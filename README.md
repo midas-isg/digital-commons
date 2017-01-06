@@ -1,10 +1,7 @@
-# Spring Boot Hello World Example with JSP
-
-## Guide
-https://hellokoding.com/spring-boot-hello-world-example-with-jsp/
+# MIDAS Digital Commons
 
 ## What you'll need
-- JDK 1.7 or later
+- JDK 1.8 or later
 - Maven 3 or later
 
 ## Stack
@@ -12,4 +9,4 @@ https://hellokoding.com/spring-boot-hello-world-example-with-jsp/
 - Java
 
 ## Run
-`mvn spring-boot:run`
+`mvn spring-boot:run` or deploy the war file in tomcat.
