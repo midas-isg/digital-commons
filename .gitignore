@@ -1,2 +1,5 @@
-# Created by .ignore support plugin (hsz.mobi)
-/zBad/
+target
+*.iml
+.DS_Store
+/target
+.idea/
