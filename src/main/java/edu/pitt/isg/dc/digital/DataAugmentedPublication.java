@@ -1,5 +1,9 @@
 package edu.pitt.isg.dc.digital;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class DataAugmentedPublication {
     private String name;
@@ -28,6 +32,27 @@ public class DataAugmentedPublication {
 
     public void setData(AugmentedData data) {
         this.data = data;
+    }
+
+    public Map<String, Object> toBootstrapTree() {
+        Map<String, Object> tree = new HashMap<>();
+
+        if(this.name != null) {
+            tree.put("text", this.name);
+        }
+
+        List<Map<String, Object>> nodes = new ArrayList<>();
+        if(this.paper != null) {
+            nodes.add(this.paper.getCitation());
+        }
+
+        if(this.data != null) {
+            nodes.add(this.data.getCitation());
+        }
+
+        tree.put("nodes", nodes);
+
+        return tree;
     }
 
     @Override

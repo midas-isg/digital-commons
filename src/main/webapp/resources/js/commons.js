@@ -13,9 +13,11 @@
 //Bootstrap v3.3.4 (>= 3.0.0)
 //jQuery v2.1.3 (>= 1.9.0)
 
-var dataAugmentedPublications = [{
+/*var dataAugmentedPublications = [{
     text: "Drake Paper 1"}, {text:"Drake Paper 2"}
-];
+];*/
+
+var dataAugmentedPublications = [];
 
 var dataAndKnowledgeTree = [{
     text: "SPEW synthetic ecosystems",

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class HelloController {
@@ -21,9 +22,9 @@ public class HelloController {
         return "commons";
     }
 
-    private List<DataAugmentedPublication> dummyModels() {
-        final ArrayList<DataAugmentedPublication> list = new ArrayList<>();
-        list.add(dummyDataAugmentedPublication());
+    private List<Map<String, Object>> dummyModels() {
+        final ArrayList<Map<String, Object>> list = new ArrayList<>();
+        list.add(dummyDataAugmentedPublication().toBootstrapTree());
         System.out.println(list);
         return list;
     }
@@ -39,8 +40,10 @@ public class HelloController {
     private Paper dummyPaper() {
         final Paper paper = new Paper();
         fillDummyEbola(paper);
+        paper.setName("Ebola Cases and Health System Demand in Liberia");
         paper.setDoi("10.1371/journal.pbio.1002056");
         paper.setTypeText("Paper");
+        paper.setJournal("PLOS Biology");
         paper.setUrl("http://dx.doi.org/10.1371/journal.pbio.1002056");
         return paper;
     }
@@ -48,8 +51,10 @@ public class HelloController {
     private AugmentedData dummyAugmentedData() {
         final AugmentedData data = new AugmentedData();
         fillDummyEbola(data);
+        data.setName("Data from: Ebola cases and health system demand in Liberia");
         data.setDoi("10.5061/dryad.17m5q");
         data.setTypeText("Dryad Data Package");
+        data.setJournal("PLOS Biology");
         data.setUrl("http://dx.doi.org/10.5061/dryad.17m5q");
         return data;
     }
