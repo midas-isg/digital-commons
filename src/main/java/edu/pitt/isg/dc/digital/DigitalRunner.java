@@ -25,8 +25,8 @@ public class DigitalRunner implements CommandLineRunner {
     private void logDigitalTypes() {
         log("All Digital Types:");
         log("-------------------------------");
-        for (Type aff : typeRepository.findAll()) {
-            log(aff.toString());
+        for (Type type : typeRepository.findAll()) {
+            log(type.toString());
         }
         log("");
     }
@@ -39,8 +39,8 @@ public class DigitalRunner implements CommandLineRunner {
     private void logDigitalObjects() {
         log("All Digital Objects:");
         log("-------------------------------");
-        for (Digital aff : digitalRepository.findAll()) {
-            log(aff.toString());
+        for (Digital digital : digitalRepository.findAll()) {
+            log(digital.toString());
         }
         log("");
     }
