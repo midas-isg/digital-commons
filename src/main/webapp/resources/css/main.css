@@ -2,3 +2,8 @@
     margin-left:40px;
     word-wrap:break-word;
 }
+
+#commons-body {
+    width:95%;
+    margin: auto;
+}

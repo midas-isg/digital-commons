@@ -32,7 +32,8 @@
 
 </head>
 
-<body>
+<body id="commons-body">
+<h1>MIDAS Digital Commons</h1>
 <div class="row">
     <hr>
 
