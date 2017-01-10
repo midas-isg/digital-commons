@@ -74,17 +74,4 @@ public class DataAugmentedPublication extends Digital {
     public void setJournal(String journal) {
         this.journal = journal;
     }
-
-    @Override
-    public String toString() {
-        return "DataAugmentedPublication{" +
-                "authorsText='" + authorsText + '\'' +
-                ", publicationDateText='" + publicationDateText + '\'' +
-                ", typeText='" + typeText + '\'' +
-                ", doi='" + doi + '\'' +
-                ", url='" + url + '\'' +
-                ", journal='" + journal + '\'' +
-                ", paper=" + paper +
-                '}';
-    }
 }
