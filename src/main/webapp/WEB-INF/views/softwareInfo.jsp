@@ -43,13 +43,45 @@
     <div class="col-md-12">
         <h1>MIDAS Digital Commons - Software Information</h1>
         <hr>
-        <h2>Software Name</h2>
-        <h4>Version: </h4>
-        <h4>Developer(s): </h4>
-        <h4>DOI: </h4>
-        <h4>URL: </h4>
-        <h4>Source Control: </h4>
+        <h2>${software.name}</h2>
+
+        <c:if test="${not empty software.version}">
+            <div>
+                <h4 class="inline">Version: </h4>
+                ${software.version}
+            </div>
+        </c:if>
+
+        <c:if test="${not empty software.developer}">
+            <div>
+                <h4 class="inline">Developer(s):</h4>
+                ${software.developer}
+            </div>
+        </c:if>
+
+        <c:if test="${not empty software.doi}">
+            <div>
+                <h4 class="inline">DOI: </h4>
+                ${software.doi}
+            </div>
+        </c:if>
+
+        <c:if test="${not empty software.url}">
+            <div>
+                <h4 class="inline">URL: </h4>
+                <a href="${software.url}">${software.url}</a>
+            </div>
+        </c:if>
+
+        <c:if test="${not empty software.sourceCodeUrl}">
+            <div>
+                <h4 class="inline">Source Control: </h4>
+                <a href="${software.sourceCodeUrl}">${software.sourceCodeUrl}</a>
+            </div>
+        </c:if>
+
         <br>
+
         <a href="${pageContext.request.contextPath}/home"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
     </div>
 </div>

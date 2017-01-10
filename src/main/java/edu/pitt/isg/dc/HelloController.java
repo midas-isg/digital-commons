@@ -7,11 +7,13 @@ import edu.pitt.isg.dc.digital.Publication;
 import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.dap.DapUtil;
+import edu.pitt.isg.dc.digital.software.Software;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.Utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,9 +38,22 @@ public class HelloController {
         return "commons";
     }
 
-    @RequestMapping(value = "/software", method = RequestMethod.GET)
-    public String softwareInfo(Model model) {
-        model.addAttribute("software", new ArrayList<SoftwareFolder>());    // placeholder for iterable to be returned from DB
+    @RequestMapping(value = "/software/{id}", method = RequestMethod.GET)
+    public String softwareInfo(Model model, @PathVariable("id") long id) {
+        List<SoftwareFolder> tree = new ArrayList<>();
+
+        Software softwareToReturn = new Software();
+        for(SoftwareFolder folder : tree) {
+            for(Software software : folder.getList()) {
+                // TODO - uncommon when database is complete
+                /*if(software.getId() == id) {
+                    softwareToReturn = software;
+                    break;
+                }*/
+            }
+        }
+
+        model.addAttribute("software", softwareToReturn);    // placeholder for iterable to be returned from DB
         return "softwareInfo";
     }
 
