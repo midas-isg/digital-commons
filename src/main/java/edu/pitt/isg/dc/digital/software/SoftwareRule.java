@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 @Service
 public class SoftwareRule {
@@ -14,7 +14,7 @@ public class SoftwareRule {
     private SoftwareRepository repository;
 
     public Iterable<SoftwareFolder> tree() {
-        Map<String, SoftwareFolder> root = new HashMap<>();
+        Map<String, SoftwareFolder> root = new TreeMap<>();
         Iterable<Software> all = repository.findAll();
         for (Software item : all){
             final String type = item.getTypeText();
