@@ -18,6 +18,7 @@
 ];*/
 
 var dataAugmentedPublications = [];
+var software = [];
 
 var algorithmsTree = [{
     text: "Disease transmission simulators",

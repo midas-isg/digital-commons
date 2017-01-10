@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.digital.Publication;
 import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.dap.DapUtil;
+import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.Utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-import java.util.Properties;
+import java.util.*;
 
 @Controller
 public class HelloController {
@@ -33,9 +30,7 @@ public class HelloController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String hello(Model model) {
-        /*model.addAttribute("dataAugmentedPublications", dummyModels());
-        Iterable<DapFolder> tree = rule.tree();
-        System.out.println(tree);*/
+        model.addAttribute("software", new ArrayList<SoftwareFolder>());    // placeholder for iterable to be returned from DB
         model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(rule.tree()));
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         return "commons";
