@@ -11,9 +11,6 @@ import javax.persistence.ManyToOne;
 public class DataAugmentedPublication extends Digital {
     private String authorsText;
     private String publicationDateText;
-    private String typeText;
-    private String doi;
-    private String url;
     private String journal;
     private DataAugmentedPublication paper;
 
@@ -25,36 +22,12 @@ public class DataAugmentedPublication extends Digital {
         this.authorsText = authorsText;
     }
 
-    public String getDoi() {
-        return doi;
-    }
-
-    public void setDoi(String doi) {
-        this.doi = doi;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public String getPublicationDateText() {
         return publicationDateText;
     }
 
     public void setPublicationDateText(String publicationDateText) {
         this.publicationDateText = publicationDateText;
-    }
-
-    public String getTypeText() {
-        return typeText;
-    }
-
-    public void setTypeText(String typeText) {
-        this.typeText = typeText;
     }
 
     @ManyToOne(fetch = FetchType.LAZY)
