@@ -14,15 +14,6 @@ import javax.persistence.ManyToOne;
 public class Digital {
     private Long id;
     private String name;
-    private Type type;
-
-    public Digital() {
-    }
-
-    public Digital(String name, Type type) {
-        this.name = name;
-        this.type = type;
-    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -42,21 +33,8 @@ public class Digital {
         this.name = name;
     }
 
-    @ManyToOne(fetch= FetchType.EAGER)
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
     @Override
     public String toString() {
-        return "Digital{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type=" + type +
-                '}';
+        return "id=" + id + ", name='" + name + "'";
     }
 }
