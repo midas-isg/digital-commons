@@ -13,10 +13,39 @@
         });
 
         <c:forEach items="${folder.list}" var="item">
-            software[${loop.index}].nodes.push({
-                "text": "<div class=\"node-with-margin\">${item.name}</div>",
-                "url": '${item.url}'
-            });
+            var nodeText = "";
+            var url = "#";
+
+            <c:if test="${not empty item}">
+                <c:if test="${not empty item.name}">
+                    nodeText += ${item.name} + " ";
+                </c:if>
+
+                <c:if test="${not empty item.version}">
+                    nodeText += "(" + ${item.version} + "). ";
+                </c:if>
+
+                <c:if test="${not empty item.developer}">
+                    nodeText += ${item.developer} + ". ";
+                </c:if>
+
+                <c:if test="${not empty item.doi}">
+                    nodeText += "<i>" + ${item.doi} + ".</i> ";
+                </c:if>
+
+                <c:if test="${not empty item.url}">
+                    nodeText += "<i>" + ${item.url} + ".</i> ";
+                </c:if>
+
+                <c:if test="${not empty item.sourceCodeUrl}">
+                    nodeText += "<i>Source: " + ${item.sourceCodeUrl} + ".</i> ";
+                </c:if>
+
+                software[${loop.index}].nodes.push({
+                    "text": "<div class=\"node-with-margin\">" + nodeText + "</div>",
+                    "url": url
+                });
+            </c:if>
         </c:forEach>
     </c:forEach>
 
