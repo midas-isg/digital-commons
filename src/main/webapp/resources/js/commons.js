@@ -19,13 +19,6 @@
 
 var dataAugmentedPublications = [];
 
-var dataAndKnowledgeTree = [{
-    text: "SPEW synthetic ecosystems",
-    nodes: [{text: "USA"}] },
-    {text:"Disease surveillance data", nodes:[{text:"Ebola"}, {text:"Chik-V"}, {text:"Zika"}]}, {text:"Epidemics", nodes:[{text:"Ebola Zaire 1976"}, {text:"..."}]}
-
-];
-
 var algorithmsTree = [{
     text: "Disease transmission simulators",
     href: "#node-1",
@@ -78,13 +71,39 @@ var algorithmsTree = [{
     }
 ];
 
-function getDataAndKnowledgeTree() {
-    return dataAndKnowledgeTree;
-}
+function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
+    var collections = [];
+    var tree = [];
 
-var $dataAndKnowledgeTree = $('#data-and-knowledge-treeview').treeview({
-    data: getDataAndKnowledgeTree(),
-});
+    tree.push({
+            text: "SPEW synthetic ecosystems",
+            nodes: [{text: "USA"}]
+        },
+        {text: "Disease surveillance data", nodes: [{text: "Ebola"}, {text: "Chik-V"}, {text: "Zika"}]});
+
+    $.each(libraryData, function (index, value) {
+        var url;
+        if (index.includes("Epidemic")) {
+            url = libraryViewerUrl + "epidemic/";
+        } else if (index.includes("CaseSeries")) {
+            url = libraryViewerUrl + "caseSeries/"
+        } else {
+            url = libraryViewerUrl + "infectiousDiseaseScenario/";
+        }
+        var nodeLevel1 = [];
+        $.each(value, function (index, value) {
+            var nodeLevel2 = [];
+            $.each(value, function (index, value) {
+                nodeLevel2.push({text: value.name, url: url+value.urn});
+            });
+            nodeLevel1.push({text: index, nodes: nodeLevel2});
+        });
+
+        collections.push({text: index, nodes: nodeLevel1});
+    });
+    tree.push({text: "Collections", nodes: collections});
+    return tree;
+}
 
 function getDataAugmentedPublicationsTree() {
     return dataAugmentedPublications;
