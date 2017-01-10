@@ -8,9 +8,6 @@ import javax.persistence.Entity;
 public class Software extends Digital {
     private String version;
     private String developer;
-    private String url;
-    private String doi;
-    private String typeText;
     private String sourceCodeUrl;
 
     public String getVersion() {
@@ -27,30 +24,6 @@ public class Software extends Digital {
 
     public void setDeveloper(String developer) {
         this.developer = developer;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public String getDoi() {
-        return doi;
-    }
-
-    public void setDoi(String doi) {
-        this.doi = doi;
-    }
-
-    public String getTypeText() {
-        return typeText;
-    }
-
-    public void setTypeText(String typeText) {
-        this.typeText = typeText;
     }
 
     public String getSourceCodeUrl() {
