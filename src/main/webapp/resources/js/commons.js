@@ -94,7 +94,7 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
         $.each(value, function (index, value) {
             var nodeLevel2 = [];
             $.each(value, function (index, value) {
-                nodeLevel2.push({text: value.name, url: url+value.urn});
+                nodeLevel2.push({text:  "<div class=\"grandnode-with-margin\">" + value.name + "<div>", url: url+value.urn});
             });
             nodeLevel1.push({text: index, nodes: nodeLevel2});
         });

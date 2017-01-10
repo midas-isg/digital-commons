@@ -7,3 +7,8 @@
     width:95%;
     margin: auto;
 }
+
+.grandnode-with-margin {
+    margin-left:80px;
+    word-wrap:break-word;
+}
