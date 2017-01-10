@@ -21,4 +21,12 @@ public class SoftwareFolder {
     public void setList(List<Software> list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "SoftwareFolder{" +
+                "name='" + name + '\'' +
+                ", list=" + list +
+                '}';
+    }
 }
