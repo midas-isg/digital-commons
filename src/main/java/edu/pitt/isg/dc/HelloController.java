@@ -30,9 +30,9 @@ public class HelloController {
     private DapRule rule;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String hello(Model model, @RequestParam(value="name") String name) {
-        //model.addAttribute("dataAugmentedPublications", dummyModels());
-        model.addAttribute("dataAugmentedPublications", rule.tree());
+    public String hello(Model model) {
+        model.addAttribute("dataAugmentedPublications", dummyModels());
+//        model.addAttribute("dataAugmentedPublications", rule.tree());
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         return "commons";
     }
