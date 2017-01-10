@@ -4,6 +4,8 @@ import edu.pitt.isg.dc.digital.AugmentedData;
 import edu.pitt.isg.dc.digital.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.Paper;
 import edu.pitt.isg.dc.digital.Publication;
+import edu.pitt.isg.dc.digital.dap.DapRule;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +18,13 @@ import java.util.Map;
 
 @Controller
 public class HelloController {
+    @Autowired
+    private DapRule rule;
+
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String hello(Model model, @RequestParam(value="name", required=false, defaultValue="World") String name) {
-        model.addAttribute("dataAugmentedPublications", dummyModels());
+    public String hello(Model model, @RequestParam(value="name") String name) {
+        //model.addAttribute("dataAugmentedPublications", dummyModels());
+        model.addAttribute("dataAugmentedPublications", rule.tree());
         return "commons";
     }
 
