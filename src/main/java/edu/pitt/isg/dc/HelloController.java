@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.digital.Paper;
 import edu.pitt.isg.dc.digital.Publication;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import org.springframework.beans.factory.annotation.Autowired;
+import edu.pitt.isg.dc.Utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import java.util.Properties;
+
 @Controller
 public class HelloController {
-    @Autowired
+ private static String VIEWER_URL = "";
+
+    static {
+        Properties configurationProperties = DigitalCommonsProperties.getProperties();
+        VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
+    }    @Autowired
     private DapRule rule;
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String hello(Model model, @RequestParam(value="name") String name) {
         //model.addAttribute("dataAugmentedPublications", dummyModels());
         model.addAttribute("dataAugmentedPublications", rule.tree());
+        model.addAttribute("libraryViewerUrl", VIEWER_URL);
         return "commons";
     }
 
