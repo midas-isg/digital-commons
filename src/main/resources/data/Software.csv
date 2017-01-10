@@ -1,0 +1,8 @@
+name,version,developer,url,doi,typeText,sourceCodeUrl
+GLEAMViz,,"Northeastern University, ISI Foundation",,,Data visualizers,
+FluOutlook,,"Northeastern University, ISI Foundation",http://fluoutlook.org/,,Disease Surveillance algorithms and systems,
+ZIKA Modeling,,"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",http://www.zika-model.org/,,Disease Transmission Models,
+TRANSTAT,,CENTER FOR INFERENCE AND DYNAMICS OF INFECTIOUS DISEASES,http://www.cidid.org/transtat,,Disease Transmission Simulators,
+nextstrain/Zika,,,http://nextstrain.org/zika/,,Disease Surveillance algorithms and systems,
+nextflu/H3N2,,,http://nextflu.org/h3n2/3y/,,Disease Surveillance algorithms and systems,https://github.com/blab/nextflu
+pomp: Statistical Inference for Partially Observed Markov Processes,1,Aaron A. King <kingaa at umich.edu>,https://cran.r-project.org/web/packages/pomp/index.html,,Data pipeline algorithms and systems,
