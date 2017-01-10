@@ -24,19 +24,25 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
+    <!-- jQuery imports -->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"
+            integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 
+    <!-- Bootstrap CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"
           rel="stylesheet">
+
+    <!-- Bootstrap JS -->
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 
 </head>
 
 <body id="commons-body">
 <h1>MIDAS Digital Commons</h1>
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="#browse">Browse</a></li>
-    <li role="presentation"><a href="http://ide.obc.io/#/">Search</a></li>
+    <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
+    <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
 </ul>
 <div class="row">
     <div class="tab-content">
@@ -54,11 +60,14 @@
                 <div id="publications-treeview" class="treeview"></div>
             </div>
         </div>
+        <div id="search" class="tab-pane fade">
+            <iframe src="http://ide.obc.io/#/" style="width:100%; height:100%">
+                <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a> to search.</p>
+            </iframe>
+        </div>
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-2.1.3.min.js"
-        integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
