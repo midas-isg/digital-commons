@@ -27,6 +27,8 @@ public class HelloController {
         list.add(dummyDataAugmentedPublication().toBootstrapTree());
         list.add(dummyDataAugmentedPublication("Waiting time to infectious disease emergence",
                 dummyFromScratch("Christopher J. Dibble, Eamon B. O'Dea, Andrew W. Park, John M. Drake", "10-19-2016", "Waiting time to infectious disease emergence", "10.1098/rsif.2016.0540", "Paper", "The Royal Society", "http://dx.doi.org/10.1098/rsif.2016.0540"), dummyFromScratch("Dibble CJ, O'Dea EB, Park AW, Drake JM", "10-27-2016", "Data from: Waiting time to infectious disease emergence", "10.5061/dryad.dp4kb", "Dryad Data Package", "Dryad Digital Repository", "http://dx.doi.org/10.5061/dryad.dp4kb")).toBootstrapTree());
+        list.add(dummyDataAugmentedPublication("Spatial spread of the West Africa Ebola epidemic",
+                dummyFromScratch("Andrew M. Kramer, J. Tomlin Pulliam, Laura W. Alexander, Andrew W. Park, Pejman Rohani, John M. Drake", "8-3-2016", "Spatial spread of the West Africa Ebola epidemic", "10.1098/rsos.160294", "Paper", "The Royal Society", "http://dx.doi.org/10.1098/rsos.160294"), dummyFromScratch("Kramer AM, Pulliam JT, Alexander LW, Park AW, Rohani P, Drake JM", "9-8-2016", "Data from: Spatial spread of the West Africa Ebola epidemic", "10.5061/dryad.k95j3.2", "Dryad Data Package", "Dryad Digital Repository", "http://dx.doi.org/10.5061/dryad.k95j3.2")).toBootstrapTree());
         return list;
     }
 
