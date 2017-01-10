@@ -4,7 +4,9 @@ import edu.pitt.isg.dc.digital.AugmentedData;
 import edu.pitt.isg.dc.digital.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.Paper;
 import edu.pitt.isg.dc.digital.Publication;
+import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
+import edu.pitt.isg.dc.digital.dap.DapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.Utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
@@ -31,8 +33,10 @@ public class HelloController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String hello(Model model) {
-        model.addAttribute("dataAugmentedPublications", dummyModels());
-//        model.addAttribute("dataAugmentedPublications", rule.tree());
+        /*model.addAttribute("dataAugmentedPublications", dummyModels());
+        Iterable<DapFolder> tree = rule.tree();
+        System.out.println(tree);*/
+        model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(rule.tree()));
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         return "commons";
     }
