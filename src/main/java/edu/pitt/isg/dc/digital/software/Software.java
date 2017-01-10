@@ -1,21 +1,17 @@
 package edu.pitt.isg.dc.digital.software;
 
-public class Software {
-    private String name;
+import edu.pitt.isg.dc.digital.Digital;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Software extends Digital {
     private String version;
     private String developer;
     private String url;
     private String doi;
     private String typeText;
     private String sourceCodeUrl;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getVersion() {
         return version;
