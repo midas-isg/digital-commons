@@ -22,6 +22,8 @@
 
     <title>MIDAS Digital Commons</title>
 
+    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
 
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +32,8 @@
 
 </head>
 
-<body>
+<body id="commons-body">
+<h1>MIDAS Digital Commons</h1>
 <div class="row">
     <hr>
 
@@ -52,6 +55,8 @@
         integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
+
+<myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
 
 </body>
 </html>
