@@ -13,10 +13,11 @@
         });
 
         <c:forEach items="${folder.list}" var="item">
-            var nodeText = "";
-            var url = "#";
+            /*var nodeText = "";
+            var url = "#";*/
 
             <c:if test="${not empty item}">
+                /*
                 <c:if test="${not empty item.name}">
                     nodeText += ${item.name} + " ";
                 </c:if>
@@ -40,10 +41,11 @@
                 <c:if test="${not empty item.sourceCodeUrl}">
                     nodeText += "<i>Source: " + ${item.sourceCodeUrl} + ".</i> ";
                 </c:if>
+                */
 
                 software[${loop.index}].nodes.push({
-                    "text": "<div class=\"node-with-margin\">" + nodeText + "</div>",
-                    "url": url
+                    "text": "<div class=\"node-with-margin\">" + ${item.name} + "</div>",
+                    "url": "${pageContext.request.contextPath}/software/" + ${item.id}
                 });
             </c:if>
         </c:forEach>
