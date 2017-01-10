@@ -57,10 +57,9 @@ public class DapUtil {
             publicationInfo += dap.getName() + ". ";
         }
 
-        // TODO - UNCOMMENT WHEN JOURNAL IS ADDED TO DB
-        /*if(dap.getJournal() != null) {
+        if(dap.getJournal() != null) {
             doiInfo += dap.getJournal() + ". ";
-        }*/
+        }
 
         if(dap.getDoi() != null) {
             doiInfo += "doi: " + dap.getDoi() + " ";
