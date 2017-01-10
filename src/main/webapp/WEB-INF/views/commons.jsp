@@ -61,7 +61,7 @@
             </div>
         </div>
         <div id="search" class="tab-pane fade">
-            <iframe src="http://ide.obc.io/#/" class="fullscreen">
+            <iframe src="http://ide.obc.io/#/" class="fullscreen" frameBorder="0">
                 <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a> to search.</p>
             </iframe>
         </div>
