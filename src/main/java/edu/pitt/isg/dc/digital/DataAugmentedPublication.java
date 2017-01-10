@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.digital;
 
-
+/** TODO: to be removed */
 public class DataAugmentedPublication {
     private String name;
     private Paper paper;

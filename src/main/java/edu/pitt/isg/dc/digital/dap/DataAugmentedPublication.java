@@ -1,12 +1,20 @@
-package edu.pitt.isg.dc.digital;
+package edu.pitt.isg.dc.digital.dap;
 
-/** TODO: to be removed */
-public abstract class Publication {
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.pitt.isg.dc.digital.Digital;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+
+@Entity(name = "dap")
+public class DataAugmentedPublication extends Digital {
     private String authorsText;
     private String publicationDateText;
     private String typeText;
     private String doi;
     private String url;
+    private DataAugmentedPublication paper;
 
     public String getAuthorsText() {
         return authorsText;
@@ -46,6 +54,16 @@ public abstract class Publication {
 
     public void setTypeText(String typeText) {
         this.typeText = typeText;
+    }
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    public DataAugmentedPublication getPaper() {
+        return paper;
+    }
+
+    public void setPaper(DataAugmentedPublication paper) {
+        this.paper = paper;
     }
 
     @Override
