@@ -34,20 +34,26 @@
 
 <body id="commons-body">
 <h1>MIDAS Digital Commons</h1>
+<ul class="nav nav-tabs">
+    <li role="presentation" class="active"><a href="#browse">Browse</a></li>
+    <li role="presentation"><a href="http://ide.obc.io/#/">Search</a></li>
+</ul>
 <div class="row">
-    <hr>
-
-    <div class="col-sm-4">
-        <h2>Algorithms</h2>
-        <div id="algorithm-treeview" class="treeview"></div>
-    </div>
-    <div class="col-sm-4">
-        <h2>Data &amp; Knowledge</h2>
-        <div id="data-and-knowledge-treeview" class="treeview"></div>
-    </div>
-    <div class="col-sm-4">
-        <h2>Data-Augmented Publications</h2>
-        <div id="publications-treeview" class="treeview"></div>
+    <div class="tab-content">
+        <div id="browse" class="tab-pane fade in active">
+            <div class="col-sm-4">
+                <h2>Algorithms</h2>
+                <div id="algorithm-treeview" class="treeview"></div>
+            </div>
+            <div class="col-sm-4">
+                <h2>Data &amp; Knowledge</h2>
+                <div id="data-and-knowledge-treeview" class="treeview"></div>
+            </div>
+            <div class="col-sm-4">
+                <h2>Data-Augmented Publications</h2>
+                <div id="publications-treeview" class="treeview"></div>
+            </div>
+        </div>
     </div>
 </div>
 
