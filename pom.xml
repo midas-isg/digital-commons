@@ -6,6 +6,7 @@
     <name>Digital Commons</name>
     <description>MIDAS Digital Commons</description>
     <packaging>war</packaging>
+    <version>0.0.1</version>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
