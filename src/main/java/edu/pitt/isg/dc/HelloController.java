@@ -36,6 +36,12 @@ public class HelloController {
         return "commons";
     }
 
+    @RequestMapping(value = "/software", method = RequestMethod.GET)
+    public String softwareInfo(Model model) {
+        model.addAttribute("software", new ArrayList<SoftwareFolder>());    // placeholder for iterable to be returned from DB
+        return "softwareInfo";
+    }
+
     private List<Map<String, Object>> dummyModels() {
         final ArrayList<Map<String, Object>> list = new ArrayList<>();
         list.add(dummyDataAugmentedPublication().toBootstrapTree());
