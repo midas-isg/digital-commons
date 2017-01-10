@@ -79,8 +79,8 @@ public class DapRunner implements CommandLineRunner {
     }
 
     private DataAugmentedPublication toDataAugmentedPublication(DapForm form) {
-        final String paperDoi = form.getPaperDoi();
         final DataAugmentedPublication dap = new DataAugmentedPublication();
+        final String paperDoi = form.getPaperDoi();
         dap.setPaper(findPaper(paperDoi));
         dap.setName(form.getName());
         dap.setUrl(form.getUrl());
@@ -88,6 +88,7 @@ public class DapRunner implements CommandLineRunner {
         dap.setAuthorsText(form.getAuthorsText());
         dap.setPublicationDateText(form.getPublicationDateText());
         dap.setDoi(form.getDoi());
+        dap.setJournal(form.getJournal());
         return dap;
     }
 

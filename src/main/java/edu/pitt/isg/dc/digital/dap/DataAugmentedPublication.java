@@ -14,6 +14,7 @@ public class DataAugmentedPublication extends Digital {
     private String typeText;
     private String doi;
     private String url;
+    private String journal;
     private DataAugmentedPublication paper;
 
     public String getAuthorsText() {
@@ -66,14 +67,24 @@ public class DataAugmentedPublication extends Digital {
         this.paper = paper;
     }
 
+    public String getJournal() {
+        return journal;
+    }
+
+    public void setJournal(String journal) {
+        this.journal = journal;
+    }
+
     @Override
     public String toString() {
-        return "Publication{" +
+        return "DataAugmentedPublication{" +
                 "authorsText='" + authorsText + '\'' +
                 ", publicationDateText='" + publicationDateText + '\'' +
                 ", typeText='" + typeText + '\'' +
                 ", doi='" + doi + '\'' +
                 ", url='" + url + '\'' +
+                ", journal='" + journal + '\'' +
+                ", paper=" + paper +
                 '}';
     }
 }
