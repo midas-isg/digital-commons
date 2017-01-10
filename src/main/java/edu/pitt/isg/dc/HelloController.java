@@ -37,6 +37,7 @@ public class HelloController {
         Iterable<DapFolder> tree = rule.tree();
         System.out.println(tree);*/
         model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(rule.tree()));
+        model.addAttribute("libraryViewerUrl", VIEWER_URL);
         return "commons";
     }
 
