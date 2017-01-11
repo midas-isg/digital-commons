@@ -73,9 +73,8 @@ var algorithmsTree = [{
 
 function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
     var collections = [];
-    var tree = [];
 
-    tree.push({
+    collections.push({
             text: "SPEW synthetic ecosystems",
             nodes: [{text: "USA"}]
         },
@@ -101,8 +100,7 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
 
         collections.push({text: index, nodes: nodeLevel1});
     });
-    tree.push({text: "Collections", nodes: collections});
-    return tree;
+    return collections;
 }
 
 function getDataAugmentedPublicationsTree() {

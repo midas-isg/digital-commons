@@ -4,16 +4,14 @@ import edu.pitt.isg.dc.digital.AugmentedData;
 import edu.pitt.isg.dc.digital.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.Paper;
 import edu.pitt.isg.dc.digital.Publication;
-import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.dap.DapUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import edu.pitt.isg.dc.Utils.DigitalCommonsProperties;
+import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +22,12 @@ import java.util.Properties;
 @Controller
 public class HelloController {
  private static String VIEWER_URL = "";
+ private static String VIEWER_TOKEN = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
+        VIEWER_TOKEN = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_TOKEN);
     }    @Autowired
     private DapRule rule;
 
@@ -38,6 +38,7 @@ public class HelloController {
         System.out.println(tree);*/
         model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(rule.tree()));
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
+        model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         return "commons";
     }
 

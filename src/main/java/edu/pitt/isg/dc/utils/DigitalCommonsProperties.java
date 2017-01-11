@@ -1,10 +1,7 @@
-package edu.pitt.isg.dc.Utils;
+package edu.pitt.isg.dc.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -13,6 +10,7 @@ import java.util.Properties;
 public class DigitalCommonsProperties extends Properties {
 
     public static final String LIBRARY_VIEWER_URL = "libraryViewerUrl";
+    public static final String LIBRARY_VIEWER_TOKEN = "libraryViewerToken";
 
     private static class DigitalCommonsPropertiesHolder {
 

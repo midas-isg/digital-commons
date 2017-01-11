@@ -57,6 +57,6 @@
 <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
-<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}"></myTags:libraryViewerCollections>
+<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"></myTags:libraryViewerCollections>
 </body>
 </html>
