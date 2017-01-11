@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Properties;
 
 @Controller
-public class HelloController {
+public class CommonsController {
  private static String VIEWER_URL = "";
  private static String VIEWER_TOKEN = "";
 
@@ -29,10 +29,9 @@ public class HelloController {
     private DapRule dapRule;
     @Autowired
     private SoftwareRule softwareRule;
-
-
+    
     @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public String hello(Model model) {
+    public String commons(Model model) {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
