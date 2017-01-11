@@ -12,3 +12,16 @@
     margin-left:80px;
     word-wrap:break-word;
 }
+
+.fullscreen {
+    height:100%;
+    width:100%;
+}
+
+#search {
+    margin-top:5px;
+}
+
+.inline {
+    display:inline;
+}
