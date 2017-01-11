@@ -41,7 +41,8 @@
 <body id="commons-body">
 <div class="row">
     <div class="col-md-12">
-        <h1>MIDAS Digital Commons - Software Information</h1>
+        <h1 class="commons-header">MIDAS Digital Commons</h1>
+        <h2 class="commons-subheader">Software Information</h2>
         <hr>
         <h3>${software.name}</h3>
 
