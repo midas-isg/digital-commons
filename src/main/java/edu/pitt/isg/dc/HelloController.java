@@ -1,7 +1,6 @@
 package edu.pitt.isg.dc;
 
 import edu.pitt.isg.dc.digital.dap.DapRule;
-import edu.pitt.isg.dc.digital.dap.DapUtil;
 import edu.pitt.isg.dc.digital.software.Software;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
@@ -34,7 +33,7 @@ public class HelloController {
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String hello(Model model) {
-        model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(dapRule.tree()));
+        model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
