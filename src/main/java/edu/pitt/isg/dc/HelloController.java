@@ -41,7 +41,6 @@ public class HelloController {
     public String hello(Model model) {
         model.addAttribute("dataAugmentedPublications", DapUtil.convertDapTreeToBootstrapTree(dapRule.tree()));
         model.addAttribute("software", toSoftwareFolderList(softwareRule.tree()));
-        //model.addAttribute("software", new ArrayList<SoftwareFolder>());
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         return "commons";
@@ -53,16 +52,15 @@ public class HelloController {
 
     @RequestMapping(value = "/software/{id}", method = RequestMethod.GET)
     public String softwareInfo(Model model, @PathVariable("id") long id) {
-        List<SoftwareFolder> tree = new ArrayList<>();
+        List<SoftwareFolder> tree = toSoftwareFolderList(softwareRule.tree());
 
         Software softwareToReturn = new Software();
         for(SoftwareFolder folder : tree) {
             for(Software software : folder.getList()) {
-                // TODO - uncommon when database is complete
-                /*if(software.getId() == id) {
+                if(software.getId() == id) {
                     softwareToReturn = software;
                     break;
-                }*/
+                }
             }
         }
 

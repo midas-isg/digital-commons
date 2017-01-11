@@ -43,38 +43,46 @@
     <div class="col-md-12">
         <h1>MIDAS Digital Commons - Software Information</h1>
         <hr>
-        <h2>${software.name}</h2>
+        <h3>${software.name}</h3>
+
+        <c:if test="${not empty software.typeText}">
+            <div class="font-size-16">
+                <h4 class="inline">Type: </h4>
+                    ${software.typeText}
+            </div>
+        </c:if>
+
 
         <c:if test="${not empty software.version}">
-            <div>
+            <div class="font-size-16">
                 <h4 class="inline">Version: </h4>
                 ${software.version}
             </div>
         </c:if>
 
         <c:if test="${not empty software.developer}">
-            <div>
+            <div class="font-size-16">
                 <h4 class="inline">Developer(s):</h4>
                 ${software.developer}
             </div>
         </c:if>
 
         <c:if test="${not empty software.doi}">
-            <div>
+            <div class="font-size-16">
                 <h4 class="inline">DOI: </h4>
                 ${software.doi}
             </div>
         </c:if>
 
         <c:if test="${not empty software.url}">
-            <div>
+            <div class="font-size-16">
                 <h4 class="inline">URL: </h4>
                 <a href="${software.url}">${software.url}</a>
             </div>
         </c:if>
 
         <c:if test="${not empty software.sourceCodeUrl}">
-            <div>
+            <div class="font-size-16">
                 <h4 class="inline">Source Control: </h4>
                 <a href="${software.sourceCodeUrl}">${software.sourceCodeUrl}</a>
             </div>
