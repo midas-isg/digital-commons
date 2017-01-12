@@ -1,6 +1,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags"%>
 <%@ attribute name="dataAugmentedPublications" required="true"
-	type="java.util.List"%>
+	type="java.lang.Iterable"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
@@ -8,16 +8,12 @@
 <script>
 	<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
 		dataAugmentedPublications.push({
-			"text": "${pub.text}",
+			"text": "${pub.name}",
 			"nodes": []
 		});
 
-		<c:forEach items="${pub.nodes}" var="node">
-			dataAugmentedPublications[${loop.index}].nodes.push({
-				"text": "<div class=\"node-with-margin\"><strong>${node.type}: </strong>" + "${node.publicationInfo} <i>${node.doiInfo}</i></div>",
-				"url": '${node.url}'
-			});
-		</c:forEach>
+		<myTags:addDataAugmentedPublications dap="${pub.paper}" index="${loop.index}"></myTags:addDataAugmentedPublications>
+		<myTags:addDataAugmentedPublications dap="${pub.data}" index="${loop.index}"></myTags:addDataAugmentedPublications>
 	</c:forEach>
 
 	var $dataAugmentedPublicationsTree = $('#publications-treeview').treeview({
