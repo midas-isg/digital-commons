@@ -74,6 +74,7 @@ var algorithmsTree = [{
 
 function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
     var collections = [];
+    libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push({
             text: "SPEW synthetic ecosystems",
@@ -85,7 +86,7 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
         var url;
         if (index.includes("Epidemic")) {
             url = libraryViewerUrl + "epidemic/";
-        } else if (index.includes("CaseSeries")) {
+        } else if (index.includes("Case Series")) {
             url = libraryViewerUrl + "caseSeries/"
         } else {
             url = libraryViewerUrl + "infectiousDiseaseScenario/";
