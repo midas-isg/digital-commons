@@ -71,8 +71,9 @@
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
-<!--<myTags:software software="${software}"></myTags:software>-->
+<myTags:software software="${software}"></myTags:software>
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
 <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"></myTags:libraryViewerCollections>
 </body>
+
 </html>

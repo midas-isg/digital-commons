@@ -25,3 +25,15 @@
 .inline {
     display:inline;
 }
+
+.font-size-16 {
+    font-size:16px;
+}
+
+.commons-header {
+    margin-bottom:0px;
+}
+
+.commons-subheader {
+    margin-top:0px;
+}
