@@ -9,11 +9,10 @@
 	<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
 		dataAugmentedPublications.push({
 			"text": "${pub.name}",
-			"nodes": []
-		});
+            "url": "${pageContext.request.contextPath}/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
 
-		<myTags:addDataAugmentedPublications dap="${pub.paper}" index="${loop.index}"></myTags:addDataAugmentedPublications>
-		<myTags:addDataAugmentedPublications dap="${pub.data}" index="${loop.index}"></myTags:addDataAugmentedPublications>
+        });
+
 	</c:forEach>
 
 	var $dataAugmentedPublicationsTree = $('#publications-treeview').treeview({

@@ -1,6 +1,8 @@
 package edu.pitt.isg.dc;
 
+import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
+import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.software.Software;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
@@ -56,5 +58,27 @@ public class HelloController {
 
         model.addAttribute("software", softwareToReturn);    // placeholder for iterable to be returned from DB
         return "softwareInfo";
+    }
+
+    @RequestMapping(value = "/publication/{paperId}/{dataId}", method = RequestMethod.GET)
+    public String publicationInfo(Model model, @PathVariable("paperId") long paperId, @PathVariable("dataId") long dataId) {
+        Iterable<DapFolder> tree = dapRule.tree();
+
+        DataAugmentedPublication dataAugmentedPublicationPaper = new DataAugmentedPublication();
+        DataAugmentedPublication dataAugmentedPublicationData = new DataAugmentedPublication();
+
+        for(DapFolder folder : tree) {
+            DataAugmentedPublication publicationPaper = folder.getPaper();
+            DataAugmentedPublication publicationData = folder.getData();
+            if(publicationPaper.getId() == paperId && publicationData.getId() == dataId) {
+                dataAugmentedPublicationPaper = publicationPaper;
+                dataAugmentedPublicationData = publicationData;
+                break;
+            }
+        }
+
+        model.addAttribute("publicationPaper", dataAugmentedPublicationPaper);
+        model.addAttribute("publicationData", dataAugmentedPublicationData);
+        return "publicationInfo";
     }
 }

@@ -20,6 +20,35 @@
 var dataAugmentedPublications = [];
 var software = [];
 
+
+var standardEncodingTree = {
+   text: "Standards for encoding data",
+    nodes: [{
+        text: "Apollo Location Service",
+        url: "https://betaweb.rods.pitt.edu/ls"
+    },
+        {
+            text: "NCBI Taxon Id",
+            url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
+        },
+        {
+            text: "SNOMED CT",
+            url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
+        },
+        {
+            text: "LOINC",
+            url: "http://loinc.org/"
+        },
+        {
+            text: "Vaccine Ontology",
+            url: "http://www.violinet.org/vaccineontology/"
+        },
+        {
+            text: "RxNorm",
+            url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
+    }]
+};
+
 var algorithmsTree = [{
     text: "Disease transmission simulators",
     href: "#node-1",
@@ -77,7 +106,7 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push({
-            text: "SPEW synthetic ecosystems",
+            text: "Synthetic ecosystems",
             nodes: [{text: "USA"}]
         },
         {text: "Disease surveillance data", nodes: [{text: "Ebola"}, {text: "Chik-V"}, {text: "Zika"}]});
@@ -95,15 +124,40 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
         $.each(value, function (index, value) {
             var nodeLevel2 = [];
             $.each(value, function (index, value) {
-                nodeLevel2.push({text:  "<div class=\"grandnode-with-margin\">" + value.name + "<div>", url: url+value.urn});
+                // var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
+                //     "<i class='fa fa-external-link'></i></button>";
+                // var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
+                //     "<i class='fa fa-info-circle'></i></button>";
+
+                nodeLevel2.push({text:  "<div class=\"grandnode-with-margin\">" + value.name +"<div>" , url: url+value.urn});
             });
             nodeLevel1.push({text: index, nodes: nodeLevel2});
         });
 
         collections.push({text: index, nodes: nodeLevel1});
+
     });
+
+    collections.push(standardEncodingTree);
+
     return collections;
 }
+
+function openViewer(url) {
+    window.open(url);
+}
+
+function openModal(url) {
+    $('#libraryViewerModal').modal('show').find('.modal-body').load(url);
+}
+
+// var $standardEncodingTree = $('#encoding-treeview').treeview( {
+//     data: getStandardEncodingsTree(),
+// });
+//
+// function getStandardEncodingsTree() {
+//     return standardEncodingTree;
+// }
 
 function getDataAugmentedPublicationsTree() {
     return dataAugmentedPublications;

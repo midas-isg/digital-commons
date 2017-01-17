@@ -45,6 +45,7 @@
         <h2 class="commons-subheader">Software Information</h2>
         <hr>
         <h3>${software.name}</h3>
+        <h3>General Information:</h3>
 
         <c:if test="${not empty software.typeText}">
             <div class="font-size-16">
@@ -56,7 +57,7 @@
 
         <c:if test="${not empty software.version}">
             <div class="font-size-16">
-                <h4 class="inline">Version: </h4>
+                <h4 class="inline">Source code version: </h4>
                 ${software.version}
             </div>
         </c:if>
@@ -75,16 +76,30 @@
             </div>
         </c:if>
 
+        <%--<c:if test="${not empty software.webService}">--%>
+            <%--<div class="font-size-16">--%>
+                <%--<h4 class="inline">Web service: </h4>--%>
+                    <%--${software.webService}--%>
+            <%--</div>--%>
+        <%--</c:if>--%>
+
+        <%--<c:if test="${not empty software.webApplication}">--%>
+            <%--<div class="font-size-16">--%>
+                <%--<h4 class="inline">Web application: </h4>--%>
+                    <%--${software.webApplication}--%>
+            <%--</div>--%>
+        <%--</c:if>--%>
+
         <c:if test="${not empty software.url}">
             <div class="font-size-16">
-                <h4 class="inline">URL: </h4>
+                <h4 class="inline">Software location: </h4>
                 <a href="${software.url}">${software.url}</a>
             </div>
         </c:if>
 
         <c:if test="${not empty software.sourceCodeUrl}">
             <div class="font-size-16">
-                <h4 class="inline">Source Control: </h4>
+                <h4 class="inline">Source code location: </h4>
                 <a href="${software.sourceCodeUrl}">${software.sourceCodeUrl}</a>
             </div>
         </c:if>

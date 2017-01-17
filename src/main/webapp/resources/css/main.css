@@ -9,7 +9,7 @@
 }
 
 .grandnode-with-margin {
-    margin-left:80px;
+    margin-left:60px;
     word-wrap:break-word;
 }
 
@@ -36,4 +36,8 @@
 
 .commons-subheader {
     margin-top:0px;
+}
+
+.modal-dialog {
+    width: 80% !important;
 }

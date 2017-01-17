@@ -31,12 +31,13 @@
             complete : function(e) {
                 $('#data-and-knowledge-treeview').on('nodeSelected', function(event, data) {
                     if(data.url != null && data.state.selected == true) {
-                        window.location.href = data.url, '_blank';
+                        window.open(data.url);
                     }
                 });
-                console.log("DONE");
             }
         });
+        
+
     });
 
 </script>

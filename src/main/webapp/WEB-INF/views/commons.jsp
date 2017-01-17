@@ -14,15 +14,18 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <head>
+    <script src="http://cdn.auth0.com/w2/auth0-6.8.js"></script>
+
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MIDAS Digital Commons</title>
-
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+    <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">--%>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"
@@ -44,11 +47,25 @@
     <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
 </ul>
+
+<%--Library Viewer Modal--%>
+<div id="libraryViewerModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="tab-content">
         <div id="browse" class="tab-pane fade in active">
             <div class="col-sm-4">
-                <h2>Algorithms</h2>
+                <h2>Software</h2>
                 <div id="algorithm-treeview" class="treeview"></div>
             </div>
             <div class="col-sm-4">

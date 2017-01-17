@@ -1,48 +1,61 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags"%>
-<%@ attribute name="dap" required="true"
+<%@ attribute name="publication" required="true"
 	type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication"%>
-<%@ attribute name="index" required="true"
-			  type="java.lang.Integer"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
-<c:if test="${not empty dap}">
-	var nodeText = "";
-	var url = "";
+	<h3>${publication.name}</h3>
 
-	<c:if test="${not empty dap.typeText}">
-		nodeText += "<strong>${dap.typeText}: </strong>";
+	<c:if test="${not empty publication.typeText}">
+		<div class="font-size-16">
+			<h4 class="inline">Type: </h4>
+				${publication.typeText}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.authorsText}">
-		nodeText += "${dap.authorsText} ";
+
+	<c:if test="${not empty publication.authorsText}">
+		<div class="font-size-16">
+			<h4 class="inline">Authors: </h4>
+				${publication.authorsText}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.publicationDateText}">
-		nodeText += "(${dap.publicationDateText}) ";
+	<c:if test="${not empty publication.publicationDateText}">
+		<div class="font-size-16">
+			<h4 class="inline">Publication date:</h4>
+				${publication.publicationDateText}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.name}">
-		nodeText += "${dap.name}. ";
+	<c:if test="${not empty publication.name}">
+		<div class="font-size-16">
+			<h4 class="inline">Publication Name:</h4>
+				${publication.name}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.journal}">
-		nodeText += "<i>${dap.journal}.</i> ";
+	<c:if test="${not empty publication.journal}">
+		<div class="font-size-16">
+			<h4 class="inline">Journal:</h4>
+				${publication.journal}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.doi}">
-		nodeText += "<i>doi: ${dap.doi}</i> ";
+	<c:if test="${not empty publication.doi}">
+		<div class="font-size-16">
+			<h4 class="inline">DOI: </h4>
+				${publication.doi}
+		</div>
 	</c:if>
 
-	<c:if test="${not empty dap.url}">
-		nodeText += "<i>${dap.url}</i>";
-		url = "${dap.url}";
-	</c:if>
+	<c:if test="${not empty publication.url}">
+		<div class="font-size-16">
+			<h4 class="inline">URL: </h4>
+			<a href="${publication.url}">${publication.url}</a>
+		</div></c:if>
 
-	dataAugmentedPublications[${index}].nodes.push({
-		"text": "<div class=\"node-with-margin\">" + nodeText + "</div>",
-		"url": url
-	});
-</c:if>
+
+	<br>
 
