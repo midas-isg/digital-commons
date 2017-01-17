@@ -1,8 +1,13 @@
 name,version,developer,url,doi,typeText,sourceCodeUrl
 GLEAMViz,,"Northeastern University, ISI Foundation",,,Data visualizers,
-FluOutlook,,"Northeastern University, ISI Foundation",http://fluoutlook.org/,,Disease Surveillance algorithms and systems,
-ZIKA Modeling,,"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",http://www.zika-model.org/,,Disease Transmission Models,
-TRANSTAT,,CENTER FOR INFERENCE AND DYNAMICS OF INFECTIOUS DISEASES,http://www.cidid.org/transtat,,Disease Transmission Simulators,
-nextstrain/Zika,,,http://nextstrain.org/zika/,,Disease Surveillance algorithms and systems,
-nextflu/H3N2,,,http://nextflu.org/h3n2/3y/,,Disease Surveillance algorithms and systems,https://github.com/blab/nextflu
-pomp: Statistical Inference for Partially Observed Markov Processes,1,Aaron A. King <kingaa at umich.edu>,https://cran.r-project.org/web/packages/pomp/index.html,,Data pipeline algorithms and systems,
+pomp: Statistical Inference for Partially Observed Markov Processes,1,Aaron A. King <kingaa at umich.edu>,https://cran.r-project.org/web/packages/pomp/index.html,,Data regularization algorithms,
+Galapagos,1.0,ISG,https://research.rods.pitt.edu/galapagos/,,Data visualizers,
+EpiCaseMap,1.0.1.0,ISG,https://betaweb.rods.pitt.edu/epicasemap,,Data visualizers,https://github.com/midas-isg/epicasemap/releases/tag/1.0.1
+Apollo Location Service,1.0,ISG,https://betaweb.rods.pitt.edu/ls,,Data visualizers,https://github.com/midas-isg/ls/releases/tag/als-1.0
+SPEW,1.1.0,ISG,http://spew.olympus.psc.edu/syneco/spe,,Data regularization algorithms,https://github.com/leerichardson/spew
+FluOutlook,,"Northeastern University, ISI Foundation",http://fluoutlook.org/,,Disease surveillance algorithms and systems,
+ZIKA Modeling,,"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",http://www.zika-model.org/,,Disease transmission models,
+nextstrain/Zika,,,http://nextstrain.org/zika/,,Disease surveillance algorithms and systems,
+nextflu/H3N2,,,http://nextflu.org/h3n2/3y/,,Disease surveillance algorithms and systems,https://github.com/blab/nextflu
+TRANSTAT,,CENTER FOR INFERENCE AND DYNAMICS OF INFECTIOUS DISEASES,http://www.cidid.org/transtat,,Disease transmission models,
+SEUA,3.1.0,ISG,https://research.rods.pitt.edu/,,Disease transmission models,
