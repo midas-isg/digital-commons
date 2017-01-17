@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Properties;
 
 @Controller
-public class HelloController {
+public class HomeController {
  private static String VIEWER_URL = "";
  private static String VIEWER_TOKEN = "";
 
@@ -32,6 +32,10 @@ public class HelloController {
     @Autowired
     private SoftwareRule softwareRule;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String redirectHome() {
+        return "redirect:/home";
+    }
 
     @RequestMapping(value = "/home", method = RequestMethod.GET)
     public String hello(Model model) {
