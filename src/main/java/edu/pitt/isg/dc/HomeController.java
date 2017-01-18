@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc;
 
 import edu.pitt.isg.dc.digital.dap.DapFolder;
+import edu.pitt.isg.dc.digital.dap.DapForm;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.software.Software;

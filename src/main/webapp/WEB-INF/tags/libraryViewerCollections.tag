@@ -30,6 +30,9 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').on('nodeSelected', function(event, data) {
+                    if(typeof data['nodes'] != undefined) {
+                        $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+                    }
                     if(data.url != null && data.state.selected == true) {
                         window.open(data.url);
                     }

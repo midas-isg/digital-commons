@@ -23,13 +23,18 @@
     </c:forEach>
 
     var $softwareTree = $('#algorithm-treeview').treeview({
-        data: software
-    });
+        data: software,
 
-    $('#algorithm-treeview').on('nodeSelected', function(event, data) {
-        if(data.url != null && data.state.selected == true) {
-            window.location.href = data.url;
+        onNodeSelected: function(event, data) {
+            if(typeof data['nodes'] != undefined) {
+                $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+            }
+
+            if(data.url != null && data.state.selected == true) {
+                window.location.href = data.url;
+            }
         }
     });
+
 </script>
 

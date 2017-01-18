@@ -17,11 +17,22 @@ public class DapRule {
         for (DataAugmentedPublication dap : daps){
             if (dap.getTypeText().equals("Paper")){
                 final DapFolder folder = newFolder(dap);
-                root.put(dap.getId(), folder);
+                if(root.get(dap.getId()) == null) {
+                    root.put(dap.getId(), folder);
+                } else {
+                    root.get(dap.getId()).setName(folder.getName());
+                    root.get(dap.getId()).setPaper(folder.getPaper());
+                }
             } else {
                 final DataAugmentedPublication paper = dap.getPaper();
-                final DapFolder folder = root.get(paper.getId());
-                folder.setData(dap);
+                if(root.get(paper.getId()) != null) {
+                    final DapFolder folder = root.get(paper.getId());
+                    folder.setData(dap);
+                } else {
+                    final DapFolder folder = newFolder(dap);
+                    folder.setData(dap);
+                    root.put(paper.getId(), folder);
+                }
             }
         }
 

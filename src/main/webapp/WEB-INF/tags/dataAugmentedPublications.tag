@@ -7,8 +7,12 @@
 
 <script>
 	<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
+    <s:eval
+                expression="T(edu.pitt.isg.dc.utils.DigitalCommonsHelper).generateDisplayTitle(pub)"
+                var="pubTitle"/>
+
 		dataAugmentedPublications.push({
-			"text": "${pub.name}",
+			"text": "${pubTitle}",
             "url": "${pageContext.request.contextPath}/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
 
         });

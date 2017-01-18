@@ -24,27 +24,27 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "Apollo Location Service",
+        text: "Apollo location codes",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "NCBI Taxon Id",
+            text: "NCBI Taxon identifier",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "SNOMED CT",
+            text: "SNOMED CT codes",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "LOINC",
+            text: "LOINC codes",
             url: "http://loinc.org/"
         },
         {
-            text: "Vaccine Ontology",
+            text: "Vaccine Ontology identifier",
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
-            text: "RxNorm",
+            text: "RxNorm codes",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
     }]
 };
