@@ -18,10 +18,10 @@ public class DigitalCommonsHelper {
         title += authorNames[authorNames.length-1] + ", ";
 
         for(int i=0; i<authorNames.length-1;i++) {
-            title+= authorNames[i] + " ";
+            title+= authorNames[i].charAt(0) + "";
         }
 
-        title += "et al. ";
+        title += " et al. ";
 
         title += dap.getName();
         return title;
