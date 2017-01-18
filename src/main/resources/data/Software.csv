@@ -7,7 +7,7 @@ TRANSTAT,,CENTER FOR INFERENCE AND DYNAMICS OF INFECTIOUS DISEASES,http://www.ci
 SEUA,3.1.0,ISG,https://research.rods.pitt.edu/,,Disease transmission models,
 SPEW,1.1.0,ISG,http://spew.olympus.psc.edu/syneco/spe,,Other software,https://github.com/leerichardson/spew
 HyPhy,2.2.7,iGEM/UCSD evolutionary biology and bioinformatics group,http://www.hyphy.org/w/index.php/Main_Page,,Viral and bacterial evolution simulators,https://github.com/veg/hyphy/releases/tag/2.2.7
-outbreaker,1.1-7,"Thibaut Jombart, Imperial College",https://sites.google.com/site/therepiproject/r-pac/outbreaker,,Viral and bacterial evolution simulators,https://github.com/thibautjombart/outbreaker/releases/tag/1.1-7
+outbreaker,1.1-7,"Thibaut Jombart, Imperial College",https://sites.google.com/site/therepiproject/r-pac/outbreaker,,Inferring outbreak transmission trees,https://github.com/thibautjombart/outbreaker/releases/tag/1.1-7
 SEEDY,1.3,"Colin Worby, Harvard T.H. Chan School of Public Health",,,Viral and bacterial evolution simulators,https://cran.r-project.org/web/packages/seedy/index.html
 nextstrain/Zika,,Trevor Bedford and Richard Neher,http://nextstrain.org/zika/,,Disease surveillance algorithms and systems,
 nextflu/H3N2,,Trevor Bedford and Richard Neher,http://nextflu.org/h3n2/3y/,,Disease surveillance algorithms and systems,https://github.com/blab/nextflu
