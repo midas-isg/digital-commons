@@ -3,19 +3,25 @@ package edu.pitt.isg.dc.digital.software;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Service
 public class SoftwareRule {
+    private static final String DISEASE_TRANSMISSION_MODELS = "Disease transmission models";
+    private static final String VIRAL_BACTERIAL_EVOLUTION_SIMULATORS = "Viral and bacterial evolution simulators";
+    private static final String DATA_VISUALIZERS = "Data visualizers";
+    private static final String INFERRING_OUTBREAK_TRANSMISSION_TREES = "Inferring outbreak transmission trees";
+    private static final String DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS = "Disease surveillance algorithms and systems";
+    private static final String OTHER_SOFTWARE = "Other software";
+
+
     @Autowired
     private SoftwareRepository repository;
 
     public Iterable<SoftwareFolder> tree() {
-        Map<String, SoftwareFolder> root = new TreeMap<>();
+        LinkedHashMap<String, SoftwareFolder> root = new LinkedHashMap<>();
         Iterable<Software> all = repository.findAll();
+        createSortedFolder(root);
         for (Software item : all){
             final String type = item.getTypeText();
             final SoftwareFolder folder = toFolder(root, type);
@@ -49,6 +55,15 @@ public class SoftwareRule {
         root.put(type, newFolder);
         return newFolder;
 
+    }
+
+    private void createSortedFolder(Map<String, SoftwareFolder> root) {
+        toFolder(root, DISEASE_TRANSMISSION_MODELS);
+        toFolder(root, VIRAL_BACTERIAL_EVOLUTION_SIMULATORS);
+        toFolder(root, DATA_VISUALIZERS);
+        toFolder(root, INFERRING_OUTBREAK_TRANSMISSION_TREES);
+        toFolder(root, DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS);
+        toFolder(root, OTHER_SOFTWARE);
     }
 
     private SoftwareFolder newFolder(String name) {
