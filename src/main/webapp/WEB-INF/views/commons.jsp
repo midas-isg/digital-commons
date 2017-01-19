@@ -90,7 +90,7 @@
 
 <myTags:software software="${software}"></myTags:software>
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
-<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"></myTags:libraryViewerCollections>
+<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewData="${spew}"></myTags:libraryViewerCollections>
 </body>
 
 </html>

@@ -3,11 +3,32 @@
               type="java.lang.String"%>
 <%@ attribute name="libraryViewerToken" required="true"
               type="java.lang.String"%>
+<%@ attribute name="spewData" required="true"
+              type="java.lang.Iterable"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
+    var syntheticEcosystems = {
+        text: "Synthetic ecosystems",
+        nodes: []
+    };
+
+    <c:forEach items="${spewData}" var="location" varStatus="loop">
+        var ecosystem = {};
+
+        <c:if test="${not empty location.name}">
+            ecosystem['text'] = '${location.name}';
+        </c:if>
+
+        <c:if test="${not empty location.url}">
+            ecosystem['url'] = '${location.url}';
+        </c:if>
+
+        syntheticEcosystems.nodes.push(ecosystem);
+    </c:forEach>
+
     $(document).ready(function () {
         $.ajax({
             type : "GET",
@@ -20,7 +41,7 @@
             timeout : 100000,
             success : function(data) {
                 var $dataAndKnowledgeTree = $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(data, ${libraryViewerUrl}),
+                    data: getDataAndKnowledgeTree(data, syntheticEcosystems, ${libraryViewerUrl}),
                 });
                 return data;
             },

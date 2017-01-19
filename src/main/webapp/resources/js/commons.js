@@ -101,14 +101,11 @@ var algorithmsTree = [{
     }
 ];
 
-function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    collections.push({
-            text: "Synthetic ecosystems",
-            nodes: [{text: "USA"}]
-        },
+    collections.push(syntheticEcosystems,
         {text: "Disease surveillance data", nodes: [{text: "Ebola"}, {text: "Chik-V"}, {text: "Zika"}]});
 
     $.each(libraryData, function (index, value) {

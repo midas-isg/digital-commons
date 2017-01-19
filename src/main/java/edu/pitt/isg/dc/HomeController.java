@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.software.Software;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
+import edu.pitt.isg.dc.digital.spew.SpewRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
@@ -32,6 +33,8 @@ public class HomeController {
     private DapRule dapRule;
     @Autowired
     private SoftwareRule softwareRule;
+    @Autowired
+    private SpewRule spewRule;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirectHome() {
@@ -42,6 +45,7 @@ public class HomeController {
     public String hello(Model model) {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
+        model.addAttribute("spew", spewRule.tree());
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         return "commons";
