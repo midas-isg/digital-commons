@@ -28,7 +28,11 @@ var standardEncodingTree = {
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "NCBI Taxon identifier",
+            text: "Apollo XSD",
+            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        },
+        {
+            text: "NCBI Taxon identifiers",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
@@ -40,7 +44,7 @@ var standardEncodingTree = {
             url: "http://loinc.org/"
         },
         {
-            text: "Vaccine Ontology identifier",
+            text: "Vaccine Ontology identifiers",
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
@@ -109,7 +113,7 @@ function getDataAndKnowledgeTree(libraryData, libraryViewerUrl) {
             text: "Synthetic ecosystems",
             nodes: [{text: "USA"}]
         },
-        {text: "Disease surveillance data", nodes: [{text: "Ebola"}, {text: "Chik-V"}, {text: "Zika"}]});
+        {text: "Disease surveillance data", nodes: [{text: "Zika data repository", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
 
     $.each(libraryData, function (index, value) {
         var url;
