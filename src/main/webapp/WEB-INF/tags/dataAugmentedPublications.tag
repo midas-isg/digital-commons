@@ -25,7 +25,8 @@
 
 	$('#publications-treeview').on('nodeSelected', function(event, data) {
 		if(data.url != null && data.state.selected == true) {
-			window.location.href = data.url;
+            $('#publications-treeview').treeview('unselectNode', [data.nodeId, {silent: true}]);
+            window.location.href = data.url;
 		}
 	});
 </script>
