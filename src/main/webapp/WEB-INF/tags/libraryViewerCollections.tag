@@ -50,6 +50,7 @@
                 console.log("ERROR: ", e);
             },
             complete : function(e) {
+                $('#data-and-knowledge-treeview').treeview('collapseAll', { silent: true });
                 $('#data-and-knowledge-treeview').on('nodeSelected', function(event, data) {
                     if(typeof data['nodes'] != undefined) {
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
