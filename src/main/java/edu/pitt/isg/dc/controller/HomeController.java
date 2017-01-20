@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.software.Software;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
+import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 @Controller
@@ -45,7 +48,15 @@ public class HomeController {
     public String hello(Model model) {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
-        model.addAttribute("spew", spewRule.tree());
+        try {
+            model.addAttribute("spew", spewRule.tree());
+        } catch (Exception e) {
+            SpewLocation emptySpew = new SpewLocation();
+            emptySpew.setName("Error loading data from SPEW");
+            List<SpewLocation> tree = new ArrayList<>();
+            tree.add(emptySpew);
+            model.addAttribute("spew", tree);
+        }
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         return "commons";
