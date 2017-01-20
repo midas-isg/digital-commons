@@ -75,7 +75,7 @@ public class SpewDao {
         return toSpewUrlBuilder(baseUrl)
                 .pathSegment("spe")
                 .queryParam("adminCodePath", country.getCode())
-                //.queryParam("quickView", true)
+                .queryParam("openSummary", true)
                 .toUriString();
     }
 }
