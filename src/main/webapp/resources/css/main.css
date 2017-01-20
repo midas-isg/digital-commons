@@ -3,6 +3,10 @@
     word-wrap:break-word;
 }
 
+.node-break {
+    word-wrap:break-word;
+}
+
 #commons-body {
     width:95%;
     margin: auto;

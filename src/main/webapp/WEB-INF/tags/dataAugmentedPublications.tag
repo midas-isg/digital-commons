@@ -12,7 +12,7 @@
                 var="pubTitle"/>
 
 		dataAugmentedPublications.push({
-			"text": "${pubTitle}",
+			"text": "<div class=\"node-break\">" + "${pubTitle}" + "</div>",
             "url": "${pageContext.request.contextPath}/main/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
 
         });
