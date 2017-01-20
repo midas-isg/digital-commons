@@ -30,6 +30,7 @@
     </c:forEach>
 
     $(document).ready(function () {
+        var libraryData;
         $.ajax({
             type : "GET",
             contentType : "application/json",
@@ -40,19 +41,18 @@
             },
             timeout : 100000,
             success : function(data) {
-                var $dataAndKnowledgeTree = $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(data, syntheticEcosystems, ${libraryViewerUrl}),
+                libraryData = data;
+            },
+            error : function(e) {
+                libraryData = null;
+            },
+            complete : function(e) {
+                $('#data-and-knowledge-treeview').treeview({
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, ${libraryViewerUrl}),
                     showBorder: false,
                     expandIcon: "glyphicon glyphicon-chevron-right",
                     collapseIcon: "glyphicon glyphicon-chevron-down",
                 });
-                return data;
-            },
-            error : function(e) {
-                console.log(data);
-                console.log("ERROR: ", e);
-            },
-            complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview('collapseAll', { silent: true });
                 $('#data-and-knowledge-treeview').on('nodeSelected', function(event, data) {
                     if(typeof data['nodes'] != undefined) {

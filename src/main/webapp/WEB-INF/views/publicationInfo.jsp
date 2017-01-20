@@ -35,9 +35,9 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Publication Information"></myTags:header>
 
 </head>
-<myTags:header pageTitle="MIDAS Digital Commons" subTitle="Publication Information"></myTags:header>
 <body id="commons-body">
 <div class="row">
     <div class="col-md-12">

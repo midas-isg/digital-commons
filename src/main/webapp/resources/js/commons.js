@@ -60,32 +60,38 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     collections.push(syntheticEcosystems,
         {text: "Disease surveillance data", nodes: [{text: "Zika data repository", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
 
-    $.each(libraryData, function (index, value) {
-        var url;
-        if (index.includes("Epidemic")) {
-            url = libraryViewerUrl + "epidemic/";
-        } else if (index.includes("Case Series")) {
-            url = libraryViewerUrl + "caseSeries/"
-        } else {
-            url = libraryViewerUrl + "infectiousDiseaseScenario/";
-        }
-        var nodeLevel1 = [];
-        $.each(value, function (index, value) {
-            var nodeLevel2 = [];
+
+    if(libraryData != null) {
+        $.each(libraryData, function (index, value) {
+            var url;
+            if (index.includes("Epidemic")) {
+                url = libraryViewerUrl + "epidemic/";
+            } else if (index.includes("Case series")) {
+                url = libraryViewerUrl + "caseSeries/"
+            } else {
+                url = libraryViewerUrl + "infectiousDiseaseScenario/";
+            }
+            var nodeLevel1 = [];
             $.each(value, function (index, value) {
-                // var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
-                //     "<i class='fa fa-external-link'></i></button>";
-                // var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
-                //     "<i class='fa fa-info-circle'></i></button>";
+                var nodeLevel2 = [];
+                $.each(value, function (index, value) {
+                    // var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
+                    //     "<i class='fa fa-external-link'></i></button>";
+                    // var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
+                    //     "<i class='fa fa-info-circle'></i></button>";
 
-                nodeLevel2.push({text:  "<div class=\"grandnode-with-margin\">" + value.name +"<div>" , url: url+value.urn});
+                    nodeLevel2.push({
+                        text: "<div class=\"grandnode-with-margin\">" + value.name + "<div>",
+                        url: url + value.urn
+                    });
+                });
+                nodeLevel1.push({text: index, nodes: nodeLevel2});
             });
-            nodeLevel1.push({text: index, nodes: nodeLevel2});
+
+            collections.push({text: index, nodes: nodeLevel1});
+
         });
-
-        collections.push({text: index, nodes: nodeLevel1});
-
-    });
+    }
 
     collections.push(standardEncodingTree);
 
