@@ -72,7 +72,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 				.scheme("https")
 				.host(auth0Domain)
 				.pathSegment("v2", "logout")
-				.queryParam("returnTo", UrlAid.toUrlString(request,  ""))
+				.queryParam("returnTo", UrlAid.toUrlString(request,  "login"))
 				.queryParam("client_id", clientId)
 				.build().toString();
 		return new RedirectView(redirectUrl, false);
@@ -95,7 +95,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		session.setAttribute("userName", auth0User.getName());
 		session.setAttribute("userPic", auth0User.getPicture());
 		
-		return "redirect:/home";
+		return "redirect:/main";
 
 	}
 

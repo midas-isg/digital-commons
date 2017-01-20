@@ -53,58 +53,6 @@ var standardEncodingTree = {
     }]
 };
 
-var algorithmsTree = [{
-    text: "Disease transmission simulators",
-    href: "#node-1",
-    selectable: true,
-    state: {
-        checked: true,
-        disabled: false,
-        expanded: true,
-        selected: true
-    },
-    tags: [''],
-    nodes: [{
-        text: "PSC FRED"
-    }, {
-        text: "PHDL FRED"
-    }, {
-        text: "GLEAM"
-    }, {
-        text: "FluTE"
-    }]
-}, {
-    text: "Disease transmission models",
-    nodes: [{
-        text: "2009 H1N1 Influenza, PSC FRED",
-    }, {
-        text: "2014 Sierra Leone, Steve B Ebola Simulator"
-    }]
-},
-
-    {
-        text: "Viral and bacterial evolution simulators",
-        nodes: [{
-            text: "HyPhy",
-        }, {
-            text: "SEEDY",
-        }, {
-            text: "HIV-TRACE"
-        }],
-    },
-
-    {
-        text: "Data pipeline algorithms and systems",
-        nodes: [{text:"Omnivore"}]
-    }, {
-        text: "Disease Surveillance algorithms and systems",
-        nodes: [{text:"Shaman ILI"}, {text:"Rosenfeld Influenza"}]
-    }, {
-        text: "Data visualizers",
-        nodes: [{text:"Galapagos"}, {text:"Roni R. visualizer"}]
-    }
-];
-
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
@@ -152,28 +100,3 @@ function openModal(url) {
     $('#libraryViewerModal').modal('show').find('.modal-body').load(url);
 }
 
-// var $standardEncodingTree = $('#encoding-treeview').treeview( {
-//     data: getStandardEncodingsTree(),
-// });
-//
-// function getStandardEncodingsTree() {
-//     return standardEncodingTree;
-// }
-
-function getDataAugmentedPublicationsTree() {
-    return dataAugmentedPublications;
-}
-
-var $dataAugmentedPublicationsTree = $('#publications-treeview').treeview({
-    data: getDataAugmentedPublicationsTree(),
-});
-
-
-var $searchableTree = $('#algorithm-treeview').treeview({
-    data: getTree(),
-});
-
-function getTree() {
-    // Some logic to retrieve, or generate tree structure
-    return algorithmsTree;
-}

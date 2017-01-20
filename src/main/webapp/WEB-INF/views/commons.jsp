@@ -14,8 +14,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <head>
-    <script src="http://cdn.auth0.com/w2/auth0-6.8.js"></script>
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -24,7 +22,7 @@
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
     <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">--%>
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <%--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
@@ -41,8 +39,9 @@
 
 </head>
 
+<myTags:header pageTitle="MIDAS Digital Commons"></myTags:header>
 <body id="commons-body">
-<h1>MIDAS Digital Commons</h1>
+<%--<h1>MIDAS Digital Commons</h1>--%>
 <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>

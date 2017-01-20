@@ -37,17 +37,15 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 
 </head>
-
+<myTags:header pageTitle="MIDAS Digital Commons" subTitle="Publication Information"></myTags:header>
 <body id="commons-body">
 <div class="row">
     <div class="col-md-12">
-        <h1 class="commons-header">MIDAS Digital Commons</h1>
-        <h2 class="commons-subheader">Publication Information</h2>
         <hr>
         <myTags:addDataAugmentedPublications publication="${publicationPaper}"></myTags:addDataAugmentedPublications>
         <myTags:addDataAugmentedPublications publication="${publicationData}"></myTags:addDataAugmentedPublications>
 
-        <a href="${pageContext.request.contextPath}/home"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
+        <a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
     </div>
 </div>
 </div>

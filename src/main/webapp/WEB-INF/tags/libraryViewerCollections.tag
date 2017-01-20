@@ -42,6 +42,9 @@
             success : function(data) {
                 var $dataAndKnowledgeTree = $('#data-and-knowledge-treeview').treeview({
                     data: getDataAndKnowledgeTree(data, syntheticEcosystems, ${libraryViewerUrl}),
+                    showBorder: false,
+                    expandIcon: "glyphicon glyphicon-chevron-right",
+                    collapseIcon: "glyphicon glyphicon-chevron-down",
                 });
                 return data;
             },

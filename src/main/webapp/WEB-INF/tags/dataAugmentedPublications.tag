@@ -13,7 +13,7 @@
 
 		dataAugmentedPublications.push({
 			"text": "${pubTitle}",
-            "url": "${pageContext.request.contextPath}/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
+            "url": "${pageContext.request.contextPath}/main/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
 
         });
 
@@ -21,6 +21,9 @@
 
 	var $dataAugmentedPublicationsTree = $('#publications-treeview').treeview({
 		data: dataAugmentedPublications,
+        expandIcon: "glyphicon glyphicon-chevron-right",
+        collapseIcon: "glyphicon glyphicon-chevron-down",
+		showBorder: false,
 	});
 
 	$('#publications-treeview').on('nodeSelected', function(event, data) {

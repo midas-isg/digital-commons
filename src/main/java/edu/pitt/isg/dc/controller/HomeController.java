@@ -1,4 +1,4 @@
-package edu.pitt.isg.dc;
+package edu.pitt.isg.dc.controller;
 
 import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapForm;
@@ -38,10 +38,10 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirectHome() {
-        return "redirect:/home";
+        return "redirect:/main";
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String hello(Model model) {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
@@ -51,7 +51,7 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/software/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/software/{id}", method = RequestMethod.GET)
     public String softwareInfo(Model model, @PathVariable("id") long id) {
         Iterable<SoftwareFolder> tree = softwareRule.tree();
 
@@ -69,7 +69,7 @@ public class HomeController {
         return "softwareInfo";
     }
 
-    @RequestMapping(value = "/publication/{paperId}/{dataId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/publication/{paperId}/{dataId}", method = RequestMethod.GET)
     public String publicationInfo(Model model, @PathVariable("paperId") long paperId, @PathVariable("dataId") long dataId) {
         Iterable<DapFolder> tree = dapRule.tree();
 

@@ -16,7 +16,7 @@
             <c:if test="${not empty item}">
                 software[${loop.index}].nodes.push({
                     "text": "<div class=\"node-with-margin\">" + "${item.name}" + "</div>",
-                    "url": "${pageContext.request.contextPath}/software/" + "${item.id}"
+                    "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
                 });
             </c:if>
         </c:forEach>
@@ -24,6 +24,10 @@
 
     var $softwareTree = $('#algorithm-treeview').treeview({
         data: software,
+        showBorder: false,
+        collapseAll: true,
+        expandIcon: "glyphicon glyphicon-chevron-right",
+        collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
             if(typeof data['nodes'] != undefined) {
@@ -35,6 +39,8 @@
             }
         }
     });
+
+    $('#algorithm-treeview').treeview('collapseAll', { silent: true });
 
 </script>
 
