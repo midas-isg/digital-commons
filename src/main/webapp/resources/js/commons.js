@@ -24,31 +24,31 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "Apollo location codes",
+        text: "<div class=\"node-with-margin\">Apollo location codes</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "Apollo XSD",
+            text: "<div class=\"node-with-margin\">Apollo XSD</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
-            text: "NCBI Taxon identifiers",
+            text: "<div class=\"node-with-margin\">NCBI Taxon identifiers</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "SNOMED CT codes",
+            text: "<div class=\"node-with-margin\">SNOMED CT codes</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "LOINC codes",
+            text: "<div class=\"node-with-margin\">LOINC codes</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "Vaccine Ontology identifiers",
+            text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers</div>",
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
-            text: "RxNorm codes",
+            text: "<div class=\"node-with-margin\">RxNorm codes</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
     }]
 };
@@ -58,7 +58,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push(syntheticEcosystems,
-        {text: "Disease surveillance data", nodes: [{text: "Zika data repository", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
+        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "<div class=\"node-with-margin\">Tycho</div>", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
 
 
     if(libraryData != null) {

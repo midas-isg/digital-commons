@@ -19,7 +19,7 @@
         var ecosystem = {};
 
         <c:if test="${not empty location.name}">
-            ecosystem['text'] = '${location.name}';
+            ecosystem['text'] = '<div class=\"node-with-margin\">${location.name}</div>';
         </c:if>
 
         <c:if test="${not empty location.url}">
