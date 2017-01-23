@@ -106,3 +106,23 @@ function openModal(url) {
     $('#libraryViewerModal').modal('show').find('.modal-body').load(url);
 }
 
+function formatLocation(location) {
+    var splitLocationNames = location.split(' ');
+
+    for(var i = 0; i < splitLocationNames.length; i++) {
+        var characterIndex = 0;
+        if(splitLocationNames[i].charAt(0) == '(') {
+            characterIndex = 1;
+        }
+
+        if(splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
+            splitLocationNames[i] = splitLocationNames[i].charAt(characterIndex).toUpperCase() + splitLocationNames[i].slice(characterIndex + 1);
+
+            if(characterIndex == 1) {       // add back leading parentheses if we removed it
+                splitLocationNames[i] = '(' + splitLocationNames[i];
+            }
+        }
+    }
+
+    return splitLocationNames.join(' ');
+}
