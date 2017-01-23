@@ -39,26 +39,25 @@
 
 </head>
 
-<myTags:header pageTitle="MIDAS Digital Commons"></myTags:header>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true"></myTags:header>
 <body id="commons-body">
-<%--<h1>MIDAS Digital Commons</h1>--%>
 <ul class="nav nav-tabs">
     <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
 </ul>
 
 <%--Library Viewer Modal--%>
-<div id="libraryViewerModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+<%--<div id="libraryViewerModal" class="modal fade">--%>
+    <%--<div class="modal-dialog">--%>
+        <%--<div class="modal-content">--%>
+            <%--<div class="modal-body">--%>
+            <%--</div>--%>
+            <%--<div class="modal-footer">--%>
+                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
 
 <div class="row">
     <div class="tab-content">

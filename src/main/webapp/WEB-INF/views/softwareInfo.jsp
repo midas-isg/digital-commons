@@ -35,7 +35,7 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Software Information"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Software Information" loggedIn="true"></myTags:header>
 
 </head>
 
