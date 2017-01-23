@@ -45,3 +45,7 @@
 .modal-dialog {
     width: 80% !important;
 }
+
+.list-group-item {
+    padding:5px 10px !important;
+}
