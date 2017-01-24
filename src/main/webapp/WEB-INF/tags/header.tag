@@ -27,13 +27,13 @@
                 </c:if>
                 <c:if test="${iframe == true}">
                     <li>
-                        <a class="leaf" href="${pageContext.request.contextPath}/main">
+                        <a class="leaf margin-top-13" href="${pageContext.request.contextPath}/main">
                             <icon class="glyphicon glyphicon-chevron-left"></icon>
                             Back to Digital Commons
                         </a>
                     </li>
                     <li>
-                        <a class="leaf" href="#" onclick="loadExternalSite()">Open external site
+                        <a class="leaf margin-top-13" href="#" onclick="loadExternalSite()">Open external site
                             <icon class="glyphicon glyphicon-chevron-right"></icon>
                         </a>
                     </li>
@@ -49,3 +49,12 @@
             ${subTitle}
     </h2>
 </c:if>
+
+
+<script>
+    function loadExternalSite() {
+        console.log(document.getElementById("libraryFrame").contentWindow.location.href);
+        window.open(document.getElementById("libraryFrame").contentWindow.location.href);
+    }
+
+</script>

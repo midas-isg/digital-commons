@@ -150,8 +150,8 @@ function getPopover(contextPath, title, url) {
     });
 
     var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
-        "<i class='glyphicon glyphicon-info-sign'></i></a>";
-    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='window.open(\"" + url + "\");'>" +
+        "<i class='fa fa-info-circle'></i></a>";
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='location.href=(\"" + url + "\");'>" +
         "<i class='glyphicon glyphicon-share-alt'></i></a>";
 
     var img = "'<img src = \"" + contextPath + "/resources/img/psc.png" + "\" style=\"max-width:100%; max-height:100%;\">'";

@@ -21,8 +21,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-    <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">--%>
-    <%--<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
@@ -115,13 +115,5 @@
     </script>-->
 
 </body>
-
-<script>
-    function loadExternalSite() {
-        console.log(document.getElementById("libraryFrame").contentWindow.location.href);
-        window.open(document.getElementById("libraryFrame").contentWindow.location.href);
-    }
-
-</script>
 
 </html>
