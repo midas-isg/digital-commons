@@ -49,7 +49,7 @@
                 </c:if>*/
 
                 software[${loop.index}].nodes.push({
-                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}", '${item.name}') + '</div>',
+                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}", '${item.name}', "${pageContext.request.contextPath}/main/software/" + "${item.id}") + '</div>',
                     "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
                 });
 
@@ -74,13 +74,14 @@
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
+            console.log(event);
             if(typeof data['nodes'] != undefined) {
                 $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
 
-            if(data.url != null && data.state.selected == true) {
+            /*if(data.url != null && data.state.selected == true) {
                 window.location.href = data.url;
-            }
+            }*/
         }
     });
 

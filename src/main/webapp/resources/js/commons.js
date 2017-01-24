@@ -75,9 +75,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             $.each(value, function (index, value) {
                 var nodeLevel2 = [];
                 $.each(value, function (index, value) {
-                    // var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
+                    //var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
                     //     "<i class='fa fa-external-link'></i></button>";
-                    // var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
+                    //var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
                     //     "<i class='fa fa-info-circle'></i></button>";
 
                     nodeLevel2.push({
@@ -143,13 +143,18 @@ function collapsableNode(contextPath, title, text) {
         '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
 }
 
-function getPopover(contextPath, title) {
+function getPopover(contextPath, title, url) {
     var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
 
+    var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
+        "<i class='glyphicon glyphicon-info-sign'></i></a>";
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='window.open(\"" + url + "\");'>" +
+        "<i class='glyphicon glyphicon-share-alt'></i></a>";
+
     var img = "'<img src = \"" + contextPath + "/resources/img/psc.png" + "\" style=\"max-width:100%; max-height:100%;\">'";
 
-    return '<span id="' + guid + '">' + title + '</span><script>$("#' + guid + '").popover({html: true, trigger: "hover", content: function() {return ' + img + '}});</script>';
+    return '<span id="' + guid + '">' + title + '</span>' + modalbutton + externalbutton + '<script>$("#' + guid + '-modal").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
 }
