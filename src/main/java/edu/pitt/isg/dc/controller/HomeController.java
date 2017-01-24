@@ -51,6 +51,7 @@ public class HomeController {
         model.addAttribute("software", softwareRule.tree());
         try {
             model.addAttribute("spew", spewRule.tree());
+            model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {
             SpewLocation emptySpew = new SpewLocation();
             emptySpew.setName("Error loading data from SPEW");

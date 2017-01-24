@@ -90,7 +90,7 @@
 
 <myTags:software software="${software}"></myTags:software>
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
-<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewData="${spew}"></myTags:libraryViewerCollections>
+<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewData="${spew}" spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
 
     <!--<div id="panelOne" class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne" style="padding:1px 3px">

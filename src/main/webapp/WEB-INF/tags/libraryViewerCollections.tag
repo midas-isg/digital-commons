@@ -5,6 +5,8 @@
               type="java.lang.String"%>
 <%@ attribute name="spewData" required="true"
               type="java.lang.Iterable"%>
+<%@ attribute name="spewRegions" required="true"
+              type="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
@@ -45,8 +47,8 @@
             while(!(locationLetterAscii >= lowerBound && locationLetterAscii <= upperBound)) {
                 currentBin += 1;
 
-                var lowerBound = nameBins[currentBin].charCodeAt(0);
-                var upperBound = nameBins[currentBin].charCodeAt(2);
+                lowerBound = nameBins[currentBin].charCodeAt(0);
+                upperBound = nameBins[currentBin].charCodeAt(2);
             }
 
             syntheticEcosystems.nodes.push({'text':nameBins[currentBin], 'nodes': []});
@@ -54,14 +56,37 @@
 
         var ecosystem = {};
 
-        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + formattedLocation + "</div>";
-
         if(locations[i] in locationUrls) {
             ecosystem['url'] = locationUrls[locations[i]];
         }
 
+        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + getPopover("${pageContext.request.contextPath}" + "/resources/img/syneco.png", formattedLocation, 'openLibraryFrame', [ecosystem['url']]) + "</div>";
+
+        if('url' in ecosystem) {
+            delete ecosystem['url'];
+        }
+
         syntheticEcosystems.nodes[syntheticEcosystems.nodes.length - 1].nodes.push(ecosystem);
     }
+
+    var syntheticEcosystemsByRegion = {
+        text: "Synthetic ecosystems (by region)",
+        nodes: []
+    };
+
+    <c:forEach items="${spewRegions}" var="region" varStatus="loop">
+        <c:if test="${not empty region.children}">
+            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}"), 'nodes': []});
+            var currentNode = syntheticEcosystemsByRegion.nodes[syntheticEcosystemsByRegion.nodes.length - 1].nodes;
+            console.log(currentNode);
+            <c:forEach items="${region.children}" var="child">
+                <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>
+            </c:forEach>
+        </c:if>
+        <c:if test="${empty region.children}">
+            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}")});
+        </c:if>
+    </c:forEach>
 
     $(document).ready(function () {
         var libraryData;
@@ -82,7 +107,7 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, ${libraryViewerUrl}),
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, ${libraryViewerUrl}),
                     showBorder: false,
 
                     expandIcon: "glyphicon glyphicon-chevron-right",
