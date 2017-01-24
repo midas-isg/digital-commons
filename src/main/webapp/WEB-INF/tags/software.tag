@@ -70,9 +70,7 @@
         data: software,
         showBorder: false,
         collapseAll: true,
-        backColor: "#092940",
-        onhoverColor: "#397AAC",
-        color: "white",
+
         expandIcon: "glyphicon glyphicon-chevron-right",
         collapseIcon: "glyphicon glyphicon-chevron-down",
 

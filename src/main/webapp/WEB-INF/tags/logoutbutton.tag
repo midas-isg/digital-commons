@@ -5,10 +5,6 @@
 
 
 <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-<form action="${urlLevel}" method="GET" class="login-form">
-    <!--<div class="row">-->
-    <div class="submit_button">
-        <input type="submit" class="btn btn-primary" value="Logout"/>
-    </div>
-    <!--</div>-->
+<form class="navbar-form" action="${urlLevel}" method="GET">
+    <button type="submit" class="btn btn-primary navbar-btn" value="Logout">Logout</button>
 </form>
