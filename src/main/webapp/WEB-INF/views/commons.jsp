@@ -39,9 +39,34 @@
 
 </head>
 
+<%--iframe--%>
+<nav class="navbar navbar-default navbar-fixed-top" style="display:none;margin: auto; top: 0px; left: 0px; bottom: auto; right: auto; box-sizing: border-box; width: 100%;">
+    <div class="container-fluid background-nav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <ul class="nav navbar-nav">
+            <li>
+                <a class="leaf" href="${pageContext.request.contextPath}/main">
+                        <icon class="glyphicon glyphicon-chevron-left"></icon>
+                        Back to Digital Commons
+                </a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a class="leaf" href="#" onclick="loadExternalSite()">Open external site
+                    <icon class="glyphicon glyphicon-chevron-right"></icon>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <iframe name="libraryFrame" id="libraryFrame" frameborder="0"
+            style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
+</nav>
+
+
 <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true"></myTags:header>
 <body id="commons-body">
-<ul class="nav nav-tabs">
+<ul id="commons-main-tabs" class="nav nav-tabs">
     <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
 </ul>
@@ -59,19 +84,20 @@
     <%--</div>--%>
 <%--</div>--%>
 
-<div class="row">
+
+<div id="commons-main-body" class="row">
     <div class="tab-content">
         <div id="browse" class="tab-pane fade in active">
             <div class="col-sm-4">
-                <h2>Software</h2>
+                <h2 class="title-font">Software</h2>
                 <div id="algorithm-treeview" class="treeview"></div>
             </div>
             <div class="col-sm-4">
-                <h2>Data &amp; Knowledge</h2>
+                <h2 class="title-font">Data &amp; Knowledge</h2>
                 <div id="data-and-knowledge-treeview" class="treeview"></div>
             </div>
             <div class="col-sm-4">
-                <h2>Data-Augmented Publications</h2>
+                <h2 class="title-font">Data-Augmented Publications</h2>
                 <div id="publications-treeview" class="treeview"></div>
             </div>
         </div>
@@ -90,5 +116,13 @@
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
 <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewData="${spew}"></myTags:libraryViewerCollections>
 </body>
+
+<script>
+    function loadExternalSite() {
+        console.log(document.getElementById("libraryFrame").contentWindow.location.href);
+        window.open(document.getElementById("libraryFrame").contentWindow.location.href);
+    }
+
+</script>
 
 </html>

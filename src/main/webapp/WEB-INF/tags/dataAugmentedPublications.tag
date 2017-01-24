@@ -23,6 +23,9 @@
 		data: dataAugmentedPublications,
         expandIcon: "glyphicon glyphicon-chevron-right",
         collapseIcon: "glyphicon glyphicon-chevron-down",
+        backColor: "#092940",
+        onhoverColor: "#397AAC",
+        color: "white",
 		showBorder: false,
 	});
 

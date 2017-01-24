@@ -43,11 +43,11 @@
 <div class="row">
     <div class="col-md-12">
         <hr>
-        <h3>${software.name}</h3>
-        <h3>General Information:</h3>
+        <h3 class="title-font">${software.name}</h3>
+        <h3 class="title-font">General Information:</h3>
 
         <c:if test="${not empty software.typeText}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">Type: </h4>
                     ${software.typeText}
             </div>
@@ -55,49 +55,49 @@
 
 
         <c:if test="${not empty software.version}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">Source code version: </h4>
                 ${software.version}
             </div>
         </c:if>
 
         <c:if test="${not empty software.developer}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">Developer(s):</h4>
                 ${software.developer}
             </div>
         </c:if>
 
         <c:if test="${not empty software.doi}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">DOI: </h4>
                 ${software.doi}
             </div>
         </c:if>
 
         <%--<c:if test="${not empty software.webService}">--%>
-            <%--<div class="font-size-16">--%>
+            <%--<div class="title-font font-size-16">--%>
                 <%--<h4 class="inline">Web service: </h4>--%>
                     <%--${software.webService}--%>
             <%--</div>--%>
         <%--</c:if>--%>
 
         <%--<c:if test="${not empty software.webApplication}">--%>
-            <%--<div class="font-size-16">--%>
+            <%--<div class="title-font font-size-16">--%>
                 <%--<h4 class="inline">Web application: </h4>--%>
                     <%--${software.webApplication}--%>
             <%--</div>--%>
         <%--</c:if>--%>
 
         <c:if test="${not empty software.url}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">Software location: </h4>
                 <a href="${software.url}">${software.url}</a>
             </div>
         </c:if>
 
         <c:if test="${not empty software.sourceCodeUrl}">
-            <div class="font-size-16">
+            <div class="title-font font-size-16">
                 <h4 class="inline">Source code location: </h4>
                 <a href="${software.sourceCodeUrl}">${software.sourceCodeUrl}</a>
             </div>

@@ -8,7 +8,7 @@
 
 <div class="container-fluid" id="header-top">
     <div class="row">
-        <h1 class="commons-header">
+        <h1 class="title-font commons-header">
             ${pageTitle}
             <c:if test="${loggedIn == true}">
                 <div class="pull-right">
@@ -17,7 +17,7 @@
             </c:if>
 
         </h1>
-        <h2 class="commons-subheader commons-header">
+        <h2 class="sub-title-font commons-subheader commons-header">
             ${subTitle}
         </h2>
 

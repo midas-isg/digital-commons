@@ -45,3 +45,36 @@
 .modal-dialog {
     width: 80% !important;
 }
+
+.sub-title-font {
+    color: #092940;
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.title-font {
+    color: #092940;
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.title-font:after {
+    content: "";
+    display: block;
+    background-color: #a83338;
+    height: 10px;
+    height: 0.625rem;
+    margin-top: 21px;
+    margin-top: 1.3125rem;
+}
+
+.background-nav {
+    background-color: #092940;
+}
+
+.leaf {
+    color:white !important;
+    text-decoration: underline;
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}

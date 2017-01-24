@@ -8,7 +8,7 @@
 <form action="${urlLevel}" method="GET" class="login-form">
     <!--<div class="row">-->
     <div class="submit_button">
-        <input type="submit" class="btn btn-default" value="Logout"/>
+        <input type="submit" class="btn btn-primary" value="Logout"/>
     </div>
     <!--</div>-->
 </form>
