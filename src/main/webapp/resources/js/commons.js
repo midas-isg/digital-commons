@@ -127,6 +127,18 @@ function formatLocation(location) {
     return splitLocationNames.join(' ');
 }
 
+function openSoftwareInfo(contextPath, id) {
+    console.log('here');
+    window.open(contextPath + "/main/software/" + id);
+}
+
+function openLibraryFrame(url) {
+    document.getElementById("libraryFrame").parentNode.style.display='';
+    document.getElementById("commons-main-body").style.display='none';
+    document.getElementById("commons-main-tabs").style.display='none';
+
+    window.open(url, "libraryFrame");
+}
 
 function collapsableNode(contextPath, title, text) {
     var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -143,7 +155,7 @@ function collapsableNode(contextPath, title, text) {
         '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
 }
 
-function getPopover(contextPath, title, url) {
+function getPopover(imgPath, title, funcName, params) {
     var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
@@ -151,10 +163,21 @@ function getPopover(contextPath, title, url) {
 
     var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         "<i class='glyphicon glyphicon-info-sign'></i></a>";
-    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='window.open(\"" + url + "\");'>" +
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "'>" +
         "<i class='glyphicon glyphicon-share-alt'></i></a>";
 
-    var img = "'<img src = \"" + contextPath + "/resources/img/psc.png" + "\" style=\"max-width:100%; max-height:100%;\">'";
+    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
 
-    return '<span id="' + guid + '">' + title + '</span>' + modalbutton + externalbutton + '<script>$("#' + guid + '-modal").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
+    var paramsStr = '';
+    for(var i = 0; i < params.length; i++) {
+        if(i==0) {
+            paramsStr += '"' + params[i] + '"';
+        } else {
+            paramsStr += ',"' + params[i] + '"';
+        }
+    }
+
+    var externalClick = '$("#' + guid + '-external").click(function () {' + funcName + '(' + paramsStr + ')}' + ');';
+
+    return '<span id="' + guid + '">' + title + '</span>' + modalbutton + externalbutton + '<script>' + externalClick + '$("#' + guid + '-modal").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
 }

@@ -45,8 +45,8 @@
             while(!(locationLetterAscii >= lowerBound && locationLetterAscii <= upperBound)) {
                 currentBin += 1;
 
-                var lowerBound = nameBins[currentBin].charCodeAt(0);
-                var upperBound = nameBins[currentBin].charCodeAt(2);
+                lowerBound = nameBins[currentBin].charCodeAt(0);
+                upperBound = nameBins[currentBin].charCodeAt(2);
             }
 
             syntheticEcosystems.nodes.push({'text':nameBins[currentBin], 'nodes': []});
@@ -54,10 +54,14 @@
 
         var ecosystem = {};
 
-        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + formattedLocation + "</div>";
-
         if(locations[i] in locationUrls) {
             ecosystem['url'] = locationUrls[locations[i]];
+        }
+
+        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + getPopover("${pageContext.request.contextPath}" + "/resources/img/syneco.png", formattedLocation, 'openLibraryFrame', [ecosystem['url']]) + "</div>";
+
+        if('url' in ecosystem) {
+            delete ecosystem['url'];
         }
 
         syntheticEcosystems.nodes[syntheticEcosystems.nodes.length - 1].nodes.push(ecosystem);
