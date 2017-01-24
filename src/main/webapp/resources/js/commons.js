@@ -53,11 +53,11 @@ var standardEncodingTree = {
     }]
 };
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    collections.push(syntheticEcosystems,
+    collections.push(syntheticEcosystems, syntheticEcosystemsByRegion,
         {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "<div class=\"node-with-margin\">Tycho</div>", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
 
 
@@ -107,7 +107,11 @@ function openModal(url) {
 }
 
 function formatLocation(location) {
-    var splitLocationNames = location.split(' ');
+    if(location.includes('_')) {
+        var splitLocationNames = location.split('_');
+    } else {
+        var splitLocationNames = location.split(' ');
+    }
 
     for(var i = 0; i < splitLocationNames.length; i++) {
         var characterIndex = 0;

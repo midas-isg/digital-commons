@@ -75,16 +75,18 @@
     };
 
     <c:forEach items="${spewRegions}" var="region" varStatus="loop">
-        console.log("${region.name}");
-
-        <c:forEach items="${region.children}" var="child">
-            console.log("${child}");
-        </c:forEach>
-
-        console.log("${region.children}");
+        <c:if test="${not empty region.children}">
+            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}"), 'nodes': []});
+            var currentNode = syntheticEcosystemsByRegion.nodes[syntheticEcosystemsByRegion.nodes.length - 1].nodes;
+            console.log(currentNode);
+            <c:forEach items="${region.children}" var="child">
+                <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>
+            </c:forEach>
+        </c:if>
+        <c:if test="${empty region.children}">
+            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}")});
+        </c:if>
     </c:forEach>
-
-
 
     $(document).ready(function () {
         var libraryData;
@@ -105,7 +107,7 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, ${libraryViewerUrl}),
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, ${libraryViewerUrl}),
                     showBorder: false,
 
                     expandIcon: "glyphicon glyphicon-chevron-right",
