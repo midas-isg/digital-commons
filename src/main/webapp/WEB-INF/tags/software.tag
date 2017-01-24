@@ -49,19 +49,9 @@
                 </c:if>*/
 
                 software[${loop.index}].nodes.push({
-                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}", '${item.name}', "${pageContext.request.contextPath}/main/software/" + "${item.id}") + '</div>',
+                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/psc.png", '${item.name}', 'openSoftwareInfo', ["${pageContext.request.contextPath}","${item.id}"]) + '</div>',
                     "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
                 });
-
-                /*software[${loop.index}].nodes.push({
-                 "text": "<div class=\"node-with-margin\">${item.name}</div>",
-                 "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
-                 });*/
-
-                /*software[${loop.index}].nodes.push({
-                    "text": "<div class=\"node-with-margin\">" + collapsableNode("${pageContext.request.contextPath}", "${item.name}", collapseText) + "</div>",
-                    "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
-                });*/
             </c:if>
         </c:forEach>
     </c:forEach>
@@ -75,7 +65,6 @@
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
-            console.log(event);
             if(typeof data['nodes'] != undefined) {
                 $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
