@@ -126,3 +126,30 @@ function formatLocation(location) {
 
     return splitLocationNames.join(' ');
 }
+
+
+function collapsableNode(contextPath, title, text) {
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+
+    return '<div id="' + guid + '-panel" class="panel panel-default" style="margin-bottom: 0">' +
+        '<div class="panel-heading" role="tab" id="' + guid + '-heading" style="padding:1px 3px">' +
+        '<span class="panel-title" style="font-size:12px;">' +
+        '<a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="' + guid + '-collapse" style="text-decoration: none">' +
+        title + '</a></span></div><div id="' + guid + '-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="' + guid + '-heading">' +
+        '<div class="panel-body" style="padding:1px 3px; font-size:12px">' + text + '<img src = "' + contextPath + '/resources/img/psc.png' + '" style="max-width:100%; max-height:100%;">' + '</div></div></div>' + '<script>' +
+        '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
+}
+
+function getPopover(contextPath, title) {
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+
+    var img = "'<img src = \"" + contextPath + "/resources/img/psc.png" + "\" style=\"max-width:100%; max-height:100%;\">'";
+
+    return '<span id="' + guid + '">' + title + '</span><script>$("#' + guid + '").popover({html: true, trigger: "hover", content: function() {return ' + img + '}});</script>';
+}

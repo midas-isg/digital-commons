@@ -90,7 +90,7 @@
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
 <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewData="${spew}"></myTags:libraryViewerCollections>
 
-    <div id="panelOne" class="panel panel-default">
+    <!--<div id="panelOne" class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne" style="padding:1px 3px">
             <span class="panel-title" style="font-size:12px;">
                 <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" style="text-decoration: none">
@@ -110,7 +110,7 @@
         $('#panelOne').hover(function() {
             $('#collapseOne').collapse('toggle');
         });
-    </script>
+    </script>-->
 
 </body>
 
