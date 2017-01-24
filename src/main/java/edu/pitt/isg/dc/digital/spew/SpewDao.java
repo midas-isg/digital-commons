@@ -24,8 +24,15 @@ public class SpewDao {
     private String baseUrl;
 
     public List<SpewLocation> listCountries() {
+        return getLocations(toSpewCountriesUrl(baseUrl));
+    }
+
+    public List<SpewLocation> listRegions() {
+        return getLocations(toSpewRegionsUrl(baseUrl));
+    }
+
+    private List<SpewLocation> getLocations(String url) {
         final HttpEntity<SpewLocationLot> requestEntity = new HttpEntity<>(null, toHttpHeaders());
-        final String url = toSpewCountriesUrl(baseUrl);
         final ResponseEntity<SpewLocationLot> exchange = toRestTemplate().exchange(url, GET, requestEntity, SpewLocationLot.class);
         if (exchange.getStatusCode().is2xxSuccessful()) {
             final SpewLocationLot body = exchange.getBody();
@@ -48,8 +55,16 @@ public class SpewDao {
     }
 
     static String toSpewCountriesUrl(String baseUrl) {
+        return getSpewUrl(baseUrl, "countries");
+    }
+
+    static String toSpewRegionsUrl(String baseUrl) {
+        return getSpewUrl(baseUrl, "regions");
+    }
+
+    private static String getSpewUrl(String baseUrl, String entities) {
         return toApiBuilder(baseUrl)
-                .pathSegment("countries")
+                .pathSegment(entities)
                 .build().toUriString();
     }
 
@@ -71,11 +86,15 @@ public class SpewDao {
         }
     }
 
-    public String toDownloadUrlAtQuickView(SpewLocation country){
+    public String toDownloadUrlWithSummary(SpewLocation location){
         return toSpewUrlBuilder(baseUrl)
                 .pathSegment("spe")
-                .queryParam("adminCodePath", country.getCode())
+                .queryParam("adminCodePath", location.getCode())
                 .queryParam("openSummary", true)
                 .toUriString();
+    }
+
+    public boolean isCountry(SpewLocation location) {
+        return location.getType().equals("country");
     }
 }
