@@ -132,8 +132,7 @@ function formatLocation(location) {
 }
 
 function openSoftwareInfo(contextPath, id) {
-    console.log('here');
-    window.open(contextPath + "/main/software/" + id);
+    location.href = contextPath + "/main/software/" + id;
 }
 
 function openLibraryFrame(url) {
