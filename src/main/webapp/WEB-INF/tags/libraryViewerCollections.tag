@@ -107,9 +107,7 @@
                 $('#data-and-knowledge-treeview').treeview({
                     data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, ${libraryViewerUrl}),
                     showBorder: false,
-                    backColor: "#092940",
-                    onhoverColor: "#397AAC",
-                    color: "white",
+
                     expandIcon: "glyphicon glyphicon-chevron-right",
                     collapseIcon: "glyphicon glyphicon-chevron-down",
                 });
@@ -119,12 +117,7 @@
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                     }
                     if(data.url != null && data.state.selected == true) {
-                        document.getElementById("libraryFrame").parentNode.style.display='';
-//                        document.getElementById("iframeNav").style.display='';
-                        document.getElementById("commons-main-body").style.display='none';
-                        document.getElementById("commons-main-tabs").style.display='none';
-
-                        window.open(data.url, "libraryFrame");
+                        <%--window.location.href(${pageContext.request.contextPath} + "/main/view/" + data.url);--%>
                     }
                 });
             }

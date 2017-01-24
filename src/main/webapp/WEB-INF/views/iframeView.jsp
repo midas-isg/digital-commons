@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: amd176
-  Date: 1/10/17
-  Time: 3:28 PM
+  User: mas400
+  Date: 1/24/17
+  Time: 3:00 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,7 +20,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>MIDAS Digital Commons - publication Information</title>
+    <title>MIDAS Digital Commons - Software Information</title>
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 
@@ -35,19 +35,12 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Publication Information" loggedIn="true"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="false" iframe="true"></myTags:header>
 
 </head>
-<body id="commons-body">
-<div class="row">
-    <div class="col-md-12">
-        <myTags:addDataAugmentedPublications publication="${publicationPaper}"></myTags:addDataAugmentedPublications>
-        <myTags:addDataAugmentedPublications publication="${publicationData}"></myTags:addDataAugmentedPublications>
 
-        <a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
-    </div>
-</div>
-</div>
-
+<body>
+<iframe src="${url}" frameborder="0"
+        style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
 </body>
 </html>

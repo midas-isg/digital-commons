@@ -39,33 +39,9 @@
 
 </head>
 
-<%--iframe--%>
-<nav class="navbar navbar-default navbar-fixed-top" style="display:none;margin: auto; top: 0px; left: 0px; bottom: auto; right: auto; box-sizing: border-box; width: 100%;">
-    <div class="container-fluid background-nav">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <ul class="nav navbar-nav">
-            <li>
-                <a class="leaf" href="${pageContext.request.contextPath}/main">
-                        <icon class="glyphicon glyphicon-chevron-left"></icon>
-                        Back to Digital Commons
-                </a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <a class="leaf" href="#" onclick="loadExternalSite()">Open external site
-                    <icon class="glyphicon glyphicon-chevron-right"></icon>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <iframe name="libraryFrame" id="libraryFrame" frameborder="0"
-            style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
-</nav>
-
-
-<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true"></myTags:header>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" iframe="false"></myTags:header>
 <body id="commons-body">
+<br>
 <ul id="commons-main-tabs" class="nav nav-tabs">
     <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>

@@ -63,6 +63,12 @@ public class HomeController {
         return "commons";
     }
 
+    @RequestMapping(value = "/main/view/{url}", method = RequestMethod.GET)
+    public String loadIframe(Model model, @PathVariable("url") String url) {
+        model.addAttribute("url", url);
+        return "iframeView";
+    }
+
     @RequestMapping(value = "/main/software/{id}", method = RequestMethod.GET)
     public String softwareInfo(Model model, @PathVariable("id") long id) {
         Iterable<SoftwareFolder> tree = softwareRule.tree();
