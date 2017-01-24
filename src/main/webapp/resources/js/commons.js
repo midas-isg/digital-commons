@@ -132,8 +132,7 @@ function formatLocation(location) {
 }
 
 function openSoftwareInfo(contextPath, id) {
-    console.log('here');
-    window.open(contextPath + "/main/software/" + id);
+    location.href = contextPath + "/main/software/" + id;
 }
 
 function openLibraryFrame(url) {
@@ -168,8 +167,10 @@ function getPopover(imgPath, title, funcName, params) {
     var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         
         "<i class='fa fa-info-circle'></i></a>";
+
+    var url = '';
     var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='location.href=(\"" + url + "\");'>" +
-        "<i class='glyphicon glyphicon-share-alt'></i></a>";
+        "<i class='fa fa-arrow-right'></i></a>";
 
     var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
 
