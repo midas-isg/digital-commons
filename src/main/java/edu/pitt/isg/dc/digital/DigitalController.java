@@ -4,7 +4,6 @@ import edu.pitt.isg.dc.digital.dap.DapFolder;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
-import edu.pitt.isg.dc.digital.spew.SpewDao;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +31,10 @@ public class DigitalController {
     @RequestMapping("api/spew-tree")
     public Object listCountries(){
         return spewRule.tree();
+    }
+
+    @RequestMapping("api/spew-region-tree")
+    public Object listCountriesGroupedByRegions(){
+        return spewRule.treeRegions();
     }
 }
