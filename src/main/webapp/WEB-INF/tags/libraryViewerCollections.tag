@@ -11,7 +11,7 @@
 
 <script>
     var syntheticEcosystems = {
-        text: "Synthetic Ecosystems by Name",
+        text: "Synthetic ecosystems (by name)",
         nodes: []
     };
 
