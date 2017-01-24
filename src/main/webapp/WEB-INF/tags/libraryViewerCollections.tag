@@ -5,6 +5,8 @@
               type="java.lang.String"%>
 <%@ attribute name="spewData" required="true"
               type="java.lang.Iterable"%>
+<%@ attribute name="spewRegions" required="true"
+              type="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
@@ -66,6 +68,23 @@
 
         syntheticEcosystems.nodes[syntheticEcosystems.nodes.length - 1].nodes.push(ecosystem);
     }
+
+    var syntheticEcosystemsByRegion = {
+        text: "Synthetic ecosystems (by region)",
+        nodes: []
+    };
+
+    <c:forEach items="${spewRegions}" var="region" varStatus="loop">
+        console.log("${region.name}");
+
+        <c:forEach items="${region.children}" var="child">
+            console.log("${child}");
+        </c:forEach>
+
+        console.log("${region.children}");
+    </c:forEach>
+
+
 
     $(document).ready(function () {
         var libraryData;
