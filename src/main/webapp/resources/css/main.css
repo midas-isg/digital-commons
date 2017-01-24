@@ -1,5 +1,5 @@
 .node-with-margin {
-    margin-left:40px;
+    margin-left:30px;
     word-wrap:break-word;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .grandnode-with-margin {
-    margin-left:60px;
+    margin-left:50px;
     word-wrap:break-word;
 }
 
@@ -46,6 +46,9 @@
     width: 80% !important;
 }
 
+.list-group-item {
+    padding:1px 3px !important;
+}
 .sub-title-font {
     color: #092940;
     font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;

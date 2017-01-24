@@ -14,10 +14,54 @@
 
         <c:forEach items="${folder.list}" var="item">
             <c:if test="${not empty item}">
+                /*var collapseText = '';
+
+                <c:if test="${not empty item.version}">
+                    collapseText += 'Version: ' + '${item.version}';
+                </c:if>
+
+                <c:if test="${not empty item.developer}">
+                    if(collapseText.length > 0) {
+                        collapseText += '<br>';
+                    }
+                    collapseText += 'Developer(s): ' + '${item.developer}';
+                </c:if>
+
+                <c:if test="${not empty item.doi}">
+                    if(collapseText.length > 0) {
+                        collapseText += '<br>';
+                    }
+                    collapseText += '<br>DOI: ' + '${item.developer}';
+                </c:if>
+
+                <c:if test="${not empty item.url}">
+                    if(collapseText.length > 0) {
+                        collapseText += '<br>';
+                    }
+                    collapseText += 'Software location: ' + '${item.url}';
+                </c:if>
+
+                <c:if test="${not empty item.sourceCodeUrl}">
+                    if(collapseText.length > 0) {
+                        collapseText += '<br>';
+                    }
+                    collapseText += 'Source code location: ' + '${item.sourceCodeUrl}';
+                </c:if>*/
+
                 software[${loop.index}].nodes.push({
-                    "text": "<div class=\"node-with-margin\">" + "${item.name}" + "</div>",
+                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}", '${item.name}', "${pageContext.request.contextPath}/main/software/" + "${item.id}") + '</div>',
                     "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
                 });
+
+                /*software[${loop.index}].nodes.push({
+                 "text": "<div class=\"node-with-margin\">${item.name}</div>",
+                 "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
+                 });*/
+
+                /*software[${loop.index}].nodes.push({
+                    "text": "<div class=\"node-with-margin\">" + collapsableNode("${pageContext.request.contextPath}", "${item.name}", collapseText) + "</div>",
+                    "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
+                });*/
             </c:if>
         </c:forEach>
     </c:forEach>
@@ -33,13 +77,14 @@
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
+            console.log(event);
             if(typeof data['nodes'] != undefined) {
                 $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
 
-            if(data.url != null && data.state.selected == true) {
+            /*if(data.url != null && data.state.selected == true) {
                 window.location.href = data.url;
-            }
+            }*/
         }
     });
 
