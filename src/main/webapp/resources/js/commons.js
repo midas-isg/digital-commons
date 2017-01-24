@@ -24,31 +24,31 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "Apollo location codes",
+        text: "<div class=\"node-with-margin\">Apollo location codes</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "Apollo XSD",
+            text: "<div class=\"node-with-margin\">Apollo XSD</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
-            text: "NCBI Taxon identifiers",
+            text: "<div class=\"node-with-margin\">NCBI Taxon identifiers</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "SNOMED CT codes",
+            text: "<div class=\"node-with-margin\">SNOMED CT codes</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "LOINC codes",
+            text: "<div class=\"node-with-margin\">LOINC codes</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "Vaccine Ontology identifiers",
+            text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers</div>",
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
-            text: "RxNorm codes",
+            text: "<div class=\"node-with-margin\">RxNorm codes</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
     }]
 };
@@ -58,7 +58,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push(syntheticEcosystems,
-        {text: "Disease surveillance data", nodes: [{text: "Zika data repository", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
+        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "<div class=\"node-with-margin\">Tycho</div>", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
 
 
     if(libraryData != null) {
@@ -75,9 +75,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             $.each(value, function (index, value) {
                 var nodeLevel2 = [];
                 $.each(value, function (index, value) {
-                    // var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
+                    //var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
                     //     "<i class='fa fa-external-link'></i></button>";
-                    // var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
+                    //var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
                     //     "<i class='fa fa-info-circle'></i></button>";
 
                     nodeLevel2.push({
@@ -106,3 +106,55 @@ function openModal(url) {
     $('#libraryViewerModal').modal('show').find('.modal-body').load(url);
 }
 
+function formatLocation(location) {
+    var splitLocationNames = location.split(' ');
+
+    for(var i = 0; i < splitLocationNames.length; i++) {
+        var characterIndex = 0;
+        if(splitLocationNames[i].charAt(0) == '(') {
+            characterIndex = 1;
+        }
+
+        if(splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
+            splitLocationNames[i] = splitLocationNames[i].charAt(characterIndex).toUpperCase() + splitLocationNames[i].slice(characterIndex + 1);
+
+            if(characterIndex == 1) {       // add back leading parentheses if we removed it
+                splitLocationNames[i] = '(' + splitLocationNames[i];
+            }
+        }
+    }
+
+    return splitLocationNames.join(' ');
+}
+
+
+function collapsableNode(contextPath, title, text) {
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+
+    return '<div id="' + guid + '-panel" class="panel panel-default" style="margin-bottom: 0">' +
+        '<div class="panel-heading" role="tab" id="' + guid + '-heading" style="padding:1px 3px">' +
+        '<span class="panel-title" style="font-size:12px;">' +
+        '<a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="' + guid + '-collapse" style="text-decoration: none">' +
+        title + '</a></span></div><div id="' + guid + '-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="' + guid + '-heading">' +
+        '<div class="panel-body" style="padding:1px 3px; font-size:12px">' + text + '<img src = "' + contextPath + '/resources/img/psc.png' + '" style="max-width:100%; max-height:100%;">' + '</div></div></div>' + '<script>' +
+        '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
+}
+
+function getPopover(contextPath, title, url) {
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        return v.toString(16);
+    });
+
+    var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
+        "<i class='glyphicon glyphicon-info-sign'></i></a>";
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='window.open(\"" + url + "\");'>" +
+        "<i class='glyphicon glyphicon-share-alt'></i></a>";
+
+    var img = "'<img src = \"" + contextPath + "/resources/img/psc.png" + "\" style=\"max-width:100%; max-height:100%;\">'";
+
+    return '<span id="' + guid + '">' + title + '</span>' + modalbutton + externalbutton + '<script>$("#' + guid + '-modal").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
+}
