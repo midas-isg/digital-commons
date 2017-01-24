@@ -119,7 +119,7 @@
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                     }
                     if(data.url != null && data.state.selected == true) {
-                        <%--window.location.href(${pageContext.request.contextPath} + "/main/view/" + data.url);--%>
+                        $(location).attr('href', "${pageContext.request.contextPath}" + "/main/view?url=" + encodeURIComponent(data.url));
                     }
                 });
             }

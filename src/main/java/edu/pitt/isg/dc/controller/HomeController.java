@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,8 +64,8 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/main/view/{url}", method = RequestMethod.GET)
-    public String loadIframe(Model model, @PathVariable("url") String url) {
+    @RequestMapping(value = "/main/view", method = RequestMethod.GET, headers = "Accept=text/html")
+    public String loadIframe(Model model, @RequestParam(value = "url") String url) {
         model.addAttribute("url", url);
         return "iframeView";
     }

@@ -115,3 +115,8 @@
 .inline-block {
     display: inline-block;
 }
+
+a {
+    color: #092940 !important;
+    text-decoration: none;
+}

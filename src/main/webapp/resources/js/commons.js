@@ -166,8 +166,9 @@ function getPopover(imgPath, title, funcName, params) {
     });
 
     var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
-        "<i class='glyphicon glyphicon-info-sign'></i></a>";
-    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "'>" +
+        
+        "<i class='fa fa-info-circle'></i></a>";
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='location.href=(\"" + url + "\");'>" +
         "<i class='glyphicon glyphicon-share-alt'></i></a>";
 
     var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
