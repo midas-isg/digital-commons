@@ -141,3 +141,7 @@ a {
 .popover-content {
     padding: 5px 5px !important;
 }
+
+#imagepreview {
+    width:100%;
+}

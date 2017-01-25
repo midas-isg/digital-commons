@@ -186,7 +186,7 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%; min-height:150px\" onclick= \"openModal(this.id);\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; min-height:150px\" onclick= \"openModal(this.id);\">'";
 
     return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }
