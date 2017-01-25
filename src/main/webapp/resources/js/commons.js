@@ -154,25 +154,24 @@ function collapsableNode(contextPath, title, text) {
         '<span class="panel-title" style="font-size:12px;">' +
         '<a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="' + guid + '-collapse" style="text-decoration: none">' +
         title + '</a></span></div><div id="' + guid + '-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="' + guid + '-heading">' +
-        '<div class="panel-body" style="padding:1px 3px; font-size:12px">' + text + '<img src = "' + contextPath + '/resources/img/psc.png' + '" style="max-width:100%; max-height:100%;">' + '</div></div></div>' + '<script>' +
+        '<div class="panel-body" style="padding:1px 3px; font-size:12px">' + text + '<img src = "' + contextPath + '/resources/img/fred.png' + '" style="max-width:100%; max-height:100%;">' + '</div></div></div>' + '<script>' +
         '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
 }
 
-function getPopover(imgPath, title, funcName, params) {
+function getPopover(imgPath, title, modalImgPath) {
     var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
 
-    var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
+    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
+
+    /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         
         "<i class='fa fa-info-circle'></i></a>";
 
-    var url = '';
-    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "' onclick='location.href=(\"" + url + "\");'>" +
+    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "'>" +
         "<i class='fa fa-arrow-right'></i></a>";
-
-    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
 
     var paramsStr = '';
     for(var i = 0; i < params.length; i++) {
@@ -183,7 +182,7 @@ function getPopover(imgPath, title, funcName, params) {
         }
     }
 
-    var externalClick = '$("#' + guid + '-external").click(function () {' + funcName + '(' + paramsStr + ')}' + ');';
+    var externalClick = '$("#' + guid + '-external").click(function () {' + funcName + '(' + paramsStr + ')}' + ');';*/
 
-    return '<span id="' + guid + '">' + title + '</span>' + modalbutton + externalbutton + '<script>' + externalClick + '$("#' + guid + '-modal").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
+    return '<span id="' + guid + '">' + title + '</span>' + '<script>' + '$("#' + guid + '").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
 }
