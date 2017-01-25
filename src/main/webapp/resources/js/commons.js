@@ -66,14 +66,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
-                    text: "Tycho",
-                    nodes:[
-                        {
-                            text: "<div class=\"grandnode-with-margin\">" +
-                            getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence', contextPath + "/resources/img/tycho_more_info.png") +
-                            "</div>"
-                        }
-                    ]
+                    text: "<div class=\"node-with-margin\">Tycho</div>",
+                    url: "https://www.tycho.pitt.edu/data/level1.php"
                 }
             ]
         }
