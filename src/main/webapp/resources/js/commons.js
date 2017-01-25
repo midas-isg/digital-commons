@@ -102,7 +102,8 @@ function openViewer(url) {
     window.open(url);
 }
 
-function openModal(url) {
+function openModal(url, parent) {
+    $(parent).toggle();
     $('#imagepreview').attr('src', url);
     $('#pageModal').modal('show');
     // $('#pageModal').modal('show').find('.modal-body').load(url);
@@ -167,7 +168,7 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.src)\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.id, this.parentNode.parentNode);\">'";
 
     /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         

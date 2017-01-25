@@ -49,7 +49,7 @@
                 </c:if>*/
 
                 software[${loop.index}].nodes.push({
-                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}') + '</div>',
+                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>',
                     "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
                 });
             </c:if>

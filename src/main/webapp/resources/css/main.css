@@ -120,3 +120,12 @@ a {
     color: #092940 !important;
     text-decoration: none;
 }
+
+.modal-dialog{
+    position: relative !important;
+    display: table;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: auto !important;
+    min-width: 300px;
+}
