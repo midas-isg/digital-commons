@@ -1,6 +1,8 @@
 .node-with-margin {
     margin-left:30px;
-    word-wrap:break-word;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .node-break {
@@ -20,9 +22,12 @@
 
 .grandnode-with-margin {
     margin-left:50px;
-    word-wrap:break-word;
     padding-left: 2em;
     text-indent: -2em;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .fullscreen {
@@ -184,4 +189,14 @@ a {
 .underline {
     text-decoration: underline;
 
+}
+
+.list-group-item {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.list-group-item li {
+    white-space: pre-wrap;
 }
