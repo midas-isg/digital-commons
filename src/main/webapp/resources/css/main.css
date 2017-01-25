@@ -120,3 +120,7 @@ a {
     color: #092940 !important;
     text-decoration: none;
 }
+
+.popover {
+    border: 3px solid rgba(9, 41, 64, 0.8) !important;
+}
