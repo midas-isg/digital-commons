@@ -6,12 +6,14 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <c:if test="${not empty region.children}">
-    currentNode.push({'text': formatLocation("${region.name}"), 'nodes': []});
+    /* currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}"), 'nodes': []});
     currentNode = currentNode[currentNode.length - 1].nodes;
-    <c:forEach items="${region.children}" var="child">
+
+    currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}")}); */
+    <c:forEach items="${region.children}" var="child" varStatus="childLoop">
         <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>
     </c:forEach>
 </c:if>
 <c:if test="${empty region.children}">
-    currentNode.push({'text': getPopover("${pageContext.request.contextPath}" + "/resources/img/spew.jpg", formatLocation("${region.name}"), "${pageContext.request.contextPath}" + "/resources/img/spew_more_info.jpg")});
+    currentNode.push({'name': "${region.name}", 'text': "<div class=\"grandnode-with-margin\">" + formatLocation("${region.name}") + "</div>", 'url': "${region.url}"});
 </c:if>

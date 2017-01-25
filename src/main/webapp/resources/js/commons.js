@@ -53,12 +53,31 @@ var standardEncodingTree = {
     }]
 };
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl, contextPath) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    collections.push(syntheticEcosystems, syntheticEcosystemsByRegion,
-        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", nodes:[{text: "<div class=\"grandnode-with-margin\">" + getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence', contextPath + "/resources/img/tycho_more_info.png") + "</div>"}]}]});
+    collections.push(syntheticEcosystems,
+        {
+            text: "Disease surveillance data",
+            nodes: [
+                {
+                    text: "<div class=\"node-with-margin\">Zika data repository</div>",
+                    url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
+                },
+                {
+                    text: "Tycho",
+                    nodes:[
+                        {
+                            text: "<div class=\"grandnode-with-margin\">" +
+                            getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence', contextPath + "/resources/img/tycho_more_info.png") +
+                            "</div>"
+                        }
+                    ]
+                }
+            ]
+        }
+    );
 
 
     if(libraryData != null) {
@@ -167,25 +186,15 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.id);\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%; min-height:150px\" onclick= \"openModal(this.id);\">'";
 
-    /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
-        
-        "<i class='fa fa-info-circle'></i></a>";
+    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
+}
 
-    var externalbutton = "<a href='' type='button'  id='" + guid + "-external" + "'>" +
-        "<i class='fa fa-arrow-right'></i></a>";
-
-    var paramsStr = '';
-    for(var i = 0; i < params.length; i++) {
-        if(i==0) {
-            paramsStr += '"' + params[i] + '"';
-        } else {
-            paramsStr += ',"' + params[i] + '"';
-        }
-    }
-
-    var externalClick = '$("#' + guid + '-external").click(function () {' + funcName + '(' + paramsStr + ')}' + ');';*/
-
-    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>' + '$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
+function compareNodes(a,b) {
+    if (a.name < b.name)
+        return -1;
+    if (a.name > b.name)
+        return 1;
+    return 0;
 }
