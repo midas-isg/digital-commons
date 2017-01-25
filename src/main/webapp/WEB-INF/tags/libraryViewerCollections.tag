@@ -60,7 +60,7 @@
             ecosystem['url'] = locationUrls[locations[i]];
         }
 
-        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + getPopover("${pageContext.request.contextPath}" + "/resources/img/syneco.png", formattedLocation, 'openLibraryFrame', [ecosystem['url']]) + "</div>";
+        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + getPopover("${pageContext.request.contextPath}" + "/resources/img/spew.jpg", formattedLocation) + "</div>";
 
         if('url' in ecosystem) {
             delete ecosystem['url'];
