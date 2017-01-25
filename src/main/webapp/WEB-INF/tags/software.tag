@@ -8,7 +8,7 @@
 <script>
     <c:forEach items="${software}" var="folder" varStatus="loop">
         software.push({
-            "text": "${folder.name}",
+            "text": "<span class=\"root-break\">" + "${folder.name}" + "</span>",
             "nodes": []
         });
 

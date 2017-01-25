@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
-	<h3>${publication.name}</h3>
+	<h3 class="sub-title-font">${publication.name}</h3>
 
 	<c:if test="${not empty publication.typeText}">
 		<div class="font-size-16">

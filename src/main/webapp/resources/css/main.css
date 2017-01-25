@@ -7,6 +7,12 @@
     word-wrap:break-word;
 }
 
+.root-break{
+    /*padding-left: 1.5em;*/
+    /*text-indent:-1.5em;*/
+
+}
+
 #commons-body {
     width:95%;
     margin: auto;
@@ -15,6 +21,8 @@
 .grandnode-with-margin {
     margin-left:50px;
     word-wrap:break-word;
+    padding-left: 2em;
+    text-indent: -2em;
 }
 
 .fullscreen {
@@ -52,6 +60,15 @@
 
 .margin-top-13 {
     margin-top: 13px;
+}
+
+.margin-top-22 {
+    margin-top: 22px !important;
+}
+
+
+.margin-top-30 {
+    margin-top: 30px !important;
 }
 
 .sub-title-font {
