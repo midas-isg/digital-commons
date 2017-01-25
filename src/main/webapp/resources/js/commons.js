@@ -103,7 +103,8 @@ function openViewer(url) {
 }
 
 function openModal(url) {
-    $('#pageModal').modal('show').find('.modal-body').attr('src', url);
+    $('#imagepreview').attr('src', url);
+    $('#pageModal').modal('show');
     // $('#pageModal').modal('show').find('.modal-body').load(url);
 
 }
@@ -166,7 +167,7 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
+    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.src)\">'";
 
     /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         
