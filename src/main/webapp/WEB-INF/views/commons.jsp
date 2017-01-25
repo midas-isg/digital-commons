@@ -65,15 +65,15 @@
 <div id="commons-main-body" class="row">
     <div class="tab-content">
         <div id="browse" class="tab-pane fade in active">
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <h2 class="title-font">Software</h2>
                 <div id="algorithm-treeview" class="treeview"></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <h2 class="title-font">Data &amp; Knowledge</h2>
                 <div id="data-and-knowledge-treeview" class="treeview"></div>
             </div>
-            <div class="col-md-4">
+            <div class="col-sm-4">
                 <h2 class="title-font">Data-Augmented Publications</h2>
                 <div id="publications-treeview" class="treeview"></div>
             </div>
