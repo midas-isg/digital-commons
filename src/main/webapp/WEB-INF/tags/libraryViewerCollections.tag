@@ -107,7 +107,7 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, ${libraryViewerUrl}),
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}"),
                     showBorder: false,
 
                     expandIcon: "glyphicon glyphicon-chevron-right",

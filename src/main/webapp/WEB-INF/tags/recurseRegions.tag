@@ -13,5 +13,5 @@
     </c:forEach>
 </c:if>
 <c:if test="${empty region.children}">
-    currentNode.push({'text': getPopover("${pageContext.request.contextPath}" + "/resources/img/syneco.png", formatLocation("${region.name}"), 'openLibraryFrame', ["${region.url}"])});
+    currentNode.push({'text': getPopover("${pageContext.request.contextPath}" + "/resources/img/spew.jpg", formatLocation("${region.name}"), "${pageContext.request.contextPath}" + "/resources/img/spew_more_info.jpg")});
 </c:if>

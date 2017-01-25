@@ -53,12 +53,12 @@ var standardEncodingTree = {
     }]
 };
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl, contextPath) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push(syntheticEcosystems, syntheticEcosystemsByRegion,
-        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "<div class=\"node-with-margin\">Tycho</div>", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
+        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", nodes:[{text: "<div class=\"grandnode-with-margin\">" + getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence', contextPath + "/resources/img/tycho_more_info.png") + "</div>"}]}]});
 
 
     if(libraryData != null) {
@@ -102,8 +102,7 @@ function openViewer(url) {
     window.open(url);
 }
 
-function openModal(url, parent) {
-    $(parent).toggle();
+function openModal(url) {
     $('#imagepreview').attr('src', url);
     $('#pageModal').modal('show');
     // $('#pageModal').modal('show').find('.modal-body').load(url);
@@ -168,7 +167,7 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.id, this.parentNode.parentNode);\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.id);\">'";
 
     /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         
@@ -188,5 +187,5 @@ function getPopover(imgPath, title, modalImgPath) {
 
     var externalClick = '$("#' + guid + '-external").click(function () {' + funcName + '(' + paramsStr + ')}' + ');';*/
 
-    return '<span id="' + guid + '">' + title + '</span>' + '<script>' + '$("#' + guid + '").click(function(e) {e.preventDefault(); e.stopPropagation();}).popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}});</script>';
+    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>' + '$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }

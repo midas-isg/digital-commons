@@ -86,6 +86,17 @@
     </div>
 </div>
 
+<script>
+    $('#commons-body').on('click', function (e) {
+        console.log('here');
+        //did not click a popover toggle or popover
+        if ($(e.target).attr('class') !== 'bs-popover') {
+            $("[rel=popover]").not(e.target).popover("destroy");
+            $(".popover").remove();
+        }
+    });
+</script>
+
 <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
