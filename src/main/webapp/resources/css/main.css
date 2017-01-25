@@ -162,3 +162,11 @@ a {
 #imagepreview {
     width:100%;
 }
+
+.btn-default {
+    color: #333;
+    background-color: #fff !important;
+    border-color: #ccc !important;
+}
+
+.page-divider {display:none}

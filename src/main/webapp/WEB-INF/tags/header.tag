@@ -11,13 +11,24 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="main-nav container-fluid ">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
-                        data-target="#navbar-collapse" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+                <c:if test="${iframe == true}">
+                    <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
+                            data-target="#navbar-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </c:if>
+                <c:if test="${loggedIn == true}">
+                    <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
+                    <form class="commons-header" action="${urlLevel}" method="GET">
+                        <button type="submit" class=" margin-top-22 btn btn-default navbar-toggle collapsed">
+                            Logout
+                        </button>
+                    </form>
+                </c:if>
+
                 <a href="${pageContext.request.contextPath}">
                     <img alt="MIDAS" class="navbar-brand-mod hidden-sm hidden-md hidden-lg"
                          src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
@@ -35,25 +46,26 @@
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${loggedIn == true}">
                         <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                        <form class="navbar-form" action="${urlLevel}" method="GET">
-                            <button type="submit" class="btn btn-default margin-top-13">Logout</button>
-                        </form>
+                    <form class="navbar-form" action="${urlLevel}" method="GET">
+                        <button type="submit" class="btn btn-default margin-top-13">Logout</button>
+                    </form>
                     </c:if>
                     <c:if test="${iframe == true}">
-                        <li>
-                            <a class="leaf margin-top-13" href="${pageContext.request.contextPath}/main">
-                                <icon class="glyphicon glyphicon-chevron-left"></icon>
-                                Back to Digital Commons
-                            </a>
-                        </li>
-                        <li>
-                            <a class="leaf margin-top-13" href="#" onclick="loadExternalSite()">Open external site
-                                <icon class="glyphicon glyphicon-chevron-right"></icon>
-                            </a>
-                        </li>
-                    </c:if>
-                </ul>
+                    <li>
+                        <a class="leaf margin-top-13" href="${pageContext.request.contextPath}/main">
+                            <icon class="glyphicon glyphicon-chevron-left"></icon>
+                            Back to Digital Commons
+                        </a>
+                    </li>
+                    <li>
+                        <a class="leaf margin-top-13" href="#" onclick="loadExternalSite()">Open external site
+                            <icon class="glyphicon glyphicon-chevron-right"></icon>
+                        </a>
+                    </li>
             </div>
+
+            </c:if>
+            </ul>
         </div><!-- /.container-fluid -->
     </nav>
 </div>
