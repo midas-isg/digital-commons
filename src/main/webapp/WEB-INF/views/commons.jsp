@@ -47,18 +47,18 @@
     <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
 </ul>
 
-<%--Library Viewer Modal--%>
-<%--<div id="libraryViewerModal" class="modal fade">--%>
-    <%--<div class="modal-dialog">--%>
-        <%--<div class="modal-content">--%>
-            <%--<div class="modal-body">--%>
-            <%--</div>--%>
-            <%--<div class="modal-footer">--%>
-                <%--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+<%--"Click here" modal--%>
+<div id="pageModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div id="commons-main-body" class="row">
