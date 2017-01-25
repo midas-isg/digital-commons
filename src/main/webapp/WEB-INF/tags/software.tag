@@ -48,6 +48,15 @@
                     collapseText += 'Source code location: ' + '${item.sourceCodeUrl}';
                 </c:if>*/
 
+                var url = '';
+                <c:if test="${not empty item.sourceCodeUrl}">
+                    url = '${item.sourceCodeUrl}';
+                </c:if>
+
+                <c:if test="${not empty item.url}">
+                    url = '${item.url}';
+                </c:if>
+
                 <c:if test="${folder.name == 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
                         "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>'
@@ -57,7 +66,7 @@
                 <c:if test="${folder.name != 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
                         "text": '<div class="node-with-margin">${item.name}</div>',
-                        "url": "${item.url}"
+                        "url": url
                     });
                 </c:if>
             </c:if>
