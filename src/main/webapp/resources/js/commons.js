@@ -53,12 +53,12 @@ var standardEncodingTree = {
     }]
 };
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, libraryViewerUrl, contextPath) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push(syntheticEcosystems, syntheticEcosystemsByRegion,
-        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "<div class=\"node-with-margin\">Tycho</div>", url: "https://www.tycho.pitt.edu/data/level1.php"}]});
+        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", nodes:[{text: "<div class=\"grandnode-with-margin\">" + getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence') + "</div>"}]}]});
 
 
     if(libraryData != null) {
