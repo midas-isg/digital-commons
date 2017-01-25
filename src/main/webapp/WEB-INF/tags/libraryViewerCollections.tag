@@ -12,7 +12,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
-    var syntheticEcosystems = {
+    /* var syntheticEcosystems = {
         text: "Synthetic ecosystems (by name)",
         nodes: []
     };
@@ -67,26 +67,31 @@
         }
 
         syntheticEcosystems.nodes[syntheticEcosystems.nodes.length - 1].nodes.push(ecosystem);
-    }
+    } */
 
     var syntheticEcosystemsByRegion = {
-        text: "Synthetic ecosystems (by region)",
+        text: "Synthetic ecosystems",
         nodes: []
     };
 
     <c:forEach items="${spewRegions}" var="region" varStatus="loop">
         <c:if test="${not empty region.children}">
-            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}"), 'nodes': []});
+            syntheticEcosystemsByRegion.nodes.push({'name': "${region.name}", 'text':formatLocation("${region.name}"), 'nodes': []});
             var currentNode = syntheticEcosystemsByRegion.nodes[syntheticEcosystemsByRegion.nodes.length - 1].nodes;
-            console.log(currentNode);
             <c:forEach items="${region.children}" var="child">
                 <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>
             </c:forEach>
         </c:if>
         <c:if test="${empty region.children}">
-            syntheticEcosystemsByRegion.nodes.push({'text':formatLocation("${region.name}")});
+            syntheticEcosystemsByRegion.nodes.push({'name': "${region.name}", 'text':formatLocation("${region.name}")});
         </c:if>
     </c:forEach>
+
+    syntheticEcosystemsByRegion.nodes.sort(compareNodes);
+
+    for(var i in syntheticEcosystemsByRegion.nodes) {
+        syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
+    }
 
     $(document).ready(function () {
         var libraryData;
@@ -107,7 +112,7 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}"),
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}"),
                     showBorder: false,
 
                     expandIcon: "glyphicon glyphicon-chevron-right",

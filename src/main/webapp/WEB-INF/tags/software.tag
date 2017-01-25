@@ -48,10 +48,18 @@
                     collapseText += 'Source code location: ' + '${item.sourceCodeUrl}';
                 </c:if>*/
 
-                software[${loop.index}].nodes.push({
-                    "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>',
-                    "url": "${pageContext.request.contextPath}/main/software/" + "${item.id}"
-                });
+                <c:if test="${folder.name == 'Disease transmission models'}">
+                    software[${loop.index}].nodes.push({
+                        "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>'
+                    });
+                </c:if>
+
+                <c:if test="${folder.name != 'Disease transmission models'}">
+                    software[${loop.index}].nodes.push({
+                        "text": '<div class="node-with-margin">${item.name}</div>',
+                        "url": "${item.url}"
+                    });
+                </c:if>
             </c:if>
         </c:forEach>
     </c:forEach>
@@ -69,9 +77,9 @@
                 $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
 
-            /*if(data.url != null && data.state.selected == true) {
+            if(data.url != null && data.state.selected == true) {
                 window.location.href = data.url;
-            }*/
+            }
         }
     });
 
