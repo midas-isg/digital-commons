@@ -103,7 +103,9 @@ function openViewer(url) {
 }
 
 function openModal(url) {
-    $('#libraryViewerModal').modal('show').find('.modal-body').load(url);
+    $('#pageModal').modal('show').find('.modal-body').attr('src', url);
+    // $('#pageModal').modal('show').find('.modal-body').load(url);
+
 }
 
 function formatLocation(location) {
