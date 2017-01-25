@@ -121,6 +121,19 @@ a {
     text-decoration: none;
 }
 
+.modal-dialog{
+    position: relative !important;
+    display: table;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: auto !important;
+    min-width: 300px;
+}
+
+.modal-content {
+    border: 10px solid rgba(9, 41, 64, 1) !important;
+
+}
 .popover {
     border: 10px solid rgba(9, 41, 64, 1) !important;
 }

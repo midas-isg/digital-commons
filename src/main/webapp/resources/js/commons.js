@@ -58,7 +58,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, syntheticEcos
     libraryViewerUrl = libraryViewerUrl + "main/";
 
     collections.push(syntheticEcosystems, syntheticEcosystemsByRegion,
-        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", nodes:[{text: "<div class=\"grandnode-with-margin\">" + getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence') + "</div>"}]}]});
+        {text: "Disease surveillance data", nodes: [{text: "<div class=\"node-with-margin\">Zika data repository</div>", url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"}, {text: "Tycho", nodes:[{text: "<div class=\"grandnode-with-margin\">" + getPopover(contextPath + "/resources/img/tycho.jpg", 'Measles incidence', contextPath + "/resources/img/tycho_more_info.png") + "</div>"}]}]});
 
 
     if(libraryData != null) {
@@ -103,7 +103,8 @@ function openViewer(url) {
 }
 
 function openModal(url) {
-    $('#pageModal').modal('show').find('.modal-body').attr('src', url);
+    $('#imagepreview').attr('src', url);
+    $('#pageModal').modal('show');
     // $('#pageModal').modal('show').find('.modal-body').load(url);
 
 }
@@ -166,7 +167,7 @@ function getPopover(imgPath, title, modalImgPath) {
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" style=\"max-width:100%; max-height:100%;\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; max-height:100%;\" onclick= \"openModal(this.id);\">'";
 
     /*var modalbutton = "<a href='#' type='button'  id='" + guid + "-modal" + "' style='margin-left:10px; margin-right:5px'>" +
         
