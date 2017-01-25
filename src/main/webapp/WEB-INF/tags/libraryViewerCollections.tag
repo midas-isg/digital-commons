@@ -124,7 +124,13 @@
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                     }
                     if(data.url != null && data.state.selected == true) {
-                        $(location).attr('href', "${pageContext.request.contextPath}" + "/main/view?url=" + encodeURIComponent(data.url));
+                        var url  = data.url;
+                        if(url.search("apolloLibraryViewer") > -1) {
+//                        if($.contains(data.url, "apolloLibraryViewer")) {
+                            $(location).attr('href', "${pageContext.request.contextPath}" + "/main/view?url=" + encodeURIComponent(data.url));
+                        } else {
+                            $(location).attr('href', data.url);
+                        }
                     }
                 });
             }
