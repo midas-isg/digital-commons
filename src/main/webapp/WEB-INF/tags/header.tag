@@ -62,9 +62,10 @@
                             <icon class="glyphicon glyphicon-chevron-right"></icon>
                         </a>
                     </li>
+                    </c:if>
+
             </div>
 
-            </c:if>
             </ul>
         </div><!-- /.container-fluid -->
     </nav>
@@ -79,8 +80,7 @@
 
 <script>
     function loadExternalSite() {
-        console.log(document.getElementById("libraryFrame").contentWindow.location.href);
-        window.open(document.getElementById("libraryFrame").contentWindow.location.href);
+        window.open(document.getElementById("libraryFrame").src);
     }
 
 </script>

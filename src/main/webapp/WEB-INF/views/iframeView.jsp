@@ -40,7 +40,7 @@
 </head>
 
 <body>
-<iframe src="${url}" frameborder="0"
+<iframe src="${url}" id="libraryFrame" frameborder="0"
         style="overflow:hidden;height:100%;width:100%" height="100%" width="100%"></iframe>
 </body>
 </html>
