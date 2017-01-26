@@ -43,11 +43,17 @@
 
 <script>
     function autoMargin() {
+        var subtitleHeight = 0;
+
+        if($('#subtitle').length) {
+            subtitleHeight = $('#subtitle').height();
+        }
+
         var topMargin = $(document).height()
-                - ( $('#content').height() + $('#header').height() + 50)
+                - ( $('#content').height() + $('#header').height() + subtitleHeight + 50)
                 - $('#footer').height();
 
-        if(topMargin <= 280) {
+        if(topMargin <= 280 && subtitleHeight == 0) {
             topMargin = 10;
         }
 
