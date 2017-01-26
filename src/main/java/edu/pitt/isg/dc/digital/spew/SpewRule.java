@@ -18,7 +18,7 @@ public class SpewRule {
 
     private void customize(SpewLocation country) {
         country.setChildren(null);
-        country.setUrl(dao.toDownloadUrlWithSummary(country));
+        // country.setUrl(dao.toDownloadUrlWithSummary(country));
     }
 
     public Iterable<SpewLocation> treeRegions(){
