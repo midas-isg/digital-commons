@@ -35,6 +35,7 @@
           rel="stylesheet">
 
     <!-- Bootstrap JS -->
+    <script src="${pageContext.request.contextPath}/resources/js/tether.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 
 </head>
@@ -102,7 +103,6 @@
 <myTags:software software="${software}"></myTags:software>
 <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
 <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
-
     <!--<div id="panelOne" class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne" style="padding:1px 3px">
             <span class="panel-title" style="font-size:12px;">

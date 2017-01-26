@@ -8,7 +8,7 @@
 <script>
     <c:forEach items="${software}" var="folder" varStatus="loop">
         software.push({
-            "text": "<span class=\"root-break\">" + "${folder.name}" + "</span>",
+            "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + "${folder.name}" + "</span>",
             "nodes": []
         });
 
@@ -59,13 +59,13 @@
 
                 <c:if test="${folder.name == 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>'
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>'
                     });
                 </c:if>
 
                 <c:if test="${folder.name != 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin">${item.name}</div>',
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">${item.name}</div>',
                         "url": url
                     });
                 </c:if>
