@@ -42,82 +42,66 @@
 
 <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" iframe="false"></myTags:header>
 <body id="commons-body">
-<%--"Click here" modal--%>
-<div id="pageModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <img src="" id="imagepreview" >
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+<div id="content">
+
+    <%--"Click here" modal--%>
+    <div id="pageModal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="" id="imagepreview" >
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-<div id="commons-main-body" class="row">
-    <div class="tab-content">
-        <div id="browse" class="tab-pane fade in active">
-            <div class="col-sm-4">
-                <h2 class="title-font">Software</h2>
-                <div id="algorithm-treeview" class="treeview"></div>
+    <div id="commons-main-body" class="row">
+        <div class="tab-content">
+            <div id="browse" class="tab-pane fade in active">
+                <div class="col-sm-4">
+                    <h2 class="title-font">Software</h2>
+                    <div id="algorithm-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="title-font">Data &amp; Knowledge</h2>
+                    <div id="data-and-knowledge-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="title-font">Data-Augmented Publications</h2>
+                    <div id="publications-treeview" class="treeview"></div>
+                </div>
             </div>
-            <div class="col-sm-4">
-                <h2 class="title-font">Data &amp; Knowledge</h2>
-                <div id="data-and-knowledge-treeview" class="treeview"></div>
-            </div>
-            <div class="col-sm-4">
-                <h2 class="title-font">Data-Augmented Publications</h2>
-                <div id="publications-treeview" class="treeview"></div>
-            </div>
-        </div>
-        <div id="search" class="tab-pane fade">
-            <iframe src="http://ide.obc.io/#/" class="fullscreen" frameBorder="0">
-                <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a> to search.</p>
-            </iframe>
-        </div>
-    </div>
-</div>
-
-<script>
-    $('#commons-body').on('click', function (e) {
-        //did not click a popover toggle or popover
-        if ($(e.target).attr('class') !== 'bs-popover') {
-            $("[rel=popover]").not(e.target).popover("destroy");
-            $(".popover").remove();
-        }
-    });
-</script>
-
-<script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
-
-<myTags:software software="${software}"></myTags:software>
-<myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
-<myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
-    <!--<div id="panelOne" class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne" style="padding:1px 3px">
-            <span class="panel-title" style="font-size:12px;">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseOne" style="text-decoration: none">
-                    Collapsible Group Item #1
-                </a>
-            </span>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body" style="padding:1px 3px; font-size:12px">
-                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            <div id="search" class="tab-pane fade">
+                <iframe src="http://ide.obc.io/#/" class="fullscreen" frameBorder="0">
+                    <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a> to search.</p>
+                </iframe>
             </div>
         </div>
     </div>
 
     <script>
-        $('#collapseOne').collapse('hide');
-        $('#panelOne').hover(function() {
-            $('#collapseOne').collapse('toggle');
+        $('#commons-body').on('click', function (e) {
+            //did not click a popover toggle or popover
+            if ($(e.target).attr('class') !== 'bs-popover') {
+                $("[rel=popover]").not(e.target).popover("destroy");
+                $(".popover").remove();
+            }
         });
-    </script>-->
+    </script>
+
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
+
+    <myTags:software software="${software}"></myTags:software>
+    <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
+    <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
+</div>
+
+<myTags:footer></myTags:footer>
 
 </body>
 

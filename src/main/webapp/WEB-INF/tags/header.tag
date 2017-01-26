@@ -8,7 +8,7 @@
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 
 <div class="spacer">
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header">
         <div class="main-nav container-fluid ">
             <div class="navbar-header">
                 <c:if test="${loggedIn == true}">
