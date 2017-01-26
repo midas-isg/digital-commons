@@ -40,15 +40,18 @@
 
 </head>
 <body id="commons-body">
-<div class="row">
-    <div class="col-md-12">
-        <myTags:addDataAugmentedPublications publication="${publicationPaper}"></myTags:addDataAugmentedPublications>
-        <myTags:addDataAugmentedPublications publication="${publicationData}"></myTags:addDataAugmentedPublications>
+<div id="content">
+    <div class="row">
+        <div class="col-md-12">
+            <myTags:addDataAugmentedPublications publication="${publicationPaper}"></myTags:addDataAugmentedPublications>
+            <myTags:addDataAugmentedPublications publication="${publicationData}"></myTags:addDataAugmentedPublications>
 
-        <a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
+            <a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
+        </div>
     </div>
 </div>
 </div>
 
+<myTags:footer></myTags:footer>
 </body>
 </html>

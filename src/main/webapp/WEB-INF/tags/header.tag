@@ -72,11 +72,10 @@
 </div>
 
 <c:if test="${not empty subTitle}">
-    <h2 class="title-font">
+    <h2 class="title-font" id="subtitle">
             ${subTitle}
     </h2>
 </c:if>
-
 
 <script>
     function loadExternalSite() {
