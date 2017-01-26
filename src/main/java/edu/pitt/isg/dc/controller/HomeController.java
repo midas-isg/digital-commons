@@ -1,7 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
 import edu.pitt.isg.dc.digital.dap.DapFolder;
-import edu.pitt.isg.dc.digital.dap.DapForm;
 import edu.pitt.isg.dc.digital.dap.DapRule;
 import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
 import edu.pitt.isg.dc.digital.software.Software;
@@ -18,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -26,11 +28,13 @@ import java.util.Properties;
 public class HomeController {
  private static String VIEWER_URL = "";
  private static String VIEWER_TOKEN = "";
+ private static String SPEW_CACHE_FILE = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
         VIEWER_TOKEN = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_TOKEN);
+        SPEW_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.SPEW_CACHE_FILE_LOCATION);
     }
 
     @Autowired
@@ -50,14 +54,23 @@ public class HomeController {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
         try {
-            model.addAttribute("spew", spewRule.tree());
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {
-            SpewLocation emptySpew = new SpewLocation();
-            emptySpew.setName("Error loading data from SPEW");
-            List<SpewLocation> tree = new ArrayList<>();
-            tree.add(emptySpew);
-            model.addAttribute("spew", tree);
+            try {
+                Path path = Paths.get(SPEW_CACHE_FILE);
+
+                FileInputStream fis = new FileInputStream(path.toFile());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
+
+                model.addAttribute("spewRegions", spewLocationIterable);
+            } catch (Exception ee) {
+                SpewLocation emptySpew = new SpewLocation();
+                emptySpew.setName("Error loading data from SPEW");
+                List<SpewLocation> tree = new ArrayList<>();
+                tree.add(emptySpew);
+                model.addAttribute("spewRegions", tree);
+            }
         }
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
@@ -108,5 +121,24 @@ public class HomeController {
         model.addAttribute("publicationPaper", dataAugmentedPublicationPaper);
         model.addAttribute("publicationData", dataAugmentedPublicationData);
         return "publicationInfo";
+    }
+
+    @RequestMapping(value = "/main/api/cache-spew", method = RequestMethod.GET)
+    public String cacheSpew(Model model) {
+        try {
+            Path path = Paths.get(SPEW_CACHE_FILE);
+            FileOutputStream fos = new FileOutputStream(path.toFile());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            Iterable<SpewLocation> spewRegions = spewRule.treeRegions();
+
+            oos.writeObject(spewRegions);
+
+            model.addAttribute("status", "success");
+        } catch (Exception e) {
+            model.addAttribute("status", "fail");
+        }
+
+        return "cacheStatus";
     }
 }

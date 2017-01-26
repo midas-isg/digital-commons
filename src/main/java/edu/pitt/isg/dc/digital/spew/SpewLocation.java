@@ -1,8 +1,9 @@
 package edu.pitt.isg.dc.digital.spew;
 
 import java.util.Map;
+import java.io.Serializable;
 
-public class SpewLocation {
+public class SpewLocation implements Serializable {
     private String code;
     private String name;
     private String url;
