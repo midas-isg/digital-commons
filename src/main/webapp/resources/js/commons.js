@@ -66,8 +66,21 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
-                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Tycho (US notifiable diseases)</div>",
-                    url: "https://www.tycho.pitt.edu/data/level1.php"
+                    text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
+                    nodes: [
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 1</div>",
+                            url:"https://www.tycho.pitt.edu/data/level1.php"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 2</div>",
+                            url:"https://www.tycho.pitt.edu/data/level2.php"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>CDC Wonder</div>",
+                            url:"https://wonder.cdc.gov/"
+                        }
+                    ]
                 }
             ]
         }

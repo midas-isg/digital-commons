@@ -42,12 +42,6 @@
 
 <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" iframe="false"></myTags:header>
 <body id="commons-body">
-<br>
-<ul id="commons-main-tabs" class="nav nav-tabs">
-    <li role="presentation" class="active"><a data-toggle="tab" href="#browse">Browse</a></li>
-    <li role="presentation"><a data-toggle="tab" href="#search">Search</a></li>
-</ul>
-
 <%--"Click here" modal--%>
 <div id="pageModal" class="modal fade">
     <div class="modal-dialog">

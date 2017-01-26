@@ -11,7 +11,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="main-nav container-fluid ">
             <div class="navbar-header">
-                <c:if test="${iframe == true}">
+                <%--<c:if test="${iframe == true}">--%>
                     <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
                             data-target="#navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -19,23 +19,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                </c:if>
-                <c:if test="${loggedIn == true}">
-                    <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                    <form class="commons-header" action="${urlLevel}" method="GET">
-                        <button type="submit" class=" margin-top-22 btn btn-default navbar-toggle collapsed">
-                            Logout
-                        </button>
-                    </form>
-                </c:if>
+                <%--</c:if>--%>
+                <%--<c:if test="${loggedIn == true}">--%>
+                    <%--<c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>--%>
+                    <%--<form class="commons-header" action="${urlLevel}" method="GET">--%>
+                        <%--<button type="submit" class=" margin-top-22 btn btn-default navbar-toggle collapsed">--%>
+                            <%--Logout--%>
+                        <%--</button>--%>
+                    <%--</form>--%>
+                <%--</c:if>--%>
 
                 <a href="${pageContext.request.contextPath}">
-                    <img alt="MIDAS" class="navbar-brand-mod hidden-sm hidden-md hidden-lg"
+                    <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
                          src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
-                <h4 class="leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h4>
+                <h4 class="leaf inline-block hidden-md hidden-lg margin-top-30">${pageTitle}</h4>
             </div>
 
-            <div class="nav navbar-nav hidden-xs">
+            <div class="nav navbar-nav hidden-xs hidden-sm">
                 <a href="${pageContext.request.contextPath}">
                     <img alt="MIDAS" class="navbar-brand-mod"
                          src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
@@ -43,6 +43,14 @@
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
+                <c:if test="${loggedIn == true && iframe == false}">
+                    <ul class="nav navbar-nav navbar-padding">
+                        <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
+                                               href="#browse">Browse</a></li>
+                        <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>
+                        </li>
+                    </ul>
+                </c:if>
                 <ul class="nav navbar-nav navbar-right">
                     <c:if test="${loggedIn == true}">
                         <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
