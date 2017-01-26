@@ -61,10 +61,6 @@
     padding:1px 3px !important;
 }
 
-.margin-top-13 {
-    margin-top: 13px;
-}
-
 .margin-top-22 {
     margin-top: 22px !important;
 }
@@ -198,26 +194,52 @@ a {
 .list-group-item li {
     white-space: pre-wrap;
 }
+@media screen and (min-width: 767px) {
+    .navbar-padding {
+        padding-left: 100px !important;
+    }
 
-.navbar-padding {
-    padding-left: 100px !important;
+    .padding-top-30 {
+        padding-top: 30px!important;
+    }
+
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+        height: 80px;
+        background-color: rgba(0,0,0,0.25) !important;
+    }
+
+    .padding-top-30:hover {
+        height: 80px;
+        background-color: rgba(0,0,0,0.25) !important;
+    }
+    .margin-top-13 {
+        margin-top: 13px;
+    }
 }
 
-.padding-top-30 {
-    padding-top: 30px!important;
+@media screen and (max-width: 766px) {
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+        background-color: rgba(0,0,0,0.25) !important;
+    }
+
+    .navbar-form {
+        padding-top: 0px !important;
+        padding-right: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 15px;
+
+        margin-top: 0px !important;
+        margin-right: 0px !important;
+        margin-bottom: 0px !important;
+         margin-left: 0px !important;
+         border-top: 0px solid transparent !important;
+         border-bottom: 0px solid transparent !important;
+         -webkit-box-shadow: none !important;
+         box-shadow: none !important;
+    }
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    height: 80px;
-    background-color: rgba(0,0,0,0.25) !important;
-}
-
-.padding-top-30:hover {
-    height: 80px;
-    background-color: rgba(0,0,0,0.25) !important;
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 991px) and (max-width: 991px) {
     .navbar-collapse.collapse {
         display: none !important;
     }

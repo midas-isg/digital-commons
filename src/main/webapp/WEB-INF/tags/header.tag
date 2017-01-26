@@ -11,7 +11,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="main-nav container-fluid ">
             <div class="navbar-header">
-                <%--<c:if test="${iframe == true}">--%>
+                <c:if test="${loggedIn == true}">
                     <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
                             data-target="#navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
@@ -19,15 +19,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                <%--</c:if>--%>
-                <%--<c:if test="${loggedIn == true}">--%>
-                    <%--<c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>--%>
-                    <%--<form class="commons-header" action="${urlLevel}" method="GET">--%>
-                        <%--<button type="submit" class=" margin-top-22 btn btn-default navbar-toggle collapsed">--%>
-                            <%--Logout--%>
-                        <%--</button>--%>
-                    <%--</form>--%>
-                <%--</c:if>--%>
+                </c:if>
 
                 <a href="${pageContext.request.contextPath}">
                     <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
