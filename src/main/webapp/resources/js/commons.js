@@ -24,31 +24,31 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\">Apollo location codes (location data)</div>",
+        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (location data)</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "<div class=\"node-with-margin\">Apollo XSD (data types)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (data types)</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
-            text: "<div class=\"node-with-margin\">LOINC codes (lab tests)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (lab tests)</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "<div class=\"node-with-margin\">NCBI Taxon identifiers (host and pathogen species)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (host and pathogen species)</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "<div class=\"node-with-margin\">RxNorm codes (clinical drugs)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (clinical drugs)</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
-            text: "<div class=\"node-with-margin\">SNOMED CT codes (diagnosis)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (diagnosis)</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers (vaccines)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
         }]
 };
@@ -62,11 +62,11 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Disease surveillance data",
             nodes: [
                 {
-                    text: "<div class=\"node-with-margin\">Zika data repository</div>",
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Zika data repository</div>",
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
-                    text: "<div class=\"node-with-margin\">Tycho (US notifiable diseases)</div>",
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Tycho (US notifiable diseases)</div>",
                     url: "https://www.tycho.pitt.edu/data/level1.php"
                 }
             ]
@@ -191,4 +191,17 @@ function compareNodes(a,b) {
     if (a.name > b.name)
         return 1;
     return 0;
+}
+
+function toggleTitle(element) {
+    var $this = $(element);
+
+    console.log($this[0].offsetWidth, $this[0].scrollWidth);
+    console.log($this[0].parentNode.offsetWidth, $this[0].parentNode.scrollWidth);
+
+    if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
+        $this.attr('title', $this.text());
+    } else {
+        $this.attr('title', '');
+    }
 }

@@ -11,7 +11,7 @@
 
 <script>
     var syntheticEcosystemsByRegion = {
-        text: "Synthetic ecosystems",
+        text: "<span onmouseover='toggleTitle(this)'>Synthetic ecosystems</span>",
         nodes: []
     };
 
