@@ -3,8 +3,6 @@
               type="java.lang.String"%>
 <%@ attribute name="libraryViewerToken" required="true"
               type="java.lang.String"%>
-<%@ attribute name="spewData" required="true"
-              type="java.lang.Iterable"%>
 <%@ attribute name="spewRegions" required="true"
               type="java.util.List"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -12,63 +10,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
-    /* var syntheticEcosystems = {
-        text: "Synthetic ecosystems (by name)",
-        nodes: []
-    };
-
-    var locations = [];
-    var locationUrls = {};
-    <c:forEach items="${spewData}" var="location" varStatus="loop">
-        <c:if test="${not empty location.name}">
-            locations.push('${location.name}');
-        </c:if>
-
-        <c:if test="${not empty location.url}">
-            locationUrls['${location.name}'] = '${location.url}';
-        </c:if>
-    </c:forEach>
-    locations.sort();
-
-    var nameBins = ['A-E', 'F-L', 'M-R', 'S-Z'];
-
-    var currentBin = 0;
-    var lowerBound = nameBins[currentBin].charCodeAt(0);
-    var upperBound = nameBins[currentBin].charCodeAt(2);
-    for(var i=0; i < locations.length; i++) {
-        var formattedLocation = formatLocation(locations[i]);
-        var locationLetterAscii = formattedLocation.charCodeAt(0);
-
-        if(locationLetterAscii >= lowerBound && locationLetterAscii <= upperBound) {
-            if(i==0) {
-                syntheticEcosystems.nodes.push({'text':nameBins[currentBin], 'nodes': []});
-            }
-        } else {
-            while(!(locationLetterAscii >= lowerBound && locationLetterAscii <= upperBound)) {
-                currentBin += 1;
-
-                lowerBound = nameBins[currentBin].charCodeAt(0);
-                upperBound = nameBins[currentBin].charCodeAt(2);
-            }
-
-            syntheticEcosystems.nodes.push({'text':nameBins[currentBin], 'nodes': []});
-        }
-
-        var ecosystem = {};
-
-        if(locations[i] in locationUrls) {
-            ecosystem['url'] = locationUrls[locations[i]];
-        }
-
-        ecosystem['text'] = "<div class=\"grandnode-with-margin\">" + getPopover("${pageContext.request.contextPath}" + "/resources/img/spew.jpg", formattedLocation, "${pageContext.request.contextPath}" + "/resources/img/spew_more_info.jpg") + "</div>";
-
-        if('url' in ecosystem) {
-            delete ecosystem['url'];
-        }
-
-        syntheticEcosystems.nodes[syntheticEcosystems.nodes.length - 1].nodes.push(ecosystem);
-    } */
-
     var syntheticEcosystemsByRegion = {
         text: "Synthetic ecosystems",
         nodes: []
