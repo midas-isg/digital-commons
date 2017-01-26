@@ -24,31 +24,31 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\">Apollo location codes (for encoding location data)</div>",
+        text: "<div class=\"node-with-margin\">Apollo location codes (location data)</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "<div class=\"node-with-margin\">Apollo XSD (for standardizing simulator input)</div>",
+            text: "<div class=\"node-with-margin\">Apollo XSD (data types)</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
-            text: "<div class=\"node-with-margin\">LOINC codes (for encoding medical laboratory observations)</div>",
+            text: "<div class=\"node-with-margin\">LOINC codes (lab tests)</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "<div class=\"node-with-margin\">NCBI Taxon identifiers (for encoding organisms)</div>",
+            text: "<div class=\"node-with-margin\">NCBI Taxon identifiers (host and pathogen species)</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "<div class=\"node-with-margin\">RxNorm codes (for encoding clinical drugs)</div>",
+            text: "<div class=\"node-with-margin\">RxNorm codes (clinical drugs)</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
-            text: "<div class=\"node-with-margin\">SNOMED CT codes (for encoding clinical documentation and reporting)</div>",
+            text: "<div class=\"node-with-margin\">SNOMED CT codes (diagnosis)</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers (for encoding vaccines)</div>",
+            text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers (vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
         }]
 };
@@ -66,7 +66,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
-                    text: "<div class=\"node-with-margin\">Tycho</div>",
+                    text: "<div class=\"node-with-margin\">Tycho (US notifiable diseases)</div>",
                     url: "https://www.tycho.pitt.edu/data/level1.php"
                 }
             ]
