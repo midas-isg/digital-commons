@@ -36,7 +36,7 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Data-Augmented Publication Information" loggedIn="true"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Data-Augmented Publication" loggedIn="true"></myTags:header>
 
 </head>
 <body id="commons-body">

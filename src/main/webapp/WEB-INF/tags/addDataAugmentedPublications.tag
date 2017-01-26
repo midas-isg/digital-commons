@@ -31,7 +31,7 @@
 	<c:if test="${not empty publication.journal}">
 		<div class="font-size-16 standard-font">
 				<%--${publication.typeText} |--%>
-					published
+					Published
 					<fmt:parseDate pattern="M-dd-yyyy" value="${publication.publicationDateText}" var="parsedDate" />
 					<fmt:formatDate value="${parsedDate}" pattern="dd MMM yyyy" />,
 						${publication.journal}
@@ -40,7 +40,7 @@
 
 	<c:if test="${not empty publication.doi}">
 		<div class="font-size-16">
-			<h4 class="inline standard-font">doi: </h4>
+			<h4 class="inline standard-font">DOI: </h4>
 			<a class="underline standard-font" href="${publication.url}">${publication.doi} <i class="fa fa-external-link" aria-hidden="true"></i></a>
 		</div>
 	</c:if>
