@@ -62,7 +62,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Disease surveillance data",
             nodes: [
                 {
-                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Zika data repository</div>",
+                    text: "<span onmouseover='toggleTitle(this)'>Zika data repository</span>",
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
