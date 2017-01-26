@@ -32,25 +32,25 @@ var standardEncodingTree = {
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
+            text: "<div class=\"node-with-margin\">LOINC codes (for encoding medical laboratory observations)</div>",
+            url: "http://loinc.org/"
+        },
+        {
             text: "<div class=\"node-with-margin\">NCBI Taxon identifiers (for encoding organisms)</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
+        },
+        {
+            text: "<div class=\"node-with-margin\">RxNorm codes (for encoding clinical drugs)</div>",
+            url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
             text: "<div class=\"node-with-margin\">SNOMED CT codes (for encoding clinical documentation and reporting)</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\">LOINC codes (for encoding medical laboratory observations)</div>",
-            url: "http://loinc.org/"
-        },
-        {
             text: "<div class=\"node-with-margin\">Vaccine Ontology identifiers (for encoding vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
-        },
-        {
-            text: "<div class=\"node-with-margin\">RxNorm codes (for encoding clinical drugs)</div>",
-            url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
-    }]
+        }]
 };
 
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {

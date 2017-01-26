@@ -20,7 +20,7 @@ public class SoftwareRule {
 
     public Iterable<SoftwareFolder> tree() {
         LinkedHashMap<String, SoftwareFolder> root = new LinkedHashMap<>();
-        Iterable<Software> all = repository.findAll();
+        Iterable<Software> all = repository.findAllByOrderByName();
         createSortedFolder(root);
         for (Software item : all){
             final String type = item.getTypeText();

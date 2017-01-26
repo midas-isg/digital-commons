@@ -181,9 +181,13 @@ a {
 .page-divider {display:none}
 
 .publication-info {
-    /*color: #6f7785;*/
+    color: #666 !important;
     font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
     /*text-transform: uppercase;*/
+}
+
+.standard-font {
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
 }
 
 .underline {
