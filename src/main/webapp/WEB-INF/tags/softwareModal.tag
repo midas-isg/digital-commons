@@ -8,14 +8,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header software-header">
-                <h2 class="sub-title-font pull-left color-white">PSC Fred v2.0.1</h2>
-                    <span class="hidden-xs">
+                <h2 class="sub-title-font pull-left color-white" id="software-name"></h2>
+                    <%--<span class="hidden-xs">
                         <img src="${pageContext.request.contextPath}/resources/img/psc_logo.png" id="logo-img" class="pull-right">
-                    </span>
+                    </span>--%>
             </div>
             <div class="modal-body">
-                <h3 class="sub-title-font" id="software-name"></h3>
-                <div class="sub-title-font font-size-16" id="software-type-container">
+
+                <div class="sub-title-font font-size-16 modal-software-item" id="software-disease-coverage-container">
+                    <h4 class="inline bold">Disease coverage: </h4><br>
+                    <span id="software-disease-coverage"></span>
+                </div>
+
+                <div class="sub-title-font font-size-16 modal-software-item" id="software-location-coverage-container">
+                    <h4 class="inline bold">Location coverage: </h4><br>
+                    <span id="software-location-coverage"></span>
+                </div>
+
+                <div class="sub-title-font font-size-16 modal-software-item" id="software-species-included-container">
+                    <h4 class="inline bold">Species included: </h4><br>
+                    <span id="software-species-included"></span>
+                </div>
+
+                <div class="sub-title-font font-size-16 modal-software-item" id="software-control-measures-container">
+                    <h4 class="inline bold">Control measures: </h4><br>
+                    <span id="software-control-measures"></span>
+                </div>
+
+                <div class="sub-title-font font-size-16 modal-software-item" id="software-type-container">
                     <h4 class="inline bold">Type: </h4><br>
                     <span id="software-type"></span>
                 </div>

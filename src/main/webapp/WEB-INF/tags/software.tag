@@ -41,19 +41,27 @@
 
                 <c:if test="${folder.name == 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg", '${item.name}', softwareDictionary) + '</div>'
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'${item.name}\')">' + "${item.name}" + '</div>',
+                        "name": "${item.name}"
                     });
                 </c:if>
 
                 <c:if test="${folder.name != 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
                         "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">${item.name}</div>',
-                        "url": url
+                        "url": url,
+                        "name": "${item.name}"
                     });
                 </c:if>
             </c:if>
         </c:forEach>
     </c:forEach>
+
+    hardcodeSoftware();
+
+    for(var i = 0; i < software.length; i++) {
+        software[i].nodes.sort(compareNodes);
+    }
 
     var $softwareTree = $('#algorithm-treeview').treeview({
         data: software,
