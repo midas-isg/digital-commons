@@ -19,6 +19,7 @@
 
 var dataAugmentedPublications = [];
 var software = [];
+var softwareDictionary = {};
 
 
 var standardEncodingTree = {
@@ -128,10 +129,60 @@ function openViewer(url) {
     window.open(url);
 }
 
-function openModal(url) {
-    $('#imagepreview').attr('src', url);
+function openModal(softwareName) {
+    var attrs = softwareDictionary[softwareName];
+
+    if(softwareName != null) {
+        $('#software-name').text(softwareName);
+    } else {
+        $('#software-name').hide();
+    }
+
+    if('developer' in attrs) {
+        $('#software-developer').text(attrs['developer']);
+
+        if(attrs['developer'].includes(',')) {
+            $('#software-developer-tag').text('Developers:');
+        } else {
+            $('#software-developer-tag').text('Developer:');
+        }
+    } else {
+        $('#software-developer-container').hide();
+    }
+
+    if('doi' in attrs) {
+        $('#software-doi').text(attrs['doi']);
+    } else {
+        $('#software-doi-container').hide();
+    }
+
+    if('type' in attrs) {
+        $('#software-type').text(attrs['type']);
+    } else {
+        $('#software-type-container').hide();
+    }
+
+    if('version' in attrs) {
+        $('#software-version').text(attrs['version']);
+    } else {
+        $('#software-version-container').hide();
+    }
+
+    if('location' in attrs) {
+        $('#software-location').text(attrs['location']);
+        $('#software-location').attr('href', attrs['location']);
+    } else {
+        $('#software-location-container').hide();
+    }
+
+    if('source' in attrs) {
+        $('#software-source-code').text(attrs['source']);
+        $('#software-source-code').attr('href', attrs['source']);
+    } else {
+        $('#software-source-code-container').hide();
+    }
+
     $('#pageModal').modal('show');
-    // $('#pageModal').modal('show').find('.modal-body').load(url);
 
 }
 
@@ -187,15 +238,15 @@ function collapsableNode(contextPath, title, text) {
         '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
 }
 
-function getPopover(imgPath, title, modalImgPath) {
+function getPopover(imgPath, title, modalImgPath, softwareName) {
     var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + modalImgPath+"\" style=\"max-width:100%; min-height:150px\" onclick= \"openModal(this.id);\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid +"-img\" style=\"max-width:100%; min-height:150px\">'";
 
-    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
+    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '-img").click(function(){openModal("' + softwareName + '")});$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }
 
 function compareNodes(a,b) {

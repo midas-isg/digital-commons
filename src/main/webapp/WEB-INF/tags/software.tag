@@ -14,52 +14,34 @@
 
         <c:forEach items="${folder.list}" var="item">
             <c:if test="${not empty item}">
-                /*var collapseText = '';
+                var url = '';
+                softwareDictionary['${item.name}'] = {};
 
                 <c:if test="${not empty item.version}">
-                    collapseText += 'Version: ' + '${item.version}';
+                    softwareDictionary['${item.name}']['version'] = '${item.version}';
                 </c:if>
 
                 <c:if test="${not empty item.developer}">
-                    if(collapseText.length > 0) {
-                        collapseText += '<br>';
-                    }
-                    collapseText += 'Developer(s): ' + '${item.developer}';
+                    softwareDictionary['${item.name}']['developer'] = '${item.developer}';
                 </c:if>
 
                 <c:if test="${not empty item.doi}">
-                    if(collapseText.length > 0) {
-                        collapseText += '<br>';
-                    }
-                    collapseText += '<br>DOI: ' + '${item.developer}';
-                </c:if>
-
-                <c:if test="${not empty item.url}">
-                    if(collapseText.length > 0) {
-                        collapseText += '<br>';
-                    }
-                    collapseText += 'Software location: ' + '${item.url}';
+                    softwareDictionary['${item.name}']['doi'] = '${item.doi}';
                 </c:if>
 
                 <c:if test="${not empty item.sourceCodeUrl}">
-                    if(collapseText.length > 0) {
-                        collapseText += '<br>';
-                    }
-                    collapseText += 'Source code location: ' + '${item.sourceCodeUrl}';
-                </c:if>*/
-
-                var url = '';
-                <c:if test="${not empty item.sourceCodeUrl}">
+                    softwareDictionary['${item.name}']['sourceCode'] = '${item.sourceCodeUrl}';
                     url = '${item.sourceCodeUrl}';
                 </c:if>
 
                 <c:if test="${not empty item.url}">
+                    softwareDictionary['${item.name}']['location'] = '${item.url}';
                     url = '${item.url}';
                 </c:if>
 
                 <c:if test="${folder.name == 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg") + '</div>'
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + getPopover("${pageContext.request.contextPath}" + "/resources/img/fred.png", '${item.name}', "${pageContext.request.contextPath}" + "/resources/img/fred_more_info.jpg", '${item.name}', softwareDictionary) + '</div>'
                     });
                 </c:if>
 
