@@ -14,8 +14,8 @@
 //jQuery v2.1.3 (>= 1.9.0)
 
 /*var dataAugmentedPublications = [{
- text: "Drake Paper 1"}, {text:"Drake Paper 2"}
- ];*/
+    text: "Drake Paper 1"}, {text:"Drake Paper 2"}
+];*/
 
 var dataAugmentedPublications = [];
 var software = [];
@@ -64,19 +64,35 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Disease surveillance data",
             nodes: [
                 {
-                    text: "<span onmouseover='toggleTitle(this)'>Zika data repository</span>",
-                    url: "https://zenodo.org/record/192153#.WIEKNLGZNcA"
+                    text: "<span onmouseover='toggleTitle(this)'>CDCEpi Zika Github</span>",
+                    url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
                     text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
                     nodes: [
                         {
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 1</div>",
-                            url: "https://www.tycho.pitt.edu/data/level1.php"
+                            url:"https://www.tycho.pitt.edu/data/level1.php"
                         },
                         {
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 2</div>",
-                            url: "https://www.tycho.pitt.edu/data/level2.php"
+                            url:"https://www.tycho.pitt.edu/data/level2.php"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</div>",
+                            url:"https://data.cdc.gov/browse?category=MMWR"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Colombia Ministry of Health routine infectious disease surveillance tables</div>",
+                            url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Brazil Ministry of Health routine infectious diseases surveillance databases</div>",
+                            url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Singapore Ministry of Health infectious disease surveillance data</div>",
+                            url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
                         }
                     ]
                 }
@@ -99,7 +115,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     );
 
 
-    if (libraryData != null) {
+    if(libraryData != null) {
         $.each(libraryData, function (index, value) {
             var url;
             if (index.includes("Epidemic")) {
@@ -146,16 +162,16 @@ function openViewer(url) {
 function openModal(softwareName) {
     var attrs = softwareDictionary[softwareName];
 
-    if (softwareName != null) {
+    if(softwareName != null) {
         $('#software-name').text(softwareName);
     } else {
         $('#software-name').hide();
     }
 
-    if ('developer' in attrs) {
+    if('developer' in attrs) {
         $('#software-developer').text(attrs['developer']);
 
-        if (attrs['developer'].includes(',')) {
+        if(attrs['developer'].includes(',')) {
             $('#software-developer-tag').text('Developers:');
         } else {
             $('#software-developer-tag').text('Developer:');
@@ -164,32 +180,32 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    if ('doi' in attrs) {
+    if('doi' in attrs) {
         $('#software-doi').text(attrs['doi']);
     } else {
         $('#software-doi-container').hide();
     }
 
-    if ('type' in attrs) {
+    if('type' in attrs) {
         $('#software-type').text(attrs['type']);
     } else {
         $('#software-type-container').hide();
     }
 
-    if ('version' in attrs) {
+    if('version' in attrs) {
         $('#software-version').text(attrs['version']);
     } else {
         $('#software-version-container').hide();
     }
 
-    if ('location' in attrs) {
+    if('location' in attrs) {
         $('#software-location').text(attrs['location']);
         $('#software-location').attr('href', attrs['location']);
     } else {
         $('#software-location-container').hide();
     }
 
-    if ('source' in attrs) {
+    if('source' in attrs) {
         $('#software-source-code').text(attrs['source']);
         $('#software-source-code').attr('href', attrs['source']);
     } else {
@@ -201,22 +217,22 @@ function openModal(softwareName) {
 }
 
 function formatLocation(location) {
-    if (location.includes('_')) {
+    if(location.includes('_')) {
         var splitLocationNames = location.split('_');
     } else {
         var splitLocationNames = location.split(' ');
     }
 
-    for (var i = 0; i < splitLocationNames.length; i++) {
+    for(var i = 0; i < splitLocationNames.length; i++) {
         var characterIndex = 0;
-        if (splitLocationNames[i].charAt(0) == '(') {
+        if(splitLocationNames[i].charAt(0) == '(') {
             characterIndex = 1;
         }
 
-        if (splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
+        if(splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
             splitLocationNames[i] = splitLocationNames[i].charAt(characterIndex).toUpperCase() + splitLocationNames[i].slice(characterIndex + 1);
 
-            if (characterIndex == 1) {       // add back leading parentheses if we removed it
+            if(characterIndex == 1) {       // add back leading parentheses if we removed it
                 splitLocationNames[i] = '(' + splitLocationNames[i];
             }
         }
@@ -230,16 +246,16 @@ function openSoftwareInfo(contextPath, id) {
 }
 
 function openLibraryFrame(url) {
-    document.getElementById("libraryFrame").parentNode.style.display = '';
-    document.getElementById("commons-main-body").style.display = 'none';
-    document.getElementById("commons-main-tabs").style.display = 'none';
+    document.getElementById("libraryFrame").parentNode.style.display='';
+    document.getElementById("commons-main-body").style.display='none';
+    document.getElementById("commons-main-tabs").style.display='none';
 
     window.open(url, "libraryFrame");
 }
 
 function collapsableNode(contextPath, title, text) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
 
@@ -253,17 +269,17 @@ function collapsableNode(contextPath, title, text) {
 }
 
 function getPopover(imgPath, title, modalImgPath, softwareName) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid + "-img\" style=\"max-width:100%; min-height:150px\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid +"-img\" style=\"max-width:100%; min-height:150px\">'";
 
     return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '-img").click(function(){openModal("' + softwareName + '")});$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }
 
-function compareNodes(a, b) {
+function compareNodes(a,b) {
     if (a.name < b.name)
         return -1;
     if (a.name > b.name)
@@ -277,7 +293,7 @@ function toggleTitle(element) {
     console.log($this[0].offsetWidth, $this[0].scrollWidth);
     console.log($this[0].parentNode.offsetWidth, $this[0].parentNode.scrollWidth);
 
-    if ($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth) {
+    if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
         $this.attr('title', $this.text());
     } else {
         $this.attr('title', '');
