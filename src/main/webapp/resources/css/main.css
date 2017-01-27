@@ -147,8 +147,10 @@ a {
 }
 
 .modal-content {
-    border: 10px solid rgba(9, 41, 64, 1) !important;
-
+    border-left: 5px solid #0c2b65 !important;
+    border-right: 5px solid #0c2b65 !important;
+    border-top: 2px solid #0c2b65 !important;
+    border-bottom: 5px solid #0c2b65 !important;
 }
 .popover {
     border: 10px solid rgba(9, 41, 64, 1) !important;
@@ -274,4 +276,41 @@ a {
 .snomed-message,.disclaimer {
     font-size:x-small;
     margin-top:5px;
+}
+
+.modal-software-item {
+    margin-top:5px;
+}
+
+#software-name {
+    font-weight: 600;
+    margin-top: 0px;
+    padding-bottom:10px;
+    border-bottom: 5px solid #0c2b65 !important;
+}
+
+.software-header {
+    padding:0px !important;
+    padding-left:15px !important;
+    background-color: #0c2b65 !important
+}
+
+.color-white {
+    color:white;
+}
+
+#logo-img {
+    margin-top:3px;
+}
+
+.bold {
+    font-weight:600;
+}
+
+#software-location {
+    text-decoration:underline;
+}
+
+#software-source-code {
+    text-decoration: underline;
 }

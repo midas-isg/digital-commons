@@ -44,20 +44,7 @@
 <body id="commons-body">
 <div id="content">
 
-    <%--"Click here" modal--%>
-    <div id="pageModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <img src="" id="imagepreview" >
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <myTags:softwareModal></myTags:softwareModal>
 
     <div id="commons-main-body" class="row">
         <div class="tab-content">

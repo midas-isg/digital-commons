@@ -51,9 +51,9 @@
 
         var topMargin = $(document).height()
                 - ( $('#content').height() + $('#header').height() + subtitleHeight + 50)
-                - $('#footer').height();
+                - ($('#footer').height());
 
-        if(topMargin <= 280 && subtitleHeight == 0) {
+        if(topMargin < 0 || ($(document).width() < 768 && subtitleHeight == 0)) {
             topMargin = 10;
         }
 
