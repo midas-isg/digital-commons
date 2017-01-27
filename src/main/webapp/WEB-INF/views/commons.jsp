@@ -40,7 +40,7 @@
 
 </head>
 
-<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" iframe="false"></myTags:header>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" wantCollapse="true" iframe="false"></myTags:header>
 <body id="commons-body">
 <div id="content">
 

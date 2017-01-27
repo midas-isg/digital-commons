@@ -24,31 +24,31 @@ var software = [];
 var standardEncodingTree = {
    text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (location data)</div>",
+        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (for location data)</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (data types)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for data types)</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (lab tests)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (host and pathogen species)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (for host and pathogen taxa)</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (clinical drugs)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (for drugs)</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (diagnosis)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (for diagnoses)</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (vaccines)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
         }]
 };
