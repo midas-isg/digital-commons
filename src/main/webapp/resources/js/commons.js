@@ -14,8 +14,8 @@
 //jQuery v2.1.3 (>= 1.9.0)
 
 /*var dataAugmentedPublications = [{
-    text: "Drake Paper 1"}, {text:"Drake Paper 2"}
-];*/
+ text: "Drake Paper 1"}, {text:"Drake Paper 2"}
+ ];*/
 
 var dataAugmentedPublications = [];
 var software = [];
@@ -23,15 +23,11 @@ var softwareDictionary = {};
 
 
 var standardEncodingTree = {
-   text: "Standards for encoding data",
+    text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (for location data)</div>",
+        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (for locations)</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
-        {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for data types)</div>",
-            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
-        },
         {
             text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</div>",
             url: "http://loinc.org/"
@@ -51,7 +47,12 @@ var standardEncodingTree = {
         {
             text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
-        }]
+        },
+        {
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for data types)</div>",
+            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        }
+    ]
 };
 
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
@@ -64,31 +65,41 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             nodes: [
                 {
                     text: "<span onmouseover='toggleTitle(this)'>Zika data repository</span>",
-                    url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
+                    url: "https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
                     text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
                     nodes: [
                         {
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 1</div>",
-                            url:"https://www.tycho.pitt.edu/data/level1.php"
+                            url: "https://www.tycho.pitt.edu/data/level1.php"
                         },
                         {
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 2</div>",
-                            url:"https://www.tycho.pitt.edu/data/level2.php"
-                        },
-                        {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>CDC Wonder</div>",
-                            url:"https://wonder.cdc.gov/"
+                            url: "https://www.tycho.pitt.edu/data/level2.php"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            text: "Mortality data",
+            nodes: [
+
+                {
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US cause of death 1995-2015</div>",
+                    url: "https://wonder.cdc.gov/controller/datarequest/D76"
+                },
+                {
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</div>",
+                    url: "https://wonder.cdc.gov/mortSQL.htm"
                 }
             ]
         }
     );
 
 
-    if(libraryData != null) {
+    if (libraryData != null) {
         $.each(libraryData, function (index, value) {
             var url;
             if (index.includes("Epidemic")) {
@@ -112,6 +123,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                         url: url + value.urn
                     });
                 });
+                if(index.includes("Zika") || index.includes("Chikungunya")) {
+                    index += " (under development)";
+                }
                 nodeLevel1.push({text: index, nodes: nodeLevel2});
             });
 
@@ -132,16 +146,16 @@ function openViewer(url) {
 function openModal(softwareName) {
     var attrs = softwareDictionary[softwareName];
 
-    if(softwareName != null) {
+    if (softwareName != null) {
         $('#software-name').text(softwareName);
     } else {
         $('#software-name').hide();
     }
 
-    if('developer' in attrs) {
+    if ('developer' in attrs) {
         $('#software-developer').text(attrs['developer']);
 
-        if(attrs['developer'].includes(',')) {
+        if (attrs['developer'].includes(',')) {
             $('#software-developer-tag').text('Developers:');
         } else {
             $('#software-developer-tag').text('Developer:');
@@ -150,32 +164,32 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    if('doi' in attrs) {
+    if ('doi' in attrs) {
         $('#software-doi').text(attrs['doi']);
     } else {
         $('#software-doi-container').hide();
     }
 
-    if('type' in attrs) {
+    if ('type' in attrs) {
         $('#software-type').text(attrs['type']);
     } else {
         $('#software-type-container').hide();
     }
 
-    if('version' in attrs) {
+    if ('version' in attrs) {
         $('#software-version').text(attrs['version']);
     } else {
         $('#software-version-container').hide();
     }
 
-    if('location' in attrs) {
+    if ('location' in attrs) {
         $('#software-location').text(attrs['location']);
         $('#software-location').attr('href', attrs['location']);
     } else {
         $('#software-location-container').hide();
     }
 
-    if('source' in attrs) {
+    if ('source' in attrs) {
         $('#software-source-code').text(attrs['source']);
         $('#software-source-code').attr('href', attrs['source']);
     } else {
@@ -187,22 +201,22 @@ function openModal(softwareName) {
 }
 
 function formatLocation(location) {
-    if(location.includes('_')) {
+    if (location.includes('_')) {
         var splitLocationNames = location.split('_');
     } else {
         var splitLocationNames = location.split(' ');
     }
 
-    for(var i = 0; i < splitLocationNames.length; i++) {
+    for (var i = 0; i < splitLocationNames.length; i++) {
         var characterIndex = 0;
-        if(splitLocationNames[i].charAt(0) == '(') {
+        if (splitLocationNames[i].charAt(0) == '(') {
             characterIndex = 1;
         }
 
-        if(splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
+        if (splitLocationNames[i].replace(/["'\(\)]/g, "") != 'of') {        // remove parentheses and check for 'of'
             splitLocationNames[i] = splitLocationNames[i].charAt(characterIndex).toUpperCase() + splitLocationNames[i].slice(characterIndex + 1);
 
-            if(characterIndex == 1) {       // add back leading parentheses if we removed it
+            if (characterIndex == 1) {       // add back leading parentheses if we removed it
                 splitLocationNames[i] = '(' + splitLocationNames[i];
             }
         }
@@ -216,16 +230,16 @@ function openSoftwareInfo(contextPath, id) {
 }
 
 function openLibraryFrame(url) {
-    document.getElementById("libraryFrame").parentNode.style.display='';
-    document.getElementById("commons-main-body").style.display='none';
-    document.getElementById("commons-main-tabs").style.display='none';
+    document.getElementById("libraryFrame").parentNode.style.display = '';
+    document.getElementById("commons-main-body").style.display = 'none';
+    document.getElementById("commons-main-tabs").style.display = 'none';
 
     window.open(url, "libraryFrame");
 }
 
 function collapsableNode(contextPath, title, text) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 
@@ -239,17 +253,17 @@ function collapsableNode(contextPath, title, text) {
 }
 
 function getPopover(imgPath, title, modalImgPath, softwareName) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid +"-img\" style=\"max-width:100%; min-height:150px\">'";
+    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid + "-img\" style=\"max-width:100%; min-height:150px\">'";
 
     return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '-img").click(function(){openModal("' + softwareName + '")});$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }
 
-function compareNodes(a,b) {
+function compareNodes(a, b) {
     if (a.name < b.name)
         return -1;
     if (a.name > b.name)
@@ -263,7 +277,7 @@ function toggleTitle(element) {
     console.log($this[0].offsetWidth, $this[0].scrollWidth);
     console.log($this[0].parentNode.offsetWidth, $this[0].parentNode.scrollWidth);
 
-    if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
+    if ($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth) {
         $this.attr('title', $this.text());
     } else {
         $this.attr('title', '');

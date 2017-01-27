@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>MIDAS Digital Commons - Data-Augmented Publication Information</title>
+    <myTags:favicon></myTags:favicon>
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

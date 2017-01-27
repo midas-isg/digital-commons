@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <myTags:favicon></myTags:favicon>
     <title>MIDAS Digital Commons</title>
 </head>
 <body>
