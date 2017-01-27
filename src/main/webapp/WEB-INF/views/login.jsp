@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Digital Commons</title>
+    <myTags:favicon></myTags:favicon>
 
     <!-- Bootstrap core CSS -->
     <script src="resources/js/jquery-1.11.1.min.js"></script>

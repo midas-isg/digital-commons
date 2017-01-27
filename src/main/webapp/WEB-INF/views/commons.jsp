@@ -20,6 +20,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <myTags:favicon></myTags:favicon>
+
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -40,7 +42,7 @@
 
 </head>
 
-<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" iframe="false"></myTags:header>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" wantCollapse="true" iframe="false"></myTags:header>
 <body id="commons-body">
 <div id="content">
 
@@ -64,7 +66,8 @@
             </div>
             <div id="search" class="tab-pane fade">
                 <iframe src="http://ide.obc.io/#/" class="fullscreen" frameBorder="0">
-                    <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a> to search.</p>
+                    <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a>
+                        to search.</p>
                 </iframe>
             </div>
         </div>
@@ -84,8 +87,10 @@
     <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
 
     <myTags:software software="${software}"></myTags:software>
-    <myTags:dataAugmentedPublications dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
-    <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}" spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
+    <myTags:dataAugmentedPublications
+            dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
+    <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"
+                                     spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
 </div>
 
 <myTags:footer></myTags:footer>

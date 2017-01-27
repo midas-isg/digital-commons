@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>MIDAS Digital Commons</title>
+	<myTags:favicon></myTags:favicon>
 
 	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 

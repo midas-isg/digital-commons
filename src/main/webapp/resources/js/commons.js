@@ -38,35 +38,36 @@ function hardcodeSoftware() {
 }
 
 var standardEncodingTree = {
-   text: "Standards for encoding data",
+    text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (location data)</div>",
+        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (for locations)</div>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (data types)</div>",
-            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
-        },
-        {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (lab tests)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</div>",
             url: "http://loinc.org/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (host and pathogen species)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (for host and pathogen taxa)</div>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (clinical drugs)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (for drugs)</div>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (diagnosis)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (for diagnoses)</div>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (vaccines)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</div>",
             url: "http://www.violinet.org/vaccineontology/"
-        }]
+        },
+        {
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for data types)</div>",
+            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        }
+    ]
 };
 
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
@@ -93,22 +94,36 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                             url:"https://www.tycho.pitt.edu/data/level2.php"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR Morbidity and Mortality Tables through Data.cdc.gov</div>",
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</div>",
                             url:"https://data.cdc.gov/browse?category=MMWR"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Colombia Ministry of Health Routine Infectious Disease Surveillance Tables</div>",
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Colombia Ministry of Health routine infectious disease surveillance tables</div>",
                             url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Brazil Ministry of Health Routine Infectious Diseases Surveillance Databases</div>",
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Brazil Ministry of Health routine infectious diseases surveillance databases</div>",
                             url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Singapore Ministry of Health Infectious Disease Surveillance Data</div>",
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Singapore Ministry of Health infectious disease surveillance data</div>",
                             url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
                         }
                     ]
+                }
+            ]
+        },
+        {
+            text: "Mortality data",
+            nodes: [
+
+                {
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US cause of death 1995-2015</div>",
+                    url: "https://wonder.cdc.gov/controller/datarequest/D76"
+                },
+                {
+                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</div>",
+                    url: "https://wonder.cdc.gov/mortSQL.htm"
                 }
             ]
         }
@@ -139,6 +154,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                         url: url + value.urn
                     });
                 });
+                if(index.includes("Zika") || index.includes("Chikungunya")) {
+                    index += " (under development)";
+                }
                 nodeLevel1.push({text: index, nodes: nodeLevel2});
             });
 

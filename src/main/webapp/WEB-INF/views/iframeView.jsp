@@ -21,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>MIDAS Digital Commons - Software Information</title>
+    <myTags:favicon></myTags:favicon>
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
 
@@ -35,7 +36,7 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="false" iframe="true"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="false" wantCollapse="true" iframe="true"></myTags:header>
 
 </head>
 

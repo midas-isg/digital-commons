@@ -5,13 +5,14 @@
 <%@ attribute name="pageTitle" type="java.lang.String" %>
 <%@ attribute name="subTitle" type="java.lang.String" %>
 <%@ attribute name="loggedIn" type="java.lang.Boolean" %>
+<%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 
 <div class="spacer">
     <nav class="navbar navbar-default navbar-fixed-top" id="header">
         <div class="main-nav container-fluid ">
             <div class="navbar-header">
-                <c:if test="${loggedIn == true}">
+                <c:if test="${wantCollapse == true}">
                     <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
                             data-target="#navbar-collapse" aria-expanded="false">
                         <span class="sr-only">Toggle navigation</span>
