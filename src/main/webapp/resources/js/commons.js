@@ -63,7 +63,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Disease surveillance data",
             nodes: [
                 {
-                    text: "<span onmouseover='toggleTitle(this)'>Zika data repository</span>",
+                    text: "<span onmouseover='toggleTitle(this)'>CDCEpi Zika Github</span>",
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
@@ -78,8 +78,20 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                             url:"https://www.tycho.pitt.edu/data/level2.php"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>CDC Wonder</div>",
-                            url:"https://wonder.cdc.gov/"
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR Morbidity and Mortality Tables through Data.cdc.gov</div>",
+                            url:"https://data.cdc.gov/browse?category=MMWR"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Colombia Ministry of Health Routine Infectious Disease Surveillance Tables</div>",
+                            url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Brazil Ministry of Health Routine Infectious Diseases Surveillance Databases</div>",
+                            url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
+                        },
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Singapore Ministry of Health Infectious Disease Surveillance Data</div>",
+                            url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
                         }
                     ]
                 }
