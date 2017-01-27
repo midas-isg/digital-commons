@@ -282,16 +282,10 @@ a {
     margin-top:5px;
 }
 
-#software-name {
-    font-weight: 600;
-    margin-top: 0px;
-    padding-bottom:10px;
-    border-bottom: 5px solid #0c2b65 !important;
-}
-
 .software-header {
     padding:0px !important;
     padding-left:15px !important;
+    padding-right:15px !important;
     background-color: #0c2b65 !important
 }
 
