@@ -29,6 +29,7 @@ function hardcodeSoftware() {
     attrs['locationCoverage'] = 'Los Angeles and Seattle';
     attrs['speciesIncluded'] = 'Homo sapiens';
     attrs['controlMeasures'] = 'vaccination, antivirals';
+    attrs['source'] = 'https://github.com/dlchao/FluTE';
 
     software[0].nodes.push({
         'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'FluTE – V. 1.12, 1.15, & 1.16\')">' + "FluTE – V. 1.12, 1.15, & 1.16" + '</div>',
