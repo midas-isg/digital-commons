@@ -37,12 +37,16 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Data-augmented Publication" wantCollapse="true" loggedIn="true"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" wantCollapse="true" loggedIn="true"></myTags:header>
 
 
 </head>
 <body id="commons-body">
 <div id="content">
+    <h2 class="title-font" id="subtitle">
+        Data-augmented Publication
+    </h2>
+
     <div class="row">
         <div class="col-md-12">
             <myTags:addDataAugmentedPublications publication="${publicationPaper}"></myTags:addDataAugmentedPublications>

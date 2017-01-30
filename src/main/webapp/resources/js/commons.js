@@ -365,3 +365,7 @@ function toggleTitle(element) {
         $this.attr('title', '');
     }
 }
+
+function activeTab(tab) {
+    $('.tabs a[href="#' + tab + '"]').tab('show');
+};

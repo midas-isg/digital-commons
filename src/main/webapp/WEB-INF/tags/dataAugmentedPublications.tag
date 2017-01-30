@@ -13,7 +13,9 @@
 
 		dataAugmentedPublications.push({
 			"text": "<li style=\"margin-left: 1em;\">" + "${pubTitle}" + "</li>",
-            "url": "${pageContext.request.contextPath}/main/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}"
+            "url": "${pageContext.request.contextPath}/main/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}",
+			"paperId": "${pub.paper.id}",
+			"dataId": "${pub.data.id}"
 
         });
 
@@ -30,7 +32,8 @@
 	$('#publications-treeview').on('nodeSelected', function(event, data) {
 		if(data.url != null && data.state.selected == true) {
             $('#publications-treeview').treeview('unselectNode', [data.nodeId, {silent: true}]);
-            window.location.href = data.url;
+			activeTab("publication-" + data.paperId + "-" + data.dataId);
+            //window.location.href = data.url;
 		}
 	});
 </script>

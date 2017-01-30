@@ -70,6 +70,23 @@
                         to search.</p>
                 </iframe>
             </div>
+            <div id="about" class="tab-pane fade">
+                <myTags:about></myTags:about>
+            </div>
+            <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
+                <div id="publication-${pub.paper.id}-${pub.data.id}" class="tab-pane fade">
+                    <div class="col-md-12">
+                        <h2 class="title-font" id="subtitle">
+                            Data-augmented Publication
+                        </h2>
+
+                        <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
+                        <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
+
+                        <button type="button" class="btn btn-default" onclick="activeTab('browse')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
+                    </div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 
