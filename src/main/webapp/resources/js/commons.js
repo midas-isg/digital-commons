@@ -78,12 +78,29 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Disease surveillance data",
             nodes: [
                 {
+                    text: "<span onmouseover='toggleTitle(this)'>Brazil Ministry of Health routine infectious diseases surveillance databases</span>",
+                    url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
+                },
+                {
                     text: "<span onmouseover='toggleTitle(this)'>CDCEpi Zika Github</span>",
                     url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
                 },
                 {
+                    text: "<span onmouseover='toggleTitle(this)'>Colombia Ministry of Health routine infectious disease surveillance tables</span>",
+                    url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
+                },
+                {
+                    text: "<span onmouseover='toggleTitle(this)'>Singapore Ministry of Health infectious disease surveillance data</span>",
+                    url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
+                },
+                {
                     text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
                     nodes: [
+                        {
+                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</div>",
+                            url:"https://data.cdc.gov/browse?category=MMWR"
+                        },
+
                         {
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 1</div>",
                             url:"https://www.tycho.pitt.edu/data/level1.php"
@@ -92,24 +109,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                             text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 2</div>",
                             url:"https://www.tycho.pitt.edu/data/level2.php"
                         },
-                        {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</div>",
-                            url:"https://data.cdc.gov/browse?category=MMWR"
-                        },
-                        {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Colombia Ministry of Health routine infectious disease surveillance tables</div>",
-                            url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
-                        },
-                        {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Brazil Ministry of Health routine infectious diseases surveillance databases</div>",
-                            url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
-                        },
-                        {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Singapore Ministry of Health infectious disease surveillance data</div>",
-                            url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
-                        }
                     ]
-                }
+                },
             ]
         },
         {
