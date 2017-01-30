@@ -308,3 +308,7 @@ a {
 #software-source-code {
     text-decoration: underline;
 }
+
+#software-modal {
+    max-width:600px;
+}

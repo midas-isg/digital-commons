@@ -5,7 +5,7 @@
 
 
 <div id="pageModal" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog" id="software-modal">
         <div class="modal-content">
             <div class="modal-header software-header">
                 <h2 class="sub-title-font pull-left color-white" id="software-name"></h2>
@@ -15,6 +15,7 @@
             </div>
             <div class="modal-body">
 
+                <%--<myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>--%>
                 <div class="sub-title-font font-size-16 modal-software-item" id="software-disease-coverage-container">
                     <h4 class="inline bold">Disease coverage: </h4><br>
                     <span id="software-disease-coverage"></span>

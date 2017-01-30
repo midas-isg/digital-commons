@@ -19,8 +19,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>MIDAS Digital Commons - Data-Augmented Publication Information</title>
+  
+    <title>MIDAS Digital Commons - Data-augmented Publication Information</title>
     <myTags:favicon></myTags:favicon>
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
@@ -37,7 +37,8 @@
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Data-Augmented Publication" wantCollapse="true" loggedIn="true"></myTags:header>
+    <myTags:header pageTitle="MIDAS Digital Commons" subTitle="Data-augmented Publication" wantCollapse="true" loggedIn="true"></myTags:header>
+
 
 </head>
 <body id="commons-body">
