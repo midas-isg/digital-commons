@@ -57,7 +57,9 @@
         </c:forEach>
     </c:forEach>
 
-    hardcodeSoftware();
+    if(isSoftwareHardcoded) {
+        hardcodeSoftware();
+    }
 
     for(var i = 0; i < software.length; i++) {
         software[i].nodes.sort(compareNodes);

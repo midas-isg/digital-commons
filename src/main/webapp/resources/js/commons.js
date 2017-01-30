@@ -19,12 +19,16 @@
 
 var dataAugmentedPublications = [];
 var software = [];
+
+var isSoftwareHardcoded = true;
 var softwareDictionary = {};
 
 function hardcodeSoftware() {
-    softwareDictionary['FluTE – V. 1.12, 1.15, & 1.16'] = {};
+    var name = 'FluTE – V. 1.12, 1.15, & 1.16';
 
-    var attrs = softwareDictionary['FluTE – V. 1.12, 1.15, & 1.16'];
+    softwareDictionary[name] = {};
+
+    var attrs = softwareDictionary[name];
     attrs['diseaseCoverage'] = 'influenza';
     attrs['locationCoverage'] = 'Los Angeles and Seattle';
     attrs['speciesIncluded'] = 'Homo sapiens';
@@ -32,8 +36,8 @@ function hardcodeSoftware() {
     attrs['source'] = 'https://github.com/dlchao/FluTE';
 
     software[0].nodes.push({
-        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'FluTE – V. 1.12, 1.15, & 1.16\')">' + "FluTE – V. 1.12, 1.15, & 1.16" + '</div>',
-        'name': 'FluTE – V. 1.12, 1.15, & 1.16'
+        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
+        'name': name
     });
 }
 

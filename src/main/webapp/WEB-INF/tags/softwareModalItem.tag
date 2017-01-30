@@ -8,6 +8,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <div class="sub-title-font font-size-16 modal-software-item" id="software-${id}-container">
-    <h4 class="inline bold">${title}: </h4><br>
-    <span id="software-${id}></span>
+    <h4 class="inline bold" id="software-${id}-tag">${title}: </h4><br>
+    <span id="software-${id}"></span>
 </div>
