@@ -56,9 +56,9 @@
     "directory":"Disease transmission models",
     "generalInfo":"A simulator of malaria epidemiology and control",
     "version":"36.11",
-    "executables":"[Linux](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz),[OS X](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz),[Windows - no libs](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip),[Windows w/ libs](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip)",
+    "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
     "source":"https://github.com/SwissTPH/openmalaria",
-    "sourceCodeRelease":"[ZIP](https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip),[TAR.GZ](https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz)",
+    "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "diseaseCoverage":"Malaria",
     "speciesIncluded":"Humans, Mosquitoes",
     "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"

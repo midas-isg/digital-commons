@@ -281,7 +281,13 @@ function openModal(softwareName) {
 
     toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
-    toggleModalItem('publicationsThatUsedRelease', attrs, 'publications-that-used-release', false, true);
+    toggleModalItem('publicationsThatUsedRelease', attrs, 'publications-that-used-release', false, false);
+
+    toggleModalItem('webApplication', attrs, 'web-application', true, false);
+
+    toggleModalItem('userGuidesAndManuals', attrs, 'user-guides-and-manuals', true, false);
+
+    toggleModalItem('executables', attrs, 'executables', false, true);
 
     $('#pageModal').modal('show');
 

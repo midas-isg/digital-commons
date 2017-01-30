@@ -10,28 +10,21 @@
 
     <div>The MIDAS Digital Commons is a collection of digital objects for the <a class="underline" href="https://www.nigms.nih.gov/Research/SpecificAreas/MIDAS/Pages/default.aspx">MIDAS network</a>.</div>
     <div>
-        <h3 class="sub-title-font underline">Submission Guidelines</h3>
+        <h4 class="sub-title-font underline">Submission Guidelines</h4>
         <span>If you have any digital objects that you'd like to submit to the commons, please contact Mike Wagner via email at <a class="underline" href="malito:mmw1@pitt.edu">mmw1@pitt.edu</a>.</span>
     </div>
     <div>
-        <h3 class="sub-title-font underline">Funding</h3>
+        <h4 class="sub-title-font underline">Funding</h4>
 
         <span>
             The MIDAS Digital Commons is funded by the National Institutes of Health (NIGMS) program for Models of Infectious Disease Agent Study (MIDAS) grant U24GM110707.
         </span>
     </div>
     <div>
-        <h3 class="sub-title-font underline">Disclaimer</h3>
+        <h4 class="sub-title-font underline">Disclaimer</h4>
 
         <span>
-            BY USING THE DIGITAL COMMONS YOU
-                AGREE THAT NO WARRANTIES OF ANY KIND ARE MADE BY THE UNIVERSITY OF
-                PITTSBURGH (UNIVERSITY) WITH RESPECT TO THE DATA PROVIDED IN THE
-                DIGITAL COMMONS OR ANY USE THEREOF, AND THE UNIVERSITY HEREBY
-                DISCLAIM THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-                PARTICULAR PURPOSE AND NON-INFRINGEMENT. THE UNIVERSITY SHALL NOT BE
-                LIABLE FOR ANY CLAIMS, LOSSES OR DAMAGES OF ANY KIND ARISING FROM THE
-                DATA PROVIDED IN THE DIGITAL COMMONS OR ANY USE THEREOF.
+            By using the Digital Commons you agree that no warranties of any kind are made by the University of Pittsburgh (university) with respect to the data provided in the Digital Commons or any use thereof, and the university hereby disclaim the implied warranties of merchantability, fitness for a particular purpose and non-infringement. The university shall not be liable for any claims, losses or damages of any kind arising from the data provided in the Digital Commons or any use thereof.
         </span>
     </div>
 </div>
