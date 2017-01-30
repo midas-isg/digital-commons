@@ -15,56 +15,32 @@
             </div>
             <div class="modal-body">
 
-                <%--<myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>--%>
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-disease-coverage-container">
-                    <h4 class="inline bold">Disease coverage: </h4><br>
-                    <span id="software-disease-coverage"></span>
-                </div>
+                <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-location-coverage-container">
-                    <h4 class="inline bold">Location coverage: </h4><br>
-                    <span id="software-location-coverage"></span>
-                </div>
+                <myTags:softwareModalItem id="general-info" title="General info" hasHref="false"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-species-included-container">
-                    <h4 class="inline bold">Species included: </h4><br>
-                    <span id="software-species-included"></span>
-                </div>
+                <myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-control-measures-container">
-                    <h4 class="inline bold">Control measures: </h4><br>
-                    <span id="software-control-measures"></span>
-                </div>
+                <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-type-container">
-                    <h4 class="inline bold">Type: </h4><br>
-                    <span id="software-type"></span>
-                </div>
+                <myTags:softwareModalItem id="species-included" title="Species included"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-version-container">
-                    <h4 class="inline bold">Source code version: </h4><br>
-                    <span id="software-version"></span>
-                </div>
+                <myTags:softwareModalItem id="control-measures" title="Control measures"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-developer-container">
-                    <h4 class="inline bold" id="software-developer-tag"></h4><br>
-                    <span id="software-developer"></span>
-                </div>
+                <myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-doi-container">
-                    <h4 class="inline bold">DOI: </h4><br>
-                    <span id="software-doi"></span>
-                </div>
+                <myTags:softwareModalItem id="version" title="Source code version"></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-location-container">
-                    <h4 class="inline bold">Software location: </h4><br>
-                    <a id="software-location" href=""></a>
-                </div>
+                <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
-                <div class="sub-title-font font-size-16 modal-software-item" id="software-source-code-container">
-                    <h4 class="inline bold">Source code location: </h4><br>
-                    <a id="software-source-code" href=""></a>
-                </div>
+                <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="source-code" title="Source code location" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

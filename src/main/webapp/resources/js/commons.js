@@ -19,22 +19,65 @@
 
 var dataAugmentedPublications = [];
 var software = [];
+
+var isSoftwareHardcoded = true;
 var softwareDictionary = {};
 
-function hardcodeSoftware() {
-    softwareDictionary['FluTE – V. 1.12, 1.15, & 1.16'] = {};
+function hardcodeSoftwareFromJson(location) {
+    $.getJSON( location, function( data ) {
+        console.log(data);
+        for(var key in data) {
+            softwareDictionary[key] = data[key];
 
-    var attrs = softwareDictionary['FluTE – V. 1.12, 1.15, & 1.16'];
-    attrs['diseaseCoverage'] = 'influenza';
-    attrs['locationCoverage'] = 'Los Angeles and Seattle';
-    attrs['speciesIncluded'] = 'Homo sapiens';
-    attrs['controlMeasures'] = 'vaccination, antivirals';
-    attrs['source'] = 'https://github.com/dlchao/FluTE';
+            if('directory' in softwareDictionary[key]) {
+                for(var i = 0; i < software.length; i++) {
+                    if(software[i]['name'] == softwareDictionary[key]['directory']) {
+                        software[i].nodes.push({
+                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + key + '</div>',
+                            'name': key
+                        });
+                        console.log(software[i].nodes);
+                        break;
+                    }
+                }
+            }
+        }
 
-    software[0].nodes.push({
-        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'FluTE – V. 1.12, 1.15, & 1.16\')">' + "FluTE – V. 1.12, 1.15, & 1.16" + '</div>',
-        'name': 'FluTE – V. 1.12, 1.15, & 1.16'
+        for(var i = 0; i < software.length; i++) {
+            software[i].nodes.sort(compareNodes);
+        }
+
+        var $softwareTree = $('#algorithm-treeview').treeview({
+            data: software,
+            showBorder: false,
+            collapseAll: true,
+
+            expandIcon: "glyphicon glyphicon-chevron-right",
+            collapseIcon: "glyphicon glyphicon-chevron-down",
+
+            onNodeSelected: function(event, data) {
+                if(typeof data['nodes'] != undefined) {
+                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+                }
+
+                if(data.url != null && data.state.selected == true) {
+                    window.location.href = data.url;
+                }
+            }
+        });
+        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
     });
+}
+
+function hardcodeSoftware() {
+    for(var i = 0; i < software[2].nodes.length; i++) {
+        if(software[2].nodes[i].name == 'GLEAMViz') {
+            delete software[2].nodes[i];
+            break;
+        }
+    }
+
+    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics model</span>", nodes: [], "name": "Population dynamics model"});
 }
 
 var standardEncodingTree = {
@@ -175,6 +218,24 @@ function openViewer(url) {
     window.open(url);
 }
 
+function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
+    if(key in attrs) {
+        $('#software-' + name + '-container').show();
+
+        if(renderHtml) {
+            $('#software-' + name).html(attrs[key]);
+        } else {
+            $('#software-' + name).text(attrs[key]);
+        }
+
+        if(hasHref) {
+            $('#software-' + name).attr('href', attrs[key]);
+        }
+    } else {
+        $('#software-' + name + '-container').hide();
+    }
+}
+
 function openModal(softwareName) {
     var attrs = softwareDictionary[softwareName];
 
@@ -198,70 +259,29 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    if('doi' in attrs) {
-        $('#software-doi-container').show();
-        $('#software-doi').text(attrs['doi']);
-    } else {
-        $('#software-doi-container').hide();
-    }
+    toggleModalItem('doi', attrs, 'doi', false, false);
 
-    if('type' in attrs) {
-        $('#software-type-container').show();
-        $('#software-type').text(attrs['type']);
-    } else {
-        $('#software-type-container').hide();
-    }
+    toggleModalItem('type', attrs, 'type', false, false);
 
-    if('version' in attrs) {
-        $('#software-version-container').show();
-        $('#software-version').text(attrs['version']);
-    } else {
-        $('#software-version-container').hide();
-    }
+    toggleModalItem('version', attrs, 'version', false, false);
 
-    if('location' in attrs) {
-        $('#software-location-container').show();
-        $('#software-location').text(attrs['location']);
-        $('#software-location').attr('href', attrs['location']);
-    } else {
-        $('#software-location-container').hide();
-    }
+    toggleModalItem('location', attrs, 'location', true, false);
 
-    if('source' in attrs) {
-        $('#software-source-code-container').show();
-        $('#software-source-code').text(attrs['source']);
-        $('#software-source-code').attr('href', attrs['source']);
-    } else {
-        $('#software-source-code-container').hide();
-    }
+    toggleModalItem('source', attrs, 'source-code', true, false);
 
-    if('diseaseCoverage' in attrs) {
-        $('#software-disease-coverage-container').show();
-        $('#software-disease-coverage').text(attrs['diseaseCoverage']);
-    } else {
-        $('#software-disease-coverage-container').hide();
-    }
+    toggleModalItem('diseaseCoverage', attrs, 'disease-coverage', false, false);
 
-    if('locationCoverage' in attrs) {
-        $('#software-location-coverage-container').show();
-        $('#software-location-coverage').text(attrs['locationCoverage']);
-    } else {
-        $('#software-location-coverage-container').hide();
-    }
+    toggleModalItem('locationCoverage', attrs, 'location-coverage', false, false);
 
-    if('speciesIncluded' in attrs) {
-        $('#software-species-included-container').show();
-        $('#software-species-included').text(attrs['speciesIncluded']);
-    } else {
-        $('#software-species-included-container').hide();
-    }
+    toggleModalItem('speciesIncluded', attrs, 'species-included', false, false);
 
-    if('controlMeasures' in attrs) {
-        $('#software-control-measures-container').show();
-        $('#software-control-measures').text(attrs['controlMeasures']);
-    } else {
-        $('#software-control-measures-container').hide();
-    }
+    toggleModalItem('controlMeasures', attrs, 'control-measures', false, false);
+
+    toggleModalItem('title', attrs, 'title', false, false);
+
+    toggleModalItem('generalInfo', attrs, 'general-info', false, true);
+
+    toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
     $('#pageModal').modal('show');
 
