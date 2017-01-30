@@ -201,6 +201,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 if(index.includes("Zika") || index.includes("Chikungunya")) {
                     index += " (under development)";
                 }
+                if(index.includes("H1n1 infectious disease scenarios"))
+                    index = "H1N1 infectious disease scenarios";
                 nodeLevel1.push({text: index, nodes: nodeLevel2});
             });
 
