@@ -7,6 +7,7 @@
 <%@ attribute name="loggedIn" type="java.lang.Boolean" %>
 <%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
+<%@ attribute name="pub" type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication" %>
 
 <div class="spacer">
     <nav class="navbar navbar-default navbar-fixed-top" id="header">
@@ -37,11 +38,14 @@
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <c:if test="${loggedIn == true && iframe == false}">
-                    <ul class="nav navbar-nav navbar-padding">
+                    <ul class="nav navbar-nav navbar-padding tabs">
                         <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
                                                href="#browse">Browse</a></li>
                         <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>
-                        </li>
+                        <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
+                        <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
+                            <li class="hidden"><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}">About</a></li>
+                        </c:forEach>
                     </ul>
                 </c:if>
                 <ul class="nav navbar-nav navbar-right">
@@ -71,12 +75,6 @@
         </div><!-- /.container-fluid -->
     </nav>
 </div>
-
-<c:if test="${not empty subTitle}">
-    <h2 class="title-font" id="subtitle">
-            ${subTitle}
-    </h2>
-</c:if>
 
 <script>
     function loadExternalSite() {

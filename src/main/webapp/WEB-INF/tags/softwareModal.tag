@@ -37,9 +37,17 @@
 
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="source-code" title="Source code location" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="publications-that-used-release" title="Publications that used release" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 
             </div>
             <div class="modal-footer">
