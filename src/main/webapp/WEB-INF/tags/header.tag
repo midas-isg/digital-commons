@@ -41,6 +41,7 @@
                         <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
                                                href="#browse">Browse</a></li>
                         <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>
+                        <li><a class="leaf font-size-20 padding-top-30 " href="${pageContext.request.contextPath}/main/about">About</a>
                         </li>
                     </ul>
                 </c:if>
