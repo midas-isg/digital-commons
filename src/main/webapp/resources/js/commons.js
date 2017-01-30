@@ -25,7 +25,6 @@ var softwareDictionary = {};
 
 function hardcodeSoftwareFromJson(location) {
     $.getJSON( location, function( data ) {
-        console.log(data);
         for(var key in data) {
             softwareDictionary[key] = data[key];
 
@@ -36,7 +35,6 @@ function hardcodeSoftwareFromJson(location) {
                             'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + key + '</div>',
                             'name': key
                         });
-                        console.log(software[i].nodes);
                         break;
                     }
                 }
@@ -361,12 +359,13 @@ function compareNodes(a,b) {
 function toggleTitle(element) {
     var $this = $(element);
 
-    console.log($this[0].offsetWidth, $this[0].scrollWidth);
-    console.log($this[0].parentNode.offsetWidth, $this[0].parentNode.scrollWidth);
-
     if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
         $this.attr('title', $this.text());
     } else {
         $this.attr('title', '');
     }
 }
+
+function activeTab(tab) {
+    $('.tabs a[href="#' + tab + '"]').tab('show');
+};

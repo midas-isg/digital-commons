@@ -4,6 +4,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <footer class="bs-docs-footer" role="contentinfo" id="footer">
+    <!--<div class="col-sm-5 col-md-7 col-lg-8">
+        &#0169; 2017 University of Pittsburgh
+    </div>
+
+    <div class="col-sm-7 col-md-5 col-lg-4">
+        Please direct comments and questions to <a href="mailto:mmw1@pitt.edu">Mike Wagner</a>.
+    </div>-->
+
+    <div class="hidden-xs">
+        <div class="pull-left">
+            &#0169; 2017 University of Pittsburgh
+        </div>
+
+        <div class="pull-right">
+            Please direct comments and questions to <a href="mailto:mmw1@pitt.edu">Mike Wagner</a>.
+        </div>
+    </div>
+
+    <div class="hidden-sm hidden-md hidden-lg">
+        <div class="col-xs-12">
+            &#0169; 2017 University of Pittsburgh
+        </div>
+
+        <div class="col-xs-12">
+            Please direct comments and questions to <a href="mailto:mmw1@pitt.edu">Mike Wagner</a>.
+        </div>
+    </div>
+</footer>
+<%--<footer class="bs-docs-footer" role="contentinfo" id="footer">
     <div class="container">
         <p>&#0169; 2017 University of Pittsburgh</p>
         <p>
@@ -68,4 +97,4 @@
     $(window).resize(function() {
         autoMargin();
     });
-</script>
+</script>--%>

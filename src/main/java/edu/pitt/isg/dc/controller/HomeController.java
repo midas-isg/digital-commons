@@ -141,4 +141,9 @@ public class HomeController {
 
         return "cacheStatus";
     }
+
+    @RequestMapping(value = "/main/about", method = RequestMethod.GET)
+    public String about(Model model) {
+        return "about";
+    }
 }
