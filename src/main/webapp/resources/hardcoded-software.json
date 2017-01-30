@@ -42,7 +42,7 @@
     "diseaseCoverage":"Ebola",
     "speciesIncluded":"Humans",
     "sourceCodeRelease":"<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
-    "publicationsThatUsedRelease":"The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis(http://dx.doi.org/10.1016/S1473-3099(15)70139-8)"
+    "publicationsThatUsedRelease":"The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">http://dx.doi.org/10.1016/S1473-3099(15)70139-8</a>)"
   },
   "FRED – v2.12.0":{
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
