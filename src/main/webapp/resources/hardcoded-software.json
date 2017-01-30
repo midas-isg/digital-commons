@@ -20,5 +20,19 @@
       "generalInfo":"<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
       "location":"http://www.skeeterbuster.net/",
       "sourceCodeRelease":"on request.  E-mail <a href=\"mailto:info@skeeterbuster.net?Subject=Source%20code%20release\" target=\"_top\" style=\"text-decoration: underline\">info@skeeterbuster.net</a>"
-   }
+   },
+  "Vectri malaria model":{
+    "directory":"Disease transmission models",
+    "diseaseCoverage":"Malaria",
+    "speciesIncluded":"Humans and mosquitoes",
+    "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
+    "sourceCodeRelease":"Download at  <a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
+  },
+  "Dengue transmission model":{
+    "directory":"Disease transmission models",
+    "version":"2.0",
+    "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
+    "source":"https://github.com/tjhladish/dengue",
+    "sourceCodeRelease":"Download at <a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>"
+  }
 }
