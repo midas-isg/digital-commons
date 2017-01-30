@@ -281,6 +281,8 @@ function openModal(softwareName) {
 
     toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
+    toggleModalItem('publicationsThatUsedRelease', attrs, 'publications-that-used-release', false, true);
+
     $('#pageModal').modal('show');
 
 }

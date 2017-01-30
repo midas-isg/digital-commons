@@ -41,7 +41,7 @@
     "version":"commit 720c16",
     "diseaseCoverage":"Ebola",
     "speciesIncluded":"Humans",
-    "sourceCodeRelease":"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4",
+    "sourceCodeRelease":"<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
     "publicationsThatUsedRelease":"The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis(http://dx.doi.org/10.1016/S1473-3099(15)70139-8)"
   },
   "FRED – v2.12.0":{
