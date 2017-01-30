@@ -23,37 +23,53 @@ var software = [];
 var isSoftwareHardcoded = true;
 var softwareDictionary = {};
 
+function hardcodeSoftwareFromJson(location) {
+    $.getJSON( location, function( data ) {
+        console.log(data);
+        for(var key in data) {
+            softwareDictionary[key] = data[key];
+
+            if('directory' in softwareDictionary[key]) {
+                for(var i = 0; i < software.length; i++) {
+                    if(software[i]['name'] == softwareDictionary[key]['directory']) {
+                        software[i].nodes.push({
+                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + key + '</div>',
+                            'name': key
+                        });
+                        console.log(software[i].nodes);
+                        break;
+                    }
+                }
+            }
+        }
+
+        for(var i = 0; i < software.length; i++) {
+            software[i].nodes.sort(compareNodes);
+        }
+
+        var $softwareTree = $('#algorithm-treeview').treeview({
+            data: software,
+            showBorder: false,
+            collapseAll: true,
+
+            expandIcon: "glyphicon glyphicon-chevron-right",
+            collapseIcon: "glyphicon glyphicon-chevron-down",
+
+            onNodeSelected: function(event, data) {
+                if(typeof data['nodes'] != undefined) {
+                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+                }
+
+                if(data.url != null && data.state.selected == true) {
+                    window.location.href = data.url;
+                }
+            }
+        });
+        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+    });
+}
+
 function hardcodeSoftware() {
-    var name = 'FluTE – V. 1.12, 1.15, & 1.16';
-    softwareDictionary[name] = {};
-    var attrs = softwareDictionary[name];
-
-    attrs['diseaseCoverage'] = 'influenza';
-    attrs['locationCoverage'] = 'Los Angeles and Seattle';
-    attrs['speciesIncluded'] = 'Homo sapiens';
-    attrs['controlMeasures'] = 'vaccination, antivirals';
-    attrs['source'] = 'https://github.com/dlchao/FluTE';
-
-    software[0].nodes.push({
-        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
-        'name': name
-    });
-
-    name = 'GLEAM 2.0';
-    softwareDictionary[name] = {};
-    attrs = softwareDictionary[name];
-
-    attrs['title'] = 'Global Epidemic and Mobility Model (GLEAM)';
-    attrs['diseaseCoverage'] = 'Communicable human-to-human';
-    attrs['locationCoverage'] = 'Worldwide';
-    attrs['speciesIncluded'] = 'Homo sapiens';
-    attrs['location'] = 'http://www.gleamviz.org';
-
-    software[2].nodes.push({
-        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
-        'name': name
-    });
-
     for(var i = 0; i < software[2].nodes.length; i++) {
         if(software[2].nodes[i].name == 'GLEAMViz') {
             delete software[2].nodes[i];
@@ -61,20 +77,7 @@ function hardcodeSoftware() {
         }
     }
 
-    software.splice(1, 0, {'text': 'Population dynamics model', nodes: []});
-
-    name = 'Skeeter Buster';
-    softwareDictionary[name] = {};
-    attrs = softwareDictionary[name];
-
-    attrs['generalInfo'] = '<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.';
-    attrs['location'] = 'http://www.skeeterbuster.net/';
-    attrs['sourceCodeRelease'] = 'on request.  E-mail <a href="mailto:info@skeeterbuster.net?Subject=Source%20code%20release" target="_top" style="text-decoration: underline">info@skeeterbuster.net</a>';
-
-    software[1].nodes.push({
-        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
-        'name': name
-    });
+    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics model</span>", nodes: [], "name": "Population dynamics model"});
 }
 
 var standardEncodingTree = {
