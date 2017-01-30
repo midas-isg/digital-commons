@@ -34,5 +34,33 @@
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
     "source":"https://github.com/tjhladish/dengue",
     "sourceCodeRelease":"Download at <a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>"
+  },
+  "EbolaVaccPowerSL":{
+    "directory":"Disease transmission models",
+    "generalInfo":"Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.",
+    "version":"commit 720c16",
+    "diseaseCoverage":"Ebola",
+    "speciesIncluded":"Humans",
+    "sourceCodeRelease":"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4",
+    "publicationsThatUsedRelease":"The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis(http://dx.doi.org/10.1016/S1473-3099(15)70139-8)"
+  },
+  "FRED – v2.12.0":{
+    "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
+    "directory":"Disease transmission models",
+    "version":"FRED-v2.12.0",
+    "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
+    "diseaseCoverage":"Any human-to-human infection which is transmitted by contact",
+    "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
+  },
+  "Open Malaria":{
+    "directory":"Disease transmission models",
+    "generalInfo":"A simulator of malaria epidemiology and control",
+    "version":"36.11",
+    "executables":"[Linux](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz),[OS X](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz),[Windows - no libs](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip),[Windows w/ libs](https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip)",
+    "source":"https://github.com/SwissTPH/openmalaria",
+    "sourceCodeRelease":"[ZIP](https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip),[TAR.GZ](https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz)",
+    "diseaseCoverage":"Malaria",
+    "speciesIncluded":"Humans, Mosquitoes",
+    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"
   }
 }
