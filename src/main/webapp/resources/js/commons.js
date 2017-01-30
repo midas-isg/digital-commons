@@ -25,10 +25,9 @@ var softwareDictionary = {};
 
 function hardcodeSoftware() {
     var name = 'FluTE – V. 1.12, 1.15, & 1.16';
-
     softwareDictionary[name] = {};
-
     var attrs = softwareDictionary[name];
+
     attrs['diseaseCoverage'] = 'influenza';
     attrs['locationCoverage'] = 'Los Angeles and Seattle';
     attrs['speciesIncluded'] = 'Homo sapiens';
@@ -36,6 +35,43 @@ function hardcodeSoftware() {
     attrs['source'] = 'https://github.com/dlchao/FluTE';
 
     software[0].nodes.push({
+        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
+        'name': name
+    });
+
+    name = 'GLEAM 2.0';
+    softwareDictionary[name] = {};
+    attrs = softwareDictionary[name];
+
+    attrs['title'] = 'Global Epidemic and Mobility Model (GLEAM)';
+    attrs['diseaseCoverage'] = 'Communicable human-to-human';
+    attrs['locationCoverage'] = 'Worldwide';
+    attrs['speciesIncluded'] = 'Homo sapiens';
+    attrs['location'] = 'http://www.gleamviz.org';
+
+    software[2].nodes.push({
+        'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
+        'name': name
+    });
+
+    for(var i = 0; i < software[2].nodes.length; i++) {
+        if(software[2].nodes[i].name == 'GLEAMViz') {
+            delete software[2].nodes[i];
+            break;
+        }
+    }
+
+    software.splice(1, 0, {'text': 'Population dynamics model', nodes: []});
+
+    name = 'Skeeter Buster';
+    softwareDictionary[name] = {};
+    attrs = softwareDictionary[name];
+
+    attrs['generalInfo'] = '<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.';
+    attrs['location'] = 'http://www.skeeterbuster.net/';
+    attrs['sourceCodeRelease'] = 'on request.  E-mail <a href="mailto:info@skeeterbuster.net?Subject=Source%20code%20release" target="_top" style="text-decoration: underline">info@skeeterbuster.net</a>';
+
+    software[1].nodes.push({
         'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\')">' + name + '</div>',
         'name': name
     });
@@ -178,6 +214,24 @@ function openViewer(url) {
     window.open(url);
 }
 
+function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
+    if(key in attrs) {
+        $('#software-' + name + '-container').show();
+
+        if(renderHtml) {
+            $('#software-' + name).html(attrs[key]);
+        } else {
+            $('#software-' + name).text(attrs[key]);
+        }
+
+        if(hasHref) {
+            $('#software-' + name).attr('href', attrs[key]);
+        }
+    } else {
+        $('#software-' + name + '-container').hide();
+    }
+}
+
 function openModal(softwareName) {
     var attrs = softwareDictionary[softwareName];
 
@@ -201,70 +255,29 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    if('doi' in attrs) {
-        $('#software-doi-container').show();
-        $('#software-doi').text(attrs['doi']);
-    } else {
-        $('#software-doi-container').hide();
-    }
+    toggleModalItem('doi', attrs, 'doi', false, false);
 
-    if('type' in attrs) {
-        $('#software-type-container').show();
-        $('#software-type').text(attrs['type']);
-    } else {
-        $('#software-type-container').hide();
-    }
+    toggleModalItem('type', attrs, 'type', false, false);
 
-    if('version' in attrs) {
-        $('#software-version-container').show();
-        $('#software-version').text(attrs['version']);
-    } else {
-        $('#software-version-container').hide();
-    }
+    toggleModalItem('version', attrs, 'version', false, false);
 
-    if('location' in attrs) {
-        $('#software-location-container').show();
-        $('#software-location').text(attrs['location']);
-        $('#software-location').attr('href', attrs['location']);
-    } else {
-        $('#software-location-container').hide();
-    }
+    toggleModalItem('location', attrs, 'location', true, false);
 
-    if('source' in attrs) {
-        $('#software-source-code-container').show();
-        $('#software-source-code').text(attrs['source']);
-        $('#software-source-code').attr('href', attrs['source']);
-    } else {
-        $('#software-source-code-container').hide();
-    }
+    toggleModalItem('source', attrs, 'source-code', true, false);
 
-    if('diseaseCoverage' in attrs) {
-        $('#software-disease-coverage-container').show();
-        $('#software-disease-coverage').text(attrs['diseaseCoverage']);
-    } else {
-        $('#software-disease-coverage-container').hide();
-    }
+    toggleModalItem('diseaseCoverage', attrs, 'disease-coverage', false, false);
 
-    if('locationCoverage' in attrs) {
-        $('#software-location-coverage-container').show();
-        $('#software-location-coverage').text(attrs['locationCoverage']);
-    } else {
-        $('#software-location-coverage-container').hide();
-    }
+    toggleModalItem('locationCoverage', attrs, 'location-coverage', false, false);
 
-    if('speciesIncluded' in attrs) {
-        $('#software-species-included-container').show();
-        $('#software-species-included').text(attrs['speciesIncluded']);
-    } else {
-        $('#software-species-included-container').hide();
-    }
+    toggleModalItem('speciesIncluded', attrs, 'species-included', false, false);
 
-    if('controlMeasures' in attrs) {
-        $('#software-control-measures-container').show();
-        $('#software-control-measures').text(attrs['controlMeasures']);
-    } else {
-        $('#software-control-measures-container').hide();
-    }
+    toggleModalItem('controlMeasures', attrs, 'control-measures', false, false);
+
+    toggleModalItem('title', attrs, 'title', false, false);
+
+    toggleModalItem('generalInfo', attrs, 'general-info', false, true);
+
+    toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
     $('#pageModal').modal('show');
 

@@ -15,6 +15,10 @@
             </div>
             <div class="modal-body">
 
+                <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="general-info" title="General info" hasHref="false"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
@@ -31,9 +35,11 @@
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="location" title="Software location"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="source-code" title="Source code location"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="source-code" title="Source code location" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 
             </div>
             <div class="modal-footer">
