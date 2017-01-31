@@ -165,7 +165,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 },
                 {
                     text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</div>",
-                    url: "https://wonder.cdc.gov/mortSQL.htm"
+                    url: "https://wonder.cdc.gov/mortSQL.html"
                 }
             ]
         }
