@@ -146,4 +146,32 @@ public class HomeController {
     public String about(Model model) {
         return "about";
     }
+
+    @RequestMapping(value = "/preview", method = RequestMethod.GET)
+    public String preview(Model model) {
+        model.addAttribute("dataAugmentedPublications", dapRule.tree());
+        model.addAttribute("software", softwareRule.tree());
+        try {
+            model.addAttribute("spewRegions", spewRule.treeRegions());
+        } catch (Exception e) {
+            try {
+                Path path = Paths.get(SPEW_CACHE_FILE);
+
+                FileInputStream fis = new FileInputStream(path.toFile());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
+
+                model.addAttribute("spewRegions", spewLocationIterable);
+            } catch (Exception ee) {
+                SpewLocation emptySpew = new SpewLocation();
+                emptySpew.setName("Error loading data from SPEW");
+                List<SpewLocation> tree = new ArrayList<>();
+                tree.add(emptySpew);
+                model.addAttribute("spewRegions", tree);
+            }
+        }
+        model.addAttribute("libraryViewerUrl", VIEWER_URL);
+        model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
+        return "commons";
+    }
 }
