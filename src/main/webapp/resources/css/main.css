@@ -113,6 +113,10 @@
     top: auto; left: auto; bottom: auto; right: auto; margin: 0px; display: block; position: relative; box-sizing: content-box; width: 100%; min-height: 80px; height: 80px;
 }
 
+.spacer-small {
+    top: auto; left: auto; bottom: auto; right: auto; margin: 0px; display: block; position: relative; box-sizing: content-box; width: 100%; min-height: 30px; height: 30px;
+}
+
 .navbar-brand-mod {
     float: left !important;
     height: 80px !important;
