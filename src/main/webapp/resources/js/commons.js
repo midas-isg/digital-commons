@@ -76,6 +76,8 @@ function hardcodeSoftware() {
     }
 
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics model</span>", nodes: [], "name": "Population dynamics model"});
+
+    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
 
 var standardEncodingTree = {
@@ -105,7 +107,7 @@ var standardEncodingTree = {
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for data types)</div>",
+            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</div>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         }
     ]
@@ -294,6 +296,8 @@ function openModal(softwareName) {
     toggleModalItem('executables', attrs, 'executables', false, true);
 
     toggleModalItem('license', attrs, 'license', false, false);
+
+    toggleModalItem('documentation', attrs, 'documentation', true, false);
 
     $('#pageModal').modal('show');
 

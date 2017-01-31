@@ -82,19 +82,19 @@
     "directory":"Modeling platforms",
     "generalInfo":"Repast Simphony is a richly interactive and easy to learn Java-based modeling system that is designed for use on workstations and small computing clusters.",
     "version":"2.4.0",
-    "executables":"https://repast.github.io/download.html",
+    "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
     "documentation":"https://repast.github.io/docs.html",
     "source":"https://github.com/Repast/repast.simphony",
-    "sourceCodeRelease":"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0"
+    "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0\" class=\"underline\">https://github.com/Repast/repast.simphony/releases/tag/v2.4.0</a>"
   },
   "Repast for High Performance Computing":{
     "directory":"Modeling platforms",
     "generalInfo":"Repast for High Performance Computing is a lean and expert-focused C++-based modeling system that is designed for use on large computing clusters and supercomputers.",
     "version":"2.2.0",
-    "executables":"https://repast.github.io/download.html",
+    "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
     "documentation":"https://repast.github.io/docs.html",
     "source":"https://github.com/Repast/repast.hpc",
-    "sourceCodeRelease":"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0"
+    "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0\" class=\"underline\">https://github.com/Repast/repast.hpc/releases/tag/v2.2.0</a>"
   }
 
 }
