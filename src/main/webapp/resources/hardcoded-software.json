@@ -4,9 +4,9 @@
       "diseaseCoverage":"influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "speciesIncluded":"Homo sapiens",
-      "controlMeasures":"vaccination, antivirals",
+      "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
-      "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656. doi:10.1371/journal.pcbi.1000656"
+      "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">doi:10.1371/journal.pcbi.1000656</a>)"
    },
    "GLEAM 2.0":{  
       "directory":"Data visualizers",
@@ -28,11 +28,12 @@
   "Vectri malaria model":{
     "directory":"Disease transmission models",
     "diseaseCoverage":"Malaria",
-    "speciesIncluded":"Humans and mosquitoes",
+    "speciesIncluded":"Humans, Mosquitoes",
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
     "sourceCodeRelease":"Download at  <a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
   },
   "Dengue transmission model":{
+    "diseaseCoverage":"Dengue",
     "directory":"Disease transmission models",
     "version":"2.0",
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
@@ -47,14 +48,14 @@
     "diseaseCoverage":"Ebola",
     "speciesIncluded":"Humans",
     "sourceCodeRelease":"<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
-    "publicationsThatUsedRelease":"The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">http://dx.doi.org/10.1016/S1473-3099(15)70139-8</a>)"
+    "publicationsThatUsedRelease":"Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
   },
   "FRED – v2.12.0":{
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
     "directory":"Disease transmission models",
     "version":"FRED-v2.12.0",
     "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
-    "diseaseCoverage":"Any human-to-human infection which is transmitted by contact",
+    "diseaseCoverage":"Communicable human-to-human",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
   "Open Malaria":{
@@ -67,5 +68,33 @@
     "diseaseCoverage":"Malaria",
     "speciesIncluded":"Humans, Mosquitoes",
     "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"
+  },
+  "Global Epidemic Simulator":{
+    "directory":"Disease transmission models",
+    "generalInfo":"The Global Epidemic Simulator is a platform for modelling directly transmissible human diseases such as influenza, and testing intervention policies that may reduce the duration or severity of an outbreak of such a disease. Building on previous work, this model is spatial and individual-based, using various geographical and demographic data sources to place households at absolute locations, populated with individuals of specific ages who each attend schools or workplaces situated in their vicinity. The significant advance of this project over previous work is the global nature of simulation, the memory and performance requirements of which motivate us towards a multi-core, multi-computer solution.",
+    "version": "beta-1.0",
+    "sourceCodeRelease":"https://sourceforge.net/projects/globalepidemics/files/?source=navbar",
+    "diseaseCoverage":"influenza-like diseases",
+    "speciesIncluded":"Humans",
+    "license":"Apache V2.0"
+  },
+  "Repast Simphony":{
+    "directory":"Modeling platforms",
+    "generalInfo":"Repast Simphony is a richly interactive and easy to learn Java-based modeling system that is designed for use on workstations and small computing clusters.",
+    "version":"2.4.0",
+    "executables":"https://repast.github.io/download.html",
+    "documentation":"https://repast.github.io/docs.html",
+    "source":"https://github.com/Repast/repast.simphony",
+    "sourceCodeRelease":"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0"
+  },
+  "Repast for High Performance Computing":{
+    "directory":"Modeling platforms",
+    "generalInfo":"Repast for High Performance Computing is a lean and expert-focused C++-based modeling system that is designed for use on large computing clusters and supercomputers.",
+    "version":"2.2.0",
+    "executables":"https://repast.github.io/download.html",
+    "documentation":"https://repast.github.io/docs.html",
+    "source":"https://github.com/Repast/repast.hpc",
+    "sourceCodeRelease":"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0"
   }
+
 }
