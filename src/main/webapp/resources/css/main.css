@@ -201,6 +201,16 @@ a {
         padding-left: 100px !important;
     }
 
+    /*.navbar-nav {
+        margin: 7.5px -15px !important;
+    }*/
+
+    .navbar-nav {
+        margin-top: 3px !important;
+        margin-right: -15px !important;
+        margin-left: -15px !important;
+    }
+
     .padding-top-30 {
         padding-top: 30px!important;
     }
