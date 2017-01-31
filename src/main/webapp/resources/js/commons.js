@@ -376,4 +376,5 @@ function toggleTitle(element) {
 
 function activeTab(tab) {
     $('.tabs a[href="#' + tab + '"]').tab('show');
+    location.hash = tab;
 };
