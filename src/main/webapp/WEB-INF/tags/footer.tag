@@ -11,7 +11,7 @@
             </div>
 
             <div class="pull-right" style="margin-right:20px">
-                Please direct comments and questions to <a class="leaf underline" href="mailto:mmw1@pitt.edu">Mike Wagner</a>.
+                Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
             </div>
         </div>
 
@@ -20,8 +20,8 @@
                 &#0169; 2017 University of Pittsburgh
             </div>
 
-            <div class="col-xs-12">
-                Please direct comments and questions to <a class="leaf underline" href="mailto:mmw1@pitt.edu">Mike Wagner</a>.
+            <div class="col-xs-12" style="font-size:12px">
+                Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
             </div>
         </div>
     </div>
