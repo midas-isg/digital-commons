@@ -283,6 +283,8 @@ function openModal(softwareName) {
 
     toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
+    toggleModalItem('publicationsAboutRelease', attrs, 'publications-about-release', false, true);
+
     toggleModalItem('publicationsThatUsedRelease', attrs, 'publications-that-used-release', false, true);
 
     toggleModalItem('webApplication', attrs, 'web-application', true, false);
@@ -290,6 +292,8 @@ function openModal(softwareName) {
     toggleModalItem('userGuidesAndManuals', attrs, 'user-guides-and-manuals', true, false);
 
     toggleModalItem('executables', attrs, 'executables', false, true);
+
+    toggleModalItem('license', attrs, 'license', false, false);
 
     $('#pageModal').modal('show');
 
@@ -378,4 +382,5 @@ function toggleTitle(element) {
 
 function activeTab(tab) {
     $('.tabs a[href="#' + tab + '"]').tab('show');
+    location.hash = tab;
 };

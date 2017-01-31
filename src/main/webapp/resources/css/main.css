@@ -201,6 +201,16 @@ a {
         padding-left: 100px !important;
     }
 
+    /*.navbar-nav {
+        margin: 7.5px -15px !important;
+    }*/
+
+    .navbar-nav {
+        margin-top: 3px !important;
+        margin-right: -15px !important;
+        margin-left: -15px !important;
+    }
+
     .padding-top-30 {
         padding-top: 30px!important;
     }
@@ -313,10 +323,44 @@ a {
     max-width:600px;
 }
 
-.push {
+/*.push {
     height:50px;
+}*/
+
+/*#content {
+    min-height: calc(100vh - 125px);
+}*/
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 
-#content {
-    min-height: calc(100vh - 125px);
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 45px !important;
+}
+.footer {
+    margin-top:10px;
+    position: fixed;
+    left:0;
+    right:0;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #0c2b65;
+}
+
+.footer-container-lg {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.footer-container-xs {
+    margin-top: 10px;
+}
+
+.about-item {
+    margin-top:20px;
 }
