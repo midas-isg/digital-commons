@@ -31,16 +31,31 @@ if(!String.prototype.includes) {
     };
 }
 
-function hardcodeSoftwareFromJson(location) {
-    $.getJSON( location, function( data ) {
+function getSoftwareTitle(name, version) {
+    var title = name;
+    if(isNaN(version[0])) {
+        title += ' - ' + version;
+    } else {
+        title += ' - v' + version;
+    }
+    return title;
+}
+
+function hardcodeSoftwareFromJson(contextPath, location) {
+    $.getJSON( contextPath + location, function( data ) {
         for(var key in data) {
             softwareDictionary[key] = data[key];
 
             if('directory' in softwareDictionary[key]) {
                 for(var i = 0; i < software.length; i++) {
                     if(software[i]['name'] == softwareDictionary[key]['directory']) {
+                        var title = key;
+                        if('version' in softwareDictionary[key]) {
+                            title = getSoftwareTitle(key, softwareDictionary[key]['version']);
+                        }
+
                         software[i].nodes.push({
-                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + key + '</div>',
+                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</div>',
                             'name': key
                         });
                         break;
@@ -49,60 +64,7 @@ function hardcodeSoftwareFromJson(location) {
             }
         }
 
-        for(var i = 0; i < software.length; i++) {
-            software[i].nodes.sort(compareNodes);
-        }
-
-        var $softwareTree = $('#algorithm-treeview').treeview({
-            data: software,
-            showBorder: false,
-            collapseAll: true,
-
-            expandIcon: "glyphicon glyphicon-chevron-right",
-            collapseIcon: "glyphicon glyphicon-chevron-down",
-
-            onNodeSelected: function(event, data) {
-                if(typeof data['nodes'] != undefined) {
-                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
-                }
-
-                if(data.parentId == null) {
-                    var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
-
-                    if(data.state.expanded) {
-                        if(expandedSoftware != null) {
-                            var index = expandedSoftware.indexOf(data.nodeId);
-                            if (index > -1) {
-                                expandedSoftware.splice(index, 1);
-                            }
-                        }
-                    } else {
-                        if(expandedSoftware != null) {
-                            var index = expandedSoftware.indexOf(data.nodeId);
-                            if (index <= -1) {
-                                expandedSoftware.push(data.nodeId);
-                            }
-                        } else {
-                            expandedSoftware = [];
-                            expandedSoftware.push(data.nodeId);
-                        }
-                    }
-
-                    localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
-                }
-
-                if(data.url != null && data.state.selected == true) {
-                    window.location.href = data.url;
-                }
-            }
-        });
-        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
-        var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
-        if(expandedSoftware != null) {
-            for(var i = 0; i < expandedSoftware.length; i++) {
-                $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
-            }
-        }
+        buildSoftwareTree(contextPath);
     });
 }
 
@@ -114,9 +76,70 @@ function hardcodeSoftware() {
         }
     }
 
-    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics model</span>", nodes: [], "name": "Population dynamics model"});
+    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics models</span>", nodes: [], "name": "Population dynamics models"});
 
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
+}
+
+function buildSoftwareTree(contextPath) {
+    for(var i = 0; i < software.length; i++) {
+        software[i].nodes.sort(compareNodes);
+    }
+
+    var $softwareTree = $('#algorithm-treeview').treeview({
+        data: software,
+        showBorder: false,
+        collapseAll: true,
+
+        expandIcon: "glyphicon glyphicon-chevron-right",
+        collapseIcon: "glyphicon glyphicon-chevron-down",
+
+        onNodeSelected: function(event, data) {
+            if(typeof data['nodes'] != undefined) {
+                $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+            }
+
+            if(data.parentId == null) {
+                var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+
+                if(data.state.expanded) {
+                    if(expandedSoftware != null) {
+                        var index = expandedSoftware.indexOf(data.nodeId);
+                        if (index > -1) {
+                            expandedSoftware.splice(index, 1);
+                        }
+                    }
+                } else {
+                    if(expandedSoftware != null) {
+                        var index = expandedSoftware.indexOf(data.nodeId);
+                        if (index <= -1) {
+                            expandedSoftware.push(data.nodeId);
+                        }
+                    } else {
+                        expandedSoftware = [];
+                        expandedSoftware.push(data.nodeId);
+                    }
+                }
+
+                localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
+            }
+
+            if(data.url != null && data.state.selected == true) {
+                if(data.name == 'Galapagos' || data.name == 'SPEW Download Service' || data.name == 'Simple End-user Apollo App') {
+                    $(location).attr('href', contextPath + "/main/view?url=" + encodeURIComponent(data.url));
+                } else {
+                    window.location.href = data.url;
+                }
+            }
+        }
+    });
+    $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+    var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+    if(expandedSoftware != null) {
+        for(var i = 0; i < expandedSoftware.length; i++) {
+            $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+        }
+    }
 }
 
 var standardEncodingTree = {
@@ -282,7 +305,11 @@ function openModal(softwareName) {
 
     if(softwareName != null) {
         $('#software-name').show();
-        $('#software-name').text(softwareName);
+        if('version' in attrs) {
+            $('#software-name').text(getSoftwareTitle(softwareName, attrs['version']));
+        } else {
+            $('#software-name').text(softwareName);
+        }
     } else {
         $('#software-name').hide();
     }
@@ -300,11 +327,33 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    toggleModalItem('doi', attrs, 'doi', false, false);
+    if('doi' in attrs) {
+        $('#software-doi-container').show();
+        $('#software-doi').text(attrs['doi']);
+    } else {
+        console.log('here');
+        $('#software-doi-container').show();
+        $('#software-doi').text('N/A');
+    }
+
+    if('version' in attrs) {
+        $('#software-version-container').show();
+        $('#software-version').text(attrs['version']);
+
+        if(attrs['version'].includes(',')) {
+            $('#software-version-tag').text('Source code versions:');
+        } else {
+            $('#software-version-tag').text('Source code version:');
+        }
+    } else {
+        $('#software-version-container').hide();
+    }
+
+    //toggleModalItem('doi', attrs, 'doi', false, false);
 
     toggleModalItem('type', attrs, 'type', false, false);
 
-    toggleModalItem('version', attrs, 'version', false, false);
+    //toggleModalItem('version', attrs, 'version', false, false);
 
     toggleModalItem('location', attrs, 'location', true, false);
 

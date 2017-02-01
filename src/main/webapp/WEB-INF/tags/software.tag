@@ -18,8 +18,11 @@
                 var url = '';
                 softwareDictionary['${item.name}'] = {};
 
+                var title = '${item.name}';
+
                 <c:if test="${not empty item.version}">
                     softwareDictionary['${item.name}']['version'] = '${item.version}';
+                    title = getSoftwareTitle('${item.name}', '${item.version}');
                 </c:if>
 
                 <c:if test="${not empty item.developer}">
@@ -42,14 +45,14 @@
 
                 <c:if test="${folder.name == 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'${item.name}\')">' + "${item.name}" + '</div>',
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'${item.name}\')">' + title + '</div>',
                         "name": "${item.name}"
                     });
                 </c:if>
 
                 <c:if test="${folder.name != 'Disease transmission models'}">
                     software[${loop.index}].nodes.push({
-                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">${item.name}</div>',
+                        "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + title + '</div>',
                         "url": url,
                         "name": "${item.name}"
                     });
@@ -60,37 +63,11 @@
 
     if(isSoftwareHardcoded) {
         hardcodeSoftware();
-        hardcodeSoftwareFromJson("${pageContext.request.contextPath}/resources/hardcoded-software.json")
+        hardcodeSoftwareFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json")
     }
 
     if(!isSoftwareHardcoded) {
-        for(var i = 0; i < software.length; i++) {
-            software[i].nodes.sort(compareNodes);
-        }
-
-        var $softwareTree = $('#algorithm-treeview').treeview({
-            data: software,
-            showBorder: false,
-            collapseAll: true,
-
-            expandIcon: "glyphicon glyphicon-chevron-right",
-            collapseIcon: "glyphicon glyphicon-chevron-down",
-
-            onNodeSelected: function (event, data) {
-                if (typeof data['nodes'] != undefined) {
-                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, {
-                        levels: 1,
-                        silent: true
-                    }]).treeview('unselectNode', [data.nodeId, {silent: true}]);
-                }
-
-                if (data.url != null && data.state.selected == true) {
-                    window.location.href = data.url;
-                }
-            }
-        });
-
-        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+        buildSoftwareTree("${pageContext.request.contextPath}");
     }
 
 </script>

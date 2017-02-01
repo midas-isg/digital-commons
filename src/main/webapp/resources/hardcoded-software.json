@@ -1,11 +1,12 @@
 {  
-   "FluTE – V. 1.12, 1.15, & 1.16":{  
+   "FluTE":{
       "directory":"Disease transmission models",
       "diseaseCoverage":"influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "speciesIncluded":"Homo sapiens",
       "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
+      "version":"1.12, 1.15, & 1.16",
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
    "GLEAM 2.0":{  
@@ -18,11 +19,11 @@
       "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
    },
    "Skeeter Buster":{
-      "directory":"Population dynamics model",
+      "directory":"Population dynamics models",
       "generalInfo":"<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
       "location":"http://www.skeeterbuster.net/",
       "sourceCodeRelease":"on request.  E-mail <a href=\"mailto:info@skeeterbuster.net?Subject=Source%20code%20release\" target=\"_top\" style=\"text-decoration: underline\">info@skeeterbuster.net</a>",
-      "license":"GPLv3",
+      "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
       "executables":"<a href = \"http://legrosmathi.eu/skeeterbuster/Skeeter_Buster.zip\" style=\"text-decoration:underline\">Windows</a>"
    },
   "Vectri malaria model":{
@@ -50,10 +51,10 @@
     "sourceCodeRelease":"<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
     "publicationsThatUsedRelease":"Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
   },
-  "FRED – v2.12.0":{
+  "FRED":{
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
     "directory":"Disease transmission models",
-    "version":"FRED-v2.12.0",
+    "version":"2.12.0",
     "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
     "diseaseCoverage":"Communicable human-to-human",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
@@ -76,7 +77,7 @@
     "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "diseaseCoverage":"influenza-like diseases",
     "speciesIncluded":"Humans",
-    "license":"<a href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
+    "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
   "Repast Simphony":{
     "directory":"Modeling platforms",
