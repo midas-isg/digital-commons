@@ -9,6 +9,7 @@ import java.util.List;
 public class SpewRule {
     @Autowired
     private SpewDao dao;
+    private Iterable<SpewLocation> cachedTreeRegions;
 
     public Iterable<SpewLocation> tree(){
         List<SpewLocation> countries = dao.listCountries();
@@ -22,12 +23,17 @@ public class SpewRule {
     }
 
     public Iterable<SpewLocation> treeRegions(){
-        final List<SpewLocation> regions = dao.listRegions();
-        regions.stream()
-                .flatMap(r -> r.getChildren().values().stream())
-                .flatMap(s -> s.getChildren().values().stream())
-                .filter(dao::isCountry)
-                .forEach(this::customize);
-        return regions;
+        if(cachedTreeRegions != null) {
+            return cachedTreeRegions;
+        } else {
+            final List<SpewLocation> regions = dao.listRegions();
+            regions.stream()
+                    .flatMap(r -> r.getChildren().values().stream())
+                    .flatMap(s -> s.getChildren().values().stream())
+                    .filter(dao::isCountry)
+                    .forEach(this::customize);
+            cachedTreeRegions = regions;
+            return regions;
+        }
     }
 }
