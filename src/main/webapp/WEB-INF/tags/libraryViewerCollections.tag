@@ -68,9 +68,11 @@
                     var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
 
                     if(data.state.expanded) {
-                        var index = expandedDataAndKnowledge.indexOf(data.nodeId);
-                        if (index > -1) {
-                            expandedDataAndKnowledge.splice(index, 1);
+                        if(expandedDataAndKnowledge != null) {
+                            var index = expandedDataAndKnowledge.indexOf(data.nodeId);
+                            if (index > -1) {
+                                expandedDataAndKnowledge.splice(index, 1);
+                            }
                         }
                     } else {
                         if(expandedDataAndKnowledge != null) {
@@ -97,8 +99,10 @@
                     }
                 });
                 var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
-                for(var i = 0; i < expandedDataAndKnowledge.length; i++) {
-                    $('#data-and-knowledge-treeview').treeview('expandNode', [ expandedDataAndKnowledge[i], { silent: true } ]);
+                if(expandedDataAndKnowledge != null) {
+                    for (var i = 0; i < expandedDataAndKnowledge.length; i++) {
+                        $('#data-and-knowledge-treeview').treeview('expandNode', [expandedDataAndKnowledge[i], {silent: true}]);
+                    }
                 }
             }
         });
