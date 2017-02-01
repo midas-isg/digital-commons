@@ -45,7 +45,7 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirectHome() {
-        return "redirect:/main";
+        return "redirect:/preview";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
