@@ -69,10 +69,8 @@
                             </a>
                         </li>
                         </c:if>--%>
-
+                    </ul>
                 </div>
-
-                </ul>
             </div><!-- /.container-fluid -->
         </nav>
         </div>
