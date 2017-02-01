@@ -30,7 +30,7 @@
     "diseaseCoverage":"Malaria",
     "speciesIncluded":"Humans, Mosquitoes",
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
-    "sourceCodeRelease":"Download at  <a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
+    "sourceCodeRelease":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
   },
   "Dengue transmission model":{
     "diseaseCoverage":"Dengue",
@@ -38,7 +38,7 @@
     "version":"2.0",
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
     "source":"https://github.com/tjhladish/dengue",
-    "sourceCodeRelease":"Download at <a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
+    "sourceCodeRelease":"<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license":"GPLv3"
   },
   "EbolaVaccPowerSL":{
@@ -73,7 +73,7 @@
     "directory":"Disease transmission models",
     "generalInfo":"The Global Epidemic Simulator is a platform for modelling directly transmissible human diseases such as influenza, and testing intervention policies that may reduce the duration or severity of an outbreak of such a disease. Building on previous work, this model is spatial and individual-based, using various geographical and demographic data sources to place households at absolute locations, populated with individuals of specific ages who each attend schools or workplaces situated in their vicinity. The significant advance of this project over previous work is the global nature of simulation, the memory and performance requirements of which motivate us towards a multi-core, multi-computer solution.",
     "version": "beta-1.0",
-    "sourceCodeRelease":"https://sourceforge.net/projects/globalepidemics/files/?source=navbar",
+    "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "diseaseCoverage":"influenza-like diseases",
     "speciesIncluded":"Humans",
     "license":"Apache V2.0"
