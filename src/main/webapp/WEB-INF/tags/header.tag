@@ -49,13 +49,13 @@
                             </c:forEach>
                         </ul>
                     </c:if>
-                    <%--<ul class="nav navbar-nav navbar-right">--%>
-                        <%--<c:if test="${loggedIn == true}">--%>
-                            <%--<c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>--%>
-                        <%--<form class="navbar-form" action="${urlLevel}" method="GET">--%>
-                            <%--<button type="submit" class="btn btn-default margin-top-13">Logout</button>--%>
-                        <%--</form>--%>
-                        <%--</c:if>--%>
+                    <ul class="nav navbar-nav navbar-right">
+                        <c:if test="${loggedIn == true}">
+                            <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
+                        <form class="navbar-form" action="${urlLevel}" method="GET">
+                            <button type="submit" class="btn btn-default margin-top-13">Logout</button>
+                        </form>
+                        </c:if>
                         <%--<c:if test="${iframe == true}">
                         <li>
                             <a class="leaf margin-top-13" href="${pageContext.request.contextPath}/main">
@@ -69,7 +69,7 @@
                             </a>
                         </li>
                         </c:if>--%>
-                    <%--</ul>--%>
+                    </ul>
                 </div>
             </div><!-- /.container-fluid -->
         </nav>
