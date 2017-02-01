@@ -9,7 +9,7 @@
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
    "GLEAM 2.0":{  
-      "directory":"Data visualizers",
+      "directory":"Disease transmission models",
       "title":"Global Epidemic and Mobility Model (GLEAM)",
       "diseaseCoverage":"Communicable human-to-human",
       "locationCoverage":"Worldwide",
@@ -39,9 +39,9 @@
     "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
     "source":"https://github.com/tjhladish/dengue",
     "sourceCodeRelease":"<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
-    "license":"GPLv3"
+    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>"
   },
-  "EbolaVaccPowerSL":{
+  "Ebola transmission model":{
     "directory":"Disease transmission models",
     "generalInfo":"Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.",
     "version":"commit 720c16",
@@ -76,7 +76,7 @@
     "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "diseaseCoverage":"influenza-like diseases",
     "speciesIncluded":"Humans",
-    "license":"Apache V2.0"
+    "license":"<a href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
   "Repast Simphony":{
     "directory":"Modeling platforms",

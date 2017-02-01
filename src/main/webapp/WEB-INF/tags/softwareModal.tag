@@ -29,8 +29,6 @@
 
                 <myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="version" title="Source code version"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
@@ -41,7 +39,9 @@
 
                 <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="source-code" title="Source code location" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="version" title="Source code version"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="source-code" title="Source code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 
