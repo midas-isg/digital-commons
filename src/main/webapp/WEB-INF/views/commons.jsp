@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jdl50
-  Date: 1/6/17
-  Time: 3:15 PM
-  To change this template use File | Settings | File Templates.
---%>
-
+<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 

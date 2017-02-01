@@ -77,7 +77,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/main/getCollectionsJson", method = RequestMethod.GET)
+    @RequestMapping(value = "/main/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
     String getCollectionsJson() throws Exception {
@@ -91,7 +91,7 @@ public class HomeController {
 
             con.setRequestMethod("GET");
             con.setRequestProperty("Authorization", VIEWER_TOKEN);
-
+            con.setRequestProperty("Accept-Charset", "UTF-8");
             BufferedReader in = new BufferedReader(
                     new InputStreamReader(con.getInputStream()));
             String inputLine;

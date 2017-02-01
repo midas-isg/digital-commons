@@ -8,7 +8,7 @@ import java.util.*;
 @Service
 public class SoftwareRule {
     private static final String DISEASE_TRANSMISSION_MODELS = "Disease transmission models";
-    private static final String VIRAL_BACTERIAL_EVOLUTION_SIMULATORS = "Viral and bacterial evolution simulators";
+    private static final String VIRAL_BACTERIAL_EVOLUTION_SIMULATORS = "Viral and bacterial evolution models";
     private static final String DATA_VISUALIZERS = "Data visualizers";
     private static final String INFERRING_OUTBREAK_TRANSMISSION_TREES = "Inferring outbreak transmission trees";
     private static final String DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS = "Disease surveillance algorithms and systems";

@@ -40,6 +40,7 @@
             type : "GET",
             contentType : "application/json",
             url : "/digital-commons/main/getCollectionsJson",
+            headers: "Accept=application/json; charset=utf-8",
             dataType : 'json',
             timeout : 100000,
             success : function(data) {
