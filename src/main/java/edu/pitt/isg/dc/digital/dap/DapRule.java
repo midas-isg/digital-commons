@@ -10,8 +10,12 @@ import java.util.Map;
 public class DapRule {
     @Autowired
     private DapRepository dapRepository;
+    private Iterable<DapFolder> cachedDataAugmentedPublications;
 
     public Iterable<DapFolder> tree() {
+        if(cachedDataAugmentedPublications != null) {
+            return cachedDataAugmentedPublications;
+        }
         Map<Long, DapFolder> root = new HashMap<>();
         Iterable<DataAugmentedPublication> daps = dapRepository.findAll();
         for (DataAugmentedPublication dap : daps){
@@ -35,7 +39,7 @@ public class DapRule {
                 }
             }
         }
-
+        cachedDataAugmentedPublications = root.values();
         return root.values();
     }
 

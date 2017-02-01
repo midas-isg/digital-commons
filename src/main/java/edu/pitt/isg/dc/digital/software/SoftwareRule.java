@@ -17,19 +17,25 @@ public class SoftwareRule {
 
     @Autowired
     private SoftwareRepository repository;
+    private Iterable<SoftwareFolder> cachedSoftwareRule;
 
     public Iterable<SoftwareFolder> tree() {
-        LinkedHashMap<String, SoftwareFolder> root = new LinkedHashMap<>();
-        Iterable<Software> all = repository.findAllByOrderByName();
-        createSortedFolder(root);
-        for (Software item : all){
-            final String type = item.getTypeText();
-            final SoftwareFolder folder = toFolder(root, type);
-            final List<Software> list = toList(folder);
-            list.add(item);
-        }
+        if(cachedSoftwareRule != null) {
+            return cachedSoftwareRule;
+        } else {
+            LinkedHashMap<String, SoftwareFolder> root = new LinkedHashMap<>();
+            Iterable<Software> all = repository.findAllByOrderByName();
+            createSortedFolder(root);
+            for (Software item : all) {
+                final String type = item.getTypeText();
+                final SoftwareFolder folder = toFolder(root, type);
+                final List<Software> list = toList(folder);
+                list.add(item);
+            }
 
-        return root.values();
+            cachedSoftwareRule = root.values();
+            return root.values();
+        }
     }
 
     private List<Software> toList(SoftwareFolder folder) {

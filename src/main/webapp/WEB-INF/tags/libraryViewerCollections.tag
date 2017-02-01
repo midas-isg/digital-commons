@@ -39,11 +39,8 @@
         $.ajax({
             type : "GET",
             contentType : "application/json",
-            url : ${libraryViewerUrl} + "collectionsJson/",
+            url : "/digital-commons/main/getCollectionsJson",
             dataType : 'json',
-            headers : {
-                "Authorization" : ${libraryViewerToken}
-            },
             timeout : 100000,
             success : function(data) {
                 libraryData = data;

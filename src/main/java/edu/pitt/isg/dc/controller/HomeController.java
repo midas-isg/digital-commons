@@ -12,23 +12,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 
 @Controller
 public class HomeController {
- private static String VIEWER_URL = "";
- private static String VIEWER_TOKEN = "";
- private static String SPEW_CACHE_FILE = "";
+    private static String VIEWER_URL = "";
+    private static String VIEWER_TOKEN = "";
+    private static String SPEW_CACHE_FILE = "";
+    private String libraryCollectionsJson = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -75,6 +74,37 @@ public class HomeController {
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         return "commons";
+    }
+
+
+    @RequestMapping(value = "/main/getCollectionsJson", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String getCollectionsJson() throws Exception {
+
+        if(!libraryCollectionsJson.equals("")) {
+            return libraryCollectionsJson;
+        } else {
+            String libraryUrl = VIEWER_URL.replace("\"", "") + "collectionsJson/";
+            URL url = new URL(libraryUrl);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+            con.setRequestMethod("GET");
+            con.setRequestProperty("Authorization", VIEWER_TOKEN);
+
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+
+            libraryCollectionsJson = response.toString();
+            return response.toString();
+        }
     }
 
     @RequestMapping(value = "/main/view", method = RequestMethod.GET, headers = "Accept=text/html")
