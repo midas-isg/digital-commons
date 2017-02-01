@@ -31,13 +31,13 @@
 
                 <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="version" title="Source code version"></myTags:softwareModalItem>
 

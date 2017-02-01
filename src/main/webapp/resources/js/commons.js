@@ -31,6 +31,16 @@ if(!String.prototype.includes) {
     };
 }
 
+function getSoftwareTitle(name, version) {
+    var title = name;
+    if(isNaN(version[0])) {
+        title += ' - ' + version;
+    } else {
+        title += ' - v' + version;
+    }
+    return title;
+}
+
 function hardcodeSoftwareFromJson(location) {
     $.getJSON( location, function( data ) {
         for(var key in data) {
@@ -39,8 +49,13 @@ function hardcodeSoftwareFromJson(location) {
             if('directory' in softwareDictionary[key]) {
                 for(var i = 0; i < software.length; i++) {
                     if(software[i]['name'] == softwareDictionary[key]['directory']) {
+                        var title = key;
+                        if('version' in softwareDictionary[key]) {
+                            title = getSoftwareTitle(key, softwareDictionary[key]['version']);
+                        }
+
                         software[i].nodes.push({
-                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + key + '</div>',
+                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</div>',
                             'name': key
                         });
                         break;
@@ -114,7 +129,7 @@ function hardcodeSoftware() {
         }
     }
 
-    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics model</span>", nodes: [], "name": "Population dynamics model"});
+    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics models</span>", nodes: [], "name": "Population dynamics models"});
 
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
@@ -300,7 +315,16 @@ function openModal(softwareName) {
         $('#software-developer-container').hide();
     }
 
-    toggleModalItem('doi', attrs, 'doi', false, false);
+    if('doi' in attrs) {
+        $('#software-doi-container').show();
+        $('#software-doi').text(attrs['doi']);
+    } else {
+        console.log('here');
+        $('#software-doi-container').show();
+        $('#software-doi').text('N/A');
+    }
+
+    //toggleModalItem('doi', attrs, 'doi', false, false);
 
     toggleModalItem('type', attrs, 'type', false, false);
 
