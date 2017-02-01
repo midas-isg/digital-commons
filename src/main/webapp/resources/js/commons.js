@@ -23,6 +23,14 @@ var software = [];
 var isSoftwareHardcoded = true;
 var softwareDictionary = {};
 
+/* Change includes method in IE */
+if(!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
+
 function hardcodeSoftwareFromJson(location) {
     $.getJSON( location, function( data ) {
         for(var key in data) {
