@@ -41,8 +41,8 @@ function getSoftwareTitle(name, version) {
     return title;
 }
 
-function hardcodeSoftwareFromJson(location) {
-    $.getJSON( location, function( data ) {
+function hardcodeSoftwareFromJson(contextPath, location) {
+    $.getJSON( contextPath + location, function( data ) {
         for(var key in data) {
             softwareDictionary[key] = data[key];
 
@@ -64,60 +64,7 @@ function hardcodeSoftwareFromJson(location) {
             }
         }
 
-        for(var i = 0; i < software.length; i++) {
-            software[i].nodes.sort(compareNodes);
-        }
-
-        var $softwareTree = $('#algorithm-treeview').treeview({
-            data: software,
-            showBorder: false,
-            collapseAll: true,
-
-            expandIcon: "glyphicon glyphicon-chevron-right",
-            collapseIcon: "glyphicon glyphicon-chevron-down",
-
-            onNodeSelected: function(event, data) {
-                if(typeof data['nodes'] != undefined) {
-                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
-                }
-
-                if(data.parentId == null) {
-                    var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
-
-                    if(data.state.expanded) {
-                        if(expandedSoftware != null) {
-                            var index = expandedSoftware.indexOf(data.nodeId);
-                            if (index > -1) {
-                                expandedSoftware.splice(index, 1);
-                            }
-                        }
-                    } else {
-                        if(expandedSoftware != null) {
-                            var index = expandedSoftware.indexOf(data.nodeId);
-                            if (index <= -1) {
-                                expandedSoftware.push(data.nodeId);
-                            }
-                        } else {
-                            expandedSoftware = [];
-                            expandedSoftware.push(data.nodeId);
-                        }
-                    }
-
-                    localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
-                }
-
-                if(data.url != null && data.state.selected == true) {
-                    window.location.href = data.url;
-                }
-            }
-        });
-        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
-        var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
-        if(expandedSoftware != null) {
-            for(var i = 0; i < expandedSoftware.length; i++) {
-                $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
-            }
-        }
+        buildSoftwareTree(contextPath);
     });
 }
 
@@ -132,6 +79,67 @@ function hardcodeSoftware() {
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics models</span>", nodes: [], "name": "Population dynamics models"});
 
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
+}
+
+function buildSoftwareTree(contextPath) {
+    for(var i = 0; i < software.length; i++) {
+        software[i].nodes.sort(compareNodes);
+    }
+
+    var $softwareTree = $('#algorithm-treeview').treeview({
+        data: software,
+        showBorder: false,
+        collapseAll: true,
+
+        expandIcon: "glyphicon glyphicon-chevron-right",
+        collapseIcon: "glyphicon glyphicon-chevron-down",
+
+        onNodeSelected: function(event, data) {
+            if(typeof data['nodes'] != undefined) {
+                $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+            }
+
+            if(data.parentId == null) {
+                var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+
+                if(data.state.expanded) {
+                    if(expandedSoftware != null) {
+                        var index = expandedSoftware.indexOf(data.nodeId);
+                        if (index > -1) {
+                            expandedSoftware.splice(index, 1);
+                        }
+                    }
+                } else {
+                    if(expandedSoftware != null) {
+                        var index = expandedSoftware.indexOf(data.nodeId);
+                        if (index <= -1) {
+                            expandedSoftware.push(data.nodeId);
+                        }
+                    } else {
+                        expandedSoftware = [];
+                        expandedSoftware.push(data.nodeId);
+                    }
+                }
+
+                localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
+            }
+
+            if(data.url != null && data.state.selected == true) {
+                if(data.name == 'Galapagos' || data.name == 'SPEW Download Service' || data.name == 'Simple End-user Apollo App') {
+                    $(location).attr('href', contextPath + "/main/view?url=" + encodeURIComponent(data.url));
+                } else {
+                    window.location.href = data.url;
+                }
+            }
+        }
+    });
+    $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+    var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+    if(expandedSoftware != null) {
+        for(var i = 0; i < expandedSoftware.length; i++) {
+            $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+        }
+    }
 }
 
 var standardEncodingTree = {

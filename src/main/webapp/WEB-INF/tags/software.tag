@@ -63,37 +63,11 @@
 
     if(isSoftwareHardcoded) {
         hardcodeSoftware();
-        hardcodeSoftwareFromJson("${pageContext.request.contextPath}/resources/hardcoded-software.json")
+        hardcodeSoftwareFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json")
     }
 
     if(!isSoftwareHardcoded) {
-        for(var i = 0; i < software.length; i++) {
-            software[i].nodes.sort(compareNodes);
-        }
-
-        var $softwareTree = $('#algorithm-treeview').treeview({
-            data: software,
-            showBorder: false,
-            collapseAll: true,
-
-            expandIcon: "glyphicon glyphicon-chevron-right",
-            collapseIcon: "glyphicon glyphicon-chevron-down",
-
-            onNodeSelected: function (event, data) {
-                if (typeof data['nodes'] != undefined) {
-                    $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, {
-                        levels: 1,
-                        silent: true
-                    }]).treeview('unselectNode', [data.nodeId, {silent: true}]);
-                }
-
-                if (data.url != null && data.state.selected == true) {
-                    window.location.href = data.url;
-                }
-            }
-        });
-
-        $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+        buildSoftwareTree("${pageContext.request.contextPath}");
     }
 
 </script>
