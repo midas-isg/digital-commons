@@ -78,7 +78,28 @@
         </div>
     </c:if>
     <c:if test="${iframe == true}">
-        <style>
+        <div class="spacer-small"></div>
+
+        <div style="height:30px; width:100%; background-color:#0c2b65; position:fixed; top:0">
+            <div class="pull-right" style="margin-top:5px; margin-right:5px">
+                <a class="leaf" href="#" onclick="loadExternalSite()">
+                    <span class="">Open external site</span>
+                    <icon class="glyphicon glyphicon-chevron-right"></icon>
+                </a>
+            </div>
+
+            <div style="margin-top:5px; margin-right:5px; position:absolute; left:40%">
+                <span class="leaf hidden-xs">MIDAS SSO-enabled site</span>
+            </div>
+
+            <div class="pull-left leaf" style="margin-top:5px; margin-left:5px">
+                <a class="leaf" href="${pageContext.request.contextPath}/main">
+                    <icon class="glyphicon glyphicon-chevron-left"></icon>
+                    <span class="">Back to Digital Commons</span>
+                </a>
+            </div>
+        </div>
+        <%--<style>
             .navbar-xs { min-height:22px; border-radius:0; background-color:#0c2b65;}
             .navbar-xs .navbar-brand{ padding: 2px 8px;font-size: 14px;line-height: 14px; }
             .navbar-xs .navbar-nav > li > a { border-right:1px solid #ddd; padding-top: 1px; padding-bottom: 2px; line-height: 16px }
@@ -117,7 +138,7 @@
                 </li>
             </ul>
         </nav>
-        </div>
+        </div>--%>
     </c:if>
 
 <script>

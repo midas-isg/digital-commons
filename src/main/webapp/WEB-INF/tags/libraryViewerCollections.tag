@@ -61,6 +61,28 @@
                     if(typeof data['nodes'] != undefined) {
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                     }
+
+                    var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
+
+                    if(data.state.expanded) {
+                        var index = expandedDataAndKnowledge.indexOf(data.nodeId);
+                        if (index > -1) {
+                            expandedDataAndKnowledge.splice(index, 1);
+                        }
+                    } else {
+                        if(expandedDataAndKnowledge != null) {
+                            var index = expandedDataAndKnowledge.indexOf(data.nodeId);
+                            if (index <= -1) {
+                                expandedDataAndKnowledge.push(data.nodeId);
+                            }
+                        } else {
+                            expandedDataAndKnowledge = [];
+                            expandedDataAndKnowledge.push(data.nodeId);
+                        }
+                    }
+
+                    localStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
+
                     if(data.url != null && data.state.selected == true) {
                         var url  = data.url;
                         if(url.search("apolloLibraryViewer") > -1) {
@@ -71,6 +93,10 @@
                         }
                     }
                 });
+                var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
+                for(var i = 0; i < expandedDataAndKnowledge.length; i++) {
+                    $('#data-and-knowledge-treeview').treeview('expandNode', [ expandedDataAndKnowledge[i], { silent: true } ]);
+                }
             }
         });
         
