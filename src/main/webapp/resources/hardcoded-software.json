@@ -1,11 +1,12 @@
 {  
-   "FluTE – V. 1.12, 1.15, & 1.16":{  
+   "FluTE":{
       "directory":"Disease transmission models",
       "diseaseCoverage":"influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "speciesIncluded":"Homo sapiens",
       "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
+      "version":"1.12, 1.15, & 1.16",
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
    "GLEAM 2.0":{  

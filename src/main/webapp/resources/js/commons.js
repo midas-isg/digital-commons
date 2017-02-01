@@ -297,7 +297,11 @@ function openModal(softwareName) {
 
     if(softwareName != null) {
         $('#software-name').show();
-        $('#software-name').text(softwareName);
+        if('version' in attrs) {
+            $('#software-name').text(getSoftwareTitle(softwareName, attrs['version']));
+        } else {
+            $('#software-name').text(softwareName);
+        }
     } else {
         $('#software-name').hide();
     }
@@ -324,11 +328,24 @@ function openModal(softwareName) {
         $('#software-doi').text('N/A');
     }
 
+    if('version' in attrs) {
+        $('#software-version-container').show();
+        $('#software-version').text(attrs['version']);
+
+        if(attrs['version'].includes(',')) {
+            $('#software-version-tag').text('Source code versions:');
+        } else {
+            $('#software-version-tag').text('Source code version:');
+        }
+    } else {
+        $('#software-version-container').hide();
+    }
+
     //toggleModalItem('doi', attrs, 'doi', false, false);
 
     toggleModalItem('type', attrs, 'type', false, false);
 
-    toggleModalItem('version', attrs, 'version', false, false);
+    //toggleModalItem('version', attrs, 'version', false, false);
 
     toggleModalItem('location', attrs, 'location', true, false);
 
