@@ -58,12 +58,39 @@ function hardcodeSoftwareFromJson(location) {
                     $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                 }
 
+                if(data.parentId == null) {
+                    var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+
+                    if(data.state.expanded) {
+                        var index = expandedSoftware.indexOf(data.nodeId);
+                        if (index > -1) {
+                            expandedSoftware.splice(index, 1);
+                        }
+                    } else {
+                        if(expandedSoftware != null) {
+                            var index = expandedSoftware.indexOf(data.nodeId);
+                            if (index <= -1) {
+                                expandedSoftware.push(data.nodeId);
+                            }
+                        } else {
+                            expandedSoftware = [];
+                            expandedSoftware.push(data.nodeId);
+                        }
+                    }
+
+                    localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
+                }
+
                 if(data.url != null && data.state.selected == true) {
                     window.location.href = data.url;
                 }
             }
         });
         $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+        var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+        for(var i = 0; i < expandedSoftware.length; i++) {
+            $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+        }
     });
 }
 
