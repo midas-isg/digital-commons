@@ -334,7 +334,7 @@ function openModal(softwareName) {
 
     toggleModalItem('executables', attrs, 'executables', false, true);
 
-    toggleModalItem('license', attrs, 'license', false, false);
+    toggleModalItem('license', attrs, 'license', false, true);
 
     toggleModalItem('documentation', attrs, 'documentation', true, false);
 
