@@ -32,10 +32,12 @@
    },
   "Vectri malaria model":{
     "directory":"Disease transmission models",
+    "version":"v1.3.5",
     "diseaseCoverage":"Malaria",
     "speciesIncluded":"Humans, Mosquitoes",
-    "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
-    "sourceCodeRelease":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
+    "generalInfo":"VECTRI is a mathematical model for malaria transmission that accounts for the impact of temperature and rainfall variability on the development cycles of the malaria vector in its larval and adult stage, and also of the parasite itself.",
+    "documentation":"Documentation is included in source download.",
+    "sourceCodeRelease":"Request permission to download at: <a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
   },
   "Dengue transmission model":{
     "diseaseCoverage":"Dengue",
