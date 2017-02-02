@@ -53,7 +53,7 @@
                         <c:if test="${loggedIn == true}">
                             <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
                         <form class="navbar-form" action="${urlLevel}" method="GET">
-                            <button type="submit" class="btn btn-default margin-top-13">Logout</button>
+                            <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>
                         </form>
                         </c:if>
                         <%--<c:if test="${iframe == true}">

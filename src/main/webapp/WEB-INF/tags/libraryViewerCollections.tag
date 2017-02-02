@@ -67,7 +67,7 @@
                         $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
                     }
 
-                    var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
+                    var expandedDataAndKnowledge = $.parseJSON(sessionStorage.getItem("expandedDataAndKnowledge"));
 
                     if(data.state.expanded) {
                         if(expandedDataAndKnowledge != null) {
@@ -88,7 +88,7 @@
                         }
                     }
 
-                    localStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
+                    sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
 
                     if(data.url != null && data.state.selected == true) {
                         var url  = data.url;
@@ -100,7 +100,7 @@
                         }
                     }
                 });
-                var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
+                var expandedDataAndKnowledge = $.parseJSON(sessionStorage.getItem("expandedDataAndKnowledge"));
                 var toRemove = [];
                 if(expandedDataAndKnowledge != null) {
                     for (var i = 0; i < expandedDataAndKnowledge.length; i++) {
@@ -116,7 +116,7 @@
                             expandedDataAndKnowledge.splice(toRemove[i], 1);
                         }
 
-                        localStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
+                        sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
                     }
                 }
             }
