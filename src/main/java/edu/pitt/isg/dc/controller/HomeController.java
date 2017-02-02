@@ -241,6 +241,7 @@ public class HomeController {
         }
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
+        model.addAttribute("preview", true);
         return "commons";
     }
 }

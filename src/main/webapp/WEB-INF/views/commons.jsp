@@ -36,8 +36,15 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
 
 </head>
+<c:choose>
+    <c:when test="${preview == true}">
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false"></myTags:header>
+    </c:when>
+    <c:otherwise>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false"></myTags:header>
 
-<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" wantCollapse="true" iframe="false"></myTags:header>
+    </c:otherwise>
+</c:choose>
 <body id="commons-body">
 <div id="content">
 
