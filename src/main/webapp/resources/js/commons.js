@@ -72,7 +72,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             'name': key
                         };
 
-                        if('redirect' in softwareDictionary[key]) {
+                        if('redirect' in softwareDictionary[key] && softwareDictionary[key]['redirect'] == true) {
                             var url = '';
                             if('source' in softwareDictionary[key]) {
                                 url = softwareDictionary[key]['source'];
@@ -85,6 +85,10 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             if(url.length > 0) {
                                 nodeData['url'] = url;
                                 nodeData['text'] = '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + title + '</div>';
+
+                                if('midasSso' in softwareDictionary[key] && softwareDictionary[key]['midasSso'] == true) {
+                                    nodeData['midasSso'] = softwareDictionary[key]['midasSso'];
+                                }
                             }
                         }
 
@@ -156,7 +160,7 @@ function buildSoftwareTree(contextPath) {
             }
 
             if(data.url != null && data.state.selected == true) {
-                if(data.name == 'Galapagos' || data.name == 'SPEW Download Service' || data.name == 'Simple End-user Apollo App') {
+                if('midasSso' in data && data['midasSso'] == true) {
                     $(location).attr('href', contextPath + "/main/view?url=" + encodeURIComponent(data.url));
                 } else {
                     window.location.href = data.url;
