@@ -296,6 +296,9 @@ a {
 .modal-software-item {
     margin-top:5px;
     word-wrap:break-word;
+    overflow-wrap: break-word;
+    word-break: break-all;
+    -ms-word-break: break-all;
 }
 
 .software-header {
