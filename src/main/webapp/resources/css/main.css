@@ -373,3 +373,17 @@ body {
 .theme-primary-color {
     color:#0c2b65
 }
+
+#dev-team-footer {
+    font-size:12px;
+}
+
+@media (max-width:400px){
+    #dev-team-footer {
+        font-size:10px;
+    }
+
+    #page-title {
+        font-size:15px;
+    }
+}

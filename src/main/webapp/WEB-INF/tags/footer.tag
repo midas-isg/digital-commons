@@ -20,7 +20,7 @@
                 &#0169; 2017 University of Pittsburgh
             </div>
 
-            <div class="col-xs-12" style="font-size:12px">
+            <div id="dev-team-footer" class="col-xs-12">
                 Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
             </div>
         </div>

@@ -27,7 +27,7 @@
                     <a href="${pageContext.request.contextPath}">
                         <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
                              src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
-                    <h4 class="leaf inline-block hidden-md hidden-lg margin-top-30">${pageTitle}</h4>
+                    <h4 id="page-title" class="leaf inline-block hidden-md hidden-lg margin-top-30">${pageTitle}</h4>
                 </div>
 
                 <div class="nav navbar-nav hidden-xs hidden-sm">
