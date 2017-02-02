@@ -53,7 +53,7 @@
 
                 <myTags:softwareModalItem id="publications-that-used-release" title="Publications that used release" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 

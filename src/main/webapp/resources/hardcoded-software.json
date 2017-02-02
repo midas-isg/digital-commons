@@ -1,6 +1,6 @@
 {
    "settings":{
-     "directories":["Disease transmission models", "Pathogen evolution models", "Data visualizers", "Disease transmission tree estimators", "Synthetic ecosystem constructors", "Disease forecasting", "Modeling platforms", "Other software"]
+     "directories":["Disease transmission models", "Population dynamics models", "Pathogen evolution models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Disease forecasting", "Modeling platforms", "Other software"]
    },
    "FluTE":{
       "directory":"Disease transmission models",
@@ -22,7 +22,7 @@
       "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
    },
    "Skeeter Buster":{
-      "directory":"Synthetic ecosystem constructors",
+      "directory":"Population dynamics models",
       "generalInfo":"<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
       "populationSpecies":"Aedes aegypti",
       "location":"http://www.skeeterbuster.net/",
@@ -111,7 +111,7 @@
     "developer": "Center for Inference and Dynamics of Infectious Disease",
     "location": "http://www.cidid.org/transtat",
     "executables": "<a href=\"http://www.cidid.org/s/main_windows.exe\", class=\"underline\">Windows</a>, <a href=\"http://www.cidid.org/s/main_OSX_v_10_10_4.out\", class=\"underline\">MAC OS X</a>",
-    "documentation":"<a href=\"http://www.cidid.org/s/TranStat_Tutorial_A_07_07_2015.pdf\", class=\"underline\">TransStat Tutorial A 07/07/2015 [PDF]</a>",
+    "documentation":"<a href=\"http://www.cidid.org/s/TranStat_Tutorial_A_07_07_2015.pdf\", class=\"underline\" download>TransStat Tutorial A 07/07/2015 [PDF]</a>",
     "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class\"underline\">download latest version</a>",
     "license":"not provided"
   },
@@ -194,5 +194,14 @@
     "location":"http://spew.olympus.psc.edu/syneco/spe",
     "midasSso":true,
     "redirect":true
+  },
+  "spew":{
+    "directory":"Synthetic ecosystem constructors",
+    "developer":"Shannon Gallagher, Lee Richardson, Samuel Venutra, Bill Eddy",
+    "location":"http://www.stat.cmu.edu/~spew/",
+    "executables":"<a href = \"http://data.olympus.psc.edu/syneco/spew_1.2.0/spew_1.2.0.tar.gz\" style=\"text-decoration:underline\">OS X</a>",
+    "source":"https://github.com/leerichardson/spew",
+    "version":"1.2.0",
+    "documentation":"<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\", class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>"
   }
 }

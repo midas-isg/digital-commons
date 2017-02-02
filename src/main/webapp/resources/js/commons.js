@@ -435,7 +435,7 @@ function openModal(softwareName) {
 
     toggleModalItem('license', attrs, 'license', false, true);
 
-    toggleModalItem('documentation', attrs, 'documentation', true, false);
+    toggleModalItem('documentation', attrs, 'documentation', false, true);
 
     $('#pageModal').modal('show');
 
