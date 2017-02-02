@@ -27,6 +27,7 @@ public class HomeController {
     private static String VIEWER_URL = "";
     private static String VIEWER_TOKEN = "";
     private static String SPEW_CACHE_FILE = "";
+    private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
 
     static {
@@ -34,6 +35,7 @@ public class HomeController {
         VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
         VIEWER_TOKEN = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_TOKEN);
         SPEW_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.SPEW_CACHE_FILE_LOCATION);
+        LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
     }
 
     @Autowired
@@ -83,28 +85,65 @@ public class HomeController {
     String getCollectionsJson() throws Exception {
 
         if(!libraryCollectionsJson.equals("")) {
+
             return libraryCollectionsJson;
         } else {
-            String libraryUrl = VIEWER_URL.replace("\"", "") + "collectionsJson/";
-            URL url = new URL(libraryUrl);
-            HttpURLConnection con = (HttpURLConnection) url.openConnection();
-
-            con.setRequestMethod("GET");
-            con.setRequestProperty("Authorization", VIEWER_TOKEN);
-            con.setRequestProperty("Accept-Charset", "UTF-8");
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            try {
+                Path path = Paths.get(LIBRARY_COLLECTIONS_CACHE_FILE);
+                FileInputStream fis = new FileInputStream(path.toFile());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                libraryCollectionsJson = (String) ois.readObject();
+                return libraryCollectionsJson;
+            } catch (Exception e) {
+                queryCollectionsJson(VIEWER_URL, VIEWER_TOKEN);
+                return libraryCollectionsJson;
             }
-            in.close();
-
-            libraryCollectionsJson = response.toString();
-            return response.toString();
         }
+    }
+
+    private void queryCollectionsJson(String viewerUrl, String viewerToken) throws Exception {
+        String libraryUrl = viewerUrl.replace("\"", "") + "collectionsJson/";
+        URL url = new URL(libraryUrl);
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+        con.setRequestMethod("GET");
+        con.setRequestProperty("Authorization", viewerToken);
+        con.setRequestProperty("Accept-Charset", "UTF-8");
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        libraryCollectionsJson = response.toString();
+        writeCollectionsJson();
+    }
+
+    private void writeCollectionsJson() {
+        try {
+            Path path = Paths.get(LIBRARY_COLLECTIONS_CACHE_FILE);
+            FileOutputStream fos = new FileOutputStream(path.toFile());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(libraryCollectionsJson);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping(value = "/main/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
+    public String getCachedLibraryCollections(Model model, @RequestHeader("LibraryURL") String viewerUrl, @RequestHeader("LibraryToken") String viewerToken) {
+        try {
+            queryCollectionsJson(viewerUrl, viewerToken);
+            model.addAttribute("status", "success");
+
+        } catch (Exception ex) {
+            model.addAttribute("status", "fail");
+        }
+        return "cacheStatus";
     }
 
     @RequestMapping(value = "/main/view", method = RequestMethod.GET, headers = "Accept=text/html")

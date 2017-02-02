@@ -12,6 +12,7 @@ public class DigitalCommonsProperties extends Properties {
     public static final String LIBRARY_VIEWER_URL = "libraryViewerUrl";
     public static final String LIBRARY_VIEWER_TOKEN = "libraryViewerToken";
     public static final String SPEW_CACHE_FILE_LOCATION = "spewCacheFileLocation";
+    public static final String LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION = "libraryCollectionsCacheFileLocation";
 
     private static class DigitalCommonsPropertiesHolder {
 
