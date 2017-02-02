@@ -392,6 +392,12 @@ body {
     }
 }
 
+@media (max-width:350px){
+    .hidden-extra-xs {
+        display:none !important;
+    }
+}
+
 .tab-content {
     margin-bottom:20px;
 }

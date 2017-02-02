@@ -82,7 +82,7 @@
         <div style="height:30px; width:100%; background-color:#0c2b65; position:fixed; top:0">
             <div class="pull-right" style="margin-top:5px; margin-right:5px">
                 <a class="leaf" href="#" onclick="loadExternalSite()">
-                    <span class="">Open external site</span>
+                    <span class="hidden-extra-xs">Open external site</span>
                     <icon class="glyphicon glyphicon-chevron-right"></icon>
                 </a>
             </div>
@@ -94,7 +94,7 @@
             <div class="pull-left leaf" style="margin-top:5px; margin-left:5px">
                 <a class="leaf" href="${pageContext.request.contextPath}/main">
                     <icon class="glyphicon glyphicon-chevron-left"></icon>
-                    <span class="">Back to Digital Commons</span>
+                    <span class="hidden-extra-xs">Back to Digital Commons</span>
                 </a>
             </div>
         </div>
