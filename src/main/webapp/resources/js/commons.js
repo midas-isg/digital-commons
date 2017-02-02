@@ -172,7 +172,11 @@ function buildSoftwareTree(contextPath) {
     var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
     if(expandedSoftware != null) {
         for(var i = 0; i < expandedSoftware.length; i++) {
-            $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+            try {
+                $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+            } catch(err) {
+                // continue
+            }
         }
     }
 }
