@@ -15,5 +15,5 @@
     </c:forEach>
 </c:if>
 <c:if test="${empty region.children}">
-    currentNode.push({'name': "${region.name}", 'text': "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>" + formatLocation("${region.name}") + "</div>", 'url': "${region.url}"});
+    currentNode.push({'name': "${region.name}", 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation("${region.name}") + "</span>", 'url': "${region.url}"});
 </c:if>
