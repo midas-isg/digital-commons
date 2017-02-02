@@ -378,7 +378,7 @@ body {
     font-size:12px;
 }
 
-@media (max-width:400px){
+@media (max-width:380px){
     #dev-team-footer {
         font-size:10px;
     }
