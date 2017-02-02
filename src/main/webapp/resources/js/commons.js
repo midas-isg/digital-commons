@@ -170,9 +170,22 @@ function buildSoftwareTree(contextPath) {
     });
     $('#algorithm-treeview').treeview('collapseAll', { silent: true });
     var expandedSoftware = $.parseJSON(localStorage.getItem("expandedSoftware"));
+    var toRemove = [];
     if(expandedSoftware != null) {
         for(var i = 0; i < expandedSoftware.length; i++) {
-            $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+            try {
+                $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+            } catch(err) {
+                toRemove.push(i);
+            }
+        }
+
+        if(toRemove.length > 0) {
+            for(var i = 0; i < toRemove.length; i++) {
+                expandedSoftware.splice(toRemove[i], 1);
+            }
+
+            localStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
         }
     }
 }

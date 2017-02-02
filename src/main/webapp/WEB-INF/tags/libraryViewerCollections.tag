@@ -101,9 +101,22 @@
                     }
                 });
                 var expandedDataAndKnowledge = $.parseJSON(localStorage.getItem("expandedDataAndKnowledge"));
+                var toRemove = [];
                 if(expandedDataAndKnowledge != null) {
                     for (var i = 0; i < expandedDataAndKnowledge.length; i++) {
-                        $('#data-and-knowledge-treeview').treeview('expandNode', [expandedDataAndKnowledge[i], {silent: true}]);
+                        try {
+                            $('#data-and-knowledge-treeview').treeview('expandNode', [expandedDataAndKnowledge[i], {silent: true}]);
+                        } catch(err) {
+                            toRemove.push(i);
+                        }
+                    }
+
+                    if(toRemove.length > 0) {
+                        for(var i = 0; i < toRemove.length; i++) {
+                            expandedDataAndKnowledge.splice(toRemove[i], 1);
+                        }
+
+                        localStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
                     }
                 }
             }
