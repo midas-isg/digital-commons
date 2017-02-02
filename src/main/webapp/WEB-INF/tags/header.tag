@@ -5,6 +5,7 @@
 <%@ attribute name="pageTitle" type="java.lang.String" %>
 <%@ attribute name="subTitle" type="java.lang.String" %>
 <%@ attribute name="loggedIn" type="java.lang.Boolean" %>
+<%@ attribute name="preview" type="java.lang.Boolean" %>
 <%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 <%@ attribute name="pub" type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication" %>
@@ -50,7 +51,7 @@
                         </ul>
                     </c:if>
                     <ul class="nav navbar-nav navbar-right">
-                        <c:if test="${loggedIn == true}">
+                        <c:if test="${loggedIn == true and preview == false}">
                             <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
                         <form class="navbar-form" action="${urlLevel}" method="GET">
                             <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>
