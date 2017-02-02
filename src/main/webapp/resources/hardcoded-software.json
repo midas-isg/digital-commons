@@ -225,5 +225,20 @@
     "location":"https://reichlab.github.io/flusight/",
     "source":"https://github.com/reichlab/flusight",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
+  },
+  "ILI Forecasting":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://cpid.iri.columbia.edu/"
+  },
+  "CDCEpi Dengue competition":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://cdcepi.github.io/dengue/targets.html"
+  },
+  "CDCEpi influenza":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://cdcepi.github.io/flu/forecasts.html"
   }
 }
