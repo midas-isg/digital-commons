@@ -23,7 +23,9 @@
 
                 <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="species-included" title="Species included"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="species-included" title="Host species included"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="population-species" title="Population species"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="control-measures" title="Control measures"></myTags:softwareModalItem>
 

@@ -43,6 +43,19 @@ function getSoftwareTitle(name, version) {
 
 function hardcodeSoftwareFromJson(contextPath, location) {
     $.getJSON( contextPath + location, function( data ) {
+        var settings = data["settings"];
+        var directories = settings["directories"];
+
+        for(var i = 0; i < directories.length; i++) {
+            software.push({
+                "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
+                "nodes": [],
+                "name": directories[i]
+            });
+        }
+
+        delete data["settings"];
+
         for(var key in data) {
             softwareDictionary[key] = data[key];
 
@@ -54,10 +67,28 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             title = getSoftwareTitle(key, softwareDictionary[key]['version']);
                         }
 
-                        software[i].nodes.push({
+                        var nodeData = {
                             'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</div>',
                             'name': key
-                        });
+                        };
+
+                        if('redirect' in softwareDictionary[key]) {
+                            var url = '';
+                            if('source' in softwareDictionary[key]) {
+                                url = softwareDictionary[key]['source'];
+                            }
+
+                            if('location' in softwareDictionary[key]) {
+                                url = softwareDictionary[key]['location'];
+                            }
+
+                            if(url.length > 0) {
+                                nodeData['url'] = url;
+                                nodeData['text'] = '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + title + '</div>';
+                            }
+                        }
+
+                        software[i].nodes.push(nodeData);
                         break;
                     }
                 }
@@ -78,7 +109,7 @@ function hardcodeSoftware() {
 
     software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics models</span>", nodes: [], "name": "Population dynamics models"});
 
-    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
+    software.splice(6, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
 
 function buildSoftwareTree(contextPath) {
@@ -352,6 +383,8 @@ function openModal(softwareName) {
     //toggleModalItem('doi', attrs, 'doi', false, false);
 
     toggleModalItem('type', attrs, 'type', false, false);
+
+    toggleModalItem('populationSpecies', attrs, 'population-species', false, false);
 
     //toggleModalItem('version', attrs, 'version', false, false);
 

@@ -6,7 +6,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
-    <c:forEach items="${software}" var="folder" varStatus="loop">
+    <%--<c:forEach items="${software}" var="folder" varStatus="loop">
         software.push({
             "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + "${folder.name}" + "</span>",
             "nodes": [],
@@ -34,7 +34,7 @@
                 </c:if>
 
                 <c:if test="${not empty item.sourceCodeUrl}">
-                    softwareDictionary['${item.name}']['sourceCode'] = '${item.sourceCodeUrl}';
+                    softwareDictionary['${item.name}']['source'] = '${item.sourceCodeUrl}';
                     url = '${item.sourceCodeUrl}';
                 </c:if>
 
@@ -44,6 +44,7 @@
                 </c:if>
 
                 <c:if test="${folder.name == 'Disease transmission models'}">
+                    console.log('"' + '${item.name}' + '":', JSON.stringify(softwareDictionary['${item.name}']));
                     software[${loop.index}].nodes.push({
                         "text": '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'${item.name}\')">' + title + '</div>',
                         "name": "${item.name}"
@@ -59,16 +60,15 @@
                 </c:if>
             </c:if>
         </c:forEach>
-    </c:forEach>
+    </c:forEach>--%>
 
     if(isSoftwareHardcoded) {
-        hardcodeSoftware();
         hardcodeSoftwareFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json")
     }
 
-    if(!isSoftwareHardcoded) {
+    /*if(!isSoftwareHardcoded) {
         buildSoftwareTree("${pageContext.request.contextPath}");
-    }
+    }*/
 
 </script>
 

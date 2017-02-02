@@ -1,4 +1,7 @@
-{  
+{
+   "settings":{
+     "directories":["Disease transmission models", "Synthetic ecosystem constructors", "Pathogen evolution models", "Data visualizers", "Disease transmission tree estimators", "Disease forecasting", "Modeling platforms", "Other software"]
+   },
    "FluTE":{
       "directory":"Disease transmission models",
       "diseaseCoverage":"influenza",
@@ -19,8 +22,9 @@
       "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
    },
    "Skeeter Buster":{
-      "directory":"Population dynamics models",
+      "directory":"Synthetic ecosystem constructors",
       "generalInfo":"<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
+      "populationSpecies":"Aedes aegypti",
       "location":"http://www.skeeterbuster.net/",
       "sourceCodeRelease":"on request.  E-mail <a href=\"mailto:info@skeeterbuster.net?Subject=Source%20code%20release\" target=\"_top\" style=\"text-decoration: underline\">info@skeeterbuster.net</a>",
       "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
@@ -74,6 +78,7 @@
     "directory":"Disease transmission models",
     "generalInfo":"The Global Epidemic Simulator is a platform for modelling directly transmissible human diseases such as influenza, and testing intervention policies that may reduce the duration or severity of an outbreak of such a disease. Building on previous work, this model is spatial and individual-based, using various geographical and demographic data sources to place households at absolute locations, populated with individuals of specific ages who each attend schools or workplaces situated in their vicinity. The significant advance of this project over previous work is the global nature of simulation, the memory and performance requirements of which motivate us towards a multi-core, multi-computer solution.",
     "version": "beta-1.0",
+    "locationCoverage":"Worldwide",
     "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "diseaseCoverage":"influenza-like diseases",
     "speciesIncluded":"Humans",
@@ -96,6 +101,90 @@
     "documentation":"https://repast.github.io/docs.html",
     "source":"https://github.com/Repast/repast.hpc",
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0\" class=\"underline\">https://github.com/Repast/repast.hpc/releases/tag/v2.2.0</a>"
+  },
+  "TRANSTAT":{
+    "directory":"Disease transmission models",
+    "developer":"Center for Inference and Dynamics of Infectious Disease",
+    "location":"http://www.cidid.org/transtat"
+  },
+  "ZIKA Modeling":{
+    "directory":"Disease transmission models",
+    "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
+    "location":"http://www.zika-model.org/"
+  },
+  "HyPhy":{
+    "directory":"Pathogen evolution models",
+    "developer":"iGEM/UCSD evolutionary biology and bioinformatics group",
+    "location":"http://www.hyphy.org/w/index.php/Main_Page",
+    "source":"https://github.com/veg/hyphy/releases/tag/2.2.7",
+    "version":"2.2.7",
+    "redirect":true
+  },
+  "SEEDY":{
+    "directory":"Pathogen evolution models",
+    "developer":"Colin Worby, Harvard T.H. Chan School of Public Health",
+    "source":"https://cran.r-project.org/web/packages/seedy/index.html",
+    "version":"1.3",
+    "redirect":true
+  },
+  "nextflu/H3N2":{
+    "directory":"Pathogen evolution models",
+    "developer":"Trevor Bedford and Richard Neher",
+    "source":"https://github.com/blab/nextflu",
+    "location":"http://nextflu.org/h3n2/3y/",
+    "redirect":true
+  },
+  "nextstrain/Zika":{
+    "directory":"Pathogen evolution models",
+    "developer":"Trevor Bedford and Richard Neher",
+    "location":"http://nextstrain.org/zika/",
+    "redirect":true
+  },
+  "EpiCaseMap":{
+    "directory":"Data visualizers",
+    "version":"1.0.1.0",
+    "developer":"ISG",
+    "source":"https://github.com/midas-isg/epicasemap/releases/tag/1.0.1",
+    "location":"https://betaweb.rods.pitt.edu/epicasemap",
+    "redirect":true
+  },
+  "Galapagos":{
+    "directory":"Data visualizers",
+    "version":"1.0",
+    "developer":"ISG",
+    "location":"https://research.rods.pitt.edu/galapagos/",
+    "midasSso":true,
+    "redirect":true
+  },
+  "outbreaker":{
+    "directory":"Disease transmission tree estimators",
+    "version":"1.1-7",
+    "developer":"Thibaut Jombart, Imperial College",
+    "source":"https://github.com/thibautjombart/outbreaker/releases/tag/1.1-7",
+    "location":"https://sites.google.com/site/therepiproject/r-pac/outbreaker",
+    "redirect":true
+  },
+  "FluOutlook":{
+    "directory":"Disease forecasting",
+    "developer":"Northeastern University, ISI Foundation",
+    "location":"http://fluoutlook.org/",
+    "redirect":true
+  },
+  "Simple End-user Apollo App":{
+    "directory":"Other software",
+    "version":"3.1.0",
+    "developer":"ISG",
+    "location":"https://research.rods.pitt.edu/apollo-web-client/",
+    "midasSso":true,
+    "redirect":true
+  },
+  "SPEW Download Service":{
+    "directory":"Other software",
+    "version":"1.1.0",
+    "developer":"ISG",
+    "source":"https://github.com/leerichardson/spew",
+    "location":"http://spew.olympus.psc.edu/syneco/spe",
+    "midasSso":true,
+    "redirect":true
   }
-
 }
