@@ -38,15 +38,19 @@
         var libraryData;
         $.ajax({
             type : "GET",
-            contentType : "application/json",
+            contentType : "application/json; charset=utf-8",
             url : "/digital-commons/main/getCollectionsJson",
-            headers: "Accept=application/json; charset=utf-8",
             dataType : 'json',
+            data: {},
+            cache: false,
             timeout : 100000,
             success : function(data) {
                 libraryData = data;
             },
-            error : function(e) {
+            error : function(xhr, textStatus, errorThrown) {
+                console.log(xhr.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
                 libraryData = null;
             },
             complete : function(e) {
