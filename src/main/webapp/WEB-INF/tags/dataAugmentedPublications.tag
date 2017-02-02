@@ -25,7 +25,7 @@
 		data: dataAugmentedPublications,
         expandIcon: "glyphicon glyphicon-chevron-right",
         collapseIcon: "glyphicon glyphicon-chevron-down",
-		emptyIcon: "fa fa-circle fa-1",
+		emptyIcon: "bullet-point	",
 		showBorder: false,
 	});
 
