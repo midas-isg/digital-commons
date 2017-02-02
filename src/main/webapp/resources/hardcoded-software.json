@@ -203,5 +203,26 @@
     "source":"https://github.com/leerichardson/spew",
     "version":"1.2.0",
     "documentation":"<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\", class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>"
+  },
+  "ILI-nearby":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://delphi.midas.cs.cmu.edu/nowcast/"
+  },
+  "Delphi's forecasts":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://delphi.midas.cs.cmu.edu/forecast/"
+  },
+  "Epicast":{
+    "directory":"Disease forecasting",
+    "redirect":true,
+    "location":"http://delphi.midas.cs.cmu.edu/epicast/"
+  },
+  "FluSight":{
+    "directory":"Disease forecasting",
+    "location":"https://reichlab.github.io/flusight/",
+    "source":"https://github.com/reichlab/flusight",
+    "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
   }
 }

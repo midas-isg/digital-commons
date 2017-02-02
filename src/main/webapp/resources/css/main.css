@@ -295,6 +295,7 @@ a {
 
 .modal-software-item {
     margin-top:5px;
+    word-wrap:break-word;
 }
 
 .software-header {

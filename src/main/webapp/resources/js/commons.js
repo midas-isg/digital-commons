@@ -377,11 +377,11 @@ function openModal(softwareName) {
 
     if('doi' in attrs) {
         $('#software-doi-container').show();
-        $('#software-doi').text(attrs['doi']);
+        $('#software-doi').html(attrs['doi']);
     } else {
         console.log('here');
         $('#software-doi-container').show();
-        $('#software-doi').text('N/A');
+        $('#software-doi').html('N/A');
     }
 
     if('version' in attrs) {
