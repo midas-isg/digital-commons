@@ -22,6 +22,7 @@ var software = [];
 
 var isSoftwareHardcoded = true;
 var softwareDictionary = {};
+var softwareSettings = {};
 
 /* Change includes method in IE */
 if(!String.prototype.includes) {
@@ -43,8 +44,8 @@ function getSoftwareTitle(name, version) {
 
 function hardcodeSoftwareFromJson(contextPath, location) {
     $.getJSON( contextPath + location, function( data ) {
-        var settings = data["settings"];
-        var directories = settings["directories"];
+        softwareSettings = data["settings"];
+        var directories = softwareSettings["directories"];
 
         for(var i = 0; i < directories.length; i++) {
             software.push({
@@ -53,8 +54,6 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                 "name": directories[i]
             });
         }
-
-        delete data["settings"];
 
         for(var key in data) {
             softwareDictionary[key] = data[key];
@@ -168,9 +167,29 @@ function buildSoftwareTree(contextPath) {
             }
         }
     });
+
     $('#algorithm-treeview').treeview('collapseAll', { silent: true });
     var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
     var toRemove = [];
+
+    if(expandedSoftware == null) {
+        var openByDefault = softwareDictionary["settings"]["openDirectories"];
+        var openByDefaultIds = [];
+        for(var i = 0; i < openByDefault.length; i++) {
+            var matchingNode = $('#algorithm-treeview').treeview('search', [ openByDefault[i], {
+                ignoreCase: false,     // case insensitive
+                exactMatch: false,    // like or equals
+                revealResults: false  // reveal matching nodes
+            }])[0];
+            $('#algorithm-treeview').treeview('clearSearch');
+
+            openByDefaultIds.push(matchingNode.nodeId);
+        }
+
+        expandedSoftware = openByDefaultIds;
+        sessionStorage.setItem("expandedSoftware", JSON.stringify(openByDefaultIds));
+    }
+
     if(expandedSoftware != null) {
         for(var i = 0; i < expandedSoftware.length; i++) {
             try {

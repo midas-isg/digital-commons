@@ -102,6 +102,25 @@
                 });
                 var expandedDataAndKnowledge = $.parseJSON(sessionStorage.getItem("expandedDataAndKnowledge"));
                 var toRemove = [];
+
+                if(expandedDataAndKnowledge == null) {
+                    var openByDefault = ["Synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data"];
+                    var openByDefaultIds = [];
+                    for(var i = 0; i < openByDefault.length; i++) {
+                        var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {
+                            ignoreCase: false,     // case insensitive
+                            exactMatch: false,    // like or equals
+                            revealResults: false  // reveal matching nodes
+                        }])[0];
+                        $('#data-and-knowledge-treeview').treeview('clearSearch');
+
+                        openByDefaultIds.push(matchingNode.nodeId);
+                    }
+
+                    expandedDataAndKnowledge = openByDefaultIds;
+                    sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(openByDefaultIds));
+                }
+
                 if(expandedDataAndKnowledge != null) {
                     for (var i = 0; i < expandedDataAndKnowledge.length; i++) {
                         try {
