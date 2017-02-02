@@ -79,7 +79,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/main/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
+    @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
     String getCollectionsJson() throws Exception {
@@ -134,16 +134,16 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value = "/main/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
-    public String getCachedLibraryCollections(Model model, @RequestHeader("LibraryURL") String viewerUrl, @RequestHeader("LibraryToken") String viewerToken) {
+    @RequestMapping(value = "/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
+    public
+    @ResponseBody
+    String getCachedLibraryCollections(Model model, @RequestHeader("LibraryURL") String viewerUrl, @RequestHeader("LibraryToken") String viewerToken) {
         try {
             queryCollectionsJson(viewerUrl, viewerToken);
-            model.addAttribute("status", "success");
-
+            return libraryCollectionsJson;
         } catch (Exception ex) {
-            model.addAttribute("status", "fail");
+            return ex.getMessage();
         }
-        return "cacheStatus";
     }
 
     @RequestMapping(value = "/main/view", method = RequestMethod.GET, headers = "Accept=text/html")
