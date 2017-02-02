@@ -1,6 +1,6 @@
 {
    "settings":{
-     "directories":["Disease transmission models", "Population dynamics models", "Pathogen evolution models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Disease forecasting", "Modeling platforms", "Other software"]
+     "directories":["Disease transmission models", "Population dynamics models", "Pathogen evolution models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Disease forecasting", "Modeling platforms"]
    },
    "FluTE":{
       "directory":"Disease transmission models",
