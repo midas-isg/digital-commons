@@ -102,12 +102,18 @@
     "source":"https://github.com/Repast/repast.hpc",
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0\" class=\"underline\">https://github.com/Repast/repast.hpc/releases/tag/v2.2.0</a>"
   },
-  "TRANSTAT":{
-    "directory":"Disease transmission models",
-    "developer":"Center for Inference and Dynamics of Infectious Disease",
-    "location":"http://www.cidid.org/transtat"
+  "TranStat": {
+    "generalInfo":"TranStat is a software application designed to estimate the transmissibility of infections within groups of individuals.",
+    "directory": "Disease transmission models",
+    "version":"Version 3 July 2015",
+    "developer": "Center for Inference and Dynamics of Infectious Disease",
+    "location": "http://www.cidid.org/transtat",
+    "executables": "<a href=\"http://www.cidid.org/s/main_windows.exe\", class=\"underline\">Windows</a>, <a href=\"http://www.cidid.org/s/main_OSX_v_10_10_4.out\", class=\"underline\">MAC OS X</a>",
+    "documentation":"<a href=\"http://www.cidid.org/s/TranStat_Tutorial_A_07_07_2015.pdf\", class=\"underline\">TransStat Tutorial A 07/07/2015 [PDF]</a>",
+    "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class\"underline\">download latest version</a>",
+    "license":"not provided"
   },
-  "ZIKA Modeling":{
+    "ZIKA Modeling":{
     "directory":"Disease transmission models",
     "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
     "location":"http://www.zika-model.org/"
