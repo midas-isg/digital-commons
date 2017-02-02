@@ -391,3 +391,7 @@ body {
         font-size:15px;
     }
 }
+
+.tab-content {
+    margin-bottom:20px;
+}
