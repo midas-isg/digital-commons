@@ -43,7 +43,7 @@
                         <ul class="nav navbar-nav navbar-padding tabs">
                             <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
                                                    href="#browse">Browse</a></li>
-                            <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>
+                            <!--<li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>-->
                             <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
                                 <li class="hidden"><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}">About</a></li>
