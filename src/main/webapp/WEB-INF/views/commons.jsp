@@ -37,7 +37,7 @@
 
 </head>
 <c:choose>
-    <c:when test="${preview == true}">
+    <c:when test="${preview eq true}">
         <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false"></myTags:header>
     </c:when>
     <c:otherwise>

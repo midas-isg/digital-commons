@@ -24,18 +24,38 @@
                             <span class="icon-bar"></span>
                         </button>
                     </c:if>
+                    <c:choose>
+                        <c:when test="${preview}" >
+                            <a href="${pageContext.request.contextPath}/preview">
+                                <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath}">
+                                <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                        </c:otherwise>
 
-                    <a href="${pageContext.request.contextPath}">
-                        <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
-                             src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                    </c:choose>
+
                     <h4 id="page-title" class="leaf inline-block hidden-md hidden-lg margin-top-30">${pageTitle}</h4>
                 </div>
 
                 <div class="nav navbar-nav hidden-xs hidden-sm">
-                    <a href="${pageContext.request.contextPath}">
-                        <img alt="MIDAS" class="navbar-brand-mod"
-                             src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
-                    <h1 class="leaf inline-block">${pageTitle}</h1>
+                    <c:choose>
+                        <c:when test="${preview}">
+                            <a href="${pageContext.request.contextPath}/preview">
+                                <img alt="MIDAS" class="navbar-brand-mod"
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                            <h1 class="leaf inline-block">${pageTitle}</h1>
+                        </c:when>
+                        <c:otherwise>
+                            <a href="${pageContext.request.contextPath}">
+                                <img alt="MIDAS" class="navbar-brand-mod"
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                            <h1 class="leaf inline-block">${pageTitle}</h1>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse">

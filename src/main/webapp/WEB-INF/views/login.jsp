@@ -30,82 +30,65 @@
 
 <body class="nav-md">
 <!-- /page content -->
-
+<form name="ignore_me">
+    <input type="hidden" id="page_is_dirty" name="page_is_dirty" value="0" />
+</form>
 </body>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        var auth0 = new Auth0({
-            clientID: '${clientId}',
-            domain: '${domain}',
-            callbackURL: '${callbackUrl}'
-        });
+    var dirty_bit = document.getElementById('page_is_dirty');
+    console.log(dirty_bit);
+    if (dirty_bit.value == '1') {
+        console.log("here");
+        window.location = '${pageContext.request.contextPath}/preview';
+    }else {
+        mark_page_dirty();
+        $(document).ready(function() {
+            var auth0 = new Auth0({
+                clientID: '${clientId}',
+                domain: '${domain}',
+                callbackURL: '${callbackUrl}'
+            });
 
-        auth0.getSSOData(function (err, data) {
-            var loggedInUserId = '${userId}';
-            if (data && data.sso === true) {
-                console.log('SSO: an Auth0 SSO session already exists');
-                console.log(loggedInUserId);
-                console.log(data.lastUsedUserID);
-                if (loggedInUserId !== data.lastUsedUserID) {
-                    console.log("SSO Session but NOT locally authenticated ");
-                    auth0.login({
-                        scope: 'openid name email picture offline_access',
-                        state: '${state}'
-                    }, function (err) {
-                        console.error('Error logging in: ' + err);
-                    });
+            auth0.getSSOData(function (err, data) {
+                var loggedInUserId = '${userId}';
+                if (data && data.sso === true) {
+                    console.log('SSO: an Auth0 SSO session already exists');
+                    console.log(loggedInUserId);
+                    console.log(data.lastUsedUserID);
+                    if (loggedInUserId !== data.lastUsedUserID) {
+                        console.log("SSO Session but NOT locally authenticated ");
+                        auth0.login({
+                            scope: 'openid name email picture offline_access',
+                            state: '${state}'
+                        }, function (err) {
+                            console.error('Error logging in: ' + err);
+                        });
+                    } else {
+                        console.log("SSO Session and locally authenticated ");
+                        window.location = '${pageContext.request.contextPath}';
+                    }
+                } else if (loggedInUserId){
+                    console.log("NO SSO Session but locally authenticated -> log them out locally");
+                    window.location = '${logoutUrl}';
                 } else {
-                    console.log("SSO Session and locally authenticated ");
-                    window.location = '${pageContext.request.contextPath}';
-                }
-            } else if (loggedInUserId){
-                console.log("NO SSO Session but locally authenticated -> log them out locally");
-                window.location = '${logoutUrl}';
-            } else {
-                console.log("NO SSO Session and NOT locally authenticated ");
-                var title = "Digital Commons";
-                var message = "Please login to use the services";
+                    console.log("NO SSO Session and NOT locally authenticated ");
+                    var title = "Digital Commons";
+                    var message = "Please login to use the services";
 //                var hash = window.location.hash.substr(1);
 //                if (hash.match('^logout')){
 //                    message = "Logged out successfully.";
 //                }
-                window.location = '${ssoLoginUrl}?returnToUrl='
+                    window.location = '${ssoLoginUrl}?returnToUrl='
                         + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message;
-            }
+                }
+            });
         });
-    });
+    }
+    function mark_page_dirty() {
+        dirty_bit.value = '1';
+    }
 
-
-    <%--$(document)--%>
-            <%--.ready(--%>
-                    <%--function() {--%>
-                        <%--var auth0ClientId = '${clientId}';--%>
-                        <%--var auth0Domain = '${domain}';--%>
-                        <%--var state = '${state}';--%>
-                        <%--var callbackUrl = '${callbackUrl}';--%>
-                        <%--//var iconUrl = /*[[@{/img/ccd_logo.png}]]*/ '';--%>
-                        <%--new Auth0Lock(auth0ClientId, auth0Domain).show({--%>
-                            <%--dict: {--%>
-                                <%--signin: {--%>
-                                    <%--title: "MIDAS Login"--%>
-                                <%--}--%>
-                            <%--},--%>
-                            <%--//icon: iconUrl,--%>
-                            <%--callbackURL: callbackUrl,--%>
-                            <%--responseType: 'code',--%>
-                            <%--rememberLastLogin: true,--%>
-                            <%--closable: false,--%>
-                            <%--authParams: {--%>
-                                <%--state: state--%>
-                            <%--}--%>
-                        <%--});--%>
-
-
-                        <%--$("#login").click(function(e){--%>
-                            <%--attemptLogin();--%>
-                        <%--});--%>
-                    <%--});--%>
 </script>
 
 </html>

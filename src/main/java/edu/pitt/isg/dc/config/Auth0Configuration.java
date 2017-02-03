@@ -14,6 +14,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.annotation.*;
 
@@ -43,7 +44,12 @@ public class Auth0Configuration extends Auth0Config {
         @Override
         public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain next)
                 throws IOException, ServletException {
+            HttpServletRequest httpServletRequest = (HttpServletRequest) request;
             currentContextPath = ((HttpServletRequest) request).getContextPath();
+            final HttpSession session = httpServletRequest.getSession();
+            String parameter = httpServletRequest.getParameter("url");
+            String url = httpServletRequest.getRequestURI().substring(httpServletRequest.getContextPath().length()) + "?url=" + parameter;
+            session.setAttribute("requestUrl", url);
             super.doFilter(request, response, next);
         }
 
