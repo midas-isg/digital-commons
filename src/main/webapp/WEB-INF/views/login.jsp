@@ -37,9 +37,8 @@
 
 <script type="text/javascript">
     var dirty_bit = document.getElementById('page_is_dirty');
-    console.log(dirty_bit);
+    console.log(dirty_bit.value);
     if (dirty_bit.value == '1') {
-        console.log("here");
         window.location = '${pageContext.request.contextPath}/preview';
     }else {
         mark_page_dirty();
@@ -86,7 +85,9 @@
         });
     }
     function mark_page_dirty() {
+        console.log("mark");
         dirty_bit.value = '1';
+        console.log(dirty_bit.value);
     }
 
 </script>

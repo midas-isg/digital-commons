@@ -7,18 +7,18 @@
       "directory":"Disease transmission models",
       "diseaseCoverage":"influenza",
       "locationCoverage":"Los Angeles and Seattle",
-      "speciesIncluded":"Homo sapiens",
+      "speciesIncluded":"Humans",
       "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
       "version":"1.12, 1.15, & 1.16",
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
-   "GLEAM 2.0":{  
+   "GLEAM 2.0":{
       "directory":"Disease transmission models",
       "title":"Global Epidemic and Mobility Model (GLEAM)",
       "diseaseCoverage":"Communicable human-to-human",
       "locationCoverage":"Worldwide",
-      "speciesIncluded":"Homo sapiens",
+      "speciesIncluded":"Humans",
       "location":"http://www.gleamviz.org",
       "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
    },
@@ -119,7 +119,7 @@
     "ZIKA Modeling":{
     "directory":"Disease transmission models",
     "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
-    "location":"http://www.zika-model.org/"
+    "webApplication":"http://www.zika-model.org/"
   },
   "HyPhy":{
     "directory":"Pathogen evolution models",
