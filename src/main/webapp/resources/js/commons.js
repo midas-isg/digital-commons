@@ -242,11 +242,11 @@ var standardEncodingTree = {
     ]
 };
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
+function getDataAndKnowledgeTree(libraryData, libraryViewerUrl, contextPath) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    collections.push(syntheticEcosystems,
+    collections.push(
         {
             text: "Disease surveillance data",
             nodes: [

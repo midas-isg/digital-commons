@@ -1,7 +1,7 @@
 {
    "settings":{
-     "directories":["Disease transmission models", "Population dynamics models", "Pathogen evolution models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Disease forecasting", "Modeling platforms"],
-     "openDirectories":["Disease transmission models", "Population dynamics models", "Pathogen evolution models"]
+     "directories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms"],
+     "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
    },
    "FluTE":{
       "directory":"Disease transmission models",
@@ -225,7 +225,7 @@
     "source":"https://github.com/reichlab/flusight",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
   },
-  "ILI Forecasting":{
+  "Columbia Prediction of Infectious Diseases":{
     "directory":"Disease forecasting",
     "redirect":true,
     "location":"http://cpid.iri.columbia.edu/"
