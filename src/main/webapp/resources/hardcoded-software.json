@@ -44,10 +44,11 @@
     "diseaseCoverage":"Dengue",
     "directory":"Disease transmission models",
     "version":"2.0",
-    "generalInfo":"<a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>",
+    "generalInfo":"This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
     "source":"https://github.com/tjhladish/dengue",
     "sourceCodeRelease":"<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
-    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>"
+    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
+    "publicationsThatUsedRelease": "Thomas J. Hladish, Carl A. B. Pearson, Dennis L. Chao, Diana Patricia Rojas, Gabriel L. Recchia, Héctor Gómez-Dantés, M. Elizabeth Halloran, Juliet R. C. Pulliam, Ira M. Longini (2016) Projected Impact of Dengue Vaccination in Yucatán, Mexico. (<a href=\"http://dx.doi.org/10.1371/journal.pntd.0004661\" class=\"underline\">doi:10.1371/journal.pntd.0004661</a>)"
   },
   "Ebola transmission model":{
     "directory":"Disease transmission models",
