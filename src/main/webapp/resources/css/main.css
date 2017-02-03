@@ -401,3 +401,8 @@ body {
 .tab-content {
     margin-bottom:20px;
 }
+
+.bullet-point:before {
+    content: ' \25CF';
+    font-size: 11px;
+}

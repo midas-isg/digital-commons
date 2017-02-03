@@ -1,4 +1,4 @@
-<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 

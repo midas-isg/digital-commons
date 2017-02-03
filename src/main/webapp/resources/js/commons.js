@@ -67,7 +67,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                         }
 
                         var nodeData = {
-                            'text': '<div class="node-with-margin" onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</div>',
+                            'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
                             'name': key
                         };
 
@@ -83,7 +83,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
 
                             if(url.length > 0) {
                                 nodeData['url'] = url;
-                                nodeData['text'] = '<div class="node-with-margin" onmouseover="toggleTitle(this)">' + title + '</div>';
+                                nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
                                 if('midasSso' in softwareDictionary[key] && softwareDictionary[key]['midasSso'] == true) {
                                     nodeData['midasSso'] = softwareDictionary[key]['midasSso'];
@@ -212,31 +212,31 @@ function buildSoftwareTree(contextPath) {
 var standardEncodingTree = {
     text: "Standards for encoding data",
     nodes: [{
-        text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo location codes (for locations)</div>",
+        text: "<span onmouseover='toggleTitle(this)'>Apollo location codes (for locations)</span>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</span>",
             url: "http://loinc.org/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (for host and pathogen taxa)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (for host and pathogen taxa)</span>",
             url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>RxNorm codes (for drugs)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>RxNorm codes (for drugs)</span>",
             url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>SNOMED CT codes (for diagnoses)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>SNOMED CT codes (for diagnoses)</span>",
             url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</span>",
             url: "http://www.violinet.org/vaccineontology/"
         },
         {
-            text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</div>",
+            text: "<span onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</span>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
         }
     ]
@@ -270,16 +270,16 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
                     nodes: [
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</div>",
+                            text: "<span onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</span>",
                             url:"https://data.cdc.gov/browse?category=MMWR"
                         },
 
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 1</div>",
+                            text: "<span onmouseover='toggleTitle(this)'>Tycho level 1</span>",
                             url:"https://www.tycho.pitt.edu/data/level1.php"
                         },
                         {
-                            text: "<div class=\"grandnode-with-margin\" onmouseover='toggleTitle(this)'>Tycho level 2</div>",
+                            text: "<span onmouseover='toggleTitle(this)'>Tycho level 2</span>",
                             url:"https://www.tycho.pitt.edu/data/level2.php"
                         },
                     ]
@@ -291,11 +291,11 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             nodes: [
 
                 {
-                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US cause of death 1995-2015</div>",
+                    text: "<span onmouseover='toggleTitle(this)'>CDC WONDER US cause of death 1995-2015</span>",
                     url: "https://wonder.cdc.gov/controller/datarequest/D76"
                 },
                 {
-                    text: "<div class=\"node-with-margin\" onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</div>",
+                    text: "<span onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</span>",
                     url: "https://wonder.cdc.gov/mortSQL.html"
                 }
             ]
@@ -323,7 +323,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     //     "<i class='fa fa-info-circle'></i></button>";
 
                     nodeLevel2.push({
-                        text: "<div class=\"grandnode-with-margin\">" + value.name + "<div>",
+                        text: "<span>" + value.name + "<span>",
                         url: url + value.urn
                     });
                 });

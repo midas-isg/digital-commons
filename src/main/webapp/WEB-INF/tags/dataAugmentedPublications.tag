@@ -12,7 +12,7 @@
                 var="pubTitle"/>
 
 		dataAugmentedPublications.push({
-			"text": "<li style=\"margin-left: 1em;\">" + "${pubTitle}" + "</li>",
+			"text": "${pubTitle}",
             "url": "${pageContext.request.contextPath}/main/publication/" + "${pub.paper.id}" + "/" + "${pub.data.id}",
 			"paperId": "${pub.paper.id}",
 			"dataId": "${pub.data.id}"
@@ -25,7 +25,7 @@
 		data: dataAugmentedPublications,
         expandIcon: "glyphicon glyphicon-chevron-right",
         collapseIcon: "glyphicon glyphicon-chevron-down",
-//		emptyIcon: "glyphicon glyphicon-minus",
+		emptyIcon: "bullet-point	",
 		showBorder: false,
 	});
 
