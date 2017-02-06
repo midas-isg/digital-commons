@@ -1,6 +1,10 @@
 package edu.pitt.isg.dc.controller;
 
-import com.auth0.web.*;
+import com.auth0.Auth0User;
+import com.auth0.NonceUtils;
+import com.auth0.QueryParamUtils;
+import com.auth0.SessionUtils;
+import com.auth0.spring.security.mvc.Auth0CallbackHandler;
 import edu.pitt.isg.dc.utils.UrlAid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -16,19 +20,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Scanner;
 
 @Controller
 public class Auth0Controller extends Auth0CallbackHandler {
-	//private SsoConfig ssoConfig;
-
-	/*@Autowired
-    protected void setSsoConfig(final SsoConfig ssoConfig) {
-        this.ssoConfig = ssoConfig;
-    }*/
 	@RequestMapping(value = "/${auth0.loginRedirectOnFail}", method = RequestMethod.GET)
 	public String showLoginPage(
 			final HttpServletRequest request,
@@ -45,7 +41,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		model.addAttribute("state", nonce);
 		model.addAttribute("clientId", clientId);
 		model.addAttribute("domain", auth0Domain);
-		model.addAttribute("ssoLoginUrl", "http://betaweb.rods.pitt.edu/hub/sso");
+		model.addAttribute("ssoLoginUrl", "http://betaweb.rods.pitt.edu/hub-beta/sso");
 		model.addAttribute("logoutUrl", request.getContextPath() + "/logout");
 		Auth0User auth0User = (Auth0User) session.getAttribute("auth0User");
 		if (auth0User != null) {
@@ -55,7 +51,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		return "login";
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logoutFromAuth0", method = RequestMethod.GET)
 	public RedirectView logOut(
 			@Value("${auth0.domain}") final String auth0Domain,
 			@Value("${auth0.clientId}") final String clientId,
@@ -73,7 +69,6 @@ public class Auth0Controller extends Auth0CallbackHandler {
 				.host(auth0Domain)
 				.pathSegment("v2", "logout")
 				.queryParam("returnTo", UrlAid.toUrlString(request,  "login"))
-				.queryParam("client_id", clientId)
 				.build().toString();
 		return new RedirectView(redirectUrl, false);
 	}
@@ -94,9 +89,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		session.setAttribute("userId", userId);
 		session.setAttribute("userName", auth0User.getName());
 		session.setAttribute("userPic", auth0User.getPicture());
-		if(session.getAttribute("requestUrl") != null && !((String)session.getAttribute("requestUrl")).contains("login")) {
-			return "redirect:"+ (String) session.getAttribute("requestUrl");
-		}
+
 		return "redirect:/main";
 
 	}
