@@ -48,11 +48,32 @@ function hardcodeSoftwareFromJson(contextPath, location) {
         var directories = softwareSettings["directories"];
 
         for(var i = 0; i < directories.length; i++) {
-            software.push({
-                "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
-                "nodes": [],
-                "name": directories[i]
-            });
+            if(typeof directories[i] === 'string') {
+                software.push({
+                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
+                    "nodes": [],
+                    "name": directories[i]
+                });
+            } else {
+                var keys = Object.keys(directories[i]);
+                var topDirectory = keys[0];
+                var nodes = [];
+
+                for(var x = 0; x < directories[i][topDirectory].length; x++) {
+                    nodes.push({
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x] + "</span>",
+                        "nodes": [],
+                        "name": directories[i][topDirectory][x]
+                    });
+                }
+
+                software.push({
+                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
+                    "nodes": [],
+                    "name": topDirectory
+                });
+
+            }
         }
 
         for(var key in data) {
