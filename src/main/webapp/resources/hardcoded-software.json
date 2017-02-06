@@ -250,5 +250,28 @@
     "version":"0.0.4",
     "source":"https://github.com/PSC-PublicHealth/pFRED",
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
+  },
+  "Apollo FluTE":{
+    "directory":"Disease transmission models",
+    "generalInfo":"A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.",
+    "diseaseCoverage":"influenza",
+    "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
+    "source":"https://github.com/PSC-PublicHealth/FluTE",
+    "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268028#.WJiSt2V8-sM\" class=\"underline\">https://zenodo.org/record/268028#.WJiSt2V8-sM</a>",
+    "version":"apollo-flute-1.1",
+    "documentation":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
+    "locationCoverage":"U.S.",
+    "speciesIncluded":"Humans",
+    "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
+  },
+  "FRED Cygwin Installer":{
+    "directory":"Disease transmission models",
+    "generalInfo":"This is an installer of FRED-v2.12.0 for Cygwin.",
+    "doi":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\", class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
+    "source":"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
+    "version":"2.12.0-b1.0",
+    "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268504#.WJiWQmV8-sM\" class=\"underline\">https://zenodo.org/record/268504#.WJiWQmV8-sM</a>",
+    "documentation":"<a href=\"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md\" class=\"underline\">https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md</a>",
+    "executables":"<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"
   }
 }
