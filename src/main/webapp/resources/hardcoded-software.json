@@ -31,7 +31,7 @@
       "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
       "executables":"<a href = \"http://legrosmathi.eu/skeeterbuster/Skeeter_Buster.zip\" style=\"text-decoration:underline\">Windows</a>"
    },
-  "Vectri malaria model":{
+  "VECTRI malaria model":{
     "directory":"Disease transmission models",
     "version":"v1.3.5",
     "diseaseCoverage":"Malaria",
@@ -264,10 +264,10 @@
     "speciesIncluded":"Humans",
     "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
-  "FRED Cygwin Installer":{
+  "FRED Windows 64":{
     "directory":"Disease transmission models",
-    "generalInfo":"This is an installer of FRED-v2.12.0 for Cygwin.",
-    "doi":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\", class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
+    "generalInfo":"This software installs the FRED simulator on a Windows 64-bit operating system.",
+    "doi":"<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>",
     "source":"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
     "version":"2.12.0-b1.0",
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268504#.WJiWQmV8-sM\" class=\"underline\">https://zenodo.org/record/268504#.WJiWQmV8-sM</a>",
