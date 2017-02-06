@@ -37,8 +37,9 @@
     "diseaseCoverage":"Malaria",
     "speciesIncluded":"Humans, Mosquitoes",
     "generalInfo":"VECTRI is a mathematical model for malaria transmission that accounts for the impact of temperature and rainfall variability on the development cycles of the malaria vector in its larval and adult stage, and also of the parasite itself.",
-    "documentation":"Documentation is included in source download.",
-    "sourceCodeRelease":"Request permission to download at: <a href = \"http://users.ictp.it/~tompkins/vectri/index.html\" style=\"text-decoration:underline\">http://users.ictp.it/~tompkins/vectri/index.html</a>"
+    "documentation":"<a href=\"https://gitlab.com/tompkins/vectri/tree/v1.3.5/doc\" class=\"underline\">https://gitlab.com/tompkins/vectri/tree/v1.3.5/doc</a>",
+    "sourceCodeRelease":"<a href=\"https://gitlab.com/tompkins/vectri/tree/v1.3.5\" class=\"underline\">https://gitlab.com/tompkins/vectri/tree/v1.3.5</a>",
+    "source":"https://gitlab.com/tompkins/vectri"
   },
   "Dengue transmission model":{
     "diseaseCoverage":"Dengue",
@@ -93,7 +94,7 @@
     "generalInfo":"Repast Simphony is a richly interactive and easy to learn Java-based modeling system that is designed for use on workstations and small computing clusters.",
     "version":"2.4.0",
     "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
-    "documentation":"https://repast.github.io/docs.html",
+    "documentation":"<a href=\"https://repast.github.io/docs.html\" class=\"underline\">https://repast.github.io/docs.html</a>",
     "source":"https://github.com/Repast/repast.simphony",
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0\" class=\"underline\">https://github.com/Repast/repast.simphony/releases/tag/v2.4.0</a>"
   },
@@ -102,7 +103,7 @@
     "generalInfo":"Repast for High Performance Computing is a lean and expert-focused C++-based modeling system that is designed for use on large computing clusters and supercomputers.",
     "version":"2.2.0",
     "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
-    "documentation":"https://repast.github.io/docs.html",
+    "documentation":"<a href=\"https://repast.github.io/docs.html\" class=\"underline\">https://repast.github.io/docs.html</a>",
     "source":"https://github.com/Repast/repast.hpc",
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.hpc/releases/tag/v2.2.0\" class=\"underline\">https://github.com/Repast/repast.hpc/releases/tag/v2.2.0</a>"
   },
@@ -240,5 +241,14 @@
     "directory":"Disease forecasting",
     "redirect":true,
     "location":"http://cdcepi.github.io/flu/forecasts.html"
+  },
+  "pFRED":{
+    "directory":"Disease transmission models",
+    "generalInfo":"A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.",
+    "diseaseCoverage":"Communicable human-to-human",
+    "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
+    "version":"0.0.4",
+    "source":"https://github.com/PSC-PublicHealth/pFRED",
+    "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   }
 }
