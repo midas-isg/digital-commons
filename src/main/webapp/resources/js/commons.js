@@ -69,7 +69,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
 
                 software.push({
                     "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
-                    "nodes": [],
+                    "nodes": nodes,
                     "name": topDirectory
                 });
 
@@ -81,7 +81,21 @@ function hardcodeSoftwareFromJson(contextPath, location) {
 
             if('directory' in softwareDictionary[key]) {
                 for(var i = 0; i < software.length; i++) {
-                    if(software[i]['name'] == softwareDictionary[key]['directory']) {
+                    var subdirectories = [];
+                    var subdirectoryContent = [];
+                    if('nodes' in software[i]) {
+                        for(var x in software[i]['nodes']) {
+                            if('nodes' in software[i]['nodes'][x]) {
+                                subdirectories.push(software[i]['nodes'][x]['name']);
+                                subdirectoryContent.push(software[i]['nodes'][x]);
+                            }
+                        }
+                    }
+
+
+                    var index = subdirectories.indexOf(softwareDictionary[key]['directory']);
+
+                    if(software[i]['name'] == softwareDictionary[key]['directory'] || index > -1) {
                         var title = key;
                         if('version' in softwareDictionary[key]) {
                             title = getSoftwareTitle(key, softwareDictionary[key]['version']);
@@ -112,7 +126,13 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             }
                         }
 
-                        software[i].nodes.push(nodeData);
+                        if(index > -1) {
+                            subdirectoryContent[index].nodes.push(nodeData);
+                            subdirectoryContent[index].nodes.sort(compareNodes);
+                        } else {
+                            software[i].nodes.push(nodeData);
+                        }
+
                         break;
                     }
                 }
