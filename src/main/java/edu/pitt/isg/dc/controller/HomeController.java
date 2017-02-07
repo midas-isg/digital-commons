@@ -129,8 +129,10 @@ public class HomeController {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
             oos.writeObject(libraryCollectionsJson);
-        }catch (Exception e) {
-            e.printStackTrace();
+        }catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
     }
 
