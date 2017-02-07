@@ -49,10 +49,10 @@ public class Auth0Configuration extends Auth0Config {
                     .loginPage("/login")
                     .permitAll()
                 .and()
-                    .addFilterBefore(new Auth0FilterSupportingContextPath(), Auth0AuthenticationFilter.class);
+                    .addFilterBefore(new FilterAddingRequestUrlIntoSession(), Auth0AuthenticationFilter.class);
     }
 
-    private class Auth0FilterSupportingContextPath extends GenericFilterBean {
+    private class FilterAddingRequestUrlIntoSession extends GenericFilterBean {
         @Override
         public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException{
             fillRequestUrlIntoSession((HttpServletRequest) request);
