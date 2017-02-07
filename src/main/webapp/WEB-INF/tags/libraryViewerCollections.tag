@@ -39,7 +39,7 @@
         $.ajax({
             type : "GET",
             contentType : "application/json; charset=utf-8",
-            url : "/digital-commons/getCollectionsJson",
+            url : "${pageContext.request.contextPath}/getCollectionsJson",
             dataType : 'json',
             data: {},
             cache: false,
