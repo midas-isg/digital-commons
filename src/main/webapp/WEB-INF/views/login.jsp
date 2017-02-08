@@ -30,65 +30,77 @@
 
 <body class="nav-md">
 <!-- /page content -->
-<form name="ignore_me">
-    <input type="hidden" id="page_is_dirty" name="page_is_dirty" value="0" />
+<form name="ignore_me" autocomplete="on">
+    <input type="hidden" id="page_is_dirty" value="no">
 </form>
 </body>
 
 <script type="text/javascript">
-    var dirty_bit = document.getElementById('page_is_dirty');
-    console.log(dirty_bit.value);
-    if (dirty_bit.value == '1') {
-        window.location = '${pageContext.request.contextPath}/preview';
-    }else {
-        mark_page_dirty();
-        $(document).ready(function() {
-            var auth0 = new Auth0({
-                clientID: '${clientId}',
-                domain: '${domain}',
-                callbackURL: '${callbackUrl}'
-            });
+    window.onpageshow = function(event) {
+        if (event.persisted) {
+            window.location.reload()
+        }
+    };
+    onload = function () {
+        var e;
+        if(sessionStorage.getItem("dirtypage") != null) {
+            console.log("session");
+            e = sessionStorage.getItem("dirtypage");
+        } else {
+            console.log("form");
+            e = document.getElementById("page_is_dirty").value;
+        }
+        console.log(e);
+        if (e == "yes") {
+            sessionStorage.setItem("dirtypage", "no");
+            window.location = '${pageContext.request.contextPath}/preview';
+        } else {
+            sessionStorage.setItem("dirtypage", "yes");
 
-            auth0.getSSOData(function (err, data) {
-                var loggedInUserId = '${userId}';
-                if (data && data.sso === true) {
-                    console.log('SSO: an Auth0 SSO session already exists');
-                    console.log(loggedInUserId);
-                    console.log(data.lastUsedUserID);
-                    if (loggedInUserId !== data.lastUsedUserID) {
-                        console.log("SSO Session but NOT locally authenticated ");
-                        auth0.login({
-                            scope: 'openid name email picture offline_access',
-                            state: '${state}'
-                        }, function (err) {
-                            console.error('Error logging in: ' + err);
-                        });
+            $(document).ready(function () {
+                var auth0 = new Auth0({
+                    clientID: '${clientId}',
+                    domain: '${domain}',
+                    callbackURL: '${callbackUrl}'
+                });
+
+                auth0.getSSOData(function (err, data) {
+                    var loggedInUserId = '${userId}';
+                    if (data && data.sso === true) {
+                        console.log('SSO: an Auth0 SSO session already exists');
+                        console.log(loggedInUserId);
+                        console.log(data.lastUsedUserID);
+                        if (loggedInUserId !== data.lastUsedUserID) {
+                            console.log("SSO Session but NOT locally authenticated ");
+                            auth0.login({
+                                scope: 'openid name email picture offline_access',
+                                state: '${state}'
+                            }, function (err) {
+                                console.error('Error logging in: ' + err);
+                            });
+                        } else {
+                            console.log("SSO Session and locally authenticated ");
+                            window.location = '${pageContext.request.contextPath}';
+                        }
+                    } else if (loggedInUserId) {
+                        console.log("NO SSO Session but locally authenticated -> log them out locally");
+                        window.location = '${logoutUrl}';
                     } else {
-                        console.log("SSO Session and locally authenticated ");
-                        window.location = '${pageContext.request.contextPath}';
-                    }
-                } else if (loggedInUserId){
-                    console.log("NO SSO Session but locally authenticated -> log them out locally");
-                    window.location = '${logoutUrl}';
-                } else {
-                    console.log("NO SSO Session and NOT locally authenticated ");
-                    var title = "Digital Commons";
-                    var message = "Please login to use the services";
+                        console.log("NO SSO Session and NOT locally authenticated ");
+                        var title = "Digital Commons";
+                        var message = "Please login to use the services";
 //                var hash = window.location.hash.substr(1);
 //                if (hash.match('^logout')){
 //                    message = "Logged out successfully.";
 //                }
-                    window.location = '${ssoLoginUrl}?returnToUrl='
-                        + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message;
-                }
+                        window.location = '${ssoLoginUrl}?returnToUrl='
+                            + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message;
+                    }
+                });
             });
-        });
+        }
     }
-    function mark_page_dirty() {
-        console.log("mark");
-        dirty_bit.value = '1';
-        console.log(dirty_bit.value);
-    }
+
 
 </script>
 
