@@ -10,7 +10,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
-    <%--var syntheticEcosystemsByRegion = {
+    var syntheticEcosystemsByRegion = {
         text: "<span onmouseover='toggleTitle(this)'>Synthetic ecosystems</span>",
         nodes: []
     };
@@ -32,7 +32,7 @@
 
     for(var i in syntheticEcosystemsByRegion.nodes) {
         syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
-    }--%>
+    }
 
     $(document).ready(function () {
         var libraryData;
@@ -55,7 +55,7 @@
             },
             complete : function(e) {
                 $('#data-and-knowledge-treeview').treeview({
-                    data: getDataAndKnowledgeTree(libraryData, ${libraryViewerUrl}, "${pageContext.request.contextPath}"),
+                    data: getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}"),
                     showBorder: false,
 
                     expandIcon: "glyphicon glyphicon-chevron-right",
