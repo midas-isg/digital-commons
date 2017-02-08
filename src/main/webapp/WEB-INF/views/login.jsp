@@ -43,19 +43,19 @@
     };
     onload = function () {
         var e;
-        if(sessionStorage.getItem("dirtypage") != null) {
+        if(localStorage.getItem("dirtypage") != null) {
             console.log("session");
-            e = sessionStorage.getItem("dirtypage");
+            e = localStorage.getItem("dirtypage");
         } else {
             console.log("form");
             e = document.getElementById("page_is_dirty").value;
         }
         console.log(e);
         if (e == "yes") {
-            sessionStorage.setItem("dirtypage", "no");
+            localStorage.setItem("dirtypage", "no");
             window.location = '${pageContext.request.contextPath}/preview';
         } else {
-            sessionStorage.setItem("dirtypage", "yes");
+            localStorage.setItem("dirtypage", "yes");
 
             $(document).ready(function () {
                 var auth0 = new Auth0({
