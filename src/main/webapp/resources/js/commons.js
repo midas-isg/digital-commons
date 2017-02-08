@@ -287,7 +287,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    collections.push(syntheticEcosystems,
+    collections.push(
         {
             text: "Disease surveillance data",
             nodes: [
