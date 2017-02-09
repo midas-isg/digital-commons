@@ -63,7 +63,8 @@ public class Auth0Configuration extends Auth0Config {
             final HttpSession session = request.getSession(true);// true == allow create
             final String parameter = request.getParameter("url");
             final String url = request.getRequestURI().substring(request.getContextPath().length()) + "?url=" + parameter;
-            session.setAttribute("requestUrl", url);
+           if(!url.contains("login") && !url.contains("auth") && !url.contains("callback") && !url.contains("null"))
+                session.setAttribute("requestUrl", url);
             //System.out.println(url);
         }
     }

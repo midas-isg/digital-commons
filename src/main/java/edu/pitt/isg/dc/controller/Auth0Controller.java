@@ -89,7 +89,11 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		session.setAttribute("userId", userId);
 		session.setAttribute("userName", auth0User.getName());
 		session.setAttribute("userPic", auth0User.getPicture());
-
+		if(session.getAttribute("requestUrl") != null && !((String)session.getAttribute("requestUrl")).contains("login")) {
+			String redirect = (String) session.getAttribute("requestUrl") ;
+			session.removeAttribute("requestUrl");
+			return "redirect:"+ redirect;
+		}
 		return "redirect:/main";
 
 	}
