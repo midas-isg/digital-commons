@@ -24,7 +24,7 @@
     <myTags:favicon></myTags:favicon>
 
     <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- jQuery imports -->
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"
