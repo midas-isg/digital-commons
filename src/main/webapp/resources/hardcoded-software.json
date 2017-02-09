@@ -278,5 +278,17 @@
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268504#.WJiWQmV8-sM\" class=\"underline\">https://zenodo.org/record/268504#.WJiWQmV8-sM</a>",
     "documentation":"<a href=\"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md\" class=\"underline\">https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md</a>",
     "executables":"<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"
+  },
+  "Zika virus infections in childbearing women in the Americas":{
+    "directory":"Disease transmission models",
+    "version":"commit f5e0cef",
+    "diseaseCoverage":"Zika",
+    "locationCoverage":"The Americas",
+    "speciesIncluded":"Humans, Mosquitos",
+    "generalInfo":"This model projects Zika virus infections in childbearing women in the Americas.",
+    "source":"https://github.com/TAlexPerkins/Zika_nmicrobiol_2016",
+    "doi":"<a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">10.1038/nmicrobiol.2016.126</a>",
+    "publicationsThatUsedRelease": "Perkins TA, Siraj AS, Ruktanonchai CW, Kraemer MUGK, Tatem AJ. (2016) Model-based projections of Zika virus infections in childbearing women in the Americas. Nature Microbiology 1:16126. <a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">http://www.nature.com/articles/nmicrobiol2016126</a>",
+    "license":"<a href=\"http://matt.might.net/articles/crapl/\" class=\"underline\">CRAPL v0.1 License</a>"
   }
 }
