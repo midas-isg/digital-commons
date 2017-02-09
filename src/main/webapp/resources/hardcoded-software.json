@@ -21,11 +21,11 @@
       "locationCoverage":"Worldwide",
       "speciesIncluded":"Humans",
       "version":"v2.0 - GLEAM Server, v6.7 - GLEAMviz simulator client",
-      "executables":"<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
+      "executables":"GleamViz v6.7: <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
       "documentation":"<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
       "location":"http://www.gleamviz.org",
       "license":"Proprietary",
-      "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
+      "publicationsAboutRelease":"<a href = \"http://www.gleamviz.org/publications/\" style=\"text-decoration:underline\">http://www.gleamviz.org/publications/</a>"
    },
    "Skeeter Buster":{
       "directory":"Population dynamics models",
