@@ -41,7 +41,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		model.addAttribute("state", nonce);
 		model.addAttribute("clientId", clientId);
 		model.addAttribute("domain", auth0Domain);
-		model.addAttribute("ssoLoginUrl", "http://betaweb.rods.pitt.edu/hub-beta/sso");
+		model.addAttribute("ssoLoginUrl", "http://betaweb.rods.pitt.edu/hub/sso");
 		model.addAttribute("logoutUrl", request.getContextPath() + "/logout");
 		Auth0User auth0User = (Auth0User) session.getAttribute("auth0User");
 		if (auth0User != null) {

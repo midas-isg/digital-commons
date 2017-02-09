@@ -33,12 +33,6 @@
 </body>
 
 <script type="text/javascript">
-    window.onpageshow = function (event) {
-        if (event.persisted) {
-            window.location.reload()
-        }
-    };
-
     $(document).ready(function () {
         var auth0 = new Auth0({
             clientID: '${clientId}',
