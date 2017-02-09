@@ -13,13 +13,18 @@
       "version":"1.12, 1.15, & 1.16",
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
-   "GLEAM 2.0":{
+   "GLEAM":{
       "directory":"Disease transmission models",
       "title":"Global Epidemic and Mobility Model (GLEAM)",
+      "generalInfo":"<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
       "diseaseCoverage":"Communicable human-to-human",
       "locationCoverage":"Worldwide",
       "speciesIncluded":"Humans",
+      "version":"v2.0 - GLEAM Server, v6.7 GLEAMviz simulator client",
+      "executables":"<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
+      "documentation":"<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
       "location":"http://www.gleamviz.org",
+      "license":"Proprietary",
       "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
    },
    "Skeeter Buster":{

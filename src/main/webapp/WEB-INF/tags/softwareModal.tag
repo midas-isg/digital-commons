@@ -14,7 +14,6 @@
                     </span>--%>
             </div>
             <div class="modal-body">
-
                 <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="general-info" title="General info" hasHref="false"></myTags:softwareModalItem>
@@ -33,29 +32,30 @@
 
                 <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="version" title="Source code version"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code" title="Source code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="license" title="License" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="publications-about-release" title="Publications about release" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="publications-that-used-release" title="Publications that used release" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
-
-                <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="license" title="License" hasHref="false"></myTags:softwareModalItem>
 
             </div>
             <div class="modal-footer">

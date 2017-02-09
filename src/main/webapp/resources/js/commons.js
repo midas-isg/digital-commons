@@ -34,6 +34,8 @@ if(!String.prototype.includes) {
 
 function getSoftwareTitle(name, version) {
     var title = name;
+
+    version = version.split(' - ')[0];
     if(isNaN(version[0])) {
         title += ' - ' + version;
     } else {
@@ -439,7 +441,6 @@ function openModal(softwareName) {
         $('#software-doi-container').show();
         $('#software-doi').html(attrs['doi']);
     } else {
-        console.log('here');
         $('#software-doi-container').show();
         $('#software-doi').html('N/A');
     }
@@ -449,9 +450,9 @@ function openModal(softwareName) {
         $('#software-version').text(attrs['version']);
 
         if(attrs['version'].includes(',')) {
-            $('#software-version-tag').text('Source code versions:');
+            $('#software-version-tag').text('Software versions:');
         } else {
-            $('#software-version-tag').text('Source code version:');
+            $('#software-version-tag').text('Software version:');
         }
     } else {
         $('#software-version-container').hide();
