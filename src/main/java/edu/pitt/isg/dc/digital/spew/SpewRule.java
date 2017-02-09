@@ -18,7 +18,9 @@ public class SpewRule {
     }
 
     private void customize(SpewLocation country) {
-        country.setChildren(null);
+        if(!country.getName().equals("united states of america")) {
+            country.setChildren(null);
+        }
         // country.setUrl(dao.toDownloadUrlWithSummary(country));
     }
 
