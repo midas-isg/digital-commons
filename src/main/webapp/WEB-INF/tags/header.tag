@@ -28,12 +28,12 @@
                         <c:when test="${preview}" >
                             <a href="${pageContext.request.contextPath}/preview">
                                 <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:when>
                         <c:otherwise>
                             <a href="${pageContext.request.contextPath}">
                                 <img alt="MIDAS" class="navbar-brand-mod hidden-md hidden-lg"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:otherwise>
 
                     </c:choose>
@@ -46,13 +46,13 @@
                         <c:when test="${preview}">
                             <a href="${pageContext.request.contextPath}/preview">
                                 <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                             <h1 class="leaf inline-block">${pageTitle}</h1>
                         </c:when>
                         <c:otherwise>
                             <a href="${pageContext.request.contextPath}">
                                 <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_4.png"></a>
+                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                             <h1 class="leaf inline-block">${pageTitle}</h1>
                         </c:otherwise>
                     </c:choose>
