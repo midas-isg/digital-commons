@@ -30,9 +30,6 @@
 
 <body class="nav-md">
 <!-- /page content -->
-<form name="ignore_me" autocomplete="on">
-    <input type="hidden" id="page_is_dirty" value="no">
-</form>
 </body>
 
 <script type="text/javascript">
