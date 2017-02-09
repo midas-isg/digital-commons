@@ -31,7 +31,9 @@
     syntheticEcosystemsByRegion.nodes.sort(compareNodes);
 
     for(var i in syntheticEcosystemsByRegion.nodes) {
-        syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
+        if(syntheticEcosystemsByRegion.nodes[i].nodes != null) {
+            syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
+        }
     }
 
     $(document).ready(function () {

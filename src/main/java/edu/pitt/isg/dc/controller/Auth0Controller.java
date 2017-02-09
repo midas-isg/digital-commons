@@ -30,7 +30,8 @@ public class Auth0Controller extends Auth0CallbackHandler {
 			final HttpServletRequest request,
 			final Model model,
 			@Value("${auth0.clientId}") final String clientId,
-			@Value("${auth0.domain}") final String auth0Domain) {
+			@Value("${auth0.domain}") final String auth0Domain,
+			@Value("${auth0.midasHubUrl}") final String midasHubUrl) {
 
 		final HttpSession session = request.getSession();
 
