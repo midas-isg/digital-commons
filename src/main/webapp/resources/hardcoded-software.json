@@ -294,8 +294,7 @@
   "Dynamic Mosquito Simulation Model (DyMSiM)":{
     "directory":"Population dynamics models",
     "generalInfo":"<p>The Dynamic Mosquito Simulation Model (DyMSiM) enables the simulation of mosquito populations driven by climate data. DyMSiM provides a useful tool for researchers investigating a number of mosquito-borne diseases.</p> <p>DyMSiM was created using STELLA 9.02 software. You must have STELLA installed on your computer to run DyMSiM.</p>",
-    "speciesIncluded":"Humans, Mosquitos",
-    "diseaseCoverage":"Mosquito-borne diseases",
+    "speciesIncluded":"Mosquitos",
     "location":"https://sites.google.com/site/dymsimmodel/home",
     "executables":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/download\">Windows, OS X</a> (registration required)",
     "documentation":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/about\">https://sites.google.com/site/dymsimmodel/about</a>",
