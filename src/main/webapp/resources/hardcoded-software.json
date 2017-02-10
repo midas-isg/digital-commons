@@ -21,11 +21,11 @@
       "locationCoverage":"Worldwide",
       "speciesIncluded":"Humans",
       "version":"v2.0 - GLEAM Server, v6.7 - GLEAMviz simulator client",
-      "executables":"<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
+      "executables":"GleamViz v6.7: <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
       "documentation":"<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
       "location":"http://www.gleamviz.org",
       "license":"Proprietary",
-      "publicationsAboutRelease":"<a href = \"http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37\" style=\"text-decoration:underline\">http://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-11-37</a>"
+      "publicationsAboutRelease":"<a href = \"http://www.gleamviz.org/publications/\" style=\"text-decoration:underline\">http://www.gleamviz.org/publications/</a>"
    },
    "Skeeter Buster":{
       "directory":"Population dynamics models",
@@ -278,5 +278,28 @@
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268504#.WJiWQmV8-sM\" class=\"underline\">https://zenodo.org/record/268504#.WJiWQmV8-sM</a>",
     "documentation":"<a href=\"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md\" class=\"underline\">https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md</a>",
     "executables":"<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"
+  },
+  "Zika virus infections in childbearing women in the Americas":{
+    "directory":"Disease transmission models",
+    "version":"commit f5e0cef",
+    "diseaseCoverage":"Zika",
+    "locationCoverage":"The Americas",
+    "speciesIncluded":"Humans, Mosquitos",
+    "generalInfo":"This model projects Zika virus infections in childbearing women in the Americas.",
+    "source":"https://github.com/TAlexPerkins/Zika_nmicrobiol_2016",
+    "doi":"<a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">10.1038/nmicrobiol.2016.126</a>",
+    "publicationsThatUsedRelease": "Perkins TA, Siraj AS, Ruktanonchai CW, Kraemer MUGK, Tatem AJ. (2016) Model-based projections of Zika virus infections in childbearing women in the Americas. Nature Microbiology 1:16126. (<a href=\"http://dx.doi.org/10.1038/nmicrobiol.2016.126\" class=\"underline\">doi:10.1038/nmicrobiol.2016.126</a>)",
+    "license":"<a href=\"http://matt.might.net/articles/crapl/\" class=\"underline\">CRAPL v0.1 License</a>"
+  },
+  "Dynamic Mosquito Simulation Model (DyMSiM)":{
+    "directory":"Population dynamics models",
+    "generalInfo":"<p>The Dynamic Mosquito Simulation Model (DyMSiM) enables the simulation of mosquito populations driven by climate data. DyMSiM provides a useful tool for researchers investigating a number of mosquito-borne diseases.</p> <p>DyMSiM was created using STELLA 9.02 software. You must have STELLA installed on your computer to run DyMSiM.</p>",
+    "speciesIncluded":"Humans, Mosquitos",
+    "diseaseCoverage":"Mosquito-borne diseases",
+    "location":"https://sites.google.com/site/dymsimmodel/home",
+    "executables":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/download\">Windows, OS X</a> (registration required)",
+    "documentation":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/about\">https://sites.google.com/site/dymsimmodel/about</a>",
+    "license":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/download\">Proprietary Open Source License</a>",
+    "publicationsAboutRelease": "Morin C and Comrie AC, 2010. Modeled response of the West Nile virus vector Culex quinquefasciatus to changing climate using the dynamic mosquito simulation model. International Journal of Biometeorology 54,517-529. (<a href=\"http://dx.doi.org/10.1007/s00484-010-0349-6\" class=\"underline\">doi:10.1007/s00484-010-0349-6</a>)"
   }
 }
