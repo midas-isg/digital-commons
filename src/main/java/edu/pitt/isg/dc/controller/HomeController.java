@@ -103,12 +103,14 @@ public class HomeController {
 
     private void queryCollectionsJson(String viewerUrl, String viewerToken) throws Exception {
         String libraryUrl = viewerUrl.replace("\"", "") + "collectionsJson/";
+        String token = viewerToken.replace("\"", "");
         URL url = new URL(libraryUrl);
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
         con.setRequestMethod("GET");
-        con.setRequestProperty("Authorization", viewerToken);
+        con.setRequestProperty("Authorization", token);
         con.setRequestProperty("Accept-Charset", "UTF-8");
+
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer response = new StringBuffer();
