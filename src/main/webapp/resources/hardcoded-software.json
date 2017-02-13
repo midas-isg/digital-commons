@@ -5,10 +5,10 @@
    },
    "FluTE":{
       "directory":"FluTE (4 versions)",
-      "diseaseCoverage":"influenza",
+      "diseaseCoverage":"Influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "speciesIncluded":"Humans",
-      "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
+      "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
       "version":"1.12, 1.15, & 1.16",
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
@@ -75,7 +75,7 @@
   },
   "Open Malaria":{
     "directory":"Disease transmission models",
-    "generalInfo":"A simulator of malaria epidemiology and control",
+    "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"36.11",
     "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
     "source":"https://github.com/SwissTPH/openmalaria",
@@ -90,7 +90,7 @@
     "version": "beta-1.0",
     "locationCoverage":"Worldwide",
     "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
-    "diseaseCoverage":"influenza-like diseases",
+    "diseaseCoverage":"Influenza-like diseases",
     "speciesIncluded":"Humans",
     "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
@@ -259,7 +259,7 @@
   "Apollo FluTE":{
     "directory":"FluTE (4 versions)",
     "generalInfo":"A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.",
-    "diseaseCoverage":"influenza",
+    "diseaseCoverage":"Influenza",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
     "source":"https://github.com/PSC-PublicHealth/FluTE",
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268028#.WJiSt2V8-sM\" class=\"underline\">https://zenodo.org/record/268028#.WJiSt2V8-sM</a>",
@@ -267,7 +267,7 @@
     "documentation":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
     "locationCoverage":"U.S.",
     "speciesIncluded":"Humans",
-    "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
+    "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
   "FRED Windows 64":{
     "directory":"FRED (3 versions)",
