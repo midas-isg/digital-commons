@@ -27,4 +27,11 @@
             By using the MIDAS Digital Commons you agree that no warranties of any kind are made by the University of Pittsburgh (University) with respect to the data provided in the MIDAS Digital Commons or any use thereof, and the University hereby disclaim the implied warranties of merchantability, fitness for a particular purpose and non-infringement. The University shall not be liable for any claims, losses or damages of any kind arising from the data provided in the MIDAS Digital Commons or any use thereof.
         </span>
     </div>
+    <div class="about-item">
+        <h4 class="bold theme-primary-color">Contact</h4>
+
+        <span>
+            Please direct comments and questions to our <a class="underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
+        </span>
+    </div>
 </div>

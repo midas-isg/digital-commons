@@ -61,12 +61,15 @@
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <c:if test="${loggedIn == true && iframe == false}">
                         <ul class="nav navbar-nav navbar-padding tabs">
-                            <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
-                                                   href="#browse">Browse</a></li>
+                            <li class="active "><a class="leaf font-size-14 padding-top-30" data-toggle="tab"
+                                                   href="#software">Software</a></li>
                             <!--<li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>-->
-                            <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
+                            <li><a id="data-and-knowledge-tab" class="leaf font-size-14 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>
+                            <li><a class="leaf font-size-14 padding-top-30 " data-toggle="tab" href="#web-services">WebServices</a></li>
+                            <li><a class="leaf font-size-14 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
+                            <li class="hidden"><a class="leaf font-size-14 padding-top-30 " data-toggle="tab" href="#about"></a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
-                                <li class="hidden"><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}">About</a></li>
+                                <li class="hidden"><a class="leaf font-size-14 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
                             </c:forEach>
                         </ul>
                     </c:if>
