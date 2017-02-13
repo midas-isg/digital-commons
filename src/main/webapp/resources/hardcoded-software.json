@@ -7,7 +7,7 @@
       "directory":"FluTE (4 versions)",
       "diseaseCoverage":"influenza",
       "locationCoverage":"Los Angeles and Seattle",
-      "speciesIncluded":"Humans",
+      "hostSpeciesIncluded":"Humans",
       "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
       "source":"https://github.com/dlchao/FluTE",
       "version":"1.12, 1.15, & 1.16",
@@ -19,7 +19,7 @@
       "generalInfo":"<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
       "diseaseCoverage":"Communicable human-to-human",
       "locationCoverage":"Worldwide",
-      "speciesIncluded":"Humans",
+      "hostSpeciesIncluded":"Humans",
       "version":"v2.0 - GLEAM Server, v6.7 - GLEAMviz simulator client",
       "executables":"GleamViz v6.7: <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>, <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>",
       "documentation":"<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
@@ -40,7 +40,7 @@
     "directory":"Disease transmission models",
     "version":"v1.3.5",
     "diseaseCoverage":"Malaria",
-    "speciesIncluded":"Humans, Mosquitoes",
+    "hostSpeciesIncluded":"Humans, Mosquitoes",
     "generalInfo":"VECTRI is a mathematical model for malaria transmission that accounts for the impact of temperature and rainfall variability on the development cycles of the malaria vector in its larval and adult stage, and also of the parasite itself.",
     "documentation":"<a href=\"https://gitlab.com/tompkins/vectri/tree/v1.3.5/doc\" class=\"underline\">https://gitlab.com/tompkins/vectri/tree/v1.3.5/doc</a>",
     "sourceCodeRelease":"<a href=\"https://gitlab.com/tompkins/vectri/tree/v1.3.5\" class=\"underline\">https://gitlab.com/tompkins/vectri/tree/v1.3.5</a>",
@@ -61,7 +61,7 @@
     "generalInfo":"Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.",
     "version":"commit 720c16",
     "diseaseCoverage":"Ebola",
-    "speciesIncluded":"Humans",
+    "hostSpeciesIncluded":"Humans",
     "sourceCodeRelease":"<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
     "publicationsThatUsedRelease":"Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
   },
@@ -81,7 +81,7 @@
     "source":"https://github.com/SwissTPH/openmalaria",
     "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "diseaseCoverage":"Malaria",
-    "speciesIncluded":"Humans, Mosquitoes",
+    "hostSpeciesIncluded":"Humans, Mosquitoes",
     "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"
   },
   "Global Epidemic Simulator":{
@@ -91,7 +91,7 @@
     "locationCoverage":"Worldwide",
     "sourceCodeRelease":"<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "diseaseCoverage":"influenza-like diseases",
-    "speciesIncluded":"Humans",
+    "hostSpeciesIncluded":"Humans",
     "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
   "Repast Simphony":{
@@ -266,7 +266,7 @@
     "version":"apollo-flute-1.1",
     "documentation":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
     "locationCoverage":"U.S.",
-    "speciesIncluded":"Humans",
+    "hostSpeciesIncluded":"Humans",
     "controlMeasures":"antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
   "FRED Windows 64":{
@@ -284,7 +284,7 @@
     "version":"commit f5e0cef",
     "diseaseCoverage":"Zika",
     "locationCoverage":"The Americas",
-    "speciesIncluded":"Humans, Mosquitos",
+    "hostSpeciesIncluded":"Humans, Mosquitos",
     "generalInfo":"This model projects Zika virus infections in childbearing women in the Americas.",
     "source":"https://github.com/TAlexPerkins/Zika_nmicrobiol_2016",
     "doi":"<a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">10.1038/nmicrobiol.2016.126</a>",

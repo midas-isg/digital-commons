@@ -532,6 +532,8 @@ function openModal(softwareName) {
 
     toggleModalItem('speciesIncluded', attrs, 'species-included', false, false);
 
+    toggleModalItem('hostSpeciesIncluded', attrs, 'host-species-included', false, false);
+
     toggleModalItem('controlMeasures', attrs, 'control-measures', false, false);
 
     toggleModalItem('title', attrs, 'title', false, false);
