@@ -29,7 +29,7 @@
 
     <!--<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">-->
     <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
-    <link href="${pageContext.request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
