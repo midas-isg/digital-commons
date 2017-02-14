@@ -667,12 +667,47 @@ function getWebServicesTreeview() {
     return collections;
 }
 
-function getComputePlatformTreeview() {
+function getSoftwareEnvironmentTreeview() {
     var collections = [];
     collections.push(
         {
-            text: "Compute Platform placeholder",
+            text: "Software environment placeholder",
             nodes: []
+        }
+    );
+    return collections;
+}
+
+function getDiseaseTransmissionModelTreeview() {
+    var collections = [];
+    collections.push(
+        {
+            text: "Disease transmission model placeholder",
+            nodes: []
+        }
+    );
+    return collections;
+}
+
+function getSystemSoftwareTreeview() {
+    var collections = [];
+    collections.push(
+        {
+            text: "Systems software placeholder",
+            nodes: []
+        }
+    );
+    return collections;
+}
+
+function getToolsTreeview() {
+    var collections = [];
+    collections.push(
+        {
+            text: "Statistical analysis software"
+        },
+        {
+            text: "Image manipulation"
         }
     );
     return collections;
