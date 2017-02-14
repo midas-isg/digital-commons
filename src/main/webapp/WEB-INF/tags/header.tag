@@ -104,4 +104,8 @@
         var viewportWidth = $(window).width();
         $('#monitor').html(viewportWidth);
     });
+
+    $('.nav a').on('click', function(){
+        $('.navbar-toggle').click();
+    });
 </script>
