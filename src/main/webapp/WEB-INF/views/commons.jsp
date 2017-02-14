@@ -28,7 +28,6 @@
     <myTags:favicon></myTags:favicon>
 
     <!--<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">-->
-    <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>MIDAS Digital Commons</title>
 
@@ -44,6 +43,7 @@
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/tether.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
 </head>
 <c:choose>
