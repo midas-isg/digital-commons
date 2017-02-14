@@ -36,23 +36,23 @@
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:otherwise>
                     </c:choose>
-                    <h1 class="leaf hidden-xs inline-block">${pageTitle}</h1>
-                    <h3 id="page-title" class="font-size-21 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+                    <h2 class="leaf hidden-xs hidden-sm hidden-md inline-block">${pageTitle}</h2>
+                    <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
 
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <c:if test="${loggedIn == true && iframe == false}">
                         <ul class="nav navbar-nav navbar-padding">
-                            <li class="active "><a class="leaf font-size-20 padding-top-30" data-toggle="tab"
+                            <li class="active "><a class="leaf font-size-16 padding-top-30" data-toggle="tab"
                                                    href="#software">Software</a></li>
                             <!--<li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>-->
-                            <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>
-                            <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#web-services">WebServices</a></li>
-                            <li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
-                            <li class="hidden"><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#about"></a></li>
+                            <li><a class="leaf font-size-16 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>
+                            <li><a class="leaf font-size-16 padding-top-30 " data-toggle="tab" href="#web-services">WebServices</a></li>
+                            <li><a class="leaf font-size-16 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
+                            <li class="hidden"><a class="leaf font-size-16 padding-top-30 " data-toggle="tab" href="#about"></a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
-                                <li class="hidden"><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
+                                <li class="hidden"><a class="leaf font-size-16 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
                             </c:forEach>
                         </ul>
                     </c:if>
@@ -98,14 +98,11 @@
         window.open(document.getElementById("libraryFrame").src);
     }
 
-    $('#monitor').html($(window).width());
-
     $(window).resize(function() {
-        var viewportWidth = $(window).width();
-        $('#monitor').html(viewportWidth);
-    });
-
-    $('.nav a').on('click', function(){
-        $('.navbar-toggle').click();
+        if( $(this).width() < 768) {
+            $('.nav a').on('click', function(){
+                $('.navbar-toggle').click();
+            });
+        }
     });
 </script>
