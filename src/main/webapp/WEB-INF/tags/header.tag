@@ -36,7 +36,7 @@
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:otherwise>
                     </c:choose>
-                    <h2 class="leaf hidden-xs hidden-sm hidden-md inline-block">${pageTitle}</h2>
+                    <h2 class="leaf hidden-xs hidden-sm hidden-md inline-block margin-top-23">${pageTitle}</h2>
                     <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
 
                 </div>
@@ -98,11 +98,10 @@
         window.open(document.getElementById("libraryFrame").src);
     }
 
-    $(window).resize(function() {
-        if( $(this).width() < 768) {
-            $('.nav a').on('click', function(){
-                $('.navbar-toggle').click();
-            });
+    $('.nav a').on('click', function () {
+        if ($(window).width() < 768) {
+            $('.navbar-toggle').click();
         }
     });
+
 </script>
