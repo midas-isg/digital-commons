@@ -82,7 +82,8 @@
     "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "diseaseCoverage":"Malaria",
     "hostSpeciesIncluded":"Humans, Mosquitoes",
-    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"
+    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki",
+    "isOlympus": true
   },
   "Global Epidemic Simulator":{
     "directory":"Disease transmission models",

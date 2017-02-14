@@ -118,7 +118,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
 
                 for(var x = 0; x < directories[i][topDirectory].length; x++) {
                     nodes.push({
-                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x] + "</span>",
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x] + "</span> <i class='olympus-color'><sup>AVAILABLE ON OLYMPUS</sup></i>",
                         "nodes": [],
                         "name": directories[i][topDirectory][x]
                     });
@@ -162,6 +162,10 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
                             'name': key
                         };
+
+                        if('isOlympus' in softwareDictionary[key] && softwareDictionary[key]['isOlympus'] == true) {
+                            nodeData.text += ' <i class="olympus-color"><sup>AVAILABLE ON OLYMPUS</sup></i>';
+                        }
 
                         if('redirect' in softwareDictionary[key] && softwareDictionary[key]['redirect'] == true) {
                             var url = '';
