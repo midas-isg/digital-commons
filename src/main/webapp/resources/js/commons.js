@@ -651,3 +651,25 @@ function activeTab(tab) {
         $('#data-and-knowledge-tab').addClass('highlighted-item');
     }
 }
+
+function getWebServicesTreeview() {
+    var collections = [];
+    collections.push(
+        {
+            text: "WebServices placeholder",
+            nodes: []
+        }
+    );
+    return collections;
+}
+
+function getComputePlatformTreeview() {
+    var collections = [];
+    collections.push(
+        {
+            text: "Compute Platform placeholder",
+            nodes: []
+        }
+    );
+    return collections;
+}
