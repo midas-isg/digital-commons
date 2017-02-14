@@ -62,26 +62,34 @@
 
     <div id="commons-main-body" class="row">
         <div class="tab-content">
-            <div id="browse" class="tab-pane fade in active">
-                <div class="col-sm-4">
+            <div id="software" class="tab-pane fade in active">
+                <div class="col-sm-12">
                     <h2 class="title-font">Software</h2>
                     <div id="algorithm-treeview" class="treeview"></div>
                 </div>
-                <div class="col-sm-4">
+            </div>
+            <div id="data-and-knowledge" class="tab-pane fade">
+                <div class="col-sm-6">
                     <h2 class="title-font">Data &amp; Knowledge</h2>
                     <div id="data-and-knowledge-treeview" class="treeview"></div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
                 </div>
             </div>
-            <!--<div id="search" class="tab-pane fade">
-                <iframe src="http://ide.obc.io/#/" class="fullscreen" frameBorder="0">
-                    <p>Your browser does not support iframes. Please visit <a href="http://ide.obc.io/#/">http://ide.obc.io/#/</a>
-                        to search.</p>
-                </iframe>
-            </div>-->
+            <div id="web-services" class="tab-pane fade">
+                <div class="col-sm-12">
+                    <h2 class="title-font">WebServices</h2>
+                    <div id="web-services-treeview" class="treeview"></div>
+                </div>
+            </div>
+            <div id="compute-platform" class="tab-pane fade">
+                <div class="col-sm-12">
+                    <h2 class="title-font">Compute Platform</h2>
+                    <div id="compute-platform-treeview" class="treeview"></div>
+                </div>
+            </div>
             <div id="about" class="tab-pane fade">
                 <myTags:about></myTags:about>
             </div>
@@ -95,7 +103,7 @@
                         <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
                         <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
 
-                        <button type="button" class="btn btn-default" onclick="activeTab('browse')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
+                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
                     </div>
                 </div>
             </c:forEach>
@@ -109,11 +117,24 @@
                 $("[rel=popover]").not(e.target).popover("destroy");
                 $(".popover").remove();
             }
+
+            if($(e.target).attr('data-toggle') == 'tab') {
+                if($(e.target).attr('href') == '#data-and-knowledge') {
+                    $('#data-and-knowledge-tab').addClass('highlighted-item');
+                } else {
+                    $('#data-and-knowledge-tab').removeClass('highlighted-item');
+                }
+            }
         });
+
+
 
         $(document).ready(function() {
             if (location.hash) {
                 $("a[href='" + location.hash + "']").tab("show");
+                if(location.hash.includes('publication')) {
+                    $('#data-and-knowledge-tab').addClass('highlighted-item');
+                }
             }
             $(document.body).on("click", "a[data-toggle]", function(event) {
                 location.hash = this.getAttribute("href");
@@ -126,7 +147,7 @@
     </script>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications

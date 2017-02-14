@@ -33,7 +33,6 @@
 		if(data.url != null && data.state.selected == true) {
             $('#publications-treeview').treeview('unselectNode', [data.nodeId, {silent: true}]);
 			activeTab("publication-" + data.paperId + "-" + data.dataId);
-            //window.location.href = data.url;
 		}
 	});
 </script>

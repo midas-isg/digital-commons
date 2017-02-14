@@ -11,7 +11,8 @@
             </div>
 
             <div class="pull-right" style="margin-right:20px">
-                Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
+                <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
+                <span class="leaf underline pointer" onclick="activeTab('about')">About the MIDAS Digital Commons.</span>
             </div>
         </div>
 
@@ -21,7 +22,8 @@
             </div>
 
             <div id="dev-team-footer" class="col-xs-12">
-                Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.
+                <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
+                <span class="leaf underline pointer" onclick="activeTab('about')">About the MIDAS Digital Commons.</span>
             </div>
         </div>
     </div>

@@ -39,6 +39,10 @@
 }
 
 .font-size-16 {
+    font-size:14px;
+}
+
+.font-size-16 {
     font-size:16px;
 }
 
@@ -409,4 +413,13 @@ body {
 .bullet-point:before {
     content: ' \25CF';
     font-size: 11px;
+}
+
+.pointer {
+    cursor:pointer;
+}
+
+.highlighted-item {
+    padding-bottom: 30px !important;
+    background-color: #09204c !important;
 }

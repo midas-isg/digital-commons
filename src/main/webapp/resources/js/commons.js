@@ -644,4 +644,10 @@ function toggleTitle(element) {
 function activeTab(tab) {
     $('.tabs a[href="#' + tab + '"]').tab('show');
     location.hash = tab;
-};
+
+    if(!tab.includes('publication')) {
+        $('#data-and-knowledge-tab').removeClass('highlighted-item');
+    } else {
+        $('#data-and-knowledge-tab').addClass('highlighted-item');
+    }
+}
