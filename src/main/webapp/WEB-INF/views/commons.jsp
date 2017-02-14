@@ -154,6 +154,8 @@
             dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
     <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"
                                      spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
+    <myTags:webServices></myTags:webServices>
+    <myTags:computePlatform></myTags:computePlatform>
 </div>
 
 </body>
