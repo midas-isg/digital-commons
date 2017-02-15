@@ -118,7 +118,7 @@ function hardcodeSoftwareFromJson(contextPath, location) {
 
                 for(var x = 0; x < directories[i][topDirectory].length; x++) {
                     nodes.push({
-                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x] + "</span> <i class='olympus-color'><sup>AVAILABLE ON OLYMPUS</sup></i>",
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
                         "nodes": [],
                         "name": directories[i][topDirectory][x]
                     });
@@ -180,6 +180,10 @@ function hardcodeSoftwareFromJson(contextPath, location) {
                             if(url.length > 0) {
                                 nodeData['url'] = url;
                                 nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
+
+                                if('isOlympus' in softwareDictionary[key] && softwareDictionary[key]['isOlympus'] == true) {
+                                    nodeData.text += ' <i class="olympus-color"><sup>AVAILABLE ON OLYMPUS</sup></i>';
+                                }
 
                                 if('midasSso' in softwareDictionary[key] && softwareDictionary[key]['midasSso'] == true) {
                                     nodeData['midasSso'] = softwareDictionary[key]['midasSso'];
@@ -628,9 +632,9 @@ function getPopover(imgPath, title, modalImgPath, softwareName) {
 }
 
 function compareNodes(a,b) {
-    if (a.name.toLowerCase() < b.name.toLowerCase())
+    if (a.name.trim().toLowerCase() < b.name.trim().toLowerCase())
         return -1;
-    if (a.name.toLowerCase() > b.name.toLowerCase())
+    if (a.name.trim().toLowerCase() > b.name.trim().toLowerCase())
         return 1;
     return 0;
 }

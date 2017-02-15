@@ -3,9 +3,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<footer class="footer">
+<footer class="footer-lg hidden-xs">
     <div class="leaf">
-        <div class="hidden-xs footer-container-lg">
+        <div class="footer-container-lg">
             <div class="pull-left">
                 &#0169; 2017 University of Pittsburgh
             </div>
@@ -15,8 +15,12 @@
                 <span class="leaf underline pointer" onclick="activeTab('about')">About the MIDAS Digital Commons.</span>
             </div>
         </div>
+    </div>
+</footer>
 
-        <div class="hidden-sm hidden-md hidden-lg footer-container-xs">
+<footer class="footer-xs hidden-sm hidden-md hidden-lg">
+    <div class="leaf">
+        <div class="footer-container-xs">
             <div class="col-xs-12">
                 &#0169; 2017 University of Pittsburgh
             </div>

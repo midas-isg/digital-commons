@@ -1,6 +1,6 @@
 {
    "settings":{
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms"],
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
      "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
    },
    "FluTE":{
@@ -73,8 +73,30 @@
     "diseaseCoverage":"Communicable human-to-human",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
+  "Open Malaria  ":{
+    "directory":"Open Malaria (3 versions)",
+    "generalInfo":"A simulator of malaria epidemiology and control.",
+    "version":"32",
+    "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
+    "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-32-RC3.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-32-RC3.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
+    "diseaseCoverage":"Malaria",
+    "hostSpeciesIncluded":"Humans, Mosquitoes",
+    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki",
+    "isOlympus": true
+  },
+  "Open Malaria ":{
+    "directory":"Open Malaria (3 versions)",
+    "generalInfo":"A simulator of malaria epidemiology and control.",
+    "version":"33.1",
+    "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
+    "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-33.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-33.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
+    "diseaseCoverage":"Malaria",
+    "hostSpeciesIncluded":"Humans, Mosquitoes",
+    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki",
+    "isOlympus": true
+  },
   "Open Malaria":{
-    "directory":"Disease transmission models",
+    "directory":"Open Malaria (3 versions)",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"36.11",
     "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
@@ -133,7 +155,8 @@
     "developer":"iGEM/UCSD evolutionary biology and bioinformatics group",
     "location":"http://www.hyphy.org/w/index.php/Main_Page",
     "source":"https://github.com/veg/hyphy/releases/tag/2.2.7",
-    "version":"2.2.7",
+    "version":"2.2.6",
+    "isOlympus":true,
     "redirect":true
   },
   "SEEDY":{
@@ -301,5 +324,27 @@
     "documentation":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/about\">https://sites.google.com/site/dymsimmodel/about</a>",
     "license":"<a class=\"underline\" href=\"https://sites.google.com/site/dymsimmodel/download\">Proprietary Open Source License</a>",
     "publicationsAboutRelease": "Morin C and Comrie AC, 2010. Modeled response of the West Nile virus vector Culex quinquefasciatus to changing climate using the dynamic mosquito simulation model. International Journal of Biometeorology 54,517-529. (<a href=\"http://dx.doi.org/10.1007/s00484-010-0349-6\" class=\"underline\">doi:10.1007/s00484-010-0349-6</a>)"
+  },
+  "NetLogo":{
+    "directory":"NetLogo (2 versions)",
+    "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
+    "version":"5.0.4",
+    "executables":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/download.shtml\">http://ccl.northwestern.edu/netlogo/download.shtml</a>",
+    "source":"https://github.com/NetLogo/NetLogo",
+    "sourceCodeRelease":"<a href=\"https://github.com/NetLogo/NetLogo/releases/tag/5.0.4\" class=\"underline\">https://github.com/NetLogo/NetLogo/releases/tag/5.0.4</a>",
+    "documentation":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/docs/\">http://ccl.northwestern.edu/netlogo/docs/</a>",
+    "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License), version 2</a>",
+    "isOlympus":true
+  },
+  "NetLogo ":{
+    "directory":"NetLogo (2 versions)",
+    "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
+    "webApplication":"http://www.netlogoweb.org/launch",
+    "version":"6.0",
+    "executables":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/download.shtml\">http://ccl.northwestern.edu/netlogo/download.shtml</a>",
+    "source":"https://github.com/NetLogo/NetLogo",
+    "sourceCodeRelease":"<a href=\"https://github.com/NetLogo/NetLogo/releases/tag/6.0.0\" class=\"underline\">https://github.com/NetLogo/NetLogo/releases/tag/6.0.0</a>",
+    "documentation":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/docs/\">http://ccl.northwestern.edu/netlogo/docs/</a>",
+    "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License), version 2</a>"
   }
 }
