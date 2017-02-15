@@ -19,5 +19,5 @@
   },
   "r_blas/unaccelerated-blas":{
     "description": "BLAS library for R"
-  },
+  }
 }
