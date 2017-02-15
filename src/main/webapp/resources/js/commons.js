@@ -226,7 +226,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
             }
         }
 
-        buildSoftwareTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
+        buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
     });
 }
 
@@ -243,14 +243,14 @@ function hardcodeSoftware() {
     software.splice(6, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
 
-function buildSoftwareTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
+function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
     if('nodes' in treeArray) {
         for(var i = 0; i < treeArray.length; i++) {
             treeArray[i].nodes.sort(compareNodes);
         }
     }
 
-    $(treeviewTag).treeview({
+    var treeviewInfo = {
         data: treeArray,
         showBorder: false,
         collapseAll: true,
@@ -296,9 +296,15 @@ function buildSoftwareTree(contextPath, treeArray, treeviewTag, expandedInfo, tr
                 }
             }
         }
-    });
+    };
 
+    if(name == "systemSoftware") {
+        treeviewInfo['emptyIcon'] = "bullet-point	";;
+    }
+
+    $(treeviewTag).treeview(treeviewInfo);
     $(treeviewTag).treeview('collapseAll', { silent: true });
+
     var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
     var toRemove = [];
 
