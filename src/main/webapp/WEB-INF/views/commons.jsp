@@ -9,10 +9,17 @@
 
 <head>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', 'UA-91508504-1', 'auto');
         ga('send', 'pageview');
@@ -28,7 +35,8 @@
     <myTags:favicon></myTags:favicon>
 
     <!--<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">-->
-    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css"
+          rel="stylesheet">
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
@@ -48,10 +56,12 @@
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true"
+                       iframe="false"></myTags:header>
     </c:when>
     <c:otherwise>
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true"
+                       iframe="false"></myTags:header>
 
     </c:otherwise>
 </c:choose>
@@ -81,14 +91,67 @@
             <div id="web-services" class="tab-pane fade">
                 <div class="col-sm-12">
                     <h2 class="title-font">WebServices</h2>
+                    <h3 class="sub-title-font">Apollo Broker Service</h3>
+                    <div class="font-size-16 standard-font">
+                        The Apollo Broker Service is the web service used by applications like the Simple End User
+                        Apollo
+                        Application to run Disease Transmission Models, and interact with the Apollo Library.
+                        <br><br>
+                        The Apollo Broker Service has a RESTful and SOAP interface. The documentation for the RESTful
+                        endpoints
+                        is at: <a class="underline"
+                                  href="https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp">https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp</a>.
+                        The WSDL of the SOAP service can be found here: <a
+                            href="https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl"
+                            class="underline">https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl</a>
+                        <br><br>
+                        For more information on the Apollo Broker Service, please email <a class="underline"
+                                                                                           href="mailto:jdl50@pitt.edu">John
+                        Levander</a>.
+                    </div>
+                    <br>
+
+                    <h3 class="sub-title-font">Apollo Library Viewer</h3>
+                    <div class="font-size-16 standard-font">
+                        The Apollo Library Viewer has a RESTful API that allows users to access case count data that is
+                        stored
+                        in the Apollo Library. The link to the documentation is at:
+                        <a class="underline"
+                           href="https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp">https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp</a>.
+                    </div>
+                    <br>
+
+                    <h3 class="sub-title-font">Apollo Location Service</h3>
+                    <div class="font-size-16 standard-font">
+                        The Apollo Location Service contains a RESTful API that allows users to lookup INCITS codes,
+                        Apollo
+                        Location Codes, and many other types of geographic information that is available for locations
+                        that are
+                        stored in the Apollo Location Service Database. The documentation for this service is located
+                        here
+                        (sign-up required):
+                        <a class="underline" href="http://betaweb.rods.pitt.edu/ls/api-docs">http://betaweb.rods.pitt.edu/ls/api-docs</a>.
+                    </div>
+                    <br>
+
+                    <h3 class="sub-title-font">EpiCaseMap</h3>
+                    <div class="font-size-16 standard-font">
+                        The documentation for this service is located here (sign-up required): <a class="underline"
+                                                                                                  href="http://betaweb.rods.pitt.edu/epicasemap/api">http://betaweb.rods.pitt.edu/epicasemap/api</a>.
+                    </div>
+                    <br>
                     <div id="web-services-treeview" class="treeview"></div>
                 </div>
             </div>
             <div id="compute-platform" class="tab-pane fade">
                 <div class="col-sm-12">
                     <h2 class="title-font">Compute Platform</h2>
-                    <p>The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS researchers can use Olympus to use, share, and modify digital objects hosted on the platform. The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.</p>
-                    <p>To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.</p>
+                    <p>The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS
+                        researchers can use Olympus to use, share, and modify digital objects hosted on the platform.
+                        The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.</p>
+                    <p>To sign up for an account on Olympus, please visit <a href="http://epimodels.org"
+                                                                             class="underline">http://epimodels.org</a>.
+                    </p>
                 </div>
                 <div class="col-sm-12">
                     <h2 class="title-font">Software Environment</h2>
@@ -117,10 +180,15 @@
                             Data-augmented Publication
                         </h2>
 
-                        <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
-                        <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
+                        <myTags:addDataAugmentedPublications
+                                publication="${pub.paper}"></myTags:addDataAugmentedPublications>
+                        <myTags:addDataAugmentedPublications
+                                publication="${pub.data}"></myTags:addDataAugmentedPublications>
 
-                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
+                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')">
+                            <icon class="glyphicon glyphicon-chevron-left"></icon>
+                            Back
+                        </button>
                     </div>
                 </div>
             </c:forEach>
@@ -135,8 +203,8 @@
                 $(".popover").remove();
             }
 
-            if($(e.target).attr('data-toggle') == 'tab') {
-                if($(e.target).attr('href') == '#data-and-knowledge') {
+            if ($(e.target).attr('data-toggle') == 'tab') {
+                if ($(e.target).attr('href') == '#data-and-knowledge') {
                     $('#data-and-knowledge-tab').addClass('highlighted-item');
                 } else {
                     $('#data-and-knowledge-tab').removeClass('highlighted-item');
@@ -145,19 +213,18 @@
         });
 
 
-
-        $(document).ready(function() {
+        $(document).ready(function () {
             if (location.hash) {
                 $("a[href='" + location.hash + "']").tab("show");
-                if(location.hash.includes('publication')) {
+                if (location.hash.includes('publication')) {
                     $('#data-and-knowledge-tab').addClass('highlighted-item');
                 }
             }
-            $(document.body).on("click", "a[data-toggle]", function(event) {
+            $(document.body).on("click", "a[data-toggle]", function (event) {
                 location.hash = this.getAttribute("href");
             });
         });
-        $(window).on("popstate", function() {
+        $(window).on("popstate", function () {
             var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
             $("a[href='" + anchor + "']").tab("show");
         });

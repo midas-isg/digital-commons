@@ -11,7 +11,7 @@
     <div class="about-item">The MIDAS Digital Commons is a collection of digital objects for the <a class="underline" href="https://www.nigms.nih.gov/Research/SpecificAreas/MIDAS/Pages/default.aspx">MIDAS network</a>.</div>
     <div class="about-item">
         <h4 class="bold theme-primary-color">Submission Guidelines</h4>
-        <span>If you have any digital objects that you'd like to submit to the commons, please contact Mike Wagner via email at <a class="underline" href="malito:mmw1@pitt.edu">mmw1@pitt.edu</a>.</span>
+        <span>If you have any digital objects that you'd like to submit to the commons, please contact Mike Wagner via email at <a class="underline" href="mailto:mmw1@pitt.edu">mmw1@pitt.edu</a>.</span>
     </div>
     <div class="about-item">
         <h4 class="bold theme-primary-color">Funding</h4>
