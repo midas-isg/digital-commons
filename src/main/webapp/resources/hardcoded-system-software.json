@@ -1,0 +1,140 @@
+{
+    "settings": {
+      "name": "systemSoftware"
+    },
+    "anaconda/4.1.1":{
+      "description":"Provides the anaconda open data science platforms"
+    },
+    "cmake/3.3.0":{
+      "description":"CMAKE 3.6.0 (cmake)"
+    },
+    "dcp/0.1.0-rc.2":{
+      "description":"distributed copy using mpi"
+    },
+    "environs":{
+      "description":"Provides shared software environments (python, R)"
+    },
+    "gcc/4.6.3":{
+      "description":"Provides the GNU compiler collection"
+    },
+    "gcc/4.7.4":{
+      "description":"Provides the GNU compiler collection"
+    },
+    "gcc/4.8.3":{
+      "description":"Provides the GNU compiler collection"
+    },
+    "gcc/5.2.0":{
+      "description":"Provides the GNU compiler collection"
+    },
+    "gcc/6.1.0":{
+      "description":"Provides the GNU compiler collection"
+    },
+    "gdal/1.11.4":{
+      "description":"GDAL geospatial analysis package"
+    },
+    "gdal/2.0.2":{
+      "description":"GDAL geospatial analysis package"
+    },
+    "geos/3.5.0":{
+      "description":"GEOS geospatial analysis package"
+    },
+    "git/2.7.1":{
+      "description":"git version control"
+    },
+    "git_annex/6.20160511-g4633f0b":{
+      "description":"git version control for large files"
+    },
+    "glib_compat/16.6.22":{
+      "description":"Provides compatibility version of glibc and glibc++"
+    },
+    "gmp/6.0.0":{
+      "description":"GMP is a free library for arbitrary precision arithmetic, operating on signed integers, rational numbers, and floating-point numbers"
+    },
+    "gnu_parallel/20150122":{
+      "description":"Parallel execution of shell commands"
+    },
+    "go/1.6.2":{
+      "description":"Go is an open source programming language that makes it easy to build simple, reliable, and efficient software"
+    },
+    "java/jdk7":{
+      "description":"Java JDK 1.7.0-71"
+    },
+    "java/jdk8":{
+      "description":"Java JDK 1.8.0-25"
+    },
+    "java/jre7":{
+      "description":"Java JRE 1.7.0-71"
+    },
+    "java/jre8":{
+      "description":"Java JRE 1.8.0-25"
+    },
+    "julia/0.3.11":{
+      "description":"Julia is a high-level, high-performance dynamic programming language for technical computing"
+    },
+    "julia/0.4.5":{
+      "description":"Julia is a high-level, high-performance dynamic programming language for technical computing"
+    },
+    "malloc_preload/tcmalloc-2.4":{
+      "description":"Alternate Malloc as LD_PRELOAD"
+    },
+    "mpc/1.0.3":{
+      "description":"Gnu Mpc is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result"
+    },
+    "mpfr/3.1.3":{
+      "description":"The MPFR library is a C library for multiple-precision floating-point computations with correct rounding"
+    },
+    "openblas/0.2.13":{
+      "description":"the OpenBLAS libraries (pthreads version)"
+    },
+    "openblas/0.2.15":{
+      "description":"the OpenBLAS libraries (pthreads version)"
+    },
+    "openblas/0.2.18":{
+      "description":"the OpenBLAS libraries (pthreads version)"
+    },
+    "openmpi/1.8.1.new":{
+      "description":"The Open MPI Project is an open source Message Passing Interface implementation"
+    },
+    "openmpi/1.8.1":{
+      "description":"The Open MPI Project is an open source Message Passing Interface implementation"
+    },
+    "openmpi/1.10.3":{
+      "description":"The Open MPI Project is an open source Message Passing Interface implementation"
+    },
+    "pandoc/1.16.0.2":{
+      "description":"Pandoc is a Haskell library for converting from one markup format to another, and a command-line tool that uses this library"
+    },
+    "pixz/1.0.6":{
+      "description":"pixz - parallel indexed xz compression"
+    },
+    "python/2.6.6":{
+      "description":"Provides the python interpreter"
+    },
+    "python/2.7.8":{
+      "description":"Provides the python interpreter"
+    },
+    "python/2.7.11":{
+      "description":"Provides the python interpreter"
+    },
+    "python/3.4.1-virtualenvwrapper":{
+      "description":"Provides the python interpreter"
+    },
+    "python/3.4.1":{
+      "description":"Provides the python interpreter"
+    },
+    "python/3.5.1":{
+      "description":"Provides the python interpreter"
+    },
+    "sbcl/1.3.10":{
+      "description":"Steel Bank Common Lisp high performance compiler"
+    },
+    "sqlite3/sqlite3.10.0":{
+      "description":"SQLite is a self-contained, high-reliability, embedded, full-featured, public-domain, SQL database engine"
+    },
+    "tau/2.25.2":{
+      "description":"TAU Performance Profiling Package"
+    },
+    "tmux/2.2":{
+      "description":"The tmux terminal multiplexer (similar to GNU screen)"
+    }
+}

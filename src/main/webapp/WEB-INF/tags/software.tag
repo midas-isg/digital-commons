@@ -63,7 +63,7 @@
     </c:forEach>--%>
 
     if(isSoftwareHardcoded) {
-        hardcodeSoftwareFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json")
+        hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json", software, softwareDictionary, softwareSettings, '#algorithm-treeview', 'expandedSoftware')
     }
 
     /*if(!isSoftwareHardcoded) {
