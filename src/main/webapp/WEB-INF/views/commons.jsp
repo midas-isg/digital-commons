@@ -112,18 +112,22 @@
                     <h3 class="sub-title-font">Apollo Location Service</h3>
                     <div class="font-size-16 standard-font">
                         The Apollo Location Service contains a RESTful API that allows users to lookup INCITS codes,
-                        Apollo
-                        Location Codes, and many other types of geographic information that is available for locations
-                        that are
-                        stored in the Apollo Location Service Database. The documentation for this service is located
-                        here
-                        (sign-up required):
+                        Apollo Location Codes, and many other types of geographic information that is available for
+                        locations
+                        that are stored in the Apollo Location Service Database. The documentation for this service is
+                        located
+                        here (sign-up required):
                         <a class="underline" href="http://betaweb.rods.pitt.edu/ls/api-docs">http://betaweb.rods.pitt.edu/ls/api-docs</a>.
                     </div>
                     <br>
 
                     <h3 class="sub-title-font">EpiCaseMap</h3>
                     <div class="font-size-16 standard-font">
+                        This application contains a RESTful API that allows users to upload time-coordinate series data
+                        and create visualizations for comparing and contrasting data visually. It facilitates this by
+                        providing methods for creating; retrieving; updating; and deleting time-coordinate series,
+                        visualizations, and related meta data.
+
                         The documentation for this service is located here (sign-up required): <a class="underline"
                                                                                                   href="http://betaweb.rods.pitt.edu/epicasemap/api">http://betaweb.rods.pitt.edu/epicasemap/api</a>.
                     </div>
