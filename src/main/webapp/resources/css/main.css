@@ -109,6 +109,22 @@
     margin-top: 1.3125rem;
 }
 
+.subtitle-font {
+    color: #0c2b65;
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.subtitle-font:after {
+    content: "";
+    display: block;
+    background-color: #0c2b65;
+    height: 5px;
+    height: 0.425rem;
+    margin-top: 11px;
+    margin-top: 0.8125rem;
+}
+
 .main-nav {
     background-color: #0c2b65;
     color: white;
