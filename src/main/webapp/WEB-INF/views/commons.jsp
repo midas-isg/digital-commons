@@ -74,6 +74,9 @@
                 <div class="col-sm-4">
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
+                    <div class="legend hidden-xs">
+                        <b>Legend</b><p><i>O = Available on Olympus</i></p>
+                    </div>
                 </div>
             </div>
             <div id="web-services" class="tab-pane fade">
