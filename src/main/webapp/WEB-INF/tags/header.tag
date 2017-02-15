@@ -48,7 +48,7 @@
                                                    href="#content">Content</a></li>
                             <!--<li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>-->
                             <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>--%>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">WebServices</a></li>
+                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">Web Services</a></li>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
                             <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about"></a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">

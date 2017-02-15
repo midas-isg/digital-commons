@@ -489,3 +489,7 @@ body {
     padding-bottom: 30px !important;
     background-color: #09204c !important;
 }
+
+.legend-font {
+    font-size: 11px;
+}

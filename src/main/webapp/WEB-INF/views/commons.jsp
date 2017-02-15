@@ -75,10 +75,14 @@
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
                 </div>
+
+                <div class="col-sm-12">
+                    <b><i class="olympus-color legend-font">(O)</i></b> <i>= Available on Olympus</i>
+                </div>
             </div>
             <div id="web-services" class="tab-pane fade">
                 <div class="col-sm-12">
-                    <h2 class="title-font">WebServices</h2>
+                    <h2 class="title-font">Web Services</h2>
                     <h3 class="sub-title-font">Apollo Broker Service</h3>
                     <div class="font-size-16 standard-font">
                         The Apollo Broker Service is the web service used by applications like the Simple End User
@@ -123,10 +127,10 @@
 
                     <h3 class="sub-title-font">EpiCaseMap</h3>
                     <div class="font-size-16 standard-font">
-                        This application contains a RESTful API that allows users to upload time-coordinate series data
+                        EpiCaseMap contains a RESTful API that allows users to upload time-coordinate series data
                         and create visualizations for comparing and contrasting data visually. It facilitates this by
-                        providing methods for creating; retrieving; updating; and deleting time-coordinate series,
-                        visualizations, and related meta data.
+                        providing methods for creating, retrieving, updating, and deleting time-coordinate series,
+                        visualizations, and related metadata.
 
                         The documentation for this service is located here (sign-up required): <a class="underline"
                                                                                                   href="http://betaweb.rods.pitt.edu/epicasemap/api">http://betaweb.rods.pitt.edu/epicasemap/api</a>.
