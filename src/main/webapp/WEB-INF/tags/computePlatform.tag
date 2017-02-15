@@ -4,15 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <script>
-    $('#software-environment-treeview').treeview({
-        data: getSoftwareEnvironmentTreeview(),
-        showBorder: false,
-
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
-        highlightSelected: false
-    });
-
     $('#disease-transmission-models-treeview').treeview({
         data: getDiseaseTransmissionModelTreeview(),
         showBorder: false,
@@ -22,14 +13,7 @@
         highlightSelected: false
     });
 
-    $('#system-software-treeview').treeview({
-        data: getSystemSoftwareTreeview(),
-        showBorder: false,
-
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
-        highlightSelected: false
-    });
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware');
 
     $('#tools-treeview').treeview({
         data: getToolsTreeview(),

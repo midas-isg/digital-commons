@@ -18,11 +18,16 @@
 ];*/
 
 var dataAugmentedPublications = [];
-var software = [];
 
-var isSoftwareHardcoded = true;
+var software = [];
 var softwareDictionary = {};
 var softwareSettings = {};
+
+var systemsSoftware = [];
+var systemsSoftwareDictionary = {};
+var systemsSoftwareSettings = {};
+
+var isSoftwareHardcoded = true;
 
 var stateHash =  {
     '01': 'Alabama',
@@ -99,112 +104,129 @@ function getSoftwareTitle(name, version) {
     return title;
 }
 
-function hardcodeSoftwareFromJson(contextPath, location) {
+function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo) {
     $.getJSON( contextPath + location, function( data ) {
-        softwareSettings = data["settings"];
-        var directories = softwareSettings["directories"];
+        treeSettings = data["settings"];
+        console.log(data["settings"]);
 
-        for(var i = 0; i < directories.length; i++) {
-            if(typeof directories[i] === 'string') {
-                software.push({
-                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
-                    "nodes": [],
-                    "name": directories[i]
-                });
-            } else {
-                var keys = Object.keys(directories[i]);
-                var topDirectory = keys[0];
-                var nodes = [];
+        var name = treeSettings["name"];
 
-                for(var x = 0; x < directories[i][topDirectory].length; x++) {
-                    nodes.push({
-                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
+        if(name == "software") {
+            var directories = treeSettings["directories"];
+            for(var i = 0; i < directories.length; i++) {
+                if(typeof directories[i] === 'string') {
+                    treeArray.push({
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
                         "nodes": [],
-                        "name": directories[i][topDirectory][x]
+                        "name": directories[i]
                     });
-                }
+                } else {
+                    var keys = Object.keys(directories[i]);
+                    var topDirectory = keys[0];
+                    var nodes = [];
 
-                software.push({
-                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
-                    "nodes": nodes,
-                    "name": topDirectory
-                });
-
-            }
-        }
-
-        for(var key in data) {
-            softwareDictionary[key] = data[key];
-
-            if('directory' in softwareDictionary[key]) {
-                for(var i = 0; i < software.length; i++) {
-                    var subdirectories = [];
-                    var subdirectoryContent = [];
-                    if('nodes' in software[i]) {
-                        for(var x in software[i]['nodes']) {
-                            if('nodes' in software[i]['nodes'][x]) {
-                                subdirectories.push(software[i]['nodes'][x]['name']);
-                                subdirectoryContent.push(software[i]['nodes'][x]);
-                            }
-                        }
+                    for(var x = 0; x < directories[i][topDirectory].length; x++) {
+                        nodes.push({
+                            "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
+                            "nodes": [],
+                            "name": directories[i][topDirectory][x]
+                        });
                     }
 
+                    treeArray.push({
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
+                        "nodes": nodes,
+                        "name": topDirectory
+                    });
 
-                    var index = subdirectories.indexOf(softwareDictionary[key]['directory']);
+                }
+            }
 
-                    if(software[i]['name'] == softwareDictionary[key]['directory'] || index > -1) {
-                        var title = key;
-                        if('version' in softwareDictionary[key]) {
-                            title = getSoftwareTitle(key, softwareDictionary[key]['version']);
-                        }
+            for(var key in data) {
+                treeDictionary[key] = data[key];
 
-                        var nodeData = {
-                            'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
-                            'name': key
-                        };
-
-                        if('isOlympus' in softwareDictionary[key] && softwareDictionary[key]['isOlympus'] == true) {
-                            nodeData.text += ' <i class="olympus-color"><sup>AVAILABLE ON OLYMPUS</sup></i>';
-                        }
-
-                        if('redirect' in softwareDictionary[key] && softwareDictionary[key]['redirect'] == true) {
-                            var url = '';
-                            if('source' in softwareDictionary[key]) {
-                                url = softwareDictionary[key]['source'];
-                            }
-
-                            if('location' in softwareDictionary[key]) {
-                                url = softwareDictionary[key]['location'];
-                            }
-
-                            if(url.length > 0) {
-                                nodeData['url'] = url;
-                                nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
-
-                                if('isOlympus' in softwareDictionary[key] && softwareDictionary[key]['isOlympus'] == true) {
-                                    nodeData.text += ' <i class="olympus-color"><sup>AVAILABLE ON OLYMPUS</sup></i>';
-                                }
-
-                                if('midasSso' in softwareDictionary[key] && softwareDictionary[key]['midasSso'] == true) {
-                                    nodeData['midasSso'] = softwareDictionary[key]['midasSso'];
+                if('directory' in treeDictionary[key]) {
+                    for(var i = 0; i < treeArray.length; i++) {
+                        var subdirectories = [];
+                        var subdirectoryContent = [];
+                        if('nodes' in treeArray[i]) {
+                            for(var x in treeArray[i]['nodes']) {
+                                if('nodes' in treeArray[i]['nodes'][x]) {
+                                    subdirectories.push(treeArray[i]['nodes'][x]['name']);
+                                    subdirectoryContent.push(treeArray[i]['nodes'][x]);
                                 }
                             }
                         }
 
-                        if(index > -1) {
-                            subdirectoryContent[index].nodes.push(nodeData);
-                            subdirectoryContent[index].nodes.sort(compareNodes);
-                        } else {
-                            software[i].nodes.push(nodeData);
-                        }
 
-                        break;
+                        var index = subdirectories.indexOf(treeDictionary[key]['directory']);
+
+                        if(treeArray[i]['name'] == treeDictionary[key]['directory'] || index > -1) {
+                            var title = key;
+                            if('version' in treeDictionary[key]) {
+                                title = getSoftwareTitle(key, treeDictionary[key]['version']);
+                            }
+
+                            var nodeData = {
+                                'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
+                                'name': key
+                            };
+
+                            if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
+                                nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
+                            }
+
+                            if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
+                                var url = '';
+                                if('source' in treeDictionary[key]) {
+                                    url = treeDictionary[key]['source'];
+                                }
+
+                                if('location' in treeDictionary[key]) {
+                                    url = treeDictionary[key]['location'];
+                                }
+
+                                if(url.length > 0) {
+                                    nodeData['url'] = url;
+                                    nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
+
+                                    if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
+                                        nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
+                                    }
+
+                                    if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+                                        nodeData['midasSso'] = treeDictionary[key]['midasSso'];
+                                    }
+                                }
+                            }
+
+                            if(index > -1) {
+                                subdirectoryContent[index].nodes.push(nodeData);
+                                subdirectoryContent[index].nodes.sort(compareNodes);
+                            } else {
+                                treeArray[i].nodes.push(nodeData);
+                            }
+
+                            break;
+                        }
                     }
+                }
+            }
+        } else {
+            for(var key in data) {
+                if(key != "settings") {
+                    treeDictionary[key] = data[key];
+
+                    treeArray.push(
+                        {
+                            text: "<span title='" + treeDictionary[key]["description"] + "'>" + key + "</span>"
+                        }
+                    );
                 }
             }
         }
 
-        buildSoftwareTree(contextPath);
+        buildSoftwareTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
     });
 }
 
@@ -221,13 +243,15 @@ function hardcodeSoftware() {
     software.splice(6, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
 
-function buildSoftwareTree(contextPath) {
-    for(var i = 0; i < software.length; i++) {
-        software[i].nodes.sort(compareNodes);
+function buildSoftwareTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
+    if('nodes' in treeArray) {
+        for(var i = 0; i < treeArray.length; i++) {
+            treeArray[i].nodes.sort(compareNodes);
+        }
     }
 
-    var $softwareTree = $('#algorithm-treeview').treeview({
-        data: software,
+    $(treeviewTag).treeview({
+        data: treeArray,
         showBorder: false,
         collapseAll: true,
 
@@ -236,11 +260,11 @@ function buildSoftwareTree(contextPath) {
 
         onNodeSelected: function(event, data) {
             if(typeof data['nodes'] != undefined) {
-                $('#algorithm-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+                $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
 
             if(data.parentId == null) {
-                var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
+                var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
 
                 if(data.state.expanded) {
                     if(expandedSoftware != null) {
@@ -261,7 +285,7 @@ function buildSoftwareTree(contextPath) {
                     }
                 }
 
-                sessionStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
+                sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
             }
 
             if(data.url != null && data.state.selected == true) {
@@ -274,32 +298,32 @@ function buildSoftwareTree(contextPath) {
         }
     });
 
-    $('#algorithm-treeview').treeview('collapseAll', { silent: true });
+    $(treeviewTag).treeview('collapseAll', { silent: true });
     var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
     var toRemove = [];
 
     if(expandedSoftware == null) {
-        var openByDefault = softwareDictionary["settings"]["openDirectories"];
+        var openByDefault = treeDictionary["settings"]["openDirectories"];
         var openByDefaultIds = [];
         for(var i = 0; i < openByDefault.length; i++) {
-            var matchingNode = $('#algorithm-treeview').treeview('search', [ openByDefault[i], {
+            var matchingNode = $(treeviewTag).treeview('search', [ openByDefault[i], {
                 ignoreCase: false,     // case insensitive
                 exactMatch: false,    // like or equals
                 revealResults: false  // reveal matching nodes
             }])[0];
-            $('#algorithm-treeview').treeview('clearSearch');
+            $(treeviewTag).treeview('clearSearch');
 
             openByDefaultIds.push(matchingNode.nodeId);
         }
 
         expandedSoftware = openByDefaultIds;
-        sessionStorage.setItem("expandedSoftware", JSON.stringify(openByDefaultIds));
+        sessionStorage.setItem(expandedInfo, JSON.stringify(openByDefaultIds));
     }
 
     if(expandedSoftware != null) {
         for(var i = 0; i < expandedSoftware.length; i++) {
             try {
-                $('#algorithm-treeview').treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
+                $(treeviewTag).treeview('expandNode', [ expandedSoftware[i], { silent: true } ]);
             } catch(err) {
                 toRemove.push(i);
             }
@@ -310,7 +334,7 @@ function buildSoftwareTree(contextPath) {
                 expandedSoftware.splice(toRemove[i], 1);
             }
 
-            sessionStorage.setItem("expandedSoftware", JSON.stringify(expandedSoftware));
+            sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
         }
     }
 }
@@ -687,17 +711,6 @@ function getDiseaseTransmissionModelTreeview() {
     collections.push(
         {
             text: "Disease transmission model placeholder",
-            nodes: []
-        }
-    );
-    return collections;
-}
-
-function getSystemSoftwareTreeview() {
-    var collections = [];
-    collections.push(
-        {
-            text: "Systems software placeholder",
             nodes: []
         }
     );

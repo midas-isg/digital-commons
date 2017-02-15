@@ -9,17 +9,10 @@
 
 <head>
     <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-91508504-1', 'auto');
         ga('send', 'pageview');
@@ -35,8 +28,7 @@
     <myTags:favicon></myTags:favicon>
 
     <!--<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">-->
-    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css"
-          rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
@@ -56,34 +48,30 @@
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true"
-                       iframe="false"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false"></myTags:header>
     </c:when>
     <c:otherwise>
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true"
-                       iframe="false"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false"></myTags:header>
 
     </c:otherwise>
 </c:choose>
 <body id="commons-body">
-<div id="content">
+<div id="content-body">
 
     <myTags:softwareModal></myTags:softwareModal>
 
     <div id="commons-main-body" class="row">
         <div class="tab-content">
-            <div id="software" class="tab-pane fade in active">
-                <div class="col-sm-12">
+            <div id="content" class="tab-pane fade in active">
+                <div class="col-sm-4">
                     <h2 class="title-font">Software</h2>
                     <div id="algorithm-treeview" class="treeview"></div>
                 </div>
-            </div>
-            <div id="data-and-knowledge" class="tab-pane fade">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h2 class="title-font">Data &amp; Knowledge</h2>
                     <div id="data-and-knowledge-treeview" class="treeview"></div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
                 </div>
@@ -146,27 +134,19 @@
             <div id="compute-platform" class="tab-pane fade">
                 <div class="col-sm-12">
                     <h2 class="title-font">Compute Platform</h2>
-                    <p>The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS
-                        researchers can use Olympus to use, share, and modify digital objects hosted on the platform.
-                        The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.</p>
-                    <p>To sign up for an account on Olympus, please visit <a href="http://epimodels.org"
-                                                                             class="underline">http://epimodels.org</a>.
-                    </p>
-                </div>
-                <div class="col-sm-12">
-                    <h2 class="title-font">Software Environment</h2>
-                    <div id="software-environment-treeview" class="treeview"></div>
+                    <p>The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS researchers can use Olympus to use, share, and modify digital objects hosted on the platform. The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.</p>
+                    <p>To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.</p>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="title-font">Disease Transmission Models</h2>
+                    <h4 class="subtitle-font">Disease Transmission Models</h4>
                     <div id="disease-transmission-models-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="title-font">System Software</h2>
+                    <h4 class="subtitle-font">System Software</h4>
                     <div id="system-software-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="title-font">Tools</h2>
+                    <h4 class="subtitle-font">Tools</h4>
                     <div id="tools-treeview" class="treeview"></div>
                 </div>
             </div>
@@ -180,15 +160,10 @@
                             Data-augmented Publication
                         </h2>
 
-                        <myTags:addDataAugmentedPublications
-                                publication="${pub.paper}"></myTags:addDataAugmentedPublications>
-                        <myTags:addDataAugmentedPublications
-                                publication="${pub.data}"></myTags:addDataAugmentedPublications>
+                        <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
+                        <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
 
-                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')">
-                            <icon class="glyphicon glyphicon-chevron-left"></icon>
-                            Back
-                        </button>
+                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
                     </div>
                 </div>
             </c:forEach>
@@ -203,8 +178,8 @@
                 $(".popover").remove();
             }
 
-            if ($(e.target).attr('data-toggle') == 'tab') {
-                if ($(e.target).attr('href') == '#data-and-knowledge') {
+            if($(e.target).attr('data-toggle') == 'tab') {
+                if($(e.target).attr('href') == '#data-and-knowledge') {
                     $('#data-and-knowledge-tab').addClass('highlighted-item');
                 } else {
                     $('#data-and-knowledge-tab').removeClass('highlighted-item');
@@ -213,18 +188,19 @@
         });
 
 
-        $(document).ready(function () {
+
+        $(document).ready(function() {
             if (location.hash) {
                 $("a[href='" + location.hash + "']").tab("show");
-                if (location.hash.includes('publication')) {
+                if(location.hash.includes('publication')) {
                     $('#data-and-knowledge-tab').addClass('highlighted-item');
                 }
             }
-            $(document.body).on("click", "a[data-toggle]", function (event) {
+            $(document.body).on("click", "a[data-toggle]", function(event) {
                 location.hash = this.getAttribute("href");
             });
         });
-        $(window).on("popstate", function () {
+        $(window).on("popstate", function() {
             var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
             $("a[href='" + anchor + "']").tab("show");
         });

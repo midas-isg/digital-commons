@@ -45,7 +45,7 @@
                     <c:if test="${loggedIn == true && iframe == false}">
                         <ul class="nav navbar-nav navbar-padding">
                             <li class="active "><a class="leaf font-size-18 padding-top-30" data-toggle="tab"
-                                                   href="#software">Content</a></li>
+                                                   href="#content">Content</a></li>
                             <!--<li><a class="leaf font-size-20 padding-top-30 " data-toggle="tab" href="#search">Search</a>-->
                             <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>--%>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">WebServices</a></li>

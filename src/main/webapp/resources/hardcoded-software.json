@@ -1,5 +1,6 @@
 {
    "settings":{
+     "name":"software",
      "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
      "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
    },
@@ -278,6 +279,7 @@
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
     "version":"0.0.4",
     "source":"https://github.com/PSC-PublicHealth/pFRED",
+    "isOlympus":true,
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   },
   "Apollo FluTE":{
@@ -290,6 +292,7 @@
     "version":"apollo-flute-1.1",
     "documentation":"<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
     "locationCoverage":"U.S.",
+    "isOlympus":true,
     "hostSpeciesIncluded":"Humans",
     "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
