@@ -115,7 +115,6 @@ function getSoftwareTitle(name, version) {
 function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo) {
     $.getJSON( contextPath + location, function( data ) {
         treeSettings = data["settings"];
-        console.log(data["settings"]);
 
         var name = treeSettings["name"];
 
