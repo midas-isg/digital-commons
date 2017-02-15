@@ -163,7 +163,7 @@
                         <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
                         <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
 
-                        <button type="button" class="btn btn-default" onclick="activeTab('data-and-knowledge')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
+                        <button type="button" class="btn btn-default" onclick="activeTab('content')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
                     </div>
                 </div>
             </c:forEach>
