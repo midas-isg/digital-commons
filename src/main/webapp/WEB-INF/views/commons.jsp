@@ -74,10 +74,15 @@
                 <div class="col-sm-4">
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
+                    <div class="legend hidden-xs">
+                        <p><i class="olympus-color legend-font">(O)</i><i> = Available on Olympus</i></p>
+                    </div>
                 </div>
 
-                <div class="col-sm-12">
-                    <b><i class="olympus-color legend-font">(O)</i></b> <i>= Available on Olympus</i>
+                <div class="col-sm-4">
+                    <div class="legend-small hidden-sm hidden-md hidden-lg">
+                        <p><i class="olympus-color legend-font">(O)</i><i> = Available on Olympus</i></p>
+                    </div>
                 </div>
             </div>
             <div id="web-services" class="tab-pane fade">

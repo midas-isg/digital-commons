@@ -490,6 +490,32 @@ body {
     background-color: #09204c !important;
 }
 
+.legend {
+    margin-bottom: 45px;
+    position: fixed;
+    margin-right: 25px;
+    right: 0;
+    bottom: 0;
+    color: #0c2b65;
+    border: 2px solid #0c2b65;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    border-radius:5px;
+
+}
+
+.legend-small {
+    position: absolute;
+    margin-bottom: 60px;
+    color: #0c2b65;
+    border: 2px solid #0c2b65;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    border-radius:5px;
+}
+
 .legend-font {
     font-size: 11px;
 }

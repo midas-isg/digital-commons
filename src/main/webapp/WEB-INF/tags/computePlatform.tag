@@ -13,16 +13,10 @@
         highlightSelected: false
     });
 
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-disease-transmission-models.json", diseaseTransmissionModel, diseaseTransmissionModelDictionary, diseaseTransmissionModelSettings, '#disease-transmission-models-treeview', 'expandedDiseaseTransmissionModels');
+
     hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware');
 
-    $('#tools-treeview').treeview({
-        data: getToolsTreeview(),
-        showBorder: false,
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-tools.json", tools, toolsDictionary, toolsSettings, '#tools-treeview', 'expandedTools');
 
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
-        emptyIcon: "bullet-point	",
-        showBorder: false,
-        highlightSelected: false
-    });
 </script>

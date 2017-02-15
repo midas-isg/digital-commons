@@ -27,6 +27,14 @@ var systemsSoftware = [];
 var systemsSoftwareDictionary = {};
 var systemsSoftwareSettings = {};
 
+var diseaseTransmissionModel = [];
+var diseaseTransmissionModelDictionary = {};
+var diseaseTransmissionModelSettings = {};
+
+var tools = [];
+var toolsDictionary = {};
+var toolsSettings = {};
+
 var isSoftwareHardcoded = true;
 
 var stateHash =  {
@@ -244,8 +252,8 @@ function hardcodeSoftware() {
 }
 
 function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
-    if('nodes' in treeArray) {
-        for(var i = 0; i < treeArray.length; i++) {
+    for(var i = 0; i < treeArray.length; i++) {
+        if('nodes' in treeArray[i]) {
             treeArray[i].nodes.sort(compareNodes);
         }
     }
@@ -298,8 +306,8 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         }
     };
 
-    if(name == "systemSoftware") {
-        treeviewInfo['emptyIcon'] = "bullet-point	";;
+    if(name != "software") {
+        treeviewInfo['emptyIcon'] = "bullet-point	";
     }
 
     $(treeviewTag).treeview(treeviewInfo);
