@@ -119,7 +119,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         var name = treeSettings["name"];
 
-        if(name == "software") {
+        if(name == "software" || name == "tools") {
             var directories = treeSettings["directories"];
             for(var i = 0; i < directories.length; i++) {
                 if(typeof directories[i] === 'string') {
@@ -206,6 +206,10 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                                         nodeData['midasSso'] = treeDictionary[key]['midasSso'];
                                     }
                                 }
+                            }
+
+                            if(name == "tools") {
+                                nodeData.text = "<span title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
                             }
 
                             if(index > -1) {
@@ -306,14 +310,14 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         }
     };
 
-    if(name != "software") {
+    if(name != "software" && name != "tools") {
         treeviewInfo['emptyIcon'] = "bullet-point	";
     }
 
     $(treeviewTag).treeview(treeviewInfo);
     $(treeviewTag).treeview('collapseAll', { silent: true });
 
-    var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
+    var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
 
     if(expandedSoftware == null) {

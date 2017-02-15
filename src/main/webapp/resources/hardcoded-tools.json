@@ -1,11 +1,39 @@
 {
   "settings":{
-    "name": "tools"
+    "name": "tools",
+    "directories":["Statistical analysis software", "Image manipulation"],
+    "openDirectories":[]
   },
   "ImageMagick/6.9.5-7":{
+    "directory": "Image manipulation",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
   "ImageMagick/7.0.2-1":{
+    "directory": "Image manipulation",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
+  },
+  "matlab/R2015a":{
+    "directory": "Statistical analysis software",
+    "description": "MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and fourth-generation programming language"
+  },
+  "r/3.1.2":{
+    "directory": "Statistical analysis software",
+    "description": "R Statistical Computing"
+  },
+  "r/3.2.1":{
+    "directory": "Statistical analysis software",
+    "description": "R Statistical Computing"
+  },
+  "r/3.3.1":{
+    "directory": "Statistical analysis software",
+    "description": "R Statistical Computing"
+  },
+  "r_blas/openblas-0.2.13":{
+    "directory": "Statistical analysis software",
+    "description": "Optimized BLAS library for R"
+  },
+  "r_blas/unaccelerated-blas":{
+    "directory": "Statistical analysis software",
+    "description": "BLAS library for R"
   }
 }
