@@ -1,7 +1,8 @@
 {
   "settings":{
     "name": "tools",
-    "directories":["Statistical analysis software", "Image manipulation"]
+    "directories":["Statistical analysis software", "Image manipulation"],
+    "openDirectories":[]
   },
   "ImageMagick/6.9.5-7":{
     "directory": "Image manipulation",

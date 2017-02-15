@@ -317,7 +317,7 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
     $(treeviewTag).treeview(treeviewInfo);
     $(treeviewTag).treeview('collapseAll', { silent: true });
 
-    var expandedSoftware = $.parseJSON(sessionStorage.getItem("expandedSoftware"));
+    var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
 
     if(expandedSoftware == null) {
