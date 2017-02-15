@@ -27,6 +27,14 @@ var systemsSoftware = [];
 var systemsSoftwareDictionary = {};
 var systemsSoftwareSettings = {};
 
+var diseaseTransmissionModel = [];
+var diseaseTransmissionModelDictionary = {};
+var diseaseTransmissionModelSettings = {};
+
+var tools = [];
+var toolsDictionary = {};
+var toolsSettings = {};
+
 var isSoftwareHardcoded = true;
 
 var stateHash =  {
@@ -298,7 +306,7 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         }
     };
 
-    if(name == "systemSoftware") {
+    if(name != "software") {
         treeviewInfo['emptyIcon'] = "bullet-point	";
     }
 

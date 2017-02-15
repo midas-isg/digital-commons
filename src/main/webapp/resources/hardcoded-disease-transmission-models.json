@@ -1,0 +1,47 @@
+{
+    "settings": {
+      "name": "diseaseTransmissionModels"
+    },
+    "clara/clara-0.5":{
+      "description":"CLARA is an agent based model of vector born diseases."
+    },
+    "fred/fred-apollo-r2217":{
+      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
+    },
+    "fred/fred-apollo-r2218":{
+      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
+    },
+    "fred/fred-apollo":{
+      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
+    },
+    "fred/pfred":{
+      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
+    },
+    "fred/pfred-0.0.2":{
+      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
+    },
+    "fred/pfred-0.0.3":{
+      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
+    },
+    "fred/pfred-0.0.4":{
+      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
+    },
+    "hyphy/2.2.6":{
+      "description":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning"
+    },
+    "netlogo/netlogo-5.0.4":{
+      "description":"Netlogo is an agent-based simulation framework."
+    },
+    "openmalaria/32":{
+      "description":"OpenMalaria simulator of malaria epidemiology and control."
+    },
+    "openmalaria/33.1":{
+      "description":"OpenMalaria simulator of malaria epidemiology and control."
+    },
+    "openmalaria_resources":{
+      "description":""
+    },
+    "pitt_seir/pitt_seir-3.0":{
+      "description":"SEIR is a simple compartment model for flu simulationrs"
+    }
+}

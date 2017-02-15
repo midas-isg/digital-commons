@@ -1,0 +1,11 @@
+{
+  "settings":{
+    "name": "tools"
+  },
+  "ImageMagick/6.9.5-7":{
+    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
+  },
+  "ImageMagick/7.0.2-1":{
+    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
+  }
+}
