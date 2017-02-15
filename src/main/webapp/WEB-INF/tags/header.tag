@@ -98,13 +98,13 @@
         window.open(document.getElementById("libraryFrame").src);
     }
 
-    $(window).resize(function() {
+    $(window).on("resize", function() {
         if( $(window).width() < 1080) {
             document.getElementById("page-title-big").style.display = 'none';
         } else {
             document.getElementById("page-title-big").style.display = 'inline-block';
         }
-    });
+    }).resize();
 
     $('.nav a').on('click', function () {
         if ($(window).width() < 768) {
