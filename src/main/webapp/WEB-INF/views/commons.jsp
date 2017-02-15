@@ -87,7 +87,24 @@
             <div id="compute-platform" class="tab-pane fade">
                 <div class="col-sm-12">
                     <h2 class="title-font">Compute Platform</h2>
-                    <div id="compute-platform-treeview" class="treeview"></div>
+                    <p>The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS researchers can use Olympus to use, share, and modify digital objects hosted on the platform. The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.</p>
+                    <p>To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.</p>
+                </div>
+                <div class="col-sm-12">
+                    <h2 class="title-font">Software Environment</h2>
+                    <div id="software-environment-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="title-font">Disease Transmission Models</h2>
+                    <div id="disease-transmission-models-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="title-font">System Software</h2>
+                    <div id="system-software-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="title-font">Tools</h2>
+                    <div id="tools-treeview" class="treeview"></div>
                 </div>
             </div>
             <div id="about" class="tab-pane fade">
