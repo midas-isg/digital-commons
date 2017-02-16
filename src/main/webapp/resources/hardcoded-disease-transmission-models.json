@@ -1,48 +1,63 @@
 {
     "settings": {
       "name": "diseaseTransmissionModels",
+      "directories": ["clara", "fred", "hyphy", "netlogo", "openmalaria", "pitt_seir"],
       "openDirectories":[]
     },
     "clara/clara-0.5":{
+      "directory":"clara",
       "description":"CLARA is an agent based model of vector born diseases."
     },
     "fred/fred-apollo-r2217":{
+      "directory":"fred",
       "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
     },
     "fred/fred-apollo-r2218":{
+      "directory":"fred",
       "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
     },
     "fred/fred-apollo":{
+      "directory":"fred",
       "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
     },
     "fred/pfred":{
+      "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.2":{
+      "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.3":{
+      "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.4":{
+      "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "hyphy/2.2.6":{
+      "directory":"hyphy",
       "description":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning"
     },
     "netlogo/netlogo-5.0.4":{
+      "directory":"netlogo",
       "description":"Netlogo is an agent-based simulation framework."
     },
     "openmalaria/32":{
+      "directory":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "openmalaria/33.1":{
+      "directory":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "openmalaria_resources":{
+      "directory":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "pitt_seir/pitt_seir-3.0":{
+      "directory":"pitt_seir",
       "description":"SEIR is a simple compartment model for flu simulations"
     }
 }
