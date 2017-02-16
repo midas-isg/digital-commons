@@ -118,7 +118,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         var name = treeSettings["name"];
 
-        if(name == "software" || name == "tools" || name == "diseaseTransmissionModels") {
+        if(name == "software" || name == "tools" || name == "diseaseTransmissionModels" || name == "systemSoftware") {
             var directories = treeSettings["directories"];
             for(var i = 0; i < directories.length; i++) {
                 if(typeof directories[i] === 'string') {
@@ -207,7 +207,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                                 }
                             }
 
-                            if(name == "tools" || name == "diseaseTransmissionModels") {
+                            if(name != "software") {
                                 nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
                             }
 
@@ -298,7 +298,7 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         }
     };
 
-    if(name != "software" && name != "tools" && name != "diseaseTransmissionModels") {
+    if(name != "software" && name != "tools" && name != "diseaseTransmissionModels" && name != "systemSoftware") {
         treeviewInfo['emptyIcon'] = "bullet-point	";
     }
 
