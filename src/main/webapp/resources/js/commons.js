@@ -238,7 +238,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         }
 
         buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
-        $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
+        $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
     });
 }
 

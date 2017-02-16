@@ -204,7 +204,7 @@
                 }
             }*/
             //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
-            $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
+            $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
         });
 
 
