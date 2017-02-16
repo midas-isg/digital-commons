@@ -74,8 +74,6 @@
                 <div class="col-sm-4">
                     <h2 class="title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
-
-                    <h2 class="title-font">Web Services</h2>
                     <div id="webservices-treeview" class="treeview"></div>
 
                     <div class="legend hidden-xs">

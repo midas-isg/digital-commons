@@ -48,8 +48,11 @@
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 
-
                 <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="rest-documentation" title="REST Documentation" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="soap-documentation" title="SOAP Documentation" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 

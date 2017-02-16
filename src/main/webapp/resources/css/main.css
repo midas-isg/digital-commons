@@ -519,3 +519,8 @@ body {
 .legend-font {
     font-size: 11px;
 }
+
+#webservices-treeview {
+    margin-top: -20px;
+    margin-left: -3px;
+}

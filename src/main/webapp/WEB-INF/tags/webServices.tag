@@ -4,5 +4,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <script>
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/web-services.json", webservices, webservicesDictionary, webservicesSettings, '#webservices-treeview', 'expandedTools');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-web-services.json", webservices, webservicesDictionary, webservicesSettings, '#webservices-treeview', 'expandedWebServices');
 </script>

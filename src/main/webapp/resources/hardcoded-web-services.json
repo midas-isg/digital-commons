@@ -1,5 +1,6 @@
 {
   "settings": {
+    "name":"webServices",
     "directories":["Web services"],
     "openDirectories":[]
   },
@@ -21,7 +22,7 @@
     "generalInfo": "The Apollo Location Service contains a RESTful API that allows users to lookup INCITS codes, Apollo Location Codes, and many other types of geographic information that is available for locations that are stored in the Apollo Location Service Database.",
     "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs"
   },
-  "EpiCaseMap": {
+  "EpiCaseMap ": {
     "directory": "Web services",
     "generalInfo": "EpiCaseMap contains a RESTful API that allows users to upload time-coordinate series data and create visualizations for comparing and contrasting data visually. It facilitates this by providing methods for creating, retrieving, updating, and deleting time-coordinate series, visualizations, and related metadata.",
     "restDocumentation": "http://betaweb.rods.pitt.edu/epicasemap/api"

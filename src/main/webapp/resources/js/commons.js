@@ -178,7 +178,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                         }
 
                         var nodeData = {
-                            'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
+                            'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\',' + '\'' + key + '\')">' + title + '</span>',
                             'name': key
                         };
 
@@ -210,7 +210,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                             }
                         }
 
-                        if(name != "software") {
+                        if(name != "software" && name != "webServices") {
                             nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
                         }
 
@@ -505,15 +505,20 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     }
 }
 
-function openModal(softwareName) {
-    var attrs = softwareDictionary[softwareName];
+function openModal(type, name) {
+    var attrs = {};
+    if(type == 'software') {
+        attrs = softwareDictionary[name];
+    } else if(type == 'webServices') {
+        attrs = webservicesDictionary[name];
+    }
 
-    if(softwareName != null) {
+    if(name != null) {
         $('#software-name').show();
         if('version' in attrs) {
-            $('#software-name').text(getSoftwareTitle(softwareName, attrs['version']));
+            $('#software-name').text(getSoftwareTitle(name, attrs['version']));
         } else {
-            $('#software-name').text(softwareName);
+            $('#software-name').text(name);
         }
     } else {
         $('#software-name').hide();
@@ -535,31 +540,35 @@ function openModal(softwareName) {
     if('doi' in attrs) {
         $('#software-doi-container').show();
         $('#software-doi').html(attrs['doi']);
-    } else {
+    } else if(type == 'software') {
         $('#software-doi-container').show();
         $('#software-doi').html('N/A');
+    } else {
+        $('#software-doi-container').hide();
     }
 
     if('version' in attrs) {
         $('#software-version-container').show();
         $('#software-version').text(attrs['version']);
 
-        if(attrs['version'].includes(',')) {
+        if(attrs['version'].includes(',') && type == 'software') {
             $('#software-version-tag').text('Software versions:');
         } else {
             $('#software-version-tag').text('Software version:');
+        }
+
+        if(attrs['version'].includes(',') && type == 'webServices') {
+            $('#software-version-tag').text('Versions:');
+        } else {
+            $('#software-version-tag').text('Version:');
         }
     } else {
         $('#software-version-container').hide();
     }
 
-    //toggleModalItem('doi', attrs, 'doi', false, false);
-
     toggleModalItem('type', attrs, 'type', false, false);
 
     toggleModalItem('populationSpecies', attrs, 'population-species', false, false);
-
-    //toggleModalItem('version', attrs, 'version', false, false);
 
     toggleModalItem('location', attrs, 'location', true, false);
 
@@ -594,6 +603,10 @@ function openModal(softwareName) {
     toggleModalItem('license', attrs, 'license', false, true);
 
     toggleModalItem('documentation', attrs, 'documentation', false, true);
+
+    toggleModalItem('restDocumentation', attrs, 'rest-documentation', true, false);
+
+    toggleModalItem('soapDocumentation', attrs, 'soap-documentation', true, false);
 
     $('#pageModal').modal('show');
 
