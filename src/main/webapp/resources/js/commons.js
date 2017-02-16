@@ -258,6 +258,7 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
+            $('[data-toggle="tooltip"]').tooltip('destroy');
             if(typeof data['nodes'] != undefined) {
                 $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
