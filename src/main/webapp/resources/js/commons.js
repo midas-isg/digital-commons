@@ -35,6 +35,10 @@ var tools = [];
 var toolsDictionary = {};
 var toolsSettings = {};
 
+var webservices = [];
+var webservicesDictionary = {};
+var webservicesSettings = {};
+
 var isSoftwareHardcoded = true;
 
 var stateHash =  {
@@ -118,113 +122,111 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         var name = treeSettings["name"];
 
-        if(name == "software" || name == "tools" || name == "diseaseTransmissionModels" || name == "systemSoftware") {
-            var directories = treeSettings["directories"];
-            for(var i = 0; i < directories.length; i++) {
-                if(typeof directories[i] === 'string') {
-                    treeArray.push({
-                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
+        var directories = treeSettings["directories"];
+        for(var i = 0; i < directories.length; i++) {
+            if(typeof directories[i] === 'string') {
+                treeArray.push({
+                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
+                    "nodes": [],
+                    "name": directories[i]
+                });
+            } else {
+                var keys = Object.keys(directories[i]);
+                var topDirectory = keys[0];
+                var nodes = [];
+
+                for(var x = 0; x < directories[i][topDirectory].length; x++) {
+                    nodes.push({
+                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
                         "nodes": [],
-                        "name": directories[i]
+                        "name": directories[i][topDirectory][x]
                     });
-                } else {
-                    var keys = Object.keys(directories[i]);
-                    var topDirectory = keys[0];
-                    var nodes = [];
+                }
 
-                    for(var x = 0; x < directories[i][topDirectory].length; x++) {
-                        nodes.push({
-                            "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i][topDirectory][x],
-                            "nodes": [],
-                            "name": directories[i][topDirectory][x]
-                        });
+                treeArray.push({
+                    "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
+                    "nodes": nodes,
+                    "name": topDirectory
+                });
+
+            }
+        }
+
+        for(var key in data) {
+            treeDictionary[key] = data[key];
+
+            if('directory' in treeDictionary[key]) {
+                for(var i = 0; i < treeArray.length; i++) {
+                    var subdirectories = [];
+                    var subdirectoryContent = [];
+                    if('nodes' in treeArray[i]) {
+                        for(var x in treeArray[i]['nodes']) {
+                            if('nodes' in treeArray[i]['nodes'][x]) {
+                                subdirectories.push(treeArray[i]['nodes'][x]['name']);
+                                subdirectoryContent.push(treeArray[i]['nodes'][x]);
+                            }
+                        }
                     }
 
-                    treeArray.push({
-                        "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + topDirectory + "</span>",
-                        "nodes": nodes,
-                        "name": topDirectory
-                    });
 
-                }
-            }
+                    var index = subdirectories.indexOf(treeDictionary[key]['directory']);
 
-            for(var key in data) {
-                treeDictionary[key] = data[key];
+                    if(treeArray[i]['name'] == treeDictionary[key]['directory'] || index > -1) {
+                        var title = key;
+                        if('version' in treeDictionary[key]) {
+                            title = getSoftwareTitle(key, treeDictionary[key]['version']);
+                        }
 
-                if('directory' in treeDictionary[key]) {
-                    for(var i = 0; i < treeArray.length; i++) {
-                        var subdirectories = [];
-                        var subdirectoryContent = [];
-                        if('nodes' in treeArray[i]) {
-                            for(var x in treeArray[i]['nodes']) {
-                                if('nodes' in treeArray[i]['nodes'][x]) {
-                                    subdirectories.push(treeArray[i]['nodes'][x]['name']);
-                                    subdirectoryContent.push(treeArray[i]['nodes'][x]);
+                        var nodeData = {
+                            'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
+                            'name': key
+                        };
+
+                        if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
+                            nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
+                        }
+
+                        if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
+                            var url = '';
+                            if('source' in treeDictionary[key]) {
+                                url = treeDictionary[key]['source'];
+                            }
+
+                            if('location' in treeDictionary[key]) {
+                                url = treeDictionary[key]['location'];
+                            }
+
+                            if(url.length > 0) {
+                                nodeData['url'] = url;
+                                nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
+
+                                if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
+                                    nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
+                                }
+
+                                if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+                                    nodeData['midasSso'] = treeDictionary[key]['midasSso'];
                                 }
                             }
                         }
 
-
-                        var index = subdirectories.indexOf(treeDictionary[key]['directory']);
-
-                        if(treeArray[i]['name'] == treeDictionary[key]['directory'] || index > -1) {
-                            var title = key;
-                            if('version' in treeDictionary[key]) {
-                                title = getSoftwareTitle(key, treeDictionary[key]['version']);
-                            }
-
-                            var nodeData = {
-                                'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + key + '\')">' + title + '</span>',
-                                'name': key
-                            };
-
-                            if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-                                nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
-                            }
-
-                            if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
-                                var url = '';
-                                if('source' in treeDictionary[key]) {
-                                    url = treeDictionary[key]['source'];
-                                }
-
-                                if('location' in treeDictionary[key]) {
-                                    url = treeDictionary[key]['location'];
-                                }
-
-                                if(url.length > 0) {
-                                    nodeData['url'] = url;
-                                    nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
-
-                                    if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-                                        nodeData.text += ' <b><i class="olympus-color"><sup>(O)</sup></i></b>';
-                                    }
-
-                                    if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
-                                        nodeData['midasSso'] = treeDictionary[key]['midasSso'];
-                                    }
-                                }
-                            }
-
-                            if(name != "software") {
-                                nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
-                            }
-
-                            if(index > -1) {
-                                subdirectoryContent[index].nodes.push(nodeData);
-                                subdirectoryContent[index].nodes.sort(compareNodes);
-                            } else {
-                                treeArray[i].nodes.push(nodeData);
-                            }
-
-                            break;
+                        if(name != "software") {
+                            nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
                         }
+
+                        if(index > -1) {
+                            subdirectoryContent[index].nodes.push(nodeData);
+                            subdirectoryContent[index].nodes.sort(compareNodes);
+                        } else {
+                            treeArray[i].nodes.push(nodeData);
+                        }
+
+                        break;
                     }
                 }
             }
-        } else {
-            for(var key in data) {
+        }
+            /*for(var key in data) {
                 if(key != "settings") {
                     treeDictionary[key] = data[key];
 
@@ -234,8 +236,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                         }
                     );
                 }
-            }
-        }
+            }*/
 
         buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
         $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
@@ -298,9 +299,9 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
         }
     };
 
-    if(name != "software" && name != "tools" && name != "diseaseTransmissionModels" && name != "systemSoftware") {
+    /*if(name != "software" && name != "tools" && name != "diseaseTransmissionModels" && name != "systemSoftware") {
         treeviewInfo['emptyIcon'] = "bullet-point	";
-    }
+    }*/
 
     $(treeviewTag).treeview(treeviewInfo);
     $(treeviewTag).treeview('collapseAll', { silent: true });
