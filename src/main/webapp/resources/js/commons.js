@@ -208,7 +208,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
                             }
 
                             if(name == "tools") {
-                                nodeData.text = "<span title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
+                                nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
                             }
 
                             if(index > -1) {
@@ -230,7 +230,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
                     treeArray.push(
                         {
-                            text: "<span title='" + treeDictionary[key]["description"] + "'>" + key + "</span>"
+                            text: "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>"
                         }
                     );
                 }
@@ -238,20 +238,8 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         }
 
         buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
+        $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
     });
-}
-
-function hardcodeSoftware() {
-    for(var i = 0; i < software[2].nodes.length; i++) {
-        if(software[2].nodes[i].name == 'GLEAMViz') {
-            delete software[2].nodes[i];
-            break;
-        }
-    }
-
-    software.splice(1, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Population dynamics models</span>", nodes: [], "name": "Population dynamics models"});
-
-    software.splice(6, 0, {'text': "<span class=\"root-break\" onmouseover='toggleTitle(this)'>Modeling platforms</span>", nodes: [], "name": "Modeling platforms"});
 }
 
 function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
@@ -319,7 +307,7 @@ function buildSoftwareTree(name, contextPath, treeArray, treeviewTag, expandedIn
     var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
 
-    if(expandedSoftware == null) {
+    if(expandedSoftware == null && "settings" in treeDictionary) {
         var openByDefault = treeDictionary["settings"]["openDirectories"];
         var openByDefaultIds = [];
         for(var i = 0; i < openByDefault.length; i++) {

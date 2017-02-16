@@ -1,6 +1,7 @@
 {
     "settings": {
-      "name": "systemSoftware"
+      "name": "systemSoftware",
+      "openDirectories":[]
     },
     "anaconda/4.1.1":{
       "description":"Provides the anaconda open data science platforms"

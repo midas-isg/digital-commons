@@ -1,6 +1,7 @@
 {
     "settings": {
-      "name": "diseaseTransmissionModels"
+      "name": "diseaseTransmissionModels",
+      "openDirectories":[]
     },
     "clara/clara-0.5":{
       "description":"CLARA is an agent based model of vector born diseases."
@@ -39,7 +40,7 @@
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "openmalaria_resources":{
-      "description":""
+      "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "pitt_seir/pitt_seir-3.0":{
       "description":"SEIR is a simple compartment model for flu simulations"

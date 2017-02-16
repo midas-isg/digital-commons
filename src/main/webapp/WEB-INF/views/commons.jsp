@@ -196,13 +196,15 @@
                 $(".popover").remove();
             }
 
-            if($(e.target).attr('data-toggle') == 'tab') {
+            /*if($(e.target).attr('data-toggle') == 'tab') {
                 if($(e.target).attr('href') == '#data-and-knowledge') {
                     $('#data-and-knowledge-tab').addClass('highlighted-item');
                 } else {
                     $('#data-and-knowledge-tab').removeClass('highlighted-item');
                 }
-            }
+            }*/
+            //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
+            $('[data-toggle="tooltip"]').tooltip({trigger : 'hover'});
         });
 
 
