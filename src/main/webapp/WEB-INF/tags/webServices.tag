@@ -3,12 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-<%--<script>--%>
-<%--$('#web-services-treeview').treeview({--%>
-<%--data: getWebServicesTreeview(),--%>
-<%--showBorder: false,--%>
-
-<%--expandIcon: "glyphicon glyphicon-chevron-right",--%>
-<%--collapseIcon: "glyphicon glyphicon-chevron-down"--%>
-<%--});--%>
-<%--</script>--%>
+<script>
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-web-services.json", webservices, webservicesDictionary, webservicesSettings, '#webservices-treeview', 'expandedWebServices');
+</script>

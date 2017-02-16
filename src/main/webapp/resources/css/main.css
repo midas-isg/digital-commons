@@ -502,6 +502,7 @@ body {
     padding-left: 5px;
     padding-top: 5px;
     border-radius:5px;
+    background-color: white;
 
 }
 
@@ -514,6 +515,7 @@ body {
     padding-left: 5px;
     padding-top: 5px;
     border-radius:5px;
+    background-color: white;
 }
 
 .legend-font {
@@ -540,4 +542,9 @@ body {
 
 .no-link {
     cursor: initial;
+}
+
+#webservices-treeview {
+    margin-top: -20px;
+    margin-left: -3px;
 }
