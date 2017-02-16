@@ -1,6 +1,7 @@
 {
     "settings": {
-      "name": "diseaseTransmissionModels"
+      "name": "diseaseTransmissionModels",
+      "openDirectories":[]
     },
     "clara/clara-0.5":{
       "description":"CLARA is an agent based model of vector born diseases."
