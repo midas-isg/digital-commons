@@ -548,3 +548,15 @@ body {
     margin-top: -20px;
     margin-left: -3px;
 }
+
+#tools-treeview ul li {
+    cursor: default;
+}
+
+#disease-transmission-models-treeview ul li {
+    cursor: default;
+}
+
+#system-software-treeview ul li {
+    cursor: default;
+}

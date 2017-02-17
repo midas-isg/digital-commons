@@ -52,7 +52,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         addTreeDirectories(directories, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
-        buildBootstrapTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
+        buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
 
         $('[data-toggle="tooltip"]').tooltip({
             trigger : 'hover',
@@ -112,7 +112,7 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
      }*/
 }
 
-function buildBootstrapTree(contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
+function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
     for(var i = 0; i < treeArray.length; i++) {
         if('nodes' in treeArray[i]) {
             treeArray[i].nodes.sort(compareNodes);
@@ -128,7 +128,6 @@ function buildBootstrapTree(contextPath, treeArray, treeviewTag, expandedInfo, t
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
-            $('[data-toggle="tooltip"]').tooltip('destroy');
             if(typeof data['nodes'] != undefined) {
                 $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
@@ -168,12 +167,24 @@ function buildBootstrapTree(contextPath, treeArray, treeviewTag, expandedInfo, t
         }
     };
 
+    if(name == "diseaseTransmissionModels" || name == "systemSoftware" || name == "tools") {
+        treeviewInfo['expandIcon'] = "bullet-point	";
+        treeviewInfo['collapseIcon'] = "bullet-point	";
+        treeviewInfo['highlightSelected'] = false;
+        treeviewInfo['onNodeSelected'] = function(event, data) {
+            $('[data-toggle="tooltip"]').tooltip('destroy');
+            event.stopPropagation();
+        };
+        $(treeviewTag).treeview(treeviewInfo);
+        $(treeviewTag).treeview('expandAll', { silent: true });
+    } else {
+        $(treeviewTag).treeview(treeviewInfo);
+        $(treeviewTag).treeview('collapseAll', { silent: true });
+    }
+
     /*if(name != "software" && name != "tools" && name != "diseaseTransmissionModels" && name != "systemSoftware") {
      treeviewInfo['emptyIcon'] = "bullet-point	";
      }*/
-
-    $(treeviewTag).treeview(treeviewInfo);
-    $(treeviewTag).treeview('collapseAll', { silent: true });
 
     var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
