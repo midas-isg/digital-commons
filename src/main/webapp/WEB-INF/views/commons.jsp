@@ -151,7 +151,7 @@
             </div>
             <div id="compute-platform" class="tab-pane fade">
                 <div class="col-sm-12">
-                    <h2 class="title-font">Olympus</h2>
+                    <h3 class="title-font">Olympus</h3>
                     <div class="font-size-16 standard-font">
                         Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
                         <br><br>
@@ -163,16 +163,17 @@
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="content-title-font">Disease Transmission Models</h3>
-                    <div id="disease-transmission-models-treeview" class="treeview"></div>
-                </div>
-                <div class="col-sm-4">
-                    <h3 class="content-title-font">System Software</h3>
+                    <h4 class="subtitle-font">System Software</h4>
                     <div id="system-software-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="content-title-font">Tools</h3>
+                    <h4 class="subtitle-font">Tools</h4>
                     <div id="tools-treeview" class="treeview"></div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="subtitle-font">Disease Transmission Models</h4>
+                    <div class="dtm-disclaimer"><i>These entries are cross-referenced with the Disease Transmission Models on the “Content” page.</i></div>
+                    <div id="disease-transmission-models-treeview" class="treeview"></div>
                 </div>
             </div>
             <div id="about" class="tab-pane fade">

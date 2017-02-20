@@ -115,10 +115,15 @@
     content: "";
     display: block;
     background-color: #0c2b65;
-    height: 10px;
-    height: 0.625rem;
-    margin-top: 21px;
-    margin-top: 1.3125rem;
+    height: 5px;
+    height: 0.425rem;
+    margin-top: 11px;
+    margin-top: 0.8125rem;
+}
+
+.dtm-disclaimer {
+    font-size:11px;
+    margin-bottom:5px;
 }
 
 @media screen and (max-width: 1105px) {
@@ -134,6 +139,24 @@
     .content-title-font {
         color: #0c2b65;
         font-size:16px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .subtitle-font {
+        color: #0c2b65;
+        font-size:15px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .subtitle-font {
+        color: #0c2b65;
+        font-size:18px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
