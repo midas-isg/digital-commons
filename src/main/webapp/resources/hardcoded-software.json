@@ -1,11 +1,11 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
+     "directories":[{"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>": ["FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>", "FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>", "Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>"]}, "Disease forecasting", "Pathogen evolution models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>": ["NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>"]}],
      "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
    },
    "FluTE":{
-      "directory":"FluTE (4 versions)",
+      "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
       "diseaseCoverage":"Influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "hostSpeciesIncluded":"Humans",
@@ -15,7 +15,7 @@
       "publicationsAboutRelease":"Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
    },
    "GLEAM":{
-      "directory":"Disease transmission models",
+      "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
       "title":"Global Epidemic and Mobility Model (GLEAM)",
       "generalInfo":"<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
       "diseaseCoverage":"Communicable human-to-human",
@@ -38,7 +38,7 @@
       "executables":"<a href = \"http://legrosmathi.eu/skeeterbuster/Skeeter_Buster.zip\" style=\"text-decoration:underline\">Windows</a>"
    },
   "VECTRI malaria model":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "version":"v1.3.5",
     "diseaseCoverage":"Malaria",
     "hostSpeciesIncluded":"Humans, Mosquitoes",
@@ -49,7 +49,7 @@
   },
   "Dengue transmission model":{
     "diseaseCoverage":"Dengue",
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "version":"2.0",
     "generalInfo":"This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
     "source":"https://github.com/tjhladish/dengue",
@@ -58,7 +58,7 @@
     "publicationsThatUsedRelease": "Thomas J. Hladish, Carl A. B. Pearson, Dennis L. Chao, Diana Patricia Rojas, Gabriel L. Recchia, Héctor Gómez-Dantés, M. Elizabeth Halloran, Juliet R. C. Pulliam, Ira M. Longini (2016) Projected Impact of Dengue Vaccination in Yucatán, Mexico. (<a href=\"http://dx.doi.org/10.1371/journal.pntd.0004661\" class=\"underline\">doi:10.1371/journal.pntd.0004661</a>)"
   },
   "Ebola transmission model":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.",
     "version":"commit 720c16",
     "diseaseCoverage":"Ebola",
@@ -68,14 +68,14 @@
   },
   "FRED":{
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
-    "directory":"FRED (3 versions)",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "version":"2.12.0",
     "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
     "diseaseCoverage":"Communicable human-to-human",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
   "Open Malaria  ":{
-    "directory":"Open Malaria (3 versions)",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"32",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
@@ -86,7 +86,7 @@
     "isOlympus": true
   },
   "Open Malaria ":{
-    "directory":"Open Malaria (3 versions)",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"33.1",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
@@ -97,7 +97,7 @@
     "isOlympus": true
   },
   "Open Malaria":{
-    "directory":"Open Malaria (3 versions)",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"36.11",
     "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
@@ -109,7 +109,7 @@
     "isOlympus": true
   },
   "Global Epidemic Simulator":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"The Global Epidemic Simulator is a platform for modelling directly transmissible human diseases such as influenza, and testing intervention policies that may reduce the duration or severity of an outbreak of such a disease. Building on previous work, this model is spatial and individual-based, using various geographical and demographic data sources to place households at absolute locations, populated with individuals of specific ages who each attend schools or workplaces situated in their vicinity. The significant advance of this project over previous work is the global nature of simulation, the memory and performance requirements of which motivate us towards a multi-core, multi-computer solution.",
     "version": "beta-1.0",
     "locationCoverage":"Worldwide",
@@ -119,7 +119,7 @@
     "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
   "Repast Simphony":{
-    "directory":"Modeling platforms",
+    "directory":"Modeling platforms <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"Repast Simphony is a richly interactive and easy to learn Java-based modeling system that is designed for use on workstations and small computing clusters.",
     "version":"2.4.0",
     "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
@@ -128,7 +128,7 @@
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0\" class=\"underline\">https://github.com/Repast/repast.simphony/releases/tag/v2.4.0</a>"
   },
   "Repast for High Performance Computing":{
-    "directory":"Modeling platforms",
+    "directory":"Modeling platforms <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"Repast for High Performance Computing is a lean and expert-focused C++-based modeling system that is designed for use on large computing clusters and supercomputers.",
     "version":"2.2.0",
     "executables":"<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>",
@@ -138,7 +138,7 @@
   },
   "TranStat": {
     "generalInfo":"TranStat is a software application designed to estimate the transmissibility of infections within groups of individuals.",
-    "directory": "Disease transmission models",
+    "directory": "Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "version":"Version 3 July 2015",
     "developer": "Center for Inference and Dynamics of Infectious Disease",
     "location": "http://www.cidid.org/transtat",
@@ -147,12 +147,12 @@
     "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class\"underline\">download latest version</a>"
   },
     "ZIKA Modeling":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
     "webApplication":"http://www.zika-model.org/"
   },
   "HyPhy":{
-    "directory":"Pathogen evolution models",
+    "directory":"Pathogen evolution models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "developer":"iGEM/UCSD evolutionary biology and bioinformatics group",
     "location":"http://www.hyphy.org/w/index.php/Main_Page",
     "source":"https://github.com/veg/hyphy/releases/tag/2.2.7",
@@ -161,21 +161,21 @@
     "redirect":true
   },
   "SEEDY":{
-    "directory":"Pathogen evolution models",
+    "directory":"Pathogen evolution models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "developer":"Colin Worby, Harvard T.H. Chan School of Public Health",
     "source":"https://cran.r-project.org/web/packages/seedy/index.html",
     "version":"1.3",
     "redirect":true
   },
   "nextflu/H3N2":{
-    "directory":"Pathogen evolution models",
+    "directory":"Pathogen evolution models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "developer":"Trevor Bedford and Richard Neher",
     "source":"https://github.com/blab/nextflu",
     "location":"http://nextflu.org/h3n2/3y/",
     "redirect":true
   },
   "nextstrain/Zika":{
-    "directory":"Pathogen evolution models",
+    "directory":"Pathogen evolution models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "developer":"Trevor Bedford and Richard Neher",
     "location":"http://nextstrain.org/zika/",
     "redirect":true
@@ -273,7 +273,7 @@
     "location":"http://cdcepi.github.io/flu/forecasts.html"
   },
   "pFRED":{
-    "directory":"FRED (3 versions)",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.",
     "diseaseCoverage":"Communicable human-to-human",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
@@ -283,7 +283,7 @@
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   },
   "Apollo FluTE":{
-    "directory":"FluTE (4 versions)",
+    "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.",
     "diseaseCoverage":"Influenza",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
@@ -297,7 +297,7 @@
     "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
   "FRED Windows 64":{
-    "directory":"FRED (3 versions)",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"This software installs the FRED simulator on a Windows 64-bit operating system.",
     "doi":"<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>",
     "source":"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
@@ -307,7 +307,7 @@
     "executables":"<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"
   },
   "Zika virus infections in childbearing women in the Americas":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "version":"commit f5e0cef",
     "diseaseCoverage":"Zika",
     "locationCoverage":"The Americas",
@@ -329,7 +329,7 @@
     "publicationsAboutRelease": "Morin C and Comrie AC, 2010. Modeled response of the West Nile virus vector Culex quinquefasciatus to changing climate using the dynamic mosquito simulation model. International Journal of Biometeorology 54,517-529. (<a href=\"http://dx.doi.org/10.1007/s00484-010-0349-6\" class=\"underline\">doi:10.1007/s00484-010-0349-6</a>)"
   },
   "NetLogo":{
-    "directory":"NetLogo (2 versions)",
+    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "version":"5.0.4",
     "executables":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/download.shtml\">http://ccl.northwestern.edu/netlogo/download.shtml</a>",
@@ -340,7 +340,7 @@
     "isOlympus":true
   },
   "NetLogo ":{
-    "directory":"NetLogo (2 versions)",
+    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "webApplication":"http://www.netlogoweb.org/launch",
     "version":"6.0",
@@ -351,7 +351,7 @@
     "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License), version 2</a>"
   },
   "SEIR epidemic model":{
-    "directory":"Disease transmission models",
+    "directory":"Disease transmission models <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
     "generalInfo":"A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.",
     "version":"3.0",
     "source":"https://github.com/midas-isg/PITT-SEIR-model",
