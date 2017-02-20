@@ -593,6 +593,12 @@ function openModal(type, name) {
 
     toggleModalItem('soapDocumentation', attrs, 'soap-documentation', true, false);
 
+    toggleModalItem('projectSource', attrs, 'project-source-code', true, false);
+
+    toggleModalItem('soapSource', attrs, 'rest-source-code', true, false);
+
+    toggleModalItem('restSource', attrs, 'soap-source-code', true, false);
+
     $('#pageModal').modal('show');
 
 }

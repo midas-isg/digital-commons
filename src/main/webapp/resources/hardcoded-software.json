@@ -349,5 +349,12 @@
     "sourceCodeRelease":"<a href=\"https://github.com/NetLogo/NetLogo/releases/tag/6.0.0\" class=\"underline\">https://github.com/NetLogo/NetLogo/releases/tag/6.0.0</a>",
     "documentation":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/docs/\">http://ccl.northwestern.edu/netlogo/docs/</a>",
     "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License), version 2</a>"
+  },
+  "SEIR epidemic model":{
+    "directory":"Disease transmission models",
+    "generalInfo":"A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.",
+    "version":"3.0",
+    "source":"https://github.com/midas-isg/PITT-SEIR-model",
+    "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   }
 }

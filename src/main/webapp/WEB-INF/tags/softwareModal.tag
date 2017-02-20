@@ -38,6 +38,8 @@
 
                 <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="end-point-prefix" title="Endpoint prefix" hasHref="true"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
@@ -46,9 +48,13 @@
 
                 <myTags:softwareModalItem id="source-code" title="Source code repository" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="project-source-code" title="Project source code repository" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="end-point-prefix" title="Endpoint prefix" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="rest-source-code" title="REST source code repository" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="soap-source-code" title="SOAP source code repository" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
 
