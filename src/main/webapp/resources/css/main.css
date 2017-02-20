@@ -148,7 +148,7 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
     .content-title-font {
         color: #0c2b65;
         font-size:30px;
