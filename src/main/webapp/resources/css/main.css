@@ -121,15 +121,6 @@
     margin-top: 1.3125rem;
 }
 
-@media screen and (max-width: 1307px) {
-    .content-title-font {
-        color: #0c2b65;
-        font-size:25px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
-}
-
 @media screen and (max-width: 1105px) {
     .content-title-font {
         color: #0c2b65;
@@ -151,7 +142,7 @@
 @media screen and (max-width: 767px) {
     .content-title-font {
         color: #0c2b65;
-        font-size:30px;
+        font-size:24px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
