@@ -64,15 +64,15 @@
         <div class="tab-content">
             <div id="content" class="tab-pane fade in active">
                 <div class="col-sm-4">
-                    <h2 class="title-font">Software</h2>
+                    <h2 class="content-title-font">Software</h2>
                     <div id="algorithm-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="title-font">Data &amp; Knowledge</h2>
+                    <h2 class="content-title-font">Data &amp; Knowledge</h2>
                     <div id="data-and-knowledge-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h2 class="title-font">Data-augmented Publications</h2>
+                    <h2 class="content-title-font">Data-augmented Publications</h2>
                     <div id="publications-treeview" class="treeview"></div>
                     <div id="webservices-treeview" class="treeview"></div>
 

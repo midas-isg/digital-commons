@@ -105,6 +105,58 @@
     margin-top: 1.3125rem;
 }
 
+.content-title-font {
+    color: #0c2b65;
+    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+}
+
+.content-title-font:after {
+    content: "";
+    display: block;
+    background-color: #0c2b65;
+    height: 10px;
+    height: 0.625rem;
+    margin-top: 21px;
+    margin-top: 1.3125rem;
+}
+
+@media screen and (max-width: 1307px) {
+    .content-title-font {
+        color: #0c2b65;
+        font-size:25px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 1105px) {
+    .content-title-font {
+        color: #0c2b65;
+        font-size:20px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .content-title-font {
+        color: #0c2b65;
+        font-size:17px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .content-title-font {
+        color: #0c2b65;
+        font-size:30px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
 .subtitle-font {
     color: #0c2b65;
     font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -228,42 +280,6 @@ a {
 
 .list-group-item li {
     white-space: pre-wrap;
-}
-
-@media screen and (max-width: 1307px) {
-    .title-font {
-        color: #0c2b65;
-        font-size:25px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
-}
-
-@media screen and (max-width: 1105px) {
-    .title-font {
-        color: #0c2b65;
-        font-size:20px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
-}
-
-@media screen and (max-width: 899px) {
-    .title-font {
-        color: #0c2b65;
-        font-size:17px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .title-font {
-        color: #0c2b65;
-        font-size:30px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
 }
 
 @media screen and (min-width: 768px) {
