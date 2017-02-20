@@ -37,7 +37,6 @@
     "generalInfo":"This API allows users to query the Project Tycho database for publically available disease surveillance data (such as recorded weekly National Notifiable Disease Surveillance System (NNDSS) reports for the United States (1888-2013). It provides methods for retrieving data by location type, event type, disease name, and time span,  as well as filtering options for specific locations.",
     "documentation":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
     "endpointPrefix":"http://www.tycho.pitt.edu/api/",
-    "version": "1.1.0",
-    "exampleQueries":"<ul style=\"margin-left:-20px\"><li><a class=\"underline\" href=\"http://www.tycho.pitt.edu/api/states?apikey=YOURAPIKEY\">http://www.tycho.pitt.edu/api/states?apikey=YOURAPIKEY</li><li><a class=\"underline\" href=\"http://www.tycho.pitt.edu/api/info?event=cases&disease=measles&loc_type=state&apikey=YOURAPIKEY\">http://www.tycho.pitt.edu/api/info?event=cases&disease=measles&loc_type=state&apikey=YOURAPIKEY</li><li><a class=\"underline\" href=\"http://www.tycho.pitt.edu/api/query?loc_type=city&loc=Pittsburgh&state=PA&disease=measles&event=cases&start=1900&end=1920&apikey=YOURAPIKEY\">http://www.tycho.pitt.edu/api/query?loc_type=city&loc=Pittsburgh&state=PA&disease=measles&event=cases&start=1900&end=1920&apikey=YOURAPIKEY</li></ul>"
+    "version": "1.1.0"
   }
 }
