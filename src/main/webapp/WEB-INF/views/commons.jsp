@@ -75,7 +75,7 @@
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
                     <div class="legend hidden-xs">
-                        <p><i class="olympus-color legend-font">(O)</i><i> = available on Olympus</i></p>
+                        <p><i class="olympus-color legend-font"><b>(O)</b></i><i> = available on Olympus</i></p>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
 
                 <div class="col-sm-4">
                     <div class="legend-small hidden-sm hidden-md hidden-lg">
-                        <p><i class="olympus-color legend-font">(O)</i><i> = available on Olympus</i></p>
+                        <p><i class="olympus-color legend-font"><b>(O)</b></i><i> = available on Olympus</i></p>
                     </div>
                 </div>
             </div>
@@ -153,18 +153,26 @@
                 <div class="col-sm-12">
                     <h3 class="title-font">Olympus</h3>
                     <div class="font-size-16 standard-font">
-                        <div class="col-sm-6">
+                        <div class="col-sm-7">
                             Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
                             <br><br>
                             To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
                             <br><br>
                             For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>PowerPoint presentation</a> or watch the video <span class="hidden-xs">to the right.</span> <span class="hidden-lg hidden-md hidden-sm">below.</span>
                             <br><br>
-                            <i>Several programming languages, compilers, and popular development tools available on Olympus are listed below.</i>
-                            <br><br>
                         </div>
-                        <div class="col-sm-6">
-                            <iframe style="width:100%" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                        <div class="col-sm-5">
+                            <iframe style="width:100%" height="275" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <h3 class="title-font">Software available on Olympus</h3>
+                    <div class="font-size-16 standard-font">
+                        <div class="col-sm-12">
+                            A list of the programming languages, compilers, and popular development tools that are available on Olympus is shown below. A wiki describing how to use Olympus is available at <a href="https://git.isg.pitt.edu/hpc/olympus/wikis/home">https://git.isg.pitt.edu/hpc/olympus/wikis/home</a>.
+                            <br/><br/>
+                            If you require software on Olympus that is not listed below, please contact <a href="mailto:remarks@psc.edu">remarks@psc.edu</a>.<br/><br/>
                         </div>
                     </div>
                 </div>
