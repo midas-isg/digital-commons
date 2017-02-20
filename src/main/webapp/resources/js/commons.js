@@ -99,7 +99,7 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
 
         if('directory' in treeDictionary[key]) {
             addNodesToDirectory(name, key, treeArray, treeDictionary);
-        } else if(key != "settings") {
+        } else if(key != "settings" && key != "EpiCaseMap") {
             var nodeData = getNodeData(name, key, treeDictionary);
             nodeData["nodes"] = [];
             treeArray.push(nodeData);
@@ -598,6 +598,8 @@ function openModal(type, name) {
     toggleModalItem('soapSource', attrs, 'rest-source-code', true, false);
 
     toggleModalItem('restSource', attrs, 'soap-source-code', true, false);
+
+    toggleModalItem('exampleQueries', attrs, 'example-queries', false, true);
 
     $('#pageModal').modal('show');
 

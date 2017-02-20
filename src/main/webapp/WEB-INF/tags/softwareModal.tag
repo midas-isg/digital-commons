@@ -62,6 +62,8 @@
 
                 <myTags:softwareModalItem id="soap-documentation" title="SOAP Documentation" hasHref="true"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="example-queries" title="Example Queries" hasHref="false"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="license" title="License" hasHref="false"></myTags:softwareModalItem>
