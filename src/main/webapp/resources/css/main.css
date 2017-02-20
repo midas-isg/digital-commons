@@ -588,11 +588,6 @@ body {
     cursor: initial;
 }
 
-#webservices-treeview {
-    margin-top: -20px;
-    margin-left: -3px;
-}
-
 #tools-treeview ul li {
     cursor: default;
 }

@@ -51,6 +51,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         var directories = treeSettings["directories"];
 
         addTreeDirectories(directories, treeArray);
+        console.log(name, treeDictionary, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
         buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
 
@@ -98,6 +99,10 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
 
         if('directory' in treeDictionary[key]) {
             addNodesToDirectory(name, key, treeArray, treeDictionary);
+        } else if(key != "settings") {
+            var nodeData = getNodeData(name, key, treeDictionary);
+            nodeData["nodes"] = [];
+            treeArray.push(nodeData);
         }
     }
 
@@ -178,6 +183,10 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('expandAll', { silent: true });
     } else {
+        if(name == "webServices") {
+            treeviewInfo['expandIcon'] = "bullet-point	";
+            treeviewInfo['collapseIcon'] = "bullet-point	";
+        }
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('collapseAll', { silent: true });
     }
@@ -224,10 +233,6 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
             sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
         }
     }
-}
-
-function buildTreeview() {
-
 }
 
 function addNodesToDirectory(name, key, treeArray, treeDictionary) {

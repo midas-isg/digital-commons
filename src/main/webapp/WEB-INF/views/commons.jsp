@@ -74,11 +74,14 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
-                    <div id="webservices-treeview" class="treeview"></div>
-
                     <div class="legend hidden-xs">
                         <p><i class="olympus-color legend-font">(O)</i><i> = available on Olympus</i></p>
                     </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h3 class="content-title-font">Web Services</h3>
+                    <div id="webservices-treeview" class="treeview"></div>
                 </div>
 
                 <div class="col-sm-4">
