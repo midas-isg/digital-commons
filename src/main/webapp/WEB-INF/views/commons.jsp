@@ -153,13 +153,17 @@
                 <div class="col-sm-12">
                     <h3 class="title-font">Olympus</h3>
                     <div class="font-size-16 standard-font">
-                        Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
-                        <br><br>
-                    To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
-                        <br><br>
-                    For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>Powerpoint Presentation</a> or watch the following video:
-                        <br><br>
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                        <div class="col-sm-6">
+                            Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
+                            <br><br>
+                            To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
+                            <br><br>
+                            For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>Powerpoint Presentation</a> or watch the video <span class="hidden-xs">to the right.</span> <span class="hidden-lg hidden-md hidden-sm">below.</span>
+                            <br><br>
+                        </div>
+                        <div class="col-sm-6">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
