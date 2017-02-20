@@ -8,17 +8,20 @@
     "generalInfo": "The Apollo Broker Service is the web service used by applications like the Simple End User Apollo Application to run Disease Transmission Models, and interact with the Apollo Library.",
     "version": "4.0.1",
     "restDocumentation": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp",
-    "soapDocumentation": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl"
+    "soapDocumentation": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl",
+    "endpointPrefix": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1"
   },
   "Apollo Library Viewer": {
     "generalInfo": "The Apollo Library Viewer API provides methods for accessing instances of Epidemics and Infectious Disease Scenarios in JSON and XML format.",
     "version": "4.0.1",
-    "restDocumentation": "https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp"
+    "restDocumentation": "https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp",
+    "endpointPrefix": "https://research.rods.pitt.edu/apolloLibraryViewer-401"
   },
   "Apollo Location Service": {
     "version": "1.1.1",
     "generalInfo": "The Apollo Location Service contains a RESTful API that allows users to lookup INCITS codes, Apollo Location Codes, and many other types of geographic information that is available for locations that are stored in the Apollo Location Service Database.",
-    "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs"
+    "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs",
+    "endpointPrefix": "http://betaweb.rods.pitt.edu/ls"
   },
   "EpiCaseMap": {
     "version": "1.0.1.0",

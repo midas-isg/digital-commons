@@ -585,6 +585,8 @@ function openModal(type, name) {
 
     toggleModalItem('license', attrs, 'license', false, true);
 
+    toggleModalItem('endpointPrefix', attrs, 'end-point-prefix', true, false);
+
     toggleModalItem('documentation', attrs, 'documentation', false, true);
 
     toggleModalItem('restDocumentation', attrs, 'rest-documentation', true, false);
