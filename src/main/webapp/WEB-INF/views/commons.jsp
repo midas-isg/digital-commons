@@ -160,9 +160,11 @@
                             <br><br>
                             For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>Powerpoint Presentation</a> or watch the video <span class="hidden-xs">to the right.</span> <span class="hidden-lg hidden-md hidden-sm">below.</span>
                             <br><br>
+                            <i>Several programming languages, compilers, and popular development tools available on Olympus are listed below.</i>
+                            <br><br>
                         </div>
                         <div class="col-sm-6">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                            <iframe style="width:100%" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
