@@ -151,25 +151,27 @@
             </div>
             <div id="compute-platform" class="tab-pane fade">
                 <div class="col-sm-12">
-                    <h2 class="title-font">Compute Platform</h2>
+                    <h2 class="title-font">Olympus</h2>
                     <div class="font-size-16 standard-font">
-                        The Olympus supercomputer serves as the compute platform for the MIDAS Digital Commons. MIDAS researchers can use Olympus to use, share, and modify digital objects hosted on the platform. The platform runs on 2,684 cores, 16TB of RAM, and has 160TB of shared disk space.
+                        Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
                         <br><br>
                     To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
                         <br><br>
-
+                    For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>Powerpoint Presentation</a> or watch the following video:
+                        <br><br>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="subtitle-font">Disease Transmission Models</h3>
+                    <h3 class="content-title-font">Disease Transmission Models</h3>
                     <div id="disease-transmission-models-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="subtitle-font">System Software</h3>
+                    <h3 class="content-title-font">System Software</h3>
                     <div id="system-software-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="subtitle-font">Tools</h3>
+                    <h3 class="content-title-font">Tools</h3>
                     <div id="tools-treeview" class="treeview"></div>
                 </div>
             </div>

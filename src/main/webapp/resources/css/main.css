@@ -124,7 +124,7 @@
 @media screen and (max-width: 1105px) {
     .content-title-font {
         color: #0c2b65;
-        font-size:20px;
+        font-size:19px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
@@ -133,7 +133,7 @@
 @media screen and (max-width: 899px) {
     .content-title-font {
         color: #0c2b65;
-        font-size:17px;
+        font-size:16px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
