@@ -170,9 +170,9 @@
                     <h3 class="title-font">Software available on Olympus</h3>
                     <div class="font-size-16 standard-font">
                         <div class="col-sm-12">
-                            A list of the programming languages, compilers, and popular development tools that are available on Olympus is shown below. A wiki describing how to use Olympus is available at <a href="https://git.isg.pitt.edu/hpc/olympus/wikis/home">https://git.isg.pitt.edu/hpc/olympus/wikis/home</a>.
+                            A list of the programming languages, compilers, and popular development tools that are available on Olympus is shown below. A wiki describing how to use Olympus is available at <a href="https://git.isg.pitt.edu/hpc/olympus/wikis/home" class="underline">https://git.isg.pitt.edu/hpc/olympus/wikis/home</a>.
                             <br/><br/>
-                            If you require software on Olympus that is not listed below, please contact <a href="mailto:remarks@psc.edu">remarks@psc.edu</a>.<br/><br/>
+                            If you require software on Olympus that is not listed below, please contact <a href="mailto:remarks@psc.edu" class="underline">remarks@psc.edu</a>.<br/><br/>
                         </div>
                     </div>
                 </div>
