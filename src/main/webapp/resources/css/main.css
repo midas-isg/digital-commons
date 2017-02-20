@@ -229,6 +229,43 @@ a {
 .list-group-item li {
     white-space: pre-wrap;
 }
+
+@media screen and (max-width: 1307px) {
+    .title-font {
+        color: #0c2b65;
+        font-size:25px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 1105px) {
+    .title-font {
+        color: #0c2b65;
+        font-size:20px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .title-font {
+        color: #0c2b65;
+        font-size:17px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .title-font {
+        color: #0c2b65;
+        font-size:30px;
+        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+        font-weight: normal;
+    }
+}
+
 @media screen and (min-width: 768px) {
     .navbar-padding {
         padding-left: 30px !important;
