@@ -77,13 +77,13 @@
                     <div id="webservices-treeview" class="treeview"></div>
 
                     <div class="legend hidden-xs">
-                        <p><i class="olympus-color legend-font">(O)</i><i> = Ready to run on Olympus</i></p>
+                        <p><i class="olympus-color legend-font">(O)</i><i> = available on Olympus</i></p>
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <div class="legend-small hidden-sm hidden-md hidden-lg">
-                        <p><i class="olympus-color legend-font">(O)</i><i> = Ready to run on Olympus</i></p>
+                        <p><i class="olympus-color legend-font">(O)</i><i> = available on Olympus</i></p>
                     </div>
                 </div>
             </div>
