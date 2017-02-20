@@ -157,7 +157,7 @@
                         <br><br>
                     To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
                         <br><br>
-                    For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>Powerpoint Presentation</a> or watch the following video:
+                    For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>PowerPoint presentation</a> or watch the following video:
                         <br><br>
                         <iframe width="560" height="315" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
                     </div>

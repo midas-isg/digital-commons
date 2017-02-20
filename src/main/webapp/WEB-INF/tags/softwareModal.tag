@@ -38,8 +38,6 @@
 
                 <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="end-point-prefix" title="Endpoint prefix" hasHref="true"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
@@ -52,17 +50,19 @@
 
                 <myTags:softwareModalItem id="documentation" title="Documentation" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="rest-documentation" title="REST Documentation" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="rest-documentation" title="REST documentation" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="rest-source-code" title="REST source code repository" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="end-point-prefix" title="REST endpoint prefix" hasHref="true"></myTags:softwareModalItem>
+                
+                <myTags:softwareModalItem id="rest-source-code" title="REST service source code repository" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="soap-documentation" title="SOAP Documentation" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="soap-documentation" title="SOAP documentation" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="soap-source-code" title="SOAP source code repository" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="soap-source-code" title="SOAP service source code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="example-queries" title="Example Queries" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="project-source-code" title="Project source code repository" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="project-source-code" title="Associated project source code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="user-guides-and-manuals" title="User guides and manuals" hasHref="true"></myTags:softwareModalItem>
 
