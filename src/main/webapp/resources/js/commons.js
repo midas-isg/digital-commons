@@ -275,6 +275,9 @@ function getNodeData(name, key, treeDictionary) {
     var title = key;
     if('version' in treeDictionary[key]) {
         title = getSoftwareTitle(key, treeDictionary[key]['version']);
+    } else if(title.includes('/') && name != "software" && name != "webServices") {
+        //var titleAndVersion = title.split('/');
+        //title = getSoftwareTitle(titleAndVersion[0], titleAndVersion[1]);
     }
 
     var nodeData = {
@@ -311,7 +314,7 @@ function getNodeData(name, key, treeDictionary) {
     }
 
     if(name != "software" && name != "webServices") {
-        nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + key + "</span>";
+        nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
     return nodeData;
@@ -591,7 +594,7 @@ function openModal(type, name) {
 
     toggleModalItem('restDocumentation', attrs, 'rest-documentation', true, false);
 
-    toggleModalItem('soapDocumentation', attrs, 'soap-documentation', true, false);
+    toggleModalItem('soapEndpoint', attrs, 'soap-endpoint', true, false);
 
     toggleModalItem('projectSource', attrs, 'project-source-code', true, false);
 

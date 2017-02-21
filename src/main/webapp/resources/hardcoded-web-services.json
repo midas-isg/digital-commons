@@ -11,7 +11,7 @@
     "restSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-service-rest-frontend",
     "soapSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-soap-service",
     "restDocumentation": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp",
-    "soapDocumentation": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl",
+    "soapEndpoint": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl",
     "endpointPrefix": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1"
   },
   "Apollo Library Viewer": {
