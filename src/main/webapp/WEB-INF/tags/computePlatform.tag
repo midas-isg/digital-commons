@@ -15,6 +15,8 @@
 
     hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-disease-transmission-models.json", diseaseTransmissionModel, diseaseTransmissionModelDictionary, diseaseTransmissionModelSettings, '#disease-transmission-models-treeview', 'expandedDiseaseTransmissionModels');
 
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-modeling-platforms.json", modelingPlatforms, modelingPlatformsDictionary, modelingPlatformsSettings, '#modeling-platforms-treeview', 'expandedModelingPlatforms');
+
     hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware');
 
     <%--hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-tools.json", tools, toolsDictionary, toolsSettings, '#tools-treeview', 'expandedTools');--%>

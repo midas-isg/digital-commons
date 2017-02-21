@@ -27,6 +27,10 @@ var diseaseTransmissionModel = [];
 var diseaseTransmissionModelDictionary = {};
 var diseaseTransmissionModelSettings = {};
 
+var modelingPlatforms = [];
+var modelingPlatformsDictionary = {};
+var modelingPlatformsSettings = {};
+
 //var tools = [];
 //var toolsDictionary = {};
 //var toolsSettings = {};

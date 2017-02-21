@@ -40,10 +40,6 @@
       "directory":"hyphy",
       "description":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning"
     },
-    "netlogo/netlogo-5.0.4":{
-      "directory":"netlogo",
-      "description":"Netlogo is an agent-based simulation framework."
-    },
     "openmalaria/32":{
       "directory":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
