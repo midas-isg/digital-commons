@@ -631,3 +631,7 @@ body {
     color: #0c2b65;
     text-decoration:underline;
 }
+
+.italic {
+    font-style: italic;
+}
