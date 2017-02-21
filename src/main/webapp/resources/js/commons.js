@@ -594,6 +594,8 @@ function openModal(type, name) {
 
     toggleModalItem('restDocumentation', attrs, 'rest-documentation', true, false);
 
+    toggleModalItem('soapDocumentation', attrs, 'soap-documentation', true, false);
+
     toggleModalItem('soapEndpoint', attrs, 'soap-endpoint', true, false);
 
     toggleModalItem('projectSource', attrs, 'project-source-code', true, false);

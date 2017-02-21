@@ -38,5 +38,18 @@
     "documentation":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
     "endpointPrefix":"http://www.tycho.pitt.edu/api/",
     "version": "1.1.0"
+  },
+  "MedlinePlus Connect": {
+    "generalInfo":"MedlinePlus Connect responds to requests based on diagnosis (problem) codes, medication codes, and lab test codes.  The parameters for the Web service requests conform to the <a class=\"underline\" href=\"http://wiki.hl7.org/index.php?title=Product_Infobutton#Product_Name_-_HL7_V3_IG:_URL-Based_Implementations_of_the_Context-Aware_Information_Retrieval_.28Infobutton.29\">HL7 Context-Aware Knowledge Retrieval (Infobutton) Knowledge Request URL-Based Implementation Guide</a>. The REST-based response conforms to the <a class=\"underline\" href=\"http://wiki.hl7.org/index.php?title=Product_Infobutton#Product_Name_-_HL7_V3_Implementation_Guide:_Context-Aware_Knowledge_Retrieval_.28Infobutton.29_-_Service-Oriented_Architecture_Implementation_Guide\">HL7 Context-Aware Knowledge Retrieval (Infobutton) Service-Oriented Architecture Implementation Guide</a>. The output of the request can be XML in the Atom feed format, JSON, or JSONP.",
+    "restDocumentation":"https://medlineplus.gov/connect/service.html"
+  },
+  "RxNorm API": {
+    "generalInfo":"The RxNorm API is a web service for accessing the current RxNorm data set. With one exception, no license is needed to use the RxNorm API. This is because the data returned from the API is from the RxNorm vocabulary, a non-proprietary vocabulary developed by the National Library of Medicine.",
+    "restDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
+    "soapDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html"
+  },
+  "Entrez Programming Utilities (E-utilities)": {
+    "generalInfo":"The Entrez Programming Utilities (E-utilities) are a set of eight server-side programs that provide a stable interface into the Entrez query and database system at the National Center for Biotechnology Information (NCBI). The E-utilities use a fixed URL syntax that translates a standard set of input parameters into the values necessary for various NCBI software components to search for and retrieve the requested data. The E-utilities are therefore the structured interface to the Entrez system, which currently includes 38 databases covering a variety of biomedical data, including nucleotide and protein sequences, gene records, three-dimensional molecular structures, and the biomedical literature.",
+    "restDocumentation":"https://www.ncbi.nlm.nih.gov/books/NBK25501/"
   }
 }
