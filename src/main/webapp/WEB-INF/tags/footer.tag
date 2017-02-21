@@ -29,11 +29,11 @@
                 &#0169; 2017 University of Pittsburgh
             </div>
 
-            <div style="float:right; margin-right: 10px; font-style: italic;">
+            <div style="float:right; margin-right: 20px; font-style: italic;">
                 <span class="leaf">v1.0</span>
             </div>
 
-            <div id="dev-team-footer" class="col-xs-8">
+            <div id="dev-team-footer" class="col-xs-12">
                 <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
                 <span class="leaf underline pointer" onclick="activeTab('about')">About the MIDAS Digital Commons.</span>
             </div>
