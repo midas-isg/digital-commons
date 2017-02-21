@@ -355,6 +355,7 @@
     "generalInfo":"A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.",
     "version":"3.0",
     "source":"https://github.com/midas-isg/PITT-SEIR-model",
-    "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
+    "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
+    "doi":"<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>"
   }
 }
