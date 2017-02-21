@@ -14,12 +14,6 @@
     "soapEndpoint": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl",
     "endpointPrefix": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1"
   },
-  "Apollo Library Viewer": {
-    "generalInfo": "The Apollo Library Viewer API provides methods for accessing instances of Epidemics and Infectious Disease Scenarios in JSON and XML format.",
-    "version": "4.0.1",
-    "restDocumentation": "https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp",
-    "endpointPrefix": "https://research.rods.pitt.edu/apolloLibraryViewer-401"
-  },
   "Apollo Location Service": {
     "version": "1.1.1",
     "projectSource":"https://github.com/midas-isg/ls",
