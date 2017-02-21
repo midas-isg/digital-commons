@@ -1,15 +1,15 @@
 {
   "settings":{
     "name": "tools",
-    "directories":["ImageMagick", "matlab", "r"],
+    "directories":["imagemagick", "matlab", "r"],
     "openDirectories":[]
   },
-  "ImageMagick/6.9.5-7":{
-    "directory": "ImageMagick",
+  "imagemagick/6.9.5-7":{
+    "directory": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
-  "ImageMagick/7.0.2-1":{
-    "directory": "ImageMagick",
+  "imagemagick/7.0.2-1":{
+    "directory": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
   "matlab/R2015a":{

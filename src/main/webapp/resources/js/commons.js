@@ -124,6 +124,10 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         }
     }
 
+    if(name != "software") {
+        treeArray.sort(compareNodes);
+    }
+
     var treeviewInfo = {
         data: treeArray,
         showBorder: false,
