@@ -8,18 +8,6 @@
       "directory":"clara",
       "description":"CLARA is an agent based model of vector born diseases."
     },
-    "fred/fred-apollo-r2217":{
-      "directory":"fred",
-      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
-    },
-    "fred/fred-apollo-r2218":{
-      "directory":"fred",
-      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
-    },
-    "fred/fred-apollo":{
-      "directory":"fred",
-      "description":"fred-apollo is a PSC fork of the FRED simulator compatible with the apollo project."
-    },
     "fred/pfred":{
       "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
