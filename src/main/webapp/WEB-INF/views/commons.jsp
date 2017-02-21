@@ -193,7 +193,7 @@
                     <div class="dtm-disclaimer"><i>These entries are cross-referenced with the Disease Transmission Models on the “Content” page.</i></div>
                     <div id="disease-transmission-models-treeview" class="treeview"></div>
 
-                    <h4 class="subtitle-font">Modeling platforms</h4>
+                    <h4 class="subtitle-font">Modeling Platforms</h4>
                     <div id="modeling-platforms-treeview" class="treeview"></div>
                 </div>
             </div>
