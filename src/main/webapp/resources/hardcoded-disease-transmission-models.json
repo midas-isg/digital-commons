@@ -1,7 +1,7 @@
 {
     "settings": {
       "name": "diseaseTransmissionModels",
-      "directories": ["clara", "fred", "hyphy", "netlogo", "openmalaria", "pitt_seir"],
+      "directories": ["clara", "fred", "hyphy", "openmalaria", "pitt_seir"],
       "openDirectories":[]
     },
     "clara/clara-0.5":{
