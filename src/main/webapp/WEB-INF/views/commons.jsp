@@ -182,7 +182,11 @@
                 </div>
                 <div class="col-sm-4">
                     <h4 class="subtitle-font">Tools</h4>
-                    <div id="tools-treeview" class="treeview"></div>
+                    <h5 class="tools">Statistical analysis</h5>
+                    <div id="statistical-analysis-treeview" class="treeview"></div>
+                    <h5 class="tools">Image manipulation</h5>
+                    <div id="image-manipulation-treeview" class="treeview"></div>
+                    <!--<div id="tools-treeview" class="treeview"></div>-->
                 </div>
                 <div class="col-sm-4">
                     <h4 class="subtitle-font">Disease Transmission Models</h4>

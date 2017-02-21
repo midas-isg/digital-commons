@@ -27,9 +27,17 @@ var diseaseTransmissionModel = [];
 var diseaseTransmissionModelDictionary = {};
 var diseaseTransmissionModelSettings = {};
 
-var tools = [];
-var toolsDictionary = {};
-var toolsSettings = {};
+//var tools = [];
+//var toolsDictionary = {};
+//var toolsSettings = {};
+
+var statisticalAnalysis = [];
+var statisticalAnalysisDictionary = {};
+var statisticalAnalysisSettings = {};
+
+var imageManipulation = [];
+var imageManipulationDictionary = {};
+var imageManipulationSettings = {};
 
 var webservices = [];
 var webservicesDictionary = {};

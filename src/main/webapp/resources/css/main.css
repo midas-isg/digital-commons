@@ -626,3 +626,8 @@ body {
 .no-padding {
     padding:0px !important;
 }
+
+.tools {
+    color: #0c2b65;
+    text-decoration:underline;
+}
