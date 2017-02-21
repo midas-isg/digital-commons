@@ -101,12 +101,24 @@
     $(window).on("resize", function() {
 //        if( $(window).width() < 945) {
         if( $(window).width() < 815) {
-
-            document.getElementById("page-title-big").style.display = 'none';
+            hideBigTitle();
+//            document.getElementById("page-title-big").style.display = 'none';
         } else {
-            document.getElementById("page-title-big").style.display = 'inline-block';
+            showBigTitle();
+//            document.getElementById("page-title-big").style.display = 'inline-block';
         }
     }).resize();
+
+    function hideBigTitle() {
+        var d = document.getElementById('page-title-big');
+        d.style.display = '';
+        d.style.display = 'none';
+    }
+    function showBigTitle() {
+        var d = document.getElementById('page-title-big');
+        d.style.display = '';
+        d.style.display = 'inline-block';
+    }
 
     $('.nav a').on('click', function () {
         if ($(window).width() < 768) {
