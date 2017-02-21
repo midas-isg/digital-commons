@@ -622,3 +622,7 @@ body {
 #system-software-treeview ul li {
     cursor: default;
 }
+
+.no-padding {
+    padding:0px !important;
+}

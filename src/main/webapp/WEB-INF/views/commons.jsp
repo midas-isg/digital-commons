@@ -153,7 +153,7 @@
                 <div class="col-sm-12">
                     <h3 class="title-font">Olympus</h3>
                     <div class="font-size-16 standard-font">
-                        <div class="col-sm-7">
+                        <div class="col-sm-7 no-padding">
                             Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
                             <br><br>
                             To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
@@ -161,7 +161,7 @@
                             For more information on Olympus, please read this <a class="underline" href="${pageContext.request.contextPath}/resources/pdf/olympus-presentation.pdf" download>PowerPoint presentation</a> or watch the video <span class="hidden-xs">to the right.</span> <span class="hidden-lg hidden-md hidden-sm">below.</span>
                             <br><br>
                         </div>
-                        <div class="col-sm-5">
+                        <div class="col-sm-5 no-padding">
                             <iframe style="width:100%" height="275" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -169,8 +169,8 @@
                 <div class="col-sm-12">
                     <h3 class="title-font">Software available on Olympus</h3>
                     <div class="font-size-16 standard-font">
-                        <div class="col-sm-12">
-                            A list of the programming languages, compilers, and popular development tools that are available on Olympus is shown below. A wiki describing how to use Olympus is available at <a href="https://git.isg.pitt.edu/hpc/olympus/wikis/home" class="underline">https://git.isg.pitt.edu/hpc/olympus/wikis/home</a>.
+                        <div class="col-sm-12 no-padding">
+                            A list of the programming languages, compilers, development tools, and disease transmission models that are available on Olympus is shown below. A wiki describing how to use Olympus is available at <a href="https://git.isg.pitt.edu/hpc/olympus/wikis/home" class="underline">https://git.isg.pitt.edu/hpc/olympus/wikis/home</a>.
                             <br/><br/>
                             If you require software on Olympus that is not listed below, please contact <a href="mailto:remarks@psc.edu" class="underline">remarks@psc.edu</a>.<br/><br/>
                         </div>
