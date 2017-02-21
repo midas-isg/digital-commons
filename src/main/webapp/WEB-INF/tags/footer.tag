@@ -10,7 +10,11 @@
                 &#0169; 2017 University of Pittsburgh
             </div>
 
-            <div style="position: absolute; margin-left: 38%; font-style: italic;">
+            <div class="hidden-sm" style="position: absolute; margin-left: 38%; font-style: italic;">
+                <span class="leaf">MIDAS Digital Commons v1.0</span>
+            </div>
+
+            <div class="hidden-md hidden-lg" style="position: absolute; margin-left: 34%; font-style: italic;">
                 <span class="leaf">MIDAS Digital Commons v1.0</span>
             </div>
 
