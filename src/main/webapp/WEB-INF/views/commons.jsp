@@ -75,7 +75,7 @@
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
                     <div class="legend hidden-xs">
-                        <p><i class="olympus-color legend-font"><b>(O)</b></i><i> = available on Olympus</i></p>
+                        <p><i class="olympus-color legend-font"><b>(RROO)</b></i><i> = ready to run on Olympus</i></p>
                     </div>
                 </div>
 
@@ -86,7 +86,7 @@
 
                 <div class="col-sm-4">
                     <div class="legend-small hidden-sm hidden-md hidden-lg">
-                        <p><i class="olympus-color legend-font"><b>(O)</b></i><i> = available on Olympus</i></p>
+                        <p><i class="olympus-color legend-font"><b>(RROO)</b></i><i> = ready to run on Olympus</i></p>
                     </div>
                 </div>
             </div>

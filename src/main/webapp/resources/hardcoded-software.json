@@ -1,11 +1,11 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>", "FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>", "Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>"]}],
+     "directories":[{"Disease transmission models": ["FRED (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>", "FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>", "Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>"]}],
      "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
    },
    "FluTE":{
-      "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+      "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
       "diseaseCoverage":"Influenza",
       "locationCoverage":"Los Angeles and Seattle",
       "hostSpeciesIncluded":"Humans",
@@ -68,14 +68,14 @@
   },
   "FRED":{
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
-    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "version":"2.12.0",
     "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
     "diseaseCoverage":"Communicable human-to-human",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
   "Open Malaria  ":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"32",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
@@ -86,7 +86,7 @@
     "isOlympus": true
   },
   "Open Malaria ":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"33.1",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
@@ -97,7 +97,7 @@
     "isOlympus": true
   },
   "Open Malaria":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"36.11",
     "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
@@ -273,7 +273,7 @@
     "location":"http://cdcepi.github.io/flu/forecasts.html"
   },
   "pFRED":{
-    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.",
     "diseaseCoverage":"Communicable human-to-human",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
@@ -283,7 +283,7 @@
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   },
   "Apollo FluTE":{
-    "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"FluTE (4 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.",
     "diseaseCoverage":"Influenza",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
@@ -297,7 +297,7 @@
     "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
   },
   "FRED Windows 64":{
-    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"This software installs the FRED simulator on a Windows 64-bit operating system.",
     "doi":"<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>",
     "source":"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
@@ -329,7 +329,7 @@
     "publicationsAboutRelease": "Morin C and Comrie AC, 2010. Modeled response of the West Nile virus vector Culex quinquefasciatus to changing climate using the dynamic mosquito simulation model. International Journal of Biometeorology 54,517-529. (<a href=\"http://dx.doi.org/10.1007/s00484-010-0349-6\" class=\"underline\">doi:10.1007/s00484-010-0349-6</a>)"
   },
   "NetLogo":{
-    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "version":"5.0.4",
     "executables":"<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/download.shtml\">http://ccl.northwestern.edu/netlogo/download.shtml</a>",
@@ -340,7 +340,7 @@
     "isOlympus":true
   },
   "NetLogo ":{
-    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(O)</sup></i><b>",
+    "directory":"NetLogo (2 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "webApplication":"http://www.netlogoweb.org/launch",
     "version":"6.0",
