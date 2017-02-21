@@ -5,7 +5,7 @@
     "openDirectories":[]
   },
   "Apollo Broker Service":{
-    "generalInfo": "The Apollo Broker Service is the web service used by applications like the Simple End User Apollo Application to run Disease Transmission Models, and interact with the Apollo Library.",
+    "generalInfo": "The Apollo Broker Service is the web service used by applications to run disease transmission models, and interact with the Apollo Library.",
     "version": "4.0.1",
     "projectSource": "https://github.com/ApolloDev/apollo",
     "restSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-service-rest-frontend",
