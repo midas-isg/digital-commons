@@ -10,7 +10,7 @@
                 &#0169; 2017 University of Pittsburgh
             </div>
 
-            <div style="position: absolute; margin-left: 40%; font-style: italic;">
+            <div style="position: absolute; margin-left: 45%; font-style: italic;">
                 <span class="leaf">Version 1.0</span>
             </div>
 
