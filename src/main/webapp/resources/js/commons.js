@@ -320,7 +320,7 @@ function getNodeData(name, key, treeDictionary) {
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
             if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-                nodeData.text += ' <b><i class="olympus-color"><sup>(RROO)</sup></i></b>';
+                nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
             }
 
             if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
