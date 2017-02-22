@@ -295,11 +295,6 @@
     "forecasts":"Timing of peak incidence <br> Maximum weekly incidence <br> Total number of dengue cases in a transmission season",
     "challengeSite":"http://cdcepi.github.io/dengue/targets.html"
   },
-  "CDCEpi influenza":{
-    "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://cdcepi.github.io/flu/forecasts.html"
-  },
   "pFRED":{
     "directory":"FRED (3 versions) <b><i class=\"olympus-color\"><sup>(RROO)</sup></i><b>",
     "generalInfo":"A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.",
