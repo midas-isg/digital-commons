@@ -13,12 +13,16 @@
     </p>
 
     <p class="font-size-16 standard-font">
-        At present, MDC consists of (1) a collection of <strong>digital objects</strong> in the domain of infectious disease epidemiology, and (2) a <strong>compute platform</strong> for running experiments.   In an upcoming release, the MDC will add (3) a <strong>search function</strong> that allows digital objects -- software, web services, synthetic ecosystems, datasets, and machine-interpretable knowledge -- to be discovered via user programs and web services.  The search function will play the same role as a Data Discovery Index, but for a larger range of digital objects.
+        At present, the MIDAS Digital Commons (MDC) consists of a collection of digital objects in the domain of infectious disease epidemiology with a compute platform for running experiments.   In an upcoming release, the MDC will add a search function that makes the digital objects findable.
     </p>
 
-     <p class="font-size-16 standard-font">
-        The compute platform hosts some of the digital objects (e.g., disease transmission models and synthetic ecosystems) as well as programming languages and other software tools.   These locally hosted digital objects are labelled <i>RROO</i> (Ready to run on Olympus). Other digital objects are hosted remotely (i.e., they are virtual w.r.t. this digital commons).
-     </p>
+    <p class="font-size-16 standard-font">
+        The <strong>digital objects</strong> include software, synthetic ecosystems, data sets, knowledge, data-augmented publications, and Web services.
+    </p>
+
+    <p class="font-size-16 standard-font">
+        The <strong>compute platform</strong> hosts some of the digital objects (e.g., disease transmission models and synthetic ecosystems) as well as programming languages and other software tools. These locally hosted digital objects are labelled <i>RROO</i> (Ready to run on Olympus). Other digital objects are hosted remotely (i.e., they are virtual w.r.t. this digital commons).
+    </p>
 
     <p class="font-size-16 standard-font">
         We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines.  To make objects interoperable, we are representing them in Apollo-XSD syntax.   Objects that we have done this with are labelled <i>AE</i> (Apollo-Encoded).   Note that we fully represent data and knowledge objects in Apollo-XSD syntax, but for software objects represent only the inputs and outputs in Apollo-XSD syntax.
