@@ -302,7 +302,7 @@ function getNodeData(name, key, treeDictionary) {
     };
 
     if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-        nodeData.text += ' <b><i class="olympus-color"><sup>(RROO)</sup></i></b>';
+        nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
     }
 
     if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
