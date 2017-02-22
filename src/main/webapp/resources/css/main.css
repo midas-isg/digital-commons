@@ -523,11 +523,7 @@ body {
     font-size:12px;
 }
 
-@media (max-width:440px){
-    #dev-team-footer {
-        font-size:10px;
-    }
-
+@media (max-width:440px) {
     #page-title {
         font-size:15px;
     }

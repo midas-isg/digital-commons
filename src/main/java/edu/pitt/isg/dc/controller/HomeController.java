@@ -84,7 +84,7 @@ public class HomeController {
     @ResponseBody
     String getCollectionsJson() throws Exception {
 
-        if(!libraryCollectionsJson.equals("")) {
+        if(!libraryCollectionsJson.equals("") && !libraryCollectionsJson.equals("{}")) {
 
             return libraryCollectionsJson;
         } else {
@@ -110,6 +110,7 @@ public class HomeController {
         con.setRequestMethod("GET");
         con.setRequestProperty("Authorization", token);
         con.setRequestProperty("Accept-Charset", "UTF-8");
+        con.setRequestProperty("Accept", "application/json");
 
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
