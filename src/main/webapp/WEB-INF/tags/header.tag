@@ -37,7 +37,7 @@
                         </c:otherwise>
                     </c:choose>
                     <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm margin-top-22">${pageTitle}</h2>
-                    <h3 id="page-title" class="font-size-20 leaf inline-block hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+                    <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
 
                 </div>
 
