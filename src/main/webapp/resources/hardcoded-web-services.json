@@ -28,18 +28,22 @@
     "restDocumentation": "http://betaweb.rods.pitt.edu/epicasemap/api"
   },
   "Project Tycho": {
-    "generalInfo":"This API allows users to query the Project Tycho database for publically available disease surveillance data (such as recorded weekly National Notifiable Disease Surveillance System (NNDSS) reports for the United States (1888-2013). It provides methods for retrieving data by location type, event type, disease name, and time span,  as well as filtering options for specific locations.",
+    "generalInfo":"<p>This API allows users to query the Project Tycho database for publically available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
     "documentation":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
     "endpointPrefix":"http://www.tycho.pitt.edu/api/",
     "version": "1.1.0"
   },
   "RxNorm API": {
-    "generalInfo":"The RxNorm API is a web service for accessing the current RxNorm data set. With one exception, no license is needed to use the RxNorm API. This is because the data returned from the API is from the RxNorm vocabulary, a non-proprietary vocabulary developed by the National Library of Medicine.",
+    "generalInfo":"The RxNorm API is a web service for accessing the current RxNorm data set.",
     "restDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
     "soapDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html"
   },
   "Entrez Programming Utilities (E-utilities)": {
-    "generalInfo":"The Entrez Programming Utilities (E-utilities) are a set of eight server-side programs that provide a stable interface into the Entrez query and database system at the National Center for Biotechnology Information (NCBI). The E-utilities use a fixed URL syntax that translates a standard set of input parameters into the values necessary for various NCBI software components to search for and retrieve the requested data. The E-utilities are therefore the structured interface to the Entrez system, which currently includes 38 databases covering a variety of biomedical data, including nucleotide and protein sequences, gene records, three-dimensional molecular structures, and the biomedical literature.",
+    "generalInfo":"<p>Entrez is a search engine for National Center for Biotechnology Information (NCBI) databases.  The Entrez Programming Utilities (E-utilities) allows you to execute searches via web service.</p> <p>For example, this web service is used by the Apollo Library to look up entries in the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\">NCBI Taxonomy Database</a>.</p>",
     "restDocumentation":"https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+  },
+  "MedlinePlus Connect": {
+    "generalInfo":"MedlinePlus Connect is a web service for looking up diagnosis codes (i.e. ICD-9, ICD-10 and SNOMED-CT), medication codes (i.e. RXCUI and NDC) and lab test (i.e. LOINC) codes. MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.",
+    "restDocumentation":"https://medlineplus.gov/connect/service.html"
   }
 }
