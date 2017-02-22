@@ -75,8 +75,21 @@
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
                     <div class="legend hidden-xs">
-                        <div><i class="olympus-color legend-font"><b>RROO</b></i><i> = ready to run on Olympus</i></div>
-                        <div><i class="olympus-color legend-font"><b>AE</b></i><i> = Apollo-Encoded</i></div>
+                        <table class="table table-sm" style="
+                            margin-bottom: 0px;
+                        ">
+                            <tbody>
+                                <tr>
+                                    <td><i class="olympus-color legend-font"><b>AE</b></i></td>
+                                    <td><i>Apollo-Encoded</i></td>
+                                </tr>
+
+                                <tr>
+                                    <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
+                                    <td><i>ready to run on Olympus</i></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
@@ -87,8 +100,21 @@
 
                 <div class="col-sm-4">
                     <div class="legend-small hidden-sm hidden-md hidden-lg">
-                        <div><i class="olympus-color legend-font"><b>RROO</b></i><i> = ready to run on Olympus</i></div>
-                        <div><i class="olympus-color legend-font"><b>AE</b></i><i> = Apollo-Encoded</i></div>
+                        <table class="table table-sm" style="
+                            margin-bottom: 0px;
+                        ">
+                            <tbody>
+                            <tr>
+                                <td><i class="olympus-color legend-font"><b>AE</b></i></td>
+                                <td><i>Apollo-Encoded</i></td>
+                            </tr>
+
+                            <tr>
+                                <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
+                                <td><i>ready to run on Olympus</i></td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

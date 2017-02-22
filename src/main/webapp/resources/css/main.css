@@ -516,7 +516,7 @@ body {
 }
 
 .olympus-color {
-    color:#0d3d98;
+    color:#db6715;
 }
 
 #dev-team-footer {
@@ -563,8 +563,6 @@ body {
     border: 2px solid #0c2b65;
     padding-right: 5px;
     padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 7px;
     border-radius:5px;
     background-color: white;
     z-index:100;
@@ -578,8 +576,6 @@ body {
     border: 2px solid #0c2b65;
     padding-right: 5px;
     padding-left: 5px;
-    padding-top: 5px;
-    padding-bottom: 7px;
     border-radius:5px;
     background-color: white;
 }
