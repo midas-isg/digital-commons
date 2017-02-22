@@ -542,7 +542,7 @@ function openModal(type, name) {
     if('doi' in attrs) {
         $('#software-doi-container').show();
         $('#software-doi').html(attrs['doi']);
-    } else if(type == 'software') {
+    } else if(type == 'software' && attrs['directory'] != 'Disease forecasting') {
         $('#software-doi-container').show();
         $('#software-doi').html('N/A');
     } else {
@@ -621,6 +621,20 @@ function openModal(type, name) {
     toggleModalItem('restSource', attrs, 'soap-source-code', true, false);
 
     toggleModalItem('exampleQueries', attrs, 'example-queries', false, true);
+
+    toggleModalItem('diseases', attrs, 'diseases', false, false);
+
+    toggleModalItem('region', attrs, 'region', false, true);
+
+    toggleModalItem('forecasts', attrs, 'forecasts', false, true);
+
+    toggleModalItem('nowcasts', attrs, 'nowcasts', false, true);
+
+    toggleModalItem('challengeSite', attrs, 'challenge-site', true, false);
+
+    toggleModalItem('site', attrs, 'site', true, false);
+
+    toggleModalItem('forecastFrequency', attrs, 'forecast-frequency', false, false);
 
     $('#pageModal').modal('show');
 

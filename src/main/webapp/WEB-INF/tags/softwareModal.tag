@@ -32,6 +32,20 @@
 
                 <myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="forecast-frequency" title="Frequency of forecast"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="diseases" title="Diseases"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="region" title="Locations"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="forecasts" title="Forecasts"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="nowcasts" title="Nowcasts"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="challenge-site" title="Challenge site" hasHref="true"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="site" title="Site" hasHref="true"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>

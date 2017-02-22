@@ -206,9 +206,12 @@
   },
   "FluOutlook":{
     "directory":"Disease forecasting",
-    "developer":"Northeastern University, ISI Foundation",
-    "location":"http://fluoutlook.org/",
-    "redirect":true
+    "type":"prospective 2013-2016",
+    "forecastFrequency":"weekly",
+    "diseases":"Influenza",
+    "region":"Countries worldwide",
+    "forecasts":"weighted percent ILI visits",
+    "site":"http://fluoutlook.org/"
   },
   "Simple End-user Apollo App":{
     "directory":"Other software",
@@ -238,34 +241,59 @@
   },
   "ILI-nearby":{
     "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://delphi.midas.cs.cmu.edu/nowcast/"
+    "type":"prospective nowcast",
+    "forecastFrequency":"weekly",
+    "diseases":"Influenza",
+    "region":"US National, HHS regions, Census regions, and states",
+    "nowcasts":"weekly percent ILI",
+    "site":"http://delphi.midas.cs.cmu.edu/nowcast/"
   },
-  "Delphi's forecasts":{
+  "Delphi":{
     "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://delphi.midas.cs.cmu.edu/forecast/"
+    "generalInfo":"Delphi's forecasts are derived from expert's forecasts. To sign up to participate as an expert go to: <a href=\"http://delphi.midas.cs.cmu.edu/epicast/\", class=\"underline\">http://delphi.midas.cs.cmu.edu/epicast/</a>",
+    "type":"prospective 2016-2017",
+    "forecastFrequency":"weekly",
+    "diseases":"Influenza",
+    "region":"10 US regions and national",
+    "forecasts":"Start week <br> Peak week <br> Peak intensity",
+    "site":"http://delphi.midas.cs.cmu.edu/forecast/"
   },
-  "Epicast":{
+  "FluSight: Seasonal Influenza Forecasting":{
     "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://delphi.midas.cs.cmu.edu/epicast/"
+    "forecastFrequency":"weekly",
+    "type":"prospective 2015-2016",
+    "diseases": "Influenza",
+    "region":"10 US regions",
+    "forecasts":"Start week <br> Peak week <br> Peak intensity <br> Short term (1-, 2-, 3-, and 4-week ahead) forecasts of weekly percent visits to sentinel clincians for ILI",
+    "challengeSite":"http://cdcepi.github.io/flu/index.html"
   },
   "FluSight":{
     "directory":"Disease forecasting",
-    "location":"https://reichlab.github.io/flusight/",
+    "type":"prospective 2015-2017",
+    "forecastFrequency":"weekly",
+    "diseases":"Influenza",
+    "region":"10 US regions",
+    "forecasts":"weighted percent ILI visits",
+    "webApplication":"https://reichlab.github.io/flusight/",
     "source":"https://github.com/reichlab/flusight",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
   },
   "Columbia Prediction of Infectious Diseases":{
     "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://cpid.iri.columbia.edu/"
+    "forecastFrequency":"weekly",
+    "type":"prospective 2016-2017",
+    "diseases":"Influenza",
+    "region":"95 US cities",
+    "forecasts":"Weekly count of observed influenza like illness",
+    "site":"http://cpid.iri.columbia.edu/"
   },
   "CDCEpi Dengue competition":{
     "directory":"Disease forecasting",
-    "redirect":true,
-    "location":"http://cdcepi.github.io/dengue/targets.html"
+    "type":"Retrospective 2009-2013",
+    "diseases": "Dengue",
+    "region":"San Juan, Puerto Rico <br> Iquitos, Peru",
+    "forecasts":"Timing of peak incidence <br> Maximum weekly incidence <br> Total number of dengue cases in a transmission season",
+    "challengeSite":"http://cdcepi.github.io/dengue/targets.html"
   },
   "CDCEpi influenza":{
     "directory":"Disease forecasting",
