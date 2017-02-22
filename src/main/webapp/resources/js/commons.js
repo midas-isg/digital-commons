@@ -303,6 +303,8 @@ function getNodeData(name, key, treeDictionary) {
 
     if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
         nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
+    } else if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
+        nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
     }
 
     if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
@@ -321,6 +323,8 @@ function getNodeData(name, key, treeDictionary) {
 
             if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
                 nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
+            } else if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
+                nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
             }
 
             if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
@@ -463,7 +467,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     //     "<i class='fa fa-info-circle'></i></button>";
 
                     nodeLevel2.push({
-                        text: "<span>" + value.name + " <b><i class=\"olympus-color\"><sup>AE</sup></i><b><span>",
+                        text: "<span>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b><span>",
                         url: url + value.urn
                     });
                 });
@@ -472,7 +476,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 }
                 if(index.includes("H1n1 infectious disease scenarios"))
                     index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: index + " <b><i class=\"olympus-color\"><sup>AE</sup></i><b><span>", nodes: nodeLevel2});
+                nodeLevel1.push({text: index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b><span>", nodes: nodeLevel2});
             });
 
             collections.push({text: index, nodes: nodeLevel1});

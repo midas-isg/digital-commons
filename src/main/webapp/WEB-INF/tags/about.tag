@@ -25,7 +25,7 @@
     </p>
 
     <p class="font-size-16 standard-font">
-        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines.  To make objects interoperable, we are representing them in Apollo-XSD syntax.   Objects that we have done this with are labelled <i>AE</i> (Apollo-Encoded).   Note that we fully represent data and knowledge objects in Apollo-XSD syntax, but for software objects represent only the inputs and outputs in Apollo-XSD syntax.
+        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines.  To make objects interoperable, we are representing them in Apollo-XSD syntax.   Objects that we have done this with are labelled <i>AE</i> (Apollo-Enabled).   Note that we fully represent data and knowledge objects in Apollo-XSD syntax, but for software objects represent only the inputs and outputs in Apollo-XSD syntax.
     </p>
     <div class="font-size-16 standard-font">
         <h3 class="sub-title-font">Submission Guidelines</h3>

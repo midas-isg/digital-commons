@@ -80,8 +80,8 @@
                         ">
                             <tbody>
                                 <tr>
-                                    <td><i class="olympus-color legend-font"><b>AE</b></i></td>
-                                    <td><i>Apollo-Encoded</i></td>
+                                    <td><i class="ae-color legend-font"><b>AE</b></i></td>
+                                    <td><i>Apollo-Enabled</i></td>
                                 </tr>
 
                                 <tr>
@@ -105,8 +105,8 @@
                         ">
                             <tbody>
                             <tr>
-                                <td><i class="olympus-color legend-font"><b>AE</b></i></td>
-                                <td><i>Apollo-Encoded</i></td>
+                                <td><i class="ae-color legend-font"><b>AE</b></i></td>
+                                <td><i>Apollo-Enabled</i></td>
                             </tr>
 
                             <tr>
