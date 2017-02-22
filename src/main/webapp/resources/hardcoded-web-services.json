@@ -5,7 +5,7 @@
     "openDirectories":[]
   },
   "Apollo Broker Service":{
-    "generalInfo": "The Apollo Broker Service is the web service used by applications to run disease transmission models, and interact with the Apollo Library.",
+    "generalInfo": "<p>The Apollo Broker Service is a web service used by applications to run disease transmission models (DTMs).</p> <p>MIDAS developers will find this web service useful for building applications that run the following currently-connected DTMs: pFRED, Pitt-SEIR model, Pitt-Anthrax model, and the Ebola transmission model. Additional models will be available at a future date.</p>",
     "version": "4.0.1",
     "projectSource": "https://github.com/ApolloDev/apollo",
     "restSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-service-rest-frontend",
@@ -17,7 +17,7 @@
   "Apollo Location Service": {
     "version": "1.1.1",
     "projectSource":"https://github.com/midas-isg/ls",
-    "generalInfo": "The Apollo Location Service provides a RESTful API that allows users to lookup INCITS codes, Apollo Location Codes, and other types of geographic information that is available for locations that are stored in the Apollo Location Service Database.",
+    "generalInfo": "<p>The Apollo Location Service is an interface to a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>The Apollo Location Service <i>web service</i> allows developers to programmatically query the database.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>",
     "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs",
     "endpointPrefix": "http://betaweb.rods.pitt.edu/ls"
   },
