@@ -32,8 +32,7 @@
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"
-            integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
@@ -41,8 +40,8 @@
           rel="stylesheet">
 
     <!-- Bootstrap JS -->
-    <script src="${pageContext.request.contextPath}/resources/js/tether.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>
     <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
 </head>
@@ -190,7 +189,7 @@
                             <br><br>
                         </div>
                         <div class="col-sm-5 no-padding">
-                            <iframe style="width:100%" height="275" src="https://www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+                            <iframe id="olympus-video" style="width:100%" height="275" src="" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
@@ -276,6 +275,9 @@
             $(document.body).on("click", "a[data-toggle]", function(event) {
                 location.hash = this.getAttribute("href");
             });
+
+            // defer video load
+            $('iframe#olympus-video').attr('src', 'https://www.youtube.com/embed/8DoMUjl_yCw');
         });
         $(window).on("popstate", function() {
             var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
@@ -284,7 +286,7 @@
     </script>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications

@@ -63,7 +63,6 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         var directories = treeSettings["directories"];
 
         addTreeDirectories(directories, treeArray);
-        console.log(name, treeDictionary, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
         buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
 
