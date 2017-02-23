@@ -12,6 +12,7 @@
 #commons-body {
     width:95%;
     margin: auto;
+    overflow-x:hidden;
 }
 
 .grandnode-with-margin {
