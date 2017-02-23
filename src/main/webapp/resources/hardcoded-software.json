@@ -197,6 +197,16 @@
     "midasSso":true,
     "redirect":true
   },
+  "FluScores":{
+    "directory":"Data visualizers",
+    "location":"http://delphi.midas.cs.cmu.edu/misc/fluscores/",
+    "redirect":true
+  },
+  "EpiVis":{
+    "directory":"Data visualizers",
+    "location":"http://delphi.midas.cs.cmu.edu/epivis/epivis.html",
+    "redirect":true
+  },
   "outbreaker":{
     "directory":"Disease transmission tree estimators",
     "version":"1.1-7",
@@ -238,7 +248,7 @@
     "executables":"<a href = \"http://data.olympus.psc.edu/syneco/spew_1.2.0/spew_1.2.0.tar.gz\" style=\"text-decoration:underline\">OS X</a>",
     "source":"https://github.com/leerichardson/spew",
     "version":"1.2.0",
-    "documentation":"<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\", class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>"
+    "documentation":"<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\" class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>"
   },
   "ILI-nearby":{
     "directory":"Disease forecasting",
@@ -249,6 +259,12 @@
     "nowcasts":"weekly percent ILI",
     "site":"http://delphi.midas.cs.cmu.edu/nowcast/"
   },
+  "spaero: Software for Project AERO":{
+    "directory":"Disease forecasting",
+    "generalInfo":"An R package that implements methods for anticipating the emergence and eradication of infectious diseases from surveillance time series. Also provides support for computational experiments testing the performance of such methods.",
+    "site":"https://cran.r-project.org/web/packages/spaero/index.html",
+    "documentation":"<a href=\"https://cran.r-project.org/web/packages/spaero/spaero.pdf\" class=\"underline\" download>https://cran.r-project.org/web/packages/spaero/spaero.pdf</a>"
+  },
   "Delphi":{
     "directory":"Disease forecasting",
     "generalInfo":"Delphi's forecasts are derived from expert's forecasts. To sign up to participate as an expert go to: <a href=\"http://delphi.midas.cs.cmu.edu/epicast/\", class=\"underline\">http://delphi.midas.cs.cmu.edu/epicast/</a>",
@@ -257,7 +273,8 @@
     "diseases":"Influenza",
     "region":"10 US regions and national",
     "forecasts":"Start week <br> Peak week <br> Peak intensity",
-    "site":"http://delphi.midas.cs.cmu.edu/forecast/"
+    "site":"http://delphi.midas.cs.cmu.edu/forecast/",
+    "source":"https://github.com/cmu-delphi/"
   },
   "FluSight: Seasonal Influenza Forecasting":{
     "directory":"Disease forecasting",

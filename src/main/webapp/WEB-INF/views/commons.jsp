@@ -66,7 +66,7 @@
                     <div id="publications-treeview" class="treeview"></div>
                     <div class="legend hidden-xs">
                         <table class="table table-sm" style="
-                            margin-bottom: 0px;
+                            margin-bottom: 3px;
                         ">
                             <tbody>
                                 <tr>
@@ -91,7 +91,7 @@
                 <div class="col-sm-4">
                     <div class="legend-small hidden-sm hidden-md hidden-lg">
                         <table class="table table-sm" style="
-                            margin-bottom: 0px;
+                            margin-bottom: 3px;
                         ">
                             <tbody>
                             <tr>
@@ -221,9 +221,9 @@
             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
                 <div id="publication-${pub.paper.id}-${pub.data.id}" class="tab-pane fade">
                     <div class="col-md-12">
-                        <h2 class="title-font" id="subtitle">
+                        <h3 class="title-font" id="subtitle">
                             Data-augmented Publication
-                        </h2>
+                        </h3>
 
                         <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
                         <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>

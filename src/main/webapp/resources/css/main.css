@@ -9,9 +9,14 @@
     word-wrap:break-word;
 }
 
+.font-size-20 {
+    font-size:20px;
+}
+
 #commons-body {
     width:95%;
     margin: auto;
+    margin-top:-10px;
     overflow-x:hidden;
 }
 

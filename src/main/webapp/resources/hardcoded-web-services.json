@@ -45,5 +45,11 @@
   "MedlinePlus Connect": {
     "generalInfo":"<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>",
     "restDocumentation":"https://medlineplus.gov/connect/service.html"
+  },
+  "Epi-Data":{
+    "version":"commit 7367f92",
+    "generalInfo":"<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
+    "restDocumentation":"https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
+    "source":"https://github.com/cmu-delphi/delphi-epidata"
   }
 }
