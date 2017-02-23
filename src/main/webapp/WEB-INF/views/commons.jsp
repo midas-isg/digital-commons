@@ -32,7 +32,8 @@
     <title>MIDAS Digital Commons</title>
 
     <!-- jQuery imports -->
-    <script src="${pageContext.request.contextPath}/resources/js/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"
+            integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
@@ -244,47 +245,6 @@
         </div>
     </div>
 
-    <script>
-        $('#commons-body').on('click', function (e) {
-            //did not click a popover toggle or popover
-            if ($(e.target).attr('class') !== 'bs-popover') {
-                $("[rel=popover]").not(e.target).popover("destroy");
-                $(".popover").remove();
-            }
-
-            /*if($(e.target).attr('data-toggle') == 'tab') {
-                if($(e.target).attr('href') == '#data-and-knowledge') {
-                    $('#data-and-knowledge-tab').addClass('highlighted-item');
-                } else {
-                    $('#data-and-knowledge-tab').removeClass('highlighted-item');
-                }
-            }*/
-            //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
-            $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
-        });
-
-
-
-        $(document).ready(function() {
-            if (location.hash) {
-                $("a[href='" + location.hash + "']").tab("show");
-                if(location.hash.includes('publication')) {
-                    $('#data-and-knowledge-tab').addClass('highlighted-item');
-                }
-            }
-            $(document.body).on("click", "a[data-toggle]", function(event) {
-                location.hash = this.getAttribute("href");
-            });
-
-            // defer video load
-            $('iframe#olympus-video').attr('src', 'https://www.youtube.com/embed/8DoMUjl_yCw');
-        });
-        $(window).on("popstate", function() {
-            var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
-            $("a[href='" + anchor + "']").tab("show");
-        });
-    </script>
-
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
     <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
 
@@ -296,6 +256,47 @@
     <myTags:webServices></myTags:webServices>
     <myTags:computePlatform></myTags:computePlatform>
 </div>
+
+<script>
+    $('#commons-body').on('click', function (e) {
+        //did not click a popover toggle or popover
+        if ($(e.target).attr('class') !== 'bs-popover') {
+            $("[rel=popover]").not(e.target).popover("destroy");
+            $(".popover").remove();
+        }
+
+        /*if($(e.target).attr('data-toggle') == 'tab') {
+         if($(e.target).attr('href') == '#data-and-knowledge') {
+         $('#data-and-knowledge-tab').addClass('highlighted-item');
+         } else {
+         $('#data-and-knowledge-tab').removeClass('highlighted-item');
+         }
+         }*/
+        //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
+        $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
+    });
+
+
+
+    $(document).ready(function() {
+        if (location.hash) {
+            $("a[href='" + location.hash + "']").tab("show");
+            if(location.hash.includes('publication')) {
+                $('#data-and-knowledge-tab').addClass('highlighted-item');
+            }
+        }
+        $(document.body).on("click", "a[data-toggle]", function(event) {
+            location.hash = this.getAttribute("href");
+        });
+
+        // defer video load
+        $('iframe#olympus-video').attr('src', 'https://www.youtube.com/embed/8DoMUjl_yCw');
+    });
+    $(window).on("popstate", function() {
+        var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+        $("a[href='" + anchor + "']").tab("show");
+    });
+</script>
 
 </body>
 
