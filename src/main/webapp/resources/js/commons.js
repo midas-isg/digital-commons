@@ -56,7 +56,7 @@ if(!String.prototype.includes) {
 }
 
 function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo) {
-    $.getJSON( contextPath + location, function( data ) {
+    $.getJSON( contextPath + location + '?v=' + Date.now(), function( data ) {
         treeSettings = data["settings"];
 
         var name = treeSettings["name"];
