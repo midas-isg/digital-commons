@@ -180,7 +180,7 @@
                             <br><br>
                         </div>
                         <div class="col-sm-5 no-padding">
-                            <iframe id="olympus-video" style="width:100%" height="275" src="" frameborder="0" allowfullscreen></iframe>
+                            <iframe id="olympus-video" style="width:100%" height="275" src="" data-src="//www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
