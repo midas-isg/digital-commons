@@ -148,6 +148,15 @@
         </init-param>
     </filter>
 
+    <filter>
+        <filter-name>jsonCache</filter-name>
+        <filter-class>edu.pitt.isg.dc.config.CacheFilter</filter-class>
+        <init-param>
+            <param-name>months</param-name>
+            <param-value>12</param-value>
+        </init-param>
+    </filter>
+
     <!-- Map the filter to serve your static resources -->
 
     <filter-mapping>
@@ -178,5 +187,10 @@
     <filter-mapping>
         <filter-name>jsCache</filter-name>
         <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>jsonCache</filter-name>
+        <url-pattern>*.json</url-pattern>
     </filter-mapping>
 </web-app>
