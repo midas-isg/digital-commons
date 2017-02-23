@@ -8,16 +8,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <head>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-91508504-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -258,44 +248,13 @@
 </div>
 
 <script>
-    $('#commons-body').on('click', function (e) {
-        //did not click a popover toggle or popover
-        if ($(e.target).attr('class') !== 'bs-popover') {
-            $("[rel=popover]").not(e.target).popover("destroy");
-            $(".popover").remove();
-        }
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        /*if($(e.target).attr('data-toggle') == 'tab') {
-         if($(e.target).attr('href') == '#data-and-knowledge') {
-         $('#data-and-knowledge-tab').addClass('highlighted-item');
-         } else {
-         $('#data-and-knowledge-tab').removeClass('highlighted-item');
-         }
-         }*/
-        //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
-        $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
-    });
-
-
-
-    $(document).ready(function() {
-        if (location.hash) {
-            $("a[href='" + location.hash + "']").tab("show");
-            if(location.hash.includes('publication')) {
-                $('#data-and-knowledge-tab').addClass('highlighted-item');
-            }
-        }
-        $(document.body).on("click", "a[data-toggle]", function(event) {
-            location.hash = this.getAttribute("href");
-        });
-
-        // defer video load
-        $('iframe#olympus-video').attr('src', 'https://www.youtube.com/embed/8DoMUjl_yCw');
-    });
-    $(window).on("popstate", function() {
-        var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
-        $("a[href='" + anchor + "']").tab("show");
-    });
+    ga('create', 'UA-91508504-1', 'auto');
+    ga('send', 'pageview');
 </script>
 
 </body>

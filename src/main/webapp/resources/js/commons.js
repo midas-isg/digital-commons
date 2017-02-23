@@ -780,3 +780,41 @@ function getToolsTreeview() {
     );
     return collections;
 }
+
+$('#commons-body').on('click', function (e) {
+    //did not click a popover toggle or popover
+    if ($(e.target).attr('class') !== 'bs-popover') {
+        $("[rel=popover]").not(e.target).popover("destroy");
+        $(".popover").remove();
+    }
+
+    /*if($(e.target).attr('data-toggle') == 'tab') {
+     if($(e.target).attr('href') == '#data-and-knowledge') {
+     $('#data-and-knowledge-tab').addClass('highlighted-item');
+     } else {
+     $('#data-and-knowledge-tab').removeClass('highlighted-item');
+     }
+     }*/
+    //$('[data-toggle="tooltip"]').not(e.target).popover("destroy");
+    $('[data-toggle="tooltip"]').tooltip({trigger : 'hover', delay: 350});
+});
+
+$(document).ready(function() {
+    if (location.hash) {
+        $("a[href='" + location.hash + "']").tab("show");
+        if(location.hash.includes('publication')) {
+            $('#data-and-knowledge-tab').addClass('highlighted-item');
+        }
+    }
+    $(document.body).on("click", "a[data-toggle]", function(event) {
+        location.hash = this.getAttribute("href");
+    });
+
+    // defer video load
+    $('iframe#olympus-video').attr('src', 'https://www.youtube.com/embed/8DoMUjl_yCw');
+});
+
+$(window).on("popstate", function() {
+    var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
+    $("a[href='" + anchor + "']").tab("show");
+});
