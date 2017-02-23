@@ -575,8 +575,9 @@ body {
 }
 
 .legend-small {
-    position: absolute;
-    margin-bottom: 110px;
+    /*position: absolute;
+    margin-bottom: 110px;*/
+    width:250px;
     color: #0c2b65;
     border: 2px solid #0c2b65;
     padding-right: 5px;
