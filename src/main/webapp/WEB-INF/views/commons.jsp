@@ -76,7 +76,7 @@
 
                                 <tr>
                                     <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
-                                    <td><i>ready to run on Olympus</i></td>
+                                    <td><i>Ready to Run On Olympus</i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -101,7 +101,7 @@
 
                             <tr>
                                 <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
-                                <td><i>ready to run on Olympus</i></td>
+                                <td><i>Ready to Run On Olympus</i></td>
                             </tr>
                             </tbody>
                         </table>

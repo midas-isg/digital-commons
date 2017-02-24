@@ -300,10 +300,12 @@ function getNodeData(name, key, treeDictionary) {
         'name': key
     };
 
+    if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
+        nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
+    }
+
     if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
         nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-    } else if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
-        nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
     }
 
     if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
@@ -320,10 +322,12 @@ function getNodeData(name, key, treeDictionary) {
             nodeData['url'] = url;
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
+            if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
+                nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
+            }
+
             if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
                 nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-            } else if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
-                nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
             }
 
             if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {

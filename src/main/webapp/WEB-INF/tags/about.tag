@@ -13,7 +13,7 @@
     </p>
 
     <p class="font-size-16 standard-font">
-        At present, the MIDAS Digital Commons (MDC) consists of a collection of digital objects in the domain of infectious disease epidemiology with a compute platform for running experiments. In an upcoming release, the MDC will add a search function that makes the digital objects findable.
+        At present, the MDC consists of a collection of digital objects in the domain of infectious disease epidemiology with a compute platform for running experiments. In an upcoming release, the MDC will add a search function that makes the digital objects findable.
     </p>
 
     <p class="font-size-16 standard-font">
