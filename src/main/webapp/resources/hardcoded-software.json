@@ -47,6 +47,14 @@
     "sourceCodeRelease":"<a href=\"https://gitlab.com/tompkins/vectri/tree/v1.3.5\" class=\"underline\">https://gitlab.com/tompkins/vectri/tree/v1.3.5</a>",
     "source":"https://gitlab.com/tompkins/vectri"
   },
+  "CLARA":{
+    "directory":"Disease transmission models",
+    "isOlympus":true,
+    "version":"0.5",
+    "generalInfo":"CLARA is a Netlogo agent-based model for vector bourne diseases. CLARA is still under development.",
+    "doi":"<a href=\"http://doi.org/10.5281/zenodo.322422\", class=\"underline\">10.5281/zenodo.322422</a>",
+    "source":"https://github.com/PSC-PublicHealth/CLARA"
+  },
   "Dengue transmission model":{
     "diseaseCoverage":"Dengue",
     "directory":"Disease transmission models",
