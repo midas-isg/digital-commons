@@ -151,31 +151,30 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
             if(typeof data['nodes'] != undefined) {
                 $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
+            
+            var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
 
-            if(data.parentId == null) {
-                var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
-
-                if(data.state.expanded) {
-                    if(expandedSoftware != null) {
-                        var index = expandedSoftware.indexOf(data.nodeId);
-                        if (index > -1) {
-                            expandedSoftware.splice(index, 1);
-                        }
-                    }
-                } else {
-                    if(expandedSoftware != null) {
-                        var index = expandedSoftware.indexOf(data.nodeId);
-                        if (index <= -1) {
-                            expandedSoftware.push(data.nodeId);
-                        }
-                    } else {
-                        expandedSoftware = [];
-                        expandedSoftware.push(data.nodeId);
+            if(data.state.expanded) {
+                if(expandedSoftware != null) {
+                    var index = expandedSoftware.indexOf(data.nodeId);
+                    if (index > -1) {
+                        expandedSoftware.splice(index, 1);
                     }
                 }
-
-                sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
+            } else {
+                if(expandedSoftware != null) {
+                    var index = expandedSoftware.indexOf(data.nodeId);
+                    if (index <= -1) {
+                        expandedSoftware.push(data.nodeId);
+                    }
+                } else {
+                    expandedSoftware = [];
+                    expandedSoftware.push(data.nodeId);
+                }
             }
+
+            sessionStorage.setItem(expandedInfo, JSON.stringify(expandedSoftware));
+
 
             if(data.url != null && data.state.selected == true) {
                 if('midasSso' in data && data['midasSso'] == true) {
@@ -223,8 +222,9 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
                 revealResults: false  // reveal matching nodes
             }])[0];
             $(treeviewTag).treeview('clearSearch');
-
-            openByDefaultIds.push(matchingNode.nodeId);
+            if(matchingNode != null) {
+                openByDefaultIds.push(matchingNode.nodeId);
+            }
         }
 
         expandedSoftware = openByDefaultIds;

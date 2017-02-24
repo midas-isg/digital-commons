@@ -1,8 +1,8 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>RROO</sup></i><b>"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
-     "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models"]
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
+     "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo"]
    },
    "FluTE":{
       "directory":"FluTE (4 versions)",
@@ -76,7 +76,7 @@
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
   "Open Malaria  ":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>RROO</sup></i><b>",
+    "directory":"Open Malaria (3 versions)",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"32",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
@@ -87,7 +87,7 @@
     "isOlympus": true
   },
   "Open Malaria ":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>RROO</sup></i><b>",
+    "directory":"Open Malaria (3 versions)",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"33.1",
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
@@ -98,7 +98,7 @@
     "isOlympus": true
   },
   "Open Malaria":{
-    "directory":"Open Malaria (3 versions) <b><i class=\"olympus-color\"><sup>RROO</sup></i><b>",
+    "directory":"Open Malaria (3 versions)",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":"36.11",
     "executables":"<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-osx.tar.gz\" style=\"text-decoration:underline\">OS X</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows-no-libs.zip\" style=\"text-decoration:underline\">Windows - no libs</a>, <a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-windows.zip\" style=\"text-decoration:underline\">Windows w/ libs</a>",
@@ -106,8 +106,7 @@
     "sourceCodeRelease":"<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "diseaseCoverage":"Malaria",
     "hostSpeciesIncluded":"Humans, Mosquitoes",
-    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki",
-    "isOlympus": true
+    "userGuidesAndManuals":"https://github.com/SwissTPH/openmalaria/wiki"
   },
   "Global Epidemic Simulator":{
     "directory":"Disease transmission models",

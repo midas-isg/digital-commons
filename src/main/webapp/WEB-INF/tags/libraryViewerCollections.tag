@@ -161,7 +161,7 @@
                 var toRemove = [];
 
                 if(expandedDataAndKnowledge == null) {
-                    var openByDefault = ["Disease surveillance data", "US notifiable diseases", "Mortality data"];
+                    var openByDefault = ["Synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data"];
                     var openByDefaultIds = [];
                     for(var i = 0; i < openByDefault.length; i++) {
                         var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {
@@ -171,7 +171,9 @@
                         }])[0];
                         $('#data-and-knowledge-treeview').treeview('clearSearch');
 
-                        openByDefaultIds.push(matchingNode.nodeId);
+                        if(matchingNode != null) {
+                            openByDefaultIds.push(matchingNode.nodeId);
+                        }
                     }
 
                     expandedDataAndKnowledge = openByDefaultIds;
