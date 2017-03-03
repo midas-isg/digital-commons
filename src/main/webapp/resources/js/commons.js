@@ -178,7 +178,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
 
             if(data.url != null && data.state.selected == true) {
                 if('midasSso' in data && data['midasSso'] == true) {
-                    $(location).attr('href', contextPath + "/main/view?url=" + encodeURIComponent(data.url));
+                    $(location).attr('href', contextPath + "/midas-sso/view?url=" + encodeURIComponent(data.url));
                 } else {
                     window.location.href = data.url;
                 }
@@ -287,6 +287,7 @@ function addNodesToSubdirectories(treeArrayItem, subdirectories, subdirectoryCon
 }
 
 function getNodeData(name, key, treeDictionary) {
+    console.log('here');
     var title = key;
     if('version' in treeDictionary[key]) {
         title = getSoftwareTitle(key, treeDictionary[key]['version']);
@@ -331,6 +332,7 @@ function getNodeData(name, key, treeDictionary) {
             }
 
             if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+                nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
                 nodeData['midasSso'] = treeDictionary[key]['midasSso'];
             }
         }
@@ -358,7 +360,7 @@ function getSoftwareTitle(name, version) {
 var standardEncodingTree = {
     text: "Standards for encoding data",
     nodes: [{
-        text: "<span onmouseover='toggleTitle(this)'>Apollo location codes (for locations)</span>",
+        text: "<span onmouseover='toggleTitle(this)'>Apollo location codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
         url: "https://betaweb.rods.pitt.edu/ls"
     },
         {
@@ -470,7 +472,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     //     "<i class='fa fa-info-circle'></i></button>";
 
                     nodeLevel2.push({
-                        text: "<span>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b><span>",
+                        text: "<span>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span> ",
                         url: url + value.urn
                     });
                 });
@@ -479,7 +481,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 }
                 if(index.includes("H1n1 infectious disease scenarios"))
                     index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b><span>", nodes: nodeLevel2});
+                nodeLevel1.push({text: index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b><span>", nodes: nodeLevel2});
             });
 
             collections.push({text: index, nodes: nodeLevel1});

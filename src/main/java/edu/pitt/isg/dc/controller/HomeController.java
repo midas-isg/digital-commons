@@ -75,6 +75,7 @@ public class HomeController {
         }
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
+        model.addAttribute("preview", true);
         return "commons";
     }
 
@@ -151,7 +152,7 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value = "/main/view", method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = "/midas-sso/view", method = RequestMethod.GET, headers = "Accept=text/html")
     public String loadIframe(Model model, @RequestParam(value = "url") String url) {
         model.addAttribute("url", url);
         return "iframeView";

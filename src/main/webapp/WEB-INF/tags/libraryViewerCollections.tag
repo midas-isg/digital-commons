@@ -151,7 +151,7 @@
                         var url  = data.url;
                         if(url.search("apolloLibraryViewer") > -1) {
 //                        if($.contains(data.url, "apolloLibraryViewer")) {
-                            $(location).attr('href', "${pageContext.request.contextPath}" + "/main/view?url=" + encodeURIComponent(data.url));
+                            $(location).attr('href', "${pageContext.request.contextPath}" + "/midas-sso/view?url=" + encodeURIComponent(data.url));
                         } else {
                             $(location).attr('href', data.url);
                         }
