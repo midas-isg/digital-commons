@@ -1,8 +1,8 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}],
-     "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo"]
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}, "Phylogenetic tree constructors"],
+     "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors"]
    },
    "FluTE":{
       "directory":"FluTE (4 versions)",
@@ -409,5 +409,19 @@
     "source":"https://github.com/midas-isg/PITT-SEIR-model",
     "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
     "doi":"<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>"
+  },
+  "PhyML":{
+    "directory":"Phylogenetic tree constructors",
+    "version":"3.0",
+    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>",
+    "generalInfo":"PhyML is a phylogeny software based on the maximum-likelihood principle. Binaries are available for Linux, MacOS and Windows; the source code is available on request.",
+    "developer":"Stéphane Guidon (LIRMM, Montpellier, France.), Olivier Gascuel (LIRMM, Montpellier, France.)",
+    "dataInputFormats":"PHYLIP format (sequences)",
+    "dataOutputFormats":"Newick format (for the ML tree)",
+    "webApplication":"http://www.atgc-montpellier.fr/phyml/",
+    "executables":"<a class=\"underline\" href=\"http://www.atgc-montpellier.fr/phyml/binaries.php \">Executable Binaries</a>",
+    "publicationsAboutRelease":"\"New Algorithms and Methods to Estimate Maximum-Likelihood Phylogenies: Assessing the Performance of PhyML 3.0.\" Guindon S., Dufayard J.F., Lefort V., Anisimova M., Hordijk W., Gascuel O. Systematic Biology, 59(3):307-21, 2010. (<a href=\" https://doi.org/10.1093/sysbio/syq010\", class=\"underline\">doi:10.1093/sysbio/syq010</a>)",
+    "publicationsThatUsedRelease":"<a class=\"underline\" href=\"http://biorxiv.org/content/early/2016/09/16/071779\">http://biorxiv.org/content/early/2016/09/16/071779</a>",
+    "documentation":"<a class=\"underline\" href=\"http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf\" download>http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf</a>"
   }
 }

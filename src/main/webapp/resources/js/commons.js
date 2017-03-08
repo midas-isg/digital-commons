@@ -287,7 +287,6 @@ function addNodesToSubdirectories(treeArrayItem, subdirectories, subdirectoryCon
 }
 
 function getNodeData(name, key, treeDictionary) {
-    console.log('here');
     var title = key;
     if('version' in treeDictionary[key]) {
         title = getSoftwareTitle(key, treeDictionary[key]['version']);
@@ -644,6 +643,10 @@ function openModal(type, name) {
     toggleModalItem('site', attrs, 'site', true, false);
 
     toggleModalItem('forecastFrequency', attrs, 'forecast-frequency', false, false);
+
+    toggleModalItem('dataInputFormats', attrs, 'data-input-formats', false, false);
+
+    toggleModalItem('dataOutputFormats', attrs, 'data-output-formats', false, false);
 
     $('#pageModal').modal('show');
 

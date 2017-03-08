@@ -48,15 +48,19 @@
 
                 <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="data-output-formats" title="Formats for data outputs"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code" title="Source code repository" hasHref="true"></myTags:softwareModalItem>
 
