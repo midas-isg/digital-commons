@@ -16,7 +16,7 @@
             <div class="modal-body">
                 <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="general-info" title="General info" hasHref="false"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="general-info" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>
 
@@ -54,15 +54,15 @@
 
                 <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="data-output-formats" title="Formats for data outputs"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="source-code" title="Source code repository" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="source-code" title="Links to code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 

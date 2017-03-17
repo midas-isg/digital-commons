@@ -81,7 +81,7 @@
 
                                 <tr>
                                     <td><i class="sso-color legend-font"><b>SSO</b></i></td>
-                                    <td><i>MIDAS Single Sign-On</i></td>
+                                    <td><i>Requires (single) sign on</i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -111,7 +111,7 @@
 
                             <tr>
                                 <td><i class="sso-color legend-font"><b>SSO</b></i></td>
-                                <td><i>MIDAS Single Sign-On</i></td>
+                                <td><i>Requires (single) sign on</i></td>
                             </tr>
                             </tbody>
                         </table>

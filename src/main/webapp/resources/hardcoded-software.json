@@ -1,7 +1,7 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", {"Modeling platforms": ["NetLogo (2 versions)"]}, "Phylogenetic tree constructors"],
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Disease transmission tree estimators", "Phylogenetic tree constructors", "Data visualizers", {"Modeling platforms": ["NetLogo (2 versions)"]}],
      "openDirectories":["Disease transmission models", "Disease forecasting", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors"]
    },
    "FluTE":{
@@ -155,7 +155,7 @@
     "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class=\"underline\">download latest version</a>"
   },
     "ZIKA Modeling":{
-    "directory":"Disease transmission models",
+    "directory":"Disease forecasting",
     "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
     "webApplication":"http://www.zika-model.org/"
   },
@@ -423,5 +423,12 @@
     "publicationsAboutRelease":"\"New Algorithms and Methods to Estimate Maximum-Likelihood Phylogenies: Assessing the Performance of PhyML 3.0.\" Guindon S., Dufayard J.F., Lefort V., Anisimova M., Hordijk W., Gascuel O. Systematic Biology, 59(3):307-21, 2010. (<a href=\" https://doi.org/10.1093/sysbio/syq010\", class=\"underline\">doi:10.1093/sysbio/syq010</a>)",
     "publicationsThatUsedRelease":"<a class=\"underline\" href=\"http://biorxiv.org/content/early/2016/09/16/071779\">http://biorxiv.org/content/early/2016/09/16/071779</a>",
     "documentation":"<a class=\"underline\" href=\"http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf\" download>http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf</a>"
+  },
+  "PHYLIP":{
+    "directory":"Phylogenetic tree constructors",
+    "version":"3.696",
+    "generalInfo":"PHYLogeny Inference Package (PHYLIP) is a free computational phylogenetics package of programs for inferring evolutionary trees (phylogenies). It consists of 35 portable programs, i.e., the source code is written in the programming language C. Releases occur as source code, and as precompiled executables for many operating systems including Windows (95, 98, ME, NT, 2000, XP, Vista), Mac OS 8, Mac OS 9, OS X, Linux (Debian, Red Hat); and FreeBSD from <a class='underline' href='https://www.freebsd.org/'>FreeBSD.org</a>. Full documentation is written for all the programs in the package and is included therein.",
+    "developer":"Professor Joseph Felsenstein, of the Department of Genome Sciences and the Department of Biology, University of Washington, Seattle.",
+    "executables":"<a class=\"underline\" href=\"http://evolution.genetics.washington.edu/phylip/sourcecode.html\">Executable Binaries</a>"
   }
 }

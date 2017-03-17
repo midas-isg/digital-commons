@@ -515,6 +515,29 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     }
 }
 
+function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, checkDirectoryBool) {
+    if(key in attrs) {
+        $('#software-' + name + '-container').show();
+
+        if(renderHtml) {
+            $('#software-' + name).html(attrs[key]);
+        } else {
+            $('#software-' + name).text(attrs[key]);
+        }
+
+        if(hasHref) {
+            $('#software-' + name).attr('href', attrs[key]);
+        }
+    } else if(type == 'software' && checkDirectoryBool) {
+        $('#software-' + name + '-container').show();
+        $('#software-' + name).html('N/A');
+    } else {
+        $('#software-' + name + '-container').hide();
+    }
+
+    attrs['directory'] != 'Disease forecasting'
+}
+
 function openModal(type, name) {
     var attrs = {};
     if(type == 'software') {
@@ -547,16 +570,6 @@ function openModal(type, name) {
         $('#software-developer-container').hide();
     }
 
-    if('doi' in attrs) {
-        $('#software-doi-container').show();
-        $('#software-doi').html(attrs['doi']);
-    } else if(type == 'software' && attrs['directory'] != 'Disease forecasting') {
-        $('#software-doi-container').show();
-        $('#software-doi').html('N/A');
-    } else {
-        $('#software-doi-container').hide();
-    }
-
     if('version' in attrs) {
         $('#software-version-container').show();
         $('#software-version').text(attrs['version']);
@@ -575,6 +588,12 @@ function openModal(type, name) {
     } else {
         $('#software-version-container').hide();
     }
+
+    toggleRequiredModalItem('doi', attrs, 'doi', false, true, type, attrs['directory'] != 'Disease forecasting');
+
+    toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, false, type, true);
+
+    toggleRequiredModalItem('dataOutputFormats', attrs, 'data-output-formats', false, false, type, true);
 
     toggleModalItem('type', attrs, 'type', false, false);
 
@@ -643,10 +662,6 @@ function openModal(type, name) {
     toggleModalItem('site', attrs, 'site', true, false);
 
     toggleModalItem('forecastFrequency', attrs, 'forecast-frequency', false, false);
-
-    toggleModalItem('dataInputFormats', attrs, 'data-input-formats', false, false);
-
-    toggleModalItem('dataOutputFormats', attrs, 'data-output-formats', false, false);
 
     $('#pageModal').modal('show');
 
