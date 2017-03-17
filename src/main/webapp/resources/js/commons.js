@@ -515,7 +515,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     }
 }
 
-function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, checkDirectoryBool) {
+function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if(key in attrs) {
         $('#software-' + name + '-container').show();
 
@@ -528,7 +528,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, ch
         if(hasHref) {
             $('#software-' + name).attr('href', attrs[key]);
         }
-    } else if(type == 'software' && checkDirectoryBool) {
+    } else if(type == 'software') {
         $('#software-' + name + '-container').show();
         $('#software-' + name).html('N/A');
     } else {
@@ -589,7 +589,7 @@ function openModal(type, name) {
         $('#software-version-container').hide();
     }
 
-    toggleRequiredModalItem('doi', attrs, 'doi', false, true, type, attrs['directory'] != 'Disease forecasting');
+    toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
 
     toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, false, type, true);
 
@@ -652,6 +652,8 @@ function openModal(type, name) {
     toggleModalItem('diseases', attrs, 'diseases', false, false);
 
     toggleModalItem('region', attrs, 'region', false, true);
+
+    toggleModalItem('outcomes', attrs, 'outcomes', false, true);
 
     toggleModalItem('forecasts', attrs, 'forecasts', false, true);
 

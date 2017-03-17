@@ -155,9 +155,13 @@
     "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class=\"underline\">download latest version</a>"
   },
     "ZIKA Modeling":{
-    "directory":"Disease forecasting",
+    "directory":"Disease transmission models",
     "developer":"Northeastern University, Bruno Kessler Foundation, ISI Foundation, Fred Hutchinson Cancer Research Center, University of Florida",
-    "webApplication":"http://www.zika-model.org/"
+    "webApplication":"http://www.zika-model.org/",
+    "generalInfo":"This web application uses a data-driven global stochastic and spatial vector-host epidemic model to provide a quantitative analysis of the spreading pattern of ZIKV in Latin America. The model divides the world population into geographic census areas that are defined around transportation hubs and connected by mobility fluxes. The model integrates real world demographic and transportation data.  It also consider the dependence with local weather data of ZIKV transmission drivers such as the mosquito lifespan and abundance. The basic calibration of the model is performed by a Markov Chain Monte Carlo analysis of specific Zika outbreaks. The model generates microsimulations that provide stochastic ensemble output of possible epidemic evolutions, and statistical estimates of newly generated cases, importation events, probability of autochthonous transmission as a function of time. The number of potential microcephaly cases related to Zika is projected on the basis of the epidemic incidence by using a model-based approach used for French Polynesia.",
+    "diseases": "Zika",
+    "region":"South America <br> Latin America <br> Caribbean",
+    "outcomes": "Number of Zika-attributable microcephaly cases <br> Attack rate"
   },
   "HyPhy":{
     "directory":"Pathogen evolution models",

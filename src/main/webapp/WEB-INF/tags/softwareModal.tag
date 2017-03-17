@@ -36,6 +36,8 @@
 
                 <myTags:softwareModalItem id="diseases" title="Diseases"></myTags:softwareModalItem>
 
+                <myTags:softwareModalItem id="outcomes" title="Outcomes"></myTags:softwareModalItem>
+
                 <myTags:softwareModalItem id="region" title="Locations"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="forecasts" title="Forecasts"></myTags:softwareModalItem>
