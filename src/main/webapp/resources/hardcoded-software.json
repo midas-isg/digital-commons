@@ -344,7 +344,8 @@
     "isApolloEnabled":true,
     "isOlympus":true,
     "hostSpeciesIncluded":"Humans",
-    "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination"
+    "controlMeasures":"Antivirals, isolation, liberal sick leave, quarantine, school closure, travel restriction, vaccination",
+    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>"
   },
   "FRED Windows 64":{
     "directory":"FRED (3 versions)",
