@@ -17,7 +17,7 @@
   "Apollo Location Service": {
     "version": "1.1.1",
     "projectSource":"https://github.com/midas-isg/ls",
-    "generalInfo": "<p>The Apollo Location Service is an interface to a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>The Apollo Location Service <i>web service</i> allows developers to programmatically query the database.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>",
+    "generalInfo": "</p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>",
     "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs",
     "endpointPrefix": "http://betaweb.rods.pitt.edu/ls"
   },
@@ -34,12 +34,12 @@
     "version": "1.1.0"
   },
   "RxNorm API": {
-    "generalInfo":"<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system.</p>",
+    "generalInfo":"<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>",
     "restDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
     "soapDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html"
   },
   "Entrez Programming Utilities (E-utilities)": {
-    "generalInfo":"<p><a href=\"https://www.ncbi.nlm.nih.gov/gquery/\" class=\"underline\">Entrez</a> is a search engine for National Center for Biotechnology Information (NCBI) databases.  The Entrez Programming Utilities (E-utilities) allows you to execute searches against these databases via web service.</p> <p>MIDAS developers will find this web service useful when dealing with coding systems developed by the NCBI  (e.g. NCBI Taxonomy IDs). For example, this web service is used by the Apollo Library to look up entries in the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a>.</p>",
+    "generalInfo":"<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>",
     "restDocumentation":"https://www.ncbi.nlm.nih.gov/books/NBK25501/"
   },
   "MedlinePlus Connect": {

@@ -18,7 +18,7 @@
 
                 <myTags:softwareModalItem id="general-info" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="disease-coverage" title="Disease coverage"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="disease-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
 
@@ -61,6 +61,12 @@
                 <myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="data-output-formats" title="Formats for data outputs"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="visualization-type" title="Types of visualizations"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="platform" title="Platform, environment, and dependencies"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="grant" title="Associated grants"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 

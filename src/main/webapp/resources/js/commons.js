@@ -358,10 +358,7 @@ function getSoftwareTitle(name, version) {
 
 var standardEncodingTree = {
     text: "Standards for encoding data",
-    nodes: [{
-        text: "<span onmouseover='toggleTitle(this)'>Apollo location codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
-        url: "https://betaweb.rods.pitt.edu/ls"
-    },
+    nodes: [
         {
             text: "<span onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</span>",
             url: "http://loinc.org/"
@@ -385,6 +382,10 @@ var standardEncodingTree = {
         {
             text: "<span onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</span>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Apollo Location Codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
+            url: "https://betaweb.rods.pitt.edu/ls"
         }
     ]
 };
@@ -395,6 +396,19 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
     collections.push(
         syntheticEcosystems,
+        {
+            text: "Synthia synthetic populations",
+            nodes: [
+                {
+                    text: "2010 U.S. Synthetic Populations by County",
+                    url:"http://www.epimodels.org/drupal/?q=node/81"
+                },
+                {
+                    text: "2010 U.S. Synthetic Populations by State",
+                    url:"http://www.epimodels.org/drupal/?q=node/80"
+                }
+            ]
+        },
         {
             text: "Disease surveillance data",
             nodes: [
@@ -515,7 +529,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     }
 }
 
-function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
+function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, directory) {
     if(key in attrs) {
         $('#software-' + name + '-container').show();
 
@@ -530,12 +544,14 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         }
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();
-        $('#software-' + name).html('N/A');
+        if(attrs['directory'] == 'Disease transmission models' && (key == 'dataInputFormats' || key == 'dataOutputFormats')) {
+            $('#software-' + name).html('Proprietary');
+        } else {
+            $('#software-' + name).html('N/A');
+        }
     } else {
         $('#software-' + name + '-container').hide();
     }
-
-    attrs['directory'] != 'Disease forecasting'
 }
 
 function openModal(type, name) {
@@ -586,7 +602,7 @@ function openModal(type, name) {
             $('#software-version-tag').text('Version:');
         }
     } else {
-        $('#software-version-container').hide();
+        $('#software-version').text('N/A');
     }
 
     toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
@@ -664,6 +680,12 @@ function openModal(type, name) {
     toggleModalItem('site', attrs, 'site', true, false);
 
     toggleModalItem('forecastFrequency', attrs, 'forecast-frequency', false, false);
+
+    toggleModalItem('visualizationType', attrs, 'visualization-type', false, false);
+
+    toggleModalItem('grant', attrs, 'grant', false, false);
+
+    toggleModalItem('platform', attrs, 'platform', false, false);
 
     $('#pageModal').modal('show');
 
