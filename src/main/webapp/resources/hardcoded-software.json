@@ -493,5 +493,13 @@
     "developer":"Professor Joseph Felsenstein, of the Department of Genome Sciences and the Department of Biology, University of Washington, Seattle.",
     "dataOutputFormats":"PHYLIP",
     "executables":"<a class=\"underline\" href=\"http://evolution.genetics.washington.edu/phylip/sourcecode.html\">Executable Binaries</a>"
+  },
+  "Synthetic Microdata Household Viewer":{
+    "directory":"Data visualizers",
+    "generalInfo":"The Synthetic Microdata Household Viewer is a browser-based application that displays distributions of households in a synthetic (simulated) population generated from 2010 U.S. Census and 2007-2011 5-year American Community Survey data.  The software displays the distributions on interactive maps, and can show four demographic variables: household income, household size, householder race, and householder age.",
+    "developer":"RTI International. Co-authors Bill Wheaton, Brandon Bergenroth, Dahl Winters, James Rineer.",
+    "webApplication":"https://synthpopviewer.rti.org",
+    "platform":"Web browsers",
+    "grant":"1-U24-GM087704"
   }
 }
