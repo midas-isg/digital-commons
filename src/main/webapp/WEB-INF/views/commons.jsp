@@ -246,7 +246,7 @@
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications
@@ -263,8 +263,10 @@
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-91508504-1', 'auto');
-    ga('send', 'pageview');
+    //ga('create', 'UA-91508504-1', 'auto');
+    ga('create', 'UA-91508504-1', {
+        'cookieDomain': 'none'
+    });
 </script>
 
 </body>

@@ -177,6 +177,12 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
 
 
             if(data.url != null && data.state.selected == true) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: data.url
+                });
+
                 if('midasSso' in data && data['midasSso'] == true) {
                     $(location).attr('href', contextPath + "/midas-sso/view?url=" + encodeURIComponent(data.url));
                 } else {
@@ -397,7 +403,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     collections.push(
         syntheticEcosystems,
         {
-            text: "Synthia synthetic populations",
+            text: "Synthia™ synthetic populations",
             nodes: [
                 {
                     text: "2010 U.S. Synthetic Populations by County",
@@ -558,8 +564,20 @@ function openModal(type, name) {
     var attrs = {};
     if(type == 'software') {
         attrs = softwareDictionary[name];
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'User Activity',
+            eventAction: 'Software - ' + name
+        });
     } else if(type == 'webServices') {
         attrs = webservicesDictionary[name];
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'User Activity',
+            eventAction: 'Web Services - ' + name
+        });
     }
 
     if(name != null) {
@@ -850,18 +868,60 @@ $('#commons-body').on('click', function (e) {
 $(document).ready(function() {
     if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
-        if(location.hash.includes('publication')) {
-            $('#data-and-knowledge-tab').addClass('highlighted-item');
+        var elementText = $("a[href='" + location.hash + "']").text();
+
+        if(elementText == '') {
+            elementText = 'Data-augmented Publication';
         }
+
+        ga('send', {
+            hitType: 'pageview',
+            page: location.pathname,
+            title: elementText
+        });
+
+        if(location.hash.includes('publication')) {
+            $('#content-tab').addClass('highlighted-item');
+        }
+    } else {
+        ga('send', {
+            hitType: 'pageview',
+            page: location.pathname,
+            title: 'Content'
+        });
     }
+
     $(document.body).on("click", "a[data-toggle]", function(event) {
         location.hash = this.getAttribute("href");
+        ga('send', {
+            hitType: 'pageview',
+            page: location.pathname,
+            title: $(this).text()
+        });
+    });
+
+    $(document.body).on("click", "a", function(event) {
+        var href = this.getAttribute("href");
+
+        if(href.includes('http')) {
+            ga('send', {
+                hitType: 'event',
+                eventCategory: 'Clickthrough',
+                eventAction: href
+            });
+        }
     });
 });
 
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
     $("a[href='" + anchor + "']").tab("show");
+
+    if(location.hash.includes('publication')) {
+        $('#content-tab').addClass('highlighted-item');
+    } else {
+        $('#content-tab').removeClass('highlighted-item');
+    }
 });
 
 function init() {

@@ -66,7 +66,7 @@
     };
 
     var syntheticEcosystemsByRegion = {
-        text: "<span onmouseover='toggleTitle(this)'>Synthetic ecosystems</span>",
+        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span>",
         nodes: []
     };
 
@@ -148,6 +148,12 @@
                     sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
 
                     if(data.url != null && data.state.selected == true) {
+                        ga('send', {
+                            hitType: 'event',
+                            eventCategory: 'Clickthrough',
+                            eventAction: data.url
+                        });
+
                         var url  = data.url;
                         if(url.search("apolloLibraryViewer") > -1) {
 //                        if($.contains(data.url, "apolloLibraryViewer")) {
@@ -161,7 +167,7 @@
                 var toRemove = [];
 
                 if(expandedDataAndKnowledge == null) {
-                    var openByDefault = ["Synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia synthetic populations"];
+                    var openByDefault = ["SPEW synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia"];
                     var openByDefaultIds = [];
                     for(var i = 0; i < openByDefault.length; i++) {
                         var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {
