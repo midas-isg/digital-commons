@@ -550,7 +550,11 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, di
         }
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();
-        if(attrs['directory'] == 'Disease transmission models' && (key == 'dataInputFormats' || key == 'dataOutputFormats')) {
+        if((attrs['directory'] == 'Disease transmission models' ||
+            attrs['directory'].includes('FluTE') ||
+            attrs['directory'].includes('FRED') ||
+            attrs['directory'].includes('Open Malaria')) &&
+            (key == 'dataInputFormats' || key == 'dataOutputFormats')) {
             $('#software-' + name).html('Proprietary');
         } else {
             $('#software-' + name).html('N/A');

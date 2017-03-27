@@ -94,6 +94,7 @@
     "locationCoverage":"United States",
     "hostSpeciesIncluded":"Humans",
     "diseaseCoverage":"Communicable human-to-human",
+    "dataInputFormats":"Synthetic population – Synthia.US; all other input – proprietary",
     "controlMeasures":"Vaccination, quarantine, reactive school closures, global school closures",
     "webApplication":"http://fred.publichealth.pitt.edu/simulator/"
   },
@@ -409,6 +410,7 @@
     "locationCoverage":"United States",
     "hostSpeciesIncluded":"Humans",
     "diseaseCoverage":"Communicable human-to-human",
+    "dataInputFormats":"Synthetic population – Synthia.US; all other input – proprietary",
     "controlMeasures":"Vaccination, quarantine, reactive school closures, global school closures",
     "documentation":"<a href=\"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md\" class=\"underline\">https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md</a>",
     "executables":"<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"
