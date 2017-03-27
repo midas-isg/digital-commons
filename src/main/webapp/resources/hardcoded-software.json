@@ -381,6 +381,7 @@
     "locationCoverage":"United States",
     "hostSpeciesIncluded":"Humans",
     "diseaseCoverage":"Communicable human-to-human",
+    "dataInputFormats":"Synthetic population – Synthia.US; all other input – proprietary",
     "controlMeasures":"Vaccination, quarantine, reactive school closures, global school closures",
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   },
