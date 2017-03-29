@@ -299,6 +299,7 @@
   },
   "spew":{
     "directory":"Synthetic ecosystem constructors",
+    "generalInfo":"Synthetic Populations and Ecosystems of the World (SPEW) is an open-source R package for creating synthetic populations and ecosystems for any geographic region in the world.  The resulting synthetic ecosystems provide data on both synthetic agents and households, their locations, and (for US agents) both school and workplace assignments.",
     "developer":"Shannon Gallagher, Lee Richardson, Samuel Venutra, Bill Eddy",
     "location":"http://www.stat.cmu.edu/~spew/",
     "executables":"<a href = \"http://data.olympus.psc.edu/syneco/spew_1.2.0/spew_1.2.0.tar.gz\" style=\"text-decoration:underline\">OS X</a>",
