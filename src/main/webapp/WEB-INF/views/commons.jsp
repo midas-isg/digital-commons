@@ -86,7 +86,7 @@
 
                                 <tr>
                                     <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
-                                    <td><i>Universal Disease Simulation Interface</i></td>
+                                    <td><i>Available via the Universal Disease Simulation Interface</i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -121,7 +121,7 @@
 
                             <tr>
                                 <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
-                                <td><i>Universal Disease Simulation Interface</i></td>
+                                <td><i>Available via the Universal Disease Simulation Interface</i></td>
                             </tr>
                             </tbody>
                         </table>
