@@ -71,7 +71,7 @@
                             <tbody>
                                 <tr>
                                     <td><i class="ae-color legend-font"><b>AE</b></i></td>
-                                    <td><i>Apollo-Enabled</i></td>
+                                    <td><i>Apollo-Encoded</i></td>
                                 </tr>
 
                                 <tr>
@@ -82,6 +82,11 @@
                                 <tr>
                                     <td><i class="sso-color legend-font"><b>SSO</b></i></td>
                                     <td><i>Requires (single) sign on</i></td>
+                                </tr>
+
+                                <tr>
+                                    <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
+                                    <td><i>Universal Disease Simulation Interface</i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -101,7 +106,7 @@
                             <tbody>
                             <tr>
                                 <td><i class="ae-color legend-font"><b>AE</b></i></td>
-                                <td><i>Apollo-Enabled</i></td>
+                                <td><i>Apollo-Encoded</i></td>
                             </tr>
 
                             <tr>
@@ -112,6 +117,11 @@
                             <tr>
                                 <td><i class="sso-color legend-font"><b>SSO</b></i></td>
                                 <td><i>Requires (single) sign on</i></td>
+                            </tr>
+
+                            <tr>
+                                <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
+                                <td><i>Universal Disease Simulation Interface</i></td>
                             </tr>
                             </tbody>
                         </table>
@@ -246,7 +256,7 @@
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications

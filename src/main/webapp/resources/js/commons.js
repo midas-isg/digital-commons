@@ -310,8 +310,16 @@ function getNodeData(name, key, treeDictionary) {
         nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
     }
 
+    if('isUdsi' in treeDictionary[key] && treeDictionary[key]['isUdsi'] == true) {
+        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+    }
+
     if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
         nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
+    }
+
+    if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+        nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
     }
 
     if('redirect' in treeDictionary[key] && treeDictionary[key]['redirect'] == true) {
@@ -332,11 +340,16 @@ function getNodeData(name, key, treeDictionary) {
                 nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
             }
 
+            if('isUdsi' in treeDictionary[key] && treeDictionary[key]['isUdsi'] == true) {
+                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+            }
+
             if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
                 nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
             }
 
             if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+                console.log(nodeData.text);
                 nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
                 nodeData['midasSso'] = treeDictionary[key]['midasSso'];
             }
@@ -550,11 +563,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, di
         }
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();
-        if((attrs['directory'] == 'Disease transmission models' ||
-            attrs['directory'].includes('FluTE') ||
-            attrs['directory'].includes('FRED') ||
-            attrs['directory'].includes('Open Malaria')) &&
-            (key == 'dataInputFormats' || key == 'dataOutputFormats')) {
+        if(key == 'dataInputFormats' || key == 'dataOutputFormats') {
             $('#software-' + name).html('Proprietary');
         } else {
             $('#software-' + name).html('N/A');
