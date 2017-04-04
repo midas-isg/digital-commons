@@ -35,6 +35,8 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>
     <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
+    <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
+    <script src="http://flowchart.js.org/flowchart-latest.js"></script>
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
@@ -235,6 +237,50 @@
                     <div id="modeling-platforms-treeview" class="treeview"></div>
                 </div>
             </div>
+            <div id="workflows" class="tab-pane fade">
+                <div class="col-sm-12">
+                    <h3 class="title-font">Workflows on Olympus</h3>
+                    <div class="font-size-16 standard-font">
+                        <span>
+                            These scripts and all the programs they invoke are staged on the Olympus cluster.
+                            Follow the instructions below to execute a workflow on your Olympus account.
+                            Alternatively, you can copy and edit the script before running on Olympus.
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="title-font">Construct a location-specific disease transmission model</h3>
+                        <div class="font-size-16 standard-font">
+                            <span class="col-md-12 col-lg-12 no-padding">
+                                The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location
+                                (US, state, or county code). It creates a runnable instance of FRED for that location.
+                            </span>
+
+                            <div class="col-md-6 col-lg-6 no-padding">
+                                <div style="margin-top:10px">
+                                    <label>Select synthetic population:</label><br>
+                                    <label class="radio-inline"><input type="radio" name="synthpop" value="spew" onclick="drawDiagram()">SPEW</label>
+                                    <label class="radio-inline"><input type="radio" name="synthpop" value="synthia" onclick="drawDiagram()">Synthia</label>
+                                </div>
+                                <div style="margin-top:10px; margin-bottom:10px">
+                                    <label>Select disease transmission model:</label><br>
+                                    <label class="radio-inline"><input type="radio" name="dtm" value="fred" onclick="drawDiagram()">FRED</label>
+                                </div>
+
+                                <label id="workflow-diagram-label"></label>
+                                <div id="workflow-diagram"></div>
+                            </div>
+
+                            <div id="lsdtm-script-container" class="col-md-6 col-lg-6 no-padding" style="display:none; margin-top:10px">
+                                <label>LSDTM script</label><br>
+                                <pre style="max-height:400px; overflow:scroll"><code id="lsdtm-script"></code></pre>
+
+                                <label>Example invocation of the LSDTM script</label><br>
+                                <pre style="max-height:100px; overflow:scroll"><code id="run-lsdtm-script"></code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="about" class="tab-pane fade">
                 <myTags:about></myTags:about>
             </div>
@@ -256,7 +302,7 @@
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications
@@ -267,16 +313,17 @@
     <myTags:computePlatform></myTags:computePlatform>
 </div>
 
+<!-- uncomment for dev and production -->
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    //ga('create', 'UA-91508504-1', 'auto');
-    ga('create', 'UA-91508504-1', {
+    ga('create', 'UA-91508504-1', 'auto');
+    /*ga('create', 'UA-91508504-1', {
         'cookieDomain': 'none'
-    });
+    });*/
 </script>
 
 </body>
