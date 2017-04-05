@@ -650,3 +650,7 @@ body {
 .udsi-color {
     color: #22a6a9;
 }
+
+label[disabled="disabled"]{
+    color: #AAA;
+}

@@ -993,6 +993,10 @@ function drawDiagram() {
     var synthpop = $('input[name=synthpop]:checked').val();
     var dtm = $('input[name=dtm]:checked').val();
 
+    var locationValues = $('#location-select').val().split('_');
+    var formattedLocation = formatLocation(locationValues[0]);
+    var locationCode = locationValues[1];
+
     var toParse = '';
     if(synthpop == 'spew') {
         toParse = 'cond=>condition: Population|popgreen\n' +
@@ -1049,8 +1053,8 @@ function drawDiagram() {
         'line-color': 'black',
         'element-color': 'black',
         'fill': 'white',
-        'yes-text': 'yes',
-        'no-text': 'no',
+        'yes-text': 'SPEW',
+        'no-text': 'Synthia',
         'arrow-end': 'block',
         'scale': 1,
         'flowstate' : {
@@ -1060,12 +1064,88 @@ function drawDiagram() {
         }
     });
 
-    if(synthpop != null && dtm != null) {
+    if(locationCode != null && synthpop != null && dtm != null) {
         jQuery.get('http://localhost:8080/digital-commons/resources/lsdtm-script-example.txt', function(data) {
             $('#lsdtm-script').text(data);
-            $('#run-lsdtm-script').text('lsdtm.sh -s /synecos/IPUMS.SA -dtm FRED_2.1 | Brazil\n\n(Construct FRED 2.1 on Brazil)');
+            $('#run-lsdtm-script').text('./spew2synthia.sh \n' +
+                './generate_params.sh ' + 'spew_1.2.0_' + locationCode + '\n' +
+                './FRED\n\n' +
+                '(Construct FRED on ' + formattedLocation + ')');
+            //$('#run-lsdtm-script').text('lsdtm.sh -s /synecos/IPUMS.SA -dtm FRED_2.1 | Brazil\n\n(Construct FRED 2.1 on Brazil)');
 
             $('#lsdtm-script-container').show();
         });
+    } else {
+        $('#lsdtm-script-container').hide();
     }
+}
+
+function sortSelect(selectId) {
+    var options = $(selectId + " option");
+    var selected = $(selectId).val();
+
+    options.sort(function(a,b) {
+        if (a.text > b.text) return 1;
+        if (a.text < b.text) return -1;
+        return 0
+    });
+
+    $(selectId).empty().append(options);
+    $(selectId).val(selected);
+}
+
+function checkLocationSelect() {
+    if($("#location-select").val() != '') {
+        $("#synthpop-radios").children().each(function(index, child) {
+            var text = $(child).text();
+
+            if(text != "Synthia") {
+                $(child).removeAttr("disabled");
+            }
+
+            if(text == "SPEW") {
+                $(child).children().each(function(index, childsChild) {
+                    $(childsChild).removeAttr("disabled");
+                    $(childsChild).click();
+                });
+                drawDiagram();
+            }
+        });
+    } else {
+        $("#synthpop-radios").children().each(function(index, child) {
+            var text = $(child).text();
+            $(child).attr("disabled", "disabled");
+
+            if(text == "SPEW") {
+                $(child).children().each(function(index, childsChild) {
+                    $(childsChild).attr("disabled", "disabled");
+                    $(childsChild).removeAttr("checked");
+                });
+                console.log($('input[name=synthpop]:checked').val());
+                drawDiagram();
+            }
+        });
+    }
+}
+
+function copyToClipboard(elementId) {
+    var $temp = $("<textarea>");
+    $("body").append($temp);
+    $temp.val($(elementId).text()).select();
+    document.execCommand("copy");
+    $temp.remove();
+}
+
+function download(filename, elementId) {
+    var text = $(elementId).text();
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
 }

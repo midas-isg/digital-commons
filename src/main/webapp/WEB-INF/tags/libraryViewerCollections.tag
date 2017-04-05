@@ -84,6 +84,7 @@
     </c:forEach>
 
     syntheticEcosystemsByRegion.nodes.sort(compareNodes);
+    sortSelect("#location-select");
 
     for(var i in syntheticEcosystemsByRegion.nodes) {
         if(syntheticEcosystemsByRegion.nodes[i].nodes != null) {

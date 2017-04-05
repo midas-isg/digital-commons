@@ -257,25 +257,62 @@
 
                             <div class="col-md-6 col-lg-6 no-padding">
                                 <div style="margin-top:10px">
-                                    <label>Select synthetic population:</label><br>
-                                    <label class="radio-inline"><input type="radio" name="synthpop" value="spew" onclick="drawDiagram()">SPEW</label>
-                                    <label class="radio-inline"><input type="radio" name="synthpop" value="synthia" onclick="drawDiagram()">Synthia</label>
+                                    <label>Select location:</label><br>
+                                    <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()"><option value=""></option></select>
                                 </div>
-                                <div style="margin-top:10px; margin-bottom:10px">
+                                <div style="margin-top:10px" id="synthpop-radios">
+                                    <label disabled="disabled">Select available synthetic population(s) for location:</label><br>
+                                    <label disabled="disabled" class="radio-inline"><input type="radio" name="synthpop" value="spew" onclick="drawDiagram()" disabled>SPEW</label>
+                                    <label disabled="disabled" class="radio-inline"><input type="radio" name="synthpop" value="synthia" onclick="drawDiagram()" disabled>Synthia</label>
+                                </div>
+                                <div style="margin-top:10px; margin-bottom:10px" id="dtm-radios">
                                     <label>Select disease transmission model:</label><br>
-                                    <label class="radio-inline"><input type="radio" name="dtm" value="fred" onclick="drawDiagram()">FRED</label>
+                                    <label class="radio-inline"><input type="radio" name="dtm" value="fred" onclick="drawDiagram()" checked>FRED</label>
                                 </div>
 
                                 <label id="workflow-diagram-label"></label>
-                                <div id="workflow-diagram"></div>
+                                <div id="workflow-diagram" style="overflow:scroll"></div>
                             </div>
 
                             <div id="lsdtm-script-container" class="col-md-6 col-lg-6 no-padding" style="display:none; margin-top:10px">
                                 <label>LSDTM script</label><br>
-                                <pre style="max-height:400px; overflow:scroll"><code id="lsdtm-script"></code></pre>
+                                <div style="position:relative"
+                                     onmouseenter="$('#lsdtm-script-btns').fadeIn();"
+                                     onmouseleave="$('#lsdtm-script-btns').fadeOut();">
+                                    <pre style="max-height:450px; overflow:scroll"><code id="lsdtm-script"></code></pre>
+                                    <div id="lsdtm-script-btns" style="display:none">
+                                        <button class="btn btn-xs btn-default"
+                                                style="top: 4px;right: 30px; position:absolute;"
+                                                onclick="copyToClipboard('#lsdtm-script')">
+                                            <icon class="glyphicon glyphicon glyphicon-copy"></icon>
+                                        </button>
+                                        <button class="btn btn-xs btn-default"
+                                                style="top: 4px;right: 4px; position:absolute;"
+                                                onclick="download('lsdtm.sh', '#lsdtm-script')">
+                                            <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                                        </button>
+                                    </div>
+                                </div>
 
                                 <label>Example invocation of the LSDTM script</label><br>
-                                <pre style="max-height:100px; overflow:scroll"><code id="run-lsdtm-script"></code></pre>
+                                <div style="position:relative"
+                                     onmouseenter="$('#run-lsdtm-script-btns').fadeIn();"
+                                     onmouseleave="$('#run-lsdtm-script-btns').fadeOut();">
+                                    <pre style="max-height:150px; overflow:scroll"><code id="run-lsdtm-script"></code></pre>
+
+                                    <div id="run-lsdtm-script-btns" style="display:none">
+                                        <button class="btn btn-xs btn-default"
+                                                style="top: 4px;right: 30px; position:absolute;"
+                                                onclick="copyToClipboard('#run-lsdtm-script')">
+                                            <icon class="glyphicon glyphicon glyphicon-copy"></icon>
+                                        </button>
+                                        <button class="btn btn-xs btn-default"
+                                                style="top: 4px;right: 4px; position:absolute;"
+                                                onclick="download('invoke-lsdtm.txt', '#run-lsdtm-script')">
+                                            <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

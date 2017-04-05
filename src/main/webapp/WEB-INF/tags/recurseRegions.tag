@@ -27,5 +27,8 @@
     </c:if>
 </c:if>
 <c:if test="${empty region.children && region.name != 'burkina faso'}">
+    <c:if test="${region.name != 'canada'}">
+        $('#location-select').append('<option value="' + '${region.name}_${region.code}' + '">' + formatLocation('${region.name}') + '</option>');
+    </c:if>
     currentNode.push({'name': "${region.name}", 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation("${region.name}") + "</span>", 'url': "${region.url}"});
 </c:if>
