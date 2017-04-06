@@ -1,7 +1,7 @@
 {
     "settings": {
       "name": "diseaseTransmissionModels",
-      "directories": ["clara", "fred", "hyphy", "openmalaria", "pitt_seir"],
+      "directories": ["clara", "fred", "openmalaria", "pitt_seir"],
       "openDirectories":[]
     },
     "clara/clara-0.5":{
@@ -23,10 +23,6 @@
     "fred/pfred-0.0.4":{
       "directory":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
-    },
-    "hyphy/2.2.6":{
-      "directory":"hyphy",
-      "description":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning"
     },
     "openmalaria/32":{
       "directory":"openmalaria",

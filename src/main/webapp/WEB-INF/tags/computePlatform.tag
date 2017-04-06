@@ -19,7 +19,7 @@
 
     hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware');
 
-    <%--hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-tools.json", tools, toolsDictionary, toolsSettings, '#tools-treeview', 'expandedTools');--%>
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-genetic-sequence.json", geneticSequence, geneticSequenceDictionary, geneticSequenceSettings, '#genetic-sequence-treeview', 'expandedGeneticSequence');
 
     hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-statistical-analysis.json", statisticalAnalysis, statisticalAnalysisDictionary, statisticalAnalysisSettings, '#statistical-analysis-treeview', 'expandedStatisticalAnalysis');
 

@@ -521,5 +521,21 @@
     "dataInputFormats":"Synthia.US",
     "dataOutputFormats":"None",
     "grant":"1-U24-GM087704"
+  },
+  "NAADSM":{
+    "directory":"Disease transmission models",
+    "generalInfo":"NAADSM is a framework for creating stochastic, spatial, state-transition simulation models of the spread and control of highly contagious diseases of animals. User-established parameters define model behavior in terms of disease progression; disease spread by animal-to-animal contact, contact with contaminated personnel or equipment, and airborne dissemination; and the implementation of control measures such as vaccination and depopulation. Resources available to implement disease control strategies are taken into consideration. The model records a wide variety of measures of the extent of simulated outbreaks and other characteristics. The graphical interface and output visualization features also make it a useful tool for training and preparedness exercises. NAADSM has been developed with broad international support, and has been used to evaluate outbreak scenarios and potential control strategies for economically important animal diseases in many countries around the world.",
+    "developer":"<a class='underline' href='mailto:caroline.dube@inspection.gc.ca'>Caroline Dube</a>, Epidemiologist and Scientific Advisor; <a class='underline' href='mailto:nharvey@uoguelph.ca'>Neil Harvey</a>; <a class='underline' href='mailto:Kelly.A.Patyk@aphis.usda.gov'>Kelly Patyk</a>; <a class='underline' href='mailto:aaron.reeves@colostate.edu'>Aaron Reeves</a>, Epidemilogic Modeler; <a class='underline' href='mailto:ann.h.seitzinger@aphis.usda.gov'>Anna Seitzinger</a>",
+    "diseaseCoverage":"Avian influenza A, Foot-and-mouth disease, Pseudorabies",
+    "locationCoverage":"Denmark",
+    "documentation":"Reeves A, Hupalo R, Patyk KA, Hill AE: User's Guide for the North American Animal Disease Spread… (2012)",
+    "source":"https://sourceforge.net/projects/naadsm/",
+    "executables":"Windows, Unix, and Mac OS executables can be found <a class='underline' href='http://www.naadsm.org/download'>here</a>",
+    "location":"http://www.naadsm.org/about",
+    "version":"v3.3 & 4.0",
+    "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License)</a>",
+    "publicationsThatUsedRelease":"<ul style='padding-left:20px'><li>Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of F… (2010) </li><li>Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network Analysis of Livestock Movements t… (2008) </li><li>Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries… (2011)</li><li>Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made … (2007)</li><li>Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of Strategies for t… (2011)</li><li>Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verif… (2011)</li><li>Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-and-Mouth Dise… (2007)</li><li>Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulatio… (2013)</li><li>Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case Stu… (2007)</li></ul>",
+    "hostSpeciesIncluded":"N/A",
+    "controlMeasures":"N/A"
   }
 }

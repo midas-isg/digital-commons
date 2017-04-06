@@ -37,6 +37,8 @@
 
     <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
     <script src="http://flowchart.js.org/flowchart-latest.js"></script>
+
+    <script>var ctx = "${pageContext.request.contextPath}"</script>
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
@@ -194,7 +196,7 @@
                     <h3 class="title-font">Olympus</h3>
                     <div class="font-size-16 standard-font">
                         <div class="col-sm-7 no-padding">
-                            Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 7 disease transmission models, and hosts synthetic ecosystems for many countries.
+                            Olympus is a linux-based supercomputer intended to be a workspace for model development and running experiments.   It is configured with several programming languages, compilers, and popular development tools (listed below) for general modeling work.  Olympus is also configured to run 4 disease transmission models, and hosts synthetic ecosystems for many countries.
                             <br><br>
                             Olympus is provided as a free resource to members of the MIDAS network. To sign up for an account on Olympus, please visit <a href="http://epimodels.org" class="underline">http://epimodels.org</a>.
                             <br><br>
@@ -226,7 +228,8 @@
                     <div id="statistical-analysis-treeview" class="treeview"></div>
                     <h5 class="tools">Image manipulation</h5>
                     <div id="image-manipulation-treeview" class="treeview"></div>
-                    <!--<div id="tools-treeview" class="treeview"></div>-->
+                    <h5 class="tools">Genetic sequence</h5>
+                    <div id="genetic-sequence-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
                     <h4 class="subtitle-font">Disease Transmission Models</h4>

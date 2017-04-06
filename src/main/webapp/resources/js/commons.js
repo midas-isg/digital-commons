@@ -31,10 +31,6 @@ var modelingPlatforms = [];
 var modelingPlatformsDictionary = {};
 var modelingPlatformsSettings = {};
 
-//var tools = [];
-//var toolsDictionary = {};
-//var toolsSettings = {};
-
 var statisticalAnalysis = [];
 var statisticalAnalysisDictionary = {};
 var statisticalAnalysisSettings = {};
@@ -46,6 +42,10 @@ var imageManipulationSettings = {};
 var webservices = [];
 var webservicesDictionary = {};
 var webservicesSettings = {};
+
+var geneticSequence = [];
+var geneticSequenceDictionary = {};
+var geneticSequenceSettings = {};
 
 /* Change includes method in IE */
 if(!String.prototype.includes) {
@@ -606,7 +606,7 @@ function openModal(type, name) {
 
     if('developer' in attrs) {
         $('#software-developer-container').show();
-        $('#software-developer').text(attrs['developer']);
+        $('#software-developer').html(attrs['developer']);
 
         if(attrs['developer'].includes(',')) {
             $('#software-developer-tag').text('Developers:');
@@ -1065,13 +1065,12 @@ function drawDiagram() {
     });
 
     if(locationCode != null && synthpop != null && dtm != null) {
-        jQuery.get('http://localhost:8080/digital-commons/resources/lsdtm-script-example.txt', function(data) {
+        jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
             $('#lsdtm-script').text(data);
             $('#run-lsdtm-script').text('./spew2synthia.sh \n' +
                 './generate_params.sh ' + 'spew_1.2.0_' + locationCode + '\n' +
                 './FRED\n\n' +
                 '(Construct FRED on ' + formattedLocation + ')');
-            //$('#run-lsdtm-script').text('lsdtm.sh -s /synecos/IPUMS.SA -dtm FRED_2.1 | Brazil\n\n(Construct FRED 2.1 on Brazil)');
 
             $('#lsdtm-script-container').show();
         });

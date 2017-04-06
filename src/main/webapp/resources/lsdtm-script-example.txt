@@ -1,23 +1,37 @@
-#!/bin/bash
-X=3
-Y=4
-empty_string=""
-if [ $X -lt $Y ]
-then
-    echo "\$X=${X}, which is smaller than \$Y=${Y}"
-fi
+if [ ! -z "$1" ] && [ -d "${FRED_POPULATIONS}/$1" ]; then
+        population=$1
+        echo "synthetic_population_directory = ${FRED_POPULATIONS}" > ${PWD}/params
+        echo "synthetic_population_id = $population" >> ${PWD}/params
 
-if [ -n "$empty_string" ]; then
-    echo "empty string is non_empty"
-fi
+        #fips
+        #city
+        #county
+        #state
 
-if [ -e "${HOME}/.fvwmrc" ]; then
-    echo "you have a .fvwmrc file"
-    if [ -L "${HOME}/.fvwmrc" ]; then
-        echo "it's a symbolic link
-    elif [ -f "${HOME}/.fvwmrc" ]; then
-        echo "it's a regular file"
-    fi
+        #start_date
+        #seed
+        #outdir
+
+        #quality_control
+        #report_age_of_infection
+        #report_place_of_infection
+        #report_generation_time
+        #report_serial_interval
+        #report_incidence_by_county
+        #track_infection_events
+
+        #enable_visualization_layer
+        #household_visualization_mode
+        #census_tract_visualization_mode
+        #visualization_grid_size
+
+        #verbose
+        #debug
+
+        echo "Successfully created params. Running 'FRED' from this directory will use the generated params file."
+        echo
 else
-    echo "you have no .fvwmrc file"
+        echo "$1 not found. Try double checking the SYNTHETIC_POPULATION_ID."
+        echo "Usage: generate_params.sh SYNTHETIC_POPULATION_ID"
+        echo
 fi
