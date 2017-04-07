@@ -1,37 +1,11 @@
-if [ ! -z "$1" ] && [ -d "${FRED_POPULATIONS}/$1" ]; then
-        population=$1
-        echo "synthetic_population_directory = ${FRED_POPULATIONS}" > ${PWD}/params
-        echo "synthetic_population_id = $population" >> ${PWD}/params
+#!/bin/sh
 
-        #fips
-        #city
-        #county
-        #state
+base_dir=$(dirname "$0")
 
-        #start_date
-        #seed
-        #outdir
-
-        #quality_control
-        #report_age_of_infection
-        #report_place_of_infection
-        #report_generation_time
-        #report_serial_interval
-        #report_incidence_by_county
-        #track_infection_events
-
-        #enable_visualization_layer
-        #household_visualization_mode
-        #census_tract_visualization_mode
-        #visualization_grid_size
-
-        #verbose
-        #debug
-
-        echo "Successfully created params. Running 'FRED' from this directory will use the generated params file."
-        echo
+if [ ! -z $1 ]; then
+        qsub -v SYNTHETIC_POPULATION_ID="$1" $base_dir/spew2synthia_fred.pbs
 else
-        echo "$1 not found. Try double checking the SYNTHETIC_POPULATION_ID."
-        echo "Usage: generate_params.sh SYNTHETIC_POPULATION_ID"
-        echo
+        $(>&2 echo "Failed to provide synthetic_population_id.")
+        $(>&2 echo "Try: lsdtm.sh <synthetic_population_id>")
+        $(>&2 echo "Aborted.")
 fi

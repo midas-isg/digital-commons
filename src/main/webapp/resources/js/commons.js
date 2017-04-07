@@ -1067,10 +1067,10 @@ function drawDiagram() {
     if(locationCode != null && synthpop != null && dtm != null) {
         jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
             $('#lsdtm-script').text(data);
-            $('#run-lsdtm-script').text('./spew2synthia.sh \n' +
-                './generate_params.sh ' + 'spew_1.2.0_' + locationCode + '\n' +
-                './FRED\n\n' +
-                '(Construct FRED on ' + formattedLocation + ')');
+            $('#run-lsdtm-script').text(
+                'ssh <username>@olympus.psc.edu\n' +
+                '/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh spew_1.2.0_'
+                + locationCode);
 
             $('#lsdtm-script-container').show();
         });

@@ -251,14 +251,14 @@
                         </span>
                     </div>
                     <div>
-                        <h3 class="title-font">Construct a location-specific disease transmission model</h3>
+                        <h3 class="title-font">Obtaining a Synthetic Population in Synthia Format</h3>
                         <div class="font-size-16 standard-font">
                             <span class="col-md-12 col-lg-12 no-padding">
                                 The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location
                                 (US, state, or county code). It creates a runnable instance of FRED for that location.
                             </span>
 
-                            <div class="col-md-6 col-lg-6 no-padding">
+                            <div class="col-md-12 col-lg-12 no-padding">
                                 <div style="margin-top:10px">
                                     <label>Select location:</label><br>
                                     <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()"><option value=""></option></select>
@@ -277,12 +277,12 @@
                                 <div id="workflow-diagram" style="overflow:scroll"></div>
                             </div>
 
-                            <div id="lsdtm-script-container" class="col-md-6 col-lg-6 no-padding" style="display:none; margin-top:10px">
-                                <label>LSDTM script</label><br>
+                            <div id="lsdtm-script-container" class="col-md-12 col-lg-12 no-padding" style="display:none; margin-top:10px">
+                                <label>Instructions to run LSDTM script</label><br>
                                 <div style="position:relative"
                                      onmouseenter="$('#lsdtm-script-btns').fadeIn();"
                                      onmouseleave="$('#lsdtm-script-btns').fadeOut();">
-                                    <pre style="max-height:450px; overflow:scroll"><code id="lsdtm-script"></code></pre>
+                                    <pre style="max-height:450px; overflow:scroll"><code style="white-space:pre" id="lsdtm-script"></code></pre>
                                     <div id="lsdtm-script-btns" style="display:none">
                                         <button class="btn btn-xs btn-default"
                                                 style="top: 4px;right: 30px; position:absolute;"
@@ -301,7 +301,7 @@
                                 <div style="position:relative"
                                      onmouseenter="$('#run-lsdtm-script-btns').fadeIn();"
                                      onmouseleave="$('#run-lsdtm-script-btns').fadeOut();">
-                                    <pre style="max-height:150px; overflow:scroll"><code id="run-lsdtm-script"></code></pre>
+                                    <pre style="max-height:150px; overflow:scroll"><code style="white-space:pre" id="run-lsdtm-script"></code></pre>
 
                                     <div id="run-lsdtm-script-btns" style="display:none">
                                         <button class="btn btn-xs btn-default"
