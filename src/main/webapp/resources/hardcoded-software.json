@@ -1,8 +1,8 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Disease transmission tree estimators", "Phylogenetic tree constructors", "Data visualizers", {"Modeling platforms": ["NetLogo (2 versions)"]}],
-     "openDirectories":["Disease transmission models", "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors"]
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Disease transmission tree estimators", "Phylogenetic tree constructors", "Data visualizers", {"Modeling platforms": ["NetLogo (2 versions)"]}, "Data-format converters"],
+     "openDirectories":["Disease transmission models", "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors", "Data-format converters"]
    },
    "FluTE":{
       "directory":"FluTE (4 versions)",
@@ -537,5 +537,11 @@
     "publicationsThatUsedRelease":"<ul style='padding-left:20px'><li>Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of F… (2010) </li><li>Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network Analysis of Livestock Movements t… (2008) </li><li>Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries… (2011)</li><li>Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made … (2007)</li><li>Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of Strategies for t… (2011)</li><li>Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verif… (2011)</li><li>Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-and-Mouth Dise… (2007)</li><li>Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulatio… (2013)</li><li>Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case Stu… (2007)</li></ul>",
     "hostSpeciesIncluded":"N/A",
     "controlMeasures":"N/A"
+  },
+  "SPEW to Synthia":{
+    "directory":"Data-format converters",
+    "source":"https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
+    "dataOutputFormats":"Synthia",
+    "dataInputFormats":"SPEW"
   }
 }

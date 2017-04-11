@@ -950,6 +950,35 @@ function init() {
         } } }
 window.onload = init;
 
+function convertDateNumToString(num) {
+    if(num < 10) {
+        num = '0' + num;
+    } else {
+        num += ''
+    }
+
+    return num;
+}
+
+function getFormattedDate() {
+    var date = new Date();
+    var year = date.getYear()-100;
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    var minutes = date.getMinutes();
+    var seconds = date.getSeconds();
+
+    year = convertDateNumToString(year);
+    month = convertDateNumToString(month);
+    day = convertDateNumToString(day);
+    minutes = convertDateNumToString(minutes);
+    seconds = convertDateNumToString(seconds);
+
+    var formattedDate = year + month + day + minutes + seconds;
+
+    return formattedDate;
+}
+
 function drawDiagram() {
     /*var synthpop = $('input[name=synthpop]:checked').val();
     var dtm = $('input[name=dtm]:checked').val();
@@ -992,12 +1021,13 @@ function drawDiagram() {
 
     var synthpop = $('input[name=synthpop]:checked').val();
     var dtm = $('input[name=dtm]:checked').val();
+    var olympusUsername =$('#olympus-username').val();
 
     var locationValues = $('#location-select').val().split('_');
     var formattedLocation = formatLocation(locationValues[0]);
     var locationCode = locationValues[1];
 
-    var toParse = '';
+    /*var toParse = '';
     if(synthpop == 'spew') {
         toParse = 'cond=>condition: Population|popgreen\n' +
             'op2=>operation: Synthia.US format\n'+
@@ -1062,18 +1092,34 @@ function drawDiagram() {
             'popgreen': {'fill': 'lightgreen', 'yes-text' : 'SPEW', 'no-text' : 'Synthia'},
             'green': {'fill': 'lightgreen'}
         }
-    });
+    });*/
 
     if(locationCode != null && synthpop != null && dtm != null) {
-        jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
-            $('#lsdtm-script').text(data);
+        /*jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
+            //$('#lsdtm-script').text(data);
             $('#run-lsdtm-script').text(
                 'ssh <username>@olympus.psc.edu\n' +
                 '/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh spew_1.2.0_'
                 + locationCode);
 
             $('#lsdtm-script-container').show();
-        });
+        });*/
+
+        var username = "<username>";
+        if(olympusUsername != null && olympusUsername.trim() != '') {
+            username = olympusUsername;
+        }
+
+        var outputDirectory = locationCode + "_" + dtm + "_" + getFormattedDate();
+
+        $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
+        $('#status-lsdtm-script').text("qstat | grep " + username);
+        $('#view-output-lsdtm-script').text("ls " + outputDirectory);
+        $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/fred_spew2synthia.e######");
+        $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/fred_spew2synthia.o######");
+        $('#view-fred-out-lsdtm-script').text("cat " + outputDirectory + "/OUT/out1.txt");
+
+        $('#lsdtm-script-container').show();
     } else {
         $('#lsdtm-script-container').hide();
     }

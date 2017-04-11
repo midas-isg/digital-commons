@@ -260,6 +260,10 @@
 
                             <div class="col-md-12 col-lg-12 no-padding">
                                 <div style="margin-top:10px">
+                                    <label>Olympus username:</label><br>
+                                    <input style="max-width:280px" id="olympus-username" onkeyup="checkLocationSelect()" class="form-control"/>
+                                </div>
+                                <div style="margin-top:10px">
                                     <label>Select location:</label><br>
                                     <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()"><option value=""></option></select>
                                 </div>
@@ -274,48 +278,65 @@
                                 </div>
 
                                 <label id="workflow-diagram-label"></label>
-                                <div id="workflow-diagram" style="overflow:scroll"></div>
+                                <img src="${pageContext.request.contextPath}/resources/img/workflow-mockup.png" style="width:100%">
+                                <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
                             </div>
 
                             <div id="lsdtm-script-container" class="col-md-12 col-lg-12 no-padding" style="display:none; margin-top:10px">
-                                <label>Instructions to run LSDTM script</label><br>
-                                <div style="position:relative"
+                                <label>LSDTM script</label><br>
+                                <div style="overflow:scroll; width:100%; margin-bottom:10px"
                                      onmouseenter="$('#lsdtm-script-btns').fadeIn();"
                                      onmouseleave="$('#lsdtm-script-btns').fadeOut();">
-                                    <pre style="max-height:450px; overflow:scroll"><code style="white-space:pre" id="lsdtm-script"></code></pre>
+                                    <myTags:lsdtmScript></myTags:lsdtmScript>
                                     <div id="lsdtm-script-btns" style="display:none">
                                         <button class="btn btn-xs btn-default"
-                                                style="top: 4px;right: 30px; position:absolute;"
+                                                style="top: 30px;right: 30px; position:absolute;"
                                                 onclick="copyToClipboard('#lsdtm-script')">
                                             <icon class="glyphicon glyphicon glyphicon-copy"></icon>
                                         </button>
                                         <button class="btn btn-xs btn-default"
-                                                style="top: 4px;right: 4px; position:absolute;"
+                                                style="top: 30px;right: 4px; position:absolute;"
                                                 onclick="download('lsdtm.sh', '#lsdtm-script')">
                                             <icon class="glyphicon glyphicon glyphicon-download"></icon>
                                         </button>
                                     </div>
                                 </div>
 
-                                <label>Example invocation of the LSDTM script</label><br>
-                                <div style="position:relative"
-                                     onmouseenter="$('#run-lsdtm-script-btns').fadeIn();"
-                                     onmouseleave="$('#run-lsdtm-script-btns').fadeOut();">
-                                    <pre style="max-height:150px; overflow:scroll"><code style="white-space:pre" id="run-lsdtm-script"></code></pre>
+                                <myTags:workflowCodeBlock buttonId="submit-lsdtm-script-btns"
+                                                          scriptId="submit-lsdtm-script"
+                                                          scriptFilename="submit-lsdtm.txt"
+                                                          label="Instructions to submit the LSDTM script to the job scheduler">
+                                </myTags:workflowCodeBlock>
 
-                                    <div id="run-lsdtm-script-btns" style="display:none">
-                                        <button class="btn btn-xs btn-default"
-                                                style="top: 4px;right: 30px; position:absolute;"
-                                                onclick="copyToClipboard('#run-lsdtm-script')">
-                                            <icon class="glyphicon glyphicon glyphicon-copy"></icon>
-                                        </button>
-                                        <button class="btn btn-xs btn-default"
-                                                style="top: 4px;right: 4px; position:absolute;"
-                                                onclick="download('invoke-lsdtm.txt', '#run-lsdtm-script')">
-                                            <icon class="glyphicon glyphicon glyphicon-download"></icon>
-                                        </button>
-                                    </div>
-                                </div>
+                                <myTags:workflowCodeBlock buttonId="status-lsdtm-script-btns"
+                                                          scriptId="status-lsdtm-script"
+                                                          scriptFilename="status-lsdtm.txt"
+                                                          label="Instructions to check the status of your job">
+                                </myTags:workflowCodeBlock>
+
+                                <myTags:workflowCodeBlock buttonId="view-output-lsdtm-script-btns"
+                                                          scriptId="view-output-lsdtm-script"
+                                                          scriptFilename="view-output-lsdtm.txt"
+                                                          label="Instructions to view the output of the LSDTM script">
+                                </myTags:workflowCodeBlock>
+
+                                <myTags:workflowCodeBlock buttonId="view-error-lsdtm-script-btns"
+                                                          scriptId="view-error-lsdtm-script"
+                                                          scriptFilename="view-error-lsdtm.txt"
+                                                          label="Instructions to view the error log of the LSDTM script">
+                                </myTags:workflowCodeBlock>
+
+                                <myTags:workflowCodeBlock buttonId="view-stdout-lsdtm-script-btns"
+                                                          scriptId="view-stdout-lsdtm-script"
+                                                          scriptFilename="view-stdout-lsdtm.txt"
+                                                          label="Instructions to view the standard output log of the LSDTM script">
+                                </myTags:workflowCodeBlock>
+
+                                <myTags:workflowCodeBlock buttonId="view-fred-out-lsdtm-script-btns"
+                                                          scriptId="view-fred-out-lsdtm-script"
+                                                          scriptFilename="view-fred-out-lsdtm.txt"
+                                                          label="Instructions to view the output generated by FRED">
+                                </myTags:workflowCodeBlock>
                             </div>
                         </div>
                     </div>
