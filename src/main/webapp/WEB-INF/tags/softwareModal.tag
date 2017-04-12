@@ -18,7 +18,7 @@
 
                 <myTags:softwareModalItem id="general-info" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="disease-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="pathogen-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
 
@@ -29,6 +29,10 @@
                 <myTags:softwareModalItem id="population-species" title="Population species"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="control-measures" title="Control measures"></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
+
+                <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
 
@@ -44,17 +48,9 @@
 
                 <myTags:softwareModalItem id="nowcasts" title="Nowcasts"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="challenge-site" title="Challenge site" hasHref="true"></myTags:softwareModalItem>
-
-                <myTags:softwareModalItem id="site" title="Site" hasHref="true"></myTags:softwareModalItem>
-
-                <myTags:softwareModalItem id="developer" title=""></myTags:softwareModalItem>
-
-                <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
-
                 <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="location" title="Software location" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="site" title="Website" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
 
@@ -70,7 +66,7 @@
 
                 <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
 
-                <myTags:softwareModalItem id="source-code" title="Links to code repository" hasHref="true"></myTags:softwareModalItem>
+                <myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
 
                 <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
 

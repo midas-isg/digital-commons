@@ -183,7 +183,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
                     eventAction: data.url
                 });
 
-                if('midasSso' in data && data['midasSso'] == true) {
+                if('signInRequired' in data && data['signInRequired'] == true) {
                     $(location).attr('href', contextPath + "/midas-sso/view?url=" + encodeURIComponent(data.url));
                 } else {
                     window.location.href = data.url;
@@ -263,7 +263,7 @@ function addNodesToDirectory(name, key, treeArray, treeDictionary) {
 
         addNodesToSubdirectories(treeArray[i], subdirectories, subdirectoryContent);
 
-        var index = subdirectories.indexOf(treeDictionary[key]['directory']);
+        var index = subdirectories.indexOf(treeDictionary[key]['subdirectory']);
 
         if(treeArray[i]['name'] == treeDictionary[key]['directory'] || index > -1) {
             var nodeData = getNodeData(name, key, treeDictionary);
@@ -295,7 +295,7 @@ function addNodesToSubdirectories(treeArrayItem, subdirectories, subdirectoryCon
 function getNodeData(name, key, treeDictionary) {
     var title = key;
     if('version' in treeDictionary[key]) {
-        title = getSoftwareTitle(key, treeDictionary[key]['version']);
+        title = getSoftwareTitle(key, treeDictionary[key]['version'].join(', '));
     } else if(title.includes('/') && name != "software" && name != "webServices") {
         //var titleAndVersion = title.split('/');
         //title = getSoftwareTitle(titleAndVersion[0], titleAndVersion[1]);
@@ -306,19 +306,19 @@ function getNodeData(name, key, treeDictionary) {
         'name': key
     };
 
-    if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
-        nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
+    if('availableAt' in treeDictionary[key]) {
+        for(var i = 0; i < treeDictionary[key]["availableAt"].length; i++) {
+            if(treeDictionary[key]["availableAt"][i] == "udsi") {
+                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+            }
+
+            if(treeDictionary[key]["availableAt"][i] == "olympus") {
+                nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
+            }
+        }
     }
 
-    if('isUdsi' in treeDictionary[key] && treeDictionary[key]['isUdsi'] == true) {
-        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
-    }
-
-    if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-        nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-    }
-
-    if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
+    if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
         nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
     }
 
@@ -328,30 +328,29 @@ function getNodeData(name, key, treeDictionary) {
             url = treeDictionary[key]['source'];
         }
 
-        if('location' in treeDictionary[key]) {
-            url = treeDictionary[key]['location'];
+        if('site' in treeDictionary[key]) {
+            url = treeDictionary[key]['site'];
         }
 
         if(url.length > 0) {
             nodeData['url'] = url;
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
-            if('isApolloEnabled' in treeDictionary[key] && treeDictionary[key]['isApolloEnabled'] == true) {
-                nodeData.text += ' <b><i class="ae-color"><sup>AE</sup></i></b>';
+            if('availableAt' in treeDictionary[key]) {
+                for(var i = 0; i < treeDictionary[key]["availableAt"].length; i++) {
+                    if(treeDictionary[key]["availableAt"][i] == "udsi") {
+                        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+                    }
+
+                    if(treeDictionary[key]["availableAt"][i] == "olympus") {
+                        nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
+                    }
+                }
             }
 
-            if('isUdsi' in treeDictionary[key] && treeDictionary[key]['isUdsi'] == true) {
-                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
-            }
-
-            if('isOlympus' in treeDictionary[key] && treeDictionary[key]['isOlympus'] == true) {
-                nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-            }
-
-            if('midasSso' in treeDictionary[key] && treeDictionary[key]['midasSso'] == true) {
-                console.log(nodeData.text);
+            if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
                 nodeData.text += ' <b><i class="sso-color"><sup>SSO</sup></i></b>';
-                nodeData['midasSso'] = treeDictionary[key]['midasSso'];
+                nodeData['signInRequired'] = treeDictionary[key]['signInRequired'];
             }
         }
     }
@@ -365,6 +364,12 @@ function getNodeData(name, key, treeDictionary) {
 
 function getSoftwareTitle(name, version) {
     var title = name;
+
+    var splitTitle = title.split(' ');
+    var titleEnd = splitTitle[splitTitle.length - 1];
+    if(titleEnd.length == 3 && titleEnd.startsWith('[') && titleEnd.endsWith(']')) {
+        title = splitTitle.slice(0, splitTitle.length - 1).join(' ');
+    }
 
     version = version.split(' - ')[0];
     if(isNaN(version[0])) {
@@ -532,34 +537,48 @@ function openViewer(url) {
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     if(key in attrs) {
+        var attribute = attrs[key];
+        if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+            if(attribute[0].includes("<ul") || attribute[0].includes("<br>")) {
+                attribute = attribute.join('');
+            } else {
+                attribute = attribute.join(', ');
+            }
+        }
+
         $('#software-' + name + '-container').show();
 
         if(renderHtml) {
-            $('#software-' + name).html(attrs[key]);
+            $('#software-' + name).html(attribute);
         } else {
-            $('#software-' + name).text(attrs[key]);
+            $('#software-' + name).text(attribute);
         }
 
         if(hasHref) {
-            $('#software-' + name).attr('href', attrs[key]);
+            $('#software-' + name).attr('href', attribute);
         }
     } else {
         $('#software-' + name + '-container').hide();
     }
 }
 
-function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type, directory) {
+function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if(key in attrs) {
+        var attribute = attrs[key];
+        if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+            attribute = attribute.join(', ');
+        }
+
         $('#software-' + name + '-container').show();
 
         if(renderHtml) {
-            $('#software-' + name).html(attrs[key]);
+            $('#software-' + name).html(attribute);
         } else {
-            $('#software-' + name).text(attrs[key]);
+            $('#software-' + name).text(attribute);
         }
 
         if(hasHref) {
-            $('#software-' + name).attr('href', attrs[key]);
+            $('#software-' + name).attr('href', attribute);
         }
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();
@@ -596,7 +615,7 @@ function openModal(type, name) {
     if(name != null) {
         $('#software-name').show();
         if('version' in attrs) {
-            $('#software-name').text(getSoftwareTitle(name, attrs['version']));
+            $('#software-name').text(getSoftwareTitle(name, attrs['version'].join(', ')));
         } else {
             $('#software-name').text(name);
         }
@@ -605,10 +624,15 @@ function openModal(type, name) {
     }
 
     if('developer' in attrs) {
-        $('#software-developer-container').show();
-        $('#software-developer').html(attrs['developer']);
+        var attribute = attrs['developer'];
+        var length = attribute.length;
 
-        if(attrs['developer'].includes(',')) {
+        attribute = attribute.join(', ');
+
+        $('#software-developer-container').show();
+        $('#software-developer').html(attribute);
+
+        if(length > 1) {
             $('#software-developer-tag').text('Developers:');
         } else {
             $('#software-developer-tag').text('Developer:');
@@ -618,16 +642,21 @@ function openModal(type, name) {
     }
 
     if('version' in attrs) {
-        $('#software-version-container').show();
-        $('#software-version').text(attrs['version']);
+        var attribute = attrs['version'];
+        var length = attribute.length;
 
-        if(attrs['version'].includes(',') && type == 'software') {
+        attribute = attribute.join(', ');
+
+        $('#software-version-container').show();
+        $('#software-version').text(attribute);
+
+        if(length > 1 && type == 'software') {
             $('#software-version-tag').text('Software versions:');
         } else {
             $('#software-version-tag').text('Software version:');
         }
 
-        if(attrs['version'].includes(',') && type == 'webServices') {
+        if(length > 1 && type == 'webServices') {
             $('#software-version-tag').text('Versions:');
         } else {
             $('#software-version-tag').text('Version:');
@@ -646,11 +675,9 @@ function openModal(type, name) {
 
     toggleModalItem('populationSpecies', attrs, 'population-species', false, false);
 
-    toggleModalItem('location', attrs, 'location', true, false);
-
     toggleModalItem('source', attrs, 'source-code', true, false);
 
-    toggleModalItem('diseaseCoverage', attrs, 'disease-coverage', false, false);
+    toggleModalItem('pathogenCoverage', attrs, 'pathogen-coverage', false, false);
 
     toggleModalItem('locationCoverage', attrs, 'location-coverage', false, false);
 
@@ -705,8 +732,6 @@ function openModal(type, name) {
     toggleModalItem('forecasts', attrs, 'forecasts', false, true);
 
     toggleModalItem('nowcasts', attrs, 'nowcasts', false, true);
-
-    toggleModalItem('challengeSite', attrs, 'challenge-site', true, false);
 
     toggleModalItem('site', attrs, 'site', true, false);
 
