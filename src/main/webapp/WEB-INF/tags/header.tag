@@ -38,7 +38,6 @@
                     </c:choose>
                     <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm margin-top-22">${pageTitle}</h2>
                     <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
-
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -51,6 +50,7 @@
                             <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">Web Services</a></li>--%>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+                            <!--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>-->
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
                                 <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>

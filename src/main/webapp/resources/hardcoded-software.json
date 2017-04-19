@@ -22,7 +22,7 @@
       "pathogenCoverage":["Communicable human-to-human"],
       "locationCoverage":["Worldwide"],
       "hostSpeciesIncluded":["Humans"],
-     "controlMeasures":["Travel restrictions"],
+      "controlMeasures":["Travel restrictions"],
       "version":["v2.0 - GLEAM Server", "v6.7 - GLEAMviz simulator client"],
       "executables":["GleamViz v6.7: <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>", "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>", "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>"],
       "documentation":"<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
@@ -512,10 +512,13 @@
     "hostSpeciesIncluded":["N/A"],
     "controlMeasures":["N/A"]
   },
-  "SPEW to Synthia":{
+  "spew2synthia":{
     "directory":"Data-format converters",
+    "version":["1.2.0-1.1"],
+    "developer":["Sahawut Wesaratchakit"],
     "source":"https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
     "dataOutputFormats":["Synthia"],
-    "dataInputFormats":["SPEW"]
+    "dataInputFormats":["SPEW"],
+    "doi":"<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>"
   }
 }
