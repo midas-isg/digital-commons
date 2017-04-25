@@ -168,7 +168,7 @@
                 var toRemove = [];
 
                 if(expandedDataAndKnowledge == null) {
-                    var openByDefault = ["SPEW synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia"];
+                    var openByDefault = ["SPEW synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia", "Data formats", "Standard identifiers"];
                     var openByDefaultIds = [];
                     for(var i = 0; i < openByDefault.length; i++) {
                         var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {

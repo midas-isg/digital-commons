@@ -79,8 +79,8 @@
                                 </tr>
 
                                 <tr>
-                                    <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
-                                    <td><i>Ready to Run On Olympus</i></td>
+                                    <td><i class="olympus-color legend-font"><b>AOC</b></i></td>
+                                    <td><i>Available on Olympus Cluster</i></td>
                                 </tr>
 
                                 <tr>
@@ -114,8 +114,8 @@
                             </tr>
 
                             <tr>
-                                <td><i class="olympus-color legend-font"><b>RROO</b></i></td>
-                                <td><i>Ready to Run On Olympus</i></td>
+                                <td><i class="olympus-color legend-font"><b>AOC</b></i></td>
+                                <td><i>Available on Olympus Cluster</i></td>
                             </tr>
 
                             <tr>

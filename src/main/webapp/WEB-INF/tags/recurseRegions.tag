@@ -11,7 +11,14 @@
         var childNodes = currentNode[currentNode.length - 1].nodes;
         <c:forEach items="${region.children}" var="child" varStatus="childLoop">
             if("${child.value.name}" in stateHash) {
-                childNodes.push({'name': stateHash["${child.value.name}"], 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation(stateHash["${child.value.name}"]) + "</span>", 'url': "${child.value.url}"});
+                if(stateHash["${child.value.name}"] === "New York") {
+                    childNodes.push({
+                        'name': stateHash["${child.value.name}"],
+                        'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${child.value.name}\")'>" + formatLocation(stateHash["${child.value.name}"]) + "</span>"
+                    });
+                } else {
+                    childNodes.push({'name': stateHash["${child.value.name}"], 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation(stateHash["${child.value.name}"]) + "</span>", 'url': "${child.value.url}"});
+                }
             }
         </c:forEach>
         childNodes.sort(compareNodes);

@@ -47,6 +47,25 @@ var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
 
+var syntheticEcosystemsDictionary = {};
+$.getJSON( ctx + '/resources/spew_us_ny.json' + '?v=' + Date.now(), function( data ) {
+    console.log(data);
+    syntheticEcosystemsDictionary['36'] = {
+        'title': data['title'],
+        'generalInfo': data['description'],
+        'json': data
+    };
+
+    var creators = [];
+    for(var i = 0; i < data['creators'].length; i++) {
+        var creator = data['creators'][i];
+        creator = creator['firstName'] + ' ' + creator['lastName'];
+        creators.push(creator);
+    }
+
+    syntheticEcosystemsDictionary['36']['developer']= creators;
+});
+
 /* Change includes method in IE */
 if(!String.prototype.includes) {
     String.prototype.includes = function() {
@@ -61,6 +80,21 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         var name = treeSettings["name"];
         var directories = treeSettings["directories"];
+
+        if(location.includes('hardcoded-software.json')) {
+            for(var i in directories) {
+                var category = directories[i];
+
+                if(typeof category !== 'string') {
+                    category = Object.keys(category)[0];
+                }
+
+                $('#category-select').append($('<option>', {
+                    value: category,
+                    text: 'Software - ' + category
+                }));
+            }
+        }
 
         addTreeDirectories(directories, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
@@ -306,16 +340,12 @@ function getNodeData(name, key, treeDictionary) {
         'name': key
     };
 
-    if('availableAt' in treeDictionary[key]) {
-        for(var i = 0; i < treeDictionary[key]["availableAt"].length; i++) {
-            if(treeDictionary[key]["availableAt"][i] == "udsi") {
-                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
-            }
+    if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+        nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
+    }
 
-            if(treeDictionary[key]["availableAt"][i] == "olympus") {
-                nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-            }
-        }
+    if('availableOnUdsi' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
     }
 
     if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
@@ -336,16 +366,12 @@ function getNodeData(name, key, treeDictionary) {
             nodeData['url'] = url;
             nodeData['text'] = '<span onmouseover="toggleTitle(this)">' + title + '</span>';
 
-            if('availableAt' in treeDictionary[key]) {
-                for(var i = 0; i < treeDictionary[key]["availableAt"].length; i++) {
-                    if(treeDictionary[key]["availableAt"][i] == "udsi") {
-                        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
-                    }
+            if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+                nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
+            }
 
-                    if(treeDictionary[key]["availableAt"][i] == "olympus") {
-                        nodeData.text += ' <b><i class="olympus-color"><sup>RROO</sup></i></b>';
-                    }
-                }
+            if('availableOnUdsi' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
             }
 
             if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
@@ -380,8 +406,8 @@ function getSoftwareTitle(name, version) {
     return title;
 }
 
-var standardEncodingTree = {
-    text: "Standards for encoding data",
+var standardIdentifierTree = {
+    text: "Standard identifiers",
     nodes: [
         {
             text: "<span onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</span>",
@@ -403,16 +429,67 @@ var standardEncodingTree = {
             text: "<span onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</span>",
             url: "http://www.violinet.org/vaccineontology/"
         },
-        {
+        /*{
             text: "<span onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</span>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
-        },
+        },*/
         {
             text: "<span onmouseover='toggleTitle(this)'>Apollo Location Codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
             url: "https://betaweb.rods.pitt.edu/ls"
         }
     ]
 };
+
+var dataFormatsTree = {
+    text: "Data formats",
+    nodes: [
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Synthia</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Spew.US</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Spew.IPUMS</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Spew.CANADA</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Brazil format</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Columbia format</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Omnivore output format</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Galapagos output format</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Tycho Level 2</span>",
+            url: ""
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>Apollo XSD v4.0.1</span>",
+            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        }
+    ]
+};
+dataFormatsTree.nodes.sort(function(a,b) {
+    if (a.text > b.text) return 1;
+    if (a.text < b.text) return -1;
+    return 0
+});
 
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
     var collections = [];
@@ -526,7 +603,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         });
     }
 
-    collections.push(standardEncodingTree);
+    collections.push(dataFormatsTree);
+    collections.push(standardIdentifierTree);
 
     return collections;
 }
@@ -602,6 +680,9 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Software - ' + name
         });
+
+        $('#modal-nav-tabs').hide();
+        $('#display-json').text('');
     } else if(type == 'webServices') {
         attrs = webservicesDictionary[name];
 
@@ -610,6 +691,15 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Web Services - ' + name
         });
+
+        $('#modal-nav-tabs').hide();
+        $('#display-json').text('');
+    } else if(type == 'syntheticEcosystems') {
+        attrs = syntheticEcosystemsDictionary[name];
+        name = stateHash[name];
+
+        $('#modal-nav-tabs').show();
+        $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
     }
 
     if(name != null) {
@@ -661,8 +751,10 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else {
+    } else if(type != 'syntheticEcosystems') {
         $('#software-version').text('N/A');
+    } else {
+        $('#software-version-container').hide();
     }
 
     toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
@@ -1271,3 +1363,8 @@ function toggleElementById(id, element) {
         }
     }
 }
+
+$('#pageModal').on('hidden.bs.modal', function () {
+    $('#modal-html-link').click();
+    location.hash = '_';
+});

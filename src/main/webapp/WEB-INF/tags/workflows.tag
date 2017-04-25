@@ -61,12 +61,12 @@
                     <myTags:lsdtmScript></myTags:lsdtmScript>
                     <div id="lsdtm-script-btns" style="display:none">
                         <button class="btn btn-xs btn-default"
-                                style="top: 30px;right: 30px; position:absolute;"
+                                style="top: 27px;right: 30px; position:absolute;"
                                 onclick="copyToClipboard('#lsdtm-script')">
                             <icon class="glyphicon glyphicon glyphicon-copy"></icon>
                         </button>
                         <button class="btn btn-xs btn-default"
-                                style="top: 30px;right: 4px; position:absolute;"
+                                style="top: 27px;right: 4px; position:absolute;"
                                 onclick="download('lsdtm.sh', '#lsdtm-script')">
                             <icon class="glyphicon glyphicon glyphicon-download"></icon>
                         </button>
