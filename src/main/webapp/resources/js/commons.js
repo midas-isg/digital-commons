@@ -49,10 +49,12 @@ var geneticSequenceSettings = {};
 
 var syntheticEcosystemsDictionary = {};
 $.getJSON( ctx + '/resources/spew_us_ny.json' + '?v=' + Date.now(), function( data ) {
-    console.log(data);
     syntheticEcosystemsDictionary['36'] = {
         'title': data['title'],
-        'generalInfo': data['description'],
+        'description': data['description'],
+        'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
+        'landingPage': data['distributions'][0]['access']['landingPage'],
+        'accessUrl': data['distributions'][0]['access']['accessURL'],
         'json': data
     };
 
@@ -63,7 +65,19 @@ $.getJSON( ctx + '/resources/spew_us_ny.json' + '?v=' + Date.now(), function( da
         creators.push(creator);
     }
 
-    syntheticEcosystemsDictionary['36']['developer']= creators;
+    var authData = data['distributions'][0]['access']['authorizations'];
+    var authorizations = [];
+
+    if(authData != null) {
+        for(var i = 0; i < authData.length; i++) {
+            authorizations.push(authData[i]["value"]);
+        }
+        syntheticEcosystemsDictionary['36']['authorizations']= authorizations;
+    }
+
+
+    syntheticEcosystemsDictionary['36']['creator']= creators;
+    console.log(syntheticEcosystemsDictionary['36']);
 });
 
 /* Change includes method in IE */
@@ -142,7 +156,7 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
     for(var key in data) {
         treeDictionary[key] = data[key];
 
-        if('directory' in treeDictionary[key]) {
+        if('subtype' in treeDictionary[key]) {
             addNodesToDirectory(name, key, treeArray, treeDictionary);
         } else if(key != "settings" && key != "EpiCaseMap") {
             var nodeData = getNodeData(name, key, treeDictionary);
@@ -297,9 +311,9 @@ function addNodesToDirectory(name, key, treeArray, treeDictionary) {
 
         addNodesToSubdirectories(treeArray[i], subdirectories, subdirectoryContent);
 
-        var index = subdirectories.indexOf(treeDictionary[key]['subdirectory']);
+        var index = subdirectories.indexOf(treeDictionary[key]['product']);
 
-        if(treeArray[i]['name'] == treeDictionary[key]['directory'] || index > -1) {
+        if(treeArray[i]['name'] == treeDictionary[key]['subtype'] || index > -1) {
             var nodeData = getNodeData(name, key, treeDictionary);
 
             /* Add node to directory or subdirectory */
@@ -731,6 +745,24 @@ function openModal(type, name) {
         $('#software-developer-container').hide();
     }
 
+    if('creator' in attrs) {
+        var attribute = attrs['creator'];
+        var length = attribute.length;
+
+        attribute = attribute.join(', ');
+
+        $('#software-creator-container').show();
+        $('#software-creator').html(attribute);
+
+        if(length > 1) {
+            $('#software-creator-tag').text('Creators:');
+        } else {
+            $('#software-creator-tag').text('Creator:');
+        }
+    } else {
+        $('#software-creator-container').hide();
+    }
+
     if('version' in attrs) {
         var attribute = attrs['version'];
         var length = attribute.length;
@@ -834,6 +866,16 @@ function openModal(type, name) {
     toggleModalItem('grant', attrs, 'grant', false, false);
 
     toggleModalItem('platform', attrs, 'platform', false, false);
+
+    toggleModalItem('description', attrs, 'description', false, false);
+
+    toggleModalItem('identifier', attrs, 'identifier', true, false);
+
+    toggleModalItem('landingPage', attrs, 'landing-page', true, false);
+
+    toggleModalItem('accessUrl', attrs, 'access-url', true, false);
+
+    toggleModalItem('authorizations', attrs, 'authorizations', false, false);
 
     $('#pageModal').modal('show');
 

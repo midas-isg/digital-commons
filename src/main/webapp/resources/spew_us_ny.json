@@ -52,13 +52,13 @@
 			"name": "Individual",
 			"identifier": {
 				"identifier": "http://purl.obolibrary.org/obo/OBI_0100026l",
-				"identifierSource": ""
+				"identifierSource": "https://biosharing.org/bsg-s000070"
 			}
 		},
 		{
 			"name": "Homo sapiens",
 			"identifier": {
-				"identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=9606",
+				"identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
 				"identifierSource": "https://biosharing.org/bsg-s000154"
 			}
 		},
@@ -66,21 +66,21 @@
 			"name": "Household",
 			"identifier": {
 				"identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
-				"identifierSource": "http://purl.obolibrary.org/obo/OMRSE_0000007"
+				"identifierSource": "https://biosharing.org/bsg-s000097"
 			}
 		},
 		{
 			"name": "Schools",
 			"identifier": {
-				"identifier": "http://purl.obolibrary.org/obo/OMRSE_00000057",
-				"identifierSource": ""
+				"identifier": "http://purl.obolibrary.org/obo/OMRSE_00000064",
+				"identifierSource": "https://biosharing.org/bsg-s000097"
 			}
 		},
 		{
 			"name": "Workplace facility",
 			"identifier": {
 				"identifier": "http://purl.obolibrary.org/obo/OMRSE_00000078",
-				"identifierSource": ""
+				"identifierSource": "https://biosharing.org/bsg-s000097"
 			}
 		},
 		{
@@ -117,11 +117,11 @@
 			"postalAddress": ", Pittsburgh, PA, United States"
 		},
 		"startDate": {
-			"date": "2014",
+			"date": "2017",
 			"type": {}
 		},
 		"endDate": {
-			"date": "2016",
+			"date": "2017",
 			"type": {}
 		}
 	},
@@ -133,14 +133,14 @@
 			},
 			"dates": [
 				{
-					"date": "1999-11-03",
+					"date": "2017-11-03",
 					"type": {
 						"value": "creation",
 						"valueIRI": ""
 					}
 				},
 				{
-					"date": "2016-05-19",
+					"date": "2017-05-19",
 					"type": {
 						"value": "modification",
 						"valueIRI": ""
@@ -165,7 +165,7 @@
 				}
 			],
 			"storedIn": {
-				"name": "Synthetic Ecosystem Repository",
+				"name": "MIDAS Digital Commons",
 				"identifier": {
 					"identifier": "",
 					"identifierSource": "http"

@@ -5,7 +5,7 @@
     "openDirectories":[]
   },
   "hyphy/2.2.6":{
-    "directory":"hyphy",
+    "subtype":"hyphy",
     "description":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning"
   }
 }

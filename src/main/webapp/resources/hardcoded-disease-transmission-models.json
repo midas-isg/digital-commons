@@ -5,39 +5,39 @@
       "openDirectories":[]
     },
     "clara/clara-0.5":{
-      "directory":"clara",
+      "subtype":"clara",
       "description":"CLARA is an agent based model of vector born diseases."
     },
     "fred/pfred":{
-      "directory":"fred",
+      "subtype":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.2":{
-      "directory":"fred",
+      "subtype":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.3":{
-      "directory":"fred",
+      "subtype":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "fred/pfred-0.0.4":{
-      "directory":"fred",
+      "subtype":"fred",
       "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
     },
     "openmalaria/32":{
-      "directory":"openmalaria",
+      "subtype":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "openmalaria/33.1":{
-      "directory":"openmalaria",
+      "subtype":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "openmalaria_resources":{
-      "directory":"openmalaria",
+      "subtype":"openmalaria",
       "description":"OpenMalaria simulator of malaria epidemiology and control."
     },
     "pitt_seir/pitt_seir-3.0":{
-      "directory":"pitt_seir",
+      "subtype":"pitt_seir",
       "description":"SEIR is a simple compartment model for flu simulations"
     }
 }

@@ -22,6 +22,18 @@
 
                         <myTags:softwareModalItem id="general-info" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
+                        <myTags:softwareModalItem id="description" title="Description" hasHref="false"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="identifier" title="Identifier" hasHref="true"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="landing-page" title="Landing Page" hasHref="true"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="access-url" title="Access URL" hasHref="true"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="authorizations" title="Authorizations" hasHref="false"></myTags:softwareModalItem>
+
                         <myTags:softwareModalItem id="pathogen-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
@@ -104,9 +116,12 @@
                     <div class="tab-pane fade" id="modal-json">
                         <style>
                             #modal-code-block {
-                                overflow:scroll;
                                 max-height:500px;
                                 max-width:720px;
+                                overflow:scroll;
+                                margin-bottom:10px;
+                                border: 1px solid #ccc;
+                                border-radius:4px
                             }
                         </style>
 
@@ -118,19 +133,21 @@
                                 width-=5;
                             }
                         </script>
-                        <pre id="modal-code-block"><code style="white-space:pre" id="display-json"></code></pre>
 
-                        <div id="${buttonId}" style="display:none">
-                            <button class="btn btn-xs btn-default"
-                                    style="top: 27px;right: 30px; position:absolute;"
-                                    onclick="copyToClipboard('#${scriptId}')">
-                                <icon class="glyphicon glyphicon glyphicon-copy"></icon>
-                            </button>
-                            <button class="btn btn-xs btn-default"
-                                    style="top: 27px;right: 4px; position:absolute;"
-                                    onclick="download('${scriptFilename}', '#${scriptId}')">
-                                <icon class="glyphicon glyphicon glyphicon-download"></icon>
-                            </button>
+                        <div id="modal-code-block" onmouseenter="$('#modal-download-btns').fadeIn();" onmouseleave="$('#modal-download-btns').fadeOut();">
+                            <pre style="border:none; margin:0"><code style="white-space:pre" id="display-json"></code></pre>
+                            <div id="modal-download-btns" style="display:none">
+                                <button class="btn btn-xs btn-default"
+                                        style="top: 60px;right: 44px; position:absolute;"
+                                        onclick="copyToClipboard('#display-json')">
+                                    <icon class="glyphicon glyphicon glyphicon-copy"></icon>
+                                </button>
+                                <button class="btn btn-xs btn-default"
+                                        style="top: 60px;right: 18px; position:absolute;"
+                                        onclick="download($('#software-name').text() + '.json', '#display-json')">
+                                    <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                                </button>
+                            </div>
                         </div>
 
                     </div>

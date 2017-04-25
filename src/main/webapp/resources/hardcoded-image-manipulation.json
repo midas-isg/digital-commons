@@ -5,11 +5,11 @@
     "openDirectories":[]
   },
   "imagemagick/6.9.5-7":{
-    "directory": "imagemagick",
+    "subtype": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
   "imagemagick/7.0.2-1":{
-    "directory": "imagemagick",
+    "subtype": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   }
 }

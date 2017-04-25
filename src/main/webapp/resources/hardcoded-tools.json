@@ -5,35 +5,35 @@
     "openDirectories":[]
   },
   "imagemagick/6.9.5-7":{
-    "directory": "imagemagick",
+    "subtype": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
   "imagemagick/7.0.2-1":{
-    "directory": "imagemagick",
+    "subtype": "imagemagick",
     "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
   },
   "matlab/R2015a":{
-    "directory": "matlab",
+    "subtype": "matlab",
     "description": "MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and fourth-generation programming language"
   },
   "r/3.1.2":{
-    "directory": "r",
+    "subtype": "r",
     "description": "R Statistical Computing"
   },
   "r/3.2.1":{
-    "directory": "r",
+    "subtype": "r",
     "description": "R Statistical Computing"
   },
   "r/3.3.1":{
-    "directory": "r",
+    "subtype": "r",
     "description": "R Statistical Computing"
   },
   "r_blas/openblas-0.2.13":{
-    "directory": "r",
+    "subtype": "r",
     "description": "Optimized BLAS library for R"
   },
   "r_blas/unaccelerated-blas":{
-    "directory": "r",
+    "subtype": "r",
     "description": "BLAS library for R"
   }
 }

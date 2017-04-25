@@ -5,7 +5,7 @@
       "openDirectories":[]
     },
     "netlogo/netlogo-5.0.4":{
-      "directory":"netlogo",
+      "subtype":"netlogo",
       "description":"Netlogo is an agent-based simulation framework."
     }
 }

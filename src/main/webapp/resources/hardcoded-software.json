@@ -5,8 +5,8 @@
      "openDirectories":["Disease transmission models", "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors", "Data-format converters"]
    },
    "FluTE":{
-      "directory":"Disease transmission models",
-      "subdirectory":"FluTE (4 versions)",
+      "subtype":"Disease transmission models",
+      "product":"FluTE (4 versions)",
       "pathogenCoverage":["Influenza"],
       "locationCoverage":["Los Angeles", "Seattle"],
       "hostSpeciesIncluded":["Humans"],
@@ -16,7 +16,7 @@
       "publicationsAboutRelease":["Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"]
    },
    "GLEAM":{
-      "directory":"Disease transmission models",
+      "subtype":"Disease transmission models",
       "title":"Global Epidemic and Mobility Model (GLEAM)",
       "generalInfo":"<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
       "pathogenCoverage":["Communicable human-to-human"],
@@ -31,7 +31,7 @@
       "publicationsAboutRelease":["<a href = \"http://www.gleamviz.org/publications/\" style=\"text-decoration:underline\">http://www.gleamviz.org/publications/</a>"]
    },
    "Skeeter Buster":{
-      "directory":"Population dynamics models",
+      "subtype":"Population dynamics models",
       "generalInfo":"<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
       "populationSpecies":["Aedes aegypti"],
       "site":"http://www.skeeterbuster.net/",
@@ -40,7 +40,7 @@
       "executables":["<a href = \"http://legrosmathi.eu/skeeterbuster/Skeeter_Buster.zip\" style=\"text-decoration:underline\">Windows</a>"]
    },
   "CLARA":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "availableOnOlympus":true,
     "version":["0.5"],
     "locationCoverage":["Cairns, Australia"],
@@ -53,7 +53,7 @@
     "source":"https://github.com/PSC-PublicHealth/CLARA"
   },
   "Dengue transmission model":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "locationCoverage":["Yucatán, Mexico"],
     "hostSpeciesIncluded":["Humans", "Mosquitoes"],
     "pathogenCoverage":["Dengue"],
@@ -66,7 +66,7 @@
     "publicationsThatUsedRelease":["Thomas J. Hladish, Carl A. B. Pearson, Dennis L. Chao, Diana Patricia Rojas, Gabriel L. Recchia, Héctor Gómez-Dantés, M. Elizabeth Halloran, Juliet R. C. Pulliam, Ira M. Longini (2016) Projected Impact of Dengue Vaccination in Yucatán, Mexico. (<a href=\"http://dx.doi.org/10.1371/journal.pntd.0004661\" class=\"underline\">doi:10.1371/journal.pntd.0004661</a>)"]
   },
   "Ebola transmission model":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "isUdsi": true,
     "generalInfo":"<p>Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p>",
     "version":["commit 720c16"],
@@ -78,8 +78,8 @@
     "publicationsThatUsedRelease":["Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"]
   },
   "FRED":{
-    "directory":"Disease transmission models",
-    "subdirectory":"FRED (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"FRED (3 versions)",
     "generalInfo":"FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
     "version":["2.12.0"],
     "source":"https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
@@ -91,8 +91,8 @@
     "webApplication":["http://fred.publichealth.pitt.edu/simulator/"]
   },
   "Open Malaria [1]":{
-    "directory":"Disease transmission models",
-    "subdirectory":"Open Malaria (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"Open Malaria (3 versions)",
     "generalInfo":"<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version":["32"],
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
@@ -105,8 +105,8 @@
     "availableOnOlympus": true
   },
   "Open Malaria [2]":{
-    "directory":"Disease transmission models",
-    "subdirectory":"Open Malaria (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"Open Malaria (3 versions)",
     "generalInfo":"<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version":["33.1"],
     "source":"https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
@@ -119,8 +119,8 @@
     "availableOnOlympus": true
   },
   "Open Malaria [3]":{
-    "directory":"Disease transmission models",
-    "subdirectory":"Open Malaria (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"Open Malaria (3 versions)",
     "generalInfo":"A simulator of malaria epidemiology and control.",
     "version":["36.11"],
     "locationCoverage":["N/A"],
@@ -133,7 +133,7 @@
     "userGuidesAndManuals":["https://github.com/SwissTPH/openmalaria/wiki"]
   },
   "Global Epidemic Simulator":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "generalInfo":"The Global Epidemic Simulator is a platform for modelling directly transmissible human diseases such as influenza, and testing intervention policies that may reduce the duration or severity of an outbreak of such a disease. Building on previous work, this model is spatial and individual-based, using various geographical and demographic data sources to place households at absolute locations, populated with individuals of specific ages who each attend schools or workplaces situated in their vicinity. The significant advance of this project over previous work is the global nature of simulation, the memory and performance requirements of which motivate us towards a multi-core, multi-computer solution.",
     "version":["beta-1.0"],
     "locationCoverage":["Worldwide"],
@@ -144,7 +144,7 @@
     "license":"<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>"
   },
   "Repast Simphony":{
-    "directory":"Modeling platforms",
+    "subtype":"Modeling platforms",
     "generalInfo":"Repast Simphony is a richly interactive and easy to learn Java-based modeling system that is designed for use on workstations and small computing clusters.",
     "version":["2.4.0"],
     "executables":["<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>"],
@@ -153,7 +153,7 @@
     "sourceCodeRelease":"<a href=\"https://github.com/Repast/repast.simphony/releases/tag/v2.4.0\" class=\"underline\">https://github.com/Repast/repast.simphony/releases/tag/v2.4.0</a>"
   },
   "Repast for High Performance Computing":{
-    "directory":"Modeling platforms",
+    "subtype":"Modeling platforms",
     "generalInfo":"Repast for High Performance Computing is a lean and expert-focused C++-based modeling system that is designed for use on large computing clusters and supercomputers.",
     "version":["2.2.0"],
     "executables":["<a href=\"https://repast.github.io/download.html\" class=\"underline\">https://repast.github.io/download.html</a>"],
@@ -163,7 +163,7 @@
   },
   "TranStat": {
     "generalInfo":"TranStat is a software application designed to estimate the transmissibility of infections within groups of individuals.",
-    "directory": "Disease transmission models",
+    "subtype": "Disease transmission models",
     "locationCoverage":["N/A"],
     "hostSpeciesIncluded":["N/A"],
     "pathogenCoverage":["N/A"],
@@ -176,7 +176,7 @@
     "sourceCodeRelease":"<a href=\"http://www.cidid.org/s/TranStat_Version_3_July_2015_source.zip\" class=\"underline\">Download latest version</a>"
   },
     "ZIKA Modeling":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "developer":["Northeastern University", "Bruno Kessler Foundation", "ISI Foundation", "Fred Hutchinson Cancer Research Center", "University of Florida"],
     "webApplication":["http://www.zika-model.org/"],
     "generalInfo":"This web application uses a data-driven global stochastic and spatial vector-host epidemic model to provide a quantitative analysis of the spreading pattern of ZIKV in Latin America. The model divides the world population into geographic census areas that are defined around transportation hubs and connected by mobility fluxes. The model integrates real world demographic and transportation data.  It also consider the dependence with local weather data of ZIKV transmission drivers such as the mosquito lifespan and abundance. The basic calibration of the model is performed by a Markov Chain Monte Carlo analysis of specific Zika outbreaks. The model generates microsimulations that provide stochastic ensemble output of possible epidemic evolutions, and statistical estimates of newly generated cases, importation events, probability of autochthonous transmission as a function of time. The number of potential microcephaly cases related to Zika is projected on the basis of the epidemic incidence by using a model-based approach used for French Polynesia.",
@@ -185,7 +185,7 @@
     "outcomes": ["Number of Zika-attributable microcephaly cases <br>", "Attack rate"]
   },
   "HyPhy":{
-    "directory":"Pathogen evolution models",
+    "subtype":"Pathogen evolution models",
     "developer":["iGEM/UCSD evolutionary biology and bioinformatics group"],
     "site":"http://www.hyphy.org/w/index.php/Main_Page",
     "source":"https://github.com/veg/hyphy/releases/tag/2.2.7",
@@ -194,27 +194,27 @@
     "redirect":true
   },
   "SEEDY":{
-    "directory":"Pathogen evolution models",
+    "subtype":"Pathogen evolution models",
     "developer":["Colin Worby, Harvard T.H. Chan School of Public Health"],
     "source":"https://cran.r-project.org/web/packages/seedy/index.html",
     "version":["1.3"],
     "redirect":true
   },
   "nextflu/H3N2":{
-    "directory":"Pathogen evolution models",
+    "subtype":"Pathogen evolution models",
     "developer":["Trevor Bedford", "Richard Neher"],
     "source":"https://github.com/blab/nextflu",
     "site":"http://nextflu.org/h3n2/3y/",
     "redirect":true
   },
   "nextstrain/Zika":{
-    "directory":"Pathogen evolution models",
+    "subtype":"Pathogen evolution models",
     "developer":["Trevor Bedford", "Richard Neher"],
     "site":"http://nextstrain.org/zika/",
     "redirect":true
   },
   "EpiCaseMap":{
-    "directory":"Data visualizers",
+    "subtype":"Data visualizers",
     "version":["1.0.1.0"],
     "doi":"<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>",
     "developer":["Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs", "Programming by Software Development Service, Informatics Services Group."],
@@ -228,7 +228,7 @@
     "grant":"U24GM110707"
   },
   "Galapagos":{
-    "directory":"Data visualizers",
+    "subtype":"Data visualizers",
     "generalInfo":"Galapagos is a web application for comparing and exploring the output of epidemic simulations.  The simulator output must be written in Galapagos format and provided as either a CSV or HDF5 file.  The application enables an analyst to quickly visualize simulator output in the form of tables of various statistics, graphs, and maps. Output from multiple simulations can be loaded into the tables and graphs, which allows an analyst to quickly compare the results of multiple simulations.  The user can download graphs in PNG, SVG, or PDF format, and can download tables in CSV format.",
     "version":["1.0"],
     "developer":["Software Development Service, Informatics Services Group"],
@@ -239,12 +239,12 @@
     "signInRequired":true
   },
   "FluScores":{
-    "directory":"Data visualizers",
+    "subtype":"Data visualizers",
     "site":"http://delphi.midas.cs.cmu.edu/misc/fluscores/",
     "redirect":true
   },
   "EpiVis":{
-    "directory":"Data visualizers",
+    "subtype":"Data visualizers",
     "version":["v38"],
     "license":"MIT",
     "source":"https://github.com/cmu-delphi/www-epivis",
@@ -256,7 +256,7 @@
     "visualizationType":["Time series"]
   },
   "outbreaker":{
-    "directory":"Disease transmission tree estimators",
+    "subtype":"Disease transmission tree estimators",
     "version":["1.1-7"],
     "developer":["Thibaut Jombart, Imperial College"],
     "source":"https://github.com/thibautjombart/outbreaker/releases/tag/1.1-7",
@@ -264,7 +264,7 @@
     "redirect":true
   },
   "FluOutlook":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "type":"prospective 2013-2016",
     "forecastFrequency":"weekly",
     "diseases":["Influenza"],
@@ -273,7 +273,7 @@
     "site":"http://fluoutlook.org/"
   },
   "spew":{
-    "directory":"Synthetic ecosystem constructors",
+    "subtype":"Synthetic ecosystem constructors",
     "generalInfo":"Synthetic Populations and Ecosystems of the World (SPEW) is an open-source R package for creating synthetic populations and ecosystems for any geographic region in the world.  The resulting synthetic ecosystems provide data on both synthetic agents and households, their locations, and (for US agents) both school and workplace assignments.",
     "developer":["Shannon Gallagher", "Lee Richardson", "Samuel Venutra", "Bill Eddy"],
     "site":"http://www.stat.cmu.edu/~spew/",
@@ -283,7 +283,7 @@
     "documentation":"<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\" class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>"
   },
   "ILI-nearby":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "type":"prospective nowcast",
     "forecastFrequency":"weekly",
     "diseases":["Influenza"],
@@ -292,13 +292,13 @@
     "site":"http://delphi.midas.cs.cmu.edu/nowcast/"
   },
   "spaero: Software for Project AERO":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "generalInfo":"An R package that implements methods for anticipating the emergence and eradication of infectious diseases from surveillance time series. Also provides support for computational experiments testing the performance of such methods.",
     "site":"https://cran.r-project.org/web/packages/spaero/index.html",
     "documentation":"<a href=\"https://cran.r-project.org/web/packages/spaero/spaero.pdf\" class=\"underline\" download>https://cran.r-project.org/web/packages/spaero/spaero.pdf</a>"
   },
   "Delphi":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "generalInfo":"Delphi's forecasts are derived from expert's forecasts. To sign up to participate as an expert go to: <a href=\"http://delphi.midas.cs.cmu.edu/epicast/\", class=\"underline\">http://delphi.midas.cs.cmu.edu/epicast/</a>",
     "type":"prospective 2016-2017",
     "forecastFrequency":"weekly",
@@ -309,7 +309,7 @@
     "source":"https://github.com/cmu-delphi/"
   },
   "FluSight: Seasonal Influenza Forecasting":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "forecastFrequency":"weekly",
     "type":"prospective 2015-2016",
     "diseases":["Influenza"],
@@ -318,7 +318,7 @@
     "site":"http://cdcepi.github.io/flu/index.html"
   },
   "FluSight":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "type":"prospective 2015-2017",
     "forecastFrequency":"weekly",
     "diseases":["Influenza"],
@@ -329,7 +329,7 @@
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
   },
   "Columbia Prediction of Infectious Diseases":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "forecastFrequency":"weekly",
     "type":"prospective 2016-2017",
     "diseases":["Influenza"],
@@ -338,7 +338,7 @@
     "site":"http://cpid.iri.columbia.edu/"
   },
   "CDCEpi Dengue competition":{
-    "directory":"Disease forecasters",
+    "subtype":"Disease forecasters",
     "type":"Retrospective 2009-2013",
     "diseases":["Dengue"],
     "region":["San Juan, Puerto Rico <br>", "Iquitos, Peru"],
@@ -346,8 +346,8 @@
     "site":"http://cdcepi.github.io/dengue/targets.html"
   },
   "pFRED":{
-    "directory":"Disease transmission models",
-    "subdirectory":"FRED (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"FRED (3 versions)",
     "generalInfo":"<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage":["Communicable human-to-human"],
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
@@ -362,8 +362,8 @@
     "sourceCodeRelease":"<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>"
   },
   "Apollo FluTE":{
-    "directory":"Disease transmission models",
-    "subdirectory":"FluTE (4 versions)",
+    "subtype":"Disease transmission models",
+    "product":"FluTE (4 versions)",
     "generalInfo":"<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage":["Influenza"],
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
@@ -379,8 +379,8 @@
     "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>"
   },
   "FRED Windows 64":{
-    "directory":"Disease transmission models",
-    "subdirectory":"FRED (3 versions)",
+    "subtype":"Disease transmission models",
+    "product":"FRED (3 versions)",
     "generalInfo":"This software installs the FRED simulator on a Windows 64-bit operating system.",
     "doi":"<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>",
     "source":"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
@@ -395,7 +395,7 @@
     "executables":["<a href=\"http://research.rods.pitt.edu/fred_win64.exe\" class=\"underline\">Windows</a>"]
   },
   "Zika virus infections in childbearing women in the Americas":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "version":["commit f5e0cef"],
     "pathogenCoverage":["Zika"],
     "locationCoverage":["The Americas"],
@@ -408,7 +408,7 @@
     "license":"<a href=\"http://matt.might.net/articles/crapl/\" class=\"underline\">CRAPL v0.1 License</a>"
   },
   "Dynamic Mosquito Simulation Model (DyMSiM)":{
-    "directory":"Population dynamics models",
+    "subtype":"Population dynamics models",
     "generalInfo":"<p>The Dynamic Mosquito Simulation Model (DyMSiM) enables the simulation of mosquito populations driven by climate data. DyMSiM provides a useful tool for researchers investigating a number of mosquito-borne diseases.</p> <p>DyMSiM was created using STELLA 9.02 software. You must have STELLA installed on your computer to run DyMSiM.</p>",
     "populationSpecies":["Mosquitoes"],
     "site":"https://sites.google.com/site/dymsimmodel/home",
@@ -418,8 +418,8 @@
     "publicationsAboutRelease": ["Morin C and Comrie AC, 2010. Modeled response of the West Nile virus vector Culex quinquefasciatus to changing climate using the dynamic mosquito simulation model. International Journal of Biometeorology 54,517-529. (<a href=\"http://dx.doi.org/10.1007/s00484-010-0349-6\" class=\"underline\">doi:10.1007/s00484-010-0349-6</a>)"]
   },
   "NetLogo [1]":{
-    "directory":"Modeling platforms",
-    "subdirectory":"NetLogo (2 versions)",
+    "subtype":"Modeling platforms",
+    "product":"NetLogo (2 versions)",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "version":["5.0.4"],
     "executables":["<a class=\"underline\" href=\"http://ccl.northwestern.edu/netlogo/download.shtml\">http://ccl.northwestern.edu/netlogo/download.shtml</a>"],
@@ -430,8 +430,8 @@
     "availableOnOlympus": true
   },
   "NetLogo [2]":{
-    "directory":"Modeling platforms",
-    "subdirectory":"NetLogo (2 versions)",
+    "subtype":"Modeling platforms",
+    "product":"NetLogo (2 versions)",
     "generalInfo":"NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "webApplication":["http://www.netlogoweb.org/launch"],
     "version":["6.0"],
@@ -442,7 +442,7 @@
     "license":"<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License), version 2</a>"
   },
   "Pitt-Anthrax model":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "availableOnOlympus": true,
     "availableOnUdsi": true,
     "locationCoverage":["Worldwide"],
@@ -456,7 +456,7 @@
     "doi":"<a href=\"https://zenodo.org/record/439078#.WNvahxLytzq\", class=\"underline\">10.5281/zenodo.439078</a>"
   },
   "Pitt-SEIR model":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "availableOnOlympus": true,
     "availableOnUdsi": true,
     "locationCoverage":["Worldwide"],
@@ -470,7 +470,7 @@
     "doi":"<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>"
   },
   "PhyML":{
-    "directory":"Phylogenetic tree constructors",
+    "subtype":"Phylogenetic tree constructors",
     "version":["3.0"],
     "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>",
     "generalInfo":"PhyML is a phylogeny software based on the maximum-likelihood principle. Binaries are available for Linux, MacOS and Windows; the source code is available on request.",
@@ -484,7 +484,7 @@
     "documentation":"<a class=\"underline\" href=\"http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf\" download>http://www.atgc-montpellier.fr/download/papers/phyml_manual_2012.pdf</a>"
   },
   "PHYLIP":{
-    "directory":"Phylogenetic tree constructors",
+    "subtype":"Phylogenetic tree constructors",
     "version":["3.696"],
     "generalInfo":"PHYLogeny Inference Package (PHYLIP) is a free computational phylogenetics package of programs for inferring evolutionary trees (phylogenies). It consists of 35 portable programs, i.e., the source code is written in the programming language C. Releases occur as source code, and as precompiled executables for many operating systems including Windows (95, 98, ME, NT, 2000, XP, Vista), Mac OS 8, Mac OS 9, OS X, Linux (Debian, Red Hat); and FreeBSD from <a class=\"underline\" href=\"https://www.freebsd.org/\">FreeBSD.org</a>. Full documentation is written for all the programs in the package and is included therein.",
     "developer":["Professor Joseph Felsenstein, of the Department of Genome Sciences and the Department of Biology, University of Washington, Seattle."],
@@ -492,7 +492,7 @@
     "executables":["<a class=\"underline\" href=\"http://evolution.genetics.washington.edu/phylip/sourcecode.html\">Executable Binaries</a>"]
   },
   "Synthetic Microdata Household Viewer":{
-    "directory":"Data visualizers",
+    "subtype":"Data visualizers",
     "generalInfo":"The Synthetic Microdata Household Viewer is a browser-based application that displays distributions of households in a synthetic (simulated) population generated from 2010 U.S. Census and 2007-2011 5-year American Community Survey data.  The software displays the distributions on interactive maps, and can show four demographic variables: household income, household size, householder race, and householder age.",
     "developer":["RTI International", "Bill Wheaton", "Brandon Bergenroth", "Dahl Winters", "James Rineer"],
     "webApplication":["https://synthpopviewer.rti.org"],
@@ -501,7 +501,7 @@
     "grant":"1-U24-GM087704"
   },
   "NAADSM":{
-    "directory":"Disease transmission models",
+    "subtype":"Disease transmission models",
     "generalInfo":"NAADSM is a framework for creating stochastic, spatial, state-transition simulation models of the spread and control of highly contagious diseases of animals. User-established parameters define model behavior in terms of disease progression; disease spread by animal-to-animal contact, contact with contaminated personnel or equipment, and airborne dissemination; and the implementation of control measures such as vaccination and depopulation. Resources available to implement disease control strategies are taken into consideration. The model records a wide variety of measures of the extent of simulated outbreaks and other characteristics. The graphical interface and output visualization features also make it a useful tool for training and preparedness exercises. NAADSM has been developed with broad international support, and has been used to evaluate outbreak scenarios and potential control strategies for economically important animal diseases in many countries around the world.",
     "developer":["<a class=\"underline\" href=\"mailto:caroline.dube@inspection.gc.ca\">Caroline Dube</a> - Epidemiologist and Scientific Advisor", "<a class=\"underline\" href=\"mailto:nharvey@uoguelph.ca\">Neil Harvey</a>", "<a class=\"underline\" href=\"mailto:Kelly.A.Patyk@aphis.usda.gov\">Kelly Patyk</a>", "<a class=\"underline\" href=\"mailto:aaron.reeves@colostate.edu\">Aaron Reeves</a> - Epidemilogic Modeler", "<a class=\"underline\" href=\"mailto:ann.h.seitzinger@aphis.usda.gov\">Anna Seitzinger</a>"],
     "pathogenCoverage":["Avian influenza A", "Foot-and-mouth disease", "Pseudorabies"],
@@ -517,7 +517,7 @@
     "controlMeasures":["N/A"]
   },
   "spew2synthia":{
-    "directory":"Data-format converters",
+    "subtype":"Data-format converters",
     "version":["1.2.0-1.1"],
     "developer":["Sahawut Wesaratchakit"],
     "source":"https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
