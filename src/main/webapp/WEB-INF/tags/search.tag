@@ -11,7 +11,7 @@
     <div class="col-sm-12 col-md-12 col-lg-12" style="border: 1px solid #ccc; border-radius:4px;">
         <div class="col-sm-6 col-md-6 col-lg-6 no-padding">
             <h4 class="sub-title-font">Query Builder</h4>
-            <button class="btn btn-default" onclick="$('#query-builder-constraint-container').show()">Add constraint to query</button>
+            <button id="add-constraint-btn" class="btn btn-default" style="margin-bottom:10px" onclick="$('#query-builder-constraint-container').show(); $(this).hide();">Add constraint to query</button>
 
             <div id="query-builder-constraint-container" style="display:none">
                 <div id="new-constraint" style="margin-top:12px; border: 1px solid #ccc; border-radius:4px; padding:10px; margin-bottom:12px;">
@@ -64,20 +64,37 @@
                     </div>
 
                     <div style="margin-top:10px;">
-                        <button class="btn btn-default">Add</button>
-                        <button class="btn btn-default">Cancel</button>
+                        <button class="btn btn-default" onclick="addConstraintToList();">Add</button>
+                        <button class="btn btn-default" onclick="$('#query-builder-constraint-container').hide(); $('#add-constraint-btn').show();">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="constraint-list-container" class="col-sm-6 col-md-6 col-lg-6 no-padding" style="padding-left:20px !important">
+        <style>
+            #constraint-list-container {
+                padding-left:20px !important;
+                height:100%;
+                margin-bottom:10px
+            }
+
+            @media screen and (max-width: 768px){
+                #constraint-list-container {
+                    padding-left:0px !important;
+                }
+            }
+        </style>
+        <div id="constraint-list-container" class="col-sm-6 col-md-6 col-lg-6 no-padding">
             <div id="constraint-list" style="padding:10px 0 0 0">
                 <h4 class="sub-title-font" style="margin: 0px 0px 8px 0px;">Constraints</h4>
-                <ol style="margin-left:-22px">
-                    <li>&nbsp; Constraint 1</li>
-                    <li>&nbsp; Constraint 2</li>
-                    <li>&nbsp; Constraint 3</li>
+                <span id="no-constraints-listed">
+                    N/A
+                </span>
+                <ol id="constraints-listed" style="margin-left:-22px; display:none">
                 </ol>
+            </div>
+
+            <div id="run-query" style="display:none;">
+                <button class="btn btn-default" style="margin-top:5px;">Run Query</button>
             </div>
         </div>
     </div>

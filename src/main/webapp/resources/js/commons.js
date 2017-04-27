@@ -1520,15 +1520,17 @@ function changeQueryField() {
     var value = $("#value-select").val();
     var operator = $('input[name=fieldOperator]:checked').val();
 
-    console.log(field, value, operator);
-
     if(field != null && field != '') {
         if(operator != null && operator != '' && operator == 'hasValue') {
             $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC that has the <i>' +  unCamelCase(field) + '</i> field.');
             $('#human-readable-query').show();
         } else if(operator != null && operator != '') {
             if(value != null && value != '') {
-                $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC that supports a <i>' +  unCamelCase(field) + '</i> of <i>' + toTitleCase(value) + '</i>.');
+                if(operator == 'equals') {
+                    $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC whose <i>' +  unCamelCase(field) + '</i> is <i>' + toTitleCase(value) + '</i>.');
+                } else {
+                    $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC that contains a <i>' +  unCamelCase(field) + '</i> of <i>' + toTitleCase(value) + '</i>.');
+                }
                 $('#human-readable-query').show();
             } else {
                 $('#human-readable-query').hide();
@@ -1539,4 +1541,32 @@ function changeQueryField() {
     } else {
         $('#human-readable-query').hide();
     }
+}
+function getNumConstraints() {
+    var numConstraints = $('#constraints-listed li').size();
+    return numConstraints;
+}
+function removeConstraint(element) {
+    $(element).closest('li').remove();
+
+    var numConstraints = getNumConstraints();
+    if(numConstraints == 0) {
+        $('#constraints-listed').hide();
+        $('#no-constraints-listed').show();
+        $('#run-query').hide();
+    }
+}
+
+function addConstraintToList() {
+    $('#constraints-listed').append($('<li>', {
+        'html': $('#human-readable-query-text').html() + ' <button class="btn btn-default btn-xs" onclick="removeConstraint(this)">Delete</button>'
+    }));
+
+    var numConstraints = getNumConstraints();
+    if(numConstraints > 0) {
+        $('#no-constraints-listed').hide();
+        $('#constraints-listed').show();
+        $('#run-query').show();
+    }
+
 }
