@@ -89,7 +89,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
+                                    <td><i class="udsi-color legend-font"><b>UIDS</b></i></td>
                                     <td><i>Available via the Universal Disease Simulator Interface</i></td>
                                 </tr>
                             </tbody>
@@ -100,6 +100,11 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Web Services</h3>
                     <div id="webservices-treeview" class="treeview"></div>
+                </div>
+
+                <div class="col-sm-4">
+                    <h3 class="content-title-font">Data Formats</h3>
+                    <div id="data-formats-treeview" class="treeview"></div>
                 </div>
 
                 <div class="col-sm-4">
@@ -124,71 +129,12 @@
                             </tr>
 
                             <tr>
-                                <td><i class="udsi-color legend-font"><b>UDSI</b></i></td>
+                                <td><i class="udsi-color legend-font"><b>UIDS</b></i></td>
                                 <td><i>Available via the Universal Disease Simulator Interface</i></td>
                             </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div id="web-services" class="tab-pane fade">
-                <div class="col-sm-12">
-                    <h2 class="title-font">Web Services</h2>
-                    <h3 class="sub-title-font">Apollo Broker Service</h3>
-                    <div class="font-size-16 standard-font">
-                        The Apollo Broker Service is the web service used by applications like the Simple End User
-                        Apollo
-                        Application to run Disease Transmission Models, and interact with the Apollo Library.
-                        <br><br>
-                        The Apollo Broker Service has a RESTful and SOAP interface. The documentation for the RESTful
-                        endpoints
-                        is at: <a class="underline"
-                                  href="https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp">https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp</a>.
-                        The WSDL of the SOAP service can be found here: <a
-                            href="https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl"
-                            class="underline">https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl</a>
-                        <br><br>
-                        For more information on the Apollo Broker Service, please email <a class="underline"
-                                                                                           href="mailto:jdl50@pitt.edu">John
-                        Levander</a>.
-                    </div>
-                    <br>
-
-                    <h3 class="sub-title-font">Apollo Library Viewer</h3>
-                    <div class="font-size-16 standard-font">
-                        The Apollo Library Viewer has a RESTful API that allows users to access case count data that is
-                        stored
-                        in the Apollo Library. The link to the documentation is at:
-                        <a class="underline"
-                           href="https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp">https://research.rods.pitt.edu/apolloLibraryViewer-401/sdoc.jsp</a>.
-                    </div>
-                    <br>
-
-                    <h3 class="sub-title-font">Apollo Location Service</h3>
-                    <div class="font-size-16 standard-font">
-                        The Apollo Location Service contains a RESTful API that allows users to lookup INCITS codes,
-                        Apollo Location Codes, and many other types of geographic information that is available for
-                        locations
-                        that are stored in the Apollo Location Service Database. The documentation for this service is
-                        located
-                        here (sign-up required):
-                        <a class="underline" href="http://betaweb.rods.pitt.edu/ls/api-docs">http://betaweb.rods.pitt.edu/ls/api-docs</a>.
-                    </div>
-                    <br>
-
-                    <h3 class="sub-title-font">EpiCaseMap</h3>
-                    <div class="font-size-16 standard-font">
-                        EpiCaseMap contains a RESTful API that allows users to upload time-coordinate series data
-                        and create visualizations for comparing and contrasting data visually. It facilitates this by
-                        providing methods for creating, retrieving, updating, and deleting time-coordinate series,
-                        visualizations, and related metadata.
-
-                        The documentation for this service is located here (sign-up required): <a class="underline"
-                                                                                                  href="http://betaweb.rods.pitt.edu/epicasemap/api">http://betaweb.rods.pitt.edu/epicasemap/api</a>.
-                    </div>
-                    <br>
-                    <div id="web-services-treeview" class="treeview"></div>
                 </div>
             </div>
             <div id="compute-platform" class="tab-pane fade">
@@ -275,6 +221,7 @@
     <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"
                                      spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
     <myTags:webServices></myTags:webServices>
+    <myTags:dataFormats></myTags:dataFormats>
     <myTags:computePlatform></myTags:computePlatform>
 </div>
 

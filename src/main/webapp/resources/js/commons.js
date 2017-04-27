@@ -43,6 +43,10 @@ var webservices = [];
 var webservicesDictionary = {};
 var webservicesSettings = {};
 
+var dataFormats = [];
+var dataFormatsDictionary = {};
+var dataFormatsSettings = {};
+
 var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
@@ -251,7 +255,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('expandAll', { silent: true });
     } else {
-        if(name == "webServices") {
+        if(name == "webServices" || name == "dataFormats") {
             treeviewInfo['expandIcon'] = "bullet-point	";
             treeviewInfo['collapseIcon'] = "bullet-point	";
         }
@@ -344,9 +348,6 @@ function getNodeData(name, key, treeDictionary) {
     var title = key;
     if('version' in treeDictionary[key]) {
         title = getSoftwareTitle(key, treeDictionary[key]['version'].join(', '));
-    } else if(title.includes('/') && name != "software" && name != "webServices") {
-        //var titleAndVersion = title.split('/');
-        //title = getSoftwareTitle(titleAndVersion[0], titleAndVersion[1]);
     }
 
     var nodeData = {
@@ -358,8 +359,8 @@ function getNodeData(name, key, treeDictionary) {
         nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
     }
 
-    if('availableOnUdsi' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
-        nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+    if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+        nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
     }
 
     if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
@@ -372,8 +373,8 @@ function getNodeData(name, key, treeDictionary) {
             url = treeDictionary[key]['source'];
         }
 
-        if('site' in treeDictionary[key]) {
-            url = treeDictionary[key]['site'];
+        if('website' in treeDictionary[key]) {
+            url = treeDictionary[key]['website'];
         }
 
         if(url.length > 0) {
@@ -384,8 +385,8 @@ function getNodeData(name, key, treeDictionary) {
                 nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
             }
 
-            if('availableOnUdsi' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
-                nodeData.text += ' <b><i class="udsi-color"><sup>UDSI</sup></i></b>';
+            if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+                nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
             }
 
             if('signInRequired' in treeDictionary[key] && treeDictionary[key]['signInRequired'] == true) {
@@ -395,7 +396,7 @@ function getNodeData(name, key, treeDictionary) {
         }
     }
 
-    if(name != "software" && name != "webServices") {
+    if(name != "software" && name != "webServices" && name != "dataFormats") {
         nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
@@ -454,7 +455,7 @@ var standardIdentifierTree = {
     ]
 };
 
-var dataFormatsTree = {
+/*var dataFormatsTree = {
     text: "Data formats",
     nodes: [
         {
@@ -474,14 +475,6 @@ var dataFormatsTree = {
             url: ""
         },
         {
-            text: "<span onmouseover='toggleTitle(this)'>Brazil format</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Columbia format</span>",
-            url: ""
-        },
-        {
             text: "<span onmouseover='toggleTitle(this)'>Omnivore output format</span>",
             url: ""
         },
@@ -490,12 +483,16 @@ var dataFormatsTree = {
             url: ""
         },
         {
-            text: "<span onmouseover='toggleTitle(this)'>Tycho Level 2</span>",
+            text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
             url: ""
         },
         {
             text: "<span onmouseover='toggleTitle(this)'>Apollo XSD v4.0.1</span>",
             url: "https://github.com/ApolloDev/apollo-xsd-and-types"
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)'>PHYSIS</span>",
+            url: ""
         }
     ]
 };
@@ -503,7 +500,7 @@ dataFormatsTree.nodes.sort(function(a,b) {
     if (a.text > b.text) return 1;
     if (a.text < b.text) return -1;
     return 0
-});
+});*/
 
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
     var collections = [];
@@ -617,7 +614,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         });
     }
 
-    collections.push(dataFormatsTree);
+    //collections.push(dataFormatsTree);
     collections.push(standardIdentifierTree);
 
     return collections;
@@ -714,6 +711,11 @@ function openModal(type, name) {
 
         $('#modal-nav-tabs').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
+    } else if(type == 'dataFormats') {
+        attrs = dataFormatsDictionary[name];
+
+        $('#modal-nav-tabs').hide();
+        $('#display-json').text('');
     }
 
     if(name != null) {
@@ -813,7 +815,7 @@ function openModal(type, name) {
 
     toggleModalItem('title', attrs, 'title', false, false);
 
-    toggleModalItem('generalInfo', attrs, 'general-info', false, true);
+    toggleModalItem('humanReadableSynopsis', attrs, 'human-readable-synopsis', false, true);
 
     toggleModalItem('sourceCodeRelease', attrs, 'source-code-release', false, true);
 
@@ -857,7 +859,7 @@ function openModal(type, name) {
 
     toggleModalItem('nowcasts', attrs, 'nowcasts', false, true);
 
-    toggleModalItem('site', attrs, 'site', true, false);
+    toggleModalItem('website', attrs, 'website', true, false);
 
     toggleModalItem('forecastFrequency', attrs, 'forecast-frequency', false, false);
 
@@ -916,32 +918,6 @@ function openLibraryFrame(url) {
     document.getElementById("commons-main-tabs").style.display='none';
 
     window.open(url, "libraryFrame");
-}
-
-function collapsableNode(contextPath, title, text) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-        return v.toString(16);
-    });
-
-    return '<div id="' + guid + '-panel" class="panel panel-default" style="margin-bottom: 0">' +
-        '<div class="panel-heading" role="tab" id="' + guid + '-heading" style="padding:1px 3px">' +
-        '<span class="panel-title" style="font-size:12px;">' +
-        '<a role="button" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="' + guid + '-collapse" style="text-decoration: none">' +
-        title + '</a></span></div><div id="' + guid + '-collapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="' + guid + '-heading">' +
-        '<div class="panel-body" style="padding:1px 3px; font-size:12px">' + text + '<img src = "' + contextPath + '/resources/img/fred.png' + '" style="max-width:100%; max-height:100%;">' + '</div></div></div>' + '<script>' +
-        '$("#' + guid + '-panel").hover(function() {$("#' + guid + '-collapse").collapse("show");}, function() {$("#' + guid + '-collapse").collapse("hide");}); </script>';
-}
-
-function getPopover(imgPath, title, modalImgPath, softwareName) {
-    var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-        return v.toString(16);
-    });
-
-    var img = "'<img src = \"" + imgPath + "\" id = \"" + guid +"-img\" style=\"max-width:100%; min-height:150px\">'";
-
-    return '<span id="' + guid + '" class="bs-popover">' + title + '</span>' + '<script>$("#' + guid + '-img").click(function(){openModal("' + softwareName + '")});$("#' + guid + '").popover({container: "body", html: true, trigger: "click", content: function() {return ' + img + '}}).on("show.bs.popover", function(e){$("[rel=popover]").not(e.target).popover("destroy");$(".popover").remove();});</script>';
 }
 
 function compareNodes(a,b) {
@@ -1410,3 +1386,93 @@ $('#pageModal').on('hidden.bs.modal', function () {
     $('#modal-html-link').click();
     location.hash = '_';
 });
+
+function populateFieldValues() {
+    var field = $('#field-select').val();
+    var valueSet = new Set();
+
+    $('#value-select').empty().append($('<option>', {
+        value: '',
+        text: ''
+    }));
+
+    if(field != null && field != '') {
+        var keys = Object.keys(softwareDictionary);
+        for(var i = 0; i < keys.length; i ++) {
+            var key = keys[i];
+            if(key != 'settings') {
+                if(softwareDictionary[key]['subtype'] == 'Disease transmission models') {
+                    for(var x = 0; x < softwareDictionary[key][field].length; x++) {
+                        var value = softwareDictionary[key][field][x];
+                        if(value != 'N/A') {
+                            valueSet.add(value.toLowerCase());
+                        }
+                    }
+                }
+            }
+        }
+
+        var valueArray = Array.from(valueSet).sort();
+        for(var i = 0; i < valueArray.length; i++) {
+            $('#value-select').append($('<option>', {
+                value: valueArray[i],
+                text: toTitleCase(valueArray[i])
+            }));
+        }
+    }
+}
+
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
+
+function unCamelCase(str){
+    return str
+        // insert a space between lower & upper
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        // space before last upper in a sequence followed by lower
+        .replace(/\b([A-Z]+)([A-Z])([a-z])/, '$1 $2$3')
+        // uppercase the first character
+        .replace(/^./, function(str){ return str.toUpperCase(); })
+}
+
+function changeQueryCategory() {
+    var category = $("#category-select").val();
+    if(category != null && category != '') {
+        if(category == 'software') {
+            $('#human-readable-query-text').html('Find every entry in the <i>' + toTitleCase(category) + '</i> category in the MDC.');
+        } else {
+            $('#human-readable-query-text').html('Find every entry classified as <i>' + toTitleCase(category).slice(0,-1) + '</i> in the <i>Software</i> category in the MDC.');
+        }
+
+        $('#human-readable-query').show();
+    } else {
+        $('#human-readable-query').hide();
+    }
+}
+
+function changeQueryField() {
+    var field = $("#field-select").val();
+    var value = $("#value-select").val();
+    var operator = $('input[name=fieldOperator]:checked').val();
+
+    console.log(field, value, operator);
+
+    if(field != null && field != '') {
+        if(operator != null && operator != '' && operator == 'hasValue') {
+            $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC that has the <i>' +  unCamelCase(field) + '</i> field.');
+            $('#human-readable-query').show();
+        } else if(operator != null && operator != '') {
+            if(value != null && value != '') {
+                $('#human-readable-query-text').html('Find every entry classified as <i>Disease Transmission Model</i> in the <i>Software</i> category in the MDC that supports a <i>' +  unCamelCase(field) + '</i> of <i>' + toTitleCase(value) + '</i>.');
+                $('#human-readable-query').show();
+            } else {
+                $('#human-readable-query').hide();
+            }
+        } else {
+            $('#human-readable-query').hide();
+        }
+    } else {
+        $('#human-readable-query').hide();
+    }
+}

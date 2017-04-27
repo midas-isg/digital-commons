@@ -20,7 +20,7 @@
                     <div class="tab-pane fade in active" id="modal-html">
                         <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="general-info" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="human-readable-synopsis" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="description" title="Description" hasHref="false"></myTags:softwareModalItem>
 
@@ -66,7 +66,7 @@
 
                         <myTags:softwareModalItem id="web-application" title="Web application" hasHref="true"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="site" title="Website" hasHref="true"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="website" title="Website" hasHref="true"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
 

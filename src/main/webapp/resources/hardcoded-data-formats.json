@@ -1,0 +1,44 @@
+{
+  "settings": {
+    "name": "dataFormats",
+    "directories": [],
+    "openDirectories": []
+  },
+  "Synthia": {
+    "redirect": true,
+    "website": "#"
+  },
+  "SPEW.US": {
+    "redirect": true,
+    "website": "#"
+  },
+  "SPEW.IPUMS": {
+    "redirect": true,
+    "website": "#"
+  },
+  "SPEW.CANADA": {
+    "redirect": true,
+    "website": "#"
+  },
+  "Omnivore output format": {
+    "redirect": true,
+    "website": "#"
+  },
+  "Galapagos output format": {
+    "redirect": true,
+    "website": "#"
+  },
+  "Tycho 2.0": {
+    "redirect": true,
+    "website": "#"
+  },
+  "Apollo XSD": {
+    "redirect": true,
+    "version":["4.0.1"],
+    "website": "https://github.com/ApolloDev/apollo-xsd-and-types"
+  },
+  "PHYSIS": {
+    "redirect": true,
+    "website": "#"
+  }
+}
