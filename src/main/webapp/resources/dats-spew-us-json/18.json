@@ -1,0 +1,186 @@
+{
+    "title": "Indiana Synthetic Population",
+    "description": "Indiana synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
+    "identifier": {
+        "identifier": "",
+        "identifierSource": "n/a"
+    },
+    "creators": [
+        {
+            "firstName": "Lee",
+            "lastName": "Richardson",
+            "email": ""
+        },
+        {
+            "firstName": "Shannon",
+            "lastName": "Gallagher",
+            "email": ""
+        },
+        {
+            "firstName": "Samuel",
+            "lastName": "Ventura",
+            "email": ""
+        },
+        {
+            "firstName": "Bill",
+            "lastName": "Eddy",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "agent level population and environment census",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000197"
+            }
+        },
+        {
+            "method": {
+                "value": "agent-level ecosystem data generation",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000164"
+            }
+        },
+        {
+            "platform": {
+                "value": "SPEW",
+                "valueIRI": "https://github.com/leerichardson/spew"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Individual",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OBI_0100026l",
+                "identifierSource": "https://biosharing.org/bsg-s000070"
+            }
+        },
+        {
+            "name": "Homo sapiens",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifierSource": "https://biosharing.org/bsg-s000154"
+            }
+        },
+        {
+            "name": "Household",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Schools",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000064",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Workplace facility",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000078",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Indiana",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1616",
+                "identifierSource": "apollo location service"
+            }
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "Indiana",
+            "description": "",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1616",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "US-IN",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "18",
+                    "identifierSource": "FIPS state code"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "Carnegie Mellon University, Department of Statistics",
+        "location": {
+            "postalAddress": "5000 Forbes Ave., Baker Hall 132, Pittsburgh, PA, United States"
+        },
+        "startDate": {
+            "date": "2017",
+            "type": {}
+        },
+        "endDate": {
+            "date": "2017",
+            "type": {}
+        }
+    },
+    "distributions": [
+        {
+            "identifier": {
+                "identifier": "1",
+                "identifierSource": ""
+            },
+            "dates": [
+                {
+                    "date": "2016-11-05",
+                    "type": {
+                        "value": "creation",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "access": {
+                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa/18/diags/us_diags_18.html",
+                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa/18/"
+            },
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "SPEW.US format",
+                        "identifierSource": "RODS Laboratory, University of Pittsburgh"
+                    },
+                    "name": "SPEW.US format",
+                    "type": {
+                        "value": "SPEW.US-File-Formats",
+                        "valueIRI": " https://github.com/midas-isg/data-format-repository/wiki/SPEW.US-File-Formats"
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "MIDAS Digital Commons",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": "http"
+                },
+                "licenses": [
+                    {
+                        "name": ""
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": ""
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ]
+}

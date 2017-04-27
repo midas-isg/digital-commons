@@ -51,38 +51,100 @@ var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
 
+var stateHash =  {
+    '01': 'Alabama',
+    '02': 'Alaska',
+    '04': 'Arizona',
+    '05': 'Arkansas',
+    '06': 'California',
+    '08': 'Colorado',
+    '09': 'Connecticut',
+    '10': 'Delaware',
+    '11': 'District Of Columbia',
+    '12': 'Florida',
+    '13': 'Georgia',
+    '15': 'Hawaii',
+    '16': 'Idaho',
+    '17': 'Illinois',
+    '18': 'Indiana',
+    '19': 'Iowa',
+    '20': 'Kansas',
+    '21': 'Kentucky',
+    '22': 'Louisiana',
+    '23': 'Maine',
+    '24': 'Maryland',
+    '25': 'Massachusetts',
+    '26': 'Michigan',
+    '27': 'Minnesota',
+    '28': 'Mississippi',
+    '29': 'Missouri',
+    '30': 'Montana',
+    '31': 'Nebraska',
+    '32': 'Nevada',
+    '33': 'New Hampshire',
+    '34': 'New Jersey',
+    '35': 'New Mexico',
+    '36': 'New York',
+    '37': 'North Carolina',
+    '38': 'North Dakota',
+    '39': 'Ohio',
+    '40': 'Oklahoma',
+    '41': 'Oregon',
+    '42': 'Pennsylvania',
+    '44': 'Rhode Island',
+    '45': 'South Carolina',
+    '46': 'South Dakota',
+    '47': 'Tennessee',
+    '48': 'Texas',
+    '49': 'Utah',
+    '50': 'Vermont',
+    '51': 'Virginia',
+    '53': 'Washington',
+    '54': 'West Virginia',
+    '55': 'Wisconsin',
+    '56': 'Wyoming'
+};
+
+var fipsCodes = Object.keys(stateHash);
 var syntheticEcosystemsDictionary = {};
-$.getJSON( ctx + '/resources/spew_us_ny.json' + '?v=' + Date.now(), function( data ) {
-    syntheticEcosystemsDictionary['36'] = {
-        'title': data['title'],
-        'description': data['description'],
-        'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
-        'landingPage': data['distributions'][0]['access']['landingPage'],
-        'accessUrl': data['distributions'][0]['access']['accessURL'],
-        'json': data
-    };
+function populateSyntheticEcosystemDictionary(count) {
+    var fipsCode = fipsCodes[count];
+    $.getJSON( ctx + '/resources/dats-spew-us-json/' + fipsCode + '.json' + '?v=' + Date.now(), function( data ) {
+        syntheticEcosystemsDictionary[fipsCode] = {
+            'title': data['title'],
+            'description': data['description'],
+            'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
+            'landingPage': data['distributions'][0]['access']['landingPage'],
+            'accessUrl': data['distributions'][0]['access']['accessURL'],
+            'json': data
+        };
 
-    var creators = [];
-    for(var i = 0; i < data['creators'].length; i++) {
-        var creator = data['creators'][i];
-        creator = creator['firstName'] + ' ' + creator['lastName'];
-        creators.push(creator);
-    }
-
-    var authData = data['distributions'][0]['access']['authorizations'];
-    var authorizations = [];
-
-    if(authData != null) {
-        for(var i = 0; i < authData.length; i++) {
-            authorizations.push(authData[i]["value"]);
+        var creators = [];
+        for(var i = 0; i < data['creators'].length; i++) {
+            var creator = data['creators'][i];
+            creator = creator['firstName'] + ' ' + creator['lastName'];
+            creators.push(creator);
         }
-        syntheticEcosystemsDictionary['36']['authorizations']= authorizations;
-    }
 
+        var authData = data['distributions'][0]['access']['authorizations'];
+        var authorizations = [];
 
-    syntheticEcosystemsDictionary['36']['creator']= creators;
-    console.log(syntheticEcosystemsDictionary['36']);
-});
+        if(authData != null) {
+            for(var i = 0; i < authData.length; i++) {
+                authorizations.push(authData[i]["value"]);
+            }
+            syntheticEcosystemsDictionary[fipsCode]['authorizations']= authorizations;
+        }
+
+        syntheticEcosystemsDictionary[fipsCode]['creator']= creators;
+        count++;
+
+        if(count < fipsCodes.length) {
+            populateSyntheticEcosystemDictionary(count);
+        }
+    });
+}
+populateSyntheticEcosystemDictionary(0);
 
 /* Change includes method in IE */
 if(!String.prototype.includes) {
@@ -1019,6 +1081,8 @@ $(document).ready(function() {
 
         if(location.hash == "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
+        } else if(location.hash == "#modal-json") {
+            location.hash = "#_";
         }
 
         var elementText = $("a[href='" + location.hash + "']").text();
