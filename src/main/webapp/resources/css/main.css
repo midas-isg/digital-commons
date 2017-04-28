@@ -654,3 +654,7 @@ body {
 label[disabled="disabled"]{
     color: #AAA;
 }
+
+.error-color {
+    color:#a94442;
+}

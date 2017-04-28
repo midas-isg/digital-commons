@@ -51,6 +51,7 @@ var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
 
+var countryHash = {};
 var stateHash =  {
     '01': 'Alabama',
     '02': 'Alaska',
@@ -107,36 +108,41 @@ var stateHash =  {
 
 var fipsCodes = Object.keys(stateHash);
 var syntheticEcosystemsDictionary = {};
+
+function addSyntheticEcosystem(data, code) {
+    syntheticEcosystemsDictionary[code] = {
+        'title': data['title'],
+        'description': data['description'],
+        'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
+        'landingPage': data['distributions'][0]['access']['landingPage'],
+        'accessUrl': data['distributions'][0]['access']['accessURL'],
+        'json': data
+    };
+
+    var creators = [];
+    for(var i = 0; i < data['creators'].length; i++) {
+        var creator = data['creators'][i];
+        creator = creator['firstName'] + ' ' + creator['lastName'];
+        creators.push(creator);
+    }
+
+    var authData = data['distributions'][0]['access']['authorizations'];
+    var authorizations = [];
+
+    if(authData != null) {
+        for(var i = 0; i < authData.length; i++) {
+            authorizations.push(authData[i]["value"]);
+        }
+        syntheticEcosystemsDictionary[code]['authorizations']= authorizations;
+    }
+
+    syntheticEcosystemsDictionary[code]['creator']= creators;
+}
+
 function populateSyntheticEcosystemDictionary(count) {
     var fipsCode = fipsCodes[count];
-    $.getJSON( ctx + '/resources/dats-spew-us-json/' + fipsCode + '.json' + '?v=' + Date.now(), function( data ) {
-        syntheticEcosystemsDictionary[fipsCode] = {
-            'title': data['title'],
-            'description': data['description'],
-            'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
-            'landingPage': data['distributions'][0]['access']['landingPage'],
-            'accessUrl': data['distributions'][0]['access']['accessURL'],
-            'json': data
-        };
-
-        var creators = [];
-        for(var i = 0; i < data['creators'].length; i++) {
-            var creator = data['creators'][i];
-            creator = creator['firstName'] + ' ' + creator['lastName'];
-            creators.push(creator);
-        }
-
-        var authData = data['distributions'][0]['access']['authorizations'];
-        var authorizations = [];
-
-        if(authData != null) {
-            for(var i = 0; i < authData.length; i++) {
-                authorizations.push(authData[i]["value"]);
-            }
-            syntheticEcosystemsDictionary[fipsCode]['authorizations']= authorizations;
-        }
-
-        syntheticEcosystemsDictionary[fipsCode]['creator']= creators;
+    $.getJSON( ctx + '/resources/spew-dats-json/' + fipsCode + '.json' + '?v=' + Date.now(), function( data ) {
+        addSyntheticEcosystem(data, fipsCode);
         count++;
 
         if(count < fipsCodes.length) {
@@ -769,7 +775,12 @@ function openModal(type, name) {
         $('#display-json').text('');
     } else if(type == 'syntheticEcosystems') {
         attrs = syntheticEcosystemsDictionary[name];
-        name = stateHash[name];
+
+        if(stateHash.hasOwnProperty(name)) {
+            name = stateHash[name];
+        } else if(countryHash.hasOwnProperty(name)) {
+            name = countryHash[name];
+        }
 
         $('#modal-nav-tabs').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
@@ -1082,7 +1093,8 @@ $(document).ready(function() {
         if(location.hash == "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
         } else if(location.hash == "#modal-json") {
-            location.hash = "#_";
+            $('#modal-html-link').click();
+            location.hash = '_';
         }
 
         var elementText = $("a[href='" + location.hash + "']").text();
@@ -1511,6 +1523,7 @@ function changeQueryCategory() {
 
         $('#human-readable-query').show();
     } else {
+        $('#human-readable-query-text').html('');
         $('#human-readable-query').hide();
     }
 }
@@ -1533,12 +1546,15 @@ function changeQueryField() {
                 }
                 $('#human-readable-query').show();
             } else {
+                $('#human-readable-query-text').html('');
                 $('#human-readable-query').hide();
             }
         } else {
+            $('#human-readable-query-text').html('');
             $('#human-readable-query').hide();
         }
     } else {
+        $('#human-readable-query-text').html('');
         $('#human-readable-query').hide();
     }
 }
@@ -1558,15 +1574,76 @@ function removeConstraint(element) {
 }
 
 function addConstraintToList() {
-    $('#constraints-listed').append($('<li>', {
-        'html': $('#human-readable-query-text').html() + ' <button class="btn btn-default btn-xs" onclick="removeConstraint(this)">Delete</button>'
-    }));
+    removeDuplicateError();
 
-    var numConstraints = getNumConstraints();
-    if(numConstraints > 0) {
-        $('#no-constraints-listed').hide();
-        $('#constraints-listed').show();
-        $('#run-query').show();
+    if($('#human-readable-query-text').html() != '') {
+        var newConstraintHtml = $('#human-readable-query-text').html() + ' <button class="btn btn-default btn-xs" onclick="removeConstraint(this)">Delete</button>';
+
+        var duplicate = false;
+        $('#constraints-listed li').each(function(i) {
+            if($(this).html() == newConstraintHtml) {
+                duplicate = true;
+            }
+        });
+
+        if(!duplicate) {
+            $('#constraints-listed').append($('<li>', {
+                'html': newConstraintHtml
+            }));
+
+            var numConstraints = getNumConstraints();
+            if(numConstraints > 0) {
+                $('#no-constraints-listed').hide();
+                $('#constraints-listed').show();
+                $('#run-query').show();
+            }
+        } else {
+            $('#human-readable-query').addClass('error-color');
+            $('#human-readable-query-feedback').text('Error: Duplicate constraint.');
+        }
+    } else {
+        var categoryContainer = $('#category-select-container');
+        var fieldContainer = $('#field-select-container');
+        var valueContainer = $('#value-select-container');
+
+        if(categoryContainer.is(":visible")) {
+            var category = $("#category-select").val();
+
+            if(category == null || category == '') {
+                categoryContainer.addClass('has-error');
+                $('#category-select-feedback').text('Error: Please select a category.');
+            }
+        } else if(fieldContainer.is(":visible")) {
+            var field = $("#field-select").val();
+            var value = $("#value-select").val();
+
+            if(field == null || field == '') {
+                fieldContainer.addClass('has-error');
+                $('#field-select-feedback').text('Error: Please select a field.');
+            }
+
+            if(value == null || value == '') {
+                valueContainer.addClass('has-error');
+                $('#value-select-feedback').text('Error: Please select a value.');
+            }
+        }
     }
+}
 
+function removeDuplicateError() {
+    $('#human-readable-query').removeClass('error-color');
+    $('#human-readable-query-feedback').text('');
+}
+
+function removeError(element) {
+    $('#' + element  + '-container').removeClass('has-error');
+    $('#' + element  + '-feedback').text('');
+}
+
+function removeErrors() {
+    removeError('category-select');
+    removeError('field-select');
+    removeError('value-select');
+
+    removeDuplicateError();
 }

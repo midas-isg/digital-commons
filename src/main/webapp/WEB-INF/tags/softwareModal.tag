@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="modal-nav-tabs" style="display:none">
                     <li class="active"><a href="#modal-html" data-toggle="tab" id="modal-html-link">HTML</a></li>
-                    <li><a href="#modal-json" data-toggle="tab">JSON</a></li>
+                    <li><a href="#modal-json" data-toggle="tab">DATS JSON</a></li>
                 </ul>
 
                 <div class="tab-content">

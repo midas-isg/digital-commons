@@ -18,49 +18,70 @@
                     <div>
                         <label>New Constraint:</label><br>
                         <label class="radio-inline"
-                               onclick="$('#field-container').hide(); $('#category-container').show(); changeQueryCategory();">
+                               onclick="$('#field-container').hide(); $('#category-container').show(); changeQueryCategory(); removeErrors();">
                             <input type="radio" name="constraintType" value="category" checked="checked">By Category
                         </label>
 
                         <label class="radio-inline"
-                               onclick="$('#field-container').show(); $('#category-container').hide(); changeQueryField()">
+                               onclick="$('#field-container').show(); $('#category-container').hide(); changeQueryField(); removeErrors();">
                             <input type="radio" name="constraintType" value="field">By Field
                         </label>
                     </div>
                     <div style="margin-top:10px" id="category-container">
-                        <label>Category:</label><br>
-                        <select class="form-control" id="category-select" onchange="changeQueryCategory();">
-                            <option value=""></option>
-                            <option value="software">Software</option>
-                        </select>
+                        <div id="category-select-container">
+                            <label class="control-label" for="category-select">Category:</label><br>
+                            <select class="form-control"
+                                    id="category-select"
+                                    onchange="changeQueryCategory(); removeError('category-select'); removeDuplicateError();"
+                                    aria-describedby="category-select-feedback">
+                                <option value=""></option>
+                                <option value="software">Software</option>
+                            </select>
+
+                            <span id="category-select-feedback" class="error-color"></span>
+                        </div>
                     </div>
                     <div style="margin-top:10px; display:none" id="field-container">
-                        <div>
-                            <label>Field:</label><br>
-                            <select class="form-control" id="field-select" onchange="populateFieldValues(); changeQueryField();">
+                        <div id="field-select-container">
+                            <label class="control-label" for="field-select">Field:</label><br>
+                            <select class="form-control"
+                                    id="field-select"
+                                    onchange="populateFieldValues(); changeQueryField(); removeError('field-select'); removeDuplicateError();"
+                                    aria-describedby="field-select-feedback">
                                 <option></option>
                                 <option value="pathogenCoverage">Software - Disease Transmission Models - Pathogen coverage</option>
                                 <option value="locationCoverage">Software - Disease Transmission Models - Location coverage</option>
                                 <option value="hostSpeciesIncluded">Software - Disease Transmission Models - Host species included</option>
                                 <option value="controlMeasures">Software - Disease Transmission Models - Control measures</option>
                             </select>
+
+                            <span id="field-select-feedback" class="error-color"></span>
                         </div>
                         <div style="margin-top:10px">
                             <label class="radio-inline"><input type="radio" name="fieldOperator" value="equals" checked="checked" onclick="$('#value-select-container').show(); changeQueryField();">equals</label>
                             <label class="radio-inline"><input type="radio" name="fieldOperator" value="contains" onclick="$('#value-select-container').show(); changeQueryField();">contains</label>
                             <label class="radio-inline"><input type="radio" name="fieldOperator" value="hasValue" onclick="$('#value-select-container').hide();  changeQueryField();">has value</label>
                         </div>
-                        <div style="margin-top:10px" id="value-select-container">
-                            <label>Value:</label><br>
-                            <select class="form-control" id="value-select" onchange="changeQueryField()">
+                        <div style="margin-top:10px"
+                             id="value-select-container">
+                            <label class="control-label"
+                                   for="value-select"
+                                   aria-describedby="value-select-feedback">Value:</label><br>
+                            <select class="form-control" id="value-select" onchange="changeQueryField(); removeError('value-select'); removeDuplicateError();">
                                 <option></option>
                             </select>
+
+                            <span id="value-select-feedback" class="error-color"></span>
                         </div>
                     </div>
 
                     <div style="margin-top:10px; display:none" id="human-readable-query">
                         <label>Resulting Human Readable Query:</label><br>
                         <span id="human-readable-query-text"></span>
+
+                        <div style="margin-top:15px">
+                            <span id="human-readable-query-feedback" class="error-color"></span>
+                        </div>
                     </div>
 
                     <div style="margin-top:10px;">

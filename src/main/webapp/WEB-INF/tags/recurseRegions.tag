@@ -33,5 +33,14 @@
     <c:if test="${region.name != 'canada'}">
         $('#location-select').append('<option value="' + '${region.name}_${region.code}' + '">' + formatLocation('${region.name}') + '</option>');
     </c:if>
-    currentNode.push({'name': "${region.name}", 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation("${region.name}") + "</span>", 'url': "${region.url}"});
+    //currentNode.push({'name': "${region.name}", 'text': "<span onmouseover='toggleTitle(this)'>" + formatLocation("${region.name}") + "</span>", 'url': "${region.url}"});
+    currentNode.push({
+        'name': "${region.name}",
+        'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticEcosystems\", \"${region.code}\")'>" + formatLocation("${region.name}") + "</span>"
+    });
+
+    $.getJSON( ctx + '/resources/spew-dats-json/' + "${region.code}" + '.json' + '?v=' + Date.now(), function( data ) {
+        addSyntheticEcosystem(data, "${region.code}");
+        countryHash["${region.code}"] = formatLocation("${region.name}");
+    });
 </c:if>
