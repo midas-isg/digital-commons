@@ -1,6 +1,6 @@
 {
     "title": "Canada Synthetic Population",
-    "description": "Canada synthetic ecosystem dataset consisting of tables for persons and households.  This dataset was created by the SPEW R Package using the following input data sources:  GeoHive counts and IPUMS-I shapefiles and microdata.",
+    "description": "Canada synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: Public Use Microdata Files (PUMFS), National Household Survey, 2011.",
     "identifier": {
         "identifier": "",
         "identifierSource": "n/a"
@@ -137,13 +137,13 @@
             "conformsTo": [
                 {
                     "identifier": {
-                        "identifier": "SPEW.IPUMS format",
+                        "identifier": "SPEW.CANADA format",
                         "identifierSource": "RODS Laboratory, University of Pittsburgh"
                     },
-                    "name": "SPEW.IPUMS format",
+                    "name": "SPEW.CANADA format",
                     "type": {
-                        "value": "SPEW.IPUMS-File-Formats",
-                        "valueIRI": " https://github.com/midas-isg/data-format-repository/wiki/SPEW.IPUMS-File-Formats"
+                        "value": "SPEW.CANADA-File-Formats",
+                        "valueIRI": "https://github.com/midas-isg/data-format-repository/wiki/SPEW.CANADA-File-Formats"
                     }
                 }
             ],

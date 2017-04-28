@@ -105,15 +105,21 @@ var stateHash =  {
     '55': 'Wisconsin',
     '56': 'Wyoming'
 };
-
 var fipsCodes = Object.keys(stateHash);
-var syntheticEcosystemsDictionary = {};
 
-function addSyntheticEcosystem(data, code) {
-    syntheticEcosystemsDictionary[code] = {
+var syntheticEcosystemsDictionary = {};
+var epidemicsDictionary = {};
+
+function addDatsToDictionary(dictionary, data, code) {
+    var identifier = data['spatialCoverage'][0]['identifier']['identifier'];
+    if(!identifier.includes('http')) {
+        identifier = data['spatialCoverage'][0]['identifier']['identifierSource'];
+    }
+
+    dictionary[code] = {
         'title': data['title'],
         'description': data['description'],
-        'identifier': data['spatialCoverage'][0]['identifier']['identifier'],
+        'identifier': identifier,
         'landingPage': data['distributions'][0]['access']['landingPage'],
         'accessUrl': data['distributions'][0]['access']['accessURL'],
         'json': data
@@ -133,16 +139,16 @@ function addSyntheticEcosystem(data, code) {
         for(var i = 0; i < authData.length; i++) {
             authorizations.push(authData[i]["value"]);
         }
-        syntheticEcosystemsDictionary[code]['authorizations']= authorizations;
+        dictionary[code]['authorizations']= authorizations;
     }
 
-    syntheticEcosystemsDictionary[code]['creator']= creators;
+    dictionary[code]['creator']= creators;
 }
 
 function populateSyntheticEcosystemDictionary(count) {
     var fipsCode = fipsCodes[count];
     $.getJSON( ctx + '/resources/spew-dats-json/' + fipsCode + '.json' + '?v=' + Date.now(), function( data ) {
-        addSyntheticEcosystem(data, fipsCode);
+        addDatsToDictionary(syntheticEcosystemsDictionary, data, fipsCode);
         count++;
 
         if(count < fipsCodes.length) {
@@ -656,28 +662,49 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 url = libraryViewerUrl + "infectiousDiseaseScenario/";
             }
             var nodeLevel1 = [];
+
             $.each(value, function (index, value) {
                 var nodeLevel2 = [];
-                $.each(value, function (index, value) {
-                    //var externalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openViewer(this.id)'>" +
-                    //     "<i class='fa fa-external-link'></i></button>";
-                    //var modalbutton = "<button type='button'  id='" + url+value.urn + "'  class='btn btn-primary pull-right' onclick='openModal(this.id)'>" +
-                    //     "<i class='fa fa-info-circle'></i></button>";
 
-                    nodeLevel2.push({
-                        text: "<span>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span> ",
-                        url: url + value.urn
-                    });
+                var ebolaEpidemics = false;
+                if(index == "Ebola epidemics") {
+                    ebolaEpidemics = true;
+                }
+                $.each(value, function (index, value) {
+                    if(ebolaEpidemics) {
+                        var dictionaryKey = value.name;
+                        if(dictionaryKey.includes('É')) {
+                            dictionaryKey = dictionaryKey.replace('É', 'E');
+                        }
+
+                        nodeLevel2.push({
+                            name: value.name,
+                            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"epidemics\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span>"
+                        });
+
+                        $.getJSON( ctx + '/resources/ebola-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                            addDatsToDictionary(epidemicsDictionary, data, dictionaryKey);
+                        })
+                        .error(function() {
+                            // TODO - Error handling
+                        });
+
+                    } else {
+                        nodeLevel2.push({
+                            text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span> ",
+                            url: url + value.urn
+                        });
+                    }
                 });
                 if(index.includes("Zika") || index.includes("Chikungunya")) {
                     index += " (under development)";
                 }
                 if(index.includes("H1n1 infectious disease scenarios"))
                     index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b><span>", nodes: nodeLevel2});
+                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span>", nodes: nodeLevel2});
             });
 
-            collections.push({text: index, nodes: nodeLevel1});
+            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span>", nodes: nodeLevel1});
 
         });
     }
@@ -760,7 +787,7 @@ function openModal(type, name) {
             eventAction: 'Software - ' + name
         });
 
-        $('#modal-nav-tabs').hide();
+        $('#modal-switch-btn').hide();
         $('#display-json').text('');
     } else if(type == 'webServices') {
         attrs = webservicesDictionary[name];
@@ -771,23 +798,28 @@ function openModal(type, name) {
             eventAction: 'Web Services - ' + name
         });
 
-        $('#modal-nav-tabs').hide();
+        $('#modal-switch-btn').hide();
         $('#display-json').text('');
-    } else if(type == 'syntheticEcosystems') {
-        attrs = syntheticEcosystemsDictionary[name];
+    } else if(type == 'syntheticEcosystems' || type == 'epidemics') {
+        if(type == 'syntheticEcosystems') {
+            attrs = syntheticEcosystemsDictionary[name];
 
-        if(stateHash.hasOwnProperty(name)) {
-            name = stateHash[name];
-        } else if(countryHash.hasOwnProperty(name)) {
-            name = countryHash[name];
+            if(stateHash.hasOwnProperty(name)) {
+                name = stateHash[name];
+            } else if(countryHash.hasOwnProperty(name)) {
+                name = countryHash[name];
+            }
+        } else if(type == 'epidemics') {
+            attrs = epidemicsDictionary[name];
+            name = epidemicsDictionary[name]['title'].replace(' data and knowledge', '')
         }
 
-        $('#modal-nav-tabs').show();
+        $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
     } else if(type == 'dataFormats') {
         attrs = dataFormatsDictionary[name];
 
-        $('#modal-nav-tabs').hide();
+        $('#modal-switch-btn').hide();
         $('#display-json').text('');
     }
 
@@ -858,7 +890,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems') {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics') {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();
@@ -1459,6 +1491,7 @@ function toggleElementById(id, element) {
 }
 
 $('#pageModal').on('hidden.bs.modal', function () {
+    $('#modal-switch-btn').text('Switch to Metadata View');
     $('#modal-html-link').click();
     location.hash = '_';
 });
@@ -1646,4 +1679,25 @@ function removeErrors() {
     removeError('value-select');
 
     removeDuplicateError();
+}
+
+function toggleModalView() {
+    if($('#modal-html').hasClass('active')) {
+        $('#modal-code-block').height($('#modal-html').height() - 27);
+        $('#modal-json-link').click();
+        $('#modal-switch-btn').text('Switch to HTML View');
+    } else {
+        $('#modal-html-link').click();
+        $('#modal-switch-btn').text('Switch to Metadata View');
+    }
+}
+
+function openUrl(element) {
+    event.preventDefault();
+    var url = $(element)[0].href;
+    if(url.search("apolloLibraryViewer") > -1) {
+        $(location).attr('href', ctx + "/midas-sso/view?url=" + encodeURIComponent(url));
+    } else {
+        $(location).attr('href', url);
+    }
 }

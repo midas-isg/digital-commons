@@ -13,7 +13,7 @@
             <div class="modal-body">
                 <ul class="nav nav-tabs" id="modal-nav-tabs" style="display:none">
                     <li class="active"><a href="#modal-html" data-toggle="tab" id="modal-html-link">HTML</a></li>
-                    <li><a href="#modal-json" data-toggle="tab">DATS JSON</a></li>
+                    <li><a href="#modal-json" data-toggle="tab" id="modal-json-link">DATS JSON</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -117,7 +117,7 @@
                         <style>
                             #modal-code-block {
                                 max-height:500px;
-                                max-width:720px;
+                                max-width:560px;
                                 overflow:scroll;
                                 margin-bottom:10px;
                                 border: 1px solid #ccc;
@@ -134,16 +134,20 @@
                             }
                         </script>
 
+                        <div class="sub-title-font font-size-16 modal-software-item" style="margin-bottom:3px">
+                            <h4 class="inline bold" id="jsonFormat">Metadata format: </h4><a href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a><br>
+                        </div>
+
                         <div id="modal-code-block" onmouseenter="$('#modal-download-btns').fadeIn();" onmouseleave="$('#modal-download-btns').fadeOut();">
                             <pre style="border:none; margin:0"><code style="white-space:pre" id="display-json"></code></pre>
                             <div id="modal-download-btns" style="display:none">
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 60px;right: 44px; position:absolute;"
+                                        style="top: 48px;right: 44px; position:absolute;"
                                         onclick="copyToClipboard('#display-json')">
                                     <icon class="glyphicon glyphicon glyphicon-copy"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 60px;right: 18px; position:absolute;"
+                                        style="top: 48px;right: 18px; position:absolute;"
                                         onclick="download($('#software-name').text() + '.json', '#display-json')">
                                     <icon class="glyphicon glyphicon glyphicon-download"></icon>
                                 </button>
@@ -154,6 +158,12 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button id="modal-switch-btn"
+                        type="button"
+                        class="btn btn-default"
+                        onclick="toggleModalView();">
+                    Switch to Metadata View
+                </button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>

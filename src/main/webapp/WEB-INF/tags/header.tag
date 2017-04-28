@@ -49,7 +49,7 @@
                             <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">Web Services</a></li>--%>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>
+                            <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>--%>
                             <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
                             <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
                                 <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>

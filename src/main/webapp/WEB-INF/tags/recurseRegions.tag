@@ -40,7 +40,7 @@
     });
 
     $.getJSON( ctx + '/resources/spew-dats-json/' + "${region.code}" + '.json' + '?v=' + Date.now(), function( data ) {
-        addSyntheticEcosystem(data, "${region.code}");
+        addDatsToDictionary(syntheticEcosystemsDictionary, data, "${region.code}");
         countryHash["${region.code}"] = formatLocation("${region.name}");
     });
 </c:if>
