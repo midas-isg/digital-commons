@@ -135,7 +135,12 @@
                         </script>
 
                         <div class="sub-title-font font-size-16 modal-software-item" style="margin-bottom:3px">
-                            <h4 class="inline bold" id="jsonFormat">Metadata format: </h4><a href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a><br>
+                            <h4 class="inline bold" id="jsonFormat">
+                                Metadata format:
+                            </h4>
+                            <a id="dats-json" href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a>
+                            <span id="mdc-json">MIDAS Digital Commons Metadata Format</span>
+                            <br>
                         </div>
 
                         <div id="modal-code-block" onmouseenter="$('#modal-download-btns').fadeIn();" onmouseleave="$('#modal-download-btns').fadeOut();">

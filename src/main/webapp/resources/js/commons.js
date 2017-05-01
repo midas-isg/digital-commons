@@ -109,6 +109,7 @@ var fipsCodes = Object.keys(stateHash);
 
 var syntheticEcosystemsDictionary = {};
 var epidemicsDictionary = {};
+var synthiaPopulationsDictionary = {};
 
 function addDatsToDictionary(dictionary, data, code) {
     var identifier = data['spatialCoverage'][0]['identifier']['identifier'];
@@ -157,6 +158,25 @@ function populateSyntheticEcosystemDictionary(count) {
     });
 }
 populateSyntheticEcosystemDictionary(0);
+
+function populateSynthiaPopulationsDictionary(count) {
+    var files = ['synthia_us_by_county', 'synthia_us_by_state'];
+
+    $.getJSON( ctx + '/resources/synthia-dats-json/' + files[count] + '.json' + '?v=' + Date.now(), function( data ) {
+        var splitFile = files[count].split('_');
+        var name = splitFile[splitFile.length - 1];
+
+        addDatsToDictionary(synthiaPopulationsDictionary, data, name);
+        count++;
+
+        if(count < files.length) {
+            populateSynthiaPopulationsDictionary(count);
+        } else {
+            console.log(synthiaPopulationsDictionary);
+        }
+    });
+}
+populateSynthiaPopulationsDictionary(0);
 
 /* Change includes method in IE */
 if(!String.prototype.includes) {
@@ -586,12 +606,10 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Synthia™ synthetic populations",
             nodes: [
                 {
-                    text: "2010 U.S. Synthetic Populations by County",
-                    url:"http://www.epimodels.org/drupal/?q=node/81"
+                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span>"
                 },
                 {
-                    text: "2010 U.S. Synthetic Populations by State",
-                    url:"http://www.epimodels.org/drupal/?q=node/80"
+                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span>"
                 }
             ]
         },
@@ -720,7 +738,7 @@ function openViewer(url) {
 }
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
-    if(key in attrs) {
+    if(key in attrs && attrs[key] != null) {
         var attribute = attrs[key];
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             if(attribute[0].includes("<ul") || attribute[0].includes("<br>")) {
@@ -778,6 +796,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
 
 function openModal(type, name) {
     var attrs = {};
+
     if(type == 'software') {
         attrs = softwareDictionary[name];
 
@@ -786,9 +805,6 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Software - ' + name
         });
-
-        $('#modal-switch-btn').hide();
-        $('#display-json').text('');
     } else if(type == 'webServices') {
         attrs = webservicesDictionary[name];
 
@@ -797,10 +813,7 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Web Services - ' + name
         });
-
-        $('#modal-switch-btn').hide();
-        $('#display-json').text('');
-    } else if(type == 'syntheticEcosystems' || type == 'epidemics') {
+    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations") {
         if(type == 'syntheticEcosystems') {
             attrs = syntheticEcosystemsDictionary[name];
 
@@ -811,16 +824,25 @@ function openModal(type, name) {
             }
         } else if(type == 'epidemics') {
             attrs = epidemicsDictionary[name];
-            name = epidemicsDictionary[name]['title'].replace(' data and knowledge', '')
+            name = attrs['title'].replace(' data and knowledge', '');
+        } else if(type == 'syntheticPopulations') {
+            attrs = synthiaPopulationsDictionary[name];
+            name = attrs['title'];
         }
 
+        $('#mdc-json').hide();
+        $('#dats-json').show();
         $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
     } else if(type == 'dataFormats') {
         attrs = dataFormatsDictionary[name];
+    }
 
-        $('#modal-switch-btn').hide();
-        $('#display-json').text('');
+    if(type == 'software' || type == 'webServices' || type == 'dataFormats') {
+        $('#dats-json').hide();
+        $('#mdc-json').show();
+        $('#modal-switch-btn').show();
+        $('#display-json').text(JSON.stringify(attrs, null, 4));
     }
 
     if(name != null) {
@@ -890,7 +912,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems' && type != 'epidemics') {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations") {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();
@@ -898,9 +920,9 @@ function openModal(type, name) {
 
     toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
 
-    toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, false, type, true);
+    toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, true, type, true);
 
-    toggleRequiredModalItem('dataOutputFormats', attrs, 'data-output-formats', false, false, type, true);
+    toggleRequiredModalItem('dataOutputFormats', attrs, 'data-output-formats', false, true, type, true);
 
     toggleModalItem('type', attrs, 'type', false, false);
 
@@ -1683,7 +1705,7 @@ function removeErrors() {
 
 function toggleModalView() {
     if($('#modal-html').hasClass('active')) {
-        $('#modal-code-block').height($('#modal-html').height() - 27);
+        $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px')
         $('#modal-json-link').click();
         $('#modal-switch-btn').text('Switch to HTML View');
     } else {

@@ -1,0 +1,188 @@
+{
+    "title": "2010 U.S. Synthetic Populations by County",
+    "description": "The data were generated from 2010 U.S. Decennial Census and 2007-2011 5-year American Community Survey data. The data are computer representations of the distribution of households by these four demographic variables, but do not represent actual households or locations of actual households.",
+    "identifier": {
+        "identifier": "http://www.epimodels.org/drupal/?q=node/81",
+        "identifierSource": "MIDAS Informatics Services Group"
+    },
+    "creators": [
+        {
+            "firstName": "William",
+            "lastName": "Wheaton",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "agent level population and environment census",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000197"
+            }
+        },
+        {
+            "method": {
+                "value": "agent-level ecosystem data generation",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000164"
+            }
+        },
+        {
+            "platform": {
+                "value": "SYNTHIA",
+                "valueIRI": ""
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Individual",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OBI_0100026l",
+                "identifierSource": "https://biosharing.org/bsg-s000070"
+            }
+        },
+        {
+            "name": "Homo sapiens",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifierSource": "https://biosharing.org/bsg-s000154"
+            }
+        },
+        {
+            "name": "Household",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Group quarters",
+            "identifier": {
+                "identifier": "",
+                "identifierSource": ""
+            }
+        },
+        {
+            "name": "Schools",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000064",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Workplace facility",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000078",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "United States of America",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+                "identifierSource": "apollo location service"
+            }
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "United States of America",
+            "description": "",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "US",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "840",
+                    "identifierSource": "ISO 3166-1"
+                },
+                {
+                    "identifier": "USA",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "RTI International, Durham",
+        "location": {
+            "postalAddress": "Research Triangle Park, North Carolina, United States"
+        },
+        "startDate": {
+            "date": "2014",
+            "type": {}
+        },
+        "endDate": {
+            "date": "2016",
+            "type": {}
+        }
+    },
+    "distributions": [
+        {
+            "identifier": {
+                "identifier": "1",
+                "identifierSource": ""
+            },
+            "dates": [
+                {
+                    "date": "1999-11-03",
+                    "type": {
+                        "value": "creation",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2016-05-19",
+                    "type": {
+                        "value": "modification",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "access": {
+                "landingPage": "http://www.epimodels.org/drupal/?q=node/80"
+            },
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "SYNTHIA format",
+                        "identifierSource": "RODS Laboratory, University of Pittsburgh"
+                    },
+                    "name": "SYNTHIA format",
+                    "type": {
+                        "value": "SYNTHIA format",
+                        "valueIRI": "https://github.com/midas-isg/data-format-repository/wiki/Synthia-File-Formats"
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "MIDAS Digital Commons",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": "http"
+                },
+                "licenses": [
+                    {
+                        "name": ""
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": ""
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ]
+}
