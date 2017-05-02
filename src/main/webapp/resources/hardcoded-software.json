@@ -321,13 +321,14 @@
   "FluSight":{
     "subtype":"Data visualizers",
     "humanReadableSynopsis":"<p>Flusight is a static influenza forecasts visualizer. It takes weekly prediction files in the format used by <a href=\"https://predict.phiresearchlab.org/\" class=\"underline\">CDC FluSight Challenge</a>, extracts entities needed for visualization and generates a minified webpage ready for static hosting. The visualizer uses an intermediate file, summarizing the predictions, which can be generated either by the set of scripts in the repository (which uses CDC's prediction format) or by the user.</p> <p>A live version associated with this github repository at <a href=\"http://reichlab.io/flusight/\" class=\"underline\">http://reichlab.io/flusight/</a> displays predictions for CDC FluSight Challenge by <a href=\"http://reichlab.io/\" class=\"underline\">Reich Lab</a> at UMass Amherst. To know more about it, go to the <a href=\"https://github.com/reichlab/flusight/wiki/About\" class=\"underline\">about</a> page in the <a href=\"https://github.com/reichlab/flusight/wiki\" class=\"underline\">wiki</a>.</p>",
-    "developer":["Nick"],
+    "developer":["Nick Reich", "Abhinav Tushar", "elray1"],
     "version":["1.3.2"],
     "webApplication":["https://reichlab.github.io/flusight/"],
     "source":"https://github.com/reichlab/flusight/releases/tag/v1.3.2",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>",
     "grant":"R35GM119582",
     "dataInputFormats":["<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"],
+    "dataOutputFormats":["N/A"],
     "license":"<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>"
   },
   "Columbia Prediction of Infectious Diseases":{
