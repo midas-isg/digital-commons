@@ -326,9 +326,8 @@
     "webApplication":["https://reichlab.github.io/flusight/"],
     "source":"https://github.com/reichlab/flusight/releases/tag/v1.3.2",
     "doi":"<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>",
-    "grant":"R35GM110707",
+    "grant":"R35GM119582",
     "dataInputFormats":["<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"],
-    "documentation":"<a href=\"http://research.rods.pitt.edu/EpiCaseMapUserGuide.pdf\" class=\"underline\">http://research.rods.pitt.edu/EpiCaseMapUserGuide.pdf</a>",
     "license":"<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>"
   },
   "Columbia Prediction of Infectious Diseases":{

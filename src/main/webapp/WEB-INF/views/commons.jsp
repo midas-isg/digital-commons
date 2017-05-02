@@ -188,6 +188,9 @@
             <div id="search" class="tab-pane fade">
                 <myTags:search></myTags:search>
             </div>
+            <div id="add-entry" class="tab-pane fade">
+                <myTags:addEntry></myTags:addEntry>
+            </div>
             <div id="about" class="tab-pane fade">
                 <myTags:about></myTags:about>
             </div>

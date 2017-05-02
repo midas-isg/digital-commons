@@ -3,12 +3,88 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<div class="col-md-12 font-size-16">
+<div class="col-md-12">
     <h3 class="title-font" id="subtitle">
         Search
     </h3>
 
-    <div class="col-sm-12 col-md-12 col-lg-12" style="border: 1px solid #ccc; border-radius:4px;">
+    <style>
+        #constraints-container [class*="col-"] {
+            background-clip: padding-box;
+            border: 10px solid transparent;
+        }
+
+        #constraints-container select {
+            width:100%;
+        }
+
+        #constraints-container input {
+            width:100%;
+        }
+    </style>
+
+    <div class="col-sm-12 col-md-12 col-lg-12" style="border: 1px solid #ccc; border-radius:4px;" id="constraints-container">
+        <div style="margin-bottom:10px">
+            <h4 class="sub-title-font" style="font-size:18px">Query Builder</h4>
+            <button class="btn btn-default" onclick="addConstraint();">Add constraint</button>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12 no-padding" id="new-constraint-1" style="display:none">
+
+            <div style="margin-top:0px; border: 1px solid #ccc; border-radius:4px; padding:10px;">
+                <h4 style="margin-top:0px; font-size:16px;">Constraint #1</h4>
+                <div>
+                    <div class="form-inline" style="margin-bottom:4px">
+                        <label class="control-label" for="category-select" style="margin-right:5px">Find </label>
+                        <select class="form-control"
+                                id="category-select"
+                                aria-describedby="category-select-feedback">
+                            <option value=""></option>
+                            <option value="software">Software</option>
+                        </select>
+                    </div>
+
+                    <div class="form-inline" style="margin-bottom:4px">
+                        <label class="control-label" for="field-select" style="margin-right:5px">Field </label>
+                        <select class="form-control"
+                                id="field-select"
+                                aria-describedby="field-select-feedback">
+                            <option value=""></option>
+                            <option value="pathogenCoverage">Software - Disease Transmission Models - Pathogen coverage</option>
+                            <option value="locationCoverage">Software - Disease Transmission Models - Location coverage</option>
+                            <option value="hostSpeciesIncluded">Software - Disease Transmission Models - Host species included</option>
+                            <option value="controlMeasures">Software - Disease Transmission Models - Control measures</option>
+                        </select>
+                    </div>
+
+                    <div class="form-inline" style="margin-bottom:4px">
+                        <label class="control-label" for="field-value-input" style="margin-right:5px">Field value equals</label>
+                        <input class="form-control"
+                                id="field-value-input"
+                                aria-describedby="field-value-input-feedback"/>
+                    </div>
+
+                    <div class="form-inline" style="margin-bottom:4px">
+                        <label class="control-label" for="field-value-category-input" style="margin-right:5px">Field value is of category</label>
+                        <input class="form-control"
+                               id="field-value-category-input"
+                               aria-describedby="field-value-input-feedback"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-12 col-lg-12" id="constraint-operator-1-2" style="display:none">
+            <select class="form-control"
+                    id="operator-select"
+                    aria-describedby="operator-select-feedback">
+                <option>AND</option>
+                <option>OR</option>
+            </select>
+        </div>
+    </div>
+
+    <%--<div class="col-sm-12 col-md-12 col-lg-12" style="border: 1px solid #ccc; border-radius:4px;">
         <div class="col-sm-6 col-md-6 col-lg-6 no-padding">
             <h4 class="sub-title-font">Query Builder</h4>
             <button id="add-constraint-btn" class="btn btn-default" style="margin-bottom:10px" onclick="$('#query-builder-constraint-container').show(); $(this).hide();">Add constraint to query</button>
@@ -118,5 +194,5 @@
                 <button class="btn btn-default" style="margin-top:5px;">Run Query</button>
             </div>
         </div>
-    </div>
+    </div>--%>
 </div>

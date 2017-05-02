@@ -171,8 +171,6 @@ function populateSynthiaPopulationsDictionary(count) {
 
         if(count < files.length) {
             populateSynthiaPopulationsDictionary(count);
-        } else {
-            console.log(synthiaPopulationsDictionary);
         }
     });
 }
@@ -1721,5 +1719,22 @@ function openUrl(element) {
         $(location).attr('href', ctx + "/midas-sso/view?url=" + encodeURIComponent(url));
     } else {
         $(location).attr('href', url);
+    }
+}
+
+function addConstraint() {
+    if(!$('#new-constraint-1').is(':visible')) {
+        $('#new-constraint-1').show();
+    } else {
+        var newConstraint = $('div[id^="new-constraint-"]:last');
+        var num = parseInt( newConstraint.prop("id").match(/\d+/g), 10 ) + 1;
+
+        if(!$('#constraint-operator-1-2').is(':visible')) {
+            $('#constraint-operator-1-2').show();
+        } else {
+            $('#constraints-container').append($('#constraint-operator-1-2').clone().prop('id', 'constraint-operator-' + (num-1) + '-' + num));
+        }
+
+        $('#constraints-container').append(newConstraint.clone().prop('id', 'new-constraint-' + num));
     }
 }
