@@ -32,7 +32,7 @@
         <div class="col-sm-12 col-md-12 col-lg-12 no-padding" id="new-constraint-1" style="display:none">
 
             <div style="margin-top:0px; border: 1px solid #ccc; border-radius:4px; padding:10px;">
-                <h4 style="margin-top:0px; font-size:16px;">Constraint #1</h4>
+                <h4 style="margin-top:0px; font-size:16px;" class="constraint-header">Constraint #1</h4>
                 <div>
                     <div class="form-inline" style="margin-bottom:4px">
                         <label class="control-label" for="category-select" style="margin-right:5px">Find </label>
@@ -69,6 +69,10 @@
                         <input class="form-control"
                                id="field-value-category-input"
                                aria-describedby="field-value-input-feedback"/>
+                    </div>
+
+                    <div style="margin-top:10px; height:34px">
+                        <button class="btn btn-danger delete-constraint pull-right" style="right:0" onclick="deleteConstraint(this)">Delete</button>
                     </div>
                 </div>
             </div>

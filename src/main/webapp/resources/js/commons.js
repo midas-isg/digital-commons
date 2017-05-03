@@ -143,6 +143,14 @@ function addDatsToDictionary(dictionary, data, code) {
         dictionary[code]['authorizations']= authorizations;
     }
 
+    var distributions = data["distributions"];
+    if(distributions != null && distributions.length > 0) {
+        var storedIn = distributions[0]["storedIn"]["name"];
+        if(storedIn == "MIDAS Digital Commons") {
+            dictionary[code]["availableOnOlympus"] = true;
+        }
+    }
+
     dictionary[code]['creator']= creators;
 }
 
@@ -604,10 +612,10 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             text: "Synthia™ synthetic populations",
             nodes: [
                 {
-                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span>"
+                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
                 },
                 {
-                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span>"
+                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
                 }
             ]
         },
@@ -695,19 +703,21 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
                         nodeLevel2.push({
                             name: value.name,
-                            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"epidemics\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span>"
+                            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"epidemics\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
                         });
 
                         $.getJSON( ctx + '/resources/ebola-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
                             addDatsToDictionary(epidemicsDictionary, data, dictionaryKey);
                         })
-                        .error(function() {
-                            // TODO - Error handling
+                        .error(function(data) {
+                            console.log('error');
                         });
+
+                        console.log(epidemicsDictionary);
 
                     } else {
                         nodeLevel2.push({
-                            text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span> ",
+                            text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> ",
                             url: url + value.urn
                         });
                     }
@@ -717,7 +727,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 }
                 if(index.includes("H1n1 infectious disease scenarios"))
                     index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> <b><i class='sso-color'><sup>SSO</sup></i></b></span>", nodes: nodeLevel2});
+                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span>", nodes: nodeLevel2});
             });
 
             collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span>", nodes: nodeLevel1});
@@ -854,8 +864,8 @@ function openModal(type, name) {
         $('#software-name').hide();
     }
 
-    if('developer' in attrs) {
-        var attribute = attrs['developer'];
+    if('developers' in attrs) {
+        var attribute = attrs['developers'];
         var length = attribute.length;
 
         attribute = attribute.join(', ');
@@ -990,7 +1000,7 @@ function openModal(type, name) {
 
     toggleModalItem('visualizationType', attrs, 'visualization-type', false, false);
 
-    toggleModalItem('grant', attrs, 'grant', false, false);
+    toggleModalItem('grants', attrs, 'grant', false, false);
 
     toggleModalItem('platform', attrs, 'platform', false, false);
 
@@ -1736,5 +1746,45 @@ function addConstraint() {
         }
 
         $('#constraints-container').append(newConstraint.clone().prop('id', 'new-constraint-' + num));
+        $('#new-constraint-' + num + ' .constraint-header').text('Constraint #' + num);
+    }
+}
+
+function deleteConstraint(element) {
+    var constraintContainer = $(element).parent().parent().parent().parent()[0];
+    var containerId = constraintContainer.id;
+    var splitContainer = containerId.split('-');
+    var num = parseInt(splitContainer[splitContainer.length - 1]);
+
+    var numContainers = $('div[id^="new-constraint-"]').length;
+    if(num == 1 && numContainers == 1) {
+        $('#new-constraint-' + num).hide();
+        $('#constraint-operator-1-2').hide();
+    } else {
+        var constraintOperator = '#constraint-operator-' + (num-1) + '-' + num;
+
+        if((num % 2) != 0) {
+            constraintOperator = '#constraint-operator-' + num + '-' + (num+1);
+        }
+
+        $(constraintOperator).remove();
+        $('#new-constraint-' + num).remove();
+    }
+
+    reindexConstraints();
+}
+
+function reindexConstraints() {
+    var constraints = $('div[id^="new-constraint-"]');
+    var operators = $('div[id^="constraint-operator-"]');
+    console.log(operators);
+
+    for(var i = 0; i < constraints.length; i++) {
+        $(constraints[i]).prop("id", "new-constraint-" + (i+1));
+        $('#new-constraint-' + (i+1) + ' .constraint-header').text('Constraint #' + (i+1));
+    }
+
+    for(var i = 0; i < operators.length; i++) {
+        $(operators[i]).prop("id", "constraint-operator-" + (i+1) + '-' + (i+2));
     }
 }

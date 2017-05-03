@@ -576,14 +576,14 @@ body {
     border-radius:5px;
     background-color: white;
     z-index:100;
-    max-width:256px;
+    max-width:267px;
 
 }
 
 .legend-small {
     /*position: absolute;
     margin-bottom: 110px;*/
-    width:256px;
+    width:267px;
     color: #0c2b65;
     border: 2px solid #0c2b65;
     padding-right: 5px;

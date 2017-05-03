@@ -13,7 +13,7 @@
 <div class="sub-title-font font-size-16 modal-software-item" id="software-${id}-container">
     <h4 class="inline bold" id="software-${id}-tag">${title}: </h4><br>
     <c:if test="${hasHref == 'true'}">
-        <a href="" onclick=openUrl(this) id="software-${id}" class="underline"></a>
+        <a href="" id="software-${id}" class="underline"></a>
     </c:if>
 
     <c:if test="${hasHref != 'true'}">

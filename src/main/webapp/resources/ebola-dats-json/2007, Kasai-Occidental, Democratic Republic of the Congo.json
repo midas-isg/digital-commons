@@ -2,7 +2,7 @@
     "title": "2007, Kasai-Occidental, Democratic Republic of the Congo data and knowledge",
     "description": "Information about the 2007, Kasai-Occidental, Democratic Republic of the Congo epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
     "identifier": {
-        "identifier": "https://research.rods.pitt.edu/apolloLibraryViewer-401/13.xml",
+        "identifier": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/13.xml?view=true",
         "identifierSource": "The Informatics Services Group of the MIDAS research network creates and maintains this identifier."
     },
     "creators": [
@@ -104,7 +104,7 @@
             ],
             "access": {
                 "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/13",
-                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/13.xml",
+                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/13.xml?view=true",
                 "authorizations": [
                     {
                         "value": "public",

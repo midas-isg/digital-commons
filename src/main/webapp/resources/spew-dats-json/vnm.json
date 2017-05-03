@@ -1,5 +1,5 @@
 {
-    "title": "Vietnam Synthetic Population",
+    "title": "Vietnam Synthetic Ecosystem",
     "description": "Vietnam synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
         "identifier": "",

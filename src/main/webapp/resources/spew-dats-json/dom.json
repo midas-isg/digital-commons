@@ -1,5 +1,5 @@
 {
-    "title": "Dominican Republic Synthetic Population",
+    "title": "Dominican Republic Synthetic Ecosystem",
     "description": "Dominican Republic synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
         "identifier": "",
