@@ -8,6 +8,10 @@ import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.stereotype.Controller;
@@ -105,24 +109,44 @@ public class HomeController {
     private void queryCollectionsJson(String viewerUrl, String viewerToken) throws Exception {
         String libraryUrl = viewerUrl.replace("\"", "") + "collectionsJson/";
         String token = viewerToken.replace("\"", "");
-        URL url = new URL(libraryUrl);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-        con.setRequestMethod("GET");
-        con.setRequestProperty("Authorization", token);
-        con.setRequestProperty("Accept-Charset", "UTF-8");
-        con.setRequestProperty("Accept", "application/json");
+        HttpClient client = new DefaultHttpClient();
+        HttpGet request = new HttpGet(libraryUrl);
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
+        request.addHeader("Authorization", token);
+        request.addHeader("Accept-Charset", "UTF-8");
+        request.addHeader("Accept", "application/json");
 
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
+        HttpResponse response = client.execute(request);
+
+        BufferedReader rd = new BufferedReader(
+                new InputStreamReader(response.getEntity().getContent()));
+
+        StringBuffer result = new StringBuffer();
+        String line = "";
+        while ((line = rd.readLine()) != null) {
+            result.append(line);
         }
-        in.close();
 
-        libraryCollectionsJson = response.toString();
+//
+//        URL url = new URL(libraryUrl);
+//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//
+//        con.setRequestMethod("GET");
+//        con.setRequestProperty("Authorization", token);
+//        con.setRequestProperty("Accept-Charset", "UTF-8");
+//        con.setRequestProperty("Accept", "application/json");
+//
+//        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//        String inputLine;
+//        StringBuffer response = new StringBuffer();
+//
+//        while ((inputLine = in.readLine()) != null) {
+//            response.append(inputLine);
+//        }
+//        in.close();
+
+        libraryCollectionsJson = result.toString();
         writeCollectionsJson();
     }
 
