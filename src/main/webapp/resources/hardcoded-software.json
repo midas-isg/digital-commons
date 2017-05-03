@@ -1,8 +1,8 @@
 {
    "settings":{
      "name":"software",
-     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Disease transmission tree estimators", "Phylogenetic tree constructors", "Data visualizers", {"Modeling platforms": ["NetLogo (2 versions)"]}, "Data-format converters"],
-     "openDirectories":["Disease transmission models", "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors", "Data-format converters"]
+     "directories":[{"Disease transmission models": ["FRED (3 versions)", "FluTE (4 versions)", "Open Malaria (3 versions)"]}, "Disease forecasters", {"Pathogen evolution models": ["NextStrain (2 versions)"]}, "Population dynamics models", "Synthetic ecosystem constructors", "Disease transmission tree estimators", "Phylogenetic tree constructors", "Data visualizers", {"Modeling platforms": ["NetLogo (2 versions)"]}, "Data-format converters"],
+     "openDirectories":["Disease transmission models", "Disease forecasters", "Pathogen evolution models", "Population dynamics models", "Synthetic ecosystem constructors", "Data visualizers", "Disease transmission tree estimators", "Modeling platforms", "FluTE", "FRED", "Open Malaria", "NetLogo", "Phylogenetic tree constructors", "Data-format converters", "NextStrain"]
    },
    "FluTE":{
       "subtype":"Disease transmission models",
@@ -186,32 +186,47 @@
   },
   "HyPhy":{
     "subtype":"Pathogen evolution models",
-    "developers":["iGEM/UCSD evolutionary biology and bioinformatics group"],
+    "humanReadableSynopsis":"HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning. It features a complete graphical user interface (GUI) and a rich scripting language for limitless customization of analyses. Additionally, HyPhy features support for parallel computing environments (via message passing interface) and it can be compiled as a shared library and called from other programming environments such as Python or R. HyPhy has over 8000 registered users and has been cited in over 900 peer-reviewed publications (Google Scholar). Continued development of HyPhy is currently supported in part by an NIGMS R01 award 1R01GM093939.",
+    "developers":["Sergei Pond", "Steven Weaver"],
     "website":"http://www.hyphy.org/w/index.php/Main_Page",
-    "source":"https://github.com/veg/hyphy/releases/tag/2.2.7",
+    "source":"https://github.com/veg/hyphy",
     "version":["2.2.6"],
     "availableOnOlympus": true,
-    "redirect":true
+    "grants":["NIH/NIGMS R01GM093939"]
   },
   "SEEDY":{
     "subtype":"Pathogen evolution models",
-    "developers":["Colin Worby, Harvard T.H. Chan School of Public Health"],
-    "source":"https://cran.r-project.org/web/packages/seedy/index.html",
+    "humanReadableSynopsis":"SEEDY is an R package that contains a suite of functions for the simulation, visualisation and analysis of bacterial evolution within- and between-hosts",
+    "developers":["Colin Worby"],
+    "website":"https://CRAN.R-project.org/package=seedy",
+    "documentation":"<a href=\"https://cran.r-project.org/web/packages/seedy/seedy.pdf\" class=\"underline\">https://cran.r-project.org/web/packages/seedy/seedy.pdf</a>",
     "version":["1.3"],
-    "redirect":true
+    "executables":["Windows binaries: r-devel: seedy_1.3.zip, r-release: seedy_1.3.zip, r-oldrel: seedy_1.3.zip<br>", "OS X El Capitan binaries: r-release: seedy_1.3.tgz<br>", "OS X Mavericks binaries: r-oldrel: seedy_1.3.tgz"]
   },
-  "nextflu/H3N2":{
+  "nextflu":{
     "subtype":"Pathogen evolution models",
-    "developers":["Trevor Bedford", "Richard Neher"],
-    "source":"https://github.com/blab/nextflu",
-    "website":"http://nextflu.org/h3n2/3y/",
-    "redirect":true
+    "product":"NextStrain (2 versions)",
+    "humanReadableSynopsis":"nextflu v1.0 is the release of the Nextstrain project described in a 2015 Bioinformatics article. Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. The goal is to aid epidemiological understanding and improve outbreak response.",
+    "dataInputFormats":["FASTA"],
+    "version":["1.0"],
+    "website":"http://nextflu.org/",
+    "source":"https://github.com/blab/nextflu/releases",
+    "developers":["Richard Neher", "Trevor Bedford", "Colin Megill", "James Hadfield", "Charlton Callender", "Sidney Bell", "Barney Potter", "Sarah Murata"],
+    "publicationsAboutRelease":["Neher, R. A., & Bedford, T. (2015). nextflu: real-time tracking of seasonal influenza virus evolution in humans. Bioinformatics, 31(21), 3546–3548. <a href=\"http://doi.org/10.1093/bioinformatics/btv381\" class=\"underline\">http://doi.org/10.1093/bioinformatics/btv381</a>"],
+    "license":"<a href=\"https://www.gnu.org/licenses/agpl-3.0.en.html\" class=\"underline\">GNU Affero General Public License</a>",
+    "grants":["ERC Stg-260686", "NIH U54 GM111274"],
+    "pathogens":["H1N1 Influenza", "H3N2 Influenza"]
   },
-  "nextstrain/Zika":{
+  "nextstrain.org":{
     "subtype":"Pathogen evolution models",
-    "developers":["Trevor Bedford", "Richard Neher"],
+    "product":"NextStrain (2 versions)",
+    "humanReadableSynopsis":"Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. Our goal is to aid epidemiological understanding and improve outbreak response.",
+    "developers":["Richard Neher", "James Hadfield", "Trevor Bedford", "Sidney Bell"],
+    "locations":["Worldwide"],
+    "pathogens":["Zika virus", "ebola virus", "avian influenza virus A/H7N9", "h1n1 influenza", "h3n2 influenza", "Dengue virus"],
+    "dataInputFormats":["FASTA"],
     "website":"http://nextstrain.org/zika/",
-    "redirect":true
+    "license":"<a href=\"https://www.gnu.org/licenses/agpl-3.0.en.html\" class=\"underline\">GNU Affero General Public License</a>"
   },
   "EpiCaseMap":{
     "subtype":"Data visualizers",
@@ -257,11 +272,15 @@
   },
   "outbreaker":{
     "subtype":"Disease transmission tree estimators",
+    "humanReadableSynopsis":"The R-package outbreaker implements a Bayesian approach for reconstructing outbreak data from pathogen genome sequences. It also implements a tool for outbreak simulation.",
+    "dataInputFormat":"DNAbin matrix format",
+    "license":"<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPL</a>",
     "version":["1.1-7"],
-    "developers":["Thibaut Jombart, Imperial College"],
-    "source":"https://github.com/thibautjombart/outbreaker/releases/tag/1.1-7",
+    "developers":["Thibaut Jombart"],
+    "source":"https://github.com/thibautjombart/outbreaker",
+    "documentation":"<a href=\"https://cran.r-project.org/web/packages/outbreaker/outbreaker.pdf\" class=\"underline\">https://cran.r-project.org/web/packages/outbreaker/outbreaker.pdf</a><br><a href=\"https://sites.google.com/site/therepiproject/outbreaker-intro.pdf\" class=\"underline\">https://sites.google.com/site/therepiproject/outbreaker-intro.pdf</a>",
     "website":"https://sites.google.com/site/therepiproject/r-pac/outbreaker",
-    "redirect":true
+    "publicationsAboutRelease":"Jombart T, Cori A, Didelot X, Cauchemez S, Fraser C & Ferguson N (2014) Bayesian Reconstruction of Disease Outbreaks by Combining Epidemiologic and Genomic Data. PLoS Comput Biol 10(1): e1003457. (<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1003457\" class=\"underline\">doi:10.1371/journal.pcbi.1003457</a>)"
   },
   "FluOutlook":{
     "subtype":"Disease forecasters",

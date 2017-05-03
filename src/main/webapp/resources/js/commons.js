@@ -647,13 +647,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                         },
 
                         {
-                            text: "<span onmouseover='toggleTitle(this)'>Tycho level 1</span>",
-                            url:"https://www.tycho.pitt.edu/data/level1.php"
-                        },
-                        {
-                            text: "<span onmouseover='toggleTitle(this)'>Tycho level 2</span>",
-                            url:"https://www.tycho.pitt.edu/data/level2.php"
-                        },
+                            text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
+                            url:"https://www.tycho.pitt.edu/"
+                        }
                     ]
                 },
             ]
@@ -793,7 +789,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();
         if(key == 'dataInputFormats' || key == 'dataOutputFormats') {
-            $('#software-' + name).html('Proprietary');
+            $('#software-' + name).html('N/A');
         } else {
             $('#software-' + name).html('N/A');
         }
@@ -987,6 +983,10 @@ function openModal(type, name) {
     toggleModalItem('diseases', attrs, 'diseases', false, false);
 
     toggleModalItem('region', attrs, 'region', false, true);
+
+    toggleModalItem('locations', attrs, 'locations', false, true);
+
+    toggleModalItem('pathogens', attrs, 'pathogens', false, true);
 
     toggleModalItem('outcomes', attrs, 'outcomes', false, true);
 

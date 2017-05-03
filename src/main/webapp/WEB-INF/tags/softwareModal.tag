@@ -34,6 +34,10 @@
 
                         <myTags:softwareModalItem id="authorizations" title="Authorizations" hasHref="false"></myTags:softwareModalItem>
 
+                        <myTags:softwareModalItem id="pathogens" title="Pathogens"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="locations" title="Locations"></myTags:softwareModalItem>
+
                         <myTags:softwareModalItem id="pathogen-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="location-coverage" title="Location coverage"></myTags:softwareModalItem>
