@@ -18,7 +18,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="modal-html">
-                        <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
+                        <%--<myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>--%>
 
                         <myTags:softwareModalItem id="human-readable-synopsis" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 

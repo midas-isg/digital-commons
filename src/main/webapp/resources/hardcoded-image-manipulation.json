@@ -1,15 +1,11 @@
-{
-  "settings":{
-    "name": "tools",
-    "directories":["imagemagick"],
-    "openDirectories":[]
-  },
-  "imagemagick/6.9.5-7":{
+[{
     "subtype": "imagemagick",
-    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
+    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images",
+    "title": "imagemagick/6.9.5-7"
   },
-  "imagemagick/7.0.2-1":{
+  {
     "subtype": "imagemagick",
-    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images"
+    "description": "ImageMagick® is a software suite to create, edit, compose, or convert bitmap images",
+    "title": "imagemagick/7.0.2-1"
   }
-}
+]

@@ -192,12 +192,51 @@ if(!String.prototype.includes) {
     };
 }
 
-function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo) {
+function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, treeSettings, treeviewTag, expandedInfo, name) {
     $.getJSON( contextPath + location + '?v=' + Date.now(), function( data ) {
-        treeSettings = data["settings"];
+        //treeSettings = data["settings"];
+        //var name = treeSettings["name"];
+        //var directories = treeSettings["directories"];
 
-        var name = treeSettings["name"];
-        var directories = treeSettings["directories"];
+        var directories = new Set();
+        var subdirectories = new Set();
+        for(var i = 0; i < data.length; i ++) {
+            directories.add(data[i]["subtype"]);
+            if(data[i].hasOwnProperty("product")) {
+                subdirectories.add(data[i]["subtype"] + "-->" + data[i]["product"]);
+            }
+        }
+        directories = Array.from(directories);
+        subdirectories = Array.from(subdirectories);
+
+        if(directories[0] == null) {
+            directories = [];
+        }
+
+        if(subdirectories[0] == null) {
+            subdirectories = [];
+        }
+
+        var openByDefault = JSON.parse(JSON.stringify(directories));
+        for(var i = 0; i < subdirectories.length; i++) {
+            var directoryAndSubdirectory = subdirectories[i].split('-->');
+            for(var x = 0; x < directories.length; x++) {
+                var directoryName = directories[x];
+                if(typeof directories[x] !== 'string') {
+                    directoryName = Object.keys(directories[x])[0];
+                }
+
+                if(directoryAndSubdirectory[0] == directoryName) {
+                    if(typeof directories[x] === 'string') {
+                        directories[x] = {};
+                        directories[x][directoryAndSubdirectory[0]] = [directoryAndSubdirectory[1]];
+                    } else {
+                        directories[x][directoryName].push(directoryAndSubdirectory[1]);
+                    }
+                }
+            }
+            openByDefault.push(directoryAndSubdirectory[1].replace(/\s*\(.*?\)\s*/g, ''));
+        }
 
         if(location.includes('hardcoded-software.json')) {
             for(var i in directories) {
@@ -216,7 +255,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         addTreeDirectories(directories, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
-        buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary);
+        buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
 
         $('[data-toggle="tooltip"]').tooltip({
             trigger : 'hover',
@@ -251,7 +290,6 @@ function addTreeDirectories(directories, treeArray) {
                 "nodes": nodes,
                 "name": topDirectory
             });
-
         }
     }
 }
@@ -280,7 +318,7 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
      }*/
 }
 
-function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary) {
+function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault) {
     for(var i = 0; i < treeArray.length; i++) {
         if('nodes' in treeArray[i]) {
             treeArray[i].nodes.sort(compareNodes);
@@ -370,8 +408,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
     var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
     var toRemove = [];
 
-    if(expandedSoftware == null && "settings" in treeDictionary) {
-        var openByDefault = treeDictionary["settings"]["openDirectories"];
+    if(expandedSoftware == null) {
         var openByDefaultIds = [];
         for(var i = 0; i < openByDefault.length; i++) {
             var matchingNode = $(treeviewTag).treeview('search', [ openByDefault[i], {
@@ -447,12 +484,14 @@ function addNodesToSubdirectories(treeArrayItem, subdirectories, subdirectoryCon
 function getNodeData(name, key, treeDictionary) {
     var title = key;
     if('version' in treeDictionary[key]) {
-        title = getSoftwareTitle(key, treeDictionary[key]['version'].join(', '));
+        title = getSoftwareTitle(treeDictionary[key]['title'], treeDictionary[key]['version'].join(', '));
+    } else {
+        title = treeDictionary[key]['title'];
     }
 
     var nodeData = {
         'text': '<span onmouseover="toggleTitle(this)" onclick="openModal(\'' + name + '\',' + '\'' + key + '\')">' + title + '</span>',
-        'name': key
+        'name': title
     };
 
     if('availableOnOlympus' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
@@ -709,8 +748,6 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                             console.log('error');
                         });
 
-                        console.log(epidemicsDictionary);
-
                     } else {
                         nodeLevel2.push({
                             text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> ",
@@ -803,6 +840,7 @@ function openModal(type, name) {
 
     if(type == 'software') {
         attrs = softwareDictionary[name];
+        name = attrs['title'];
 
         ga('send', {
             hitType: 'event',
@@ -811,6 +849,7 @@ function openModal(type, name) {
         });
     } else if(type == 'webServices') {
         attrs = webservicesDictionary[name];
+        name = attrs['title'];
 
         ga('send', {
             hitType: 'event',
@@ -930,7 +969,7 @@ function openModal(type, name) {
 
     toggleModalItem('type', attrs, 'type', false, false);
 
-    toggleModalItem('populationSpecies', attrs, 'population-species', false, false);
+    toggleModalItem('populationSpeciesIncluded', attrs, 'population-species', false, false);
 
     toggleModalItem('source', attrs, 'source-code', true, false);
 
@@ -944,7 +983,7 @@ function openModal(type, name) {
 
     toggleModalItem('controlMeasures', attrs, 'control-measures', false, false);
 
-    toggleModalItem('title', attrs, 'title', false, false);
+    //toggleModalItem('title', attrs, 'title', false, false);
 
     toggleModalItem('humanReadableSynopsis', attrs, 'human-readable-synopsis', false, true);
 
@@ -1777,7 +1816,6 @@ function deleteConstraint(element) {
 function reindexConstraints() {
     var constraints = $('div[id^="new-constraint-"]');
     var operators = $('div[id^="constraint-operator-"]');
-    console.log(operators);
 
     for(var i = 0; i < constraints.length; i++) {
         $(constraints[i]).prop("id", "new-constraint-" + (i+1));

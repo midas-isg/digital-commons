@@ -1,55 +1,58 @@
-{
-  "settings": {
-    "name":"webServices",
-    "directories":[],
-    "openDirectories":[]
-  },
-  "Apollo Web Service":{
-    "humanReadableSynopsis":"<p>The Apollo Web Service is a web service that provides a single point of access for end user applications to multiple web services that support infectious disease modeling.  The Apollo Web Service connects to the Apollo Run Manager service, the Apollo File Store service, and the Apollo Library service.</p> <p>The Apollo Run Manager service is used for running the <a target=\"_blank\" href=\"https://github.com/PSC-PublicHealth/pFRED\" class=\"underline\">pFRED</a>, <a href=\"https://github.com/PSC-PublicHealth/FluTE\" target=\"_blank\" class=\"underline\">Apollo-FluTE</a>, <a href=\"https://github.com/midas-isg/PITT-SEIR-model\" target=\"_blank\" class=\"underline\">Pitt-SEIR model</a>, <a href=\"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" target=\"_blank\" class=\"underline\">Ebola transmission model</a>, and the Pitt-Anthrax disease transmission models.  The Apollo File Store service is used for downloading output files written by the disease transmission models.  The Apollo Library service is used for retrieving information about Ebola, Zika, and chickungunya epidemics, rabies case listings, and H1N1 infectious disease scenarios in a machine-readable format (XML or JSON).</p>",
-    "version": ["4.0.1"],
+[{
+    "humanReadableSynopsis": "<p>The Apollo Web Service is a web service that provides a single point of access for end user applications to multiple web services that support infectious disease modeling.  The Apollo Web Service connects to the Apollo Run Manager service, the Apollo File Store service, and the Apollo Library service.</p> <p>The Apollo Run Manager service is used for running the <a target=\"_blank\" href=\"https://github.com/PSC-PublicHealth/pFRED\" class=\"underline\">pFRED</a>, <a href=\"https://github.com/PSC-PublicHealth/FluTE\" target=\"_blank\" class=\"underline\">Apollo-FluTE</a>, <a href=\"https://github.com/midas-isg/PITT-SEIR-model\" target=\"_blank\" class=\"underline\">Pitt-SEIR model</a>, <a href=\"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" target=\"_blank\" class=\"underline\">Ebola transmission model</a>, and the Pitt-Anthrax disease transmission models.  The Apollo File Store service is used for downloading output files written by the disease transmission models.  The Apollo Library service is used for retrieving information about Ebola, Zika, and chickungunya epidemics, rabies case listings, and H1N1 infectious disease scenarios in a machine-readable format (XML or JSON).</p>",
+    "version": [
+      "4.0.1"
+    ],
     "projectSource": "https://github.com/ApolloDev/apollo",
-    "restSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-service-rest-frontend",
-    "soapSource":"https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-soap-service",
+    "restSource": "https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-service-rest-frontend",
+    "soapSource": "https://github.com/ApolloDev/apollo/tree/4.0-upgrade/broker-soap-service",
     "restDocumentation": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1/sdoc.jsp",
     "soapEndpoint": "https://research.rods.pitt.edu/broker-service-war-4.0.1/services/apolloservice?wsdl",
-    "endpointPrefix": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1"
+    "endpointPrefix": "https://research.rods.pitt.edu/broker-service-rest-frontend-4.0.1",
+    "title": "Apollo Web Service"
   },
-  "Apollo Location Service": {
-    "version": ["1.1.1"],
-    "projectSource":"https://github.com/midas-isg/ls",
+  {
+    "version": [
+      "1.1.1"
+    ],
+    "projectSource": "https://github.com/midas-isg/ls",
     "humanReadableSynopsis": "</p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>",
     "restDocumentation": "http://betaweb.rods.pitt.edu/ls/api-docs",
-    "endpointPrefix": "http://betaweb.rods.pitt.edu/ls"
+    "endpointPrefix": "http://betaweb.rods.pitt.edu/ls",
+    "title": "Apollo Location Service"
   },
-  "EpiCaseMap": {
-    "version": ["1.0.1.0"],
-    "projectSource": "https://github.com/midas-isg/epicasemap",
-    "humanReadableSynopsis": "EpiCaseMap contains a RESTful API that allows users to upload time-coordinate series data and create visualizations for comparing and contrasting data visually. It facilitates this by providing methods for creating, retrieving, updating, and deleting time-coordinate series, visualizations, and related metadata.",
-    "restDocumentation": "http://betaweb.rods.pitt.edu/epicasemap/api"
+  {
+    "humanReadableSynopsis": "<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
+    "documentation": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
+    "endpointPrefix": "http://www.tycho.pitt.edu/api/",
+    "version": [
+      "1.1.0"
+    ],
+    "title": "Project Tycho"
   },
-  "Project Tycho": {
-    "humanReadableSynopsis":"<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
-    "documentation":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
-    "endpointPrefix":"http://www.tycho.pitt.edu/api/",
-    "version": ["1.1.0"]
+  {
+    "humanReadableSynopsis": "<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>",
+    "restDocumentation": "https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
+    "soapDocumentation": "https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
+    "title": "RxNorm API"
   },
-  "RxNorm API": {
-    "humanReadableSynopsis":"<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>",
-    "restDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
-    "soapDocumentation":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html"
+  {
+    "humanReadableSynopsis": "<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>",
+    "restDocumentation": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+    "title": "Entrez Programming Utilities (E-utilities)"
   },
-  "Entrez Programming Utilities (E-utilities)": {
-    "humanReadableSynopsis":"<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>",
-    "restDocumentation":"https://www.ncbi.nlm.nih.gov/books/NBK25501/"
+  {
+    "humanReadableSynopsis": "<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>",
+    "restDocumentation": "https://medlineplus.gov/connect/service.html",
+    "title": "MedlinePlus Connect"
   },
-  "MedlinePlus Connect": {
-    "humanReadableSynopsis":"<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>",
-    "restDocumentation":"https://medlineplus.gov/connect/service.html"
-  },
-  "Epi-Data":{
-    "version":["commit 7367f92"],
-    "humanReadableSynopsis":"<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
-    "restDocumentation":"https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
-    "source":"https://github.com/cmu-delphi/delphi-epidata"
+  {
+    "version": [
+      "commit 7367f92"
+    ],
+    "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
+    "restDocumentation": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
+    "source": "https://github.com/cmu-delphi/delphi-epidata",
+    "title": "Epi-Data"
   }
-}
+]

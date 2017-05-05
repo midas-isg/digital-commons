@@ -1,43 +1,46 @@
-{
-    "settings": {
-      "name": "diseaseTransmissionModels",
-      "directories": ["clara", "fred", "openmalaria", "pitt_seir"],
-      "openDirectories":[]
-    },
-    "clara/clara-0.5":{
-      "subtype":"clara",
-      "description":"CLARA is an agent based model of vector born diseases."
-    },
-    "fred/pfred":{
-      "subtype":"fred",
-      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
-    },
-    "fred/pfred-0.0.2":{
-      "subtype":"fred",
-      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
-    },
-    "fred/pfred-0.0.3":{
-      "subtype":"fred",
-      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
-    },
-    "fred/pfred-0.0.4":{
-      "subtype":"fred",
-      "description":"pFRED is the parallel, high-performance PSC fork of the FRED simulator."
-    },
-    "openmalaria/32":{
-      "subtype":"openmalaria",
-      "description":"OpenMalaria simulator of malaria epidemiology and control."
-    },
-    "openmalaria/33.1":{
-      "subtype":"openmalaria",
-      "description":"OpenMalaria simulator of malaria epidemiology and control."
-    },
-    "openmalaria_resources":{
-      "subtype":"openmalaria",
-      "description":"OpenMalaria simulator of malaria epidemiology and control."
-    },
-    "pitt_seir/pitt_seir-3.0":{
-      "subtype":"pitt_seir",
-      "description":"SEIR is a simple compartment model for flu simulations"
-    }
-}
+[{
+    "subtype": "clara",
+    "description": "CLARA is an agent based model of vector born diseases.",
+    "title": "clara/clara-0.5"
+  },
+  {
+    "subtype": "fred",
+    "description": "pFRED is the parallel, high-performance PSC fork of the FRED simulator.",
+    "title": "fred/pfred"
+  },
+  {
+    "subtype": "fred",
+    "description": "pFRED is the parallel, high-performance PSC fork of the FRED simulator.",
+    "title": "fred/pfred-0.0.2"
+  },
+  {
+    "subtype": "fred",
+    "description": "pFRED is the parallel, high-performance PSC fork of the FRED simulator.",
+    "title": "fred/pfred-0.0.3"
+  },
+  {
+    "subtype": "fred",
+    "description": "pFRED is the parallel, high-performance PSC fork of the FRED simulator.",
+    "title": "fred/pfred-0.0.4"
+  },
+  {
+    "subtype": "openmalaria",
+    "description": "OpenMalaria simulator of malaria epidemiology and control.",
+    "title": "openmalaria/32"
+  },
+  {
+    "subtype": "openmalaria",
+    "description": "OpenMalaria simulator of malaria epidemiology and control.",
+    "title": "openmalaria/33.1"
+  },
+  {
+    "subtype": "openmalaria",
+    "description": "OpenMalaria simulator of malaria epidemiology and control.",
+    "title": "openmalaria_resources"
+  },
+  {
+    "subtype": "pitt_seir",
+    "description": "SEIR is a simple compartment model for flu simulations",
+    "title": "pitt_seir/pitt_seir-3.0"
+  }
+]

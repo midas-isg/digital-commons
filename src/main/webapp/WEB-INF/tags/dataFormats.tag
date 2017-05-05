@@ -4,5 +4,5 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
 <script>
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-data-formats.json", dataFormats, dataFormatsDictionary, dataFormatsSettings, '#data-formats-treeview', 'expandedDataFormats');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-data-formats.json", dataFormats, dataFormatsDictionary, dataFormatsSettings, '#data-formats-treeview', 'expandedDataFormats', 'dataFormats');
 </script>
