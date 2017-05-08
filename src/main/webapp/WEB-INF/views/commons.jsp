@@ -212,7 +212,7 @@
     </div>
 
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
     <myTags:dataAugmentedPublications

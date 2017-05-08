@@ -34,7 +34,7 @@
 },
   {
     "subtype": "Disease forecasters",
-    "humanReadableSynopsis": "Fluoutlook is a web platform for the exploration of influenza forecasts.  It provides a visual interface to numerical forecasts of the current influenza season in North America and Europe through maps and charts. Activity data and forecasts are updated weekly, based on the reports of the official influenza surveillance systems in each country.",
+    "humanReadableSynopsis": "FluOutlook is a web platform for the exploration of influenza forecasts.  It provides a visual interface to numerical forecasts of the current influenza season in North America and Europe through maps and charts. Activity data and forecasts are updated weekly, based on the reports of the official influenza surveillance systems in each country.",
     "type": "prospective 2013-2016",
     "forecastFrequency": "weekly",
     "diseases": [
@@ -622,9 +622,10 @@
     "dataInputFormats": [
       "FASTA"
     ],
-    "website": "http://nextstrain.org/zika/",
+    "source": "https://github.com/nextstrain",
+    "website": "http://nextstrain.org/",
     "license": "<a href=\"https://www.gnu.org/licenses/agpl-3.0.en.html\" class=\"underline\">GNU Affero General Public License</a>",
-    "title": "nextstrain.org"
+    "title": "nextstrain organization"
   },
   {
     "subtype": "Data visualizers",
@@ -1087,7 +1088,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "humanReadableSynopsis": "NAADSM is a framework for creating stochastic, spatial, state-transition simulation models of the spread and control of highly contagious diseases of animals. User-established parameters define model behavior in terms of disease progression; disease spread by animal-to-animal contact, contact with contaminated personnel or equipment, and airborne dissemination; and the implementation of control measures such as vaccination and depopulation. Resources available to implement disease control strategies are taken into consideration. The model records a wide variety of measures of the extent of simulated outbreaks and other characteristics. The graphical interface and output visualization features also make it a useful tool for training and preparedness exercises. NAADSM has been developed with broad international support, and has been used to evaluate outbreak scenarios and potential control strategies for economically important animal diseases in many countries around the world.",
+    "humanReadableSynopsis": "North American Animal Disease Spread (NAADSM) is a framework for creating stochastic, spatial, state-transition simulation models of the spread and control of highly contagious diseases of animals. User-established parameters define model behavior in terms of disease progression; disease spread by animal-to-animal contact, contact with contaminated personnel or equipment, and airborne dissemination; and the implementation of control measures such as vaccination and depopulation. Resources available to implement disease control strategies are taken into consideration. The model records a wide variety of measures of the extent of simulated outbreaks and other characteristics. The graphical interface and output visualization features also make it a useful tool for training and preparedness exercises. NAADSM has been developed with broad international support, and has been used to evaluate outbreak scenarios and potential control strategies for economically important animal diseases in many countries around the world.",
     "developers": [
       "<a class=\"underline\" href=\"mailto:caroline.dube@inspection.gc.ca\">Caroline Dube</a> - Epidemiologist and Scientific Advisor",
       "<a class=\"underline\" href=\"mailto:nharvey@uoguelph.ca\">Neil Harvey</a>",

@@ -1,6 +1,6 @@
 {
     "title": "2010 U.S. Synthetic Populations by State",
-    "description": "The data were generated from 2010 U.S. Decennial Census and 2007-2011 5-year American Community Survey data. The data are computer representations of the distribution of households by these four demographic variables, but do not represent actual households or locations of actual households.",
+    "description": "These synthetic populations were generated from 2010 U.S. Decennial Census and 2007-2011 5-year American Community Survey data. The data are computer representations of the distribution of households by these four demographic variables, but do not represent actual households or locations of actual households.",
     "identifier": {
         "identifier": "http://www.epimodels.org/drupal/?q=node/80",
         "identifierSource": "MIDAS Informatics Services Group"

@@ -76,7 +76,7 @@
 
                         <myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="data-output-formats" title="Formats for data outputs"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="data-output-formats" title="Formats for data output"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="visualization-type" title="Types of visualizations"></myTags:softwareModalItem>
 

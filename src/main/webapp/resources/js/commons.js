@@ -678,19 +678,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
                 },
                 {
-                    text: "<span onmouseover='toggleTitle(this)'>US notifiable diseases</span>",
-                    nodes: [
-                        {
-                            text: "<span onmouseover='toggleTitle(this)'>MMWR morbidity and mortality tables through data.cdc.gov</span>",
-                            url:"https://data.cdc.gov/browse?category=MMWR"
-                        },
-
-                        {
-                            text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
-                            url:"https://www.tycho.pitt.edu/"
-                        }
-                    ]
+                    text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
+                    url:"https://www.tycho.pitt.edu/"
                 },
+                {
+                    text: "<span onmouseover='toggleTitle(this)'>US MMWR morbidity and mortality tables through data.cdc.gov</span>",
+                    url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
+                }
             ]
         },
         {
