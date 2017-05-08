@@ -8,6 +8,8 @@ import edu.pitt.isg.dc.digital.software.SoftwareFolder;
 import edu.pitt.isg.dc.digital.software.SoftwareRule;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
+import org.apache.commons.io.FileUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -22,6 +24,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -162,6 +165,30 @@ public class HomeController {
         }catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+
+    @RequestMapping(value = "/getSoftwareJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
+    public
+    @ResponseBody
+    String getSoftwareJson() throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File jsonFile = new File(classLoader.getResource("json/hardcoded-software.json").getFile());
+        String json = FileUtils.readFileToString(jsonFile);
+
+        return json;
+    }
+
+    @RequestMapping(value = "/getSoftwareXml", method = RequestMethod.GET, headers = "Accept=application/xml; charset=utf-8")
+    public
+    @ResponseBody
+    String getSoftwareXml(@RequestParam(value = "index") int index) throws Exception {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File jsonFile = new File(classLoader.getResource("json/hardcoded-software.json").getFile());
+        String json = FileUtils.readFileToString(jsonFile);
+        List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(json);
+        String xml = softwareXmlList.get(index);
+
+        return xml;
     }
 
     @RequestMapping(value = "/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")

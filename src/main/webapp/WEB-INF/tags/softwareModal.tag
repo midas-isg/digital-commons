@@ -148,17 +148,22 @@
                         </div>
 
                         <div id="modal-code-block" onmouseenter="$('#modal-download-btns').fadeIn();" onmouseleave="$('#modal-download-btns').fadeOut();">
-                            <pre style="border:none; margin:0"><code style="white-space:pre" id="display-json"></code></pre>
+                            <pre style="border:none; margin:0; overflow:visible; display:inline-block"><code style="white-space:pre; display:inline-block" id="display-json"></code></pre>
                             <div id="modal-download-btns" style="display:none">
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 48px;right: 44px; position:absolute;"
+                                        style="top: 48px;right: 70px; position:absolute;"
                                         onclick="copyToClipboard('#display-json')">
                                     <icon class="glyphicon glyphicon glyphicon-copy"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 48px;right: 18px; position:absolute;"
+                                        style="top: 48px;right: 44px; position:absolute;"
                                         onclick="download($('#software-name').text() + '.json', '#display-json')">
                                     <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                                </button>
+                                <button class="btn btn-xs btn-default"
+                                        style="top: 48px;right: 18px; position:absolute;"
+                                        onclick="openJsonInNewTab($('#display-json'))">
+                                    <icon class="glyphicon glyphicon-new-window"></icon>
                                 </button>
                             </div>
                         </div>

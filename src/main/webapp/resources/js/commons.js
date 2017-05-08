@@ -47,6 +47,10 @@ var dataFormats = [];
 var dataFormatsDictionary = {};
 var dataFormatsSettings = {};
 
+var standardIdentifiers = [];
+var standardIdentifiersDictionary = {};
+var standardIdentifiersSettings = {};
+
 var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
@@ -393,7 +397,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('expandAll', { silent: true });
     } else {
-        if(name == "webServices" || name == "dataFormats") {
+        if(name == "webServices" || name == "dataFormats" || name == "standardIdentifiers") {
             treeviewInfo['expandIcon'] = "bullet-point	";
             treeviewInfo['collapseIcon'] = "bullet-point	";
         }
@@ -535,7 +539,7 @@ function getNodeData(name, key, treeDictionary) {
         }
     }
 
-    if(name != "software" && name != "webServices" && name != "dataFormats") {
+    if(name != "software" && name != "webServices" && name != "dataFormats" && name != "standardIdentifiers") {
         nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
@@ -560,7 +564,7 @@ function getSoftwareTitle(name, version) {
     return title;
 }
 
-var standardIdentifierTree = {
+/*var standardIdentifierTree = {
     text: "Standard identifiers",
     nodes: [
         {
@@ -583,10 +587,6 @@ var standardIdentifierTree = {
             text: "<span onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</span>",
             url: "http://www.violinet.org/vaccineontology/"
         },
-        /*{
-            text: "<span onmouseover='toggleTitle(this)'>Apollo XSD (for standard data types)</span>",
-            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
-        },*/
         {
             text: "<span onmouseover='toggleTitle(this)'>Apollo Location Codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
             url: "https://betaweb.rods.pitt.edu/ls"
@@ -594,7 +594,7 @@ var standardIdentifierTree = {
     ]
 };
 
-/*var dataFormatsTree = {
+var dataFormatsTree = {
     text: "Data formats",
     nodes: [
         {
@@ -763,7 +763,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     }
 
     //collections.push(dataFormatsTree);
-    collections.push(standardIdentifierTree);
+    //collections.push(standardIdentifierTree);
 
     return collections;
 }
@@ -832,8 +832,10 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
 function openModal(type, name) {
     var attrs = {};
 
+    var softwareIndex = -1;
     if(type == 'software') {
         attrs = softwareDictionary[name];
+        softwareIndex = parseInt(name);
         name = attrs['title'];
 
         ga('send', {
@@ -871,15 +873,21 @@ function openModal(type, name) {
         $('#dats-json').show();
         $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
-    } else if(type == 'dataFormats') {
+    } else if(type == 'dataFormats' || type == 'standardIdentifiers') {
         attrs = dataFormatsDictionary[name];
     }
 
-    if(type == 'software' || type == 'webServices' || type == 'dataFormats') {
+    if(type == 'software' || type == 'webServices' || type == 'dataFormats' || type == 'standardIdentifiers') {
         $('#dats-json').hide();
         $('#mdc-json').show();
         $('#modal-switch-btn').show();
-        $('#display-json').text(JSON.stringify(attrs, null, 4));
+        if(type == 'software') {
+            $.get(ctx + '/getSoftwareXml?index=' + softwareIndex, function(data) {
+                $('#display-json').text(new XMLSerializer().serializeToString(data.documentElement));
+            });
+        } else {
+            $('#display-json').text(JSON.stringify(attrs, null, 4));
+        }
     }
 
     if(name != null) {
@@ -1507,6 +1515,11 @@ function copyToClipboard(elementId) {
 function download(filename, elementId) {
     var text = $(elementId).text();
     var element = document.createElement('a');
+
+    if(text.includes('xmlns')) {
+        filename = filename.replace('.json', '.xml');
+    }
+
     element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
     element.setAttribute('download', filename);
 
@@ -1516,6 +1529,15 @@ function download(filename, elementId) {
     element.click();
 
     document.body.removeChild(element);
+}
+
+function openJsonInNewTab(elementId) {
+    var text = $(elementId).text();
+    var type = 'application/json';
+    if(text.includes('xmlns')) {
+        type = 'application/xml';
+    }
+    window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
 }
 
 function toggleElementById(id, element) {

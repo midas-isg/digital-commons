@@ -89,7 +89,7 @@
 84
 85
 86
-87</pre></td><td><pre id="lsdtm-script" style="margin: 0; line-height: 125%; border:none"><span style="color: #0099FF; font-style: italic">#!/bin/sh</span>
+87</pre></td><td><pre id="lsdtm-script" style="margin: 0; line-height: 125%; border:none; display:inline-block; overflow:visible"><span style="color: #0099FF; font-style: italic">#!/bin/sh</span>
 
 <span style="color: #006699; font-weight: bold">function </span>usage
 <span style="color: #555555">{</span>
