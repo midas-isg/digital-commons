@@ -1,11 +1,6 @@
-{
-    "settings": {
-      "name": "diseaseTransmissionModels",
-      "directories": ["netlogo"],
-      "openDirectories":[]
-    },
-    "netlogo/netlogo-5.0.4":{
-      "subtype":"netlogo",
-      "description":"Netlogo is an agent-based simulation framework."
-    }
-}
+[{
+    "subtype": "netlogo",
+    "description": "Netlogo is an agent-based simulation framework.",
+    "title": "netlogo/netlogo-5.0.4"
+  }
+]

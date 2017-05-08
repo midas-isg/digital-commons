@@ -13,15 +13,15 @@
         highlightSelected: false
     });
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-disease-transmission-models.json", diseaseTransmissionModel, diseaseTransmissionModelDictionary, diseaseTransmissionModelSettings, '#disease-transmission-models-treeview', 'expandedDiseaseTransmissionModels');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-disease-transmission-models.json", diseaseTransmissionModel, diseaseTransmissionModelDictionary, diseaseTransmissionModelSettings, '#disease-transmission-models-treeview', 'expandedDiseaseTransmissionModels', 'diseaseTransmissionModels');
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-modeling-platforms.json", modelingPlatforms, modelingPlatformsDictionary, modelingPlatformsSettings, '#modeling-platforms-treeview', 'expandedModelingPlatforms');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-modeling-platforms.json", modelingPlatforms, modelingPlatformsDictionary, modelingPlatformsSettings, '#modeling-platforms-treeview', 'expandedModelingPlatforms', 'diseaseTransmissionModels');
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-system-software.json", systemsSoftware, systemsSoftwareDictionary, systemsSoftwareSettings, '#system-software-treeview', 'expandedSystemsSoftware', 'systemSoftware');
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-genetic-sequence.json", geneticSequence, geneticSequenceDictionary, geneticSequenceSettings, '#genetic-sequence-treeview', 'expandedGeneticSequence');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-genetic-sequence.json", geneticSequence, geneticSequenceDictionary, geneticSequenceSettings, '#genetic-sequence-treeview', 'expandedGeneticSequence', 'tools');
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-statistical-analysis.json", statisticalAnalysis, statisticalAnalysisDictionary, statisticalAnalysisSettings, '#statistical-analysis-treeview', 'expandedStatisticalAnalysis');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-statistical-analysis.json", statisticalAnalysis, statisticalAnalysisDictionary, statisticalAnalysisSettings, '#statistical-analysis-treeview', 'expandedStatisticalAnalysis', 'tools');
 
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-image-manipulation.json", imageManipulation, imageManipulationDictionary, imageManipulationSettings, '#image-manipulation-treeview', 'expandedImageManipulation');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-image-manipulation.json", imageManipulation, imageManipulationDictionary, imageManipulationSettings, '#image-manipulation-treeview', 'expandedImageManipulation', 'tools');
 </script>

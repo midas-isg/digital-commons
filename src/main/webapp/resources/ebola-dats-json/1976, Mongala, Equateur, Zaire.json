@@ -2,7 +2,7 @@
     "title": "1976, Mongala, E\u0301quateur, Zaire data and knowledge",
     "description": "Information about the 1976, Mongala, E\u0301quateur, Zaire epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
     "identifier": {
-        "identifier": "https://research.rods.pitt.edu/apolloLibraryViewer-401/1.xml",
+        "identifier": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/1.xml?view=true",
         "identifierSource": "The Informatics Services Group of the MIDAS research network creates and maintains this identifier."
     },
     "creators": [
@@ -104,7 +104,7 @@
             ],
             "access": {
                 "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/1",
-                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/1.xml",
+                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/1.xml?view=true",
                 "authorizations": [
                     {
                         "value": "public",

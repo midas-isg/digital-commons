@@ -1,44 +1,49 @@
-{
-  "settings": {
-    "name": "dataFormats",
-    "directories": [],
-    "openDirectories": []
-  },
-  "Synthia": {
+[{
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "Synthia"
   },
-  "SPEW.US": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "SPEW.US"
   },
-  "SPEW.IPUMS": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "SPEW.IPUMS"
   },
-  "SPEW.CANADA": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "SPEW.CANADA"
   },
-  "Omnivore output format": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "Omnivore output format"
   },
-  "Galapagos output format": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "Galapagos output format"
   },
-  "Tycho 2.0": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "Tycho 2.0"
   },
-  "Apollo XSD": {
+  {
     "redirect": true,
-    "version":["4.0.1"],
-    "website": "https://github.com/ApolloDev/apollo-xsd-and-types"
+    "version": [
+      "4.0.1"
+    ],
+    "website": "https://github.com/ApolloDev/apollo-xsd-and-types",
+    "title": "Apollo XSD"
   },
-  "PHYSIS": {
+  {
     "redirect": true,
-    "website": "#"
+    "website": "#",
+    "title": "PHYLIP"
   }
-}
+]

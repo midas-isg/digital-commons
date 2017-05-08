@@ -18,7 +18,7 @@
 
                 <div class="tab-content">
                     <div class="tab-pane fade in active" id="modal-html">
-                        <myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>
+                        <%--<myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>--%>
 
                         <myTags:softwareModalItem id="human-readable-synopsis" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
@@ -33,6 +33,10 @@
                         <myTags:softwareModalItem id="access-url" title="Access URL" hasHref="true"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="authorizations" title="Authorizations" hasHref="false"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="pathogens" title="Pathogens"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="locations" title="Locations"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="pathogen-coverage" title="Pathogen coverage"></myTags:softwareModalItem>
 
@@ -72,7 +76,7 @@
 
                         <myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="data-output-formats" title="Formats for data outputs"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="data-output-formats" title="Formats for data output"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="visualization-type" title="Types of visualizations"></myTags:softwareModalItem>
 

@@ -17,7 +17,7 @@
 
     <c:forEach items="${spewRegions}" var="region" varStatus="loop">
         <c:if test="${not empty region.children}">
-            syntheticEcosystemsByRegion.nodes.push({'name': "${region.name}", 'text':formatLocation("${region.name}"), 'nodes': []});
+            syntheticEcosystemsByRegion.nodes.push({'name': "${region.name}", 'text':formatLocation("${region.name}") + " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>", 'nodes': []});
             var currentNode = syntheticEcosystemsByRegion.nodes[syntheticEcosystemsByRegion.nodes.length - 1].nodes;
             <c:forEach items="${region.children}" var="child">
                 <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>

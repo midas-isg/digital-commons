@@ -6,6 +6,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
-    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json", software, softwareDictionary, softwareSettings, '#algorithm-treeview', 'expandedSoftware');
+    hardcodeFromJson("${pageContext.request.contextPath}", "/resources/hardcoded-software.json", software, softwareDictionary, softwareSettings, '#algorithm-treeview', 'expandedSoftware', "software");
 </script>
 

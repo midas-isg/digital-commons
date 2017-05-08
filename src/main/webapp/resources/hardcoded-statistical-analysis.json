@@ -1,31 +1,31 @@
-{
-  "settings":{
-    "name": "tools",
-    "directories":["matlab", "r"],
-    "openDirectories":[]
-  },
-  "matlab/R2015a":{
+[{
     "subtype": "matlab",
-    "description": "MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and fourth-generation programming language"
+    "description": "MATLAB (matrix laboratory) is a multi-paradigm numerical computing environment and fourth-generation programming language",
+    "title": "matlab/R2015a"
   },
-  "r/3.1.2":{
+  {
     "subtype": "r",
-    "description": "R Statistical Computing"
+    "description": "R Statistical Computing",
+    "title": "r/3.1.2"
   },
-  "r/3.2.1":{
+  {
     "subtype": "r",
-    "description": "R Statistical Computing"
+    "description": "R Statistical Computing",
+    "title": "r/3.2.1"
   },
-  "r/3.3.1":{
+  {
     "subtype": "r",
-    "description": "R Statistical Computing"
+    "description": "R Statistical Computing",
+    "title": "r/3.3.1"
   },
-  "r_blas/openblas-0.2.13":{
+  {
     "subtype": "r",
-    "description": "Optimized BLAS library for R"
+    "description": "Optimized BLAS library for R",
+    "title": "r_blas/openblas-0.2.13"
   },
-  "r_blas/unaccelerated-blas":{
+  {
     "subtype": "r",
-    "description": "BLAS library for R"
+    "description": "BLAS library for R",
+    "title": "r_blas/unaccelerated-blas"
   }
-}
+]
