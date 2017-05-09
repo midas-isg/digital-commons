@@ -963,6 +963,23 @@ function openModal(type, name) {
         $('#software-version-container').hide();
     }
 
+    if('dataServiceDescription' in attrs) {
+        var descriptions = attrs['dataServiceDescription'];
+        for(var i = 0; i < descriptions.length; i++) {
+            if(Object.keys(descriptions[i]).includes('accessPointType') && descriptions[i]['accessPointType'] != 'custom') {
+                if(descriptions[i]['accessPointType'] == 'REST') {
+                    attrs['restDocumentation'] = descriptions[i]['accessPointDescription'];
+                } else if(descriptions[i]['accessPointType'] == 'SOAP') {
+                    attrs['soapDocumentation'] = descriptions[i]['accessPointDescription'];
+                }
+            }
+
+            if(descriptions[i]['accessPointUrl'] != null && descriptions[i]['accessPointUrl'] != '') {
+                attrs['endpointPrefix'] = descriptions[i]['accessPointUrl'];
+            }
+        }
+    }
+
     toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
 
     toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, true, type, true);
@@ -985,7 +1002,7 @@ function openModal(type, name) {
 
     toggleModalItem('controlMeasures', attrs, 'control-measures', false, false);
 
-    //toggleModalItem('title', attrs, 'title', false, false);
+    toggleModalItem('title', attrs, 'title', false, false);
 
     toggleModalItem('humanReadableSynopsis', attrs, 'human-readable-synopsis', false, true);
 
