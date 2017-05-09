@@ -42,7 +42,7 @@
         },
         {
             "platform": {
-                "value": "SPEW",
+                "value": "SPEW 1.20",
                 "valueIRI": "https://github.com/leerichardson/spew"
             }
         }

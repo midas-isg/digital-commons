@@ -1,0 +1,37 @@
+[{
+    "redirect": true,
+    "website": "http://loinc.org/",
+    "title": "LOINC codes (for lab tests)"
+  },
+  {
+    "redirect": true,
+    "website": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi",
+    "title": "NCBI Taxon identifiers (for host and pathogen taxa)"
+  },
+  {
+    "redirect": true,
+    "website": "https://www.nlm.nih.gov/research/umls/rxnorm/",
+    "title": "RxNorm codes (for drugs)"
+  },
+  {
+    "redirect": true,
+    "website": "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition",
+    "title": "SNOMED CT codes (for diagnoses)"
+  },
+  {
+    "redirect": true,
+    "website": "http://www.violinet.org/vaccineontology/",
+    "title": "Vaccine Ontology identifiers (for vaccines)"
+  },
+  {
+    "redirect": true,
+    "website": "https://github.com/ApolloDev/apollo-xsd-and-types",
+    "title": "Apollo XSD (for standard data types)"
+  },
+  {
+    "redirect": true,
+    "title": "Apollo Location Codes (for locations)",
+    "website": "https://betaweb.rods.pitt.edu/ls",
+    "signInRequired":true
+  }
+]

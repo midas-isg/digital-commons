@@ -68,32 +68,36 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
-                    <div class="legend hidden-xs">
-                        <table class="table table-sm" style="
-                            margin-bottom: 3px;
-                        ">
-                            <tbody>
-                                <tr>
-                                    <td><i class="ae-color legend-font"><b>AE</b></i></td>
-                                    <td><i><span class="underline">A</span>pollo-<span class="underline">E</span>ncoded</i></td>
-                                </tr>
+                    <div style="margin-bottom: 45px; position: fixed; margin-right: 10px; right: 15px; bottom: 0; z-index:100;" class="hidden-xs">
+                        <button id="show-legend" class="btn btn-default btn-xs" onclick="$('#show-legend').hide(); $('#main-legend').show();">Show Legend</button>
+                        <div id="main-legend" class="legend" style="display:none">
+                            <button style="position:absolute; right:6px; top:9px" class="btn btn-default btn-xs" onclick="$('#main-legend').hide(); $('#show-legend').show();">Hide</button>
+                            <table class="table table-sm" style="
+                                margin-bottom: 3px;
+                            ">
+                                <tbody>
+                                    <tr>
+                                        <td><i class="ae-color legend-font"><b>AE</b></i></td>
+                                        <td><i><span class="underline">A</span>pollo-<span class="underline">E</span>ncoded</i></td>
+                                    </tr>
 
-                                <tr>
-                                    <td><i class="olympus-color legend-font"><b>AOC</b></i></td>
-                                    <td><i><span class="underline">A</span>vailable on <span class="underline">O</span>lympus <span class="underline">C</span>luster</i></td>
-                                </tr>
+                                    <tr>
+                                        <td><i class="olympus-color legend-font"><b>AOC</b></i></td>
+                                        <td><i><span class="underline">A</span>vailable on <span class="underline">O</span>lympus <span class="underline">C</span>luster</i></td>
+                                    </tr>
 
-                                <tr>
-                                    <td><i class="sso-color legend-font"><b>SSO</b></i></td>
-                                    <td><i>Requires (<span class="underline">S</span>ingle) <span class="underline">S</span>ign <span class="underline">O</span>n</i></td>
-                                </tr>
+                                    <tr>
+                                        <td><i class="sso-color legend-font"><b>SSO</b></i></td>
+                                        <td><i>Requires (<span class="underline">S</span>ingle) <span class="underline">S</span>ign <span class="underline">O</span>n</i></td>
+                                    </tr>
 
-                                <tr>
-                                    <td><i class="udsi-color legend-font"><b>UIDS</b></i></td>
-                                    <td><i>Available via the <span class="underline">U</span>niversal <span class="underline">I</span>nterface to <span class="underline">D</span>isease <span class="underline">S</span>imulators</i></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr>
+                                        <td><i class="udsi-color legend-font"><b>UIDS</b></i></td>
+                                        <td><i>Available via the <span class="underline">U</span>niversal <span class="underline">I</span>nterface to <span class="underline">D</span>isease <span class="underline">S</span>imulators</i></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                         <h3 class="content-title-font">Web Services</h3>
@@ -101,6 +105,9 @@
 
                         <h3 class="content-title-font">Data Formats</h3>
                         <div id="data-formats-treeview" class="treeview"></div>
+
+                        <h3 class="content-title-font">Standard Identifiers</h3>
+                        <div id="standard-identifiers-treeview" class="treeview"></div>
                 </div>
 
                 <div class="col-sm-4">
@@ -221,6 +228,7 @@
                                      spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
     <myTags:webServices></myTags:webServices>
     <myTags:dataFormats></myTags:dataFormats>
+    <myTags:standardIdentifiers></myTags:standardIdentifiers>
     <myTags:computePlatform></myTags:computePlatform>
 </div>
 

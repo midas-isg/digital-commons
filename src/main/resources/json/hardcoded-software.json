@@ -110,7 +110,8 @@
     "subtype": "Disease transmission tree estimators",
     "humanReadableSynopsis": "The R-package outbreaker implements a Bayesian approach for reconstructing outbreak data from pathogen genome sequences. It also implements a tool for outbreak simulation.",
     "dataInputFormats": [
-      "DNAbin matrix format" ],
+      "DNAbin matrix format"
+    ],
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPL</a>",
     "version": [
       "1.1-7"
