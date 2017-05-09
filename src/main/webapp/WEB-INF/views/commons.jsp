@@ -100,8 +100,8 @@
                         </div>
                     </div>
 
-                        <h3 class="content-title-font">Web Services</h3>
-                        <div id="webservices-treeview" class="treeview"></div>
+                        <%--<h3 class="content-title-font">Web Services</h3>
+                        <div id="webservices-treeview" class="treeview"></div>--%>
 
                         <h3 class="content-title-font">Data Formats</h3>
                         <div id="data-formats-treeview" class="treeview"></div>
