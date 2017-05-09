@@ -68,7 +68,7 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Data-augmented Publications</h3>
                     <div id="publications-treeview" class="treeview"></div>
-                    <div style="margin-bottom: 45px; position: fixed; margin-right: 10px; right: 0; bottom: 0; z-index:100;" class="hidden-xs">
+                    <div style="margin-bottom: 45px; position: fixed; margin-right: 10px; right: 15px; bottom: 0; z-index:100;" class="hidden-xs">
                         <button id="show-legend" class="btn btn-default btn-xs" onclick="$('#show-legend').hide(); $('#main-legend').show();">Show Legend</button>
                         <div id="main-legend" class="legend" style="display:none">
                             <button style="position:absolute; right:6px; top:9px" class="btn btn-default btn-xs" onclick="$('#main-legend').hide(); $('#show-legend').show();">Hide</button>
