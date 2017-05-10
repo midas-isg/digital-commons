@@ -11,7 +11,7 @@
     "description": "This specification describes a tabular format that describes a nationwide synthetic population of households and persons called the 2010 U.S. Synthesized Population dataset, which was developed by RTI International. The synthetic population is a detailed, spatially-explicit representation of the socio-demographic distribution of the U.S. population in a microdata form. The data are distributed in a compressed file containing a series of ASCII files with comma separated value.",
     "licenses": [
         {
-            "name": "???"
+            "name": ""
         }
     ],
     "version": "2010 U.S. Synthesized Population",

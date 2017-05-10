@@ -115,6 +115,9 @@ var syntheticEcosystemsDictionary = {};
 var epidemicsDictionary = {};
 var synthiaPopulationsDictionary = {};
 
+function convertToHref(href) {
+    return '<a class="underline" href="' + href + '">' + href + '</a>';
+}
 function addDatsToDictionary(dictionary, data, code, type) {
     var identifier = data['identifier']['identifier'];
 
@@ -128,7 +131,7 @@ function addDatsToDictionary(dictionary, data, code, type) {
     }
 
     if(identifier.includes('http')) {
-       identifier = '<a class="underline" href="' + identifier + '">' + identifier + '</a>';
+       identifier = convertToHref(identifier);
     }
 
     dictionary[code] = {
@@ -143,11 +146,25 @@ function addDatsToDictionary(dictionary, data, code, type) {
 
         if(data['licenses'][0]['name'] != null && data['licenses'][0]['name'] != '') {
             dictionary[code]['license']  = data['licenses'][0]['name'];
+
+            if(dictionary[code]['license'].includes('http')) {
+                dictionary[code]['license'] = convertToHref(dictionary[code]['license']);
+            }
         }
 
         if(data['version'] != null && data['version'] != '') {
             dictionary[code]['version'] = [data['version']];
             //dictionary[code]['title'] = getSoftwareTitle(data['name'], dictionary[code]['version']);
+        }
+
+        for(var i = 0; i < data["extraProperties"].length; i++) {
+            var property = data["extraProperties"][i];
+
+            if(property["category"] == "human-readable specification of data format") {
+                dictionary[code]['humanReadableSpecification'] = property["values"][0]["value"];
+            } else if(property["category"] == "machine-readable specification of data format") {
+                dictionary[code]['machineReadableSpecification'] = property["values"][0]["valueIRI"];
+            }
         }
     } else if(type != 'dataStandard') {
         var distributions = data["distributions"];
@@ -1126,6 +1143,10 @@ function openModal(type, name) {
     toggleModalItem('accessUrl', attrs, 'access-url', true, false);
 
     toggleModalItem('authorizations', attrs, 'authorizations', false, false);
+
+    toggleModalItem('humanReadableSpecification', attrs, 'human-readable-specification', true, false);
+
+    toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', false, false);
 
     $('#pageModal').modal('show');
 

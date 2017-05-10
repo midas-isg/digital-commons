@@ -5,8 +5,8 @@
     },
     "name": "PHYLIP-format",
     "type": {
-        "value": "gene sequence data",
-        "valueIRI": ""
+        "value": "sequence data",
+        "valueIRI": "http://purl.obolibrary.org/obo/OBI_0000973"
     },
     "description": "This specification describes the PHYLIP format, a format used for most input and output files used by PHYLIP, the Phylogeny Inference Package.  PHYLIP is a package of programs for inferring phylogenies (evolutionary trees). It has been distributed since 1980, and has over 30,000 registered users, making it the most widely distributed package of phylogeny programs.",
     "licenses": [
