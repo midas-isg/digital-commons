@@ -1,0 +1,19 @@
+{
+    "identifier": {
+        "identifier": "APOLLO:InfectiousDiseaseScenario-v4.01",
+        "identifierSource": "APOLLO"
+    },
+    "name": "Apollo Infectious Disease Scenario",
+    "type": {
+        "value": "infectious disease scenario",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000184"
+    },
+    "description": "The type delcaration of the InfectiousDiseaseScenario from the Apollo Data Types - v4.0.1",
+    "licenses": [
+        {
+            "name": "Apache License 2.0"
+        }
+    ],
+    "version": "4.0.1",
+    "extraProperties": []
+}

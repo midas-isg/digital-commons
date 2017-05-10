@@ -20,15 +20,17 @@
                     <div class="tab-pane fade in active" id="modal-html">
                         <%--<myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>--%>
 
+                        <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
+
                         <myTags:softwareModalItem id="human-readable-synopsis" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="description" title="Description" hasHref="false"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="identifier" title="Identifier" hasHref="true"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="identifier" title="Identifier" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="landing-page" title="Landing Page" hasHref="true"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="landing-page" title="Landing page" hasHref="true"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="access-url" title="Access URL" hasHref="true"></myTags:softwareModalItem>
 
@@ -84,8 +86,6 @@
 
                         <myTags:softwareModalItem id="grant" title="Associated grants"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
-
                         <myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
@@ -104,7 +104,7 @@
 
                         <myTags:softwareModalItem id="soap-source-code" title="SOAP service source code repository" hasHref="true"></myTags:softwareModalItem>
 
-                        <myTags:softwareModalItem id="example-queries" title="Example Queries" hasHref="false"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="example-queries" title="Example queries" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="project-source-code" title="Associated project source code repository" hasHref="true"></myTags:softwareModalItem>
 

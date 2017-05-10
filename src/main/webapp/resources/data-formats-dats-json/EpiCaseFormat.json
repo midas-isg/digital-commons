@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:epi-case-format-v1.2",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "EpiCaseFormat",
+    "type": {
+        "value": "disease surveillance data",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+    },
+    "description": "This specification describes two tabular formats for representing count data for a location at a point in time.  The formats differ in that one represents locations as points using latitude and longitude, and the other format represents locations as polygons using an ID from the Apollo Location Service.",
+    "licenses": [
+        {
+            "name": "Creative Commons Attribution 3.0 United States"
+        }
+    ],
+    "version": "1.2",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/EpiCaseMap-1.2",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

@@ -1,49 +1,89 @@
-[{
-    "redirect": true,
-    "website": "#",
-    "title": "Synthia"
-  },
+[
   {
-    "redirect": true,
-    "website": "#",
-    "title": "SPEW.US"
-  },
-  {
-    "redirect": true,
-    "website": "#",
-    "title": "SPEW.IPUMS"
-  },
-  {
-    "redirect": true,
-    "website": "#",
-    "title": "SPEW.CANADA"
-  },
-  {
-    "redirect": true,
-    "website": "#",
-    "title": "Omnivore output format"
-  },
-  {
-    "redirect": true,
-    "website": "#",
-    "title": "Galapagos output format"
-  },
-  {
-    "redirect": true,
-    "website": "#",
-    "title": "Tycho 2.0"
-  },
-  {
-    "redirect": true,
+    "title": "Apollo Infectious Disease Scenario",
     "version": [
       "4.0.1"
-    ],
-    "website": "https://github.com/ApolloDev/apollo-xsd-and-types",
-    "title": "Apollo XSD"
+    ]
   },
   {
-    "redirect": true,
-    "website": "#",
-    "title": "PHYLIP"
+    "title": "Galapagos-CSV",
+    "version": [
+      "2"
+    ]
+  },
+  {
+    "title": "Omnivore-CSV",
+    "version": [
+      "2"
+    ]
+  },
+  {
+    "title": "PHYLIP-format",
+    "version": [
+      "3.695"
+    ]
+  },
+  {
+    "title": "SPEW.CANADA",
+    "version": [
+      "1.2.0"
+    ]
+  },
+  {
+    "title": "SPEW.IPUMS",
+    "version": [
+      "1.2.0"
+    ]
+  },
+  {
+    "title": "SPEW.US",
+    "version": [
+      "1.2.0"
+    ]
+  },
+  {
+    "title": "Synthia",
+    "version": [
+      "2010 U.S. Synthesized Population"
+    ]
+  },
+  {
+    "title": "Tycho dataset",
+    "version": [
+      "1"
+    ]
+  },
+  {
+    "title": "hladish dengue transmission model",
+    "version": [
+      "2"
+    ]
+  },
+  {
+    "title": "EpiCaseFormat",
+    "version": [
+      "1.2"
+    ]
+  },
+  {
+    "title": "GeoJSON",
+    "version": [
+      "RFC 7946"
+    ]
+  },
+  {
+    "title": "newick tree format"
+  },
+  {
+    "title": "FASTA Sequence Format",
+    "version": [
+      "FASTA"
+    ]
+  },
+  {
+    "title": "Epi-Data JSON",
+    "version": [
+      "1"
+    ]
   }
 ]
