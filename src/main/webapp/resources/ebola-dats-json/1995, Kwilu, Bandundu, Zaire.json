@@ -1,9 +1,9 @@
 {
-    "title": "1995, Kwilu, Bandundu, Zaire data and knowledge",
-    "description": "Information about the 1995, Kwilu, Bandundu, Zaire epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
+    "title": "1995, Kwilu, Bandundu, Zaire Ebola epidemic data and knowledge",
+    "description": "Information about the 1995, Kwilu, Bandundu, Zaire Ebola epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
     "identifier": {
-        "identifier": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/6.xml?view=true",
-        "identifierSource": "The Informatics Services Group of the MIDAS research network creates and maintains this identifier."
+        "identifier": "https://doi.org/10.5281/zenodo.572239",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -119,8 +119,8 @@
             "conformsTo": [
                 {
                     "identifier": {
-                        "identifier": "edu.pitt.apollo.types.v4__0__1.Epidemic",
-                        "identifierSource": "The Informatics Services Group of the MIDAS research network located in the Department of Biomedical Informatics at the University of Pittsburgh creates and maintains this identifier."
+                        "identifier": "bsg-s000701",
+                        "identifierSource": "https://biosharing.org"
                     },
                     "name": "Apollo XSD",
                     "type": {
@@ -132,10 +132,10 @@
             "storedIn": {
                 "name": "Apollo Library",
                 "version": "4.0.1",
-                "description": "A repository of machine-interpretable information in the domains of epidemiology and population biology.  The intent of the collection is to support model building",
+                "description": "A repository of machine-interpretable information in the domain of infectious disease epidemiology. The intent of the collection is to support model building.",
                 "identifier": {
-                    "identifier": "http://www.epimodels.org/apolloLibraryViewer-4.0.1/about",
-                    "identifierSource": "Informatics Service Group, Dept. of Biomedical Informatics, University of Pittsburgh"
+                    "identifier": "biodbcore-000938",
+                    "identifierSource": "https://biosharing.org"
                 },
                 "publishers": [
                     {
