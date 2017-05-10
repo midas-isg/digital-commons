@@ -221,6 +221,136 @@
     "title": "EpiCaseMap"
   },
   {
+    "subtype": "Data-format converters",
+    "version": [
+      "1.2.0-1.1"
+    ],
+    "developers": [
+      "Sahawut Wesaratchakit"
+    ],
+    "source": "https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
+    "dataOutputFormats": [
+      "Synthia"
+    ],
+    "dataInputFormats": [
+      "SPEW"
+    ],
+    "doi": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>",
+    "title": "spew2synthia"
+  },
+  {
+    "subtype": "Data services",
+    "title": "Apollo Location Service",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"REST",
+        "accessPointDescription":"http://betaweb.rods.pitt.edu/ls/api-docs",
+        "accessPointUrl":"http://betaweb.rods.pitt.edu/ls"
+      }
+    ],
+    "version": [
+      "1.1.1"
+    ],
+    "dataOutputFormats":[
+      "GeoJSON"
+    ],
+    "dataInputFormats":[
+      "Proprietary"
+    ],
+    "source": "https://github.com/midas-isg/ls",
+    "humanReadableSynopsis": "</p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>"
+  },
+  {
+    "subtype": "Data services",
+    "title": "Project Tycho",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"custom",
+        "accessPointDescription":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
+        "accessPointUrl":"http://www.tycho.pitt.edu/api/"
+      }
+    ],
+    "humanReadableSynopsis": "<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
+    "version": [
+      "1.1.0"
+    ],
+    "dataOutputFormats":[
+      "Proprietary"
+    ],
+    "dataInputFormats":[
+      "Proprietary"
+    ]
+  },
+  {
+    "subtype": "Data services",
+    "title": "RxNorm API",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"SOAP",
+        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
+        "accessPointUrl":""
+      },
+      {
+        "accessPointType":"REST",
+        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
+        "accessPointUrl":""
+      }
+    ],
+    "dataOutputFormats":[
+      "RxNorm drug codes"
+    ],
+    "humanReadableSynopsis": "<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>"
+  },
+  {
+    "subtype": "Data services",
+    "title": "Entrez Programming Utilities (E-utilities)",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"REST",
+        "accessPointDescription":"https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+        "accessPointUrl":""
+      }
+    ],
+    "dataOutputFormats":[
+      "NCBI Taxon Identifier and others"
+    ],
+    "humanReadableSynopsis": "<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>"
+  },
+  {
+    "subtype": "Data services",
+    "title": "MedlinePlus Connect",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"REST",
+        "accessPointDescription":"https://medlineplus.gov/connect/service.html",
+        "accessPointUrl":""
+      }
+    ],
+    "humanReadableSynopsis": "<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>"
+  },
+  {
+    "subtype": "Data services",
+    "title": "Epi-Data",
+    "dataServiceDescription":[
+      {
+        "accessPointType":"REST",
+        "accessPointDescription":"https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
+        "accessPointUrl":""
+      }
+    ],
+    "dataOutputFormats":[
+      "Epi-data JSON"
+    ],
+    "version": [
+      "commit 7367f92"
+    ],
+    "dataInputFormats":[
+      "Proprietary"
+    ],
+    "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
+    "source": "https://github.com/cmu-delphi/delphi-epidata"
+  },
+  {
     "subtype": "Disease transmission models",
     "availableOnOlympus": true,
     "version": [
@@ -1135,135 +1265,5 @@
       "N/A"
     ],
     "title": "NAADSM"
-  },
-  {
-    "subtype": "Data-format converters",
-    "version": [
-      "1.2.0-1.1"
-    ],
-    "developers": [
-      "Sahawut Wesaratchakit"
-    ],
-    "source": "https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
-    "dataOutputFormats": [
-      "Synthia"
-    ],
-    "dataInputFormats": [
-      "SPEW"
-    ],
-    "doi": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>",
-    "title": "spew2synthia"
-  },
-  {
-    "subtype": "Data services",
-    "title": "Apollo Location Service",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"http://betaweb.rods.pitt.edu/ls/api-docs",
-        "accessPointUrl":"http://betaweb.rods.pitt.edu/ls"
-      }
-    ],
-    "version": [
-      "1.1.1"
-    ],
-    "dataOutputFormats":[
-      "GeoJSON"
-    ],
-    "dataInputFormats":[
-      "Proprietary"
-    ],
-    "source": "https://github.com/midas-isg/ls",
-    "humanReadableSynopsis": "</p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>"
-  },
-  {
-    "subtype": "Data services",
-    "title": "Project Tycho",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"custom",
-        "accessPointDescription":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
-        "accessPointUrl":"http://www.tycho.pitt.edu/api/"
-      }
-    ],
-    "humanReadableSynopsis": "<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
-    "version": [
-      "1.1.0"
-    ],
-    "dataOutputFormats":[
-      "Proprietary"
-    ],
-    "dataInputFormats":[
-      "Proprietary"
-    ]
-  },
-  {
-    "subtype": "Data services",
-    "title": "RxNorm API",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"SOAP",
-        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
-        "accessPointUrl":""
-      },
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
-        "accessPointUrl":""
-      }
-    ],
-    "dataOutputFormats":[
-      "RxNorm drug codes"
-    ],
-    "humanReadableSynopsis": "<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>"
-  },
-  {
-    "subtype": "Data services",
-    "title": "Entrez Programming Utilities (E-utilities)",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://www.ncbi.nlm.nih.gov/books/NBK25501/",
-        "accessPointUrl":""
-      }
-    ],
-    "dataOutputFormats":[
-      "NCBI Taxon Identifier and others"
-    ],
-    "humanReadableSynopsis": "<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>"
-  },
-  {
-    "subtype": "Data services",
-    "title": "MedlinePlus Connect",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://medlineplus.gov/connect/service.html",
-        "accessPointUrl":""
-      }
-    ],
-    "humanReadableSynopsis": "<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>"
-  },
-  {
-    "subtype": "Data services",
-    "title": "Epi-Data",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
-        "accessPointUrl":""
-      }
-    ],
-    "dataOutputFormats":[
-      "Epi-data JSON"
-    ],
-    "version": [
-      "commit 7367f92"
-    ],
-    "dataInputFormats":[
-      "Proprietary"
-    ],
-    "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
-    "source": "https://github.com/cmu-delphi/delphi-epidata"
   }
 ]

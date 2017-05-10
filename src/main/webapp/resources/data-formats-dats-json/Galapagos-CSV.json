@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:galapagos-output-format-v2.0",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "Galapagos-CSV",
+    "type": {
+        "value": "disease transmission model output",
+        "valueIRI": ""
+    },
+    "description": "This specification describes a tabular format in which output from a disease transmission model is represented.",
+    "licenses": [
+        {
+            "name": "Creative Commons Attribution 3.0 United States"
+        }
+    ],
+    "version": "2",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/Galapagos-Output-Format",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

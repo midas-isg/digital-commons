@@ -1,0 +1,19 @@
+{
+    "identifier": {
+        "identifier": "Eventually, but not before May 15th there will be a biosharing id",
+        "identifierSource": "biosharing.org"
+    },
+    "name": "Tycho dataset",
+    "type": {
+        "value": "disease surveillance data",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+    },
+    "description": "XML format for Tycho v2.0 country-condition disease surveillance datasets",
+    "licenses": [
+        {
+            "name": "https://www.tycho.pitt.edu/legal/license_agreement.html"
+        }
+    ],
+    "version": "1",
+    "extraProperties": []
+}

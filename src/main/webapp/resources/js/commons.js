@@ -115,47 +115,71 @@ var syntheticEcosystemsDictionary = {};
 var epidemicsDictionary = {};
 var synthiaPopulationsDictionary = {};
 
-function addDatsToDictionary(dictionary, data, code) {
-    var identifier = data['spatialCoverage'][0]['identifier']['identifier'];
-    if(!identifier.includes('http')) {
-        identifier = data['spatialCoverage'][0]['identifier']['identifierSource'];
+function addDatsToDictionary(dictionary, data, code, type) {
+    var identifier = data['identifier']['identifier'];
+
+    if(identifier == null || identifier == '') {
+        if(data['spatialCoverage'] != null && data['spatialCoverage'].length > 0) {
+            identifier = data['spatialCoverage'][0]['identifier']['identifier'];
+            if(!identifier.includes('http')) {
+                identifier = data['spatialCoverage'][0]['identifier']['identifierSource'];
+            }
+        }
+    }
+
+    if(identifier.includes('http')) {
+       identifier = '<a class="underline" href="' + identifier + '">' + identifier + '</a>';
     }
 
     dictionary[code] = {
         'title': data['title'],
         'description': data['description'],
         'identifier': identifier,
-        'landingPage': data['distributions'][0]['access']['landingPage'],
-        'accessUrl': data['distributions'][0]['access']['accessURL'],
         'json': data
     };
 
-    var creators = [];
-    for(var i = 0; i < data['creators'].length; i++) {
-        var creator = data['creators'][i];
-        creator = creator['firstName'] + ' ' + creator['lastName'];
-        creators.push(creator);
-    }
+    if(type == 'dataStandard') {
+        dictionary[code]['title'] = data['name'];
 
-    var authData = data['distributions'][0]['access']['authorizations'];
-    var authorizations = [];
-
-    if(authData != null) {
-        for(var i = 0; i < authData.length; i++) {
-            authorizations.push(authData[i]["value"]);
+        if(data['licenses'][0]['name'] != null && data['licenses'][0]['name'] != '') {
+            dictionary[code]['license']  = data['licenses'][0]['name'];
         }
-        dictionary[code]['authorizations']= authorizations;
-    }
 
-    var distributions = data["distributions"];
-    if(distributions != null && distributions.length > 0) {
-        var storedIn = distributions[0]["storedIn"]["name"];
-        if(storedIn == "MIDAS Digital Commons") {
-            dictionary[code]["availableOnOlympus"] = true;
+        if(data['version'] != null && data['version'] != '') {
+            dictionary[code]['version'] = [data['version']];
+            //dictionary[code]['title'] = getSoftwareTitle(data['name'], dictionary[code]['version']);
         }
-    }
+    } else if(type != 'dataStandard') {
+        var distributions = data["distributions"];
+        if(distributions != null && distributions.length > 0) {
+            var storedIn = distributions[0]["storedIn"]["name"];
+            if(storedIn == "MIDAS Digital Commons") {
+                dictionary[code]["availableOnOlympus"] = true;
+            }
 
-    dictionary[code]['creator']= creators;
+            dictionary[code]['landingPage'] = distributions[0]['access']['landingPage'];
+            dictionary[code]['accessUrl'] = distributions[0]['access']['accessURL'];
+
+            var authData = distributions[0]['access']['authorizations'];
+            var authorizations = [];
+
+            if(authData != null) {
+                for(var i = 0; i < authData.length; i++) {
+                    authorizations.push(authData[i]["value"]);
+                }
+                dictionary[code]['authorizations']= authorizations;
+            }
+        }
+
+        var creators = [];
+        for(var i = 0; i < data['creators'].length; i++) {
+            var creator = data['creators'][i];
+            creator = creator['firstName'] + ' ' + creator['lastName'];
+            creators.push(creator);
+        }
+
+        dictionary[code]['creator']= creators;
+    }
 }
 
 function populateSyntheticEcosystemDictionary(count) {
@@ -187,6 +211,24 @@ function populateSynthiaPopulationsDictionary(count) {
     });
 }
 populateSynthiaPopulationsDictionary(0);
+
+function populateDataFormatsDictionary(count) {
+    var keys = Object.keys(dataFormatsDictionary);
+    var fileNames = [];
+    for(var i = 0; i < keys.length; i++) {
+        fileNames.push(dataFormatsDictionary[keys[i]]['title']);
+    }
+
+    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+        addDatsToDictionary(dataFormatsDictionary, data, count, 'dataStandard');
+        count++;
+
+        if(count < fileNames.length) {
+            populateDataFormatsDictionary(count);
+            console.log(dataFormatsDictionary);
+        }
+    });
+}
 
 /* Change includes method in IE */
 if(!String.prototype.includes) {
@@ -260,6 +302,10 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
         addTreeDirectories(directories, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
         buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
+
+        if(name == 'dataFormats') {
+            populateDataFormatsDictionary(0);
+        }
 
         $('[data-toggle="tooltip"]').tooltip({
             trigger : 'hover',
@@ -556,7 +602,8 @@ function getSoftwareTitle(name, version) {
     }
 
     version = version.split(' - ')[0];
-    if(isNaN(version[0])) {
+    console.log(version);
+    if(isNaN(version[0]) || version == '2010 U.S. Synthesized Population') {
         title += ' - ' + version;
     } else {
         title += ' - v' + version;
@@ -873,11 +920,19 @@ function openModal(type, name) {
         $('#dats-json').show();
         $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
-    } else if(type == 'dataFormats' || type == 'standardIdentifiers') {
+    } else if(type == 'dataFormats'){
         attrs = dataFormatsDictionary[name];
+        name = attrs['title'];
+
+        $('#mdc-json').hide();
+        $('#dats-json').show();
+        $('#modal-switch-btn').show();
+        $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
+    } else if(type == 'standardIdentifiers') {
+        attrs = standardIdentifiersDictionary[name];
     }
 
-    if(type == 'software' || type == 'webServices' || type == 'dataFormats' || type == 'standardIdentifiers') {
+    if(type == 'software' || type == 'webServices' || type == 'standardIdentifiers') {
         $('#dats-json').hide();
         $('#mdc-json').show();
         $('#modal-switch-btn').show();
@@ -957,7 +1012,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations") {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats") {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();
@@ -1064,7 +1119,7 @@ function openModal(type, name) {
 
     toggleModalItem('description', attrs, 'description', false, false);
 
-    toggleModalItem('identifier', attrs, 'identifier', true, false);
+    toggleModalItem('identifier', attrs, 'identifier', false, true);
 
     toggleModalItem('landingPage', attrs, 'landing-page', true, false);
 

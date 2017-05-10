@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "BIOSHARING.ORG:bsg-s000228",
+        "identifierSource": "biosharing.org"
+    },
+    "name": "FASTA Sequence Format",
+    "type": {
+        "value": "gene sequence data",
+        "valueIRI": ""
+    },
+    "description": "FASTA format is a text-based format for representing either nucleotide sequences or peptide sequences, in which nucleotides or amino acids are represented using single-letter codes. The format also allows for sequence names and comments to precede the sequences.",
+    "licenses": [
+        {
+            "name": "No License Specified."
+        }
+    ],
+    "version": "FASTA",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "http://blast.ncbi.nlm.nih.gov/blastcgihelp.shtml",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}
