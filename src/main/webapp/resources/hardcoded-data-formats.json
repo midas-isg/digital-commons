@@ -72,7 +72,10 @@
     ]
   },
   {
-    "title": "newick tree format"
+    "title": "newick tree format",
+    "version": [
+      ""
+    ]
   },
   {
     "title": "FASTA Sequence Format",
@@ -84,6 +87,18 @@
     "title": "Epi-Data JSON",
     "version": [
       "1"
+    ]
+  },
+  {
+    "title": "Apollo Epidemic",
+    "version": [
+      "4.0.1"
+    ]
+  },
+  {
+    "title": "Apollo Case Series",
+    "version": [
+      "4.0.1"
     ]
   }
 ]
