@@ -201,12 +201,9 @@
       "Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs",
       "Programming by Software Development Service, Informatics Services Group."
     ],
-    "dataOutputFormats": [
-      "JSON"
-    ],
     "dataInputFormats": [
-      "CSV",
-      "Tycho (XML)"
+      "MIDAS-ISG:tycho-xml-output-format-v1.0",
+      "MIDAS-ISG:epi-case-format-v1.2"
     ],
     "source": "https://github.com/midas-isg/epicasemap",
     "webApplication": [
@@ -230,10 +227,12 @@
     ],
     "source": "https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
     "dataOutputFormats": [
-      "Synthia"
+      "MIDAS-ISG:synthia-us-v2010"
     ],
     "dataInputFormats": [
-      "SPEW"
+      "MIDAS-ISG:spew-us-v1.2.0",
+      "MIDAS-ISG:spew-ipums-v1.2.0",
+      "MIDAS-ISG:spew-canada-v1.2.0"
     ],
     "doi": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>",
     "title": "spew2synthia"
@@ -252,13 +251,13 @@
       "1.1.1"
     ],
     "dataOutputFormats":[
-      "GeoJSON"
+      "IETF:GeoJSON-rfc7946"
     ],
     "dataInputFormats":[
       "Proprietary"
     ],
     "source": "https://github.com/midas-isg/ls",
-    "humanReadableSynopsis": "</p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>"
+    "humanReadableSynopsis": "<p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>"
   },
   {
     "subtype": "Data services",
@@ -769,14 +768,7 @@
       "Software Development Service, Informatics Services Group"
     ],
     "dataInputFormats": [
-      "CSV",
-      "HDF5"
-    ],
-    "dataOutputFormats": [
-      "PNG",
-      "SVG",
-      "PDF",
-      "CSV"
+      "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "webApplication": [
       "https://research.rods.pitt.edu/galapagos/"
@@ -799,9 +791,6 @@
     "dataInputFormats": [
       "CSV",
       "API"
-    ],
-    "dataOutputFormats": [
-      "None"
     ],
     "webApplication": [
       "http://delphi.midas.cs.cmu.edu/epivis/epivis.html"
@@ -900,9 +889,6 @@
     "dataInputFormats": [
       "<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"
     ],
-    "dataOutputFormats": [
-      "N/A"
-    ],
     "license": "<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>",
     "title": "FluSight"
   },
@@ -963,8 +949,11 @@
       "Humans"
     ],
     "dataInputFormats": [
-      "Synthetic population – Synthia.US",
-      "all other input – proprietary"
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1",
+      "MIDAS-ISG:synthia-us-v2010"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "controlMeasures": [
       "Vaccination",
@@ -1007,7 +996,14 @@
       "vaccination"
     ],
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>",
-    "title": "Apollo FluTE"
+    "title": "Apollo FluTE",
+    "dataInputFormats": [
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1",
+      "MIDAS-ISG:flute-synthetic-ecosystem-v1.1"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
+    ]
   },
   {
     "subtype": "Disease transmission models",
@@ -1149,7 +1145,13 @@
     "source": "https://github.com/midas-isg/PITT-Anthrax-model",
     "license": "<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
     "doi": "<a href=\"https://zenodo.org/record/439078#.WNvahxLytzq\", class=\"underline\">10.5281/zenodo.439078</a>",
-    "title": "Pitt-Anthrax model"
+    "title": "Pitt-Anthrax model",
+    "dataInputFormats": [
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
+    ]
   },
   {
     "subtype": "Disease transmission models",
@@ -1175,7 +1177,13 @@
     "source": "https://github.com/midas-isg/PITT-SEIR-model",
     "license": "<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
     "doi": "<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>",
-    "title": "Pitt-SEIR model"
+    "title": "Pitt-SEIR model",
+    "dataInputFormats": [
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
+    ]
   },
   {
     "subtype": "Phylogenetic tree constructors",
@@ -1209,9 +1217,6 @@
     ],
     "dataInputFormats": [
       "Synthia.US"
-    ],
-    "dataOutputFormats": [
-      "None"
     ],
     "grants": [
       "1-U24-GM087704"
@@ -1265,5 +1270,30 @@
       "N/A"
     ],
     "title": "NAADSM"
+  },
+  {
+    "subtype": "Data visualizers",
+    "version": [
+      "4.0.1"
+    ],
+    "developers": [
+      "Software Development Service, Informatics Services Group"
+    ],
+    "dataInputFormats": [
+      "MIDAS-ISG:omnivore-output-format-v2.0",
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1",
+      "APOLLO:Epidemic-v4.0.1",
+      "APOLLO:CaseSeries-v4.0.1"
+    ],
+    "source": "https://git.isg.pitt.edu/isg-sds/apollo-library-viewer",
+    "webApplication": [
+      "http://epimodels.org/apolloLibraryViewer-4.0.1/"
+    ],
+    "license": "Apache 2.0",
+    "humanReadableSynopsis": "The Apollo Library is a curated collection of infectious disease-related information gathered from health reports and other peer-reviewed sources.   All information in the library is available in both human and machine readable formats.",
+    "grants": [
+      "U24GM110707"
+    ],
+    "title": "Apollo Library Viewer"
   }
 ]
