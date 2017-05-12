@@ -86,8 +86,8 @@
             },
             "dates": [],
             "access": {
-                "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/caseSeries/33",
-                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/caseSeries/33.xml?view=true",
+                "landingPage": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/caseSeries/33",
+                "accessURL": "http://epimodels.org/apolloLibraryViewer-4.0.1/caseSeries/33.xml?view=true",
                 "authorizations": [
                     {
                         "value": "public",
