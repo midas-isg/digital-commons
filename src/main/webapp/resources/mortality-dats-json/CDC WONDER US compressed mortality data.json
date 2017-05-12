@@ -1,0 +1,77 @@
+{
+	"title": "CDC WONDER US compressed mortality data",
+	"description": "CDC WONDER US Compessed Mortality data. The Compressed Mortality data include mortality and population counts for all U.S. counties for the years 1968 to 2015. Counts and rates of death can be obtained by underlying cause of death, state, county, age, race, sex, and year.",
+	"identifier": {
+		"identifier": "CDC WONDER US cause of death 1968-2015",
+		"identifierSource": "MIDAS Informatics Services Group"
+	},
+	"creators": [
+		{
+			"firstName": "",
+			"lastName": "US CDC",
+			"email": ""
+		}
+	],
+	"types": [
+		{
+			"information": {
+				"value": "disease surveillance data",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+			}
+		},
+		{
+			"method": {
+				"value": "disease surveillance",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+			}
+		}
+	],
+	"isAbout": [
+		{
+			"name": "morbidity and mortality",
+			"identifier": {
+				"identifier": "",
+				"identifierSource": ""
+			}
+		}
+	],
+	"spatialCoverage": [
+		{
+			"name": "United States",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+				"identifierSource": "apollo location service"
+			},
+			"alternativeIdentifiers": [
+				{
+					"identifier": "US",
+					"identifierSource": "ISO-3166"
+				},
+				{
+					"identifier": "840",
+					"identifierSource": "ISO 3166-1 numeric"
+				},
+				{
+					"identifier": "USA",
+					"identifierSource": "ISO 3166-1 alpha-3"
+				}
+			]
+		}
+	],
+	"distributions": [
+		{
+			"access": {
+				"landingPage": "https://wonder.cdc.gov/mortSQL.html"
+			},
+			"dates": [
+				{
+					"date": "2017-05-11",
+					"type": {
+						"value": "accessed",
+						"valueIRI": ""
+					}
+				}
+			]
+		}
+	]
+}

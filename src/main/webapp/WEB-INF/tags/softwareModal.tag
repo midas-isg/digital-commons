@@ -56,6 +56,10 @@
 
                         <myTags:softwareModalItem id="version" title="Software version"></myTags:softwareModalItem>
 
+                        <myTags:softwareModalItem id="human-readable-specification" title="Human readable specification" hasHref="true"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="machine-readable-specification" title="Machine readable specification" hasHref="true"></myTags:softwareModalItem>
+
                         <myTags:softwareModalItem id="type" title="Type"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="forecast-frequency" title="Frequency of forecast"></myTags:softwareModalItem>

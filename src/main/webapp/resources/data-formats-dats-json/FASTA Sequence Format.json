@@ -5,8 +5,8 @@
     },
     "name": "FASTA Sequence Format",
     "type": {
-        "value": "gene sequence data",
-        "valueIRI": ""
+        "value": "sequence data",
+        "valueIRI": "http://purl.obolibrary.org/obo/OBI_0000973"
     },
     "description": "FASTA format is a text-based format for representing either nucleotide sequences or peptide sequences, in which nucleotides or amino acids are represented using single-letter codes. The format also allows for sequence names and comments to precede the sequences.",
     "licenses": [

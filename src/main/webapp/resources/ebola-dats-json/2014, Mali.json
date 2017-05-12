@@ -56,7 +56,7 @@
                 "identifier": "38",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=38"
             },
-            "relatedIdentifiers": [
+            "alternateIdentifiers": [
                 {
                     "identifier": "ML-1",
                     "identifierSource": "ISO 3166"
@@ -183,7 +183,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 39,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

@@ -57,7 +57,7 @@
                 "identifier": "85165",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85165"
             },
-            "relatedIdentifiers": []
+            "alternateIdentifiers": []
         }
     ],
     "producedBy": {
@@ -172,7 +172,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 20,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

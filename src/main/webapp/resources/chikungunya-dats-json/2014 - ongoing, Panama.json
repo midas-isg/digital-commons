@@ -1,0 +1,215 @@
+{
+    "title": "2014 - ongoing, Panama, Chikungunya epidemic data and knowledge",
+    "description": "Information about the 2014 - ongoing, Panama Chikungunya epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
+    "identifier": {
+        "identifier": "under development",
+        "identifierSource": ""
+    },
+    "creators": [
+        {
+            "firstName": "Wilbert",
+            "lastName": "van Panhuis",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "epidemic",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
+            }
+        },
+        {
+            "method": {
+                "value": "systematic literature review",
+                "valueIRI": "http://purl.obolibrary.org/obo/OBI_0001958"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Chikungunya virus",
+            "identifier": {
+                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=37124",
+                "identifierSource": "https://biosharing.org/bsg-s000154"
+            }
+        },
+        {
+            "name": "Chikungunya fever",
+            "identifier": {
+                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=111864006",
+                "identifierSource": "https://biosharing.org/bsg-s000098"
+            }
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "Panama",
+            "identifier": {
+                "identifier": "5074",
+                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=5074"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "PA",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "PAN",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                },
+                {
+                    "identifier": "591",
+                    "identifierSource": "ISO 3166-1 numeric"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "RODS Laboratory, University of Pittsburgh",
+        "location": {
+            "postalAddress": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh, Pittsburgh, PA, United States"
+        },
+        "stateDate": {
+            "date": "2015-03-21",
+            "type": {
+                "value": "modification",
+                "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+            }
+        },
+        "endDate": {
+            "date": "2015-03-21",
+            "type": {
+                "value": "modification",
+                "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+            }
+        }
+    },
+    "distributions": [
+        {
+            "identifier": {
+                "identifier": "1",
+                "identifierSource": ""
+            },
+            "dates": [
+                {
+                    "date": "2015-03-21",
+                    "type": {
+                        "value": "modification",
+                        "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+                    }
+                },
+                {
+                    "date": "2015-03-21",
+                    "type": {
+                        "value": "modification",
+                        "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+                    }
+                }
+            ],
+            "access": {
+                "landingPage": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/75",
+                "accessURL": "http://epimodels.org/apolloLibraryViewer-4.0.1/epidemic/75.xml?view=true",
+                "authorizations": [
+                    {
+                        "value": "public",
+                        "valueIRI": ""
+                    }
+                ]
+            },
+            "formats": [
+                "xml",
+                "json"
+            ],
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "bsg-s000701",
+                        "identifierSource": "https://biosharing.org"
+                    },
+                    "name": "Apollo XSD",
+                    "type": {
+                        "value": "xml schema",
+                        "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "Apollo Library",
+                "version": "4.0.1",
+                "description": "A repository of machine-interpretable information in the domain of infectious disease epidemiology. The intent of the collection is to support model building.",
+                "identifier": {
+                    "identifier": "biodbcore-000938",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "publishers": [
+                    {
+                        "name": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh"
+                    }
+                ],
+                "scopes": [
+                    {
+                        "value": "epidemic",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
+                    },
+                    {
+                        "value": "infectious disease scenario",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000184"
+                    },
+                    {
+                        "value": "case series",
+                        "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    },
+                    {
+                        "value": "knowledge base",
+                        "valueIRI": ""
+                    }
+                ],
+                "licenses": [
+                    {
+                        "name": "BY USING THE APOLLO LIBRARY VIEWER YOU AGREE THAT NO WARRANTIES OF ANY KIND ARE MADE BY THE UNIVERSITY OF PITTSBURGH (UNIVERSITY) WITH RESPECT TO THE DATA PROVIDED IN THE APOLLO LIBRARY VIEWER OR ANY USE THEREOF, AND THE UNIVERSITY HEREBY DISCLAIM THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. THE UNIVERSITY SHALL NOT BE LIABLE FOR ANY CLAIMS, LOSSES OR DAMAGES OF ANY KIND ARISING FROM THE DATA PROVIDED IN THE APOLLO LIBRARY VIEWER OR ANY USE THEREOF."
+                    }
+                ]
+            },
+            "size": 44,
+            "unit": {
+                "value": "kilobyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ],
+    "acknowledges": [
+        {
+            "identifier": {
+                "identifier": "U24GM110707",
+                "identifierSource": "US National Institutes of Health"
+            },
+            "funders": [
+                {
+                    "name": "National Institute of General Medical Sciences",
+                    "abbreviation": "NIGMS"
+                }
+            ],
+            "name": "MIDAS Informatics Services Group"
+        },
+        {
+            "identifier": {
+                "identifier": "R01GM101151",
+                "identifierSource": "US National Institutes of Health"
+            },
+            "funders": [
+                {
+                    "name": "National Institute of General Medical Sciences",
+                    "abbreviation": "NIGMS"
+                }
+            ],
+            "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+        }
+    ]
+}

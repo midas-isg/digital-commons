@@ -56,7 +56,7 @@
                 "identifier": "224",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=224"
             },
-            "relatedIdentifiers": [
+            "alternateIdentifiers": [
                 {
                     "identifier": "K\u00e9ll\u00e9",
                     "identifierSource": "ISG"
@@ -183,7 +183,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 16,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

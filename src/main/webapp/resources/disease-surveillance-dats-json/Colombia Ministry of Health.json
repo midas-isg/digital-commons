@@ -1,0 +1,77 @@
+{
+	"title": "Colombia Routine Surveillance",
+	"description": "Collection of routine disease surveillance data made publically available by Colombia National Institute of Health",
+	"identifier": {
+		"identifier": "Colombia Routine Surveillance",
+		"identifierSource": "MIDAS Informatics Services Group"
+	},
+	"creators": [
+		{
+			"firstName": "",
+			"lastName": "Colombia National Institute of Health",
+			"email": ""
+		}
+	],
+	"types": [
+		{
+			"information": {
+				"value": "disease surveillance data",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+			}
+		},
+		{
+			"method": {
+				"value": "disease surveillance",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+			}
+		}
+	],
+	"isAbout": [
+		{
+			"name": "notifiable diseases",
+			"identifier": {
+				"identifier": "",
+				"identifierSource": ""
+			}
+		}
+	],
+	"spatialCoverage": [
+		{
+			"name": "Colombia",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5076",
+				"identifierSource": "apollo location service"
+			},
+			"alternativeIdentifiers": [
+				{
+					"identifier": "CO",
+					"identifierSource": "ISO-3166"
+				},
+				{
+					"identifier": "170",
+					"identifierSource": "ISO 3166-1 numeric"
+				},
+				{
+					"identifier": "COL",
+					"identifierSource": "ISO 3166-1 alpha-3"
+				}
+			]
+		}
+	],
+	"distributions": [
+		{
+			"access": {
+				"landingPage": "http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
+			},
+			"dates": [
+				{
+					"date": "",
+					"type": {
+						"value": "accessed",
+						"valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+					}
+				}
+			]
+		}
+	]
+}
