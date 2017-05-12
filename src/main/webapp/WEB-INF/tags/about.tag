@@ -9,7 +9,7 @@
     </h3>
 
     <p class="font-size-16 standard-font">
-        The primary purpose of the MIDAS Digital Commons (MDC) is to support epidemiologists who are developing computational models of biological phenomena. Its secondary purpose is to play the role of a community digital commons within the BD2K framework.
+        The primary purpose of the MIDAS Digital Commons (MDC) is to support epidemiologists who are developing computational models of biological phenomena. Its secondary purpose is to play the role of a disciplinary commons within the BD2K framework.  The discipline is infectious disease epidemiology and the scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order <a href="http://publications.onbc.io/#/" class="underline">here</a>).
     </p>
 
     <p class="font-size-16 standard-font">
@@ -17,16 +17,22 @@
     </p>
 
     <p class="font-size-16 standard-font">
-        The <strong>digital objects</strong> include software, synthetic ecosystems, data sets, knowledge, data-augmented publications, and web services.
+        The <strong>digital objects</strong> include software, datasets, and data formats.
     </p>
 
     <p class="font-size-16 standard-font">
-        The <strong>compute platform</strong> hosts some of the digital objects (e.g., disease transmission models and synthetic ecosystems) as well as programming languages and other software tools. These locally hosted digital objects are labelled <i>RROO</i> (Ready to run on Olympus). Other digital objects are hosted remotely (i.e., they are virtual w.r.t. this digital commons).
+        The <strong>compute platform</strong> hosts programming languages and other software tools and some of the digital objects (e.g., disease transmission models and synthetic ecosystems). The locally hosted digital objects are labelled <i>AOC</i> (Available on the Olympus Cluster). Other digital objects are hosted remotely (i.e., they are virtual w.r.t. this digital commons).
     </p>
 
     <p class="font-size-16 standard-font">
-        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines. To make knowledge and data interoperable, we represent it whenever possible in Apollo-XSD syntax and label it as being <i>AE</i> (Apollo-Encoded) in the Commons.
+        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines. To make datasets interoperable, we represent them whenever possible in Apollo-XSD syntax and label it as being <i>AE</i> (Apollo-Encoded) in the MDC.
     </p>
+
+    <div class="font-size-16 standard-font">
+        <h3 class="sub-title-font font-size-20">Ontology</h3>
+        <span>The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it <a
+                class="underline" href="https://github.com/ApolloDev/apollo-sv/releases/tag/v3.0.1">here</a>.</span>
+    </div>
 
     <div class="font-size-16 standard-font">
         <h3 class="sub-title-font font-size-20">Submission Guidelines</h3>
