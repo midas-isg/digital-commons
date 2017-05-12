@@ -115,8 +115,8 @@
                 }
             ],
             "access": {
-                "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/25",
-                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/25.xml?view=true",
+                "landingPage": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/25",
+                "accessURL": "http://epimodels.org/apolloLibraryViewer-4.0.1/epidemic/25.xml?view=true",
                 "authorizations": [
                     {
                         "value": "public",
