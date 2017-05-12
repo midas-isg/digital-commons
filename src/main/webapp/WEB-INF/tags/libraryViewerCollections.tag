@@ -49,6 +49,7 @@
             timeout : 100000,
             success : function(data) {
                 libraryData = data;
+                console.log(libraryData);
             },
             error : function(xhr, textStatus, errorThrown) {
                 console.log(xhr.responseText);

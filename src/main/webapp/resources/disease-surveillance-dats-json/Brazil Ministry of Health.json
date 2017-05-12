@@ -1,0 +1,90 @@
+{
+	"title": "Brazil Epidemiological and Morbidity",
+	"description": "Brazil Ministry of Health website, section for epidemiological and moribidity information, including hospital morbidity, cases of AIDS since 1980 (in temporary maintenance), cases of Leprosy since 2001, and diseases and injuries from 2001-present.",
+	"identifier": {
+		"identifier": "Brazil Ministry of Health public disease surveillance website",
+		"identifierSource": "MIDAS Informatics Services Group"
+	},
+	"creators": [
+		{
+			"firstName": "Anonymous",
+			"lastName": "",
+			"email": ""
+		}
+	],
+	"types": [
+		{
+			"information": {
+				"value": "disease surveillance data",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+			}
+		},
+		{
+			"method": {
+				"value": "disease surveillance",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+			}
+		}
+	],
+	"isAbout": [
+		{
+			"name": "hospital morbidity",
+			"identifier": {
+				"identifier": "",
+				"identifierSource": ""
+			}
+		},
+		{
+			"name": "AIDS",
+			"identifier": {
+				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=186705005",
+				"identifierSource": "https://biosharing.org/bsg-s000098"
+			}
+		},
+		{
+			"name": "Leprosy",
+			"identifier": {
+				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=81004002",
+				"identifierSource": "https://biosharing.org/bsg-s000098"
+			}
+		},
+		{
+			"name": "notifiable conditions",
+			"identifier": {
+				"identifier": "",
+				"identifierSource": ""
+			}
+		}
+	],
+	"spatialCoverage": [
+		{
+			"name": "Brazil",
+			"description": "the country of Brazil",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5000",
+				"identifierSource": "apollo location service"
+			},
+			"alternateIdentifiers": [
+				{
+					"identifier": "BR",
+					"identifierSource": "ISO 3166"
+				},
+				{
+					"identifier": "76",
+					"identifierSource": "ISO 3166-1 numeric"
+				},
+				{
+					"identifier": "BRA",
+					"identifierSource": "ISO 3166-1 alpha-3"
+				}
+			]
+		}
+	],
+	"distributions": [
+		{
+			"access": {
+				"landingPage": "http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
+			}
+		}
+	]
+}

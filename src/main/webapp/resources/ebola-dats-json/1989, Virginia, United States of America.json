@@ -35,9 +35,9 @@
             }
         },
         {
-            "name": "Ebola virus disease",
+            "name": "Simian hemorrhagic fever (disorder)",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=76493004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -56,7 +56,7 @@
                 "identifier": "84022",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84022"
             },
-            "relatedIdentifiers": [
+            "alternateIdentifiers": [
                 {
                     "identifier": "51059482602",
                     "identifierSource": "Census tract identifier"
@@ -176,7 +176,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 3,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

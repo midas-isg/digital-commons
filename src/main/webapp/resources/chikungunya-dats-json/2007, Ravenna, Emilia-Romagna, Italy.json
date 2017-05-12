@@ -30,7 +30,7 @@
         {
             "name": "Chikungunya virus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=37124)",
+                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=37124",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
@@ -50,7 +50,7 @@
                 "identifier": "337530",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=337530"
             },
-            "relatedIdentifiers": []
+            "alternateIdentifiers": []
         }
     ],
     "producedBy": {
@@ -58,7 +58,7 @@
         "location": {
             "postalAddress": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh, Pittsburgh, PA, United States"
         },
-        "startDate": {
+        "stateDate": {
             "date": "2015-08-06",
             "type": {
                 "value": "creation",
@@ -96,8 +96,8 @@
                 }
             ],
             "access": {
-                "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/41",
-                "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/epidemic/41.xml?view=true",
+                "landingPage": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/41",
+                "accessURL": "http://epimodels.org/apolloLibraryViewer-4.0.1/epidemic/41.xml?view=true",
                 "authorizations": [
                     {
                         "value": "public",
@@ -165,7 +165,7 @@
                     }
                 ]
             },
-            "size": 370,
+            "size": 220,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

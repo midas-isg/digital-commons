@@ -1,0 +1,77 @@
+{
+	"title": "Singapore Diseases and Conditions",
+	"description": "Collection of routine disease surveillance data made publically available by Singapore Ministry of Health",
+	"identifier": {
+		"identifier": "Singapore Routine Surveillance",
+		"identifierSource": "MIDAS Informatics Services Group"
+	},
+	"creators": [
+		{
+			"firstName": "",
+			"lastName": "Singapore Ministry of Health",
+			"email": ""
+		}
+	],
+	"types": [
+		{
+			"information": {
+				"value": "disease surveillance data",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+			}
+		},
+		{
+			"method": {
+				"value": "disease surveillance",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+			}
+		}
+	],
+	"isAbout": [
+		{
+			"name": "notifiable diseases",
+			"identifier": {
+				"identifier": "",
+				"identifierSource": ""
+			}
+		}
+	],
+	"spatialCoverage": [
+		{
+			"name": "Singapore",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5166",
+				"identifierSource": "apollo location service"
+			},
+			"alternativeIdentifiers": [
+				{
+					"identifier": "SG",
+					"identifierSource": "ISO-3166"
+				},
+				{
+					"identifier": "702",
+					"identifierSource": "ISO 3166-1 numeric"
+				},
+				{
+					"identifier": "SGP",
+					"identifierSource": "ISO 3166-1 alpha-3"
+				}
+			]
+		}
+	],
+	"distributions": [
+		{
+			"access": {
+				"landingPage": "https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
+			},
+			"dates": [
+				{
+					"date": "2017-05-11",
+					"type": {
+						"value": "accessed",
+						"valueIRI": ""
+					}
+				}
+			]
+		}
+	]
+}

@@ -56,7 +56,7 @@
                 "identifier": "55",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=55"
             },
-            "relatedIdentifiers": [
+            "alternateIdentifiers": [
                 {
                     "identifier": "UG-407",
                     "identifierSource": "ISO 3166"
@@ -176,7 +176,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 6,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

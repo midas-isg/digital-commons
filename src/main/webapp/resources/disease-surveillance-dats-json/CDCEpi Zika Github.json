@@ -1,0 +1,180 @@
+{
+	"title": "CDC epi github of publically available Zika data",
+	"description": "Data repository of publicly available Zika data",
+	"identifier": {
+		"identifier": "CDCEpi Zika Github",
+		"identifierSource": "MIDAS Informatics Services Group"
+	},
+	"creators": [
+		{
+			"firstName": "Dania M",
+			"lastName": " Rodriguez",
+			"email": ""
+		},
+		{
+			"firstName": "Mike",
+			"lastName": "Johansson",
+			"email": ""
+		}
+	],
+	"types": [
+		{
+			"information": {
+				"value": "disease surveillance data",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+			}
+		},
+		{
+			"method": {
+				"value": "disease surveillance",
+				"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+			}
+		}
+	],
+	"isAbout": [
+		{
+			"name": "Zika virus",
+			"identifier": {
+				"identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=64320)",
+				"identifierSource": "https://biosharing.org/bsg-s000154"
+			}
+		},
+		{
+			"name": "Zika virus disease",
+			"identifier": {
+				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=3928002",
+				"identifierSource": "https://biosharing.org/bsg-s000098"
+			}
+		},
+		{
+			"name": "Fetal microcephaly",
+			"identifier": {
+				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid= 431265009",
+				"identifierSource": "https://biosharing.org/bsg-s000098"
+			}
+		}
+	],
+	"spatialCoverage": [
+		{
+			"name": "Argentina",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4977",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Brazil",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5000",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Colombia",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5076",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Dominican Republic",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5120",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Ecuador",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5088",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "El Salvador",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5165",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "France",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4988",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Guatemala",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5018",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Haiti",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4989",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Mexico",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5178",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Nicaragua",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Panama",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5074",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "Puerto Rico",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1607",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "US Virgin Islands",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1604",
+				"identifierSource": "apollo location service"
+			}
+		},
+		{
+			"name": "United States",
+			"identifier": {
+				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+				"identifierSource": "apollo location service"
+			}
+		}
+	],
+	"distributions": [
+		{
+			"access": {
+				"landingPage": "https://github.com/cdcepi/zika"
+			},
+			"dates": [
+				{
+					"date": "2017-05-11",
+					"type": {
+						"value": "accessed",
+						"valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+					}
+				}
+			]
+		}
+	]
+}

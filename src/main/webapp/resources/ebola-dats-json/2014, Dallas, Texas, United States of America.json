@@ -56,7 +56,7 @@
                 "identifier": "72404",
                 "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=72404"
             },
-            "relatedIdentifiers": [
+            "alternateIdentifiers": [
                 {
                     "identifier": "48113007822",
                     "identifierSource": "Census tract identifier"
@@ -176,7 +176,7 @@
                     }
                 ]
             },
-            "size": 60,
+            "size": 19,
             "unit": {
                 "value": "kilobyte",
                 "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"

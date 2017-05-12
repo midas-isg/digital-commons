@@ -116,6 +116,9 @@ var epidemicsDictionary = {};
 var synthiaPopulationsDictionary = {};
 var caseSeriesDictionary = {};
 var chikungunyaDictionary = {};
+var diseaseSurveillanceDictionary = {};
+var moralityDataDictionary = {};
+var zikaDictionary = {};
 
 function convertToHref(href) {
     return '<a class="underline" href="' + href + '">' + href + '</a>';
@@ -171,9 +174,11 @@ function addDatsToDictionary(dictionary, data, code, type) {
     } else if(type != 'dataStandard') {
         var distributions = data["distributions"];
         if(distributions != null && distributions.length > 0) {
-            var storedIn = distributions[0]["storedIn"]["name"];
-            if(storedIn == "MIDAS Digital Commons") {
-                dictionary[code]["availableOnOlympus"] = true;
+            if(distributions[0]["storedIn"] != null) {
+                var storedIn = distributions[0]["storedIn"]["name"];
+                if(storedIn == "MIDAS Digital Commons") {
+                    dictionary[code]["availableOnOlympus"] = true;
+                }
             }
 
             dictionary[code]['landingPage'] = distributions[0]['access']['landingPage'];
@@ -230,6 +235,32 @@ function populateSynthiaPopulationsDictionary(count) {
     });
 }
 populateSynthiaPopulationsDictionary(0);
+
+var dsdNodeNames = ["Brazil Ministry of Health", "CDCEpi Zika Github", "Colombia Ministry of Health", "Singapore Ministry of Health", "US MMWR morbidity and mortality tables"];
+function populateDiseaseSurveillanceDictionary(count) {
+    $.getJSON( ctx + '/resources/disease-surveillance-dats-json/' + dsdNodeNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+        addDatsToDictionary(diseaseSurveillanceDictionary, data, dsdNodeNames[count]);
+        count++;
+
+        if(count < dsdNodeNames.length) {
+            populateDiseaseSurveillanceDictionary(count);
+        }
+    })
+}
+populateDiseaseSurveillanceDictionary(0);
+
+var moralityDataNodeNames = ["CDC WONDER US cause of death 1995-2015", "CDC WONDER US compressed mortality data"];
+function populateMortalityDataDictionary(count) {
+    $.getJSON( ctx + '/resources/mortality-dats-json/' + moralityDataNodeNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+        addDatsToDictionary(moralityDataDictionary, data, moralityDataNodeNames[count]);
+        count++;
+
+        if(count < moralityDataNodeNames.length) {
+            populateMortalityDataDictionary(count);
+        }
+    })
+}
+populateMortalityDataDictionary(0);
 
 function populateDataFormatsDictionary(count) {
     var keys = Object.keys(dataFormatsDictionary);
@@ -724,52 +755,36 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
                 }
             ]
-        },
-        {
-            text: "Disease surveillance data",
-            nodes: [
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>Brazil Ministry of Health</span>",
-                    url:"http://www2.datasus.gov.br/DATASUS/index.php?area=0203"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>CDCEpi Zika Github</span>",
-                    url:"https://zenodo.org/record/192153#.WIEKNLGZNcA"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>Colombia Ministry of Health</span>",
-                    url:"http://www.ins.gov.co/lineas-de-accion/Subdireccion-Vigilancia/sivigila/Paginas/vigilancia-rutinaria.aspx"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>Singapore Ministry of Health</span>",
-                    url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
-                    url:"https://www.tycho.pitt.edu/"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>US MMWR morbidity and mortality tables through data.cdc.gov</span>",
-                    url:"https://www.moh.gov.sg/content/moh_web/home/diseases_and_conditions.html"
-                }
-            ]
-        },
-        {
-            text: "Mortality data",
-            nodes: [
-
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>CDC WONDER US cause of death 1995-2015</span>",
-                    url: "https://wonder.cdc.gov/controller/datarequest/D76"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)'>CDC WONDER US compressed mortality files</span>",
-                    url: "https://wonder.cdc.gov/mortSQL.html"
-                }
-            ]
         }
     );
 
+    var dsd = {
+        text: "Disease surveillance data",
+        nodes: []
+    };
+
+    for(var i = 0; i < dsdNodeNames.length; i++) {
+        dsd.nodes.push({
+            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"diseaseSurveillance\",\"" + dsdNodeNames[i] + "\")'>" + dsdNodeNames[i] + "</span>",
+            name: dsdNodeNames[i]
+        });
+    }
+
+    collections.push(dsd);
+
+    var mortalityData = {
+        text: "Mortality data",
+        nodes: []
+    };
+
+    for(var i = 0; i < moralityDataNodeNames.length; i++) {
+        mortalityData.nodes.push({
+            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"mortalityData\",\"" + moralityDataNodeNames[i] + "\")'>" + moralityDataNodeNames[i] + "</span>",
+            name: moralityDataNodeNames[i]
+        });
+    }
+
+    collections.push(mortalityData);
 
     if(libraryData != null) {
         $.each(libraryData, function (index, value) {
@@ -789,16 +804,19 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 var ebolaEpidemics = false;
                 var caseListings = false;
                 var chikungunyaEpidemics = false;
+                var zikaEpidemics = false;
                 if(index == "Ebola epidemics") {
                     ebolaEpidemics = true;
                 } else if(index == "Rabies case listings") {
                     caseListings = true;
                 } else if(index == "Chikungunya epidemics") {
                     chikungunyaEpidemics = true;
+                } else if(index == "Zika epidemics") {
+                    zikaEpidemics = true;
                 }
 
                 $.each(value, function (index, value) {
-                    if(ebolaEpidemics || caseListings || chikungunyaEpidemics) {
+                    if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics) {
                         var dictionaryKey = value.name;
                         if(dictionaryKey.includes('É')) {
                             dictionaryKey = dictionaryKey.replace('É', 'E');
@@ -840,6 +858,18 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
                             $.getJSON( ctx + '/resources/chikungunya-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
                                 addDatsToDictionary(chikungunyaDictionary, data, dictionaryKey);
+                            })
+                            .error(function(data) {
+                                console.log(dictionaryKey);
+                            });
+                        } else if(zikaEpidemics) {
+                            nodeLevel2.push({
+                                name: value.name,
+                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"zika\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                            });
+
+                            $.getJSON( ctx + '/resources/zika-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                addDatsToDictionary(zikaDictionary, data, dictionaryKey);
                             })
                             .error(function(data) {
                                 console.log(dictionaryKey);
@@ -956,7 +986,7 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Web Services - ' + name
         });
-    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya") {
+    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya" || type == "diseaseSurveillance" || type == "mortalityData" || type == "zika") {
         if(type == 'syntheticEcosystems') {
             attrs = syntheticEcosystemsDictionary[name];
 
@@ -976,6 +1006,15 @@ function openModal(type, name) {
             name = attrs['title'];
         } else if(type == 'chikungunya') {
             attrs = chikungunyaDictionary[name];
+            name = attrs['title'];
+        } else if(type == 'diseaseSurveillance') {
+            attrs = diseaseSurveillanceDictionary[name];
+            name = attrs['title'];
+        } else if(type == 'mortalityData') {
+            attrs = moralityDataDictionary[name];
+            name = attrs['title'];
+        } else if(type == 'zika') {
+            attrs = zikaDictionary[name];
             name = attrs['title'];
         }
 
@@ -1075,7 +1114,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries") {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries" && type != "diseaseSurveillance" && type != "mortalityData" && type != "zika") {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();
