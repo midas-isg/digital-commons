@@ -119,6 +119,7 @@ var chikungunyaDictionary = {};
 var diseaseSurveillanceDictionary = {};
 var moralityDataDictionary = {};
 var zikaDictionary = {};
+var infectiousDiseaseDictionary = {};
 
 function convertToHref(href) {
     return '<a class="underline" href="' + href + '">' + href + '</a>';
@@ -805,6 +806,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 var caseListings = false;
                 var chikungunyaEpidemics = false;
                 var zikaEpidemics = false;
+                var infectiousDisease = false;
                 if(index == "Ebola epidemics") {
                     ebolaEpidemics = true;
                 } else if(index == "Rabies case listings") {
@@ -813,11 +815,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     chikungunyaEpidemics = true;
                 } else if(index == "Zika epidemics") {
                     zikaEpidemics = true;
+                } else if(index == 'H1N1 infectious disease scenarios') {
+                    infectiousDisease = true;
                 }
 
                 $.each(value, function (index, value) {
-                    if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics) {
-                        var dictionaryKey = value.name;
+                    if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics || infectiousDisease) {
+                        var dictionaryKey = value.name.trim();
                         if(dictionaryKey.includes('É')) {
                             dictionaryKey = dictionaryKey.replace('É', 'E');
                         } else if(dictionaryKey.includes('/')) {
@@ -874,6 +878,18 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                             .error(function(data) {
                                 console.log(dictionaryKey);
                             });
+                        } else if(infectiousDisease) {
+                            nodeLevel2.push({
+                                name: value.name,
+                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"infectiousDisease\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                            });
+
+                            $.getJSON( ctx + '/resources/infectious-disease-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                addDatsToDictionary(infectiousDiseaseDictionary, data, dictionaryKey);
+                            })
+                            .error(function(data) {
+                                console.log(dictionaryKey);
+                            });
                         }
 
                     } else {
@@ -910,9 +926,12 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     if(key in attrs && attrs[key] != null) {
         var attribute = attrs[key];
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
-            if(attribute[0].includes("<ul") || attribute[0].includes("<br>")) {
-                attribute = attribute.join('');
-            } else {
+            if((key == 'publicationsThatUsedRelease' || key == "publicatoinsAboutRelease" || key == "forecasts" || key == 'executables') && attribute.length > 1) {
+                var htmlStr = '<ul style="padding-left:19px"><li>';
+                attribute = attribute.join('</li><li>');
+                htmlStr += attribute + '</ul>';
+                attribute = htmlStr;
+            }  else {
                 attribute = attribute.join(', ');
             }
         }
@@ -937,7 +956,14 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if(key in attrs) {
         var attribute = attrs[key];
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
-            attribute = attribute.join(', ');
+            if((key == 'dataInputFormats' || key == 'dataOutputFormats') && attribute.length > 1) {
+                var htmlStr = '<ul style="padding-left:19px"><li>';
+                attribute = attribute.join('</li><li>');
+                htmlStr += attribute + '</ul>';
+                attribute = htmlStr;
+            } else {
+                attribute = attribute.join(', ');
+            }
         }
 
         $('#software-' + name + '-container').show();
@@ -986,7 +1012,7 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Web Services - ' + name
         });
-    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya" || type == "diseaseSurveillance" || type == "mortalityData" || type == "zika") {
+    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya" || type == "diseaseSurveillance" || type == "mortalityData" || type == "zika" || type == "infectiousDisease") {
         if(type == 'syntheticEcosystems') {
             attrs = syntheticEcosystemsDictionary[name];
 
@@ -1015,6 +1041,9 @@ function openModal(type, name) {
             name = attrs['title'];
         } else if(type == 'zika') {
             attrs = zikaDictionary[name];
+            name = attrs['title'];
+        } else if(type == 'infectiousDisease') {
+            attrs = infectiousDiseaseDictionary[name];
             name = attrs['title'];
         }
 
@@ -1118,7 +1147,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries" && type != "diseaseSurveillance" && type != "mortalityData" && type != "zika") {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries" && type != "diseaseSurveillance" && type != "mortalityData" && type != "zika" && type != "infectiousDisease") {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();

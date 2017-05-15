@@ -1,27 +1,27 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:hladish-dengue-model-v2.0",
+        "identifier": "MIDAS-ISG:epivis-csv-v38",
         "identifierSource": "MIDAS-ISG"
     },
-    "name": "hladish dengue transmission model",
+    "name": "EpiVis Input Format",
     "type": {
-        "value": "synthetic ecosystem data set",
-        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
+        "value": "",
+        "valueIRI": ""
     },
-    "description": "This specification describes four tabular formats named: population-yucatan.txt\nlocations-yucatan.txt\nimmunity-yucatan.txt\nnetwork-yucatan.txt",
+    "description": "This specification describes the tabular format used to import time series data into EpiVis.",
     "licenses": [
         {
-            "name": "GNU General Public License"
+            "name": "No License Specified."
         }
     ],
-    "version": "2",
+    "version": "38",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "https://github.com/tjhladish/dengue/blob/master/pop-yucatan/README",
+                    "value": "None",
                     "valueIRI": ""
                 }
             ]

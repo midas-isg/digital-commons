@@ -2,7 +2,7 @@
     "title": "United States, 1951 - 2015, Rabies cases with documented bat exposures and/or bat strains of rabies",
     "description": "A case series of rabies cases with documented bat exposures and/or bat strains of rabies virus",
     "identifier": {
-        "identifier": "under development",
+        "identifier": "https://doi.org/10.5281/zenodo.580101",
         "identifierSource": "zenodo"
     },
     "creators": [

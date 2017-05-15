@@ -100,9 +100,9 @@
       "1.2.0"
     ],
     "dataOutputFormats": [
-      "SPEW.US",
-      "SPEW.IPUMS",
-      "SPEW.CANADA"
+      "MIDAS-ISG:spew-us-format-v1.2.0",
+      "MIDAS-ISG:spew-ipums-format-v1.2.0",
+      "MIDAS-ISG:spew-canada-format-v1.2.0"
     ],
     "documentation": "<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\" class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>",
     "title": "spew"
@@ -111,7 +111,7 @@
     "subtype": "Disease transmission tree estimators",
     "humanReadableSynopsis": "The R-package outbreaker implements a Bayesian approach for reconstructing outbreak data from pathogen genome sequences. It also implements a tool for outbreak simulation.",
     "dataInputFormats": [
-      "DNAbin matrix format"
+      "MIDAS-ISG:dna-sequences-for-ape-v1.0"
     ],
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPL</a>",
     "version": [
@@ -140,10 +140,10 @@
       "Olivier Gascuel (LIRMM, Montpellier, France.)"
     ],
     "dataInputFormats": [
-      "PHYLIP format (sequences)"
+      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0"
     ],
     "dataOutputFormats": [
-      "Newick format (for the ML tree)"
+      "BIOSHARING.ORG:bsg-s000250"
     ],
     "webApplication": [
       "http://www.atgc-montpellier.fr/phyml/"
@@ -181,9 +181,9 @@
       "v6.7 - GLEAMviz simulator client"
     ],
     "executables": [
-      "GleamViz v6.7: <a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows</a>",
-      "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX</a>",
-      "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit</a>"
+      "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-windows-installer.exe\">Windows client</a>",
+      "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-osx-installer.app.zip\">OSX client</a>",
+      "<a class=\"underline\" href=\"http://www.gleamviz.org/simul/bin/GLEAMviz-6.7-linux-x64-installer.run\">Linux 64-bit client</a>"
     ],
     "documentation": "<a class=\"underline\" href=\"http://www.gleamviz.org/simulator/GLEAMviz_client_manual_v6.7.pdf\" download>GLEAMviz simulator client manual v6.7</a>",
     "website": "http://www.gleamviz.org",
@@ -296,7 +296,7 @@
       }
     ],
     "dataOutputFormats": [
-      "RxNorm drug codes"
+      "MIDAS-ISG:rxnorm-api-output-format-v1.0"
     ],
     "humanReadableSynopsis": "<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>"
   },
@@ -309,7 +309,7 @@
       "accessPointUrl": ""
     }],
     "dataOutputFormats": [
-      "NCBI Taxon Identifier and others"
+      "MIDAS-ISG:entrez-output-format-v1.0"
     ],
     "humanReadableSynopsis": "<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>"
   },
@@ -332,7 +332,7 @@
       "accessPointUrl": ""
     }],
     "dataOutputFormats": [
-      "Epi-data JSON"
+      "MIDAS-ISG:epi-data-json-v1.0"
     ],
     "version": [
       "commit 7367f92"
@@ -445,8 +445,8 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "Synthetic population – Synthia.US",
-      "all other input – proprietary"
+      "MIDAS-ISG:synthia-us-format-v2010",
+      "Proprietary"
     ],
     "controlMeasures": [
       "Vaccination",
@@ -665,8 +665,8 @@
       "Zika"
     ],
     "region": [
-      "South America <br>",
-      "Latin America <br>",
+      "South America",
+      "Latin America",
       "Caribbean"
     ],
     "title": "ZIKA Modeling"
@@ -683,8 +683,8 @@
       "1.3"
     ],
     "executables": [
-      "Windows binaries: r-devel: seedy_1.3.zip, r-release: seedy_1.3.zip, r-oldrel: seedy_1.3.zip<br>",
-      "OS X El Capitan binaries: r-release: seedy_1.3.tgz<br>",
+      "Windows binaries: r-devel: seedy_1.3.zip, r-release: seedy_1.3.zip, r-oldrel: seedy_1.3.zip",
+      "OS X El Capitan binaries: r-release: seedy_1.3.tgz",
       "OS X Mavericks binaries: r-oldrel: seedy_1.3.tgz"
     ],
     "title": "SEEDY"
@@ -694,7 +694,7 @@
     "product": "NextStrain (2 versions)",
     "humanReadableSynopsis": "nextflu v1.0 is the release of the Nextstrain project described in a 2015 Bioinformatics article. Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. The goal is to aid epidemiological understanding and improve outbreak response.",
     "dataInputFormats": [
-      "FASTA"
+      "BIOSHARING.ORG:bsg-s000228"
     ],
     "version": [
       "1.0"
@@ -747,7 +747,7 @@
       "Dengue virus"
     ],
     "dataInputFormats": [
-      "FASTA"
+      "BIOSHARING.ORG:bsg-s000228"
     ],
     "source": "https://github.com/nextstrain",
     "website": "http://nextstrain.org/",
@@ -785,8 +785,8 @@
       "DELPHI, Carnegie Mellon University"
     ],
     "dataInputFormats": [
-      "CSV",
-      "API"
+      "MIDAS-ISG:epivis-csv-v38",
+      "MIDAS-ISG:flusight-forecast-v1.0"
     ],
     "webApplication": [
       "http://delphi.midas.cs.cmu.edu/epivis/epivis.html"
@@ -835,8 +835,8 @@
       "10 US regions and national"
     ],
     "forecasts": [
-      "Start week <br>",
-      "Peak week <br>",
+      "Start week",
+      "Peak week",
       "Peak intensity"
     ],
     "website": "http://delphi.midas.cs.cmu.edu/forecast/",
@@ -855,9 +855,9 @@
       "10 US regions"
     ],
     "forecasts": [
-      "Start week <br>",
-      "Peak week <br>",
-      "Peak intensity <br>",
+      "Start week",
+      "Peak week",
+      "Peak intensity",
       "Short term (1-, 2-, 3-, and 4-week ahead) forecasts of weekly percent visits to sentinel clincians for ILI"
     ],
     "website": "http://cdcepi.github.io/flu/index.html",
@@ -915,12 +915,12 @@
       "Dengue"
     ],
     "region": [
-      "San Juan, Puerto Rico <br>",
+      "San Juan, Puerto Rico",
       "Iquitos, Peru"
     ],
     "forecasts": [
-      "Timing of peak incidence <br>",
-      "Maximum weekly incidence <br>",
+      "Timing of peak incidence",
+      "Maximum weekly incidence",
       "Total number of dengue cases in a transmission season"
     ],
     "website": "http://cdcepi.github.io/dengue/index.html",
@@ -1029,8 +1029,8 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "Synthetic population – Synthia.US",
-      "all other input – proprietary"
+      "MIDAS-ISG:synthia-us-format-v2010",
+      "Proprietary"
     ],
     "controlMeasures": [
       "Vaccination",
@@ -1205,7 +1205,7 @@
       "Professor Joseph Felsenstein, of the Department of Genome Sciences and the Department of Biology, University of Washington, Seattle."
     ],
     "dataOutputFormats": [
-      "PHYLIP"
+      "UW-DGS-DB:phylip-format-v3.695"
     ],
     "executables": [
       "<a class=\"underline\" href=\"http://evolution.genetics.washington.edu/phylip/sourcecode.html\">Executable Binaries</a>"
@@ -1226,7 +1226,7 @@
       "https://synthpopviewer.rti.org"
     ],
     "dataInputFormats": [
-      "Synthia.US"
+      "MIDAS-ISG:synthia-us-format-v2010"
     ],
     "grants": [
       "1-U24-GM087704"
@@ -1263,15 +1263,15 @@
     ],
     "license": "<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License)</a>",
     "publicationsThatUsedRelease": [
-      "<ul style=\"padding-left:20px\"><li>Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of F... (2010)</li>",
-      "<li>Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network Analysis of Livestock Movements t... (2008) </li>",
-      "<li>Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries... (2011)</li>",
-      "<li>Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made ... (2007)</li>",
-      "<li>Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of Strategies for t... (2011)</li>",
-      "<li>Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verif... (2011)</li>",
-      "<li>Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-and-Mouth Dise... (2007)</li>",
-      "<li>Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulatio... (2013)</li>",
-      "<li>Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case Stu... (2007)</li></ul>"
+      "Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of F... (2010)",
+      "Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network Analysis of Livestock Movements t... (2008)",
+      "Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries... (2011)",
+      "Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made ... (2007)",
+      "Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of Strategies for t... (2011)",
+      "Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verif... (2011)",
+      "Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-and-Mouth Dise... (2007)",
+      "Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulatio... (2013)",
+      "Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case Stu... (2007)"
     ],
     "hostSpeciesIncluded": [
       "N/A"
@@ -1309,8 +1309,10 @@
   {
     "subtype": "Data-format converters",
     "humanReadableSynopsis": "<p>Epidemic case count data are an important source of information for infectious disease researchers, but these counts are often distributed by health agencies in non-standard formats. Analysts typically spend a lot of time reformatting or “munging” these data before they can conduct their analysis.</p> <p>We created Omnivore, a web-based tool for converting case count reports from health agencies into a standard data format.  Omnivore, which is still under development, uses custom-developed parsers to automatically ingest data from various sources that include: Zika data from the US Centers for Disease Control and Prevention, and Chikungunya data from the Pan American Health Organization, the Mexican Ministry of Health, and the Colombian Ministry of Health.</p> <p>Omnivore automatically detects the data format and automatically extracts information such as the type of case counts (e.g. cumulative vs. intervals), report dates, and location. Omnivore automatically detects missing counts and duplicate counts, flagging missing counts removing duplicates after detection. Omnivore is currently undergoing final testing and will be a valuable tool to help researchers and practitioners to significantly speed up their workflow for analysis of epidemic time series data.</p>",
-    "webApplication": "http://betaweb.rods.pitt.edu/omnivore",
-    "signInRequired":"true",
+    "webApplication": [
+      "http://betaweb.rods.pitt.edu/omnivore"
+    ],
+    "signInRequired": true,
     "version": [
       "0.5"
     ],
@@ -1326,7 +1328,9 @@
       "MIDAS-ISG:colombia-moh-chikungunya-weekly-summary-v1.0",
       "MIDAS-ISG:colombia-municipal-routine-surveillance-events-by-week-v1.0"
     ],
-    "identifier": {"identifier": "MIDAS-ISG:omnivore-v0.5"},
+    "identifier": {
+      "identifier": "MIDAS-ISG:omnivore-v0.5"
+    },
     "title": "Omnivore"
   }
 ]

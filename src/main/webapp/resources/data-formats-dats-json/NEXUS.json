@@ -1,27 +1,27 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:hladish-dengue-model-v2.0",
+        "identifier": "MIDAS-ISG:nexus-v1.0",
         "identifierSource": "MIDAS-ISG"
     },
-    "name": "hladish dengue transmission model",
+    "name": "NEXUS",
     "type": {
-        "value": "synthetic ecosystem data set",
-        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
+        "value": "",
+        "valueIRI": ""
     },
-    "description": "This specification describes four tabular formats named: population-yucatan.txt\nlocations-yucatan.txt\nimmunity-yucatan.txt\nnetwork-yucatan.txt",
+    "description": "NEXUS is a file format designed to contain systematic data for use by computer programs. The format is widely used in bioinformatics. Several popular phylogenetic programs such as PAUP*, MrBayes, Mesquite, MacClade and SplitsTree use this format.",
     "licenses": [
         {
-            "name": "GNU General Public License"
+            "name": "No License Specified."
         }
     ],
-    "version": "2",
+    "version": "1",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "https://github.com/tjhladish/dengue/blob/master/pop-yucatan/README",
+                    "value": "http://wiki.christophchamp.com/index.php?title=NEXUS_file_format",
                     "valueIRI": ""
                 }
             ]

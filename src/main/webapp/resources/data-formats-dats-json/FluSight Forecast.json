@@ -1,27 +1,27 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:hladish-dengue-model-v2.0",
+        "identifier": "MIDAS-ISG:flusight-forecast-v1.0",
         "identifierSource": "MIDAS-ISG"
     },
-    "name": "hladish dengue transmission model",
+    "name": "FluSight Forecast",
     "type": {
-        "value": "synthetic ecosystem data set",
-        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
+        "value": "",
+        "valueIRI": ""
     },
-    "description": "This specification describes four tabular formats named: population-yucatan.txt\nlocations-yucatan.txt\nimmunity-yucatan.txt\nnetwork-yucatan.txt",
+    "description": "This specification describes the tabular format used to submit forecasts to the FluSight influenza challenge.",
     "licenses": [
         {
-            "name": "GNU General Public License"
+            "name": ""
         }
     ],
-    "version": "2",
+    "version": "1",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "https://github.com/tjhladish/dengue/blob/master/pop-yucatan/README",
+                    "value": "https://github.com/cdcepi/FluSight-forecasts",
                     "valueIRI": ""
                 }
             ]
