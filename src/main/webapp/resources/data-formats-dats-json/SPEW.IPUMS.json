@@ -1,6 +1,6 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:spew-ipums-v1.2.0",
+        "identifier": "MIDAS-ISG:spew-ipums-format-v1.2.0",
         "identifierSource": "MIDAS-ISG"
     },
     "name": "SPEW.IPUMS",
@@ -8,7 +8,7 @@
         "value": "synthetic ecosystem data set",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
     },
-    "description": "This specification describes two tabular formats:  one for households and the other for persons.",
+    "description": "This specification describes two tabular formats: one for households and the other for persons.",
     "licenses": [
         {
             "name": ""

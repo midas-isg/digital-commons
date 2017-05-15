@@ -1,6 +1,6 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:spew-us-v1.2.0",
+        "identifier": "MIDAS-ISG:spew-us-format-v1.2.0",
         "identifierSource": "MIDAS-ISG"
     },
     "name": "SPEW.US",
@@ -8,7 +8,7 @@
         "value": "synthetic ecosystem data set",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
     },
-    "description": "This specification describes four tabular formats:  for representing households, persons, schools and workplaces.",
+    "description": "This specification describes four tabular formats: for representing households, persons, schools and workplaces.",
     "licenses": [
         {
             "name": ""

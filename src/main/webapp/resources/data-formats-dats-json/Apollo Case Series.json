@@ -5,13 +5,13 @@
     },
     "name": "Apollo Case Series",
     "type": {
-        "value": "case series",
-        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000559"
+        "value": "http://purl.obolibrary.org/obo/APOLLO_SV_00000559",
+        "valueIRI": "Michael Wagner, John Levander, Nicholas Millett, William Hogan"
     },
     "description": "The type declaration of the InfectiousDiseaseScenario from the Apollo Data Types - v4.0.1",
     "licenses": [
         {
-            "name": "Apache License 2.0"
+            "name": "\"case series\""
         }
     ],
     "version": "4.0.1",

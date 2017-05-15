@@ -1,6 +1,6 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:galapagos-output-format-v2.0",
+        "identifier": "MIDAS-ISG:galapagos-input-format-v1.0",
         "identifierSource": "MIDAS-ISG"
     },
     "name": "Galapagos-CSV",
@@ -14,14 +14,14 @@
             "name": "Creative Commons Attribution 3.0 United States"
         }
     ],
-    "version": "2",
+    "version": "1",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "https://github.com/midas-isg/data-format-repository/wiki/Galapagos-Output-Format",
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/Galapagos-v1.0",
                     "valueIRI": ""
                 }
             ]

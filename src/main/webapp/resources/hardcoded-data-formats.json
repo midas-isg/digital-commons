@@ -12,6 +12,12 @@
     ]
   },
   {
+    "title": "Galapagos-CSV",
+    "version": [
+      "1"
+    ]
+  },
+  {
     "title": "Omnivore-CSV",
     "version": [
       "2"
@@ -99,6 +105,30 @@
     "title": "Apollo Case Series",
     "version": [
       "4.0.1"
+    ]
+  },
+  {
+    "title": "NEXUS",
+    "version": [
+      "1"
+    ]
+  },
+  {
+    "title": "ape coding scheme for DNA sequences",
+    "version": [
+      "1"
+    ]
+  },
+  {
+    "title": "EpiVis Input Format",
+    "version": [
+      "38"
+    ]
+  },
+  {
+    "title": "FluSight Forecast",
+    "version": [
+      "1"
     ]
   }
 ]
