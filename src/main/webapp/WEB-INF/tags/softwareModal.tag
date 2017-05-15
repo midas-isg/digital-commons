@@ -20,13 +20,13 @@
                     <div class="tab-pane fade in active" id="modal-html">
                         <%--<myTags:softwareModalItem id="title" title="Title" hasHref="false"></myTags:softwareModalItem>--%>
 
-                        <myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>
+                        <myTags:softwareModalItem id="identifier" title="Identifier" hasHref="false"></myTags:softwareModalItem>
+
+                        <%--<myTags:softwareModalItem id="doi" title="DOI"></myTags:softwareModalItem>--%>
 
                         <myTags:softwareModalItem id="human-readable-synopsis" title="Human-readable synopsis" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="description" title="Description" hasHref="false"></myTags:softwareModalItem>
-
-                        <myTags:softwareModalItem id="identifier" title="Identifier" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="creator" title="" hasHref="false"></myTags:softwareModalItem>
 
@@ -147,7 +147,7 @@
                                 Metadata format:
                             </h4>
                             <a id="dats-json" href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a>
-                            <span id="mdc-json">MIDAS Digital Commons Metadata Format</span>
+                            <span id="mdc-json">MDC Software Metadata Format</span>
                             <br>
                         </div>
 

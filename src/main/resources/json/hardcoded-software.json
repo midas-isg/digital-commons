@@ -1,37 +1,38 @@
-[{
-  "subtype": "Disease transmission models",
-  "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
-  "product": "FluTE (4 versions)",
-  "pathogenCoverage": [
-    "Influenza"
-  ],
-  "locationCoverage": [
-    "Los Angeles",
-    "Seattle"
-  ],
-  "hostSpeciesIncluded": [
-    "Humans"
-  ],
-  "controlMeasures": [
-    "Antivirals",
-    "isolation",
-    "liberal sick leave",
-    "quarantine",
-    "school closure",
-    "travel restriction",
-    "vaccination"
-  ],
-  "source": "https://github.com/dlchao/FluTE",
-  "version": [
-    "1.12",
-    "1.15",
-    "1.16"
-  ],
-  "publicationsAboutRelease": [
-    "Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
-  ],
-  "title": "FluTE"
-},
+[
+  {
+    "subtype": "Disease transmission models",
+    "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
+    "product": "FluTE (4 versions)",
+    "pathogenCoverage": [
+      "Influenza"
+    ],
+    "locationCoverage": [
+      "Los Angeles",
+      "Seattle"
+    ],
+    "hostSpeciesIncluded": [
+      "Humans"
+    ],
+    "controlMeasures": [
+      "Antivirals",
+      "isolation",
+      "liberal sick leave",
+      "quarantine",
+      "school closure",
+      "travel restriction",
+      "vaccination"
+    ],
+    "source": "https://github.com/dlchao/FluTE",
+    "version": [
+      "1.12",
+      "1.15",
+      "1.16"
+    ],
+    "publicationsAboutRelease": [
+      "Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:<a href=\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class=\"underline\">10.1371/journal.pcbi.1000656</a>)"
+    ],
+    "title": "FluTE"
+  },
   {
     "subtype": "Disease forecasters",
     "humanReadableSynopsis": "FluOutlook is a web platform for the exploration of influenza forecasts.  It provides a visual interface to numerical forecasts of the current influenza season in North America and Europe through maps and charts. Activity data and forecasts are updated weekly, based on the reports of the official influenza surveillance systems in each country.",
@@ -196,7 +197,9 @@
     "version": [
       "1.0.1.0"
     ],
-    "doi": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>",
+    "identifier": {
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>"
+    },
     "developers": [
       "Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs",
       "Programming by Software Development Service, Informatics Services Group."
@@ -234,26 +237,26 @@
       "MIDAS-ISG:spew-ipums-v1.2.0",
       "MIDAS-ISG:spew-canada-v1.2.0"
     ],
-    "doi": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>",
+    "identifier": {
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>"
+    },
     "title": "spew2synthia"
   },
   {
     "subtype": "Data services",
     "title": "Apollo Location Service",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"http://betaweb.rods.pitt.edu/ls/api-docs",
-        "accessPointUrl":"http://betaweb.rods.pitt.edu/ls"
-      }
-    ],
+    "dataServiceDescription": [{
+      "accessPointType": "REST",
+      "accessPointDescription": "http://betaweb.rods.pitt.edu/ls/api-docs",
+      "accessPointUrl": "http://betaweb.rods.pitt.edu/ls"
+    }],
     "version": [
       "1.1.1"
     ],
-    "dataOutputFormats":[
+    "dataOutputFormats": [
       "IETF:GeoJSON-rfc7946"
     ],
-    "dataInputFormats":[
+    "dataInputFormats": [
       "Proprietary"
     ],
     "source": "https://github.com/midas-isg/ls",
@@ -262,40 +265,37 @@
   {
     "subtype": "Data services",
     "title": "Project Tycho",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"custom",
-        "accessPointDescription":"<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
-        "accessPointUrl":"http://www.tycho.pitt.edu/api/"
-      }
-    ],
+    "dataServiceDescription": [{
+      "accessPointType": "custom",
+      "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
+      "accessPointUrl": "http://www.tycho.pitt.edu/api/"
+    }],
     "humanReadableSynopsis": "<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
     "version": [
       "1.1.0"
     ],
-    "dataOutputFormats":[
+    "dataOutputFormats": [
       "Proprietary"
     ],
-    "dataInputFormats":[
+    "dataInputFormats": [
       "Proprietary"
     ]
   },
   {
     "subtype": "Data services",
     "title": "RxNorm API",
-    "dataServiceDescription":[
+    "dataServiceDescription": [{
+      "accessPointType": "SOAP",
+      "accessPointDescription": "https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
+      "accessPointUrl": ""
+    },
       {
-        "accessPointType":"SOAP",
-        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
-        "accessPointUrl":""
-      },
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
-        "accessPointUrl":""
+        "accessPointType": "REST",
+        "accessPointDescription": "https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
+        "accessPointUrl": ""
       }
     ],
-    "dataOutputFormats":[
+    "dataOutputFormats": [
       "RxNorm drug codes"
     ],
     "humanReadableSynopsis": "<p>The RxNorm API is a web service for accessing the current RxNorm data set.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using the RxNorm coding system or when standardizing datasets.</p>"
@@ -303,14 +303,12 @@
   {
     "subtype": "Data services",
     "title": "Entrez Programming Utilities (E-utilities)",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://www.ncbi.nlm.nih.gov/books/NBK25501/",
-        "accessPointUrl":""
-      }
-    ],
-    "dataOutputFormats":[
+    "dataServiceDescription": [{
+      "accessPointType": "REST",
+      "accessPointDescription": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+      "accessPointUrl": ""
+    }],
+    "dataOutputFormats": [
       "NCBI Taxon Identifier and others"
     ],
     "humanReadableSynopsis": "<p>The Entrez Programming Utilities (E-utilities) is a web service which allows you to execute text searches on the PubMed database of biomedical literature and 38 other literature and molecular databases including DNA and protein sequence, structure, gene, genome, genetic variation and gene expression.</p> <p>An example of a use that MIDAS developers might make of this system is querying the <a class=\"underline\" href=\"https://www.ncbi.nlm.nih.gov/taxonomy/\" style=\"word-break:break-word\">NCBI Taxonomy Database</a> for standard codes for host and pathogen species.</p>"
@@ -318,32 +316,28 @@
   {
     "subtype": "Data services",
     "title": "MedlinePlus Connect",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://medlineplus.gov/connect/service.html",
-        "accessPointUrl":""
-      }
-    ],
+    "dataServiceDescription": [{
+      "accessPointType": "REST",
+      "accessPointDescription": "https://medlineplus.gov/connect/service.html",
+      "accessPointUrl": ""
+    }],
     "humanReadableSynopsis": "<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>"
   },
   {
     "subtype": "Data services",
     "title": "Epi-Data",
-    "dataServiceDescription":[
-      {
-        "accessPointType":"REST",
-        "accessPointDescription":"https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
-        "accessPointUrl":""
-      }
-    ],
-    "dataOutputFormats":[
+    "dataServiceDescription": [{
+      "accessPointType": "REST",
+      "accessPointDescription": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
+      "accessPointUrl": ""
+    }],
+    "dataOutputFormats": [
       "Epi-data JSON"
     ],
     "version": [
       "commit 7367f92"
     ],
-    "dataInputFormats":[
+    "dataInputFormats": [
       "Proprietary"
     ],
     "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
@@ -372,7 +366,9 @@
       "larviciding"
     ],
     "humanReadableSynopsis": "<p>CLARA is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
-    "doi": "<a href=\"http://doi.org/10.5281/zenodo.322422\", class=\"underline\">10.5281/zenodo.322422</a>",
+    "identifier": {
+      "identifier": "<a href=\"http://doi.org/10.5281/zenodo.322422\", class=\"underline\">10.5281/zenodo.322422</a>"
+    },
     "developers": [
       "Shawn T. Brown"
     ],
@@ -882,7 +878,9 @@
       "https://reichlab.github.io/flusight/"
     ],
     "source": "https://github.com/reichlab/flusight/releases/tag/v1.3.2",
-    "doi": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>",
+    "identifier": {
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
+    },
     "grants": [
       "R35GM119582"
     ],
@@ -935,7 +933,9 @@
     "pathogenCoverage": [
       "Communicable human-to-human"
     ],
-    "doi": "<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>",
+    "identifier": {
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>"
+    },
     "version": [
       "0.0.4"
     ],
@@ -971,7 +971,9 @@
     "pathogenCoverage": [
       "Influenza"
     ],
-    "doi": "<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>",
+    "identifier": {
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>"
+    },
     "source": "https://github.com/PSC-PublicHealth/FluTE",
     "sourceCodeRelease": "<a href=\"https://zenodo.org/record/268028#.WJiSt2V8-sM\" class=\"underline\">https://zenodo.org/record/268028#.WJiSt2V8-sM</a>",
     "version": [
@@ -1009,7 +1011,9 @@
     "subtype": "Disease transmission models",
     "product": "FRED (3 versions)",
     "humanReadableSynopsis": "This software installs the FRED simulator on a Windows 64-bit operating system.",
-    "doi": "<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>",
+    "identifier": {
+      "identifier": "<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>"
+    },
     "source": "https://github.com/midas-isg/FRED_CYGWIN_INSTALLER",
     "version": [
       "2.12.0-b1.0"
@@ -1060,7 +1064,9 @@
     ],
     "humanReadableSynopsis": "This model projects Zika virus infections in childbearing women in the Americas.",
     "source": "https://github.com/TAlexPerkins/Zika_nmicrobiol_2016",
-    "doi": "<a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">10.1038/nmicrobiol.2016.126</a>",
+    "identifier": {
+      "identifier": "<a href=\"http://www.nature.com/articles/nmicrobiol2016126\" class=\"underline\">10.1038/nmicrobiol.2016.126</a>"
+    },
     "publicationsThatUsedRelease": [
       "Perkins TA, Siraj AS, Ruktanonchai CW, Kraemer MUGK, Tatem AJ. (2016) Model-based projections of Zika virus infections in childbearing women in the Americas. Nature Microbiology 1:16126. (<a href=\"http://dx.doi.org/10.1038/nmicrobiol.2016.126\" class=\"underline\">doi:10.1038/nmicrobiol.2016.126</a>)"
     ],
@@ -1144,7 +1150,9 @@
     ],
     "source": "https://github.com/midas-isg/PITT-Anthrax-model",
     "license": "<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
-    "doi": "<a href=\"https://zenodo.org/record/439078#.WNvahxLytzq\", class=\"underline\">10.5281/zenodo.439078</a>",
+    "identifier": {
+      "identifier": "<a href=\"https://zenodo.org/record/439078#.WNvahxLytzq\", class=\"underline\">10.5281/zenodo.439078</a>"
+    },
     "title": "Pitt-Anthrax model",
     "dataInputFormats": [
       "APOLLO:InfectiousDiseaseScenario-v4.0.1"
@@ -1176,7 +1184,9 @@
     ],
     "source": "https://github.com/midas-isg/PITT-SEIR-model",
     "license": "<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
-    "doi": "<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>",
+    "identifier": {
+      "identifier": "<a href=\"https://zenodo.org/record/319937#.WKxb1xLytPV\", class=\"underline\">10.5281/zenodo.319937</a>"
+    },
     "title": "Pitt-SEIR model",
     "dataInputFormats": [
       "APOLLO:InfectiousDiseaseScenario-v4.0.1"
