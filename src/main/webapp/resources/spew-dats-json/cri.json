@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/cri/diags/ipums_diags_cri.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/cri/"
+                "landingPage": "http://w3id.org/spew/0000066",
+                "accessURL": "https://zenodo.org/api/files/d0a8bb9d-355f-42ae-8671-596ba96faeb2/cri.tar.gz"
             },
             "conformsTo": [
                 {

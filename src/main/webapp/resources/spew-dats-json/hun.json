@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/hun/diags/ipums_diags_hun.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/hun/"
+                "landingPage": "http://w3id.org/spew/0000079",
+                "accessURL": "https://zenodo.org/api/files/5d8a2e17-8059-4251-bc30-50968ab55f1e/hun.tar.gz"
             },
             "conformsTo": [
                 {

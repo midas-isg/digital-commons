@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/ssd/diags/ipums_diags_ssd.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/ssd/"
+                "landingPage": "http://w3id.org/spew/0000111",
+                "accessURL": "https://zenodo.org/api/files/588650c2-77f1-47e2-bf99-2388fc3bd35c/ssd.tar.gz"
             },
             "conformsTo": [
                 {

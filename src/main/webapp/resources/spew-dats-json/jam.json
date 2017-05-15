@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/jam/diags/ipums_diags_jam.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/jam/"
+                "landingPage": "http://w3id.org/spew/0000085",
+                "accessURL": "https://zenodo.org/api/files/e706755f-e734-45eb-b4de-7924633350e0/jam.tar.gz"
             },
             "conformsTo": [
                 {

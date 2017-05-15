@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/southern_asia/bgd/diags/ipums_diags_bgd.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/southern_asia/bgd/"
+                "landingPage": "http://w3id.org/spew/0000056",
+                "accessURL": "https://zenodo.org/api/files/edfe56f1-29e7-4200-8d8e-1e47a4bee84d/bgd.tar.gz"
             },
             "conformsTo": [
                 {

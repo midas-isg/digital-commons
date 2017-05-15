@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/hti/diags/ipums_diags_hti.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/hti/"
+                "landingPage": "http://w3id.org/spew/0000078",
+                "accessURL": "https://zenodo.org/api/files/c5aedf61-dd12-4d14-b086-fc3d5a377c13/hti.tar.gz"
             },
             "conformsTo": [
                 {

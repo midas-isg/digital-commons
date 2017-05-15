@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/ken/diags/ipums_diags_ken.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/ken/"
+                "landingPage": "http://w3id.org/spew/0000087",
+                "accessURL": "https://zenodo.org/api/files/acd25780-2e26-4606-b18e-7fc053d0f163/ken.tar.gz"
             },
             "conformsTo": [
                 {

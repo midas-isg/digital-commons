@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/dom/diags/ipums_diags_dom.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/caribbean/dom/"
+                "landingPage": "http://w3id.org/spew/0000069",
+                "accessURL": "https://zenodo.org/api/files/2d80fc8a-6dc6-4461-bf20-83d9d24f67d1/dom.tar.gz"
             },
             "conformsTo": [
                 {

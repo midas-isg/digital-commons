@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/lbr/diags/ipums_diags_lbr.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/lbr/"
+                "landingPage": "http://w3id.org/spew/0000089",
+                "accessURL": "https://zenodo.org/api/files/f7c3d604-1605-4c99-a5fc-97a0e54d5ae2/lbr.tar.gz"
             },
             "conformsTo": [
                 {

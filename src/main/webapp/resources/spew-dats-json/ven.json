@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ven/diags/ipums_diags_ven.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ven/"
+                "landingPage": "http://w3id.org/spew/0000120",
+                "accessURL": "https://zenodo.org/api/files/0c4fdf78-33bc-4752-ab71-91dcc83ebd2f/ven.tar.gz"
             },
             "conformsTo": [
                 {

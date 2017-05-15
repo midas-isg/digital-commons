@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/southern_africa/zaf/diags/ipums_diags_zaf.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/southern_africa/zaf/"
+                "landingPage": "http://w3id.org/spew/0000122",
+                "accessURL": "https://zenodo.org/api/files/1ab7ea20-0459-4884-96bb-d5040e83c69f/zaf.tar.gz"
             },
             "conformsTo": [
                 {

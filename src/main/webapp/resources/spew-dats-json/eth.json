@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/eth/diags/ipums_diags_eth.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/eth/"
+                "landingPage": "http://w3id.org/spew/0000073",
+                "accessURL": "https://zenodo.org/api/files/d1da8517-c4e1-49bd-85a2-9ed76dfc7a6f/eth.tar.gz"
             },
             "conformsTo": [
                 {

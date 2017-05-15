@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/tza/diags/ipums_diags_tza.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/tza/"
+                "landingPage": "http://w3id.org/spew/0000115",
+                "accessURL": "https://zenodo.org/api/files/49666750-4cdb-46bc-b03f-6fe22652e433/tza.tar.gz"
             },
             "conformsTo": [
                 {

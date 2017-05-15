@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/southern_europe/prt/diags/ipums_diags_prt.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/southern_europe/prt/"
+                "landingPage": "http://w3id.org/spew/0000104",
+                "accessURL": "https://zenodo.org/api/files/ff43966e-2334-4113-aeb9-acd8e845b270/prt.tar.gz"
             },
             "conformsTo": [
                 {

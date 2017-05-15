@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/blr/diags/ipums_diags_blr.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/blr/"
+                "landingPage": "http://w3id.org/spew/0000057",
+                "accessURL": "https://zenodo.org/api/files/2cdfc599-68b2-417a-96b1-d380d6323d8e/blr.tar.gz"
             },
             "conformsTo": [
                 {

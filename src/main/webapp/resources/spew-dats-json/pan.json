@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/pan/diags/ipums_diags_pan.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/pan/"
+                "landingPage": "http://w3id.org/spew/0000101",
+                "accessURL": "https://zenodo.org/api/files/595d2938-8ce7-4e65-b48a-76deebb4e9d1/pan.tar.gz"
             },
             "conformsTo": [
                 {

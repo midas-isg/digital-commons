@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/rou/diags/ipums_diags_rou.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/rou/"
+                "landingPage": "http://w3id.org/spew/0000106",
+                "accessURL": "https://zenodo.org/api/files/325496b0-ba71-410f-bad7-4c41214ddbf9/rou.tar.gz"
             },
             "conformsTo": [
                 {

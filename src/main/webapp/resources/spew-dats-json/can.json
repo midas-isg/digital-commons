@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/can/diags/ipums_diags_can.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/can/"
+                "landingPage": "http://w3id.org/spew/0000060",
+                "accessURL": "https://zenodo.org/api/files/5e04c50f-dd36-4548-b12d-7a2d1173c2e2/can.tar.gz"
             },
             "conformsTo": [
                 {

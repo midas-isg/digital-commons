@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/slv/diags/ipums_diags_slv.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/slv/"
+                "landingPage": "http://w3id.org/spew/0000110",
+                "accessURL": "https://zenodo.org/api/files/f19a2eca-6242-4cb3-b4fd-43108110549a/slv.tar.gz"
             },
             "conformsTo": [
                 {

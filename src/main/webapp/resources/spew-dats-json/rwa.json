@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/rwa/diags/ipums_diags_rwa.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/rwa/"
+                "landingPage": "http://w3id.org/spew/0000107",
+                "accessURL": "https://zenodo.org/api/files/defa46ae-5e03-45d5-b5a1-6b2878679a09/rwa.tar.gz"
             },
             "conformsTo": [
                 {

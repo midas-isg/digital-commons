@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/southern_asia/pak/diags/ipums_diags_pak.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/southern_asia/pak/"
+                "landingPage": "http://w3id.org/spew/0000100",
+                "accessURL": "https://zenodo.org/api/files/ab9e5719-8e8a-48fb-bb64-0707db8998c5/pak.tar.gz"
             },
             "conformsTo": [
                 {

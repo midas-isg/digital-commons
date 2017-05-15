@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/tur/diags/ipums_diags_tur.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/tur/"
+                "landingPage": "http://w3id.org/spew/0000114",
+                "accessURL": "https://zenodo.org/api/files/0e29eaf1-87d0-4f99-a3a0-925e0e5bc4ad/tur.tar.gz"
             },
             "conformsTo": [
                 {

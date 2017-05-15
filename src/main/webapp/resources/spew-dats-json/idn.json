@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/idn/diags/ipums_diags_idn.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/idn/"
+                "landingPage": "http://w3id.org/spew/0000080",
+                "accessURL": "https://zenodo.org/api/files/f8dc8a4e-e16b-4be8-adec-fdd924bdf597/idn.tar.gz"
             },
             "conformsTo": [
                 {

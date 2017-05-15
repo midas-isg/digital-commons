@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/sdn/diags/ipums_diags_sdn.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/sdn/"
+                "landingPage": "http://w3id.org/spew/0000108",
+                "accessURL": "https://zenodo.org/api/files/c366291f-68d2-449a-b21d-aad06b666b24/sdn.tar.gz"
             },
             "conformsTo": [
                 {
