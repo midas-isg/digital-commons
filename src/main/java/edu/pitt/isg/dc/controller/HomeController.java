@@ -58,9 +58,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String hello(Model model) {
+    public String hello(Model model) throws Exception {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
+        //model.addAttribute("softwareForm", softwareRule.generateXSDForm(null));
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {

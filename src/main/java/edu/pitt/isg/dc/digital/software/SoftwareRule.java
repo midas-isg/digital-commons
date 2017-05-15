@@ -1,9 +1,13 @@
 package edu.pitt.isg.dc.digital.software;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.io.InputStream;
 import java.util.*;
+import java.util.regex.Matcher;
 
 @Service
 public class SoftwareRule {
@@ -14,6 +18,8 @@ public class SoftwareRule {
     private static final String DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS = "Disease surveillance algorithms and systems";
     private static final String OTHER_SOFTWARE = "Other software";
 
+    private static final String SOFTWARE_XSD = "software.xsd";
+    private static final String XSD_FORM_RESOURCES = "https://xsd-forms.herokuapp.com"; //"/resources/xsd-forms/";
 
     @Autowired
     private SoftwareRepository repository;
@@ -78,4 +84,30 @@ public class SoftwareRule {
         return folder;
     }
 
+    public String generateXSDForm(String rootElementName) throws Exception {
+        /*
+        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
+        InputStream schema = appContext.getResource(SOFTWARE_XSD).getInputStream();
+        String idPrefix = "";
+        scala.Option<String> rootElement;
+        String htmlString;
+
+        if(rootElementName != null) {
+            rootElement = scala.Some.apply(rootElementName);
+        }
+        else {
+            rootElement = scala.Option.empty();
+        }
+
+        htmlString = com.github.davidmoten.xsdforms.Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+        htmlString = htmlString.replaceAll("//.*\n", Matcher.quoteReplacement(" "));
+        htmlString = htmlString.replace("\"", "\\\"");
+        htmlString = htmlString.replace("'", "\\'");
+        //htmlString = htmlString.replace("<head>", "<head><base href='" + XSD_FORM_RESOURCES + "'>");
+
+        return htmlString.replace("\n", "");
+        */
+
+        return "";
+    }
 }
