@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/irq/diags/ipums_diags_irq.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/irq/"
+                "landingPage": "http://w3id.org/spew/0000082",
+                "accessURL": "https://zenodo.org/api/files/32e6ca94-e768-48d0-a77f-d319d74c9e6a/irq.tar.gz"
             },
             "conformsTo": [
                 {

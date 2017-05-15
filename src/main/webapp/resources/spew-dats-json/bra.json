@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/bra/diags/ipums_diags_bra.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/bra/"
+                "landingPage": "http://w3id.org/spew/0000059",
+                "accessURL": "https://zenodo.org/api/files/c2196129-24f0-4f22-83c3-308118c612a2/bra.tar.gz"
             },
             "conformsTo": [
                 {

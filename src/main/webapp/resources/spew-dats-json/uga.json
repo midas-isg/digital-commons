@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/uga/diags/ipums_diags_uga.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/uga/"
+                "landingPage": "http://w3id.org/spew/0000116",
+                "accessURL": "https://zenodo.org/api/files/86357f56-6ccd-460d-bde8-ab489c8f034b/uga.tar.gz"
             },
             "conformsTo": [
                 {

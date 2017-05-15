@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/nic/diags/ipums_diags_nic.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/nic/"
+                "landingPage": "http://w3id.org/spew/0000098",
+                "accessURL": "https://zenodo.org/api/files/ede227ef-f6b9-4192-9fa6-c7adac4bd6c4/nic.tar.gz"
             },
             "conformsTo": [
                 {

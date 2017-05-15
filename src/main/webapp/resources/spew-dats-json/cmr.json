@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/middle_africa/cmr/diags/ipums_diags_cmr.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/middle_africa/cmr/"
+                "landingPage": "http://w3id.org/spew/0000064",
+                "accessURL": "https://zenodo.org/api/files/fd6c2bea-0fd1-446f-911a-16ac7a8f5443/cmr.tar.gz"
             },
             "conformsTo": [
                 {

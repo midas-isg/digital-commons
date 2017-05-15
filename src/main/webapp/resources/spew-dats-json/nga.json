@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/nga/diags/ipums_diags_nga.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/nga/"
+                "landingPage": "http://w3id.org/spew/0000097",
+                "accessURL": "https://zenodo.org/api/files/697fce6e-ea3e-4445-8460-9b4f73b895eb/nga.tar.gz"
             },
             "conformsTo": [
                 {

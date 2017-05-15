@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ury/diags/ipums_diags_ury.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ury/"
+                "landingPage": "http://w3id.org/spew/0000118",
+                "accessURL": "https://zenodo.org/api/files/cb2c1b55-c9e6-4d73-a335-f48970691a7d/ury.tar.gz"
             },
             "conformsTo": [
                 {

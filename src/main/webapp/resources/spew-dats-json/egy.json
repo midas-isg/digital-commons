@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/egy/diags/ipums_diags_egy.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/egy/"
+                "landingPage": "http://w3id.org/spew/0000071",
+                "accessURL": "https://zenodo.org/api/files/2585795d-6a00-4f92-b121-19c038137936/egy.tar.gz"
             },
             "conformsTo": [
                 {

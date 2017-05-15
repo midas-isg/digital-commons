@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/bol/diags/ipums_diags_bol.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/bol/"
+                "landingPage": "http://w3id.org/spew/0000058",
+                "accessURL": "https://zenodo.org/api/files/f4d2b48f-8272-4737-ad95-ef5eba0b3fb6/bol.tar.gz"
             },
             "conformsTo": [
                 {

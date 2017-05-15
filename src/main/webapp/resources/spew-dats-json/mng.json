@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/eastern_asia/mng/diags/ipums_diags_mng.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/eastern_asia/mng/"
+                "landingPage": "http://w3id.org/spew/0000093",
+                "accessURL": "https://zenodo.org/api/files/6a9170c9-dfbf-4637-8586-de999ab0274e/mng.tar.gz"
             },
             "conformsTo": [
                 {

@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/khm/diags/ipums_diags_khm.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/khm/"
+                "landingPage": "http://w3id.org/spew/0000088",
+                "accessURL": "https://zenodo.org/api/files/9fae5478-aeec-41bd-a9cf-62e19092184a/khm.tar.gz"
             },
             "conformsTo": [
                 {

@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/jor/diags/ipums_diags_jor.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/jor/"
+                "landingPage": "http://w3id.org/spew/0000086",
+                "accessURL": "https://zenodo.org/api/files/3bf473ee-5cb6-454d-894b-871055c0e936/jor.tar.gz"
             },
             "conformsTo": [
                 {

@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/oceania/melanesia/fji/diags/ipums_diags_fji.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/oceania/melanesia/fji/"
+                "landingPage": "http://w3id.org/spew/0000074",
+                "accessURL": "https://zenodo.org/api/files/af22f2cd-e41d-4da6-a173-ac221c08f71a/fji.tar.gz"
             },
             "conformsTo": [
                 {

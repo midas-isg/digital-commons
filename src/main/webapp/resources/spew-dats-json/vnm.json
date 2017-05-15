@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/vnm/diags/ipums_diags_vnm.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/vnm/"
+                "landingPage": "http://w3id.org/spew/0000121",
+                "accessURL": "https://zenodo.org/api/files/b44ea2fb-0856-43a4-b9d7-f19975164334/vnm.tar.gz"
             },
             "conformsTo": [
                 {

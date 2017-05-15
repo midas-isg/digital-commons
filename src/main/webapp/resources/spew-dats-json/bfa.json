@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/bfa/diags/ipums_diags_bfa.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/western_africa/bfa/"
+                "landingPage": "http://w3id.org/spew/0000055",
+                "accessURL": "https://zenodo.org/api/files/54e7aaf2-503e-45e2-8add-b11d2f75f3be/bfa.tar.gz"
             },
             "conformsTo": [
                 {

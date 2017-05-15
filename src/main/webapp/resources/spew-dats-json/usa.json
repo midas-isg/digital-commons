@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa"
+                "landingPage": "http://w3id.org/spew/0000119",
+                "accessURL": "https://zenodo.org/api/files/c9f856e5-a20b-45a5-906b-ebc82b012abe/northern_america.tar.gz"
             },
             "conformsTo": [
                 {

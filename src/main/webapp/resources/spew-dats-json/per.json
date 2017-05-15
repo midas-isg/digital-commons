@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/per/diags/ipums_diags_per.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/per/"
+                "landingPage": "http://w3id.org/spew/0000102",
+                "accessURL": "https://zenodo.org/api/files/fd5e25ba-677d-4081-8c93-d4687584879e/per.tar.gz"
             },
             "conformsTo": [
                 {

@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/ukr/diags/ipums_diags_ukr.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/eastern_europe/ukr/"
+                "landingPage": "http://w3id.org/spew/0000117",
+                "accessURL": "https://zenodo.org/api/files/ef875662-0060-4d1e-a38d-2dd04c64c1e0/ukr.tar.gz"
             },
             "conformsTo": [
                 {

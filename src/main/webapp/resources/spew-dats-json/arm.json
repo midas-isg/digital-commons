@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/arm/diags/ipums_diags_arm.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/arm/"
+                "landingPage": "http://w3id.org/spew/0000053",
+                "accessURL": "https://zenodo.org/api/files/0bf15135-1fbd-479c-b426-6777ecafa7b9/arm.tar.gz"
             },
             "conformsTo": [
                 {

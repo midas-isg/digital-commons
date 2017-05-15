@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/mwi/diags/ipums_diags_mwi.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/eastern_africa/mwi/"
+                "landingPage": "http://w3id.org/spew/0000095",
+                "accessURL": "https://zenodo.org/api/files/dd867945-9b44-48b9-8cb3-f4982170d279/mwi.tar.gz"
             },
             "conformsTo": [
                 {

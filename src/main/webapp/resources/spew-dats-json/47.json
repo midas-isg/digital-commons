@@ -141,8 +141,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa/47/diags/us_diags_47.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/usa/47/"
+                "landingPage": "http://w3id.org/spew/0000043",
+                "accessURL": "https://zenodo.org/api/files/29e548ac-df36-424c-9cf8-1bda8d195bf3/47.tar.gz"
             },
             "conformsTo": [
                 {

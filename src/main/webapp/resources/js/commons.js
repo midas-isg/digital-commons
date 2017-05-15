@@ -1058,6 +1058,10 @@ function openModal(type, name) {
         $('#software-name').hide();
     }
 
+    if(attrs.hasOwnProperty('identifier') && attrs['identifier'].hasOwnProperty('identifier')) {
+        attrs['identifier'] = attrs['identifier']['identifier']
+    }
+
     if('developers' in attrs) {
         var attribute = attrs['developers'];
         var length = attribute.length;
@@ -1137,7 +1141,9 @@ function openModal(type, name) {
         }
     }
 
-    toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
+    //toggleRequiredModalItem('doi', attrs, 'doi', false, true, type);
+
+    toggleRequiredModalItem('identifier', attrs, 'identifier', false, true, type);
 
     toggleRequiredModalItem('dataInputFormats', attrs, 'data-input-formats', false, true, type, true);
 
@@ -1220,8 +1226,6 @@ function openModal(type, name) {
     toggleModalItem('platform', attrs, 'platform', false, false);
 
     toggleModalItem('description', attrs, 'description', false, false);
-
-    toggleModalItem('identifier', attrs, 'identifier', false, true);
 
     toggleModalItem('landingPage', attrs, 'landing-page', true, false);
 

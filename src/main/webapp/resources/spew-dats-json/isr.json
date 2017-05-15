@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/isr/diags/ipums_diags_isr.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/western_asia/isr/"
+                "landingPage": "http://w3id.org/spew/0000083",
+                "accessURL": "https://zenodo.org/api/files/1d4ba154-af7e-46e0-971f-0de1f9e2d1f7/isr.tar.gz"
             },
             "conformsTo": [
                 {

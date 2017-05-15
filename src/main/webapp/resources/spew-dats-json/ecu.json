@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ecu/diags/ipums_diags_ecu.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/south_america/ecu/"
+                "landingPage": "http://w3id.org/spew/0000070",
+                "accessURL": "https://zenodo.org/api/files/ba7ff88c-ecd0-4323-9029-def38f68814d/ecu.tar.gz"
             },
             "conformsTo": [
                 {

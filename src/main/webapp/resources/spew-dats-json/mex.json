@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/mex/diags/ipums_diags_mex.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/central_america/mex/"
+                "landingPage": "http://w3id.org/spew/0000091",
+                "accessURL": "https://zenodo.org/api/files/6dcd2a57-09e3-46f7-a780-e5f3f608c1cc/mex.tar.gz"
             },
             "conformsTo": [
                 {

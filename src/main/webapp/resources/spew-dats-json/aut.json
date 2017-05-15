@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/western_europe/aut/diags/ipums_diags_aut.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/western_europe/aut/"
+                "landingPage": "http://w3id.org/spew/0000054",
+                "accessURL": "https://zenodo.org/api/files/c918e60a-1c80-4587-a20a-08ba440b7ecc/aut.tar.gz"
             },
             "conformsTo": [
                 {

@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/southern_europe/grc/diags/ipums_diags_grc.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/europe/southern_europe/grc/"
+                "landingPage": "http://w3id.org/spew/0000077",
+                "accessURL": "https://zenodo.org/api/files/dddd0e9f-98a2-41da-8fc7-ce59789015cc/grc.tar.gz"
             },
             "conformsTo": [
                 {

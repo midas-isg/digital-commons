@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/tha/diags/ipums_diags_tha.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/asia/south_eastern_asia/tha/"
+                "landingPage": "http://w3id.org/spew/0000113",
+                "accessURL": "https://zenodo.org/api/files/2ff3ae09-6956-4d7f-9668-355b61c3aa70/tha.tar.gz"
             },
             "conformsTo": [
                 {

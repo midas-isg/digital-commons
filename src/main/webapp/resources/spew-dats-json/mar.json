@@ -131,8 +131,8 @@
                 }
             ],
             "access": {
-                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/mar/diags/ipums_diags_mar.html",
-                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/africa/northern_africa/mar/"
+                "landingPage": "http://w3id.org/spew/0000090",
+                "accessURL": "https://zenodo.org/api/files/041b4eec-0b41-48ba-8b94-11607dd5cc77/mar.tar.gz"
             },
             "conformsTo": [
                 {
