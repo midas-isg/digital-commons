@@ -79,11 +79,6 @@
         </dependency>
 
         <!-- XSD Form Generator -->
-<!--        <dependency>
-            <groupId>edu.pitt.isg</groupId>
-            <artifactId>xsd-forms</artifactId>
-            <version>0.2.2-SNAPSHOT</version>
-        </dependency>-->
         <dependency>
             <groupId>edu.pitt.isg</groupId>
             <artifactId>xsd-forms-generator</artifactId>
