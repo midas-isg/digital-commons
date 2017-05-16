@@ -24,7 +24,6 @@ public class DCEmailService {
 
     static {
         String adminEmail = "";
-        String emailSender = "";
         String username = "";
         String password = "";
         String host = "";
@@ -33,7 +32,7 @@ public class DCEmailService {
 
         try{
             EMAIL_CONFIG.load(DCEmailService.class.getClassLoader()
-                .getResourceAsStream("myconfig.properties"));
+                .getResourceAsStream("mail.properties"));
             adminEmail = EMAIL_CONFIG.getProperty("mail.receivers");
             username = EMAIL_CONFIG.getProperty("mail.sender");
             password = EMAIL_CONFIG.getProperty("mail.sender_password");

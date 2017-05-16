@@ -64,7 +64,10 @@ public class Auth0Configuration extends Auth0Config {
         private void fillRequestUrlIntoSession(HttpServletRequest request) {
             final HttpSession session = request.getSession(true);// true == allow create
             final String parameter = request.getParameter("url");
-            final String url = request.getRequestURI().substring(request.getContextPath().length()) + "?url=" + parameter;
+            String url = request.getRequestURI().substring(request.getContextPath().length()) + "?url=" + parameter;
+            if(parameter == null) {
+                url = request.getRequestURI().substring(request.getContextPath().length());
+            }
            if(!url.contains("login") && !url.contains("auth") && !url.contains("callback") && !url.contains("null"))
                 session.setAttribute("requestUrl", url);
             //System.out.println(url);

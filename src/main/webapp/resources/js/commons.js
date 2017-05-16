@@ -1427,6 +1427,7 @@ $(document).ready(function() {
             $('#content-tab').addClass('highlighted-item');
         }
     } else {
+        $("#content-tab").click();
         ga('send', {
             hitType: 'pageview',
             page: location.pathname,
