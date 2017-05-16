@@ -8,6 +8,7 @@
 <%@ attribute name="preview" type="java.lang.Boolean" %>
 <%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
+<%@ attribute name="addEntry" type="java.lang.Boolean" %>
 <%@ attribute name="pub" type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication" %>
 
     <c:if test="${iframe != true}">
@@ -43,18 +44,25 @@
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <c:if test="${loggedIn == true && iframe == false}">
                         <ul class="nav navbar-nav navbar-padding">
-                            <li class="active "><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="tab"
-                                                   href="#content">Content</a></li>
-                            <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#data-and-knowledge">Data & Knowledge</a></li>--%>
-                            <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#web-services">Web Services</a></li>--%>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>
-                                    <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#add-entry">Add Entry</a></li>
-                            <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
-                            <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
+                            <c:if test="${addEntry == true}">
+                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" href="${pageContext.request.contextPath}/main#content">Content</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#compute-platform">Compute Platform</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+                                <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#search">Search</a></li>--%>
+                                <li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#about">About</a></li>
+                            </c:if>
+                            <c:if test="${addEntry != true}">
+                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="tab" href="#content">Content</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+                                <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>--%>
+                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
+                            </c:if>
+                            <%--<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
                                 <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
-                            </c:forEach>
+                            </c:forEach>--%>
                         </ul>
                     </c:if>
                     <ul class="nav navbar-nav navbar-right">

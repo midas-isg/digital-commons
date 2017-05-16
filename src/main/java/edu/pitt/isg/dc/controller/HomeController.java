@@ -88,6 +88,14 @@ public class HomeController {
         return "commons";
     }
 
+    @RequestMapping(value = "/midas-sso/add", method = RequestMethod.GET)
+    public String addEntry(Model model) throws Exception {
+        model.addAttribute("software", softwareRule.tree());
+        model.addAttribute("xsdForms", softwareRule.generateXSDForms());
+
+        return "addEntry";
+    }
+
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
