@@ -34,6 +34,8 @@ import java.io.IOException;
 public class Auth0Configuration extends Auth0Config {
     @Override
     protected void authorizeRequests(final HttpSecurity http) throws Exception {
+        http.headers()
+            .frameOptions().sameOrigin();
 
         http.authorizeRequests()
                 .antMatchers("/public/**", "/webjars/**", "/logoutFromAuth0", "/callback").permitAll()

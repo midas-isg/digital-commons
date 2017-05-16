@@ -1,8 +1,19 @@
 package edu.pitt.isg.dc.digital.software;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 @Service
@@ -14,6 +25,13 @@ public class SoftwareRule {
     private static final String DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS = "Disease surveillance algorithms and systems";
     private static final String OTHER_SOFTWARE = "Other software";
 
+    private static boolean GENERATE_XSD_FORMS = false;
+    private static final String [] XSD_FILES = {
+        "software.xsd",
+        "dats.xsd"
+        };
+    private static final String XSD_FORM_RESOURCES = "/resources/xsd-forms/";
+    private static final String OUTPUT_DIRECTORY = "C:\\Users\\tps23\\Desktop\\test\\";
 
     @Autowired
     private SoftwareRepository repository;
@@ -78,4 +96,69 @@ public class SoftwareRule {
         return folder;
     }
 
+    //TODO: relocate XSD form-related stuff to more appropriate class
+    private void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext) throws IOException {
+        InputStream schema;
+        String idPrefix = "";
+        String htmlString;
+        scala.Option<String> rootElement;
+
+        if(rootElementName != null) {
+            rootElement = scala.Option.apply(rootElementName);
+
+            schema = appContext.getResource(xsdFile).getInputStream();
+            htmlString = com.github.davidmoten.xsdforms.Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+            schema.close();
+
+            htmlString = htmlString.replace("<head>", "<head><base href='.'>");
+
+            Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
+            Charset charset = Charset.forName("US-ASCII");
+            try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
+                writer.write(htmlString, 0, htmlString.length());
+            } catch (IOException x) {
+                System.err.format("IOException: %s%n", x);
+            }
+        }
+
+        return;
+    }
+
+    public String generateXSDForms() throws Exception {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
+        InputStream schema;
+        DocumentBuilderFactory dbFactory;
+        DocumentBuilder dBuilder;
+        Document document;
+        String rootElementName;
+        String typeList = "";
+
+        for(int i = 0; i < XSD_FILES.length; i++) {
+            typeList += (XSD_FILES[i] + ":");
+            schema = appContext.getResource(XSD_FILES[i]).getInputStream();
+            dbFactory = DocumentBuilderFactory.newInstance();
+            dBuilder = dbFactory.newDocumentBuilder();
+            document = dBuilder.parse(schema);
+            schema.close();
+
+            NodeList nodes = document.getElementsByTagName("schema").item(0).getChildNodes();
+            int nodesLength = nodes.getLength();
+
+            for(int j = 0; j < nodesLength; j++) {
+                if(nodes.item(j).getNodeName().equals("element")){
+                    rootElementName = nodes.item(j).getAttributes().getNamedItem("name").getNodeValue();
+                    typeList += (rootElementName + ";");
+
+                    if(GENERATE_XSD_FORMS){
+                        generateForm(XSD_FILES[i], rootElementName, appContext);
+                    }
+                }
+            }
+            typeList += "-";
+        }
+
+        GENERATE_XSD_FORMS = false;
+
+        return typeList;
+    }
 }

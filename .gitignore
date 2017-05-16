@@ -6,3 +6,4 @@ target
 out/
 auth0.properties
 application.properties
+myconfig.properties
