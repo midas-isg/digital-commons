@@ -2195,10 +2195,10 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
    return xml;
   }
 
-  //extract xml from element <Software>
+  //extract xml from element <ModelingPlatforms>
   function getXml1instance() {
 
-    var xml = '\n' + spaces(0) + '<Software xmlns="http://mdc.isg.pitt.edu/v1_0/">';
+    var xml = '\n' + spaces(0) + '<ModelingPlatforms xmlns="http://mdc.isg.pitt.edu/v1_0/">';
     //now add sequence children for each instanceNo
     if (idVisible('repeating-enclosing-1-instance-1')) {
       xml += getXml2instance1();
@@ -2222,7 +2222,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       xml += getXml22instance1();
       xml += getXml23instance1();
     }
-    xml += '\n' + spaces(0) + '</Software>';
+    xml += '\n' + spaces(0) + '</ModelingPlatforms>';
     return xml;
   }
 

@@ -1,6 +1,8 @@
 package edu.pitt.isg.dc.controller;
 
 import edu.pitt.isg.Converter;
+import edu.pitt.isg.dc.component.DCEmailService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class DataEntryController {
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-
-    public @ResponseBody String addNewWorker(@RequestBody String rawInputString) throws Exception {
+    public @ResponseBody String addNewEntry(@RequestBody String rawInputString) throws Exception {
         Converter xml2JSONConverter = new Converter();
         String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
         String jsonString = null;
@@ -30,7 +31,9 @@ System.out.println(jsonString);
             System.err.println(exception);
         }
 
-        //TODO: Save JSON entry to 'under review' list
+        //E-mail to someone it concerns
+        DCEmailService emailService = new DCEmailService();
+        emailService.mailToAdmin("Digital Commons New Entry Request", jsonString);
 
         return jsonString;
     }

@@ -61,7 +61,8 @@ public class HomeController {
     public String hello(Model model) throws Exception {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
-        //model.addAttribute("softwareForm", softwareRule.generateXSDForm(null));
+        model.addAttribute("xsdForms", softwareRule.generateXSDForms());
+
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {
@@ -86,7 +87,6 @@ public class HomeController {
         model.addAttribute("preview", true);
         return "commons";
     }
-
 
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public

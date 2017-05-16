@@ -4,10 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
 
-import java.io.InputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
-import java.util.regex.Matcher;
 
 @Service
 public class SoftwareRule {
@@ -18,8 +25,13 @@ public class SoftwareRule {
     private static final String DISEASE_SURVEILLANCE_ALGORITHMS_SYSTEMS = "Disease surveillance algorithms and systems";
     private static final String OTHER_SOFTWARE = "Other software";
 
-    private static final String SOFTWARE_XSD = "software.xsd";
-    private static final String XSD_FORM_RESOURCES = "https://xsd-forms.herokuapp.com"; //"/resources/xsd-forms/";
+    private static boolean GENERATE_XSD_FORMS = false;
+    private static final String [] XSD_FILES = {
+        "software.xsd",
+        "dats.xsd"
+        };
+    private static final String XSD_FORM_RESOURCES = "/resources/xsd-forms/";
+    private static final String OUTPUT_DIRECTORY = "C:\\Users\\tps23\\Desktop\\test\\";
 
     @Autowired
     private SoftwareRepository repository;
@@ -84,30 +96,69 @@ public class SoftwareRule {
         return folder;
     }
 
-    public String generateXSDForm(String rootElementName) throws Exception {
-        /*
-        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
-        InputStream schema = appContext.getResource(SOFTWARE_XSD).getInputStream();
+    //TODO: relocate XSD form-related stuff to more appropriate class
+    private void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext) throws IOException {
+        InputStream schema;
         String idPrefix = "";
-        scala.Option<String> rootElement;
         String htmlString;
+        scala.Option<String> rootElement;
 
         if(rootElementName != null) {
-            rootElement = scala.Some.apply(rootElementName);
+            rootElement = scala.Option.apply(rootElementName);
+
+            schema = appContext.getResource(xsdFile).getInputStream();
+            htmlString = com.github.davidmoten.xsdforms.Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+            schema.close();
+
+            htmlString = htmlString.replace("<head>", "<head><base href='.'>");
+
+            Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
+            Charset charset = Charset.forName("US-ASCII");
+            try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
+                writer.write(htmlString, 0, htmlString.length());
+            } catch (IOException x) {
+                System.err.format("IOException: %s%n", x);
+            }
         }
-        else {
-            rootElement = scala.Option.empty();
+
+        return;
+    }
+
+    public String generateXSDForms() throws Exception {
+        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
+        InputStream schema;
+        DocumentBuilderFactory dbFactory;
+        DocumentBuilder dBuilder;
+        Document document;
+        String rootElementName;
+        String typeList = "";
+
+        for(int i = 0; i < XSD_FILES.length; i++) {
+            typeList += (XSD_FILES[i] + ":");
+            schema = appContext.getResource(XSD_FILES[i]).getInputStream();
+            dbFactory = DocumentBuilderFactory.newInstance();
+            dBuilder = dbFactory.newDocumentBuilder();
+            document = dBuilder.parse(schema);
+            schema.close();
+
+            NodeList nodes = document.getElementsByTagName("schema").item(0).getChildNodes();
+            int nodesLength = nodes.getLength();
+
+            for(int j = 0; j < nodesLength; j++) {
+                if(nodes.item(j).getNodeName().equals("element")){
+                    rootElementName = nodes.item(j).getAttributes().getNamedItem("name").getNodeValue();
+                    typeList += (rootElementName + ";");
+
+                    if(GENERATE_XSD_FORMS){
+                        generateForm(XSD_FILES[i], rootElementName, appContext);
+                    }
+                }
+            }
+            typeList += "-";
         }
 
-        htmlString = com.github.davidmoten.xsdforms.Generator.generateHtmlAsString(schema, idPrefix, rootElement);
-        htmlString = htmlString.replaceAll("//.*\n", Matcher.quoteReplacement(" "));
-        htmlString = htmlString.replace("\"", "\\\"");
-        htmlString = htmlString.replace("'", "\\'");
-        //htmlString = htmlString.replace("<head>", "<head><base href='" + XSD_FORM_RESOURCES + "'>");
+        GENERATE_XSD_FORMS = false;
 
-        return htmlString.replace("\n", "");
-        */
-
-        return "";
+        return typeList;
     }
 }
