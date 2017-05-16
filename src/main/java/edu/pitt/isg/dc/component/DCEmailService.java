@@ -20,7 +20,6 @@ public class DCEmailService {
     private static final String PROTOCOL;
     private static final String PASSWORD;
     private static final String ADMIN_EMAIL;
-    private static final String EMAIL_SENDER;
     private static final Properties EMAIL_CONFIG;
 
     static {
@@ -34,20 +33,18 @@ public class DCEmailService {
 
         try{
             EMAIL_CONFIG.load(DCEmailService.class.getClassLoader()
-                .getResourceAsStream("myconfig.properties"));
-            adminEmail = EMAIL_CONFIG.getProperty("dcAdmin");
-            emailSender = EMAIL_CONFIG.getProperty("mailSender");
-            username = EMAIL_CONFIG.getProperty("username");
-            password = EMAIL_CONFIG.getProperty("password");
-            host = EMAIL_CONFIG.getProperty("host");
-            protocol = EMAIL_CONFIG.getProperty("protocol");
+                .getResourceAsStream("config.properties"));
+            adminEmail = EMAIL_CONFIG.getProperty("mail.receivers");
+            username = EMAIL_CONFIG.getProperty("mail.sender");
+            password = EMAIL_CONFIG.getProperty("mail.sender_password");
+            host = EMAIL_CONFIG.getProperty("mail.host");
+            protocol = EMAIL_CONFIG.getProperty("mail.protocol");
         }
         catch(Exception exception) {
             System.err.print(exception);
         }
 
         ADMIN_EMAIL = adminEmail;
-        EMAIL_SENDER = emailSender;
         USERNAME = username;
         PASSWORD = password;
         HOST = host;
@@ -88,7 +85,7 @@ public class DCEmailService {
             // set any needed mail.smtps.* properties here
             Session session = Session.getInstance(props);
             MimeMessage msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(EMAIL_SENDER));
+            msg.setFrom(new InternetAddress(USERNAME));
 
             msg.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(ADMIN_EMAIL));

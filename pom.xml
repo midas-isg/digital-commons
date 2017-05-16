@@ -79,15 +79,21 @@
         </dependency>
 
         <!-- XSD Form Generator -->
-        <dependency>
+<!--        <dependency>
             <groupId>edu.pitt.isg</groupId>
             <artifactId>xsd-forms</artifactId>
             <version>0.2.2-SNAPSHOT</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>edu.pitt.isg</groupId>
             <artifactId>xsd-forms-generator</artifactId>
             <version>0.2.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.5.0-b01</version>
         </dependency>
 
     </dependencies>
