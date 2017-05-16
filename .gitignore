@@ -1,9 +1,7 @@
+*.properties
 target
 *.iml
 .DS_Store
 /target
 .idea/
 out/
-auth0.properties
-application.properties
-myconfig.properties
