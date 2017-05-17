@@ -764,7 +764,7 @@
       "Software Development Service, Informatics Services Group"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:galapagos-output-format-v2.0"
+      "MIDAS-ISG:galapagos-output-format-v1.0"
     ],
     "webApplication": [
       "https://research.rods.pitt.edu/galapagos/"
