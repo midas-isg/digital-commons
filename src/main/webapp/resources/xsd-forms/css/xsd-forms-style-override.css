@@ -40,6 +40,10 @@ body {
     width: 50%;
 }
 
+.item-input-text {
+    width: 100%;
+}
+
 .invisible {
     visibility: visible !important;
 }
