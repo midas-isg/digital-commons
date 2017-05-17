@@ -23,6 +23,10 @@ body {
     display: none;
 }
 
-.submit {
-    margin-left: 10px;
+#submit {
+    margin-left:0px;
+}
+
+.sequence-content {
+    margin-left:0px;
 }
