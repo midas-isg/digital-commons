@@ -233,7 +233,7 @@
       "MIDAS-ISG:synthia-us-v2010"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:spew-us-v1.2.0",
+      "MIDAS-ISG:spew-us-format-v1.2.0",
       "MIDAS-ISG:spew-ipums-v1.2.0",
       "MIDAS-ISG:spew-canada-v1.2.0"
     ],
@@ -254,7 +254,7 @@
       "1.1.1"
     ],
     "dataOutputFormats": [
-      "IETF:GeoJSON-rfc7946"
+      "IETF:rfc7946"
     ],
     "dataInputFormats": [
       "Proprietary"
@@ -445,7 +445,7 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010",
+      "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
@@ -1029,7 +1029,7 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010",
+      "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
@@ -1226,7 +1226,7 @@
       "https://synthpopviewer.rti.org"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010"
+      "MIDAS-ISG:synthia-us-v2010"
     ],
     "grants": [
       "1-U24-GM087704"
