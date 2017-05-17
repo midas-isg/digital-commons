@@ -73,7 +73,8 @@
                         form = formDocument.getElementsByTagName("form")[0];
                         XSD_FORM.makeReadable();
 
-                        formDocument.getElementById("submit").classList.add("btn btn-default");
+                        formDocument.getElementById("submit").classList.add("btn");
+                        formDocument.getElementById("submit").classList.add("btn-default");
                         formDocument.getElementById("submit").onclick = function() {
                             var xmlString;
 
