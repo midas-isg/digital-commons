@@ -73,6 +73,7 @@
                         form = formDocument.getElementsByTagName("form")[0];
                         XSD_FORM.makeReadable();
 
+                        formDocument.getElementById("submit").classList.add("btn btn-default");
                         formDocument.getElementById("submit").onclick = function() {
                             var xmlString;
 
@@ -214,16 +215,16 @@
             <fieldset id="universal" class="form-group">
                 <legend><span id="entry-type">New</span> entry</legend>
 
-                <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);">
+                <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);" style="margin-bottom: 5px;">
                     <option value="" selected>Please select entry type</option>
                 </select>
 
-                <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);">
+                <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);" style="margin-bottom: 5px;">
                 </select>
             </fieldset>
         </form>
         
-        <iframe id="form-frame" height="400px" style="width:100%;"></iframe>
+        <iframe id="form-frame" height="450px" style="width:100%; border: none"></iframe>
         <div id="email-result" class="alert" role="alert"></div>
     </div>
 </div>

@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.digital.software;
 
+import com.github.davidmoten.xsdforms.Generator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -107,10 +108,14 @@ public class SoftwareRule {
             rootElement = scala.Option.apply(rootElementName);
 
             schema = appContext.getResource(xsdFile).getInputStream();
-            htmlString = com.github.davidmoten.xsdforms.Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+            htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
 
-            htmlString = htmlString.replace("<head>", "<head><base href='.'>");
+            htmlString = htmlString.replace("<head>", "<head><base href='.'>" +
+                "<link rel='stylesheet' type='text/css' href='../css/main.css'>" +
+                "<link rel='stylesheet' href='../css/bootstrap/3.3.6/bootstrap.min.css'>" +
+                "<link rel='stylesheet' href='../css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'>" +
+                "<link rel='stylesheet' href='../css/font-awesome-4.7.0/css/font-awesome.min.css'>");
 
             Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
             Charset charset = Charset.forName("US-ASCII");
