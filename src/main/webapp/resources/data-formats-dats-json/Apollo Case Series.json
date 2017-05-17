@@ -8,7 +8,7 @@
         "value": "case series",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000559"
     },
-    "description": "CaseSeries is a type declaration defined in the Apollo Data Types - v4.0.1 XSD. It describes case series within the domain of infectious disease transmission modeling.",
+    "description": "CaseSeries is a data type defined in the Apollo Standard, which represents an investigation that has, as part, a population survey with an objective to count all participants in some disease outcome or some exposure process.",
     "licenses": [
         {
             "name": "Apache License 2.0"

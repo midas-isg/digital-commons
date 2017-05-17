@@ -23,7 +23,7 @@ body {
     display: none;
 }
 
-#submit {
+#submit .submit {
     margin-left:0px;
 }
 
