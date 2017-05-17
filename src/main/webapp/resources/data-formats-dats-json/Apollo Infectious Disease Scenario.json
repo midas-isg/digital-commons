@@ -8,7 +8,7 @@
         "value": "infectious disease scenario",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000184"
     },
-    "description": "InfectiousDiseaseScenario is a type declaration defined in the Apollo Data Types - v4.0.1 XSD. It describes infectious disease scenarios within the domain of infectious disease transmission modeling.",
+    "description": "InfectiousDiseaseScenario is a data type defined in the Apollo Standard, which represents an ecosystem at simulator time zero that has at least one infection process affecting at least one population.",
     "licenses": [
         {
             "name": "Apache License 2.0"

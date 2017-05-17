@@ -8,7 +8,7 @@
         "value": "epidemic",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
     },
-    "description": "Epidemic is a type declaration defined in the Apollo Data Types - v4.0.1 XSD. It describes epidemics within the domain of infectious disease transmission modeling.",
+    "description": "Epidemic is a data type defined in the Apollo Standard, which represents a process whose beginning is demarcated by accelerating infection acquisition by one or more host species of a particular pathogen in a particular location and whose end is demarcated by the time when the rate of of infection acquisition becomes constant.",
     "licenses": [
         {
             "name": "Apache License 2.0"
