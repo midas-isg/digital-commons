@@ -50,31 +50,6 @@ public class DCEmailService {
         PROTOCOL = protocol;
     }
 
-    /*
-    @Autowired
-    MailSender emailSender;
-
-    public void mailToAdmin(String subject, String payload) {
-        String to = ADMIN_EMAIL;
-        String from = EMAIL_SENDER;
-        SimpleMailMessage message = new SimpleMailMessage();
-
-        message.setTo(to);
-        message.setFrom(from);
-        message.setSubject(subject);
-        message.setText(payload);
-
-        try{
-            emailSender.send(message);
-        }
-        catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return;
-    }
-    */
-
     public static void mailToAdmin(String subject, String payload) throws Exception {
         // set the message content here
         Transport t = null;

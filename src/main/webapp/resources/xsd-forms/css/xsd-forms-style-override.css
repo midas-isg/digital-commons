@@ -22,3 +22,7 @@ body {
 .clr {
     display: none;
 }
+
+.submit {
+    margin-left: 10px;
+}
