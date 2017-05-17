@@ -8,7 +8,7 @@
         "value": "synthetic ecosystem data set",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
     },
-    "description": "This specification describes four tabular formats: for representing households, persons, schools and workplaces.",
+    "description": "This specification describes four tabular formats:  for representing households, persons, schools and workplaces.",
     "licenses": [
         {
             "name": ""

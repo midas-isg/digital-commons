@@ -17,16 +17,6 @@
     "version": "38",
     "extraProperties": [
         {
-            "category": "human-readable specification of data format",
-            "categoryIRI": "",
-            "values": [
-                {
-                    "value": "None",
-                    "valueIRI": ""
-                }
-            ]
-        },
-        {
             "category": "validator",
             "categoryIRI": "",
             "values": [
