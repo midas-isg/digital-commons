@@ -24,7 +24,6 @@ public class DCEmailService {
 
     static {
         String adminEmail = "";
-        String emailSender = "";
         String username = "";
         String password = "";
         String host = "";

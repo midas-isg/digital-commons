@@ -28,7 +28,7 @@ System.out.println("~~~~~~~~~~~~");
 System.out.println(jsonString);
         }
         catch(Exception exception) {
-            System.err.println(exception);
+            exception.printStackTrace();
         }
 
         //E-mail to someone it concerns

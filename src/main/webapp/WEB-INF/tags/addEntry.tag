@@ -73,6 +73,7 @@
                         form = formDocument.getElementsByTagName("form")[0];
                         XSD_FORM.makeReadable();
 
+                        formDocument.getElementById("submit").classList.add("btn btn-default");
                         formDocument.getElementById("submit").onclick = function() {
                             var xmlString;
 
@@ -212,24 +213,18 @@
     <div id="add-entry-form-section" class="font-size-16">
         <form id="add-entry-form">
             <fieldset id="universal" class="form-group">
-                <legend style="display:none"><span id="entry-type">New</span> entry</legend>
+                <legend><span id="entry-type">New</span> entry</legend>
 
-                <div>
-                    <label>Type</label>
-                    <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);">
-                        <option value="" selected>Please select entry type</option>
-                    </select>
-                </div>
+                <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);" style="margin-bottom: 5px;">
+                    <option value="" selected>Please select entry type</option>
+                </select>
 
-                <div style="margin-top:5px">
-                    <label>Subtype</label>
-                    <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);">
-                    </select>
-                </div>
+                <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);" style="margin-bottom: 5px;">
+                </select>
             </fieldset>
         </form>
-
-        <iframe id="form-frame" height="400px" style="width:100%;"></iframe>
+        
+        <iframe id="form-frame" height="450px" style="width:100%; border: none"></iframe>
         <div id="email-result" class="alert" role="alert"></div>
     </div>
 </div>
