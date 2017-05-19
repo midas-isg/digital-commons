@@ -11,7 +11,7 @@
 
 <script>
     var syntheticEcosystemsByRegion = {
-        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span>",
+        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span> <span class='badge'>${spewRegions.size()}</span>",
         nodes: []
     };
 
@@ -35,6 +35,13 @@
         if(syntheticEcosystemsByRegion.nodes[i].nodes != null) {
             syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
         }
+    }
+
+    for(var i = 0; i < syntheticEcosystemsByRegion.nodes.length; i++) {
+        var nodeName = syntheticEcosystemsByRegion.nodes[i].name;
+        var innerNodesLength = syntheticEcosystemsByRegion.nodes[i].nodes.length;
+
+        syntheticEcosystemsByRegion.nodes[i].text += "<span class='badge'>" + innerNodesLength + "</span>"
     }
 
     $(document).ready(function () {

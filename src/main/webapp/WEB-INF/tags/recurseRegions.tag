@@ -7,7 +7,7 @@
 
 <c:if test="${not empty region.children}">
     <c:if test="${region.name == 'united states of america'}">
-        currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}") + " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>", 'nodes': []});
+        currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}") + " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b><span class='badge'>${region.children.size()}</span>", 'nodes': []});
         var childNodes = currentNode[currentNode.length - 1].nodes;
         <c:forEach items="${region.children}" var="child" varStatus="childLoop">
             if("${child.value.name}" in stateHash) {

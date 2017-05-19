@@ -9,11 +9,11 @@
     </h3>
 
     <p class="font-size-16 standard-font">
-        The primary purpose of the MIDAS Digital Commons (MDC) is to support epidemiologists who are developing computational models of biological phenomena. Its secondary purpose is to play the role of a disciplinary commons within the BD2K framework.  The discipline is infectious disease epidemiology and the scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order <a href="http://publications.onbc.io/#/" class="underline">here</a>).
+        The primary purpose of the MIDAS Digital Commons (MDC) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order <a href="http://publications.onbc.io/#/" class="underline">here</a>).
     </p>
 
     <p class="font-size-16 standard-font">
-        At present, the MDC consists of a collection of digital objects in the domain of infectious disease epidemiology with a compute platform for running experiments. In an upcoming release, the MDC will add a search function that makes the digital objects findable.
+        At present, the MDC consists of (1) a collection of digital objects in the domain of infectious disease epidemiology (2) a compute platform for running experiments, and (3) a search function that makes the digital objects findable.
     </p>
 
     <p class="font-size-16 standard-font">
@@ -25,7 +25,7 @@
     </p>
 
     <p class="font-size-16 standard-font">
-        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines. To make datasets interoperable, we represent them whenever possible in Apollo-XSD syntax and label it as being <i>AE</i> (Apollo-Encoded) in the MDC.
+        We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines. To make datasets interoperable, we represent them whenever possible in Apollo-XSD syntax and label them as being <i>AE</i> (Apollo-Encoded) in the MDC.
     </p>
 
     <div class="font-size-16 standard-font">
