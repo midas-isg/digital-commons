@@ -23,21 +23,26 @@ body {
     display: none;
 }
 
-#submit .submit {
-    margin-left:0px;
+#submit {
+    margin-left:0px !important;
 }
 
-.sequence-content {
-    margin-left: 10px;
+.submit {
+    margin-left:0px !important;
+}
+
+.repeating-enclosing {
     margin: 1px;
     border: 1px solid #ccc;
     border-radius:4px;
     padding: 5px;
+    padding-top:10px;
+    margin-bottom:5px;
 }
 
 .item-input {
     float: left;
-    width: 50%;
+    width: 100%;
 }
 
 .item-input-text {
@@ -46,4 +51,18 @@ body {
 
 .invisible {
     visibility: visible !important;
+}
+
+.item-error {
+    color:red;
+    background-color:transparent;
+    padding:0px;
+}
+
+.form {
+    max-width:99.9%;
+}
+
+.sequence-content {
+    margin-right:10px;
 }

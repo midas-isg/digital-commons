@@ -87,7 +87,7 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/midas-sso/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addEntry(Model model) throws Exception {
         model.addAttribute("software", softwareRule.tree());
         model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
