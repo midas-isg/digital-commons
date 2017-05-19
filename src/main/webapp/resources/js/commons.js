@@ -560,7 +560,7 @@ function addNodesToDirectory(name, key, treeArray, treeDictionary) {
 
         if(treeArray[i]['name'] == treeDictionary[key]['subtype'] || index > -1) {
             var nodeData = getNodeData(name, key, treeDictionary);
-            console.log(nodeData);
+            //console.log(nodeData);
 
             /* Add node to directory or subdirectory */
             if(index > -1) {
@@ -776,7 +776,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         });
     }
 
-    /*dsd.nodes.push({
+    /* dsd.nodes.push({
         text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
         nodes: []
     });
