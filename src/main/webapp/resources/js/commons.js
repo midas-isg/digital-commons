@@ -353,7 +353,7 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
             }
         }
 
-        addTreeDirectories(directories, treeArray, treeDictionary);
+        addTreeDirectories(directories, treeArray);
         addTreeNodes(name, data, treeDictionary, treeArray);
         buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
 
@@ -368,12 +368,11 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
     });
 }
 
-function addTreeDirectories(directories, treeArray, treeDictionary) {
+function addTreeDirectories(directories, treeArray) {
     for(var i = 0; i < directories.length; i++) {
-
         if(typeof directories[i] === 'string') {
             treeArray.push({
-                "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span> <span class='badge'>" + treeDictionary[i].length + "</span> ",
+                "text": "<span class=\"root-break\" onmouseover='toggleTitle(this)'>" + directories[i] + "</span>",
                 "nodes": [],
                 "name": directories[i]
             });
@@ -409,6 +408,18 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
             var nodeData = getNodeData(name, key, treeDictionary);
             nodeData["nodes"] = [];
             treeArray.push(nodeData);
+        }
+    }
+
+    for(var i = 0; i < treeArray.length; i++) {
+        if(treeArray[i].nodes.length > 0) {
+            treeArray[i].text += "<span class='badge'>" + treeArray[i].nodes.length + "</span>";
+        }
+
+        for(var x = 0; x < treeArray[i].nodes.length; x++) {
+            if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
+                treeArray[i].nodes[x].text += "<span class='badge'>" + treeArray[i].nodes[x].nodes.length + "</span>";
+            }
         }
     }
 
