@@ -413,12 +413,12 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
 
     for(var i = 0; i < treeArray.length; i++) {
         if(treeArray[i].nodes.length > 0) {
-            treeArray[i].text += "<span class='badge'>" + treeArray[i].nodes.length + "</span>";
+            treeArray[i].text += "<span class='badge'>[" + treeArray[i].nodes.length + "]</span>";
         }
 
         for(var x = 0; x < treeArray[i].nodes.length; x++) {
             if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
-                treeArray[i].nodes[x].text += "<span class='badge'>" + treeArray[i].nodes[x].nodes.length + "</span>";
+                treeArray[i].nodes[x].text += "<span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
             }
         }
     }
@@ -764,7 +764,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     collections.push(
         syntheticEcosystems,
         {
-            text: "Synthia™ synthetic populations <span class='badge'>"+ Object.keys(syntheticEcosystems).length + "</span>",
+            text: "Synthia™ synthetic populations <span class='badge'>["+ Object.keys(syntheticEcosystems).length + "]</span>",
             nodes: [
                 {
                     text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
@@ -777,7 +777,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     );
 
     var dsd = {
-        text: "Disease surveillance data <span class='badge'>"+dsdNodeNames.length+"</span>",
+        text: "Disease surveillance data <span class='badge'>["+dsdNodeNames.length+"]</span>",
         nodes: []
     };
 
@@ -799,7 +799,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     collections.push(dsd);
 
     var mortalityData = {
-        text: "Mortality data <span class='badge'>"+moralityDataNodeNames.length+"</span>",
+        text: "Mortality data <span class='badge'>["+moralityDataNodeNames.length+"]</span>",
         nodes: []
     };
 
@@ -929,10 +929,10 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 }
                 if(index.includes("H1n1 infectious disease scenarios"))
                     index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>"+value.length+"</span>", nodes: nodeLevel2});
+                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>["+value.length+"]</span>", nodes: nodeLevel2});
             });
 
-            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>"+Object.keys(value).length +"</span>", nodes: nodeLevel1});
+            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>["+Object.keys(value).length +"]</span>", nodes: nodeLevel1});
         });
     }
 

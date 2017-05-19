@@ -8,7 +8,7 @@
         Search
     </h3>
 
-    <iframe class="frame" src="http://mdcsearchdev.onbc.io/#/" allowfullscreen id="searchFrame"></iframe>
+    <iframe class="frame" src="http://mdcsearchdev.onbc.io/#/" scrolling="no" allowfullscreen id="searchFrame"></iframe>
 
     <%--<style>--%>
         <%--#constraints-container [class*="col-"] {--%>
@@ -202,9 +202,3 @@
         <%--</div>--%>
     <%--</div>&ndash;%&gt;--%>
 </div>
-
-<script>
-    function resizeIframe(obj) {
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-    }
-</script>

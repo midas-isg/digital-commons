@@ -2,7 +2,7 @@
   {
     "subtype": "Disease transmission models",
     "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
-    "product": "FluTE (4 versions)",
+    "product": "FluTE",
     "pathogenCoverage": [
       "Influenza"
     ],
@@ -429,7 +429,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
     "version": [
       "2.12.0"
@@ -461,7 +461,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "32"
@@ -493,7 +493,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "33.1"
@@ -525,7 +525,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "A simulator of malaria epidemiology and control.",
     "version": [
       "36.11"
@@ -691,7 +691,7 @@
   },
   {
     "subtype": "Pathogen evolution models",
-    "product": "NextStrain (2 versions)",
+    "product": "NextStrain",
     "humanReadableSynopsis": "nextflu v1.0 is the release of the Nextstrain project described in a 2015 Bioinformatics article. Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. The goal is to aid epidemiological understanding and improve outbreak response.",
     "dataInputFormats": [
       "BIOSHARING.ORG:bsg-s000228"
@@ -727,7 +727,7 @@
   },
   {
     "subtype": "Pathogen evolution models",
-    "product": "NextStrain (2 versions)",
+    "product": "NextStrain",
     "humanReadableSynopsis": "Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. Our goal is to aid epidemiological understanding and improve outbreak response.",
     "developers": [
       "Richard Neher",
@@ -928,7 +928,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Communicable human-to-human"
@@ -966,7 +966,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FluTE (4 versions)",
+    "product": "FluTE",
     "humanReadableSynopsis": "<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Influenza"
@@ -1009,7 +1009,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "This software installs the FRED simulator on a Windows 64-bit operating system.",
     "identifier": {
       "identifier": "<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>"
@@ -1092,7 +1092,7 @@
   },
   {
     "subtype": "Modeling platforms",
-    "product": "NetLogo (2 versions)",
+    "product": "NetLogo",
     "humanReadableSynopsis": "NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "version": [
       "5.0.4"
@@ -1109,7 +1109,7 @@
   },
   {
     "subtype": "Modeling platforms",
-    "product": "NetLogo (2 versions)",
+    "product": "NetLogo",
     "humanReadableSynopsis": "NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "webApplication": [
       "http://www.netlogoweb.org/launch"
