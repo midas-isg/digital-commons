@@ -60,6 +60,7 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Software</h3>
                     <div id="algorithm-treeview" class="treeview"></div>
+                    <%--<div id="tycho-treeview" class="treeview"></div>--%>
                 </div>
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Datasets</h3>
@@ -224,6 +225,7 @@
     <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"
                                      spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
     <myTags:webServices></myTags:webServices>
+    <myTags:tycho></myTags:tycho>
     <myTags:dataFormats></myTags:dataFormats>
     <myTags:standardIdentifiers></myTags:standardIdentifiers>
     <myTags:computePlatform></myTags:computePlatform>
