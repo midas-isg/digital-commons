@@ -2,8 +2,8 @@
     "title": "Utah Synthetic Ecosystem",
     "description": "Utah synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574022",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000045",
-                "accessURL": "https://zenodo.org/api/files/44817656-91ff-44da-a5be-55cd2dabc9ce/49.tar.gz"
+                "accessURL": "https://zenodo.org/record/574022/files/49.tar.gz"
             },
             "conformsTo": [
                 {

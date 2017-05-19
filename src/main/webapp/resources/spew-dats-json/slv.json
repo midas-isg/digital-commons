@@ -2,8 +2,8 @@
     "title": "El Salvador Synthetic Ecosystem",
     "description": "El Salvador synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574087",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000110",
-                "accessURL": "https://zenodo.org/api/files/f19a2eca-6242-4cb3-b4fd-43108110549a/slv.tar.gz"
+                "accessURL": "https://zenodo.org/record/574087/files/slv.tar.gz"
             },
             "conformsTo": [
                 {

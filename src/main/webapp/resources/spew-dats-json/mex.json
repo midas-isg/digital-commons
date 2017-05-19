@@ -2,8 +2,8 @@
     "title": "Mexico Synthetic Ecosystem",
     "description": "Mexico synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574068",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000091",
-                "accessURL": "https://zenodo.org/api/files/6dcd2a57-09e3-46f7-a780-e5f3f608c1cc/mex.tar.gz"
+                "accessURL": "https://zenodo.org/record/574068/files/mex.tar.gz"
             },
             "conformsTo": [
                 {

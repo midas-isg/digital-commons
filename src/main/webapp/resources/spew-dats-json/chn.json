@@ -2,8 +2,8 @@
     "title": "China Synthetic Ecosystem",
     "description": "China synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574040",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000063",
-                "accessURL": "https://zenodo.org/api/files/a012d99c-d2cd-425c-a7d5-80194033d0a8/chn.tar.gz"
+                "accessURL": "https://zenodo.org/record/574040/files/chn.tar.gz"
             },
             "conformsTo": [
                 {

@@ -2,8 +2,8 @@
     "title": "Iraq Synthetic Ecosystem",
     "description": "Iraq synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574059",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000082",
-                "accessURL": "https://zenodo.org/api/files/32e6ca94-e768-48d0-a77f-d319d74c9e6a/irq.tar.gz"
+                "accessURL": "https://zenodo.org/record/574059/files/irq.tar.gz"
             },
             "conformsTo": [
                 {

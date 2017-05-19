@@ -2,8 +2,8 @@
     "title": "Dominican Republic Synthetic Ecosystem",
     "description": "Dominican Republic synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574046",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000069",
-                "accessURL": "https://zenodo.org/api/files/2d80fc8a-6dc6-4461-bf20-83d9d24f67d1/dom.tar.gz"
+                "accessURL": "https://zenodo.org/record/574046/files/dom.tar.gz"
             },
             "conformsTo": [
                 {

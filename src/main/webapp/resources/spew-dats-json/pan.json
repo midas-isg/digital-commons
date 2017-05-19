@@ -2,8 +2,8 @@
     "title": "Panama Synthetic Ecosystem",
     "description": "Panama synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574078",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000101",
-                "accessURL": "https://zenodo.org/api/files/595d2938-8ce7-4e65-b48a-76deebb4e9d1/pan.tar.gz"
+                "accessURL": "https://zenodo.org/record/574078/files/pan.tar.gz"
             },
             "conformsTo": [
                 {

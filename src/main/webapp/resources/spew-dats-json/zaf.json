@@ -2,8 +2,8 @@
     "title": "South Africa Synthetic Ecosystem",
     "description": "South Africa synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574099",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000122",
-                "accessURL": "https://zenodo.org/api/files/1ab7ea20-0459-4884-96bb-d5040e83c69f/zaf.tar.gz"
+                "accessURL": "https://zenodo.org/record/574099/files/zaf.tar.gz"
             },
             "conformsTo": [
                 {

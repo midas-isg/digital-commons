@@ -2,8 +2,8 @@
     "title": "Jamaica Synthetic Ecosystem",
     "description": "Jamaica synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574062",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000085",
-                "accessURL": "https://zenodo.org/api/files/e706755f-e734-45eb-b4de-7924633350e0/jam.tar.gz"
+                "accessURL": "https://zenodo.org/record/574062/files/jam.tar.gz"
             },
             "conformsTo": [
                 {

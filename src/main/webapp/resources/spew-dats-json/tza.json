@@ -2,8 +2,8 @@
     "title": "Tanzania, United Republic of Synthetic Ecosystem",
     "description": "Tanzania, United Republic of synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574092",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000115",
-                "accessURL": "https://zenodo.org/api/files/49666750-4cdb-46bc-b03f-6fe22652e433/tza.tar.gz"
+                "accessURL": "https://zenodo.org/record/574092/files/tza.tar.gz"
             },
             "conformsTo": [
                 {

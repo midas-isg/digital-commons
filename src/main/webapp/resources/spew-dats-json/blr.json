@@ -2,8 +2,8 @@
     "title": "Belarus Synthetic Ecosystem",
     "description": "Belarus synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574034",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000057",
-                "accessURL": "https://zenodo.org/api/files/2cdfc599-68b2-417a-96b1-d380d6323d8e/blr.tar.gz"
+                "accessURL": "https://zenodo.org/record/574034/files/blr.tar.gz"
             },
             "conformsTo": [
                 {

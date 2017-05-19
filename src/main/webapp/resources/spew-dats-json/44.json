@@ -2,8 +2,8 @@
     "title": "Rhode Island Synthetic Ecosystem",
     "description": "Rhode Island synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574017",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000040",
-                "accessURL": "https://zenodo.org/api/files/a5fde61e-c191-4c4e-9bbf-0a5d88d0cc86/44.tar.gz"
+                "accessURL": "https://zenodo.org/record/574017/files/44.tar.gz"
             },
             "conformsTo": [
                 {

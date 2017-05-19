@@ -2,8 +2,8 @@
     "title": "Jordan Synthetic Ecosystem",
     "description": "Jordan synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574063",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000086",
-                "accessURL": "https://zenodo.org/api/files/3bf473ee-5cb6-454d-894b-871055c0e936/jor.tar.gz"
+                "accessURL": "https://zenodo.org/record/574063/files/jor.tar.gz"
             },
             "conformsTo": [
                 {

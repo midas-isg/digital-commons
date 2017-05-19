@@ -2,8 +2,8 @@
     "title": "Rwanda Synthetic Ecosystem",
     "description": "Rwanda synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574084",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000107",
-                "accessURL": "https://zenodo.org/api/files/defa46ae-5e03-45d5-b5a1-6b2878679a09/rwa.tar.gz"
+                "accessURL": "https://zenodo.org/record/574084/files/rwa.tar.gz"
             },
             "conformsTo": [
                 {

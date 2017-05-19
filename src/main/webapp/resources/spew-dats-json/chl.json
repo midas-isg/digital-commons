@@ -2,8 +2,8 @@
     "title": "Chile Synthetic Ecosystem",
     "description": "Chile synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574039",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000062",
-                "accessURL": "https://zenodo.org/api/files/64881eeb-6e20-4d21-bba7-e6f2e1275a1a/chl.tar.gz"
+                "accessURL": "https://zenodo.org/record/574039/files/chl.tar.gz"
             },
             "conformsTo": [
                 {

@@ -2,8 +2,8 @@
     "title": "Slovenia Synthetic Ecosystem",
     "description": "Slovenia synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574089",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000112",
-                "accessURL": "https://zenodo.org/api/files/bc57d963-18e2-43da-a1f7-3fcf347daf2a/svn.tar.gz"
+                "accessURL": "https://zenodo.org/record/574089/files/svn.tar.gz"
             },
             "conformsTo": [
                 {

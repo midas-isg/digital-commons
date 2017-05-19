@@ -2,8 +2,8 @@
     "title": "France Synthetic Ecosystem",
     "description": "France synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574052",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000075",
-                "accessURL": "https://zenodo.org/api/files/01e45949-277a-44ee-89d8-8d33542fa9f6/fra.tar.gz"
+                "accessURL": "https://zenodo.org/record/574052/files/fra.tar.gz"
             },
             "conformsTo": [
                 {

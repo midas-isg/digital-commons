@@ -2,8 +2,8 @@
     "title": "Ecuador Synthetic Ecosystem",
     "description": "Ecuador synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574047",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000070",
-                "accessURL": "https://zenodo.org/api/files/ba7ff88c-ecd0-4323-9029-def38f68814d/ecu.tar.gz"
+                "accessURL": "https://zenodo.org/record/574047/files/ecu.tar.gz"
             },
             "conformsTo": [
                 {

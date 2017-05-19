@@ -2,8 +2,8 @@
     "title": "Bangladesh Synthetic Ecosystem",
     "description": "Bangladesh synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574033",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000056",
-                "accessURL": "https://zenodo.org/api/files/edfe56f1-29e7-4200-8d8e-1e47a4bee84d/bgd.tar.gz"
+                "accessURL": "https://zenodo.org/record/574033/files/bgd.tar.gz"
             },
             "conformsTo": [
                 {

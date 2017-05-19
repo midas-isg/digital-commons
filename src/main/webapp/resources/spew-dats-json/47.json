@@ -2,8 +2,8 @@
     "title": "Tennessee Synthetic Ecosystem",
     "description": "Tennessee synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574020",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000043",
-                "accessURL": "https://zenodo.org/api/files/29e548ac-df36-424c-9cf8-1bda8d195bf3/47.tar.gz"
+                "accessURL": "https://zenodo.org/record/574020/files/47.tar.gz"
             },
             "conformsTo": [
                 {

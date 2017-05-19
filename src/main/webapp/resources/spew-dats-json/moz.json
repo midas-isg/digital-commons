@@ -2,8 +2,8 @@
     "title": "Mozambique Synthetic Ecosystem",
     "description": "Mozambique synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574071",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000094",
-                "accessURL": "https://zenodo.org/api/files/1092115a-b13c-4870-b108-9eff7ec3e8db/moz.tar.gz"
+                "accessURL": "https://zenodo.org/record/574071/files/moz.tar.gz"
             },
             "conformsTo": [
                 {

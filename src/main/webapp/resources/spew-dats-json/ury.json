@@ -2,8 +2,8 @@
     "title": "Uruguay Synthetic Ecosystem",
     "description": "Uruguay synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574095",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000118",
-                "accessURL": "https://zenodo.org/api/files/cb2c1b55-c9e6-4d73-a335-f48970691a7d/ury.tar.gz"
+                "accessURL": "https://zenodo.org/record/574095/files/ury.tar.gz"
             },
             "conformsTo": [
                 {

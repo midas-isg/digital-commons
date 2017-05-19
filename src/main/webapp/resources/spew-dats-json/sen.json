@@ -2,8 +2,8 @@
     "title": "Senegal Synthetic Ecosystem",
     "description": "Senegal synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574086",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000109",
-                "accessURL": "https://zenodo.org/api/files/730d5eda-3993-4e48-bba2-6090656da284/sen.tar.gz"
+                "accessURL": "https://zenodo.org/record/574086/files/sen.tar.gz"
             },
             "conformsTo": [
                 {

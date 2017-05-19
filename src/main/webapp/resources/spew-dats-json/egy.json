@@ -2,8 +2,8 @@
     "title": "Egypt Synthetic Ecosystem",
     "description": "Egypt synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574048",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000071",
-                "accessURL": "https://zenodo.org/api/files/2585795d-6a00-4f92-b121-19c038137936/egy.tar.gz"
+                "accessURL": "https://zenodo.org/record/574048/files/egy.tar.gz"
             },
             "conformsTo": [
                 {

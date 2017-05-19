@@ -2,8 +2,8 @@
     "title": "Canada Synthetic Ecosystem",
     "description": "Canada synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: Public Use Microdata Files (PUMFS), National Household Survey, 2011.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574037",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000060",
-                "accessURL": "https://zenodo.org/api/files/5e04c50f-dd36-4548-b12d-7a2d1173c2e2/can.tar.gz"
+                "accessURL": "https://zenodo.org/record/574037/files/can.tar.gz"
             },
             "conformsTo": [
                 {

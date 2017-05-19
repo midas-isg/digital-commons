@@ -2,8 +2,8 @@
     "title": "Cuba Synthetic Ecosystem",
     "description": "Cuba synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574044",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000067",
-                "accessURL": "https://zenodo.org/api/files/55f60120-dc25-4ac1-8bd6-8414c4302b9a/cub.tar.gz"
+                "accessURL": "https://zenodo.org/record/574044/files/cub.tar.gz"
             },
             "conformsTo": [
                 {

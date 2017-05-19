@@ -2,8 +2,8 @@
     "title": "India Synthetic Ecosystem",
     "description": "India synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574058",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000081",
-                "accessURL": "https://zenodo.org/api/files/5bfdf625-a2ea-499d-ab6f-50dc114b6fae/ind.tar.gz"
+                "accessURL": "https://zenodo.org/record/574058/files/ind.tar.gz"
             },
             "conformsTo": [
                 {

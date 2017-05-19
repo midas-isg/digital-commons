@@ -2,8 +2,8 @@
     "title": "Cameroon Synthetic Ecosystem",
     "description": "Cameroon synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574041",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000064",
-                "accessURL": "https://zenodo.org/api/files/fd6c2bea-0fd1-446f-911a-16ac7a8f5443/cmr.tar.gz"
+                "accessURL": "https://zenodo.org/record/574041/files/cmr.tar.gz"
             },
             "conformsTo": [
                 {
