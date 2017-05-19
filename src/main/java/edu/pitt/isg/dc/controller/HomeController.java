@@ -61,7 +61,6 @@ public class HomeController {
     public String hello(Model model) throws Exception {
         model.addAttribute("dataAugmentedPublications", dapRule.tree());
         model.addAttribute("software", softwareRule.tree());
-        model.addAttribute("xsdForms", softwareRule.generateXSDForms());
 
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
@@ -88,10 +87,10 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/midas-sso/add", method = RequestMethod.GET)
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addEntry(Model model) throws Exception {
         model.addAttribute("software", softwareRule.tree());
-        model.addAttribute("xsdForms", softwareRule.generateXSDForms());
+        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
 
         return "addEntry";
     }
