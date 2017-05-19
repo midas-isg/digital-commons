@@ -55,6 +55,10 @@ var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
 
+var tycho = [];
+var tychoDictionary = {};
+var tychoSettings = {};
+
 var countryHash = {};
 var stateHash =  {
     '01': 'Alabama',
@@ -556,6 +560,7 @@ function addNodesToDirectory(name, key, treeArray, treeDictionary) {
 
         if(treeArray[i]['name'] == treeDictionary[key]['subtype'] || index > -1) {
             var nodeData = getNodeData(name, key, treeDictionary);
+            console.log(nodeData);
 
             /* Add node to directory or subdirectory */
             if(index > -1) {
@@ -770,6 +775,14 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             name: dsdNodeNames[i]
         });
     }
+
+    /*dsd.nodes.push({
+        text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
+        nodes: []
+    });
+
+    var tychoNodes = dsd.nodes[dsd.nodes.length - 1].nodes;
+    tychoNodes.push({});*/
 
     collections.push(dsd);
 
