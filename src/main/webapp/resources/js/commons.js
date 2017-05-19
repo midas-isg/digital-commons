@@ -188,12 +188,12 @@ function addDatsToDictionary(dictionary, data, code, type) {
             var authData = distributions[0]['access']['authorizations'];
             var authorizations = [];
 
-            if(authData != null) {
+            /*if(authData != null) {
                 for(var i = 0; i < authData.length; i++) {
                     authorizations.push(authData[i]["value"]);
                 }
                 dictionary[code]['authorizations']= authorizations;
-            }
+            }*/
         }
 
         var creators = [];
