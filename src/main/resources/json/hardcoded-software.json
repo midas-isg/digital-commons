@@ -140,7 +140,7 @@
       "Olivier Gascuel (LIRMM, Montpellier, France.)"
     ],
     "dataInputFormats": [
-      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0"
+      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0", "MIDAS-ISG:dna-sequences-for-ape-v1.0"
     ],
     "dataOutputFormats": [
       "BIOSHARING.ORG:bsg-s000250"
@@ -394,6 +394,7 @@
       "2.0"
     ],
     "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
+    "dataInputFormats": "Hladish dengue transmission model format v2",
     "source": "https://github.com/tjhladish/dengue",
     "sourceCodeRelease": "<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
@@ -409,11 +410,18 @@
     "version": [
       "commit 720c16"
     ],
+    "availableOnUIDS": true,
     "locationCoverage": [
       "Sierra Leone"
     ],
     "pathogenCoverage": [
       "Ebola"
+    ],
+    "dataInputFormats": [
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "controlMeasures": [
       "Vaccination"
@@ -426,6 +434,8 @@
       "Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
     ],
     "title": "Ebola transmission model"
+
+
   },
   {
     "subtype": "Disease transmission models",
@@ -764,7 +774,8 @@
       "Software Development Service, Informatics Services Group"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:galapagos-output-format-v1.0"
+      "MIDAS-ISG:galapagos-output-format-v1.0",
+      "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "webApplication": [
       "https://research.rods.pitt.edu/galapagos/"

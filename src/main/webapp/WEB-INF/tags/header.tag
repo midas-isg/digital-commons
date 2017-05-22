@@ -9,7 +9,7 @@
 <%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
-<%@ attribute name="pub" type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication" %>
+
 
     <c:if test="${iframe != true}">
         <div class="spacer">
@@ -60,9 +60,6 @@
                                 <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
                             </c:if>
-                            <%--<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
-                                <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
-                            </c:forEach>--%>
                         </ul>
                     </c:if>
                     <ul class="nav navbar-nav navbar-right">

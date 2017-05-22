@@ -6,7 +6,7 @@
     ]
   },
   {
-    "title": "Galapagos-CSV",
+    "title": "Galapagos CSV",
     "version": [
       "2"
     ]
@@ -83,6 +83,7 @@
       ""
     ]
   },
+
   {
     "title": "FASTA Sequence Format",
     "version": [
@@ -93,6 +94,12 @@
     "title": "Epi-Data JSON",
     "version": [
       "1"
+    ]
+  },
+  {
+    "title": "ApolloFlute",
+    "version": [
+      "1.1"
     ]
   },
   {
