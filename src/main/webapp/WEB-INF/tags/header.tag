@@ -27,7 +27,7 @@
                     </c:if>
                     <c:choose>
                         <c:when test="${preview}">
-                            <a href="${pageContext.request.contextPath}/preview">
+                            <a href="${pageContext.request.contextPath}/main">
                                 <img alt="MIDAS" class="navbar-brand-mod"
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:when>

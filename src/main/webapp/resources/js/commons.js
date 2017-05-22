@@ -1425,10 +1425,6 @@ $('#commons-body').on('click', function (e) {
 });
 
 $(document).ready(function() {
-    if ($(window).width() < 768) {
-        $('.navbar-toggle').click();
-    }
-
     if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
 
@@ -1483,6 +1479,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#navbar-collapse').collapse('hide');
 });
 
 $(window).on("popstate", function() {
