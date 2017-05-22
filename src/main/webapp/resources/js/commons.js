@@ -1438,9 +1438,7 @@ $(document).ready(function() {
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
     }
-
-    $("span:contains('Galapagos CSV - v2')").text("Galapagos-CSV - v2");
-
+  
     if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
 
@@ -1495,6 +1493,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#navbar-collapse').collapse('hide');
 });
 
 $(window).on("popstate", function() {
