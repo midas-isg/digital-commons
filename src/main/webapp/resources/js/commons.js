@@ -130,7 +130,6 @@ function convertToHref(href) {
 }
 function addDatsToDictionary(dictionary, data, code, type) {
     var identifier = data['identifier']['identifier'];
-
     if(identifier == null || identifier == '') {
         if(data['spatialCoverage'] != null && data['spatialCoverage'].length > 0) {
             identifier = data['spatialCoverage'][0]['identifier']['identifier'];
@@ -144,12 +143,19 @@ function addDatsToDictionary(dictionary, data, code, type) {
        identifier = convertToHref(identifier);
     }
 
+    if (data['name'] === 'Galapagos CSV') {
+        data['title'] = 'Galapagos-CSV';
+        data['name'] = 'Galapagos-CSV';
+    }
+
+
     dictionary[code] = {
         'title': data['title'],
         'description': data['description'],
         'identifier': identifier,
         'json': data
     };
+
 
     if(type == 'dataStandard') {
         dictionary[code]['title'] = data['name'];
@@ -269,12 +275,13 @@ populateMortalityDataDictionary(0);
 
 function populateDataFormatsDictionary(count) {
     var keys = Object.keys(dataFormatsDictionary);
+
     var fileNames = [];
     for(var i = 0; i < keys.length; i++) {
-        fileNames.push(dataFormatsDictionary[keys[i]]['title']);
+        fileNames.push(dataFormatsDictionary[keys[i]]['filename']);
     }
 
-    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '?v=' + Date.now(), function( data ) {
         addDatsToDictionary(dataFormatsDictionary, data, count, 'dataStandard');
         count++;
 
@@ -513,6 +520,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
             treeviewInfo['expandIcon'] = "bullet-point	";
             treeviewInfo['collapseIcon'] = "bullet-point	";
         }
+
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('collapseAll', { silent: true });
     }
@@ -615,7 +623,7 @@ function getNodeData(name, key, treeDictionary) {
         nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
     }
 
-    if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+    if('availableOnUIDS' in treeDictionary[key] == true) {
         nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
     }
 
@@ -1076,9 +1084,9 @@ function openModal(type, name) {
         $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
     } else if(type == 'dataFormats'){
+        console.log(name);
         attrs = dataFormatsDictionary[name];
         name = attrs['title'];
-
         $('#mdc-json').hide();
         $('#dats-json').show();
         $('#modal-switch-btn').show();
@@ -1288,7 +1296,7 @@ function openModal(type, name) {
 
     toggleModalItem('humanReadableSpecification', attrs, 'human-readable-specification', true, false);
 
-    toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', false, false);
+    toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', true, false);
 
     $('#pageModal').modal('show');
 
@@ -1344,9 +1352,11 @@ function toggleTitle(element) {
 
     if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
         $this.attr('title', $this.text());
+
     } else {
         $this.attr('title', '');
     }
+
 }
 
 function activeTab(tab) {
@@ -1425,6 +1435,10 @@ $('#commons-body').on('click', function (e) {
 });
 
 $(document).ready(function() {
+    if ($(window).width() < 768) {
+        $('.navbar-toggle').click();
+    }
+  
     if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
 

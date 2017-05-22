@@ -1,27 +1,27 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:galapagos-output-format-v1.0",
+        "identifier": "MIDAS-ISG:flute-synthetic-ecosystem-v1.1",
         "identifierSource": "MIDAS-ISG"
     },
-    "name": "Galapagos-CSV",
+    "name": "FluTE Synthetic Ecosystem",
     "type": {
-        "value": "disease transmission model output",
+        "value": "Epi-data output",
         "valueIRI": ""
     },
-    "description": "This specification describes a tabular format in which output from a disease transmission model is represented.",
+    "description": "The synthetic ecosystem format used by FluTE.",
     "licenses": [
         {
-            "name": "Creative Commons Attribution 3.0 United States"
+            "name": ""
         }
     ],
-    "version": "1",
+    "version": "1.1",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "https://github.com/midas-isg/data-format-repository/wiki/Galapagos-v1.0",
+                    "value": "https://github.com/dlchao/FluTE/blob/master/README",
                     "valueIRI": ""
                 }
             ]
