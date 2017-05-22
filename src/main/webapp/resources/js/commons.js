@@ -278,10 +278,10 @@ function populateDataFormatsDictionary(count) {
 
     var fileNames = [];
     for(var i = 0; i < keys.length; i++) {
-        fileNames.push(dataFormatsDictionary[keys[i]]['title']);
+        fileNames.push(dataFormatsDictionary[keys[i]]['filename']);
     }
 
-    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '?v=' + Date.now(), function( data ) {
         addDatsToDictionary(dataFormatsDictionary, data, count, 'dataStandard');
         count++;
 
@@ -1084,6 +1084,7 @@ function openModal(type, name) {
         $('#modal-switch-btn').show();
         $('#display-json').text(JSON.stringify(attrs['json'], null, "\t"));
     } else if(type == 'dataFormats'){
+        console.log(name);
         attrs = dataFormatsDictionary[name];
         name = attrs['title'];
         $('#mdc-json').hide();

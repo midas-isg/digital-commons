@@ -365,7 +365,7 @@
       "vaccination",
       "larviciding"
     ],
-    "humanReadableSynopsis": "<p>CLARA is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>The ComputationaL ARthropod Agents (CLARA) is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "identifier": {
       "identifier": "<a href=\"http://doi.org/10.5281/zenodo.322422\", class=\"underline\">10.5281/zenodo.322422</a>"
     },
@@ -394,7 +394,7 @@
       "2.0"
     ],
     "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
-    "dataInputFormats": "Hladish dengue transmission model format v2",
+    "dataInputFormats": "MIDAS-ISG:hladish-dengue-model-v2.0",
     "source": "https://github.com/tjhladish/dengue",
     "sourceCodeRelease": "<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",

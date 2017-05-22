@@ -1,84 +1,98 @@
 [
   {
     "title": "Apollo Infectious Disease Scenario",
+	 "filename": "Apollo Infectious Disease Scenario.json",
     "version": [
       "4.0.1"
     ]
   },
   {
-    "title": "Galapagos CSV",
+    "title": "Galapagos-CSV",
+	 "filename": "Galapagos CSV.json",
     "version": [
       "2"
     ]
   },
   {
     "title": "Galapagos-CSV",
+	 "filename": "Galapagos-CSV.json",
     "version": [
       "1"
     ]
   },
   {
     "title": "Omnivore-CSV",
+	 "filename": "Omnivore-CSV.json",
     "version": [
       "2"
     ]
   },
   {
     "title": "PHYLIP-format",
+	 "filename": "PHYLIP-format.json",
     "version": [
       "3.695"
     ]
   },
   {
     "title": "SPEW.CANADA",
+	 "filename": "SPEW.CANADA.json",
     "version": [
       "1.2.0"
     ]
   },
   {
     "title": "SPEW.IPUMS",
+	 "filename": "SPEW.IPUMS.json",
     "version": [
       "1.2.0"
     ]
   },
   {
     "title": "SPEW.US",
+	 "filename": "SPEW.US.json",
     "version": [
       "1.2.0"
     ]
   },
   {
     "title": "Synthia",
+	 "filename": "Synthia.json",
     "version": [
       "2010 U.S. Synthesized Population"
     ]
   },
   {
     "title": "Tycho dataset",
+	 "filename": "Tycho dataset.json",
     "version": [
       "1"
     ]
   },
   {
     "title": "hladish dengue transmission model",
+	 "filename": "hladish dengue transmission model.json",
     "version": [
       "2"
     ]
   },
   {
     "title": "EpiCaseFormat",
+	 "filename": "EpiCaseFormat.json",
     "version": [
       "1.2"
     ]
   },
   {
     "title": "GeoJSON",
+	 "filename": "GeoJSON.json",
     "version": [
       "RFC 7946"
     ]
   },
   {
     "title": "newick tree format",
+	 "filename": "newick tree format.json",
     "version": [
       ""
     ]
@@ -86,54 +100,63 @@
 
   {
     "title": "FASTA Sequence Format",
+	 "filename": "FASTA Sequence Format.json",
     "version": [
       "FASTA"
     ]
   },
   {
     "title": "Epi-Data JSON",
+	 "filename": "Epi-Data JSON.json",
     "version": [
       "1"
     ]
   },
   {
-    "title": "ApolloFlute",
+    "title": "FluTE Synthetic Ecosystem",
+	 "filename": "ApolloFlute.json",
     "version": [
       "1.1"
     ]
   },
   {
     "title": "Apollo Epidemic",
+	 "filename": "Apollo Epidemic.json",
     "version": [
       "4.0.1"
     ]
   },
   {
     "title": "Apollo Case Series",
+	 "filename": "Apollo Case Series.json",
     "version": [
       "4.0.1"
     ]
   },
   {
     "title": "NEXUS",
+	 "filename": "NEXUS.json",
     "version": [
       "1"
     ]
   },
   {
     "title": "ape coding scheme for DNA sequences",
+	 "filename": "ape coding scheme for DNA sequences.json",
     "version": [
       "1"
     ]
   },
   {
     "title": "EpiVis Input Format",
+	 "filename": "EpiVis Input Format.json",
     "version": [
       "38"
     ]
   },
   {
     "title": "FluSight Forecast",
+	 "filename": "FluSight Forecast.json",
     "version": [
       "1"
     ]
