@@ -279,6 +279,7 @@ function populateDataFormatsDictionary(count) {
     var fileNames = [];
     for(var i = 0; i < keys.length; i++) {
         fileNames.push(dataFormatsDictionary[keys[i]]['filename']);
+        console.log(dataFormatsDictionary);
     }
 
     $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '?v=' + Date.now(), function( data ) {
