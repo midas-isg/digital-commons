@@ -126,6 +126,9 @@ var zikaDictionary = {};
 var infectiousDiseaseDictionary = {};
 
 function convertToHref(href) {
+    if(href.includes("zenodo")){
+        href = href.split('https://doi.org/').pop();
+    }
     return '<a class="underline" href="' + href + '">' + href + '</a>';
 }
 function addDatsToDictionary(dictionary, data, code, type) {

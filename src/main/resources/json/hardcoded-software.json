@@ -198,7 +198,7 @@
       "1.0.1.0"
     ],
     "identifier": {
-      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>"
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">10.5281/zenodo.437560</a>"
     },
     "developers": [
       "Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs",
@@ -890,7 +890,7 @@
     ],
     "source": "https://github.com/reichlab/flusight/releases/tag/v1.3.2",
     "identifier": {
-      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">10.5281/zenodo.192509</a>"
     },
     "grants": [
       "R35GM119582"
