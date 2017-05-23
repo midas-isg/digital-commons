@@ -53,7 +53,6 @@ public class HomeController {
             if(subLocation.getChildren() != null && !usa) {
                 recurseSpewTree(subLocation, false);
             } else {
-                System.out.println(subLocation.getName());
                 spewCount++;
             }
         }
