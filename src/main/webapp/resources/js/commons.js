@@ -419,15 +419,19 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
     }
 
     for(var i = 0; i < treeArray.length; i++) {
-        if(treeArray[i].nodes.length > 0) {
-            treeArray[i].text += "<span class='badge'>[" + treeArray[i].nodes.length + "]</span>";
-        }
-
+        var rootSoftwareLength = 0;
         for(var x = 0; x < treeArray[i].nodes.length; x++) {
             if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
+                rootSoftwareLength += (treeArray[i].nodes[x].nodes.length-1)
                 treeArray[i].nodes[x].text += "<span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
             }
         }
+
+        if(treeArray[i].nodes.length > 0) {
+            rootSoftwareLength += treeArray[i].nodes.length;
+            treeArray[i].text += "<span class='badge'>[" + rootSoftwareLength + "]</span>";
+        }
+
     }
 
     /*for(var key in data) {
@@ -831,10 +835,10 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 url = libraryViewerUrl + "infectiousDiseaseScenario/";
             }
             var nodeLevel1 = [];
+            var libraryEntryLength = 0;
 
             $.each(value, function (index, value) {
                 var nodeLevel2 = [];
-
                 var ebolaEpidemics = false;
                 var caseListings = false;
                 var chikungunyaEpidemics = false;
@@ -853,6 +857,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 }
 
                 $.each(value, function (index, value) {
+                    libraryEntryLength++;
+
                     if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics || infectiousDisease) {
                         var dictionaryKey = value.name.trim();
                         if(dictionaryKey.includes('É')) {
@@ -940,7 +946,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                 nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>["+value.length+"]</span>", nodes: nodeLevel2});
             });
 
-            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>["+Object.keys(value).length +"]</span>", nodes: nodeLevel1});
+            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1});
         });
     }
 
