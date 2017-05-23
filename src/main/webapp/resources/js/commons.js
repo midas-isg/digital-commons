@@ -812,7 +812,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     );
 
     var dsd = {
-        text: "Disease surveillance data <span class='badge'>["+dsdNodeNames.length+"]</span>",
+        text: "Disease surveillance data",
         nodes: []
     };
 
@@ -856,6 +856,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
             tychoIds.push(data[i]['id']);
         }
+        for(var i=0; i<tychoNodes.length; i++) {
+            tychoNodes[i].text += "<span class='badge'>["+ tychoNodes[i].nodes.length +"]</span>"
+        }
+        dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
+        var dsdLength = dsdNodeNames.length + tychoIds.length;
+        dsd.text += "<span class='badge'>["+dsdLength+"]</span>"
+
         tychoNodes[tychoNodes.length - 1].nodes.sort(compareNodes);
     }).then(function() {
         dsd.nodes.sort(compareNodes);
