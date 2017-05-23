@@ -873,7 +873,12 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             tychoIds.push(data[i]['id']);
         }
         for(var i=0; i<tychoNodes.length; i++) {
-            tychoNodes[i].text += "<span class='badge'>["+ tychoNodes[i].nodes.length +"]</span>";
+            var upperLevelCount = 0;
+            for(var x=0; x<tychoNodes[i].nodes.length; x++) {
+                tychoNodes[i].nodes[x].text += "<span class='badge'>["+ tychoNodes[i].nodes[x].nodes.length +"]</span>";
+                upperLevelCount += tychoNodes[i].nodes[x].nodes.length;
+            }
+            tychoNodes[i].text += "<span class='badge'>["+ upperLevelCount +"]</span>";
             tychoNodes[i].nodes.sort(compareNodes);
         }
         dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
