@@ -1,11 +1,5 @@
 package edu.pitt.isg.dc.controller;
 
-import edu.pitt.isg.dc.digital.dap.DapFolder;
-import edu.pitt.isg.dc.digital.dap.DapRule;
-import edu.pitt.isg.dc.digital.dap.DataAugmentedPublication;
-import edu.pitt.isg.dc.digital.software.Software;
-import edu.pitt.isg.dc.digital.software.SoftwareFolder;
-import edu.pitt.isg.dc.digital.software.SoftwareRule;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
@@ -46,10 +40,6 @@ public class HomeController {
     }
 
     @Autowired
-    private DapRule dapRule;
-    @Autowired
-    private SoftwareRule softwareRule;
-    @Autowired
     private SpewRule spewRule;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -59,9 +49,6 @@ public class HomeController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String hello(Model model) throws Exception {
-        model.addAttribute("dataAugmentedPublications", dapRule.tree());
-        model.addAttribute("software", softwareRule.tree());
-
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {
@@ -89,7 +76,6 @@ public class HomeController {
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addEntry(Model model) throws Exception {
-        model.addAttribute("software", softwareRule.tree());
         model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
 
         return "addEntry";
@@ -217,46 +203,6 @@ public class HomeController {
         return "iframeView";
     }
 
-    @RequestMapping(value = "/main/software/{id}", method = RequestMethod.GET)
-    public String softwareInfo(Model model, @PathVariable("id") long id) {
-        Iterable<SoftwareFolder> tree = softwareRule.tree();
-
-        Software softwareToReturn = new Software();
-        for(SoftwareFolder folder : tree) {
-            for(Software software : folder.getList()) {
-                if(software.getId() == id) {
-                    softwareToReturn = software;
-                    break;
-                }
-            }
-        }
-
-        model.addAttribute("software", softwareToReturn);    // placeholder for iterable to be returned from DB
-        return "softwareInfo";
-    }
-
-    @RequestMapping(value = "/main/publication/{paperId}/{dataId}", method = RequestMethod.GET)
-    public String publicationInfo(Model model, @PathVariable("paperId") long paperId, @PathVariable("dataId") long dataId) {
-        Iterable<DapFolder> tree = dapRule.tree();
-
-        DataAugmentedPublication dataAugmentedPublicationPaper = new DataAugmentedPublication();
-        DataAugmentedPublication dataAugmentedPublicationData = new DataAugmentedPublication();
-
-        for(DapFolder folder : tree) {
-            DataAugmentedPublication publicationPaper = folder.getPaper();
-            DataAugmentedPublication publicationData = folder.getData();
-            if(publicationPaper.getId() == paperId && publicationData.getId() == dataId) {
-                dataAugmentedPublicationPaper = publicationPaper;
-                dataAugmentedPublicationData = publicationData;
-                break;
-            }
-        }
-
-        model.addAttribute("publicationPaper", dataAugmentedPublicationPaper);
-        model.addAttribute("publicationData", dataAugmentedPublicationData);
-        return "publicationInfo";
-    }
-
     @RequestMapping(value = "/main/api/cache-spew", method = RequestMethod.GET)
     public String cacheSpew(Model model) {
         try {
@@ -283,8 +229,6 @@ public class HomeController {
 
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
     public String preview(Model model) {
-        model.addAttribute("dataAugmentedPublications", dapRule.tree());
-        model.addAttribute("software", softwareRule.tree());
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {

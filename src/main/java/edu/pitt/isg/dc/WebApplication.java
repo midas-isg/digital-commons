@@ -5,8 +5,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.boot.autoconfigure.orm.jpa.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.boot.autoconfigure.jdbc.*;
+import org.springframework.context.annotation.*;
 
-@SpringBootApplication
+@SpringBootApplication(exclude={HibernateJpaAutoConfiguration.class, DataSourceAutoConfiguration.class})
 @EnableWebMvc
 public class WebApplication extends SpringBootServletInitializer {
     @Override
