@@ -126,10 +126,13 @@ var zikaDictionary = {};
 var infectiousDiseaseDictionary = {};
 
 function convertToHref(href) {
+    var identifier;
     if(href.includes("zenodo")){
-        href = href.split('https://doi.org/').pop();
+        identifier = href.split('https://doi.org/').pop();
+    } else {
+        identifier = href;
     }
-    return '<a class="underline" href="' + href + '">' + href + '</a>';
+    return '<a class="underline" href="' + href + '">' + identifier + '</a>';
 }
 function addDatsToDictionary(dictionary, data, code, type) {
     var identifier = data['identifier']['identifier'];
