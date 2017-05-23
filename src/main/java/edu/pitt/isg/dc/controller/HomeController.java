@@ -53,6 +53,7 @@ public class HomeController {
             if(subLocation.getChildren() != null && !usa) {
                 recurseSpewTree(subLocation, false);
             } else {
+                System.out.println(subLocation.getName());
                 spewCount++;
             }
         }
@@ -83,6 +84,7 @@ public class HomeController {
                 }
                 recurseSpewTree(location, false);
             }
+            //we do not show burkina faso
             spewCount--;
             model.addAttribute("spewRegionCount", spewCount);
             model.addAttribute("spewAmericaCount", spewAmericaCount);
