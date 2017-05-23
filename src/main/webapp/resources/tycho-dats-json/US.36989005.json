@@ -1,6 +1,10 @@
 {
     "title": "Counts of people diagnosed with Mumps in the United States as reported by public health surveillance from 1923-12-30 to 2016-07-02.",
     "description": "Counts of people diagnosed with Mumps for US states and/or cities as reported by multiple surveillance systems. These counts have been curated by the Project Tycho data team at the University of Pittsburgh.",
+    "identifier": {
+        "identifier": "TYCHO:US.36989005.v2",
+        "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
+    },
     "creators": [
         {
             "firstName": "Wilbert",
@@ -435,7 +439,7 @@
             "title": "CSV file of counts of people diagnosed with Mumps in the United States as reported by public health surveillance",
             "description": "Project Tycho downloadable CSV file for counts of people diagnosed with Mumps, one file per surveillance system.",
             "identifier": {
-                "identifier": "US.36989005",
+                "identifier": "TYCHO:US.36989005.v2",
                 "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
             },
             "dates": [],

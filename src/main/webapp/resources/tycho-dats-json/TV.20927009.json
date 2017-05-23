@@ -1,6 +1,10 @@
 {
     "title": "Counts of people diagnosed with Dengue hemorrhagic fever in Tuvalu as reported by public health surveillance.",
     "description": "Counts of people diagnosed with Dengue hemorrhagic fever in Tuvalu as reported by the World Health Organization Western Pacific Regional Office website. These counts have been curated by the Project Tycho data team at the University of Pittsburgh.",
+    "identifier": {
+        "identifier": "TYCHO:TV.20927009.v2",
+        "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
+    },
     "creators": [
         {
             "firstName": "Wilbert",
@@ -228,7 +232,7 @@
             "title": "CSV file of counts of people diagnosed with Dengue hemorrhagic fever in Tuvalu as reported by public health surveillance",
             "description": "Project Tycho downloadable CSV file for counts of people diagnosed with Dengue hemorrhagic fever, one file per surveillance system.",
             "identifier": {
-                "identifier": "TV.20927009",
+                "identifier": "TYCHO:TV.20927009.v2",
                 "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
             },
             "dates": [],
