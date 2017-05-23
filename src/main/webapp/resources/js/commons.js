@@ -834,10 +834,24 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     $.getJSON( ctx + '/resources/hardcoded-tycho.json?v=' + Date.now(), function( data ) {
         var currentCountryCode = '';
         var currentTychoNode = null;
+        var continentTychoNode = null;
+        var continents = [];
         for(var i = 0; i < data.length; i++) {
+            if(!continents.includes(data[i]['continent'])) {
+                tychoNodes.push({
+                    'name': data[i]['continent'],
+                    'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['continent'] + "</span>",
+                    'nodes': []
+                });
+                continents.push(data[i]['continent']);
+                continentTychoNode = tychoNodes[tychoNodes.length - 1].nodes;
+            } else {
+                continentTychoNode = tychoNodes[continents.indexOf(data[i]['continent'])].nodes;
+            }
+
             if(data[i]['countryIso'] != currentCountryCode) {
                 currentCountryCode = data[i]['countryIso'];
-                tychoNodes.push({
+                continentTychoNode.push({
                     'name': data[i]['subtype'],
                     'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['subtype'] + "</span>",
                     'nodes': []
@@ -846,7 +860,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     currentTychoNode.sort(compareNodes);
                 }
 
-                currentTychoNode = tychoNodes[tychoNodes.length - 1].nodes;
+                currentTychoNode = continentTychoNode[continentTychoNode.length - 1].nodes;
             }
 
             currentTychoNode.push({
