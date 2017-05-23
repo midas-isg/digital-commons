@@ -896,7 +896,7 @@
       "R35GM119582"
     ],
     "dataInputFormats": [
-      "<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"
+      "MIDAS-ISG:flusight-forecast-v1.0"
     ],
     "license": "<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>",
     "title": "FluSight"
