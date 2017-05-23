@@ -843,6 +843,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['continent'] + "</span>",
                     'nodes': []
                 });
+
                 continents.push(data[i]['continent']);
                 continentTychoNode = tychoNodes[tychoNodes.length - 1].nodes;
             } else {
@@ -856,6 +857,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                     'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['subtype'] + "</span>",
                     'nodes': []
                 });
+
                 if(currentTychoNode != null) {
                     currentTychoNode.sort(compareNodes);
                 }
@@ -871,7 +873,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             tychoIds.push(data[i]['id']);
         }
         for(var i=0; i<tychoNodes.length; i++) {
-            tychoNodes[i].text += "<span class='badge'>["+ tychoNodes[i].nodes.length +"]</span>"
+            tychoNodes[i].text += "<span class='badge'>["+ tychoNodes[i].nodes.length +"]</span>";
+            tychoNodes[i].nodes.sort(compareNodes);
         }
         dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
         var dsdLength = dsdNodeNames.length + tychoIds.length;
