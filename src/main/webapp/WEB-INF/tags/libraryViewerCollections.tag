@@ -5,13 +5,17 @@
               type="java.lang.String"%>
 <%@ attribute name="spewRegions" required="true"
               type="java.util.List"%>
+<%@ attribute name="spewRegionCount" required="false"
+              type="java.lang.Integer"%>
+<%@ attribute name="spewAmericaCount" required="false"
+              type="java.lang.Integer"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <script>
     var syntheticEcosystemsByRegion = {
-        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span> <span class='badge'>[${spewRegions.size()}]</span>",
+        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span> <span class='badge'>[${spewRegionCount}]</span> ",
         nodes: []
     };
 
@@ -36,14 +40,17 @@
             syntheticEcosystemsByRegion.nodes[i].nodes.sort(compareNodes);
         }
     }
-
+//    var spewContentsLength =0;
     for(var i = 0; i < syntheticEcosystemsByRegion.nodes.length; i++) {
         var nodeName = syntheticEcosystemsByRegion.nodes[i].name;
         var innerNodesLength = syntheticEcosystemsByRegion.nodes[i].nodes.length;
-
-        syntheticEcosystemsByRegion.nodes[i].text += "<span class='badge'>[" + innerNodesLength + "]</span>"
+//        spewContentsLength += innerNodesLength;
+        if(syntheticEcosystemsByRegion.nodes[i].text.includes("Americas")) {
+            syntheticEcosystemsByRegion.nodes[i].text += "<span class='badge'>[${spewAmericaCount}]</span>";
+        } else {
+            syntheticEcosystemsByRegion.nodes[i].text += "<span class='badge'>[" + innerNodesLength + "]</span>";
+        }
     }
-
     $(document).ready(function () {
         var libraryData;
         $.ajax({

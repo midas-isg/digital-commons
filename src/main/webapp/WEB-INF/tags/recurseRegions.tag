@@ -1,6 +1,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags"%>
 <%@ attribute name="region" required="true"
               type="edu.pitt.isg.dc.digital.spew.SpewLocation"%>
+<%@attribute name="spewLength" type="java.lang.Integer" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
@@ -25,8 +26,10 @@
 
         currentNode.push({'name': "${region.name}", 'text': formatLocation("${region.name}")}); */
         <c:forEach items="${region.children}" var="child" varStatus="childLoop">
-            <myTags:recurseRegions region="${child.value}"></myTags:recurseRegions>
+            <c:set var="spewLength" value="${spewLength + 1}"></c:set>
+            <myTags:recurseRegions region="${child.value}" spewLength="${spewLength}"></myTags:recurseRegions>
         </c:forEach>
+
     </c:if>
 </c:if>
 <c:if test="${empty region.children && region.name != 'burkina faso'}">

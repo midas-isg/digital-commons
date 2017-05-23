@@ -163,7 +163,7 @@
   {
     "subtype": "Disease transmission models",
     "title": "GLEAM",
-    "humanReadableSynopsis": "<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
+    "humanReadableSynopsis": "<p>GLEAM (GLobal Epidemic and Mobility Model) produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
     "pathogenCoverage": [
       "Communicable human-to-human"
     ],
@@ -198,7 +198,7 @@
       "1.0.1.0"
     ],
     "identifier": {
-      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>"
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">10.5281/zenodo.437560</a>"
     },
     "developers": [
       "Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs",
@@ -890,13 +890,13 @@
     ],
     "source": "https://github.com/reichlab/flusight/releases/tag/v1.3.2",
     "identifier": {
-      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">10.5281/zenodo.192509</a>"
     },
     "grants": [
       "R35GM119582"
     ],
     "dataInputFormats": [
-      "<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"
+      "MIDAS-ISG:flusight-forecast-v1.0"
     ],
     "license": "<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>",
     "title": "FluSight"

@@ -656,7 +656,7 @@ label[disabled="disabled"]{
 .frame {
     display: block;
     width: 100vw;
-    height: 100vh;
+    height: 1100px;
     max-width: 100%;
     margin: 0;
     padding: 0;

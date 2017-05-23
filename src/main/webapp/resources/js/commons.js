@@ -126,11 +126,17 @@ var zikaDictionary = {};
 var infectiousDiseaseDictionary = {};
 
 function convertToHref(href) {
-    return '<a class="underline" href="' + href + '">' + href + '</a>';
+    var identifier;
+    if(href.includes("zenodo")){
+        identifier = href.split('https://doi.org/').pop();
+    } else {
+        identifier = href;
+    }
+    return '<a class="underline" href="' + href + '">' + identifier + '</a>';
 }
 
 function addDatsToDictionary(dictionary, data, code, type) {
-    if(data.hasOwnProperty['identifier']) {
+    if ("undefined" !== typeof data['identifier']) {
         var identifier = data['identifier']['identifier'];
     } else {
         identifier = null;
@@ -436,15 +442,19 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
     }
 
     for(var i = 0; i < treeArray.length; i++) {
-        if(treeArray[i].nodes.length > 0) {
-            treeArray[i].text += "<span class='badge'>[" + treeArray[i].nodes.length + "]</span>";
-        }
-
+        var rootSoftwareLength = 0;
         for(var x = 0; x < treeArray[i].nodes.length; x++) {
             if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
+                rootSoftwareLength += (treeArray[i].nodes[x].nodes.length-1)
                 treeArray[i].nodes[x].text += "<span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
             }
         }
+
+        if(treeArray[i].nodes.length > 0) {
+            rootSoftwareLength += treeArray[i].nodes.length;
+            treeArray[i].text += "<span class='badge'>[" + rootSoftwareLength + "]</span>";
+        }
+
     }
 
     /*for(var key in data) {
