@@ -83,6 +83,7 @@ public class HomeController {
                 }
                 recurseSpewTree(location, false);
             }
+            spewCount--;
             model.addAttribute("spewRegionCount", spewCount);
             model.addAttribute("spewAmericaCount", spewAmericaCount);
 
