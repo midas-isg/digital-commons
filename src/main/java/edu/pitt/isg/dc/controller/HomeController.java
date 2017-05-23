@@ -40,13 +40,7 @@ public class HomeController {
     @Autowired
     private SpewRule spewRule;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String redirectHome() {
-        return "redirect:/main";
-    }
-
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String hello(Model model) throws Exception {
+    public void populateCommonsMainModel(Model model) {
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
         } catch (Exception e) {
@@ -69,6 +63,16 @@ public class HomeController {
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String redirectHome() {
+        return "redirect:/main";
+    }
+
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String hello(Model model) throws Exception {
+        populateCommonsMainModel(model);
         return "commons";
     }
 
@@ -226,29 +230,8 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/preview", method = RequestMethod.GET)
-    public String preview(Model model) {
-        try {
-            model.addAttribute("spewRegions", spewRule.treeRegions());
-        } catch (Exception e) {
-            try {
-                Path path = Paths.get(SPEW_CACHE_FILE);
-
-                FileInputStream fis = new FileInputStream(path.toFile());
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
-
-                model.addAttribute("spewRegions", spewLocationIterable);
-            } catch (Exception ee) {
-                SpewLocation emptySpew = new SpewLocation();
-                emptySpew.setName("Error loading data from SPEW");
-                List<SpewLocation> tree = new ArrayList<>();
-                tree.add(emptySpew);
-                model.addAttribute("spewRegions", tree);
-            }
-        }
-        model.addAttribute("libraryViewerUrl", VIEWER_URL);
-        model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
-        model.addAttribute("preview", true);
+    public String preview(Model model) throws Exception {
+        populateCommonsMainModel(model);
         return "commons";
     }
 }
