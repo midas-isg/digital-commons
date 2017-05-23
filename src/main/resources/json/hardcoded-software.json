@@ -394,7 +394,7 @@
       "2.0"
     ],
     "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
-    "dataInputFormats": "MIDAS-ISG:hladish-dengue-model-v2.0",
+    "dataInputFormats": ["MIDAS-ISG:hladish-dengue-model-v2.0"],
     "source": "https://github.com/tjhladish/dengue",
     "sourceCodeRelease": "<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
