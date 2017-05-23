@@ -19,6 +19,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 
 @Controller
@@ -40,9 +41,51 @@ public class HomeController {
     @Autowired
     private SpewRule spewRule;
 
+    private Integer spewCount;
+    private Integer spewAmericaCount;
+
+    private void recurseSpewTree(SpewLocation location, boolean usa) {
+        for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
+            SpewLocation subLocation = entry.getValue();
+            if(subLocation.getName().equals("united states of america")) {
+                recurseSpewTree(subLocation, true);
+            }
+            if(subLocation.getChildren() != null && !usa) {
+                recurseSpewTree(subLocation, false);
+            } else {
+                spewCount++;
+            }
+        }
+    }
+
+    private void recureAmericaTree(SpewLocation location, boolean usa) {
+        for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
+            SpewLocation subLocation = entry.getValue();
+            if(subLocation.getName().equals("united states of america")) {
+                recureAmericaTree(subLocation, true);
+            }
+            if(subLocation.getChildren() != null && !usa) {
+                recureAmericaTree(subLocation, false);
+            } else {
+                spewAmericaCount++;
+            }
+        }
+    }
+
     public void populateCommonsMainModel(Model model) {
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
+            spewCount=0;
+            spewAmericaCount = 0;
+            for(SpewLocation location : spewRule.treeRegions()) {
+                if (location.getName().toLowerCase().contains("america")) {
+                    recureAmericaTree(location, false);
+                }
+                recurseSpewTree(location, false);
+            }
+            model.addAttribute("spewRegionCount", spewCount);
+            model.addAttribute("spewAmericaCount", spewAmericaCount);
+
         } catch (Exception e) {
             try {
                 Path path = Paths.get(SPEW_CACHE_FILE);
