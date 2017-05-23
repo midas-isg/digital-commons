@@ -1,2216 +1,2180 @@
 [
   {
     "subtype": "Afghanistan",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AF.20927009",
     "countryIso": "AF"
   },
   {
     "subtype": "Afghanistan",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AF.38362002",
     "countryIso": "AF"
   },
   {
     "subtype": "Afghanistan",
-    "title": "Dengue",
-    "id": "AF.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AF.722862003",
     "countryIso": "AF"
   },
   {
     "subtype": "Antigua and Barbuda",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AG.20927009",
     "countryIso": "AG"
   },
   {
     "subtype": "Antigua and Barbuda",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AG.38362002",
     "countryIso": "AG"
   },
   {
     "subtype": "Antigua and Barbuda",
-    "title": "Dengue",
-    "id": "AG.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AG.722862003",
     "countryIso": "AG"
   },
   {
     "subtype": "Anguilla",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AI.20927009",
     "countryIso": "AI"
   },
   {
     "subtype": "Anguilla",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AI.38362002",
     "countryIso": "AI"
   },
   {
     "subtype": "Anguilla",
-    "title": "Dengue",
-    "id": "AI.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AI.722862003",
     "countryIso": "AI"
   },
   {
     "subtype": "Netherlands Antilles",
-    "title": "Dengue hemorrhagic fever",
-    "id": "AN.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "AN.20927009",
     "countryIso": "AN"
   },
   {
     "subtype": "Netherlands Antilles",
-    "title": "Dengue",
-    "id": "AN.240370009",
+    "product": "Dengue",
+    "id": "AN.38362002",
     "countryIso": "AN"
   },
   {
     "subtype": "Argentina",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AR.20927009",
     "countryIso": "AR"
   },
   {
     "subtype": "Argentina",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AR.38362002",
     "countryIso": "AR"
   },
   {
     "subtype": "Argentina",
-    "title": "Dengue",
-    "id": "AR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AR.722862003",
     "countryIso": "AR"
   },
   {
     "subtype": "American Samoa",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AS.20927009",
     "countryIso": "AS"
   },
   {
     "subtype": "American Samoa",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AS.38362002",
     "countryIso": "AS"
   },
   {
     "subtype": "American Samoa",
-    "title": "Dengue",
-    "id": "AS.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AS.722862003",
     "countryIso": "AS"
   },
   {
     "subtype": "Australia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AU.20927009",
     "countryIso": "AU"
   },
   {
     "subtype": "Australia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AU.38362002",
     "countryIso": "AU"
   },
   {
     "subtype": "Australia",
-    "title": "Dengue",
-    "id": "AU.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AU.722862003",
     "countryIso": "AU"
   },
   {
     "subtype": "Aruba",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "AW.20927009",
     "countryIso": "AW"
   },
   {
     "subtype": "Aruba",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "AW.38362002",
     "countryIso": "AW"
   },
   {
     "subtype": "Aruba",
-    "title": "Dengue",
-    "id": "AW.240370009",
+    "product": "Dengue without warning signs",
+    "id": "AW.722862003",
     "countryIso": "AW"
   },
   {
     "subtype": "Barbados",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BB.20927009",
     "countryIso": "BB"
   },
   {
     "subtype": "Barbados",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BB.38362002",
     "countryIso": "BB"
   },
   {
     "subtype": "Barbados",
-    "title": "Dengue",
-    "id": "BB.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BB.722862003",
     "countryIso": "BB"
   },
   {
     "subtype": "Bangladesh",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BD.20927009",
     "countryIso": "BD"
   },
   {
     "subtype": "Bangladesh",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BD.38362002",
     "countryIso": "BD"
   },
   {
     "subtype": "Bangladesh",
-    "title": "Dengue",
-    "id": "BD.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BD.722862003",
     "countryIso": "BD"
   },
   {
     "subtype": "Saint Barthelemy",
-    "title": "Dengue hemorrhagic fever",
-    "id": "BL.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "BL.20927009",
     "countryIso": "BL"
   },
   {
     "subtype": "Saint Barthelemy",
-    "title": "Dengue",
-    "id": "BL.240370009",
+    "product": "Dengue",
+    "id": "BL.38362002",
     "countryIso": "BL"
   },
   {
     "subtype": "Bermuda",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BM.20927009",
     "countryIso": "BM"
   },
   {
     "subtype": "Bermuda",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BM.38362002",
     "countryIso": "BM"
   },
   {
     "subtype": "Bermuda",
-    "title": "Dengue",
-    "id": "BM.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BM.722862003",
     "countryIso": "BM"
   },
   {
     "subtype": "Brunei Darussalam",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BN.20927009",
     "countryIso": "BN"
   },
   {
     "subtype": "Brunei Darussalam",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BN.38362002",
     "countryIso": "BN"
   },
   {
     "subtype": "Brunei Darussalam",
-    "title": "Dengue",
-    "id": "BN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BN.722862003",
     "countryIso": "BN"
   },
   {
     "subtype": "Bolivia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BO.20927009",
     "countryIso": "BO"
   },
   {
     "subtype": "Bolivia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BO.38362002",
     "countryIso": "BO"
   },
   {
     "subtype": "Bolivia",
-    "title": "Dengue",
-    "id": "BO.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BO.722862003",
     "countryIso": "BO"
   },
   {
     "subtype": "Brazil",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BR.20927009",
     "countryIso": "BR"
   },
   {
     "subtype": "Brazil",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BR.38362002",
     "countryIso": "BR"
   },
   {
     "subtype": "Brazil",
-    "title": "Dengue",
-    "id": "BR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BR.722862003",
     "countryIso": "BR"
   },
   {
     "subtype": "Bahamas",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BS.20927009",
     "countryIso": "BS"
   },
   {
     "subtype": "Bahamas",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BS.38362002",
     "countryIso": "BS"
   },
   {
     "subtype": "Bahamas",
-    "title": "Dengue",
-    "id": "BS.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BS.722862003",
     "countryIso": "BS"
   },
   {
     "subtype": "Bhutan",
-    "title": "Dengue",
-    "id": "BT.240370009",
+    "product": "Dengue",
+    "id": "BT.38362002",
     "countryIso": "BT"
   },
   {
     "subtype": "Belize",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "BZ.20927009",
     "countryIso": "BZ"
   },
   {
     "subtype": "Belize",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "BZ.38362002",
     "countryIso": "BZ"
   },
   {
     "subtype": "Belize",
-    "title": "Dengue",
-    "id": "BZ.240370009",
+    "product": "Dengue without warning signs",
+    "id": "BZ.722862003",
     "countryIso": "BZ"
   },
   {
     "subtype": "Canada",
-    "title": "Dengue hemorrhagic fever",
-    "id": "CA.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "CA.20927009",
     "countryIso": "CA"
   },
   {
     "subtype": "Canada",
-    "title": "Dengue",
-    "id": "CA.240370009",
+    "product": "Dengue",
+    "id": "CA.38362002",
     "countryIso": "CA"
   },
   {
     "subtype": "Cook Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CK.20927009",
     "countryIso": "CK"
   },
   {
     "subtype": "Cook Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CK.38362002",
     "countryIso": "CK"
   },
   {
     "subtype": "Cook Islands",
-    "title": "Dengue",
-    "id": "CK.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CK.722862003",
     "countryIso": "CK"
   },
   {
     "subtype": "Chile",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CL.20927009",
     "countryIso": "CL"
   },
   {
     "subtype": "Chile",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CL.38362002",
     "countryIso": "CL"
   },
   {
     "subtype": "Chile",
-    "title": "Dengue",
-    "id": "CL.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CL.722862003",
     "countryIso": "CL"
   },
   {
     "subtype": "China",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CN.20927009",
     "countryIso": "CN"
   },
   {
     "subtype": "China",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CN.38362002",
     "countryIso": "CN"
   },
   {
     "subtype": "China",
-    "title": "Dengue",
-    "id": "CN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CN.722862003",
     "countryIso": "CN"
   },
   {
     "subtype": "Colombia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CO.20927009",
     "countryIso": "CO"
   },
   {
     "subtype": "Colombia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CO.38362002",
     "countryIso": "CO"
   },
   {
     "subtype": "Colombia",
-    "title": "Dengue",
-    "id": "CO.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CO.722862003",
     "countryIso": "CO"
   },
   {
     "subtype": "Costa Rica",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CR.20927009",
     "countryIso": "CR"
   },
   {
     "subtype": "Costa Rica",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CR.38362002",
     "countryIso": "CR"
   },
   {
     "subtype": "Costa Rica",
-    "title": "Dengue",
-    "id": "CR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CR.722862003",
     "countryIso": "CR"
   },
   {
     "subtype": "Cuba",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "CU.20927009",
     "countryIso": "CU"
   },
   {
     "subtype": "Cuba",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "CU.38362002",
     "countryIso": "CU"
   },
   {
     "subtype": "Cuba",
-    "title": "Dengue",
-    "id": "CU.240370009",
+    "product": "Dengue without warning signs",
+    "id": "CU.722862003",
     "countryIso": "CU"
   },
   {
     "subtype": "Curacao",
-    "title": "Dengue hemorrhagic fever",
-    "id": "CW.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "CW.20927009",
     "countryIso": "CW"
   },
   {
     "subtype": "Curacao",
-    "title": "Dengue",
-    "id": "CW.240370009",
+    "product": "Dengue",
+    "id": "CW.38362002",
     "countryIso": "CW"
   },
   {
     "subtype": "Dominica",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "DM.20927009",
     "countryIso": "DM"
   },
   {
     "subtype": "Dominica",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "DM.38362002",
     "countryIso": "DM"
   },
   {
     "subtype": "Dominica",
-    "title": "Dengue",
-    "id": "DM.240370009",
+    "product": "Dengue without warning signs",
+    "id": "DM.722862003",
     "countryIso": "DM"
   },
   {
     "subtype": "Dominican Republic",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "DO.20927009",
     "countryIso": "DO"
   },
   {
     "subtype": "Dominican Republic",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "DO.38362002",
     "countryIso": "DO"
   },
   {
     "subtype": "Dominican Republic",
-    "title": "Dengue",
-    "id": "DO.240370009",
+    "product": "Dengue without warning signs",
+    "id": "DO.722862003",
     "countryIso": "DO"
   },
   {
     "subtype": "Ecuador",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "EC.20927009",
     "countryIso": "EC"
   },
   {
     "subtype": "Ecuador",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "EC.38362002",
     "countryIso": "EC"
   },
   {
     "subtype": "Ecuador",
-    "title": "Dengue",
-    "id": "EC.240370009",
+    "product": "Dengue without warning signs",
+    "id": "EC.722862003",
     "countryIso": "EC"
   },
   {
     "subtype": "Fiji",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "FJ.20927009",
     "countryIso": "FJ"
   },
   {
     "subtype": "Fiji",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "FJ.38362002",
     "countryIso": "FJ"
   },
   {
     "subtype": "Fiji",
-    "title": "Dengue",
-    "id": "FJ.240370009",
+    "product": "Dengue without warning signs",
+    "id": "FJ.722862003",
     "countryIso": "FJ"
   },
   {
     "subtype": "Micronesia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "FM.20927009",
     "countryIso": "FM"
   },
   {
     "subtype": "Micronesia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "FM.38362002",
     "countryIso": "FM"
   },
   {
     "subtype": "Micronesia",
-    "title": "Dengue",
-    "id": "FM.240370009",
+    "product": "Dengue without warning signs",
+    "id": "FM.722862003",
     "countryIso": "FM"
   },
   {
     "subtype": "Grenada",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GD.20927009",
     "countryIso": "GD"
   },
   {
     "subtype": "Grenada",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GD.38362002",
     "countryIso": "GD"
   },
   {
     "subtype": "Grenada",
-    "title": "Dengue",
-    "id": "GD.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GD.722862003",
     "countryIso": "GD"
   },
   {
     "subtype": "French Guiana",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GF.20927009",
     "countryIso": "GF"
   },
   {
     "subtype": "French Guiana",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GF.38362002",
     "countryIso": "GF"
   },
   {
     "subtype": "French Guiana",
-    "title": "Dengue",
-    "id": "GF.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GF.722862003",
     "countryIso": "GF"
   },
   {
     "subtype": "Guadeloupe",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GP.20927009",
     "countryIso": "GP"
   },
   {
     "subtype": "Guadeloupe",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GP.38362002",
     "countryIso": "GP"
   },
   {
     "subtype": "Guadeloupe",
-    "title": "Dengue",
-    "id": "GP.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GP.722862003",
     "countryIso": "GP"
   },
   {
     "subtype": "Guatemala",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GT.20927009",
     "countryIso": "GT"
   },
   {
     "subtype": "Guatemala",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GT.38362002",
     "countryIso": "GT"
   },
   {
     "subtype": "Guatemala",
-    "title": "Dengue",
-    "id": "GT.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GT.722862003",
     "countryIso": "GT"
   },
   {
     "subtype": "Guam",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GU.20927009",
     "countryIso": "GU"
   },
   {
     "subtype": "Guam",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GU.38362002",
     "countryIso": "GU"
   },
   {
     "subtype": "Guam",
-    "title": "Dengue",
-    "id": "GU.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GU.722862003",
     "countryIso": "GU"
   },
   {
     "subtype": "Guyana",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "GY.20927009",
     "countryIso": "GY"
   },
   {
     "subtype": "Guyana",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "GY.38362002",
     "countryIso": "GY"
   },
   {
     "subtype": "Guyana",
-    "title": "Dengue",
-    "id": "GY.240370009",
+    "product": "Dengue without warning signs",
+    "id": "GY.722862003",
     "countryIso": "GY"
   },
   {
     "subtype": "Hong Kong",
-    "title": "Dengue hemorrhagic fever",
-    "id": "HK.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "HK.20927009",
     "countryIso": "HK"
   },
   {
     "subtype": "Hong Kong",
-    "title": "Dengue",
-    "id": "HK.240370009",
+    "product": "Dengue",
+    "id": "HK.38362002",
     "countryIso": "HK"
   },
   {
     "subtype": "Honduras",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "HN.20927009",
     "countryIso": "HN"
   },
   {
     "subtype": "Honduras",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "HN.38362002",
     "countryIso": "HN"
   },
   {
     "subtype": "Honduras",
-    "title": "Dengue",
-    "id": "HN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "HN.722862003",
     "countryIso": "HN"
   },
   {
     "subtype": "Haiti",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "HT.20927009",
     "countryIso": "HT"
   },
   {
     "subtype": "Haiti",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "HT.38362002",
     "countryIso": "HT"
   },
   {
     "subtype": "Haiti",
-    "title": "Dengue",
-    "id": "HT.240370009",
+    "product": "Dengue without warning signs",
+    "id": "HT.722862003",
     "countryIso": "HT"
   },
   {
     "subtype": "Indonesia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "ID.20927009",
     "countryIso": "ID"
   },
   {
     "subtype": "Indonesia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "ID.38362002",
     "countryIso": "ID"
   },
   {
     "subtype": "Indonesia",
-    "title": "Dengue",
-    "id": "ID.240370009",
+    "product": "Dengue without warning signs",
+    "id": "ID.722862003",
     "countryIso": "ID"
   },
   {
     "subtype": "India",
-    "title": "Dengue without warning signs",
-    "id": "IN.20927009",
+    "product": "Dengue",
+    "id": "IN.38362002",
     "countryIso": "IN"
   },
   {
     "subtype": "India",
-    "title": "Dengue",
-    "id": "IN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "IN.722862003",
     "countryIso": "IN"
   },
   {
     "subtype": "Jamaica",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "JM.20927009",
     "countryIso": "JM"
   },
   {
     "subtype": "Jamaica",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "JM.38362002",
     "countryIso": "JM"
   },
   {
     "subtype": "Jamaica",
-    "title": "Dengue",
-    "id": "JM.240370009",
+    "product": "Dengue without warning signs",
+    "id": "JM.722862003",
     "countryIso": "JM"
   },
   {
     "subtype": "Japan",
-    "title": "Dengue without warning signs",
-    "id": "JP.20927009",
+    "product": "Dengue",
+    "id": "JP.38362002",
     "countryIso": "JP"
   },
   {
     "subtype": "Japan",
-    "title": "Dengue",
-    "id": "JP.240370009",
+    "product": "Dengue without warning signs",
+    "id": "JP.722862003",
     "countryIso": "JP"
   },
   {
     "subtype": "Cambodia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "KH.20927009",
     "countryIso": "KH"
   },
   {
     "subtype": "Cambodia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "KH.38362002",
     "countryIso": "KH"
   },
   {
     "subtype": "Cambodia",
-    "title": "Dengue",
-    "id": "KH.240370009",
+    "product": "Dengue without warning signs",
+    "id": "KH.722862003",
     "countryIso": "KH"
   },
   {
     "subtype": "Kiribati",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "KI.20927009",
     "countryIso": "KI"
   },
   {
     "subtype": "Kiribati",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "KI.38362002",
     "countryIso": "KI"
   },
   {
     "subtype": "Kiribati",
-    "title": "Dengue",
-    "id": "KI.240370009",
+    "product": "Dengue without warning signs",
+    "id": "KI.722862003",
     "countryIso": "KI"
   },
   {
     "subtype": "Saint Kitts and Nevis",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "KN.20927009",
     "countryIso": "KN"
   },
   {
     "subtype": "Saint Kitts and Nevis",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "KN.38362002",
     "countryIso": "KN"
   },
   {
     "subtype": "Saint Kitts and Nevis",
-    "title": "Dengue",
-    "id": "KN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "KN.722862003",
     "countryIso": "KN"
   },
   {
     "subtype": "South Korea",
-    "title": "Dengue hemorrhagic fever",
-    "id": "KR.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "KR.20927009",
     "countryIso": "KR"
   },
   {
     "subtype": "South Korea",
-    "title": "Dengue",
-    "id": "KR.240370009",
+    "product": "Dengue",
+    "id": "KR.38362002",
     "countryIso": "KR"
   },
   {
     "subtype": "Cayman Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "KY.20927009",
     "countryIso": "KY"
   },
   {
     "subtype": "Cayman Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "KY.38362002",
     "countryIso": "KY"
   },
   {
     "subtype": "Cayman Islands",
-    "title": "Dengue",
-    "id": "KY.240370009",
+    "product": "Dengue without warning signs",
+    "id": "KY.722862003",
     "countryIso": "KY"
   },
   {
     "subtype": "Laos",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "LA.20927009",
     "countryIso": "LA"
   },
   {
     "subtype": "Laos",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "LA.38362002",
     "countryIso": "LA"
   },
   {
     "subtype": "Laos",
-    "title": "Dengue",
-    "id": "LA.240370009",
+    "product": "Dengue without warning signs",
+    "id": "LA.722862003",
     "countryIso": "LA"
   },
   {
     "subtype": "Saint Lucia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "LC.20927009",
     "countryIso": "LC"
   },
   {
     "subtype": "Saint Lucia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "LC.38362002",
     "countryIso": "LC"
   },
   {
     "subtype": "Saint Lucia",
-    "title": "Dengue",
-    "id": "LC.240370009",
+    "product": "Dengue without warning signs",
+    "id": "LC.722862003",
     "countryIso": "LC"
   },
   {
     "subtype": "Sri Lanka",
-    "title": "Dengue without warning signs",
-    "id": "LK.20927009",
+    "product": "Dengue",
+    "id": "LK.38362002",
     "countryIso": "LK"
   },
   {
     "subtype": "Sri Lanka",
-    "title": "Dengue",
-    "id": "LK.240370009",
+    "product": "Dengue without warning signs",
+    "id": "LK.722862003",
     "countryIso": "LK"
   },
   {
     "subtype": "Saint Martin",
-    "title": "Dengue hemorrhagic fever",
-    "id": "MF.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "MF.20927009",
     "countryIso": "MF"
   },
   {
     "subtype": "Saint Martin",
-    "title": "Dengue",
-    "id": "MF.240370009",
+    "product": "Dengue",
+    "id": "MF.38362002",
     "countryIso": "MF"
   },
   {
     "subtype": "Marshall Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MH.20927009",
     "countryIso": "MH"
   },
   {
     "subtype": "Marshall Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MH.38362002",
     "countryIso": "MH"
   },
   {
     "subtype": "Marshall Islands",
-    "title": "Dengue",
-    "id": "MH.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MH.722862003",
     "countryIso": "MH"
   },
   {
     "subtype": "Myanmar",
-    "title": "Dengue without warning signs",
-    "id": "MM.20927009",
+    "product": "Dengue",
+    "id": "MM.38362002",
     "countryIso": "MM"
   },
   {
     "subtype": "Myanmar",
-    "title": "Dengue",
-    "id": "MM.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MM.722862003",
     "countryIso": "MM"
   },
   {
     "subtype": "Mongolia",
-    "title": "Dengue hemorrhagic fever",
-    "id": "MN.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "MN.20927009",
     "countryIso": "MN"
   },
   {
     "subtype": "Mongolia",
-    "title": "Dengue",
-    "id": "MN.240370009",
+    "product": "Dengue",
+    "id": "MN.38362002",
     "countryIso": "MN"
   },
   {
     "subtype": "Macao",
-    "title": "Dengue hemorrhagic fever",
-    "id": "MO.38362002",
+    "product": "Dengue hemorrhagic fever",
+    "id": "MO.20927009",
     "countryIso": "MO"
   },
   {
     "subtype": "Macao",
-    "title": "Dengue",
-    "id": "MO.240370009",
+    "product": "Dengue",
+    "id": "MO.38362002",
     "countryIso": "MO"
   },
   {
     "subtype": "Northern Mariana Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MP.20927009",
     "countryIso": "MP"
   },
   {
     "subtype": "Northern Mariana Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MP.38362002",
     "countryIso": "MP"
   },
   {
     "subtype": "Northern Mariana Islands",
-    "title": "Dengue",
-    "id": "MP.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MP.722862003",
     "countryIso": "MP"
   },
   {
     "subtype": "Martinique",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MQ.20927009",
     "countryIso": "MQ"
   },
   {
     "subtype": "Martinique",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MQ.38362002",
     "countryIso": "MQ"
   },
   {
     "subtype": "Martinique",
-    "title": "Dengue",
-    "id": "MQ.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MQ.722862003",
     "countryIso": "MQ"
   },
   {
     "subtype": "Montserrat",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MS.20927009",
     "countryIso": "MS"
   },
   {
     "subtype": "Montserrat",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MS.38362002",
     "countryIso": "MS"
   },
   {
     "subtype": "Montserrat",
-    "title": "Dengue",
-    "id": "MS.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MS.722862003",
     "countryIso": "MS"
   },
   {
     "subtype": "Maldives",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MV.20927009",
     "countryIso": "MV"
   },
   {
     "subtype": "Maldives",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MV.38362002",
     "countryIso": "MV"
   },
   {
     "subtype": "Maldives",
-    "title": "Dengue",
-    "id": "MV.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MV.722862003",
     "countryIso": "MV"
   },
   {
     "subtype": "Mexico",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MX.20927009",
     "countryIso": "MX"
   },
   {
     "subtype": "Mexico",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MX.38362002",
     "countryIso": "MX"
   },
   {
     "subtype": "Mexico",
-    "title": "Dengue",
-    "id": "MX.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MX.722862003",
     "countryIso": "MX"
   },
   {
     "subtype": "Malaysia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "MY.20927009",
     "countryIso": "MY"
   },
   {
     "subtype": "Malaysia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "MY.38362002",
     "countryIso": "MY"
   },
   {
     "subtype": "Malaysia",
-    "title": "Dengue",
-    "id": "MY.240370009",
+    "product": "Dengue without warning signs",
+    "id": "MY.722862003",
     "countryIso": "MY"
   },
   {
     "subtype": "New Caledonia",
-    "title": "Dengue without warning signs",
-    "id": "NC.20927009",
+    "product": "Dengue",
+    "id": "NC.38362002",
     "countryIso": "NC"
   },
   {
     "subtype": "New Caledonia",
-    "title": "Dengue",
-    "id": "NC.240370009",
+    "product": "Dengue without warning signs",
+    "id": "NC.722862003",
     "countryIso": "NC"
   },
   {
     "subtype": "Nicaragua",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "NI.20927009",
     "countryIso": "NI"
   },
   {
     "subtype": "Nicaragua",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "NI.38362002",
     "countryIso": "NI"
   },
   {
     "subtype": "Nicaragua",
-    "title": "Dengue",
-    "id": "NI.240370009",
+    "product": "Dengue without warning signs",
+    "id": "NI.722862003",
     "countryIso": "NI"
   },
   {
     "subtype": "Nepal",
-    "title": "Dengue",
-    "id": "NP.240370009",
+    "product": "Dengue",
+    "id": "NP.38362002",
     "countryIso": "NP"
   },
   {
     "subtype": "Nauru",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "NR.20927009",
     "countryIso": "NR"
   },
   {
     "subtype": "Nauru",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "NR.38362002",
     "countryIso": "NR"
   },
   {
     "subtype": "Nauru",
-    "title": "Dengue",
-    "id": "NR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "NR.722862003",
     "countryIso": "NR"
   },
   {
     "subtype": "Niue",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "NU.20927009",
     "countryIso": "NU"
   },
   {
     "subtype": "Niue",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "NU.38362002",
     "countryIso": "NU"
   },
   {
     "subtype": "Niue",
-    "title": "Dengue",
-    "id": "NU.240370009",
+    "product": "Dengue without warning signs",
+    "id": "NU.722862003",
     "countryIso": "NU"
   },
   {
     "subtype": "New Zealand",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "NZ.20927009",
     "countryIso": "NZ"
   },
   {
     "subtype": "New Zealand",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "NZ.38362002",
     "countryIso": "NZ"
   },
   {
     "subtype": "New Zealand",
-    "title": "Dengue",
-    "id": "NZ.240370009",
+    "product": "Dengue without warning signs",
+    "id": "NZ.722862003",
     "countryIso": "NZ"
   },
   {
     "subtype": "Panama",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PA.20927009",
     "countryIso": "PA"
   },
   {
     "subtype": "Panama",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PA.38362002",
     "countryIso": "PA"
   },
   {
     "subtype": "Panama",
-    "title": "Dengue",
-    "id": "PA.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PA.722862003",
     "countryIso": "PA"
   },
   {
     "subtype": "Peru",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PE.20927009",
     "countryIso": "PE"
   },
   {
     "subtype": "Peru",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PE.38362002",
     "countryIso": "PE"
   },
   {
     "subtype": "Peru",
-    "title": "Dengue",
-    "id": "PE.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PE.722862003",
     "countryIso": "PE"
   },
   {
     "subtype": "French Polynesia",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PF.20927009",
     "countryIso": "PF"
   },
   {
     "subtype": "French Polynesia",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PF.38362002",
     "countryIso": "PF"
   },
   {
     "subtype": "French Polynesia",
-    "title": "Dengue",
-    "id": "PF.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PF.722862003",
     "countryIso": "PF"
   },
   {
     "subtype": "Papua New Guinea",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PG.20927009",
     "countryIso": "PG"
   },
   {
     "subtype": "Papua New Guinea",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PG.38362002",
     "countryIso": "PG"
   },
   {
     "subtype": "Papua New Guinea",
-    "title": "Dengue",
-    "id": "PG.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PG.722862003",
     "countryIso": "PG"
   },
   {
     "subtype": "Philippines",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PH.20927009",
     "countryIso": "PH"
   },
   {
     "subtype": "Philippines",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PH.38362002",
     "countryIso": "PH"
   },
   {
     "subtype": "Philippines",
-    "title": "Dengue",
-    "id": "PH.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PH.722862003",
     "countryIso": "PH"
   },
   {
     "subtype": "Pitcairn",
-    "title": "Dengue",
-    "id": "PN.240370009",
+    "product": "Dengue",
+    "id": "PN.38362002",
     "countryIso": "PN"
   },
   {
     "subtype": "Puerto Rico",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PR.20927009",
     "countryIso": "PR"
   },
   {
     "subtype": "Puerto Rico",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PR.38362002",
     "countryIso": "PR"
   },
   {
     "subtype": "Puerto Rico",
-    "title": "Dengue",
-    "id": "PR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PR.722862003",
     "countryIso": "PR"
   },
   {
     "subtype": "Palau",
-    "title": "Dengue without warning signs",
-    "id": "PW.20927009",
+    "product": "Dengue",
+    "id": "PW.38362002",
     "countryIso": "PW"
   },
   {
     "subtype": "Palau",
-    "title": "Dengue",
-    "id": "PW.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PW.722862003",
     "countryIso": "PW"
   },
   {
     "subtype": "Paraguay",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "PY.20927009",
     "countryIso": "PY"
   },
   {
     "subtype": "Paraguay",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "PY.38362002",
     "countryIso": "PY"
   },
   {
     "subtype": "Paraguay",
-    "title": "Dengue",
-    "id": "PY.240370009",
+    "product": "Dengue without warning signs",
+    "id": "PY.722862003",
     "countryIso": "PY"
   },
   {
     "subtype": "Saudi Arabia",
-    "title": "Dengue without warning signs",
-    "id": "SA.20927009",
+    "product": "Dengue",
+    "id": "SA.38362002",
     "countryIso": "SA"
   },
   {
     "subtype": "Saudi Arabia",
-    "title": "Dengue",
-    "id": "SA.240370009",
+    "product": "Dengue without warning signs",
+    "id": "SA.722862003",
     "countryIso": "SA"
   },
   {
     "subtype": "Solomon Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "SB.20927009",
     "countryIso": "SB"
   },
   {
     "subtype": "Solomon Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "SB.38362002",
     "countryIso": "SB"
   },
   {
     "subtype": "Solomon Islands",
-    "title": "Dengue",
-    "id": "SB.240370009",
+    "product": "Dengue without warning signs",
+    "id": "SB.722862003",
     "countryIso": "SB"
   },
   {
     "subtype": "Singapore",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "SG.20927009",
     "countryIso": "SG"
   },
   {
     "subtype": "Singapore",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "SG.38362002",
     "countryIso": "SG"
   },
   {
     "subtype": "Singapore",
-    "title": "Dengue",
-    "id": "SG.240370009",
+    "product": "Dengue without warning signs",
+    "id": "SG.722862003",
     "countryIso": "SG"
   },
   {
     "subtype": "Suriname",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "SR.20927009",
     "countryIso": "SR"
   },
   {
     "subtype": "Suriname",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "SR.38362002",
     "countryIso": "SR"
   },
   {
     "subtype": "Suriname",
-    "title": "Dengue",
-    "id": "SR.240370009",
+    "product": "Dengue without warning signs",
+    "id": "SR.722862003",
     "countryIso": "SR"
   },
   {
     "subtype": "El Salvador",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "SV.20927009",
     "countryIso": "SV"
   },
   {
     "subtype": "El Salvador",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "SV.38362002",
     "countryIso": "SV"
   },
   {
     "subtype": "El Salvador",
-    "title": "Dengue",
-    "id": "SV.240370009",
+    "product": "Dengue without warning signs",
+    "id": "SV.722862003",
     "countryIso": "SV"
   },
   {
     "subtype": "Turks and Caicos Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "TC.20927009",
     "countryIso": "TC"
   },
   {
     "subtype": "Turks and Caicos Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "TC.38362002",
     "countryIso": "TC"
   },
   {
     "subtype": "Turks and Caicos Islands",
-    "title": "Dengue",
-    "id": "TC.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TC.722862003",
     "countryIso": "TC"
   },
   {
     "subtype": "Thailand",
-    "title": "Dengue without warning signs",
-    "id": "TH.20927009",
+    "product": "Dengue",
+    "id": "TH.38362002",
     "countryIso": "TH"
   },
   {
     "subtype": "Thailand",
-    "title": "Dengue",
-    "id": "TH.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TH.722862003",
     "countryIso": "TH"
   },
   {
     "subtype": "Tokelau",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "TK.20927009",
     "countryIso": "TK"
   },
   {
     "subtype": "Tokelau",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "TK.38362002",
     "countryIso": "TK"
   },
   {
     "subtype": "Tokelau",
-    "title": "Dengue",
-    "id": "TK.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TK.722862003",
     "countryIso": "TK"
   },
   {
     "subtype": "Timor-Leste",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "TL.20927009",
     "countryIso": "TL"
   },
   {
     "subtype": "Timor-Leste",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "TL.38362002",
     "countryIso": "TL"
   },
   {
     "subtype": "Timor-Leste",
-    "title": "Dengue",
-    "id": "TL.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TL.722862003",
     "countryIso": "TL"
   },
   {
     "subtype": "Tonga",
-    "title": "Dengue without warning signs",
-    "id": "TO.20927009",
+    "product": "Dengue",
+    "id": "TO.38362002",
     "countryIso": "TO"
   },
   {
     "subtype": "Tonga",
-    "title": "Dengue",
-    "id": "TO.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TO.722862003",
     "countryIso": "TO"
   },
   {
     "subtype": "Trinidad and Tobago",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "TT.20927009",
     "countryIso": "TT"
   },
   {
     "subtype": "Trinidad and Tobago",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "TT.38362002",
     "countryIso": "TT"
   },
   {
     "subtype": "Trinidad and Tobago",
-    "title": "Dengue",
-    "id": "TT.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TT.722862003",
     "countryIso": "TT"
   },
   {
     "subtype": "Tuvalu",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "TV.20927009",
     "countryIso": "TV"
   },
   {
     "subtype": "Tuvalu",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "TV.38362002",
     "countryIso": "TV"
   },
   {
     "subtype": "Tuvalu",
-    "title": "Dengue",
-    "id": "TV.240370009",
+    "product": "Dengue without warning signs",
+    "id": "TV.722862003",
     "countryIso": "TV"
   },
   {
     "subtype": "Taiwan",
-    "title": "Dengue",
-    "id": "TW.240370009",
+    "product": "Dengue",
+    "id": "TW.38362002",
     "countryIso": "TW"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Congenital syphilis",
+    "product": "Congenital rubella syndrome",
     "id": "US.1857005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Viral hepatitis",
+    "product": "Viral hepatitis",
     "id": "US.3738000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Invasive meningococcal disease",
+    "product": "Listeriosis",
     "id": "US.4241002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Typhoid fever",
+    "product": "Typhoid fever",
     "id": "US.4834000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Influenza",
+    "product": "Influenza",
     "id": "US.6142004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Meningitis",
+    "product": "Meningitis",
     "id": "US.7180009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Rabies",
+    "product": "Rabies",
     "id": "US.14168008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Measles",
+    "product": "Measles",
     "id": "US.14189004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute nonparalytic poliomyelitis",
+    "product": "Acute nonparalytic poliomyelitis",
     "id": "US.14535005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Gonorrhea",
+    "product": "Gonorrhea",
     "id": "US.15628003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Yellow fever",
+    "product": "Yellow fever",
     "id": "US.16541001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Toxic shock syndrome",
+    "product": "Toxic shock syndrome",
     "id": "US.18504008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Tularemia",
+    "product": "Tularemia",
     "id": "US.19265001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "US.20927009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Babesiosis",
+    "product": "Babesiosis",
     "id": "US.21061004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Lyme disease",
+    "product": "Lyme disease",
     "id": "US.23502006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Meningococcal infectious disease",
+    "product": "Meningococcal infectious disease",
     "id": "US.23511006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute type A viral hepatitis",
+    "product": "Acute type A viral hepatitis",
     "id": "US.25102003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Murine typhus",
+    "product": "Murine typhus",
     "id": "US.25668000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Legionella infection",
+    "product": "Legionella infection",
     "id": "US.26726000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Pertussis",
+    "product": "Pertussis",
     "id": "US.27836007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Scarlet fever",
+    "product": "Scarlet fever",
     "id": "US.30242009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "West Nile fever without encephalitis",
+    "product": "Congenital syphilis",
     "id": "US.35742006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Shigellosis",
+    "product": "Shigellosis",
     "id": "US.36188001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Rubella",
+    "product": "Rubella",
     "id": "US.36653000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Mumps",
+    "product": "Mumps",
     "id": "US.36989005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Dengue",
+    "product": "Dengue",
     "id": "US.38362002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Varicella",
+    "product": "Varicella",
     "id": "US.38907003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute type A viral hepatitis",
+    "product": "Viral hepatitis, type A",
     "id": "US.40468003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Streptococcal sore throat",
+    "product": "Streptococcal sore throat",
     "id": "US.43878008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Encephalitis",
+    "product": "Encephalitis",
     "id": "US.45170000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Campylobacteriosis",
+    "product": "Tuberculosis",
     "id": "US.56717001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Giardiasis",
+    "product": "Giardiasis",
     "id": "US.58265007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Coccidioidomycosis",
+    "product": "Coccidioidomycosis",
     "id": "US.60826002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Malaria",
+    "product": "Malaria",
     "id": "US.61462000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acquired immune deficiency syndrome",
+    "product": "Acquired immune deficiency syndrome",
     "id": "US.62479008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Cholera",
+    "product": "Cholera",
     "id": "US.63650001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute type B viral hepatitis",
+    "product": "Viral hepatitis type B",
     "id": "US.66071002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Smallpox",
+    "product": "Smallpox",
     "id": "US.67924001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infection caused by Escherichia coli",
+    "product": "Infection caused by Escherichia coli",
     "id": "US.71057007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Smallpox without rash",
+    "product": "Smallpox without rash",
     "id": "US.74724001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Ornithosis",
+    "product": "Ornithosis",
     "id": "US.75116005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Brucellosis",
+    "product": "Brucellosis",
     "id": "US.75702008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Disorder of nervous system caused by West Nile virus",
+    "product": "Syphilis",
     "id": "US.76272004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute type B viral hepatitis",
+    "product": "Acute type B viral hepatitis",
     "id": "US.76795007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Pertussis",
+    "product": "Tetanus",
     "id": "US.76902006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Leprosy",
+    "product": "Leprosy",
     "id": "US.81004002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Human anaplasmosis caused by Anaplasma phagocytophilum",
+    "product": "Human anaplasmosis caused by Anaplasma phagocytophilum",
     "id": "US.85708001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Campylobacteriosis",
+    "product": "Campylobacteriosis",
     "id": "US.86500004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Haemophilus influenzae infection",
+    "product": "Haemophilus influenzae infection",
     "id": "US.91428005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Chlamydial infection",
+    "product": "Chlamydial infection",
     "id": "US.105629000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Dysentery",
+    "product": "Dysentery",
     "id": "US.111939009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Inflammatory disease of liver",
+    "product": "Inflammatory disease of liver",
     "id": "US.128241005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Typhoid and paratyphoid fevers",
+    "product": "Typhoid and paratyphoid fevers",
     "id": "US.186090001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Encephalitis lethargica",
+    "product": "Encephalitis lethargica",
     "id": "US.186499007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Hepatitis non-A non-B",
+    "product": "Hepatitis non-A non-B",
     "id": "US.186634008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Primary syphilis OR Secondary syphilis",
-    "id": "US.186771002",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Rocky Mountain spotted fever",
+    "product": "Rocky Mountain spotted fever",
     "id": "US.186772009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Meningococcal meningitis",
+    "product": "Meningococcal meningitis",
     "id": "US.192644005",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infection caused by Shiga toxin producing Escherichia coli",
+    "product": "Post-infectious encephalitis",
     "id": "US.192727001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Congenital rubella syndrome",
+    "product": "Pneumonia",
     "id": "US.233604007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Leprosy",
-    "id": "US.235868007",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Cryptosporidiosis",
+    "product": "Cryptosporidiosis",
     "id": "US.240370009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute paralytic poliomyelitis",
+    "product": "Acute paralytic poliomyelitis",
     "id": "US.240460008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Disease caused by West Nile virus",
-    "id": "US.240557004",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Typhus group rickettsial disease",
+    "product": "Typhus group rickettsial disease",
     "id": "US.240613006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Human ehrlichiosis caused by Ehrlichia chaffeensis",
-    "id": "US.240626005",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Bacillary dysentery",
+    "product": "Bacillary dysentery",
     "id": "US.274081004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Lobar pneumonia",
+    "product": "Lobar pneumonia",
     "id": "US.278516003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Aseptic meningitis",
+    "product": "Aseptic meningitis",
     "id": "US.301770000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Salmonella infection",
+    "product": "Salmonella infection",
     "id": "US.302231008",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infective encephalitis",
+    "product": "Infective encephalitis",
     "id": "US.312215006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Human ehrlichiosis caused by Ehrlichia chaffeensis",
+    "product": "Human ehrlichiosis caused by Ehrlichia chaffeensis",
     "id": "US.359747000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Amebic dysentery",
+    "product": "Amebic dysentery",
     "id": "US.387754006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "West Nile fever without encephalitis",
+    "product": "West Nile fever without encephalitis",
     "id": "US.397420007",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Diphtheria",
+    "product": "Diphtheria",
     "id": "US.397428000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infantile paralysis",
+    "product": "Infantile paralysis",
     "id": "US.397928009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Acute poliomyelitis",
+    "product": "Acute poliomyelitis",
     "id": "US.398102009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infection caused by non-cholerae vibrio",
+    "product": "Infection caused by non-cholerae vibrio",
     "id": "US.398557001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Brucellosis",
-    "id": "US.398565003",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Primary encephalitis",
+    "product": "Primary encephalitis",
     "id": "US.406573001",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Invasive Group A beta-hemolytic streptococcal disease",
+    "product": "Invasive Group A beta-hemolytic streptococcal disease",
     "id": "US.406614006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Aseptic meningitis",
+    "product": "Invasive Streptococcus pneumoniae disease",
     "id": "US.406617004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Invasive drug resistant Streptococcus pneumoniae disease",
+    "product": "Invasive drug resistant Streptococcus pneumoniae disease",
     "id": "US.406618009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Anthrax",
+    "product": "Anthrax",
     "id": "US.409498004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Pellagra",
+    "product": "Disease caused by West Nile virus",
+    "id": "US.417093003",
+    "countryIso": "US"
+  },
+  {
+    "subtype": "United States of America (the)",
+    "product": "Pellagra",
     "id": "US.418186002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Active tuberculosis",
+    "product": "Active tuberculosis",
     "id": "US.427099000",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Human anaplasmosis caused by Anaplasma phagocytophilum",
-    "id": "US.427481004",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Disorder of nervous system caused by West Nile virus",
+    "product": "Disorder of nervous system caused by West Nile virus",
     "id": "US.430397002",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Meningococcal meningitis",
-    "id": "US.442696006",
-    "countryIso": "US"
-  },
-  {
-    "subtype": "United States of America (the)",
-    "title": "Giardiasis",
+    "product": "Intestinal infection caused by Escherichia coli O157:H7",
     "id": "US.446328009",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Invasive meningococcal disease",
+    "product": "Invasive meningococcal disease",
     "id": "US.707225006",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Infection caused by larvae of Trichinella",
+    "product": "Infection caused by larvae of Trichinella",
     "id": "US.709018004",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Viral hepatitis",
+    "product": "Haemophilus influenzae type b infection",
     "id": "US.709410003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Dengue without warning signs",
+    "product": "Dengue without warning signs",
     "id": "US.722862003",
     "countryIso": "US"
   },
   {
     "subtype": "United States of America (the)",
-    "title": "Gonorrhea",
+    "product": "Infection caused by Shiga toxin producing Escherichia coli",
     "id": "US.328291000119103",
     "countryIso": "US"
   },
   {
     "subtype": "Uruguay",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "UY.20927009",
     "countryIso": "UY"
   },
   {
     "subtype": "Uruguay",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "UY.38362002",
     "countryIso": "UY"
   },
   {
     "subtype": "Uruguay",
-    "title": "Dengue",
-    "id": "UY.240370009",
+    "product": "Dengue without warning signs",
+    "id": "UY.722862003",
     "countryIso": "UY"
   },
   {
     "subtype": "Saint Vincent and the Grenadines",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VC.20927009",
     "countryIso": "VC"
   },
   {
     "subtype": "Saint Vincent and the Grenadines",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VC.38362002",
     "countryIso": "VC"
   },
   {
     "subtype": "Saint Vincent and the Grenadines",
-    "title": "Dengue",
-    "id": "VC.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VC.722862003",
     "countryIso": "VC"
   },
   {
     "subtype": "Venezuela",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VE.20927009",
     "countryIso": "VE"
   },
   {
     "subtype": "Venezuela",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VE.38362002",
     "countryIso": "VE"
   },
   {
     "subtype": "Venezuela",
-    "title": "Dengue",
-    "id": "VE.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VE.722862003",
     "countryIso": "VE"
   },
   {
     "subtype": "British Virgin Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VG.20927009",
     "countryIso": "VG"
   },
   {
     "subtype": "British Virgin Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VG.38362002",
     "countryIso": "VG"
   },
   {
     "subtype": "British Virgin Islands",
-    "title": "Dengue",
-    "id": "VG.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VG.722862003",
     "countryIso": "VG"
   },
   {
     "subtype": "Virgin Islands",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VI.20927009",
     "countryIso": "VI"
   },
   {
     "subtype": "Virgin Islands",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VI.38362002",
     "countryIso": "VI"
   },
   {
     "subtype": "Virgin Islands",
-    "title": "Dengue",
-    "id": "VI.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VI.722862003",
     "countryIso": "VI"
   },
   {
     "subtype": "Vietnam",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VN.20927009",
     "countryIso": "VN"
   },
   {
     "subtype": "Vietnam",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VN.38362002",
     "countryIso": "VN"
   },
   {
     "subtype": "Vietnam",
-    "title": "Dengue",
-    "id": "VN.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VN.722862003",
     "countryIso": "VN"
   },
   {
     "subtype": "Vanuatu",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "VU.20927009",
     "countryIso": "VU"
   },
   {
     "subtype": "Vanuatu",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "VU.38362002",
     "countryIso": "VU"
   },
   {
     "subtype": "Vanuatu",
-    "title": "Dengue",
-    "id": "VU.240370009",
+    "product": "Dengue without warning signs",
+    "id": "VU.722862003",
     "countryIso": "VU"
   },
   {
     "subtype": "Wallis and Futuna",
-    "title": "Dengue without warning signs",
+    "product": "Dengue hemorrhagic fever",
     "id": "WF.20927009",
     "countryIso": "WF"
   },
   {
     "subtype": "Wallis and Futuna",
-    "title": "Dengue hemorrhagic fever",
+    "product": "Dengue",
     "id": "WF.38362002",
     "countryIso": "WF"
   },
   {
     "subtype": "Wallis and Futuna",
-    "title": "Dengue",
-    "id": "WF.240370009",
+    "product": "Dengue without warning signs",
+    "id": "WF.722862003",
     "countryIso": "WF"
   },
   {
     "subtype": "Samoa",
-    "title": "Dengue without warning signs",
-    "id": "WS.20927009",
+    "product": "Dengue",
+    "id": "WS.38362002",
     "countryIso": "WS"
   },
   {
     "subtype": "Samoa",
-    "title": "Dengue",
-    "id": "WS.240370009",
+    "product": "Dengue without warning signs",
+    "id": "WS.722862003",
     "countryIso": "WS"
   }
 ]

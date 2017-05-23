@@ -1,0 +1,642 @@
+{
+    "title": "Counts of people diagnosed with Dengue in India as reported by public health surveillance.",
+    "description": "Counts of people diagnosed with Dengue in India as reported by multiple surveillance systems. These counts have been curated by the Project Tycho data team at the University of Pittsburgh.",
+    "creators": [
+        {
+            "firstName": "Wilbert",
+            "lastName": "van Panhuis",
+            "email": "wilbert.van.panhuis@pitt.edu"
+        },
+        {
+            "firstName": "Marc",
+            "lastName": "Choisy",
+            "email": ""
+        },
+        {
+            "firstName": "Xin",
+            "lastName": "Xionga",
+            "email": ""
+        },
+        {
+            "firstName": "Nian",
+            "lastName": "Choka",
+            "email": ""
+        },
+        {
+            "firstName": "Pasakorn",
+            "lastName": "Akarasewi",
+            "email": ""
+        },
+        {
+            "firstName": "Sopon",
+            "lastName": "Iamsirithaworn",
+            "email": ""
+        },
+        {
+            "firstName": "Sai",
+            "lastName": "Lam",
+            "email": ""
+        },
+        {
+            "firstName": "Chee",
+            "lastName": "Chong",
+            "email": ""
+        },
+        {
+            "firstName": "Fook",
+            "lastName": "Lam",
+            "email": ""
+        },
+        {
+            "firstName": "Bounlay",
+            "lastName": "Phommasak",
+            "email": ""
+        },
+        {
+            "firstName": "Phengta",
+            "lastName": "Vongphrachanh",
+            "email": ""
+        },
+        {
+            "firstName": "Khamphaphongphane",
+            "lastName": "Bouaphanh",
+            "email": ""
+        },
+        {
+            "firstName": "Huy",
+            "lastName": "Rekol",
+            "email": ""
+        },
+        {
+            "firstName": "Nguyen",
+            "lastName": "Hien",
+            "email": ""
+        },
+        {
+            "firstName": "Pham",
+            "lastName": "Thai",
+            "email": ""
+        },
+        {
+            "firstName": "Tran",
+            "lastName": "Duong",
+            "email": ""
+        },
+        {
+            "firstName": "Jen-Hsiang",
+            "lastName": "Chuang",
+            "email": ""
+        },
+        {
+            "firstName": "Yu-Lun",
+            "lastName": "Liu",
+            "email": ""
+        },
+        {
+            "firstName": "Lee-Ching",
+            "lastName": "Ng",
+            "email": ""
+        },
+        {
+            "firstName": "Yuan",
+            "lastName": "Shi",
+            "email": ""
+        },
+        {
+            "firstName": "Enrique",
+            "lastName": "Tayag",
+            "email": ""
+        },
+        {
+            "firstName": "Vito",
+            "lastName": "Roque",
+            "email": ""
+        },
+        {
+            "firstName": "Lyndon",
+            "lastName": "Suy",
+            "email": ""
+        },
+        {
+            "firstName": "Richard",
+            "lastName": "Jarman",
+            "email": ""
+        },
+        {
+            "firstName": "Robert",
+            "lastName": "Gibbons",
+            "email": ""
+        },
+        {
+            "firstName": "John",
+            "lastName": "Velasco",
+            "email": ""
+        },
+        {
+            "firstName": "In-Kyu",
+            "lastName": "Yoon",
+            "email": ""
+        },
+        {
+            "firstName": "Donald",
+            "lastName": "Burke",
+            "email": ""
+        },
+        {
+            "firstName": "Derek",
+            "lastName": "Cummings",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "disease surveillance data",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+            }
+        },
+        {
+            "method": {
+                "value": "disease surveillance",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Dengue",
+            "identifier": {
+                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=38362002",
+                "identifierSource": "https://biosharing.org/bsg-s000098"
+            }
+        },
+        {
+            "name": "India",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5180",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "IN",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "IND",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                },
+                {
+                    "identifier": "356",
+                    "identifierSource": "ISO 3166-1 numeric"
+                }
+            ]
+        }
+    ],
+    "hasPart": [
+        {
+            "title": "Counts of people diagnosed with Dengue in India as reported by the World Health Organization DengueNet Database between 1991-01-01 and 2006-12-31",
+            "creators": [
+                {
+                    "firstName": "Wilbert",
+                    "lastName": "van Panhuis",
+                    "email": "wilbert.van.panhuis@pitt.edu"
+                },
+                {
+                    "firstName": "Marc",
+                    "lastName": "Choisy",
+                    "email": ""
+                },
+                {
+                    "firstName": "Xin",
+                    "lastName": "Xionga",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nian",
+                    "lastName": "Choka",
+                    "email": ""
+                },
+                {
+                    "firstName": "Pasakorn",
+                    "lastName": "Akarasewi",
+                    "email": ""
+                },
+                {
+                    "firstName": "Sopon",
+                    "lastName": "Iamsirithaworn",
+                    "email": ""
+                },
+                {
+                    "firstName": "Sai",
+                    "lastName": "Lam",
+                    "email": ""
+                },
+                {
+                    "firstName": "Chee",
+                    "lastName": "Chong",
+                    "email": ""
+                },
+                {
+                    "firstName": "Fook",
+                    "lastName": "Lam",
+                    "email": ""
+                },
+                {
+                    "firstName": "Bounlay",
+                    "lastName": "Phommasak",
+                    "email": ""
+                },
+                {
+                    "firstName": "Phengta",
+                    "lastName": "Vongphrachanh",
+                    "email": ""
+                },
+                {
+                    "firstName": "Khamphaphongphane",
+                    "lastName": "Bouaphanh",
+                    "email": ""
+                },
+                {
+                    "firstName": "Huy",
+                    "lastName": "Rekol",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nguyen",
+                    "lastName": "Hien",
+                    "email": ""
+                },
+                {
+                    "firstName": "Pham",
+                    "lastName": "Thai",
+                    "email": ""
+                },
+                {
+                    "firstName": "Tran",
+                    "lastName": "Duong",
+                    "email": ""
+                },
+                {
+                    "firstName": "Jen-Hsiang",
+                    "lastName": "Chuang",
+                    "email": ""
+                },
+                {
+                    "firstName": "Yu-Lun",
+                    "lastName": "Liu",
+                    "email": ""
+                },
+                {
+                    "firstName": "Lee-Ching",
+                    "lastName": "Ng",
+                    "email": ""
+                },
+                {
+                    "firstName": "Yuan",
+                    "lastName": "Shi",
+                    "email": ""
+                },
+                {
+                    "firstName": "Enrique",
+                    "lastName": "Tayag",
+                    "email": ""
+                },
+                {
+                    "firstName": "Vito",
+                    "lastName": "Roque",
+                    "email": ""
+                },
+                {
+                    "firstName": "Lyndon",
+                    "lastName": "Suy",
+                    "email": ""
+                },
+                {
+                    "firstName": "Richard",
+                    "lastName": "Jarman",
+                    "email": ""
+                },
+                {
+                    "firstName": "Robert",
+                    "lastName": "Gibbons",
+                    "email": ""
+                },
+                {
+                    "firstName": "John",
+                    "lastName": "Velasco",
+                    "email": ""
+                },
+                {
+                    "firstName": "In-Kyu",
+                    "lastName": "Yoon",
+                    "email": ""
+                },
+                {
+                    "firstName": "Donald",
+                    "lastName": "Burke",
+                    "email": ""
+                },
+                {
+                    "firstName": "Derek",
+                    "lastName": "Cummings",
+                    "email": ""
+                }
+            ],
+            "types": [
+                {
+                    "information": {
+                        "value": "disease surveillance data",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+                    }
+                },
+                {
+                    "method": {
+                        "value": "disease surveillance",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Counts of people diagnosed with Dengue in India as reported by the World Health Organization Southeast Asia Regional Office website between 1991-01-01 and 2006-12-31",
+            "creators": [
+                {
+                    "firstName": "Wilbert",
+                    "lastName": "van Panhuis",
+                    "email": "wilbert.van.panhuis@pitt.edu"
+                },
+                {
+                    "firstName": "Marc",
+                    "lastName": "Choisy",
+                    "email": ""
+                },
+                {
+                    "firstName": "Xin",
+                    "lastName": "Xionga",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nian",
+                    "lastName": "Choka",
+                    "email": ""
+                },
+                {
+                    "firstName": "Pasakorn",
+                    "lastName": "Akarasewi",
+                    "email": ""
+                },
+                {
+                    "firstName": "Sopon",
+                    "lastName": "Iamsirithaworn",
+                    "email": ""
+                },
+                {
+                    "firstName": "Sai",
+                    "lastName": "Lam",
+                    "email": ""
+                },
+                {
+                    "firstName": "Chee",
+                    "lastName": "Chong",
+                    "email": ""
+                },
+                {
+                    "firstName": "Fook",
+                    "lastName": "Lam",
+                    "email": ""
+                },
+                {
+                    "firstName": "Bounlay",
+                    "lastName": "Phommasak",
+                    "email": ""
+                },
+                {
+                    "firstName": "Phengta",
+                    "lastName": "Vongphrachanh",
+                    "email": ""
+                },
+                {
+                    "firstName": "Khamphaphongphane",
+                    "lastName": "Bouaphanh",
+                    "email": ""
+                },
+                {
+                    "firstName": "Huy",
+                    "lastName": "Rekol",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nguyen",
+                    "lastName": "Hien",
+                    "email": ""
+                },
+                {
+                    "firstName": "Pham",
+                    "lastName": "Thai",
+                    "email": ""
+                },
+                {
+                    "firstName": "Tran",
+                    "lastName": "Duong",
+                    "email": ""
+                },
+                {
+                    "firstName": "Jen-Hsiang",
+                    "lastName": "Chuang",
+                    "email": ""
+                },
+                {
+                    "firstName": "Yu-Lun",
+                    "lastName": "Liu",
+                    "email": ""
+                },
+                {
+                    "firstName": "Lee-Ching",
+                    "lastName": "Ng",
+                    "email": ""
+                },
+                {
+                    "firstName": "Yuan",
+                    "lastName": "Shi",
+                    "email": ""
+                },
+                {
+                    "firstName": "Enrique",
+                    "lastName": "Tayag",
+                    "email": ""
+                },
+                {
+                    "firstName": "Vito",
+                    "lastName": "Roque",
+                    "email": ""
+                },
+                {
+                    "firstName": "Lyndon",
+                    "lastName": "Suy",
+                    "email": ""
+                },
+                {
+                    "firstName": "Richard",
+                    "lastName": "Jarman",
+                    "email": ""
+                },
+                {
+                    "firstName": "Robert",
+                    "lastName": "Gibbons",
+                    "email": ""
+                },
+                {
+                    "firstName": "John",
+                    "lastName": "Velasco",
+                    "email": ""
+                },
+                {
+                    "firstName": "In-Kyu",
+                    "lastName": "Yoon",
+                    "email": ""
+                },
+                {
+                    "firstName": "Donald",
+                    "lastName": "Burke",
+                    "email": ""
+                },
+                {
+                    "firstName": "Derek",
+                    "lastName": "Cummings",
+                    "email": ""
+                }
+            ],
+            "types": [
+                {
+                    "information": {
+                        "value": "disease surveillance data",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+                    }
+                },
+                {
+                    "method": {
+                        "value": "disease surveillance",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+                    }
+                }
+            ]
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "India",
+            "description": "India, but may be incomplete for some areas",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5180",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "IN",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "IND",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                },
+                {
+                    "identifier": "356",
+                    "identifierSource": "ISO 3166-1 numeric"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "Project Tycho",
+        "location": {
+            "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15262, USA"
+        }
+    },
+    "distributions": [
+        {
+            "title": "CSV file of counts of people diagnosed with Dengue in India as reported by public health surveillance",
+            "description": "Project Tycho downloadable CSV file for counts of people diagnosed with Dengue, one file per surveillance system.",
+            "identifier": {
+                "identifier": "IN.38362002",
+                "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
+            },
+            "dates": [],
+            "access": {
+                "landingPage": "www.tycho.pitt.edu/data",
+                "accessURL": "http://www.tycho.pitt.edu/data/IN.38362002"
+            },
+            "formats": [
+                "csv"
+            ],
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "Project Tycho 2.0 format",
+                        "identifierSource": "Project Tycho"
+                    },
+                    "name": "Tycho 2.0 format",
+                    "type": {
+                        "value": "Tycho-determined variables in long CSV format",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "Project Tycho data repository",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": ""
+                },
+                "licenses": [
+                    {
+                        "name": "CREATIVE COMMONS PUBLIC LICENSE",
+                        "extraProperties": [
+                            {
+                                "category": "LicenseURL",
+                                "categoryIRI": "",
+                                "values": [
+                                    "https://www.tycho.pitt.edu/legal/license_agreement.html"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": "2.0"
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ],
+    "acknowledges": [
+        {
+            "name": "Bill and Melinda Gates Foundation",
+            "identifier": {
+                "identifier": "Bill and Melinda Gates Foundation (Grant 49276, Evaluation of Candidate Vaccine Technologies Using Computational Models)",
+                "identifierSource": "https://www.vaccinemodeling.org/"
+            }
+        },
+        {
+            "name": "MIDAS Informatics Services Group",
+            "identifier": {
+                "identifier": "US National Institute of General Medical Sciences (Grant 5U54GM088491, Computational Models of Infectious Disease Threats)",
+                "identifierSource": "https://midas.pitt.edu/"
+            }
+        },
+        {
+            "name": "Benter Foundation Pittsburgh",
+            "identifier": {
+                "identifier": "Benter Foundation Pittsburgh",
+                "identifierSource": "http://www.benterfoundation.com/"
+            }
+        }
+    ]
+}
