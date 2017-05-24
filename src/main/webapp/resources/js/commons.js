@@ -1868,16 +1868,16 @@ function drawDiagram() {
             locationCode + " -o /home/" + username + "/test\n557925.pbs.olympus.psc.edu");
 
         $('#status-lsdtm-script').text("qstat | grep " + username);
-        $('#example-status-lsdtm-script').text("-bash-4.2$ qstat | grep " + username + "\n557925.pbs.olympus.psc.edu ..._spew2synthia " + username + "        00:33:37 R batch");
+        $('#example-status-lsdtm-script').text("-bash-4.2$ qstat | grep " + username + "\n557925.pbs.olympus.psc.edu ...synthia-1.2.0 " + username + "        00:33:37 R batch");
 
         $('#view-output-lsdtm-script').text("ls " + outputDirectory);
-        $('#example-view-output-lsdtm-script').text("-bash-4.2$ ls /home/" + username + "/test\nfred_spew2synthia.e557925  fred_spew2synthia.o557925  OUT  params");
+        $('#example-view-output-lsdtm-script').text("-bash-4.2$ ls /home/" + username + "/test\nspew2synthia-1.2.0.e557925  spew2synthia-1.2.0.o557925  OUT  params");
 
-        $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/fred_spew2synthia.e######");
-        $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/fred_spew2synthia.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
+        $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/spew2synthia-1.2.0.e######");
+        $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/spew2synthia-1.2.0.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
 
-        $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/fred_spew2synthia.o######");
-        $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/fred_spew2synthia.o557925\n\nday 239 report population took 0.000115 seconds\n" +
+        $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/spew2synthia-1.2.0.o######");
+        $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/spew2synthia-1.2.0.o557925\n\nday 239 report population took 0.000115 seconds\n" +
             "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
             "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
 
