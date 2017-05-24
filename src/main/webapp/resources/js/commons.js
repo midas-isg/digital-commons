@@ -1830,9 +1830,9 @@ function checkLocationSelect() {
 
             $(child).children().each(function(index, childsChild) {
                 $(childsChild).removeAttr("disabled");
-                if(text == "SPEW") {
+                /*if(text == "SPEW") {
                     $(childsChild).click();
-                }
+                }*/
             });
             drawDiagram();
         });
