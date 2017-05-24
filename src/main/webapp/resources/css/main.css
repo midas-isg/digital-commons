@@ -656,14 +656,18 @@ label[disabled="disabled"]{
 .frame {
     display: block;
     width: 100vw;
-    height: 1100px;
+    height: 100vh;
     max-width: 100%;
     margin: 0;
     padding: 0;
     border: 0 none;
     box-sizing: border-box;
-    scrolling: no;
 }
+.frame::-webkit-scrollbar {
+     display: none;
+ }
+
+
 
 .badge {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -671,7 +675,7 @@ label[disabled="disabled"]{
     min-width: 10px;
     padding: 3px 2px;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: normal;
     line-height: 1;
     color: black;
     /*#0c2b65*/

@@ -40,7 +40,9 @@
                 </div>
 
                 <label id="workflow-diagram-label"></label>
-                <img src="${pageContext.request.contextPath}/resources/img/workflow_mockup.jpg" style="width:100%">
+                <img id="workflow-none-img" src="${pageContext.request.contextPath}/resources/img/workflow_none_selected.jpg" style="width:60%">
+                <img id="workflow-spew-img" src="${pageContext.request.contextPath}/resources/img/workflow_spew_selected.jpg" style="width:60%; display:none;">
+                <img id="workflow-synthia-img" src="${pageContext.request.contextPath}/resources/img/workflow_synthia_selected.jpg" style="width:60%; display:none;">
                 <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
             </div>
 
