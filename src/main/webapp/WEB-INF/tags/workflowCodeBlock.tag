@@ -22,12 +22,12 @@
                 <span id="span-a-${scriptId}">(<a id="a-${scriptId}" href="#workflows">show example</a>)</span>
             </label>
 
-            <span>[</span>
+            <%--<span>[</span>
             <small>
                 <icon class="glyphicon glyphicon-minus" onclick="toggleElementById('#${scriptId}-code-block', this)">
                 </icon>
             </small>
-            <span>]</span>
+            <span>]</span>--%>
             <br>
 
             <script>

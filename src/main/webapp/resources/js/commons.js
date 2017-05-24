@@ -1862,7 +1862,8 @@ function drawDiagram() {
 
         var outputDirectory = locationCode + "_" + dtm + "_" + getFormattedDate();
 
-        $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
+        $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory);
+        //$('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
         $('#example-submit-lsdtm-script').text("-bash-4.2$ /mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" +
             locationCode + " -o /home/" + username + "/test\n557925.pbs.olympus.psc.edu");
 
