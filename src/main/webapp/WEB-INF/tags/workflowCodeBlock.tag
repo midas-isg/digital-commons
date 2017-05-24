@@ -40,7 +40,7 @@
 
         <pre style="max-height:150px; overflow:scroll"><code style="white-space:pre" id="${scriptId}"></code></pre>
 
-        <div id="${buttonId}" style="display:none">
+        <%--<div id="${buttonId}" style="display:none">
             <button class="btn btn-xs btn-default"
                     style="top: 27px;right: 30px; position:absolute;"
                     onclick="copyToClipboard('#${scriptId}')">
@@ -51,7 +51,7 @@
                     onclick="download('${scriptFilename}', '#${scriptId}')">
                 <icon class="glyphicon glyphicon glyphicon-download"></icon>
             </button>
-        </div>
+        </div>--%>
 
 
     </div>

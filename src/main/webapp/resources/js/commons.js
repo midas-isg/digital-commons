@@ -1730,44 +1730,10 @@ function getFormattedDate() {
 }
 
 function drawDiagram() {
-    /*var synthpop = $('input[name=synthpop]:checked').val();
-    var dtm = $('input[name=dtm]:checked').val();
 
-    var operationNum = 1;
-    var toParse = '';
-    if(synthpop == 'spew') {
-        toParse = 'op' + operationNum + '=>operation: SPEW:>\n';
-        operationNum++;
-
-        toParse += 'op' + operationNum + '=>operation: SPEW.US to Synthia.US translator\n';
-        operationNum++;
-    } else if(synthpop == 'synthia') {
-        toParse = 'op' + operationNum + '=>operation: Synthia:>\n';
-        operationNum++;
-    } else {
-        return;
-    }
-
-    if(dtm == 'pfred') {
-        toParse += 'op' + operationNum + '=>operation: pFRED DTM:>\n';
-        operationNum++;
-    } else if(dtm == 'flute') {
-        toParse += 'op' + operationNum + '=>operation: FluTE DTM:>\n';
-        operationNum++;
-    }
-
-    for(var i = 1; i < operationNum + 1; i++) {
-        toParse += 'op' + i;
-
-        if(i != operationNum) {
-            toParse += '->';
-        }
-    }
-
-    $('#workflow-diagram-label').text('Workflow Diagram');
-    $('#workflow-diagram').html('');
-    var diagram = flowchart.parse(toParse);
-    diagram.drawSVG('workflow-diagram');*/
+    $('#workflow-none-img').hide();
+    $('#workflow-spew-img').hide();
+    $('#workflow-synthia-img').hide();
 
     var synthpop = $('input[name=synthpop]:checked').val();
     var dtm = $('input[name=dtm]:checked').val();
@@ -1777,84 +1743,15 @@ function drawDiagram() {
     var formattedLocation = formatLocation(locationValues[0]);
     var locationCode = locationValues[1];
 
-    /*var toParse = '';
     if(synthpop == 'spew') {
-        toParse = 'cond=>condition: Population|popgreen\n' +
-            'op2=>operation: Synthia.US format\n'+
-            'op3=>operation: SPEW.US format|green\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator|green\n';
-
-        if(dtm == 'fred') {
-            toParse += 'op5=>operation: FRED DTM|green\n';
-        } else {
-            toParse += 'op5=>operation: FRED DTM\n';
-        }
-
-        toParse += 'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
-
+        $('#workflow-spew-img').show();
     } else if(synthpop == 'synthia') {
-        toParse = 'cond=>condition: Population|popgreen\n' +
-            'op2=>operation: Synthia.US format|green\n'+
-            'op3=>operation: SPEW.US format\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator\n';
-
-        if(dtm == 'fred') {
-            toParse += 'op5=>operation: FRED DTM|green\n';
-        } else {
-            toParse += 'op5=>operation: FRED DTM\n';
-        }
-
-        toParse += 'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
-
+        $('#workflow-synthia-img').show();
     } else {
-        toParse = 'cond=>condition: Population\n' +
-            'op2=>operation: Synthia.US format\n'+
-            'op3=>operation: SPEW.US format\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator\n'+
-            'op5=>operation: FRED DTM\n'+
-            'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
+        $('#workflow-none-img').show();
     }
 
-    $('#workflow-diagram-label').text('Workflow Diagram');
-    $('#workflow-diagram').html('');
-
-    var diagram = flowchart.parse(toParse);
-    diagram.drawSVG('workflow-diagram', {
-        'x': 0,
-        'y': 0,
-        'line-width': 3,
-        'line-length': 50,
-        'text-margin': 10,
-        'font-size': 14,
-        'font-color': 'black',
-        'line-color': 'black',
-        'element-color': 'black',
-        'fill': 'white',
-        'yes-text': 'SPEW',
-        'no-text': 'Synthia',
-        'arrow-end': 'block',
-        'scale': 1,
-        'flowstate' : {
-            'dtm': {'yes-text' : 'SPEW', 'no-text' : 'Synthia'},
-            'popgreen': {'fill': 'lightgreen', 'yes-text' : 'SPEW', 'no-text' : 'Synthia'},
-            'green': {'fill': 'lightgreen'}
-        }
-    });*/
-
     if(locationCode != null && synthpop != null && dtm != null) {
-        /*jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
-            //$('#lsdtm-script').text(data);
-            $('#run-lsdtm-script').text(
-                'ssh <username>@olympus.psc.edu\n' +
-                '/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh spew_1.2.0_'
-                + locationCode);
-
-            $('#lsdtm-script-container').show();
-        });*/
-
         var username = "<username>";
         if(olympusUsername != null && olympusUsername.trim() != '') {
             username = olympusUsername;
@@ -1913,17 +1810,15 @@ function checkLocationSelect() {
         $("#synthpop-radios").children().each(function(index, child) {
             var text = $(child).text();
 
-            if(text != "Synthia") {
-                $(child).removeAttr("disabled");
-            }
+            $(child).removeAttr("disabled");
 
-            if(text == "SPEW") {
-                $(child).children().each(function(index, childsChild) {
-                    $(childsChild).removeAttr("disabled");
+            $(child).children().each(function(index, childsChild) {
+                $(childsChild).removeAttr("disabled");
+                if(text == "SPEW") {
                     $(childsChild).click();
-                });
-                drawDiagram();
-            }
+                }
+            });
+            drawDiagram();
         });
     } else {
         $("#synthpop-radios").children().each(function(index, child) {
