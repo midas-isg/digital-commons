@@ -1759,7 +1759,11 @@ function drawDiagram() {
 
         var outputDirectory = locationCode + "_" + dtm + "_" + getFormattedDate();
 
-        $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory);
+        if(synthpop == 'spew' ) {
+            $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory);
+        } else {
+            $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory + " -e fred_populations/United_States_2010_ver1");
+        }
         //$('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
         $('#example-submit-lsdtm-script').text("-bash-4.2$ /mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" +
             locationCode + " -o /home/" + username + "/test\n557925.pbs.olympus.psc.edu");
@@ -1770,14 +1774,26 @@ function drawDiagram() {
         $('#view-output-lsdtm-script').text("ls " + outputDirectory);
         $('#example-view-output-lsdtm-script').text("-bash-4.2$ ls /home/" + username + "/test\nspew2synthia-1.2.0.e557925  spew2synthia-1.2.0.o557925  OUT  params");
 
-        $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/spew2synthia-1.2.0.e######");
-        $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/spew2synthia-1.2.0.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
+        if(synthpop == 'spew') {
+            $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/spew2synthia-1.2.0.e######");
+            $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/spew2synthia-1.2.0.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
 
-        $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/spew2synthia-1.2.0.o######");
-        $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/spew2synthia-1.2.0.o557925\n\nday 239 report population took 0.000115 seconds\n" +
-            "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
-            "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        } else {
+            $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/United_States_2010_ver1.e######");
+            $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/United_States_2010_ver1.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
+        }
 
+        if(synthpop == 'spew') {
+            $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/spew2synthia-1.2.0.o######");
+            $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/spew2synthia-1.2.0.o557925\n\nday 239 report population took 0.000115 seconds\n" +
+                "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
+                "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        } else {
+            $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/United_States_2010_ver1.o######");
+            $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/United_States_2010_ver1.o557925\n\nday 239 report population took 0.000115 seconds\n" +
+                "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
+                "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        }
         $('#view-fred-out-lsdtm-script').text("cat " + outputDirectory + "/OUT/out1.txt");
         $('#example-view-fred-out-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/OUT/out1.txt\nDay 0 Date 2012-01-02 WkDay Tue C 10 College 0 Cs 0 E 10 GQ 0 I 0 Is 0 M 0" +
             "Military 0 N 2278377 Nursing_Home 0 P 10 Prison 0 R 0 S 2278367 Week 1 Year 2012 AR 0.00 ARs 0.00 RR 0.00\nDay 1 Date 2012-01-03 WkDay Wed C 0 College 0 Cs 1 E" +
