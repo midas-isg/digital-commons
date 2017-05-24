@@ -8,7 +8,7 @@
         Search
     </h3>
 
-    <iframe class="frame" src="http://mdcsearchdev.onbc.io/#/" scrolling="no" allowfullscreen id="searchFrame"></iframe>
+    <iframe class="frame" src="http://mdcsearchdev.onbc.io/#/"  scrolling="yes" allowfullscreen id="searchFrame"></iframe>
 
     <%--<style>--%>
         <%--#constraints-container [class*="col-"] {--%>

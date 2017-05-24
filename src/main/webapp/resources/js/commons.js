@@ -824,7 +824,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     }
 
     dsd.nodes.push({
-        text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
+        text: "<span onmouseover='toggleTitle(this)'>Project Tycho repository v2.0</span>",
         name: "Tycho 2.0",
         nodes: []
     });
