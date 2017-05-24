@@ -237,7 +237,7 @@
             },
             "dates": [],
             "access": {
-                "landingPage": "www.tycho.pitt.edu/data",
+                "landingPage": "http://www.tycho.pitt.edu/",
                 "accessURL": "http://www.tycho.pitt.edu/data/HN.722862003"
             },
             "formats": [

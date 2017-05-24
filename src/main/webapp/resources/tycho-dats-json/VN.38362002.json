@@ -894,7 +894,7 @@
             },
             "dates": [],
             "access": {
-                "landingPage": "www.tycho.pitt.edu/data",
+                "landingPage": "http://www.tycho.pitt.edu/",
                 "accessURL": "http://www.tycho.pitt.edu/data/VN.38362002"
             },
             "formats": [
