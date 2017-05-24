@@ -40,7 +40,7 @@
                 </div>
 
                 <label id="workflow-diagram-label"></label>
-                <img src="${pageContext.request.contextPath}/resources/img/workflow-mockup.png" style="width:100%">
+                <img src="${pageContext.request.contextPath}/resources/img/workflow_mockup.jpg" style="width:100%">
                 <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
             </div>
 
