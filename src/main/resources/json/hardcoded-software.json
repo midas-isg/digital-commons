@@ -100,7 +100,9 @@
       "1.2.0"
     ],
     "dataOutputFormats": [
-      "MIDAS-ISG:spew-us-format-v1.2.0"
+      "MIDAS-ISG:spew-us-format-v1.2.0",
+      "MIDAS-ISG:spew-ipums-format-v1.2.0",
+      "MIDAS-ISG:spew-canada-format-v1.2.0"
     ],
     "documentation": "<a href=\"http://www.stat.cmu.edu/~spew/assets/spew_documentation.pdf\" class=\"underline\" download>Documentation for completed synthetic ecosystems [PDF]</a>",
     "title": "spew"
@@ -231,9 +233,7 @@
       "MIDAS-ISG:synthia-us-v2010"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:spew-us-format-v1.2.0",
-      "MIDAS-ISG:spew-ipums-v1.2.0",
-      "MIDAS-ISG:spew-canada-v1.2.0"
+      "MIDAS-ISG:spew-us-format-v1.2.0"
     ],
     "identifier": {
       "identifier": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>"
