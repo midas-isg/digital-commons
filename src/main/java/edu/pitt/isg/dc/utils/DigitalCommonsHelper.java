@@ -21,7 +21,7 @@ public class DigitalCommonsHelper {
         for (Software sw : softwareList) {
             try {
                 String xml = converter.convertToXml(sw);
-                xml = xml.replaceAll("<humanReadableSynposis> ", "<humanReadableSynposis>");
+                xml = xml.replaceAll("<humanReadableSynopsis> ", "<humanReadableSynopsis>");
                 xmlSoftwareList.add(xml);
             } catch(Exception e) {
                 System.out.println("Error: " + e);
