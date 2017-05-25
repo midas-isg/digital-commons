@@ -63,10 +63,10 @@
     ]
   },
   {
-    "title": "Tycho dataset",
+    "title": "Tycho 2.0 dataset format",
     "filename": "Tycho dataset.json",
     "version": [
-      "1"
+      "2"
     ]
   },
   {
