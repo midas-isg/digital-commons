@@ -17,11 +17,11 @@
     "version": "38",
     "extraProperties": [
         {
-            "category": "validator",
+            "category": "human-readable specification of data format",
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "",
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/EpiVis-CSV---v38",
                     "valueIRI": ""
                 }
             ]
