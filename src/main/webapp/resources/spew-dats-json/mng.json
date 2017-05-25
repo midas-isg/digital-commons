@@ -2,8 +2,8 @@
     "title": "Mongolia Synthetic Ecosystem",
     "description": "Mongolia synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574070",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000093",
-                "accessURL": "https://zenodo.org/api/files/6a9170c9-dfbf-4637-8586-de999ab0274e/mng.tar.gz"
+                "accessURL": "https://zenodo.org/record/574070/files/mng.tar.gz"
             },
             "conformsTo": [
                 {

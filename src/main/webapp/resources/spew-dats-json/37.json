@@ -2,8 +2,8 @@
     "title": "North Carolina Synthetic Ecosystem",
     "description": "North Carolina synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574011",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000034",
-                "accessURL": "https://zenodo.org/api/files/8a3da3bd-35bc-42db-9098-c0fa1b2dffbe/37.tar.gz"
+                "accessURL": "https://zenodo.org/record/574011/files/37.tar.gz"
             },
             "conformsTo": [
                 {

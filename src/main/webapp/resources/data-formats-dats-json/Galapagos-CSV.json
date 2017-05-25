@@ -1,6 +1,6 @@
 {
     "identifier": {
-        "identifier": "MIDAS-ISG:galapagos-input-format-v1.0",
+        "identifier": "MIDAS-ISG:galapagos-output-format-v1.0",
         "identifierSource": "MIDAS-ISG"
     },
     "name": "Galapagos-CSV",

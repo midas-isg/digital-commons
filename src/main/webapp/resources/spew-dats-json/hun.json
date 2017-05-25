@@ -2,8 +2,8 @@
     "title": "Hungary Synthetic Ecosystem",
     "description": "Hungary synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574056",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000079",
-                "accessURL": "https://zenodo.org/api/files/5d8a2e17-8059-4251-bc30-50968ab55f1e/hun.tar.gz"
+                "accessURL": "https://zenodo.org/record/574056/files/hun.tar.gz"
             },
             "conformsTo": [
                 {

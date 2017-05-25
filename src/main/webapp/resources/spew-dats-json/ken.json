@@ -2,8 +2,8 @@
     "title": "Kenya Synthetic Ecosystem",
     "description": "Kenya synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574064",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000087",
-                "accessURL": "https://zenodo.org/api/files/acd25780-2e26-4606-b18e-7fc053d0f163/ken.tar.gz"
+                "accessURL": "https://zenodo.org/record/574064/files/ken.tar.gz"
             },
             "conformsTo": [
                 {

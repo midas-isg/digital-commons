@@ -2,8 +2,8 @@
     "title": "New Jersey Synthetic Ecosystem",
     "description": "New Jersey synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574008",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000031",
-                "accessURL": "https://zenodo.org/api/files/3a2d0c10-f8d2-446e-ba67-25eb3bea27e1/34.tar.gz"
+                "accessURL": "https://zenodo.org/record/574008/files/34.tar.gz"
             },
             "conformsTo": [
                 {

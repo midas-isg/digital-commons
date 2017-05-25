@@ -2,8 +2,8 @@
     "title": "Liberia Synthetic Ecosystem",
     "description": "Liberia synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574066",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000089",
-                "accessURL": "https://zenodo.org/api/files/f7c3d604-1605-4c99-a5fc-97a0e54d5ae2/lbr.tar.gz"
+                "accessURL": "https://zenodo.org/record/574066/files/lbr.tar.gz"
             },
             "conformsTo": [
                 {

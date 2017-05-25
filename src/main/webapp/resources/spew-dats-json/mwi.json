@@ -2,8 +2,8 @@
     "title": "Malawi Synthetic Ecosystem",
     "description": "Malawi synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574072",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000095",
-                "accessURL": "https://zenodo.org/api/files/dd867945-9b44-48b9-8cb3-f4982170d279/mwi.tar.gz"
+                "accessURL": "https://zenodo.org/record/574072/files/mwi.tar.gz"
             },
             "conformsTo": [
                 {

@@ -2,8 +2,8 @@
     "title": "Virginia Synthetic Ecosystem",
     "description": "Virginia synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574024",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000047",
-                "accessURL": "https://zenodo.org/api/files/bda3cbb9-b845-472c-bca5-e8dfb6fe2bd7/51.tar.gz"
+                "accessURL": "https://zenodo.org/record/574024/files/51.tar.gz"
             },
             "conformsTo": [
                 {

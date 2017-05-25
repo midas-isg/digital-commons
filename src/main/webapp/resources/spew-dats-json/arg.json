@@ -2,8 +2,8 @@
     "title": "Argentina Synthetic Ecosystem",
     "description": "Argentina synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574029",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000052",
-                "accessURL": "https://zenodo.org/api/files/c4646bac-da6b-4dee-b5b7-7fb2ec79067c/arg.tar.gz"
+                "accessURL": "https://zenodo.org/record/574029/files/arg.tar.gz"
             },
             "conformsTo": [
                 {

@@ -2,8 +2,8 @@
     "title": "Nicaragua Synthetic Ecosystem",
     "description": "Nicaragua synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574075",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000098",
-                "accessURL": "https://zenodo.org/api/files/ede227ef-f6b9-4192-9fa6-c7adac4bd6c4/nic.tar.gz"
+                "accessURL": "https://zenodo.org/record/574075/files/nic.tar.gz"
             },
             "conformsTo": [
                 {

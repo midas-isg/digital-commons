@@ -2,8 +2,8 @@
     "title": "Ghana Synthetic Ecosystem",
     "description": "Ghana synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574053",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000076",
-                "accessURL": "https://zenodo.org/api/files/9ade6711-3971-4ed5-a133-c123f8a45aa5/gha.tar.gz"
+                "accessURL": "https://zenodo.org/record/574053/files/gha.tar.gz"
             },
             "conformsTo": [
                 {

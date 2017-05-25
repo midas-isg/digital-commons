@@ -2,8 +2,8 @@
     "title": "California Synthetic Ecosystem",
     "description": "California synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.573982",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000005",
-                "accessURL": "https://zenodo.org/api/files/6a53f14a-cd89-4042-a542-de52919d7876/06.tar.gz"
+                "accessURL": "https://zenodo.org/record/573982/files/06.tar.gz"
             },
             "conformsTo": [
                 {

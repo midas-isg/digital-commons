@@ -40,19 +40,21 @@
                 </div>
 
                 <label id="workflow-diagram-label"></label>
-                <img src="${pageContext.request.contextPath}/resources/img/workflow-mockup.png" style="width:100%">
+                <img id="workflow-none-img" src="${pageContext.request.contextPath}/resources/img/workflow_none_selected.jpg" style="width:60%">
+                <img id="workflow-spew-img" src="${pageContext.request.contextPath}/resources/img/workflow_spew_selected.jpg" style="width:60%; display:none;">
+                <img id="workflow-synthia-img" src="${pageContext.request.contextPath}/resources/img/workflow_synthia_selected.jpg" style="width:60%; display:none;">
                 <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
             </div>
 
             <div id="lsdtm-script-container" class="col-md-12 col-lg-12 no-padding" style="display:none; margin-top:10px;">
                 <label style="margin-right:5px; display:inline">LSDTM script</label>
 
-                <span>[</span>
+                <%--<span>[</span>
                 <small>
                     <icon class="glyphicon glyphicon-minus" onclick="toggleElementById('#lsdtm-script-code-block', this)">
                     </icon>
                 </small>
-                <span>]</span>
+                <span>]</span>--%>
 
                 <br>
                 <div id="lsdtm-script-code-block" style="overflow:scroll; width:100%; margin-bottom:10px; max-height:400px; border: 1px solid #ccc; border-radius:4px"

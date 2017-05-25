@@ -2,7 +2,7 @@
   {
     "subtype": "Disease transmission models",
     "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
-    "product": "FluTE (4 versions)",
+    "product": "FluTE",
     "pathogenCoverage": [
       "Influenza"
     ],
@@ -140,7 +140,7 @@
       "Olivier Gascuel (LIRMM, Montpellier, France.)"
     ],
     "dataInputFormats": [
-      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0"
+      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0", "MIDAS-ISG:dna-sequences-for-ape-v1.0"
     ],
     "dataOutputFormats": [
       "BIOSHARING.ORG:bsg-s000250"
@@ -163,7 +163,7 @@
   {
     "subtype": "Disease transmission models",
     "title": "GLEAM",
-    "humanReadableSynopsis": "<p>GLEAM produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
+    "humanReadableSynopsis": "<p>GLEAM (GLobal Epidemic and Mobility Model) produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
     "pathogenCoverage": [
       "Communicable human-to-human"
     ],
@@ -198,7 +198,7 @@
       "1.0.1.0"
     ],
     "identifier": {
-      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">https://doi.org/10.5281/zenodo.437560</a>"
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.437560\", class=\"underline\">10.5281/zenodo.437560</a>"
     },
     "developers": [
       "Comissioned by Sarah de Valle Ph.D., Los Alamos National Labs",
@@ -233,9 +233,7 @@
       "MIDAS-ISG:synthia-us-v2010"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:spew-us-v1.2.0",
-      "MIDAS-ISG:spew-ipums-v1.2.0",
-      "MIDAS-ISG:spew-canada-v1.2.0"
+      "MIDAS-ISG:spew-us-format-v1.2.0"
     ],
     "identifier": {
       "identifier": "<a href=\"https://doi.org/10.5281/zenodo.546197\", class=\"underline\">10.5281/zenodo.546197</a>"
@@ -254,7 +252,7 @@
       "1.1.1"
     ],
     "dataOutputFormats": [
-      "IETF:GeoJSON-rfc7946"
+      "IETF:rfc7946"
     ],
     "dataInputFormats": [
       "Proprietary"
@@ -365,7 +363,7 @@
       "vaccination",
       "larviciding"
     ],
-    "humanReadableSynopsis": "<p>CLARA is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>The ComputationaL ARthropod Agents (CLARA) is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "identifier": {
       "identifier": "<a href=\"http://doi.org/10.5281/zenodo.322422\", class=\"underline\">10.5281/zenodo.322422</a>"
     },
@@ -394,6 +392,7 @@
       "2.0"
     ],
     "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
+    "dataInputFormats": ["MIDAS-ISG:hladish-dengue-model-v2.0"],
     "source": "https://github.com/tjhladish/dengue",
     "sourceCodeRelease": "<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
@@ -409,11 +408,18 @@
     "version": [
       "commit 720c16"
     ],
+    "availableOnUIDS": true,
     "locationCoverage": [
       "Sierra Leone"
     ],
     "pathogenCoverage": [
       "Ebola"
+    ],
+    "dataInputFormats": [
+      "APOLLO:InfectiousDiseaseScenario-v4.0.1"
+    ],
+    "dataOutputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "controlMeasures": [
       "Vaccination"
@@ -426,10 +432,12 @@
       "Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
     ],
     "title": "Ebola transmission model"
+
+
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University.",
     "version": [
       "2.12.0"
@@ -445,7 +453,7 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010",
+      "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
@@ -461,7 +469,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "32"
@@ -493,7 +501,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "<p>A simulator of malaria epidemiology and control.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "33.1"
@@ -525,7 +533,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "Open Malaria (3 versions)",
+    "product": "Open Malaria",
     "humanReadableSynopsis": "A simulator of malaria epidemiology and control.",
     "version": [
       "36.11"
@@ -691,7 +699,7 @@
   },
   {
     "subtype": "Pathogen evolution models",
-    "product": "NextStrain (2 versions)",
+    "product": "NextStrain",
     "humanReadableSynopsis": "nextflu v1.0 is the release of the Nextstrain project described in a 2015 Bioinformatics article. Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. The goal is to aid epidemiological understanding and improve outbreak response.",
     "dataInputFormats": [
       "BIOSHARING.ORG:bsg-s000228"
@@ -727,7 +735,7 @@
   },
   {
     "subtype": "Pathogen evolution models",
-    "product": "NextStrain (2 versions)",
+    "product": "NextStrain",
     "humanReadableSynopsis": "Nextstrain is an open-source project to harness the scientific and public health potential of pathogen genome data. We provide a continually-updated view of publicly available data with powerful analytics and visualizations showing pathogen evolution and epidemic spread. Our goal is to aid epidemiological understanding and improve outbreak response.",
     "developers": [
       "Richard Neher",
@@ -764,6 +772,7 @@
       "Software Development Service, Informatics Services Group"
     ],
     "dataInputFormats": [
+      "MIDAS-ISG:galapagos-output-format-v1.0",
       "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "webApplication": [
@@ -879,13 +888,13 @@
     ],
     "source": "https://github.com/reichlab/flusight/releases/tag/v1.3.2",
     "identifier": {
-      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">http://dx.doi.org/10.5281/zenodo.192509</a>"
+      "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.192509\", class=\"underline\">10.5281/zenodo.192509</a>"
     },
     "grants": [
       "R35GM119582"
     ],
     "dataInputFormats": [
-      "<a href=\"https://predict.phiresearchlab.org/\", class=\"underline\">CDC FluSight Challenge</a> format"
+      "MIDAS-ISG:flusight-forecast-v1.0"
     ],
     "license": "<a href=\"https://github.com/reichlab/flusight/blob/master/LICENSE\" class=\"underline\">MIT</a>",
     "title": "FluSight"
@@ -928,7 +937,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Communicable human-to-human"
@@ -966,7 +975,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FluTE (4 versions)",
+    "product": "FluTE",
     "humanReadableSynopsis": "<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Influenza"
@@ -1009,7 +1018,7 @@
   },
   {
     "subtype": "Disease transmission models",
-    "product": "FRED (3 versions)",
+    "product": "FRED",
     "humanReadableSynopsis": "This software installs the FRED simulator on a Windows 64-bit operating system.",
     "identifier": {
       "identifier": "<a href=\"https://zenodo.org/badge/latestdoi/80568018\", class=\"underline\">10.5281/zenodo.268504</a>"
@@ -1029,7 +1038,7 @@
       "Communicable human-to-human"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010",
+      "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
@@ -1092,7 +1101,7 @@
   },
   {
     "subtype": "Modeling platforms",
-    "product": "NetLogo (2 versions)",
+    "product": "NetLogo",
     "humanReadableSynopsis": "NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "version": [
       "5.0.4"
@@ -1109,7 +1118,7 @@
   },
   {
     "subtype": "Modeling platforms",
-    "product": "NetLogo (2 versions)",
+    "product": "NetLogo",
     "humanReadableSynopsis": "NetLogo is a multi-agent programmable modeling environment. It is used by tens of thousands of students, teachers and researchers worldwide. It also powers <a href=\"http://ccl.northwestern.edu/netlogo/hubnet.html\" class=\"underline\">HubNet</a> participatory simulations. It is authored by <a href=\"http://ccl.northwestern.edu/Uri.shtml\" class=\"underline\">Uri Wilensky</a> and developed at the <a href=\"http://ccl.northwestern.edu/\" class=\"underline\">CCL</a>. You can download it free of charge.",
     "webApplication": [
       "http://www.netlogoweb.org/launch"
@@ -1226,7 +1235,7 @@
       "https://synthpopviewer.rti.org"
     ],
     "dataInputFormats": [
-      "MIDAS-ISG:synthia-us-format-v2010"
+      "MIDAS-ISG:synthia-us-v2010"
     ],
     "grants": [
       "1-U24-GM087704"
@@ -1237,11 +1246,11 @@
     "subtype": "Disease transmission models",
     "humanReadableSynopsis": "North American Animal Disease Spread (NAADSM) is a framework for creating stochastic, spatial, state-transition simulation models of the spread and control of highly contagious diseases of animals. User-established parameters define model behavior in terms of disease progression; disease spread by animal-to-animal contact, contact with contaminated personnel or equipment, and airborne dissemination; and the implementation of control measures such as vaccination and depopulation. Resources available to implement disease control strategies are taken into consideration. The model records a wide variety of measures of the extent of simulated outbreaks and other characteristics. The graphical interface and output visualization features also make it a useful tool for training and preparedness exercises. NAADSM has been developed with broad international support, and has been used to evaluate outbreak scenarios and potential control strategies for economically important animal diseases in many countries around the world.",
     "developers": [
-      "<a class=\"underline\" href=\"mailto:caroline.dube@inspection.gc.ca\">Caroline Dube</a> - Epidemiologist and Scientific Advisor",
-      "<a class=\"underline\" href=\"mailto:nharvey@uoguelph.ca\">Neil Harvey</a>",
-      "<a class=\"underline\" href=\"mailto:Kelly.A.Patyk@aphis.usda.gov\">Kelly Patyk</a>",
-      "<a class=\"underline\" href=\"mailto:aaron.reeves@colostate.edu\">Aaron Reeves</a> - Epidemilogic Modeler",
-      "<a class=\"underline\" href=\"mailto:ann.h.seitzinger@aphis.usda.gov\">Anna Seitzinger</a>"
+      "Caroline Dube",
+      "Neil Harvey",
+      "Kelly Patyk",
+      "Aaron Reeves",
+      "Anna Seitzinger"
     ],
     "pathogenCoverage": [
       "Avian influenza A",

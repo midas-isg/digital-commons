@@ -2,8 +2,8 @@
     "title": "Arizona Synthetic Ecosystem",
     "description": "Arizona synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.573980",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000003",
-                "accessURL": "https://zenodo.org/api/files/4759ba50-30f7-40d4-8aeb-f84a328c10ad/04.tar.gz"
+                "accessURL": "https://zenodo.org/record/573980/files/04.tar.gz"
             },
             "conformsTo": [
                 {

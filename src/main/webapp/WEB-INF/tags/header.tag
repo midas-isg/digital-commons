@@ -9,7 +9,7 @@
 <%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
-<%@ attribute name="pub" type="edu.pitt.isg.dc.digital.dap.DataAugmentedPublication" %>
+
 
     <c:if test="${iframe != true}">
         <div class="spacer">
@@ -27,7 +27,7 @@
                     </c:if>
                     <c:choose>
                         <c:when test="${preview}">
-                            <a href="${pageContext.request.contextPath}/preview">
+                            <a href="${pageContext.request.contextPath}/main">
                                 <img alt="MIDAS" class="navbar-brand-mod"
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:when>
@@ -37,7 +37,7 @@
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:otherwise>
                     </c:choose>
-                    <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm margin-top-22">${pageTitle}</h2>
+                    <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
                     <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
                 </div>
 
@@ -46,27 +46,24 @@
                         <ul class="nav navbar-nav navbar-padding">
                             <c:if test="${addEntry == true}">
                                 <li><a id="content-tab" class="leaf font-size-18 padding-top-30" href="${pageContext.request.contextPath}/main#content">Content</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
                                 <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#compute-platform">Compute Platform</a></li>
                                 <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#search">Search</a></li>--%>
-                                <li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>
+                                <%--<li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#about">About</a></li>
                             </c:if>
                             <c:if test="${addEntry != true}">
                                 <li><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="tab" href="#content">Content</a></li>
+                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
                                 <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
                                 <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search</a></li>--%>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>
+                                <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
                             </c:if>
-                            <%--<c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
-                                <li class="hidden"><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#publication-${pub.paper.id}-${pub.data.id}"></a></li>
-                            </c:forEach>--%>
                         </ul>
                     </c:if>
                     <ul class="nav navbar-nav navbar-right">
-                        <c:if test="${loggedIn == true and preview == false}">
+                        <c:if test="${(loggedIn == true and preview == false) and addEntry != true}">
                             <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
                         <form class="navbar-form" action="${urlLevel}" method="GET">
                             <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>

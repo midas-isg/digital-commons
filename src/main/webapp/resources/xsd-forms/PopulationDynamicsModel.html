@@ -1,5 +1,5 @@
 <html>
-<head><base href='.'>
+<head><base href='.'><link rel='stylesheet' type='text/css' href='../css/main.css'><link rel='stylesheet' href='../css/bootstrap/3.3.6/bootstrap.min.css'><link rel='stylesheet' href='../css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'><link rel='stylesheet' href='../css/font-awesome-4.7.0/css/font-awesome.min.css'>
 <link rel="stylesheet" href="css/xsd-forms-style.css" type="text/css"/>
 <link rel="stylesheet" href="css/xsd-forms-style-override.css" type="text/css"/>
 <link type="text/css" href="css/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" />	
@@ -241,6 +241,14 @@ $(function() {
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-2-instance-1_1').attr('enabled','false');
+  $('#repeat-button-2-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-2-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-3-instance-1_1').click(function() {
     $('#repeating-enclosing-3-instance-1_1').hide();
   });
@@ -308,6 +316,9 @@ $('#min-occurs-zero-5-instance-1').change();
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
@@ -316,6 +327,16 @@ $('#min-occurs-zero-5-instance-1').change();
     showError('item-error-6-instance-1_1_1',ok);
   });
   
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-6-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-6-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-6-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-7-instance-1_1_1').click(function() {
     $('#repeating-enclosing-7-instance-1_1_1').hide();
   });
@@ -343,6 +364,22 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-7-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-7-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-7-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-5-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-5-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-8-instance-1_1').click(function() {
     $('#repeating-enclosing-8-instance-1_1').hide();
   });
@@ -525,6 +562,14 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-9-instance-1_1').attr('enabled','false');
+  $('#repeat-button-9-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-9-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-10-instance-1_1').click(function() {
     $('#repeating-enclosing-10-instance-1_1').hide();
   });
@@ -707,6 +752,14 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-11-instance-1_1').attr('enabled','false');
+  $('#repeat-button-11-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-11-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-12-instance-1_1').click(function() {
     $('#repeating-enclosing-12-instance-1_1').hide();
   });
@@ -734,6 +787,14 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-12-instance-1_1').attr('enabled','false');
+  $('#repeat-button-12-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-12-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-13-instance-1_1').click(function() {
     $('#repeating-enclosing-13-instance-1_1').hide();
   });
@@ -916,6 +977,14 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-14-instance-1_1').attr('enabled','false');
+  $('#repeat-button-14-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-14-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-15-instance-1_1').click(function() {
     $('#repeating-enclosing-15-instance-1_1').hide();
   });
@@ -943,6 +1012,14 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-15-instance-1_1').attr('enabled','false');
+  $('#repeat-button-15-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-15-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-16-instance-1_1').click(function() {
     $('#repeating-enclosing-16-instance-1_1').hide();
   });
@@ -2104,7 +2181,8 @@ $('#min-occurs-zero-5-instance-1').change();
   var xml='';
   if (idVisible('repeating-enclosing-6-instance-1_1_1')) {
     var v = encodedValueById("item-6-instance-1_1_1");
-    xml += '\n' + spaces(4) + '<identifier>' + v + '</identifier>';
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<identifier>' + v + '</identifier>';
   }
    return xml;
   }
@@ -2594,9 +2672,16 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
  
   <div id="item-enclosing-1-instance-1" class="sequence">
     <div id="repeating-enclosing-1-instance-1" class="repeating-enclosing">
+      <div class="sequence-label">PopulationDynamicsModel</div>
       <div id="sequence-1-instance-1" class="sequence-content">
         <div id="item-enclosing-2-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-2-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-2-instance-1" class="repeat-button white small">Add product</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-2-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-2-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">2</div>
             <label class="item-label" for="item-input-2-instance-1_1">Product</label>
             <div class="item-input">
@@ -2638,15 +2723,28 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-5-instance-1_1" class="sequence">
-          <div class="min-occurs-zero-container">
+          <div class="min-occurs-zero-container invisible">
             <div class="min-occurs-zero-label">Click to enable</div>
-            <input number="5" name="min-occurs-zero-name5-instance-1" id="min-occurs-zero-5-instance-1" class="min-occurs-zero" type="checkbox">
+            <input number="5" name="min-occurs-zero-name5-instance-1" checked="true" id="min-occurs-zero-5-instance-1" class="min-occurs-zero" type="checkbox">
             </input>
           </div>
-          <div id="repeating-enclosing-5-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-5-instance-1" class="repeat-button white small">Add identifier</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-5-instance-1_1" class="repeating-enclosing invisible">
+            <div class="sequence-label">identifier</div>
             <div id="sequence-5-instance-1" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-5-instance-1_1" class="remove-button white small">-</div>
+              </div>
               <div id="item-enclosing-6-instance-1_1_1" class="item-enclosing">
-                <div id="repeating-enclosing-6-instance-1_1_1" class="repeating-enclosing">
+                <div id="repeat-button-6-instance-1_1" class="repeat-button white small">Add identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-6-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-6-instance-1_1_1" class="remove-button white small">-</div>
+                  </div>
                   <div class="item-number">6</div>
                   <label class="item-label" for="item-input-6-instance-1_1_1">Identifier</label>
                   <div class="item-input">
@@ -2660,7 +2758,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                 </div>
               </div>
               <div id="item-enclosing-7-instance-1_1_1" class="item-enclosing">
-                <div id="repeating-enclosing-7-instance-1_1_1" class="repeating-enclosing">
+                <div id="repeat-button-7-instance-1_1" class="repeat-button white small">Add identifierSource</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-7-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-7-instance-1_1_1" class="remove-button white small">-</div>
+                  </div>
                   <div class="item-number">7</div>
                   <label class="item-label" for="item-input-7-instance-1_1_1">IdentifierSource</label>
                   <div class="item-input">
@@ -2677,10 +2781,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-8-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-8-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-8-instance-1" class="repeat-button white small">Add dataInputFormats</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-8-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-8-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-8-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">8</div>
             <label class="item-label" for="item-input-8-instance-1_1">DataInputFormats</label>
             <div class="item-input">
@@ -2692,7 +2799,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-8-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-8-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-8-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-8-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -2707,7 +2814,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-8-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-8-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-8-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-8-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -2722,7 +2829,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-8-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-8-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-8-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-8-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -2737,7 +2844,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-8-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-8-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-8-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-8-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -2754,7 +2861,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-9-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-9-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-9-instance-1" class="repeat-button white small">Add sourceCodeRelease</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-9-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-9-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">9</div>
             <label class="item-label" for="item-input-9-instance-1_1">SourceCodeRelease</label>
             <div class="item-input">
@@ -2768,10 +2881,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-10-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-10-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-10-instance-1" class="repeat-button white small">Add webApplication</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-10-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-10-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">10</div>
             <label class="item-label" for="item-input-10-instance-1_1">WebApplication</label>
             <div class="item-input">
@@ -2783,7 +2899,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-10-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-10-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-10-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -2798,7 +2914,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-10-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-10-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-10-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -2813,7 +2929,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-10-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-10-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-10-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -2828,7 +2944,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-10-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-10-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-10-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -2845,7 +2961,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-11-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-11-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-11-instance-1" class="repeat-button white small">Add license</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-11-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-11-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">11</div>
             <label class="item-label" for="item-input-11-instance-1_1">License</label>
             <div class="item-input">
@@ -2859,7 +2981,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-12-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-12-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-12-instance-1" class="repeat-button white small">Add source</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-12-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">12</div>
             <label class="item-label" for="item-input-12-instance-1_1">Source</label>
             <div class="item-input">
@@ -2873,10 +3001,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-13-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-13-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-13-instance-1" class="repeat-button white small">Add developers</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-13-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-13-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-13-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">13</div>
             <label class="item-label" for="item-input-13-instance-1_1">Developers</label>
             <div class="item-input">
@@ -2888,7 +3019,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-13-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-13-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-13-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-13-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -2903,7 +3034,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-13-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-13-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-13-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-13-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -2918,7 +3049,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-13-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-13-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-13-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-13-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -2933,7 +3064,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-13-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-13-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-13-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-13-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -2950,7 +3081,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-14-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-14-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-14-instance-1" class="repeat-button white small">Add website</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-14-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-14-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">14</div>
             <label class="item-label" for="item-input-14-instance-1_1">Website</label>
             <div class="item-input">
@@ -2964,7 +3101,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-15-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-15-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-15-instance-1" class="repeat-button white small">Add documentation</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-15-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">15</div>
             <label class="item-label" for="item-input-15-instance-1_1">Documentation</label>
             <div class="item-input">
@@ -2978,10 +3121,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-16-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-16-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-16-instance-1" class="repeat-button white small">Add publicationsThatUsedRelease</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-16-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-16-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-16-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">16</div>
             <label class="item-label" for="item-input-16-instance-1_1">PublicationsThatUsedRelease</label>
             <div class="item-input">
@@ -2993,7 +3139,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-16-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-16-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-16-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-16-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3008,7 +3154,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-16-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-16-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-16-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-16-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3023,7 +3169,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-16-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-16-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-16-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-16-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3038,7 +3184,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-16-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-16-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-16-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-16-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -3055,10 +3201,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-17-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-17-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-17-instance-1" class="repeat-button white small">Add executables</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-17-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-17-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-17-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">17</div>
             <label class="item-label" for="item-input-17-instance-1_1">Executables</label>
             <div class="item-input">
@@ -3070,7 +3219,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-17-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-17-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3085,7 +3234,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-17-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-17-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3100,7 +3249,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-17-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-17-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3115,7 +3264,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-17-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-17-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -3132,10 +3281,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-18-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-18-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-18-instance-1" class="repeat-button white small">Add version</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-18-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-18-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-18-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">18</div>
             <label class="item-label" for="item-input-18-instance-1_1">Version</label>
             <div class="item-input">
@@ -3147,7 +3299,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-18-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-18-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-18-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-18-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3162,7 +3314,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-18-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-18-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-18-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-18-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3177,7 +3329,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-18-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-18-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-18-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-18-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3192,7 +3344,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-18-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-18-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-18-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-18-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -3209,10 +3361,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-19-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-19-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-19-instance-1" class="repeat-button white small">Add publicationsAboutRelease</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-19-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-19-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-19-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">19</div>
             <label class="item-label" for="item-input-19-instance-1_1">PublicationsAboutRelease</label>
             <div class="item-input">
@@ -3224,7 +3379,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-19-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-19-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-19-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-19-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3239,7 +3394,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-19-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-19-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-19-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-19-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3254,7 +3409,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-19-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-19-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-19-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-19-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3269,7 +3424,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-19-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-19-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-19-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-19-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -3286,10 +3441,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-20-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-20-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-20-instance-1" class="repeat-button white small">Add grants</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-20-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-20-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-20-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">20</div>
             <label class="item-label" for="item-input-20-instance-1_1">Grants</label>
             <div class="item-input">
@@ -3301,7 +3459,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-20-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-20-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-20-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-20-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3316,7 +3474,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-20-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-20-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-20-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-20-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3331,7 +3489,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-20-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-20-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-20-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-20-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3346,7 +3504,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-20-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-20-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-20-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-20-instance-1_5" class="remove-button white small">-</div>
             </div>
@@ -3405,7 +3563,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-24-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-24-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-24-instance-1" class="repeat-button white small">Add populationSpeciesIncluded</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-24-instance-1_1" class="repeating-enclosing">
@@ -3482,10 +3640,13 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-25-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-25-instance-1" class="repeat-button white small">+</div>
+          <div id="repeat-button-25-instance-1" class="repeat-button white small">Add locationCoverage</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-25-instance-1_1" class="repeating-enclosing">
+          <div id="repeating-enclosing-25-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-25-instance-1_1" class="remove-button white small">-</div>
+            </div>
             <div class="item-number">25</div>
             <label class="item-label" for="item-input-25-instance-1_1">LocationCoverage</label>
             <div class="item-input">
@@ -3497,7 +3658,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-25-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-25-instance-1_2" class="repeating-enclosing">
+          <div id="repeating-enclosing-25-instance-1_2" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-25-instance-1_2" class="remove-button white small">-</div>
             </div>
@@ -3512,7 +3673,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-25-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-25-instance-1_3" class="repeating-enclosing">
+          <div id="repeating-enclosing-25-instance-1_3" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-25-instance-1_3" class="remove-button white small">-</div>
             </div>
@@ -3527,7 +3688,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-25-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-25-instance-1_4" class="repeating-enclosing">
+          <div id="repeating-enclosing-25-instance-1_4" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-25-instance-1_4" class="remove-button white small">-</div>
             </div>
@@ -3542,7 +3703,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-25-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-25-instance-1_5" class="repeating-enclosing">
+          <div id="repeating-enclosing-25-instance-1_5" class="repeating-enclosing invisible">
             <div class="remove-button-container">
               <div id="remove-button-25-instance-1_5" class="remove-button white small">-</div>
             </div>

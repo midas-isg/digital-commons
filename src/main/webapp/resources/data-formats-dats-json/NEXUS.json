@@ -8,7 +8,7 @@
         "value": "",
         "valueIRI": ""
     },
-    "description": "NEXUS is a file format designed to contain systematic data for use by computer programs. The format is widely used in bioinformatics. Several popular phylogenetic programs such as PAUP*, MrBayes, Mesquite, MacClade and SplitsTree use this format.",
+    "description": "NEXUS is a file format designed to contain systematic data for use by computer programs.  The format is widely used in bioinformatics. Several popular phylogenetic programs such as PAUP*, MrBayes, Mesquite, MacClade and SplitsTree use this format.",
     "licenses": [
         {
             "name": "No License Specified."
@@ -31,7 +31,7 @@
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "",
+                    "value": "https://github.com/nexusformat/cnxvalidate",
                     "valueIRI": ""
                 }
             ]

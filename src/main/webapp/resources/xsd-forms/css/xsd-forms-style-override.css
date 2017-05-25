@@ -1,0 +1,68 @@
+body {
+    font-size: 1.2em;
+    background-color: #ffffff;
+}
+
+.item-number {
+    display: none;
+}
+
+.remove-button {
+    margin: 5px 10px 10px 0px;
+}
+
+.repeat-button {
+    margin: 5px 10px 10px 0px;
+}
+
+.remove-button-container {
+    overflow: initial;
+}
+
+.clr {
+    display: none;
+}
+
+#submit {
+    margin-left:0px !important;
+}
+
+.submit {
+    margin-left:0px !important;
+}
+
+.repeating-enclosing {
+    margin: 1px;
+    border: 1px solid #ccc;
+    border-radius:4px;
+    padding: 5px;
+    padding-top:10px;
+    margin-bottom:5px;
+}
+
+.item-input {
+    float: left;
+    width: 100%;
+}
+
+.item-input-text {
+    width: 100%;
+}
+
+.invisible {
+    visibility: visible !important;
+}
+
+.item-error {
+    color:red;
+    background-color:transparent;
+    padding:0px;
+}
+
+.form {
+    max-width:99.9%;
+}
+
+.sequence-content {
+    margin-right:10px;
+}

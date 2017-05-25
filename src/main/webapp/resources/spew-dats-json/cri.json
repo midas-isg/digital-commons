@@ -2,8 +2,8 @@
     "title": "Costa Rica Synthetic Ecosystem",
     "description": "Costa Rica synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574043",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000066",
-                "accessURL": "https://zenodo.org/api/files/d0a8bb9d-355f-42ae-8671-596ba96faeb2/cri.tar.gz"
+                "accessURL": "https://zenodo.org/record/574043/files/cri.tar.gz"
             },
             "conformsTo": [
                 {

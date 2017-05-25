@@ -2,8 +2,8 @@
     "title": "Cambodia Synthetic Ecosystem",
     "description": "Cambodia synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574065",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000088",
-                "accessURL": "https://zenodo.org/api/files/9fae5478-aeec-41bd-a9cf-62e19092184a/khm.tar.gz"
+                "accessURL": "https://zenodo.org/record/574065/files/khm.tar.gz"
             },
             "conformsTo": [
                 {

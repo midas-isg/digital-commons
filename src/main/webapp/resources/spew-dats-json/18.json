@@ -2,8 +2,8 @@
     "title": "Indiana Synthetic Ecosystem",
     "description": "Indiana synthetic population dataset consisting of tables for persons, households, schools, and workplaces.  This dataset was created by the SPEW program from 2010 ACS SF 5-Year counts;  2010 US TIGER Roads; ACS PUMS 1-Year micro data; 2013 and 2011 NCES schools; and 2009 ESRI workplaces.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.573992",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -142,7 +142,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000015",
-                "accessURL": "https://zenodo.org/api/files/1b262982-0158-4c6d-95fa-91fac9f5d418/18.tar.gz"
+                "accessURL": "https://zenodo.org/record/573992/files/18.tar.gz"
             },
             "conformsTo": [
                 {

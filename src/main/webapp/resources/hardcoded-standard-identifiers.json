@@ -25,11 +25,6 @@
   },
   {
     "redirect": true,
-    "website": "https://github.com/ApolloDev/apollo-xsd-and-types",
-    "title": "Apollo XSD (for standard data types)"
-  },
-  {
-    "redirect": true,
     "title": "Apollo Location Codes (for locations)",
     "website": "https://betaweb.rods.pitt.edu/ls",
     "signInRequired":true

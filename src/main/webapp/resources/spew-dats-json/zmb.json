@@ -2,8 +2,8 @@
     "title": "Zambia Synthetic Ecosystem",
     "description": "Zambia synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574100",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000123",
-                "accessURL": "https://zenodo.org/api/files/356285ee-c633-4077-9604-9e5fbb9f06fa/zmb.tar.gz"
+                "accessURL": "https://zenodo.org/record/574100/files/zmb.tar.gz"
             },
             "conformsTo": [
                 {

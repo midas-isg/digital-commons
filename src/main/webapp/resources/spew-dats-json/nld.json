@@ -2,8 +2,8 @@
     "title": "Netherlands Synthetic Ecosystem",
     "description": "Netherlands synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574076",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000099",
-                "accessURL": "https://zenodo.org/api/files/7fc15705-f870-4cf0-8781-37f0589108ab/nld.tar.gz"
+                "accessURL": "https://zenodo.org/record/574076/files/nld.tar.gz"
             },
             "conformsTo": [
                 {

@@ -55,6 +55,10 @@ var geneticSequence = [];
 var geneticSequenceDictionary = {};
 var geneticSequenceSettings = {};
 
+var tycho = [];
+var tychoDictionary = {};
+var tychoSettings = {};
+
 var countryHash = {};
 var stateHash =  {
     '01': 'Alabama',
@@ -122,10 +126,21 @@ var zikaDictionary = {};
 var infectiousDiseaseDictionary = {};
 
 function convertToHref(href) {
-    return '<a class="underline" href="' + href + '">' + href + '</a>';
+    var identifier;
+    if(href.includes("zenodo")){
+        identifier = href.split('https://doi.org/').pop();
+    } else {
+        identifier = href;
+    }
+    return '<a class="underline" href="' + href + '">' + identifier + '</a>';
 }
+
 function addDatsToDictionary(dictionary, data, code, type) {
-    var identifier = data['identifier']['identifier'];
+    if ("undefined" !== typeof data['identifier']) {
+        var identifier = data['identifier']['identifier'];
+    } else {
+        identifier = null;
+    }
 
     if(identifier == null || identifier == '') {
         if(data['spatialCoverage'] != null && data['spatialCoverage'].length > 0) {
@@ -136,9 +151,15 @@ function addDatsToDictionary(dictionary, data, code, type) {
         }
     }
 
-    if(identifier.includes('http')) {
+    if(identifier != null && identifier.includes('http')) {
        identifier = convertToHref(identifier);
     }
+
+    if (data['name'] === 'Galapagos CSV') {
+        data['title'] = 'Galapagos-CSV';
+        data['name'] = 'Galapagos-CSV';
+    }
+
 
     dictionary[code] = {
         'title': data['title'],
@@ -146,6 +167,7 @@ function addDatsToDictionary(dictionary, data, code, type) {
         'identifier': identifier,
         'json': data
     };
+
 
     if(type == 'dataStandard') {
         dictionary[code]['title'] = data['name'];
@@ -170,6 +192,11 @@ function addDatsToDictionary(dictionary, data, code, type) {
                 dictionary[code]['humanReadableSpecification'] = property["values"][0]["value"];
             } else if(property["category"] == "machine-readable specification of data format") {
                 dictionary[code]['machineReadableSpecification'] = property["values"][0]["valueIRI"];
+            } else if(property["category"] == "validator") {
+                var val = property['values'][0]['value'];
+                if(val != '') {
+                    dictionary[code]['validator'] = val;
+                }
             }
         }
     } else if(type != 'dataStandard') {
@@ -188,12 +215,12 @@ function addDatsToDictionary(dictionary, data, code, type) {
             var authData = distributions[0]['access']['authorizations'];
             var authorizations = [];
 
-            if(authData != null) {
+            /*if(authData != null) {
                 for(var i = 0; i < authData.length; i++) {
                     authorizations.push(authData[i]["value"]);
                 }
                 dictionary[code]['authorizations']= authorizations;
-            }
+            }*/
         }
 
         var creators = [];
@@ -265,12 +292,13 @@ populateMortalityDataDictionary(0);
 
 function populateDataFormatsDictionary(count) {
     var keys = Object.keys(dataFormatsDictionary);
+
     var fileNames = [];
     for(var i = 0; i < keys.length; i++) {
-        fileNames.push(dataFormatsDictionary[keys[i]]['title']);
+        fileNames.push(dataFormatsDictionary[keys[i]]['filename']);
     }
 
-    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
+    $.getJSON( ctx + '/resources/data-formats-dats-json/' + fileNames[count] + '?v=' + Date.now(), function( data ) {
         addDatsToDictionary(dataFormatsDictionary, data, count, 'dataStandard');
         count++;
 
@@ -278,6 +306,17 @@ function populateDataFormatsDictionary(count) {
             populateDataFormatsDictionary(count);
         }
     });
+}
+
+function populateTycho(ids, count) {
+    $.getJSON( ctx + '/resources/tycho-dats-json/' + ids[count] + '.json?v=' + Date.now(), function( datsJson ) {
+        addDatsToDictionary(tychoDictionary, datsJson, ids[count]);
+        count++;
+
+        if(count < ids.length) {
+            populateTycho(ids, count);
+        }
+     });
 }
 
 /* Change includes method in IE */
@@ -407,6 +446,22 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
         }
     }
 
+    for(var i = 0; i < treeArray.length; i++) {
+        var rootSoftwareLength = 0;
+        for(var x = 0; x < treeArray[i].nodes.length; x++) {
+            if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
+                rootSoftwareLength += (treeArray[i].nodes[x].nodes.length-1)
+                treeArray[i].nodes[x].text += "<span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
+            }
+        }
+
+        if(treeArray[i].nodes.length > 0) {
+            rootSoftwareLength += treeArray[i].nodes.length;
+            treeArray[i].text += "<span class='badge'>[" + rootSoftwareLength + "]</span>";
+        }
+
+    }
+
     /*for(var key in data) {
         if(key != "settings") {
             treeDictionary[key] = data[key];
@@ -497,6 +552,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
             treeviewInfo['expandIcon'] = "bullet-point	";
             treeviewInfo['collapseIcon'] = "bullet-point	";
         }
+
         $(treeviewTag).treeview(treeviewInfo);
         $(treeviewTag).treeview('collapseAll', { silent: true });
     }
@@ -556,6 +612,7 @@ function addNodesToDirectory(name, key, treeArray, treeDictionary) {
 
         if(treeArray[i]['name'] == treeDictionary[key]['subtype'] || index > -1) {
             var nodeData = getNodeData(name, key, treeDictionary);
+            //console.log(nodeData);
 
             /* Add node to directory or subdirectory */
             if(index > -1) {
@@ -598,7 +655,7 @@ function getNodeData(name, key, treeDictionary) {
         nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
     }
 
-    if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnOlympus'] == true) {
+    if('availableOnUIDS' in treeDictionary[key] == true) {
         nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
     }
 
@@ -747,7 +804,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     collections.push(
         syntheticEcosystems,
         {
-            text: "Synthia™ synthetic populations",
+            text: "Synthia™ synthetic populations <span class='badge'>["+ Object.keys(syntheticEcosystems).length + "]</span>",
             nodes: [
                 {
                     text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
@@ -771,151 +828,313 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         });
     }
 
-    collections.push(dsd);
-
-    var mortalityData = {
-        text: "Mortality data",
+    dsd.nodes.push({
+        text: "<span onmouseover='toggleTitle(this)'>Project Tycho repository v2.0</span>",
+        name: "Tycho 2.0",
         nodes: []
-    };
+    });
 
-    for(var i = 0; i < moralityDataNodeNames.length; i++) {
-        mortalityData.nodes.push({
-            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"mortalityData\",\"" + moralityDataNodeNames[i] + "\")'>" + moralityDataNodeNames[i] + "</span>",
-            name: moralityDataNodeNames[i]
-        });
-    }
-
-    collections.push(mortalityData);
-
-    if(libraryData != null) {
-        $.each(libraryData, function (index, value) {
-            var url;
-            if (index.includes("Epidemic")) {
-                url = libraryViewerUrl + "epidemic/";
-            } else if (index.includes("Case series")) {
-                url = libraryViewerUrl + "caseSeries/"
-            } else {
-                url = libraryViewerUrl + "infectiousDiseaseScenario/";
-            }
-            var nodeLevel1 = [];
-
-            $.each(value, function (index, value) {
-                var nodeLevel2 = [];
-
-                var ebolaEpidemics = false;
-                var caseListings = false;
-                var chikungunyaEpidemics = false;
-                var zikaEpidemics = false;
-                var infectiousDisease = false;
-                if(index == "Ebola epidemics") {
-                    ebolaEpidemics = true;
-                } else if(index == "Rabies case listings") {
-                    caseListings = true;
-                } else if(index == "Chikungunya epidemics") {
-                    chikungunyaEpidemics = true;
-                } else if(index == "Zika epidemics") {
-                    zikaEpidemics = true;
-                } else if(index == 'H1N1 infectious disease scenarios') {
-                    infectiousDisease = true;
-                }
-
-                $.each(value, function (index, value) {
-                    if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics || infectiousDisease) {
-                        var dictionaryKey = value.name.trim();
-                        if(dictionaryKey.includes('É')) {
-                            dictionaryKey = dictionaryKey.replace('É', 'E');
-                        } else if(dictionaryKey.includes('/')) {
-                            dictionaryKey = dictionaryKey.replace('/', ':');
-                        } else if(dictionaryKey.includes('é')) {
-                            dictionaryKey = dictionaryKey.replace('é', 'e');
-                        }
-
-                        if(ebolaEpidemics) {
-                            nodeLevel2.push({
-                                name: value.name,
-                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"epidemics\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
-                            });
-
-                            $.getJSON( ctx + '/resources/ebola-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
-                                addDatsToDictionary(epidemicsDictionary, data, dictionaryKey);
-                            })
-                            .error(function(data) {
-                                console.log('error');
-                            });
-                        } else if(caseListings) {
-                            nodeLevel2.push({
-                                name: value.name,
-                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"caseSeries\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
-                            });
-
-                            $.getJSON( ctx + '/resources/case-series-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
-                                addDatsToDictionary(caseSeriesDictionary, data, dictionaryKey);
-                            })
-                            .error(function(data) {
-                                console.log(dictionaryKey);
-                            });
-                        } else if(chikungunyaEpidemics) {
-                            nodeLevel2.push({
-                                name: value.name,
-                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"chikungunya\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
-                            });
-
-                            $.getJSON( ctx + '/resources/chikungunya-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
-                                addDatsToDictionary(chikungunyaDictionary, data, dictionaryKey);
-                            })
-                            .error(function(data) {
-                                console.log(dictionaryKey);
-                            });
-                        } else if(zikaEpidemics) {
-                            nodeLevel2.push({
-                                name: value.name,
-                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"zika\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
-                            });
-
-                            $.getJSON( ctx + '/resources/zika-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
-                                addDatsToDictionary(zikaDictionary, data, dictionaryKey);
-                            })
-                            .error(function(data) {
-                                console.log(dictionaryKey);
-                            });
-                        } else if(infectiousDisease) {
-                            nodeLevel2.push({
-                                name: value.name,
-                                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"infectiousDisease\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
-                            });
-
-                            $.getJSON( ctx + '/resources/infectious-disease-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
-                                addDatsToDictionary(infectiousDiseaseDictionary, data, dictionaryKey);
-                            })
-                            .error(function(data) {
-                                console.log(dictionaryKey);
-                            });
-                        }
-
-                    } else {
-                        nodeLevel2.push({
-                            text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> ",
-                            url: url + value.urn
-                        });
-                    }
+    var tychoIds = [];
+    var tychoNodes = dsd.nodes[dsd.nodes.length - 1].nodes;
+    $.getJSON( ctx + '/resources/hardcoded-tycho.json?v=' + Date.now(), function( data ) {
+        var currentCountryCode = '';
+        var currentTychoNode = null;
+        var continentTychoNode = null;
+        var continents = [];
+        for(var i = 0; i < data.length; i++) {
+            if(!continents.includes(data[i]['continent'])) {
+                tychoNodes.push({
+                    'name': data[i]['continent'],
+                    'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['continent'] + "</span>",
+                    'nodes': []
                 });
-                if(index.includes("Zika") || index.includes("Chikungunya")) {
-                    index += " (under development)";
+
+                continents.push(data[i]['continent']);
+                continentTychoNode = tychoNodes[tychoNodes.length - 1].nodes;
+            } else {
+                continentTychoNode = tychoNodes[continents.indexOf(data[i]['continent'])].nodes;
+            }
+
+            if(data[i]['countryIso'] != currentCountryCode) {
+                currentCountryCode = data[i]['countryIso'];
+                continentTychoNode.push({
+                    'name': data[i]['subtype'],
+                    'text': "<span onmouseover='toggleTitle(this)'>" + data[i]['subtype'] + "</span>",
+                    'nodes': []
+                });
+
+                if(currentTychoNode != null) {
+                    currentTychoNode.sort(compareNodes);
                 }
-                if(index.includes("H1n1 infectious disease scenarios"))
-                    index = "H1N1 infectious disease scenarios";
-                nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span>", nodes: nodeLevel2});
+
+                currentTychoNode = continentTychoNode[continentTychoNode.length - 1].nodes;
+            }
+
+            currentTychoNode.push({
+                'name': data[i]['product'],
+                'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"tycho\",\"" + data[i]['id'] + "\")'>" + data[i]['product'] + "</span>"
             });
 
-            collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span>", nodes: nodeLevel1});
+            tychoIds.push(data[i]['id']);
+        }
+        for(var i=0; i<tychoNodes.length; i++) {
+            var upperLevelCount = 0;
+            for(var x=0; x<tychoNodes[i].nodes.length; x++) {
+                tychoNodes[i].nodes[x].text += "<span class='badge'>["+ tychoNodes[i].nodes[x].nodes.length +"]</span>";
+                upperLevelCount += tychoNodes[i].nodes[x].nodes.length;
+            }
+            tychoNodes[i].text += "<span class='badge'>["+ upperLevelCount +"]</span>";
+            tychoNodes[i].nodes.sort(compareNodes);
+        }
+        dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
+        var dsdLength = dsdNodeNames.length + tychoIds.length;
+        dsd.text += "<span class='badge'>["+dsdLength+"]</span>"
 
+        tychoNodes[tychoNodes.length - 1].nodes.sort(compareNodes);
+    }).then(function() {
+        dsd.nodes.sort(compareNodes);
+        tychoNodes.sort(compareNodes);
+        populateTycho(tychoIds, 0);
+
+        collections.push(dsd);
+
+        var mortalityData = {
+            text: "Mortality data <span class='badge'>["+moralityDataNodeNames.length+"]</span>",
+            nodes: []
+        };
+
+        for(var i = 0; i < moralityDataNodeNames.length; i++) {
+            mortalityData.nodes.push({
+                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"mortalityData\",\"" + moralityDataNodeNames[i] + "\")'>" + moralityDataNodeNames[i] + "</span>",
+                name: moralityDataNodeNames[i]
+            });
+        }
+
+        collections.push(mortalityData);
+
+        if(libraryData != null) {
+            $.each(libraryData, function (index, value) {
+                var url;
+                if (index.includes("Epidemic")) {
+                    url = libraryViewerUrl + "epidemic/";
+                } else if (index.includes("Case series")) {
+                    url = libraryViewerUrl + "caseSeries/"
+                } else {
+                    url = libraryViewerUrl + "infectiousDiseaseScenario/";
+                }
+                var nodeLevel1 = [];
+                var libraryEntryLength = 0;
+
+                $.each(value, function (index, value) {
+                    var nodeLevel2 = [];
+
+                    var ebolaEpidemics = false;
+                    var caseListings = false;
+                    var chikungunyaEpidemics = false;
+                    var zikaEpidemics = false;
+                    var infectiousDisease = false;
+                    if(index == "Ebola epidemics") {
+                        ebolaEpidemics = true;
+                    } else if(index == "Rabies case listings") {
+                        caseListings = true;
+                    } else if(index == "Chikungunya epidemics") {
+                        chikungunyaEpidemics = true;
+                    } else if(index == "Zika epidemics") {
+                        zikaEpidemics = true;
+                    } else if(index == 'H1N1 infectious disease scenarios') {
+                        infectiousDisease = true;
+                    }
+
+                    $.each(value, function (index, value) {
+                        libraryEntryLength++;
+
+                        if(ebolaEpidemics || caseListings || chikungunyaEpidemics || zikaEpidemics || infectiousDisease) {
+                            var dictionaryKey = value.name.trim();
+                            if(dictionaryKey.includes('É')) {
+                                dictionaryKey = dictionaryKey.replace('É', 'E');
+                            } else if(dictionaryKey.includes('/')) {
+                                dictionaryKey = dictionaryKey.replace('/', ':');
+                            } else if(dictionaryKey.includes('é')) {
+                                dictionaryKey = dictionaryKey.replace('é', 'e');
+                            }
+
+                            if(ebolaEpidemics) {
+                                nodeLevel2.push({
+                                    name: value.name,
+                                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"epidemics\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                                });
+
+                                $.getJSON( ctx + '/resources/ebola-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                    addDatsToDictionary(epidemicsDictionary, data, dictionaryKey);
+                                })
+                                    .error(function(data) {
+                                        console.log('error');
+                                    });
+                            } else if(caseListings) {
+                                nodeLevel2.push({
+                                    name: value.name,
+                                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"caseSeries\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                                });
+
+                                $.getJSON( ctx + '/resources/case-series-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                    addDatsToDictionary(caseSeriesDictionary, data, dictionaryKey);
+                                })
+                                    .error(function(data) {
+                                        console.log(dictionaryKey);
+                                    });
+                            } else if(chikungunyaEpidemics) {
+                                nodeLevel2.push({
+                                    name: value.name,
+                                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"chikungunya\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                                });
+
+                                $.getJSON( ctx + '/resources/chikungunya-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                    addDatsToDictionary(chikungunyaDictionary, data, dictionaryKey);
+                                })
+                                    .error(function(data) {
+                                        console.log(dictionaryKey);
+                                    });
+                            } else if(zikaEpidemics) {
+                                nodeLevel2.push({
+                                    name: value.name,
+                                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"zika\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                                });
+
+                                $.getJSON( ctx + '/resources/zika-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                    addDatsToDictionary(zikaDictionary, data, dictionaryKey);
+                                })
+                                    .error(function(data) {
+                                        console.log(dictionaryKey);
+                                    });
+                            } else if(infectiousDisease) {
+                                nodeLevel2.push({
+                                    name: value.name,
+                                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"infectiousDisease\",\"" + dictionaryKey + "\")'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b></span>"
+                                });
+
+                                $.getJSON( ctx + '/resources/infectious-disease-dats-json/' + dictionaryKey + '.json' + '?v=' + Date.now(), function( data ) {
+                                    addDatsToDictionary(infectiousDiseaseDictionary, data, dictionaryKey);
+                                })
+                                    .error(function(data) {
+                                        console.log(dictionaryKey);
+                                    });
+                            }
+
+                        } else {
+                            nodeLevel2.push({
+                                text: "<span onmouseover='toggleTitle(this)'>" + value.name + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> ",
+                                url: url + value.urn
+                            });
+                        }
+                    });
+                    if(index.includes("Zika") || index.includes("Chikungunya")) {
+                        index += " (under development)";
+                    }
+                    if(index.includes("H1n1 infectious disease scenarios"))
+                        index = "H1N1 infectious disease scenarios";
+                    nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>["+value.length+"]</span>", nodes: nodeLevel2});
+                });
+
+                collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1});
+            });
+        }
+
+        //collections.push(dataFormatsTree);
+        //collections.push(standardIdentifierTree);
+
+        $('#data-and-knowledge-treeview').treeview({
+            data: collections,
+            showBorder: false,
+
+            expandIcon: "glyphicon glyphicon-chevron-right",
+            collapseIcon: "glyphicon glyphicon-chevron-down",
         });
-    }
+        $('#data-and-knowledge-treeview').treeview('collapseAll', { silent: true });
+        $('#data-and-knowledge-treeview').on('nodeSelected', function(event, data) {
+            if(typeof data['nodes'] != undefined) {
+                $('#data-and-knowledge-treeview').treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
+            }
 
-    //collections.push(dataFormatsTree);
-    //collections.push(standardIdentifierTree);
+            var expandedDataAndKnowledge = $.parseJSON(sessionStorage.getItem("expandedDataAndKnowledge"));
 
-    return collections;
+            if(data.state.expanded) {
+                if(expandedDataAndKnowledge != null) {
+                    var index = expandedDataAndKnowledge.indexOf(data.nodeId);
+                    if (index > -1) {
+                        expandedDataAndKnowledge.splice(index, 1);
+                    }
+                }
+            } else {
+                if(expandedDataAndKnowledge != null) {
+                    var index = expandedDataAndKnowledge.indexOf(data.nodeId);
+                    if (index <= -1) {
+                        expandedDataAndKnowledge.push(data.nodeId);
+                    }
+                } else {
+                    expandedDataAndKnowledge = [];
+                    expandedDataAndKnowledge.push(data.nodeId);
+                }
+            }
+
+            sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
+
+            if(data.url != null && data.state.selected == true) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: data.url
+                });
+
+                var url  = data.url;
+                if(url.search("apolloLibraryViewer") > -1) {
+//                        if($.contains(data.url, "apolloLibraryViewer")) {
+                    $(location).attr('href', "${pageContext.request.contextPath}" + "/midas-sso/view?url=" + encodeURIComponent(data.url));
+                } else {
+                    $(location).attr('href', data.url);
+                }
+            }
+        });
+        var expandedDataAndKnowledge = $.parseJSON(sessionStorage.getItem("expandedDataAndKnowledge"));
+        var toRemove = [];
+
+        if(expandedDataAndKnowledge == null) {
+            var openByDefault = ["SPEW synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia", "Data formats", "Standard identifiers"];
+            var openByDefaultIds = [];
+            for(var i = 0; i < openByDefault.length; i++) {
+                var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {
+                    ignoreCase: false,     // case insensitive
+                    exactMatch: false,    // like or equals
+                    revealResults: false  // reveal matching nodes
+                }])[0];
+                $('#data-and-knowledge-treeview').treeview('clearSearch');
+
+                if(matchingNode != null) {
+                    openByDefaultIds.push(matchingNode.nodeId);
+                }
+            }
+
+            expandedDataAndKnowledge = openByDefaultIds;
+            sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(openByDefaultIds));
+        }
+
+        if(expandedDataAndKnowledge != null) {
+            for (var i = 0; i < expandedDataAndKnowledge.length; i++) {
+                try {
+                    $('#data-and-knowledge-treeview').treeview('expandNode', [expandedDataAndKnowledge[i], {silent: true}]);
+                } catch(err) {
+                    toRemove.push(i);
+                }
+            }
+
+            if(toRemove.length > 0) {
+                for(var i = 0; i < toRemove.length; i++) {
+                    expandedDataAndKnowledge.splice(toRemove[i], 1);
+                }
+
+                sessionStorage.setItem("expandedDataAndKnowledge", JSON.stringify(expandedDataAndKnowledge));
+            }
+        }
+    });
 }
 
 function openViewer(url) {
@@ -1012,7 +1231,7 @@ function openModal(type, name) {
             eventCategory: 'User Activity',
             eventAction: 'Web Services - ' + name
         });
-    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya" || type == "diseaseSurveillance" || type == "mortalityData" || type == "zika" || type == "infectiousDisease") {
+    } else if(type == 'syntheticEcosystems' || type == 'epidemics' || type == "syntheticPopulations" || type == "caseSeries" || type == "chikungunya" || type == "diseaseSurveillance" || type == "mortalityData" || type == "zika" || type == "infectiousDisease" || type == "tycho") {
         if(type == 'syntheticEcosystems') {
             attrs = syntheticEcosystemsDictionary[name];
 
@@ -1045,6 +1264,9 @@ function openModal(type, name) {
         } else if(type == 'infectiousDisease') {
             attrs = infectiousDiseaseDictionary[name];
             name = attrs['title'];
+        } else if(type == 'tycho') {
+            attrs = tychoDictionary[name];
+            name = attrs['title'];
         }
 
         $('#mdc-json').hide();
@@ -1054,7 +1276,6 @@ function openModal(type, name) {
     } else if(type == 'dataFormats'){
         attrs = dataFormatsDictionary[name];
         name = attrs['title'];
-
         $('#mdc-json').hide();
         $('#dats-json').show();
         $('#modal-switch-btn').show();
@@ -1147,7 +1368,7 @@ function openModal(type, name) {
         } else {
             $('#software-version-tag').text('Version:');
         }
-    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries" && type != "diseaseSurveillance" && type != "mortalityData" && type != "zika" && type != "infectiousDisease") {
+    } else if(type != 'syntheticEcosystems' && type != 'epidemics' && type != "syntheticPopulations" && type != "dataFormats" && type != "chikungunya" && type != "caseSeries" && type != "diseaseSurveillance" && type != "mortalityData" && type != "zika" && type != "infectiousDisease" && type != "tycho") {
         $('#software-version').text('N/A');
     } else {
         $('#software-version-container').hide();
@@ -1264,7 +1485,9 @@ function openModal(type, name) {
 
     toggleModalItem('humanReadableSpecification', attrs, 'human-readable-specification', true, false);
 
-    toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', false, false);
+    toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', true, false);
+
+    toggleModalItem('validator', attrs, 'validator', true, false);
 
     $('#pageModal').modal('show');
 
@@ -1320,9 +1543,11 @@ function toggleTitle(element) {
 
     if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
         $this.attr('title', $this.text());
+
     } else {
         $this.attr('title', '');
     }
+
 }
 
 function activeTab(tab) {
@@ -1401,6 +1626,10 @@ $('#commons-body').on('click', function (e) {
 });
 
 $(document).ready(function() {
+    if ($(window).width() < 768) {
+        $('.navbar-toggle').click();
+    }
+  
     if (location.hash) {
         $("a[href='" + location.hash + "']").tab("show");
 
@@ -1455,6 +1684,8 @@ $(document).ready(function() {
             });
         }
     });
+
+    $('#navbar-collapse').collapse('hide');
 });
 
 $(window).on("popstate", function() {
@@ -1506,44 +1737,10 @@ function getFormattedDate() {
 }
 
 function drawDiagram() {
-    /*var synthpop = $('input[name=synthpop]:checked').val();
-    var dtm = $('input[name=dtm]:checked').val();
 
-    var operationNum = 1;
-    var toParse = '';
-    if(synthpop == 'spew') {
-        toParse = 'op' + operationNum + '=>operation: SPEW:>\n';
-        operationNum++;
-
-        toParse += 'op' + operationNum + '=>operation: SPEW.US to Synthia.US translator\n';
-        operationNum++;
-    } else if(synthpop == 'synthia') {
-        toParse = 'op' + operationNum + '=>operation: Synthia:>\n';
-        operationNum++;
-    } else {
-        return;
-    }
-
-    if(dtm == 'pfred') {
-        toParse += 'op' + operationNum + '=>operation: pFRED DTM:>\n';
-        operationNum++;
-    } else if(dtm == 'flute') {
-        toParse += 'op' + operationNum + '=>operation: FluTE DTM:>\n';
-        operationNum++;
-    }
-
-    for(var i = 1; i < operationNum + 1; i++) {
-        toParse += 'op' + i;
-
-        if(i != operationNum) {
-            toParse += '->';
-        }
-    }
-
-    $('#workflow-diagram-label').text('Workflow Diagram');
-    $('#workflow-diagram').html('');
-    var diagram = flowchart.parse(toParse);
-    diagram.drawSVG('workflow-diagram');*/
+    $('#workflow-none-img').hide();
+    $('#workflow-spew-img').hide();
+    $('#workflow-synthia-img').hide();
 
     var synthpop = $('input[name=synthpop]:checked').val();
     var dtm = $('input[name=dtm]:checked').val();
@@ -1553,84 +1750,15 @@ function drawDiagram() {
     var formattedLocation = formatLocation(locationValues[0]);
     var locationCode = locationValues[1];
 
-    /*var toParse = '';
     if(synthpop == 'spew') {
-        toParse = 'cond=>condition: Population|popgreen\n' +
-            'op2=>operation: Synthia.US format\n'+
-            'op3=>operation: SPEW.US format|green\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator|green\n';
-
-        if(dtm == 'fred') {
-            toParse += 'op5=>operation: FRED DTM|green\n';
-        } else {
-            toParse += 'op5=>operation: FRED DTM\n';
-        }
-
-        toParse += 'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
-
+        $('#workflow-spew-img').show();
     } else if(synthpop == 'synthia') {
-        toParse = 'cond=>condition: Population|popgreen\n' +
-            'op2=>operation: Synthia.US format|green\n'+
-            'op3=>operation: SPEW.US format\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator\n';
-
-        if(dtm == 'fred') {
-            toParse += 'op5=>operation: FRED DTM|green\n';
-        } else {
-            toParse += 'op5=>operation: FRED DTM\n';
-        }
-
-        toParse += 'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
-
+        $('#workflow-synthia-img').show();
     } else {
-        toParse = 'cond=>condition: Population\n' +
-            'op2=>operation: Synthia.US format\n'+
-            'op3=>operation: SPEW.US format\n'+
-            'op4=>operation: SPEW.US to Synthia.US translator\n'+
-            'op5=>operation: FRED DTM\n'+
-            'cond(yes)->op3->op4->op5\n'+
-            'cond(no)->op2->op5\n';
+        $('#workflow-none-img').show();
     }
 
-    $('#workflow-diagram-label').text('Workflow Diagram');
-    $('#workflow-diagram').html('');
-
-    var diagram = flowchart.parse(toParse);
-    diagram.drawSVG('workflow-diagram', {
-        'x': 0,
-        'y': 0,
-        'line-width': 3,
-        'line-length': 50,
-        'text-margin': 10,
-        'font-size': 14,
-        'font-color': 'black',
-        'line-color': 'black',
-        'element-color': 'black',
-        'fill': 'white',
-        'yes-text': 'SPEW',
-        'no-text': 'Synthia',
-        'arrow-end': 'block',
-        'scale': 1,
-        'flowstate' : {
-            'dtm': {'yes-text' : 'SPEW', 'no-text' : 'Synthia'},
-            'popgreen': {'fill': 'lightgreen', 'yes-text' : 'SPEW', 'no-text' : 'Synthia'},
-            'green': {'fill': 'lightgreen'}
-        }
-    });*/
-
     if(locationCode != null && synthpop != null && dtm != null) {
-        /*jQuery.get(ctx + '/resources/lsdtm-script-example.txt', function(data) {
-            //$('#lsdtm-script').text(data);
-            $('#run-lsdtm-script').text(
-                'ssh <username>@olympus.psc.edu\n' +
-                '/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh spew_1.2.0_'
-                + locationCode);
-
-            $('#lsdtm-script-container').show();
-        });*/
-
         var username = "<username>";
         if(olympusUsername != null && olympusUsername.trim() != '') {
             username = olympusUsername;
@@ -1638,24 +1766,41 @@ function drawDiagram() {
 
         var outputDirectory = locationCode + "_" + dtm + "_" + getFormattedDate();
 
-        $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
+        if(synthpop == 'spew' ) {
+            $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory);
+        } else {
+            $('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p 2010_ver1_" + locationCode + " -o " + outputDirectory + " -e fred_populations/United_States_2010_ver1");
+        }
+        //$('#submit-lsdtm-script').text("/mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" + locationCode + " -o " + outputDirectory);
         $('#example-submit-lsdtm-script').text("-bash-4.2$ /mnt/lustre0/data/shared_group_data/syneco/spew2synthia/scripts/lsdtm.sh -p spew_1.2.0_" +
             locationCode + " -o /home/" + username + "/test\n557925.pbs.olympus.psc.edu");
 
         $('#status-lsdtm-script').text("qstat | grep " + username);
-        $('#example-status-lsdtm-script').text("-bash-4.2$ qstat | grep " + username + "\n557925.pbs.olympus.psc.edu ..._spew2synthia " + username + "        00:33:37 R batch");
+        $('#example-status-lsdtm-script').text("-bash-4.2$ qstat | grep " + username + "\n557925.pbs.olympus.psc.edu ...synthia-1.2.0 " + username + "        00:33:37 R batch");
 
         $('#view-output-lsdtm-script').text("ls " + outputDirectory);
-        $('#example-view-output-lsdtm-script').text("-bash-4.2$ ls /home/" + username + "/test\nfred_spew2synthia.e557925  fred_spew2synthia.o557925  OUT  params");
+        $('#example-view-output-lsdtm-script').text("-bash-4.2$ ls /home/" + username + "/test\nspew2synthia-1.2.0.e557925  spew2synthia-1.2.0.o557925  OUT  params");
 
-        $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/fred_spew2synthia.e######");
-        $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/fred_spew2synthia.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
+        if(synthpop == 'spew') {
+            $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/spew2synthia-1.2.0.e######");
+            $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/spew2synthia-1.2.0.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
 
-        $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/fred_spew2synthia.o######");
-        $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/fred_spew2synthia.o557925\n\nday 239 report population took 0.000115 seconds\n" +
-            "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
-            "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        } else {
+            $('#view-error-lsdtm-script').text("cat " + outputDirectory + "/United_States_2010_ver1.e######");
+            $('#example-view-error-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/United_States_2010_ver1.e557925\n\nThe following have been reloaded with a version change:\n1) gcc/4.8.3 => gcc/6.1.0");
+        }
 
+        if(synthpop == 'spew') {
+            $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/spew2synthia-1.2.0.o######");
+            $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/spew2synthia-1.2.0.o557925\n\nday 239 report population took 0.000115 seconds\n" +
+                "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
+                "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        } else {
+            $('#view-stdout-lsdtm-script').text("tail " + outputDirectory + "/United_States_2010_ver1.o######");
+            $('#example-view-stdout-lsdtm-script').text("-bash-4.2$ tail /home/" + username + "/United_States_2010_ver1.o557925\n\nday 239 report population took 0.000115 seconds\n" +
+                "day 239 maxrss 4068524\nday 239 finished Fri Apr  7 14:53:10 2017\nDAY_TIMER day 239 took 0.002799 seconds\n\n\n" +
+                "FRED simulation complete. Excluding initialization, 240 days took 0.493485 seconds\nFRED finished Fri Apr  7 14:53:10 2017\nFRED took 52.511174 seconds");
+        }
         $('#view-fred-out-lsdtm-script').text("cat " + outputDirectory + "/OUT/out1.txt");
         $('#example-view-fred-out-lsdtm-script').text("-bash-4.2$ cat /home/" + username + "/OUT/out1.txt\nDay 0 Date 2012-01-02 WkDay Tue C 10 College 0 Cs 0 E 10 GQ 0 I 0 Is 0 M 0" +
             "Military 0 N 2278377 Nursing_Home 0 P 10 Prison 0 R 0 S 2278367 Week 1 Year 2012 AR 0.00 ARs 0.00 RR 0.00\nDay 1 Date 2012-01-03 WkDay Wed C 0 College 0 Cs 1 E" +
@@ -1688,17 +1833,15 @@ function checkLocationSelect() {
         $("#synthpop-radios").children().each(function(index, child) {
             var text = $(child).text();
 
-            if(text != "Synthia") {
-                $(child).removeAttr("disabled");
-            }
+            $(child).removeAttr("disabled");
 
-            if(text == "SPEW") {
-                $(child).children().each(function(index, childsChild) {
-                    $(childsChild).removeAttr("disabled");
+            $(child).children().each(function(index, childsChild) {
+                $(childsChild).removeAttr("disabled");
+                /*if(text == "SPEW") {
                     $(childsChild).click();
-                });
-                drawDiagram();
-            }
+                }*/
+            });
+            drawDiagram();
         });
     } else {
         $("#synthpop-radios").children().each(function(index, child) {

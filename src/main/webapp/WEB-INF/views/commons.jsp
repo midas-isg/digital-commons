@@ -60,6 +60,7 @@
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Software</h3>
                     <div id="algorithm-treeview" class="treeview"></div>
+                    <div id="tycho-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
                     <h3 class="content-title-font">Datasets</h3>
@@ -198,20 +199,7 @@
             <div id="about" class="tab-pane fade">
                 <myTags:about></myTags:about>
             </div>
-            <c:forEach items="${dataAugmentedPublications}" var="pub" varStatus="loop">
-                <div id="publication-${pub.paper.id}-${pub.data.id}" class="tab-pane fade">
-                    <div class="col-md-12">
-                        <h3 class="title-font" id="subtitle">
-                            Data-augmented Publication
-                        </h3>
 
-                        <myTags:addDataAugmentedPublications publication="${pub.paper}"></myTags:addDataAugmentedPublications>
-                        <myTags:addDataAugmentedPublications publication="${pub.data}"></myTags:addDataAugmentedPublications>
-
-                        <button type="button" class="btn btn-default" onclick="activeTab('content')"><icon class="glyphicon glyphicon-chevron-left"></icon> Back</button>
-                    </div>
-                </div>
-            </c:forEach>
         </div>
     </div>
 
@@ -219,11 +207,11 @@
     <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
 
     <myTags:software software="${software}"></myTags:software>
-    <myTags:dataAugmentedPublications
-            dataAugmentedPublications="${dataAugmentedPublications}"></myTags:dataAugmentedPublications>
+
     <myTags:libraryViewerCollections libraryViewerUrl="${libraryViewerUrl}" libraryViewerToken="${libraryViewerToken}"
                                      spewRegions="${spewRegions}"></myTags:libraryViewerCollections>
     <myTags:webServices></myTags:webServices>
+    <%--<myTags:tycho></myTags:tycho>--%>
     <myTags:dataFormats></myTags:dataFormats>
     <myTags:standardIdentifiers></myTags:standardIdentifiers>
     <myTags:computePlatform></myTags:computePlatform>

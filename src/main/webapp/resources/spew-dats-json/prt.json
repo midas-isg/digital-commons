@@ -2,8 +2,8 @@
     "title": "Portugal Synthetic Ecosystem",
     "description": "Portugal synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574081",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000104",
-                "accessURL": "https://zenodo.org/api/files/ff43966e-2334-4113-aeb9-acd8e845b270/prt.tar.gz"
+                "accessURL": "https://zenodo.org/record/574081/files/prt.tar.gz"
             },
             "conformsTo": [
                 {

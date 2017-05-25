@@ -1,0 +1,376 @@
+{
+    "title": "Counts of people diagnosed with Smallpox in the United States as reported by public health surveillance from 1888-06-10 to 1952-12-13.",
+    "description": "Counts of people diagnosed with Smallpox for US states and/or cities as reported by multiple surveillance systems. These counts have been curated by the Project Tycho data team at the University of Pittsburgh.",
+    "identifier": {
+        "identifier": "TYCHO:US.67924001.v2",
+        "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
+    },
+    "creators": [
+        {
+            "firstName": "Wilbert",
+            "lastName": "van Panhuis",
+            "email": "wilbert.van.panhuis@pitt.edu"
+        },
+        {
+            "firstName": "John",
+            "lastName": "Grefenstette",
+            "email": ""
+        },
+        {
+            "firstName": "Su",
+            "lastName": "Jung",
+            "email": ""
+        },
+        {
+            "firstName": "Nian",
+            "lastName": "Chok",
+            "email": ""
+        },
+        {
+            "firstName": "Anne",
+            "lastName": "Cross",
+            "email": ""
+        },
+        {
+            "firstName": "Heather",
+            "lastName": "Eng",
+            "email": ""
+        },
+        {
+            "firstName": "Bruce",
+            "lastName": "Lee",
+            "email": ""
+        },
+        {
+            "firstName": "Vladimir",
+            "lastName": "Zadorozhny",
+            "email": ""
+        },
+        {
+            "firstName": "Shawn",
+            "lastName": "Brown",
+            "email": ""
+        },
+        {
+            "firstName": "Derek",
+            "lastName": "Cummings",
+            "email": ""
+        },
+        {
+            "firstName": "Donald",
+            "lastName": "Burke",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "disease surveillance data",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+            }
+        },
+        {
+            "method": {
+                "value": "disease surveillance",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Smallpox",
+            "identifier": {
+                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=67924001",
+                "identifierSource": "https://biosharing.org/bsg-s000098"
+            }
+        },
+        {
+            "name": "United States of America (the)",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "US",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "840",
+                    "identifierSource": "ISO 3166-1 numeric"
+                },
+                {
+                    "identifier": "USA",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                }
+            ]
+        }
+    ],
+    "hasPart": [
+        {
+            "title": "Counts of people diagnosed with Smallpox in United States of America (the) as reported by the United States Public Health Report between 1888-06-10 and 1951-12-01",
+            "creators": [
+                {
+                    "firstName": "Wilbert",
+                    "lastName": "van Panhuis",
+                    "email": "wilbert.van.panhuis@pitt.edu"
+                },
+                {
+                    "firstName": "John",
+                    "lastName": "Grefenstette",
+                    "email": ""
+                },
+                {
+                    "firstName": "Su",
+                    "lastName": "Jung",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nian",
+                    "lastName": "Chok",
+                    "email": ""
+                },
+                {
+                    "firstName": "Anne",
+                    "lastName": "Cross",
+                    "email": ""
+                },
+                {
+                    "firstName": "Heather",
+                    "lastName": "Eng",
+                    "email": ""
+                },
+                {
+                    "firstName": "Bruce",
+                    "lastName": "Lee",
+                    "email": ""
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Zadorozhny",
+                    "email": ""
+                },
+                {
+                    "firstName": "Shawn",
+                    "lastName": "Brown",
+                    "email": ""
+                },
+                {
+                    "firstName": "Derek",
+                    "lastName": "Cummings",
+                    "email": ""
+                },
+                {
+                    "firstName": "Donald",
+                    "lastName": "Burke",
+                    "email": ""
+                }
+            ],
+            "types": [
+                {
+                    "information": {
+                        "value": "disease surveillance data",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+                    }
+                },
+                {
+                    "method": {
+                        "value": "disease surveillance",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Counts of people diagnosed with Smallpox in the United States as reported by the United States Morbidity and Mortality Weekly Report between 1952-01-06 and 1952-12-13",
+            "creators": [
+                {
+                    "firstName": "Wilbert",
+                    "lastName": "van Panhuis",
+                    "email": "wilbert.van.panhuis@pitt.edu"
+                },
+                {
+                    "firstName": "John",
+                    "lastName": "Grefenstette",
+                    "email": ""
+                },
+                {
+                    "firstName": "Su",
+                    "lastName": "Jung",
+                    "email": ""
+                },
+                {
+                    "firstName": "Nian",
+                    "lastName": "Chok",
+                    "email": ""
+                },
+                {
+                    "firstName": "Anne",
+                    "lastName": "Cross",
+                    "email": ""
+                },
+                {
+                    "firstName": "Heather",
+                    "lastName": "Eng",
+                    "email": ""
+                },
+                {
+                    "firstName": "Bruce",
+                    "lastName": "Lee",
+                    "email": ""
+                },
+                {
+                    "firstName": "Vladimir",
+                    "lastName": "Zadorozhny",
+                    "email": ""
+                },
+                {
+                    "firstName": "Shawn",
+                    "lastName": "Brown",
+                    "email": ""
+                },
+                {
+                    "firstName": "Derek",
+                    "lastName": "Cummings",
+                    "email": ""
+                },
+                {
+                    "firstName": "Donald",
+                    "lastName": "Burke",
+                    "email": ""
+                }
+            ],
+            "types": [
+                {
+                    "information": {
+                        "value": "disease surveillance data",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+                    }
+                },
+                {
+                    "method": {
+                        "value": "disease surveillance",
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+                    }
+                }
+            ]
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "United States of America (the)",
+            "description": "United States of America (the), but may be incomplete for some areas",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "US",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "840",
+                    "identifierSource": "ISO 3166-1 numeric"
+                },
+                {
+                    "identifier": "USA",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "Project Tycho",
+        "location": {
+            "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15262, USA"
+        }
+    },
+    "distributions": [
+        {
+            "title": "CSV file of counts of people diagnosed with Smallpox in the United States as reported by public health surveillance",
+            "description": "Project Tycho downloadable CSV file for counts of people diagnosed with Smallpox, one file per surveillance system.",
+            "identifier": {
+                "identifier": "TYCHO:US.67924001.v2",
+                "identifierSource": "Project Tycho, Graduate School of Public Health, University of Pittsburgh"
+            },
+            "dates": [],
+            "access": {
+                "landingPage": "http://www.tycho.pitt.edu/",
+                "accessURL": "http://www.tycho.pitt.edu/data/US.67924001"
+            },
+            "formats": [
+                "csv"
+            ],
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "Project Tycho 2.0 format",
+                        "identifierSource": "Project Tycho"
+                    },
+                    "name": "Tycho 2.0 format",
+                    "type": {
+                        "value": "Tycho-determined variables in long CSV format",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "Project Tycho data repository",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": ""
+                },
+                "licenses": [
+                    {
+                        "name": "CREATIVE COMMONS PUBLIC LICENSE",
+                        "extraProperties": [
+                            {
+                                "category": "LicenseURL",
+                                "categoryIRI": "",
+                                "values": [
+                                    "https://www.tycho.pitt.edu/legal/license_agreement.html"
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": "2.0"
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ],
+    "acknowledges": [
+        {
+            "name": "Bill and Melinda Gates Foundation",
+            "identifier": {
+                "identifier": "Bill and Melinda Gates Foundation (Grant 49276, Evaluation of Candidate Vaccine Technologies Using Computational Models)",
+                "identifierSource": "https://www.vaccinemodeling.org/"
+            }
+        },
+        {
+            "name": "Project Tycho",
+            "identifier": {
+                "identifier": "US National Institute of General Medical Sciences (Grant 5U54GM088491, Computational Models of Infectious Disease Threats)",
+                "identifierSource": "https://midas.pitt.edu/"
+            }
+        },
+        {
+            "name": "Benter Foundation Pittsburgh",
+            "identifier": {
+                "identifier": "Benter Foundation Pittsburgh",
+                "identifierSource": "http://www.benterfoundation.com/"
+            }
+        }
+    ]
+}

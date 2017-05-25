@@ -73,6 +73,10 @@
                         form = formDocument.getElementsByTagName("form")[0];
                         XSD_FORM.makeReadable();
 
+                        formDocument.getElementsByTagName("");
+
+                        formDocument.getElementById("submit").classList.add("btn");
+                        formDocument.getElementById("submit").classList.add("btn-default");
                         formDocument.getElementById("submit").onclick = function() {
                             var xmlString;
 
@@ -107,7 +111,7 @@
 
                     dcOptions = document.getElementById("dc-options");
 
-                    for(i in typesList) {
+                    /*for(i in typesList) {
                         if(typesList.hasOwnProperty(i)){
                             option = document.createElement("option");
                             option.text = i.charAt(0).toUpperCase() + i.substring(1, i.length - 4);
@@ -120,7 +124,7 @@
 
                             dcOptions.add(option);
                         }
-                    }
+                    }*/
 
                     this.setAsLoaded();
                 }
@@ -134,22 +138,22 @@
                     i;
 
                 if(subtype.length > 0) {
-                    document.getElementById("entry-type").textContent =
-                        subtype.charAt(0).toUpperCase() + subtype.substr(1, subtype.length - (5));
+                    /*document.getElementById("entry-type").textContent =
+                        subtype.charAt(0).toUpperCase() + subtype.substr(1, subtype.length - (5));*/
 
                     if(subtypeOptions.getAttributeNode("hidden")) {
                         subtypeOptions.attributes.removeNamedItem("hidden");
                     }
 
-                    while(subtypeOptions.length > 0) {
+                    /*while(subtypeOptions.length > 0) {
                         subtypeOptions.remove(0);
-                    }
+                    }*/
 
                     option = document.createElement("option");
                     option.defaultSelected = true;
-                    option.text = "Please select entry type";
+                    /*option.text = "Please select entry type";
                     option.value = "";
-                    subtypeOptions.add(option);
+                    subtypeOptions.add(option);*/
 
                     for(i = 0; i < typesList[subtype].length; i++) {
                         option = document.createElement("option");
@@ -212,22 +216,42 @@
     <div id="add-entry-form-section" class="font-size-16">
         <form id="add-entry-form">
             <fieldset id="universal" class="form-group">
-                <legend><span id="entry-type">New</span> entry</legend>
+                <legend style="display:none"><span id="entry-type">New</span> entry</legend>
 
-                <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);">
-                    <option value="" selected>Please select entry type</option>
-                </select>
+                <!--<div>
+                    <label>Type</label>
+                    <select id="dc-options" required class="form-control" name="typeText" onchange="PAGE_MASTER.displaySubtypes(this.value);" style="margin-bottom: 5px;">
+                        <option value="" selected>Please select entry type</option>
+                    </select>
+                </div>-->
 
-                <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);">
-                </select>
+                <div style="margin-top:5px">
+                    <label>Type</label>
+                    <select id="subtype-options" required hidden class="form-control" name="typeText" onchange="PAGE_MASTER.displayForm(this.value);" style="margin-bottom: 5px;">
+                        <option></option>
+                    </select>
+                </div>
             </fieldset>
         </form>
         
-        <iframe id="form-frame" height="400px" style="width:100%;"></iframe>
-        <div id="email-result" class="alert" role="alert"></div>
+        <iframe id="form-frame" height="800px" style="width:100%; border: none"></iframe>
+        <div style="display:none" id="email-result" class="alert" role="alert"></div>
     </div>
 </div>
 
 <script>
     PAGE_MASTER.initialize();
+    PAGE_MASTER.displaySubtypes("dats.xsd");
+    PAGE_MASTER.displaySubtypes("software.xsd");
+
+    var opts = $("#subtype-options option");
+    var selected = $("#my_select").val();
+    opts.sort(function(a,b) {
+        if (a.text > b.text) return 1;
+        if (a.text < b.text) return -1;
+        return 0
+    });
+    $("#subtype-options").empty().append(opts);
+    $("#subtype-options").val(selected);
+
 </script>

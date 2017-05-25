@@ -652,3 +652,40 @@ label[disabled="disabled"]{
 .error-color {
     color:#a94442;
 }
+
+.frame {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    box-sizing: border-box;
+}
+.frame::-webkit-scrollbar {
+     display: none;
+ }
+
+
+
+.badge {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 2px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1;
+    color: black;
+    /*#0c2b65*/
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background: none;
+    border-radius: 10px;
+}
+
+.list-group-item>.badge {
+    float: none;
+}

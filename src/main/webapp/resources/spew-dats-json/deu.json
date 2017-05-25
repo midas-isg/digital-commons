@@ -2,8 +2,8 @@
     "title": "Germany Synthetic Ecosystem",
     "description": "Germany synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
     "identifier": {
-        "identifier": "",
-        "identifierSource": "n/a"
+        "identifier": "https://doi.org/10.5281/zenodo.574045",
+        "identifierSource": "zenodo"
     },
     "creators": [
         {
@@ -132,7 +132,7 @@
             ],
             "access": {
                 "landingPage": "http://w3id.org/spew/0000068",
-                "accessURL": "https://zenodo.org/api/files/1d6dcfeb-b784-4677-8139-840c7bb88b97/deu.tar.gz"
+                "accessURL": "https://zenodo.org/record/574045/files/deu.tar.gz"
             },
             "conformsTo": [
                 {
