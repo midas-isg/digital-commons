@@ -1,6 +1,8 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
 # About the MIDAS Digital Commons
 
- The primary purpose of the [MIDAS Digital Commons (MDC)](http://epimodels.org/apps/mdc) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order here).
+ The primary purpose of the [MIDAS Digital Commons (MDC)](http://epimodels.org/apps/mdc) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order [here](http://publications.onbc.io/#/)).
 
 At present, the MDC consists of (1) a collection of digital objects in the domain of infectious disease epidemiology (2) a compute platform for running experiments, and (3) a search function that makes the digital objects findable.
 
@@ -14,7 +16,7 @@ Visit the MIDAS Digital Commons by clicking [here](http://epimodels.org/apps/mdc
 
 ## Ontology
 
-The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it here.
+The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it [here](https://github.com/ApolloDev/apollo-sv/releases/tag/v3.0.1).
 
 
 ## Submission Guidelines
@@ -31,6 +33,8 @@ By using the MIDAS Digital Commons you agree that no warranties of any kind are 
 
 Please direct comments and questions to our development team at isg-feedback@list.pitt.edu.
 
+## License
+This is code licenced under the [GNU General Public License v3.0](https://raw.githubusercontent.com/midas-isg/digital-commons/master/LICENSE).
 ## Acknowledgements 
 <table border=0>
 <tr>
@@ -39,3 +43,5 @@ Please direct comments and questions to our development team at isg-feedback@lis
   <td width="375"><a href="http://www.jetbrains.com/idea/"><img src="https://github.com/ApolloDev/apollo/blob/wiki/img/logo_IntelliJIDEA.png" align="left" width="312" ></a></td>
 <tr>
 </table>
+
+
