@@ -1,6 +1,6 @@
 # About the MIDAS Digital Commons
 
-The primary purpose of the [MIDAS Digital Commons (MDC)](http://epimodels.org/apps/mdc) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order here).
+ The primary purpose of the [MIDAS Digital Commons (MDC)](http://epimodels.org/apps/mdc) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order here).
 
 At present, the MDC consists of (1) a collection of digital objects in the domain of infectious disease epidemiology (2) a compute platform for running experiments, and (3) a search function that makes the digital objects findable.
 
