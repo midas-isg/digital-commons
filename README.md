@@ -33,6 +33,8 @@ By using the MIDAS Digital Commons you agree that no warranties of any kind are 
 
 Please direct comments and questions to our development team at isg-feedback@list.pitt.edu.
 
+## License
+This is code licenced under the [GNU General Public License v3.0](https://raw.githubusercontent.com/midas-isg/digital-commons/master/LICENSE).
 ## Acknowledgements 
 <table border=0>
 <tr>
@@ -42,5 +44,4 @@ Please direct comments and questions to our development team at isg-feedback@lis
 <tr>
 </table>
 
-## License
-This is code licenced under the [GNU General Public License v3.0](https://raw.githubusercontent.com/midas-isg/digital-commons/master/LICENSE).
+
