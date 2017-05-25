@@ -192,6 +192,11 @@ function addDatsToDictionary(dictionary, data, code, type) {
                 dictionary[code]['humanReadableSpecification'] = property["values"][0]["value"];
             } else if(property["category"] == "machine-readable specification of data format") {
                 dictionary[code]['machineReadableSpecification'] = property["values"][0]["valueIRI"];
+            } else if(property["category"] == "validator") {
+                var val = property['values'][0]['value'];
+                if(val != '') {
+                    dictionary[code]['validator'] = val;
+                }
             }
         }
     } else if(type != 'dataStandard') {
@@ -1481,6 +1486,8 @@ function openModal(type, name) {
     toggleModalItem('humanReadableSpecification', attrs, 'human-readable-specification', true, false);
 
     toggleModalItem('machineReadableSpecification', attrs, 'machine-readable-specification', true, false);
+
+    toggleModalItem('validator', attrs, 'validator', true, false);
 
     $('#pageModal').modal('show');
 

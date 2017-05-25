@@ -31,7 +31,7 @@
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "",
+                    "value": "https://github.com/nexusformat/cnxvalidate",
                     "valueIRI": ""
                 }
             ]

@@ -14,7 +14,7 @@
             "name": "No License Specified."
         }
     ],
-    "version": "FASTA",
+    "version": "",
     "extraProperties": [
         {
             "category": "human-readable specification of data format",
@@ -31,7 +31,7 @@
             "categoryIRI": "",
             "values": [
                 {
-                    "value": "",
+                    "value": "http://www.async.ece.utah.edu/sbol-validator/",
                     "valueIRI": ""
                 }
             ]
