@@ -1,13 +1,31 @@
-# MIDAS Digital Commons
+# About the MIDAS Digital Commons
 
-## What you'll need
-- JDK 1.8 or later
-- Maven 3 or later
-- jdbc:postgresql://localhost:5432/digital??currentSchema=dev
+The primary purpose of the MIDAS Digital Commons (MDC) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order here).
 
-## Stack
-- Spring Boot
-- Java
+At present, the MDC consists of (1) a collection of digital objects in the domain of infectious disease epidemiology (2) a compute platform for running experiments, and (3) a search function that makes the digital objects findable.
 
-## Run
-`mvn spring-boot:run` or deploy the war file in tomcat.
+The digital objects include software, datasets, and data formats.
+
+The compute platform hosts programming languages and other software tools and some of the digital objects (e.g., disease transmission models and synthetic ecosystems). The locally hosted digital objects are labelled AOC (Available on the Olympus Cluster). Other digital objects are hosted remotely (i.e., they are virtual w.r.t. this digital commons).
+
+We intend that all digital objects conform to FAIR (Findable, Accessible, Interoperable, Reusable) guidelines. To make datasets interoperable, we represent them whenever possible in Apollo-XSD syntax and label them as being AE (Apollo-Encoded) in the MDC.
+
+## Ontology
+
+The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it here.
+
+
+## Submission Guidelines
+
+If you have any digital objects that you'd like to submit to the commons, please contact Mike Wagner via email at mmw1@pitt.edu.
+
+## Funding
+
+The MIDAS Digital Commons is funded by the National Institutes of Health (NIGMS) program for Models of Infectious Disease Agent Study (MIDAS) grant U24GM110707.
+
+## Disclaimer
+
+By using the MIDAS Digital Commons you agree that no warranties of any kind are made by the University of Pittsburgh (University) with respect to the data provided in the MIDAS Digital Commons or any use thereof, and the University hereby disclaim the implied warranties of merchantability, fitness for a particular purpose and non-infringement. The University shall not be liable for any claims, losses or damages of any kind arising from the data provided in the MIDAS Digital Commons or any use thereof.
+
+Please direct comments and questions to our development team at isg-feedback@list.pitt.edu.
+
