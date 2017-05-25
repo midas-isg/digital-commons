@@ -1,3 +1,5 @@
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+
 # About the MIDAS Digital Commons
 
  The primary purpose of the [MIDAS Digital Commons (MDC)](http://epimodels.org/apps/mdc) is to support infectious disease epidemiologists who are developing computational models of biological phenomena. The scope of the MDC is primarily defined by the past and present research of the MIDAS research network as reflected in its 1000+ publications (listed and linked to in reverse chronologic order here).
