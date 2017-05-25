@@ -1,5 +1,4 @@
 <div style="text-align:center"><img src ="https://github.com/midas-isg/digital-commons/raw/master/logo.png" /></div>
-![MIDAS logo]()
 
 # About the MIDAS Digital Commons
 
