@@ -16,7 +16,7 @@ Visit the MIDAS Digital Commons by clicking [here](http://epimodels.org/apps/mdc
 
 ## Ontology
 
-The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it here.
+The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it [here](https://github.com/ApolloDev/apollo-sv/releases/tag/v3.0.1).
 
 
 ## Submission Guidelines
