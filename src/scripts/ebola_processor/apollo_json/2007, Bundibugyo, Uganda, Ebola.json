@@ -1,0 +1,454 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/14",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/14.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "565995"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2007-08-20 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "2007-12-26 00:00:00 +0000",
+    "endDateDefinition" : "SYMPTOM_ONSET_LAST_CASE"
+  },
+  "administrativeLocations" : [ "41" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "565995"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "565995"
+      },
+      "incubationPeriod" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.UncertainDuration",
+        "unitOfTime" : "DAY",
+        "referenceId" : 2,
+        "uncertainValue" : {
+          "median" : 7.0,
+          "minimumValue" : 2.0,
+          "maximumValue" : 20.0,
+          "sampleSize" : 11
+        }
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.32
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Village health teams conducted active searches in the communities through daily door-to-door visits",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ {
+      "timeScale" : "EPIDEMIC_TIME_SCALE",
+      "timeSinceTimeScaleZero" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "value" : 79.0
+      }
+    } ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Countrywide social mobilization and health education",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "All case-patients were treated in isolation wards",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Suspect EHF case",
+    "investigationDefinition" : "A suspect EHF case was defined as the occurrence of 1 of the following in a resident of or visitor to Bundibugyo District after 1 August 2007: (1) sudden onset of fever, plus at least 4 of the following signs or symptoms: vomiting, diarrhea, abdominal pain, conjunctivitis, skin rash, unexplained bleeding from any site, muscle pain, intense, fatigue, difficulty swallowing, difficulty breathing, hiccups, headache; or (2) sudden onset of fever, plus history of contact with a suspect, probable, or confirmed EHF case; or (3) any sudden, unexplained death."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable EHF case",
+    "investigationDefinition" : "A probable EHF case was defined as an individual meeting the suspect case definition, with a history of contact with a probable or confirmed EHF case in the 3 weeks prior to development of signs and symptoms, plus at least 3 of the following signs or symptoms: vomiting, diarrhea, unexplained bleeding, conjunctivitis, or skin rash."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Confirmed case",
+    "investigationDefinition" : "A confirmed case was defined as a suspect or probable case with laboratory confirmation of infection."
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "SUSPECTED_CASE", "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 131,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "SUSPECTED_CASE", "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 42,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Classification of cases investigated during the Ebola hemorrhagic fever outbreak response, Bundibugyo District, Uganda, 2007 (Figure 1 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Case Fatality Rates Among Ebola Hemorrhagic Fever (Suspect, Probable, or Confirmed) and Illnesses Ruled as Not a Case of Ebola Hemorrhagic Fever Among Illnesses Investigated During the Bundibugyo Outbreak Response (Table 1 in reference)",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "SUSPECTED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-08-20 00:00:00 +0000",
+              "lastDay" : "2007-08-26 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-08-27 00:00:00 +0000",
+              "lastDay" : "2007-09-02 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-09-03 00:00:00 +0000",
+              "lastDay" : "2007-09-09 00:00:00 +0000"
+            },
+            "value" : 6,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-09-10 00:00:00 +0000",
+              "lastDay" : "2007-09-16 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-09-17 00:00:00 +0000",
+              "lastDay" : "2007-09-23 00:00:00 +0000"
+            },
+            "value" : 5,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-09-24 00:00:00 +0000",
+              "lastDay" : "2007-09-30 00:00:00 +0000"
+            },
+            "value" : 6,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-10-01 00:00:00 +0000",
+              "lastDay" : "2007-10-07 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-10-08 00:00:00 +0000",
+              "lastDay" : "2007-10-14 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-10-15 00:00:00 +0000",
+              "lastDay" : "2007-10-21 00:00:00 +0000"
+            },
+            "value" : 4,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-10-22 00:00:00 +0000",
+              "lastDay" : "2007-10-28 00:00:00 +0000"
+            },
+            "value" : 11,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-10-29 00:00:00 +0000",
+              "lastDay" : "2007-11-04 00:00:00 +0000"
+            },
+            "value" : 10,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-11-05 00:00:00 +0000",
+              "lastDay" : "2007-11-11 00:00:00 +0000"
+            },
+            "value" : 7,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-11-12 00:00:00 +0000",
+              "lastDay" : "2007-11-18 00:00:00 +0000"
+            },
+            "value" : 8,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-11-19 00:00:00 +0000",
+              "lastDay" : "2007-11-25 00:00:00 +0000"
+            },
+            "value" : 6,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-11-26 00:00:00 +0000",
+              "lastDay" : "2007-12-02 00:00:00 +0000"
+            },
+            "value" : 30,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-12-03 00:00:00 +0000",
+              "lastDay" : "2007-12-09 00:00:00 +0000"
+            },
+            "value" : 7,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-12-10 00:00:00 +0000",
+              "lastDay" : "2007-12-16 00:00:00 +0000"
+            },
+            "value" : 7,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2007-12-24 00:00:00 +0000",
+              "lastDay" : "2007-12-30 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          } ]
+        },
+        "nvariables" : 1
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Distribution of suspect, probable, and confirmed Ebola hemorrhagic fever cases, based on the date of onset of symptoms, Bundibugyo District, Uganda, 2007. EHF, Ebola hemorrhagic fever. Date of onset of symptoms of the individual associated with a large cluster of transmission events is shown in red. Date of onset of secondary cases and tertiary cases from this individual are shown in green and blue, respectively (Figure 2 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    } ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Filovirus Outbreak Detection and Surveillance:Lessons From Bundibugyo",
+    "publication" : "Bulletin of the World Health Organization, 56 (2): 271-293 (2011)",
+    "url" : "http://www.cdc.gov/vhf/ebola/pdf/Ref26_MacNeil_et_al_Filovirus_outbreak_detection_and_surveillance%20JInfectDis2011-204-S761.pdf",
+    "pubMedId" : 307456
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "",
+    "publication" : "J Infect Dis. 2011 Nov;204 Suppl 3:S761-7",
+    "url" : "http://jid.oxfordjournals.org/content/204/suppl_3/S761.long",
+    "pubMedId" : 21987748
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Ebola hemorrhagic fever associated with novel virus strain, Uganda, 2007-2008",
+    "authors" : "Wamala JF, Lukwago L, Malimbo M, Nguku P, Yoti Z, Musenero M, Amone J, Mbabazi W, Nanyunja M, Zaramba S, Opio A, Lutwama JJ, Talisuna AO,Okware SI",
+    "publication" : "Emerg Infect Dis. 2010 Jul;16(7):1087-92. doi: 10.3201/eid1607.091525",
+    "url" : "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3321896/",
+    "pubMedId" : 20587179
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on 2014-09-21", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "M Wagner 2014-09-22" ],
+  "acknowledgements" : [ ]
+}

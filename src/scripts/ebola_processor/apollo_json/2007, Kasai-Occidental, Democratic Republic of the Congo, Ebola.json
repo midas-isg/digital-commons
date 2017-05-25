@@ -1,0 +1,146 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/13",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/13.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "186538"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2007-06-12 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "2007-09-29 00:00:00 +0000",
+    "endDateDefinition" : "SYMPTOM_ONSET_LAST_CASE"
+  },
+  "administrativeLocations" : [ "274", "275" ],
+  "epidemicZones" : [ "85168" ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "186538"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "186538"
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.25
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9398",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Confirmed case",
+    "investigationDefinition" : "Not reported"
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "SUSPECTED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 149,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 1
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "SUSPECTED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 37,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 1
+    },
+    "otherCaseCounts" : [ ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Human Ebola Outbreak Resulting from Direct Exposure to Fruit Bats in Luebo, Democratic Republic of Congo, 2007",
+    "publication" : "Vector-Borne and Zoonotic Diseases",
+    "url" : "http://online.liebertpub.com/doi/abs/10.1089/vbz.2008.0167",
+    "pubMedId" : 19323614
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "2007: Ebola Hemorrhagic Fever Outbreak in the Democratic Republic of Congo (DRC)",
+    "publication" : "Centers for Disease Control and Prevention",
+    "url" : "http://www.cdc.gov/vhf/ebola/outbreaks/history/summaries.html"
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on 10-03-2014", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ ],
+  "acknowledgements" : [ ]
+}

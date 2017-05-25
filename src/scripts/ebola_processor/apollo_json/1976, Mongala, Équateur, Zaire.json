@@ -1,0 +1,1457 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/1",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/1.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "129000"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "1976-09-01 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "1976-10-24 00:00:00 +0000",
+    "endDateDefinition" : "DEATH_OF_LAST_CASE"
+  },
+  "administrativeLocations" : [ "4921" ],
+  "epidemicZones" : [ "85128" ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "129000"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "129000"
+      },
+      "incubationPeriod" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "referenceId" : 0,
+        "value" : 6.3
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.88
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromContaminatedAbioticThing",
+      "contaminatedAbioticThing" : "SYRINGE",
+      "transmissionProbability" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter"
+      }
+    } ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "4898",
+    "numberOfPeople" : 275000,
+    "additionalDescription" : "Major ethnic group:  Budza; Age distribution  50% < 15 years; Rural fraction >3/4; Village size <500 usually; Ecosystem type:  mostly tropical rainforest",
+    "subLocationCensuses" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+      "nameOfAdministrativeUnit" : "85128",
+      "numberOfPeople" : 415,
+      "numberOfHouseholds" : 71,
+      "subLocationCensuses" : [ ]
+    } ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Rattus rattus",
+    "speciesSampledNcbiTaxonId" : "10117",
+    "numberSampled" : 30,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Cimex hemipterus",
+    "speciesSampledNcbiTaxonId" : "757355",
+    "numberSampled" : 818,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Culex cinereus",
+    "speciesSampledNcbiTaxonId" : "667563",
+    "numberSampled" : 8,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Culex pipiens",
+    "speciesSampledNcbiTaxonId" : "7175",
+    "numberSampled" : 2,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Mansonia africana",
+    "speciesSampledNcbiTaxonId" : "667564",
+    "numberSampled" : 5,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Sus scrofa domesticus",
+    "speciesSampledNcbiTaxonId" : "9825",
+    "numberSampled" : 10,
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Bos taurus",
+    "speciesSampledNcbiTaxonId" : "9913",
+    "numberSampled" : 1,
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Chiroptera",
+    "speciesSampledNcbiTaxonId" : "9397",
+    "numberSampled" : 7,
+    "whereSampled" : "infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Praomys",
+    "speciesSampledNcbiTaxonId" : "10111",
+    "numberSampled" : 69,
+    "whereSampled" : "forests around infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Rodentia",
+    "speciesSampledNcbiTaxonId" : "9989",
+    "numberSampled" : 54,
+    "whereSampled" : "forests around infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Cercopithecus",
+    "speciesSampledNcbiTaxonId" : "9533",
+    "numberSampled" : 6,
+    "whereSampled" : "forests around infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Philantomba monticola",
+    "speciesSampledNcbiTaxonId" : "907742",
+    "numberSampled" : 2,
+    "whereSampled" : "forests around infected villages",
+    "testName" : "Vero cell culture for Ebolavirus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 0
+  } ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "The Catholic Mission health facility was shut down on October 3, 1976",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ {
+      "timeScale" : "EPIDEMIC_TIME_SCALE",
+      "timeSinceTimeScaleZero" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "value" : 33.0
+      }
+    } ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Medical staff of a ward of Kinhahsa hospital were quarantined",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Primary contacts were quarantined",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "isolation of patients, safe disposal of potentially contaminated articles and disposable clothing, plus high-efficiency respirators and goggles were the principal means employed to prevent contact infection.  Sodium hypochlorite (2%) boiling, or burning were the methods used to decontaminate or dispose of potentially infectious excreta, utensils, and clothing; cadavers were wrapped in shrouds soaked in formalin or phenol and buried deeply.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Possible case",
+    "investigationDefinition" : "A person with headache and/or fever for at least 24 hours, with or without other signs and symptoms, who had contact with a probable or a proven case within the previous three weeks"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "A person living in the apolloObject area who died after one or more days with two or more of the following symptoms and signs: headache, fever, abdominal pain, nausea and/or vomiting, and bleeding. The patient must have, within the three preceding weeks, received an injection or had contact with a probable or a proven case, the illness or having been otherwise diagnosed on clinical grounds."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Proven case",
+    "investigationDefinition" : "A person from whom Ebola was isolated or demonstrated by electron microscopy or who had indirect fluorescent antibody (IFA) titre of Ebolavirus within 3 weeks after onset of symptoms."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "NEONATAL_CASE",
+    "investigationLabel" : "Neonatal case",
+    "investigationDefinition" : "Infants born to patients who are probable cases if they had died within 28 days of childbirth"
+  } ],
+  "contactDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ContactDefinition",
+    "apolloLabel" : "PRIMARY_CONTACT",
+    "investigationLabel" : "Primary contact",
+    "investigationDefinition" : "a person having direct face-to-face contact with a probable or a proven case (sleeping in same room, sharing meals, caring for patients, preparing a cadaver for burial, touching the body at a funder, etc.) in the period between two days prior to onset of symptoms and the death or clinical recovery of the patient."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ContactDefinition",
+    "apolloLabel" : "SECONDARY_CONTACT",
+    "investigationLabel" : "a person having face-to-face contact with a primary contact"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ContactDefinition",
+    "apolloLabel" : "ASSISTED_CHILDBIRTH_OF_INFECTED_MOTHER",
+    "investigationLabel" : "Aided in delivery of child of sick patient",
+    "investigationDefinition" : "Aided in delivery of child of case"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ContactDefinition",
+    "apolloLabel" : "PARENTERAL_INJECTION",
+    "investigationLabel" : "Parenteral injection",
+    "investigationDefinition" : "not defined"
+  } ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 318,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 280,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "New Cases per 3-days by Probable Route of Transmission",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-01 00:00:00 +0000",
+              "lastDay" : "1976-09-03 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 2,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-04 00:00:00 +0000",
+              "lastDay" : "1976-09-06 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-07 00:00:00 +0000",
+              "lastDay" : "1976-09-09 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 4,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 8,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-10 00:00:00 +0000",
+              "lastDay" : "1976-09-12 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 6,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 15,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-13 00:00:00 +0000",
+              "lastDay" : "1976-09-15 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 14,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 13,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-16 00:00:00 +0000",
+              "lastDay" : "1976-09-18 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 7,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 10,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-19 00:00:00 +0000",
+              "lastDay" : "1976-09-21 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 9,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 14,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 2,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-22 00:00:00 +0000",
+              "lastDay" : "1976-09-24 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 26,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 18,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 2,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-25 00:00:00 +0000",
+              "lastDay" : "1976-09-27 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 19,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-09-28 00:00:00 +0000",
+              "lastDay" : "1976-09-30 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 11,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-01 00:00:00 +0000",
+              "lastDay" : "1976-10-03 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 12,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-04 00:00:00 +0000",
+              "lastDay" : "1976-10-06 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 15,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 2,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-07 00:00:00 +0000",
+              "lastDay" : "1976-10-09 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 8,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-10 00:00:00 +0000",
+              "lastDay" : "1976-10-12 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 11,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-13 00:00:00 +0000",
+              "lastDay" : "1976-10-15 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-16 00:00:00 +0000",
+              "lastDay" : "1976-10-18 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-19 00:00:00 +0000",
+              "lastDay" : "1976-10-21 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1976-10-22 00:00:00 +0000",
+              "lastDay" : "1976-10-24 00:00:00 +0000"
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SOURCE_OF_INFECTION",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "INFECTIOUS_HOST"
+                },
+                "value" : 1,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "SYRINGE"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sourceOfInfection" : "EITHER_SYRINGE_OR_INFECTIOUS_HOST"
+                },
+                "value" : 0,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          } ]
+        },
+        "nvariables" : 2
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Distribution of numbers of cases in villages (Table 2 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Age and sex distribution of cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "AGE_RANGE",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "unitOfTimeForLowerBound" : "MONTH",
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 0.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 12.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 10,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 14,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "unitOfTimeForLowerBound" : "YEAR",
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 1.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 14.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 18,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 22,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "unitOfTimeForLowerBound" : "YEAR",
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 15.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 29.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 15,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 29,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "unitOfTimeForLowerBound" : "YEAR",
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 30.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 49.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 30,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 49,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "unitOfTimeForLowerBound" : "YEAR",
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 50.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 99.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 23,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 26,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "lowerBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundary" : 99999.0,
+                "finiteBoundaryType" : "INCLUSIVE"
+              },
+              "upperBound" : {
+                "class" : "edu.pitt.apollo.types.v4_0_1.Bound",
+                "finiteBoundaryType" : "INCLUSIVE"
+              }
+            },
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "name" : "SEX",
+              "categories" : [ {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "M"
+                },
+                "value" : 2,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              }, {
+                "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+                "categoryDefinition" : {
+                  "sex" : "F"
+                },
+                "value" : 3,
+                "nextCategoricalVariable" : {
+                  "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+                  "categories" : [ ]
+                }
+              } ]
+            }
+          } ]
+        },
+        "nvariables" : 2
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Factors associated with person-to-person spread for cases, family controls; and village controls (Table 5 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Ebola virus IFA antibodies among residents of the apolloObject area by age group, sex, and exposure status (Table 7 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Percentage of symptoms and signs in fatal cases of Ebola haemorrhagic fever, in persons with IFA antibodies, and in controls (Table 9 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Bleeding manifestations in patients with Ebola haemorrhagic fever (Table 10 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    } ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Ebola haemorrhagic fever in Zaire, 1976  Report of an International Commission",
+    "publication" : "Bull World Health Organ. 56 (2): 271-293 (1978)",
+    "url" : "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2395567/",
+    "pubMedId" : 307456
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "A comparative study of strains of Ebola virus isolated from southern Sudan and northern Zaire in 1976",
+    "publication" : "J Med Virol. 1980;6(2):129-38",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/6165800",
+    "pubMedId" : 6165800
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Biologic Differences Between Strains of Ebola Virus from Zaire and Sudan",
+    "publication" : "J Infect Dis. (1983) 147 (2): 264-267.  doi: 10.1093/infdis/147.2.264",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/6165800",
+    "pubMedId" : 6827142
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 3,
+    "title" : "The epidemiology of Ebola Haemorrhagic Fever in Zaire, 1976",
+    "publication" : "Unknown conference proceedings",
+    "url" : "http://www.itg.be/internet/ebola/ebola-24.htm"
+  } ],
+  "curator" : "Mike Wagner",
+  "editHistory" : [ "created on 09-29-2014", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "V Dato 2014-10-20" ],
+  "acknowledgements" : [ ]
+}

@@ -1,0 +1,642 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/19",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/19.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "128947"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "1996-01-31 00:00:00 +0000",
+    "endDate" : "1996-03-04 00:00:00 +0000"
+  },
+  "administrativeLocations" : [ "157" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "128947"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "128947"
+      },
+      "incubationPeriod" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.UncertainDuration",
+        "unitOfTime" : "DAY",
+        "referenceId" : 0,
+        "uncertainValue" : {
+          "minimumValue" : 6.0,
+          "maximumValue" : 11.0
+        }
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.677
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromContaminatedAbioticThing",
+      "contaminatedAbioticThing" : "BUSH_MEAT",
+      "transmissionProbability" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter"
+      }
+    } ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 10,
+    "whereSampled" : "Mayibout 1",
+    "testName" : "ELISA for IGG Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "3",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 10,
+    "whereSampled" : "Mayibout 1",
+    "testName" : "ELISA for IGM Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "1",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 175,
+    "whereSampled" : "Mayibout 2",
+    "testName" : "ELISA for IGG Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "26",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 10,
+    "whereSampled" : "Mayibout 2",
+    "testName" : "ELISA for IGM Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "1",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 20,
+    "whereSampled" : "Mavadi",
+    "testName" : "ELISA for IGG Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "5",
+    "referenceId" : 0
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 20,
+    "whereSampled" : "Mavadi",
+    "testName" : "ELISA for IGM Ebola virus antibody",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "2",
+    "referenceId" : 0
+  } ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "All equipment and material necessary for barrier nursing and prevention of the spread of disease were provided",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Possible case",
+    "investigationDefinition" : "a person with headache and/or fever for at least 24 hours, with or without other signs and symptoms, who had contact with a probable or a proven case within the previous three weeks",
+    "referenceId" : 2
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "a person living in the apolloObject area who died after one or more days with two or more of the following symptoms and signs: headache, fever, abdominal pain, nausea and/or vomiting, and bleeding. The patient must have, within the three preceding weeks, received an injection or had contact with a probable or a proven case, the illness or having been otherwise diagnosed on clinical grounds.",
+    "referenceId" : 2
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Proven case",
+    "investigationDefinition" : "A person from whom Ebola was isolated or demonstrated by electron microscopy or who had indirect fluorescent antibody (IFA) titre of Ebolavirus within 3 weeks after onset of symptoms.",
+    "referenceId" : 2
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 31,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal Cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 21,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "New Cases per Day",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-01-31 00:00:00 +0000",
+              "lastDay" : "1996-01-31 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-01 00:00:00 +0000",
+              "lastDay" : "1996-02-01 00:00:00 +0000"
+            },
+            "value" : 7,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-02 00:00:00 +0000",
+              "lastDay" : "1996-02-02 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-03 00:00:00 +0000",
+              "lastDay" : "1996-02-03 00:00:00 +0000"
+            },
+            "value" : 8,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-04 00:00:00 +0000",
+              "lastDay" : "1996-02-04 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-05 00:00:00 +0000",
+              "lastDay" : "1996-02-05 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-06 00:00:00 +0000",
+              "lastDay" : "1996-02-06 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-07 00:00:00 +0000",
+              "lastDay" : "1996-02-07 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-08 00:00:00 +0000",
+              "lastDay" : "1996-02-08 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-09 00:00:00 +0000",
+              "lastDay" : "1996-02-09 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-10 00:00:00 +0000",
+              "lastDay" : "1996-02-10 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-11 00:00:00 +0000",
+              "lastDay" : "1996-02-11 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-12 00:00:00 +0000",
+              "lastDay" : "1996-02-12 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-13 00:00:00 +0000",
+              "lastDay" : "1996-02-13 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-14 00:00:00 +0000",
+              "lastDay" : "1996-02-14 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-15 00:00:00 +0000",
+              "lastDay" : "1996-02-15 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-16 00:00:00 +0000",
+              "lastDay" : "1996-02-16 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-17 00:00:00 +0000",
+              "lastDay" : "1996-02-17 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-18 00:00:00 +0000",
+              "lastDay" : "1996-02-18 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-19 00:00:00 +0000",
+              "lastDay" : "1996-02-19 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-20 00:00:00 +0000",
+              "lastDay" : "1996-02-20 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-21 00:00:00 +0000",
+              "lastDay" : "1996-02-21 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-22 00:00:00 +0000",
+              "lastDay" : "1996-02-22 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-23 00:00:00 +0000",
+              "lastDay" : "1996-02-23 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-24 00:00:00 +0000",
+              "lastDay" : "1996-02-24 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-25 00:00:00 +0000",
+              "lastDay" : "1996-02-25 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-26 00:00:00 +0000",
+              "lastDay" : "1996-02-26 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-27 00:00:00 +0000",
+              "lastDay" : "1996-02-27 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-02-28 00:00:00 +0000",
+              "lastDay" : "1996-02-28 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-03-01 00:00:00 +0000",
+              "lastDay" : "1996-03-01 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-03-02 00:00:00 +0000",
+              "lastDay" : "1996-03-02 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-03-03 00:00:00 +0000",
+              "lastDay" : "1996-03-03 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1996-03-04 00:00:00 +0000",
+              "lastDay" : "1996-03-04 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          } ]
+        },
+        "nvariables" : 1
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Evolution of spring 1996 Ebola virus apolloObject in Gabon. A, Evolution of apolloObject by mortality rate. Curve shows monophasic evolution of apolloObject limited to small no. of secondary cases who spread virus. B, Geographic evolution of apolloObject. Not included is case who died on 19 February 1996 and who had different infection not related to Ebola virus since 20 January 1996. Hop = hospital (Figure 3 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    } ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Ebola Hemorrhagic Fever Outbreaks in Gabon, 1994-1997: Epidemiologic and Health Control Issues",
+    "authors" : "Georges et al",
+    "publication" : "J Infect Dis. (1999) 179 (Supplement 1): S65-S75. doi: 10.1086/514290",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S65.long",
+    "pubMedId" : 9988167
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Human asymptomatic Ebola infection and strong inflammatory response",
+    "authors" : "Leroy et al",
+    "publication" : "Lancet. 2000 Jun 24;355(9222):2210-5",
+    "url" : "http://www.sciencedirect.com/science/article/pii/S0140673600024053",
+    "pubMedId" : 10881895
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Ebola haemorrhagic fever in Zaire, 1976  Report of an International Commission",
+    "publication" : "Bulletin of the World Health Organization, 56 (2): 271-293 (1978)",
+    "url" : "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2395567/",
+    "pubMedId" : 307456
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on 2014-09-20", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "M Wagner. 2014-10-19" ],
+  "acknowledgements" : [ ]
+}

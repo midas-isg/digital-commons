@@ -1,0 +1,170 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/16",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/16.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "186540"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2012-07-26 00:00:00 +0000",
+    "startDateDefinition" : "FIRST_LAB_CASE_CONFIRMATION",
+    "endDate" : "2012-08-03 00:00:00 +0000",
+    "endDateDefinition" : "LAST_LAB_CASE_CONFIRMATION"
+  },
+  "administrativeLocations" : [ "55" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "186540"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "186540"
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.71
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "55",
+    "numberOfPeople" : 646500,
+    "subLocationCensuses" : [ ],
+    "referenceId" : 3
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "All possible contacts who were exposed to suspected or confirmed cases since 6 July 2012 are being identified for active follow up",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Kibaale hospital has established a temporary isolation ward for suspected, probable and confirmed cases.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Proven case",
+    "investigationDefinition" : "Laboratory confirmation. Tests included antigen capture, IgM ELISA, and/or qRT-PCR"
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 24,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 2
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 17,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 2
+    },
+    "otherCaseCounts" : [ ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Genomic analysis of filoviruses associated with four viral hemorrhagic fever outbreaks in Uganda and the Democratic Republic of the Congo in 2012",
+    "publication" : "Virology. 2013 Aug 1;442(2):97-100. doi: 10.1016/j.virol.2013.04.014. Epub 2013 May 25",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/23711383",
+    "pubMedId" : 23711383
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Ebola in Uganda",
+    "publication" : "Global Alert and Response (GAR)  29 July 2012",
+    "url" : "http://www.who.int/csr/don/2012_07_29/en/"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "End of Ebola outbreak in Uganda",
+    "publication" : "Global Alert and Response (GAR)  4 October 2012",
+    "url" : "http://www.who.int/csr/don/2012_10_04/en/"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 3,
+    "title" : "Uganda",
+    "publication" : "GeoHive, citing Uganda Bureau of Statistics population 2011-07-01 projection",
+    "url" : "http://www.geohive.com/cntry/uganda.aspx"
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on  09_21_2014", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "2014-11-18 M Wagner" ],
+  "acknowledgements" : [ ]
+}

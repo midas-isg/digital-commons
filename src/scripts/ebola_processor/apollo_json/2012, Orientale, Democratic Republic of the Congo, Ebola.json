@@ -1,0 +1,182 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/17",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/17.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "565995"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2012-06-08 00:00:00 +0000",
+    "startDateDefinition" : "FIRST_LAB_CASE_CONFIRMATION",
+    "endDate" : "2012-10-11 00:00:00 +0000",
+    "endDateDefinition" : "LAST_LAB_CASE_CONFIRMATION"
+  },
+  "administrativeLocations" : [ "84916" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "565995"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "565995"
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.36
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "WHO deployed epidemiologists and logisticians from the Regional Office for Africa (AFRO) including the Inter-country Support Team, and WHO headquarters to support the MoH and is working closely with partners in the areas of coordination, surveillance, epidemiology, public information and social mobilization and logistics for outbreak responsehave been mobilized by WHO through the Global Outbreak Alert and Response Network (GOARN), to provide support to the response.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Surveillance activities are being strengthened in Isiro and neighbouring areas, including Bedhe and Nakwapongo. In Isiro, health care workers are being trained on basic infection prevention and control in health care settings.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Deployment of an infection prevention and control (IPC) specialist and an anthropologist to assist with a clearer understanding of the social and anthropological issues among the affected population that could impact the on-going response efforts.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Through the Global Outbreak Alert and Response Network (GOARN), a field laboratory has been set up by the Public Health Agency of Canada (PHAC).",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 36,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 13,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Genomic analysis of filoviruses associated with four viral hemorrhagic fever outbreaks in Uganda and the Democratic Republic of the Congo in 2012",
+    "publication" : "Virology. 2013 Aug 1;442(2):97-100. doi: 10.1016/j.virol.2013.04.014. Epub 2013 May 25",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/23711383",
+    "pubMedId" : 23711383
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Ebola outbreak in Democratic Republic of Congo",
+    "publication" : "Global Alert and Response (GAR)  17 August 2012",
+    "url" : "http://www.who.int/csr/don/2012_08_18/en/"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Ebola outbreak in Democratic Republic of Congo update",
+    "publication" : "Global Alert and Response (GAR)  14 September 2012",
+    "url" : "http://www.who.int/csr/don/2012_09_14/en/"
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 3,
+    "title" : "Ebola outbreak in Democratic Republic of Congo update",
+    "publication" : "Global Alert and Response (GAR)  26 October 2012",
+    "url" : "http://www.who.int/csr/don/2012_10_26/en/"
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on  09-21-2014", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "2014-09-23 M. Wagner" ],
+  "acknowledgements" : [ ]
+}

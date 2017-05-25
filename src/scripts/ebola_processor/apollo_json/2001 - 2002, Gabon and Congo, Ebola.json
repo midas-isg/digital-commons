@@ -1,0 +1,511 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/8",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/8.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "128951"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2001-10-21 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "2002-03-26 00:00:00 +0000",
+    "endDateDefinition" : "SYMPTOM_ONSET_LAST_CASE"
+  },
+  "administrativeLocations" : [ "173", "189", "192", "224", "223" ],
+  "epidemicZones" : [ "85165" ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "186538"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "186538"
+      },
+      "otherIntervals" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Interval",
+        "startBoundaryDefinition" : "TIME_OF_FIRST_SYMPTOM",
+        "endBoundaryDefinition" : "TIME_OF_DEATH",
+        "duration" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+          "unitOfTime" : "DAY",
+          "referenceId" : 0,
+          "value" : 6.0
+        },
+        "readableTitle" : "Time from symptom onset to death"
+      } ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.88
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromContaminatedAbioticThing",
+      "contaminatedAbioticThing" : "SYRINGE",
+      "transmissionProbability" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter"
+      }
+    } ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 159,
+    "whereSampled" : "GA Ebola virus–apolloObject area (villages)",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "40",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 92,
+    "whereSampled" : "GA Villages with human cases",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "25",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 67,
+    "whereSampled" : "GA Villages without human cases",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "15",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 66,
+    "whereSampled" : "GA Villages with human cases and animal source",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "21",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 26,
+    "whereSampled" : "GA Villages with human cases, without animal source",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "4",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 79,
+    "whereSampled" : "GA Major towns (Libreville and Port Gentil)",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "7",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Pet Dogs - Canis lupus familiaris - Species not specified.",
+    "speciesSampledNcbiTaxonId" : "9615",
+    "numberSampled" : 102,
+    "whereSampled" : "Area with no Ebola - Paris",
+    "testName" : "IGG by ELISA",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "2",
+    "referenceId" : 1
+  } ],
+  "populationInfectionSurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Gorilla",
+    "speciesSampledNcbiTaxonId" : "9595",
+    "whereSampled" : "Rainforest surrounding village",
+    "numberOfSamplesPositive" : "2",
+    "referenceId" : 0
+  } ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Active case-finding and daily follow-up of contacts for the duration of the maximum incubation period",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Establishment of isolation wards to ensure strict infection control practices during patient care",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "implementation of safe burial practices and social mobilization campaigns to encourage the adoption of practices to interrupt the spread of disease in the community.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Active Surveillance System",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ {
+      "timeScale" : "EPIDEMIC_TIME_SCALE",
+      "timeSinceTimeScaleZero" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "value" : 56.0
+      }
+    } ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Possible case",
+    "investigationDefinition" : "A suspect case was any person, dead or alive, with contact with a probable or confirmed EHF case or contact with a dead or sick animal AND fever, OR fever and at least three specific symptoms (headache, anorexia, fatigue, myalgia or arthralgia, dyspnoea, vomiting or nausea, diarrhoea, abdominal pain, dysphagia, hiccups) OR any unexplained bleeding."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "A probable case was a person with symptoms compatible with EHF as evaluated by a clinician, or a dead person with an epidemiological link with a confirmed case."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Confirmed case",
+    "investigationDefinition" : "Laboratory-confirmed cases were positive either for Ebola virus antigen or Ebola IgG antibody"
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 124,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 97,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Fig. 1. Cases of Ebola haemorrhagic fever meeting inclusion criteria in Congo and Gabon by date of onset, from October 2001 to March 2002 (n=124 cases).",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "New Cases per Week",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-10-29 00:00:00 +0000",
+              "lastDay" : "2001-11-05 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-11-06 00:00:00 +0000",
+              "lastDay" : "2001-11-12 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-11-13 00:00:00 +0000",
+              "lastDay" : "2001-11-19 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-11-20 00:00:00 +0000",
+              "lastDay" : "2001-11-27 00:00:00 +0000"
+            },
+            "value" : 4,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-11-28 00:00:00 +0000",
+              "lastDay" : "2001-12-03 00:00:00 +0000"
+            },
+            "value" : 8,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-12-04 00:00:00 +0000",
+              "lastDay" : "2001-12-10 00:00:00 +0000"
+            },
+            "value" : 9,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-12-11 00:00:00 +0000",
+              "lastDay" : "2001-12-17 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-12-18 00:00:00 +0000",
+              "lastDay" : "2001-12-24 00:00:00 +0000"
+            },
+            "value" : 9,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2001-12-25 00:00:00 +0000",
+              "lastDay" : "2001-12-31 00:00:00 +0000"
+            },
+            "value" : 5,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-01-01 00:00:00 +0000",
+              "lastDay" : "2002-01-07 00:00:00 +0000"
+            },
+            "value" : 7,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-01-08 00:00:00 +0000",
+              "lastDay" : "2002-01-14 00:00:00 +0000"
+            },
+            "value" : 9,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-01-15 00:00:00 +0000",
+              "lastDay" : "2002-01-21 00:00:00 +0000"
+            },
+            "value" : 10,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-01-22 00:00:00 +0000",
+              "lastDay" : "2002-01-28 00:00:00 +0000"
+            },
+            "value" : 8,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-01-29 00:00:00 +0000",
+              "lastDay" : "2002-02-04 00:00:00 +0000"
+            },
+            "value" : 9,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-02-05 00:00:00 +0000",
+              "lastDay" : "2002-02-11 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-02-12 00:00:00 +0000",
+              "lastDay" : "2002-02-18 00:00:00 +0000"
+            },
+            "value" : 11,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2002-03-26 00:00:00 +0000",
+              "lastDay" : "2002-04-01 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          } ]
+        },
+        "nvariables" : 1
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      }
+    } ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Outbreak(s) of Ebola haemorrhagic fever, Congo and Gabon, October 2001-July 2002",
+    "publication" : "Weekly epidemiological record No. 26 2003 78, 217-228",
+    "url" : "http://www.who.int/wer/2003/en/wer7826.pdf",
+    "pubMedId" : 15571171
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Ebola virus antibody prevalence in dogs and human risk",
+    "publication" : "Emerg Infect Dis. 2005 Mar;11(3):385-90",
+    "url" : "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3298261/",
+    "pubMedId" : 15757552
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created by Benjamin Zhu on 2014-09-20", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "M Wagner, V Dato" ],
+  "acknowledgements" : [ ]
+}

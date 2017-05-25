@@ -1,0 +1,628 @@
+min_from_date,max_to_date,country_iso,country_name,condition,snomedct_code,source_name
+1993-12-01,2005-10-31,AF,AFGHANISTAN,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1993-12-01,2005-10-31,AF,AFGHANISTAN,Dengue,38362002,World Health Organization DengueNet Database
+1993-12-01,2005-10-31,AF,AFGHANISTAN,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,AG,ANTIGUA AND BARBUDA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,AG,ANTIGUA AND BARBUDA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1960-01-01,2005-12-31,AG,ANTIGUA AND BARBUDA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,AG,ANTIGUA AND BARBUDA,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,AG,ANTIGUA AND BARBUDA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,AI,ANGUILLA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1999-01-01,2005-12-31,AI,ANGUILLA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1980-01-01,2005-12-31,AI,ANGUILLA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,AI,ANGUILLA,Dengue,38362002,Pan American Health Organization Website
+1980-01-01,2005-12-31,AI,ANGUILLA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2012-12-31,AN,Netherlands Antilles,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2009-01-01,2012-12-31,AN,Netherlands Antilles,Dengue,38362002,Pan American Health Organization Website
+1998-01-01,2005-12-31,AR,ARGENTINA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,AR,ARGENTINA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1998-01-01,2005-12-31,AR,ARGENTINA,Dengue,38362002,World Health Organization DengueNet Database
+1998-01-01,2012-12-31,AR,ARGENTINA,Dengue,38362002,Pan American Health Organization Website
+1998-01-01,2005-12-31,AR,ARGENTINA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,AS,AMERICAN SAMOA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1955-01-01,2002-12-31,AS,AMERICAN SAMOA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,AS,AMERICAN SAMOA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1955-01-01,2002-12-31,AS,AMERICAN SAMOA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,AU,AUSTRALIA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2004-12-31,AU,AUSTRALIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,AU,AUSTRALIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2011-12-31,AU,AUSTRALIA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2004-12-31,AU,AUSTRALIA,Dengue,38362002,World Health Organization DengueNet Database
+1979-01-01,2004-12-31,AU,AUSTRALIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,AW,ARUBA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,AW,ARUBA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1999-01-01,2005-12-31,AW,ARUBA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,AW,ARUBA,Dengue,38362002,Pan American Health Organization Website
+1999-01-01,2005-12-31,AW,ARUBA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,BB,BARBADOS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BB,BARBADOS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1977-01-01,2005-12-31,BB,BARBADOS,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BB,BARBADOS,Dengue,38362002,Pan American Health Organization Website
+1977-01-01,2005-12-31,BB,BARBADOS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2000-01-01,2000-12-31,BD,BANGLADESH,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,BD,BANGLADESH,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1980-01-01,2005-12-31,BD,BANGLADESH,Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2000-12-31,BD,BANGLADESH,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2012-12-31,BL,SAINT BARTHÉLEMY,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2009-01-01,2012-12-31,BL,SAINT BARTHÉLEMY,Dengue,38362002,Pan American Health Organization Website
+1999-01-01,2004-12-31,BM,BERMUDA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,BM,BERMUDA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2004-12-31,BM,BERMUDA,Dengue,38362002,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,BM,BERMUDA,Dengue,38362002,Pan American Health Organization Website
+1995-01-01,2004-12-31,BM,BERMUDA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,BN,BRUNEI DARUSSALAM,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,BN,BRUNEI DARUSSALAM,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2011-12-31,BN,BRUNEI DARUSSALAM,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+2000-01-01,2000-12-31,BN,BRUNEI DARUSSALAM,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2000-12-31,BN,BRUNEI DARUSSALAM,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1996-01-01,2006-12-31,BO,"BOLIVIA, PLURINATIONAL STATE OF",Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,BO,"BOLIVIA, PLURINATIONAL STATE OF",Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2012-12-31,BO,"BOLIVIA, PLURINATIONAL STATE OF",Dengue,38362002,Pan American Health Organization Website
+1980-01-01,2006-12-31,BO,"BOLIVIA, PLURINATIONAL STATE OF",Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2006-12-31,BO,"BOLIVIA, PLURINATIONAL STATE OF",Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BR,BRAZIL,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1986-01-01,2005-12-31,BR,BRAZIL,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1980-01-01,2005-12-31,BR,BRAZIL,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BR,BRAZIL,Dengue,38362002,Pan American Health Organization Website
+1980-01-01,2005-12-31,BR,BRAZIL,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,BS,BAHAMAS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,BS,BAHAMAS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1960-01-01,2005-12-31,BS,BAHAMAS,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BS,BAHAMAS,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,BS,BAHAMAS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2005-12-31,BT,BHUTAN,Dengue,38362002,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,BT,BHUTAN,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1998-01-01,2012-12-31,BZ,BELIZE,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1998-01-01,2005-12-31,BZ,BELIZE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1978-01-01,2005-12-31,BZ,BELIZE,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,BZ,BELIZE,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2005-12-31,BZ,BELIZE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2012-12-31,CA,CANADA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2009-01-01,2012-12-31,CA,CANADA,Dengue,38362002,Pan American Health Organization Website
+2000-01-01,2004-12-31,CK,COOK ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2005-12-31,CK,COOK ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,CK,COOK ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,CK,COOK ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1980-01-01,2004-12-31,CK,COOK ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2004-12-31,CK,COOK ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2002-01-01,2005-12-31,CL,CHILE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2002-01-01,2012-12-31,CL,CHILE,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2002-01-01,2012-12-31,CL,CHILE,Dengue,38362002,Pan American Health Organization Website
+2002-01-01,2005-12-31,CL,CHILE,Dengue,38362002,World Health Organization DengueNet Database
+2002-01-01,2005-12-31,CL,CHILE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,CN,CHINA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2008-01-01,2009-07-31,CN,CHINA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1979-01-01,2009-12-31,CN,CHINA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,CN,CHINA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,CN,CHINA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2009-07-31,CN,CHINA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1985-01-01,2005-12-31,CO,COLOMBIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1996-01-01,2012-12-31,CO,COLOMBIA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1960-01-01,2005-12-31,CO,COLOMBIA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,CO,COLOMBIA,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,CO,COLOMBIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,CR,COSTA RICA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,CR,COSTA RICA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1988-01-01,2005-12-31,CR,COSTA RICA,Dengue,38362002,World Health Organization DengueNet Database
+1996-01-01,2012-12-31,CR,COSTA RICA,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2005-12-31,CR,COSTA RICA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,CU,CUBA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1981-01-01,2005-12-31,CU,CUBA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,CU,CUBA,Dengue,38362002,Pan American Health Organization Website
+1977-01-01,2005-12-31,CU,CUBA,Dengue,38362002,World Health Organization DengueNet Database
+1977-01-01,2005-12-31,CU,CUBA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1998-01-01,2012-12-31,CW,CURAÇAO,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1998-01-01,2012-12-31,CW,CURAÇAO,Dengue,38362002,Pan American Health Organization Website
+1995-01-01,2005-12-31,DM,DOMINICA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,DM,DOMINICA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1962-01-01,2005-12-31,DM,DOMINICA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,DM,DOMINICA,Dengue,38362002,Pan American Health Organization Website
+1962-01-01,2005-12-31,DM,DOMINICA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,DO,DOMINICAN REPUBLIC,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1988-01-01,2005-12-31,DO,DOMINICAN REPUBLIC,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1960-01-01,2005-12-31,DO,DOMINICAN REPUBLIC,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,DO,DOMINICAN REPUBLIC,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,DO,DOMINICAN REPUBLIC,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,EC,ECUADOR,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,EC,ECUADOR,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1988-01-01,2005-12-31,EC,ECUADOR,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,EC,ECUADOR,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2005-12-31,EC,ECUADOR,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2005-01-01,2005-12-31,FJ,FIJI,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1971-01-01,2001-12-31,FJ,FIJI,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,FJ,FIJI,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1971-01-01,2001-12-31,FJ,FIJI,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2001-01-01,2004-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1995-01-01,2004-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1995-01-01,2004-12-31,FM,"MICRONESIA, FEDERATED STATES OF",Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,GD,GRENADA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GD,GRENADA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1969-01-01,2005-12-31,GD,GRENADA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GD,GRENADA,Dengue,38362002,Pan American Health Organization Website
+1969-01-01,2005-12-31,GD,GRENADA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1992-01-01,2005-12-31,GF,FRENCH GUIANA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GF,FRENCH GUIANA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1973-01-01,2005-12-31,GF,FRENCH GUIANA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GF,FRENCH GUIANA,Dengue,38362002,Pan American Health Organization Website
+1973-01-01,2005-12-31,GF,FRENCH GUIANA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,GP,GUADELOUPE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GP,GUADELOUPE,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1980-01-01,2005-12-31,GP,GUADELOUPE,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GP,GUADELOUPE,Dengue,38362002,Pan American Health Organization Website
+1980-01-01,2005-12-31,GP,GUADELOUPE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GT,GUATEMALA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2005-12-31,GT,GUATEMALA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1978-01-01,2005-12-31,GT,GUATEMALA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,GT,GUATEMALA,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2005-12-31,GT,GUATEMALA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2005-01-01,2005-12-31,GU,GUAM,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,GU,GUAM,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,GU,GUAM,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1983-01-01,1999-12-31,GU,GUAM,Dengue,38362002,World Health Organization DengueNet Database
+1983-01-01,1999-12-31,GU,GUAM,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,GY,GUYANA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,GY,GUYANA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1998-01-01,2012-12-31,GY,GUYANA,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2005-12-31,GY,GUYANA,Dengue,38362002,World Health Organization DengueNet Database
+1978-01-01,2005-12-31,GY,GUYANA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,HK,HONG KONG,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,HK,HONG KONG,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2011-12-31,HK,HONG KONG,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1991-01-01,2005-12-31,HN,HONDURAS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,HN,HONDURAS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1978-01-01,2005-12-31,HN,HONDURAS,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,HN,HONDURAS,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2005-12-31,HN,HONDURAS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2000-01-01,2000-12-31,HT,HAITI,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,HT,HAITI,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1972-01-01,2000-12-31,HT,HAITI,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2012-12-31,HT,HAITI,Dengue,38362002,Pan American Health Organization Website
+1972-01-01,2000-12-31,HT,HAITI,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-08-31,ID,INDONESIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,ID,INDONESIA,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1968-01-01,2006-04-30,ID,INDONESIA,Dengue,38362002,World Health Organization DengueNet Database
+1968-01-01,1996-12-31,ID,INDONESIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1991-01-01,2006-12-31,IN,INDIA,Dengue,38362002,World Health Organization DengueNet Database
+1991-01-01,2006-12-31,IN,INDIA,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1991-01-01,1996-12-31,IN,INDIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,JM,JAMAICA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,JM,JAMAICA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1960-01-01,2005-12-31,JM,JAMAICA,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,JM,JAMAICA,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,JM,JAMAICA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2001-12-31,JP,JAPAN,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,JP,JAPAN,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1999-01-01,2001-12-31,JP,JAPAN,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2001-06-01,2009-06-30,KH,CAMBODIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,KH,CAMBODIA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,KH,CAMBODIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1998-01-01,2010-12-31,KH,CAMBODIA,Dengue,38362002,Cambodia Ministry of Health (MOH) National Dengue Control Program
+2010-01-01,2011-12-31,KH,CAMBODIA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1980-01-01,2009-12-31,KH,CAMBODIA,Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2009-06-30,KH,CAMBODIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2005-12-31,KI,KIRIBATI,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1979-01-01,1994-12-31,KI,KIRIBATI,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,KI,KIRIBATI,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2011-12-31,KI,KIRIBATI,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,1994-12-31,KI,KIRIBATI,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,KN,SAINT KITTS AND NEVIS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,KN,SAINT KITTS AND NEVIS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1960-01-01,2005-12-31,KN,SAINT KITTS AND NEVIS,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,KN,SAINT KITTS AND NEVIS,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,KN,SAINT KITTS AND NEVIS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,KR,"KOREA, REPUBLIC OF",Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2010-12-31,KR,"KOREA, REPUBLIC OF",Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1999-01-01,2012-12-31,KY,CAYMAN ISLANDS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1999-01-01,2005-12-31,KY,CAYMAN ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2005-12-31,KY,CAYMAN ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,KY,CAYMAN ISLANDS,Dengue,38362002,Pan American Health Organization Website
+1995-01-01,2005-12-31,KY,CAYMAN ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2002-01-01,2007-10-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1998-01-01,2010-12-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue,38362002,Lao People’s Democratic Republic National Center for Laboratory and Epidemiology
+2000-01-01,2009-12-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,2007-10-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue,38362002,World Health Organization DengueNet Database
+2010-01-01,2010-12-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2007-10-31,LA,LAO PEOPLE'S DEMOCRATIC REPUBLIC,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1986-01-01,2005-12-31,LC,SAINT LUCIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,LC,SAINT LUCIA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2012-12-31,LC,SAINT LUCIA,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,LC,SAINT LUCIA,Dengue,38362002,World Health Organization DengueNet Database
+1960-01-01,2005-12-31,LC,SAINT LUCIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,LK,SRI LANKA,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1965-01-01,2006-12-31,LK,SRI LANKA,Dengue,38362002,World Health Organization DengueNet Database
+1965-01-01,1996-12-31,LK,SRI LANKA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2012-12-31,MF,SAINT MARTIN (FRENCH PART),Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2009-01-01,2012-12-31,MF,SAINT MARTIN (FRENCH PART),Dengue,38362002,Pan American Health Organization Website
+2004-01-01,2005-12-31,MH,MARSHALL ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2004-12-31,MH,MARSHALL ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2010-01-01,2010-12-31,MH,MARSHALL ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1989-01-01,2004-12-31,MH,MARSHALL ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,MH,MARSHALL ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1989-01-01,2004-12-31,MH,MARSHALL ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1970-01-01,2005-12-31,MM,MYANMAR,Dengue,38362002,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,MM,MYANMAR,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1970-01-01,1996-12-31,MM,MYANMAR,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,MN,MONGOLIA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2010-12-31,MN,MONGOLIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,MN,MONGOLIA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+2004-01-01,2007-12-31,MO,MACAO,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,MO,MACAO,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+2000-01-01,2008-12-31,MO,MACAO,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2004-01-01,2004-12-31,MP,NORTHERN MARIANA ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,MP,NORTHERN MARIANA ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+2001-01-01,2001-12-31,MP,NORTHERN MARIANA ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,MP,NORTHERN MARIANA ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2001-01-01,2001-12-31,MP,NORTHERN MARIANA ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2003-12-31,MQ,MARTINIQUE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,MQ,MARTINIQUE,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1975-01-01,2003-12-31,MQ,MARTINIQUE,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,MQ,MARTINIQUE,Dengue,38362002,Pan American Health Organization Website
+1975-01-01,2003-12-31,MQ,MARTINIQUE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,MS,MONTSERRAT,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1999-01-01,2005-12-31,MS,MONTSERRAT,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1988-01-01,2005-12-31,MS,MONTSERRAT,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,MS,MONTSERRAT,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2005-12-31,MS,MONTSERRAT,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,1999-12-31,MV,MALDIVES,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1988-01-01,2005-12-31,MV,MALDIVES,Dengue,38362002,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,MV,MALDIVES,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1988-01-01,1999-12-31,MV,MALDIVES,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1984-01-01,2005-12-31,MX,MEXICO,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,MX,MEXICO,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1971-01-01,2005-12-31,MX,MEXICO,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,MX,MEXICO,Dengue,38362002,Pan American Health Organization Website
+1971-01-01,2005-12-31,MX,MEXICO,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2000-01-01,2005-12-31,MY,MALAYSIA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,MY,MALAYSIA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1993-01-01,2010-12-31,MY,MALAYSIA,Dengue,38362002,Malaysia Ministry of Health Disease Control Division
+2000-01-01,2009-12-31,MY,MALAYSIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2011-12-31,MY,MALAYSIA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1963-01-01,2005-12-31,MY,MALAYSIA,Dengue,38362002,World Health Organization DengueNet Database
+1963-01-01,2005-12-31,MY,MALAYSIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1979-01-01,2000-12-31,NC,NEW CALEDONIA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,NC,NEW CALEDONIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,2000-12-31,NC,NEW CALEDONIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1985-01-01,2005-12-31,NI,NICARAGUA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,NI,NICARAGUA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1996-01-01,2012-12-31,NI,NICARAGUA,Dengue,38362002,Pan American Health Organization Website
+1985-01-01,2005-12-31,NI,NICARAGUA,Dengue,38362002,World Health Organization DengueNet Database
+1985-01-01,2005-12-31,NI,NICARAGUA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1997-01-01,2005-12-31,NP,NEPAL,Dengue,38362002,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,NP,NEPAL,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+2004-01-01,2004-12-31,NR,NAURU,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,NR,NAURU,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,1995-12-31,NR,NAURU,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,NR,NAURU,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,1995-12-31,NR,NAURU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,NU,NIUE,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,NU,NIUE,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2001-12-31,NU,NIUE,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,NU,NIUE,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,2001-12-31,NU,NIUE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,NZ,NEW ZEALAND,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,NZ,NEW ZEALAND,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2000-12-31,NZ,NEW ZEALAND,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,NZ,NEW ZEALAND,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,2000-12-31,NZ,NEW ZEALAND,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,PA,PANAMA,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2005-12-31,PA,PANAMA,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,PA,PANAMA,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2005-12-31,PA,PANAMA,Dengue,38362002,World Health Organization DengueNet Database
+1988-01-01,2005-12-31,PA,PANAMA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,PE,PERU,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,PE,PERU,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1988-01-01,2005-12-31,PE,PERU,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,PE,PERU,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2005-12-31,PE,PERU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,PF,FRENCH POLYNESIA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2009-12-31,PF,FRENCH POLYNESIA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,PF,FRENCH POLYNESIA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,2004-12-31,PF,FRENCH POLYNESIA,Dengue,38362002,World Health Organization DengueNet Database
+1979-01-01,2004-12-31,PF,FRENCH POLYNESIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2009-12-31,PG,PAPUA NEW GUINEA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2002-01-01,2009-12-31,PG,PAPUA NEW GUINEA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2011-01-01,2011-12-31,PG,PAPUA NEW GUINEA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1981-01-01,2002-12-31,PG,PAPUA NEW GUINEA,Dengue,38362002,World Health Organization DengueNet Database
+1981-01-01,2002-12-31,PG,PAPUA NEW GUINEA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,PH,PHILIPPINES,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2001-01-01,2005-12-31,PH,PHILIPPINES,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,PH,PHILIPPINES,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1955-01-01,2008-12-31,PH,PHILIPPINES,Dengue,38362002,World Health Organization DengueNet Database
+2010-01-01,2010-12-31,PH,PHILIPPINES,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1994-01-01,2010-12-31,PH,PHILIPPINES,Dengue,38362002,Philippines Ministry of Health National Epidemiology Center
+1955-01-01,2005-12-31,PH,PHILIPPINES,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2000-01-01,2003-12-31,PN,PITCAIRN,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1995-01-01,2012-12-31,PR,PUERTO RICO,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1985-01-01,2005-12-31,PR,PUERTO RICO,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1960-01-01,2005-12-31,PR,PUERTO RICO,Dengue,38362002,World Health Organization DengueNet Database
+1996-01-01,2012-12-31,PR,PUERTO RICO,Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,PR,PUERTO RICO,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,PW,PALAU,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,PW,PALAU,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1988-01-01,2001-12-31,PW,PALAU,Dengue,38362002,World Health Organization DengueNet Database
+1988-01-01,2001-12-31,PW,PALAU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2007-12-31,PY,PARAGUAY,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,PY,PARAGUAY,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1988-01-01,2007-12-31,PY,PARAGUAY,Dengue,38362002,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,PY,PARAGUAY,Dengue,38362002,Pan American Health Organization Website
+1988-01-01,2007-12-31,PY,PARAGUAY,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1994-01-01,1994-12-31,SA,SAUDI ARABIA,Dengue,38362002,World Health Organization DengueNet Database
+1994-01-01,1994-12-31,SA,SAUDI ARABIA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,SB,SOLOMON ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1994-01-01,2002-12-31,SB,SOLOMON ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2010-12-31,SB,SOLOMON ISLANDS,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1994-01-01,2002-12-31,SB,SOLOMON ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2005-01-01,2008-12-31,SG,SINGAPORE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,SG,SINGAPORE,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1960-01-01,2008-12-31,SG,SINGAPORE,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,SG,SINGAPORE,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1993-01-01,2010-12-31,SG,SINGAPORE,Dengue,38362002,Singapore National Environment Agency
+2010-01-01,2010-12-31,SG,SINGAPORE,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+2005-01-01,2008-12-31,SG,SINGAPORE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1982-01-01,2005-12-31,SR,SURINAME,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1998-01-01,2012-12-31,SR,SURINAME,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2012-12-31,SR,SURINAME,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2005-12-31,SR,SURINAME,Dengue,38362002,World Health Organization DengueNet Database
+1978-01-01,2005-12-31,SR,SURINAME,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1987-01-01,2009-12-31,SV,EL SALVADOR,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,SV,EL SALVADOR,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1978-01-01,2009-12-31,SV,EL SALVADOR,Dengue,38362002,World Health Organization DengueNet Database
+1996-01-01,2012-12-31,SV,EL SALVADOR,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2009-12-31,SV,EL SALVADOR,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,TC,TURKS AND CAICOS ISLANDS,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1999-01-01,2002-12-31,TC,TURKS AND CAICOS ISLANDS,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1974-01-01,2002-12-31,TC,TURKS AND CAICOS ISLANDS,Dengue,38362002,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,TC,TURKS AND CAICOS ISLANDS,Dengue,38362002,Pan American Health Organization Website
+1974-01-01,2002-12-31,TC,TURKS AND CAICOS ISLANDS,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1958-01-01,2005-12-31,TH,THAILAND,Dengue,38362002,World Health Organization DengueNet Database
+1993-01-01,2010-12-31,TH,THAILAND,Dengue,38362002,Thailand Bureau of Epidemiology
+1985-01-01,2006-12-31,TH,THAILAND,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+1958-01-01,1996-12-31,TH,THAILAND,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,TK,TOKELAU,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1982-01-01,2001-12-31,TK,TOKELAU,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,TK,TOKELAU,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1982-01-01,2001-12-31,TK,TOKELAU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2005-01-01,2005-05-31,TL,TIMOR-LESTE,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1985-01-01,2006-12-31,TL,TIMOR-LESTE,Dengue,38362002,World Health Organization Southeast Asia Regional Office website
+2004-01-01,2005-12-31,TL,TIMOR-LESTE,Dengue,38362002,World Health Organization DengueNet Database
+2005-01-01,2005-05-31,TL,TIMOR-LESTE,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2010-01-01,2010-12-31,TO,TONGA,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1980-01-01,1998-12-31,TO,TONGA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,TO,TONGA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1980-01-01,1998-12-31,TO,TONGA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1997-01-01,2002-12-31,TT,TRINIDAD AND TOBAGO,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1997-01-01,2012-12-31,TT,TRINIDAD AND TOBAGO,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1978-01-01,2003-12-31,TT,TRINIDAD AND TOBAGO,Dengue,38362002,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,TT,TRINIDAD AND TOBAGO,Dengue,38362002,Pan American Health Organization Website
+1978-01-01,2003-12-31,TT,TRINIDAD AND TOBAGO,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2009-12-31,TV,TUVALU,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2010-12-31,TV,TUVALU,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1980-01-01,2004-12-31,TV,TUVALU,Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2004-12-31,TV,TUVALU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1998-01-01,2010-12-31,TW,"TAIWAN, PROVINCE OF CHINA",Dengue,38362002,Taiwan Centers for Disease Control
+2015-01-01,2016-01-02,US,UNITED STATES,Congenital rubella syndrome,1857005,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2001-12-30,2002-12-28,US,UNITED STATES,Congenital rubella syndrome,1857005,United States Morbidity and Mortality Weekly Report
+1958-09-14,1994-12-31,US,UNITED STATES,Viral hepatitis,3738000,United States Morbidity and Mortality Weekly Report
+2000-01-02,2005-12-31,US,UNITED STATES,Listeriosis,4241002,United States Morbidity and Mortality Weekly Report
+1888-06-10,1941-12-27,US,UNITED STATES,Typhoid fever,4834000,United States Public Health Report
+1951-12-30,2005-12-31,US,UNITED STATES,Typhoid fever,4834000,United States Morbidity and Mortality Weekly Report
+1919-10-26,1951-12-08,US,UNITED STATES,Influenza,6142004,United States Public Health Report
+1956-01-01,1959-10-17,US,UNITED STATES,Meningitis,7180009,United States Morbidity and Mortality Weekly Report
+1905-03-20,1944-02-05,US,UNITED STATES,Meningitis,7180009,United States Public Health Report
+1948-08-29,1951-12-08,US,UNITED STATES,Rabies,14168008,United States Public Health Report
+1951-12-30,2010-01-02,US,UNITED STATES,Rabies,14168008,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Rabies,14168008,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Rabies,14168008,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1888-07-15,1951-12-08,US,UNITED STATES,Measles,14189004,United States Public Health Report
+1951-12-30,2002-12-28,US,UNITED STATES,Measles,14189004,United States Morbidity and Mortality Weekly Report
+1954-01-03,1963-12-14,US,UNITED STATES,Acute nonparalytic poliomyelitis,14535005,United States Morbidity and Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Gonorrhea,15628003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1972-01-02,2010-01-02,US,UNITED STATES,Gonorrhea,15628003,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Gonorrhea,15628003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1888-08-05,1907-03-22,US,UNITED STATES,Yellow fever,16541001,United States Public Health Report
+1983-01-09,1994-12-31,US,UNITED STATES,Toxic shock syndrome,18504008,United States Morbidity and Mortality Weekly Report
+1942-01-04,1951-12-08,US,UNITED STATES,Tularemia,19265001,United States Public Health Report
+1951-12-30,1994-12-31,US,UNITED STATES,Tularemia,19265001,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Dengue hemorrhagic fever,20927009,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1997-01-01,2012-12-31,US,UNITED STATES,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2014-01-01,2015-01-03,US,UNITED STATES,Dengue hemorrhagic fever,20927009,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2014-01-01,2016-07-02,US,UNITED STATES,Babesiosis,21061004,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2013-12-29,2014-08-02,US,UNITED STATES,Babesiosis,21061004,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Lyme disease,23502006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1990-12-30,2010-01-02,US,UNITED STATES,Lyme disease,23502006,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Lyme disease,23502006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2010-01-03,2011-12-31,US,UNITED STATES,Meningococcal infectious disease,23511006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1951-12-30,2010-01-02,US,UNITED STATES,Meningococcal infectious disease,23511006,United States Morbidity and Mortality Weekly Report
+2001-12-30,2010-01-02,US,UNITED STATES,Acute type A viral hepatitis,25102003,United States Morbidity and Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Acute type A viral hepatitis,25102003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2010-01-03,2014-08-02,US,UNITED STATES,Acute type A viral hepatitis,25102003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1951-12-30,1961-12-16,US,UNITED STATES,Murine typhus,25668000,United States Morbidity and Mortality Weekly Report
+1945-07-01,1948-07-03,US,UNITED STATES,Murine typhus,25668000,United States Public Health Report
+2015-01-01,2016-07-02,US,UNITED STATES,Legionella infection,26726000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1982-01-17,2010-01-02,US,UNITED STATES,Legionella infection,26726000,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Legionella infection,26726000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2010-01-03,2014-08-02,US,UNITED STATES,Pertussis,27836007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Pertussis,27836007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1888-07-08,1951-12-08,US,UNITED STATES,Pertussis,27836007,United States Public Health Report
+1951-12-30,2010-01-02,US,UNITED STATES,Pertussis,27836007,United States Morbidity and Mortality Weekly Report
+1888-06-10,1951-12-08,US,UNITED STATES,Scarlet fever,30242009,United States Public Health Report
+1951-12-30,1969-12-27,US,UNITED STATES,Scarlet fever,30242009,United States Morbidity and Mortality Weekly Report
+2001-12-30,2005-12-31,US,UNITED STATES,Congenital syphilis,35742006,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Shigellosis,36188001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1999-01-03,2001-12-29,US,UNITED STATES,Shigellosis,36188001,United States National Electronic Telecommunications System for Surveillance from Morbidity Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Shigellosis,36188001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2001-12-30,2010-01-02,US,UNITED STATES,Shigellosis,36188001,United States Morbidity and Mortality Weekly Report
+1999-01-03,2001-12-29,US,UNITED STATES,Shigellosis,36188001,United States Public Health Laboratory Information System from Morbidity Mortality Weekly Report
+1966-01-02,2002-12-28,US,UNITED STATES,Rubella,36653000,United States Morbidity and Mortality Weekly Report
+2015-01-01,2016-07-02,US,UNITED STATES,Rubella,36653000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2011-01-02,2014-08-02,US,UNITED STATES,Mumps,36989005,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2014-01-01,2016-07-02,US,UNITED STATES,Mumps,36989005,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1923-12-30,1932-10-08,US,UNITED STATES,Mumps,36989005,United States Public Health Report
+1967-12-31,2002-12-28,US,UNITED STATES,Mumps,36989005,United States Morbidity and Mortality Weekly Report
+1995-01-01,2012-12-31,US,UNITED STATES,Dengue,38362002,Pan American Health Organization Website
+1924-01-20,1925-01-17,US,UNITED STATES,Dengue,38362002,United States Public Health Report
+2001-01-01,2001-12-31,US,UNITED STATES,Dengue,38362002,World Health Organization DengueNet Database
+2015-01-01,2016-07-02,US,UNITED STATES,Dengue,38362002,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2010-01-03,2014-08-02,US,UNITED STATES,Varicella,38907003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Varicella,38907003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1888-09-02,1932-10-08,US,UNITED STATES,Varicella,38907003,United States Public Health Report
+1972-01-02,2010-01-02,US,UNITED STATES,Varicella,38907003,United States Morbidity and Mortality Weekly Report
+1966-01-02,2007-08-25,US,UNITED STATES,"Viral hepatitis, type A",40468003,United States Morbidity and Mortality Weekly Report
+1960-01-03,1961-12-30,US,UNITED STATES,Streptococcal sore throat,43878008,United States Morbidity and Mortality Weekly Report
+1966-01-02,1978-06-24,US,UNITED STATES,Encephalitis,45170000,United States Morbidity and Mortality Weekly Report
+1942-01-04,1948-06-12,US,UNITED STATES,Encephalitis,45170000,United States Public Health Report
+2011-01-02,2014-06-28,US,UNITED STATES,Tuberculosis,56717001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1890-12-14,1941-12-27,US,UNITED STATES,Tuberculosis,56717001,United States Public Health Report
+1972-12-31,2005-12-31,US,UNITED STATES,Tuberculosis,56717001,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Giardiasis,58265007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Giardiasis,58265007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2001-12-30,2010-01-02,US,UNITED STATES,Giardiasis,58265007,United States Morbidity and Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Coccidioidomycosis,60826002,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2002-12-29,2010-01-02,US,UNITED STATES,Coccidioidomycosis,60826002,United States Morbidity and Mortality Weekly Report
+2011-01-02,2014-08-02,US,UNITED STATES,Coccidioidomycosis,60826002,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2010-01-03,2014-08-02,US,UNITED STATES,Malaria,61462000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1951-12-30,2010-01-02,US,UNITED STATES,Malaria,61462000,United States Morbidity and Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Malaria,61462000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1984-01-01,2005-12-31,US,UNITED STATES,Acquired immune deficiency syndrome,62479008,United States Morbidity and Mortality Weekly Report
+1892-09-11,1905-11-25,US,UNITED STATES,Cholera,63650001,United States Public Health Report
+1951-12-30,2007-08-25,US,UNITED STATES,Viral hepatitis type B,66071002,United States Morbidity and Mortality Weekly Report
+1888-06-10,1951-12-01,US,UNITED STATES,Smallpox,67924001,United States Public Health Report
+1952-01-06,1952-12-13,US,UNITED STATES,Smallpox,67924001,United States Morbidity and Mortality Weekly Report
+2000-01-02,2010-01-02,US,UNITED STATES,Infection caused by Escherichia coli,71057007,United States Morbidity and Mortality Weekly Report
+1889-02-03,1906-09-22,US,UNITED STATES,Smallpox without rash,74724001,United States Public Health Report
+1956-01-01,1961-12-30,US,UNITED STATES,Ornithosis,75116005,United States Morbidity and Mortality Weekly Report
+1951-12-30,1983-01-01,US,UNITED STATES,Brucellosis,75702008,United States Morbidity and Mortality Weekly Report
+1945-01-14,1948-07-03,US,UNITED STATES,Brucellosis,75702008,United States Public Health Report
+1978-01-01,1978-02-18,US,UNITED STATES,Syphilis,76272004,United States Morbidity and Mortality Weekly Report
+2001-12-30,2010-01-02,US,UNITED STATES,Acute type B viral hepatitis,76795007,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Acute type B viral hepatitis,76795007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Acute type B viral hepatitis,76795007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1961-12-31,1981-10-24,US,UNITED STATES,Tetanus,76902006,United States Morbidity and Mortality Weekly Report
+2015-01-01,2016-07-02,US,UNITED STATES,Tetanus,76902006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1981-01-04,1991-06-08,US,UNITED STATES,Leprosy,81004002,United States Morbidity and Mortality Weekly Report
+1924-11-30,1945-01-13,US,UNITED STATES,Leprosy,81004002,United States Public Health Report
+2010-01-03,2014-08-02,US,UNITED STATES,Human anaplasmosis caused by Anaplasma phagocytophilum,85708001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Human anaplasmosis caused by Anaplasma phagocytophilum,85708001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2015-01-01,2016-07-02,US,UNITED STATES,Campylobacteriosis,86500004,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1995-12-31,2010-01-02,US,UNITED STATES,Haemophilus influenzae infection,91428005,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Haemophilus influenzae infection,91428005,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Haemophilus influenzae infection,91428005,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1995-12-31,2010-01-02,US,UNITED STATES,Chlamydial infection,105629000,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Chlamydial infection,105629000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Chlamydial infection,105629000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1942-01-04,1948-07-03,US,UNITED STATES,Dysentery,111939009,United States Public Health Report
+1983-07-17,1983-07-23,US,UNITED STATES,Inflammatory disease of liver,128241005,United States Morbidity and Mortality Weekly Report
+1937-10-10,1951-12-08,US,UNITED STATES,Typhoid and paratyphoid fevers,186090001,United States Public Health Report
+1923-12-30,1932-10-08,US,UNITED STATES,Encephalitis lethargica,186499007,United States Public Health Report
+1982-01-04,2002-12-28,US,UNITED STATES,Hepatitis non-A non-B,186634008,United States Morbidity and Mortality Weekly Report
+1951-12-30,2010-01-02,US,UNITED STATES,Rocky Mountain spotted fever,186772009,United States Morbidity and Mortality Weekly Report
+2010-01-03,2011-12-31,US,UNITED STATES,Rocky Mountain spotted fever,186772009,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1942-01-04,1951-11-24,US,UNITED STATES,Rocky Mountain spotted fever,186772009,United States Public Health Report
+1926-03-14,1951-12-08,US,UNITED STATES,Meningococcal meningitis,192644005,United States Public Health Report
+1963-12-29,1964-12-26,US,UNITED STATES,Meningococcal meningitis,192644005,United States Morbidity and Mortality Weekly Report
+1963-12-29,1994-12-31,US,UNITED STATES,Post-infectious encephalitis,192727001,United States Morbidity and Mortality Weekly Report
+1912-03-17,1951-12-08,US,UNITED STATES,Pneumonia,233604007,United States Public Health Report
+2001-12-30,2005-12-31,US,UNITED STATES,Acute viral hepatitis NOT (acute type A viral hepatitis OR acute type B viral hepatitis),235868007,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Acute viral hepatitis NOT (acute type A viral hepatitis OR acute type B viral hepatitis),235868007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2014-01-01,2016-07-02,US,UNITED STATES,Acute viral hepatitis NOT (acute type A viral hepatitis OR acute type B viral hepatitis),235868007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1999-01-03,2010-01-02,US,UNITED STATES,Cryptosporidiosis,240370009,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Cryptosporidiosis,240370009,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Cryptosporidiosis,240370009,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1954-01-03,1972-01-01,US,UNITED STATES,Acute paralytic poliomyelitis,240460008,United States Morbidity and Mortality Weekly Report
+1888-07-22,1947-12-06,US,UNITED STATES,Typhus group rickettsial disease,240613006,United States Public Health Report
+1942-01-04,1948-07-03,US,UNITED STATES,Bacillary dysentery,274081004,United States Public Health Report
+1919-01-26,1919-11-15,US,UNITED STATES,Lobar pneumonia,278516003,United States Public Health Report
+1960-01-03,1994-12-31,US,UNITED STATES,Aseptic meningitis,301770000,United States Morbidity and Mortality Weekly Report
+2001-12-30,2010-01-02,US,UNITED STATES,Salmonella infection,302231008,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Salmonella infection,302231008,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1999-01-03,2001-12-29,US,UNITED STATES,Salmonella infection,302231008,United States Public Health Laboratory Information System from Morbidity Mortality Weekly Report
+2013-12-29,2016-07-02,US,UNITED STATES,Salmonella infection,302231008,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1999-01-03,2001-12-29,US,UNITED STATES,Salmonella infection,302231008,United States National Electronic Telecommunications System for Surveillance from Morbidity Mortality Weekly Report
+1941-12-28,1951-12-08,US,UNITED STATES,Infective encephalitis,312215006,United States Public Health Report
+1951-12-30,1963-12-28,US,UNITED STATES,Infective encephalitis,312215006,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Human ehrlichiosis caused by Ehrlichia chaffeensis,359747000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2014-01-01,2016-07-02,US,UNITED STATES,Human ehrlichiosis caused by Ehrlichia chaffeensis,359747000,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1942-01-04,1948-07-03,US,UNITED STATES,Amebic dysentery,387754006,United States Public Health Report
+2014-01-01,2016-01-02,US,UNITED STATES,West Nile fever without encephalitis,397420007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2005-01-02,2010-01-02,US,UNITED STATES,West Nile fever without encephalitis,397420007,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,West Nile fever without encephalitis,397420007,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+1888-06-10,1951-12-08,US,UNITED STATES,Diphtheria,397428000,United States Public Health Report
+1951-12-30,1981-10-24,US,UNITED STATES,Diphtheria,397428000,United States Morbidity and Mortality Weekly Report
+1923-12-30,1932-10-08,US,UNITED STATES,Infantile paralysis,397928009,United States Public Health Report
+1912-03-17,1951-12-08,US,UNITED STATES,Acute poliomyelitis,398102009,United States Public Health Report
+1951-12-30,1971-12-25,US,UNITED STATES,Acute poliomyelitis,398102009,United States Morbidity and Mortality Weekly Report
+2015-01-01,2016-07-02,US,UNITED STATES,Infection caused by non-cholerae vibrio,398557001,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1963-12-29,1994-12-31,US,UNITED STATES,Primary encephalitis,406573001,United States Morbidity and Mortality Weekly Report
+2001-12-30,2010-01-02,US,UNITED STATES,Invasive Group A beta-hemolytic streptococcal disease,406614006,United States Morbidity and Mortality Weekly Report
+2015-01-01,2016-07-02,US,UNITED STATES,Invasive Streptococcus pneumoniae disease,406617004,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2002-12-29,2007-11-03,US,UNITED STATES,Invasive Streptococcus pneumoniae disease,406617004,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Invasive Streptococcus pneumoniae disease,406617004,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2001-12-30,2010-01-02,US,UNITED STATES,Invasive drug resistant Streptococcus pneumoniae disease,406618009,United States Morbidity and Mortality Weekly Report
+1942-01-04,1945-01-13,US,UNITED STATES,Anthrax,409498004,United States Public Health Report
+2002-12-29,2005-01-01,US,UNITED STATES,Disease caused by West Nile virus,417093003,United States Morbidity and Mortality Weekly Report
+1923-12-30,1932-10-08,US,UNITED STATES,Pellagra,418186002,United States Public Health Report
+1972-01-02,1974-12-28,US,UNITED STATES,Active tuberculosis,427099000,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Disorder of nervous system caused by West Nile virus,430397002,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2014-01-01,2016-07-02,US,UNITED STATES,Disorder of nervous system caused by West Nile virus,430397002,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2002-12-29,2010-01-02,US,UNITED STATES,Disorder of nervous system caused by West Nile virus,430397002,United States Morbidity and Mortality Weekly Report
+2001-12-30,2005-12-31,US,UNITED STATES,Intestinal infection caused by Escherichia coli O157:H7,446328009,United States Morbidity and Mortality Weekly Report
+1995-12-31,2001-12-29,US,UNITED STATES,Intestinal infection caused by Escherichia coli O157:H7,446328009,United States Public Health Laboratory Information System from Morbidity Mortality Weekly Report
+1995-12-31,2001-12-29,US,UNITED STATES,Intestinal infection caused by Escherichia coli O157:H7,446328009,United States National Electronic Telecommunications System for Surveillance from Morbidity Mortality Weekly Report
+2006-01-01,2009-12-19,US,UNITED STATES,Invasive meningococcal disease,707225006,United States Morbidity and Mortality Weekly Report
+2012-01-01,2014-08-02,US,UNITED STATES,Invasive meningococcal disease,707225006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2013-12-29,2016-07-02,US,UNITED STATES,Invasive meningococcal disease,707225006,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+1951-12-30,1955-12-24,US,UNITED STATES,Infection caused by larvae of Trichinella,709018004,United States Morbidity and Mortality Weekly Report
+2001-12-30,2005-12-31,US,UNITED STATES,Haemophilus influenzae type b infection,709410003,United States Morbidity and Mortality Weekly Report
+2014-01-01,2015-01-03,US,UNITED STATES,Dengue without warning signs,722862003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2001-01-01,2001-12-31,US,UNITED STATES,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2010-01-03,2014-08-02,US,UNITED STATES,Dengue without warning signs,722862003,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2001-12-30,2009-12-19,US,UNITED STATES,Infection caused by Shiga toxin producing Escherichia coli,328291000119103,United States Morbidity and Mortality Weekly Report
+2010-01-03,2014-08-02,US,UNITED STATES,Infection caused by Shiga toxin producing Escherichia coli,328291000119103,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control website
+2014-01-01,2016-07-02,US,UNITED STATES,Infection caused by Shiga toxin producing Escherichia coli,328291000119103,Morbidity Mortality Weekly Report retrieved from US Centers for Disease Control API
+2003-01-01,2012-12-31,UY,URUGUAY,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+2004-01-01,2005-12-31,UY,URUGUAY,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+2003-01-01,2005-12-31,UY,URUGUAY,Dengue,38362002,World Health Organization DengueNet Database
+2003-01-01,2012-12-31,UY,URUGUAY,Dengue,38362002,Pan American Health Organization Website
+2003-01-01,2005-12-31,UY,URUGUAY,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1999-01-01,2005-12-31,VC,SAINT VINCENT AND THE GRENADINES,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,VC,SAINT VINCENT AND THE GRENADINES,Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2012-12-31,VC,SAINT VINCENT AND THE GRENADINES,Dengue,38362002,Pan American Health Organization Website
+1980-01-01,2005-12-31,VC,SAINT VINCENT AND THE GRENADINES,Dengue,38362002,World Health Organization DengueNet Database
+1980-01-01,2005-12-31,VC,SAINT VINCENT AND THE GRENADINES,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1996-01-01,2012-12-31,VE,"VENEZUELA, BOLIVARIAN REPUBLIC OF",Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1989-01-01,2005-12-31,VE,"VENEZUELA, BOLIVARIAN REPUBLIC OF",Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1995-01-01,2012-12-31,VE,"VENEZUELA, BOLIVARIAN REPUBLIC OF",Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,VE,"VENEZUELA, BOLIVARIAN REPUBLIC OF",Dengue,38362002,World Health Organization DengueNet Database
+1960-01-01,2005-12-31,VE,"VENEZUELA, BOLIVARIAN REPUBLIC OF",Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2001-01-01,2005-12-31,VG,"VIRGIN ISLANDS, BRITISH",Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1999-01-01,2012-12-31,VG,"VIRGIN ISLANDS, BRITISH",Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1995-01-01,2012-12-31,VG,"VIRGIN ISLANDS, BRITISH",Dengue,38362002,Pan American Health Organization Website
+1960-01-01,2005-12-31,VG,"VIRGIN ISLANDS, BRITISH",Dengue,38362002,World Health Organization DengueNet Database
+1960-01-01,2005-12-31,VG,"VIRGIN ISLANDS, BRITISH",Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2007-01-01,2012-12-31,VI,"VIRGIN ISLANDS, U.S.",Dengue hemorrhagic fever,20927009,Pan American Health Organization Website
+1980-01-01,1996-12-31,VI,"VIRGIN ISLANDS, U.S.",Dengue,38362002,World Health Organization DengueNet Database
+2007-01-01,2012-12-31,VI,"VIRGIN ISLANDS, U.S.",Dengue,38362002,Pan American Health Organization Website
+1980-01-01,1996-12-31,VI,"VIRGIN ISLANDS, U.S.",Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2004-01-01,2004-12-31,VN,VIET NAM,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2003-01-01,2004-12-31,VN,VIET NAM,Dengue hemorrhagic fever,20927009,World Health Organization DengueNet Database
+1994-02-01,2010-12-31,VN,VIET NAM,Dengue,38362002,Vietnam National Institute of Hygiene and Epidemiology
+1960-01-01,2004-12-31,VN,VIET NAM,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,VN,VIET NAM,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,VN,VIET NAM,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1960-01-01,2004-12-31,VN,VIET NAM,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2009-01-01,2009-12-31,VU,VANUATU,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+2000-01-01,2010-12-31,VU,VANUATU,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+2010-01-01,2010-12-31,VU,VANUATU,Dengue,38362002,World Health Organization Western Pacific Regional Office Health Information Platform
+1979-01-01,1999-12-31,VU,VANUATU,Dengue,38362002,World Health Organization DengueNet Database
+1979-01-01,1999-12-31,VU,VANUATU,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+2008-01-01,2008-12-31,WF,WALLIS AND FUTUNA,Dengue hemorrhagic fever,20927009,World Health Organization Western Pacific Regional Office website
+1992-01-01,2001-12-31,WF,WALLIS AND FUTUNA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2009-12-31,WF,WALLIS AND FUTUNA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1992-01-01,1998-12-31,WF,WALLIS AND FUTUNA,Dengue without warning signs,722862003,World Health Organization DengueNet Database
+1979-01-01,2000-12-31,WS,SAMOA,Dengue,38362002,World Health Organization DengueNet Database
+2000-01-01,2008-12-31,WS,SAMOA,Dengue,38362002,World Health Organization Western Pacific Regional Office website
+1979-01-01,2000-12-31,WS,SAMOA,Dengue without warning signs,722862003,World Health Organization DengueNet Database

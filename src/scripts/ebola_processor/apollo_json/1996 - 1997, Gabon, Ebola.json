@@ -1,0 +1,283 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/20",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/20.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "128947"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "1996-07-13 00:00:00 +0000",
+    "startDateDefinition" : "DATE_OF_FIRST_CASE_FATALITY",
+    "endDate" : "1997-01-18 00:00:00 +0000"
+  },
+  "administrativeLocations" : [ "157" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "128947"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "128947"
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.75
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "157",
+    "additionalDescription" : "Started in logging camp near Booue (0.06 S, 11.57 E) between Ovan and Koumameyong, 200 km from Mekouka and 120 km from Makokou to the southwest",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 24,
+    "whereSampled" : "GA Family members who took care of cases without any physical protection such as gloves",
+    "testName" : "IgM capture assay",
+    "testLoincId" : "71712-4",
+    "numberOfSamplesPositive" : "11",
+    "referenceId" : 2
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 24,
+    "whereSampled" : "GA Family members who took care of cases without any physical protection such as gloves",
+    "testName" : "IgG ELISA Assay",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "11",
+    "referenceId" : 2
+  } ],
+  "populationInfectionSurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 11,
+    "whereSampled" : "GA Asymptomatic antibody positive family members",
+    "testName" : "Ebola-specific RNA",
+    "testLoincId" : "41636-2",
+    "numberOfSamplesPositive" : "7",
+    "referenceId" : 2
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 13,
+    "whereSampled" : "GA Antibody negative exposed family members",
+    "testName" : "Ebola-specific RNA",
+    "testLoincId" : "41636-2",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 2
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 7,
+    "whereSampled" : "GA Antibody and PCR + family members",
+    "testName" : "Antigen capture assay",
+    "testLoincId" : "71768-6",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 2
+  } ],
+  "infectiousDiseaseControlStrategies" : [ ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Possible case",
+    "investigationDefinition" : "a person with headache and/or fever for at least 24 hours, with or without other signs and symptoms, who had contact with a probable or a proven case within the previous three weeks",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "a person living in the apolloObject area who died after one or more days with two or more of the following symptoms and signs: headache, fever, abdominal pain, nausea and/or vomiting, and bleeding. The patient must have, within the three preceding weeks, received an injection or had contact with a probable or a proven case, the illness or having been otherwise diagnosed on clinical grounds.",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Proven case",
+    "investigationDefinition" : "A person from whom Ebola was isolated or demonstrated by electron microscopy or who had indirect fluorescent antibody (IFA) titre of Ebolavirus within 3 weeks after onset of symptoms.",
+    "referenceId" : 1
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "NEONATAL_CASE",
+    "investigationLabel" : "Neonatal case",
+    "investigationDefinition" : "infants born to patients who are probable cases if they had died within 28 days of childbirth",
+    "referenceId" : 1
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 60,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 45,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ ]
+  } ],
+  "transmissionTrees" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+    "thisCase" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "BH",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    },
+    "casesThisCaseInfected" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "BHNganga",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "BHNephew",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    } ]
+  } ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Ebola Hemorrhagic Fever Outbreaks in Gabon, 1994-1997: Epidemiologic and Health Control Issues",
+    "authors" : "Georges et al",
+    "publication" : "J Infect Dis. (1999) 179 (Supplement 1): S65-S75. doi: 10.1086/514290",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S65.long",
+    "pubMedId" : 9988167
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Ebola haemorrhagic fever in Zaire, 1976  Report of an International Commission",
+    "publication" : "Bulletin of the World Health Organization, 56 (2): 271-293 (1978)",
+    "pubMedId" : 307456
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Human asymptomatic Ebola infection and strong inflammatory response",
+    "authors" : "Leroy et al",
+    "publication" : "Lancet. 2000 Jun 24;355(9222):2210-5",
+    "url" : "http://www.sciencedirect.com/science/article/pii/S0140673600024053",
+    "pubMedId" : 10881895
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on 2014-09-20", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "M Wagner 2014-09-23 and 2914-10-20" ],
+  "acknowledgements" : [ ]
+}

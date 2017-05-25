@@ -1,0 +1,615 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/6",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/6.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "128951"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "1995-01-06 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "1995-07-16 00:00:00 +0000",
+    "endDateDefinition" : "DEATH_OF_LAST_CASE"
+  },
+  "administrativeLocations" : [ "4913" ],
+  "epidemicZones" : [ "85164" ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "128951"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "128951"
+      },
+      "incubationPeriod" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.UncertainDuration",
+        "unitOfTime" : "DAY",
+        "uncertainValue" : {
+          "mean" : 10.7,
+          "minimumValue" : 2.0,
+          "maximumValue" : 19.0
+        }
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.81
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ReproductionNumber",
+        "uncertainValue" : {
+          "mean" : 2.7,
+          "lowerBound" : 1.9,
+          "upperBound" : 2.8,
+          "confidence" : 95
+        },
+        "referenceId" : 1
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ReproductionNumber",
+        "uncertainValue" : {
+          "mean" : 1.83,
+          "standardDeviation" : 0.06
+        },
+        "referenceId" : 2
+      } ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "85164",
+    "numberOfPeople" : 200000,
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 402,
+    "whereSampled" : "Health care workers and other personnel who did not meet the EHF case definition from Kikwit General Hospital, the epicenter of the EHF apolloObject, four other hospitals (including one maternity hospital), and 26 health care centers in Kikwit and rounding towns.",
+    "testName" : "ELISA IgG Titer. Positive is > 1:400",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 6
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 152,
+    "whereSampled" : "From persons who resided in the same household as or shared a cooking fire with an EHF convalescent",
+    "testName" : "ELISA for IgG antibodies",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "4",
+    "referenceId" : 7
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 81,
+    "whereSampled" : "From initially negative persons who resided in the same household as or shared a cooking fire with an EHF convalescent",
+    "testName" : "ELISA for IgG antibodies",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 7
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo Sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 161,
+    "whereSampled" : "individuals who lived in villages surrounding Kikwit, Zaire that had had no cases during the apolloObject",
+    "testName" : "Ebola virus IgG antibodies",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "15",
+    "referenceId" : 8
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo Sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 184,
+    "whereSampled" : "self-identified forest workers from the Kikwit area",
+    "testName" : "Ebola virus IgG antibodies",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "4",
+    "referenceId" : 8
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationSerologySurvey",
+    "speciesSampled" : "Homo Sapiens",
+    "speciesSampledNcbiTaxonId" : "9606",
+    "numberSampled" : 230,
+    "whereSampled" : "self-identified city workers from the Kikwit area",
+    "testName" : "Ebola virus IgG antibodies",
+    "testLoincId" : "71770-2",
+    "numberOfSamplesPositive" : "5",
+    "referenceId" : 8
+  } ],
+  "populationInfectionSurveys" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Mosquitoes (15 species of Culicidae)",
+    "speciesSampledNcbiTaxonId" : "7157",
+    "numberSampled" : 15118,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Phlebotominae (3 species)",
+    "speciesSampledNcbiTaxonId" : "7198",
+    "numberSampled" : 124,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Bedbugs (One species - Cimex hemipterus)",
+    "speciesSampledNcbiTaxonId" : "757355",
+    "numberSampled" : 6538,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Fleas (Two species of Siphonaptera)",
+    "speciesSampledNcbiTaxonId" : "7509",
+    "numberSampled" : 144,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Lice (4 species of Phthiraptera )",
+    "speciesSampledNcbiTaxonId" : "85819",
+    "numberSampled" : 103,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Ticks (8 species of Ixodida)",
+    "speciesSampledNcbiTaxonId" : "6935",
+    "numberSampled" : 5816,
+    "whereSampled" : "Various sites related to the primary case of the 1995 DRC Ebola Epidemic",
+    "testName" : "Multiple viral isolation methods for Ebola virus",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 3
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Chaerephon ansorgei",
+    "speciesSampledNcbiTaxonId" : "256042",
+    "numberSampled" : 212,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Chaerephon pumilus",
+    "speciesSampledNcbiTaxonId" : "242384",
+    "numberSampled" : 211,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Lemniscomys striatus",
+    "speciesSampledNcbiTaxonId" : "121567",
+    "numberSampled" : 249,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Mus minutoides",
+    "speciesSampledNcbiTaxonId" : "10105",
+    "numberSampled" : 289,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Mus triton",
+    "speciesSampledNcbiTaxonId" : "473865",
+    "numberSampled" : 459,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PopulationInfectionSurvey",
+    "speciesSampled" : "Praomys jacksoni",
+    "speciesSampledNcbiTaxonId" : "209866",
+    "numberSampled" : 241,
+    "whereSampled" : "Forest biotopes and near the home of the primary case.",
+    "testName" : "A variety of viral isolation, antigen and serology tests",
+    "numberOfSamplesPositive" : "0",
+    "referenceId" : 4
+  } ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Education",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Personal Protective Equipment",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Primary contacts were quarantined",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Elimination of needle and syringe reuse or proper sterilization of items between use",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Closure of all hospitals, labs, and health centers; all care given at quarantine pavilion. On 4 May 1995, the following control measures were taken to minimize the risk of virus spread: All hospitals, laboratories, and health centers were closed throughout Kikwit and its surroundings; patients were isolated in a quarantine pavilion at Kikwit General Hospital; a volunteer team of 1 physician and 3 nurses was isolated with the patients in the quarantine ward (although at that time they had barely any gloves or protective clothing); and a pamphlet that was prepared to alert the community of the outbreak was distributed throughout the city. These interventions had minimal impact because there was a lack of running water, electricity, and latrine facilities in the isolation ward, and food had to be provided by relatives of the patients. Most patients and 2 physicians fled the hospital.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ {
+      "timeScale" : "EPIDEMIC_TIME_SCALE",
+      "timeSinceTimeScaleZero" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "value" : 119.0
+      }
+    } ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "referenceId" : 9,
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Field case definition",
+    "investigationDefinition" : "The investigation/intervention team broadened the definition to make it more sensitive over time."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "A probable case was defined as someone who had (1) an unexplained fever and contact with another case-patient; (2) unexplained fever plus at least 3 of 10 symptoms (abdominal pain, anorexia, asthenia, simple [nonbloody] diarrhea, dysphagia, dyspnea, headache, hiccups, myalgia or arthralgias, and nausea or vomiting); or (3) unexplained acute hemorrhagic signs or symptoms, such as melena, hematemesis, petechiae, or epistaxis. Cases that had been tested in laboratories and were negative were excluded."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Proven case",
+    "investigationDefinition" : "Presence of detectable antigen or IgM antibodies in a person from whom Ebola was isolated or demonstrated by electron microscopy or who had indirect fluorescent antibody (IFA) titre of Ebolavirus within 3 weeks after onset of symptoms. Individuals without any symptoms were excluded for counts"
+  } ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 315,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal Cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 250,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Fatal Ebola hemorrhagic fever cases by date of death, Bandundu region, Democratic Republic of the Congo, 1 March to 21 July 1995 (Figure 1 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Ebola hemorrhagic fever cases by date of symptom onset and occupation, Bandundu region, Democratic Republic of the Congo, 1 March to 21 July 1995 (Figure 2 in reference)",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-01-01 00:00:00 +0000",
+              "lastDay" : "1995-01-31 00:00:00 +0000"
+            },
+            "value" : 5,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-02-01 00:00:00 +0000",
+              "lastDay" : "1995-02-28 00:00:00 +0000"
+            },
+            "value" : 10,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-03-01 00:00:00 +0000",
+              "lastDay" : "1995-03-31 00:00:00 +0000"
+            },
+            "value" : 11,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-04-01 00:00:00 +0000",
+              "lastDay" : "1995-04-30 00:00:00 +0000"
+            },
+            "value" : 74,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-05-01 00:00:00 +0000",
+              "lastDay" : "1995-05-31 00:00:00 +0000"
+            },
+            "value" : 173,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-06-01 00:00:00 +0000",
+              "lastDay" : "1995-06-30 00:00:00 +0000"
+            },
+            "value" : 32,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "1995-07-01 00:00:00 +0000",
+              "lastDay" : "1995-07-31 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          } ]
+        },
+        "nvariables" : 1
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Ebola hemorrhagic fever cases by month of onset, Bandundu region, Democratic Republic of the Congo, January to July 1995. Month of onset could not be calculated for 9 case-patients (Figure 3 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Ebola hemorrhagic fever cases by date of symptom onset and source of infection (patient IDNUM3 [identification no. 3], ID-NUM2260, or other), Bandundu region, Democratic Republic of the Congo, 1 March to 30 June 1995 (Figure 5 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    } ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "The Reemergence of Ebola Hemorrhagic Fever, Democratic Republic of the Congo, 1995",
+    "authors" : "Khan et al",
+    "publication" : "Journal of Infectious Diseases. 1999;179:S76-S86",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S76.full",
+    "pubMedId" : 39988168
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Understanding the dynamics of Ebola epidemics",
+    "authors" : "Legrand et al",
+    "publication" : "Epidemiol Infect. May 2007; 135(4): 610–621",
+    "url" : "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2870608/",
+    "pubMedId" : 16999875
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "The basic reproductive number of Ebola and the effects of public health measures: the cases of Congo and Uganda",
+    "publication" : "J Theor Biol. 2004 Jul 7;229(1):119-26",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/15178190",
+    "pubMedId" : 15178190
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 3,
+    "title" : "Field investigations of an outbreak of Ebola hemorrhagic fever, Kikwit, Democratic Republic of the Congo, 1995: arthropod studies",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S148-54",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S148.long",
+    "pubMedId" : 9988178
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 4,
+    "title" : "Search for the Ebola virus reservoir in Kikwit, Democratic Republic of the Congo: reflections on a vertebrate collection",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S155-63",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S155.long",
+    "pubMedId" : 9988179
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 5,
+    "title" : "Epidemiologic and clinical aspects of the Ebola virus apolloObject in Mosango, Democratic Republic of the Congo, 1995",
+    "authors" : "Ndambi et al",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S8-10",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S8.long",
+    "pubMedId" : 9988156
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 6,
+    "title" : "Serologic survey among hospital and health center workers during the Ebola hemorrhagic fever outbreak in Kikwit, Democratic Republic of the Congo, 1995",
+    "authors" : "Tomori et al",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S98-101",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S98.long",
+    "pubMedId" : 9988171
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 7,
+    "title" : "Clinical, virologic, and immunologic follow-up of convalescent Ebola hemorrhagic fever patients and their household contacts, Kikwit, Democratic Republic of the Congo. Commission de Lutte contre les Epidémies à Kikwit",
+    "authors" : "Rowe et al",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S28-35",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/9988162",
+    "pubMedId" : 9988162
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 8,
+    "title" : "Prevalence of IgG antibodies to Ebola virus in individuals during an Ebola outbreak, Democratic Republic of the Congo, 1995",
+    "authors" : "Busico et.al",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S102-7",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S102.long",
+    "pubMedId" : 9988172
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 9,
+    "title" : "Ebola outbreak in Kikwit, Democratic Republic of the Congo: discovery and control measures",
+    "publication" : "J Infect Dis. 1999 Feb;179 Suppl 1:S259-62",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S259.long",
+    "pubMedId" : 9988192
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 9,
+    "title" : "Ebola hemorrhagic fever in Kikwit, Democratic Republic of the Congo: clinical observations in 103 patients",
+    "authors" : "Bwaka et al",
+    "url" : "http://jid.oxfordjournals.org/content/179/Supplement_1/S1.long",
+    "pubMedId" : 9988155
+  } ],
+  "curator" : "Virgina Dato",
+  "editHistory" : [ "created 2014-09-18", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "2004-09-22 and 2014-10-19 by M Wagner" ],
+  "acknowledgements" : [ "John Drake's Parameter spreadsheet pointed us to references 1 and 2, which contained estimates of R0 and incubation period we encoded" ]
+}

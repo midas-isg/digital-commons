@@ -1,0 +1,2810 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/caseSeries/35",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/caseSeries/35.xml?view=true",
+  "class" : "edu.pitt.apollo.types.v4_0_1.CaseSeries",
+  "caseSeriesDescription" : "Non-transplant human rabies cases with documented bat strains of Rabies",
+  "caseRecords" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1990TX",
+    "ageInYears" : 22,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1990-06-05 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human rabies--Texas, 1990.",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR March 01, 1991/ 40(8):132-3",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00001920.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"On April 13, the man was bitten on the right index finger by a bat while at a tavern in Mercedes, Texas.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1991AR",
+    "ageInYears" : 29,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1991-08-17 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1991-08-25 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Direct Flourscent Antibody",
+      "sampleDate" : "1991-08-12 00:00:00 +0000",
+      "result" : "Positive"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Monoclonal antibody typing",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Epidemiologic Notes and Reports Human Rabies -- Texas, Arkansas, and Georgia, 1991",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR November 08, 1991 / 40(44);765-769",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00015547.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"A friend reported that one night in early July a bat had landed on the man's mouth; the patient killed and disposed of it. Although the friend had detected no bites or scratches on the man's face, other friends and co-workers whom the patient had told about the incident recalled bites on his thumb or scratches on his chest.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1991GA",
+    "ageInYears" : 27,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1991-10-02 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1991-10-04 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1991-10-08 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Pathology",
+      "result" : "Negri bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Monoclonal antibody typing",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Epidemiologic Notes and Reports Human Rabies -- Texas, Arkansas, and Georgia, 1991",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR November 08, 1991 / 40(44);765-769",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00015547.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"Extensive interviews with the patient's family and friends in Georgia and Tennessee did not reveal any known animal exposure.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1993NY",
+    "ageInYears" : 11,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1993-07-05 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1993-07-11 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1993-07-11 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "histopathologic slides of brain tissue",
+      "sampleDate" : "1993-08-02 00:00:00 +0000",
+      "result" : "Possible Negrio bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "RNA extracted from brain tissue",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- New York, 1993",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR, October 22, 1993 / 42(41);799,805-806",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00022062.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"She had no known history of contact with a bat, and examination of her home and outbuildings on the property revealed no evidence of bat infestation.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1993TX",
+    "ageInYears" : 82,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1993-11-04 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1993-11-09 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Brain specimes tested by flourescent antibody.",
+      "result" : "Positive"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Texas and California, 1993",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR February 18, 1994 / 43(06);93-96",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00024875.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"Because of his clinical manifestations, tetanus and rabies were considered as causes of illness; however, no history of travel or animal bite could be elicited from the patient or his family.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1994CA",
+    "ageInYears" : 44,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1993-12-29 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1994-01-07 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1994-02-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Formalin-fixed brain sepciment",
+      "sampleDate" : "1994-02-18 00:00:00 +0000",
+      "result" : "Negri Bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- California, 1994",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR July 01, 1994 / 43(25);455-457",
+      "url" : "http://www.cdc.gov/mmwR/preview/mmwrhtml/00031780.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"In 1991, the patient had visited caves in Utah but had no known contact with bats.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1994AL",
+    "ageInYears" : 24,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1994-10-01 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1994-10-11 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Tissue samples sent to the Armed Forces Institue of Pathology",
+      "sampleDate" : "1994-12-02 00:00:00 +0000",
+      "result" : "Negra bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "sampleDate" : "1994-12-12 00:00:00 +0000",
+      "result" : "TB"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Alabama, Tennessee, and Texas, 1994",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR April 14, 1995 / 44(14);269-272",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00036736.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"From 1987 through the onset of her illness, the woman frequently removed and discarded dead or dying bats from a chimney in the facility where she worked.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1994WV",
+    "ageInYears" : 41,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1994-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1994-10-04 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1994-10-15 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Brain Biopsy",
+      "sampleDate" : "1994-10-10 00:00:00 +0000",
+      "result" : "Negri bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucal biopsy",
+      "sampleDate" : "1994-10-07 00:00:00 +0000",
+      "result" : "variant associatd with silver-haired bat (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- West Virginia, 1994",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR  February 10, 1995 / 44(05);86-87,93",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00035789.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with teeth",
+      "infectionSourceAdditionalDescription" : [ "\"Interviews with friends and family members on October 15 indicated that, in late June or early July 1994, the decedent and two acquaintances had shot a bat from the front porch of his house and that the decedent had examined the head of the bat by opening its mouth and feeling the teeth.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1994TN",
+    "ageInYears" : 42,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1994-11-14 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1994-11-23 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "corneal impression",
+      "sampleDate" : "1994-11-22 00:00:00 +0000",
+      "result" : "Positive for rabies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "result" : "Ln/Ps"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Alabama, Tennessee, and Texas, 1994",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR April 14, 1995 / 44(14);269-272",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00036736.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"In an interview on November 15, the patient denied any animal bites or history of international travel.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1995WA",
+    "ageInYears" : 4,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1994-03-15 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1995-03-09 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1995-03-15 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Brain tissue at autopsy",
+      "result" : "Positive for rabies virus"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "result" : "Msp"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Washington, 1995",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR September 01, 1995 / 44(34);625-627",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00038616.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"During the child's hospitalization, family members reported that, on February 18, a bat had been found in her bedroom. Family members had examined the child but found no evidence of a bite. The bat was removed from the house, destroyed, and buried in the yard.\" \"...the family members of the child described in this report had not witnessed contact between the child and the bat, and she denied a bite or any other contact on the night of the incident...\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1995CA1",
+    "ageInYears" : 27,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1995-09-09 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1995-09-10 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1995-09-21 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Autopsy Brain Tissue",
+      "sampleDate" : "1995-09-21 00:00:00 +0000",
+      "result" : "variant of rabies virus associated with Mexican free-tailed bats (Tadarida brasiliensis)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- California, 1995",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR  May 03, 1996 / 45(17);353-356",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00041256.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"...and he worked primarily in a packing shed; a bat colony inhabited the roof area of the shed. A family member believed that a bat had landed on and was brushed off the patient's chest, but was unable to provide any specific details of the incident.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1995CT",
+    "ageInYears" : 13,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1995-09-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1995-09-25 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1995-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Corneal Impressions",
+      "sampleDate" : "1995-10-01 00:00:00 +0000",
+      "result" : "Positive for rabies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA.",
+      "result" : "Msp"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Connecticut, 1995",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR March 15,1996 / 45(10);207-209",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00040627.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"Following the diagnosis of rabies, the girl's mother and three siblings recalled that on approximately August 19, a bat flying inside the house struck at least one person; during this time, the girl was asleep in an upstairs bedroom. Inspection of the house and surrounding property by the Greenwich Department of Health on September 29 did not identify dead animals or evidence of bats.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1995CA 2",
+    "ageInYears" : 74,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1995-01-26 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1995-09-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1995-11-09 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Examination of brain material",
+      "result" : "Intracytoplasmic inclusions consistent with rabies virus infection"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "DFA staining",
+      "result" : "rabies antigen"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of the specific viral RNA found in the brain tissue",
+      "result" : "rabies virus variant associated with the silver-haired bat (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- California, 1995",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR  May 03, 1996 / 45(17);353-356",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00041256.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"The patient's son reported that the patient would sometimes catch bats, but he knew of no incidents of animal bite. \"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1996KY",
+    "ageInYears" : 42,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1996-09-28 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1996-09-28 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1996-10-16 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Serum sample",
+      "sampleDate" : "1996-10-10 00:00:00 +0000",
+      "result" : "Rabies virus"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Vitreous humor fluid and serum",
+      "sampleDate" : "1996-10-15 00:00:00 +0000",
+      "result" : "Rabies virus Antibody"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of the viral nucleic acid",
+      "result" : "variant associated with the silver-haired bat (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Kentucky and Montana, 1996",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR May 09, 1997 / 46(18);397-400",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00047605.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"While hospitalized, the patient denied any history of animal bites, and an interview with the patient's husband on November 15 did not establish a history of contact with bats or other animals. The couple lived in an old house in a rural area and reported frequently hearing noises in the chimney that sounded like birds. However, investigation of the residence by the local health department did not detect evidence of bats in the house or chimney.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1996MT",
+    "ageInYears" : 40,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1996-12-09 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1996-12-19 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Serum, saliva, and nuchal skin biopsy specimens",
+      "sampleDate" : "1996-12-19 00:00:00 +0000",
+      "result" : "Positive for rabies virus"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA",
+      "result" : "variant associated with the silver-haired bat (L. noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Kentucky and Montana, 1996",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR May 09, 1997 / 46(18);397-400",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00047605.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The patient and his family lived in a rural area and reported occasionally seeing bats outside their home but denied having had physical contact with bats. In addition, the patient was employed as a custodian for a wood and paper mill and denied contact with bats at his workplace. Although coworkers reported that bats were sometimes observed near the mill premises, the Missoula City-County Health Department inspected the site after the patient's death and found no evidence of bats.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1997MT",
+    "ageInYears" : 65,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1996-12-20 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1996-12-23 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1997-01-05 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Microscopic examination of brain tissue",
+      "result" : "Negri bodes throughout the brain tissue with highest density in the cerebellum and hippocampus."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of the viral nucleic acid",
+      "result" : "variant associated with the silver-haired bat, with 99% homology with a variant identified in a previous case of human rabies in Montana in 1996"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Montana and Washington, 1997",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR August 22, 1997 / 46(33);770-774",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00049057.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"His family could not recall any history of contact with ill animals during these activities but reported that he baited traps with decayed animals he had collected from roadsides, often removing meat from the carcasses without wearing gloves. They also recalled that a bat had entered their home through the bedroom window in late summer 1996. On subsequent days, the bat was observed to be roosting during the daytime and flying around the house at dusk, and the patient eventually forced the bat out of the house with a broom. The patient's wife denied known contact with the bat and did not recall her husband having reported direct contact with the animal at any time. The bat had been driven from the house approximately 4 months before the onset of the patient's illness.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1997WA",
+    "ageInYears" : 64,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1996-12-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1997-01-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Examination of brain tissue",
+      "result" : "round, eosinophilic, cytoplasmic inclusion (Negri) bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Analysis of the viral RT-PCR sequence",
+      "result" : "Consistent with the big brown bat in the western United States"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Montana and Washington, 1997",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR August 22, 1997 / 46(33);770-774",
+      "url" : "http://www.cdc.gov/Mmwr/preview/mmwrhtml/00049057.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"Family members reported that the patient had no known history of exposure to bats or other animals during the months before his illness or during trips to Mazatl¤n, Mexico, in February 1996, or Missoula, Montana, in September 1996.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1997NJ",
+    "ageInYears" : 32,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1997-10-12 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1997-12-14 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1997-10-23 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nuchal skin biopsy",
+      "sampleDate" : "1997-10-17 00:00:00 +0000",
+      "result" : "Postive for rabies antigent by the DFA test"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleotide sequence analysis of viral RNA",
+      "result" : "a variant associated with the silver-haired (L. noctivagans) and eastern pipistrelle (Pipistrellus sp.) bats."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Texas and New Jersey, 1997",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR January 16, 1998 / 47(01);1-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00050821.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"On initial presentation, the patient reported exposure to his two pet parakeets but not to other animals. Additional history obtained from his wife revealed that on two separate occasions in early July, bats had been found in the living room of the patient's home. The patient had captured the bats by hand by using a cloth and had then released them outside. The patient and his wife did not recall whether he had been bitten.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1997TX",
+    "ageInYears" : 71,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1997-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1997-10-08 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1997-10-17 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Samples - direct fluorescent antibody",
+      "result" : "Positive"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Samples",
+      "result" : "variant associated with silver-haired (Lasionycteris noctivagans) and eastern pipistrelle (Pipistrellus sp.) bats."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmorteum Brain Sample",
+      "result" : "reverse transcriptase polymerase chain reaction (RT-PCR)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Texas and New Jersey, 1997",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR January 16, 1998 / 47(01);1-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00050821.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"On August 3, while sleeping in a motel in Harrison County, the patient had been awakened by a bat that had settled on his left shoulder. He removed and disposed of the bat. The patient's wife had examined his skin immediately after removing the bat and had not detected a bite wound.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "1998VA",
+    "ageInYears" : 29,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "1998-12-14 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "1998-09-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "1998-12-31 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nuchal skin biopsy Positive for rabies virus by direct fluorescent antibody test",
+      "result" : "Positive for rabies virus by direct fluorescent antibody test"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Sequence of amplified RT-PCR",
+      "result" : "greater than 99.7% DNA homology to a rabies virus variant associated with eastern pipistrelle bats (Pipistrellus subflavus) and silver-haired bats (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies -- Virginia, 1998",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR February 12, 1999 / 48(05);95-97",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00056456.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"Family members, friends, and prison staff reported the patient had not indicated any contact with or bite from an animal in recent months, and prison medical records did not document evidence of a bite or scratch.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2000CA",
+    "ageInYears" : 49,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2000-09-13 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2000-09-16 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2000-09-20 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Direct Flourescent antibody test",
+      "result" : "Positive for rabies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Reverse Transcriptase-polymerase chain reaction: saliva",
+      "result" : "Tadaride basilensis (Mexican Free-tailed bat)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies ---California, Georgia, Minnesota, New York, and Wisconsin, 2000",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR, December 15, 2000 / 49(49);1111-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm4949a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"The patient did not report contact with a bat, although his wife reported that in June or July a bat had flown into their house and the patient had removed it.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2000GA",
+    "ageInYears" : 26,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2000-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2000-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2000-10-10 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Direct Flourescent antibody test",
+      "result" : "Positive for rabies"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies ---California, Georgia, Minnesota, New York, and Wisconsin, 2000",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR, December 15, 2000 / 49(49);1111-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm4949a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"He had reported to co-workers that bats from the attic had entered his living quarters and landed on him while he slept.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2000ND/MN",
+    "ageInYears" : 47,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2000-10-08 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2000-10-19 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2000-10-25 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Direct Flourescent antibody test",
+      "result" : "Positive for rabies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Reverse Transcriptase-polymerase chain reaction: skin biopopsy and  saliva",
+      "result" : "Lasioyoteris noctivagans (Silver-haired bat) and Pipistrellus subflavus (Eastern pipistrelle bat)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies ---California, Georgia, Minnesota, New York, and Wisconsin, 2000",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR, December 15, 2000 / 49(49);1111-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm4949a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"...a friend told the family that during August 11--19, the patient had been awakened by a bat on his right hand. He killed the bat and was bitten in the process.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2000WI",
+    "ageInYears" : 69,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2000-10-12 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2000-10-14 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2000-11-01 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Samples",
+      "sampleDate" : "2000-11-02 00:00:00 +0000",
+      "result" : "Negri bodies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Samples",
+      "result" : "Rabies virus silver-haired bat-associated SHBRV"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies ---California, Georgia, Minnesota, New York, and Wisconsin, 2000",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR, December 15, 2000 / 49(49);1111-5",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm4949a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"The patient had told a friend that two or three times a year he had removed bats from his house with his bare hands; several other residences used by the patient also had potential portals for the entry of bats. He did not mention being bitten by an animal but had asked a friend a week before admission if rabies could be acquired from an insect bite.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2002IA",
+    "ageInYears" : 20,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2002-09-17 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2002-09-28 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucal biopsy - direct flurescent antibody",
+      "sampleDate" : "2002-09-27 00:00:00 +0000",
+      "result" : "Positive for rabies"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "DNA sequence analysis",
+      "result" : "most similar to variants found in silver-haired and eastern pipistrelle bats"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Iowa, 2002",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR January 24, 2003 / 52(03);47-48",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5203a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The source of the patient's infection remains unclear. No specific history of exposure to bats was reported.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2002CA",
+    "ageInYears" : 28,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2002-03-19 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2002-03-31 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Saliva sample - RT-PCR.",
+      "result" : "Confirmed positive for rabies by CDC"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Genetic sequence analysis",
+      "result" : "variant associated with the Mexican free-tailed bat."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- California, 2002",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR August 9, 2002 / 51(31);686-688",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5131a4.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The patient's family reported that he had killed a bat in his house on March 10, although he had denied having any direct contact.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2002TN",
+    "ageInYears" : 13,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2002-08-21 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2002-10-25 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2002-10-25 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "The nuchal skin biopsy and saliva - reverse transcription polymerase chain reaction.",
+      "sampleDate" : "2002-08-29 00:00:00 +0000",
+      "result" : "Positive for rabies virus RNA"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Genetic sequence analysis",
+      "result" : "a variant associated with silver-haired and eastern pipistrelle bats."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Tennessee, 2002",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR September 20, 2002 / 51(37);828-829",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5137a2.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"The parents reported that the patient had found a bat on the ground during the day at a nearby lake on approximately July 1 and brought it home. No other family members handled the bat, which was released the same day. The patient never reported being bitten by the bat, but at the time of the investigation the patient could not be asked directly.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2003CA",
+    "ageInYears" : 66,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2002-09-14 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "A nested, reverse transcription polymerase chain reaction assay performed on saliva samples",
+      "result" : "was positive for evidence of rabies virus nucleic acid."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Sequence analysis",
+      "result" : "100% homology with a rabies virus variant associated with the silver-haired bat (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Death Associated with Bat Rabies --- California, 2003",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR January 23, 2004 / 53(02);33-35",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5302a4.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"The patient reported being bitten by a bat on the right index finger while in his bed approximately 5 weeks before admission. He removed the bat from his home, and it flew away. \"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2004AR",
+    "ageInYears" : 20,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2004-05-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Histopathologic examination of central nervous system (CNS) tissues from patients that received organs from this individual",
+      "result" : "Rabies virus antigens"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Antigentic typing of organ recipient",
+      "result" : "compatible with a rabies virus variant associated with bats"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Investigation of Rabies Infections in Organ Donor and Transplant Recipients --- Alabama, Arkansas, Oklahoma, and Texas, 2004",
+      "authors" : "Centers for Disease Control",
+      "publication" : "MMWR  July 9, 2004 / 53(26);586-589",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5326a6.htm"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 2,
+      "title" : "Transmission of rabies virus from an organ donor to four transplant recipients.",
+      "authors" : "Srinivasan A1, Burton EC, Kuehnert MJ, Rupprecht C, Sutker WL, Ksiazek TG, Paddock CD, Guarner J, Shieh WJ, Goldsmith C, Hanlon CA, Zoretic J, Fischbach B, Niezgoda M, El-Feky WH, Orciari L, Sanchez EQ, Likos A, Klintmalm GB, Cardo D, LeDuc J, Chamberland",
+      "publication" : "NEJM",
+      "url" : "http://www.ncbi.nlm.nih.gov/pubmed/15784663"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"The donor had told others of being bitten by a bat.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2006TX",
+    "ageInYears" : 16,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2006-05-04 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2006-05-05 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2006-05-12 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Virus sequencing",
+      "result" : "Mexican free-tailed bat (t brasiliensis)"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Rabies surveillance in the United States during 2006.",
+      "authors" : "Blanton JD1, Hanlon CA, Rupprecht CE.",
+      "publication" : "J Am Vet Med Assoc August 15, 2014 / 231(4):540-56",
+      "url" : "http://www.ncbi.nlm.nih.gov/pubmed/17696853"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"The patient's family had reported that, approximately 4 weeks prior to onset, a bat had been discovered in the patient's room and released. The patient reportedly mentioned to acquaintances that he had awakened to find the bat on his face.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2006IN",
+    "ageInYears" : 10,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2006-09-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2006-10-07 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2006-11-02 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Direct fluorescent antibody (DFA) staining of the skin biopsy",
+      "result" : "Positive for detection of rabies virus antigens."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Genetic sequencing of amplicons obtained from the patient's skin and saliva,",
+      "result" : "a rabies virus variant associated with the silver-haired bat, Lasionycteris noctivagans"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Indiana and California, 2006",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR April 20, 2007 / 56(15);361-365",
+      "url" : "http://www.cdc.gov/MMWR/preview/mmwrhtml/mm5615a1.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"The patient's mother reported that in mid-June, the girl had awakened her during the night and said that a bird or bat had flown into her bedroom window and bitten her. The mother saw a small mark on the girl's arm, which the mother washed and treated with an over-the-counter first aid treatment. The mother then went to the girl's bedroom to see whether an animal was present. Finding none, she assumed that the incident was a nightmare, not uncommon for the girl. Approximately 2--3 days later, an older sibling took a dead bat away from the family cat; however, the mother did not associate this event with the previous incident and did not seek rabies PEP for the girl. The mother later reported that at the time of the incident, a bedroom window was probably open without a screen in place.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2008Ca/Mx",
+    "ageInYears" : 16,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2006-03-17 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2008-03-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Brain tissue - direct fluorescent antibody test.",
+      "result" : "Rabies virus antigen"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Genetic sequencing",
+      "result" : "a rabies virus variant most closely related to viruses found in Mexican free-tailed bats"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Imported Human Rabies --- California, 2008",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR  July 10, 2009 / 58(26);713-716",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5826a1.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The Santa Barbara County Public Health Department and health officials in Mexico interviewed family members and friends of the patient regarding potential rabies exposures. Through these interviews, two potential animal bite exposures were identified. Both occurred in Oaxaca, Mexico. In December 2007, the patient was bitten by a dog while tending sheep. In the same month, he was bitten by a fox. Several other persons who were bitten by the fox received rabies PEP, but the patient did not.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2008MO",
+    "ageInYears" : 55,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2008-11-21 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2008-11-24 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2006-11-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Skin biopsy -  direct fluorescent antibody testing and reverse transcription--polymerase chain reaction (RT-PCR)",
+      "result" : "Rabies Viral antigen and RNA were detected by CDC"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Rabies viral RNA amplified by RT-PCR was typed as a variant common to silver-haired bats (Lasionycteris noctivagans).",
+      "result" : "typed as a variant common to silver-haired bats (Lasionycteris noctivagans)."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "result" : "Rabies viral RNA amplified by RT-PCR was typed as a variant common to silver-haired bats (Lasionycteris noctivagans)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Missouri, 2008",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR November 6, 2009 / 58(43);1207-1209",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5843a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"He reported that he had been bitten by a bat on the left earlobe 4--6 weeks earlier.\"\"Family members reported that they saw the bat in the rafters of the front porch for several days before it flew into the house. The patient caught the bat and allowed it to crawl up his arm and neck, and it bit him on the left ear. At the time of the bite, he mentioned to his family the possibility of rabies transmission from bats, but did not report the incident to public health authorities or seek medical evaluation.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2009KY/IN",
+    "ageInYears" : 43,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2009-10-05 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2009-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2009-10-20 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Histopathologic examination of Brain Tissue",
+      "result" : "Abundant neuronal cytoplasmic inclusions (Negri bodies)"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Viral RNA",
+      "result" : "typed as a variant common to the tricolored bat (Perimyotis subflavus)."
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Kentucky/Indiana, 2009",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR April 9, 2010 / 59(13);393-396",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm5913a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The investigation identified no specific source of rabies virus exposure. However, the patient, who worked as a mechanic and lived in a farming community in southern Indiana, had mentioned to his friends that he had seen a bat in late July after removing a tarpaulin from a tractor adjacent to his residence. He had not mentioned a bite or a nonbite exposure associated with this or any other incident.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2009MI",
+    "ageInYears" : 55,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2009-10-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2009-11-11 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Specimens",
+      "sampleDate" : "2009-11-13 00:00:00 +0000",
+      "result" : "rabies virus antigens were detected in the brain by direct fluorescent antibody test"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Postmortem Brain Specimens",
+      "result" : "analysis of the nucleoprotein gene was consistent with a rabies virus variant found in L. noctivagans"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Michigan, 2009",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR April 15, 2011 / 60(14);437-440",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6014a1.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "445793"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact with claw",
+      "infectionSourceAdditionalDescription" : [ "\"The patient reportedly had awakened with a bat on his arm 9 months earlier but had not sought medical evaluation.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2010LA",
+    "ageInYears" : 19,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2010-07-30 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2010-08-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2010-08-21 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "postmortem brain tissues",
+      "sampleDate" : "2010-08-29 00:00:00 +0000",
+      "result" : "Rabies virus antigen"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nucleic acid amplification and sequencing.",
+      "result" : "a vampire bat rabies variant"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies from Exposure to a Vampire Bat in Mexico --- Louisiana, 2010",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR August 12, 2011 / 60(31);1050-1052",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6031a2.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Bite",
+      "infectionSourceAdditionalDescription" : [ "\"The patient's mother stated that the patient was bitten by a vampire bat on the heel of his left foot while he was sleeping. The bite occurred on July 15 in his home state of Michoacán, Mexico, 10 days before his departure for the United States.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2010WI",
+    "ageInYears" : 70,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nuchal skin biopsy",
+      "result" : "rabies virus antigens"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "result" : "rabies virus antigens"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies --- Wisconsin, 2010",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR September 2, 2011 / 60(34);1164-1166",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6034a3.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"...the patient's wife stated that they had been selling firewood and her husband mentioned the presence of bats in the woodpile.\" \" No animal bites were reported by the patient or his wife, and no other family members or friends had any likely exposures to bats or other potentially rabid animals.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2011SC",
+    "ageInYears" : 46,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2011-12-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "HOSPITALIZATION",
+      "dateTime" : "2011-12-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2011-12-19 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Nuchal skin biopsy - direct fluorescent antibody testing",
+      "result" : "rabies virus antigens"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Sequence analysis of viral RNA",
+      "result" : "rabies virus antigens"
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Human Rabies — South Carolina, 2011",
+      "authors" : "Centers for Disease Control and Prevention",
+      "publication" : "MMWR August 16, 2013 / 62(32);642-644",
+      "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/mm6232a2.htm"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Probable unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"Although there was no history of an animal bite, additional interviews with the family on December 8 revealed that the patient had observed bats in her home on several occasions the previous summer. Family members reported that the patient had awakened to a bat in her bedroom in August. She reportedly removed the bat by shaking it out of curtains through an open window and believed she had no direct contact with the bat.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2011/12MA",
+    "ageInYears" : 63,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Biopsy of nuchal Skin",
+      "result" : "Rabies virus on direct fluorscence antibody."
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.LabTestAndResult",
+      "textualName" : "Sequence Analysis",
+      "result" : "\"a variant found in insectivorous bats in the myotis (mouse-eared) species\""
+    } ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Case 1-2013 — A 63-Year-Old Man with Paresthesias and Difficulty Swallowing",
+      "authors" : "Greer DM, Robbins GK, Liejewski V, et. al.",
+      "publication" : "N Engl J Med January 10,  2013 / 368(2):172-80.",
+      "url" : "http://www.nejm.org/doi/full/10.1056/NEJMcpc1209935"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 2,
+      "title" : "Rabies surveillance in the United States during 2012",
+      "authors" : "Dyer JL, Wallace R,  Orciari L., Hightower, D. et.al. Dillon Hightower, BS; Pamela Yager, BS; Jesse D. Blanton, MPH",
+      "publication" : "J Am Vet Med Assoc Sep 15,  2013 /243(6):805-15",
+      "url" : "http://avmajournals.avma.org/doi/abs/10.2460/javma.243.6.805?url_ver=Z39.88-2003&rfr_id=ori:rid:crossref.org&rfr_dat=cr_pub%3dpubmed"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"In this patient, exposure information was obtained from the family after diagnosis. It was reported that several weeks before the onset of symptoms, the patient had awoken to a bat flying around his face during the night and that he had direct contact with the bat. The reported exposure scenario meets the ACIP criteria for the recommendation of the administration of postexposure prophylaxis \"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2014MO",
+    "ageInYears" : 52,
+    "sex" : "M",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2014-09-26 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Agency warns about Rabies virus in Missouri",
+      "authors" : "Thacker, N",
+      "publication" : "St. Joseph Post October 1, 2014",
+      "url" : "http://www.stjosephpost.com/2014/10/01/agency-warns-about-rabies-virus-in-missouri/"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 2,
+      "title" : "Human Rabies Death:",
+      "publication" : "Rabies Watch Summer/Fall 2015, Issue #2",
+      "url" : "http://rabieswatch.com/assets/article2_human-rabies-death_r4.pdf"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unknown",
+      "infectionSourceAdditionalDescription" : [ "\"The victim was said to have found bats in his home and at his workplace a month before his symptoms began, and he may have unknowingly sustained a bite.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+    "caseId" : "2015WY",
+    "ageInYears" : 77,
+    "sex" : "F",
+    "race" : [ ],
+    "occupations" : [ ],
+    "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+    "diseaseOutcomesWithLocationDateTime" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "SYMPTOMATIC",
+      "dateTime" : "2015-09-18 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+      "diseaseOutcome" : "DEATH",
+      "dateTime" : "2015-10-03 00:00:00 +0000",
+      "latLongPair" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+        "latitutde" : 0.0,
+        "longitude" : 0.0
+      }
+    } ],
+    "labTestsAndResults" : [ ],
+    "references" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 1,
+      "title" : "Wyoming marks first known rabies fatality with death of woman, 77",
+      "authors" : "Zuckerman, L",
+      "publication" : "Reuters Wed Oct 7, 2015",
+      "url" : "http://www.reuters.com/article/2015/10/07/us-usa-rabies-wyoming-idUSKCN0S128R20151007"
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+      "id" : 2,
+      "title" : "Lessons Learned and the Importance of Continued Awareness and Education",
+      "authors" : "Cara, E",
+      "publication" : "The GRAPEVINE",
+      "url" : "http://www.medicaldaily.com/wyomings-first-ever-case-human-rabies-ends-death-77-year-old-woman-356346"
+    } ],
+    "location" : [ ],
+    "caseDefinition" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+      "apolloLabel" : "CONFIRMED_CASE",
+      "investigationLabel" : "confirmed",
+      "investigationDefinition" : "Cases with Human Rabies attributed to a Bat RABV"
+    },
+    "causalPathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "11292"
+    },
+    "treatment" : [ ],
+    "infectionSource" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionSource",
+      "infectionSourceCode" : "Unprotected physical contact",
+      "infectionSourceAdditionalDescription" : [ "\"The woman contracted the disease...from a bat that flew into the family home in the middle of the night on Aug. 21 and brushed against her face and leg, Musgrave said.\" \"A family member carefully checked her for signs of a bite but found none.\"" ],
+      "infectionSourceDate" : [ ]
+    } ],
+    "controlMeasures" : [ ]
+  } ],
+  "caseDefinitions" : [ ],
+  "caseSeriesStartDate" : "1990-01-01 00:00:00 +0000",
+  "caseSeriesEndDate" : "2015-12-30 00:00:00 +0000",
+  "location" : "1216",
+  "causalPathogen" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "11292"
+  },
+  "curator" : "Virginia Dato",
+  "editHistory" : [ ],
+  "reviewedBy" : [ ],
+  "acknowledgements" : [ "Howard Pue, DVM, MSVPM, Missouri State Public Health Veterinarian for providing feedback that allowed us to identify and fix an issue related to the way the library viewer was displaying dates." ]
+}

@@ -1,0 +1,1187 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/12",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/12.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "186538"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "2005-04-18 00:00:00 +0000",
+    "startDateDefinition" : "SYMPTOM_ONSET_FIRST_CASE",
+    "endDate" : "2005-05-18 00:00:00 +0000",
+    "endDateDefinition" : "SYMPTOM_ONSET_LAST_CASE"
+  },
+  "administrativeLocations" : [ "210" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "186538"
+    },
+    "host" : "9606",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "37109004",
+      "speciesWithDisease" : "9606",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "186538"
+      },
+      "otherIntervals" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Interval",
+        "startBoundaryDefinition" : "TIME_OF_FIRST_SYMPTOM",
+        "endBoundaryDefinition" : "TIME_OF_DEATH",
+        "duration" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.UncertainDuration",
+          "unitOfTime" : "DAY",
+          "referenceId" : 0,
+          "uncertainValue" : {
+            "mean" : 6.2,
+            "minimumValue" : 3.0,
+            "maximumValue" : 10.0
+          }
+        },
+        "readableTitle" : "Time from symptom onset to death"
+      } ],
+      "diseaseOutcomesWithProbabilities" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithProbability",
+        "title" : "Case fatality rate",
+        "diseaseOutcome" : "DEATH",
+        "probability" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter",
+          "probability" : 0.83
+        }
+      } ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9606",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromContaminatedAbioticThing",
+      "contaminatedAbioticThing" : "BUSH_MEAT",
+      "transmissionProbability" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ProbabilisticParameter"
+      }
+    } ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "210",
+    "numberOfPeople" : 80000,
+    "additionalDescription" : "Cuvette Ouest County is located within a rain forest divided into six districts (Etoumbi, Ewo, Kelle, Mbomo, Mbama and Okoyo) with about 80,000 inhabitants in total. Mbomo is located at the southern limit of Odzala National Park, Etoumbi in the south east of Mbomo, and Kelle in the south of the Lossi Sanctuary. Most of the residents make their living by hunting in the local forest. Overland access to Etoumbi, Mbomo and Kelle is extremely difficult, particularly in the rainy season from October to January. In the Cuvette Ouest County, health services are dysfunctional; few people use the elementary medical services, and most consult traditional healers. The Etoumbi health center has no doctor and no ambulance, and is staffed by nurses.",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Isolation ward started",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ {
+      "timeScale" : "EPIDEMIC_TIME_SCALE",
+      "timeSinceTimeScaleZero" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.FixedDuration",
+        "unitOfTime" : "DAY",
+        "value" : 26.0
+      }
+    } ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "Active surveillance and contact tracing, public education and community mobilization, case management and safe burial, and laboratory confirmation at the district level.",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "SUSPECTED_CASE",
+    "investigationLabel" : "Suspected case",
+    "investigationDefinition" : "The 'suspected' category included all persons, living or deceased, with a history of contact with an EHF case and fever, or fever and three or more of the following symptoms: headache, vomiting, loss of appetite, diarrhea, weakness or severe fatigue, abdominal pain, body aches or joint pains, difficulty in swallowing, difficulty in breathing or hiccough; unexplained bleeding of any kind, or unexplained death."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "PROBABLE_CASE",
+    "investigationLabel" : "Probable case",
+    "investigationDefinition" : "A 'probable' case was defined as a suspected case examined by a clinician or epidemiologically linked to a confirmed case."
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition",
+    "apolloLabel" : "CONFIRMED_CASE",
+    "investigationLabel" : "Confirmed case",
+    "investigationDefinition" : "A 'confirmed' case met the clinical case definition and was antigen or PCR-positive."
+  } ],
+  "contactDefinitions" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ContactDefinition",
+    "apolloLabel" : "PRIMARY_CONTACT",
+    "investigationLabel" : "Primary contact",
+    "investigationDefinition" : "A contact was defined as someone who slept in the same household as a case within the previous month, or who had direct contact with the case (dead or alive), or who touched his/her linen or body fluids."
+  } ],
+  "caseLists" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.CaseList",
+    "speciesOfCases" : "9606",
+    "caseRecords" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "1",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-04-18 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-04-26 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "2",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-04-20 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-04-28 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "3",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-04-28 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-11 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "4",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-04-03 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "RECOVERY",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "5",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-02 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-05 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "6",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-03 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-07 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "7",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-05 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-09 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "8",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-06 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-10 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "9",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-06 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-10 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "10",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-07 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "RECOVERY",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "11",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-08 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-14 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "12",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "SYMPTOMATIC",
+        "dateTime" : "2005-05-18 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      }, {
+        "class" : "edu.pitt.apollo.types.v4_0_1.DiseaseOutcomeWithLocationDateTime",
+        "diseaseOutcome" : "DEATH",
+        "dateTime" : "2005-05-26 00:00:00 +0000",
+        "latLongPair" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.LatLongPair",
+          "latitutde" : 0.0,
+          "longitude" : 0.0
+        }
+      } ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    } ]
+  } ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "totalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 12,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "totalFatalCaseCount" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Total fatal cases",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "totalCount" : 10,
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    },
+    "otherCaseCounts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "New Cases per 2-Days",
+      "caseDefinitionsIncluded" : [ "PROBABLE_CASE", "CONFIRMED_CASE" ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree",
+        "rootVariableNode" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+          "name" : "TIME_SPAN",
+          "categories" : [ {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-18 00:00:00 +0000",
+              "lastDay" : "2005-04-19 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-20 00:00:00 +0000",
+              "lastDay" : "2005-04-21 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-22 00:00:00 +0000",
+              "lastDay" : "2005-04-23 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-24 00:00:00 +0000",
+              "lastDay" : "2005-04-25 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-26 00:00:00 +0000",
+              "lastDay" : "2005-04-27 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-28 00:00:00 +0000",
+              "lastDay" : "2005-04-29 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-04-30 00:00:00 +0000",
+              "lastDay" : "2005-05-01 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-02 00:00:00 +0000",
+              "lastDay" : "2005-05-03 00:00:00 +0000"
+            },
+            "value" : 2,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-04 00:00:00 +0000",
+              "lastDay" : "2005-05-05 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-06 00:00:00 +0000",
+              "lastDay" : "2005-05-07 00:00:00 +0000"
+            },
+            "value" : 3,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-08 00:00:00 +0000",
+              "lastDay" : "2005-05-09 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-10 00:00:00 +0000",
+              "lastDay" : "2005-05-11 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-12 00:00:00 +0000",
+              "lastDay" : "2005-05-13 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-14 00:00:00 +0000",
+              "lastDay" : "2005-05-15 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-16 00:00:00 +0000",
+              "lastDay" : "2005-05-17 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-18 00:00:00 +0000",
+              "lastDay" : "2005-05-19 00:00:00 +0000"
+            },
+            "value" : 1,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-20 00:00:00 +0000",
+              "lastDay" : "2005-05-21 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-22 00:00:00 +0000",
+              "lastDay" : "2005-05-23 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-24 00:00:00 +0000",
+              "lastDay" : "2005-05-25 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-26 00:00:00 +0000",
+              "lastDay" : "2005-05-27 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          }, {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CategoryValueNode",
+            "categoryDefinition" : {
+              "firstDay" : "2005-05-28 00:00:00 +0000",
+              "lastDay" : "2005-05-29 00:00:00 +0000"
+            },
+            "value" : 0,
+            "nextCategoricalVariable" : {
+              "class" : "edu.pitt.apollo.types.v4_0_1.CategoricalVariableNode",
+              "categories" : [ ]
+            }
+          } ]
+        },
+        "nvariables" : 1
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseCount",
+      "countTitle" : "Sociodemographic, clinical and laboratory characteristics of Ebola hemorrhagic fever patients during the Etoumbi outbreak, Republic of Congo in 2005 (Table 1 in reference)",
+      "caseDefinitionsIncluded" : [ ],
+      "caseCountArrayDescription" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseCountArrayDescription",
+        "resetDates" : [ ],
+        "dateSpansWithNoDataCollection" : [ ]
+      },
+      "caseCountArray" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.VariableCategoryValueTree"
+      },
+      "temporalCountArrayWithUniformIntervals" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TemporalCountArrayWithUniformIntervals"
+      },
+      "referenceId" : 0
+    } ]
+  } ],
+  "transmissionTrees" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+    "thisCase" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "1",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    },
+    "casesThisCaseInfected" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "3",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "5",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "6",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+        "thisCase" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+          "caseId" : "9",
+          "race" : [ ],
+          "occupations" : [ ],
+          "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+          "diseaseOutcomesWithLocationDateTime" : [ ],
+          "labTestsAndResults" : [ ],
+          "references" : [ ],
+          "location" : [ ],
+          "caseDefinition" : {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+          },
+          "causalPathogen" : {
+            "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+          },
+          "treatment" : [ ],
+          "infectionSource" : [ ],
+          "controlMeasures" : [ ]
+        },
+        "casesThisCaseInfected" : [ ]
+      } ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "7",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "8",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ {
+        "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+        "thisCase" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+          "caseId" : "12",
+          "race" : [ ],
+          "occupations" : [ ],
+          "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+          "diseaseOutcomesWithLocationDateTime" : [ ],
+          "labTestsAndResults" : [ ],
+          "references" : [ ],
+          "location" : [ ],
+          "caseDefinition" : {
+            "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+          },
+          "causalPathogen" : {
+            "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+          },
+          "treatment" : [ ],
+          "infectionSource" : [ ],
+          "controlMeasures" : [ ]
+        },
+        "casesThisCaseInfected" : [ ]
+      } ]
+    } ]
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+    "thisCase" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+      "caseId" : "2",
+      "race" : [ ],
+      "occupations" : [ ],
+      "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+      "diseaseOutcomesWithLocationDateTime" : [ ],
+      "labTestsAndResults" : [ ],
+      "references" : [ ],
+      "location" : [ ],
+      "caseDefinition" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+      },
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+      },
+      "treatment" : [ ],
+      "infectionSource" : [ ],
+      "controlMeasures" : [ ]
+    },
+    "casesThisCaseInfected" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "4",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "10",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    }, {
+      "class" : "edu.pitt.apollo.types.v4_0_1.TransmissionTree",
+      "thisCase" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.CaseRecord",
+        "caseId" : "11",
+        "race" : [ ],
+        "occupations" : [ ],
+        "placesVisitedWhileSusceptibleOrInfectious" : [ ],
+        "diseaseOutcomesWithLocationDateTime" : [ ],
+        "labTestsAndResults" : [ ],
+        "references" : [ ],
+        "location" : [ ],
+        "caseDefinition" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.CaseDefinition"
+        },
+        "causalPathogen" : {
+          "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode"
+        },
+        "treatment" : [ ],
+        "infectionSource" : [ ],
+        "controlMeasures" : [ ]
+      },
+      "casesThisCaseInfected" : [ ]
+    } ]
+  } ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "A limited outbreak of Ebola haemorrhagic fever in Etoumbi, Republic of Congo, 2005.",
+    "authors" : "Nkoghe D, Kone ML, Yada A, Leroy E.",
+    "publication" : "Trans R Soc Trop Med Hyg. 2011 Aug;105(8):466-72.",
+    "url" : "http://www.ncbi.nlm.nih.gov/pubmed/21605882",
+    "pubMedId" : 21605882
+  } ],
+  "curator" : "Virginia Dato",
+  "editHistory" : [ "created on 2014-10-10", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ "M. Wagner 2014-10-21" ],
+  "acknowledgements" : [ ]
+}

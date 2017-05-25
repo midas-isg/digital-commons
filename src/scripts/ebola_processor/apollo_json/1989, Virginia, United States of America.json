@@ -1,0 +1,104 @@
+{
+  "landingPage": "https://research.rods.pitt.edu/apolloLibraryViewer-401/main/epidemic/4",
+  "accessURL": "https://research.rods.pitt.edu/apolloLibraryViewer-401/4.xml",
+  "class" : "edu.pitt.apollo.types.v4_0_1.Epidemic",
+  "causalPathogens" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+    "ncbiTaxonId" : "386032"
+  } ],
+  "epidemicPeriod" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicPeriod",
+    "startDate" : "1989-10-04 00:00:00 +0000",
+    "endDate" : "1989-11-16 00:00:00 +0000"
+  },
+  "administrativeLocations" : [ "84022" ],
+  "epidemicZones" : [ ],
+  "infections" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Infection",
+    "pathogen" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+      "ncbiTaxonId" : "386032"
+    },
+    "host" : "9541",
+    "infectiousDiseases" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDisease",
+      "disease" : "76493004",
+      "speciesWithDisease" : "9541",
+      "causalPathogen" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.ApolloPathogenCode",
+        "ncbiTaxonId" : "386032"
+      },
+      "otherIntervals" : [ ],
+      "diseaseOutcomesWithProbabilities" : [ ]
+    } ],
+    "infectionAcquisitionsFromInfectedHosts" : [ {
+      "class" : "edu.pitt.apollo.types.v4_0_1.InfectionAcquisitionFromInfectedHost",
+      "infectedHost" : "9541",
+      "basicReproductionNumbers" : [ ],
+      "beta" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      },
+      "transmissionProbabilities" : [ ],
+      "inoculationRate" : {
+        "class" : "edu.pitt.apollo.types.v4_0_1.Rate"
+      }
+    } ],
+    "infectionAcquisitionsFromContaminatedThings" : [ ],
+    "infectionAcquisitionsFromColonizedHosts" : [ ]
+  } ],
+  "preEpidemicCensus" : {
+    "class" : "edu.pitt.apollo.types.v4_0_1.PreEpidemicEcosystemCensus",
+    "nameOfAdministrativeUnit" : "84022",
+    "additionalDescription" : "500 monkeys were there, 100 new monkeys were added",
+    "subLocationCensuses" : [ ]
+  },
+  "populationSerologySurveys" : [ ],
+  "populationInfectionSurveys" : [ ],
+  "infectiousDiseaseControlStrategies" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.InfectiousDiseaseControlMeasure",
+    "description" : "All animals in rooms F and H were sacrificed",
+    "location" : {
+      "class" : "edu.pitt.apollo.types.v4_0_1.Location"
+    },
+    "controlMeasureStartTime" : [ ],
+    "controlMeasureStopTime" : [ ],
+    "logisticalSystems" : [ ],
+    "templatedInfectiousDiseaseControlMeasureUrlsForSoftware" : [ ]
+  } ],
+  "caseDefinitions" : [ ],
+  "contactDefinitions" : [ ],
+  "caseLists" : [ ],
+  "epidemicCaseCounts" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.EpidemicCaseCounts",
+    "otherCaseCounts" : [ ]
+  } ],
+  "transmissionTrees" : [ ],
+  "relativeRiskDataSets" : [ ],
+  "causalPathogenIsolates" : [ ],
+  "references" : [ {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 0,
+    "title" : "Preliminary report: isolation of Ebola virus from monkeys imported to USA",
+    "publication" : "Lancet. 1990 Mar 3;335(8688):502-5",
+    "url" : "http://www.thelancet.com/journals/lancet/article/PII0140-6736(90)90737-P/abstract",
+    "pubMedId" : 1968529
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 1,
+    "title" : "Ebola virus infection in imported primates--Virginia, 1989.",
+    "publication" : "MMWR Morb Mortal Wkly Rep. 1989 Dec 8;38(48):831-2, 837-8",
+    "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00001512.htm",
+    "pubMedId" : 2511410
+  }, {
+    "class" : "edu.pitt.apollo.types.v4_0_1.Reference",
+    "id" : 2,
+    "title" : "Epidemiologic Notes and Reports Update: Filovirus Infection in Animal Handlers",
+    "publication" : "MMWR Morb Mortal Wkly Rep. 1990 Apr 6;39(13):221",
+    "url" : "http://www.cdc.gov/mmwr/preview/mmwrhtml/00001593.htm",
+    "pubMedId" : 2107388
+  } ],
+  "curator" : "Mike Wagner",
+  "editHistory" : [ "created on 09-21-2014", "Jan 28, 2016 at 12:22:50" ],
+  "reviewedBy" : [ ],
+  "acknowledgements" : [ ]
+}
