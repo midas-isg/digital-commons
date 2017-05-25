@@ -31,3 +31,11 @@ By using the MIDAS Digital Commons you agree that no warranties of any kind are 
 
 Please direct comments and questions to our development team at isg-feedback@list.pitt.edu.
 
+## Acknowledgements 
+<table border=0>
+<tr>
+  <td>
+     The ISG Software Development Service would like to thank JetBrains s.r.o for providing this open source project with free licenses for the amazing IntelliJ IDE.</td>
+  <td width="375"><a href="http://www.jetbrains.com/idea/"><img src="https://github.com/ApolloDev/apollo/blob/wiki/img/logo_IntelliJIDEA.png" align="left" width="312" ></a></td>
+<tr>
+</table>
