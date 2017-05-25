@@ -70,6 +70,13 @@
     ]
   },
   {
+    "title": "Tycho v1 XML Output Format",
+    "filename": "Tycho output format.json",
+    "version": [
+      "1"
+    ]
+  },
+  {
     "title": "hladish dengue transmission model",
     "filename": "hladish dengue transmission model.json",
     "version": [
