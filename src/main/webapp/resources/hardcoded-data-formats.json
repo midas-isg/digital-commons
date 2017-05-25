@@ -63,14 +63,14 @@
     ]
   },
   {
-    "title": "Tycho 2.0 dataset format",
+    "title": "Tycho Dataset Format",
     "filename": "Tycho dataset.json",
     "version": [
       "2"
     ]
   },
   {
-    "title": "Tycho v1 XML Output Format",
+    "title": "Tycho XML Output Format",
     "filename": "Tycho output format.json",
     "version": [
       "1"

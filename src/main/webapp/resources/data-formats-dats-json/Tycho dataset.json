@@ -3,7 +3,7 @@
         "identifier": "biosharing id will be available soon",
         "identifierSource": "biosharing.org"
     },
-    "name": "Tycho 2.0 dataset format",
+    "name": "Tycho Dataset Format",
     "type": {
         "value": "disease surveillance data",
         "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"

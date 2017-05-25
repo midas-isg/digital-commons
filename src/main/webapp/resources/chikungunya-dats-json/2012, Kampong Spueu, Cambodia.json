@@ -62,7 +62,7 @@
         "location": {
             "postalAddress": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh, Pittsburgh, PA, United States"
         },
-        "stateDate": {
+        "startDate": {
             "date": "2015-08-20",
             "type": {
                 "value": "creation",

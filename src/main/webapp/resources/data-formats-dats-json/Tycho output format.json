@@ -3,7 +3,7 @@
     "identifier": "MIDAS-ISG:tycho-xml-output-format-v1.0",
     "identifierSource": "MIDAS-ISG"
   },
-  "name": "Tycho v1 XML Output Format",
+  "name": "Tycho XML Output Format",
   "type": {
     "value": "disease surveillance data",
     "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
