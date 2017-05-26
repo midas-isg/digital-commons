@@ -1,0 +1,2405 @@
+[
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572234",
+            "identifierSource": "zenodo"
+        },
+        "title": "1976, Mongala, E\u0301quateur, Zaire Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-29",
+        "startDate": "2014-09-29",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/1",
+        "spatialCoverage": [
+            {
+                "name": "Yambuku",
+                "description": "Cases were located in a 70 km radius around Yambuku, Republic of Zaire, in an area called the Bumba Zone",
+                "identifier": {
+                    "identifier": "85128",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85128"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "129000",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572235",
+            "identifierSource": "zenodo"
+        },
+        "title": "1976, Sudan Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/2",
+        "spatialCoverage": [
+            {
+                "name": "Maridi",
+                "identifier": {
+                    "identifier": "85129",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85129"
+                },
+                "alternateIdentifiers": []
+            },
+            {
+                "name": "Tambura Town",
+                "identifier": {
+                    "identifier": "85130",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85130"
+                }
+            },
+            {
+                "name": "Nazara Town",
+                "identifier": {
+                    "identifier": "85131",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85131"
+                }
+            },
+            {
+                "name": "Juba City",
+                "identifier": {
+                    "identifier": "85132",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85132"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128948",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572236",
+            "identifierSource": "zenodo"
+        },
+        "title": "1979, Yambio, West Equatoria, Sudan Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-20",
+        "startDate": "2014-09-20",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/3",
+        "spatialCoverage": [
+            {
+                "name": "Yambio",
+                "identifier": {
+                    "identifier": "85143",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85143"
+                },
+                "alternateIdentifiers": []
+            },
+            {
+                "name": "Nzara Town",
+                "description": "",
+                "identifier": {
+                    "identifier": "85055",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85055"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128949",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572237",
+            "identifierSource": "zenodo"
+        },
+        "title": "1989, Virginia, United States of America Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/4",
+        "spatialCoverage": [
+            {
+                "name": "4826.02",
+                "identifier": {
+                    "identifier": "84022",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84022"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "51059482602",
+                        "identifierSource": "Census tract identifier"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "386032",
+            "hostSpecies": "9541",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572238",
+            "identifierSource": "zenodo"
+        },
+        "title": "1994 - 1995, Gabon Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-19",
+        "startDate": "2014-09-19",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/5",
+        "spatialCoverage": [
+            {
+                "name": "Andock gold-panning encampment",
+                "identifier": {
+                    "identifier": "85133",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85133"
+                },
+                "alternateIdentifiers": []
+            },
+            {
+                "name": "Mekouka gold-mining encampment",
+                "identifier": {
+                    "identifier": "85134",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85134"
+                }
+            },
+            {
+                "name": "Minkebe gold-mining encampment",
+                "identifier": {
+                    "identifier": "85135",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85135"
+                }
+            },
+            {
+                "name": "Ekobakoba Town",
+                "identifier": {
+                    "identifier": "85136",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85136"
+                }
+            },
+            {
+                "name": "Etakaniabe",
+                "identifier": {
+                    "identifier": "85137",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85137"
+                }
+            },
+            {
+                "name": "Mayela",
+                "identifier": {
+                    "identifier": "85138",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85138"
+                }
+            },
+            {
+                "name": "Mayibout",
+                "identifier": {
+                    "identifier": "85139",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85139"
+                }
+            },
+            {
+                "name": "Mvadi",
+                "identifier": {
+                    "identifier": "85140",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85140"
+                }
+            },
+            {
+                "name": "Makokou Town",
+                "identifier": {
+                    "identifier": "85141",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85141"
+                }
+            },
+            {
+                "name": "Mekouka and Andock and Minkebe",
+                "description": "Area encompassing the 3 gold-panning encampments situated in small clearings of 2000-3000 m2 at the edge of the rain forest where the epidemic started.",
+                "identifier": {
+                    "identifier": "85142",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85142"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128947",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572239",
+            "identifierSource": "zenodo"
+        },
+        "title": "1995, Kwilu, Bandundu, Zaire Ebola epidemic data and knowledge",
+        "authors": [
+            "Virgina Dato"
+        ],
+        "datePublished": "2014-09-18",
+        "startDate": "2014-09-18",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/6",
+        "spatialCoverage": [
+            {
+                "name": "Kikwit",
+                "description": "Kikwit population ~200,000, the former regional capital of Bandundu region, is located on the banks of the Kwilu River",
+                "identifier": {
+                    "identifier": "85164",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85164"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128951",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572240",
+            "identifierSource": "zenodo"
+        },
+        "title": "1996 - 1997, Gabon Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-20",
+        "startDate": "2014-09-20",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/20",
+        "spatialCoverage": [
+            {
+                "name": "Gabon",
+                "identifier": {
+                    "identifier": "157",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=157"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "GA",
+                        "identifierSource": "ISO 3166"
+                    },
+                    {
+                        "identifier": "266",
+                        "identifierSource": "ISO 3166-1 numeric"
+                    },
+                    {
+                        "identifier": "GAB",
+                        "identifierSource": "ISO 3166-1 alpha-3"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128947",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572241",
+            "identifierSource": "zenodo"
+        },
+        "title": "1996, Gabon Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-20",
+        "startDate": "2014-09-20",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/19",
+        "spatialCoverage": [
+            {
+                "name": "Gabon",
+                "identifier": {
+                    "identifier": "157",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=157"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "GA",
+                        "identifierSource": "ISO 3166"
+                    },
+                    {
+                        "identifier": "266",
+                        "identifierSource": "ISO 3166-1 numeric"
+                    },
+                    {
+                        "identifier": "GAB",
+                        "identifierSource": "ISO 3166-1 alpha-3"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "128947",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572242",
+            "identifierSource": "zenodo"
+        },
+        "title": "2000 - 2001, Uganda Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-19",
+        "startDate": "2014-09-19",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/7",
+        "spatialCoverage": [
+            {
+                "name": "Masindi",
+                "identifier": {
+                    "identifier": "56",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=56"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "UG-304",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            },
+            {
+                "name": "Mbarara",
+                "identifier": {
+                    "identifier": "65",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=65"
+                }
+            },
+            {
+                "name": "Gulu",
+                "identifier": {
+                    "identifier": "147",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=147"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "386033",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572243",
+            "identifierSource": "zenodo"
+        },
+        "title": "2001 - 2002, Gabon and Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-20",
+        "startDate": "2014-09-20",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/8",
+        "spatialCoverage": [
+            {
+                "name": "Cuvette-Ouest",
+                "description": "65 cases were noted in Gabon (47 (38%) in Zadie district, 17 (14%) in Ivindo district and 1 (1%) in Mpassa district) and 59 in Congo (33 (26%) in Mbomo district and 26 (21%) in Kelle district.)",
+                "identifier": {
+                    "identifier": "85165",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85165"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572244",
+            "identifierSource": "zenodo"
+        },
+        "title": "2002 - 2003, Cuvette-Ouest, Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-16",
+        "startDate": "2014-09-16",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/9",
+        "spatialCoverage": [
+            {
+                "name": "Mbomo",
+                "identifier": {
+                    "identifier": "224",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=224"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "K\u00e9ll\u00e9",
+                        "identifierSource": "ISG"
+                    }
+                ]
+            },
+            {
+                "name": "K\u00e9ll\u00e9",
+                "identifier": {
+                    "identifier": "223",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=223"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186536",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572245",
+            "identifierSource": "zenodo"
+        },
+        "title": "2003, Mbomo, Cuvette-Ouest, Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "William Hogan"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/10",
+        "spatialCoverage": [
+            {
+                "name": "Mbomo Village",
+                "identifier": {
+                    "identifier": "85167",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85167"
+                },
+                "alternateIdentifiers": []
+            },
+            {
+                "name": "Mbandza Village",
+                "identifier": {
+                    "identifier": "85166",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85166"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572246",
+            "identifierSource": "zenodo"
+        },
+        "title": "2004, Yambio, West Equatoria, Sudan Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/11",
+        "spatialCoverage": [
+            {
+                "name": "Yambio",
+                "description": "2004 Yambio Sudan approximate",
+                "identifier": {
+                    "identifier": "85169",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85169"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186540",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572247",
+            "identifierSource": "zenodo"
+        },
+        "title": "2005, Cuvette-Ouest, Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-10-10",
+        "startDate": "2014-10-10",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/12",
+        "spatialCoverage": [
+            {
+                "name": "Cuvette-Ouest",
+                "identifier": {
+                    "identifier": "210",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=210"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "CG-15",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572248",
+            "identifierSource": "zenodo"
+        },
+        "title": "2007, Bundibugyo, Uganda Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/14",
+        "spatialCoverage": [
+            {
+                "name": "Bundibugyo",
+                "identifier": {
+                    "identifier": "41",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=41"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "UG-401",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "565995",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572249",
+            "identifierSource": "zenodo"
+        },
+        "title": "2007, Kasai-Occidental, Democratic Republic of the Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-10-03",
+        "startDate": "2014-10-03",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/13",
+        "spatialCoverage": [
+            {
+                "name": "Linking Luebo and Mweka",
+                "description": "10 villages situated on the north-south road linking Luebo and Mweka",
+                "identifier": {
+                    "identifier": "85168",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85168"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572250",
+            "identifierSource": "zenodo"
+        },
+        "title": "2008 - 2009, Kasai-Occidental, Democratic Republic of the Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-20",
+        "startDate": "2014-09-20",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/15",
+        "spatialCoverage": [
+            {
+                "name": "Luebo",
+                "identifier": {
+                    "identifier": "275",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=275"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "Mweka",
+                        "identifierSource": "ISG"
+                    }
+                ]
+            },
+            {
+                "name": "Mweka",
+                "identifier": {
+                    "identifier": "274",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=274"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186536",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572251",
+            "identifierSource": "zenodo"
+        },
+        "title": "2012, Kibaale, Uganda Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/16",
+        "spatialCoverage": [
+            {
+                "name": "Kibaale",
+                "identifier": {
+                    "identifier": "55",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=55"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "UG-407",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186540",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572252",
+            "identifierSource": "zenodo"
+        },
+        "title": "2012, Orientale, Democratic Republic of the Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/17",
+        "spatialCoverage": [
+            {
+                "name": "Dungu",
+                "identifier": {
+                    "identifier": "84916",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84916"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "Dungu",
+                        "identifierSource": "ISG"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "565995",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572253",
+            "identifierSource": "zenodo"
+        },
+        "title": "2012, Uganda Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-09-21",
+        "startDate": "2014-09-21",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/18",
+        "spatialCoverage": [
+            {
+                "name": "Luwero",
+                "identifier": {
+                    "identifier": "67",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=67"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "UG-102",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            },
+            {
+                "name": "Kampala",
+                "identifier": {
+                    "identifier": "76",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=76"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186540",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572254",
+            "identifierSource": "zenodo"
+        },
+        "title": "2013 - 2015, Guinea Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-23",
+        "startDate": "2014-09-23",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/21",
+        "spatialCoverage": [
+            {
+                "name": "Guinea",
+                "identifier": {
+                    "identifier": "85163",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85163"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572255",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014 - 2016, Liberia Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-23",
+        "startDate": "2014-09-23",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/22",
+        "spatialCoverage": [
+            {
+                "name": "Nimba",
+                "identifier": {
+                    "identifier": "85181",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85181"
+                },
+                "alternateIdentifiers": []
+            },
+            {
+                "name": "Rivercess",
+                "identifier": {
+                    "identifier": "85183",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85183"
+                }
+            },
+            {
+                "name": "River Gee",
+                "identifier": {
+                    "identifier": "85182",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85182"
+                }
+            },
+            {
+                "name": "Sinoe",
+                "identifier": {
+                    "identifier": "85185",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85185"
+                }
+            },
+            {
+                "name": "Bomi",
+                "identifier": {
+                    "identifier": "85170",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85170"
+                }
+            },
+            {
+                "name": "Bong",
+                "identifier": {
+                    "identifier": "85171",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85171"
+                }
+            },
+            {
+                "name": "Gbarpolu",
+                "identifier": {
+                    "identifier": "85173",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85173"
+                }
+            },
+            {
+                "name": "Grand Cape Mount",
+                "identifier": {
+                    "identifier": "85175",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85175"
+                }
+            },
+            {
+                "name": "Grand Bassa",
+                "identifier": {
+                    "identifier": "85174",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85174"
+                }
+            },
+            {
+                "name": "Grand Kru",
+                "identifier": {
+                    "identifier": "85176",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85176"
+                }
+            },
+            {
+                "name": "Lofa",
+                "identifier": {
+                    "identifier": "85177",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85177"
+                }
+            },
+            {
+                "name": "Margibi",
+                "identifier": {
+                    "identifier": "85178",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85178"
+                }
+            },
+            {
+                "name": "Maryland",
+                "identifier": {
+                    "identifier": "85179",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85179"
+                }
+            },
+            {
+                "name": "Montserrado",
+                "identifier": {
+                    "identifier": "85180",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85180"
+                }
+            },
+            {
+                "name": "Liberia",
+                "identifier": {
+                    "identifier": "85172",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85172"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572256",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014 - 2017, Sierra Leone Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-23",
+        "startDate": "2014-09-23",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/24",
+        "spatialCoverage": [
+            {
+                "name": "Sierra Leone",
+                "identifier": {
+                    "identifier": "85184",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85184"
+                },
+                "alternateIdentifiers": []
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572257",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014, Dallas, Texas, United States of America Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-10-15",
+        "startDate": "2014-10-15",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/26",
+        "spatialCoverage": [
+            {
+                "name": "78.22",
+                "identifier": {
+                    "identifier": "72404",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=72404"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "48113007822",
+                        "identifierSource": "Census tract identifier"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572258",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014, Democratic Republic of the Congo Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-10-05",
+        "startDate": "2014-10-05",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/25",
+        "spatialCoverage": [
+            {
+                "name": "Congo (the Democratic Republic of the)",
+                "identifier": {
+                    "identifier": "262",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=262"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "CD",
+                        "identifierSource": "ISO 3166"
+                    },
+                    {
+                        "identifier": "180",
+                        "identifierSource": "ISO 3166-1 numeric"
+                    },
+                    {
+                        "identifier": "COD",
+                        "identifierSource": "ISO 3166-1 alpha-3"
+                    }
+                ]
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572258",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014, Mali Ebola epidemic data and knowledge",
+        "authors": [
+            "Virginia Dato"
+        ],
+        "datePublished": "2014-11-14",
+        "startDate": "2014-11-14",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/27",
+        "spatialCoverage": [
+            {
+                "name": "Bamako",
+                "identifier": {
+                    "identifier": "38",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=38"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "ML-1",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            },
+            {
+                "name": "Kayes",
+                "identifier": {
+                    "identifier": "31",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=31"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    },
+    {
+        "identifier": {
+            "identifier": "https://doi.org/10.5281/zenodo.572260",
+            "identifierSource": "zenodo"
+        },
+        "title": "2014, Nigeria Ebola epidemic data and knowledge",
+        "authors": [
+            "Mike Wagner"
+        ],
+        "datePublished": "2014-09-23",
+        "startDate": "2014-09-23",
+        "endDate": "2016-01-28",
+        "url": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/23",
+        "spatialCoverage": [
+            {
+                "name": "Lagos",
+                "identifier": {
+                    "identifier": "343",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=343"
+                },
+                "alternateIdentifiers": [
+                    {
+                        "identifier": "NG-RI",
+                        "identifierSource": "ISO 3166"
+                    }
+                ]
+            },
+            {
+                "name": "Rivers",
+                "identifier": {
+                    "identifier": "351",
+                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=351"
+                }
+            }
+        ],
+        "format": [
+            "xml",
+            "json"
+        ],
+        "isAbout": {
+            "pathogen": "186538",
+            "hostSpecies": "9606",
+            "diseases": [
+                "37109004"
+            ]
+        },
+        "dataStandard": [
+            {
+                "identifier": {
+                    "identifier": "bsg-s000701",
+                    "identifierSource": "https://biosharing.org"
+                },
+                "name": "Apollo XSD",
+                "type": {
+                    "value": "xml schema",
+                    "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+                }
+            }
+        ],
+        "acknowledges": [
+            {
+                "identifier": {
+                    "identifier": "U24GM110707",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "MIDAS Informatics Services Group"
+            },
+            {
+                "identifier": {
+                    "identifier": "R01GM101151",
+                    "identifierSource": "US National Institutes of Health"
+                },
+                "funders": [
+                    {
+                        "name": "National Institute of General Medical Sciences",
+                        "abbreviation": "NIGMS"
+                    }
+                ],
+                "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards"
+            }
+        ]
+    }
+]

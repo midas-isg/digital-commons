@@ -17,7 +17,7 @@
         <div class="font-size-16 standard-font">
                             <span class="col-md-12 col-lg-12 no-padding">
                                 The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location
-                                (US, state, or county code). It creates a runnable instance of FRED for that location.
+                                (US, state, or county code). It creates a runnable instance of PHIL for that location.
                             </span>
 
             <div class="col-md-12 col-lg-12 no-padding">
@@ -36,12 +36,12 @@
                 </div>
                 <div style="margin-top:10px; margin-bottom:10px" id="dtm-radios">
                     <label>Select disease transmission model:</label><br>
-                    <label class="radio-inline"><input type="radio" name="dtm" value="fred" onclick="drawDiagram()" checked>FRED</label>
+                    <label class="radio-inline"><input type="radio" name="dtm" value="phil" onclick="drawDiagram()" checked>PHIL</label>
                 </div>
 
                 <label id="workflow-diagram-label"></label>
-                <img id="workflow-none-img" src="${pageContext.request.contextPath}/resources/img/workflow_none_selected.jpg" style="width:60%">
-                <img id="workflow-spew-img" src="${pageContext.request.contextPath}/resources/img/workflow_spew_selected.jpg" style="width:60%; display:none;">
+                <img id="workflow-none-img" src="${pageContext.request.contextPath}/resources/img/workflow_phil_none_selected.jpg" style="width:60%">
+                <img id="workflow-spew-img" src="${pageContext.request.contextPath}/resources/img/workflow_phil_spew_selected.jpg" style="width:60%; display:none;">
                 <img id="workflow-synthia-img" src="${pageContext.request.contextPath}/resources/img/workflow_synthia_selected.jpg" style="width:60%; display:none;">
                 <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
             </div>
