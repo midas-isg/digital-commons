@@ -404,7 +404,7 @@
   {
     "subtype": "Disease transmission models",
     "isUdsi": true,
-    "humanReadableSynopsis": "<p>Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>Repository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p>",
     "version": [
       "commit 720c16"
     ],
@@ -938,7 +938,7 @@
   {
     "subtype": "Disease transmission models",
     "product": "FRED",
-    "humanReadableSynopsis": "<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Communicable human-to-human"
     ],
@@ -976,7 +976,7 @@
   {
     "subtype": "Disease transmission models",
     "product": "FluTE",
-    "humanReadableSynopsis": "<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
       "Influenza"
     ],
@@ -1153,7 +1153,7 @@
       "hospitalization with administration of intravenous antibiotics",
       "treatment in the I.C.U."
     ],
-    "humanReadableSynopsis": "<p>An anthrax compartmental model developed by the University of Pittsburgh. The model is based on the model described in the paper: <a href=\"http://dx.doi.org/10.1177/0272989x06286794\" class=\"underline\">The Cost-Effectiveness of Strategies to Reduce Mortality From an Intentional Release of Aerosolized Anthrax Spores (RS Braithwaite et al)</a></p> <p>The model supports the following control strategies: antibiotic prophylaxis of susceptible individuals in the population, hospitalization with administration of intravenous antibiotics to symptomatic individuals, and treatment in the I.C.U. for fulminant individuals.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>An anthrax compartmental model developed by the University of Pittsburgh. The model is based on the model described in the paper: <a href=\"http://dx.doi.org/10.1177/0272989x06286794\" class=\"underline\">The Cost-Effectiveness of Strategies to Reduce Mortality From an Intentional Release of Aerosolized Anthrax Spores (RS Braithwaite et al)</a></p> <p>The model supports the following control strategies: antibiotic prophylaxis of susceptible individuals in the population, hospitalization with administration of intravenous antibiotics to symptomatic individuals, and treatment in the I.C.U. for fulminant individuals.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "1.0"
     ],
@@ -1187,7 +1187,7 @@
       "Antivirals",
       "vaccination"
     ],
-    "humanReadableSynopsis": "<p>A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.</p> <p>This disease transmission model (DTM) can be run using the Universal Disease Simulator Interface available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
+    "humanReadableSynopsis": "<p>A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
       "3.0"
     ],
