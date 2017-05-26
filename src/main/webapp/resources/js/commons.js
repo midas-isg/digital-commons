@@ -204,6 +204,15 @@ function addDatsToDictionary(dictionary, data, code, type) {
         if(distributions != null && distributions.length > 0) {
             if(distributions[0]["storedIn"] != null) {
                 var storedIn = distributions[0]["storedIn"]["name"];
+
+                if(distributions[0]["storedIn"]['licenses'][0]['name'] != null && distributions[0]["storedIn"]['licenses'][0]['name'] != '') {
+                    dictionary[code]['license']  = distributions[0]["storedIn"]['licenses'][0]['name'];
+
+                    if(dictionary[code]['license'].includes('http')) {
+                        dictionary[code]['license'] = convertToHref(dictionary[code]['license']);
+                    }
+                }
+
                 if(storedIn == "MIDAS Digital Commons") {
                     dictionary[code]["availableOnOlympus"] = true;
                 }
