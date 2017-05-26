@@ -11,7 +11,7 @@
     "description": "This specification describes a tabular format in which output from a disease transmission model is represented.",
     "licenses": [
         {
-            "name": "Creative Commons Attribution 3.0 United States"
+            "name": "CC BY 3.0 US"
         }
     ],
     "version": "2",

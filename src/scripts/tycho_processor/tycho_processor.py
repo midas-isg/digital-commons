@@ -281,7 +281,7 @@ with open('datasets.csv') as f:
                     },
                     "licenses": [
                         {
-                            "name": "CREATIVE COMMONS PUBLIC LICENSE",
+                            "name": "CCPL",
                             "extraProperties": [
                                 {
                                     "category": "LicenseURL",

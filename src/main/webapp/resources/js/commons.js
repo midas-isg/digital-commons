@@ -538,8 +538,6 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
                 });
 
                 if('signInRequired' in data && data['signInRequired'] == true) {
-                    $(location).attr('href', contextPath + "/midas-sso/view?url=" + encodeURIComponent(data.url));
-                } else {
                     window.location.href = data.url;
                 }
             }
