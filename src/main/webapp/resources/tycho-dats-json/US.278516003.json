@@ -62,6 +62,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1919-01-26",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "1919-11-15",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

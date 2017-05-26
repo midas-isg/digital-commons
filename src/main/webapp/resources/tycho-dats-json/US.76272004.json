@@ -62,6 +62,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1978-01-01",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "1978-02-18",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

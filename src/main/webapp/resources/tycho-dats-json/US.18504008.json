@@ -62,6 +62,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1983-01-09",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "1994-12-31",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

@@ -152,6 +152,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1995-01-01",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "2010-12-31",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {
@@ -346,6 +362,22 @@
                     "email": ""
                 }
             ],
+            "dates": [
+                {
+                    "date": "1995-01-01",
+                    "type": {
+                        "value": "intervalStartDate",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2004-12-31",
+                    "type": {
+                        "value": "intervalEndDate",
+                        "valueIRI": ""
+                    }
+                }
+            ],
             "types": [
                 {
                     "information": {
@@ -510,6 +542,22 @@
                     "email": ""
                 }
             ],
+            "dates": [
+                {
+                    "date": "2000-01-01",
+                    "type": {
+                        "value": "intervalStartDate",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2009-12-31",
+                    "type": {
+                        "value": "intervalEndDate",
+                        "valueIRI": ""
+                    }
+                }
+            ],
             "types": [
                 {
                     "information": {
@@ -672,6 +720,22 @@
                     "firstName": "Derek",
                     "lastName": "Cummings",
                     "email": ""
+                }
+            ],
+            "dates": [
+                {
+                    "date": "2010-01-01",
+                    "type": {
+                        "value": "intervalStartDate",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2010-12-31",
+                    "type": {
+                        "value": "intervalEndDate",
+                        "valueIRI": ""
+                    }
                 }
             ],
             "types": [

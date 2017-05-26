@@ -62,6 +62,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1912-03-17",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "1951-12-08",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

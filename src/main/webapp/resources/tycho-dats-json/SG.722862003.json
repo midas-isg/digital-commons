@@ -152,6 +152,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "2005-01-01",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "2008-12-31",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

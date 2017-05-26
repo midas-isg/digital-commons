@@ -62,6 +62,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1956-01-01",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "1961-12-30",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {

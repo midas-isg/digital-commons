@@ -152,6 +152,22 @@
             "email": ""
         }
     ],
+    "dates": [
+        {
+            "date": "1985-01-01",
+            "type": {
+                "value": "intervalStartDate",
+                "valueIRI": ""
+            }
+        },
+        {
+            "date": "2006-12-31",
+            "type": {
+                "value": "intervalEndDate",
+                "valueIRI": ""
+            }
+        }
+    ],
     "types": [
         {
             "information": {
@@ -346,6 +362,22 @@
                     "email": ""
                 }
             ],
+            "dates": [
+                {
+                    "date": "2004-01-01",
+                    "type": {
+                        "value": "intervalStartDate",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2005-12-31",
+                    "type": {
+                        "value": "intervalEndDate",
+                        "valueIRI": ""
+                    }
+                }
+            ],
             "types": [
                 {
                     "information": {
@@ -508,6 +540,22 @@
                     "firstName": "Derek",
                     "lastName": "Cummings",
                     "email": ""
+                }
+            ],
+            "dates": [
+                {
+                    "date": "1985-01-01",
+                    "type": {
+                        "value": "intervalStartDate",
+                        "valueIRI": ""
+                    }
+                },
+                {
+                    "date": "2006-12-31",
+                    "type": {
+                        "value": "intervalEndDate",
+                        "valueIRI": ""
+                    }
                 }
             ],
             "types": [

@@ -879,7 +879,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
             currentTychoNode.push({
                 'name': data[i]['product'],
-                'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"tycho\",\"" + data[i]['id'] + "\")'>" + data[i]['product'] + "</span>"
+                'text': "<span onmouseover='toggleTitle(this)' onclick='openModal(\"tycho\",\"" + data[i]['id'] + "\")'>" + data[i]['product'] + " (" + data[i]['dateRange'] + ")" + "</span>"
             });
 
             tychoIds.push(data[i]['id']);

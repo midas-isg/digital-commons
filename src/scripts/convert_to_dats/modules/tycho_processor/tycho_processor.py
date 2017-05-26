@@ -358,6 +358,22 @@ def process():
                     "description": description,
                     "identifier": identifier,
                     "creators": creators,
+                    "dates":[
+                            {
+                                "date": start_date,
+                                "type": {
+                                    "value": "intervalStartDate",
+                                    "valueIRI": ""
+                                }
+                            },
+                            {
+                                "date": end_date,
+                                "type": {
+                                    "value": "intervalEndDate",
+                                    "valueIRI": ""
+                                }
+                            }
+                    ],
                     "types": types,
                     "isAbout": is_about,
                     "hasPart": [],
@@ -372,12 +388,29 @@ def process():
                     'product': disease_name,
                     'id': unique_id,
                     'countryIso': country_iso,
-                    'continent': continent
+                    'continent': continent,
+                    'dateRange': "%s - %s" % (unique_id_dates[unique_id]['start'].year, unique_id_dates[unique_id]['end'].year)
                 })
             else:
                 dats_json["hasPart"].append({
                     "title": title,
                     "creators": creators,
+                    "dates":[
+                            {
+                                "date": period_start,
+                                "type": {
+                                    "value": "intervalStartDate",
+                                    "valueIRI": ""
+                                }
+                            },
+                            {
+                                "date": period_end,
+                                "type": {
+                                    "value": "intervalEndDate",
+                                    "valueIRI": ""
+                                }
+                            }
+                    ],
                     "types": types
                 })
 
@@ -386,7 +419,23 @@ def process():
                 dats_json["hasPart"].append({
                     "title": title,
                     "creators": creators,
-                    "types": types
+                    "dates":[
+                            {
+                                "date": period_start,
+                                "type": {
+                                    "value": "intervalStartDate",
+                                    "valueIRI": ""
+                                }
+                            },
+                            {
+                                "date": period_end,
+                                "type": {
+                                    "value": "intervalEndDate",
+                                    "valueIRI": ""
+                                }
+                            }
+                    ],
+                    "types": types,
                 })
 
             output_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../..', 'output'))
