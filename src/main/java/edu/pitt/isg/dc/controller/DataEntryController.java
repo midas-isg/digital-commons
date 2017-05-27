@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.controller;
 
 import com.github.davidmoten.xsdforms.Generator;
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
 import org.springframework.context.ApplicationContext;
@@ -31,6 +32,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
  * Created by TPS23 on 5/10/2017.
  */
 
+@ApiIgnore
 @Controller
 public class DataEntryController {
     private static boolean GENERATE_XSD_FORMS = false;

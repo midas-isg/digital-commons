@@ -5,6 +5,7 @@ import com.auth0.NonceUtils;
 import com.auth0.QueryParamUtils;
 import com.auth0.SessionUtils;
 import com.auth0.spring.security.mvc.Auth0CallbackHandler;
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.utils.UrlAid;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
 
+@ApiIgnore
 @Controller
 public class Auth0Controller extends Auth0CallbackHandler {
 	@RequestMapping(value = "/${auth0.loginRedirectOnFail}", method = RequestMethod.GET)

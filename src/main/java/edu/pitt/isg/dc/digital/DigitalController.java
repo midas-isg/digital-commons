@@ -1,10 +1,12 @@
 package edu.pitt.isg.dc.digital;
 
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@ApiIgnore
 @RestController
 public class DigitalController {
     @Autowired

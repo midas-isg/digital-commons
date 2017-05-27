@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
+import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
+@ApiIgnore
 @Controller
 public class HomeController {
     private static String VIEWER_URL = "";
