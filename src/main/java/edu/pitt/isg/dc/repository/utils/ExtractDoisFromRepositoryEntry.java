@@ -4,6 +4,7 @@ import edu.pitt.isg.dc.repository.RepositoryEntry;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.Software;
+import org.jsoup.Jsoup;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -35,13 +36,15 @@ public class ExtractDoisFromRepositoryEntry {
         }
 
         if (possibleDoi != null) {
-           possibleDoi = possibleDoi.replaceAll("https?://doi\\.org/", "");
+            possibleDoi = Jsoup.parse(possibleDoi).text();
+            possibleDoi = possibleDoi.replaceAll("https?://doi\\.org/", "");
             System.out.println(possibleDoi);
-           Pattern p =  Pattern.compile("^10\\..*");
-           Matcher m = p.matcher(possibleDoi);
-           if (!m.matches()) {
-               possibleDoi = null;
-           }
+            Pattern p = Pattern.compile("^10\\..*");
+            Matcher m = p.matcher(possibleDoi);
+            if (!m.matches()) {
+                System.out.println("rejected " + possibleDoi);
+                possibleDoi = null;
+            }
         }
         return possibleDoi;
 
