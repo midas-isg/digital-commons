@@ -229,6 +229,7 @@
       "Sahawut Wesaratchakit"
     ],
     "source": "https://github.com/midas-isg/FRED/tree/SPEW-compatible/spew2synthia",
+    "humanReadableSynopsis": "Spew2synthia is a tool for translating the output of the SPEW synthetic ecosystem generator (SEG) into the output format of the Synthia SEG. SPEW is the successor to the Synthia SEG and provides several enhancements over Synthia including additional algorithmic methods for generating populations, options for placement of households, worldwide coverage and customized ecosystems through a native R library. The objective of this translation is to allow SPEW synthetic ecosystems to be used directly by Synthia-compatible disease transmission simulators such as FRED or pFRED. Translated results (Synthia synthetic ecosystems) are available on the Olympus Cluster and via the MIDAS Digital Commons (MDC).",
     "dataOutputFormats": [
       "MIDAS-ISG:synthia-us-v2010"
     ],
@@ -265,7 +266,7 @@
     "subtype": "Data services",
     "title": "Project Tycho",
     "dataServiceDescription": [{
-      "accessPointType": "custom",
+      "accessPointType": "CUSTOM",
       "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
       "accessPointUrl": "http://www.tycho.pitt.edu/api/"
     }],
@@ -823,6 +824,9 @@
     "nowcasts": [
       "weekly percent ILI"
     ],
+    "forecasts": [
+      "none"
+    ],
     "website": "http://delphi.midas.cs.cmu.edu/nowcast/",
     "title": "ILI-nearby"
   },
@@ -831,6 +835,7 @@
     "humanReadableSynopsis": "An R package that implements methods for anticipating the emergence and eradication of infectious diseases from surveillance time series. Also provides support for computational experiments testing the performance of such methods.",
     "website": "https://cran.r-project.org/web/packages/spaero/index.html",
     "documentation": "<a href=\"https://cran.r-project.org/web/packages/spaero/spaero.pdf\" class=\"underline\" download>https://cran.r-project.org/web/packages/spaero/spaero.pdf</a>",
+    "forecasts": ["none"],
     "title": "spaero: Software for Project AERO"
   },
   {
