@@ -39,6 +39,14 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }*/
 
+
+    @Bean
+    public SwaggerSpringMvcPlugin customImplementation(){
+
+        return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
+                .apiInfo(apiInfo()); // assuming the API lives at something like http://myapp/api
+    }
+
     @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
@@ -65,9 +73,9 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
 
       //  String contextForSite = configProperties.getProperty("contextPathForSite");
         ApiInfo apiInfo = new ApiInfo(
-                "Apollo Library Viewer API",
-                "The Apollo Library Viewer API provides methods for accessing collections, resources, and aspects contained within the Apollo Library.  Using the RESTful model, each access is associated with a URL. ",
-                /*contextForSite+*/"/tos",
+                "MIDAS Digital Commons API",
+                "This API allows a user to retrieve an object's DOI (digital object indentifier) and it's associated information (both data and metadata) from the MDC. ",
+                /*contextForSite+*/"/main#about",
                 "jdl50@pitt.edu",
                 null,
                 null
