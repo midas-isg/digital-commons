@@ -251,8 +251,11 @@
       "accessPointUrl": "http://betaweb.rods.pitt.edu/ls"
     }],
     "version": [
-      "1.1.1"
+      "1.2.3"
     ],
+    "identifier": {
+      "identifier": "<a href=\"https://doi.org/10.5281/zenodo.800704\", class=\"underline\">10.5281/zenodo.546197</a>"
+    },
     "dataOutputFormats": [
       "IETF:rfc7946"
     ],
