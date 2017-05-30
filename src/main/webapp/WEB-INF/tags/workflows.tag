@@ -16,8 +16,7 @@
         <h3 class="title-font">Obtaining a Synthetic Population in Synthia Format</h3>
         <div class="font-size-16 standard-font">
                             <span class="col-md-12 col-lg-12 no-padding">
-                                The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location
-                                (US, state, or county code). It creates a runnable instance of pFRED for that location.
+                                The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location. It creates a runnable instance of pFRED for that location.
                             </span>
 
             <div class="col-md-12 col-lg-12 no-padding">

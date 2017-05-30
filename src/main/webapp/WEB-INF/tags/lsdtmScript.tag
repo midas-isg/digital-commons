@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<table style="width: 100%; table-layout: fixed;"><tr><td style="width:36px"><pre style="margin: 0; line-height: 125%; border:none; border-right: 1px solid #ccc;">1
+<table style="width: 100%; table-layout: fixed;"><tr><td style="width:36px"><pre style="margin: 0; line-height: 125%; border:none; border-right: 1px solid #ccc;"> 1
  2
  3
  4
