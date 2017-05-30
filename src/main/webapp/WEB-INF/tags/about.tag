@@ -29,6 +29,12 @@
     </p>
 
     <div class="font-size-16 standard-font">
+        <h3 class="sub-title-font font-size-20">FAIR-o-meter</h3>
+        <span>We track conformance to FAIR guidelines <a
+                class="underline" href="http://meterdev.onbc.io/#/">here</a>.</span>
+    </div>
+
+    <div class="font-size-16 standard-font">
         <h3 class="sub-title-font font-size-20">Ontology</h3>
         <span>The Apollo-SV ontology represents our conceptualization of infectious disease epidemiology. You can find it <a
                 class="underline" href="https://github.com/ApolloDev/apollo-sv/releases/tag/v3.0.1">here</a>.</span>
