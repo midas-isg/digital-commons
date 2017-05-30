@@ -1,10 +1,7 @@
 package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
-import com.wordnik.swagger.annotations.ApiResponse;
-import com.wordnik.swagger.annotations.ApiResponses;
+import com.wordnik.swagger.annotations.*;
 import edu.pitt.isg.dc.repository.Repository;
 import edu.pitt.isg.dc.repository.RepositoryEntry;
 import edu.pitt.isg.dc.repository.utils.ExtractDataFromEntry;
@@ -29,6 +26,7 @@ import javax.ws.rs.GET;
 
 @RequestMapping("/api/v1")
 @Controller
+@Api(value = "DOI controller", description = "List digital objects and retrieve their data/metadata")
 public class WebServiceController {
     private static Repository repository;
 
@@ -99,12 +97,15 @@ public class WebServiceController {
                     if (entry.getInstance() instanceof Dataset) {
                         Dataset d = (Dataset) entry.getInstance();
                         for (int i = 0; i < d.getDistributions().size(); i++) {
-                            Distribution dist = d.getDistributions().get(i);
-                            return "redirect:" + dist.getAccess().getAccessURL();
-
+                            if (i == distribution) {
+                                Distribution dist = d.getDistributions().get(i);
+                                return "redirect:" + dist.getAccess().getAccessURL();
+                            }
                         }
+                        //if we are here, the specified distribtuion was not found
+                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The requested distribution (" + distribution + ") was not found for doi " + doi);
                     } else {
-                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This method is only avaliable for methods of type dataset.");
+                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This method is only available for methods of type dataset.");
                     }
                 }
             }

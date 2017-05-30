@@ -38,11 +38,11 @@ public class ExtractDoisFromRepositoryEntry {
         if (possibleDoi != null) {
             possibleDoi = Jsoup.parse(possibleDoi).text();
             possibleDoi = possibleDoi.replaceAll("https?://doi\\.org/", "");
-            System.out.println(possibleDoi);
+            //System.out.println(possibleDoi);
             Pattern p = Pattern.compile("^10\\..*");
             Matcher m = p.matcher(possibleDoi);
             if (!m.matches()) {
-                System.out.println("rejected " + possibleDoi);
+                //System.out.println("rejected " + possibleDoi);
                 possibleDoi = null;
             }
         }

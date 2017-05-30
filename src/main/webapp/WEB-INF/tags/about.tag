@@ -35,6 +35,17 @@
     </div>
 
     <div class="font-size-16 standard-font">
+        <h3 class="sub-title-font font-size-20">Web service</h3>
+        <span>A programmatic interface to the MIDAS Digital Commons is available in the form of a RESTful Web service.
+
+            The Web service (1) returns a list of the DOIs in MDC, (2) returns an object's metadata when presented with a DOI, and (3) returns data when presented with a DOI and a distribution identifier (there are one our more distributions of a dataset in the metadata) of a dataset.
+
+           The MDC Web service is documented using the Swagger software library which describes the endpoint URLs, HTTP methods, required parameters, optional parameters, response syntaxes and input forms to test the API directly from a web browser.  The Web service documentation is available  <a class="underline" href="${pageContext.request.contextPath}/sdoc.jsp">here</a>.
+
+            </span>
+    </div>
+
+    <div class="font-size-16 standard-font">
         <h3 class="sub-title-font font-size-20">Submission Guidelines</h3>
         <span>If you have any digital objects that you'd like to submit to the commons, please contact Mike Wagner via email at <a
                 class="underline" href="mailto:mmw1@pitt.edu">mmw1@pitt.edu</a>.</span>
