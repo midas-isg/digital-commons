@@ -89,11 +89,24 @@
 84
 85
 86
-87</pre></td><td style="background: #f5f5f5;"><pre id="lsdtm-script" style="margin: 0; line-height: 125%; border:none; display:inline-block; overflow:visible"><span style="color: #0099FF; font-style: italic">#!/bin/sh</span>
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100</pre></td><td style="background: #f5f5f5;"><pre id="lsdtm-script" style="margin: 0; line-height: 125%; border:none; display:inline-block; overflow:visible"><span style="color: #0099FF; font-style: italic">#!/bin/sh</span>
 
 <span style="color: #006699; font-weight: bold">function </span>usage
 <span style="color: #555555">{</span>
-	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;usage: lsdtm.sh [[[-p Synthetic Population ID] [-o Output Directory]] | [-h Help]]&quot;</span>
+	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;usage: lsdtm.sh [[[-p Synthetic Population ID] [-f|-c|-C|-s] [-o Output Directory]] | [-h Help]]&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    This script will call a PSC PBS request to run pFRED on the provided Synthetic Population ID.&quot;</span>
 	<span style="color: #336666">echo</span>
 <span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-p, --population&quot;</span>
@@ -102,15 +115,21 @@
 <span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-f, --fips&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Override to use FIPS code as Synthetic Population ID&quot;</span>
 	<span style="color: #336666">echo</span>
-<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-C, --city&quot;</span>
+<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-c, --city&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Override to use city name as Synthetic Population ID&quot;</span>
 	<span style="color: #336666">echo</span>
-<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-c, --county&quot;</span>
+<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-C, --county&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Override to use county name as Synthetic Population ID&quot;</span>
 	<span style="color: #336666">echo</span>
 <span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-s, --state&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Override to use state name as Synthetic Population ID&quot;</span>
 	<span style="color: #336666">echo</span>
+<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-m, --model&quot;</span>
+	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Model to run population on (default is fred/fred-phdl2.12.0-isg1.0)&quot;</span>
+	<span style="color: #336666">echo</span>
+<span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-e, --ecosystem&quot;</span>
+        <span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Ecosystem containing population (default is fred_populations/spew2synthia-1.2.0)&quot;</span>
+        <span style="color: #336666">echo</span>
 <span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-o, --output_directory&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Directory where the output will be generated&quot;</span>
 	<span style="color: #336666">echo</span>
@@ -119,32 +138,31 @@
 	<span style="color: #336666">echo</span>
 <span style="color: #555555">}</span>
 
-<span style="color: #003333">base_dir</span><span style="color: #555555">=</span><span style="color: #006699; font-weight: bold">$(</span>dirname <span style="color: #CC3300">&quot;$0&quot;</span><span style="color: #006699; font-weight: bold">)</span>
-<span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;synthetic_population_id&quot;</span>
-
 <span style="color: #006699; font-weight: bold">while</span> <span style="color: #555555">[</span> <span style="color: #CC3300">&quot;$1&quot;</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">do</span>
 <span style="color: #006699; font-weight: bold">    case</span> <span style="color: #003333">$1</span> in
         -p | --population <span style="color: #555555">)</span>        <span style="color: #336666">shift</span>
 <span style="color: #336666">                                   </span><span style="color: #003333">population_id</span><span style="color: #555555">=</span><span style="color: #003333">$1</span>
                                    ;;
-	-f | --fips <span style="color: #555555">)</span>              <span style="color: #336666">shift</span>
-<span style="color: #336666">				   </span><span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;fips&quot;</span>
+	-f | --fips <span style="color: #555555">)</span>              <span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;fips&quot;</span>
 				   ;;
-	-C | --city <span style="color: #555555">)</span>              <span style="color: #336666">shift</span>
-<span style="color: #336666">				   </span><span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;fips&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+	-c | --city <span style="color: #555555">)</span>              <span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #CC3300">&quot;$population_type&quot;</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;fips&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
 <span style="color: #006699; font-weight: bold">				  	 </span><span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;city&quot;</span>
 				   <span style="color: #006699; font-weight: bold">fi</span>
 				   ;;
-	-c | --county <span style="color: #555555">)</span>            <span style="color: #336666">shift</span>
-<span style="color: #336666">				   </span><span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;city&quot;</span> <span style="color: #555555">]</span> <span style="color: #555555">&amp;&amp;</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;fips&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+	-C | --county <span style="color: #555555">)</span>            <span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #CC3300">&quot;$population_type&quot;</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;city&quot;</span> <span style="color: #555555">]</span> <span style="color: #555555">&amp;&amp;</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;fips&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
 <span style="color: #006699; font-weight: bold">				   	</span><span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;county&quot;</span>
 				   <span style="color: #006699; font-weight: bold">fi</span>
 				   ;;
-	-s | --state <span style="color: #555555">)</span>             <span style="color: #336666">shift</span>
-<span style="color: #336666">				   </span><span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> <span style="color: #555555">==</span> <span style="color: #CC3300">&quot;synthetic_population_id&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+	-s | --state <span style="color: #555555">)</span>             <span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> <span style="color: #CC3300">&quot;$population_type&quot;</span> <span style="color: #555555">==</span> <span style="color: #CC3300">&quot;synthetic_population_id&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
 <span style="color: #006699; font-weight: bold">				   	</span><span style="color: #003333">population_type</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;state&quot;</span>
 				   <span style="color: #006699; font-weight: bold">fi</span>
 				   ;;
+        -m | --model <span style="color: #555555">)</span>		   <span style="color: #336666">shift</span>
+<span style="color: #336666">				   </span><span style="color: #003333">model</span><span style="color: #555555">=</span><span style="color: #003333">$1</span>
+				   ;;
+	-e | --ecosystem <span style="color: #555555">)</span>         <span style="color: #336666">shift</span>
+<span style="color: #336666">                                   </span><span style="color: #003333">ecosystem</span><span style="color: #555555">=</span><span style="color: #003333">$1</span>
+                                   ;;
         -o | --output_directory <span style="color: #555555">)</span>  <span style="color: #336666">shift</span>
 <span style="color: #336666">                                   </span><span style="color: #003333">output_directory</span><span style="color: #555555">=</span><span style="color: #003333">$1</span>
                                    ;;
@@ -157,23 +175,25 @@
 <span style="color: #006699; font-weight: bold">    </span><span style="color: #336666">shift</span>
 <span style="color: #006699; font-weight: bold">done</span>
 
-<span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> ! -z <span style="color: #003333">$population_id</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
-<span style="color: #006699; font-weight: bold">	if</span> <span style="color: #555555">[</span> ! -z <span style="color: #003333">$output_directory</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
-<span style="color: #006699; font-weight: bold">		if</span> <span style="color: #555555">[</span> ! -d <span style="color: #003333">$output_directory</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+<span style="color: #006699; font-weight: bold">if</span> <span style="color: #555555">[</span> ! -z <span style="color: #CC3300">&quot;$population_id&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+<span style="color: #006699; font-weight: bold">	if</span> <span style="color: #555555">[</span> ! -z <span style="color: #CC3300">&quot;$output_directory&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+<span style="color: #006699; font-weight: bold">		if</span> <span style="color: #555555">[</span> ! -d <span style="color: #CC3300">&quot;$output_directory&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
 <span style="color: #006699; font-weight: bold">			</span>mkdir <span style="color: #003333">$output_directory</span>
 		<span style="color: #006699; font-weight: bold">fi</span>
 <span style="color: #006699; font-weight: bold">		</span>
 <span style="color: #006699; font-weight: bold">		</span><span style="color: #336666">cd</span> <span style="color: #003333">$output_directory</span>
 	<span style="color: #006699; font-weight: bold">fi</span>
 <span style="color: #006699; font-weight: bold">	</span>
-<span style="color: #006699; font-weight: bold">	if</span> <span style="color: #555555">[</span> <span style="color: #003333">$population_type</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;synthetic_population_id&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
+<span style="color: #006699; font-weight: bold">	if</span> <span style="color: #555555">[</span> <span style="color: #CC3300">&quot;$population_type&quot;</span> !<span style="color: #555555">=</span> <span style="color: #CC3300">&quot;synthetic_population_id&quot;</span> <span style="color: #555555">]</span>; <span style="color: #006699; font-weight: bold">then</span>
 <span style="color: #006699; font-weight: bold">		</span><span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Setting $population_id as $population_type&quot;</span>
 	<span style="color: #006699; font-weight: bold">fi</span>
 <span style="color: #006699; font-weight: bold">	</span>
-<span style="color: #006699; font-weight: bold">	</span>qsub -v <span style="color: #003333">SYNTHETIC_POPULATION_ID</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_id&quot;</span>,POPULATION_TYPE<span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_type&quot;</span> <span style="color: #003333">$base_dir</span>/spew2synthia_pfred.pbs
+<span style="color: #006699; font-weight: bold">	</span>module load <span style="color: #003333">$ecosystem</span>
+	<span style="color: #003333">$base_dir</span>/generate_params.sh <span style="color: #003333">$population_id</span> <span style="color: #003333">$population_type</span>
+	<span style="color: #003333">$base_dir</span>/run_dtm.sh <span style="color: #003333">$model</span> <span style="color: #003333">$ecosystem</span>
 <span style="color: #006699; font-weight: bold">else</span>
 <span style="color: #006699; font-weight: bold">	</span>usage
-	<span style="color: #006699; font-weight: bold">$(</span>&gt;&amp;2 <span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Failed to provide Synthetic Population ID&quot;</span><span style="color: #006699; font-weight: bold">)</span>
+	<span style="color: #006699; font-weight: bold">$(</span>&gt;&amp;2 <span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Error: Failed to provide Synthetic Population ID&quot;</span><span style="color: #006699; font-weight: bold">)</span>
 	<span style="color: #006699; font-weight: bold">$(</span>&gt;&amp;2 <span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Aborted&quot;</span><span style="color: #006699; font-weight: bold">)</span>
 <span style="color: #006699; font-weight: bold">fi</span>
 </pre></td></tr></table>
