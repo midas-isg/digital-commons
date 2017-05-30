@@ -94,7 +94,7 @@
 <span style="color: #006699; font-weight: bold">function </span>usage
 <span style="color: #555555">{</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;usage: lsdtm.sh [[[-p Synthetic Population ID] [-o Output Directory]] | [-h Help]]&quot;</span>
-	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    This script will call a PSC PBS request to run FRED on the provided Synthetic Population ID.&quot;</span>
+	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    This script will call a PSC PBS request to run pFRED on the provided Synthetic Population ID.&quot;</span>
 	<span style="color: #336666">echo</span>
 <span style="color: #336666">	echo</span> <span style="color: #CC3300">&quot;-p, --population&quot;</span>
 	<span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;    Synthetic Population ID&quot;</span>
@@ -170,7 +170,7 @@
 <span style="color: #006699; font-weight: bold">		</span><span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Setting $population_id as $population_type&quot;</span>
 	<span style="color: #006699; font-weight: bold">fi</span>
 <span style="color: #006699; font-weight: bold">	</span>
-<span style="color: #006699; font-weight: bold">	</span>qsub -v <span style="color: #003333">SYNTHETIC_POPULATION_ID</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_id&quot;</span>,POPULATION_TYPE<span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_type&quot;</span> <span style="color: #003333">$base_dir</span>/spew2synthia_fred.pbs
+<span style="color: #006699; font-weight: bold">	</span>qsub -v <span style="color: #003333">SYNTHETIC_POPULATION_ID</span><span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_id&quot;</span>,POPULATION_TYPE<span style="color: #555555">=</span><span style="color: #CC3300">&quot;$population_type&quot;</span> <span style="color: #003333">$base_dir</span>/spew2synthia_pfred.pbs
 <span style="color: #006699; font-weight: bold">else</span>
 <span style="color: #006699; font-weight: bold">	</span>usage
 	<span style="color: #006699; font-weight: bold">$(</span>&gt;&amp;2 <span style="color: #336666">echo</span> <span style="color: #CC3300">&quot;Failed to provide Synthetic Population ID&quot;</span><span style="color: #006699; font-weight: bold">)</span>
