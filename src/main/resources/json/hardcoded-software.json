@@ -263,7 +263,7 @@
       "Proprietary"
     ],
     "source": "https://github.com/midas-isg/ls",
-    "humanReadableSynopsis": "<p>The Apollo Location Service is a web service that accesses a database of information about locations in which the identifiers are not only location specific but time specific.</p> <p>MIDAS developers will find this web service useful for retrieving GeoJSON data for any locations stored in the Apollo LS database.</p>"
+    "humanReadableSynopsis": "<p>The Apollo Location Service (LS) is a web service and user interface to the Apollo LS Database.   The database issues persistent identifiers for locations for specific time intervals, including intervals that start in the past and are still open at present (i.e., the identifier should be used to refer to the location today).  Temporally specific location identifiers are particularly important in epidemiology because the epidemiological record includes locations that do not presently exist, location names that have changed and location names whose political boundaries have changed. Users of the Apollo Location Service can search by Apollo LS identifier or location name.</p><p>MIDAS developers will find this web service useful for obtaining a persistent location identifier for use in datasets or software.  They may also find useful the ability to retrieve GeoJSON data for any locations stored in the Apollo LS database so they can render a map in their software.</p>"
   },
   {
     "subtype": "Data services",
