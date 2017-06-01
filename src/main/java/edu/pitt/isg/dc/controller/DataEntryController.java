@@ -35,7 +35,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 @ApiIgnore
 @Controller
 public class DataEntryController {
-    private static boolean GENERATE_XSD_FORMS = false;
+    private static boolean GENERATE_XSD_FORMS = true;
     private static final String [] XSD_FILES = {
             "software.xsd",
             "dats.xsd"
