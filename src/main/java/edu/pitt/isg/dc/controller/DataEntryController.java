@@ -70,14 +70,17 @@ public class DataEntryController {
     public @ResponseBody String addNewEntry(@RequestBody String rawInputString) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
+
         String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
+        xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
+
         String jsonString = null;
 
-System.out.println(xmlString);
+        System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-System.out.println("~~~~~~~~~~~~");
-System.out.println(jsonString);
+            System.out.println("~~~~~~~~~~~~");
+            System.out.println(jsonString);
         }
         catch(Exception exception) {
             exception.printStackTrace();
@@ -91,8 +94,7 @@ System.out.println(jsonString);
             byte data[] = fileOutput.getBytes();
             Path logPath = Paths.get(OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG);
 
-            try (OutputStream out = new BufferedOutputStream(
-                    Files.newOutputStream(logPath, CREATE, APPEND))) {
+            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(logPath, CREATE, APPEND))) {
                 out.write(data, 0, data.length);
             }
             catch (IOException exception) {
