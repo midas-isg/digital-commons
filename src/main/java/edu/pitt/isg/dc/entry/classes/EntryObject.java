@@ -1,11 +1,12 @@
 package edu.pitt.isg.dc.entry.classes;
 
+import java.util.Map;
 import java.util.HashMap;
 
 public class EntryObject {
     private String id;
     private Object entry;
-    private HashMap<String, String> properties = new HashMap<>();
+    private Map<String, String> properties = new HashMap<>();
 
     public String getId() {
         return id;
@@ -23,11 +24,11 @@ public class EntryObject {
         this.entry = entry;
     }
 
-    public HashMap<String, String> getProperties() {
+    public Map<String, String> getProperties() {
         return properties;
     }
 
-    public void setProperties(HashMap<String, String> properties) {
+    public void setProperties(Map<String, String> properties) {
         this.properties = properties;
     }
 
