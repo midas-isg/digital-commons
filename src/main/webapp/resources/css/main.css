@@ -689,3 +689,12 @@ label[disabled="disabled"]{
 .list-group-item>.badge {
     float: none;
 }
+
+.margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    background-color: rgba(0,0,0,0.25) !important;
+    padding-bottom: 30px;
+}

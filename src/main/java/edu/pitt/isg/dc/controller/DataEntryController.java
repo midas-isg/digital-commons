@@ -4,6 +4,7 @@ import com.github.davidmoten.xsdforms.Generator;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
@@ -109,7 +112,7 @@ public class DataEntryController {
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -121,16 +124,9 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-
-            htmlString = htmlString.replace("<head>", "<head><base href='.'>" +
-                    "<link rel='stylesheet' type='text/css' href='../css/main.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap/3.3.6/bootstrap.min.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'>" +
-                    "<link rel='stylesheet' href='../css/font-awesome-4.7.0/css/font-awesome.min.css'>");
-
-            Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
+            Path path = FileSystems.getDefault().getPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/")+ rootElementName + ".jsp");
             Charset charset = Charset.forName("US-ASCII");
-            try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
+            try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
                 writer.write(htmlString, 0, htmlString.length());
             } catch (IOException x) {
                 System.err.format("IOException: %s%n", x);
@@ -140,7 +136,7 @@ public class DataEntryController {
         return;
     }
 
-    public static String readXSDFiles() throws Exception {
+    public static String readXSDFiles(HttpServletRequest request) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -166,7 +162,7 @@ public class DataEntryController {
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, request);
                     }
                 }
             }
