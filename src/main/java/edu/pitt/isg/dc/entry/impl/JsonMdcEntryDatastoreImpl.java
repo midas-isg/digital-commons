@@ -71,19 +71,13 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
         httpPut.setEntity(jsonEntity);
 
         HttpResponse response = httpClient.execute(httpPut);
-        HttpEntity entity = response.getEntity();
-
-        if (entity != null) {
-            InputStream inputStream = entity.getContent();
-            try {
-                String content = IOUtils.toString(inputStream, "UTF-8");
-            } finally {
-                inputStream.close();
-            }
+        int status = response.getStatusLine().getStatusCode();
+        if(status != 200) {
+            return "Error: " + status;
+        } else {
+            entries.put(id, entryObject);
+            return id;
         }
-
-        entries.put(id, entryObject);
-        return id;
     }
 
     @Override
