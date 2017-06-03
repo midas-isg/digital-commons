@@ -59,8 +59,8 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
         jsonRequestObject.addProperty("message", "api commit");
 
         JsonObject jsonCommitter = new JsonObject();
-        jsonCommitter.addProperty("name", "Adam Darr");
-        jsonCommitter.addProperty("email", "adamdarr@gmail.com");
+        jsonCommitter.addProperty("name", "API Commit Author");
+        jsonCommitter.addProperty("email", "author@email.com");
 
         jsonRequestObject.add("committer", jsonCommitter);
         jsonRequestObject.addProperty("content", base64Entry);
