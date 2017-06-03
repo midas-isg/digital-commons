@@ -9,10 +9,10 @@ public interface MdcEntryDatastoreInterface {
 
     Object getEntry(String id);
 
-    List<Integer> getEntryIds();
+    List<String> getEntryIds();
 
     String editEntry(String id,
-                     EntryObject entryObject);
+                     EntryObject entryObject) throws Exception;
 
     boolean deleteEntry(String id);
 

@@ -1,5 +1,9 @@
 package edu.pitt.isg.dc.entry.classes;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -38,5 +42,23 @@ public class EntryObject {
 
     public void setProperty(String key, String value) {
         this.properties.put(key, value);
+    }
+
+    public Object getEntryAsTypeClass() {
+        GsonBuilder gsonBuilder = new GsonBuilder().serializeNulls();
+        Gson gson = gsonBuilder.create();
+
+        JsonObject jsonObjectEntry = (JsonObject) entry;
+        String jsonString = jsonObjectEntry.toString();
+
+        Object returnObject = null;
+        try {
+            Class typeClass = Class.forName(properties.get("type"));
+            returnObject = gson.fromJson(jsonString, typeClass);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return returnObject;
     }
 }
