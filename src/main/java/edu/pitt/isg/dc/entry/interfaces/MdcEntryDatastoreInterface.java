@@ -5,8 +5,7 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import java.util.List;
 
 public interface MdcEntryDatastoreInterface {
-    String addEntry(EntryObject entryObject,
-                    String emailAddress);
+    String addEntry(EntryObject entryObject);
 
     Object getEntry(String id);
 
