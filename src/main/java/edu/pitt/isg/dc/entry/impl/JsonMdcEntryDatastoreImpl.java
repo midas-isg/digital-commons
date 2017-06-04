@@ -6,17 +6,21 @@ import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.*;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
+import java.security.MessageDigest;
 import java.util.*;
 
 public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
@@ -30,8 +34,83 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public String addEntry(EntryObject entryObject) {
-        return null;
+    public String addEntry(EntryObject entryObject) throws Exception {
+        String type = entryObject.getProperty("type");
+        String typeDirectory = type.substring(type.lastIndexOf('.') + 1, type.length());
+
+        if(entryObject.getProperty("type") != null) {
+            if(entryObject.getEntryAsTypeClass() != null) {
+                String status = entryObject.getProperty("status");
+                if (status.equals("approved") || status.equals("pending")) {
+                    JsonObject datastore = this.readJsonFileFromUrl(datastoreUrl + "git/trees/master?recursive=1");
+                    JsonArray datastoreTree = datastore.get("tree").getAsJsonArray();
+
+                    String path = "";
+                    for (JsonElement datastoreElement : datastoreTree) {
+                        JsonObject datastoreObject = datastoreElement.getAsJsonObject();
+                        String elementPath = datastoreObject.get("path").getAsString();
+                        if (elementPath.contains(typeDirectory)) {
+                            path = elementPath.substring(0, elementPath.indexOf(typeDirectory) + typeDirectory.length());
+
+                            MessageDigest md5 = MessageDigest.getInstance("MD5");
+                            md5.update(entryObject.getEntry().toString().getBytes());
+                            byte[] bytes = md5.digest();
+                            String stringHash = new String(Hex.encodeHex(bytes));
+
+                            path += "/" + stringHash + ".json";
+                            entryObject.setProperty("path", path);
+                            break;
+                        }
+                    }
+
+                    HttpClient httpClient = HttpClients.createDefault();
+
+                    HttpPut httpPut = new HttpPut(datastoreUrl + "contents/" + entryObject.getProperty("path"));
+                    httpPut.setHeader("Authorization", "token " + DATASTORE_TOKEN);
+                    httpPut.setHeader("Content-Type", "application/json");
+
+                    JsonObject jsonObjectEntry = (JsonObject) entryObject.getEntry();
+                    String base64Entry = base64EncodeJsonObject(jsonObjectEntry);
+
+                    JsonObject jsonRequestObject = basicJsonRequestObject("api add","API Commit Author","author@email.com");
+                    jsonRequestObject.addProperty("content", base64Entry);
+
+                    String jsonRequestString = jsonRequestObject.toString();
+                    StringEntity jsonEntity = new StringEntity(jsonRequestString);
+                    httpPut.setEntity(jsonEntity);
+
+                    HttpResponse response = httpClient.execute(httpPut);
+                    int responseStatus = response.getStatusLine().getStatusCode();
+                    if(responseStatus != 201) {
+                        return "Error: " + status;
+                    } else {
+                        HttpEntity entity = response.getEntity();
+
+                        JsonObject jsonObject;
+                        if (entity != null) {
+                            InputStream inputStream = entity.getContent();
+                            try {
+                                String content = IOUtils.toString(inputStream, "UTF-8");
+                                JsonParser jsonParser = new JsonParser();
+                                jsonObject = jsonParser.parse(content).getAsJsonObject();
+
+                                String id = jsonObject.get("content").getAsJsonObject().get("sha").getAsString();
+                                entryObject.setId(id);
+                            } finally {
+                                inputStream.close();
+                            }
+                        }
+                        return entryObject.getId();
+                    }
+                } else {
+                    return "Error: Invalid status specified";
+                }
+            } else {
+                return "Error: Invalid type specified";
+            }
+        } else {
+            return "Error: No type specified";
+        }
     }
 
     @Override
@@ -53,16 +132,9 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
         httpPut.setHeader("Content-Type", "application/json");
 
         JsonObject jsonObjectEntry = (JsonObject) entryObject.getEntry();
-        String base64Entry = Base64.getEncoder().encodeToString(jsonObjectEntry.toString().getBytes());
+        String base64Entry = base64EncodeJsonObject(jsonObjectEntry);
 
-        JsonObject jsonRequestObject = new JsonObject();
-        jsonRequestObject.addProperty("message", "api commit");
-
-        JsonObject jsonCommitter = new JsonObject();
-        jsonCommitter.addProperty("name", "API Commit Author");
-        jsonCommitter.addProperty("email", "author@email.com");
-
-        jsonRequestObject.add("committer", jsonCommitter);
+        JsonObject jsonRequestObject = basicJsonRequestObject("api update","API Commit Author","author@email.com");
         jsonRequestObject.addProperty("content", base64Entry);
         jsonRequestObject.addProperty("sha", entryObject.getId());
 
@@ -81,8 +153,30 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public boolean deleteEntry(String id) {
-        return false;
+    public String deleteEntry(String id) throws Exception {
+        EntryObject entryObject = entries.get(id);
+
+        HttpClient httpClient = HttpClients.createDefault();
+
+        MyHttpDelete httpDelete = new MyHttpDelete(datastoreUrl + "contents/" + entryObject.getProperty("path"));
+        httpDelete.setHeader("Authorization", "token " + DATASTORE_TOKEN);
+        httpDelete.setHeader("Content-Type", "application/json");
+
+        JsonObject jsonRequestObject = basicJsonRequestObject("api delete","API Commit Author","author@email.com");
+        jsonRequestObject.addProperty("sha", entryObject.getId());
+
+        String jsonRequestString = jsonRequestObject.toString();
+        StringEntity jsonEntity = new StringEntity(jsonRequestString);
+        httpDelete.setEntity(jsonEntity);
+
+        HttpResponse response = httpClient.execute(httpDelete);
+        int status = response.getStatusLine().getStatusCode();
+        if(status != 200) {
+            return "Error: " + status;
+        } else {
+            entries.remove(id);
+            return id;
+        }
     }
 
     @Override
@@ -103,7 +197,7 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
             JsonObject datastoreObject = datastoreElement.getAsJsonObject();
 
             String path = datastoreObject.get("path").getAsString();
-            if(path.endsWith(".json")) {
+            if(path.endsWith("test.json")) {
                 EntryObject entryObject = new EntryObject();
 
                 String[] splitPath = path.split("/");
@@ -133,6 +227,7 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
                 entryObject.setEntry(entry);
                 entryObject.setProperty("type", type);
                 entryObject.setProperty("path", path);
+                entryObject.setProperty("status", "approved");
 
                 entries.put(id, entryObject);
             }
@@ -149,7 +244,7 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
         HttpResponse response = httpClient.execute(httpGet);
         HttpEntity entity = response.getEntity();
 
-        JsonObject jsonObject = new JsonObject();
+        JsonObject jsonObject = null;
         if (entity != null) {
             InputStream inputStream = entity.getContent();
             try {
@@ -162,5 +257,33 @@ public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
         }
 
         return jsonObject;
+    }
+
+    private JsonObject basicJsonRequestObject(String commit, String name, String email) {
+        JsonObject jsonRequestObject = new JsonObject();
+        jsonRequestObject.addProperty("message", commit);
+
+        JsonObject jsonCommitter = new JsonObject();
+        jsonCommitter.addProperty("name", name);
+        jsonCommitter.addProperty("email", email);
+
+        jsonRequestObject.add("committer", jsonCommitter);
+
+        return jsonRequestObject;
+    }
+
+    private String base64EncodeJsonObject(JsonObject jsonObject) {
+        return Base64.getEncoder().encodeToString(jsonObject.toString().getBytes());
+    }
+
+    private class MyHttpDelete extends HttpPost {
+        public MyHttpDelete(String uri) {
+            this.setURI(URI.create(uri));
+        }
+
+        @Override
+        public String getMethod() {
+            return "DELETE";
+        }
     }
 }

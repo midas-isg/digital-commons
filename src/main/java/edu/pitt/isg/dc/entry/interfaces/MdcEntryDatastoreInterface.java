@@ -5,7 +5,7 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import java.util.List;
 
 public interface MdcEntryDatastoreInterface {
-    String addEntry(EntryObject entryObject);
+    String addEntry(EntryObject entryObject) throws Exception;
 
     Object getEntry(String id);
 
@@ -14,7 +14,7 @@ public interface MdcEntryDatastoreInterface {
     String editEntry(String id,
                      EntryObject entryObject) throws Exception;
 
-    boolean deleteEntry(String id);
+    String deleteEntry(String id) throws Exception;
 
     boolean setEntryProperty(String id,
                              String key,
