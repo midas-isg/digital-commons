@@ -29,10 +29,11 @@ public class PopulateDatastore {
 
     public void populate() throws MdcEntryDatastoreException {
         MdcEntryDatastoreInterface datastore = new H2Datastore();
+
         String[] extensions = new String[] { "json" };
+        List<File> files = (List<File>) FileUtils.listFiles(Paths.get(ENTRIES_FILEPATH).toFile(), extensions, true);
 
         JsonParser parser = new JsonParser();
-        List<File> files = (List<File>) FileUtils.listFiles(Paths.get(ENTRIES_FILEPATH).toFile(), extensions, true);
         for(File file : files) {
             String jsonEntryString = null;
             try {
