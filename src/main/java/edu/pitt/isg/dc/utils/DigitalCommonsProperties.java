@@ -15,6 +15,7 @@ public class DigitalCommonsProperties extends Properties {
     public static final String LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION = "libraryCollectionsCacheFileLocation";
     public static final String ENTRIES_FILEPATH = "entriesFilepath";
 
+
     private static class DigitalCommonsPropertiesHolder {
 
         private static final DigitalCommonsProperties INSTANCE;

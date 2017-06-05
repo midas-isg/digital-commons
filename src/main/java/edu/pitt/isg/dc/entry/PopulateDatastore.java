@@ -31,7 +31,7 @@ public class PopulateDatastore {
         }
 
     public void populate() throws MdcEntryDatastoreException {
-        MdcEntryDatastoreInterface datastore = new H2Datastore(true);
+        MdcEntryDatastoreInterface datastore = new H2Datastore();
 
         String[] extensions = new String[] { "json" };
         List<File> files = (List<File>) FileUtils.listFiles(Paths.get(ENTRIES_FILEPATH).toFile(), extensions, true);

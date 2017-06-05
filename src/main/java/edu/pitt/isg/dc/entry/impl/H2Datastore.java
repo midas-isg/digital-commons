@@ -12,8 +12,8 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.apache.commons.io.FileUtils;
-import org.h2.tools.DeleteDbFiles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,15 +23,21 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class H2Datastore implements MdcEntryDatastoreInterface {
 
-    @Autowired
-    private static H2Configuration h2Configuration;
 
-    private final Boolean wipeDatabaseIfExists;
+    private H2Configuration h2Configuration;
 
-    public H2Datastore(Boolean wipeDatabaseIfExists) {
-        this.wipeDatabaseIfExists = wipeDatabaseIfExists;
+
+    public H2Datastore() {
+        try {
+            h2Configuration = new H2Configuration();
+            createDatabase();
+        } catch (Exception e) {
+            new MdcEntryDatastoreException(e.getMessage());
+        }
+        /*this.wipeDatabaseIfExists = wipeDatabaseIfExists;
         if (wipeDatabaseIfExists) {
             //jdbc:h2:/Users/jdl50/mdcDB
             String path = h2Configuration.DB_CONNECTION.substring(h2Configuration.DB_CONNECTION.lastIndexOf(":")+1);
@@ -47,19 +53,19 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             } catch (SQLException e) {
                 new MdcEntryDatastoreException(e.getMessage());
             }
-        }
+        }*/
     }
 
-    private static Connection getDBConnection() {
+    private Connection getDBConnection() {
         Connection dbConnection = null;
         try {
-            Class.forName(h2Configuration.DB_DRIVER);
+            Class.forName(h2Configuration.getDbDriver());
         } catch (ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
         try {
-            dbConnection = DriverManager.getConnection(h2Configuration.DB_CONNECTION, h2Configuration.DB_USER,
-                    h2Configuration.DB_PASSWORD);
+            dbConnection = DriverManager.getConnection(h2Configuration.getDbConnection(), h2Configuration.getDbUser(),
+                    h2Configuration.getDbPassword());
             return dbConnection;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -67,9 +73,8 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         return dbConnection;
     }
 
-    private static void createDatabase() throws SQLException {
+    private void createDatabase() throws SQLException {
         PreparedStatement createPreparedStatement = null;
-
 
         String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
 
