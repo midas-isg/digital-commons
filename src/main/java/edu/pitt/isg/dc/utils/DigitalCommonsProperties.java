@@ -14,6 +14,7 @@ public class DigitalCommonsProperties extends Properties {
     public static final String SPEW_CACHE_FILE_LOCATION = "spewCacheFileLocation";
     public static final String LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION = "libraryCollectionsCacheFileLocation";
     public static final String ENTRIES_FILEPATH = "entriesFilepath";
+    public static final String ENTRIES_AUTHENTICATION = "";
 
 
     private static class DigitalCommonsPropertiesHolder {
