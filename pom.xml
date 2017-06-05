@@ -93,6 +93,13 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.195</version>
+        </dependency>
+
         <!-- XSD Form Generator -->
         <dependency>
             <groupId>edu.pitt.isg</groupId>
