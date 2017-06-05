@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.apache.commons.io.FileUtils;
 import org.h2.tools.DeleteDbFiles;
@@ -97,7 +98,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public String addEntry(EntryObject entryObject) throws Exception {
+    public String addEntry(EntryObject entryObject) throws MdcEntryDatastoreException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(entryObject);
         try (Connection connection = getDBConnection()) {
@@ -110,12 +111,14 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
                 int newId = rs.getInt(1);
                 return String.valueOf(newId);
             }
+        } catch (SQLException e) {
+            throw new MdcEntryDatastoreException(e);
         }
         return "error";
     }
 
     @Override
-    public Object getEntry(String id) {
+    public EntryObject getEntry(String id) {
         try {
             try (Connection connection = getDBConnection()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT CONTENT FROM ENTRIES WHERE ID = ?");
@@ -129,7 +132,6 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
         return null;
     }
@@ -153,12 +155,12 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public String editEntry(String id, EntryObject entryObject) throws Exception {
+    public String editEntry(String id, EntryObject entryObject) throws MdcEntryDatastoreException {
         return null;
     }
 
     @Override
-    public String deleteEntry(String id) throws Exception {
+    public String deleteEntry(String id) throws MdcEntryDatastoreException {
         return null;
     }
 
@@ -172,6 +174,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         return null;
     }
 
+    @Override
     public void dump() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<String> ids = this.getEntryIds();

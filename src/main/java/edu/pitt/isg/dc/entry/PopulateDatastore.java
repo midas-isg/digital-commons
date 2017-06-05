@@ -20,7 +20,7 @@ public class PopulateDatastore {
     }
 
     public void populate() throws Exception {
-        H2Datastore datastore = new H2Datastore();
+        MdcEntryDatastoreInterface datastore = new H2Datastore();
         String[] extensions = new String[] { "json" };
 
         JsonParser parser = new JsonParser();
