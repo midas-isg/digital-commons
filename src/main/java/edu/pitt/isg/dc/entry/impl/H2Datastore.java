@@ -6,11 +6,16 @@ package edu.pitt.isg.dc.entry.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import org.apache.commons.io.FileUtils;
 import org.h2.tools.DeleteDbFiles;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +25,22 @@ import java.util.List;
 public class H2Datastore implements MdcEntryDatastoreInterface {
 
     private static final String DB_DRIVER = "org.h2.Driver";
-    private static final String DB_CONNECTION = "jdbc:h2:/Users/jdl50/mdcDB";
+    private static final String DB_CONNECTION = "jdbc:h2:/Users/amd176/Documents/mdcDB";
     private static final String DB_USER = "";
     private static final String DB_PASSWORD = "";
 
-    public static void main(String[] args) throws Exception {
+    static {
+        try {
+            // delete the H2 database named 'test' in the user home directory
+            DeleteDbFiles.execute("/Users/amd176/Documents/", "mdcDB", true);
+            insertWithPreparedStatement();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /*public static void main(String[] args) throws Exception {
         try {
             // delete the H2 database named 'test' in the user home directory
             DeleteDbFiles.execute("~", "mdcDB", true);
@@ -33,10 +49,9 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     private static void insertWithPreparedStatement() throws SQLException {
-        ;
         PreparedStatement createPreparedStatement = null;
         PreparedStatement insertPreparedStatement = null;
         PreparedStatement selectPreparedStatement = null;
@@ -126,7 +141,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             try (Connection connection = getDBConnection()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID FROM ENTRIES");
                 ResultSet rs = preparedStatement.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     list.add(rs.getString(1));
                 }
             }
@@ -155,5 +170,23 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     @Override
     public String getEntryProperty(String id, String key) {
         return null;
+    }
+
+    public void dump() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<String> ids = this.getEntryIds();
+        for(String id : ids) {
+            EntryObject entryObject = (EntryObject) this.getEntry(id);
+            JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
+            String json = gson.toJson(jsonElement);
+
+            String filepath = entryObject.getId();
+            File file = Paths.get(filepath).toFile();
+            try {
+                FileUtils.writeStringToFile(file, json, "UTF-8");
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

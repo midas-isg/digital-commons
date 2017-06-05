@@ -13,14 +13,14 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class PopulateDatastore {
-    private final String entriesFilepath = "../mdc-data";
+    private final String entriesFilepath = "/Users/amd176/Documents/mdc-data";
 
     public PopulateDatastore() throws Exception {
         this.populate();
     }
 
     public void populate() throws Exception {
-        MdcEntryDatastoreInterface datastore = new H2Datastore();
+        H2Datastore datastore = new H2Datastore();
         String[] extensions = new String[] { "json" };
 
         JsonParser parser = new JsonParser();
@@ -30,6 +30,7 @@ public class PopulateDatastore {
             JsonObject jsonEntryObject = parser.parse(jsonEntryString).getAsJsonObject();
 
             EntryObject entryObject = new EntryObject();
+            entryObject.setId(file.getPath());
             entryObject.setEntry(jsonEntryObject);
             datastore.addEntry(entryObject);
         }
