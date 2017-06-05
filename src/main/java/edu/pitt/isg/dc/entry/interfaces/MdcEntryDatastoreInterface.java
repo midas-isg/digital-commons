@@ -9,9 +9,11 @@ import java.util.List;
 public interface MdcEntryDatastoreInterface {
     String addEntry(EntryObject entryObject) throws MdcEntryDatastoreException;
 
-    EntryObject getEntry(String id);
+    EntryObject getEntry(String id) throws MdcEntryDatastoreException;
 
-    List<String> getEntryIds();
+    List<String> getPendingEntryIds() throws MdcEntryDatastoreException;
+
+    List<String> getEntryIds() throws MdcEntryDatastoreException;
 
     String editEntry(String id,
                      EntryObject entryObject) throws MdcEntryDatastoreException;

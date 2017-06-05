@@ -76,7 +76,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     private void createDatabase() throws SQLException {
         PreparedStatement createPreparedStatement = null;
 
-        String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
+        String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID int auto_increment primary key, CONTENT CLOB, STATUS VARCHAR)";
 
         try (Connection connection = getDBConnection()) {
             connection.setAutoCommit(false);
@@ -98,14 +98,32 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         String json = gson.toJson(entryObject);
         try (Connection connection = getDBConnection()) {
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ENTRIES (CONTENT) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ENTRIES (CONTENT, STATUS) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setClob(1, new StringReader(json));
+            preparedStatement.setString(2, entryObject.getProperty("status"));
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
             if (rs.next()) {
                 int newId = rs.getInt(1);
                 return String.valueOf(newId);
             }
+        } catch (SQLException e) {
+            throw new MdcEntryDatastoreException(e);
+        }
+        return "error";
+    }
+
+    @Override
+    public String editEntry(String id, EntryObject entryObject) throws MdcEntryDatastoreException {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(entryObject);
+        try (Connection connection = getDBConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE ENTRIES SET CONTENT = ?, STATUS = ? WHERE ID = ?");
+            preparedStatement.setClob(1, new StringReader(json));
+            preparedStatement.setString(2, entryObject.getProperty("status"));
+            preparedStatement.setString(3, id);
+
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new MdcEntryDatastoreException(e);
         }
@@ -132,6 +150,25 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
+    public List<String> getPendingEntryIds() throws MdcEntryDatastoreException {
+        List<String> list = new ArrayList<>();
+        try {
+            try (Connection connection = getDBConnection()) {
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID FROM ENTRIES WHERE STATUS = ?");
+                preparedStatement.setString(1, "pending");
+                ResultSet rs = preparedStatement.executeQuery();
+                while (rs.next()) {
+                    list.add(rs.getString(1));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+
+        }
+        return list;
+    }
+
+    @Override
     public List<String> getEntryIds() {
         List<String> list = new ArrayList<>();
         try {
@@ -149,10 +186,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         return list;
     }
 
-    @Override
-    public String editEntry(String id, EntryObject entryObject) throws MdcEntryDatastoreException {
-        return null;
-    }
+
 
     @Override
     public String deleteEntry(String id) throws MdcEntryDatastoreException {
