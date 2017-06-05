@@ -6,8 +6,8 @@ package edu.pitt.isg.dc.entry.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.pitt.isg.dc.config.H2Configuration;
 import com.google.gson.JsonElement;
+import edu.pitt.isg.dc.config.H2Configuration;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
@@ -25,20 +25,30 @@ import java.util.List;
 
 public class H2Datastore implements MdcEntryDatastoreInterface {
 
-
-
     @Autowired
     private static H2Configuration h2Configuration;
 
-    static {
-        try {
-            DeleteDbFiles.execute("~", "mdcDB", true);
-            createDatabase();
-        } catch (SQLException e) {
-            e.printStackTrace();
+    private final Boolean wipeDatabaseIfExists;
+
+    public H2Datastore(Boolean wipeDatabaseIfExists) {
+        this.wipeDatabaseIfExists = wipeDatabaseIfExists;
+        if (wipeDatabaseIfExists) {
+            //jdbc:h2:/Users/jdl50/mdcDB
+            String path = h2Configuration.DB_CONNECTION.substring(h2Configuration.DB_CONNECTION.lastIndexOf(":")+1);
+            int idx = path.lastIndexOf("/");
+            if (idx == -1)
+                idx = path.lastIndexOf("\\");
+
+            String name = path.substring(idx+1);
+            path = path.substring(0, idx+1);
+            DeleteDbFiles.execute(path, name, true);
+            try {
+                createDatabase();
+            } catch (SQLException e) {
+                new MdcEntryDatastoreException(e.getMessage());
+            }
         }
     }
-
 
     private static Connection getDBConnection() {
         Connection dbConnection = null;
@@ -61,7 +71,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         PreparedStatement createPreparedStatement = null;
 
 
-        String createEntries = "CREATE TABLE ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
+        String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
 
         try (Connection connection = getDBConnection()) {
             connection.setAutoCommit(false);
@@ -145,31 +155,28 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public boolean setEntryProperty(String id, String key, String value) {
-        return false;
-    }
+    public void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException {
+        switch (mdcDatastoreFormat) {
+            case MDC_DATA_DIRECTORY_FORMAT:
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                List<String> ids = this.getEntryIds();
+                for (String id : ids) {
+                    EntryObject entryObject = this.getEntry(id);
+                    JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
+                    String json = gson.toJson(jsonElement);
 
-    @Override
-    public String getEntryProperty(String id, String key) {
-        return null;
-    }
-
-    @Override
-    public void dump() {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<String> ids = this.getEntryIds();
-        for(String id : ids) {
-            EntryObject entryObject = this.getEntry(id);
-            JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
-            String json = gson.toJson(jsonElement);
-
-            String filepath = entryObject.getId();
-            File file = Paths.get(filepath).toFile();
-            try {
-                FileUtils.writeStringToFile(file, json, "UTF-8");
-            } catch(IOException e) {
-                e.printStackTrace();
-            }
+                    String filepath = entryObject.getId();
+                    File file = Paths.get(filepath).toFile();
+                    try {
+                        FileUtils.writeStringToFile(file, json, "UTF-8");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+            default:
+                throw new MdcEntryDatastoreException("Unsupported mdcDatastoreFormat" + mdcDatastoreFormat);
         }
+
     }
 }
