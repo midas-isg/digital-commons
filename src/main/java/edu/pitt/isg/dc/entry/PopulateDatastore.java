@@ -3,6 +3,8 @@ package edu.pitt.isg.dc.entry;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.impl.H2Datastore;
+import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -11,14 +13,14 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class PopulateDatastore {
-    private final String entriesFilepath = "/Users/amd176/Documents/mdc-data";
+    private final String entriesFilepath = "../mdc-data";
 
-    public PopulateDatastore() throws IOException {
+    public PopulateDatastore() throws Exception {
         this.populate();
     }
 
-    public void populate() throws IOException {
-        Datastore datastore = new Datastore();
+    public void populate() throws Exception {
+        MdcEntryDatastoreInterface datastore = new H2Datastore();
         String[] extensions = new String[] { "json" };
 
         JsonParser parser = new JsonParser();
@@ -33,7 +35,7 @@ public class PopulateDatastore {
         }
     }
 
-    private class Datastore {
-        public void addEntry(Object object) {}
-    }
+
+
+
 }
