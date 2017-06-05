@@ -7,17 +7,24 @@ package edu.pitt.isg.dc.entry.impl;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.pitt.isg.dc.config.H2Configuration;
+import com.google.gson.JsonElement;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import org.apache.commons.io.FileUtils;
 import org.h2.tools.DeleteDbFiles;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.StringReader;
+import java.nio.file.Paths;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class H2Datastore implements MdcEntryDatastoreInterface {
+
 
 
     @Autowired
@@ -31,6 +38,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             e.printStackTrace();
         }
     }
+
 
     private static Connection getDBConnection() {
         Connection dbConnection = null;
@@ -70,7 +78,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public String addEntry(EntryObject entryObject) throws Exception {
+    public String addEntry(EntryObject entryObject) throws MdcEntryDatastoreException {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(entryObject);
         try (Connection connection = getDBConnection()) {
@@ -83,12 +91,14 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
                 int newId = rs.getInt(1);
                 return String.valueOf(newId);
             }
+        } catch (SQLException e) {
+            throw new MdcEntryDatastoreException(e);
         }
         return "error";
     }
 
     @Override
-    public Object getEntry(String id) {
+    public EntryObject getEntry(String id) {
         try {
             try (Connection connection = getDBConnection()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT CONTENT FROM ENTRIES WHERE ID = ?");
@@ -102,7 +112,6 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
         return null;
     }
@@ -114,7 +123,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
             try (Connection connection = getDBConnection()) {
                 PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID FROM ENTRIES");
                 ResultSet rs = preparedStatement.executeQuery();
-                if (rs.next()) {
+                while (rs.next()) {
                     list.add(rs.getString(1));
                 }
             }
@@ -126,12 +135,12 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public String editEntry(String id, EntryObject entryObject) throws Exception {
+    public String editEntry(String id, EntryObject entryObject) throws MdcEntryDatastoreException {
         return null;
     }
 
     @Override
-    public String deleteEntry(String id) throws Exception {
+    public String deleteEntry(String id) throws MdcEntryDatastoreException {
         return null;
     }
 
@@ -143,5 +152,24 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     @Override
     public String getEntryProperty(String id, String key) {
         return null;
+    }
+
+    @Override
+    public void dump() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<String> ids = this.getEntryIds();
+        for(String id : ids) {
+            EntryObject entryObject = this.getEntry(id);
+            JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
+            String json = gson.toJson(jsonElement);
+
+            String filepath = entryObject.getId();
+            File file = Paths.get(filepath).toFile();
+            try {
+                FileUtils.writeStringToFile(file, json, "UTF-8");
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
