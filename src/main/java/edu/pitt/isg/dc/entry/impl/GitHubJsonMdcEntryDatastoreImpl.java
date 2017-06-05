@@ -23,7 +23,7 @@ import java.net.URI;
 import java.security.MessageDigest;
 import java.util.*;
 
-public class JsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
+public class GitHubJsonMdcEntryDatastoreImpl implements MdcEntryDatastoreInterface {
     private final String datastoreUrl = "https://api.github.com/repos/midas-isg/mdc-data/";
     private Map<String, EntryObject> entries = new HashMap<>();
 
