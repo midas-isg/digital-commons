@@ -103,7 +103,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     public Object getEntry(String id) {
         try {
             try (Connection connection = getDBConnection()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT CONTENT FROM ENTRIES WHERE ID = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT CONTENT FROM ENTRIES WHERE ID = ?");
                 preparedStatement.setInt(1, Integer.valueOf(id));
                 ResultSet rs = preparedStatement.executeQuery();
                 if (rs.next()) {
@@ -124,7 +124,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         List<String> list = new ArrayList<>();
         try {
             try (Connection connection = getDBConnection()) {
-                PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID FROM ENTRIES";
+                PreparedStatement preparedStatement = connection.prepareStatement("SELECT ID FROM ENTRIES");
                 ResultSet rs = preparedStatement.executeQuery();
                 if (rs.next()) {
                     list.add(rs.getString(1));
