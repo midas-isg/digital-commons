@@ -32,11 +32,8 @@ public class PopulateDatastore {
             EntryObject entryObject = new EntryObject();
             entryObject.setId(file.getPath());
             entryObject.setEntry(jsonEntryObject);
+
             datastore.addEntry(entryObject);
         }
     }
-
-
-
-
 }

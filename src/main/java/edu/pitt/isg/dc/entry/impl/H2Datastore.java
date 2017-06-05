@@ -179,7 +179,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         List<String> ids = this.getEntryIds();
         for(String id : ids) {
-            EntryObject entryObject = (EntryObject) this.getEntry(id);
+            EntryObject entryObject = this.getEntry(id);
             JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
             String json = gson.toJson(jsonElement);
 

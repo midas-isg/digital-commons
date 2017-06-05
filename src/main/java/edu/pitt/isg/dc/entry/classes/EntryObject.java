@@ -44,6 +44,29 @@ public class EntryObject {
         this.properties.put(key, value);
     }
 
+    public String getEntryType() {
+        String path = this.getId();
+        String[] splitPath = path.split("/");
+
+        String type = "";
+        String previousPart = "";
+        for(String pathPart : splitPath) {
+            // grab data type folder after version folder
+            if(previousPart.matches(".*\\d+_\\d+$")) {
+                String typePath = "";
+                if(previousPart.equals("2_2")) {
+                    typePath = "edu.pitt.isg.mdc.dats2_2.";
+                } else if(previousPart.equals("v1_0")) {
+                    typePath = "edu.pitt.isg.mdc.v1_0.";
+                }
+                type = typePath + pathPart;
+                break;
+            }
+            previousPart = pathPart;
+        }
+        return type;
+    }
+
     public Object getEntryAsTypeClass() {
         GsonBuilder gsonBuilder = new GsonBuilder().serializeNulls();
         Gson gson = gsonBuilder.create();
@@ -53,7 +76,7 @@ public class EntryObject {
 
         Object returnObject = null;
         try {
-            Class typeClass = Class.forName(properties.get("type"));
+            Class typeClass = Class.forName(this.getEntryType());
             returnObject = gson.fromJson(jsonString, typeClass);
         } catch (Exception e) {
             e.printStackTrace();
