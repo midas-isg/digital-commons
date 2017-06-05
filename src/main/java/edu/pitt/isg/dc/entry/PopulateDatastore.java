@@ -14,13 +14,14 @@ import java.util.List;
 
 public class PopulateDatastore {
     private final String entriesFilepath = "../mdc-data";
+    private final MdcEntryDatastoreInterface mdcEntryDatastoreInterface;
 
-    public PopulateDatastore() throws Exception {
+    public PopulateDatastore(MdcEntryDatastoreInterface mdcEntryDatastoreInterface) throws Exception {
+        this.mdcEntryDatastoreInterface = mdcEntryDatastoreInterface;
         this.populate();
     }
 
     public void populate() throws Exception {
-        MdcEntryDatastoreInterface datastore = new H2Datastore();
         String[] extensions = new String[] { "json" };
 
         JsonParser parser = new JsonParser();
@@ -31,7 +32,7 @@ public class PopulateDatastore {
 
             EntryObject entryObject = new EntryObject();
             entryObject.setEntry(jsonEntryObject);
-            datastore.addEntry(entryObject);
+            mdcEntryDatastoreInterface.addEntry(entryObject);
         }
     }
 

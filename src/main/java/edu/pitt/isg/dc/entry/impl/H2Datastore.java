@@ -6,79 +6,67 @@ package edu.pitt.isg.dc.entry.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.pitt.isg.dc.config.H2Configuration;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.h2.tools.DeleteDbFiles;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.StringReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// H2 File Database Example shows about storing the database contents into file system.
-
 public class H2Datastore implements MdcEntryDatastoreInterface {
 
-    private static final String DB_DRIVER = "org.h2.Driver";
-    private static final String DB_CONNECTION = "jdbc:h2:/Users/jdl50/mdcDB";
-    private static final String DB_USER = "";
-    private static final String DB_PASSWORD = "";
 
-    public static void main(String[] args) throws Exception {
+    @Autowired
+    private static H2Configuration h2Configuration;
+
+    static {
         try {
-            // delete the H2 database named 'test' in the user home directory
             DeleteDbFiles.execute("~", "mdcDB", true);
-            insertWithPreparedStatement();
-
+            createDatabase();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    private static void insertWithPreparedStatement() throws SQLException {
-        ;
+    private static Connection getDBConnection() {
+        Connection dbConnection = null;
+        try {
+            Class.forName(h2Configuration.DB_DRIVER);
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            dbConnection = DriverManager.getConnection(h2Configuration.DB_CONNECTION, h2Configuration.DB_USER,
+                    h2Configuration.DB_PASSWORD);
+            return dbConnection;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return dbConnection;
+    }
+
+    private static void createDatabase() throws SQLException {
         PreparedStatement createPreparedStatement = null;
-        PreparedStatement insertPreparedStatement = null;
-        PreparedStatement selectPreparedStatement = null;
 
-        String CreateQuery1 = "CREATE TABLE ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
-        String CreateQuery2 = "CREATE TABLE ENTRY_PROPERTIES(id int primary key, ENTRY_ID int, foreign key (ENTRY_ID) references ENTRIES(ID), PROPERTY_NAME VARCHAR, PROPERTY_VALUE VARCHAR )";
 
+        String createEntries = "CREATE TABLE ENTRIES(ID int auto_increment primary key, CONTENT CLOB, CLASS VARCHAR)";
 
         try (Connection connection = getDBConnection()) {
             connection.setAutoCommit(false);
 
-            createPreparedStatement = connection.prepareStatement(CreateQuery1);
+            createPreparedStatement = connection.prepareStatement(createEntries);
             createPreparedStatement.executeUpdate();
             createPreparedStatement.close();
-            createPreparedStatement = connection.prepareStatement(CreateQuery2);
-            createPreparedStatement.executeUpdate();
-            createPreparedStatement.close();
-
             connection.commit();
         } catch (SQLException e) {
             System.out.println("Exception Message " + e.getLocalizedMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-
-    private static Connection getDBConnection() {
-        Connection dbConnection = null;
-        try {
-            Class.forName(DB_DRIVER);
-        } catch (ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        try {
-            dbConnection = DriverManager.getConnection(DB_CONNECTION, DB_USER,
-                    DB_PASSWORD);
-            return dbConnection;
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return dbConnection;
     }
 
     @Override
