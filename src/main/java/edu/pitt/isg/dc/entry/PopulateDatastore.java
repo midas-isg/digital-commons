@@ -27,7 +27,6 @@ public class PopulateDatastore {
 
     public PopulateDatastore(MdcEntryDatastoreInterface mdcEntryDatastoreInterface) throws MdcEntryDatastoreException {
             this.mdcEntryDatastoreInterface = mdcEntryDatastoreInterface;
-            this.populate();
         }
 
     public void populate() throws MdcEntryDatastoreException {
