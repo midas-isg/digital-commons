@@ -9,6 +9,7 @@ import edu.pitt.isg.dc.entry.impl.H2Datastore;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -79,6 +80,7 @@ public class ApproveEntryController {
     public ResponseEntity<String> exportDatastore(Model model)  {
         try {
             h2Datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
+            EntryHelper.copyDatastore();
             return ResponseEntity.ok("Data exported successfully.");
         } catch (MdcEntryDatastoreException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());

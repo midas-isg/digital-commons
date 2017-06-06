@@ -129,7 +129,6 @@ public class HomeController {
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String addEntry(Model model, HttpServletRequest request) throws Exception {
         model.addAttribute("xsdForms", DataEntryController.readXSDFiles(request));
-
         return "addEntry";
     }
 

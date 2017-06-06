@@ -194,35 +194,10 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
-    public void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException {
+    public synchronized void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException {
         switch (mdcDatastoreFormat) {
             case MDC_DATA_DIRECTORY_FORMAT:
-                File jsonFileDirectory = Paths.get(EntryHelper.getEntriesFilepath(), "json").toFile();
-                try {
-                    FileUtils.deleteDirectory(jsonFileDirectory);
-                } catch (IOException e) {
-                    throw new MdcEntryDatastoreException(e);
-                }
-
-                Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                List<String> ids = this.getEntryIds();
-                for (String id : ids) {
-                    EntryObject entryObject = this.getEntry(id);
-                    JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
-                    String json = gson.toJson(jsonElement);
-
-                    String type = entryObject.getProperty("type");
-                    String subtype = entryObject.getProperty("subtype");
-                    boolean isPending = entryObject.getProperty("status").equals("pending");
-
-                    String path = EntryHelper.getPathFromType(type, subtype, isPending);
-                    File file = Paths.get(path, String.format("%05d", Integer.parseInt(id)) + ".json").toFile();
-                    try {
-                        FileUtils.writeStringToFile(file, json, "UTF-8");
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+                EntryHelper.exportDatastore(this);
                 break;
             default:
                 throw new MdcEntryDatastoreException("Unsupported mdcDatastoreFormat" + mdcDatastoreFormat);

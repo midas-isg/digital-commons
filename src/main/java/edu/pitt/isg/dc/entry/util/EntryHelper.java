@@ -1,7 +1,18 @@
 package edu.pitt.isg.dc.entry.util;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.util.List;
 import java.util.Properties;
 
 /**
@@ -9,11 +20,16 @@ import java.util.Properties;
  */
 public class EntryHelper {
     private static String ENTRIES_FILEPATH = "";
+    private static String TEMP_FILEPATH = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         ENTRIES_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_FILEPATH);
+        TEMP_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.TEMP_FILEPATH);
     }
+
+    private static final Object dumpLock = new Object();
+    private static final Object copyLock = new Object();
 
     public static String getTypeFromPath(String path) {
         if (path != null && path.length() > 0) {
@@ -91,5 +107,60 @@ public class EntryHelper {
 
     public static String getEntriesFilepath() {
         return ENTRIES_FILEPATH;
+    }
+
+    public static String getTempFilepath() {
+        return TEMP_FILEPATH;
+    }
+
+    public static void exportDatastore(MdcEntryDatastoreInterface mdcEntryDatastoreInterface) throws MdcEntryDatastoreException {
+        synchronized (dumpLock) {
+            File jsonFileDirectory = Paths.get(EntryHelper.getEntriesFilepath(), "json").toFile();
+            try {
+                FileUtils.deleteDirectory(jsonFileDirectory);
+            } catch (IOException e) {
+                throw new MdcEntryDatastoreException(e);
+            }
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            List<String> ids = mdcEntryDatastoreInterface.getEntryIds();
+            for (String id : ids) {
+                EntryObject entryObject = mdcEntryDatastoreInterface.getEntry(id);
+                JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
+                String json = gson.toJson(jsonElement);
+
+                String type = entryObject.getProperty("type");
+                String subtype = entryObject.getProperty("subtype");
+                boolean isPending = entryObject.getProperty("status").equals("pending");
+
+                String path = EntryHelper.getPathFromType(type, subtype, isPending);
+                File file = Paths.get(path, String.format("%05d", Integer.parseInt(id)) + ".json").toFile();
+                try {
+                    FileUtils.writeStringToFile(file, json, "UTF-8");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void copyDatastore() {
+        synchronized (dumpLock) {
+            synchronized (copyLock) {
+                File fileSrc = Paths.get(EntryHelper.getEntriesFilepath()).toFile();
+                File fileDest = Paths.get(EntryHelper.getTempFilepath(), "mdc-data-copy").toFile();
+                try {
+                    FileUtils.copyDirectory(fileSrc, fileDest);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static void pushDatastoreToGitHub() {
+        synchronized (copyLock) {
+
+        }
     }
 }

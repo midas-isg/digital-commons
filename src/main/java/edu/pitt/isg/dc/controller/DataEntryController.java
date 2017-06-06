@@ -113,7 +113,13 @@ public class DataEntryController {
                 if (customValue != null && !customValue.equals("")) {
                     entryObject.setProperty("subtype", customValue);
                 } else {
-                    entryObject.setProperty("subtype", datasetType);
+                    if (datasetType.equals("DiseaseSurveillanceData")) {
+                        entryObject.setProperty("subtype", "disease-surveillance");
+                    } else if(datasetType.equals("MortalityData")) {
+                        entryObject.setProperty("subtype", "mortality");
+                    } else {
+                        entryObject.setProperty("subtype", datasetType);
+                    }
                 }
             }
 
