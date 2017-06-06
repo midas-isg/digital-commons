@@ -37,8 +37,8 @@
                                      src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
                         </c:otherwise>
                     </c:choose>
-                    <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
-                    <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+                    <h2 id="page-title-big" class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
+                    <h3 id="page-title" class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -142,28 +142,34 @@
 
     $(window).on("resize", function() {
 //        if( $(window).width() < 945) {
-        if( $(window).width() < 815) {
-            hideBigTitle();
-//            document.getElementById("page-title-big").style.display = 'none';
+        if( $(window).width() < 1170) {
+            hideTitle('page-title-big');
         } else {
-            showBigTitle();
-//            document.getElementById("page-title-big").style.display = 'inline-block';
+            showTitle('page-title-big');
+        }
+
+        if($(window).width() > 767 && $(window).width() < 861 ) {
+            showTitle('page-title');
+        }
+        if($(window).width() > 860) {
+            hideTitle('page-title');
         }
     }).resize();
 
-    function hideBigTitle() {
-        var d = document.getElementById('page-title-big');
-        d.style.display = '';
-        d.style.display = 'none';
+    function hideTitle(title) {
+        var d = document.getElementById(title);
+        d.classList.remove('visible');
+        d.classList.add('hidden');
     }
-    function showBigTitle() {
-        var d = document.getElementById('page-title-big');
-        d.style.display = '';
-        d.style.display = 'inline-block';
+    function showTitle(title) {
+        var d = document.getElementById(title);
+        d.classList.remove('hidden');
+        d.classList.add('visible');
+        console.log('hi');
     }
 
     $('.nav a').on('click', function () {
-        if ($(window).width() < 768) {
+        if ($(window).width() < 850) {
             $('.navbar-toggle').click();
         }
     });

@@ -159,7 +159,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 850px) {
     .subtitle-font {
         color: #0c2b65;
         font-size:18px;
@@ -168,7 +168,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 850px) {
     .content-title-font {
         color: #0c2b65;
         font-size:24px;
@@ -302,7 +302,7 @@ a {
     white-space: pre-wrap;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 860px) {
     .navbar-padding {
         padding-left: 30px !important;
     }
@@ -334,7 +334,7 @@ a {
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 850px) {
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
         background-color: rgba(0,0,0,0.25) !important;
     }
@@ -355,7 +355,7 @@ a {
         box-shadow: none !important;
     }
 }
-@media (min-width: 766px) and (max-width: 767px) {
+@media (min-width: 766px) and (max-width: 860px) {
     .navbar-collapse.collapse {
         display: none !important;
     }
@@ -697,4 +697,12 @@ label[disabled="disabled"]{
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     background-color: rgba(0,0,0,0.25) !important;
     padding-bottom: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.visible {
+    display: inline-block !important;
 }
