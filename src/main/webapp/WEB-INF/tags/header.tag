@@ -41,6 +41,77 @@
                     <h3 id="page-title" class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
                 </div>
 
+                <style>
+
+                    .dropdown-submenu {
+                        position: relative;
+                    }
+
+                    .dropdown-submenu>.dropdown-menu {
+                        top: 0;
+                        left: 100%;
+                        margin-top: -6px;
+                        margin-left: -1px;
+                        -webkit-border-radius: 0 6px 6px 6px;
+                        -moz-border-radius: 0 6px 6px;
+                        border-radius: 0 6px 6px 6px;
+                    }
+
+                    .dropdown-submenu:hover>.dropdown-menu {
+                        display: block;
+                    }
+
+                    .dropdown-submenu>a:after {
+                        display: block;
+                        content: " ";
+                        float: right;
+                        width: 0;
+                        height: 0;
+                        border-color: transparent;
+                        border-style: solid;
+                        border-width: 5px 0 5px 5px;
+                        border-left-color: #ccc;
+                        margin-top: 5px;
+                        margin-right: -10px;
+                    }
+
+                    .dropdown-submenu:hover>a:after {
+                        border-left-color: #fff;
+                    }
+
+                    .dropdown-submenu.pull-left {
+                        float: none;
+                    }
+
+                    .dropdown-submenu.pull-left>.dropdown-menu {
+                        left: -100%;
+                        margin-left: 10px;
+                        -webkit-border-radius: 6px 0 6px 6px;
+                        -moz-border-radius: 6px 0 6px 6px;
+                        border-radius: 6px 0 6px 6px;
+                    }
+                </style>
+
+                <script>
+                    function preventClick() {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    function customDatasetClick() {
+                        preventClick();
+
+                        var custom = prompt("Please enter your custom dataset name.", "");
+
+                        var requestObj = {
+                            'datasetType': 'custom',
+                            'customValue': custom
+                        };
+
+                        window.location = "${pageContext.request.contextPath}/add/dataset?" + $.param( requestObj );
+                    }
+                </script>
+
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <c:if test="${loggedIn == true && iframe == false}">
                         <ul class="nav navbar-nav navbar-padding">
@@ -52,12 +123,18 @@
                                 <%--<li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu pull-right">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
                                         <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
-                                        <li><a href="${pageContext.request.contextPath}/add/mortalityData">(Dataset) Mortality Data</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">(Dataset) Disease Surveillance Data</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">Disease Surveillance Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/mortalityData">Mortality Data</a></li>
+                                                <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
@@ -80,13 +157,18 @@
                                 <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li class="dropdown">
                                     <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
+                                    <ul class="dropdown-menu pull-right">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
                                             <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">(Dataset) Mortality Data</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">(Dataset) Disease Surveillance Data</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
+                                        <li class="dropdown-submenu">
+                                            <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">Disease Surveillance Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/mortalityData">Mortality Data</a></li>
+                                                <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
+                                            </ul>
+                                        </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>
