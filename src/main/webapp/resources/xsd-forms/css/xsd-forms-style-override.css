@@ -36,8 +36,21 @@ body {
     border: 1px solid #ccc;
     border-radius:4px;
     padding: 5px;
-    padding-top:10px;
+    padding-top:5px;
     margin-bottom:5px;
+    margin-top:5px;
+}
+
+.sequence {
+    margin-top:5px;
+}
+
+.sequence .sequence-content .sequence .sequence-label {
+    margin-top:5px;
+}
+
+#repeating-enclosing-1-instance-1 .sequence-label {
+    padding-bottom:5px;
 }
 
 .item-input {
@@ -65,4 +78,8 @@ body {
 
 .sequence-content {
     margin-right:10px;
+}
+
+.sequence {
+    margin-top:8px;
 }

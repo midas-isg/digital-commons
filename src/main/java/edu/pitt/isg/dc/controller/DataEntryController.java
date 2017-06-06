@@ -4,6 +4,7 @@ import com.github.davidmoten.xsdforms.Generator;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
@@ -35,7 +38,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 @ApiIgnore
 @Controller
 public class DataEntryController {
-    private static boolean GENERATE_XSD_FORMS = false;
+    private static boolean GENERATE_XSD_FORMS = true;
     private static final String [] XSD_FILES = {
             "software.xsd",
             "dats.xsd"
@@ -70,14 +73,17 @@ public class DataEntryController {
     public @ResponseBody String addNewEntry(@RequestBody String rawInputString) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
+
         String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
+        xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
+
         String jsonString = null;
 
-System.out.println(xmlString);
+        System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-System.out.println("~~~~~~~~~~~~");
-System.out.println(jsonString);
+            System.out.println("~~~~~~~~~~~~");
+            System.out.println(jsonString);
         }
         catch(Exception exception) {
             exception.printStackTrace();
@@ -91,8 +97,7 @@ System.out.println(jsonString);
             byte data[] = fileOutput.getBytes();
             Path logPath = Paths.get(OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG);
 
-            try (OutputStream out = new BufferedOutputStream(
-                    Files.newOutputStream(logPath, CREATE, APPEND))) {
+            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(logPath, CREATE, APPEND))) {
                 out.write(data, 0, data.length);
             }
             catch (IOException exception) {
@@ -107,7 +112,7 @@ System.out.println(jsonString);
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -119,16 +124,9 @@ System.out.println(jsonString);
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-
-            htmlString = htmlString.replace("<head>", "<head><base href='.'>" +
-                    "<link rel='stylesheet' type='text/css' href='../css/main.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap/3.3.6/bootstrap.min.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'>" +
-                    "<link rel='stylesheet' href='../css/font-awesome-4.7.0/css/font-awesome.min.css'>");
-
-            Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
+            Path path = FileSystems.getDefault().getPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/")+ rootElementName + ".jsp");
             Charset charset = Charset.forName("US-ASCII");
-            try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
+            try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
                 writer.write(htmlString, 0, htmlString.length());
             } catch (IOException x) {
                 System.err.format("IOException: %s%n", x);
@@ -138,7 +136,7 @@ System.out.println(jsonString);
         return;
     }
 
-    public static String readXSDFiles() throws Exception {
+    public static String readXSDFiles(HttpServletRequest request) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -164,7 +162,7 @@ System.out.println(jsonString);
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, request);
                     }
                 }
             }

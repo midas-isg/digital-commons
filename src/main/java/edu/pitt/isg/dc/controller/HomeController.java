@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -124,11 +125,65 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addEntry(Model model) throws Exception {
-        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
+    public String addEntry(Model model, HttpServletRequest request) throws Exception {
+        model.addAttribute("xsdForms", DataEntryController.readXSDFiles(request));
 
         return "addEntry";
     }
+
+    @RequestMapping(value = "/add/dataFormatConverters" , method = RequestMethod.GET)
+    public String addNewDataFormatConverters(Model model) throws Exception {
+        return "DataFormatConverters";
+    }
+    @RequestMapping(value = "/add/dataService" , method = RequestMethod.GET)
+    public String addNewDataService(Model model) throws Exception {
+        return "DataService";
+    }
+    @RequestMapping(value = "/add/dataset" , method = RequestMethod.GET)
+    public String addNewDataset(Model model) throws Exception {
+        return "Dataset";
+    }
+    @RequestMapping(value = "/add/dataStandard" , method = RequestMethod.GET)
+    public String addNewDataStandard(Model model) throws Exception {
+        return "DataStandard";
+    }
+    @RequestMapping(value = "/add/dataVisualizers" , method = RequestMethod.GET)
+    public String addNewDataVisualizers(Model model) throws Exception {
+        return "DataVisualizers";
+    }
+    @RequestMapping(value = "/add/diseaseForecasters" , method = RequestMethod.GET)
+    public String addNewDiseaseForecasters(Model model) throws Exception {
+        return "DiseaseForecasters";
+    }
+    @RequestMapping(value = "/add/diseaseTransmissionModel" , method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionModel(Model model) throws Exception {
+        return "DiseaseTransmissionModel";
+    }
+    @RequestMapping(value = "/add/diseaseTransmissionTreeEstimators" , method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionTreeEstimators(Model model) throws Exception {
+        return "DiseaseTransmissionTreeEstimators";
+    }
+    @RequestMapping(value = "/add/modelingPlatforms" , method = RequestMethod.GET)
+    public String addNewModelingPlatforms(Model model) throws Exception {
+        return "ModelingPlatforms";
+    }
+    @RequestMapping(value = "/add/pathogenEvolutionModels" , method = RequestMethod.GET)
+    public String addNewPathogenEvolutionModels(Model model) throws Exception {
+        return "PathogenEvolutionModels";
+    }
+    @RequestMapping(value = "/add/phylogeneticTreeConstructors" , method = RequestMethod.GET)
+    public String addNewPhylogeneticTreeConstructors(Model model) throws Exception {
+        return "PhylogeneticTreeConstructors";
+    }
+    @RequestMapping(value = "/add/populationDynamicsModel" , method = RequestMethod.GET)
+    public String addNewPopulationDynamicsModel(Model model) throws Exception {
+        return "PopulationDynamicsModel";
+    }
+    @RequestMapping(value = "/add/syntheticEcosystemConstructor" , method = RequestMethod.GET)
+    public String addNewMaxEntry(Model model) throws Exception {
+        return "SyntheticEcosystemConstructors";
+    }
+
 
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public

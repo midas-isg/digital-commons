@@ -154,6 +154,22 @@
 
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                    If we e.g. execute on JDK 1.7, we should compile for Java 7 to get
+                    the same (or higher) JAXB API version as used during the xjc execution.
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
