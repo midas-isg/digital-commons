@@ -83,12 +83,12 @@ public class DataEntryController {
     }
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-    public @ResponseBody String addNewEntry(@RequestBody String rawInputString, @RequestParam(value = "datasetType", required = false) String datasetType,
-                                            @RequestParam(value = "customValue", required = false) String customValue) throws Exception {
+    public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
+                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
-        String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
+        String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 
         String jsonString = null;
@@ -132,7 +132,6 @@ public class DataEntryController {
     }
 
     private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
-        String[] datasets = {"MortalityData", "DiseaseSurveillanceData"};
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -144,13 +143,7 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-            if(rootElementName.equals("Dataset")) {
-                for(int i=0; i<datasets.length; i++) {
-                    writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), datasets[i], htmlString);
-                }
-            } else {
-                writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
-            }
+            writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
 
         return;

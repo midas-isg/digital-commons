@@ -130,8 +130,8 @@
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                                             <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">Disease Surveillance Data</a></li>
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/mortalityData">Mortality Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
                                                 <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                                             </ul>
                                         </li>
@@ -164,8 +164,8 @@
                                         <li class="dropdown-submenu">
                                             <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                                             <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">Disease Surveillance Data</a></li>
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/mortalityData">Mortality Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
+                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
                                                 <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                                             </ul>
                                         </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
