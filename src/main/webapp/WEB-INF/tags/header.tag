@@ -51,7 +51,7 @@
                                 <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
                                 <%--<li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li class="dropdown">
-                                    <a href="#!" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
+                                    <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
@@ -77,7 +77,7 @@
                                 <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
                                 <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
                                 <li class="dropdown">
-                                    <a href="#!" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
+                                    <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
