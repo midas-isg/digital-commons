@@ -4,7 +4,9 @@ import com.google.gson.*;
 import edu.pitt.isg.dc.entry.PopulateDatastore;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.impl.EntryApproval;
 import edu.pitt.isg.dc.entry.impl.H2Datastore;
+import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,15 +25,29 @@ import java.util.List;
 public class ApproveEntryController {
 
     MdcEntryDatastoreInterface h2Datastore = new H2Datastore();
+    EntryApprovalInterface entryApprovalInterface = new EntryApproval();
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
     public String review(Model model) throws MdcEntryDatastoreException {
-        List<EntryObject> entries = new ArrayList<>();
-        for(String id : h2Datastore.getEntryIds()) {
-            EntryObject entryObject = h2Datastore.getEntry(id);
-            entries.add(entryObject);
+        List<EntryObject> entries = entryApprovalInterface.getPendingEntries();
+        List<EntryObject> datasetEntries = new ArrayList<>();
+        List<EntryObject> dataStandardEntries = new ArrayList<>();
+        List<EntryObject> softwareEntries = new ArrayList<>();
+
+        for(EntryObject entryObject : entries) {
+            if(entryObject.getEntryType().contains("Dataset")) {
+                datasetEntries.add(entryObject);
+            } else if(entryObject.getEntryType().contains("DataStandard")) {
+                dataStandardEntries.add(entryObject);
+            } else {
+                softwareEntries.add(entryObject);
+            }
         }
+
         model.addAttribute("entries", entries);
+        model.addAttribute("datasetEntries", datasetEntries);
+        model.addAttribute("dataStandardEntries", dataStandardEntries);
+        model.addAttribute("softwareEntries", softwareEntries);
         return "reviewEntries";
     }
 

@@ -46,25 +46,31 @@ public class EntryObject {
 
     public String getEntryType() {
         String path = this.getId();
-        String[] splitPath = path.split("/");
+        if (path != null && path.length() > 0) {
+            String[] splitPath = path.split("/");
 
-        String type = "";
-        String previousPart = "";
-        for(String pathPart : splitPath) {
-            // grab data type folder after version folder
-            if(previousPart.matches(".*\\d+_\\d+$")) {
-                String typePath = "";
-                if(previousPart.equals("2_2")) {
-                    typePath = "edu.pitt.isg.mdc.dats2_2.";
-                } else if(previousPart.equals("v1_0")) {
-                    typePath = "edu.pitt.isg.mdc.v1_0.";
+            String type = "";
+            String previousPart = "";
+            for (String pathPart : splitPath) {
+                // grab data type folder after version folder
+                if (previousPart.matches(".*\\d+_\\d+$")) {
+                    String typePath = "";
+                    if (previousPart.equals("2_2")) {
+                        typePath = "edu.pitt.isg.mdc.dats2_2.";
+                    } else if (previousPart.equals("v1_0")) {
+                        typePath = "edu.pitt.isg.mdc.v1_0.";
+                    }
+                    type = typePath + pathPart;
+                    break;
                 }
-                type = typePath + pathPart;
-                break;
+                previousPart = pathPart;
             }
-            previousPart = pathPart;
+            return type;
+        } else if (this.getProperty("type") != null && this.getProperty("type").length() > 0) {
+            return this.getProperty("type");
+        } else {
+            return "N/A";
         }
-        return type;
     }
 
     public Object getEntryAsTypeClass() {

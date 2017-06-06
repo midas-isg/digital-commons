@@ -5,6 +5,12 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ attribute name="entries" required="true"
               type="java.util.List"%>
+<%@ attribute name="datasetEntries" required="true"
+              type="java.util.List"%>
+<%@ attribute name="dataStandardEntries" required="true"
+              type="java.util.List"%>
+<%@ attribute name="softwareEntries" required="true"
+              type="java.util.List"%>
 
 <div class="col-md-12 container">
     <h3 class="title-font" id="subtitle">
@@ -19,160 +25,16 @@
 
     <div class="tab-content">
         <div id="all" class="tab-pane fade in active">
-            <h4>All</h4>
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Version(s)</th>
-                    <th>Author(s)</th>
-                    <th>Type</th>
-                    <th>Approve</th>
-                    <th>Reject</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${entries}" var="entry">
-                    <tr>
-                        <c:choose>
-                            <c:when test="${entry.entry.title != null}">
-                                <td>${entry.entry.title}</td>
-                            </c:when>
-                            <c:otherwise>
-                                <td>${entry.entry.name}</td>
-                            </c:otherwise>
-                        </c:choose>
-                        <c:choose>
-                            <c:when test="${entry.entry.version != null && fn:length(entry.entry.version) > 0}">
-                                <c:choose>
-                                    <c:when test="${fn:contains(entry.entryType, 'DataStandard')}">
-                                        <td>${entry.entry.version}</td>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <td>
-                                            <c:forEach items="${entry.entry.version}" var="version" varStatus="versionLoop">
-                                                ${version}<c:if test="${!versionLoop.last}">,</c:if>
-                                            </c:forEach>
-                                        </td>
-                                    </c:otherwise>
-                                </c:choose>
-                            </c:when>
-                            <c:otherwise>
-                                <td>N/A</td>
-                            </c:otherwise>
-                        </c:choose>
-                        <c:choose>
-                            <c:when test="${entry.entry.developers != null && fn:length(entry.entry.developers) > 0}">
-                                <td>
-                                    <c:forEach items="${entry.entry.developers}" var="developer" varStatus="developerLoop">
-                                        ${developer}<c:if test="${!developerLoop.last}">,</c:if>
-                                    </c:forEach>
-                                </td>
-                            </c:when>
-                            <c:when test="${entry.entry.creators != null && fn:length(entry.entry.creators) > 0}">
-                                <td>
-                                    <c:forEach items="${entry.entry.creators}" var="creator" varStatus="creatorLoop">
-                                        ${creator.firstName} ${creator.lastName}<c:if test="${!creatorLoop.last}">,</c:if>
-                                    </c:forEach>
-                                </td>
-                            </c:when>
-                            <c:otherwise>
-                                <td>N/A</td>
-                            </c:otherwise>
-                        </c:choose>
-                        <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
-                        <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
-                        <td><input type="checkbox" value=""></td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+            <myTags:approveTable title="All" entries="${entries}"></myTags:approveTable>
         </div>
         <div id="dataset" class="tab-pane fade">
-            <h4>Dataset</h4>
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Creator(s)</th>
-                    <th>Approve</th>
-                    <th>Reject</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${entries}" var="entry">
-                    <c:if test="${fn:contains(entry.entryType, 'Dataset')}">
-                        <tr>
-                            <c:choose>
-                                <c:when test="${entry.entry.title != null}">
-                                    <td>${entry.entry.title}</td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td>${entry.entry.name}</td>
-                                </c:otherwise>
-                            </c:choose>
-                            <c:choose>
-                                <c:when test="${entry.entry.creators != null && fn:length(entry.entry.creators) > 0}">
-                                    <td>
-                                        <c:forEach items="${entry.entry.creators}" var="creator" varStatus="creatorLoop">
-                                            ${creator.firstName} ${creator.lastName}<c:if test="${!creatorLoop.last}">,</c:if>
-                                        </c:forEach>
-                                    </td>
-                                </c:when>
-                                <c:otherwise>
-                                    <td>N/A</td>
-                                </c:otherwise>
-                            </c:choose>
-                            <td><input type="checkbox" value=""></td>
-                            <td><input type="checkbox" value=""></td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-                </tbody>
-            </table>
+            <myTags:approveTable title="Dataset" entries="${datasetEntries}"></myTags:approveTable>
         </div>
         <div id="data-standard" class="tab-pane fade">
-            <h4>Data Standard</h4>
-
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Version</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${entries}" var="entry">
-                    <c:if test="${fn:contains(entry.entryType, 'DataStandard')}">
-                        <tr>
-                            <td>${entry.entry.name}</td>
-                            <td>${entry.entry.version}</td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-                </tbody>
-            </table>
+            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}"></myTags:approveTable>
         </div>
         <div id="software" class="tab-pane fade">
-            <h4>Software</h4>
-
-            <table class="table table-condensed">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach items="${entries}" var="entry">
-                    <c:if test="${fn:contains(entry.entryType, 'Dataset')}">
-                        <tr>
-                            <td>${entry.entry.title}</td>
-                        </tr>
-                    </c:if>
-                </c:forEach>
-                </tbody>
-            </table>
+            <myTags:approveTable title="Software" entries="${softwareEntries}"></myTags:approveTable>
         </div>
     </div>
 </div>

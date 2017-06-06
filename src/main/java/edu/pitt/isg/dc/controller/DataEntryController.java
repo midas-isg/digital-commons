@@ -1,9 +1,15 @@
 package edu.pitt.isg.dc.controller;
 
 import com.github.davidmoten.xsdforms.Generator;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.impl.EntrySubmission;
+import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
+import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -47,6 +53,13 @@ public class DataEntryController {
     private static final String OUTPUT_DIRECTORY;
     private static final String DC_ENTRY_REQUESTS_LOG;
 
+    private static String ENTRIES_AUTHENTICATION = "";
+
+    static {
+        Properties configurationProperties = DigitalCommonsProperties.getProperties();
+        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
+    }
+
     static {
         String outputDirectory = "";
         String xsdFormsPath = "";
@@ -82,27 +95,24 @@ public class DataEntryController {
         System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-            System.out.println("~~~~~~~~~~~~");
-            System.out.println(jsonString);
+            JsonParser parser = new JsonParser();
+            JsonObject entry = parser.parse(jsonString).getAsJsonObject();
         }
         catch(Exception exception) {
             exception.printStackTrace();
         }
 
         if(jsonString.length() > 0) {
-            // Append {timestamp: timestamp, entry: jsonString} to OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG
-            String fileOutput = "{\n" +
-                "    'timestamp': '" + date + "',\n" +
-                "    'entry': " + jsonString + "\n}\n\n";
-            byte data[] = fileOutput.getBytes();
-            Path logPath = Paths.get(OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG);
+            JsonParser parser = new JsonParser();
+            JsonObject entry = parser.parse(jsonString).getAsJsonObject();
 
-            try (OutputStream out = new BufferedOutputStream(Files.newOutputStream(logPath, CREATE, APPEND))) {
-                out.write(data, 0, data.length);
-            }
-            catch (IOException exception) {
-                exception.printStackTrace();
-            }
+            EntryObject entryObject = new EntryObject();
+            entryObject.setProperty("type", entry.get("class").getAsString());
+            entry.remove("class");
+            entryObject.setEntry(entry);
+
+            EntrySubmissionInterface entrySubmissionInterface = new EntrySubmission();
+            entrySubmissionInterface.submitEntry(entryObject, "", ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
             DCEmailService emailService = new DCEmailService();

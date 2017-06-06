@@ -57,7 +57,7 @@
 
     <div id="commons-main-body" class="row">
         <div id="add-entry" class="tab-pane active">
-            <myTags:reviewEntries entries="${entries}"></myTags:reviewEntries>
+            <myTags:reviewEntries entries="${entries}" datasetEntries="${datasetEntries}" dataStandardEntries="${dataStandardEntries}" softwareEntries="${softwareEntries}"></myTags:reviewEntries>
         </div>
     </div>
 </div>
