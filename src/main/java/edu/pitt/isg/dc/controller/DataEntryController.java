@@ -102,7 +102,6 @@ public class DataEntryController {
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
             JsonParser parser = new JsonParser();
-            JsonObject entry = parser.parse(jsonString).getAsJsonObject();
         }
         catch(Exception exception) {
             exception.printStackTrace();

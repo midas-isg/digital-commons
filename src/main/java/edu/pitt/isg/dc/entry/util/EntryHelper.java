@@ -85,6 +85,10 @@ public class EntryHelper {
         return subtype;
     }
 
+    public static String convertEnglishSubtype(String subtype) {
+        return "";
+    }
+
     public static String getEntriesFilepath() {
         return ENTRIES_FILEPATH;
     }
