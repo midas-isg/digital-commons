@@ -55,7 +55,9 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>
+                                        <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
+                                        <li><a href="${pageContext.request.contextPath}/add/mortalityData">(Dataset) Mortality Data</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">(Dataset) Disease Surveillance Data</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
@@ -81,8 +83,9 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
+                                            <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
+                                        <li><a href="${pageContext.request.contextPath}/add/mortalityData">(Dataset) Mortality Data</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/add/diseaseSurveillanceData">(Dataset) Disease Surveillance Data</a></li>                                                         <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
                                         <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>

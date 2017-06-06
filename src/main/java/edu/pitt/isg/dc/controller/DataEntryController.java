@@ -10,6 +10,7 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.impl.EntrySubmission;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,6 +27,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.*;
+import java.net.URI;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
@@ -83,9 +86,12 @@ public class DataEntryController {
     }
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-    public @ResponseBody String addNewEntry(@RequestBody String rawInputString) throws Exception {
+    public @ResponseBody String addNewEntry(@RequestBody String rawInputString, HttpServletRequest request) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
+
+        String referer = request.getHeader("referer");
+        String subtype = WordUtils.capitalizeFully(splitCamelCase(referer.substring(referer.lastIndexOf('/') + 1)));
 
         String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
@@ -108,6 +114,9 @@ public class DataEntryController {
 
             EntryObject entryObject = new EntryObject();
             entryObject.setProperty("type", entry.get("class").getAsString());
+            if(entry.get("class").getAsString().contains("Dataset")) {
+                entryObject.setProperty("subtype", subtype);
+            }
             entry.remove("class");
             entryObject.setEntry(entry);
 
@@ -123,6 +132,7 @@ public class DataEntryController {
     }
 
     private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
+        String[] datasets = {"MortalityData", "DiseaseSurveillanceData"};
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -134,16 +144,26 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-            Path path = FileSystems.getDefault().getPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/")+ rootElementName + ".jsp");
-            Charset charset = Charset.forName("US-ASCII");
-            try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-                writer.write(htmlString, 0, htmlString.length());
-            } catch (IOException x) {
-                System.err.format("IOException: %s%n", x);
+            if(rootElementName.equals("Dataset")) {
+                for(int i=0; i<datasets.length; i++) {
+                    writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), datasets[i], htmlString);
+                }
+            } else {
+                writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
             }
         }
 
         return;
+    }
+
+    private static void writeFormToPath(String realPath, String className, String htmlString) {
+        Path path = FileSystems.getDefault().getPath(realPath + className + ".jsp");
+        Charset charset = Charset.forName("US-ASCII");
+        try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
+            writer.write(htmlString, 0, htmlString.length());
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
     }
 
     public static String readXSDFiles(HttpServletRequest request) throws Exception {
@@ -182,5 +202,16 @@ public class DataEntryController {
         GENERATE_XSD_FORMS = false;
 
         return typeList;
+    }
+
+    private static String splitCamelCase(String s) {
+        return s.replaceAll(
+                String.format("%s|%s|%s",
+                        "(?<=[A-Z])(?=[A-Z][a-z])",
+                        "(?<=[^A-Z])(?=[A-Z])",
+                        "(?<=[A-Za-z])(?=[^A-Za-z])"
+                ),
+                " "
+        );
     }
 }

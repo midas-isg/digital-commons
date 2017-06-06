@@ -139,9 +139,19 @@ public class HomeController {
     public String addNewDataService(Model model) throws Exception {
         return "DataService";
     }
-    @RequestMapping(value = "/add/dataset" , method = RequestMethod.GET)
-    public String addNewDataset(Model model) throws Exception {
-        return "Dataset";
+//    @RequestMapping(value = "/add/dataset" , method = RequestMethod.GET)
+//    public String addNewDataset(Model model) throws Exception {
+//        return "Dataset";
+//    }
+
+    @RequestMapping(value = "/add/mortalityData" , method = RequestMethod.GET)
+    public String addNewDatasetMortality(Model model) throws Exception {
+        return "MortalityData";
+    }
+
+    @RequestMapping(value = "/add/diseaseSurveillanceData" , method = RequestMethod.GET)
+    public String addNewDatasetSurveillance(Model model) throws Exception {
+        return "DiseaseSurveillanceData";
     }
     @RequestMapping(value = "/add/dataStandard" , method = RequestMethod.GET)
     public String addNewDataStandard(Model model) throws Exception {
