@@ -26,7 +26,7 @@ public class EntrySubmission implements EntrySubmissionInterface {
         String returnValue = null;
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             entryObject.setProperty("status", "pending");
-            entryObject.setProperty("email", "emailAddress");
+            entryObject.setProperty("email", emailAddress);
             returnValue = mdcEntryDatastoreInterface.addEntry(entryObject);
         }
         return returnValue;

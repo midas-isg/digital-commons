@@ -48,8 +48,13 @@ public class PopulateDatastore {
             EntryObject entryObject = new EntryObject();
             entryObject.setId(file.getPath());
             entryObject.setEntry(jsonEntryObject);
-            mdcEntryDatastoreInterface.addEntry(entryObject);
 
+            if(file.getPath().contains("pending"))
+                entryObject.setProperty("status", "pending");
+            else
+                entryObject.setProperty("status", "approved");
+
+            mdcEntryDatastoreInterface.addEntry(entryObject);
         }
     }
 }

@@ -38,6 +38,9 @@
     <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
     <script src="http://flowchart.js.org/flowchart-latest.js"></script>
 
+    <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
     <script>var ctx = "${pageContext.request.contextPath}"</script>
 </head>
 <c:choose>

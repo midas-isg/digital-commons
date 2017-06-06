@@ -26,7 +26,6 @@ import java.util.List;
 @Component
 public class H2Datastore implements MdcEntryDatastoreInterface {
 
-
     private H2Configuration h2Configuration;
 
 
