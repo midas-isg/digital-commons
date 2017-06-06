@@ -165,13 +165,12 @@
         var d = document.getElementById(title);
         d.classList.remove('hidden');
         d.classList.add('visible');
-        console.log('hi');
     }
 
-    $('.nav a').on('click', function () {
-        if ($(window).width() < 850) {
-            $('.navbar-toggle').click();
-        }
-    });
+//    $('.nav a').on('click', function () {
+//        if ($(window).width() < 850) {
+//            $('.navbar-toggle').click();
+//        }
+//    });
 
 </script>
