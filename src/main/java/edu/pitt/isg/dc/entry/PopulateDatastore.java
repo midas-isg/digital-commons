@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.H2Datastore;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
 
@@ -46,13 +47,19 @@ public class PopulateDatastore {
             JsonObject jsonEntryObject = parser.parse(jsonEntryString).getAsJsonObject();
 
             EntryObject entryObject = new EntryObject();
-            entryObject.setId(file.getPath());
             entryObject.setEntry(jsonEntryObject);
 
             if(file.getPath().contains("pending"))
                 entryObject.setProperty("status", "pending");
             else
                 entryObject.setProperty("status", "approved");
+
+            String type = EntryHelper.getTypeFromPath(file.getPath());
+            entryObject.setProperty("type", type);
+
+            String subtype = EntryHelper.getSubtypeFromPath(file.getPath());
+            if (subtype != null)
+                entryObject.setProperty("subtype", subtype);
 
             mdcEntryDatastoreInterface.addEntry(entryObject);
         }

@@ -11,6 +11,7 @@ import edu.pitt.isg.dc.config.H2Configuration;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -196,6 +197,13 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     public void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException {
         switch (mdcDatastoreFormat) {
             case MDC_DATA_DIRECTORY_FORMAT:
+                File jsonFileDirectory = Paths.get(EntryHelper.getEntriesFilepath(), "json").toFile();
+                try {
+                    FileUtils.deleteDirectory(jsonFileDirectory);
+                } catch (IOException e) {
+                    throw new MdcEntryDatastoreException(e);
+                }
+
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
                 List<String> ids = this.getEntryIds();
                 for (String id : ids) {
@@ -203,8 +211,12 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
                     JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
                     String json = gson.toJson(jsonElement);
 
-                    String filepath = entryObject.getId();
-                    File file = Paths.get(filepath).toFile();
+                    String type = entryObject.getProperty("type");
+                    String subtype = entryObject.getProperty("subtype");
+                    boolean isPending = entryObject.getProperty("status").equals("pending");
+
+                    String path = EntryHelper.getPathFromType(type, subtype, isPending);
+                    File file = Paths.get(path, String.format("%05d", Integer.parseInt(id)) + ".json").toFile();
                     try {
                         FileUtils.writeStringToFile(file, json, "UTF-8");
                     } catch (IOException e) {

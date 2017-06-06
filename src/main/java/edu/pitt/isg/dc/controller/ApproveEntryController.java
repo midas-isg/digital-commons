@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.entry.classes.EntryObject;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.EntryApproval;
 import edu.pitt.isg.dc.entry.impl.H2Datastore;
+import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,16 @@ public class ApproveEntryController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
 
+    }
+
+    @RequestMapping(value = "/exportDatastore", method = RequestMethod.GET)
+    public ResponseEntity<String> exportDatastore(Model model)  {
+        try {
+            h2Datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
+            return ResponseEntity.ok("Data exported successfully.");
+        } catch (MdcEntryDatastoreException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
