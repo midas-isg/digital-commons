@@ -15,10 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -86,12 +83,10 @@ public class DataEntryController {
     }
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-    public @ResponseBody String addNewEntry(@RequestBody String rawInputString, HttpServletRequest request) throws Exception {
+    public @ResponseBody String addNewEntry(@RequestBody String rawInputString, @RequestParam(value = "datasetType", required = false) String datasetType,
+                                            @RequestParam(value = "customValue", required = false) String customValue) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
-
-        String referer = request.getHeader("referer");
-        String subtype = WordUtils.capitalizeFully(splitCamelCase(referer.substring(referer.lastIndexOf('/') + 1)));
 
         String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
@@ -114,9 +109,15 @@ public class DataEntryController {
 
             EntryObject entryObject = new EntryObject();
             entryObject.setProperty("type", entry.get("class").getAsString());
-            if(entry.get("class").getAsString().contains("Dataset")) {
-                entryObject.setProperty("subtype", subtype);
+
+            if(datasetType != null) {
+                if (customValue != null && !customValue.equals("")) {
+                    entryObject.setProperty("subtype", customValue);
+                } else {
+                    entryObject.setProperty("subtype", datasetType);
+                }
             }
+
             entry.remove("class");
             entryObject.setEntry(entry);
 
@@ -202,16 +203,5 @@ public class DataEntryController {
         GENERATE_XSD_FORMS = false;
 
         return typeList;
-    }
-
-    private static String splitCamelCase(String s) {
-        return s.replaceAll(
-                String.format("%s|%s|%s",
-                        "(?<=[A-Z])(?=[A-Z][a-z])",
-                        "(?<=[^A-Z])(?=[A-Z])",
-                        "(?<=[A-Za-z])(?=[^A-Za-z])"
-                ),
-                " "
-        );
     }
 }
