@@ -21,11 +21,13 @@ import java.util.Properties;
 public class EntryHelper {
     private static String ENTRIES_FILEPATH = "";
     private static String TEMP_FILEPATH = "";
+    public static String ENTRIES_ADMIN_AUTHENTICATION = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         ENTRIES_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_FILEPATH);
         TEMP_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.TEMP_FILEPATH);
+        ENTRIES_ADMIN_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_ADMIN_AUTHENTICATION);
     }
 
     private static final Object dumpLock = new Object();
@@ -111,6 +113,10 @@ public class EntryHelper {
 
     public static String getTempFilepath() {
         return TEMP_FILEPATH;
+    }
+
+    public static String getAdminAuthentication() {
+        return ENTRIES_ADMIN_AUTHENTICATION;
     }
 
     public static void exportDatastore(MdcEntryDatastoreInterface mdcEntryDatastoreInterface) throws MdcEntryDatastoreException {

@@ -30,93 +30,112 @@ public class ApproveEntryController {
     EntryApprovalInterface entryApprovalInterface = new EntryApproval();
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
-    public String review(Model model) throws MdcEntryDatastoreException {
-        List<EntryObject> entries = entryApprovalInterface.getPendingEntries();
-        List<EntryObject> datasetEntries = new ArrayList<>();
-        List<EntryObject> dataStandardEntries = new ArrayList<>();
-        List<EntryObject> softwareEntries = new ArrayList<>();
+    public String review(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            List<EntryObject> entries = entryApprovalInterface.getPendingEntries();
+            List<EntryObject> datasetEntries = new ArrayList<>();
+            List<EntryObject> dataStandardEntries = new ArrayList<>();
+            List<EntryObject> softwareEntries = new ArrayList<>();
 
-        for(EntryObject entryObject : entries) {
-            if(entryObject.getEntryType().contains("Dataset")) {
-                datasetEntries.add(entryObject);
-            } else if(entryObject.getEntryType().contains("DataStandard")) {
-                dataStandardEntries.add(entryObject);
-            } else {
-                softwareEntries.add(entryObject);
+            for(EntryObject entryObject : entries) {
+                if(entryObject.getEntryType().contains("Dataset")) {
+                    datasetEntries.add(entryObject);
+                } else if(entryObject.getEntryType().contains("DataStandard")) {
+                    dataStandardEntries.add(entryObject);
+                } else {
+                    softwareEntries.add(entryObject);
+                }
             }
-        }
 
-        model.addAttribute("entries", entries);
-        model.addAttribute("datasetEntries", datasetEntries);
-        model.addAttribute("dataStandardEntries", dataStandardEntries);
-        model.addAttribute("softwareEntries", softwareEntries);
-        return "reviewEntries";
+            model.addAttribute("entries", entries);
+            model.addAttribute("datasetEntries", datasetEntries);
+            model.addAttribute("dataStandardEntries", dataStandardEntries);
+            model.addAttribute("softwareEntries", softwareEntries);
+            return "reviewEntries";
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
     }
 
     @RequestMapping(value = "/populate", method = RequestMethod.GET)
-    public ResponseEntity<String> populate(Model model)  {
-        try {
-        PopulateDatastore populateDatastore = new PopulateDatastore(h2Datastore);
+    public ResponseEntity<String> populate(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            try {
+                PopulateDatastore populateDatastore = new PopulateDatastore(h2Datastore);
 
-            populateDatastore.populate();
-            return ResponseEntity.ok(h2Datastore.getEntryIds().size() + " entries added.");
-        } catch (MdcEntryDatastoreException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+                populateDatastore.populate();
+                return ResponseEntity.ok(h2Datastore.getEntryIds().size() + " entries added.");
+            } catch (MdcEntryDatastoreException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            }
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
 
     }
 
     @RequestMapping(value = "/items", method = RequestMethod.GET)
-    public ResponseEntity<String> addItems(Model model)  {
-        try {
-            return ResponseEntity.ok(h2Datastore.getEntryIds().size() + " total entries.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    public ResponseEntity<String> addItems(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            try {
+                return ResponseEntity.ok(h2Datastore.getEntryIds().size() + " total entries.");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            }
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
-
     }
 
     @RequestMapping(value = "/exportDatastore", method = RequestMethod.GET)
-    public ResponseEntity<String> exportDatastore(Model model)  {
-        try {
-            h2Datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
-            EntryHelper.copyDatastore();
-            return ResponseEntity.ok("Data exported successfully.");
-        } catch (MdcEntryDatastoreException e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+    public ResponseEntity<String> exportDatastore(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            try {
+                h2Datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
+                EntryHelper.copyDatastore();
+                return ResponseEntity.ok("Data exported successfully.");
+            } catch (MdcEntryDatastoreException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            }
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
 
-    public ResponseEntity<String> getItem(Model model, @PathVariable(value="itemId") int itemId)  {
-        try {
+    public ResponseEntity<String> getItem(@RequestParam(value = "auth", required = false) String auth, Model model, @PathVariable(value="itemId") int itemId) throws MdcEntryDatastoreException {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            try {
 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 
-            return ResponseEntity.ok(gson.toJson(h2Datastore.getEntry(String.valueOf(itemId))));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+                return ResponseEntity.ok(gson.toJson(h2Datastore.getEntry(String.valueOf(itemId))));
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            }
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
-
     }
 
     @RequestMapping(value = "/pending", method = RequestMethod.GET)
-    public ResponseEntity<String> getPending(Model model)  {
-        try {
-            List<String> l = h2Datastore.getPendingEntryIds();
-            String ids = "";
-            for (String id : l) {
-                ids += id + "<br/>";
+    public ResponseEntity<String> getPending(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
+        if(auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+            try {
+                List<String> l = h2Datastore.getPendingEntryIds();
+                String ids = "";
+                for (String id : l) {
+                    ids += id + "<br/>";
+                }
+                return ResponseEntity.ok("The following ids are pending:" + ids);
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
-            return ResponseEntity.ok("The following ids are pending:" + ids);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
-
     }
-
-
 
 }
