@@ -156,7 +156,7 @@ public class DataEntryController {
     }
 
     private static void writeFormToPath(String realPath, String className, String htmlString) {
-        Path path = FileSystems.getDefault().getPath(realPath + className + ".jsp");
+        Path path = FileSystems.getDefault().getPath(realPath, className + ".jsp");
         Charset charset = Charset.forName("US-ASCII");
         try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
             writer.write(htmlString, 0, htmlString.length());
