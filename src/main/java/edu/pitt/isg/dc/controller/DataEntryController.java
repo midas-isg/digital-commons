@@ -7,9 +7,11 @@ import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.EntrySubmission;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -111,6 +113,7 @@ public class DataEntryController {
 
             if(datasetType != null) {
                 if (customValue != null && !customValue.equals("")) {
+                    customValue = customValue.toLowerCase().replaceAll("[^a-zA-Z0-9_\\-]", "-");
                     entryObject.setProperty("subtype", customValue);
                 } else {
                     if (datasetType.equals("DiseaseSurveillanceData")) {
@@ -121,6 +124,8 @@ public class DataEntryController {
                         entryObject.setProperty("subtype", datasetType);
                     }
                 }
+            } else if(entry.get("class").getAsString().contains("Dataset")) {
+                throw new MdcEntryDatastoreException("Unsupported Dataset Type");
             }
 
             entry.remove("class");

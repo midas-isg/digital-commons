@@ -92,97 +92,14 @@
                     }
                 </style>
 
-                <script>
-                    function preventClick() {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-
-                    function customDatasetClick() {
-                        preventClick();
-
-                        var custom = prompt("Please enter your custom dataset name.", "");
-
-                        var requestObj = {
-                            'datasetType': 'custom',
-                            'customValue': custom
-                        };
-
-                        window.location = "${pageContext.request.contextPath}/add/dataset?" + $.param( requestObj );
-                    }
-                </script>
-
                 <div class="collapse navbar-collapse" id="navbar-collapse">
                     <c:if test="${loggedIn == true && iframe == false}">
-                        <ul class="nav navbar-nav navbar-padding">
-                            <c:if test="${addEntry == true}">
-                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" href="${pageContext.request.contextPath}/main#content">Content</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#compute-platform">Compute Platform</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
-                                        <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
-                                                <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimators</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/modelingPlatforms">Modeling Platforms</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/pathogenEvolutionModels">Pathogen Evolution Models</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/phylogeneticTreeConstructors">Phylogenetic Tree Constructors</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/populationDynamicsModel">Population Dynamics Model</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/syntheticEcosystemConstructor">Synthetic Ecosystem Constructor</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#about">About</a></li>
-                            </c:if>
-                            <c:if test="${addEntry != true}">
-                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="tab" href="#content">Content</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
-                                    <ul class="dropdown-menu pull-right">
-                                        <li><a href="${pageContext.request.contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataService">Data Service</a></li>
-                                            <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
-                                            <ul class="dropdown-menu">
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
-                                                <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
-                                                <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
-                                            </ul>
-                                        </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/dataVisualizers">Data Visualizers</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimators</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/modelingPlatforms">Modeling Platforms</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/pathogenEvolutionModels">Pathogen Evolution Models</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/phylogeneticTreeConstructors">Phylogenetic Tree Constructors</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/populationDynamicsModel">Population Dynamics Model</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/add/syntheticEcosystemConstructor">Synthetic Ecosystem Constructor</a></li>
-                                    </ul>
-                                </li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
-                            </c:if>
-                        </ul>
+                        <c:if test="${addEntry == true}">
+                            <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>
+                        </c:if>
+                        <c:if test="${addEntry != true}">
+                            <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="" dataToggle="tab"></myTags:navBar>
+                        </c:if>
                     </c:if>
                     <ul class="nav navbar-nav navbar-right">
                         <c:if test="${(loggedIn == true and preview == false) and addEntry != true}">
