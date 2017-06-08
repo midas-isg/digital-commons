@@ -14,6 +14,7 @@
         <th>Version(s)</th>
         <th>Author(s)</th>
         <th>Type</th>
+        <th>JSON Data</th>
         <th>Approve</th>
         <th>Reject</th>
     </tr>
@@ -69,8 +70,9 @@
             </c:choose>
             <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
             <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
-            <td><button class="btn btn-xs btn-success"><icon class="glyphicon glyphicon-check"></icon></button></td>
-            <td><button class="btn btn-xs btn-danger"><icon class="glyphicon glyphicon-trash"></icon></button></td>
+            <td><button class="btn btn-xs btn-default" onclick='openJsonStringInNewTab("${entry.entryJsonString}")'>View</button></td>
+            <td><button class="btn btn-xs btn-success" onclick="approveEntry('${entry.id}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
+            <td><button class="btn btn-xs btn-danger" onclick="rejectEntry('${entry.id}');"><icon class="glyphicon glyphicon-trash"></icon></button></td>
         </tr>
     </c:forEach>
     </tbody>

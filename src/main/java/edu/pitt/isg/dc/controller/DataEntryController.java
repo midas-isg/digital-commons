@@ -98,7 +98,6 @@ public class DataEntryController {
         System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-            JsonParser parser = new JsonParser();
         }
         catch(Exception exception) {
             exception.printStackTrace();

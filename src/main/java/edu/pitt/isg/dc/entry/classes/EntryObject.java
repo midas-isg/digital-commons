@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry.classes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import org.apache.commons.lang.StringEscapeUtils;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -42,6 +43,12 @@ public class EntryObject {
 
     public void setProperty(String key, String value) {
         this.properties.put(key, value);
+    }
+
+    public String getEntryJsonString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(this.getEntry());
+        return StringEscapeUtils.escapeJavaScript(json);
     }
 
     public String getEntryType() {

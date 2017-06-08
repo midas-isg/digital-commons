@@ -57,6 +57,7 @@ public class EntryApproval implements EntryApprovalInterface {
         List<EntryObject> pendingEntries = new ArrayList<>();
         for(String id : pendingEntryIds) {
             EntryObject entryObject = mdcEntryDatastoreInterface.getEntry(id);
+            entryObject.setId(id);
             pendingEntries.add(entryObject);
         }
         return pendingEntries;

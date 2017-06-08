@@ -21,12 +21,14 @@ import java.util.Properties;
 public class EntryHelper {
     private static String ENTRIES_FILEPATH = "";
     private static String TEMP_FILEPATH = "";
+    public static String ENTRIES_AUTHENTICATION = "";
     public static String ENTRIES_ADMIN_AUTHENTICATION = "";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         ENTRIES_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_FILEPATH);
         TEMP_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.TEMP_FILEPATH);
+        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
         ENTRIES_ADMIN_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_ADMIN_AUTHENTICATION);
     }
 
@@ -113,6 +115,10 @@ public class EntryHelper {
 
     public static String getTempFilepath() {
         return TEMP_FILEPATH;
+    }
+
+    public static String getServerAuthentication() {
+        return ENTRIES_AUTHENTICATION;
     }
 
     public static String getAdminAuthentication() {

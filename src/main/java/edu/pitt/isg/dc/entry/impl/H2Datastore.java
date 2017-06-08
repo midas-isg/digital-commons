@@ -190,7 +190,14 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
 
     @Override
     public String deleteEntry(String id) throws MdcEntryDatastoreException {
-        return null;
+        try (Connection connection = getDBConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE ENTRIES WHERE ID = ?");
+            preparedStatement.setString(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new MdcEntryDatastoreException(e);
+        }
+        return "error";
     }
 
     @Override

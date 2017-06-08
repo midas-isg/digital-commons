@@ -1902,6 +1902,14 @@ function openJsonInNewTab(elementId) {
     window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
 }
 
+function openJsonStringInNewTab(text) {
+    var type = 'application/json';
+    if(text.includes('xmlns')) {
+        type = 'application/xml';
+    }
+    window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
+}
+
 function toggleElementById(id, element) {
     event.preventDefault();
     var example = $(element).text().indexOf('example') > -1;
