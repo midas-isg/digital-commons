@@ -808,19 +808,28 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
+    var syntheticPopulations = {
+        text: "Synthia™ datasets <span class='badge'>["+ Object.keys(syntheticEcosystems).length + "]</span>",
+        nodes: [
+            {
+                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+            },
+            {
+                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+            }
+        ]
+    };
+
+    var syntheticPopulationsAndEcosystems = {
+        text: "Synthetic populations and ecosystems",
+        nodes: [
+            syntheticEcosystems,
+            syntheticPopulations
+        ]
+    };
+
     collections.push(
-        syntheticEcosystems,
-        {
-            text: "Synthia™ synthetic populations <span class='badge'>["+ Object.keys(syntheticEcosystems).length + "]</span>",
-            nodes: [
-                {
-                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
-                },
-                {
-                    text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
-                }
-            ]
-        }
+        syntheticPopulationsAndEcosystems
     );
 
     var dsd = {
@@ -1105,7 +1114,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         var toRemove = [];
 
         if(expandedDataAndKnowledge == null) {
-            var openByDefault = ["SPEW synthetic ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Synthia", "Data formats", "Standard identifiers"];
+            var openByDefault = ["Synthetic populations and ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Data formats", "Standard identifiers"];
             var openByDefaultIds = [];
             for(var i = 0; i < openByDefault.length; i++) {
                 var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {

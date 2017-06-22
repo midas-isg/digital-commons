@@ -15,7 +15,7 @@
 
 <script>
     var syntheticEcosystemsByRegion = {
-        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span> <span class='badge'>[${spewRegionCount}]</span> ",
+        text: "<span onmouseover='toggleTitle(this)'>SPEW datasets</span> <span class='badge'>[${spewRegionCount}]</span> ",
         nodes: []
     };
 
