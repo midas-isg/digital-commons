@@ -63,7 +63,7 @@
                     <div id="tycho-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">
-                    <h3 class="content-title-font">Datasets</h3>
+                    <h3 class="content-title-font">Data</h3>
                     <div id="data-and-knowledge-treeview" class="treeview"></div>
                 </div>
                 <div class="col-sm-4">

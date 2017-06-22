@@ -273,7 +273,7 @@ function populateSynthiaPopulationsDictionary(count) {
 }
 populateSynthiaPopulationsDictionary(0);
 
-var dsdNodeNames = ["Brazil Ministry of Health", "CDCEpi Zika Github", "Colombia Ministry of Health", "Singapore Ministry of Health", "US MMWR morbidity and mortality tables"];
+var dsdNodeNames = ["Brazil Ministry of Health website", "CDCEpi Zika Github", "Colombia Ministry of Health website", "Singapore Ministry of Health website", "US MMWR morbidity and mortality tables"];
 function populateDiseaseSurveillanceDictionary(count) {
     $.getJSON( ctx + '/resources/disease-surveillance-dats-json/' + dsdNodeNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
         addDatsToDictionary(diseaseSurveillanceDictionary, data, dsdNodeNames[count]);
@@ -446,12 +446,32 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
     for(var key in data) {
         treeDictionary[key] = data[key];
 
-        if('subtype' in treeDictionary[key]) {
-            addNodesToDirectory(name, key, treeArray, treeDictionary);
-        } else if(key != "settings" && key != "EpiCaseMap") {
+        if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Apollo Location Service") {
+            data[key]['title'] = "Apollo LS database - web app and API";
+            delete data[key]['version'];
+
             var nodeData = getNodeData(name, key, treeDictionary);
-            nodeData["nodes"] = [];
-            treeArray.push(nodeData);
+            locationData.nodes.push(nodeData);
+        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Epi-Data") {
+            data[key]['title'] = "Epi-data API (data service)";
+            delete data[key]['version'];
+
+            var nodeData = getNodeData(name, key, treeDictionary);
+            dsd.nodes.push(nodeData);
+        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Project Tycho") {
+            data[key]['title'] = "Project Tycho Repository - web app and API";
+            delete data[key]['version'];
+
+            var nodeData = getNodeData(name, key, treeDictionary);
+            dsd.nodes.push(nodeData);
+        } else {
+            if('subtype' in treeDictionary[key]) {
+                addNodesToDirectory(name, key, treeArray, treeDictionary);
+            } else if(key != "settings" && key != "EpiCaseMap") {
+                var nodeData = getNodeData(name, key, treeDictionary);
+                nodeData["nodes"] = [];
+                treeArray.push(nodeData);
+            }
         }
     }
 
@@ -460,13 +480,13 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
         for(var x = 0; x < treeArray[i].nodes.length; x++) {
             if(treeArray[i].nodes[x].nodes != null && treeArray[i].nodes[x].nodes.length > 0) {
                 rootSoftwareLength += (treeArray[i].nodes[x].nodes.length-1)
-                treeArray[i].nodes[x].text += "<span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
+                treeArray[i].nodes[x].text += " <span class='badge'>[" + treeArray[i].nodes[x].nodes.length + "]</span>";
             }
         }
 
         if(treeArray[i].nodes.length > 0) {
             rootSoftwareLength += treeArray[i].nodes.length;
-            treeArray[i].text += "<span class='badge'>[" + rootSoftwareLength + "]</span>";
+            treeArray[i].text += " <span class='badge'>[" + rootSoftwareLength + "]</span>";
         }
 
     }
@@ -727,101 +747,40 @@ function getSoftwareTitle(name, version) {
     return title;
 }
 
-/*var standardIdentifierTree = {
-    text: "Standard identifiers",
-    nodes: [
-        {
-            text: "<span onmouseover='toggleTitle(this)'>LOINC codes (for lab tests)</span>",
-            url: "http://loinc.org/"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>NCBI Taxon identifiers (for host and pathogen taxa)</span>",
-            url: "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>RxNorm codes (for drugs)</span>",
-            url: "https://www.nlm.nih.gov/research/umls/rxnorm/"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>SNOMED CT codes (for diagnoses)</span>",
-            url: "https://nciterms.nci.nih.gov/ncitbrowser/pages/vocabulary.jsf?dictionary=SNOMED%20Clinical%20Terms%20US%20Edition"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Vaccine Ontology identifiers (for vaccines)</span>",
-            url: "http://www.violinet.org/vaccineontology/"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Apollo Location Codes (for locations) <b><i class='sso-color'><sup>SSO</sup></i></b></span>",
-            url: "https://betaweb.rods.pitt.edu/ls"
-        }
-    ]
+var locationData = {
+    text: "Location data",
+    nodes: []
 };
 
-var dataFormatsTree = {
-    text: "Data formats",
-    nodes: [
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Synthia</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Spew.US</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Spew.IPUMS</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Spew.CANADA</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Omnivore output format</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Galapagos output format</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Tycho 2.0</span>",
-            url: ""
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>Apollo XSD v4.0.1</span>",
-            url: "https://github.com/ApolloDev/apollo-xsd-and-types"
-        },
-        {
-            text: "<span onmouseover='toggleTitle(this)'>PHYSIS</span>",
-            url: ""
-        }
-    ]
+var dsd = {
+    text: "Disease surveillance data",
+    nodes: []
 };
-dataFormatsTree.nodes.sort(function(a,b) {
-    if (a.text > b.text) return 1;
-    if (a.text < b.text) return -1;
-    return 0
-});*/
 
-function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath) {
+function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath, spewRegionCount) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
+    console.log(spewRegionCount);
+
+    var syntheticPopulationsNodes = [
+        {
+            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+        },
+        {
+            text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
+        }
+    ];
+
     var syntheticPopulations = {
-        text: "Synthia™ datasets <span class='badge'>["+ Object.keys(syntheticEcosystems).length + "]</span>",
-        nodes: [
-            {
-                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
-            },
-            {
-                text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"state\")'>2010 U.S. Synthetic Populations by State</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
-            }
-        ]
+        text: "Synthia™ datasets <span class='badge'>["+ Object.keys(syntheticPopulationsNodes).length + "]</span>",
+        nodes: syntheticPopulationsNodes
     };
 
+    var syntheticPopulationsAndEcosystemsLength = spewRegionCount + Object.keys(syntheticPopulationsNodes).length;
+
     var syntheticPopulationsAndEcosystems = {
-        text: "Synthetic populations and ecosystems",
+        text: "Synthetic populations and ecosystems <span class='badge'>[" + syntheticPopulationsAndEcosystemsLength + "]</span>",
         nodes: [
             syntheticEcosystems,
             syntheticPopulations
@@ -832,10 +791,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         syntheticPopulationsAndEcosystems
     );
 
-    var dsd = {
-        text: "Disease surveillance data",
-        nodes: []
-    };
+    locationData.text += " <span class='badge'>[" + locationData.nodes.length + "]</span>"
+
+    collections.push(locationData);
 
     for(var i = 0; i < dsdNodeNames.length; i++) {
         dsd.nodes.push({
@@ -845,8 +803,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     }
 
     dsd.nodes.push({
-        text: "<span onmouseover='toggleTitle(this)'>Project Tycho repository v2.0</span>",
-        name: "Tycho 2.0",
+        text: "<span onmouseover='toggleTitle(this)'>Project Tycho datasets</span>",
+        name: "Project Tycho datasets",
         nodes: []
     });
 
@@ -903,8 +861,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             tychoNodes[i].nodes.sort(compareNodes);
         }
         dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
-        var dsdLength = dsdNodeNames.length + tychoIds.length;
-        dsd.text += "<span class='badge'>["+dsdLength+"]</span>"
+        var dsdLength = tychoIds.length;
+        for(var i = 0; i < dsd.nodes.length; i++) {
+            if(dsd.nodes[i].nodes == null || dsd.nodes[i].nodes.length == 0) {
+                dsdLength+= 1;
+            }
+        }
+        dsd.text += " <span class='badge'>["+dsdLength+"]</span>"
 
         tychoNodes[tychoNodes.length - 1].nodes.sort(compareNodes);
     }).then(function() {
@@ -928,6 +891,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
 
         collections.push(mortalityData);
 
+        var toAdd = {};
         if(libraryData != null) {
             $.each(libraryData, function (index, value) {
                 var url;
@@ -1050,10 +1014,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                         index = "H1N1 infectious disease scenarios";
                     nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>["+value.length+"]</span>", nodes: nodeLevel2});
                 });
-
-                collections.push({text: "<span onmouseover='toggleTitle(this)'>" + index + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1});
+                toAdd[index] = {text: "<span onmouseover='toggleTitle(this)'>" + index + " datasets" + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1};
             });
         }
+
+        collections.push(toAdd['Epidemics']);
+        collections.push(toAdd['Case series']);
+        collections.push(toAdd['Infectious disease scenarios']);
 
         //collections.push(dataFormatsTree);
         //collections.push(standardIdentifierTree);
@@ -1114,7 +1081,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         var toRemove = [];
 
         if(expandedDataAndKnowledge == null) {
-            var openByDefault = ["Synthetic populations and ecosystems", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Data formats", "Standard identifiers"];
+            var openByDefault = ["Synthetic populations and ecosystems", "Location data", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Data formats", "Standard identifiers"];
             var openByDefaultIds = [];
             for(var i = 0; i < openByDefault.length; i++) {
                 var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {

@@ -72,7 +72,7 @@
                 libraryData = null;
             },
             complete : function(e) {
-                getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}");
+                getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}", ${spewRegionCount});
             }
         });
         
