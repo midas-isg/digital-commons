@@ -32,31 +32,38 @@
     }
 
     function approveEntry(id) {
-        var params = getEntryParams(id);
-        $.post("${pageContext.request.contextPath}/approve", params ,function(data){
-            if(data == "success") {
-                window.location.reload();
-            } else {
+        var approve = confirm("Are you sure you want to approve this entry?");
+        if(approve) {
+            var params = getEntryParams(id);
+            $.post("${pageContext.request.contextPath}/approve", params ,function(data){
+                if(data == "success") {
+                    window.location.reload();
+                } else {
+                    alert("There was an issue approving this entry. Please try again.");
+                }
+            }).fail(function() {
                 alert("There was an issue approving this entry. Please try again.");
-            }
-        }).fail(function() {
-            alert("There was an issue approving this entry. Please try again.");
-        });
+            });
+        }
     }
 
     function rejectEntry(id) {
-        var params = getEntryParams(id);
-        $.post("${pageContext.request.contextPath}/reject", params ,function(data){
-            if(data == "success") {
-                window.location.reload();
-            } else {
+        var reject = confirm("Are you sure you want to reject this entry?");
+        if(reject) {
+            var params = getEntryParams(id);
+            $.post("${pageContext.request.contextPath}/reject", params ,function(data){
+                if(data == "success") {
+                    window.location.reload();
+                } else {
+                    alert("There was an issue rejecting this entry. Please try again.");
+                }
+            }).fail(function() {
                 alert("There was an issue rejecting this entry. Please try again.");
-            }
-        }).fail(function() {
-            alert("There was an issue rejecting this entry. Please try again.");
-        });
+            });
+        }
     }
 </script>
+<myTags:softwareModal/>
 <div class="col-md-12 container">
     <h3 class="title-font" id="subtitle">
         Review Submissions

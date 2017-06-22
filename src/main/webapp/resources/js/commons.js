@@ -1215,11 +1215,18 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     }
 }
 
-function openModal(type, name) {
+function openModal(type, name, json) {
     var attrs = {};
 
     var softwareIndex = -1;
-    if(type == 'software') {
+    if(json != null) {
+        attrs = JSON.parse(json);
+        name = attrs['title'];
+
+        type = type.toLowerCase();
+
+        $('#display-json').text(JSON.stringify(attrs, null, "\t"));
+    } else if(type == 'software') {
         attrs = softwareDictionary[name];
         softwareIndex = parseInt(name);
         name = attrs['title'];
