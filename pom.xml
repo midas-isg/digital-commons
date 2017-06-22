@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.pitt.isg</groupId>
     <artifactId>digital-commons</artifactId>
     <name>Digital Commons</name>
     <description>MIDAS Digital Commons</description>
     <packaging>war</packaging>
-    <version>0.0.2</version>
+    <version>1.0</version>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,17 +15,44 @@
     </parent>
 
     <repositories>
-    <repository>
-        <id>oss-jfrog-artifactory</id>
-        <name>oss-jfrog-artifactory-releases</name>
-        <url>http://oss.jfrog.org/artifactory/oss-release-local</url>
-    </repository>
+        <repository>
+            <id>oss-jfrog-artifactory</id>
+            <name>oss-jfrog-artifactory-releases</name>
+            <url>http://oss.jfrog.org/artifactory/oss-release-local</url>
+        </repository>
+
+        <repository>
+            <id>mdc-xsd-and-types</id>
+            <url>https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/1.0-repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>object-serializer-mvn-repo</id>
+            <url>https://raw.githubusercontent.com/midas-isg/object-serializer/1.0-repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
+
+        <repository>
+            <id>xsd-forms</id>
+            <url>https://raw.githubusercontent.com/midas-isg/xsd-forms/1.0-mvn-repo</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </repository>
     </repositories>
 
     <properties>
         <java.version>1.8</java.version>
+        <github.global.server>github</github.global.server>
     </properties>
-
 
     <dependencies>
         <!-- Auth0 -->
@@ -118,13 +145,9 @@
         </dependency>
         <dependency>
             <groupId>org.ajar</groupId>
-
             <artifactId>swagger-spring-mvc-ui</artifactId>
             <version>0.3</version>
-
-
         </dependency>
-
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -137,8 +160,9 @@
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
-
     </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
@@ -156,9 +180,7 @@
                 <includes>
                     <include>**/*</include>
                 </includes>
-
             </resource>
         </resources>
-
     </build>
 </project>
