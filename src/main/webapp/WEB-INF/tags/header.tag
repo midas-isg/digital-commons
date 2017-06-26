@@ -147,16 +147,25 @@
 //        if( $(window).width() < 945) {
         if( $(window).width() < 1170) {
             hideTitle('page-title-big');
+            //showTitle('page-title');
         } else {
             showTitle('page-title-big');
+            //hideTitle('page-title');
         }
 
-        if($(window).width() > 767 && $(window).width() < 861 ) {
+        if($(window).width() >= 1050 && $(window).width() < 1170) {
             showTitle('page-title');
-        }
-        if($(window).width() > 860) {
+        } else {
             hideTitle('page-title');
         }
+
+        if($(window).width() < 861) {
+            showTitle('page-title');
+        }
+
+        /*if($(window).width() > 860) {
+            hideTitle('page-title');
+        }*/
     }).resize();
 
     function hideTitle(title) {

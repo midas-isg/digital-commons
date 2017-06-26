@@ -33,13 +33,11 @@
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-    <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
     <li class="dropdown">
         <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
         <ul class="dropdown-menu pull-right">
             <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
             <li><a href="${contextPath}/add/dataService">Data Service</a></li>
-            <%--<li><a href="${pageContext.request.contextPath}/add/dataset">Dataset</a></li>--%>
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                 <ul class="dropdown-menu">
