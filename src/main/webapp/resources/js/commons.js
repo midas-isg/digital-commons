@@ -446,20 +446,17 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
     for(var key in data) {
         treeDictionary[key] = data[key];
 
-        if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Apollo Location Service") {
-            data[key]['title'] = "Apollo LS database - web app and API";
+        if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Apollo LS database - web app and API") {
             delete data[key]['version'];
 
             var nodeData = getNodeData(name, key, treeDictionary);
             locationData.nodes.push(nodeData);
-        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Epi-Data") {
-            data[key]['title'] = "Epi-data API (data service)";
+        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Epi-Data API") {
             delete data[key]['version'];
 
             var nodeData = getNodeData(name, key, treeDictionary);
             dsd.nodes.push(nodeData);
-        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Project Tycho") {
-            data[key]['title'] = "Project Tycho Repository - web app and API";
+        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Project Tycho Repository - web app and API") {
             delete data[key]['version'];
 
             var nodeData = getNodeData(name, key, treeDictionary);

@@ -244,7 +244,7 @@
   },
   {
     "subtype": "Data services",
-    "title": "Apollo Location Service",
+    "title": "Apollo LS database - web app and API",
     "dataServiceDescription": [{
       "accessPointType": "REST",
       "accessPointDescription": "http://betaweb.rods.pitt.edu/ls/api-docs",
@@ -263,11 +263,14 @@
       "Proprietary"
     ],
     "source": "https://github.com/midas-isg/ls",
-    "humanReadableSynopsis": "<p>The Apollo Location Service (LS) is a web service and user interface to the Apollo LS Database.   The database issues persistent identifiers for locations for specific time intervals, including intervals that start in the past and are still open at present (i.e., the identifier should be used to refer to the location today).  Temporally specific location identifiers are particularly important in epidemiology because the epidemiological record includes locations that do not presently exist, location names that have changed and location names whose political boundaries have changed. Users of the Apollo Location Service can search by Apollo LS identifier or location name.</p><p>MIDAS developers will find this web service useful for obtaining a persistent location identifier for use in datasets or software.  They may also find useful the ability to retrieve GeoJSON data for any locations stored in the Apollo LS database so they can render a map in their software.</p>"
+    "humanReadableSynopsis": "<p>The Apollo Location Service (LS) is a web service and user interface to the Apollo LS Database.   The database issues persistent identifiers for locations for specific time intervals, including intervals that start in the past and are still open at present (i.e., the identifier should be used to refer to the location today).  Temporally specific location identifiers are particularly important in epidemiology because the epidemiological record includes locations that do not presently exist, location names that have changed and location names whose political boundaries have changed. Users of the Apollo Location Service can search by Apollo LS identifier or location name.</p><p>MIDAS developers will find this web service useful for obtaining a persistent location identifier for use in datasets or software.  They may also find useful the ability to retrieve GeoJSON data for any locations stored in the Apollo LS database so they can render a map in their software.</p>",
+    "webApplication": [
+      "http://betaweb.rods.pitt.edu/ls"
+    ]
   },
   {
     "subtype": "Data services",
-    "title": "Project Tycho",
+    "title": "Project Tycho Repository - web app and API",
     "dataServiceDescription": [{
       "accessPointType": "CUSTOM",
       "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
@@ -278,10 +281,14 @@
       "1.1.0"
     ],
     "dataOutputFormats": [
-      "Proprietary"
+      "MIDAS-ISG:tycho-dataset-format-v2.0",
+      "MIDAS-ISG:tycho-xml-output-format-v1.0"
     ],
     "dataInputFormats": [
       "Proprietary"
+    ],
+    "webApplication": [
+      "http://www.tycho.pitt.edu/"
     ]
   },
   {
@@ -328,7 +335,7 @@
   },
   {
     "subtype": "Data services",
-    "title": "Epi-Data",
+    "title": "Epi-Data API",
     "dataServiceDescription": [{
       "accessPointType": "REST",
       "accessPointDescription": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
