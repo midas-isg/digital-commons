@@ -6,11 +6,17 @@ import csv
 import re
 
 dats_folder = 'DATS FOLDER LOCATION'
+if os.path.isfile('spew_mapping.csv'):
+    file = open('spew_mapping.csv', 'a+')
+    interval = sum(1 for line in open('spew_mapping.csv'))-1
+    wr = csv.writer(file, quoting=csv.QUOTE_ALL)
 
-interval = 0
-file = open('spew_mapping.csv', 'w')
-wr = csv.writer(file, quoting=csv.QUOTE_ALL)
-wr.writerow(['Apollo Location Code', 'SPEW Version', 'Landing Page', 'Anonymous Identifier', 'Title'])
+else:
+    interval = 0
+    file = open('spew_mapping.csv', 'w')
+    wr = csv.writer(file, quoting=csv.QUOTE_ALL)
+    wr.writerow(['Apollo Location Code', 'SPEW Version', 'Landing Page', 'Anonymous Identifier', 'Title'])
+
 for filename in os.listdir(dats_folder):
     if filename.endswith(".json"):
         interval += 1
