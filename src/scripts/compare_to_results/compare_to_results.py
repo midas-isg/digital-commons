@@ -46,8 +46,9 @@ else:
                         if len(gold_standard_json['distributions']) > 0:
                             if 'access' in gold_standard_json['distributions'][0]:
                                 if 'accessURL' in gold_standard_json['distributions'][0]['access']:
-                                    results_json['distributions'][0].pop('access', None)
-                                    gold_standard_json['distributions'][0].pop('access', None)
+                                    if 'zenodo' in gold_standard_json['distributions'][0]['access']['accessURL']:
+                                        results_json['distributions'][0].pop('access', None)
+                                        gold_standard_json['distributions'][0].pop('access', None)
 
                     if ordered(gold_standard_json) == ordered(results_json):
                         correct += 1
