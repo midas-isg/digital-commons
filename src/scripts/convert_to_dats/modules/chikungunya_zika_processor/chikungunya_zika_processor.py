@@ -3,9 +3,11 @@ import json
 import sys
 import base64
 import re
+import os
 import xmltodict
 
 from bs4 import BeautifulSoup
+from unidecode import unidecode
 from dateutil.parser import parse
 
 def process(epidemic_type, api_key):
@@ -51,17 +53,19 @@ def process(epidemic_type, api_key):
         description_epidemic = ''
         if epidemic_type == 'chikungunya':
             description_epidemic = 'Chikungunya'
+            description_title = description_epidemic
         elif epidemic_type == 'zika':
-            description_epidemic = 'Zika virus'
+            description_epidemic = 'Zika'
+            description_title = description_epidemic + ' virus'
         
         title = entry['name'] + ', ' + description_epidemic + ' epidemic data and knowledge'
         
-        description = ('Information about the ' + entry['name'] + ' ' + description_epidemic + ' epidemic curated from multiple publications and reports. ' +
+        description = ('Information about the ' + entry['name'] + ' ' + description_title + ' epidemic curated from multiple publications and reports. ' +
                     'The information is represented in machine-interpretable Apollo-XSD format. ' + 
                     'The terminology is defined by the Apollo-SV ontology and standard identifiers.')
 
         identifier = {
-            "identifier": "under development",
+            "identifier": "identifier will be created at time of release",
             "identifierSource": ""
         }
 
@@ -360,7 +364,7 @@ def process(epidemic_type, api_key):
 
         output_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../..', 'output'))
         dats_path = os.path.join(output_path, epidemic_type + '_dats_json/')
-        filepath = os.path.join(dats_path, entry['name'] + '.json')
+        filepath = os.path.join(dats_path, re.sub(' +', ' ', unidecode(entry['name']).encode("ascii").decode("ascii") + '.json'))
 
         with open(filepath, 'w+') as out:
             out.write(dats_json_output)

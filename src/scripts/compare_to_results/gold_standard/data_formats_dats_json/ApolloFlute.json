@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:flute-synthetic-ecosystem-v1.1",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "FluTE Synthetic Ecosystem",
+    "type": {
+        "value": "Epi-data output",
+        "valueIRI": ""
+    },
+    "description": "The synthetic ecosystem format used by FluTE.",
+    "licenses": [
+        {
+            "name": ""
+        }
+    ],
+    "version": "1.1",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/dlchao/FluTE/blob/master/README",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

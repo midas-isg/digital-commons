@@ -3,8 +3,8 @@ import csv
 import json
 import collections
 
-ACCESS_TOKEN = 'PLACE ZENODO TOKEN HERE'
-dats_folder = 'DATS FOLDER LOCATION'
+ACCESS_TOKEN = 'SvxcV0O7kHohjkBVHcHZ3iZmgtJvKeZPN85ZFtgrc5wa0Uup1MtYWl2HzWTw'
+dats_folder = '/Users/amd176/Documents/Repositories/digital-commons/src/scripts/convert_to_dats/output/spew_ipums_dats_json/'
 
 data = csv.reader(open('spew_mapping.csv'))
 # Read the column names from the first line of the file
@@ -38,7 +38,10 @@ for deposition_index in range(len(json_response)):
     # Get title to cross reference with spew_mapping.csv
     title = deposition_json['title']
     if not "RABIES" in title.upper() and not "H1N1" in title:
-        landing_url = "http://w3id.org/spew/" + csv_dict[title]['Anonymous Identifier']
+        try:
+            landing_url = "http://w3id.org/spew/" + csv_dict[title]['Anonymous Identifier']
+        except KeyError:
+            continue
 
         # Extract the name  from the landing page in spew_mapping, this will allow us to access the json file
         file_name = ()
@@ -49,14 +52,18 @@ for deposition_index in range(len(json_response)):
             file_name = old_landing_page[7] + ".json"
 
         # Update the dats file with the correct identifier information and the access and landing URLs
-        with open(dats_folder+file_name) as json_file:
-            old_meta_data = json.load(json_file, object_pairs_hook=collections.OrderedDict);
+        try:
+            with open(dats_folder+file_name) as json_file:
+                old_meta_data = json.load(json_file, object_pairs_hook=collections.OrderedDict)
+        except FileNotFoundError:
+            continue
+
 
         old_meta_data['identifier']['identifier'] = deposition_json['doi_url']
         old_meta_data['identifier']['identifierSource'] = "zenodo"
         old_meta_data['distributions'][0]['access']['accessURL'] = access_url
         old_meta_data['distributions'][0]['access']['landingPage'] = landing_url
 
-        with open("modified_spew/"+file_name, 'w') as outfile:
+        with open(dats_folder+file_name, 'w') as outfile:
             json.dump(old_meta_data, outfile, indent=4)
         print("created " + file_name)

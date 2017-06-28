@@ -10,8 +10,8 @@ import os
 from os import system
 from pathlib import Path
 
-ACCESS_TOKEN = 'PLACE ZENODO TOKEN HERE'
-dats_folder = 'DATS FOLDER LOCATION'
+ACCESS_TOKEN = 'SvxcV0O7kHohjkBVHcHZ3iZmgtJvKeZPN85ZFtgrc5wa0Uup1MtYWl2HzWTw'
+dats_folder = '/Users/amd176/Documents/Repositories/digital-commons/src/scripts/convert_to_dats/output/spew_us_dats_json'
 
 headers = {"Content-Type": "application/json"}
 

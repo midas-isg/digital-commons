@@ -8,6 +8,7 @@ import re
 import urllib.request
 from dateutil.parser import parse
 from bs4 import BeautifulSoup
+from unidecode import unidecode
 
 def process():
     dois = []
@@ -354,7 +355,7 @@ def process():
 
         output_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../..', 'output'))
         dats_path = os.path.join(output_path, 'ebola_dats_json')
-        filepath = os.path.join(dats_path, name + '.json')
+        filepath = os.path.join(dats_path, unidecode(name).encode("ascii").decode("ascii") + '.json')
 
         with open(filepath, 'w+') as out:
             out.write(dats_json_output)

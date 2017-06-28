@@ -1,0 +1,176 @@
+{
+    "title": "Nicaragua Synthetic Ecosystem",
+    "description": "Nicaragua synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: GeoHive counts and IPUMS-I shapefiles and microdata.",
+    "identifier": {
+        "identifier": "https://doi.org/10.5281/zenodo.574075",
+        "identifierSource": "zenodo"
+    },
+    "creators": [
+        {
+            "firstName": "Lee",
+            "lastName": "Richardson",
+            "email": ""
+        },
+        {
+            "firstName": "Shannon",
+            "lastName": "Gallagher",
+            "email": ""
+        },
+        {
+            "firstName": "Samuel",
+            "lastName": "Ventura",
+            "email": ""
+        },
+        {
+            "firstName": "Bill",
+            "lastName": "Eddy",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "agent level population and environment census",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000197"
+            }
+        },
+        {
+            "method": {
+                "value": "agent-level ecosystem data generation",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000164"
+            }
+        },
+        {
+            "platform": {
+                "value": "SPEW 1.20",
+                "valueIRI": "https://github.com/leerichardson/spew"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Individual",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OBI_0100026l",
+                "identifierSource": "https://biosharing.org/bsg-s000070"
+            }
+        },
+        {
+            "name": "Homo sapiens",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifierSource": "https://biosharing.org/bsg-s000154"
+            }
+        },
+        {
+            "name": "Household",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Nicaragua",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
+                "identifierSource": "apollo location service"
+            }
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "Nicaragua",
+            "description": "",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "NI",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "558",
+                    "identifierSource": "ISO 3166-1 numeric"
+                },
+                {
+                    "identifier": "NIC",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "Carnegie Mellon University, Department of Statistics",
+        "location": {
+            "postalAddress": "5000 Forbes Ave., Baker Hall 132, Pittsburgh, PA, United States"
+        },
+        "startDate": {
+            "date": "2017",
+            "type": {}
+        },
+        "endDate": {
+            "date": "2017",
+            "type": {}
+        }
+    },
+    "distributions": [
+        {
+            "identifier": {
+                "identifier": "1",
+                "identifierSource": ""
+            },
+            "dates": [
+                {
+                    "date": "2016-11-05",
+                    "type": {
+                        "value": "creation",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "access": {
+                "landingPage": "http://w3id.org/spew/0000098",
+                "accessURL": "https://zenodo.org/record/574075/files/nic.tar.gz"
+            },
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "SPEW.IPUMS format",
+                        "identifierSource": "RODS Laboratory, University of Pittsburgh"
+                    },
+                    "name": "SPEW.IPUMS format",
+                    "type": {
+                        "value": "SPEW.IPUMS-File-Formats",
+                        "valueIRI": "https://github.com/midas-isg/data-format-repository/wiki/SPEW.IPUMS-File-Formats"
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "MIDAS Digital Commons",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": "http"
+                },
+                "licenses": [
+                    {
+                        "name": ""
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": ""
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ]
+}

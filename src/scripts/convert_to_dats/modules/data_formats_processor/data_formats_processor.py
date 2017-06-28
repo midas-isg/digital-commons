@@ -52,23 +52,29 @@ def process():
                         ]
                     })
 
-                extra_properties.append({
-                    "category": "validator",
-                    "categoryIRI": "",
-                    "values": [
-                        {
-                            "value": "",
-                            "valueIRI": ""
-                        }
-                    ]
-                })
+                if name != "Tycho dataset":
+                    extra_properties.append({
+                        "category": "validator",
+                        "categoryIRI": "",
+                        "values": [
+                            {
+                                "value": "",
+                                "valueIRI": ""
+                            }
+                        ]
+                    })
+            
+            if name != "Tycho dataset":
+                title = name
+            else:
+                title = "Tycho Dataset Format"
 
             dats_json = {
                 "identifier": {
                     "identifier": identifier,
                     "identifierSource": identifier_source
                 },
-                "name": name,
+                "name": title,
                 "type": {
                     "value":format_type_value,
                     "valueIRI":format_type_value_iri
