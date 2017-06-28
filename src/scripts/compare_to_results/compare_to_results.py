@@ -42,6 +42,13 @@ else:
                                 results_json.pop('identifier', None)
                                 gold_standard_json.pop('identifier', None)
 
+                    if 'distributions' in gold_standard_json:
+                        if len(gold_standard_json['distributions']) > 0:
+                            if 'access' in gold_standard_json['distributions'][0]:
+                                if 'accessURL' in gold_standard_json['distributions'][0]['access']:
+                                    results_json['distributions'][0].pop('access', None)
+                                    gold_standard_json['distributions'][0].pop('access', None)
+
                     if ordered(gold_standard_json) == ordered(results_json):
                         correct += 1
                     else:
