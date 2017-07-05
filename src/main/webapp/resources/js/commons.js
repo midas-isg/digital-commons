@@ -1011,7 +1011,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
                         index = "H1N1 infectious disease scenarios";
                     nodeLevel1.push({text: "<span onmouseover='toggleTitle(this)'>" + index + " <b><i class=\"ae-color\"><sup>AE</sup></i><b> </span> <span class='badge'>["+value.length+"]</span>", nodes: nodeLevel2});
                 });
-                toAdd[index] = {text: "<span onmouseover='toggleTitle(this)'>" + index + " datasets" + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1};
+                var title = index + " datasets";
+                if(index == "Epidemics") {
+                    title = "Epidemic datasets";
+                } else if(index == "Infectious disease scenarios") {
+                    title = "Infectious disease scenario datasets";
+                }
+                toAdd[index] = {text: "<span onmouseover='toggleTitle(this)'>" + title + "</span> <span class='badge'>["+libraryEntryLength +"]</span>", nodes: nodeLevel1};
             });
         }
 
