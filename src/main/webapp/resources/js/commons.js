@@ -1097,7 +1097,7 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         var toRemove = [];
 
         if(expandedDataAndKnowledge == null) {
-            var openByDefault = ["Synthetic populations and ecosystems", "Location data", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemics", "Infectious disease scenarios", "H1N1 infectious disease scenarios", "Standards for encoding data", "Data formats", "Standard identifiers"];
+            var openByDefault = ["Synthetic populations and ecosystems", "Location data", "Disease surveillance data", "US notifiable diseases", "Mortality data", "Case series", "Rabies case listings", "Epidemic", "Infectious disease scenario", "H1N1 infectious disease scenarios", "Standards for encoding data", "Data formats", "Standard identifiers"];
             var openByDefaultIds = [];
             for(var i = 0; i < openByDefault.length; i++) {
                 var matchingNode = $('#data-and-knowledge-treeview').treeview('search', [ openByDefault[i], {
