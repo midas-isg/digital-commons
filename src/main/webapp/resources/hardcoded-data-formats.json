@@ -160,5 +160,12 @@
     "version": [
       "1"
     ]
+  },
+  {
+    "title": "NOAA Climate Data Online JSON",
+    "filename": "NOAA Climate Data Online JSON v2.json",
+    "version": [
+      "2"
+    ]
   }
 ]

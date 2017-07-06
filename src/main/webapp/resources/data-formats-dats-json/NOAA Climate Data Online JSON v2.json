@@ -1,0 +1,28 @@
+{
+  "identifier": {
+    "identifier": "MIDAS-ISG:noaa-climate-data-online-json-v2",
+    "identifierSource": "MIDAS-ISG"
+  },
+  "name": "NOAA Climate Data Online JSON",
+  "description": "All responses are JSON and will be a single item or a collection of items with metadata.",
+  "type": {
+    "value": "weather data",
+    "valueIRI": "http://need.an.iri.from.bill/"
+  },
+  "licenses": [
+    {}
+  ],
+  "version": "2",
+  "extraProperties": [
+    {
+      "category": "human-readable specification of data format",
+      "categoryIRI": "",
+      "values": [
+        {
+          "value": "https://www.ncdc.noaa.gov/cdo-web/webservices/v2",
+          "valueIRI": ""
+        }
+      ]
+    }
+  ]
+}
