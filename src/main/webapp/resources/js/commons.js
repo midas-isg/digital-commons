@@ -461,6 +461,11 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
 
             var nodeData = getNodeData(name, key, treeDictionary);
             dsd.nodes.push(nodeData);
+        } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Climate Data Online: Web Services") {
+            delete data[key]['version'];
+
+            var nodeData = getNodeData(name, key, treeDictionary);
+            weatherAndClimateData.nodes.push(nodeData);
         } else {
             if('subtype' in treeDictionary[key]) {
                 addNodesToDirectory(name, key, treeArray, treeDictionary);
@@ -754,6 +759,11 @@ var dsd = {
     nodes: []
 };
 
+var weatherAndClimateData = {
+    text: "Weather and climate data",
+    nodes: []
+};
+
 function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewerUrl, contextPath, spewRegionCount) {
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
@@ -851,13 +861,13 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         for(var i=0; i<tychoNodes.length; i++) {
             var upperLevelCount = 0;
             for(var x=0; x<tychoNodes[i].nodes.length; x++) {
-                tychoNodes[i].nodes[x].text += "<span class='badge'>["+ tychoNodes[i].nodes[x].nodes.length +"]</span>";
+                tychoNodes[i].nodes[x].text += " <span class='badge'>["+ tychoNodes[i].nodes[x].nodes.length +"]</span>";
                 upperLevelCount += tychoNodes[i].nodes[x].nodes.length;
             }
-            tychoNodes[i].text += "<span class='badge'>["+ upperLevelCount +"]</span>";
+            tychoNodes[i].text += " <span class='badge'>["+ upperLevelCount +"]</span>";
             tychoNodes[i].nodes.sort(compareNodes);
         }
-        dsd.nodes[dsd.nodes.length-1].text += "<span class='badge'>[" + tychoIds.length +"]</span>";
+        dsd.nodes[dsd.nodes.length-1].text += " <span class='badge'>[" + tychoIds.length +"]</span>";
         var dsdLength = tychoIds.length;
         for(var i = 0; i < dsd.nodes.length; i++) {
             if(dsd.nodes[i].nodes == null || dsd.nodes[i].nodes.length == 0) {
@@ -873,6 +883,9 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
         populateTycho(tychoIds, 0);
 
         collections.push(dsd);
+
+        weatherAndClimateData.text += " <span class='badge'>["+weatherAndClimateData.nodes.length+"]</span>";
+        collections.push(weatherAndClimateData);
 
         var mortalityData = {
             text: "Mortality data <span class='badge'>["+moralityDataNodeNames.length+"]</span>",
