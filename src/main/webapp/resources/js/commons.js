@@ -273,7 +273,7 @@ function populateSynthiaPopulationsDictionary(count) {
 }
 populateSynthiaPopulationsDictionary(0);
 
-var dsdNodeNames = ["Brazil Ministry of Health website", "CDCEpi Zika Github", "Colombia Ministry of Health website", "Singapore Ministry of Health website", "US MMWR morbidity and mortality tables"];
+var dsdNodeNames = ["Brazil Ministry of Health website", "CDCEpi Zika Github", "Colombia Ministry of Health website", "Singapore Ministry of Health website", "US NNDSS condition counts as published in MMWR"];
 function populateDiseaseSurveillanceDictionary(count) {
     $.getJSON( ctx + '/resources/disease-surveillance-dats-json/' + dsdNodeNames[count] + '.json' + '?v=' + Date.now(), function( data ) {
         addDatsToDictionary(diseaseSurveillanceDictionary, data, dsdNodeNames[count]);
@@ -462,8 +462,6 @@ function addTreeNodes(name, data, treeDictionary, treeArray) {
             var nodeData = getNodeData(name, key, treeDictionary);
             dsd.nodes.push(nodeData);
         } else if(data[key]['subtype'] == "Data services" && data[key]['title'] == "Climate Data Online: Web Services") {
-            delete data[key]['version'];
-
             var nodeData = getNodeData(name, key, treeDictionary);
             weatherAndClimateData.nodes.push(nodeData);
         } else {
@@ -684,7 +682,7 @@ function getNodeData(name, key, treeDictionary) {
         nodeData.text += ' <b><i class="olympus-color"><sup>AOC</sup></i></b>';
     }
 
-    if('availableOnUIDS' in treeDictionary[key] == true) {
+    if('availableOnUIDS' in treeDictionary[key] && treeDictionary[key]['availableOnUIDS'] == true) {
         nodeData.text += ' <b><i class="udsi-color"><sup>UIDS</sup></i></b>';
     }
 

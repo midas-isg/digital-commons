@@ -145,7 +145,10 @@
 
     $(window).on("resize", function() {
 //        if( $(window).width() < 945) {
-        if( $(window).width() < 1170) {
+        var maxWidthLarge = 1214;
+        var maxWidthMedium = 1103;
+        var maxWidthSmall = 882;
+        if( $(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');
             //showTitle('page-title');
         } else {
@@ -153,13 +156,13 @@
             //hideTitle('page-title');
         }
 
-        if($(window).width() >= 1050 && $(window).width() < 1170) {
+        if($(window).width() >= maxWidthMedium && $(window).width() < maxWidthLarge) {
             showTitle('page-title');
         } else {
             hideTitle('page-title');
         }
 
-        if($(window).width() < 861) {
+        if($(window).width() < maxWidthSmall) {
             showTitle('page-title');
         }
 

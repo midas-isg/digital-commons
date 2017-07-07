@@ -1,5 +1,5 @@
 {
-	"title": "US MMWR morbidity and mortality tables",
+	"title": "US NNDSS condition counts as published in MMWR",
 	"description": "US MMWR morbidity and mortality tables made available via data.cdc.gov ",
 	"identifier": {
 		"identifier": "MMWR morbidity and mortality tables",

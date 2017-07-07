@@ -276,7 +276,7 @@
       "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
       "accessPointUrl": "http://www.tycho.pitt.edu/api/"
     }],
-    "humanReadableSynopsis": "<p>The Project Tycho API allows users to query the Project Tycho database for publicly available disease surveillance data.</p> <p>MIDAS developers can use this web service to download disease surveillance data directly into their applications for processing.</p>",
+    "humanReadableSynopsis": "<p>The API to the Project Tycho Repository retrieves weekly case counts for a range of notifiable conditions in the US at the state or city level for time periods between 1888 and 2014.</p> <p>The Project Tycho web application retrieves weekly case counts for a range of notifiable conditions in the US at the state or city level for time periods between 1888 and 2014.</p> <p>The API and web application retrieve the same information.</p>",
     "version": [
       "1.1.0"
     ],
@@ -341,14 +341,14 @@
       "accessPointDescription": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
       "accessPointUrl": ""
     }],
-    "dataOutputFormats": [
-      "MIDAS-ISG:epi-data-json-v1.0"
-    ],
     "version": [
       "commit 7367f92"
     ],
     "dataInputFormats": [
       "Proprietary"
+    ],
+    "dataOutputFormats": [
+      "N/A"
     ],
     "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
     "source": "https://github.com/cmu-delphi/delphi-epidata"
@@ -1376,7 +1376,7 @@
       "MIDAS-ISG:noaa-climate-data-online-json-v2"
     ],
     "website": "https://www.ncdc.noaa.gov/",
-    "documentation": "https://www.ncdc.noaa.gov/cdo-web/webservices/v2#gettingStarted",
+    "documentation": "<a class=\"underline\" href=\"https://www.ncdc.noaa.gov/cdo-web/webservices/v2#gettingStarted\">https://www.ncdc.noaa.gov/cdo-web/webservices/v2#gettingStarted</a>",
     "version": [
       "2"
     ],
@@ -1384,5 +1384,41 @@
     "availableOnUIDS": false,
     "signInRequired": false,
     "subtype": "Data services"
+  },
+  {
+    "hostSpeciesIncluded": [
+      "Homo sapiens"
+    ],
+    "locationCoverage": [
+      "World"
+    ],
+    "pathogenCoverage": [
+      "HIV"
+    ],
+    "title": "HIV-TRACE",
+    "humanReadableSynopsis": "HIV TRACE is a tool that aids in understanding how HIV is spreading among infected individuals through reconstruction and analysis of HIV-1 molecular transmission networks.",
+    "dataInputFormats": [
+      "FASTA"
+    ],
+    "dataOutputFormats": [
+      "JSON (proprietary)"
+    ],
+    "sourceCodeRelease": "<a class=\"underline\" href=\"https://github.com/veg/hivtrace/releases/tag/0.3.0\">https://github.com/veg/hivtrace/releases/tag/0.3.0</a>",
+    "webApplication": [
+      "http://test.datamonkey.org/hivtrace"
+    ],
+    "license": "MIT",
+    "source": "https://github.com/veg/hivtrace",
+    "documentation": "<a class=\"underline\" href=\"https://github.com/veg/hivtrace/blob/master/README.md\">https://github.com/veg/hivtrace/blob/master/README.md</a>",
+    "publicationsThatUsedRelease": [
+      "Rose Rebecca, Lamers Susanna L., Dollar James J., Grabowski Mary K., Hodcroft Emma B., Ragonnet-Cronin Manon, Wertheim Joel O., Redd Andrew D., German Danielle, and Laeyendecker Oliver. AIDS Research and Human Retroviruses. March 2017, 33(3): 211-218. (<a href=\"https://doi.org/10.1089/aid.2016.0205\" class=\"underline\">doi:10.1089/aid.2016.0205</a>)"
+    ],
+    "version": [
+      "0.3.0"
+    ],
+    "availableOnOlympus": false,
+    "availableOnUIDS": false,
+    "signInRequired": false,
+    "subtype": "Disease transmission models"
   }
 ]

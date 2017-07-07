@@ -34,9 +34,9 @@
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <li class="dropdown">
-        <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Entry <span class="caret"></span></a>
+        <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Digital Object <span class="caret"></span></a>
         <ul class="dropdown-menu pull-right">
-            <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converters</a></li>
+            <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converter</a></li>
             <li><a href="${contextPath}/add/dataService">Data Service</a></li>
             <li class="dropdown-submenu">
                 <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
@@ -45,14 +45,14 @@
                     <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
                     <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                 </ul>
-            </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Standard</a></li>
-            <li><a href="${contextPath}/add/dataVisualizers">Data Visualizers</a></li>
-            <li><a href="${contextPath}/add/diseaseForecasters">Disease Forecasters</a></li>
+            </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Format</a></li>
+            <li><a href="${contextPath}/add/dataVisualizers">Data Visualizer</a></li>
+            <li><a href="${contextPath}/add/diseaseForecasters">Disease Forecaster</a></li>
             <li><a href="${contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>
-            <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimators</a></li>
-            <li><a href="${contextPath}/add/modelingPlatforms">Modeling Platforms</a></li>
-            <li><a href="${contextPath}/add/pathogenEvolutionModels">Pathogen Evolution Models</a></li>
-            <li><a href="${contextPath}/add/phylogeneticTreeConstructors">Phylogenetic Tree Constructors</a></li>
+            <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a></li>
+            <li><a href="${contextPath}/add/modelingPlatforms">Modeling Platform</a></li>
+            <li><a href="${contextPath}/add/pathogenEvolutionModels">Pathogen Evolution Model</a></li>
+            <li><a href="${contextPath}/add/phylogeneticTreeConstructors">Phylogenetic Tree Constructor</a></li>
             <li><a href="${contextPath}/add/populationDynamicsModel">Population Dynamics Model</a></li>
             <li><a href="${contextPath}/add/syntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a></li>
         </ul>

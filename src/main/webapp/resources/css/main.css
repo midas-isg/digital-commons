@@ -375,7 +375,7 @@ a {
         box-shadow: none !important;
     }
 }
-@media (min-width: 766px) and (max-width: 860px) {
+@media (min-width: 766px) and (max-width: 882px) {
     .navbar-collapse.collapse {
         display: none !important;
         overflow-y:auto !important;
