@@ -1419,6 +1419,6 @@
     "availableOnOlympus": false,
     "availableOnUIDS": false,
     "signInRequired": false,
-    "subtype": "Disease transmission models"
+    "subtype": "Disease transmission tree estimators"
   }
 ]
