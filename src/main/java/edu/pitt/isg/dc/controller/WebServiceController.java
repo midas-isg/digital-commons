@@ -5,7 +5,7 @@ import com.wordnik.swagger.annotations.*;
 import edu.pitt.isg.dc.repository.Repository;
 import edu.pitt.isg.dc.repository.RepositoryEntry;
 import edu.pitt.isg.dc.repository.utils.ExtractDataFromEntry;
-import edu.pitt.isg.dc.repository.utils.ExtractDoisFromRepositoryEntry;
+import edu.pitt.isg.dc.repository.utils.ExtractIdentifiersFromRepositoryEntry;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Distribution;
@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import javax.ws.rs.GET;
+import java.util.*;
 
 /**
  * Created by jdl50 on 5/27/17.
@@ -26,51 +27,50 @@ import javax.ws.rs.GET;
 
 @RequestMapping("/api/v1")
 @Controller
-@Api(value = "DOI controller", description = "List digital objects and retrieve their data/metadata")
+@Api(value = "Identifier controller", description = "List digital objects and retrieve their data/metadata")
 public class WebServiceController {
     private static Repository repository;
 
     static {
         repository = new Repository();
     }
+    
     @GET
-    @ApiOperation(value = "Retrieves every DOI in the MIDAS Digital Commons.", notes = "This method retrieves every DOI in the MIDAS Digital Commons. ", response = String.class)
+    @ApiOperation(value = "Retrieves every global identifier in the MIDAS Digital Commons.", notes = "This method retrieves every global identifier in the MIDAS Digital Commons. ", response = String.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "A JSON array containing the DOIs.")
+            @ApiResponse(code = 200, message = "A JSON array containing the identifiers.")
     })
-    @RequestMapping(value = "/dois", method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = "/identifiers", method = RequestMethod.GET, headers = "Accept=text/html")
     public @ResponseBody
     String getDois(ModelMap model) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        //
-        JsonArray jsonArray = new JsonArray();
+        Set<String> identifierSet = new HashSet<>();
 
         for (RepositoryEntry entry : repository.repository) {
-            String doi = ExtractDoisFromRepositoryEntry.execute(entry);
-            if (doi != null) {
-                jsonArray.add(doi);
+            String identifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
+            if (identifier != null) {
+                identifierSet.add(identifier);
             }
         }
 
-
-        JsonParser jp = new JsonParser();
-        JsonElement je = jp.parse(jsonArray.toString());
-        return gson.toJson(je);
+        List<String> sortedIdentifiers = new ArrayList<>(identifierSet);
+        Collections.sort(sortedIdentifiers);
+        return gson.toJson(sortedIdentifiers);
     }
 
     @GET
-    @ApiOperation(value = "Retrieves the metadata for an entry in the MIDAS Digital Commons given a DOI.", notes = "Retrieves the metadata for an entry in the MIDAS Digital Commons given a DOI.", response = String.class)
+    @ApiOperation(value = "Retrieves the metadata for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the metadata for an entry in the MIDAS Digital Commons given an identifier.", response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The metadata in JSON format.")
     })
-    @RequestMapping(value = "/dois/metadata", method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = "Accept=text/html")
     public @ResponseBody
-    ResponseEntity getDois(ModelMap model, @RequestParam("doi") String doi) {
+    ResponseEntity getDois(ModelMap model, @RequestParam("identifier") String identifier) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         for (RepositoryEntry entry : repository.repository) {
-            String entryDoi = ExtractDoisFromRepositoryEntry.execute(entry);
-            if (entryDoi != null) {
-                if (entryDoi.equalsIgnoreCase(doi)) {
+            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
+            if (entryIdentifier != null) {
+                if (entryIdentifier.equalsIgnoreCase(identifier)) {
                     JsonParser jp = new JsonParser();
                     JsonElement je = jp.parse(entry.getSourceData());
                     return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(je));
@@ -78,22 +78,22 @@ public class WebServiceController {
                 }
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for DOI: " + doi);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
 
     }
 
     @GET
-    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given a DOI.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given a DOI.", response = String.class)
+    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given a identifier.", response = String.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "You will be redirected to the data if the DOI is found.")
+            @ApiResponse(code = 200, message = "You will be redirected to the data if the identifier is found.")
     })
-    @RequestMapping(value = "/dois/data", method = RequestMethod.GET, headers = "Accept=text/html")
-    protected Object getDois(@RequestParam("doi") String doi, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
+    @RequestMapping(value = "/identifiers/data", method = RequestMethod.GET, headers = "Accept=text/html")
+    public Object getDois(@RequestParam("identifier") String identifier, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
 
         for (RepositoryEntry entry : repository.repository) {
-            String entryDoi = ExtractDoisFromRepositoryEntry.execute(entry);
-            if (entryDoi != null) {
-                if (entryDoi.equalsIgnoreCase(doi)) {
+            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
+            if (entryIdentifier != null) {
+                if (entryIdentifier.equalsIgnoreCase(identifier)) {
                     if (entry.getInstance() instanceof Dataset) {
                         Dataset d = (Dataset) entry.getInstance();
                         for (int i = 0; i < d.getDistributions().size(); i++) {
@@ -103,14 +103,14 @@ public class WebServiceController {
                             }
                         }
                         //if we are here, the specified distribtuion was not found
-                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The requested distribution (" + distribution + ") was not found for doi " + doi);
+                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The requested distribution (" + distribution + ") was not found for identifier " + identifier);
                     } else {
                         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This method is only available for methods of type dataset.");
                     }
                 }
             }
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for DOI: " + doi);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
     }
 
 }

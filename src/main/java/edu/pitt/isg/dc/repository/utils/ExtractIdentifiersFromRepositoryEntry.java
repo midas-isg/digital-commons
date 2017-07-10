@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
 /**
  * Created by jdl50 on 5/27/17.
  */
-public class ExtractDoisFromRepositoryEntry {
-    public static String execute(RepositoryEntry repositoryEntry) {
+public class ExtractIdentifiersFromRepositoryEntry {
+    public static String extractIdentifiers(RepositoryEntry repositoryEntry) {
         Object o = repositoryEntry.getInstance();
         String possibleDoi = null;
         if (o instanceof Software) {
@@ -38,11 +38,17 @@ public class ExtractDoisFromRepositoryEntry {
         if (possibleDoi != null) {
             possibleDoi = Jsoup.parse(possibleDoi).text();
             possibleDoi = possibleDoi.replaceAll("https?://doi\\.org/", "");
-            //System.out.println(possibleDoi);
+        }
+        return possibleDoi;
+
+    }
+
+    public static String extractDois(RepositoryEntry repositoryEntry) {
+        String possibleDoi = extractIdentifiers(repositoryEntry);
+        if (possibleDoi != null) {
             Pattern p = Pattern.compile("^10\\..*");
             Matcher m = p.matcher(possibleDoi);
             if (!m.matches()) {
-                //System.out.println("rejected " + possibleDoi);
                 possibleDoi = null;
             }
         }
