@@ -1276,7 +1276,7 @@
     "locationCoverage": [
       "Denmark"
     ],
-    "documentation": "Reeves A, Hupalo R, Patyk KA, Hill AE: User's Guide for the North American Animal Disease Spread... (2012)",
+    "documentation": "Reeves A, Hupalo R, Patyk KA, Hill AE: The North American Animal Disease Spread Model: A simulation model to assist decision making in evaluating animal disease incursions (2012)",
     "source": "https://sourceforge.net/projects/naadsm/",
     "executables": [
       "Windows, Unix, and Mac OS executables can be found <a class=\"underline\" href=\"http://www.naadsm.org/download\">here</a>"
@@ -1288,15 +1288,15 @@
     ],
     "license": "<a class=\"underline\" href=\"http://www.gnu.org/licenses/gpl-2.0.html\">GPL (GNU General Public License)</a>",
     "publicationsThatUsedRelease": [
-      "Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of F... (2010)",
-      "Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network Analysis of Livestock Movements t... (2008)",
-      "Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries... (2011)",
-      "Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made ... (2007)",
-      "Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of Strategies for t... (2011)",
-      "Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verif... (2011)",
-      "Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-and-Mouth Dise... (2007)",
-      "Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulatio... (2013)",
-      "Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case Stu... (2007)"
+      "Cozzens T, Gebhardt K, Shwiff S, Lutman M, Pedersen K, et al.: Modeling the Economic Impact of Feral Swine-Transmitted Foot-and- Mouth Disease: A Case Study from Missouri (2010)",
+      "Dube C, Ribble C, Kelton D, McNab B, Javier S, et al.: Network analysis of livestock movements to estimate potential silent spread of Foot-and-Mouth Disease (2008)",
+      "Dube C, Sanchez J, Reeves A: Adapting existing models of highly contagious diseases to countries other than their country of origin (2011)",
+      "Dube C, Stevenson MA, Garner MG, Sanson RL, Corsdo BA, et al.: A comparison of predictions made by three simulation models of foot-and-mouth disease (2007)",
+      "Ketusing N, Reeves A, Portacci K, Yano T, Olea-Popelka F, et al.: Evaluation of strategies for the eradication of Pseudorabies virus (Aujeszky's disease) in commercial swine farms in Chiang-Mai and Lampoon Provinces, Thailand, using a simulation disease spread model (2011)",
+      "Reeves A, Salman MA, Hill AE: Approaches for evaluating veterinary epidemiological models: verification, validation and limitations (2011)",
+      "Pendell DL, Leatherman J, Schroeder TC, Alward GS: The Economic Impacts of a Foot-And-Mouth Disease Outbreak: A Regional Analysis (2007)",
+      "Patyk KA, Helm J, Martin MK, Forde-Folle KN, Olea-Popelka FJ, et al.: An epidemiologic simulation model of the spread and control of highly pathogenic avian influenza (H5N1) among commercial and backyard poultry flocks in South Carolina, United States (2013)",
+      "Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case study (2007)"
     ],
     "hostSpeciesIncluded": [
       "N/A"
