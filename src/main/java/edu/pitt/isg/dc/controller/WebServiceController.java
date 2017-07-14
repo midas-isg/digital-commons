@@ -1,7 +1,9 @@
 package edu.pitt.isg.dc.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.*;
 import com.wordnik.swagger.annotations.*;
+import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.repository.Repository;
 import edu.pitt.isg.dc.repository.RepositoryEntry;
 import edu.pitt.isg.dc.repository.utils.ExtractDataFromEntry;
@@ -9,6 +11,8 @@ import edu.pitt.isg.dc.repository.utils.ExtractIdentifiersFromRepositoryEntry;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Distribution;
+import edu.pitt.isg.mdc.v1_0.Software;
+import edu.pitt.isg.objectserializer.exceptions.SerializationException;
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,7 +20,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import java.util.*;
 
 /**
@@ -63,9 +70,9 @@ public class WebServiceController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The metadata in JSON format.")
     })
-    @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml"})
     public @ResponseBody
-    ResponseEntity getDois(ModelMap model, @RequestParam("identifier") String identifier) {
+    ResponseEntity getDois(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         for (RepositoryEntry entry : repository.repository) {
             String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
@@ -73,7 +80,22 @@ public class WebServiceController {
                 if (entryIdentifier.equalsIgnoreCase(identifier)) {
                     JsonParser jp = new JsonParser();
                     JsonElement je = jp.parse(entry.getSourceData());
-                    return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(je));
+                    String response = gson.toJson(je);
+                    if(request.getHeader("Accept").equalsIgnoreCase("application/xml")) {
+                        if (entry.getInstance() instanceof Software) {
+                            Software s = (Software) entry.getInstance();
+                            Converter converter = new Converter();
+                            try {
+                                response = converter.convertToXml(s);
+                            } catch (SerializationException | JsonProcessingException e) {
+                                e.printStackTrace();
+                                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid configuration.");
+                            }
+                        } else {
+                            return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid configuration.");
+                        }
+                    }
+                    return ResponseEntity.status(HttpStatus.OK).body(response);
 
                 }
             }
