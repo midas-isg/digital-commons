@@ -68,7 +68,7 @@ public class WebServiceController {
     @GET
     @ApiOperation(value = "Retrieves the metadata for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the metadata for an entry in the MIDAS Digital Commons given an identifier.", response = String.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "The metadata in JSON format.")
+            @ApiResponse(code = 200, message = "The metadata in JSON or XML format.")
     })
     @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml"})
     public @ResponseBody
@@ -101,7 +101,6 @@ public class WebServiceController {
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
-
     }
 
     @GET
@@ -129,6 +128,36 @@ public class WebServiceController {
                     } else {
                         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This method is only available for methods of type dataset.");
                     }
+                }
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
+    }
+
+    @GET
+    @ApiOperation(value = "Retrieves the data type for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the data type for an entry in the MIDAS Digital Commons given a identifier.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "A string containing the data type.")
+    })
+    @RequestMapping(value = "/identifiers/datatype", method = RequestMethod.GET, headers = "Accept=text/html")
+    public Object getDataType(@RequestParam("identifier") String identifier) {
+
+        for (RepositoryEntry entry : repository.repository) {
+            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
+            if (entryIdentifier != null) {
+                if (entryIdentifier.equalsIgnoreCase(identifier)) {
+                    String response = "";
+                    if (entry.getInstance() instanceof Dataset) {
+                        Dataset d = (Dataset) entry.getInstance();
+                        response = "DATS v2.2 " + d.getClass().getSimpleName();
+                    } else if(entry.getInstance() instanceof DataStandard) {
+                        DataStandard ds = (DataStandard) entry.getInstance();
+                        response = "DATS v2.2 " +ds.getClass().getSimpleName();
+                    } else if(entry.getInstance() instanceof Software) {
+                        Software s = (Software) entry.getInstance();
+                        response = s.getClass().getSimpleName();
+                    }
+                    return ResponseEntity.status(HttpStatus.OK).body(response);
                 }
             }
         }
