@@ -76,7 +76,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
     private void createDatabase() throws SQLException {
         PreparedStatement createPreparedStatement = null;
 
-        String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID int auto_increment primary key, CONTENT CLOB, STATUS VARCHAR)";
+        String createEntries = "CREATE TABLE IF NOT EXISTS ENTRIES(ID SERIAL primary key, CONTENT TEXT, STATUS VARCHAR(32))";
 
         try (Connection connection = getDBConnection()) {
             connection.setAutoCommit(false);
@@ -99,7 +99,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         try (Connection connection = getDBConnection()) {
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO ENTRIES (CONTENT, STATUS) VALUES (?, ?)", Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setClob(1, new StringReader(json));
+            preparedStatement.setString(1, json);
             preparedStatement.setString(2, entryObject.getProperty("status"));
             preparedStatement.executeUpdate();
             ResultSet rs = preparedStatement.getGeneratedKeys();
@@ -119,7 +119,7 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
         String json = gson.toJson(entryObject);
         try (Connection connection = getDBConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement("UPDATE ENTRIES SET CONTENT = ?, STATUS = ? WHERE ID = ?");
-            preparedStatement.setClob(1, new StringReader(json));
+            preparedStatement.setString(1, json);
             preparedStatement.setString(2, entryObject.getProperty("status"));
             preparedStatement.setString(3, id);
 
@@ -138,9 +138,9 @@ public class H2Datastore implements MdcEntryDatastoreInterface {
                 preparedStatement.setInt(1, Integer.valueOf(id));
                 ResultSet rs = preparedStatement.executeQuery();
                 if (rs.next()) {
-                    Clob content = rs.getClob(1);
+                    String content = rs.getString(1);
                     Gson gson = new Gson();
-                    return gson.fromJson(content.getCharacterStream(), EntryObject.class);
+                    return gson.fromJson(content, EntryObject.class);
                 }
             }
         } catch (Exception e) {
