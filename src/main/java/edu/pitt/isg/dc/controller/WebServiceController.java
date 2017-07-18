@@ -6,15 +6,12 @@ import com.wordnik.swagger.annotations.*;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.repository.Repository;
 import edu.pitt.isg.dc.repository.RepositoryEntry;
-import edu.pitt.isg.dc.repository.utils.ExtractDataFromEntry;
 import edu.pitt.isg.dc.repository.utils.ExtractIdentifiersFromRepositoryEntry;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Distribution;
 import edu.pitt.isg.mdc.v1_0.Software;
 import edu.pitt.isg.objectserializer.exceptions.SerializationException;
-import org.hibernate.annotations.GeneratorType;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -23,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import java.util.*;
 
 /**
@@ -47,9 +43,9 @@ public class WebServiceController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "A JSON array containing the identifiers.")
     })
-    @RequestMapping(value = "/identifiers", method = RequestMethod.GET, headers = "Accept=text/html")
+    @RequestMapping(value = "/identifiers", method = RequestMethod.GET, headers = "Accept=application/json")
     public @ResponseBody
-    String getDois(ModelMap model) {
+    String getIdentifiers(ModelMap model) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Set<String> identifierSet = new HashSet<>();
 
@@ -72,7 +68,7 @@ public class WebServiceController {
     })
     @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml"})
     public @ResponseBody
-    ResponseEntity getDois(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
+    ResponseEntity getMetadata(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         for (RepositoryEntry entry : repository.repository) {
             String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
@@ -104,12 +100,12 @@ public class WebServiceController {
     }
 
     @GET
-    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given a identifier.", response = String.class)
+    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distributionId.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distributionId.", response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "You will be redirected to the data if the identifier is found.")
     })
     @RequestMapping(value = "/identifiers/data", method = RequestMethod.GET, headers = "Accept=text/html")
-    public Object getDois(@RequestParam("identifier") String identifier, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
+    public Object getData(@RequestParam("identifier") String identifier, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
 
         for (RepositoryEntry entry : repository.repository) {
             String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
@@ -135,29 +131,40 @@ public class WebServiceController {
     }
 
     @GET
-    @ApiOperation(value = "Retrieves the data type for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the data type for an entry in the MIDAS Digital Commons given a identifier.", response = String.class)
+    @ApiOperation(value = "Retrieves the metadata type for an entry in the MIDAS Digital Commons given an identifier.", notes = "Retrieves the metadata type for an entry in the MIDAS Digital Commons given a identifier.", response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "A string containing the data type.")
     })
-    @RequestMapping(value = "/identifiers/datatype", method = RequestMethod.GET, headers = "Accept=text/html")
-    public Object getDataType(@RequestParam("identifier") String identifier) {
+    @RequestMapping(value = "/identifiers/metadata-type", method = RequestMethod.GET, headers = "Accept=application/json")
+    public Object getMetadataType(@RequestParam("identifier") String identifier) {
 
         for (RepositoryEntry entry : repository.repository) {
             String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
             if (entryIdentifier != null) {
                 if (entryIdentifier.equalsIgnoreCase(identifier)) {
-                    String response = "";
+                    String type = "";
+                    String schema = "";
+
                     if (entry.getInstance() instanceof Dataset) {
                         Dataset d = (Dataset) entry.getInstance();
-                        response = "DATS v2.2 " + d.getClass().getSimpleName();
+                        type = "DATS v2.2 " + d.getClass().getSimpleName();
+                        schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/dataset_schema.json";
                     } else if(entry.getInstance() instanceof DataStandard) {
                         DataStandard ds = (DataStandard) entry.getInstance();
-                        response = "DATS v2.2 " +ds.getClass().getSimpleName();
+                        type = "DATS v2.2 " +ds.getClass().getSimpleName();
+                        schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/data_standard_schema.json";
                     } else if(entry.getInstance() instanceof Software) {
                         Software s = (Software) entry.getInstance();
-                        response = s.getClass().getSimpleName();
+                        type = s.getClass().getSimpleName();
+                        schema = "https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/master/src/main/resources/software.xsd";
                     }
-                    return ResponseEntity.status(HttpStatus.OK).body(response);
+
+                    JsonObject responseObj = new JsonObject();
+                    responseObj.addProperty("datatype", type);
+                    responseObj.addProperty("schema", schema);
+
+                    String responseJson = responseObj.toString();
+                    return ResponseEntity.status(HttpStatus.OK).body(responseJson);
                 }
             }
         }

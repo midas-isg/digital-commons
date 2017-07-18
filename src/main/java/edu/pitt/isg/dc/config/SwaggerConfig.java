@@ -7,6 +7,7 @@ import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import com.wordnik.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +45,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
     public SwaggerSpringMvcPlugin customImplementation(){
 
         return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
-                .apiInfo(apiInfo()); // assuming the API lives at something like http://myapp/api
+                .apiInfo(apiInfo()).includePatterns("/api/.*?"); // assuming the API lives at something like http://myapp/api
     }
 
     @Override
