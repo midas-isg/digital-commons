@@ -15,7 +15,10 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
@@ -57,6 +60,9 @@ public class DataEntryController {
 
     private static String ENTRIES_AUTHENTICATION = "";
 
+    @Autowired
+    private ServletContext context;
+
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
@@ -83,6 +89,21 @@ public class DataEntryController {
         XSD_FORMS_PATH = xsdFormsPath;
         DC_ENTRY_REQUESTS_LOG = dcEntryRequestsLog;
     }
+
+    @Component
+    public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
+
+        @Override
+        public void onApplicationEvent(final ContextRefreshedEvent event) {
+            try {
+                readXSDFiles(context);
+            }
+            catch (Exception e){
+
+            }
+        }
+    }
+
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
     public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
@@ -141,7 +162,7 @@ public class DataEntryController {
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, ServletContext context) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -153,7 +174,7 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-            writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
+            writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
 
         return;
@@ -169,7 +190,7 @@ public class DataEntryController {
         }
     }
 
-    public static String readXSDFiles(HttpServletRequest request) throws Exception {
+    public static String readXSDFiles(ServletContext context) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -195,7 +216,7 @@ public class DataEntryController {
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext, request);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, context);
                     }
                 }
             }
