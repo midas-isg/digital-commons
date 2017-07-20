@@ -1700,9 +1700,10 @@ $(document).ready(function() {
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
     }
-  
-    if (location.hash) {
-        $("a[href='" + location.hash + "']").tab("show");
+
+    var hashElement = $("a[href='" + location.hash + "']");
+    if (location.hash && hashElement.length > 0) {
+        console.log(hashElement.tab("show"));
 
         if(location.hash == "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
