@@ -766,8 +766,6 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
     var collections = [];
     libraryViewerUrl = libraryViewerUrl + "main/";
 
-    console.log(spewRegionCount);
-
     var syntheticPopulationsNodes = [
         {
             text: "<span onmouseover='toggleTitle(this)' onclick='openModal(\"syntheticPopulations\",\"county\")'>2010 U.S. Synthetic Populations by County</span> <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>"
@@ -1138,10 +1136,57 @@ function openViewer(url) {
     window.open(url);
 }
 
+identifierCodes = {
+    "12637": "Dengue virus",
+    "114727": "H1N1 virus",
+    "333278": "H7N9 virus",
+    "12721": "Human immunodeficiency virus",
+    "64320": "Zika virus",
+    "12066": "Coxsackievirus",
+    "1570291": "Ebola virus",
+    "1392": "Bacillus anthracis",
+    "119210": "H3N2 virus",
+    "11309": "Influenza virus",
+    "10345": "Suid alphaherpesvirus 1",
+    "418103": "Plasmodium",
+    "9606": "Homo sapiens",
+    "7157": "Culicidae",
+    "7159": "Aedes aegypti",
+    "476836": "San Juan, Puerto Rico",
+    "366188": "Los Angeles, California",
+    "5196": "Denmark",
+    "5622": "Yucatan, Mexico",
+    "11": "Sierra Leone",
+    "1216": "United States of America",
+    "510873": "Seattle, Washington"
+};
+
+function identifierToString(attribute) {
+    if(attribute.hasOwnProperty('identifier') && attribute['identifier'].hasOwnProperty('identifier')) {
+        var attribute = attribute['identifier']['identifier'];
+        if(identifierCodes.hasOwnProperty(attribute)) {
+            attribute = identifierCodes[attribute];
+        }
+    }
+    return attribute;
+}
+
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     if(key in attrs && attrs[key] != null) {
         var attribute = attrs[key];
+        var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+            for(var i = 0; i < attribute.length; i++) {
+                attribute[i] = identifierToString(attribute[i]);
+                if(attribute[i] !== null && attribute[i].length > 0) {
+                    hasNulls = false;
+                }
+            }
+
+            if(hasNulls) {
+                $('#software-' + name + '-container').hide();
+            }
+
             if((key == 'publicationsThatUsedRelease' || key == "publicatoinsAboutRelease" || key == "forecasts" || key == 'executables') && attribute.length > 1) {
                 var htmlStr = '<ul style="padding-left:19px"><li>';
                 attribute = attribute.join('</li><li>');
@@ -1150,18 +1195,22 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }  else {
                 attribute = attribute.join(', ');
             }
-        }
-
-        $('#software-' + name + '-container').show();
-
-        if(renderHtml) {
-            $('#software-' + name).html(attribute);
         } else {
-            $('#software-' + name).text(attribute);
+            hasNulls = false;
         }
 
-        if(hasHref) {
-            $('#software-' + name).attr('href', attribute);
+        if(!hasNulls) {
+            if(renderHtml) {
+                $('#software-' + name).html(attribute);
+            } else {
+                $('#software-' + name).text(attribute);
+            }
+
+            if(hasHref) {
+                $('#software-' + name).attr('href', attribute);
+            }
+        } else {
+            $('#software-' + name + '-container').hide();
         }
     } else {
         $('#software-' + name + '-container').hide();
@@ -1171,7 +1220,19 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if(key in attrs) {
         var attribute = attrs[key];
+        var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+            for(var i = 0; i < attribute.length; i++) {
+                attribute[i] = identifierToString(attribute[i]);
+                if(attribute[i] !== null && attribute[i] !== '') {
+                    hasNulls = false;
+                }
+            }
+
+            if(hasNulls) {
+                $('#software-' + name + '-container').hide();
+            }
+
             if((key == 'dataInputFormats' || key == 'dataOutputFormats') && attribute.length > 1) {
                 var htmlStr = '<ul style="padding-left:19px"><li>';
                 attribute = attribute.join('</li><li>');
@@ -1180,18 +1241,24 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             } else {
                 attribute = attribute.join(', ');
             }
-        }
-
-        $('#software-' + name + '-container').show();
-
-        if(renderHtml) {
-            $('#software-' + name).html(attribute);
         } else {
-            $('#software-' + name).text(attribute);
+            hasNulls = false;
         }
 
-        if(hasHref) {
-            $('#software-' + name).attr('href', attribute);
+        if(!hasNulls) {
+            $('#software-' + name + '-container').show();
+
+            if(renderHtml) {
+                $('#software-' + name).html(attribute);
+            } else {
+                $('#software-' + name).text(attribute);
+            }
+
+            if(hasHref) {
+                $('#software-' + name).attr('href', attribute);
+            }
+        } else {
+            $('#software-' + name + '-container').hide();
         }
     } else if(type == 'software') {
         $('#software-' + name + '-container').show();

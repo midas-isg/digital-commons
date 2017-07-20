@@ -4,23 +4,78 @@
     "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
     "product": "FluTE",
     "pathogenCoverage": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "locationCoverage": [
-      "Los Angeles",
-      "Seattle"
+      {
+        "identifier": {
+          "identifier": "366188",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "510873",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Antivirals",
-      "isolation",
-      "liberal sick leave",
-      "quarantine",
-      "school closure",
-      "travel restriction",
-      "vaccination"
+      {
+        "identifier": {
+          "identifier": "Antivirals",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "isolation",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "liberal sick leave",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "quarantine",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "school closure",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "travel restriction",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      }
     ],
     "source": "https://github.com/dlchao/FluTE",
     "version": [
@@ -39,10 +94,20 @@
     "type": "prospective 2013-2016",
     "forecastFrequency": "weekly",
     "diseases": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "Countries worldwide"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "forecasts": [
       "weighted percent ILI visits"
@@ -52,7 +117,7 @@
   },
   {
     "subtype": "Pathogen evolution models",
-    "humanReadableSynopsis": "HyPhy is an open-source software package for the analysis of genetic sequences using techniques in phylogenetics, molecular evolution, and machine learning. It features a complete graphical user interface (GUI) and a rich scripting language for limitless customization of analyses. Additionally, HyPhy features support for parallel computing environments (via message passing interface) and it can be compiled as a shared library and called from other programming environments such as Python or R. HyPhy has over 8000 registered users and has been cited in over 900 peer-reviewed publications (Google Scholar). Continued development of HyPhy is currently supported in part by an NIGMS R01 award 1R01GM093939.",
+    "humanReadableSynopsis": "HyPhy is an open-source software package for the analysis of genetic sequences\u00a0using techniques in phylogenetics, molecular evolution, and machine learning. It features a complete graphical user interface (GUI) and a rich scripting language for limitless customization of analyses. Additionally, HyPhy features support for parallel computing environments (via\u00a0message passing interface) and it can be compiled as a shared library and called from other programming environments such as\u00a0Python\u00a0or\u00a0R. HyPhy has over\u00a08000 registered users\u00a0and has been\u00a0cited in over 900\u00a0peer-reviewed publications (Google Scholar). Continued development of HyPhy is currently supported in part by an NIGMS R01 award\u00a01R01GM093939.",
     "developers": [
       "Sergei Pond",
       "Steven Weaver"
@@ -72,7 +137,12 @@
     "subtype": "Population dynamics models",
     "humanReadableSynopsis": "<p>Skeeter Buster is a detailed model of Aedes aegypti populations, developed at NC State University by a team led by Fred Gould (Entomology Dept.) and Alun Lloyd (Mathematics Dept.)</p> It is a stochastic, spatially-explicit model that models cohorts of mosquitoes at a very fine spatial scale, down to the level of individual breeding sites for immature cohorts, or individual houses for adults. The biology of Ae. aegypti is described with great detail on the previously developed CIMSiM model (Focks et al., 1993). Skeeter Buster additionally includes a detailed genetic component, and can therefore model the genetics of Ae. aegypti populations, making it a crucial tool in the evaluation and development of genetic control strategies.",
     "populationSpeciesIncluded": [
-      "Aedes aegypti"
+      {
+        "identifier": {
+          "identifier": "7159",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "website": "http://www.skeeterbuster.net/",
     "sourceCodeRelease": "on request.  E-mail <a href=\"mailto:info@skeeterbuster.net?Subject=Source%20code%20release\" target=\"_top\" style=\"text-decoration: underline\">info@skeeterbuster.net</a>",
@@ -136,11 +206,13 @@
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>",
     "humanReadableSynopsis": "PhyML is a phylogeny software based on the maximum-likelihood principle. Binaries are available for Linux, MacOS and Windows; the source code is available on request.",
     "developers": [
-      "Stéphane Guidon (LIRMM, Montpellier, France.)",
+      "St\u00e9phane Guidon (LIRMM, Montpellier, France.)",
       "Olivier Gascuel (LIRMM, Montpellier, France.)"
     ],
     "dataInputFormats": [
-      "UW-DGS-DB:phylip-format-v3.695", "MIDAS-ISG:nexus-v1.0", "MIDAS-ISG:dna-sequences-for-ape-v1.0"
+      "UW-DGS-DB:phylip-format-v3.695",
+      "MIDAS-ISG:nexus-v1.0",
+      "MIDAS-ISG:dna-sequences-for-ape-v1.0"
     ],
     "dataOutputFormats": [
       "BIOSHARING.ORG:bsg-s000250"
@@ -165,16 +237,36 @@
     "title": "GLEAM",
     "humanReadableSynopsis": "<p>GLEAM (GLobal Epidemic and Mobility Model) produces realistic simulations of the global spread of infectious diseases. It integrates three layers: real-world data on the global population; real-world data on the mobility of this population; an individual based stochastic mathematical model of the infection dynamics.</p> <p>The GLEAM Simulator system consists of the GLEAM Server and the GLEAMviz Client application. The GLEAM Server uses GLEAM as the engine to perform the simulations. This server runs on high-performance computers managed by the GLEAM project. The GLEAMviz Client is a desktop application through which users interact with the GLEAM Server. It provides a simple, intuitive and visual way to set up simulations, develop disease models, and evaluate simulation results using a variety of maps, charts and data analysis tools.</p>",
     "pathogenCoverage": [
-      "Communicable human-to-human"
+      {
+        "identifier": {
+          "identifier": "Communicable human-to-human",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "locationCoverage": [
-      "Worldwide"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Travel restriction"
+      {
+        "identifier": {
+          "identifier": "Travel restriction",
+          "identifierSource": ""
+        }
+      }
     ],
     "version": [
       "v2.0 - GLEAM Server",
@@ -245,11 +337,13 @@
   {
     "subtype": "Data services",
     "title": "Apollo LS database - web app and API",
-    "dataServiceDescription": [{
-      "accessPointType": "REST",
-      "accessPointDescription": "http://betaweb.rods.pitt.edu/ls/api-docs",
-      "accessPointUrl": "http://betaweb.rods.pitt.edu/ls"
-    }],
+    "dataServiceDescription": [
+      {
+        "accessPointType": "REST",
+        "accessPointDescription": "http://betaweb.rods.pitt.edu/ls/api-docs",
+        "accessPointUrl": "http://betaweb.rods.pitt.edu/ls"
+      }
+    ],
     "version": [
       "1.2.3"
     ],
@@ -271,11 +365,13 @@
   {
     "subtype": "Data services",
     "title": "Project Tycho Repository - web app and API",
-    "dataServiceDescription": [{
-      "accessPointType": "CUSTOM",
-      "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
-      "accessPointUrl": "http://www.tycho.pitt.edu/api/"
-    }],
+    "dataServiceDescription": [
+      {
+        "accessPointType": "CUSTOM",
+        "accessPointDescription": "<a class=\"underline\" href=\"http://www.tycho.pitt.edu/api_help.php\">http://www.tycho.pitt.edu/api_help.php</a> (sign-up required)",
+        "accessPointUrl": "http://www.tycho.pitt.edu/api/"
+      }
+    ],
     "humanReadableSynopsis": "<p>The API to the Project Tycho Repository retrieves weekly case counts for a range of notifiable conditions in the US at the state or city level for time periods between 1888 and 2014.</p> <p>The Project Tycho web application retrieves weekly case counts for a range of notifiable conditions in the US at the state or city level for time periods between 1888 and 2014.</p> <p>The API and web application retrieve the same information.</p>",
     "version": [
       "1.1.0"
@@ -294,11 +390,12 @@
   {
     "subtype": "Data services",
     "title": "RxNorm API",
-    "dataServiceDescription": [{
-      "accessPointType": "SOAP",
-      "accessPointDescription": "https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
-      "accessPointUrl": ""
-    },
+    "dataServiceDescription": [
+      {
+        "accessPointType": "SOAP",
+        "accessPointDescription": "https://rxnav.nlm.nih.gov/RxNormAPIREST.html",
+        "accessPointUrl": ""
+      },
       {
         "accessPointType": "REST",
         "accessPointDescription": "https://rxnav.nlm.nih.gov/RxNormAPISOAP.html",
@@ -313,11 +410,13 @@
   {
     "subtype": "Data services",
     "title": "Entrez Programming Utilities (E-utilities)",
-    "dataServiceDescription": [{
-      "accessPointType": "REST",
-      "accessPointDescription": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
-      "accessPointUrl": ""
-    }],
+    "dataServiceDescription": [
+      {
+        "accessPointType": "REST",
+        "accessPointDescription": "https://www.ncbi.nlm.nih.gov/books/NBK25501/",
+        "accessPointUrl": ""
+      }
+    ],
     "dataOutputFormats": [
       "MIDAS-ISG:entrez-output-format-v1.0"
     ],
@@ -326,21 +425,25 @@
   {
     "subtype": "Data services",
     "title": "MedlinePlus Connect",
-    "dataServiceDescription": [{
-      "accessPointType": "REST",
-      "accessPointDescription": "https://medlineplus.gov/connect/service.html",
-      "accessPointUrl": ""
-    }],
+    "dataServiceDescription": [
+      {
+        "accessPointType": "REST",
+        "accessPointDescription": "https://medlineplus.gov/connect/service.html",
+        "accessPointUrl": ""
+      }
+    ],
     "humanReadableSynopsis": "<p>MedlinePlus Connect is a web service for looking up codes used in the field of health care, namely ICD-9, ICD-10, SNOMED-CT, RXCUI, NDC and LOINC codes.</p> <p>MIDAS developers will find this web service useful when working with data that is encoded using any of the coding systems listed above.</p>"
   },
   {
     "subtype": "Data services",
     "title": "Epi-Data API",
-    "dataServiceDescription": [{
-      "accessPointType": "REST",
-      "accessPointDescription": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
-      "accessPointUrl": ""
-    }],
+    "dataServiceDescription": [
+      {
+        "accessPointType": "REST",
+        "accessPointDescription": "https://github.com/cmu-delphi/delphi-epidata/blob/master/README.md",
+        "accessPointUrl": ""
+      }
+    ],
     "version": [
       "commit 7367f92"
     ],
@@ -350,7 +453,7 @@
     "dataOutputFormats": [
       "N/A"
     ],
-    "humanReadableSynopsis": "<p>DELPHI’s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
+    "humanReadableSynopsis": "<p>DELPHI\u2019s Epi-Data API is a web service for looking up Influenza and Dengue data for the United States and Taiwan.</p> <p>The service connects to several Influenza data sources that provide ILI counts and estimates, and Wikipedia page hits for ILI related articles.  Dengue case counts are available for Taiwan.</p> <p>MIDAS developers will find this web service useful as a single point of access to the several web services supported by the API.</p>",
     "source": "https://github.com/cmu-delphi/delphi-epidata"
   },
   {
@@ -360,20 +463,60 @@
       "0.5"
     ],
     "locationCoverage": [
-      "Cairns, Australia"
+      {
+        "identifier": {
+          "identifier": "Cairns, Australia",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Dengue"
+      {
+        "identifier": {
+          "identifier": "12637",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Wolbachia",
-      "vector control",
-      "vaccination",
-      "larviciding"
+      {
+        "identifier": {
+          "identifier": "Wolbachia",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vector control",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "larviciding",
+          "identifierSource": ""
+        }
+      }
     ],
     "humanReadableSynopsis": "<p>The ComputationaL ARthropod Agents (CLARA) is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.</p> <p> This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "identifier": {
@@ -388,28 +531,55 @@
   {
     "subtype": "Disease transmission models",
     "locationCoverage": [
-      "Yucatán, Mexico"
+      {
+        "identifier": {
+          "identifier": "5622",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Dengue"
+      {
+        "identifier": {
+          "identifier": "12637",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Vaccination"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      }
     ],
     "version": [
       "2.0"
     ],
-    "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucatán, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
-    "dataInputFormats": ["MIDAS-ISG:hladish-dengue-model-v2.0"],
+    "humanReadableSynopsis": "This agent-based dengue model represents movement of and transmission dynamics among people and mosquitoes in Yucat\u00e1n, Mexico, and simulates various vaccine scenarios to evaluate effectiveness under those conditions. It comprises 1.8 million people between 375,000 households and 100,000 workplaces and schools.",
+    "dataInputFormats": [
+      "MIDAS-ISG:hladish-dengue-model-v2.0"
+    ],
     "source": "https://github.com/tjhladish/dengue",
     "sourceCodeRelease": "<a href = \"https://github.com/tjhladish/dengue/releases/tag/v2.0\" style=\"text-decoration:underline\">https://github.com/tjhladish/dengue/releases/tag/v2.0</a>",
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GPLv3</a>",
     "publicationsThatUsedRelease": [
-      "Thomas J. Hladish, Carl A. B. Pearson, Dennis L. Chao, Diana Patricia Rojas, Gabriel L. Recchia, Héctor Gómez-Dantés, M. Elizabeth Halloran, Juliet R. C. Pulliam, Ira M. Longini (2016) Projected Impact of Dengue Vaccination in Yucatán, Mexico. (<a href=\"http://dx.doi.org/10.1371/journal.pntd.0004661\" class=\"underline\">doi:10.1371/journal.pntd.0004661</a>)"
+      "Thomas J. Hladish, Carl A. B. Pearson, Dennis L. Chao, Diana Patricia Rojas, Gabriel L. Recchia, H\u00e9ctor G\u00f3mez-Dant\u00e9s, M. Elizabeth Halloran, Juliet R. C. Pulliam, Ira M. Longini (2016) Projected Impact of Dengue Vaccination in Yucat\u00e1n, Mexico. (<a href=\"http://dx.doi.org/10.1371/journal.pntd.0004661\" class=\"underline\">doi:10.1371/journal.pntd.0004661</a>)"
     ],
     "title": "Dengue transmission model"
   },
@@ -422,10 +592,20 @@
     ],
     "availableOnUIDS": true,
     "locationCoverage": [
-      "Sierra Leone"
+      {
+        "identifier": {
+          "identifier": "11",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Ebola"
+      {
+        "identifier": {
+          "identifier": "1570291",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "dataInputFormats": [
       "APOLLO:InfectiousDiseaseScenario-v4.0.1"
@@ -434,18 +614,26 @@
       "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "controlMeasures": [
-      "Vaccination"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "sourceCodeRelease": "<a href = \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style=\"text-decoration:underline\">https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4</a>",
     "publicationsThatUsedRelease": [
       "Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (<a href=\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class=\"underline\">doi:10.1016/S1473-3099(15)70139-8</a>)"
     ],
     "title": "Ebola transmission model"
-
-
   },
   {
     "subtype": "Disease transmission models",
@@ -456,23 +644,58 @@
     ],
     "source": "https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
     "locationCoverage": [
-      "United States"
+      {
+        "identifier": {
+          "identifier": "1216",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Communicable human-to-human"
+      {
+        "identifier": {
+          "identifier": "Communicable human-to-human",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "dataInputFormats": [
       "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
-      "Vaccination",
-      "quarantine",
-      "reactive school closures",
-      "global school closures"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "quarantine",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "reactive school closures",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "global school closures",
+          "identifierSource": ""
+        }
+      }
     ],
     "webApplication": [
       "http://fred.publichealth.pitt.edu/simulator/"
@@ -489,23 +712,78 @@
     "source": "https://github.com/SwissTPH/openmalaria/releases/tag/schema-32-RC3",
     "sourceCodeRelease": "<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-32-RC3.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-32-RC3.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "locationCoverage": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Malaria"
+      {
+        "identifier": {
+          "identifier": "418103",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Mass drug deployment",
-      "vaccination",
-      "vector control interventions",
-      "indoor spraying",
-      "larviciding",
-      "zoo-prophylaxis",
-      "odour-baited traps"
+      {
+        "identifier": {
+          "identifier": "Mass drug deployment",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vector control interventions",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "indoor spraying",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "larviciding",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "zoo-prophylaxis",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "odour-baited traps",
+          "identifierSource": ""
+        }
+      }
     ],
     "documentation": "<a href=\"https://github.com/SwissTPH/openmalaria/wiki\" class=\"underline\">https://github.com/SwissTPH/openmalaria/wiki</a>",
     "availableOnOlympus": true,
@@ -521,23 +799,78 @@
     "source": "https://github.com/SwissTPH/openmalaria/releases/tag/schema-33.1",
     "sourceCodeRelease": "<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-33.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-33.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "locationCoverage": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Malaria"
+      {
+        "identifier": {
+          "identifier": "418103",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Mass drug deployment",
-      "vaccination",
-      "vector control interventions",
-      "indoor spraying",
-      "larviciding",
-      "zoo-prophylaxis",
-      "odour-baited traps"
+      {
+        "identifier": {
+          "identifier": "Mass drug deployment",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vector control interventions",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "indoor spraying",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "larviciding",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "zoo-prophylaxis",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "odour-baited traps",
+          "identifierSource": ""
+        }
+      }
     ],
     "documentation": "<a href=\"https://github.com/SwissTPH/openmalaria/wiki\" class=\"underline\">https://github.com/SwissTPH/openmalaria/wiki</a>",
     "availableOnOlympus": true,
@@ -551,16 +884,56 @@
       "36.11"
     ],
     "locationCoverage": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "controlMeasures": [
-      "Mass drug deployment",
-      "vaccination",
-      "vector control interventions",
-      "indoor spraying",
-      "larviciding",
-      "zoo-prophylaxis",
-      "odour-baited traps"
+      {
+        "identifier": {
+          "identifier": "Mass drug deployment",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vector control interventions",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "indoor spraying",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "larviciding",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "zoo-prophylaxis",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "odour-baited traps",
+          "identifierSource": ""
+        }
+      }
     ],
     "executables": [
       "<a href = \"https://github.com/SwissTPH/openmalaria/releases/download/schema-36.1.1/openMalaria-linux.tar.gz\" style=\"text-decoration:underline\">Linux</a>",
@@ -571,11 +944,26 @@
     "source": "https://github.com/SwissTPH/openmalaria",
     "sourceCodeRelease": "<a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.zip\" style=\"text-decoration:underline\">ZIP</a>, <a href = \"https://github.com/SwissTPH/openmalaria/archive/schema-36.1.1.tar.gz\" style=\"text-decoration:underline\">TAR.GZ</a>",
     "pathogenCoverage": [
-      "Malaria"
+      {
+        "identifier": {
+          "identifier": "418103",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "documentation": "<a href=\"https://github.com/SwissTPH/openmalaria/wiki\" class=\"underline\">https://github.com/SwissTPH/openmalaria/wiki</a>",
     "title": "Open Malaria"
@@ -587,22 +975,67 @@
       "beta-1.0"
     ],
     "locationCoverage": [
-      "Worldwide"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "sourceCodeRelease": "<a href = \"https://sourceforge.net/projects/globalepidemics/files/?source=navbar\" class=\"underline\">https://sourceforge.net/projects/globalepidemics/files/?source=navbar</a>",
     "pathogenCoverage": [
-      "Influenza-like diseases"
+      {
+        "identifier": {
+          "identifier": "Influenza-like diseases",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Vaccination",
-      "antiviral treatment of the symptomatic",
-      "antiviral prophylaxis of the symptomatic",
-      "place closure",
-      "travel restrictions",
-      "case quarantines"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "antiviral treatment of the symptomatic",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "antiviral prophylaxis of the symptomatic",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "place closure",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "travel restrictions",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "case quarantines",
+          "identifierSource": ""
+        }
+      }
     ],
     "license": "<a class=\"underline\" href =\"https://www.apache.org/licenses/LICENSE-2.0\">Apache V2.0</a>",
     "title": "Global Epidemic Simulator"
@@ -639,16 +1072,36 @@
     "humanReadableSynopsis": "TranStat is a software application designed to estimate the transmissibility of infections within groups of individuals.",
     "subtype": "Disease transmission models",
     "locationCoverage": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": ""
+        }
+      }
     ],
     "version": [
       "Version 3 July 2015"
@@ -682,12 +1135,32 @@
     ],
     "humanReadableSynopsis": "This web application uses a data-driven global stochastic and spatial vector-host epidemic model to provide a quantitative analysis of the spreading pattern of ZIKV in Latin America. The model divides the world population into geographic census areas that are defined around transportation hubs and connected by mobility fluxes. The model integrates real world demographic and transportation data.  It also consider the dependence with local weather data of ZIKV transmission drivers such as the mosquito lifespan and abundance. The basic calibration of the model is performed by a Markov Chain Monte Carlo analysis of specific Zika outbreaks. The model generates microsimulations that provide stochastic ensemble output of possible epidemic evolutions, and statistical estimates of newly generated cases, importation events, probability of autochthonous transmission as a function of time. The number of potential microcephaly cases related to Zika is projected on the basis of the epidemic incidence by using a model-based approach used for French Polynesia.",
     "diseases": [
-      "Zika"
+      {
+        "identifier": {
+          "identifier": "64320",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "South America",
-      "Latin America",
-      "Caribbean"
+      {
+        "identifier": {
+          "identifier": "South America",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "Latin America",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "Caribbean",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "title": "ZIKA Modeling"
   },
@@ -732,7 +1205,7 @@
       "Sarah Murata"
     ],
     "publicationsAboutRelease": [
-      "Neher, R. A., & Bedford, T. (2015). nextflu: real-time tracking of seasonal influenza virus evolution in humans. Bioinformatics, 31(21), 3546–3548. <a href=\"http://doi.org/10.1093/bioinformatics/btv381\" class=\"underline\">http://doi.org/10.1093/bioinformatics/btv381</a>"
+      "Neher, R. A., & Bedford, T. (2015). nextflu: real-time tracking of seasonal influenza virus evolution in humans. Bioinformatics, 31(21), 3546\u20133548. <a href=\"http://doi.org/10.1093/bioinformatics/btv381\" class=\"underline\">http://doi.org/10.1093/bioinformatics/btv381</a>"
     ],
     "license": "<a href=\"https://www.gnu.org/licenses/agpl-3.0.en.html\" class=\"underline\">GNU Affero General Public License</a>",
     "grants": [
@@ -740,8 +1213,18 @@
       "NIH U54 GM111274"
     ],
     "pathogens": [
-      "H1N1 Influenza",
-      "H3N2 Influenza"
+      {
+        "identifier": {
+          "identifier": "114727",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "119210",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "title": "nextflu"
   },
@@ -759,12 +1242,42 @@
       "Worldwide"
     ],
     "pathogens": [
-      "Zika virus",
-      "ebola virus",
-      "avian influenza virus A/H7N9",
-      "h1n1 influenza",
-      "h3n2 influenza",
-      "Dengue virus"
+      {
+        "identifier": {
+          "identifier": "64320",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "1570291",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "333278",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "114727",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "119210",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "12637",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "dataInputFormats": [
       "BIOSHARING.ORG:bsg-s000228"
@@ -823,13 +1336,38 @@
     "type": "prospective nowcast",
     "forecastFrequency": "weekly",
     "diseases": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "US National",
-      "HHS regions",
-      "Census regions",
-      "Census states"
+      {
+        "identifier": {
+          "identifier": "1216",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "HHS regions",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "Census regions",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "Census states",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "nowcasts": [
       "weekly percent ILI"
@@ -845,7 +1383,9 @@
     "humanReadableSynopsis": "An R package that implements methods for anticipating the emergence and eradication of infectious diseases from surveillance time series. Also provides support for computational experiments testing the performance of such methods.",
     "website": "https://cran.r-project.org/web/packages/spaero/index.html",
     "documentation": "<a href=\"https://cran.r-project.org/web/packages/spaero/spaero.pdf\" class=\"underline\" download>https://cran.r-project.org/web/packages/spaero/spaero.pdf</a>",
-    "forecasts": ["none"],
+    "forecasts": [
+      "none"
+    ],
     "title": "spaero: Software for Project AERO"
   },
   {
@@ -854,10 +1394,20 @@
     "type": "prospective 2016-2017",
     "forecastFrequency": "weekly",
     "diseases": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "10 US regions and national"
+      {
+        "identifier": {
+          "identifier": "10 US regions and national",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "forecasts": [
       "Start week",
@@ -870,14 +1420,24 @@
   },
   {
     "subtype": "Disease forecasters",
-    "humanReadableSynopsis": "This beta website houses the weekly influenza activity forecasts provided by eight research teams. It’s important to note that these are not CDC forecasts and that the forecasts on this website are not endorsed by CDC. These forecasts are based on different models, can vary significantly, and may be inaccurate.",
+    "humanReadableSynopsis": "This beta website houses the weekly influenza activity forecasts provided by eight research teams. It\u2019s important to note that these are not CDC forecasts and that the forecasts on this website are not endorsed by CDC. These forecasts are based on different models, can vary significantly, and may be inaccurate.",
     "forecastFrequency": "weekly",
     "type": "prospective 2015-2016",
     "diseases": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "10 US regions"
+      {
+        "identifier": {
+          "identifier": "10 US regions",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "forecasts": [
       "Start week",
@@ -921,10 +1481,20 @@
     "forecastFrequency": "weekly",
     "type": "prospective 2016-2017",
     "diseases": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "95 US cities"
+      {
+        "identifier": {
+          "identifier": "95 US cities",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "forecasts": [
       "Weekly count of observed influenza like illness"
@@ -937,11 +1507,26 @@
     "humanReadableSynopsis": "The Dengue Forecasting Project is a collaboration of several departments in the U.S. Federal Government (Department of Health and Human Services, Department of Defense, Department of Commerce, and the Department of Homeland Security), with the support of the Pandemic Prediction and Forecasting Science and Technology Interagency Working Group under the National Science and Technology Council.  Its goal is to design an infectious disease forecasting project with the aim of galvanizing efforts to predict epidemics of dengue.This interagency project will assess forecasts using historical data from Iquitos, Peru and San Juan, Puerto Rico. On this webpage you can find the forecast targets, dengue data, environmental data, submission procedure evaluation criteria, and a detailed description of the project. Information about dengue is available from the Centers for Disease Control and Prevention (CDC).Any updates will be posted here and on the the NOAA Dengue Forecasting Page where these materials are also available. For submissions or questions about the project contact <a href=\"mailto:predict@cdc.gov\" class=\"underline\">predict@cdc.gov</a>.",
     "type": "Retrospective 2009-2013",
     "diseases": [
-      "Dengue"
+      {
+        "identifier": {
+          "identifier": "12637",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "region": [
-      "San Juan, Puerto Rico",
-      "Iquitos, Peru"
+      {
+        "identifier": {
+          "identifier": "476836",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "Iquitos, Peru",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "forecasts": [
       "Timing of peak incidence",
@@ -956,7 +1541,12 @@
     "product": "FRED",
     "humanReadableSynopsis": "<p>A version of <a href=\"http://fred.publichealth.pitt.edu/simulator/\", class=\"underline\">FRED</a> forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
-      "Communicable human-to-human"
+      {
+        "identifier": {
+          "identifier": "Communicable human-to-human",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "identifier": {
       "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.268051\", class=\"underline\">10.5281/zenodo.268051</a>"
@@ -968,10 +1558,20 @@
     "availableOnOlympus": true,
     "availableOnUIDS": true,
     "locationCoverage": [
-      "United States"
+      {
+        "identifier": {
+          "identifier": "1216",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "dataInputFormats": [
       "APOLLO:InfectiousDiseaseScenario-v4.0.1",
@@ -981,10 +1581,30 @@
       "MIDAS-ISG:galapagos-output-format-v2.0"
     ],
     "controlMeasures": [
-      "Vaccination",
-      "quarantine",
-      "reactive school closures",
-      "global school closures"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "quarantine",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "reactive school closures",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "global school closures",
+          "identifierSource": ""
+        }
+      }
     ],
     "sourceCodeRelease": "<a href=\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class=\"underline\">https://zenodo.org/record/268051#.WJiO4mV8-sM</a>",
     "title": "pFRED"
@@ -994,7 +1614,12 @@
     "product": "FluTE",
     "humanReadableSynopsis": "<p>A version of <a href=\"https://github.com/dlchao/FluTE\", class=\"underline\">FluTE</a> forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "pathogenCoverage": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "identifier": {
       "identifier": "<a href=\"http://dx.doi.org/10.5281/zenodo.268028\", class=\"underline\">10.5281/zenodo.268028</a>"
@@ -1006,21 +1631,66 @@
     ],
     "documentation": "<a href=\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class=\"underline\">https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README</a>",
     "locationCoverage": [
-      "United States"
+      {
+        "identifier": {
+          "identifier": "1216",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "availableOnOlympus": true,
     "availableOnUIDS": true,
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Antivirals",
-      "isolation",
-      "liberal sick leave",
-      "quarantine",
-      "school closure",
-      "travel restriction",
-      "vaccination"
+      {
+        "identifier": {
+          "identifier": "Antivirals",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "isolation",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "liberal sick leave",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "quarantine",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "school closure",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "travel restriction",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      }
     ],
     "license": "<a class=\"underline\" href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU Public License</a>",
     "title": "Apollo FluTE",
@@ -1045,23 +1715,58 @@
     ],
     "sourceCodeRelease": "<a href=\"https://zenodo.org/record/268504#.WJiWQmV8-sM\" class=\"underline\">https://zenodo.org/record/268504#.WJiWQmV8-sM</a>",
     "locationCoverage": [
-      "United States"
+      {
+        "identifier": {
+          "identifier": "1216",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Communicable human-to-human"
+      {
+        "identifier": {
+          "identifier": "Communicable human-to-human",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "dataInputFormats": [
       "MIDAS-ISG:synthia-us-v2010",
       "Proprietary"
     ],
     "controlMeasures": [
-      "Vaccination",
-      "quarantine",
-      "reactive school closures",
-      "global school closures"
+      {
+        "identifier": {
+          "identifier": "Vaccination",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "quarantine",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "reactive school closures",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "global school closures",
+          "identifierSource": ""
+        }
+      }
     ],
     "documentation": "<a href=\"https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md\" class=\"underline\">https://github.com/midas-isg/FRED_CYGWIN_INSTALLER/blob/master/README.md</a>",
     "executables": [
@@ -1075,17 +1780,42 @@
       "commit f5e0cef"
     ],
     "pathogenCoverage": [
-      "Zika"
+      {
+        "identifier": {
+          "identifier": "64320",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "locationCoverage": [
-      "The Americas"
+      {
+        "identifier": {
+          "identifier": "The Americas",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "controlMeasures": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": ""
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans",
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "humanReadableSynopsis": "This model projects Zika virus infections in childbearing women in the Americas.",
     "source": "https://github.com/TAlexPerkins/Zika_nmicrobiol_2016",
@@ -1102,7 +1832,12 @@
     "subtype": "Population dynamics models",
     "humanReadableSynopsis": "<p>The Dynamic Mosquito Simulation Model (DyMSiM) enables the simulation of mosquito populations driven by climate data. DyMSiM provides a useful tool for researchers investigating a number of mosquito-borne diseases.</p> <p>DyMSiM was created using STELLA 9.02 software. You must have STELLA installed on your computer to run DyMSiM.</p>",
     "populationSpeciesIncluded": [
-      "Mosquitoes"
+      {
+        "identifier": {
+          "identifier": "7157",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "website": "https://sites.google.com/site/dymsimmodel/home",
     "executables": [
@@ -1156,18 +1891,48 @@
     "availableOnOlympus": true,
     "availableOnUIDS": true,
     "locationCoverage": [
-      "Worldwide"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Anthrax"
+      {
+        "identifier": {
+          "identifier": "1392",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Antibiotic prophylaxis",
-      "hospitalization with administration of intravenous antibiotics",
-      "treatment in the I.C.U."
+      {
+        "identifier": {
+          "identifier": "Antibiotic prophylaxis",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "hospitalization with administration of intravenous antibiotics",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "treatment in the I.C.U.",
+          "identifierSource": ""
+        }
+      }
     ],
     "humanReadableSynopsis": "<p>An anthrax compartmental model developed by the University of Pittsburgh. The model is based on the model described in the paper: <a href=\"http://dx.doi.org/10.1177/0272989x06286794\" class=\"underline\">The Cost-Effectiveness of Strategies to Reduce Mortality From an Intentional Release of Aerosolized Anthrax Spores (RS Braithwaite et al)</a></p> <p>The model supports the following control strategies: antibiotic prophylaxis of susceptible individuals in the population, hospitalization with administration of intravenous antibiotics to symptomatic individuals, and treatment in the I.C.U. for fulminant individuals.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
@@ -1191,17 +1956,42 @@
     "availableOnOlympus": true,
     "availableOnUIDS": true,
     "locationCoverage": [
-      "Worldwide"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "hostSpeciesIncluded": [
-      "Humans"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "Influenza"
+      {
+        "identifier": {
+          "identifier": "11309",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "Antivirals",
-      "vaccination"
+      {
+        "identifier": {
+          "identifier": "Antivirals",
+          "identifierSource": ""
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "vaccination",
+          "identifierSource": ""
+        }
+      }
     ],
     "humanReadableSynopsis": "<p>A SEIR compartmental model developed by the University of Pittsburgh. The model supports antiviral and vaccination control strategies.</p> <p>This disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available <a href=\"http://research.rods.pitt.edu/apollo-web-client/\" class=\"underline\">here</a>.</p> <p> This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click <a href=\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class=\"underline\">here</a>.</p>",
     "version": [
@@ -1269,12 +2059,32 @@
       "Anna Seitzinger"
     ],
     "pathogenCoverage": [
-      "Avian influenza A",
-      "Foot-and-mouth disease",
-      "Pseudorabies"
+      {
+        "identifier": {
+          "identifier": "333278",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "12066",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      },
+      {
+        "identifier": {
+          "identifier": "10345",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "locationCoverage": [
-      "Denmark"
+      {
+        "identifier": {
+          "identifier": "5196",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "documentation": "Reeves A, Hupalo R, Patyk KA, Hill AE: The North American Animal Disease Spread Model: A simulation model to assist decision making in evaluating animal disease incursions (2012)",
     "source": "https://sourceforge.net/projects/naadsm/",
@@ -1299,10 +2109,20 @@
       "Dillon E, Matthews A, Thorne F: Foot-and-Mouth Disease control costs compared: An Irish case study (2007)"
     ],
     "hostSpeciesIncluded": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "controlMeasures": [
-      "N/A"
+      {
+        "identifier": {
+          "identifier": "",
+          "identifierSource": ""
+        }
+      }
     ],
     "title": "NAADSM"
   },
@@ -1333,7 +2153,7 @@
   },
   {
     "subtype": "Data-format converters",
-    "humanReadableSynopsis": "<p>Epidemic case count data are an important source of information for infectious disease researchers, but these counts are often distributed by health agencies in non-standard formats. Analysts typically spend a lot of time reformatting or “munging” these data before they can conduct their analysis.</p> <p>We created Omnivore, a web-based tool for converting case count reports from health agencies into a standard data format.  Omnivore, which is still under development, uses custom-developed parsers to automatically ingest data from various sources that include: Zika data from the US Centers for Disease Control and Prevention, and Chikungunya data from the Pan American Health Organization, the Mexican Ministry of Health, and the Colombian Ministry of Health.</p> <p>Omnivore automatically detects the data format and automatically extracts information such as the type of case counts (e.g. cumulative vs. intervals), report dates, and location. Omnivore automatically detects missing counts and duplicate counts, flagging missing counts removing duplicates after detection. Omnivore is currently undergoing final testing and will be a valuable tool to help researchers and practitioners to significantly speed up their workflow for analysis of epidemic time series data.</p>",
+    "humanReadableSynopsis": "<p>Epidemic case count data are an important source of information for infectious disease researchers, but these counts are often distributed by health agencies in non-standard formats. Analysts typically spend a lot of time reformatting or \u201cmunging\u201d these data before they can conduct their analysis.</p> <p>We created Omnivore, a web-based tool for converting case count reports from health agencies into a standard data format.  Omnivore, which is still under development, uses custom-developed parsers to automatically ingest data from various sources that include: Zika data from the US Centers for Disease Control and Prevention, and Chikungunya data from the Pan American Health Organization, the Mexican Ministry of Health, and the Colombian Ministry of Health.</p> <p>Omnivore automatically detects the data format and automatically extracts information such as the type of case counts (e.g. cumulative vs. intervals), report dates, and location. Omnivore automatically detects missing counts and duplicate counts, flagging missing counts removing duplicates after detection. Omnivore is currently undergoing final testing and will be a valuable tool to help researchers and practitioners to significantly speed up their workflow for analysis of epidemic time series data.</p>",
     "webApplication": [
       "http://betaweb.rods.pitt.edu/omnivore"
     ],
@@ -1342,7 +2162,9 @@
       "0.5"
     ],
     "developers": [
-      "Wilbert Van Panhuis", "Max Sibilla", "John Levander"
+      "Wilbert Van Panhuis",
+      "Max Sibilla",
+      "John Levander"
     ],
     "dataOutputFormats": [
       "MIDAS-ISG:omnivore-v0.5"
@@ -1367,7 +2189,7 @@
       }
     ],
     "title": "Climate Data Online: Web Services",
-    "humanReadableSynopsis": "NCDC\u0027s Climate Data Online (CDO) offers web services that provide access to current data. This API is for developers looking to create their own scripts or programs that use the CDO database of weather and climate data. An access token is required to use the API, and each token will be limited to five requests per second and 10,000 requests per day.",
+    "humanReadableSynopsis": "NCDC's Climate Data Online (CDO) offers web services that provide access to current data. This API is for developers looking to create their own scripts or programs that use the CDO database of weather and climate data. An access token is required to use the API, and each token will be limited to five requests per second and 10,000 requests per day.",
     "identifier": {
       "identifier": "MIDAS-ISG:noaa-climate-data-online-v2",
       "identifierSource": "MIDAS-ISG"
@@ -1387,13 +2209,28 @@
   },
   {
     "hostSpeciesIncluded": [
-      "Homo sapiens"
+      {
+        "identifier": {
+          "identifier": "9606",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "locationCoverage": [
-      "World"
+      {
+        "identifier": {
+          "identifier": "Worldwide",
+          "identifierSource": "https://fairsharing.org/bsg-s000708"
+        }
+      }
     ],
     "pathogenCoverage": [
-      "HIV"
+      {
+        "identifier": {
+          "identifier": "12721",
+          "identifierSource": "https://fairsharing.org/bsg-s000154"
+        }
+      }
     ],
     "title": "HIV-TRACE",
     "humanReadableSynopsis": "HIV TRACE is a tool that aids in understanding how HIV is spreading among infected individuals through reconstruction and analysis of HIV-1 molecular transmission networks.",
