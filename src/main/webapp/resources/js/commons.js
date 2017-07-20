@@ -1703,7 +1703,7 @@ $(document).ready(function() {
 
     var hashElement = $("a[href='" + location.hash + "']");
     if (location.hash && hashElement.length > 0) {
-        console.log(hashElement.tab("show"));
+        hashElement.tab("show");
 
         if(location.hash == "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
