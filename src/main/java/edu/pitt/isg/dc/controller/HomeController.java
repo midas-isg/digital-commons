@@ -126,11 +126,11 @@ public class HomeController {
         return "commons";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addEntry(Model model, HttpServletRequest request) throws Exception {
-        model.addAttribute("xsdForms", DataEntryController.readXSDFiles(request));
-        return "addEntry";
-    }
+//    @RequestMapping(value = "/add", method = RequestMethod.GET)
+//    public String addEntry(Model model) throws Exception {
+//        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
+//        return "addEntry";
+//    }
 
     @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
     public String addNewDataFormatConverters(@PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
