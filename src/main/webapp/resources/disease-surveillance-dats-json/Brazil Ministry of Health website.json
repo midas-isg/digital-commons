@@ -37,14 +37,14 @@
 		{
 			"name": "AIDS",
 			"identifier": {
-				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=186705005",
+				"identifier": "186705005",
 				"identifierSource": "https://biosharing.org/bsg-s000098"
 			}
 		},
 		{
 			"name": "Leprosy",
 			"identifier": {
-				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=81004002",
+				"identifier": "81004002",
 				"identifierSource": "https://biosharing.org/bsg-s000098"
 			}
 		},
@@ -61,8 +61,8 @@
 			"name": "Brazil",
 			"description": "the country of Brazil",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5000",
-				"identifierSource": "apollo location service"
+				"identifier": "5000",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			},
 			"alternateIdentifiers": [
 				{

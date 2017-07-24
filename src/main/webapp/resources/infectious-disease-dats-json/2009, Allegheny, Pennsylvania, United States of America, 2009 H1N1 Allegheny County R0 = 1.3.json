@@ -30,7 +30,7 @@
 		{
 			"name": "Influenza A (H1N1)pdm09",
 			"identifier": {
-				"identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=114727",
+				"identifier": "114727",
 				"identifierSource": "https://biosharing.org/bsg-s000154"
 			}
 		}
@@ -39,8 +39,8 @@
 		{
 			"name": "Allegheny County",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/read-only?id=1169",
-				"identifierSource": "apollo location service"
+				"identifier": "1169",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			},
 			"alternateIdentifiers": [
 				{
@@ -118,7 +118,7 @@
 					},
 					{
 						"value": "case series",
-						"valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+						"valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000559"
 					}
 				],
 				"types": [

@@ -39,8 +39,8 @@
 		{
 			"name": "Colombia",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5076",
-				"identifierSource": "apollo location service"
+				"identifier": "5076",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			},
 			"alternativeIdentifiers": [
 				{

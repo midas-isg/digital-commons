@@ -35,21 +35,21 @@
 		{
 			"name": "Zika virus",
 			"identifier": {
-				"identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=64320)",
+				"identifier": "64320",
 				"identifierSource": "https://biosharing.org/bsg-s000154"
 			}
 		},
 		{
 			"name": "Zika virus disease",
 			"identifier": {
-				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=3928002",
+				"identifier": "3928002",
 				"identifierSource": "https://biosharing.org/bsg-s000098"
 			}
 		},
 		{
 			"name": "Fetal microcephaly",
 			"identifier": {
-				"identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid= 431265009",
+				"identifier": "431265009",
 				"identifierSource": "https://biosharing.org/bsg-s000098"
 			}
 		}
@@ -58,106 +58,106 @@
 		{
 			"name": "Argentina",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4977",
-				"identifierSource": "apollo location service"
+				"identifier": "4977",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Brazil",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5000",
-				"identifierSource": "apollo location service"
+				"identifier": "5000",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Colombia",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5076",
-				"identifierSource": "apollo location service"
+				"identifier": "5076",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Dominican Republic",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5120",
-				"identifierSource": "apollo location service"
+				"identifier": "5120",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Ecuador",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5088",
-				"identifierSource": "apollo location service"
+				"identifier": "5088",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "El Salvador",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5165",
-				"identifierSource": "apollo location service"
+				"identifier": "5165",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "France",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4988",
-				"identifierSource": "apollo location service"
+				"identifier": "4988",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Guatemala",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5018",
-				"identifierSource": "apollo location service"
+				"identifier": "5018",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Haiti",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4989",
-				"identifierSource": "apollo location service"
+				"identifier": "4989",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Mexico",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5178",
-				"identifierSource": "apollo location service"
+				"identifier": "5178",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Nicaragua",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
-				"identifierSource": "apollo location service"
+				"identifier": "5070",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Panama",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5074",
-				"identifierSource": "apollo location service"
+				"identifier": "5074",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "Puerto Rico",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1607",
-				"identifierSource": "apollo location service"
+				"identifier": "1607",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "US Virgin Islands",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1604",
-				"identifierSource": "apollo location service"
+				"identifier": "1604",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		},
 		{
 			"name": "United States",
 			"identifier": {
-				"identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-				"identifierSource": "apollo location service"
+				"identifier": "1216",
+				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
 			}
 		}
 	],
