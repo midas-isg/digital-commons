@@ -112,7 +112,7 @@ def process(region_type):
             ]
 
 
-            alc_identifier_url = "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+            alc_identifier_url = "ApolloLS"
             is_about = [
                 {
                     "name": "Individual",

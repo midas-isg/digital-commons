@@ -194,7 +194,7 @@
             "name": "French Polynesia",
             "identifier": {
                 "identifier": "6128",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -752,7 +752,7 @@
             "description": "French Polynesia, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "6128",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

@@ -54,7 +54,7 @@
             "name": "Maridi",
             "identifier": {
                 "identifier": "85129",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -62,21 +62,21 @@
             "name": "Tambura Town",
             "identifier": {
                 "identifier": "85130",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Nazara Town",
             "identifier": {
                 "identifier": "85131",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Juba City",
             "identifier": {
                 "identifier": "85132",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

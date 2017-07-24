@@ -59,105 +59,105 @@
 			"name": "Argentina",
 			"identifier": {
 				"identifier": "4977",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Brazil",
 			"identifier": {
 				"identifier": "5000",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Colombia",
 			"identifier": {
 				"identifier": "5076",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Dominican Republic",
 			"identifier": {
 				"identifier": "5120",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Ecuador",
 			"identifier": {
 				"identifier": "5088",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "El Salvador",
 			"identifier": {
 				"identifier": "5165",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "France",
 			"identifier": {
 				"identifier": "4988",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Guatemala",
 			"identifier": {
 				"identifier": "5018",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Haiti",
 			"identifier": {
 				"identifier": "4989",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Mexico",
 			"identifier": {
 				"identifier": "5178",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Nicaragua",
 			"identifier": {
 				"identifier": "5070",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Panama",
 			"identifier": {
 				"identifier": "5074",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "Puerto Rico",
 			"identifier": {
 				"identifier": "1607",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "US Virgin Islands",
 			"identifier": {
 				"identifier": "1604",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		},
 		{
 			"name": "United States",
 			"identifier": {
 				"identifier": "1216",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			}
 		}
 	],

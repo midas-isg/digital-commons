@@ -194,7 +194,7 @@
             "name": "Singapore",
             "identifier": {
                 "identifier": "5166",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "Singapore, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5166",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

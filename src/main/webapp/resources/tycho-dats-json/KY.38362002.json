@@ -194,7 +194,7 @@
             "name": "Cayman Islands",
             "identifier": {
                 "identifier": "5145",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "Cayman Islands, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5145",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

@@ -47,7 +47,7 @@
             "name": "Antigua and Barbuda",
             "identifier": {
                 "identifier": "5097",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

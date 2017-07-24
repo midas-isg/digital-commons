@@ -194,7 +194,7 @@
             "name": "Saint Vincent and the Grenadines",
             "identifier": {
                 "identifier": "5069",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -219,7 +219,7 @@
             "description": "Saint Vincent and the Grenadines, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5069",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

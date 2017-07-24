@@ -54,7 +54,7 @@
             "name": "Guinea",
             "identifier": {
                 "identifier": "85163",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

@@ -54,7 +54,7 @@
             "name": "Andock gold-panning encampment",
             "identifier": {
                 "identifier": "85133",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -62,56 +62,56 @@
             "name": "Mekouka gold-mining encampment",
             "identifier": {
                 "identifier": "85134",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Minkebe gold-mining encampment",
             "identifier": {
                 "identifier": "85135",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Ekobakoba Town",
             "identifier": {
                 "identifier": "85136",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Etakaniabe",
             "identifier": {
                 "identifier": "85137",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Mayela",
             "identifier": {
                 "identifier": "85138",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Mayibout",
             "identifier": {
                 "identifier": "85139",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Mvadi",
             "identifier": {
                 "identifier": "85140",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Makokou Town",
             "identifier": {
                 "identifier": "85141",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
@@ -119,7 +119,7 @@
             "description": "Area encompassing the 3 gold-panning encampments situated in small clearings of 2000-3000 m2 at the edge of the rain forest where the epidemic started.",
             "identifier": {
                 "identifier": "85142",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

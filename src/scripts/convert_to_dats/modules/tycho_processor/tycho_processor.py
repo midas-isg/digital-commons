@@ -209,7 +209,7 @@ def process():
                 "identifier": 
                     {
                     "identifier": alc,
-                    "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                    "identifierSource": "ApolloLS"
                     },
                 "alternateIdentifiers": alternate_country_identifiers
             }]
@@ -220,7 +220,7 @@ def process():
                 "description": "%s, but may be incomplete for some areas" % country_name,
                 "identifier": {
                     "identifier": alc,
-                    "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": alternate_country_identifiers
             }

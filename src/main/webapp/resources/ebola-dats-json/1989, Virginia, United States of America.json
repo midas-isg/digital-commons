@@ -54,7 +54,7 @@
             "name": "4826.02",
             "identifier": {
                 "identifier": "84022",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

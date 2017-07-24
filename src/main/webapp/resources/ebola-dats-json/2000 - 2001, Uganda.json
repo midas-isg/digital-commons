@@ -54,7 +54,7 @@
             "name": "Masindi",
             "identifier": {
                 "identifier": "56",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,14 +67,14 @@
             "name": "Mbarara",
             "identifier": {
                 "identifier": "65",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Gulu",
             "identifier": {
                 "identifier": "147",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

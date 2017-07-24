@@ -47,7 +47,7 @@
             "name": "Kampong Spueu",
             "identifier": {
                 "identifier": "6789",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

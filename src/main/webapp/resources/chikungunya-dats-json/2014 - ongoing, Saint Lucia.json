@@ -47,7 +47,7 @@
             "name": "Saint Lucia",
             "identifier": {
                 "identifier": "5017",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

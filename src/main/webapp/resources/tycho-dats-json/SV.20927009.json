@@ -194,7 +194,7 @@
             "name": "El Salvador",
             "identifier": {
                 "identifier": "5165",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "El Salvador, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5165",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

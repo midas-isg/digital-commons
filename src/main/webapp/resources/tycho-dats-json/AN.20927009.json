@@ -194,7 +194,7 @@
             "name": "Netherlands Antilles",
             "identifier": {
                 "identifier": "542915",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -223,7 +223,7 @@
             "description": "Netherlands Antilles, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "542915",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

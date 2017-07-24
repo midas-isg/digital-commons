@@ -54,7 +54,7 @@
             "name": "Luebo",
             "identifier": {
                 "identifier": "275",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,7 +67,7 @@
             "name": "Mweka",
             "identifier": {
                 "identifier": "274",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

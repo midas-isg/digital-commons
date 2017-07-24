@@ -155,7 +155,7 @@ def process(epidemic_type, api_key):
 
                     spatial_coverage[i]["identifier"] = {
                         "identifier": epidemic_zones[i],
-                        "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                        "identifierSource": "ApolloLS"
                     }
 
                     for code_properties in feature["properties"]["codes"]:

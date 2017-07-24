@@ -74,7 +74,7 @@ def process():
                     "name": "United States",
                     "identifier": {
                         "identifier": "1216",
-                        "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                        "identifierSource": "ApolloLS"
                     },
                     "alternateIdentifiers": [
                         {

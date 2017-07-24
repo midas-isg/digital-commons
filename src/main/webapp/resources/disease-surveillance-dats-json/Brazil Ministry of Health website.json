@@ -62,7 +62,7 @@
 			"description": "the country of Brazil",
 			"identifier": {
 				"identifier": "5000",
-				"identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+				"identifierSource": "ApolloLS"
 			},
 			"alternateIdentifiers": [
 				{

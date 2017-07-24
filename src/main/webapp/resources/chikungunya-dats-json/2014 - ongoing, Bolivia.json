@@ -47,7 +47,7 @@
             "name": "Bolivia",
             "identifier": {
                 "identifier": "4963",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

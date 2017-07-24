@@ -54,7 +54,7 @@
             "name": "Lagos",
             "identifier": {
                 "identifier": "343",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,7 +67,7 @@
             "name": "Rivers",
             "identifier": {
                 "identifier": "351",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

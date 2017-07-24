@@ -55,7 +55,7 @@
             "description": "65 cases were noted in Gabon (47 (38%) in Zadie district, 17 (14%) in Ivindo district and 1 (1%) in Mpassa district) and 59 in Congo (33 (26%) in Mbomo district and 26 (21%) in Kelle district.)",
             "identifier": {
                 "identifier": "85165",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

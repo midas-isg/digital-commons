@@ -54,7 +54,7 @@
             "name": "Mbomo Village",
             "identifier": {
                 "identifier": "85167",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -62,7 +62,7 @@
             "name": "Mbandza Village",
             "identifier": {
                 "identifier": "85166",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

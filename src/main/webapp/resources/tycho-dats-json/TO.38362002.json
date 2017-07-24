@@ -194,7 +194,7 @@
             "name": "Tonga",
             "identifier": {
                 "identifier": "5001",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -760,7 +760,7 @@
             "description": "Tonga, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5001",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

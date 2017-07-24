@@ -194,7 +194,7 @@
             "name": "Nauru",
             "identifier": {
                 "identifier": "5164",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -760,7 +760,7 @@
             "description": "Nauru, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5164",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

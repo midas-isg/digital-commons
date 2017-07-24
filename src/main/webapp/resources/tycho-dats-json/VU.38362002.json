@@ -194,7 +194,7 @@
             "name": "Vanuatu",
             "identifier": {
                 "identifier": "5137",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -760,7 +760,7 @@
             "description": "Vanuatu, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5137",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

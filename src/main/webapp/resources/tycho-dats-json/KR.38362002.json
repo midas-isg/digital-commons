@@ -194,7 +194,7 @@
             "name": "South Korea",
             "identifier": {
                 "identifier": "4951",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -219,7 +219,7 @@
             "description": "South Korea, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "4951",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

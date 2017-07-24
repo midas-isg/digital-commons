@@ -54,7 +54,7 @@
             "name": "Sierra Leone",
             "identifier": {
                 "identifier": "85184",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

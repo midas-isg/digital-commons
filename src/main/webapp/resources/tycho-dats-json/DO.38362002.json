@@ -194,7 +194,7 @@
             "name": "Dominican Republic",
             "identifier": {
                 "identifier": "5120",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "Dominican Republic, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5120",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

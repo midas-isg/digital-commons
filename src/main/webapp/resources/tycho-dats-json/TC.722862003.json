@@ -194,7 +194,7 @@
             "name": "Turks and Caicos Islands",
             "identifier": {
                 "identifier": "5047",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -219,7 +219,7 @@
             "description": "Turks and Caicos Islands, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5047",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

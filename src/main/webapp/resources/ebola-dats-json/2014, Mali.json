@@ -54,7 +54,7 @@
             "name": "Bamako",
             "identifier": {
                 "identifier": "38",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,7 +67,7 @@
             "name": "Kayes",
             "identifier": {
                 "identifier": "31",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

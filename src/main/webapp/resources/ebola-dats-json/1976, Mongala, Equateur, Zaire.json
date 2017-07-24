@@ -55,7 +55,7 @@
             "description": "Cases were located in a 70 km radius around Yambuku, Republic of Zaire, in an area called the Bumba Zone",
             "identifier": {
                 "identifier": "85128",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

@@ -194,7 +194,7 @@
             "name": "Papua New Guinea",
             "identifier": {
                 "identifier": "5080",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -219,7 +219,7 @@
             "description": "Papua New Guinea, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5080",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

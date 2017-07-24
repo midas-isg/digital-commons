@@ -194,7 +194,7 @@
             "name": "Argentina",
             "identifier": {
                 "identifier": "4977",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -219,7 +219,7 @@
             "description": "Argentina, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "4977",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

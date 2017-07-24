@@ -194,7 +194,7 @@
             "name": "Puerto Rico",
             "identifier": {
                 "identifier": "1607",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -215,7 +215,7 @@
             "description": "Puerto Rico, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "1607",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

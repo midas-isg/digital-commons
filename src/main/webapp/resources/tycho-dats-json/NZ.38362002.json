@@ -194,7 +194,7 @@
             "name": "New Zealand",
             "identifier": {
                 "identifier": "5063",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -760,7 +760,7 @@
             "description": "New Zealand, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5063",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

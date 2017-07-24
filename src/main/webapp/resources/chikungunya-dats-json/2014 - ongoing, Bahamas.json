@@ -47,7 +47,7 @@
             "name": "Bahamas",
             "identifier": {
                 "identifier": "5173",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

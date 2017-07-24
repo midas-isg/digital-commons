@@ -55,7 +55,7 @@
             "description": "10 villages situated on the north-south road linking Luebo and Mweka",
             "identifier": {
                 "identifier": "85168",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

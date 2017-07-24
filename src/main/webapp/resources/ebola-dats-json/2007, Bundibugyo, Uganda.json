@@ -54,7 +54,7 @@
             "name": "Bundibugyo",
             "identifier": {
                 "identifier": "41",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

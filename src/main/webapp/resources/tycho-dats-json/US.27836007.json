@@ -104,7 +104,7 @@
             "name": "United States of America (the)",
             "identifier": {
                 "identifier": "1216",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -490,7 +490,7 @@
             "description": "United States of America (the), but may be incomplete for some areas",
             "identifier": {
                 "identifier": "1216",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

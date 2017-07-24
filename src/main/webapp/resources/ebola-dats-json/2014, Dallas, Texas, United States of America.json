@@ -54,7 +54,7 @@
             "name": "78.22",
             "identifier": {
                 "identifier": "72404",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

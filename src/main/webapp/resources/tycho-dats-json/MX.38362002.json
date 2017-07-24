@@ -194,7 +194,7 @@
             "name": "Mexico",
             "identifier": {
                 "identifier": "5178",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "Mexico, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5178",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

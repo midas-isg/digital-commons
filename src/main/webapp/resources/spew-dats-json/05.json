@@ -87,7 +87,7 @@
             "name": "Arkansas",
             "identifier": {
                 "identifier": "1577",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],
@@ -97,7 +97,7 @@
             "description": "",
             "identifier": {
                 "identifier": "1577",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

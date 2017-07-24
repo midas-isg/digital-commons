@@ -73,7 +73,7 @@
             "name": "Germany",
             "identifier": {
                 "identifier": "5029",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],
@@ -83,7 +83,7 @@
             "description": "",
             "identifier": {
                 "identifier": "5029",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

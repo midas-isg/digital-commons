@@ -194,7 +194,7 @@
             "name": "Saint Kitts and Nevis",
             "identifier": {
                 "identifier": "5148",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -580,7 +580,7 @@
             "description": "Saint Kitts and Nevis, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "5148",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

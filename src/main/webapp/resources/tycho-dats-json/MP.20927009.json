@@ -194,7 +194,7 @@
             "name": "Northern Mariana Islands",
             "identifier": {
                 "identifier": "1630",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -215,7 +215,7 @@
             "description": "Northern Mariana Islands, but may be incomplete for some areas",
             "identifier": {
                 "identifier": "1630",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

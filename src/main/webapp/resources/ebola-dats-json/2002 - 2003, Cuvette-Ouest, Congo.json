@@ -54,7 +54,7 @@
             "name": "Mbomo",
             "identifier": {
                 "identifier": "224",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,7 +67,7 @@
             "name": "K\u00e9ll\u00e9",
             "identifier": {
                 "identifier": "223",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

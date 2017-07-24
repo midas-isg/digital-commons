@@ -73,7 +73,7 @@
             "name": "Romania",
             "identifier": {
                 "identifier": "5026",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],
@@ -83,7 +83,7 @@
             "description": "",
             "identifier": {
                 "identifier": "5026",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

@@ -54,7 +54,7 @@
             "name": "Yambio",
             "identifier": {
                 "identifier": "85143",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -63,7 +63,7 @@
             "description": "",
             "identifier": {
                 "identifier": "85055",
-                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
+                "identifierSource": "ApolloLS"
             }
         }
     ],
