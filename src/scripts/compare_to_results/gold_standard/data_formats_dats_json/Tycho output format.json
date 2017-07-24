@@ -1,0 +1,19 @@
+{
+  "identifier": {
+    "identifier": "MIDAS-ISG:tycho-xml-output-format-v1.0",
+    "identifierSource": "MIDAS-ISG"
+  },
+  "name": "Tycho XML Output Format",
+  "type": {
+    "value": "disease surveillance data",
+    "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+  },
+  "description": "The XML output format used by Project Tycho v1 web service.",
+  "licenses": [
+    {
+      "name": "https://www.tycho.pitt.edu/legal/license_agreement.html"
+    }
+  ],
+  "version": "1",
+  "extraProperties": []
+}

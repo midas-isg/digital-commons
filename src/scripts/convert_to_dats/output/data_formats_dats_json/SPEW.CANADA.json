@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:spew-canada-format-v1.2.0",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "SPEW.CANADA",
+    "type": {
+        "value": "synthetic ecosystem data set",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000528"
+    },
+    "description": "This specification describes two tabular formats:  one for households and the other for persons.",
+    "licenses": [
+        {
+            "name": ""
+        }
+    ],
+    "version": "1.2.0",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/SPEW.Canada-file-formats",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:dna-sequences-for-ape-v1.0",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "ape coding scheme for DNA sequences",
+    "type": {
+        "value": "",
+        "valueIRI": ""
+    },
+    "description": "This specification describes the coding scheme used in ape since version 1.10 for DNA sequences. Its aim is to provide fast algorithms and efficient programs for comparing sequences, particularly to compute evolutionary distances.",
+    "licenses": [
+        {
+            "name": "No License Specified."
+        }
+    ],
+    "version": "1",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "http://ape-package.ird.fr/misc/BitLevelCodingScheme_20April2007.pdf",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

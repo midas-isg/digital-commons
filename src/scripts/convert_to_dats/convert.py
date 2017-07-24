@@ -48,7 +48,7 @@ else:
 
 	api_key = None
 	if(len(sys.argv) > 2):
-		api_key = sys.argv[2].lower()
+		api_key = sys.argv[2]
 
 	if argument == 'case_series' or argument == 'all':
 		generate_case_series()
