@@ -30,14 +30,14 @@
         {
             "name": "Zaire ebolavirus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=186538",
+                "identifier": "186538",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -55,7 +55,7 @@
             "description": "65 cases were noted in Gabon (47 (38%) in Zadie district, 17 (14%) in Ivindo district and 1 (1%) in Mpassa district) and 59 in Congo (33 (26%) in Mbomo district and 26 (21%) in Kelle district.)",
             "identifier": {
                 "identifier": "85165",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85165"
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": []
         }

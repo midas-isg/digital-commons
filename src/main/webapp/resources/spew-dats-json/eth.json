@@ -72,8 +72,8 @@
         {
             "name": "Ethiopia",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5179",
-                "identifierSource": "apollo location service"
+                "identifier": "5179",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -82,8 +82,8 @@
             "name": "Ethiopia",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5179",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

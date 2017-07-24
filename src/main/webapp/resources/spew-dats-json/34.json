@@ -86,8 +86,8 @@
         {
             "name": "New Jersey",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1592",
-                "identifierSource": "apollo location service"
+                "identifier": "1592",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -96,8 +96,8 @@
             "name": "New Jersey",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1592",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

@@ -96,15 +96,15 @@
         {
             "name": "Human ehrlichiosis caused by Ehrlichia chaffeensis",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=359747000",
+                "identifier": "359747000",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "United States of America (the)",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "1216",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {
@@ -309,8 +309,8 @@
             "name": "United States of America (the)",
             "description": "United States of America (the), but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "1216",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

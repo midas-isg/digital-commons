@@ -72,8 +72,8 @@
         {
             "name": "Bolivia",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4963",
-                "identifierSource": "apollo location service"
+                "identifier": "4963",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -82,8 +82,8 @@
             "name": "Bolivia",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=4963",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

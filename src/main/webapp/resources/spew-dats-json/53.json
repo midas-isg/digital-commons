@@ -86,8 +86,8 @@
         {
             "name": "Washington",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1627",
-                "identifierSource": "apollo location service"
+                "identifier": "1627",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -96,8 +96,8 @@
             "name": "Washington",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1627",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

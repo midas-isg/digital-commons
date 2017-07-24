@@ -186,15 +186,15 @@
         {
             "name": "Dengue hemorrhagic fever",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=20927009",
+                "identifier": "20927009",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Saint Lucia",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5017",
-                "identifierSource": "apollo location service"
+                "identifier": "5017",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {
@@ -579,8 +579,8 @@
             "name": "Saint Lucia",
             "description": "Saint Lucia, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5017",
-                "identifierSource": "apollo location service"
+                "identifier": "5017",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

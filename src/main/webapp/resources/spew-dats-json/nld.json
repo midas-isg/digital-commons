@@ -72,8 +72,8 @@
         {
             "name": "Netherlands",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5197",
-                "identifierSource": "apollo location service"
+                "identifier": "5197",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -82,8 +82,8 @@
             "name": "Netherlands",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5197",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

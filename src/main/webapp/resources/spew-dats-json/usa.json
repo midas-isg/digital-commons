@@ -72,8 +72,8 @@
         {
             "name": "United States of America (the)",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "1216",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             }
         }
     ],
@@ -82,8 +82,8 @@
             "name": "United States of America (the)",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
                 {

@@ -91,14 +91,14 @@ def process():
             {
                 'name': scientific_name,
                 'identifier': {
-                    'identifier': 'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=' + taxon_id,
+                    'identifier': taxon_id,
                     'identifierSource': 'https://biosharing.org/bsg-s000154'
                 }
             },
             {
                 "name": snomed_name,
                 "identifier": {
-                    "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=" + snomed_ct,
+                    "identifier": snomed_ct,
                     "identifierSource": "https://biosharing.org/bsg-s000098"
                 }
             },
@@ -134,7 +134,7 @@ def process():
 
                     spatial_coverage[i]["identifier"] = {
                         "identifier": epidemic_zones[i],
-                        "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=" + epidemic_zones[i]
+                        "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
                     }
 
                     for code_properties in feature["properties"]["codes"]:

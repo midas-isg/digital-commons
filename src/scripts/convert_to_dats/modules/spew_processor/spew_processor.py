@@ -112,7 +112,7 @@ def process(region_type):
             ]
 
 
-            alc_identifier_url = "http://betaweb.rods.pitt.edu/ls/browser?id=" + alc
+            alc_identifier_url = "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             is_about = [
                 {
                     "name": "Individual",
@@ -157,8 +157,8 @@ def process(region_type):
             is_about.append({
                 "name": name,
                 "identifier": {
-                    "identifier": alc_identifier_url,
-                    "identifierSource": "apollo location service"
+                    "identifier": alc,
+                    "identifierSource": alc_identifier_url
                 }
             })
 
@@ -167,7 +167,7 @@ def process(region_type):
                 "description":"",
                 "identifier": {
                     "identifier": alc_identifier_url,
-                    "identifierSource": "apollo location service"
+                    "identifierSource": alc_identifier_url
                 },
                 "alternateIdentifiers":[]
             }]

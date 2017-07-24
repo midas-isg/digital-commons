@@ -111,14 +111,14 @@ def process(epidemic_type, api_key):
             {
                 "name": scientific_name,
                 "identifier": {
-                    "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + taxon_id,
+                    "identifier": taxon_id,
                     "identifierSource": "https://biosharing.org/bsg-s000154"
                 }
             },
             {
                 "name": snomed_name,
                 "identifier": {
-                    "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=" + snomed_ct,
+                    "identifier": snomed_ct,
                     "identifierSource": "https://biosharing.org/bsg-s000098"
                 }
             }
@@ -128,7 +128,7 @@ def process(epidemic_type, api_key):
             is_about.append({
                 "name": "Fetal microcephaly",
                 "identifier": {
-                    "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=431265009",
+                    "identifier": "431265009",
                     "identifierSource": "https://biosharing.org/bsg-s000098"
                 }
             })
@@ -155,7 +155,7 @@ def process(epidemic_type, api_key):
 
                     spatial_coverage[i]["identifier"] = {
                         "identifier": epidemic_zones[i],
-                        "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=" + epidemic_zones[i]
+                        "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
                     }
 
                     for code_properties in feature["properties"]["codes"]:
@@ -292,7 +292,7 @@ def process(epidemic_type, api_key):
                     "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000184"     },
                 {
                     "value": "case series",
-                    "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+                    "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000558"
                 }
             ],
             "types": [
