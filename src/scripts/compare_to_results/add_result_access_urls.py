@@ -31,8 +31,11 @@ else:
                     with open(gold_standard_file) as f:
                         gold_standard_json = json.loads(f.read(), object_pairs_hook=OrderedDict)
 
-                    with open(results_file) as f:
-                        results_json = json.loads(f.read(), object_pairs_hook=OrderedDict)
+                    try:
+                        with open(results_file) as f:
+                            results_json = json.loads(f.read(), object_pairs_hook=OrderedDict)
+                    except FileNotFoundError:
+                        continue
 
                     if 'identifier' in gold_standard_json:
                         if 'identifier' in gold_standard_json['identifier']:

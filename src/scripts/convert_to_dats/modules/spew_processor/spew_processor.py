@@ -166,7 +166,7 @@ def process(region_type):
                 "name":name,
                 "description":"",
                 "identifier": {
-                    "identifier": alc_identifier_url,
+                    "identifier": alc,
                     "identifierSource": alc_identifier_url
                 },
                 "alternateIdentifiers":[]

@@ -82,7 +82,7 @@
             "name": "Colombia",
             "description": "",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifier": "5076",
                 "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [

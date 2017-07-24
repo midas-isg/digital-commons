@@ -82,7 +82,7 @@
             "name": "Senegal",
             "description": "",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifier": "5083",
                 "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [

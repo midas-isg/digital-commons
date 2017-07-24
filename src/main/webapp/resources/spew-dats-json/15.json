@@ -96,7 +96,7 @@
             "name": "Hawaii",
             "description": "",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifier": "1615",
                 "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [

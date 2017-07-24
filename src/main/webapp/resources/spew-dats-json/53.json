@@ -96,7 +96,7 @@
             "name": "Washington",
             "description": "",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifier": "1627",
                 "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [

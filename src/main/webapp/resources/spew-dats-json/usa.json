@@ -82,7 +82,7 @@
             "name": "United States of America (the)",
             "description": "",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259",
+                "identifier": "1216",
                 "identifierSource": "http://purl.obolibrary.org/obo/APOLLO_SV_00000259"
             },
             "alternateIdentifiers": [
