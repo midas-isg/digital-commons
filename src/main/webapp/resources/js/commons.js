@@ -1158,7 +1158,14 @@ identifierCodes = {
     "5622": "Yucatan, Mexico",
     "11": "Sierra Leone",
     "1216": "United States of America",
-    "510873": "Seattle, Washington"
+    "510873": "Seattle, Washington",
+    "542924": "Cairns, Australia",
+    "544694": "Worldwide",
+    "544695": "The Americas",
+    "544287": "Iquitos, Peru",
+    "544696": "The Caribbean",
+    "544697": "Latin America",
+    "542920": "South America"
 };
 
 function identifierToString(attribute) {
