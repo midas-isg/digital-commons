@@ -576,8 +576,8 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         $(treeviewTag).treeview('expandAll', { silent: true });
     } else {
         if(name == "webServices" || name == "dataFormats" || name == "standardIdentifiers") {
-            treeviewInfo['expandIcon'] = "bullet-point	";
-            treeviewInfo['collapseIcon'] = "bullet-point	";
+            treeviewInfo['expandIcon'] = "";
+            treeviewInfo['collapseIcon'] = "";
         }
 
         $(treeviewTag).treeview(treeviewInfo);
@@ -1162,10 +1162,12 @@ identifierCodes = {
 };
 
 function identifierToString(attribute) {
-    if(attribute.hasOwnProperty('identifier') && attribute['identifier'].hasOwnProperty('identifier')) {
-        var attribute = attribute['identifier']['identifier'];
-        if(identifierCodes.hasOwnProperty(attribute)) {
-            attribute = identifierCodes[attribute];
+    if(attribute.hasOwnProperty('identifier')) {
+        var identifier = attribute['identifier'];
+        if(identifierCodes.hasOwnProperty(identifier['identifier'])) {
+            attribute = identifierCodes[identifier['identifier']];
+        } else if(identifier.hasOwnProperty('identifierDescription') ) {
+            attribute = identifier['identifierDescription'];
         }
     }
     return attribute;
@@ -1178,6 +1180,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
+                console.log(attribute[i]);
                 if(attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
@@ -1194,6 +1197,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 attribute = htmlStr;
             }  else {
                 attribute = attribute.join(', ');
+                attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
             }
         } else {
             hasNulls = false;
@@ -1209,6 +1213,8 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             if(hasHref) {
                 $('#software-' + name).attr('href', attribute);
             }
+
+            $('#software-' + name + '-container').show();
         } else {
             $('#software-' + name + '-container').hide();
         }
@@ -1221,6 +1227,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     if(key in attrs) {
         var attribute = attrs[key];
         var hasNulls = true;
+
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
@@ -1240,14 +1247,16 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 attribute = htmlStr;
             } else {
                 attribute = attribute.join(', ');
+                attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
             }
+        } else if(key == 'identifier' && type == 'software') {
+            attribute = attribute['identifier'];
+            hasNulls = false;
         } else {
             hasNulls = false;
         }
 
         if(!hasNulls) {
-            $('#software-' + name + '-container').show();
-
             if(renderHtml) {
                 $('#software-' + name).html(attribute);
             } else {
@@ -1257,6 +1266,8 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             if(hasHref) {
                 $('#software-' + name).attr('href', attribute);
             }
+
+            $('#software-' + name + '-container').show();
         } else {
             $('#software-' + name + '-container').hide();
         }
@@ -1379,9 +1390,9 @@ function openModal(type, name, json) {
         $('#software-name').hide();
     }
 
-    if(attrs.hasOwnProperty('identifier') && attrs['identifier'].hasOwnProperty('identifier')) {
+    /*if(attrs.hasOwnProperty('identifier') && attrs['identifier'].hasOwnProperty('identifier')) {
         attrs['identifier'] = attrs['identifier']['identifier']
-    }
+    }*/
 
     if('developers' in attrs) {
         var attribute = attrs['developers'];

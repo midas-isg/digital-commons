@@ -7,7 +7,8 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
@@ -15,13 +16,15 @@
       {
         "identifier": {
           "identifier": "366188",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "los angeles"
         }
       },
       {
         "identifier": {
           "identifier": "510873",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "seattle"
         }
       }
     ],
@@ -29,51 +32,59 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Antivirals",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antivirals"
         }
       },
       {
         "identifier": {
-          "identifier": "isolation",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "isolation"
         }
       },
       {
         "identifier": {
-          "identifier": "liberal sick leave",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "liberal sick leave"
         }
       },
       {
         "identifier": {
-          "identifier": "quarantine",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "quarantine"
         }
       },
       {
         "identifier": {
-          "identifier": "school closure",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "school closure"
         }
       },
       {
         "identifier": {
-          "identifier": "travel restriction",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "travel restriction"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       }
     ],
@@ -97,15 +108,17 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
     "region": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -140,7 +153,8 @@
       {
         "identifier": {
           "identifier": "7159",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "aedes aegypti"
         }
       }
     ],
@@ -239,16 +253,18 @@
     "pathogenCoverage": [
       {
         "identifier": {
-          "identifier": "Communicable human-to-human",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "communicable human-to-human"
         }
       }
     ],
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -256,15 +272,17 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Travel restriction",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "travel restriction"
         }
       }
     ],
@@ -465,8 +483,9 @@
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Cairns, Australia",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "cairns, australia"
         }
       }
     ],
@@ -474,13 +493,15 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
@@ -488,33 +509,38 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "dengue"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Wolbachia",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "wolbachia"
         }
       },
       {
         "identifier": {
-          "identifier": "vector control",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vector control"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "larviciding",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "larviciding"
         }
       }
     ],
@@ -534,7 +560,8 @@
       {
         "identifier": {
           "identifier": "5622",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "yucat\u00e1n, mexico"
         }
       }
     ],
@@ -542,13 +569,15 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
@@ -556,15 +585,17 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "dengue"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       }
     ],
@@ -595,7 +626,8 @@
       {
         "identifier": {
           "identifier": "11",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "sierra leone"
         }
       }
     ],
@@ -603,7 +635,8 @@
       {
         "identifier": {
           "identifier": "1570291",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "ebola virus"
         }
       }
     ],
@@ -616,8 +649,9 @@
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       }
     ],
@@ -625,7 +659,8 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
@@ -647,7 +682,8 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "us national"
         }
       }
     ],
@@ -655,15 +691,17 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "pathogenCoverage": [
       {
         "identifier": {
-          "identifier": "Communicable human-to-human",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "communicable human-to-human"
         }
       }
     ],
@@ -674,26 +712,30 @@
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "quarantine",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "quarantine"
         }
       },
       {
         "identifier": {
-          "identifier": "reactive school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "reactive school closures"
         }
       },
       {
         "identifier": {
-          "identifier": "global school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "global school closures"
         }
       }
     ],
@@ -715,7 +757,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": ""
         }
       }
     ],
@@ -723,7 +766,8 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "malaria"
         }
       }
     ],
@@ -731,57 +775,66 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Mass drug deployment",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "mass drug deployment"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "vector control interventions",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vector control interventions"
         }
       },
       {
         "identifier": {
-          "identifier": "indoor spraying",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "indoor spraying"
         }
       },
       {
         "identifier": {
-          "identifier": "larviciding",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "larviciding"
         }
       },
       {
         "identifier": {
-          "identifier": "zoo-prophylaxis",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "zoo-prophylaxis"
         }
       },
       {
         "identifier": {
-          "identifier": "odour-baited traps",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "odour-baited traps"
         }
       }
     ],
@@ -802,7 +855,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": ""
         }
       }
     ],
@@ -810,7 +864,8 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "malaria"
         }
       }
     ],
@@ -818,57 +873,66 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Mass drug deployment",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "mass drug deployment"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "vector control interventions",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vector control interventions"
         }
       },
       {
         "identifier": {
-          "identifier": "indoor spraying",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "indoor spraying"
         }
       },
       {
         "identifier": {
-          "identifier": "larviciding",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "larviciding"
         }
       },
       {
         "identifier": {
-          "identifier": "zoo-prophylaxis",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "zoo-prophylaxis"
         }
       },
       {
         "identifier": {
-          "identifier": "odour-baited traps",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "odour-baited traps"
         }
       }
     ],
@@ -887,51 +951,59 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": ""
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Mass drug deployment",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "mass drug deployment"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "vector control interventions",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vector control interventions"
         }
       },
       {
         "identifier": {
-          "identifier": "indoor spraying",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "indoor spraying"
         }
       },
       {
         "identifier": {
-          "identifier": "larviciding",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "larviciding"
         }
       },
       {
         "identifier": {
-          "identifier": "zoo-prophylaxis",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "zoo-prophylaxis"
         }
       },
       {
         "identifier": {
-          "identifier": "odour-baited traps",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "odour-baited traps"
         }
       }
     ],
@@ -947,7 +1019,8 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "malaria"
         }
       }
     ],
@@ -955,13 +1028,15 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
@@ -977,8 +1052,9 @@
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -986,8 +1062,9 @@
     "pathogenCoverage": [
       {
         "identifier": {
-          "identifier": "Influenza-like diseases",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza-like diseases"
         }
       }
     ],
@@ -995,45 +1072,52 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "antiviral treatment of the symptomatic",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antiviral treatment of the symptomatic"
         }
       },
       {
         "identifier": {
-          "identifier": "antiviral prophylaxis of the symptomatic",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antiviral prophylaxis of the symptomatic"
         }
       },
       {
         "identifier": {
-          "identifier": "place closure",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "place closure"
         }
       },
       {
         "identifier": {
-          "identifier": "travel restrictions",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "travel restrictions"
         }
       },
       {
         "identifier": {
-          "identifier": "case quarantines",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "case quarantines"
         }
       }
     ],
@@ -1075,7 +1159,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": ""
         }
       }
     ],
@@ -1083,7 +1168,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": ""
         }
       }
     ],
@@ -1091,7 +1177,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": ""
         }
       }
     ],
@@ -1099,7 +1186,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": ""
+          "identifierSource": "",
+          "identifierDescription": ""
         }
       }
     ],
@@ -1138,27 +1226,31 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "zika"
         }
       }
     ],
     "region": [
       {
         "identifier": {
-          "identifier": "South America",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "south america"
         }
       },
       {
         "identifier": {
-          "identifier": "Latin America",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "latin america"
         }
       },
       {
         "identifier": {
-          "identifier": "Caribbean",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "caribbean"
         }
       }
     ],
@@ -1216,13 +1308,15 @@
       {
         "identifier": {
           "identifier": "114727",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "h1n1 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "119210",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "h3n2 influenza"
         }
       }
     ],
@@ -1245,37 +1339,43 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "zika"
         }
       },
       {
         "identifier": {
           "identifier": "1570291",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "ebola virus"
         }
       },
       {
         "identifier": {
           "identifier": "333278",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "avian influenza a"
         }
       },
       {
         "identifier": {
           "identifier": "114727",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "h1n1 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "119210",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "h3n2 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "dengue"
         }
       }
     ],
@@ -1339,7 +1439,8 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
@@ -1347,25 +1448,29 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "us national"
         }
       },
       {
         "identifier": {
-          "identifier": "HHS regions",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "hhs regions"
         }
       },
       {
         "identifier": {
-          "identifier": "Census regions",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "census regions"
         }
       },
       {
         "identifier": {
-          "identifier": "Census states",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "census states"
         }
       }
     ],
@@ -1397,15 +1502,17 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
     "region": [
       {
         "identifier": {
-          "identifier": "10 US regions and national",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "10 us regions and national"
         }
       }
     ],
@@ -1427,15 +1534,17 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
     "region": [
       {
         "identifier": {
-          "identifier": "10 US regions",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "10 us regions"
         }
       }
     ],
@@ -1484,15 +1593,17 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
     "region": [
       {
         "identifier": {
-          "identifier": "95 US cities",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "95 us cities"
         }
       }
     ],
@@ -1510,7 +1621,8 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "dengue"
         }
       }
     ],
@@ -1518,13 +1630,15 @@
       {
         "identifier": {
           "identifier": "476836",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "san juan, puerto rico"
         }
       },
       {
         "identifier": {
-          "identifier": "Iquitos, Peru",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "iquitos, peru"
         }
       }
     ],
@@ -1543,8 +1657,9 @@
     "pathogenCoverage": [
       {
         "identifier": {
-          "identifier": "Communicable human-to-human",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "communicable human-to-human"
         }
       }
     ],
@@ -1561,7 +1676,8 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "us national"
         }
       }
     ],
@@ -1569,7 +1685,8 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
@@ -1583,26 +1700,30 @@
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "quarantine",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "quarantine"
         }
       },
       {
         "identifier": {
-          "identifier": "reactive school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "reactive school closures"
         }
       },
       {
         "identifier": {
-          "identifier": "global school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "global school closures"
         }
       }
     ],
@@ -1617,7 +1738,8 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
@@ -1634,7 +1756,8 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "us national"
         }
       }
     ],
@@ -1644,51 +1767,59 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Antivirals",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antivirals"
         }
       },
       {
         "identifier": {
-          "identifier": "isolation",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "isolation"
         }
       },
       {
         "identifier": {
-          "identifier": "liberal sick leave",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "liberal sick leave"
         }
       },
       {
         "identifier": {
-          "identifier": "quarantine",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "quarantine"
         }
       },
       {
         "identifier": {
-          "identifier": "school closure",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "school closure"
         }
       },
       {
         "identifier": {
-          "identifier": "travel restriction",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "travel restriction"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       }
     ],
@@ -1718,7 +1849,8 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "us national"
         }
       }
     ],
@@ -1726,15 +1858,17 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "pathogenCoverage": [
       {
         "identifier": {
-          "identifier": "Communicable human-to-human",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "communicable human-to-human"
         }
       }
     ],
@@ -1745,26 +1879,30 @@
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       },
       {
         "identifier": {
-          "identifier": "quarantine",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "quarantine"
         }
       },
       {
         "identifier": {
-          "identifier": "reactive school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "reactive school closures"
         }
       },
       {
         "identifier": {
-          "identifier": "global school closures",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "global school closures"
         }
       }
     ],
@@ -1783,15 +1921,17 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "zika"
         }
       }
     ],
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "The Americas",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "the americas"
         }
       }
     ],
@@ -1799,7 +1939,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": ""
+          "identifierSource": "",
+          "identifierDescription": ""
         }
       }
     ],
@@ -1807,13 +1948,15 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
@@ -1835,7 +1978,8 @@
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "mosquitoes"
         }
       }
     ],
@@ -1893,8 +2037,9 @@
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -1902,7 +2047,8 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
@@ -1910,27 +2056,31 @@
       {
         "identifier": {
           "identifier": "1392",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "anthrax"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Antibiotic prophylaxis",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antibiotic prophylaxis"
         }
       },
       {
         "identifier": {
-          "identifier": "hospitalization with administration of intravenous antibiotics",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "hospitalization with administration of intravenous antibiotics"
         }
       },
       {
         "identifier": {
-          "identifier": "treatment in the I.C.U.",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "treatment in the i.c.u."
         }
       }
     ],
@@ -1958,8 +2108,9 @@
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -1967,7 +2118,8 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
@@ -1975,21 +2127,24 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "influenza"
         }
       }
     ],
     "controlMeasures": [
       {
         "identifier": {
-          "identifier": "Antivirals",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "antivirals"
         }
       },
       {
         "identifier": {
-          "identifier": "vaccination",
-          "identifierSource": ""
+          "identifier": "",
+          "identifierSource": "",
+          "identifierDescription": "vaccination"
         }
       }
     ],
@@ -2062,19 +2217,22 @@
       {
         "identifier": {
           "identifier": "333278",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "avian influenza a"
         }
       },
       {
         "identifier": {
           "identifier": "12066",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "foot-and-mouth disease"
         }
       },
       {
         "identifier": {
           "identifier": "10345",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "pseudorabies"
         }
       }
     ],
@@ -2082,7 +2240,8 @@
       {
         "identifier": {
           "identifier": "5196",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "denmark"
         }
       }
     ],
@@ -2112,7 +2271,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": ""
         }
       }
     ],
@@ -2120,7 +2280,8 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": ""
+          "identifierSource": "",
+          "identifierDescription": ""
         }
       }
     ],
@@ -2212,15 +2373,17 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "homo sapiens"
         }
       }
     ],
     "locationCoverage": [
       {
         "identifier": {
-          "identifier": "Worldwide",
-          "identifierSource": "https://fairsharing.org/bsg-s000708"
+          "identifier": "",
+          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierDescription": "worldwide"
         }
       }
     ],
@@ -2228,7 +2391,8 @@
       {
         "identifier": {
           "identifier": "12721",
-          "identifierSource": "https://fairsharing.org/bsg-s000154"
+          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierDescription": "hiv"
         }
       }
     ],
