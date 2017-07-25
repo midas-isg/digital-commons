@@ -1173,7 +1173,32 @@ function identifierToString(attribute) {
     return attribute;
 }
 
+function listToHtmlString(attributeList) {
+    var htmlStr = '<ul style="padding-left:19px"><li>';
+    attributeList = attributeList.join('</li><li>');
+    htmlStr += attributeList + '</ul>';
+    return htmlStr;
+}
+
+function displayList(attributeList) {
+    var attribute = attributeList.join(', ');
+    attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+    return attribute;
+}
+
+function parseAttributeList(attributeList) {
+    for(var i = 0; i < attributeList.length; i++) {
+        attributeList[i] = identifierToString(attributeList[i]);
+        if(attributeList[i] !== null && attributeList[i].length > 0) {
+            var hasNulls = false;
+        }
+    }
+}
+
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
+    var elementId = '#software-' + name;
+    var containerId = elementId + '-container';
+
     if(key in attrs && attrs[key] != null) {
         var attribute = attrs[key];
         var hasNulls = true;
@@ -1187,17 +1212,13 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }
 
             if(hasNulls) {
-                $('#software-' + name + '-container').hide();
+                $(containerId).hide();
             }
 
             if((key == 'publicationsThatUsedRelease' || key == "publicatoinsAboutRelease" || key == "forecasts" || key == 'executables') && attribute.length > 1) {
-                var htmlStr = '<ul style="padding-left:19px"><li>';
-                attribute = attribute.join('</li><li>');
-                htmlStr += attribute + '</ul>';
-                attribute = htmlStr;
+                attribute = listToHtmlString(attribute);
             }  else {
-                attribute = attribute.join(', ');
-                attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+                attribute = displayList(attribute);
             }
         } else {
             hasNulls = false;
@@ -1205,25 +1226,28 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 
         if(!hasNulls) {
             if(renderHtml) {
-                $('#software-' + name).html(attribute);
+                $(elementId).html(attribute);
             } else {
-                $('#software-' + name).text(attribute);
+                $(elementId).text(attribute);
             }
 
             if(hasHref) {
-                $('#software-' + name).attr('href', attribute);
+                $(elementId).attr('href', attribute);
             }
 
-            $('#software-' + name + '-container').show();
+            $(containerId).show();
         } else {
-            $('#software-' + name + '-container').hide();
+            $(containerId).hide();
         }
     } else {
-        $('#software-' + name + '-container').hide();
+        $(containerId).hide();
     }
 }
 
 function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
+    var elementId = '#software-' + name;
+    var containerId = elementId + '-container';
+
     if(key in attrs) {
         var attribute = attrs[key];
         var hasNulls = true;
@@ -1237,17 +1261,13 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             }
 
             if(hasNulls) {
-                $('#software-' + name + '-container').hide();
+                $(containerId).hide();
             }
 
             if((key == 'dataInputFormats' || key == 'dataOutputFormats') && attribute.length > 1) {
-                var htmlStr = '<ul style="padding-left:19px"><li>';
-                attribute = attribute.join('</li><li>');
-                htmlStr += attribute + '</ul>';
-                attribute = htmlStr;
+                attribute = listToHtmlString(attribute);
             } else {
-                attribute = attribute.join(', ');
-                attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+                attribute = displayList(attribute);
             }
         } else if(key == 'identifier' && type == 'software') {
             attribute = attribute['identifier'];
@@ -1258,28 +1278,24 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
 
         if(!hasNulls) {
             if(renderHtml) {
-                $('#software-' + name).html(attribute);
+                $(elementId).html(attribute);
             } else {
-                $('#software-' + name).text(attribute);
+                $(elementId).text(attribute);
             }
 
             if(hasHref) {
-                $('#software-' + name).attr('href', attribute);
+                $(elementId).attr('href', attribute);
             }
 
-            $('#software-' + name + '-container').show();
+            $(containerId).show();
         } else {
-            $('#software-' + name + '-container').hide();
+            $(containerId).hide();
         }
     } else if(type == 'software') {
-        $('#software-' + name + '-container').show();
-        if(key == 'dataInputFormats' || key == 'dataOutputFormats') {
-            $('#software-' + name).html('N/A');
-        } else {
-            $('#software-' + name).html('N/A');
-        }
+        $(containerId).show();
+        $(elementId).html('N/A');
     } else {
-        $('#software-' + name + '-container').hide();
+        $(containerId).hide();
     }
 }
 
