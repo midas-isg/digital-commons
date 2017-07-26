@@ -14,9 +14,9 @@
 </div>
 <div class="col-sm-4">
     <div class="legend-large hidden-xs">
-        <button id="show-legend" class="btn btn-default btn-xs" onclick="$('#show-legend').hide(); $('#main-legend').show();">Show Legend</button>
+        <button id="show-legend" class="btn btn-default btn-xs" onclick="toggleLegend('show')">Show Legend</button>
         <div id="main-legend" class="legend display-none">
-            <button id="legend-button" class="btn btn-default btn-xs" onclick="$('#main-legend').hide(); $('#show-legend').show();">Hide</button>
+            <button id="legend-button" class="btn btn-default btn-xs" onclick="toggleLegend('hide')">Hide</button>
             <myTags:legendTable/>
         </div>
     </div>

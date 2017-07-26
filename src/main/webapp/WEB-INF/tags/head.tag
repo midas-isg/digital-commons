@@ -14,6 +14,8 @@
 
     <myTags:favicon></myTags:favicon>
 
+    <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>${title}</title>
 

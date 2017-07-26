@@ -10,133 +10,86 @@
 <%@ attribute name="iframe" type="java.lang.Boolean" %>
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
 
+<c:if test="${iframe != true}">
+    <div class="spacer">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header">
+        <div class="main-nav container-fluid ">
+            <div class="navbar-header">
+                <c:if test="${wantCollapse == true}">
+                    <button type="button"
+                            class="navbar-toggle collapsed margin-top-22"
+                            data-toggle="collapse"
+                            data-target="#navbar-collapse"
+                            aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </c:if>
+                <c:choose>
+                    <c:when test="${preview}">
+                        <a href="${pageContext.request.contextPath}/main">
+                            <img alt="MIDAS"
+                                 class="navbar-brand-mod"
+                                 src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                    </c:when>
+                    <c:otherwise>
+                        <a href="${pageContext.request.contextPath}">
+                            <img alt="MIDAS"
+                                 class="navbar-brand-mod"
+                                 src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                    </c:otherwise>
+                </c:choose>
+                <h2 id="page-title-big" class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
+                <h3 id="page-title" class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+            </div>
 
-    <c:if test="${iframe != true}">
-        <div class="spacer">
-        <nav class="navbar navbar-default navbar-fixed-top" id="header">
-            <div class="main-nav container-fluid ">
-                <div class="navbar-header">
-                    <c:if test="${wantCollapse == true}">
-                        <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
-                                data-target="#navbar-collapse" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <c:if test="${loggedIn == true && iframe == false}">
+                    <c:if test="${addEntry == true}">
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>
                     </c:if>
-                    <c:choose>
-                        <c:when test="${preview}">
-                            <a href="${pageContext.request.contextPath}/main">
-                                <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="${pageContext.request.contextPath}">
-                                <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
-                        </c:otherwise>
-                    </c:choose>
-                    <h2 id="page-title-big" class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
-                    <h3 id="page-title" class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
-                </div>
-
-                <style>
-
-                    .dropdown-submenu {
-                        position: relative;
-                    }
-
-                    .dropdown-submenu>.dropdown-menu {
-                        top: 0;
-                        left: 100%;
-                        margin-top: -6px;
-                        margin-left: -1px;
-                        -webkit-border-radius: 0 6px 6px 6px;
-                        -moz-border-radius: 0 6px 6px;
-                        border-radius: 0 6px 6px 6px;
-                    }
-
-                    .dropdown-submenu:hover>.dropdown-menu {
-                        display: block;
-                    }
-
-                    .dropdown-submenu>a:after {
-                        display: block;
-                        content: " ";
-                        float: right;
-                        width: 0;
-                        height: 0;
-                        border-color: transparent;
-                        border-style: solid;
-                        border-width: 5px 0 5px 5px;
-                        border-left-color: #ccc;
-                        margin-top: 5px;
-                        margin-right: -10px;
-                    }
-
-                    .dropdown-submenu:hover>a:after {
-                        border-left-color: #fff;
-                    }
-
-                    .dropdown-submenu.pull-left {
-                        float: none;
-                    }
-
-                    .dropdown-submenu.pull-left>.dropdown-menu {
-                        left: -100%;
-                        margin-left: 10px;
-                        -webkit-border-radius: 6px 0 6px 6px;
-                        -moz-border-radius: 6px 0 6px 6px;
-                        border-radius: 6px 0 6px 6px;
-                    }
-                </style>
-
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <c:if test="${loggedIn == true && iframe == false}">
-                        <c:if test="${addEntry == true}">
-                            <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>
-                        </c:if>
-                        <c:if test="${addEntry != true}">
-                            <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="" dataToggle="tab"></myTags:navBar>
-                        </c:if>
+                    <c:if test="${addEntry != true}">
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="" dataToggle="tab"></myTags:navBar>
                     </c:if>
-                    <ul class="nav navbar-nav navbar-right">
-                        <c:if test="${(loggedIn == true and preview == false) and addEntry != true}">
-                            <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                        <form class="navbar-form" action="${urlLevel}" method="GET">
-                            <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>
-                        </form>
-                        </c:if>
-                    </ul>
-                </div>
-            </div><!-- /.container-fluid -->
-        </nav>
+                </c:if>
+                <ul class="nav navbar-nav navbar-right">
+                    <c:if test="${(loggedIn == true and preview == false) and addEntry != true}">
+                        <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
+                    <form class="navbar-form" action="${urlLevel}" method="GET">
+                        <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>
+                    </form>
+                    </c:if>
+                </ul>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+    </div>
+</c:if>
+<c:if test="${iframe == true}">
+    <div class="spacer-small"></div>
+
+    <div style="height:30px; width:100%; background-color:#0c2b65; position:fixed; top:0">
+        <div class="pull-right" style="margin-top:5px; margin-right:5px">
+            <a class="leaf" href="#" onclick="loadExternalSite()">
+                <span class="hidden-extra-xs">Open external site</span>
+                <icon class="glyphicon glyphicon-chevron-right"></icon>
+            </a>
         </div>
-    </c:if>
-    <c:if test="${iframe == true}">
-        <div class="spacer-small"></div>
 
-        <div style="height:30px; width:100%; background-color:#0c2b65; position:fixed; top:0">
-            <div class="pull-right" style="margin-top:5px; margin-right:5px">
-                <a class="leaf" href="#" onclick="loadExternalSite()">
-                    <span class="hidden-extra-xs">Open external site</span>
-                    <icon class="glyphicon glyphicon-chevron-right"></icon>
-                </a>
-            </div>
-
-            <div style="margin-top:5px; margin-right:5px; position:absolute; left:40%">
-                <span class="leaf hidden-xs">MIDAS SSO-enabled site</span>
-            </div>
-
-            <div class="pull-left leaf" style="margin-top:5px; margin-left:5px">
-                <a class="leaf" href="${pageContext.request.contextPath}/main">
-                    <icon class="glyphicon glyphicon-chevron-left"></icon>
-                    <span class="hidden-extra-xs">Back to Digital Commons</span>
-                </a>
-            </div>
+        <div style="margin-top:5px; margin-right:5px; position:absolute; left:40%">
+            <span class="leaf hidden-xs">MIDAS SSO-enabled site</span>
         </div>
-    </c:if>
+
+        <div class="pull-left leaf" style="margin-top:5px; margin-left:5px">
+            <a class="leaf" href="${pageContext.request.contextPath}/main">
+                <icon class="glyphicon glyphicon-chevron-left"></icon>
+                <span class="hidden-extra-xs">Back to Digital Commons</span>
+            </a>
+        </div>
+    </div>
+</c:if>
 
 <script>
     function loadExternalSite() {
@@ -144,16 +97,13 @@
     }
 
     $(window).on("resize", function() {
-//        if( $(window).width() < 945) {
         var maxWidthLarge = 1214;
         var maxWidthMedium = 1103;
         var maxWidthSmall = 882;
         if( $(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');
-            //showTitle('page-title');
         } else {
             showTitle('page-title-big');
-            //hideTitle('page-title');
         }
 
         if($(window).width() >= maxWidthMedium && $(window).width() < maxWidthLarge) {
@@ -165,27 +115,19 @@
         if($(window).width() < maxWidthSmall) {
             showTitle('page-title');
         }
-
-        /*if($(window).width() > 860) {
-            hideTitle('page-title');
-        }*/
     }).resize();
 
     function hideTitle(title) {
         var d = document.getElementById(title);
+        console.log(d);
         d.classList.remove('visible');
         d.classList.add('hidden');
     }
+
     function showTitle(title) {
         var d = document.getElementById(title);
+        console.log(d);
         d.classList.remove('hidden');
         d.classList.add('visible');
     }
-
-//    $('.nav a').on('click', function () {
-//        if ($(window).width() < 850) {
-//            $('.navbar-toggle').click();
-//        }
-//    });
-
 </script>

@@ -2319,3 +2319,13 @@ function reindexConstraints() {
         $(operators[i]).prop("id", "constraint-operator-" + (i+1) + '-' + (i+2));
     }
 }
+
+function toggleLegend(cmd) {
+    if(cmd === "hide") {
+        $('#main-legend').hide();
+        $('#show-legend').show();
+    } else if(cmd === "show") {
+        $('#show-legend').hide();
+        $('#main-legend').show();
+    }
+}
