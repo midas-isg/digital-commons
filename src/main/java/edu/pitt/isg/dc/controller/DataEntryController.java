@@ -6,41 +6,33 @@ import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
-import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
-import edu.pitt.isg.dc.entry.impl.EntrySubmission;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.*;
-import java.net.URI;
-import java.net.URL;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Properties;
-
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
 
 /**
  * Created by TPS23 on 5/10/2017.
@@ -59,9 +51,6 @@ public class DataEntryController {
     private static final String DC_ENTRY_REQUESTS_LOG;
 
     private static String ENTRIES_AUTHENTICATION = "";
-
-    @Autowired
-    private ServletContext context;
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -90,20 +79,9 @@ public class DataEntryController {
         DC_ENTRY_REQUESTS_LOG = dcEntryRequestsLog;
     }
 
-    @Component
-    public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
 
-        @Override
-        public void onApplicationEvent(final ContextRefreshedEvent event) {
-            try {
-                readXSDFiles(context);
-            }
-            catch (Exception e){
-
-            }
-        }
-    }
-
+    @Autowired
+    EntrySubmissionInterface entrySubmissionInterface;
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
     public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
@@ -128,7 +106,7 @@ public class DataEntryController {
             JsonParser parser = new JsonParser();
             JsonObject entry = parser.parse(jsonString).getAsJsonObject();
 
-            EntryObject entryObject = new EntryObject();
+            EntryView entryObject = new EntryView();
             entryObject.setProperty("type", entry.get("class").getAsString());
 
             if(datasetType != null) {
@@ -151,7 +129,6 @@ public class DataEntryController {
             entry.remove("class");
             entryObject.setEntry(entry);
 
-            EntrySubmissionInterface entrySubmissionInterface = new EntrySubmission();
             entrySubmissionInterface.submitEntry(entryObject, "", ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
@@ -162,7 +139,7 @@ public class DataEntryController {
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, ServletContext context) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -174,10 +151,8 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-            writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
+            writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
-
-        return;
     }
 
     private static void writeFormToPath(String realPath, String className, String htmlString) {
@@ -190,7 +165,7 @@ public class DataEntryController {
         }
     }
 
-    public static String readXSDFiles(ServletContext context) throws Exception {
+    public static String readXSDFiles(HttpServletRequest request) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -216,7 +191,7 @@ public class DataEntryController {
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext, context);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, request);
                     }
                 }
             }

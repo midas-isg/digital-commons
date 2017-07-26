@@ -2,9 +2,9 @@ package edu.pitt.isg.dc.entry;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
-import edu.pitt.isg.dc.entry.impl.H2Datastore;
+import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
@@ -31,8 +31,6 @@ public class PopulateDatastore {
         }
 
     public void populate() throws MdcEntryDatastoreException {
-        MdcEntryDatastoreInterface datastore = new H2Datastore();
-
         String[] extensions = new String[] { "json" };
         List<File> files = (List<File>) FileUtils.listFiles(Paths.get(ENTRIES_FILEPATH).toFile(), extensions, true);
 
@@ -46,7 +44,7 @@ public class PopulateDatastore {
             }
             JsonObject jsonEntryObject = parser.parse(jsonEntryString).getAsJsonObject();
 
-            EntryObject entryObject = new EntryObject();
+            EntryView entryObject = new EntryView();
             entryObject.setEntry(jsonEntryObject);
 
             if(file.getPath().contains("pending"))
