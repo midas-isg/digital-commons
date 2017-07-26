@@ -3,7 +3,7 @@ package edu.pitt.isg.dc.entry.util;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
@@ -135,9 +135,9 @@ public class EntryHelper {
             }
 
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            List<String> ids = mdcEntryDatastoreInterface.getEntryIds();
-            for (String id : ids) {
-                EntryObject entryObject = mdcEntryDatastoreInterface.getEntry(id);
+            List<Long> ids = mdcEntryDatastoreInterface.getEntryIds();
+            for (long id : ids) {
+                EntryView entryObject = mdcEntryDatastoreInterface.getEntry(id);
                 JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
                 String json = gson.toJson(jsonElement);
 
@@ -146,7 +146,7 @@ public class EntryHelper {
                 boolean isPending = entryObject.getProperty("status").equals("pending");
 
                 String path = EntryHelper.getPathFromType(type, subtype, isPending);
-                File file = Paths.get(path, String.format("%05d", Integer.parseInt(id)) + ".json").toFile();
+                File file = Paths.get(path, String.format("%05d", id) + ".json").toFile();
                 try {
                     FileUtils.writeStringToFile(file, json, "UTF-8");
                 } catch (IOException e) {

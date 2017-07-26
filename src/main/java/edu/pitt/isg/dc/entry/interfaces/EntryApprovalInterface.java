@@ -1,17 +1,17 @@
 package edu.pitt.isg.dc.entry.interfaces;
 
-import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 
 import java.util.List;
 
 public interface EntryApprovalInterface {
-    void acceptEntry(String entryId,
+    void acceptEntry(long entryId,
                      String authenticationToken) throws MdcEntryDatastoreException;
 
-    void rejectEntry(String entryId,
+    void rejectEntry(long entryId,
                      String authenticationToken,
                      String reason) throws MdcEntryDatastoreException;
 
-    List<EntryObject> getPendingEntries() throws MdcEntryDatastoreException;
+    List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
 }

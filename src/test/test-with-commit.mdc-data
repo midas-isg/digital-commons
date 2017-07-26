@@ -1,0 +1,11 @@
+commit 502aea9f80856021e784eb02bc0a4a76b5bf7d98
+Author: Adam Darr <adamdarr@gmail.com>
+Date:   Mon Jul 24 15:48:21 2017 -0400
+
+    remove mdc-data.iml
+===============================================
+commit 1750d5d5200f0f32433aa558c1d837cc8ab7bfbd
+Author: Adam Darr <adamdarr@gmail.com>
+Date:   Wed Jul 12 16:20:06 2017 -0400
+
+    update NAADSM DTM partial citations

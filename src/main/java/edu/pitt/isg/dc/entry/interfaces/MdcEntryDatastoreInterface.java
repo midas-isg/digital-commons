@@ -1,24 +1,24 @@
 package edu.pitt.isg.dc.entry.interfaces;
 
-import edu.pitt.isg.dc.entry.classes.EntryObject;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 
 import java.util.List;
 
 public interface MdcEntryDatastoreInterface {
-    String addEntry(EntryObject entryObject) throws MdcEntryDatastoreException;
+    String addEntry(EntryView entryObject) throws MdcEntryDatastoreException;
 
-    EntryObject getEntry(String id) throws MdcEntryDatastoreException;
+    EntryView getEntry(long id) throws MdcEntryDatastoreException;
 
-    List<String> getPendingEntryIds() throws MdcEntryDatastoreException;
+    List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
 
-    List<String> getEntryIds() throws MdcEntryDatastoreException;
+    List<Long> getEntryIds() throws MdcEntryDatastoreException;
 
-    String editEntry(String id,
-                     EntryObject entryObject) throws MdcEntryDatastoreException;
+    String editEntry(long id,
+                     EntryView entryObject) throws MdcEntryDatastoreException;
 
-    String deleteEntry(String id) throws MdcEntryDatastoreException;
+    String deleteEntry(long id) throws MdcEntryDatastoreException;
 
 
     void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException;
