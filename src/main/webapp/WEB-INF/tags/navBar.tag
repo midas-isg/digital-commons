@@ -34,7 +34,7 @@
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <li class="dropdown">
-        <a href="" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Digital Object <span class="caret"></span></a>
+        <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Digital Object <span class="caret"></span></a>
         <ul class="dropdown-menu pull-right">
             <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converter</a></li>
             <li><a href="${contextPath}/add/dataService">Data Service</a></li>

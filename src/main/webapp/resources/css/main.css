@@ -217,6 +217,10 @@
     width: 100% !important;
 }
 
+.full-width {
+    width:100%;
+}
+
 .background-nav {
     background-color: #0c2b65;
 }
@@ -290,6 +294,10 @@ a {
     color: #333;
     background-color: #fff !important;
     border-color: #ccc !important;
+}
+
+.display-none {
+    display:none;
 }
 
 .page-divider {display:none}
@@ -722,4 +730,19 @@ label[disabled="disabled"]{
 
 .visible {
     display: inline-block !important;
+}
+
+.legend-large {
+    margin-bottom: 45px;
+    position: fixed;
+    margin-right: 10px;
+    right: 15px;
+    bottom: 0;
+    z-index:100;
+}
+
+#legend-button {
+    position:absolute;
+    right:6px;
+    top:9px
 }

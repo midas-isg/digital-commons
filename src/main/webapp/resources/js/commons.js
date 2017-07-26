@@ -1193,14 +1193,23 @@ function displayList(attributeList) {
     return attribute;
 }
 
-function parseAttributeList(attributeList) {
+function parseAttributeList(attributeList, hasNulls) {
     for(var i = 0; i < attributeList.length; i++) {
         attributeList[i] = identifierToString(attributeList[i]);
         if(attributeList[i] !== null && attributeList[i].length > 0) {
-            var hasNulls = false;
+            hasNulls = false;
         }
     }
 }
+
+var convertToHtml = [
+    "publicationsThatUsedRelease",
+    "publicatoinsAboutRelease",
+    "forecasts",
+    "executables",
+    "dataInputFormats",
+    "dataOutputFormats"
+];
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
@@ -1212,7 +1221,6 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
-                console.log(attribute[i]);
                 if(attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
@@ -1222,7 +1230,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 $(containerId).hide();
             }
 
-            if((key == 'publicationsThatUsedRelease' || key == "publicatoinsAboutRelease" || key == "forecasts" || key == 'executables') && attribute.length > 1) {
+            if(convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
                 attribute = listToHtmlString(attribute);
             }  else {
                 attribute = displayList(attribute);
@@ -1262,7 +1270,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
-                if(attribute[i] !== null && attribute[i] !== '') {
+                if(attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
             }
@@ -1271,12 +1279,12 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 $(containerId).hide();
             }
 
-            if((key == 'dataInputFormats' || key == 'dataOutputFormats') && attribute.length > 1) {
+            if(convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
                 attribute = listToHtmlString(attribute);
             } else {
                 attribute = displayList(attribute);
             }
-        } else if(key == 'identifier' && type == 'software') {
+        } else if(key === 'identifier' && type === 'software') {
             attribute = attribute['identifier'];
             hasNulls = false;
         } else {
@@ -1298,7 +1306,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         } else {
             $(containerId).hide();
         }
-    } else if(type == 'software') {
+    } else if(type === 'software') {
         $(containerId).show();
         $(elementId).html('N/A');
     } else {
