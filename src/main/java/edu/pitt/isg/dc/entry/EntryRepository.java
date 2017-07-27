@@ -25,30 +25,30 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     @Query(nativeQuery = true, value = "select * from entry\n" +
             "where exists (\n" +
             "    select 1 from jsonb_array_elements(content #> '{entry,isAbout}') as about\n" +
-            "    where about #>> '{identifier,identifier}' like ?1\n" +
-            "    and about #>> '{identifier,identifierSource}' = 'https://biosharing.org/bsg-s000154'\n" +
+            "    where about #>> '{identifier,identifierSource}' = ?1\n" +
+            "    and about #>> '{identifier,identifier}' like ?2\n" +
             ")\n")
-    List<Entry> findAllByAboutNcbiId(String likeId);
+    List<Entry> findAllByAboutNcbiId(String srcId, String likeId);
 
     @Query(nativeQuery = true, value = "select distinct id from entry\n" +
             "where exists (\n" +
             "    select 1 from jsonb_array_elements(content #> '{entry,isAbout}') as about\n" +
-            "    where about #>> '{identifier,identifier}' in ?1\n" +
-            "    and about #>> '{identifier,identifierSource}' = 'https://biosharing.org/bsg-s000154'\n" +
+            "    where about #>> '{identifier,identifierSource}' = ?1\n" +
+            "    and about #>> '{identifier,identifier}' in ?2\n" +
             ")\n")
-    List<BigInteger> findAllByAboutNcbiIdViaOntology(List<String> ncbiIds);
+    List<BigInteger> findAllByIsAboutIdentifierViaOntology(String srcId, List<String> ids);
 
     @Query(nativeQuery = true, value = "select distinct id from entry\n" +
             "where exists (\n" +
             "    select 1 from jsonb_array_elements(content #> '{entry,spatialCoverage}') as about\n" +
-            "    where about #>> '{identifier,identifier}' in ?1\n" +
-            "    and about #>> '{identifier,identifierSource}' = 'ApolloLS'\n" +
+            "    where about #>> '{identifier,identifierSource}' = ?1\n" +
+            "    and about #>> '{identifier,identifier}' in ?2\n" +
             ")\n")
-    List<BigInteger> findAllBySpatialCoverageLsIdViaOntology(List<String> lsIds);
+    List<BigInteger> findAllBySpatialCoverageIdentifierViaOntology(String srcId, List<String> ids);
 
-    @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,isAbout}') AS about WHERE about #>> '{identifier,identifierSource}' = 'https://biosharing.org/bsg-s000154'")
-    List<String> listAboutNcbiIds();
+    @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,isAbout}') AS about WHERE about #>> '{identifier,identifierSource}' = ?1")
+    List<String> listAboutNcbiIds(String srcId);
 
-    @Query(nativeQuery = true, value = "SELECT DISTINCT loc #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,spatialCoverage}') AS loc WHERE loc #>> '{identifier,identifierSource}' =  'apollo location service'")
-    List<String> listSpatialCoverageLsIds();
+    @Query(nativeQuery = true, value = "SELECT DISTINCT loc #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,spatialCoverage}') AS loc WHERE loc #>> '{identifier,identifierSource}' = ?1")
+    List<String> listSpatialCoverageLsIds(String srcId);
 }

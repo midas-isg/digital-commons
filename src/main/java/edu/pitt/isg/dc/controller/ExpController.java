@@ -5,9 +5,7 @@ import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.dc.entry.Ncbi;
 import edu.pitt.isg.dc.entry.NcbiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,11 +41,17 @@ public class ExpController {
     @Autowired
     private NcbiRepository ncbiRepo;
 
+    @Value("${app.identifierSource.ncbi}")
+    private String ncbiIdentifierSource;
+
+    @Value("${app.identifierSource.ls}")
+    private String lsIdentifierSource;
+
     @RequestMapping(value = "/entries/by-about-ncbi/{id}",
             method = GET,
             produces = {JSON, XML})
     public Object findAllByAboutNcbiId(@PathVariable Long id) {
-        return repo.findAllByAboutNcbiId("%" + id);
+        return repo.findAllByAboutNcbiId(ncbiIdentifierSource, "%" + id);
     }
 
     @Transactional
@@ -59,9 +63,9 @@ public class ExpController {
             @RequestParam(value = "coverageLsId", required = false) Long coverageLsId) {
         List<BigInteger> results = null;
         if (aboutNcbiId != null)
-            results = repo.findAllByAboutNcbiIdViaOntology(toNcbiIds(aboutNcbiId));
+            results = repo.findAllByIsAboutIdentifierViaOntology(ncbiIdentifierSource, toNcbiIds(aboutNcbiId));
         if (coverageLsId != null)
-            results = merge(results, repo.findAllBySpatialCoverageLsIdViaOntology(toLsIds(coverageLsId)));
+            results = merge(results, repo.findAllBySpatialCoverageIdentifierViaOntology(lsIdentifierSource, toLsIds(coverageLsId)));
         final List<Long> longs = toLongs(results);
         if (longs == null)
             return repo.findAll();
@@ -122,7 +126,7 @@ public class ExpController {
             method = GET,
             produces = {JSON, XML})
     public Object listNcbisUsedAsIsAboutInEntries() {
-        return ncbiRepo.findAll(toIds(repo.listAboutNcbiIds()));
+        return ncbiRepo.findAll(toIds(repo.listAboutNcbiIds(ncbiIdentifierSource)));
     }
 
     @RequestMapping(value = "/ncbis/by-path/{id}",
@@ -172,7 +176,7 @@ public class ExpController {
             method = GET,
             produces = {JSON, XML})
     public Object listUsedNcbiAsSpatialCoverageInEntries() {
-        return toIds(repo.listSpatialCoverageLsIds());
+        return toIds(repo.listSpatialCoverageLsIds(lsIdentifierSource));
     }
 
     @RequestMapping(value = "/exp",
