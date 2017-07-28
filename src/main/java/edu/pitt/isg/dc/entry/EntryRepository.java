@@ -47,8 +47,8 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     List<BigInteger> findAllBySpatialCoverageIdentifierViaOntology(String srcId, List<String> ids);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,isAbout}') AS about WHERE about #>> '{identifier,identifierSource}' = ?1")
-    List<String> listAboutNcbiIds(String srcId);
+    List<String> listAboutIds(String srcId);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT loc #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,spatialCoverage}') AS loc WHERE loc #>> '{identifier,identifierSource}' = ?1")
-    List<String> listSpatialCoverageLsIds(String srcId);
+    List<String> listSpatialCoverageIds(String srcId);
 }

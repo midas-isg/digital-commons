@@ -62,14 +62,29 @@ public class ExpController {
             @RequestParam(value = "aboutNcbiId", required = false) Long aboutNcbiId,
             @RequestParam(value = "coverageLsId", required = false) Long coverageLsId) {
         List<BigInteger> results = null;
-        if (aboutNcbiId != null)
-            results = repo.findAllByIsAboutIdentifierViaOntology(ncbiIdentifierSource, toNcbiIds(aboutNcbiId));
+        if (aboutNcbiId != null) {
+            final List<String> ncbiIds = toNcbiIds(aboutNcbiId);
+            results = findByIsAboutIds(ncbiIds);
+        }
         if (coverageLsId != null)
             results = merge(results, repo.findAllBySpatialCoverageIdentifierViaOntology(lsIdentifierSource, toLsIds(coverageLsId)));
         final List<Long> longs = toLongs(results);
         if (longs == null)
             return repo.findAll();
         return repo.findAll(longs);
+    }
+
+    private List<BigInteger> findByIsAboutIds(List<String> ncbiIds) {
+        final Set<Long> ncbis = listNcbiIdsAsIsAboutInEntries();
+        List<String> filteredIds = ncbiIds.stream()
+                .map(Long::parseLong)
+                .filter(ncbis::contains)
+                .map(Object::toString)
+                .collect(Collectors.toList());
+        final List<BigInteger> entryIds = repo.findAllByIsAboutIdentifierViaOntology(ncbiIdentifierSource, filteredIds);
+        System.out.println(ncbiIds.size() + "-> " + filteredIds.size() + " ncbis:" + filteredIds
+                + "=>" + entryIds.size() + " entries:" + entryIds);
+        return entryIds;
     }
 
     private List<BigInteger> merge(List<BigInteger> list1, List<BigInteger> list2) {
@@ -90,7 +105,7 @@ public class ExpController {
     private List<String> toLsIds(Long lsId) {
         final List<String> urls = new ArrayList<>();
         urls.add(toLsUrl(lsId));
-        System.out.println(urls);
+        //System.out.println(urls);
         return urls;
     }
 
@@ -113,7 +128,7 @@ public class ExpController {
                 .mapToObj(this::toNcbiUrl)
                 .collect(Collectors.toList())
         );
-        System.out.println(urls);
+        // System.out.println(urls);
         return urls;
     }
 
@@ -125,14 +140,19 @@ public class ExpController {
     @RequestMapping(value = "/ncbis/used-in-entry-as-about",
             method = GET,
             produces = {JSON, XML})
-    public Object listNcbisUsedAsIsAboutInEntries() {
-        return ncbiRepo.findAll(toIds(repo.listAboutNcbiIds(ncbiIdentifierSource)));
+    public List<Ncbi> listNcbisUsedAsIsAboutInEntries() {
+        return ncbiRepo.findAll(listNcbiIdsAsIsAboutInEntries());
+    }
+
+    private Set<Long> listNcbiIdsAsIsAboutInEntries() {
+        return toIds(repo.listAboutIds(ncbiIdentifierSource));
     }
 
     @RequestMapping(value = "/ncbis/by-path/{id}",
             method = GET,
             produces = {JSON, XML})
     public Object findNcbisByPathContaining(@PathVariable Long id) {
+        listNcbisUsedAsIsAboutInEntries();
         return findNcbiIdsByPathContaining(id);
     }
 
@@ -176,7 +196,7 @@ public class ExpController {
             method = GET,
             produces = {JSON, XML})
     public Object listUsedNcbiAsSpatialCoverageInEntries() {
-        return toIds(repo.listSpatialCoverageLsIds(lsIdentifierSource));
+        return toIds(repo.listSpatialCoverageIds(lsIdentifierSource));
     }
 
     @RequestMapping(value = "/exp",
