@@ -32,19 +32,11 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
 
     @Query(nativeQuery = true, value = "select distinct id from entry\n" +
             "where exists (\n" +
-            "    select 1 from jsonb_array_elements(content #> '{entry,isAbout}') as about\n" +
-            "    where about #>> '{identifier,identifierSource}' = ?1\n" +
-            "    and about #>> '{identifier,identifier}' in ?2\n" +
+            "    select 1 from jsonb_array_elements(content #> ARRAY['entry',?1]) as about\n" +
+            "    where about #>> '{identifier,identifierSource}' = ?2\n" +
+            "    and about #>> '{identifier,identifier}' in ?3\n" +
             ")\n")
-    List<BigInteger> findAllByIsAboutIdentifierViaOntology(String srcId, List<String> ids);
-
-    @Query(nativeQuery = true, value = "select distinct id from entry\n" +
-            "where exists (\n" +
-            "    select 1 from jsonb_array_elements(content #> '{entry,spatialCoverage}') as about\n" +
-            "    where about #>> '{identifier,identifierSource}' = ?1\n" +
-            "    and about #>> '{identifier,identifier}' in ?2\n" +
-            ")\n")
-    List<BigInteger> findAllBySpatialCoverageIdentifierViaOntology(String srcId, List<String> ids);
+    List<BigInteger> findAllByIdentifierViaOntology(String field, String srcId, List<String> ids);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' FROM entry, jsonb_array_elements(content #> '{entry,isAbout}') AS about WHERE about #>> '{identifier,identifierSource}' = ?1")
     List<String> listAboutIds(String srcId);

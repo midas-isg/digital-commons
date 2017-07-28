@@ -67,7 +67,7 @@ public class ExpController {
             results = findByIsAboutIds(ncbiIds);
         }
         if (coverageLsId != null)
-            results = merge(results, repo.findAllBySpatialCoverageIdentifierViaOntology(lsIdentifierSource, toLsIds(coverageLsId)));
+            results = merge(results, repo.findAllByIdentifierViaOntology("spatialCoverage", lsIdentifierSource, toLsIds(coverageLsId)));
         final List<Long> longs = toLongs(results);
         if (longs == null)
             return repo.findAll();
@@ -81,7 +81,7 @@ public class ExpController {
                 .filter(ncbis::contains)
                 .map(Object::toString)
                 .collect(Collectors.toList());
-        final List<BigInteger> entryIds = repo.findAllByIsAboutIdentifierViaOntology(ncbiIdentifierSource, filteredIds);
+        final List<BigInteger> entryIds = repo.findAllByIdentifierViaOntology("isAbout", ncbiIdentifierSource, filteredIds);
         System.out.println(ncbiIds.size() + "-> " + filteredIds.size() + " ncbis:" + filteredIds
                 + "=>" + entryIds.size() + " entries:" + entryIds);
         return entryIds;
