@@ -29,6 +29,7 @@ public class EntryView extends EntryObject {
         content =  gson.toJson(entry.getContent());
         setId(entry.getId());
         setEntry(entry.getContent().get("entry"));
+        setCategory(entry.getCategory());
         copyPropertiesFrom(entry.getContent().get("properties"));
     }
 

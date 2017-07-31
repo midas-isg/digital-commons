@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry.classes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import edu.pitt.isg.dc.entry.Category;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.util.Map;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 class EntryObject {
     transient private Long id;
     private Object entry;
+    private Category category;
     private Map<String, String> properties = new HashMap<>();
 
     public Long getId() {
@@ -27,6 +29,14 @@ class EntryObject {
 
     public void setEntry(Object entry) {
         this.entry = entry;
+    }
+
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public Map<String, String> getProperties() {

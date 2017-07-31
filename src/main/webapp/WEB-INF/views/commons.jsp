@@ -8,6 +8,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <myTags:head title="MIDAS Digital Commons"/>
+<script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
+<script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>
 
 <myTags:header
         pageTitle="MIDAS Digital Commons"
@@ -24,7 +26,11 @@
             <div id="commons-main-body" class="row">
                 <div class="tab-content">
                     <div id="content" class="tab-pane fade in active">
-                        <myTags:content/>
+                        <myTags:content
+                                softwareEntries="${softwareEntries}"
+                                datasetEntries="${datasetEntries}"
+                                dataStandardEntries="${dataStandardEntries}"
+                        />
                     </div>
                     <div id="compute-platform" class="tab-pane fade">
                         <myTags:computePlatform/>
@@ -41,11 +47,8 @@
                 </div>
             </div>
 
-            <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
-            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
-
-            <myTags:software
-                    software="${software}"/>
+            <%--<myTags:software
+                    software="${software}"/>--%>
             <myTags:libraryViewerCollections
                     libraryViewerUrl="${libraryViewerUrl}"
                     libraryViewerToken="${libraryViewerToken}"

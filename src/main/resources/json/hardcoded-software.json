@@ -7,7 +7,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -16,14 +16,14 @@
       {
         "identifier": {
           "identifier": "366188",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "los angeles"
         }
       },
       {
         "identifier": {
           "identifier": "510873",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "seattle"
         }
       }
@@ -32,7 +32,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -108,7 +108,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -117,7 +117,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -153,7 +153,7 @@
       {
         "identifier": {
           "identifier": "7159",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "aedes aegypti"
         }
       }
@@ -254,7 +254,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "communicable human-to-human"
         }
       }
@@ -263,7 +263,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -272,7 +272,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -484,7 +484,7 @@
       {
         "identifier": {
           "identifier": "542924",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "cairns, australia"
         }
       }
@@ -493,14 +493,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -509,7 +509,7 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "dengue"
         }
       }
@@ -560,7 +560,7 @@
       {
         "identifier": {
           "identifier": "5622",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "yucat\u00e1n, mexico"
         }
       }
@@ -569,14 +569,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -585,7 +585,7 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "dengue"
         }
       }
@@ -626,7 +626,7 @@
       {
         "identifier": {
           "identifier": "11",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "sierra leone"
         }
       }
@@ -635,7 +635,7 @@
       {
         "identifier": {
           "identifier": "1570291",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "ebola virus"
         }
       }
@@ -659,7 +659,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -682,7 +682,7 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "us national"
         }
       }
@@ -691,7 +691,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -700,7 +700,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "communicable human-to-human"
         }
       }
@@ -757,7 +757,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": ""
         }
       }
@@ -766,7 +766,7 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "malaria"
         }
       }
@@ -775,14 +775,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -855,7 +855,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": ""
         }
       }
@@ -864,7 +864,7 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "malaria"
         }
       }
@@ -873,14 +873,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -951,7 +951,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": ""
         }
       }
@@ -1019,7 +1019,7 @@
       {
         "identifier": {
           "identifier": "418103",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "malaria"
         }
       }
@@ -1028,14 +1028,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -1053,7 +1053,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -1063,7 +1063,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza-like diseases"
         }
       }
@@ -1072,7 +1072,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -1159,7 +1159,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": ""
         }
       }
@@ -1168,7 +1168,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": ""
         }
       }
@@ -1177,7 +1177,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": ""
         }
       }
@@ -1226,7 +1226,7 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "zika"
         }
       }
@@ -1235,21 +1235,21 @@
       {
         "identifier": {
           "identifier": "542920",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "south america"
         }
       },
       {
         "identifier": {
           "identifier": "544697",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "latin america"
         }
       },
       {
         "identifier": {
           "identifier": "544696",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "caribbean"
         }
       }
@@ -1308,14 +1308,14 @@
       {
         "identifier": {
           "identifier": "114727",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "h1n1 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "119210",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "h3n2 influenza"
         }
       }
@@ -1336,7 +1336,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -1345,42 +1345,42 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "zika"
         }
       },
       {
         "identifier": {
           "identifier": "1570291",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "ebola virus"
         }
       },
       {
         "identifier": {
           "identifier": "333278",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "avian influenza a"
         }
       },
       {
         "identifier": {
           "identifier": "114727",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "h1n1 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "119210",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "h3n2 influenza"
         }
       },
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "dengue"
         }
       }
@@ -1445,7 +1445,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -1454,28 +1454,28 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "us national"
         }
       },
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "hhs regions"
         }
       },
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "census regions"
         }
       },
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "census states"
         }
       }
@@ -1508,7 +1508,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -1517,7 +1517,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "10 us regions and national"
         }
       }
@@ -1540,7 +1540,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -1549,7 +1549,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "10 us regions"
         }
       }
@@ -1599,7 +1599,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -1608,7 +1608,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "95 us cities"
         }
       }
@@ -1627,7 +1627,7 @@
       {
         "identifier": {
           "identifier": "12637",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "dengue"
         }
       }
@@ -1636,14 +1636,14 @@
       {
         "identifier": {
           "identifier": "476836",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "san juan, puerto rico"
         }
       },
       {
         "identifier": {
           "identifier": "544287",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "iquitos, peru"
         }
       }
@@ -1664,7 +1664,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "communicable human-to-human"
         }
       }
@@ -1682,7 +1682,7 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "us national"
         }
       }
@@ -1691,7 +1691,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -1744,7 +1744,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -1762,7 +1762,7 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "us national"
         }
       }
@@ -1773,7 +1773,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -1855,7 +1855,7 @@
       {
         "identifier": {
           "identifier": "1216",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "us national"
         }
       }
@@ -1864,7 +1864,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -1873,7 +1873,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "communicable human-to-human"
         }
       }
@@ -1927,7 +1927,7 @@
       {
         "identifier": {
           "identifier": "64320",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "zika"
         }
       }
@@ -1936,7 +1936,7 @@
       {
         "identifier": {
           "identifier": "544695",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "the americas"
         }
       }
@@ -1954,14 +1954,14 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       },
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -1984,7 +1984,7 @@
       {
         "identifier": {
           "identifier": "7157",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "mosquitoes"
         }
       }
@@ -2044,7 +2044,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -2053,7 +2053,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -2062,7 +2062,7 @@
       {
         "identifier": {
           "identifier": "1392",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "anthrax"
         }
       }
@@ -2115,7 +2115,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -2124,7 +2124,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -2133,7 +2133,7 @@
       {
         "identifier": {
           "identifier": "11309",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "influenza"
         }
       }
@@ -2223,21 +2223,21 @@
       {
         "identifier": {
           "identifier": "333278",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "avian influenza a"
         }
       },
       {
         "identifier": {
           "identifier": "12066",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "foot-and-mouth disease"
         }
       },
       {
         "identifier": {
           "identifier": "10345",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "pseudorabies"
         }
       }
@@ -2246,7 +2246,7 @@
       {
         "identifier": {
           "identifier": "5196",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "denmark"
         }
       }
@@ -2277,7 +2277,7 @@
       {
         "identifier": {
           "identifier": "",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": ""
         }
       }
@@ -2379,7 +2379,7 @@
       {
         "identifier": {
           "identifier": "9606",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "homo sapiens"
         }
       }
@@ -2388,7 +2388,7 @@
       {
         "identifier": {
           "identifier": "544694",
-          "identifierSource": "https://fairsharing.org/bsg-s000708",
+          "identifierSource": "https://biosharing.org/bsg-s000708",
           "identifierDescription": "worldwide"
         }
       }
@@ -2397,7 +2397,7 @@
       {
         "identifier": {
           "identifier": "12721",
-          "identifierSource": "https://fairsharing.org/bsg-s000154",
+          "identifierSource": "https://biosharing.org/bsg-s000154",
           "identifierDescription": "hiv"
         }
       }

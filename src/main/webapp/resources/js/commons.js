@@ -1189,7 +1189,9 @@ function listToHtmlString(attributeList) {
 
 function displayList(attributeList) {
     var attribute = attributeList.join(', ');
-    attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+    if(!attribute.includes('http')) {
+        attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
+    }
     return attribute;
 }
 

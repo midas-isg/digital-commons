@@ -45,7 +45,8 @@
                     <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
                     <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                 </ul>
-            </li>                                                    <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Format</a></li>
+            </li>
+            <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Format</a></li>
             <li><a href="${contextPath}/add/dataVisualizers">Data Visualizer</a></li>
             <li><a href="${contextPath}/add/diseaseForecasters">Disease Forecaster</a></li>
             <li><a href="${contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>

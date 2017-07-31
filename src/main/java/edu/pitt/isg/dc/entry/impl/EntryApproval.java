@@ -8,6 +8,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -48,5 +49,19 @@ public class EntryApproval implements EntryApprovalInterface {
     @Override
     public List<EntryView> getPendingEntries() throws MdcEntryDatastoreException {
         return mdcEntryDatastoreInterface.getPendingEntries();
+    }
+
+    @Override
+    public List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException {
+        List<Long> entryIds = mdcEntryDatastoreInterface.getEntryIds();
+        List<EntryView> entries = new ArrayList<>();
+        for(Long entryId : entryIds) {
+            EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
+            String status = entryView.getProperty("status");
+            if(status.equals("approved")) {
+                entries.add(entryView);
+            }
+        }
+        return entries;
     }
 }

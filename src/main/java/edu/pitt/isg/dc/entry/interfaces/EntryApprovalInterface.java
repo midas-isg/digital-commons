@@ -14,4 +14,6 @@ public interface EntryApprovalInterface {
                      String reason) throws MdcEntryDatastoreException;
 
     List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
+
+    List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException;
 }

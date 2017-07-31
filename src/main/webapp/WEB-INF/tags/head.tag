@@ -36,5 +36,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
     <script src="http://flowchart.js.org/flowchart-latest.js"></script>
 
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+
     <script>var ctx = "${pageContext.request.contextPath}"</script>
 </head>

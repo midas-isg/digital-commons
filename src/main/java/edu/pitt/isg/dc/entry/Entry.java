@@ -6,9 +6,7 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.HashMap;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -20,6 +18,7 @@ public class Entry {
     private Long id;
     private HashMap content;
     private String status;
+    private Category category;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -46,5 +45,15 @@ public class Entry {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

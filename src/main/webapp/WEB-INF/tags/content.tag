@@ -2,6 +2,12 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ attribute name="datasetEntries" required="true"
+              type="java.util.List"%>
+<%@ attribute name="dataStandardEntries" required="true"
+              type="java.util.List"%>
+<%@ attribute name="softwareEntries" required="true"
+              type="java.util.List"%>
 
 <div class="col-sm-4">
     <h3 class="content-title-font">Software</h3>
@@ -33,3 +39,11 @@
         <myTags:legendTable/>
     </div>
 </div>
+
+<script>
+    <c:forEach items="${softwareEntries}" var="softwareEntry" varStatus="softwareLoop">
+        digitalObjs["software"].push(getEntryFromJson('${softwareEntry.entryJsonString}'));
+    </c:forEach>
+
+    createBootstrapTree(digitalObjs["software"], "#algorithm-treeview", "expandedSoftware");
+</script>

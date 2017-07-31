@@ -3,6 +3,11 @@ package edu.pitt.isg.dc.controller;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.impl.EntryApproval;
+import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
@@ -46,6 +51,12 @@ public class HomeController {
     @Autowired
     private SpewRule spewRule;
 
+    @Autowired
+    private EntryApprovalInterface entryApprovalInterface;
+
+    @Autowired
+    private CategoryOrderRepository categoryOrderRepository;
+
     private Integer spewCount;
     private Integer spewAmericaCount;
 
@@ -77,7 +88,7 @@ public class HomeController {
         }
     }
 
-    public void populateCommonsMainModel(Model model) {
+    public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
             spewCount=0;
@@ -110,9 +121,36 @@ public class HomeController {
                 model.addAttribute("spewRegions", tree);
             }
         }
+
+        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
+        List<EntryView> datasetEntries = new ArrayList<>();
+        List<EntryView> dataStandardEntries = new ArrayList<>();
+        List<EntryView> softwareEntries = new ArrayList<>();
+
+        for(EntryView entryObject : entries) {
+            if(entryObject.getEntryType().contains("Dataset")) {
+                datasetEntries.add(entryObject);
+            } else if(entryObject.getEntryType().contains("DataStandard")) {
+                dataStandardEntries.add(entryObject);
+            } else {
+                softwareEntries.add(entryObject);
+            }
+        }
+
+        model.addAttribute("datasetEntries", datasetEntries);
+        model.addAttribute("dataStandardEntries", dataStandardEntries);
+        model.addAttribute("softwareEntries", softwareEntries);
+
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
+    }
+
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
+    public String categories(Model model) throws Exception {
+        categoryOrderRepository.findAll();
+        model.addAttribute("entries", entryApprovalInterface.getApprovedEntries());
+        return "categories";
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
