@@ -746,3 +746,8 @@ label[disabled="disabled"]{
     right:6px;
     top:9px
 }
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
