@@ -1,68 +1,3 @@
-var digitalObjs = {
-    "software": []
-};
-
-function getEntryFromJson(jsonString) {
-    var entryViewObj = JSON.parse(jsonString);
-    return entryViewObj["entry"];
-}
-
-function createBootstrapTree(entries, treeId, sessionVariable) {
-    var subtypes = [];
-    var entriesData = [];
-
-    for(var x = 0; x < entries.length; x++) {
-        var entryObj = entries[x];
-
-        var subtype = entryObj["subtype"];
-        var subtypeIndex = -1;
-        if(!subtypes.includes(subtype)) {
-            var treeNode = {
-                text: subtype,
-                nodes: []
-            };
-
-            entriesData.push(treeNode);
-            subtypes.push(subtype);
-            subtypeIndex = entriesData.length - 1;
-        } else {
-            subtypeIndex = subtypes.indexOf(subtype);
-        }
-
-        var product = entryObj["product"];
-        if(product !== undefined && product.length > 0) {
-            var containsProduct = false;
-            for(var i = 0; i < entriesData[subtypeIndex].nodes.length; i++) {
-                var currProduct = entriesData[subtypeIndex].nodes[i].product;
-
-                if(currProduct !== undefined && currProduct === product) {
-                    entriesData[subtypeIndex].nodes[i].nodes.push(
-                        getSoftwareNode(entryObj)
-                    );
-                    containsProduct = true;
-                    break;
-                }
-            }
-
-            if(!containsProduct) {
-                entriesData[subtypeIndex].nodes.push({
-                    text: product,
-                    nodes: [getSoftwareNode(entryObj)],
-                    product: product,
-                    name: product
-                });
-            }
-        } else {
-            entriesData[subtypeIndex].nodes.push(
-                getSoftwareNode(entryObj)
-            );
-        }
-    }
-
-    entriesData = sortAndCountSoftware(entriesData);
-    $(treeId).treeview(getTreeviewInfo(entriesData, treeId, sessionVariable));
-}
-
 function expandNodesInSessionVariable(treeId, sessionVariable) {
     var expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
     var toRemove = [];
@@ -114,10 +49,10 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
-            var info = data['info'];
-            if(info !== undefined && info.hasOwnProperty('entry')) {
-                if(info['entry'] !== undefined) {
-                    showModal(info, "software");
+            if(data !== undefined && data.hasOwnProperty('json')) {
+                if(data['json'] !== undefined) {
+                    //console.log(JSON.parse(data['json']));
+                    showModal(JSON.parse(data['json']), "software");
                 }
             }
             if(typeof data['nodes'] !== undefined) {
@@ -165,13 +100,9 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
     };
 }
 
-function showModal(info, type) {
-    var entry = info["entry"];
-
+function showModal(entry, type) {
     $('#display-json').text(JSON.stringify(entry, null, "\t"));
-    
     toggleModalItems(entry, type);
-
     $('#pageModal').modal('show');
 }
 

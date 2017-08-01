@@ -20,6 +20,15 @@
 
     <body id="commons-body">
         <div id="content-body" style="margin-top:10px">
+            <c:forEach items="${treeInfoArr}" var="treeInfo" varStatus="treeLoop">
+                <div class="col-sm-4">
+                    <h3 class="content-title-font">${treeInfo.category}</h3>
+                    <div id="tree-${treeLoop.index}" class="treeview"></div>
+                </div>
+                <script>
+                        $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
+                </script>
+            </c:forEach>
             <table class="table">
                 <thead>
                     <tr>

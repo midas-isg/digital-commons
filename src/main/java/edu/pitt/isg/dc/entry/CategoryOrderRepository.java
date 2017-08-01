@@ -10,4 +10,7 @@ import java.util.List;
 public interface CategoryOrderRepository extends JpaRepository<CategoryOrder, Long> {
     @Transactional(readOnly=true)
     public List<CategoryOrder> findAll();
+
+    @Transactional(readOnly=true)
+    public CategoryOrder findOne(Long id);
 }

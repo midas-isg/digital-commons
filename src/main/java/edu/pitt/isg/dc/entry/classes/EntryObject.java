@@ -61,6 +61,12 @@ class EntryObject {
         return StringEscapeUtils.escapeJavaScript(json);
     }
 
+    public String getUnescapedEntryJsonString() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String json = gson.toJson(this.getEntry());
+        return json;
+    }
+
     public String getEntryType() {
         if (this.getProperty("type") != null && this.getProperty("type").length() > 0) {
             return this.getProperty("type");
