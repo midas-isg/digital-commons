@@ -2011,12 +2011,17 @@ function openJsonInNewTab(elementId) {
     window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
 }
 
-function openJsonStringInNewTab(text) {
-    var type = 'application/json';
-    if(text.includes('xmlns')) {
-        type = 'application/xml';
-    }
-    window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
+function viewEntryInModal(title, text) {
+    var newText = text.replace(new RegExp('\r?\n','g'), '<br />');
+    $("#viewModalTitle").text(title);
+    $("#viewModalBody").html('<br>'+text);
+
+    $('#viewModal').modal('show');
+    // var type = 'application/json';
+    // if(text.includes('xmlns')) {
+    //     type = 'application/xml';
+    // }
+    // window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
 }
 
 function toggleElementById(id, element) {

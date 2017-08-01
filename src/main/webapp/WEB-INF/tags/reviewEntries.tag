@@ -64,6 +64,7 @@
     }
 </script>
 <myTags:softwareModal/>
+<myTags:viewModal/>
 <div class="col-md-12 container">
     <h3 class="title-font" id="subtitle">
         Review Submissions
