@@ -204,6 +204,7 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
     var containerId = elementId + '-container';
     var tagId = elementId + '-tag';
 
+    var pluralKey = key+'s';
     var singular = capitalizeFirst(elementName);
     var plural = singular + 's';
 
@@ -211,7 +212,9 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
         var attribute = entry[key];
         var length = attribute.length;
 
-        attribute = attribute.join(', ');
+        if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+            attribute = attribute.join(', ');
+        }
 
         $(containerId).show();
         $(elementId).html(attribute);
@@ -221,7 +224,20 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
         } else {
             $(tagId).text(singular + ':');
         }
-    } else {
+    } else if(pluralKey in entry) {
+        var attribute = entry[pluralKey];
+        var length = attribute.length;
+
+        attribute = attribute.map(function(elem){
+            return elem.firstName + " "  + elem.lastName;
+        }).join(",");
+
+        $(containerId).show();
+        $(elementId).html(attribute);
+
+        $(tagId).text(plural + ':');
+
+    } else{
         $(containerId).hide();
     }
 }
@@ -297,11 +313,13 @@ function toggleModalItems(entry, type) {
     toggleModalItem('visualizationType', entry, 'visualization-type', false, false);
     toggleModalItem('grants', entry, 'grant', false, false);
     toggleModalItem('platform', entry, 'platform', false, false);
+    toggleModalItem('producedBy', entry, 'produced-by', false, false);
     toggleModalItem('description', entry, 'description', false, false);
     toggleModalItem('landingPage', entry, 'landing-page', true, false);
-    toggleModalItem('accessUrl', entry, 'access-url', true, false);
+    toggleModalItem('accessURL', entry, 'access-url', true, false);
     toggleModalItem('authorizations', entry, 'authorizations', false, false);
     toggleModalItem('humanReadableSpecification', entry, 'human-readable-specification', true, false);
     toggleModalItem('machineReadableSpecification', entry, 'machine-readable-specification', true, false);
     toggleModalItem('validator', entry, 'validator', true, false);
+    toggleModalItem('spatialCoverage', entry, 'spatial-coverage', false, false);
 }

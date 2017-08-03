@@ -39,4 +39,6 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
+    <script src="${pageContext.request.contextPath}/resources/js/content.js"></script>
+
 </head>

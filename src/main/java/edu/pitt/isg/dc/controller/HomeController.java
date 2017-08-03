@@ -157,30 +157,33 @@ public class HomeController {
         List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
         Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
         for(EntryView entry : entries) {
-            Long categoryId = entry.getCategory().getId();
+            if(entry.getCategory() != null) {
+                Long categoryId = entry.getCategory().getId();
 
-            if(categoryEntryMap.containsKey(categoryId)) {
-                List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
-                categoryEntries.add(entry);
-                categoryEntryMap.put(categoryId, categoryEntries);
-            } else {
-                List<EntryView> categoryEntries = new ArrayList<>();
-                categoryEntries.add(entry);
-                categoryEntryMap.put(categoryId, categoryEntries);
+                if (categoryEntryMap.containsKey(categoryId)) {
+                    List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
+                    categoryEntries.add(entry);
+                    categoryEntryMap.put(categoryId, categoryEntries);
+                } else {
+                    List<EntryView> categoryEntries = new ArrayList<>();
+                    categoryEntries.add(entry);
+                    categoryEntryMap.put(categoryId, categoryEntries);
+                }
             }
         }
 
         List<Map<String,String>> treeInfoArr = new ArrayList<>();
-        for(Category node : categoryOrderMap.get(rootCategory)) {
-            JsonArray tree = new JsonArray();
-            tree = recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
-            JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
-            Map<String, String> treeInfo = new HashMap<>();
-            treeInfo.put("category" , node.getCategory());
-            treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
-            treeInfoArr.add(treeInfo);
+        if(categoryOrderMap.size() > 0) {
+            for (Category node : categoryOrderMap.get(rootCategory)) {
+                JsonArray tree = new JsonArray();
+                tree = recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
+                JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
+                Map<String, String> treeInfo = new HashMap<>();
+                treeInfo.put("category", node.getCategory());
+                treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
+                treeInfoArr.add(treeInfo);
+            }
         }
-
 
         return treeInfoArr;
     }
@@ -209,7 +212,7 @@ public class HomeController {
                 leafNode.addProperty("text", title);
                 treeNode.getAsJsonArray("nodes").add(leafNode);
 
-                int count = treeNode.getAsJsonObject().getP
+//                int count = treeNode.getAsJsonObject().getP
             }
         }
 

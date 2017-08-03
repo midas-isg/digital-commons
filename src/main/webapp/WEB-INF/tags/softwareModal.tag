@@ -92,6 +92,8 @@
 
                         <myTags:softwareModalItem id="grant" title="Associated grants"></myTags:softwareModalItem>
 
+                        <myTags:softwareModalItem id="produced-by" title="Produced by"></myTags:softwareModalItem>
+
                         <myTags:softwareModalItem id="source-code" title="Link to code repository" hasHref="true"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="source-code-release" title="Source code release" hasHref="false"></myTags:softwareModalItem>
@@ -121,6 +123,8 @@
                         <myTags:softwareModalItem id="publications-about-release" title="Publications about release" hasHref="false"></myTags:softwareModalItem>
 
                         <myTags:softwareModalItem id="publications-that-used-release" title="Publications that used release" hasHref="false"></myTags:softwareModalItem>
+
+                        <myTags:softwareModalItem id="spatial-coverage" title="Spatial coverage" hasHref="false"></myTags:softwareModalItem>
                     </div>
 
                     <div class="tab-pane fade" id="modal-json">

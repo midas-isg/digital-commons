@@ -70,7 +70,7 @@
             </c:choose>
             <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
             <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
-            <td><button class="btn btn-xs btn-default" onclick='viewEntryInModal("${entry.entry.title}", "${entry.entryJsonString}")'>View</button></td>
+            <td><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${entry.entryType}")'>View</button></td>
             <td><button class="btn btn-xs btn-success" onclick="approveEntry('${entry.id}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
             <td><button class="btn btn-xs btn-danger" onclick="rejectEntry('${entry.id}');"><icon class="glyphicon glyphicon-trash"></icon></button></td>
         </tr>
