@@ -19,6 +19,7 @@ public class EntryView extends EntryObject {
         entry.setId(id);
         entry.setContent(hashMap);
         entry.setStatus(entryObject.getProperty("status"));
+        entry.setCategory(entryObject.getCategory());
         return entry;
     }
 

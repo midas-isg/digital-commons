@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface EntryApprovalInterface {
     void acceptEntry(long entryId,
+                     long categoryId,
                      String authenticationToken) throws MdcEntryDatastoreException;
 
     void rejectEntry(long entryId,

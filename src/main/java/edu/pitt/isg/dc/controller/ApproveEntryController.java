@@ -2,12 +2,15 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.CategoryOrderRepository;
 import edu.pitt.isg.dc.entry.PopulateDatastore;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -32,8 +37,12 @@ public class ApproveEntryController {
 
     @Autowired
     private MdcEntryDatastoreInterface datastore;
+
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
+
+    @Autowired
+    private CategoryOrderRepository categoryOrderRepository;
 
     @RequestMapping(value = "/review", method = RequestMethod.GET)
     public String review(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
@@ -53,7 +62,11 @@ public class ApproveEntryController {
                 }
             }
 
+            CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+            Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
+
             model.addAttribute("entries", entries);
+            model.addAttribute("categoryPaths", categoryPaths);
             model.addAttribute("datasetEntries", datasetEntries);
             model.addAttribute("dataStandardEntries", dataStandardEntries);
             model.addAttribute("softwareEntries", softwareEntries);
@@ -65,11 +78,11 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/approve", method = RequestMethod.POST)
     @ResponseBody
-    public String approve(@RequestParam(value = "auth", required = false) String auth, @RequestParam(value = "id", required = true) long id, Model model) throws MdcEntryDatastoreException {
+    public String approve(@RequestParam(value = "auth", required = false) String auth, @RequestParam(value = "entryId", required = true) long entryId, @RequestParam(value = "categoryId", required = true) long categoryId, Model model) throws MdcEntryDatastoreException {
         if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
             String status = "success";
             try {
-                entryApprovalInterface.acceptEntry(id, EntryHelper.getServerAuthentication());
+                entryApprovalInterface.acceptEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }

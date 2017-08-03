@@ -33,6 +33,7 @@
             <div id="add-entry" class="tab-pane active">
                 <myTags:reviewEntries
                         entries="${entries}"
+                        categoryPaths="${categoryPaths}"
                         datasetEntries="${datasetEntries}"
                         dataStandardEntries="${dataStandardEntries}"
                         softwareEntries="${softwareEntries}"/>

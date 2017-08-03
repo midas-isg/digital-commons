@@ -49,6 +49,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
+            console.log(data);
             if(data !== undefined && data.hasOwnProperty('json')) {
                 if(data['json'] !== undefined) {
                     //console.log(JSON.parse(data['json']));

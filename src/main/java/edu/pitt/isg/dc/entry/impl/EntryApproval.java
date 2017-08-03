@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.entry.impl;
 
+import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.CategoryRepository;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
@@ -27,11 +29,18 @@ public class EntryApproval implements EntryApprovalInterface {
     @Autowired
     private MdcEntryDatastoreInterface mdcEntryDatastoreInterface;// = new Datastore();
 
+    @Autowired
+    private CategoryRepository categoryRepository;// = new Datastore();
+
     @Override
-    public void acceptEntry(long entryId, String authenticationToken) throws MdcEntryDatastoreException {
+    public void acceptEntry(long entryId, long categoryId, String authenticationToken) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
             entryObject.setProperty("status", "approved");
+
+            Category category = categoryRepository.findOne(categoryId);
+            entryObject.setCategory(category);
+
             mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
             //TODO: Do we need? mdcEntryDatastoreInterface.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
         }

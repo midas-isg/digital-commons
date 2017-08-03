@@ -12,6 +12,7 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.EntryApproval;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
@@ -124,104 +125,14 @@ public class HomeController {
             }
         }
 
-        List<Map<String,String>> treeInfoArr = getEntryTrees();
+        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+        List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
+        categoryHelper.getBottomLevelCategories();
+
         model.addAttribute("treeInfoArr", treeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
-    }
-
-    public List<Map<String,String>> getEntryTrees() throws MdcEntryDatastoreException {
-        List<CategoryOrder> categoryOrders = categoryOrderRepository.findAll();
-        Category rootCategory = new Category();
-        Map<Category, List<Category>> categoryOrderMap = new HashMap<>();
-        for(CategoryOrder co : categoryOrders) {
-            Category category = co.getCategory();
-            Category subcategory = co.getSubcategory();
-
-            if(category.getCategory().equals("Root")) {
-                rootCategory = category;
-            }
-
-            if(categoryOrderMap.containsKey(category)) {
-                List<Category> subcategories = categoryOrderMap.get(category);
-                subcategories.add(subcategory);
-                categoryOrderMap.put(category, subcategories);
-            } else {
-                List<Category> subcategories = new ArrayList<>();
-                subcategories.add(subcategory);
-                categoryOrderMap.put(category, subcategories);
-            }
-        }
-
-        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
-        Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
-        for(EntryView entry : entries) {
-            Long categoryId = entry.getCategory().getId();
-
-            if(categoryEntryMap.containsKey(categoryId)) {
-                List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
-                categoryEntries.add(entry);
-                categoryEntryMap.put(categoryId, categoryEntries);
-            } else {
-                List<EntryView> categoryEntries = new ArrayList<>();
-                categoryEntries.add(entry);
-                categoryEntryMap.put(categoryId, categoryEntries);
-            }
-        }
-
-        List<Map<String,String>> treeInfoArr = new ArrayList<>();
-        for(Category node : categoryOrderMap.get(rootCategory)) {
-            JsonArray tree = new JsonArray();
-            tree = recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
-            JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
-            Map<String, String> treeInfo = new HashMap<>();
-            treeInfo.put("category" , node.getCategory());
-            treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
-            treeInfoArr.add(treeInfo);
-        }
-
-
-        return treeInfoArr;
-    }
-
-    private JsonArray recurseCategories(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {
-        JsonObject treeNode = new JsonObject();
-        treeNode.addProperty("categoryId", category.getId());
-        treeNode.addProperty("text", category.getCategory());
-        treeNode.addProperty("count", 0);
-        treeNode.add("nodes", new JsonArray());
-
-       if(categoryEntryMap.containsKey(category.getId())) {
-            List<EntryView> entries = categoryEntryMap.get(category.getId());
-            for(EntryView entry : entries) {
-                String title = "";
-                LinkedHashMap entryData = (LinkedHashMap) entry.getEntry();
-                if(entryData.containsKey("title")) {
-                    title = String.valueOf(entryData.get("title"));
-                } else if(entryData.containsKey("name")) {
-                    title = String.valueOf(entryData.get("name"));
-                }
-
-                JsonObject leafNode = new JsonObject();
-                leafNode.addProperty("entryId", entry.getId());
-                leafNode.addProperty("json", entry.getUnescapedEntryJsonString());
-                leafNode.addProperty("text", title);
-                treeNode.getAsJsonArray("nodes").add(leafNode);
-
-                int count = treeNode.getAsJsonObject().getP
-            }
-        }
-
-        if(categoryOrderMap.containsKey(category)) {
-            List<Category> childNodes = categoryOrderMap.get(category);
-            for(Category node : childNodes) {
-                recurseCategories(node, categoryOrderMap, categoryEntryMap, treeNode.getAsJsonArray("nodes"));
-            }
-        }
-
-        tree.add(treeNode);
-        return tree;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

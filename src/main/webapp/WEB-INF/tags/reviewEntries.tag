@@ -11,6 +11,9 @@
               type="java.util.List"%>
 <%@ attribute name="softwareEntries" required="true"
               type="java.util.List"%>
+<%@ attribute name="categoryPaths" required="true"
+              type="java.util.Map"%>
+
 <script>
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
@@ -20,31 +23,6 @@
         if (!results) return null;
         if (!results[2]) return '';
         return decodeURIComponent(results[2].replace(/\+/g, " "));
-    }
-
-    function getEntryParams(id) {
-        var auth = getParameterByName("auth");
-        var params = {
-            'auth': auth,
-            'id': id
-        };
-        return params;
-    }
-
-    function approveEntry(id) {
-        var approve = confirm("Are you sure you want to approve this entry?");
-        if(approve) {
-            var params = getEntryParams(id);
-            $.post("${pageContext.request.contextPath}/approve", params ,function(data){
-                if(data == "success") {
-                    window.location.reload();
-                } else {
-                    alert("There was an issue approving this entry. Please try again.");
-                }
-            }).fail(function() {
-                alert("There was an issue approving this entry. Please try again.");
-            });
-        }
     }
 
     function rejectEntry(id) {
@@ -65,6 +43,7 @@
 </script>
 <myTags:softwareModal/>
 <myTags:viewModal/>
+<myTags:approveModal categoryPaths="${categoryPaths}"/>
 <div class="col-md-12 container">
     <h3 class="title-font" id="subtitle">
         Review Submissions
