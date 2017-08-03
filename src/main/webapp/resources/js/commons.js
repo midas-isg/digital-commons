@@ -1180,6 +1180,22 @@ function identifierToString(attribute) {
     return attribute;
 }
 
+function nameToString(attribute) {
+    var name = {};
+    if(attribute.hasOwnProperty('name')) {
+        name = attribute['name'];
+    }
+
+    if(attribute.hasOwnProperty('location')) {
+        name += ", " + attribute['location'];
+    }
+
+    if(Object.keys(name).length === 0){
+        return attribute;
+    }
+    return name;
+}
+
 function listToHtmlString(attributeList) {
     var htmlStr = '<ul style="padding-left:19px"><li>';
     attributeList = attributeList.join('</li><li>');
@@ -1217,15 +1233,29 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
 
-    if(key in attrs && attrs[key] != null) {
-        var attribute = attrs[key];
+    if((key in attrs && attrs[key] != null) || (key === 'accessURL' || key === 'landingPage')) {
+        var attribute;
+        if(key in attrs) {
+            attribute = attrs[key];
+        } else if(attrs['distributions'] != null) {
+            attribute = attrs['distributions'][0]['access'][key];
+        } else {
+            return;
+        }
         var hasNulls = true;
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
-                if(attribute[i] !== null && attribute[i].length > 0) {
+                if (attribute[i] !== null && attribute[i].length > 0) {
                     hasNulls = false;
                 }
+
+                attribute[i] = nameToString(attribute[i]);
+                if (attribute[i] !== null && attribute[i].length > 0) {
+                    hasNulls = false;
+                }
+
+
             }
 
             if(hasNulls) {
@@ -1237,11 +1267,29 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }  else {
                 attribute = displayList(attribute);
             }
+        } else if(key === 'producedBy') {
+            if(Object.keys(attribute).length !== 0) {
+                if(Object.keys(attribute['location']).length !== 0) {
+                    attribute = attribute['name'] + ", " + attribute['location']['postalAddress'];
+                } else {
+                    attribute = attribute['name'];
+                }
+                hasNulls = false;
+            } else {
+                $(containerId).hide();
+            }
+        } else if (key === 'type') {
+            if(Object.keys(attribute).length !== 0) {
+                attribute = attribute['value'];
+                hasNulls = false;
+            } else {
+                $(containerId).hide();
+            }
         } else {
             hasNulls = false;
         }
 
-        if(!hasNulls) {
+        if (!hasNulls) {
             if(renderHtml) {
                 $(elementId).html(attribute);
             } else {
@@ -1286,7 +1334,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             } else {
                 attribute = displayList(attribute);
             }
-        } else if(key === 'identifier' && type === 'software') {
+        } else if(key === 'identifier') {
             attribute = attribute['identifier'];
             hasNulls = false;
         } else {
