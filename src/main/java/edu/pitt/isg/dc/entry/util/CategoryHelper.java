@@ -95,16 +95,17 @@ public class CategoryHelper {
         this.getTreePaths();
 
         List<Map<String,String>> treeInfoArr = new ArrayList<>();
-        for(Category node : categoryOrderMap.get(rootCategory)) {
-            JsonArray tree = new JsonArray();
-            tree = this.recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
-            JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
-            Map<String, String> treeInfo = new HashMap<>();
-            treeInfo.put("category" , node.getCategory());
-            treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
-            treeInfoArr.add(treeInfo);
+        if(categoryOrderMap.size() > 0) {
+            for (Category node : categoryOrderMap.get(rootCategory)) {
+                JsonArray tree = new JsonArray();
+                tree = this.recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
+                JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
+                Map<String, String> treeInfo = new HashMap<>();
+                treeInfo.put("category", node.getCategory());
+                treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
+                treeInfoArr.add(treeInfo);
+            }
         }
-
         return treeInfoArr;
     }
 
@@ -154,7 +155,7 @@ public class CategoryHelper {
 
     public Map<Long,String> recurseTreePaths(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, Map<Long, String> paths, String path) {
         String categoryName = category.getCategory();
-        if(!categoryName.equals("Root")) {
+        if(categoryName != null && !categoryName.equals("Root")) {
             path += categoryName + " -> ";
             if(categoryEntryMap.containsKey(category.getId())) {
                 paths.put(category.getId(), path.substring(0, path.lastIndexOf(" -> ")));
