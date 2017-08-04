@@ -1,7 +1,7 @@
 package edu.pitt.isg.dc.entry.util;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.CategoryOrder;
 import edu.pitt.isg.dc.entry.CategoryOrderRepository;
@@ -10,7 +10,7 @@ import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.stereotype.Component;
-
+import java.lang.reflect.Type;
 import java.util.*;
 
 @Component
@@ -24,18 +24,7 @@ public class CategoryHelper {
         this.entryApprovalInterface = entryApprovalInterface;
     }
 
-    public Collection<Category> getBottomLevelCategories() throws MdcEntryDatastoreException {
-        Map<Long, Category> categories = new HashMap<>();
-        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
-        for(EntryView entry : entries) {
-            Category category = entry.getCategory();
-            if(category != null)
-                categories.put(category.getId(), category);
-        }
-        return categories.values();
-    }
-
-    public Map<String, Object> getCategoryOrderMap() {
+    private Map<String, Object> getCategoryOrderMap() {
         List<CategoryOrder> categoryOrders = categoryOrderRepository.findAll();
         Category rootCategory = new Category();
         Map<Category, List<Category>> categoryOrderMap = new HashMap<>();
@@ -64,7 +53,7 @@ public class CategoryHelper {
         return map;
     }
 
-    public Map<Long, List<EntryView>> getCategoryEntryMap() throws MdcEntryDatastoreException {
+    private Map<Long, List<EntryView>> getCategoryEntryMap() throws MdcEntryDatastoreException {
         List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
         Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
         for(EntryView entry : entries) {
@@ -94,11 +83,13 @@ public class CategoryHelper {
         Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
         this.getTreePaths();
 
+        JsonParser jsonParser = new JsonParser();
         List<Map<String,String>> treeInfoArr = new ArrayList<>();
         for(Category node : categoryOrderMap.get(rootCategory)) {
             JsonArray tree = new JsonArray();
             tree = this.recurseCategories(node, categoryOrderMap, categoryEntryMap, tree);
             JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
+
             Map<String, String> treeInfo = new HashMap<>();
             treeInfo.put("category" , node.getCategory());
             treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
@@ -108,7 +99,7 @@ public class CategoryHelper {
         return treeInfoArr;
     }
 
-    public JsonArray recurseCategories(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {
+    private JsonArray recurseCategories(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {
         JsonObject treeNode = new JsonObject();
         treeNode.addProperty("categoryId", category.getId());
         treeNode.addProperty("text", category.getCategory());
@@ -117,6 +108,7 @@ public class CategoryHelper {
 
         if(categoryEntryMap.containsKey(category.getId())) {
             List<EntryView> entries = categoryEntryMap.get(category.getId());
+            //entries.sort(Comparator.comparing(EntryView::getTitle, String.CASE_INSENSITIVE_ORDER));
             for(EntryView entry : entries) {
                 String title = entry.getTitle();
 
@@ -138,6 +130,25 @@ public class CategoryHelper {
             }
         }
 
+        treeNode.add("nodes", sortedJsonArray(treeNode.getAsJsonArray("nodes")));
+
+        String text = treeNode.getAsJsonPrimitive("text").getAsString();
+        int count = treeNode.getAsJsonPrimitive("count").getAsInt();
+        JsonArray nodes = treeNode.getAsJsonArray("nodes");
+        for(JsonElement node : nodes) {
+            JsonObject nodeObj = node.getAsJsonObject();
+            if(nodeObj.has("count")) {
+                count += nodeObj.get("count").getAsInt();
+            }
+
+            if(nodeObj.has("nodes")) {
+                nodeObj.add("nodes", sortedJsonArray(nodeObj.getAsJsonArray("nodes")));
+            }
+        }
+        text += " [" + count + "]";
+        treeNode.addProperty("count", count);
+        treeNode.addProperty("text", text);
+
         tree.add(treeNode);
         return tree;
     }
@@ -152,7 +163,7 @@ public class CategoryHelper {
         return this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
     }
 
-    public Map<Long,String> recurseTreePaths(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, Map<Long, String> paths, String path) {
+    private Map<Long,String> recurseTreePaths(Category category, Map<Category, List<Category>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, Map<Long, String> paths, String path) {
         String categoryName = category.getCategory();
         if(!categoryName.equals("Root")) {
             path += categoryName + " -> ";
@@ -169,5 +180,35 @@ public class CategoryHelper {
         }
 
         return paths;
+    }
+
+    private JsonArray sortedJsonArray(JsonArray jsonArray) {
+        Type listType = new TypeToken<List<JsonObject>>() {}.getType();
+        List<JsonObject> myList = new Gson().fromJson(jsonArray, listType);
+        Collections.sort(myList, new JsonObjectComparator());
+
+        JsonArray sortedJsonArray = new JsonArray();
+        for(JsonObject listItem : myList)
+            sortedJsonArray.add(listItem);
+
+        return sortedJsonArray;
+    }
+
+    private class JsonObjectComparator implements Comparator<JsonObject> {
+        @Override
+        public int compare(JsonObject o1, JsonObject o2) {
+            return o1.get("text").getAsString().toLowerCase().compareTo(o2.get("text").getAsString().toLowerCase());
+        }
+    }
+
+    public Collection<Category> getBottomLevelCategories() throws MdcEntryDatastoreException {
+        Map<Long, Category> categories = new HashMap<>();
+        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
+        for(EntryView entry : entries) {
+            Category category = entry.getCategory();
+            if(category != null)
+                categories.put(category.getId(), category);
+        }
+        return categories.values();
     }
 }

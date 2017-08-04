@@ -32,6 +32,7 @@ public class EntryView extends EntryObject {
         setEntry(entry.getContent().get("entry"));
         setCategory(entry.getCategory());
         copyPropertiesFrom(entry.getContent().get("properties"));
+        setProperty("status", entry.getStatus());
     }
 
     private void copyPropertiesFrom(Object obj) {
