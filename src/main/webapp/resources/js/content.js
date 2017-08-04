@@ -184,6 +184,9 @@ function capitalizeFirst(string) {
 
 function setModalHeader(entry) {
     var title = entry["title"];
+    if(title === undefined && Object.keys(entry['name']).length !== 0) {
+        title = entry['name'];
+    }
     var version = entry["version"];
 
     var modalHeaderId = '#software-name';
@@ -191,7 +194,11 @@ function setModalHeader(entry) {
     if(title !== undefined) {
         modalHeaderText = title;
         if(version !== undefined) {
-            modalHeaderText = getSoftwareTitle(title, version.join(', '));
+            if(Object.prototype.toString.call( version ) === '[object Array]') {
+                modalHeaderText = getSoftwareTitle(title, version.join(', '));
+            } else {
+                modalHeaderText = getSoftwareTitle(title, version);
+            }
         }
         $(modalHeaderId).text(modalHeaderText);
         $(modalHeaderId).show();
