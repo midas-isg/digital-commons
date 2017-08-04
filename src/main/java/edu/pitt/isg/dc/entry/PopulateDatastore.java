@@ -17,12 +17,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class PopulateDatastore {
-    private static String ENTRIES_FILEPATH = "";
-
-    static {
-        Properties configurationProperties = DigitalCommonsProperties.getProperties();
-        ENTRIES_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_FILEPATH);
-    }
+    private static String ENTRIES_FILEPATH = EntryHelper.getEntriesFilepath();
 
     private final MdcEntryDatastoreInterface mdcEntryDatastoreInterface;
 

@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry.util;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -34,6 +35,11 @@ public class EntryHelper {
 
     private static final Object dumpLock = new Object();
     private static final Object copyLock = new Object();
+
+    @VisibleForTesting
+    public static void setEntriesFilepath(String path) {
+        ENTRIES_FILEPATH = path;
+    }
 
     public static String getTypeFromPath(String path) {
         if (path != null && path.length() > 0) {

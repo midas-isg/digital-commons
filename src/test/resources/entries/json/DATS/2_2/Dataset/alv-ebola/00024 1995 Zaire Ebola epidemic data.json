@@ -1,0 +1,210 @@
+{
+  "title": "1995, Kwilu, Bandundu, Zaire Ebola epidemic data and knowledge",
+  "types": [
+    {
+      "information": {
+        "value": "epidemic",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
+      }
+    },
+    {
+      "method": {
+        "value": "systematic literature review",
+        "valueIRI": "http://purl.obolibrary.org/obo/OBI_0001958"
+      }
+    }
+  ],
+  "isAbout": [
+    {
+      "name": "Ebola virus - Zaire (1995)",
+      "identifier": {
+        "identifier": "128951",
+        "identifierSource": "https://biosharing.org/bsg-s000154"
+      }
+    },
+    {
+      "name": "Ebola virus disease",
+      "identifier": {
+        "identifier": "37109004",
+        "identifierSource": "https://biosharing.org/bsg-s000098"
+      }
+    },
+    {
+      "name": "infectious disease control strategy",
+      "identifier": {
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000086",
+        "identifierSource": "https://biosharing.org/bsg-s002688"
+      }
+    }
+  ],
+  "creators": [
+    {
+      "email": "",
+      "lastName": "Dato",
+      "firstName": "Virginia"
+    }
+  ],
+  "identifier": {
+    "identifier": "https://doi.org/10.5281/zenodo.572239",
+    "identifierSource": "zenodo"
+  },
+  "producedBy": {
+    "name": "RODS Laboratory, University of Pittsburgh",
+    "endDate": {
+      "date": "2016-01-28",
+      "type": {
+        "value": "modification",
+        "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001874"
+      }
+    },
+    "location": {
+      "postalAddress": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh, Pittsburgh, PA, United States"
+    },
+    "startDate": {
+      "date": "2014-09-18",
+      "type": {
+        "value": "creation",
+        "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+      }
+    }
+  },
+  "description": "Information about the 1995, Kwilu, Bandundu, Zaire Ebola epidemic curated from multiple publications and reports. The information is represented in machine-interpretable Apollo-XSD format. The terminology is defined by the Apollo-SV ontology and standard identifiers.",
+  "acknowledges": [
+    {
+      "name": "MIDAS Informatics Services Group",
+      "funders": [
+        {
+          "name": "National Institute of General Medical Sciences",
+          "abbreviation": "NIGMS"
+        }
+      ],
+      "identifier": {
+        "identifier": "U24GM110707",
+        "identifierSource": "US National Institutes of Health"
+      }
+    },
+    {
+      "name": "Apollo: Increasing Access and Use of Epidemic Models Through the Development and Adoption of Standards",
+      "funders": [
+        {
+          "name": "National Institute of General Medical Sciences",
+          "abbreviation": "NIGMS"
+        }
+      ],
+      "identifier": {
+        "identifier": "R01GM101151",
+        "identifierSource": "US National Institutes of Health"
+      }
+    }
+  ],
+  "distributions": [
+    {
+      "size": 27.0,
+      "unit": {
+        "value": "kilobyte",
+        "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+      },
+      "dates": [
+        {
+          "date": "2014-09-18",
+          "type": {
+            "value": "creation",
+            "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001882"
+          }
+        },
+        {
+          "date": "2016-01-28",
+          "type": {
+            "value": "modification",
+            "valueIRI": "http://purl.obolibrary.org/obo/GENEPIO_0001874"
+          }
+        }
+      ],
+      "access": {
+        "accessURL": "http://epimodels.org/apolloLibraryViewer-4.0.1/epidemic/6.xml?view\u003dtrue",
+        "landingPage": "http://epimodels.org/apolloLibraryViewer-4.0.1/main/epidemic/6",
+        "authorizations": [
+          {
+            "value": "public",
+            "valueIRI": ""
+          }
+        ]
+      },
+      "formats": [
+        "xml",
+        "json"
+      ],
+      "storedIn": {
+        "name": "Apollo Library",
+        "types": [
+          {
+            "value": "primary repository",
+            "valueIRI": ""
+          },
+          {
+            "value": "knowledge base",
+            "valueIRI": ""
+          }
+        ],
+        "scopes": [
+          {
+            "value": "epidemic",
+            "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
+          },
+          {
+            "value": "infectious disease scenario",
+            "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000184"
+          },
+          {
+            "value": "case series",
+            "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+          }
+        ],
+        "version": "4.0.1",
+        "licenses": [
+          {
+            "name": "CC BY 4.0"
+          }
+        ],
+        "identifier": {
+          "identifier": "biodbcore-000938",
+          "identifierSource": "https://biosharing.org"
+        },
+        "publishers": [
+          {
+            "name": "RODS Laboratory, Department of Biomedical Informatics, University of Pittsburgh"
+          }
+        ],
+        "description": "A repository of machine-interpretable information in the domain of infectious disease epidemiology. The intent of the collection is to support model building."
+      },
+      "conformsTo": [
+        {
+          "name": "Apollo XSD",
+          "type": {
+            "value": "xml schema",
+            "valueIRI": "https://github.com/ApolloDev/apollo-xsd-and-types/tree/4.0-upgrade"
+          },
+          "identifier": {
+            "identifier": "bsg-s000701",
+            "identifierSource": "https://biosharing.org"
+          }
+        }
+      ],
+      "identifier": {
+        "identifier": "1",
+        "identifierSource": ""
+      }
+    }
+  ],
+  "spatialCoverage": [
+    {
+      "name": "Kikwit",
+      "identifier": {
+        "identifier": "85164",
+        "identifierSource": "ApolloLS"
+      },
+      "description": "Kikwit population ~200,000, the former regional capital of Bandundu region, is located on the banks of the Kwilu River",
+      "alternateIdentifiers": []
+    }
+  ]
+}

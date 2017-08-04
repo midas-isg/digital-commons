@@ -1,4 +1,4 @@
-package edu.pitt.isg.dc.controller;
+package edu.pitt.isg.dc.controller.ws;
 
 class MediaType {
     public static class Application {
