@@ -126,7 +126,6 @@
 
     function showTitle(title) {
         var d = document.getElementById(title);
-        console.log(d);
         d.classList.remove('hidden');
         d.classList.add('visible');
     }
