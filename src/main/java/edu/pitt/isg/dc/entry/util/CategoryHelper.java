@@ -118,6 +118,7 @@ public class CategoryHelper {
                 leafNode.addProperty("entryId", entry.getId());
                 leafNode.addProperty("json", entry.getUnescapedEntryJsonString());
                 leafNode.addProperty("text", title);
+                leafNode.addProperty("type", entry.getEntryType());
                 treeNode.getAsJsonArray("nodes").add(leafNode);
 
                 int count = treeNode.getAsJsonPrimitive("count").getAsInt() + 1;

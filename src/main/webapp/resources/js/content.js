@@ -51,7 +51,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         onNodeSelected: function(event, data) {
             if(data !== undefined && data.hasOwnProperty('json')) {
                 if(data['json'] !== undefined) {
-                    showModal(JSON.parse(data['json']), "software");
+                    showModal(JSON.parse(data['json']), data['type']);
                 }
             }
             if(typeof data['nodes'] !== undefined) {
@@ -100,6 +100,14 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
 }
 
 function showModal(entry, type) {
+    if(!type.includes('Dataset') && !type.includes('DataStandard')) {
+        $('#dats-json').hide();
+        $('#mdc-json').show();
+    } else {
+        $('#dats-json').show();
+        $('#mdc-json').hide();
+    }
+
     $('#display-json').text(JSON.stringify(entry, null, "\t"));
     toggleModalItems(entry, type);
     $('#pageModal').modal('show');
@@ -214,28 +222,35 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
     var singular = capitalizeFirst(elementName);
     var plural = singular + 's';
 
+    var attribute;
+    var length;
     if(key in entry) {
-        var attribute = entry[key];
-        var length = attribute.length;
+        attribute = entry[key];
+        length = attribute.length;
 
         if(Object.prototype.toString.call( attribute ) === '[object Array]') {
             attribute = attribute.join(', ');
-        }
-
-        $(containerId).show();
-        $(elementId).html(attribute);
-
-        if(length > 1) {
-            $(tagId).text(plural + ':');
+            if(length > 1) {
+                $(tagId).text(plural + ':');
+            } else {
+                $(tagId).text(singular + ':');
+            }
         } else {
             $(tagId).text(singular + ':');
         }
+
+        if(attribute.length > 0) {
+            $(containerId).show();
+            $(elementId).html(attribute);
+        } else {
+            $(containerId).hide();
+        }
     } else if(pluralKey in entry) {
-        var attribute = entry[pluralKey];
-        var length = attribute.length;
+        attribute = entry[pluralKey];
+        length = attribute.length;
 
         attribute = attribute.map(function(elem){
-            return elem.firstName + " "  + elem.lastName;
+            return elem.firstName + " " + elem.lastName;
         }).join(",");
 
         $(containerId).show();

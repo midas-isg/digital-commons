@@ -1239,7 +1239,12 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             attribute = attrs[key];
         } else if(attrs['distributions'] != null) {
             attribute = attrs['distributions'][0]['access'][key];
+            if(attribute == null) {
+                $(containerId).hide();
+                return;
+            }
         } else {
+            $(containerId).hide();
             return;
         }
         var hasNulls = true;
@@ -1280,8 +1285,12 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }
         } else if (key === 'type') {
             if(Object.keys(attribute).length !== 0) {
-                attribute = attribute['value'];
-                hasNulls = false;
+                if(Object.prototype.toString.call( attribute ) === "[object Object]") {
+                    attribute = attribute['value'];
+                }
+                if(attribute.length > 0) {
+                    hasNulls = false;
+                }
             } else {
                 $(containerId).hide();
             }
@@ -1336,7 +1345,12 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             }
         } else if(key === 'identifier') {
             attribute = attribute['identifier'];
-            hasNulls = false;
+
+            if(attribute == null) {
+                hasNulls = true;
+            } else {
+                hasNulls = false;
+            }
         } else {
             hasNulls = false;
         }
@@ -1353,10 +1367,13 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             }
 
             $(containerId).show();
+        } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
+            $(containerId).show();
+            $(elementId).html('N/A');
         } else {
             $(containerId).hide();
         }
-    } else if(type === 'software') {
+    } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
         $(elementId).html('N/A');
     } else {
