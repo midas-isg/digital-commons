@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.entry;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -9,7 +11,8 @@ import java.util.List;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
-    List<Entry> findAllByStatus(String status);
+    Page<Entry> findAllByStatus(String status, Pageable pageable);
+    Page<Entry> findByIdIn(List<Long> ids, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT id FROM entry\n" +
             "WHERE EXISTS (\n" +

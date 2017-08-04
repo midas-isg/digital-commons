@@ -3,6 +3,8 @@ package edu.pitt.isg.dc.entry;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -32,15 +34,15 @@ public class EntryRule {
     @Value("${app.identifierSource.ls}")
     private String lsIdentifierSource;
 
-    public List<Entry> findViaOntology(EntryOntologyQuery q) {
+    public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
         List<BigInteger> results = findByHostNcbiId(q.getHostNcbiId());
         results = merge(results, findByPathogenNcbiId(q.getPathogenNcbiId()));
         results = merge(results, findByLsId(q.getCoverageLsId()));
 
         final List<Long> longs = toLongs(results);
         if (longs == null)
-            return repo.findAllByStatus("approved");
-        return repo.findAll(longs);
+            return repo.findAllByStatus("approved", pageRequest);
+        return repo.findByIdIn(longs, pageRequest);
     }
 
     private List<BigInteger> findByLsId(Long lsId) {

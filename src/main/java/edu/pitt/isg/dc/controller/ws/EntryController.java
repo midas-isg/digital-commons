@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.controller.ws;
 import edu.pitt.isg.dc.entry.EntryRule;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,11 +28,12 @@ public class EntryController {
             @RequestParam(required = false) Long controlMeasure,
             @RequestParam(required = false) Long hostIncluded,
             @RequestParam(required = false) Long locationCoverage,
-            @RequestParam(required = false) Long pathogenCoverage) {
-
+            @RequestParam(required = false) Long pathogenCoverage,
+            Pageable pageRequest
+    ) {
         final EntryOntologyQuery q = of(
                 hostIncluded, pathogenCoverage, locationCoverage, controlMeasure
         );
-        return rule.findViaOntology(q);
+        return rule.findViaOntology(q, pageRequest);
     }
 }

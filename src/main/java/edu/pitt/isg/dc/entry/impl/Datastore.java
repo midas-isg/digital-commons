@@ -57,7 +57,7 @@ public class Datastore implements MdcEntryDatastoreInterface {
     @Transactional
     public List<EntryView> getPendingEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
-        for (Entry entry: repo.findAllByStatus("pending")) {
+        for (Entry entry: repo.findAllByStatus("pending", null)) {
             list.add(new EntryView(entry));
         }
         return list;

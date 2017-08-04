@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -100,19 +101,25 @@ public class DatabaseTest {
     @Test
     public void allEntries() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        final List<Entry> entries = rule.findViaOntology(q);
+        final Page<Entry> page = rule.findViaOntology(q, null);
 
-        assertThat(entries.size()).isGreaterThan(0);
-        assertThat(entries).allSatisfy(this::assertStatusIsApproved);
+        assertAllElementsIn1Page(page);
+        assertThat(page).allSatisfy(this::assertStatusIsApproved);
+    }
+
+    public void assertAllElementsIn1Page(Page<Entry> page) {
+        final int totalElements = (int)page.getTotalElements();
+        assertThat(totalElements).isGreaterThan(0);
+        assertThat(page.getNumberOfElements()).isEqualTo(totalElements);
     }
 
     @Test
     public void entriesWithHumanAsHost() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setHostNcbiId(humanId);
-        final List<Entry> entries = rule.findViaOntology(q);
+        final Page<Entry> entries = rule.findViaOntology(q, null);
 
-        assertThat(entries.size()).isGreaterThan(0);
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .anySatisfy(this::assertTypeIsDataset)
@@ -124,9 +131,9 @@ public class DatabaseTest {
     public void entriesEbolaAsPathogen() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setPathogenNcbiId(ebolaId);
-        final List<Entry> entries = rule.findViaOntology(q);
+        final Page<Entry> entries = rule.findViaOntology(q, null);
 
-        assertThat(entries.size()).isGreaterThan(0);
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .anySatisfy(this::assertTypeIsDataset)
@@ -139,9 +146,9 @@ public class DatabaseTest {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setHostNcbiId(humanId);
         q.setPathogenNcbiId(ebolaId);
-        final List<Entry> entries = rule.findViaOntology(q);
+        final Page<Entry> entries = rule.findViaOntology(q, null);
 
-        assertThat(entries.size()).isGreaterThan(0);
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 // .anySatisfy(this::assertTypeIsDataset)

@@ -12,5 +12,5 @@ import java.util.List;
 
 @Repository
 public interface NcbiRepository extends JpaRepository<Ncbi, Long> {
-    List<Ncbi> findAllByPathContaining(String parentId);
+    List<Ncbi> findAllByPathContaining(String parentIdWithDelimitors);
 }
