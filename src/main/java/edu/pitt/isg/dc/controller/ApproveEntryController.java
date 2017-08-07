@@ -154,21 +154,13 @@ public class ApproveEntryController {
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
-
-    public ResponseEntity<String> getItem(@RequestParam(value = "auth", required = false) String auth, Model model, @PathVariable(value="itemId") int itemId) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    public ResponseEntity<String> getItem(Model model, @PathVariable(value="itemId") int itemId) throws MdcEntryDatastoreException {
             try {
-
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-
                 return ResponseEntity.ok(gson.toJson(datastore.getEntry(itemId)));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
-        } else {
-            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
-        }
     }
 
     @RequestMapping(value = "/pending", method = RequestMethod.GET)
