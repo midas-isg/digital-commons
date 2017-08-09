@@ -22,6 +22,7 @@ public class EntryRule {
     private static final String KEY_LOCATION_COVERAGE = "locationCoverage";
     private static final String KEY_HOST_SPECIES = "hostSpeciesIncluded";
     private static final String KEY_PATHOGENS = "pathogenCoverage";
+    public static final String FIELD_IS_ABOUT = "isAbout";
 
     @Autowired
     private EntryRepository repo;
@@ -81,11 +82,12 @@ public class EntryRule {
                 .filter(ncbis::contains)
                 .map(Object::toString)
                 .collect(Collectors.toList());
-        final Set<BigInteger> set = new HashSet<>(repo.filterIdsByFieldAndIdentifierSource("isAbout", ncbiIdentifierSource, filteredIds));
+        final Set<BigInteger> set = new HashSet<>(repo.filterIdsByFieldAndIdentifierSource(FIELD_IS_ABOUT, ncbiIdentifierSource, filteredIds));
         set.addAll(repo.filterIdsByFieldAndIdentifierSource(field, ncbiIdentifierSource, filteredIds));
         final List<BigInteger> entryIds = new ArrayList<>(set);
-        System.out.println(field + ":" + ncbiIds.size() + "-> " + filteredIds.size() + " ncbis:" + filteredIds
-                + "=>" + entryIds.size() + " entries:" + entryIds);
+        System.out.println(field + ":" +
+                ncbiIds.size() + "->" + filteredIds.size() + " ncbis:"
+                + filteredIds + "=>" + entryIds.size() + " entries:" + entryIds);
         return entryIds;
     }
 

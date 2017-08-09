@@ -19,12 +19,12 @@ public class NcbiController {
     @Autowired
     private NcbiRule rule;
 
-    /* @RequestMapping(value = "/ncbis/{id}",
+    @RequestMapping(value = "/ncbis/{id}",
             method = GET,
             produces = {JSON, XML})
     public Ncbi read(@PathVariable Long id) {
         return rule.read(id);
-    }*/
+    }
 
     @RequestMapping(value = "/ncbis/search/used-as-host",
             method = GET,
