@@ -3,6 +3,8 @@ package edu.pitt.isg.dc.controller;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.digital.spew.SpewLocation;
 import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.entry.Ncbi;
+import edu.pitt.isg.dc.entry.NcbiRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
@@ -45,6 +47,8 @@ public class HomeController {
 
     @Autowired
     private SpewRule spewRule;
+    @Autowired
+    private NcbiRule ncbiRule;
 
     private Integer spewCount;
     private Integer spewAmericaCount;
@@ -118,6 +122,15 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirectHome() {
         return "redirect:/main";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String ncbis(Model model) throws Exception {
+        final List<Ncbi> hosts = ncbiRule.findHostsInEntries();
+        final List<Ncbi> pathogens = ncbiRule.findPathogensInEntries();
+        model.addAttribute("hosts", hosts);
+        model.addAttribute("pathogens", pathogens);
+        return "search";
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)

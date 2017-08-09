@@ -4,12 +4,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.rest.core.annotation.RestResource;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigInteger;
 import java.util.List;
 
 @Repository
+// @RestResource(exported = false)
 public interface EntryRepository extends JpaRepository<Entry, Long> {
     Page<Entry> findAllByStatus(String status, Pageable pageable);
     Page<Entry> findByIdIn(List<Long> ids, Pageable pageable);

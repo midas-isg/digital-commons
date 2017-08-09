@@ -19,21 +19,21 @@ public class NcbiController {
     @Autowired
     private NcbiRule rule;
 
-    @RequestMapping(value = "/ncbis/{id}",
+    /* @RequestMapping(value = "/ncbis/{id}",
             method = GET,
             produces = {JSON, XML})
     public Ncbi read(@PathVariable Long id) {
         return rule.read(id);
-    }
+    }*/
 
-    @RequestMapping(value = "/ncbis/used-as-host",
+    @RequestMapping(value = "/ncbis/search/used-as-host",
             method = GET,
             produces = {JSON, XML})
     public List<Ncbi> listHostsUsedInEntries() {
         return rule.findHostsInEntries();
     }
 
-    @RequestMapping(value = "/ncbis/used-as-pathogen",
+    @RequestMapping(value = "/ncbis/search/used-as-pathogen",
             method = GET,
             produces = {JSON, XML})
     public List<Ncbi> listPathogensUsedInEntries() {
