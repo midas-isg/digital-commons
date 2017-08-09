@@ -30,88 +30,77 @@
 <table id="ncbi-table" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
-        <th>Title</th>
+        <th>Title/Name</th>
         <th>Type</th>
     </tr>
     </thead>
     <tfoot>
     <tr>
-        <th>Title</th>
+        <th>Title/Name</th>
         <th>Type</th>
     </tr>
     </tfoot>
 </table>
 <script>
     $(document).ready(function (){
-        var host = null;
-        var pathogen = null;
-        var entryTable = null;
+        var entryApi = '${pageContext.request.contextPath}/entries/';
+        var my = {
+            '$': {
+                hostSelect: $('#host-select'),
+                pathogenSelect: $('#pathogen-select')
+            }
+        };
 
-        var ontologyEntryUrl = '/digital-commons/entries/search/by-ontology';
-        entryTable = $('#ncbi-table').DataTable({
+        my.$.hostSelect.change(onChangeHost);
+        my.$.pathogenSelect.change(onChangePathogen);
+
+        my.entryTable = $('#ncbi-table').DataTable({
             ajax: {
-                url: ontologyEntryUrl,
-                dataSrc: '_embedded.entries'
+                url: urlSearch(),
+                dataSrc: '_embedded.entries',
+                deferRender: true,
+                data: function (param) {
+                    if(my.host)
+                        param.hostIncluded = my.host;
+                    if(my.pathogen)
+                        param.pathogenCoverage = my.pathogen;
+                }
             },
-            columns: [ { data: 'content.entry.title'},
-                {data: 'content.properties.type'} ],
-            processing: true,
-            serverSide: true,
-            searching: false,
-
-            bSort: false,
-            fnServerData: dt2SpringDataRest
+            columns: [
+                { data: wholeRow, render: renderLinkWithTitleOrName },
+                { data: 'content.properties.type', render: function(data){
+                    return data.replace(/.*\./, '').replace(/([A-Z])/g, ' $1').trim();
+                } }
+            ],
+            processing: true
         });
 
-        var $hostSelect = $('#host-select');
-        $hostSelect.change(onChangeHost);
-        var $pathogenSelect = $('#pathogen-select');
-        $pathogenSelect.change(onChangePathogen);
-
-        function dt2SpringDataRest(_, aoData, fnCallback, cfg) {
-            var paramMap = simplify(aoData);
-            var restParams = toPageableParams(paramMap);
-            if(host)
-                restParams.push({name: 'hostIncluded', value: host});
-            if(pathogen)
-                restParams.push({name: 'pathogenCoverage', value: pathogen});
-            $.ajax({
-                dataType: 'json',
-                type: "GET",
-                url: cfg.ajax.url,
-                data: restParams,
-                success: function(data) {
-                    data.iTotalRecords = data.page.totalElements;
-                    data.iTotalDisplayRecords = data.page.totalElements;
-                    fnCallback(data);
-                }
-            });
-        }
-
         function onChangeHost(){
-            host = $hostSelect.val();
-            entryTable.ajax.reload();
+            my.host = my.$.hostSelect.val();
+            my.entryTable.ajax.reload();
         }
 
         function onChangePathogen(){
-            pathogen = $pathogenSelect.val();
-            entryTable.ajax.reload();
+            my.pathogen = my.$.pathogenSelect.val();
+            my.entryTable.ajax.reload();
         }
 
-        function simplify(aoData) {
-            var paramMap = {};
-            for (var i = 0; i < aoData.length; i++) {
-                paramMap[aoData[i].name] = aoData[i].value;
+        function urlSearch(size) {
+            return entryApi + 'search/by-ontology?size=' + (size || 1000000);
+        }
+
+        function wholeRow(row){
+            return row;
+        }
+
+        function renderLinkWithTitleOrName(data) {
+            var entry = data.content.entry;
+            var name = entry.title || entry.name || '<i>N/A</i>';
+            return linkHtml(data.id, name);
+
+            function linkHtml(id, name) {
+                return '<a href="' + entryApi + id + '">' + name + '</a>';
             }
-            return paramMap;
-        }
-
-        function toPageableParams(paramMap) {
-            var pageSize = paramMap.length;
-            var start = paramMap.start;
-            var pageNum = start / pageSize;
-            return [    {name: "size", value: pageSize},
-                        {name: "page", value: pageNum }];
         }
     });
 </script>
