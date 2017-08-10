@@ -118,12 +118,6 @@ public class DatabaseTest {
         assertThat(all).containsExactly(DATASET_2_2, DTM_1_0);
     }
 
-    public void assertAllElementsIn1Page(Page<Entry> page) {
-        final int totalElements = (int)page.getTotalElements();
-        assertThat(totalElements).isGreaterThan(0);
-        assertThat(page.getNumberOfElements()).isEqualTo(totalElements);
-    }
-
     @Test
     public void entriesWithHumanAsHost() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
@@ -166,6 +160,12 @@ public class DatabaseTest {
                 .allSatisfy(this::assertTypeIsDTM)
                 .allSatisfy(this::assertBaseOnTypeForHumanAsHost)
                 .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
+    }
+
+    private void assertAllElementsIn1Page(Page<Entry> page) {
+        final int totalElements = (int)page.getTotalElements();
+        assertThat(totalElements).isGreaterThan(0);
+        assertThat(page.getNumberOfElements()).isEqualTo(totalElements);
     }
 
     private void assertBaseOnTypeForHumanAsHost(Entry e) {
@@ -218,7 +218,7 @@ public class DatabaseTest {
         return ncbi;
     }
 
-    public void assertStatusIsApproved(Entry e) {
+    private void assertStatusIsApproved(Entry e) {
         assertThat(e.getStatus()).isEqualToIgnoringCase(APPROVED);
     }
 
