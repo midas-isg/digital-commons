@@ -1,21 +1,29 @@
 package edu.pitt.isg.dc.controller;
 
-import com.google.gson.*;
-import com.wordnik.swagger.annotations.*;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
 import edu.pitt.isg.dc.repository.Repository;
 import edu.pitt.isg.dc.repository.RepositoryEntry;
-import edu.pitt.isg.dc.repository.utils.ExtractDataFromEntry;
 import edu.pitt.isg.dc.repository.utils.ExtractDoisFromRepositoryEntry;
-import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Distribution;
-import org.hibernate.annotations.GeneratorType;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.ws.rs.GET;
 
 /**
@@ -88,7 +96,7 @@ public class WebServiceController {
             @ApiResponse(code = 200, message = "You will be redirected to the data if the DOI is found.")
     })
     @RequestMapping(value = "/dois/data", method = RequestMethod.GET, headers = "Accept=text/html")
-    protected Object getDois(@RequestParam("doi") String doi, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
+    public Object getDois(@RequestParam("doi") String doi, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
 
         for (RepositoryEntry entry : repository.repository) {
             String entryDoi = ExtractDoisFromRepositoryEntry.execute(entry);

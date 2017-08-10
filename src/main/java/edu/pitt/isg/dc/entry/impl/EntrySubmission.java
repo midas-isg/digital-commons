@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.entry.impl;
 
-import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.vm.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;

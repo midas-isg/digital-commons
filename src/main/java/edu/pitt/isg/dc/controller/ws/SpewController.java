@@ -1,14 +1,14 @@
-package edu.pitt.isg.dc.digital;
+package edu.pitt.isg.dc.controller.ws;
 
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.spew.SpewRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @ApiIgnore
 @RestController
-public class DigitalController {
+public class SpewController {
     @Autowired
     private SpewRule spewRule;
 

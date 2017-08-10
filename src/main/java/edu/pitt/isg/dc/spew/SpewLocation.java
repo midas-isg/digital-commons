@@ -1,4 +1,4 @@
-package edu.pitt.isg.dc.digital.spew;
+package edu.pitt.isg.dc.spew;
 
 import java.io.Serializable;
 import java.util.Map;

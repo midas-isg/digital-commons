@@ -1,10 +1,10 @@
-package edu.pitt.isg.dc.entry.util;
+package edu.pitt.isg.dc.entry;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
-import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.vm.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
@@ -16,13 +16,19 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
 
+import static edu.pitt.isg.dc.entry.Keys.STATUS;
+import static edu.pitt.isg.dc.entry.Keys.SUBTYPE;
+import static edu.pitt.isg.dc.entry.Keys.TYPE;
+import static edu.pitt.isg.dc.entry.Values.*;
+import static edu.pitt.isg.dc.entry.Values.PENDING;
+
 /**
  * Created by amd176 on 6/6/17.
  */
 public class EntryHelper {
     private static String ENTRIES_FILEPATH = "";
     private static String TEMP_FILEPATH = "";
-    public static String ENTRIES_AUTHENTICATION = "";
+    private static String ENTRIES_AUTHENTICATION = "";
     public static String ENTRIES_ADMIN_AUTHENTICATION = "";
 
     static {
@@ -94,7 +100,7 @@ public class EntryHelper {
     public static String getSubtypeFromPath(String path) {
         String subtype = null;
 
-        String[] typesWithSubtypes = new String[] {"Dataset"};
+        String[] typesWithSubtypes = new String[] {DATASET};
         String typeWithSubtype = null;
         for(String type : typesWithSubtypes) {
             if(path.contains(type)) {
@@ -147,9 +153,9 @@ public class EntryHelper {
                 JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
                 String json = gson.toJson(jsonElement);
 
-                String type = entryObject.getProperty("type");
-                String subtype = entryObject.getProperty("subtype");
-                boolean isPending = entryObject.getProperty("status").equals("pending");
+                String type = entryObject.getProperty(TYPE);
+                String subtype = entryObject.getProperty(SUBTYPE);
+                boolean isPending = entryObject.getProperty(STATUS).equals(PENDING);
 
                 String path = EntryHelper.getPathFromType(type, subtype, isPending);
                 File file = Paths.get(path, String.format("%05d", id) + ".json").toFile();

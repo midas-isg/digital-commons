@@ -9,86 +9,94 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
+import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
+import static edu.pitt.isg.dc.entry.Keys.LOCATION_COVERAGE;
+import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
+import static edu.pitt.isg.dc.entry.Keys.SPATIAL_COVERAGE;
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
+import static java.lang.System.out;
 
 @Service
 public class EntryRule {
-    private static final String KEY_ENTRY = "entry";
-
-    private static final String KEY_CONTROL_MEASURES = "controlMeasures";
-    private static final String KEY_LOCATION_COVERAGE = "locationCoverage";
-    private static final String KEY_HOST_SPECIES = "hostSpeciesIncluded";
-    private static final String KEY_PATHOGENS = "pathogenCoverage";
-    public static final String FIELD_IS_ABOUT = "isAbout";
-
     @Autowired
     private EntryRepository repo;
     @Autowired
     private NcbiRule ncbi;
-
-
     @Value("${app.identifierSource.ncbi}")
     private String ncbiIdentifierSource;
     @Value("${app.identifierSource.ls}")
     private String lsIdentifierSource;
 
     public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
-        List<BigInteger> results = findByHostNcbiId(q.getHostNcbiId());
-        results = merge(results, findByPathogenNcbiId(q.getPathogenNcbiId()));
-        results = merge(results, findByLsId(q.getCoverageLsId()));
+        List<BigInteger> results = listIdsByHostRelativesOfNcbiId(q.getHostNcbiId());
+        results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenNcbiId()));
+        results = merge(results, listIdsByRelativesOfLsId(q.getCoverageLsId()));
 
         final List<Long> longs = toLongs(results);
         if (longs == null)
-            return repo.findAllByStatus("approved", pageRequest);
+            return repo.findAllByStatus(APPROVED, pageRequest);
         return repo.findByIdIn(longs, pageRequest);
     }
 
-    private List<BigInteger> findByLsId(Long lsId) {
+    private List<BigInteger> listIdsByRelativesOfLsId(Long lsId) {
         if (lsId == null)
             return null;
-        final List<String> lsIds = toLsIds(lsId);
-        final List<BigInteger> entityIds = repo.filterIdsByFieldAndIdentifierSource("spatialCoverage", lsIdentifierSource, lsIds);
-        entityIds.addAll(repo.filterIdsByFieldAndIdentifierSource(KEY_LOCATION_COVERAGE, lsIdentifierSource, lsIds));
-        return entityIds;
+        final List<String> lsIds = toLsRelativeIds(lsId);
+        final Stream<String> stream = Stream.of(SPATIAL_COVERAGE, LOCATION_COVERAGE);
+        final List<BigInteger> ids = parallelFilter(stream, lsIdentifierSource, lsIds);
+        out.println("LS:" +lsIds +  "=>" + ids.size() + " entries:" + ids);
+        return ids;
     }
 
-    private List<BigInteger> findByPathogenNcbiId(Long id) {
+    private List<BigInteger> listIdsByPathogenRelativesOfNcbiId(Long id) {
         List<BigInteger> results = null;
         if (id != null) {
             final List<String> ncbiIds = ncbi.toAllRelativeNcbiIds(id);
-            results = findByFieldPlusIsAboutAndIds(ncbi.findPathogensInEntries(), KEY_PATHOGENS, ncbiIds);
+            results = listIdsByFieldPlusIsAboutAndNcbiIds(ncbi.findPathogensInEntries(), PATHOGEN_COVERAGE, ncbiIds);
         }
         return results;
     }
 
-    private List<BigInteger> findByHostNcbiId(Long id) {
+    private List<BigInteger> listIdsByHostRelativesOfNcbiId(Long id) {
         List<BigInteger> results = null;
         if (id != null) {
             final List<String> ncbiIds = ncbi.toAllRelativeNcbiIds(id);
-            results = findByFieldPlusIsAboutAndIds(ncbi.findHostsInEntries(), KEY_HOST_SPECIES, ncbiIds);
+            results = listIdsByFieldPlusIsAboutAndNcbiIds(ncbi.findHostsInEntries(), HOST_SPECIES, ncbiIds);
         }
         return results;
     }
 
-    private List<BigInteger> findByFieldPlusIsAboutAndIds(List<Ncbi> ncbiIdsInEntries, String field, List<String> ncbiIds) {
+    private List<BigInteger> listIdsByFieldPlusIsAboutAndNcbiIds(
+            List<Ncbi> ncbiIdsInEntries, String field, List<String> ncbiIds) {
         final Set<Long> ncbis = ncbiIdsInEntries.stream()
                 .map(Ncbi::getId)
                 .collect(Collectors.toSet());
-        List<String> filteredIds = ncbiIds.stream()
+        final List<String> filteredIds = ncbiIds.stream()
                 .map(Long::parseLong)
                 .filter(ncbis::contains)
                 .map(Object::toString)
                 .collect(Collectors.toList());
-        final Set<BigInteger> set = new HashSet<>(repo.filterIdsByFieldAndIdentifierSource(FIELD_IS_ABOUT, ncbiIdentifierSource, filteredIds));
-        set.addAll(repo.filterIdsByFieldAndIdentifierSource(field, ncbiIdentifierSource, filteredIds));
-        final List<BigInteger> entryIds = new ArrayList<>(set);
-        System.out.println(field + ":" +
+        final Stream<String> stream = Stream.of(IS_ABOUT, field);
+        final List<BigInteger> ids = parallelFilter(stream, ncbiIdentifierSource, filteredIds);
+        out.println(field + ":" +
                 ncbiIds.size() + "->" + filteredIds.size() + " ncbis:"
-                + filteredIds + "=>" + entryIds.size() + " entries:" + entryIds);
-        return entryIds;
+                + filteredIds + "=>" + ids.size() + " entries:" + ids);
+        return ids;
+    }
+
+    private List<BigInteger> parallelFilter(Stream<String> stream, String idSrc, List<String> onlyIds) {
+        return stream.parallel()
+                .map(f -> repo.filterIdsByFieldAndIdentifierSource(f, idSrc, onlyIds))
+                .flatMap(Collection::stream)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     private List<BigInteger> merge(List<BigInteger> list1, List<BigInteger> list2) {
@@ -108,7 +116,7 @@ public class EntryRule {
                 .collect(Collectors.toList());
     }
 
-    private List<String> toLsIds(Long lsId) {
+    private List<String> toLsRelativeIds(long lsId) {
         final List<String> urls = new ArrayList<>();
         urls.add(toLsUrl(lsId));
         //System.out.println(urls);

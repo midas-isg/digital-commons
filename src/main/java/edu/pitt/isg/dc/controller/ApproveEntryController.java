@@ -3,12 +3,12 @@ package edu.pitt.isg.dc.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.pitt.isg.dc.entry.PopulateDatastore;
-import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.EntryHelper;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.vm.EntryView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +29,6 @@ import java.util.List;
  */
 @Controller
 public class ApproveEntryController {
-
     @Autowired
     private MdcEntryDatastoreInterface datastore;
     @Autowired

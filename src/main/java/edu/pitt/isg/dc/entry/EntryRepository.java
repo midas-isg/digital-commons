@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.math.BigInteger;
 import java.util.List;
 
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
+
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, Long> {
     Page<Entry> findAllByStatus(String status, Pageable pageable);
@@ -19,14 +21,14 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
             "    SELECT 1 FROM jsonb_array_elements(content #> ARRAY['entry',?1]) AS about\n" +
             "    WHERE about #>> '{identifier,identifierSource}' = ?2\n" +
             "    AND about #>> '{identifier,identifier}' IN ?3\n" +
-            "    AND status = 'approved'\n" +
+            "    AND status = '" + APPROVED + "'\n" +
             ")")
     List<BigInteger> filterIdsByFieldAndIdentifierSource(String field, String srcId, List<String> onlyIds);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' " +
             "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
             "WHERE about #>> '{identifier,identifierSource}' = ?2 " +
-            "AND status = 'approved' " +
+            "AND status = '" + APPROVED + "' " +
             "")
     List<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
 }

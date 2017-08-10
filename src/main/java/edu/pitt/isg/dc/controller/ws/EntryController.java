@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.controller.ws;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryRule;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,11 +21,10 @@ import static edu.pitt.isg.dc.vm.EntryOntologyQuery.of;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
+@RequiredArgsConstructor
 public class EntryController{
-    @Autowired
-    private EntryRule rule;
-    @Autowired
-    private PagedResourcesAssembler<Entry> pagedAssembler;
+    private final EntryRule rule;
+    private final PagedResourcesAssembler<Entry> pagedAssembler;
 
     @Transactional
     @RequestMapping(value = "/entries/search/by-ontology",

@@ -1,4 +1,4 @@
-package edu.pitt.isg.dc.digital.spew;
+package edu.pitt.isg.dc.spew;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

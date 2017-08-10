@@ -1,4 +1,4 @@
-package edu.pitt.isg.dc.digital.spew;
+package edu.pitt.isg.dc.spew;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClients;

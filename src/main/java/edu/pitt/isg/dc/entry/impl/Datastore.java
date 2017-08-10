@@ -5,17 +5,19 @@ package edu.pitt.isg.dc.entry.impl;
  */
 
 import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.EntryHelper;
 import edu.pitt.isg.dc.entry.EntryRepository;
-import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.vm.EntryView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
+
+import static edu.pitt.isg.dc.entry.Values.PENDING;
 
 @Component
 public class Datastore implements MdcEntryDatastoreInterface {
@@ -57,7 +59,7 @@ public class Datastore implements MdcEntryDatastoreInterface {
     @Transactional
     public List<EntryView> getPendingEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
-        for (Entry entry: repo.findAllByStatus("pending", null)) {
+        for (Entry entry: repo.findAllByStatus(PENDING, null)) {
             list.add(new EntryView(entry));
         }
         return list;

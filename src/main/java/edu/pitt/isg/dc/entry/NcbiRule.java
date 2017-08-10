@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
+import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
+import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
+import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
+
 @Service
 public class NcbiRule {
     @Autowired
@@ -22,14 +27,14 @@ public class NcbiRule {
     @Value("${app.ncbi.host.root.path}")
     private String hostRootPath;
 
-    private Set<Long> listHostPlusIsAboutNcbiIdsInEntries() {
+    private Set<Long> listIdsOfHostPlusIsAboutNcbiIdsInEntries() {
         final Set<Long> abouts = toIds(listIdsByIsAbout());
         final Set<Long> hosts = listNcbiIdsAsHostInEntries();
         hosts.addAll(abouts);
         return hosts;
     }
 
-    private Set<Long> listPathogenPlusIsAboutNcbiIdsInEntries() {
+    private Set<Long> listIdsPathogenPlusIsAboutNcbiIdsInEntries() {
         final Set<Long> abouts = toIds(listIdsByIsAbout());
         final Set<Long> hosts = listNcbiIdsAsPathogenInEntries();
         hosts.addAll(abouts);
@@ -37,7 +42,7 @@ public class NcbiRule {
     }
 
     private List<String> listIdsByIsAbout() {
-        return entryRepo.listIdentifiersByFieldAndIdentifierSource("isAbout", identifierSource);
+        return entryRepo.listIdentifiersByFieldAndIdentifierSource(IS_ABOUT, identifierSource);
     }
 
     private Set<Long> toIds(List<String> urls) {
@@ -57,8 +62,8 @@ public class NcbiRule {
     }
 
     List<String> toAllRelativeNcbiIds(long ncbiId) {
-        Ncbi ncbi = repo.findOne(ncbiId);
-        final List<String> urls = Arrays.stream(ncbi.getPath().split("/"))
+        final Ncbi ncbi = repo.findOne(ncbiId);
+        final List<String> urls = Arrays.stream(ncbi.getPath().split(PATH_SEPARATOR))
                 .collect(Collectors.toList());
         //System.out.println(urls);
         final Set<String> descendants = findNcbiIdsByPathContaining(ncbiId);
@@ -72,19 +77,18 @@ public class NcbiRule {
     }
 
     private String toNcbiUrl(long id) {
-        //return "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=" + id;
         return "" + id;
     }
 
     private Set<String> findNcbiIdsByPathContaining(Long id) {
         final Ncbi one = repo.findOne(id);
         final String path = one.getPath();
-        final List<Ncbi> ncbis = repo.findAllByPathContaining("/" + id + "/");
+        final List<Ncbi> ncbis = repo.findAllByPathContaining(PATH_SEPARATOR + id + PATH_SEPARATOR);
         return ncbis.stream()
                 .filter(Ncbi::getLeaf)
                 .map(Ncbi::getPath)
-                .map(p -> p.replace(path + "/", ""))
-                .flatMap(p -> Arrays.stream(p.split("/")))
+                .map(p -> p.replace(path + PATH_SEPARATOR, ""))
+                .flatMap(p -> Arrays.stream(p.split(PATH_SEPARATOR)))
                 .collect(Collectors.toSet());
     }
 
@@ -94,22 +98,22 @@ public class NcbiRule {
     }
 
     public List<Ncbi> findHostsInEntries() {
-        return repo.findAll(listHostPlusIsAboutNcbiIdsInEntries()).stream()
+        return repo.findAll(listIdsOfHostPlusIsAboutNcbiIdsInEntries()).stream()
                 .filter(n -> n.getPath().startsWith(hostRootPath))
                 .collect(Collectors.toList());
     }
 
     private Set<Long> listNcbiIdsAsHostInEntries() {
-        return toIds(entryRepo.listIdentifiersByFieldAndIdentifierSource("hostSpeciesIncluded", identifierSource));
+        return toIds(entryRepo.listIdentifiersByFieldAndIdentifierSource(HOST_SPECIES, identifierSource));
     }
 
     public List<Ncbi> findPathogensInEntries() {
-        return repo.findAll(listPathogenPlusIsAboutNcbiIdsInEntries()).stream()
+        return repo.findAll(listIdsPathogenPlusIsAboutNcbiIdsInEntries()).stream()
                 .filter(n -> ! n.getPath().startsWith(hostRootPath))
                 .collect(Collectors.toList());
     }
 
     private Set<Long> listNcbiIdsAsPathogenInEntries() {
-        return toIds(entryRepo.listIdentifiersByFieldAndIdentifierSource("pathogenCoverage", identifierSource));
+        return toIds(entryRepo.listIdentifiersByFieldAndIdentifierSource(PATHOGEN_COVERAGE, identifierSource));
     }
 }

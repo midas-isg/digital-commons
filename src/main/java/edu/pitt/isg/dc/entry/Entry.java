@@ -9,17 +9,21 @@ import org.hibernate.annotations.TypeDef;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.HashMap;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
+//@Table(indexes = {@Index(columnList = "status")})
 @TypeDef(name = JsonbType.NAME, typeClass = JsonbType.class, parameters = {
         @Parameter(name = JsonbType.CLASS, value = "java.util.HashMap")})
 public class Entry {
     private Long id;
     private HashMap content;
-    private String status;
+    private String status = Values.PENDING;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

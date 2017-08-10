@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.entry.impl;
 
-import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.vm.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Properties;
+
+import static edu.pitt.isg.dc.entry.Keys.STATUS;
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
 
 /**
  * Created by amd176 on 6/5/17.
@@ -30,7 +33,7 @@ public class EntryApproval implements EntryApprovalInterface {
     public void acceptEntry(long entryId, String authenticationToken) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-            entryObject.setProperty("status", "approved");
+            entryObject.setProperty(STATUS, APPROVED);
             mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
             //TODO: Do we need? mdcEntryDatastoreInterface.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
         }
@@ -40,7 +43,7 @@ public class EntryApproval implements EntryApprovalInterface {
     public void rejectEntry(long entryId, String authenticationToken, String reason) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-            entryObject.setProperty("status", "approved");
+            entryObject.setProperty(STATUS, APPROVED);
             mdcEntryDatastoreInterface.deleteEntry(entryId);
         }
     }
