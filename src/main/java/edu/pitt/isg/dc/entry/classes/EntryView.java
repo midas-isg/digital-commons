@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry.classes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.EntryId;
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.util.HashMap;
@@ -12,7 +13,7 @@ public class EntryView extends EntryObject {
     transient private String content;
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-    public static Entry toEntry(Long id, EntryView entryObject){
+    public static Entry toEntry(EntryId id, EntryView entryObject){
         final Entry entry = new Entry();
         final String json = gson.toJson(entryObject);
         final HashMap hashMap = gson.fromJson(json, HashMap.class);

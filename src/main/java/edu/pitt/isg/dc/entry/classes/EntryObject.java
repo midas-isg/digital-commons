@@ -4,22 +4,23 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.EntryId;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 
 class EntryObject {
-    transient private Long id;
+    transient private EntryId id;
     private Object entry;
     private Category category;
     private Map<String, String> properties = new HashMap<>();
 
-    public Long getId() {
+    public EntryId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(EntryId id) {
         this.id = id;
     }
 

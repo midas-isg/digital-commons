@@ -71,8 +71,8 @@
             <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
             <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
             <td><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}")'>View</button></td>
-            <td><button class="btn btn-xs btn-success" onclick="showApproveEntryModal('${entry.id}', '${entry.category.id}', this);"><icon class="glyphicon glyphicon-check"></icon></button></td>
-            <td><button class="btn btn-xs btn-danger" onclick="rejectEntry('${entry.id}');"><icon class="glyphicon glyphicon-trash"></icon></button></td>
+            <td><button class="btn btn-xs btn-success" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this);"><icon class="glyphicon glyphicon-check"></icon></button></td>
+            <td><button class="btn btn-xs btn-danger" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this);"><icon class="glyphicon glyphicon-trash"></icon></button></td>
         </tr>
     </c:forEach>
     </tbody>

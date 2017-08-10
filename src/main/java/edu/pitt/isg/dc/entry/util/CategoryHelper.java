@@ -115,7 +115,7 @@ public class CategoryHelper {
                 String title = entry.getTitle();
 
                 JsonObject leafNode = new JsonObject();
-                leafNode.addProperty("entryId", entry.getId());
+                leafNode.addProperty("entryId", entry.getId().toString());
                 leafNode.addProperty("json", entry.getUnescapedEntryJsonString());
                 leafNode.addProperty("text", title);
                 leafNode.addProperty("type", entry.getEntryType());
