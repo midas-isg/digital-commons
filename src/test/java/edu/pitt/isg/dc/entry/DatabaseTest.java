@@ -20,6 +20,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
+import static edu.pitt.isg.dc.entry.Keys.ENTRY;
+import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
+import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
+import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
+import static edu.pitt.isg.dc.entry.Keys.PROPERTIES;
+import static edu.pitt.isg.dc.entry.Keys.TYPE;
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
+import static edu.pitt.isg.dc.entry.Values.DATASET_2_2;
+import static edu.pitt.isg.dc.entry.Values.DTM_1_0;
+import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -33,17 +43,11 @@ import static org.assertj.core.api.Assertions.assertThat;
         "spring.jpa.hibernate.ddl-auto=create"
 })
 public class DatabaseTest {
-    private static final String KEY_ENTRY = "entry";
     private static final String KEY_IDENTIFIER = "identifier";
-    private static final String KEY_PROPERTIES = "properties";
-    private static final String KEY_TYPE = "type";
-    private static final String VALUE_DATASET = "edu.pitt.isg.mdc.dats2_2.Dataset";
-    private static final String VALUE_DTM = "edu.pitt.isg.mdc.v1_0.DiseaseTransmissionModel";
     private static final long humanId = 9606;
     private static final long hostRootId = 33208;
     private static final long ebolaId = 1570291;
     private static final long ebolaZaireId = 128951;
-    public static final String KEY_IS_ABOUT = "isAbout";
     private static Long entryCount = null;
     private static Long ncbiCount = null;
 
@@ -54,7 +58,9 @@ public class DatabaseTest {
     @Autowired
     private NcbiRepository ncbiRepo;
     @Autowired
-    private EntryRule rule;
+    private EntryRule entryRule;
+    @Autowired
+    private TypeRule typeRule;
 
     @BeforeClass
     public static void changePath() {
@@ -98,12 +104,18 @@ public class DatabaseTest {
     }
 
     @Test
-    public void allEntries() throws Exception {
+    public void allApprovedEntries() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        final Page<Entry> page = rule.findViaOntology(q, null);
+        final Page<Entry> page = entryRule.findViaOntology(q, null);
 
         assertAllElementsIn1Page(page);
         assertThat(page).allSatisfy(this::assertStatusIsApproved);
+    }
+
+    @Test
+    public void allTypes() throws Exception {
+        final List<String> all = typeRule.findAll();
+        assertThat(all).containsExactly(DATASET_2_2, DTM_1_0);
     }
 
     public void assertAllElementsIn1Page(Page<Entry> page) {
@@ -116,7 +128,7 @@ public class DatabaseTest {
     public void entriesWithHumanAsHost() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setHostNcbiId(humanId);
-        final Page<Entry> entries = rule.findViaOntology(q, null);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
@@ -130,7 +142,7 @@ public class DatabaseTest {
     public void entriesEbolaAsPathogen() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setPathogenNcbiId(ebolaId);
-        final Page<Entry> entries = rule.findViaOntology(q, null);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
@@ -145,7 +157,7 @@ public class DatabaseTest {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setHostNcbiId(humanId);
         q.setPathogenNcbiId(ebolaId);
-        final Page<Entry> entries = rule.findViaOntology(q, null);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
@@ -158,32 +170,32 @@ public class DatabaseTest {
 
     private void assertBaseOnTypeForHumanAsHost(Entry e) {
         Map<String, Consumer<Map<String, Object>>> map = new HashMap<>();
-        map.put(VALUE_DTM, this::assertHumanDtm);
-        map.put(VALUE_DATASET, this::assertHumanDataset);
+        map.put(DTM_1_0, this::assertHumanDtm);
+        map.put(DATASET_2_2, this::assertHumanDataset);
         assertBaseOnType(e, map);
     }
 
     private void assertBaseOnTypeForEbolaAsPathogen(Entry e) {
         Map<String, Consumer<Map<String, Object>>> map = new HashMap<>();
-        map.put(VALUE_DTM, this::assertEbolaDtm);
-        map.put(VALUE_DATASET, this::assertEbolaDataset);
+        map.put(DTM_1_0, this::assertEbolaDtm);
+        map.put(DATASET_2_2, this::assertEbolaDataset);
         assertBaseOnType(e, map);
     }
 
     private void assertBaseOnType(Entry e, Map<String, Consumer<Map<String, Object>>> map) {
         final Map<String, Object> content = toContent(e);
-        final Map<String, Object> properties = getMap(content, KEY_PROPERTIES);
-        final String type = properties.get(KEY_TYPE).toString();
-        final Map<String, Object> entry = getMap(content, KEY_ENTRY);
+        final Map<String, Object> properties = getMap(content, PROPERTIES);
+        final String type = properties.get(TYPE).toString();
+        final Map<String, Object> entry = getMap(content, ENTRY);
         map.get(type).accept(entry);
     }
 
     private void assertEbolaDtm(Map<String, Object> entry) {
-        assertThat(getList(entry, "pathogenCoverage")).anySatisfy(this::assertEbolaIdentifiers);
+        assertThat(getList(entry, PATHOGEN_COVERAGE)).anySatisfy(this::assertEbolaIdentifiers);
     }
 
     private void assertEbolaDataset(Map<String, Object> entry) {
-        assertThat(getList(entry, KEY_IS_ABOUT)).anySatisfy(this::assertEbolaIdentifiers);
+        assertThat(getList(entry, IS_ABOUT)).anySatisfy(this::assertEbolaIdentifiers);
     }
 
     private void assertEbolaIdentifiers(Object o) {
@@ -199,7 +211,7 @@ public class DatabaseTest {
     private Ncbi toNcbi(long id, Ncbi parent, boolean leaf) {
         final Ncbi ncbi = new Ncbi();
         ncbi.setId(id);
-        final String parentPath = parent == null ? "" : parent.getPath() + "/";
+        final String parentPath = parent == null ? "" : parent.getPath() + PATH_SEPARATOR;
         ncbi.setPath(parentPath + id);
         ncbi.setLeaf(leaf);
         ncbi.setParent(parent);
@@ -207,7 +219,7 @@ public class DatabaseTest {
     }
 
     public void assertStatusIsApproved(Entry e) {
-        assertThat(e.getStatus()).isEqualToIgnoringCase("approved");
+        assertThat(e.getStatus()).isEqualToIgnoringCase(APPROVED);
     }
 
     @SuppressWarnings("unchecked")
@@ -216,11 +228,11 @@ public class DatabaseTest {
     }
 
     private void assertHumanDtm(Map<String, Object> entry) {
-        assertThat(getList(entry, "hostSpeciesIncluded")).anySatisfy(this::assertHumanIdentifier);
+        assertThat(getList(entry, HOST_SPECIES)).anySatisfy(this::assertHumanIdentifier);
     }
 
     private void assertHumanDataset(Map<String, Object> entry) {
-        assertThat(getList(entry, KEY_IS_ABOUT)).anySatisfy(this::assertHumanIdentifier);
+        assertThat(getList(entry, IS_ABOUT)).anySatisfy(this::assertHumanIdentifier);
     }
 
     private void assertHumanIdentifier(Object o) {
@@ -243,16 +255,16 @@ public class DatabaseTest {
     }
 
     private void assertTypeIsDTM(Entry entry) {
-        assertType(entry, VALUE_DTM);
+        assertType(entry, DTM_1_0);
     }
 
     private void assertTypeIsDataset(Entry entry) {
-        assertType(entry, VALUE_DATASET);
+        assertType(entry, DATASET_2_2);
     }
 
     private void assertType(Entry entry, String expected) {
         final Map<String, Object> content = toContent(entry);
-        final Map<String, Object> properties = getMap(content, KEY_PROPERTIES);
-        assertThat(properties.get(KEY_TYPE)).isEqualTo(expected);
+        final Map<String, Object> properties = getMap(content, PROPERTIES);
+        assertThat(properties.get(TYPE)).isEqualTo(expected);
     }
 }
