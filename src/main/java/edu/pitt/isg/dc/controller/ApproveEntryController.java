@@ -46,7 +46,7 @@ public class ApproveEntryController {
     public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
 //        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
         if(ifISGAdmin(session)) {
-            List<EntryView> entries = entryApprovalInterface.getPendingEntries();
+            List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
             List<EntryView> softwareEntries = new ArrayList<>();

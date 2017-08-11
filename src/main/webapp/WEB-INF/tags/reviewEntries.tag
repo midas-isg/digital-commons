@@ -92,7 +92,7 @@
             $('#category-label' + endId).addClass("error-color");
             $('#category-feedback' + endId).show();
         } else {
-            $.post("${pageContext.request.contextPath}/approve", params ,function(data){
+            $.post("${pageContext.request.contextPath}/add/approve", params ,function(data){
                 if(data === "success") {
                     window.location.reload();
                 } else {
@@ -118,7 +118,7 @@
         });
 
         var params = getEntryParams(entryId, revisionId, null, comments);
-        $.post("${pageContext.request.contextPath}/reject", params ,function(data){
+        $.post("${pageContext.request.contextPath}/add/reject", params ,function(data){
             if(data == "success") {
                 window.location.reload();
             } else {
