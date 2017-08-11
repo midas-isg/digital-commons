@@ -28,11 +28,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.QueryParam;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+
+import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 
 @ApiIgnore
 @Controller
@@ -42,6 +46,8 @@ public class HomeController {
     private static String SPEW_CACHE_FILE = "";
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
+    public static final String LOGGED_IN_PROPERTY = "loggedIn";
+    public static final String ADMIN_TYPE = "adminType";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -62,6 +68,27 @@ public class HomeController {
 
     private Integer spewCount;
     private Integer spewAmericaCount;
+
+    public static Boolean ifLoggedIn(HttpSession session) {
+        if(session.getAttribute(LOGGED_IN_PROPERTY) != null && session.getAttribute(LOGGED_IN_PROPERTY).equals(true)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifMDCEditor(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifISGAdmin(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
 
     private void recurseSpewTree(SpewLocation location, boolean usa) {
         for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
@@ -141,8 +168,17 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String hello(Model model) throws Exception {
+    public String hello(Model model, HttpSession session) throws Exception {
         populateCommonsMainModel(model);
+
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "commons";
     }
 
@@ -153,9 +189,21 @@ public class HomeController {
 //    }
 
     @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
-    public String addNewDataFormatConverters(@PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
+    public String addNewDataFormatConverters(HttpSession session, @PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
                                              @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
         model.addAttribute("category", category);
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if(!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
         if(category.toLowerCase().equals("dataset")) {
             model.addAttribute("datasetType", datasetType);
             model.addAttribute("customValue", customValue);
@@ -310,11 +358,5 @@ public class HomeController {
     @RequestMapping(value = "/main/about", method = RequestMethod.GET)
     public String about(Model model) {
         return "about";
-    }
-
-    @RequestMapping(value = "/preview", method = RequestMethod.GET)
-    public String preview(Model model) throws Exception {
-        populateCommonsMainModel(model);
-        return "commons";
     }
 }

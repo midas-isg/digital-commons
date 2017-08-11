@@ -13,10 +13,7 @@
 
 <myTags:header
         pageTitle="MIDAS Digital Commons"
-        loggedIn="true"
-        preview="true"
-        wantCollapse="true"
-        iframe="false"/>
+        loggedIn="${loggedIn}"/>
 
     <body id="commons-body">
         <div id="content-body">

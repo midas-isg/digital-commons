@@ -24,10 +24,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -44,9 +47,10 @@ public class ApproveEntryController {
     @Autowired
     private CategoryOrderRepository categoryOrderRepository;
 
-    @RequestMapping(value = "/review", method = RequestMethod.GET)
-    public String review(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    @RequestMapping(value = "/add/review", method = RequestMethod.GET)
+    public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
+//        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+        if(ifISGAdmin(session)) {
             List<EntryView> entries = entryApprovalInterface.getPendingEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
@@ -72,7 +76,8 @@ public class ApproveEntryController {
             model.addAttribute("softwareEntries", softwareEntries);
             return "reviewEntries";
         } else {
-            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+            return "accessDenied";
+//            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
     }
 

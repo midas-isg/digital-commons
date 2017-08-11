@@ -8,24 +8,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <myTags:head title="MIDAS Digital Commons"/>
-<c:choose>
-    <c:when test="${preview eq true}">
-        <myTags:header
-                pageTitle="MIDAS Digital Commons"
-                loggedIn="true" preview="true"
-                wantCollapse="true" iframe="false"
-                addEntry="true"/>
-    </c:when>
-    <c:otherwise>
-        <myTags:header
-                pageTitle="MIDAS Digital Commons"
-                loggedIn="true"
-                preview="false"
-                wantCollapse="true"
-                iframe="false"
-                addEntry="true"/>
-    </c:otherwise>
-</c:choose>
+<myTags:header
+        pageTitle="MIDAS Digital Commons"
+        loggedIn="${loggedIn}"/>
+
 <body id="commons-body">
     <div id="content-body">
 

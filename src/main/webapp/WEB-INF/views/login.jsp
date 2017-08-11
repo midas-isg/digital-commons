@@ -17,9 +17,8 @@
     <title>Digital Commons</title>
     <myTags:favicon></myTags:favicon>
 
-    <!-- Bootstrap core CSS -->
-    <script src="resources/js/jquery-1.11.1.min.js"></script>
-
+    <script type="text/javascript"
+            src="<c:url value="/resources/js/jquery-1.11.1.min.js"/>"></script>
 
     <!--[if lt IE 9]>
     <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -69,7 +68,7 @@
 //                if (hash.match('^logout')){
 //                    message = "Logged out successfully.";
 //                }
-                var returnUrl = ("${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${pageContext.request.contextPath}/preview");
+                var returnUrl = ("${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${pageContext.request.contextPath}/");
                 var returnTitle = "Back to Digital Commons"
                 window.location = '${ssoLoginUrl}?returnToUrl='
                     + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message + '&returnUrl=' + encodeURIComponent(returnUrl) + '&returnTitle=' + returnTitle;

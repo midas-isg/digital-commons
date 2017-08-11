@@ -327,7 +327,7 @@ a {
     white-space: pre-wrap;
 }
 
-@media screen and (min-width: 861px) {
+@media screen and (min-width: 981px) {
     .navbar-padding {
         padding-left: 30px !important;
     }
@@ -359,7 +359,7 @@ a {
     }
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 981px) {
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
         background-color: rgba(0,0,0,0.25) !important;
     }
@@ -383,7 +383,7 @@ a {
         box-shadow: none !important;
     }
 }
-@media (min-width: 766px) and (max-width: 882px) {
+@media (min-width: 766px) and (max-width: 981px) {
     .navbar-collapse.collapse {
         display: none !important;
         overflow-y:auto !important;

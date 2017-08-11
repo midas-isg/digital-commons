@@ -35,7 +35,7 @@
 </head>
 <body>
 <div class="container-fluid">
-	<myTags:header pageTitle="Unsupported Request" loggedIn="false"></myTags:header>
+	<myTags:header pageTitle="Unsupported Request" loggedIn="${loggedIn}"></myTags:header>
 
 	<div class="row">
 		<div class="col-md-12">
