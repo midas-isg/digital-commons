@@ -35,14 +35,21 @@ public class EntryRule {
     private String lsIdentifierSource;
 
     public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
-        List<BigInteger> results = listIdsByHostRelativesOfNcbiId(q.getHostNcbiId());
-        results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenNcbiId()));
-        results = merge(results, listIdsByRelativesOfLsId(q.getCoverageLsId()));
+        List<BigInteger> results = listIdsByHostRelativesOfNcbiId(q.getHostId());
+        results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenId()));
+        results = merge(results, listIdsByRelativesOfLsId(q.getLocationId()));
+        results = merge(results, listIdsByType(q.getType()));
 
         final List<Long> longs = toLongs(results);
         if (longs == null)
             return repo.findAllByStatus(APPROVED, pageRequest);
         return repo.findByIdIn(longs, pageRequest);
+    }
+
+    private List<BigInteger> listIdsByType(String... types) {
+        if (types == null || types.length == 0 || types[0] == null)
+            return null;
+        return repo.filterIdsByTypes(types);
     }
 
     private List<BigInteger> listIdsByRelativesOfLsId(Long lsId) {

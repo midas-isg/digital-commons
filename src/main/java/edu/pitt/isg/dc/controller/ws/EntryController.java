@@ -17,7 +17,6 @@ import javax.transaction.Transactional;
 
 import static edu.pitt.isg.dc.controller.ws.MediaType.Application.JSON;
 import static edu.pitt.isg.dc.controller.ws.MediaType.Text.XML;
-import static edu.pitt.isg.dc.vm.EntryOntologyQuery.of;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
@@ -30,16 +29,7 @@ public class EntryController{
     @RequestMapping(value = "/entries/search/by-ontology",
             method = GET,
             produces = {JSON, XML})
-    public Object findViaOntology(
-            @RequestParam(required = false) Long controlMeasure,
-            @RequestParam(required = false) Long hostIncluded,
-            @RequestParam(required = false) Long locationCoverage,
-            @RequestParam(required = false) Long pathogenCoverage,
-            Pageable pageRequest
-    ) {
-        final EntryOntologyQuery q = of(
-                hostIncluded, pathogenCoverage, locationCoverage, controlMeasure
-        );
+    public Object findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
         final Page<Entry> page = rule.findViaOntology(q, pageRequest);
         return pagedAssembler.toResource(page);
     }

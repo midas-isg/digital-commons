@@ -121,7 +121,7 @@ public class DatabaseTest {
     @Test
     public void entriesWithHumanAsHost() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        q.setHostNcbiId(humanId);
+        q.setHostId(humanId);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
@@ -135,7 +135,7 @@ public class DatabaseTest {
     @Test
     public void entriesEbolaAsPathogen() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        q.setPathogenNcbiId(ebolaId);
+        q.setPathogenId(ebolaId);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
@@ -147,19 +147,31 @@ public class DatabaseTest {
     }
 
     @Test
-    public void entriesWithHostAndPathogen() throws Exception {
+    public void entriesWithHostAndPathogenAndType() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        q.setHostNcbiId(humanId);
-        q.setPathogenNcbiId(ebolaId);
+        q.setHostId(humanId);
+        q.setPathogenId(ebolaId);
+        q.setType(DTM_1_0);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
-                // .anySatisfy(this::assertTypeIsDataset)
                 .allSatisfy(this::assertTypeIsDTM)
                 .allSatisfy(this::assertBaseOnTypeForHumanAsHost)
                 .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
+    }
+
+    @Test
+    public void entriesDataset() throws Exception {
+        final EntryOntologyQuery q = new EntryOntologyQuery();
+        q.setType(DATASET_2_2);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .allSatisfy(this::assertTypeIsDataset);
     }
 
     private void assertAllElementsIn1Page(Page<Entry> page) {

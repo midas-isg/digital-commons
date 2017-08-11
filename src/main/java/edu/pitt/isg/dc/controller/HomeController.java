@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.controller;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.entry.Ncbi;
 import edu.pitt.isg.dc.entry.NcbiRule;
+import edu.pitt.isg.dc.entry.TypeRule;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
@@ -36,9 +37,15 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Comparator.comparing;
 
 @ApiIgnore
 @Controller
@@ -61,6 +68,8 @@ public class HomeController {
     private SpewRule spewRule;
     @Autowired
     private NcbiRule ncbiRule;
+    @Autowired
+    private TypeRule typeRule;
 
     private Integer spewCount;
     private Integer spewAmericaCount;
@@ -138,11 +147,29 @@ public class HomeController {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String ncbis(Model model) throws Exception {
-        final List<Ncbi> hosts = ncbiRule.findHostsInEntries();
-        final List<Ncbi> pathogens = ncbiRule.findPathogensInEntries();
+        final List<Ncbi> hosts = sort(ncbiRule.findHostsInEntries());
+        final List<Ncbi> pathogens = sort(ncbiRule.findPathogensInEntries());
+        final List<String[]> types = typeRule.findAll().stream()
+                .map(this::formatType)
+                .sorted(comparing(s -> s[1]))
+                .collect(Collectors.toList());
         model.addAttribute("hosts", hosts);
         model.addAttribute("pathogens", pathogens);
+        model.addAttribute("types", types);
         return "search";
+    }
+
+    private List<Ncbi> sort(List<Ncbi> list) {
+        return list.stream()
+                .sorted(comparing(Ncbi::getName, String::compareToIgnoreCase))
+                .collect(Collectors.toList());
+    }
+
+    private String[] formatType(String fullyQualifiedName) {
+        final String[] tokens = fullyQualifiedName.split("\\.");
+        final String token = tokens[tokens.length - 1];
+        final String name = token.replaceAll("([A-Z])", " $1").trim();
+        return new String[]{fullyQualifiedName, name};
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)

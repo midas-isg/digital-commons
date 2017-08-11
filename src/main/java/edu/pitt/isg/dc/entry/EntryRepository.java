@@ -31,9 +31,13 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' " +
             "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
             "WHERE about #>> '{identifier,identifierSource}' = ?2 " +
-            AND_APPROVED +
-            "")
+            AND_APPROVED)
     List<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
+
+    @Query(nativeQuery = true, value = "SELECT DISTINCT id from entry " +
+            "WHERE content #>> '{properties,type}' IN ?1 " +
+            AND_APPROVED)
+    List<BigInteger> filterIdsByTypes(String[] onlyTypes);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             "FROM entry WHERE " + IS_APPROVED)

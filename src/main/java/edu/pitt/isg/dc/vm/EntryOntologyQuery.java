@@ -2,18 +2,10 @@ package edu.pitt.isg.dc.vm;
 
 public class EntryOntologyQuery {
     private Long controlMeasureId;
-    private Long coverageLsId;
-    private Long hostNcbiId;
-    private Long pathogenNcbiId;
-
-    public static EntryOntologyQuery of(Long host, Long pathogen, Long location, Long measure) {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
-        q.setControlMeasureId(measure);
-        q.setHostNcbiId(host);
-        q.setCoverageLsId(location);
-        q.setPathogenNcbiId(pathogen);
-        return q;
-    }
+    private Long locationId;
+    private Long hostId;
+    private Long pathogenId;
+    private String type;
 
     public Long getControlMeasureId() {
         return controlMeasureId;
@@ -23,27 +15,35 @@ public class EntryOntologyQuery {
         this.controlMeasureId = controlMeasureId;
     }
 
-    public Long getCoverageLsId() {
-        return coverageLsId;
+    public Long getLocationId() {
+        return locationId;
     }
 
-    public void setCoverageLsId(Long coverageLsId) {
-        this.coverageLsId = coverageLsId;
+    public void setLocationId(Long locationId) {
+        this.locationId = locationId;
     }
 
-    public Long getHostNcbiId() {
-        return hostNcbiId;
+    public Long getHostId() {
+        return hostId;
     }
 
-    public void setHostNcbiId(Long hostNcbiId) {
-        this.hostNcbiId = hostNcbiId;
+    public void setHostId(Long hostId) {
+        this.hostId = hostId;
     }
 
-    public Long getPathogenNcbiId() {
-        return pathogenNcbiId;
+    public Long getPathogenId() {
+        return pathogenId;
     }
 
-    public void setPathogenNcbiId(Long pathogenNcbiId) {
-        this.pathogenNcbiId = pathogenNcbiId;
+    public void setPathogenId(Long pathogenId) {
+        this.pathogenId = pathogenId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
