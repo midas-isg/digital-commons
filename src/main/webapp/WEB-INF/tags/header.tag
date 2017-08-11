@@ -90,7 +90,6 @@
 
     function hideTitle(title) {
         var d = document.getElementById(title);
-        console.log(d);
         d.classList.remove('visible');
         d.classList.add('hidden');
     }

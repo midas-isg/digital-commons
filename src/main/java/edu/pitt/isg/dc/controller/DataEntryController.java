@@ -109,6 +109,7 @@ public class DataEntryController {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
+        String category = java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8");
         String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 

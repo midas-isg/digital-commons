@@ -50,7 +50,7 @@ public class ExpController {
         return repo.findAllByAboutNcbiId("%" + id);
     }
 
-    @Transactional
+    /*@Transactional
     @RequestMapping(value = "/entries/by-ontology",
             method = GET,
             produces = {JSON, XML})
@@ -66,7 +66,7 @@ public class ExpController {
         if (longs == null)
             return repo.findAll();
         return repo.findAll(longs);
-    }
+    }*/
 
     private List<BigInteger> merge(List<BigInteger> list1, List<BigInteger> list2) {
         if (list1 == null)

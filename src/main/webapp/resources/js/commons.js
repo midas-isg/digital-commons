@@ -1238,7 +1238,13 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
         if(key in attrs) {
             attribute = attrs[key];
         } else if(attrs['distributions'] != null) {
-            attribute = attrs['distributions'][0]['access'][key];
+            try {
+                attribute = attrs['distributions'][0]['access'][key];
+            } catch (err) {
+                $(containerId).hide();
+                return;
+            }
+
             if(attribute == null) {
                 $(containerId).hide();
                 return;

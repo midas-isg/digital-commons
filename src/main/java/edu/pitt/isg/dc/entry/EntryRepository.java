@@ -2,21 +2,24 @@ package edu.pitt.isg.dc.entry;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.NamedNativeQuery;
 import java.math.BigInteger;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 @NamedNativeQuery(name = "Todo.findByTitleIs",
         query="SELECT * FROM todos t WHERE t.title = 'title'",
         resultClass = Entry.class
 )
 @Repository
-public interface EntryRepository extends JpaRepository<Entry, Long> {
+public interface EntryRepository extends JpaRepository<Entry, EntryId> {
+    @Transactional(readOnly=true)
+    Entry findOne(EntryId id);
+
+    void delete(EntryId id);
+
     List<Entry> findAllByStatus(String status);
 
     @Query(nativeQuery = true, value = "SELECT * FROM entry e WHERE e.status = 'approved' and e.content @> jsonb(?1)")

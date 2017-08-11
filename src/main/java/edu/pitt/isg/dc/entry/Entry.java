@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -15,22 +16,25 @@ import static javax.persistence.GenerationType.IDENTITY;
 @TypeDef(name = JsonbType.NAME, typeClass = JsonbType.class, parameters = {
         @Parameter(name = JsonbType.CLASS, value = "java.util.HashMap")})
 public class Entry {
-    private Long id;
+    @EmbeddedId
+    private EntryId id;
+    //private Long id;
+    @Type(type = JsonbType.NAME)
     private HashMap content;
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    public Long getId() {
+    public EntryId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(EntryId id) {
         this.id = id;
     }
 
-    @Type(type = JsonbType.NAME)
     public HashMap getContent() {
         return content;
     }
@@ -47,8 +51,6 @@ public class Entry {
         this.status = status;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
     public Category getCategory() {
         return category;
     }
