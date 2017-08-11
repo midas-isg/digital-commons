@@ -159,6 +159,10 @@
                     modalHeader="Approve Submission"
                     type="approve"
                     categoryPaths="${categoryPaths}"/>
+<myTags:reviewModal id="commentModal"
+                    modalHeader="Comments"
+                    type="comments"
+                    categoryPaths="${categoryPaths}"/>
 <myTags:reviewModal id="rejectModal"
                     modalHeader="Reject Submission"
                     type="reject"

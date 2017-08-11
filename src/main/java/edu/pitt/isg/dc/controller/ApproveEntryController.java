@@ -42,7 +42,7 @@ public class ApproveEntryController {
     @RequestMapping(value = "/review", method = RequestMethod.GET)
     public String review(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
         if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
-            List<EntryView> entries = entryApprovalInterface.getPendingEntries();
+            List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
             List<EntryView> softwareEntries = new ArrayList<>();
@@ -162,11 +162,12 @@ public class ApproveEntryController {
     }
 
     @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
-    public ResponseEntity<String> getItem(@PathVariable(value="itemId") EntryId itemId,
+    public ResponseEntity<String> getItem(@PathVariable(value="itemId") long itemId,
+                                          @RequestParam(value = "revisionId", required = false) long revisionId,
                                           Model model) throws MdcEntryDatastoreException {
             try {
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-                return ResponseEntity.ok(gson.toJson(datastore.getEntry(itemId)));
+                return ResponseEntity.ok(gson.toJson(datastore.getEntry(new EntryId(itemId, revisionId))));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }

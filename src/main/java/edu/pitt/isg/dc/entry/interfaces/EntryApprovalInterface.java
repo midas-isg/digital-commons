@@ -18,4 +18,6 @@ public interface EntryApprovalInterface {
     List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
 
     List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException;
+
+    List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException;
 }

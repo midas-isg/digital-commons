@@ -14,25 +14,27 @@
                 <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
             </div>
             <div class="modal-body">
-                <input id="approve-entry-id-${id}" class="hidden">
-                <input id="approve-entry-revision-id-${id}" class="hidden">
+                <c:if test="${type != 'comments'}">
+                    <input id="approve-entry-id-${id}" class="hidden">
+                    <input id="approve-entry-revision-id-${id}" class="hidden">
 
-                <div class="sub-title-font font-size-16 modal-software-item">
-                    <h4 class="inline bold">Title: </h4><br>
-                    <span id="approve-entry-title-${id}"></span>
-                </div>
-                <div class="sub-title-font font-size-16 modal-software-item">
-                    <h4 class="inline bold">Version: </h4><br>
-                    <span id="approve-entry-version-${id}"></span>
-                </div>
-                <div class="sub-title-font font-size-16 modal-software-item">
-                    <h4 class="inline bold">Author: </h4><br>
-                    <span id="approve-entry-author-${id}"></span>
-                </div>
-                <div class="sub-title-font font-size-16 modal-software-item">
-                    <h4 class="inline bold">Data type: </h4><br>
-                    <span id="approve-entry-type-${id}"></span>
-                </div>
+                    <div class="sub-title-font font-size-16 modal-software-item">
+                        <h4 class="inline bold">Title: </h4><br>
+                        <span id="approve-entry-title-${id}"></span>
+                    </div>
+                    <div class="sub-title-font font-size-16 modal-software-item">
+                        <h4 class="inline bold">Version: </h4><br>
+                        <span id="approve-entry-version-${id}"></span>
+                    </div>
+                    <div class="sub-title-font font-size-16 modal-software-item">
+                        <h4 class="inline bold">Author: </h4><br>
+                        <span id="approve-entry-author-${id}"></span>
+                    </div>
+                    <div class="sub-title-font font-size-16 modal-software-item">
+                        <h4 class="inline bold">Data type: </h4><br>
+                        <span id="approve-entry-type-${id}"></span>
+                    </div>
+                </c:if>
                 <div class="sub-title-font font-size-16 modal-software-item form-group" id="category-form-group-${id}">
                     <c:choose>
                         <c:when test="${type == 'approve'}">
@@ -45,14 +47,16 @@
                             </select>
                             <div id="category-feedback-${id}" class="error-color" style="margin-top:3px; margin-left:2px; display:none">Please select a category.</div>
                         </c:when>
-                        <c:otherwise>
+                        <c:when test="${type == 'reject'}">
                             <h4 class="inline bold" id="category-label-${id}">Category: </h4><br>
                             <span id="category-span-${id}"></span>
-                        </c:otherwise>
+                        </c:when>
                     </c:choose>
-                    <c:if test="${type == 'reject'}">
+                    <c:if test="${type == 'reject' || type == 'comments'}">
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Comment(s): </h4><br>
+                            <c:if test="${type == 'reject'}">
+                                <h4 class="inline bold">Comment(s): </h4><br>
+                            </c:if>
                             <div id="reject-comments"></div>
                             <button type="button" class="btn btn-default" style="margin-top:5px" onclick="addComment()">Add comment</button>
                         </div>
@@ -65,8 +69,11 @@
                     <c:when test="${type == 'approve'}">
                         <button type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
                     </c:when>
-                    <c:otherwise>
+                    <c:when test="${type == 'reject'}">
                         <button type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
+                    </c:when>
+                    <c:otherwise>
+                        <button type="button" class="btn btn-default" onclick="commentButton('${id}')">Submit</button>
                     </c:otherwise>
                 </c:choose>
             </div>

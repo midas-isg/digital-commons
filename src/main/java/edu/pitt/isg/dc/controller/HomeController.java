@@ -155,6 +155,9 @@ public class HomeController {
     @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
     public String addNewDataFormatConverters(@PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
                                              @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
+        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         model.addAttribute("category", category);
         if(category.toLowerCase().equals("dataset")) {
             model.addAttribute("datasetType", datasetType);
@@ -162,7 +165,6 @@ public class HomeController {
             return "Dataset";
         } else {
             return WordUtils.capitalize(category);
-
         }
     }
 

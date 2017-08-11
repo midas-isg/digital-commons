@@ -82,4 +82,18 @@ public class EntryApproval implements EntryApprovalInterface {
         }
         return entries;
     }
+
+    @Override
+    public List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException {
+        List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
+        List<EntryView> entries = new ArrayList<>();
+        for(EntryId entryId : entryIds) {
+            EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
+            String status = entryView.getProperty("status");
+            if(!status.equals("approved")) {
+                entries.add(entryView);
+            }
+        }
+        return entries;
+    }
 }
