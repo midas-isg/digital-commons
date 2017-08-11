@@ -42,4 +42,20 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             "FROM entry WHERE " + IS_APPROVED)
     List<String> listTypes();
+
+    //@Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, a.content #> '{entry, dataOutputFormats}' b.content #> '{entry, dataInputFormats}', b.content #>> '{entry, title}',\n" +
+    //@Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, b.content #>> '{entry, title}'\n" +
+    @Query(nativeQuery = true, value = "select a.id as s1, b.id as s2 \n" +
+            "from entry a, entry b\n" +
+            "where a.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
+            "and b.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
+            "and a.id <> b.id\n" +
+            "and (\n" +
+            "   ( b.content #> '{entry, dataInputFormats}' @> (a.content #> '{entry, dataOutputFormats}') )\n" +
+            "   or \n" +
+            "   ( b.content #> '{entry, dataInputFormats}' <@ (a.content #> '{entry, dataOutputFormats}')  )\n" +
+            ")\n" +
+            "order by a.content #>> '{entry, title}'" //+ AND_APPROVED
+            )
+    List<List<BigInteger>> matchSoftware();
 }

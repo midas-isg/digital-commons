@@ -9,6 +9,7 @@ final public class Values {
     public static final String PATH_SEPARATOR = "/";
     public static final String SOFTWARE = "Software"; // type
     public static final String PENDING = "pending";
+    public static final String DATA_FORMAT_CONVERTERS1_0 = "edu.pitt.isg.mdc.v1_0.DataFormatConverters";
 
     private Values(){
     }

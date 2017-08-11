@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigInteger;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +30,7 @@ import static edu.pitt.isg.dc.entry.Keys.PROPERTIES;
 import static edu.pitt.isg.dc.entry.Keys.TYPE;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
 import static edu.pitt.isg.dc.entry.Values.DATASET_2_2;
+import static edu.pitt.isg.dc.entry.Values.DATA_FORMAT_CONVERTERS1_0;
 import static edu.pitt.isg.dc.entry.Values.DTM_1_0;
 import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -115,7 +118,13 @@ public class DatabaseTest {
     @Test
     public void allTypes() throws Exception {
         final List<String> all = typeRule.findAll();
-        assertThat(all).containsExactly(DATASET_2_2, DTM_1_0);
+        assertThat(all).containsExactlyInAnyOrder(DATASET_2_2, DATA_FORMAT_CONVERTERS1_0, DTM_1_0);
+    }
+
+    @Test
+    public void matchSoftware() throws Exception {
+        final List<List<BigInteger>> lists = entryRepo.matchSoftware();
+        assertThat(lists.size()).isGreaterThan(0);
     }
 
     @Test
