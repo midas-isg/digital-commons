@@ -3,11 +3,13 @@ package edu.pitt.isg.dc.entry.classes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Comments;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
+import edu.pitt.isg.mdc.v1_0.Software;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -122,8 +124,7 @@ class EntryObject {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         if(this.getEntryType().contains("edu.pitt.isg.mdc.v1_0")) {
-            List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(getEntryJsonString());
-            return softwareXmlList.get(0);
+            return DigitalCommonsHelper.jsonToXml((Software) getEntryAsTypeClass());
         } else {
             return gson.toJson(this.getEntry());
         }
@@ -141,8 +142,7 @@ class EntryObject {
         GsonBuilder gsonBuilder = new GsonBuilder().serializeNulls();
         Gson gson = gsonBuilder.create();
 
-        JsonObject jsonObjectEntry = (JsonObject) entry;
-        String jsonString = jsonObjectEntry.toString();
+        String jsonString = gson.toJson(this.getEntry());
 
         Object returnObject = null;
         try {

@@ -307,19 +307,6 @@ public class HomeController {
         return json;
     }
 
-    @RequestMapping(value = "/getSoftwareXml", method = RequestMethod.GET, headers = "Accept=application/xml; charset=utf-8")
-    public
-    @ResponseBody
-    String getSoftwareXml(@RequestParam(value = "index") int index) throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File jsonFile = new File(classLoader.getResource("json/hardcoded-software.json").getFile());
-        String json = FileUtils.readFileToString(jsonFile);
-        List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(json);
-        String xml = softwareXmlList.get(index);
-
-        return xml;
-    }
-
     @RequestMapping(value = "/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
