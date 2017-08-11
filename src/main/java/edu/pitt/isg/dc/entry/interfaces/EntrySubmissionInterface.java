@@ -5,6 +5,7 @@ import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 
 public interface EntrySubmissionInterface {
     String submitEntry(EntryView entryObject,
+                       long categoryValue,
                        String emailAddress,
                        String authenticationToken) throws MdcEntryDatastoreException;
 }

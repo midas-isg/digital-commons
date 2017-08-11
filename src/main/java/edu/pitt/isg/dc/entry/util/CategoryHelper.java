@@ -54,7 +54,7 @@ public class CategoryHelper {
     }
 
     private Map<Long, List<EntryView>> getCategoryEntryMap() throws MdcEntryDatastoreException {
-        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
+        List<EntryView> entries = entryApprovalInterface.getPublicEntries();
         Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
         for(EntryView entry : entries) {
             Category category = entry.getCategory();
@@ -206,7 +206,7 @@ public class CategoryHelper {
 
     public Collection<Category> getBottomLevelCategories() throws MdcEntryDatastoreException {
         Map<Long, Category> categories = new HashMap<>();
-        List<EntryView> entries = entryApprovalInterface.getApprovedEntries();
+        List<EntryView> entries = entryApprovalInterface.getPublicEntries();
         for(EntryView entry : entries) {
             Category category = entry.getCategory();
             if(category != null)

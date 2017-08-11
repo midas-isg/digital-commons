@@ -9,6 +9,7 @@ import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -109,7 +110,7 @@ public class DataEntryController {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
-        String category = java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8");
+        long category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8"));
         String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 
@@ -150,7 +151,7 @@ public class DataEntryController {
             entry.remove("class");
             entryObject.setEntry(entry);
 
-            entrySubmissionInterface.submitEntry(entryObject, "", ENTRIES_AUTHENTICATION);
+            entrySubmissionInterface.submitEntry(entryObject, category,"", ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
             DCEmailService emailService = new DCEmailService();

@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.Comments;
+import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
@@ -14,6 +16,8 @@ class EntryObject {
     transient private EntryId id;
     private Object entry;
     private Category category;
+    private boolean isPublic;
+    private Comments comments;
     private Map<String, String> properties = new HashMap<>();
 
     public EntryId getId() {
@@ -38,6 +42,22 @@ class EntryObject {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public boolean getIsPublic() {
+        return this.isPublic;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
+    }
+
+    public Comments getComments() {
+        return comments;
+    }
+
+    public void setComments(Comments comments) {
+        this.comments = comments;
     }
 
     public Map<String, String> getProperties() {

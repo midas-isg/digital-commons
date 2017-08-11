@@ -84,6 +84,20 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     @Override
+    public List<EntryView> getPublicEntries() throws MdcEntryDatastoreException {
+        List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
+        List<EntryView> entries = new ArrayList<>();
+        for(EntryId entryId : entryIds) {
+            EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
+            boolean isPublic = entryView.getIsPublic();
+            if(isPublic) {
+                entries.add(entryView);
+            }
+        }
+        return entries;
+    }
+
+    @Override
     public List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException {
         List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
         List<EntryView> entries = new ArrayList<>();
@@ -91,6 +105,9 @@ public class EntryApproval implements EntryApprovalInterface {
             EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
             String status = entryView.getProperty("status");
             if(!status.equals("approved")) {
+                Comments comments = mdcEntryDatastoreInterface.getComments(entryId);
+                entryView.setComments(comments);
+
                 entries.add(entryView);
             }
         }
