@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
 
@@ -99,7 +100,13 @@ class EntryObject {
 
     public String getUnescapedEntryJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(this.getEntry());
+
+        if(this.getEntryType().contains("edu.pitt.isg.mdc.v1_0")) {
+            List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(getEntryJsonString());
+            return softwareXmlList.get(0);
+        } else {
+            return gson.toJson(this.getEntry());
+        }
     }
 
     public String getEntryType() {
