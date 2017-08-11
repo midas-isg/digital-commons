@@ -18,7 +18,7 @@
                 "description": "Cases were located in a 70 km radius around Yambuku, Republic of Zaire, in an area called the Bumba Zone",
                 "identifier": {
                     "identifier": "85128",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85128"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -94,7 +94,7 @@
                 "name": "Maridi",
                 "identifier": {
                     "identifier": "85129",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85129"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             },
@@ -102,21 +102,21 @@
                 "name": "Tambura Town",
                 "identifier": {
                     "identifier": "85130",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85130"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Nazara Town",
                 "identifier": {
                     "identifier": "85131",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85131"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Juba City",
                 "identifier": {
                     "identifier": "85132",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85132"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -191,7 +191,7 @@
                 "name": "Yambio",
                 "identifier": {
                     "identifier": "85143",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85143"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             },
@@ -200,7 +200,7 @@
                 "description": "",
                 "identifier": {
                     "identifier": "85055",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85055"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -275,7 +275,7 @@
                 "name": "4826.02",
                 "identifier": {
                     "identifier": "84022",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84022"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -356,7 +356,7 @@
                 "name": "Andock gold-panning encampment",
                 "identifier": {
                     "identifier": "85133",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85133"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             },
@@ -364,56 +364,56 @@
                 "name": "Mekouka gold-mining encampment",
                 "identifier": {
                     "identifier": "85134",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85134"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Minkebe gold-mining encampment",
                 "identifier": {
                     "identifier": "85135",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85135"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Ekobakoba Town",
                 "identifier": {
                     "identifier": "85136",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85136"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Etakaniabe",
                 "identifier": {
                     "identifier": "85137",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85137"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Mayela",
                 "identifier": {
                     "identifier": "85138",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85138"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Mayibout",
                 "identifier": {
                     "identifier": "85139",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85139"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Mvadi",
                 "identifier": {
                     "identifier": "85140",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85140"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Makokou Town",
                 "identifier": {
                     "identifier": "85141",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85141"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
@@ -421,7 +421,7 @@
                 "description": "Area encompassing the 3 gold-panning encampments situated in small clearings of 2000-3000 m2 at the edge of the rain forest where the epidemic started.",
                 "identifier": {
                     "identifier": "85142",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85142"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -497,7 +497,7 @@
                 "description": "Kikwit population ~200,000, the former regional capital of Bandundu region, is located on the banks of the Kwilu River",
                 "identifier": {
                     "identifier": "85164",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85164"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -573,7 +573,7 @@
                 "name": "Gabon",
                 "identifier": {
                     "identifier": "157",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=157"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -662,7 +662,7 @@
                 "name": "Gabon",
                 "identifier": {
                     "identifier": "157",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=157"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -751,7 +751,7 @@
                 "name": "Masindi",
                 "identifier": {
                     "identifier": "56",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=56"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -764,14 +764,14 @@
                 "name": "Mbarara",
                 "identifier": {
                     "identifier": "65",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=65"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Gulu",
                 "identifier": {
                     "identifier": "147",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=147"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -847,7 +847,7 @@
                 "description": "65 cases were noted in Gabon (47 (38%) in Zadie district, 17 (14%) in Ivindo district and 1 (1%) in Mpassa district) and 59 in Congo (33 (26%) in Mbomo district and 26 (21%) in Kelle district.)",
                 "identifier": {
                     "identifier": "85165",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85165"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -923,7 +923,7 @@
                 "name": "Mbomo",
                 "identifier": {
                     "identifier": "224",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=224"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -936,7 +936,7 @@
                 "name": "K\u00e9ll\u00e9",
                 "identifier": {
                     "identifier": "223",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=223"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -1011,7 +1011,7 @@
                 "name": "Mbomo Village",
                 "identifier": {
                     "identifier": "85167",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85167"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             },
@@ -1019,7 +1019,7 @@
                 "name": "Mbandza Village",
                 "identifier": {
                     "identifier": "85166",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85166"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -1095,7 +1095,7 @@
                 "description": "2004 Yambio Sudan approximate",
                 "identifier": {
                     "identifier": "85169",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85169"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -1171,7 +1171,7 @@
                 "name": "Cuvette-Ouest",
                 "identifier": {
                     "identifier": "210",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=210"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1252,7 +1252,7 @@
                 "name": "Bundibugyo",
                 "identifier": {
                     "identifier": "41",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=41"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1334,7 +1334,7 @@
                 "description": "10 villages situated on the north-south road linking Luebo and Mweka",
                 "identifier": {
                     "identifier": "85168",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85168"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -1410,7 +1410,7 @@
                 "name": "Luebo",
                 "identifier": {
                     "identifier": "275",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=275"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1423,7 +1423,7 @@
                 "name": "Mweka",
                 "identifier": {
                     "identifier": "274",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=274"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -1498,7 +1498,7 @@
                 "name": "Kibaale",
                 "identifier": {
                     "identifier": "55",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=55"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1579,7 +1579,7 @@
                 "name": "Dungu",
                 "identifier": {
                     "identifier": "84916",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84916"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1660,7 +1660,7 @@
                 "name": "Luwero",
                 "identifier": {
                     "identifier": "67",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=67"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -1673,7 +1673,7 @@
                 "name": "Kampala",
                 "identifier": {
                     "identifier": "76",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=76"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -1748,7 +1748,7 @@
                 "name": "Guinea",
                 "identifier": {
                     "identifier": "85163",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85163"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -1824,7 +1824,7 @@
                 "name": "Nimba",
                 "identifier": {
                     "identifier": "85181",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85181"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             },
@@ -1832,98 +1832,98 @@
                 "name": "Rivercess",
                 "identifier": {
                     "identifier": "85183",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85183"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "River Gee",
                 "identifier": {
                     "identifier": "85182",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85182"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Sinoe",
                 "identifier": {
                     "identifier": "85185",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85185"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Bomi",
                 "identifier": {
                     "identifier": "85170",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85170"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Bong",
                 "identifier": {
                     "identifier": "85171",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85171"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Gbarpolu",
                 "identifier": {
                     "identifier": "85173",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85173"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Grand Cape Mount",
                 "identifier": {
                     "identifier": "85175",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85175"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Grand Bassa",
                 "identifier": {
                     "identifier": "85174",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85174"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Grand Kru",
                 "identifier": {
                     "identifier": "85176",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85176"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Lofa",
                 "identifier": {
                     "identifier": "85177",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85177"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Margibi",
                 "identifier": {
                     "identifier": "85178",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85178"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Maryland",
                 "identifier": {
                     "identifier": "85179",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85179"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Montserrado",
                 "identifier": {
                     "identifier": "85180",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85180"
+                    "identifierSource": "ApolloLS"
                 }
             },
             {
                 "name": "Liberia",
                 "identifier": {
                     "identifier": "85172",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85172"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -1998,7 +1998,7 @@
                 "name": "Sierra Leone",
                 "identifier": {
                     "identifier": "85184",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85184"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": []
             }
@@ -2074,7 +2074,7 @@
                 "name": "78.22",
                 "identifier": {
                     "identifier": "72404",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=72404"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -2155,7 +2155,7 @@
                 "name": "Congo (the Democratic Republic of the)",
                 "identifier": {
                     "identifier": "262",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=262"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -2244,7 +2244,7 @@
                 "name": "Bamako",
                 "identifier": {
                     "identifier": "38",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=38"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -2257,7 +2257,7 @@
                 "name": "Kayes",
                 "identifier": {
                     "identifier": "31",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=31"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],
@@ -2332,7 +2332,7 @@
                 "name": "Lagos",
                 "identifier": {
                     "identifier": "343",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=343"
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": [
                     {
@@ -2345,7 +2345,7 @@
                 "name": "Rivers",
                 "identifier": {
                     "identifier": "351",
-                    "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=351"
+                    "identifierSource": "ApolloLS"
                 }
             }
         ],

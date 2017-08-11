@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -12,9 +13,16 @@ import java.util.List;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
 
 @Repository
-public interface EntryRepository extends JpaRepository<Entry, Long> {
+public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     String IS_APPROVED = "status = '" + APPROVED + "'";
     String AND_APPROVED = "AND " + IS_APPROVED;
+
+    @Transactional(readOnly=true)
+    Entry findOne(EntryId id);
+
+    void delete(EntryId id);
+
+    List<Entry> findAllByStatus(String status);
 
     Page<Entry> findAllByStatus(String status, Pageable pageable);
     Page<Entry> findByIdIn(List<Long> ids, Pageable pageable);
@@ -56,6 +64,6 @@ public interface EntryRepository extends JpaRepository<Entry, Long> {
             "   ( b.content #> '{entry, dataInputFormats}' <@ (a.content #> '{entry, dataOutputFormats}')  )\n" +
             ")\n" +
             "order by a.content #>> '{entry, title}'" //+ AND_APPROVED
-            )
+    )
     List<List<BigInteger>> matchSoftware();
 }

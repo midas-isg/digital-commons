@@ -42,10 +42,10 @@
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" preview="true" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
     </c:when>
     <c:otherwise>
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" preview="false" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
 
     </c:otherwise>
 </c:choose>

@@ -23,10 +23,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 @ApiIgnore
 @Controller
 public class Auth0Controller extends Auth0CallbackHandler {
+	private static final String ROLES_TOKEN = "roles";
+	public static final String ISG_ADMIN_TOKEN = "ISG_ADMIN";
+	public static final String MDC_EDITOR_TOKEN = "MDC_EDITOR";
+
 	@RequestMapping(value = "/${auth0.loginRedirectOnFail}", method = RequestMethod.GET)
 	public String showLoginPage(
 			final HttpServletRequest request,
@@ -83,20 +88,17 @@ public class Auth0Controller extends Auth0CallbackHandler {
 			final RedirectAttributes redirectAttributes,
 			final Model model) throws IOException {
 		final HttpSession session = request.getSession();
+		authenticateUserAtAppLevel(session, request);
 		Auth0User auth0User = (Auth0User) session.getAttribute("auth0User");
 		String email = auth0User.getEmail().toLowerCase();
 		String userId = auth0User.getUserId();
 
-		session.setAttribute("loggedIn", true);
+		session.setAttribute(HomeController.LOGGED_IN_PROPERTY, true);
 		session.setAttribute("userEmail", email);
 		session.setAttribute("userId", userId);
 		session.setAttribute("userName", auth0User.getName());
 		session.setAttribute("userPic", auth0User.getPicture());
-		if(session.getAttribute("requestUrl") != null && !((String)session.getAttribute("requestUrl")).contains("login")) {
-			String redirect = (String) session.getAttribute("requestUrl") ;
-			session.removeAttribute("requestUrl");
-			return "redirect:"+ redirect;
-		}
+//
 		return "redirect:/main";
 
 	}
@@ -150,5 +152,20 @@ public class Auth0Controller extends Auth0CallbackHandler {
 			throw new IllegalStateException("state missing in request");
 		}
 		return QueryParamUtils.parseFromQueryParams(stateFromRequest, "externalReturnUrl");
+	}
+
+	private Auth0User authenticateUserAtAppLevel(HttpSession session, HttpServletRequest req) {
+		final Auth0User auth0User = SessionUtils.getAuth0User(req);
+		if (auth0User.getAppMetadata() != null) {
+			List<String> roles = (List<String>) auth0User.getAppMetadata().get(ROLES_TOKEN);
+			if (roles != null && roles.contains(MDC_EDITOR_TOKEN)) {
+				session.setAttribute(HomeController.ADMIN_TYPE, MDC_EDITOR_TOKEN);
+			}
+			if (roles != null && roles.contains(ISG_ADMIN_TOKEN)) {
+				session.setAttribute(HomeController.ADMIN_TYPE, ISG_ADMIN_TOKEN);
+			}
+		}
+		session.setAttribute("userId", auth0User.getUserId());
+		return auth0User;
 	}
 }

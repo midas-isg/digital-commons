@@ -200,7 +200,7 @@ def process():
                 "name": disease_name,
                 "identifier": 
                     {
-                    "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=" + snomed_ct,
+                    "identifier": snomed_ct,
                     "identifierSource": "https://biosharing.org/bsg-s000098"
                 }
             },
@@ -208,8 +208,8 @@ def process():
                 "name": country_name,
                 "identifier": 
                     {
-                    "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=" + alc,
-                    "identifierSource": "apollo location service"
+                    "identifier": alc,
+                    "identifierSource": "ApolloLS"
                     },
                 "alternateIdentifiers": alternate_country_identifiers
             }]
@@ -219,8 +219,8 @@ def process():
                 "name": country_name,
                 "description": "%s, but may be incomplete for some areas" % country_name,
                 "identifier": {
-                    "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=" + alc,
-                    "identifierSource": "apollo location service"
+                    "identifier": alc,
+                    "identifierSource": "ApolloLS"
                 },
                 "alternateIdentifiers": alternate_country_identifiers
             }

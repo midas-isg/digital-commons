@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:flusight-forecast-v1.0",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "FluSight Forecast",
+    "type": {
+        "value": "",
+        "valueIRI": ""
+    },
+    "description": "This specification describes the tabular format used to submit forecasts to the FluSight influenza challenge.",
+    "licenses": [
+        {
+            "name": ""
+        }
+    ],
+    "version": "1",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/cdcepi/FluSight-forecasts",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

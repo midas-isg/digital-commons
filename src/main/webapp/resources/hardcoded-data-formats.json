@@ -106,13 +106,6 @@
     "filename": "FASTA Sequence Format.json"
   },
   {
-    "title": "Epi-Data JSON",
-    "filename": "Epi-Data JSON.json",
-    "version": [
-      "1"
-    ]
-  },
-  {
     "title": "FluTE Synthetic Ecosystem",
     "filename": "ApolloFlute.json",
     "version": [
@@ -159,6 +152,13 @@
     "filename": "FluSight Forecast.json",
     "version": [
       "1"
+    ]
+  },
+  {
+    "title": "NOAA Climate Data Online JSON",
+    "filename": "NOAA Climate Data Online JSON v2.json",
+    "version": [
+      "2"
     ]
   }
 ]

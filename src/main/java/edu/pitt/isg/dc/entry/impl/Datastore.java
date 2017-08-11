@@ -4,9 +4,7 @@ package edu.pitt.isg.dc.entry.impl;
  * Created by jdl50 on 6/5/17.
  */
 
-import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.EntryHelper;
-import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.vm.EntryView;
@@ -16,13 +14,18 @@ import org.springframework.stereotype.Component;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-
-import static edu.pitt.isg.dc.entry.Values.PENDING;
+import java.util.Set;
 
 @Component
 public class Datastore implements MdcEntryDatastoreInterface {
     @Autowired
     private EntryRepository repo;
+
+    @Autowired
+    private CommentsRepository commentsRepo;
+
+    @Autowired
+    private EntryIdManager entryIdManager;
 
     @Override
     @Transactional
@@ -59,7 +62,7 @@ public class Datastore implements MdcEntryDatastoreInterface {
     @Transactional
     public List<EntryView> getPendingEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
-        for (Entry entry: repo.findAllByStatus(PENDING, null)) {
+        for (Entry entry: repo.findAllByStatus("pending")) {
             list.add(new EntryView(entry));
         }
         return list;
@@ -95,6 +98,23 @@ public class Datastore implements MdcEntryDatastoreInterface {
                 break;
             default:
                 throw new MdcEntryDatastoreException("Unsupported mdcDatastoreFormat" + mdcDatastoreFormat);
+        }
+    }
+
+    @Override
+    @Transactional
+    public Comments getComments(EntryId id) {
+        return commentsRepo.findOne(id);
+    }
+
+    @Override
+    @Transactional
+    public String updateComments(Comments comments) throws MdcEntryDatastoreException {
+        try {
+            commentsRepo.save(comments);
+            return comments.getId().toString();
+        } catch (Exception e) {
+            throw new MdcEntryDatastoreException(e);
         }
     }
 }

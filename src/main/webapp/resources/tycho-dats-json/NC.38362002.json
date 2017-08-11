@@ -186,15 +186,15 @@
         {
             "name": "Dengue",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=38362002",
+                "identifier": "38362002",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "New Caledonia",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=8013",
-                "identifierSource": "apollo location service"
+                "identifier": "8013",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -571,8 +571,8 @@
             "name": "New Caledonia",
             "description": "New Caledonia, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=8013",
-                "identifierSource": "apollo location service"
+                "identifier": "8013",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

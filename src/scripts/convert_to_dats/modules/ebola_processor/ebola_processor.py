@@ -8,6 +8,7 @@ import re
 import urllib.request
 from dateutil.parser import parse
 from bs4 import BeautifulSoup
+from unidecode import unidecode
 
 def process():
     dois = []
@@ -90,14 +91,14 @@ def process():
             {
                 'name': scientific_name,
                 'identifier': {
-                    'identifier': 'https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=' + taxon_id,
+                    'identifier': taxon_id,
                     'identifierSource': 'https://biosharing.org/bsg-s000154'
                 }
             },
             {
                 "name": snomed_name,
                 "identifier": {
-                    "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=" + snomed_ct,
+                    "identifier": snomed_ct,
                     "identifierSource": "https://biosharing.org/bsg-s000098"
                 }
             },
@@ -133,7 +134,7 @@ def process():
 
                     spatial_coverage[i]["identifier"] = {
                         "identifier": epidemic_zones[i],
-                        "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=" + epidemic_zones[i]
+                        "identifierSource": "ApolloLS"
                     }
 
                     for code_properties in feature["properties"]["codes"]:
@@ -354,7 +355,7 @@ def process():
 
         output_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../..', 'output'))
         dats_path = os.path.join(output_path, 'ebola_dats_json')
-        filepath = os.path.join(dats_path, name + '.json')
+        filepath = os.path.join(dats_path, unidecode(name).encode("ascii").decode("ascii") + '.json')
 
         with open(filepath, 'w+') as out:
             out.write(dats_json_output)

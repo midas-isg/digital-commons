@@ -1,6 +1,18 @@
 package edu.pitt.isg.dc.controller;
 
+import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
+import edu.pitt.isg.dc.digital.spew.SpewLocation;
+import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.CategoryOrder;
+import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.impl.EntryApproval;
+import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.Ncbi;
 import edu.pitt.isg.dc.entry.NcbiRule;
 import edu.pitt.isg.dc.entry.TypeRule;
@@ -9,6 +21,7 @@ import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -25,6 +38,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,6 +60,10 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Comparator.comparing;
+import java.util.*;
+
+import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 
 @ApiIgnore
 @Controller
@@ -55,6 +73,8 @@ public class HomeController {
     private static String SPEW_CACHE_FILE = "";
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
+    public static final String LOGGED_IN_PROPERTY = "loggedIn";
+    public static final String ADMIN_TYPE = "adminType";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -71,8 +91,35 @@ public class HomeController {
     @Autowired
     private TypeRule typeRule;
 
+    @Autowired
+    private EntryApprovalInterface entryApprovalInterface;
+
+    @Autowired
+    private CategoryOrderRepository categoryOrderRepository;
+
     private Integer spewCount;
     private Integer spewAmericaCount;
+
+    public static Boolean ifLoggedIn(HttpSession session) {
+        if(session.getAttribute(LOGGED_IN_PROPERTY) != null && session.getAttribute(LOGGED_IN_PROPERTY).equals(true)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifMDCEditor(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifISGAdmin(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
 
     private void recurseSpewTree(SpewLocation location, boolean usa) {
         for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
@@ -102,7 +149,7 @@ public class HomeController {
         }
     }
 
-    public void populateCommonsMainModel(Model model) {
+    public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
         try {
             model.addAttribute("spewRegions", spewRule.treeRegions());
             spewCount=0;
@@ -135,6 +182,12 @@ public class HomeController {
                 model.addAttribute("spewRegions", tree);
             }
         }
+
+        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+        List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
+        categoryHelper.getBottomLevelCategories();
+
+        model.addAttribute("treeInfoArr", treeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
@@ -173,28 +226,51 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String hello(Model model) throws Exception {
+    public String hello(Model model, HttpSession session) throws Exception {
         populateCommonsMainModel(model);
+
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "commons";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addEntry(Model model, HttpServletRequest request) throws Exception {
-        model.addAttribute("xsdForms", DataEntryController.readXSDFiles(request));
-        return "addEntry";
-    }
+//    @RequestMapping(value = "/add", method = RequestMethod.GET)
+//    public String addEntry(Model model) throws Exception {
+//        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
+//        return "addEntry";
+//    }
 
     @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
-    public String addNewDataFormatConverters(@PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
+    public String addNewDataFormatConverters(HttpSession session, @PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
                                              @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
+        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         model.addAttribute("category", category);
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if(!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
         if(category.toLowerCase().equals("dataset")) {
             model.addAttribute("datasetType", datasetType);
             model.addAttribute("customValue", customValue);
             return "Dataset";
         } else {
             return WordUtils.capitalize(category);
-
         }
     }
 
@@ -342,11 +418,5 @@ public class HomeController {
     @RequestMapping(value = "/main/about", method = RequestMethod.GET)
     public String about(Model model) {
         return "about";
-    }
-
-    @RequestMapping(value = "/preview", method = RequestMethod.GET)
-    public String preview(Model model) throws Exception {
-        populateCommonsMainModel(model);
-        return "commons";
     }
 }

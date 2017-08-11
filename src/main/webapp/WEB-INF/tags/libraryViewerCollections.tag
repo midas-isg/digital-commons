@@ -15,7 +15,7 @@
 
 <script>
     var syntheticEcosystemsByRegion = {
-        text: "<span onmouseover='toggleTitle(this)'>SPEW synthetic ecosystems</span> <span class='badge'>[${spewRegionCount}]</span> ",
+        text: "<span onmouseover='toggleTitle(this)'>SPEW datasets</span> <span class='badge'>[${spewRegionCount}]</span> ",
         nodes: []
     };
 
@@ -72,7 +72,7 @@
                 libraryData = null;
             },
             complete : function(e) {
-                getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}");
+                getDataAndKnowledgeTree(libraryData, syntheticEcosystemsByRegion, ${libraryViewerUrl}, "${pageContext.request.contextPath}", ${spewRegionCount});
             }
         });
         

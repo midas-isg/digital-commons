@@ -11,7 +11,22 @@
               type="java.util.List"%>
 <%@ attribute name="softwareEntries" required="true"
               type="java.util.List"%>
+<%@ attribute name="categoryPaths" required="true"
+              type="java.util.Map"%>
+
 <script>
+    function getEntryParams(entryId, revisionId, categoryId, comments) {
+        var auth = getParameterByName("auth");
+        var params = {
+            'auth': auth,
+            'entryId': entryId,
+            'revisionId': revisionId,
+            'categoryId': categoryId,
+            'comments': comments
+        };
+        return params;
+    }
+
     function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -22,21 +37,63 @@
         return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    function getEntryParams(id) {
-        var auth = getParameterByName("auth");
-        var params = {
-            'auth': auth,
-            'id': id
-        };
-        return params;
+    function hideCategoryErrors() {
+        $('#category-form-group').removeClass("has-error");
+        $('#category-label').removeClass("error-color");
+        $('#category-feedback').hide();
     }
 
-    function approveEntry(id) {
-        var approve = confirm("Are you sure you want to approve this entry?");
-        if(approve) {
-            var params = getEntryParams(id);
-            $.post("${pageContext.request.contextPath}/approve", params ,function(data){
-                if(data == "success") {
+    $('#category-select').change(function() {
+        hideCategoryErrors();
+    });
+
+    function showReviewEntryModal(htmlId, entryId, revisionId, category, elem) {
+        var tableRow = $(elem).parent().parent();
+        var tableData = tableRow.children();
+
+        var elemInfo = [];
+        for(var i = 0; i < 4; i++) {
+            elemInfo.push($(tableData[i]).text().trim());
+        }
+
+        var baseId = "#approve-entry-";
+        var endId = "-" + htmlId;
+        $(baseId + "id" + endId).val(entryId);
+        $(baseId + "revision-id" + endId).val(revisionId);
+        $(baseId + "title" + endId).text(elemInfo[0]);
+        $(baseId + "version" + endId).text(elemInfo[1]);
+        $(baseId + "author" + endId).text(elemInfo[2]);
+        $(baseId + "type" + endId).text(elemInfo[3]);
+
+        if(htmlId == "approveModal") {
+            if(category !== null && category !== '') {
+                $('#category-select' + endId).val(category);
+            }
+        } else if(htmlId == "rejectModal") {
+            if(category !== null && category !== '') {
+                $('#category-span' + endId).text(category);
+            } else {
+                $('#category-span' + endId).text("None");
+            }
+        }
+
+        $('#' + htmlId).modal('show');
+    }
+
+
+    function approveButton(id) {
+        var endId = "-" + id;
+        var entryId = $("#approve-entry-id" + endId).val();
+        var revisionId = $("#approve-entry-revision-id" + endId).val();
+        var categoryId = $("#category-select" + endId).val();
+        var params = getEntryParams(entryId, revisionId, categoryId);
+        if(categoryId === null || categoryId === '' || categoryId === 'none') {
+            $('#category-form-group' + endId).addClass("has-error");
+            $('#category-label' + endId).addClass("error-color");
+            $('#category-feedback' + endId).show();
+        } else {
+            $.post("${pageContext.request.contextPath}/add/approve", params ,function(data){
+                if(data === "success") {
                     window.location.reload();
                 } else {
                     alert("There was an issue approving this entry. Please try again.");
@@ -47,23 +104,69 @@
         }
     }
 
-    function rejectEntry(id) {
-        var reject = confirm("Are you sure you want to reject this entry?");
-        if(reject) {
-            var params = getEntryParams(id);
-            $.post("${pageContext.request.contextPath}/reject", params ,function(data){
-                if(data == "success") {
-                    window.location.reload();
-                } else {
-                    alert("There was an issue rejecting this entry. Please try again.");
-                }
-            }).fail(function() {
+    function rejectButton(id) {
+        var endId = "-" + id;
+        var entryId = $("#approve-entry-id" + endId).val();
+        var revisionId = $("#approve-entry-revision-id" + endId).val();
+
+        var comments = [];
+        $.each($("#reject-comments").children(), function(index, child) {
+            var comment = $(child).find(">:first-child").val();
+            if(comment != null && comment != '') {
+                comments.push(comment);
+            }
+        });
+
+        var params = getEntryParams(entryId, revisionId, null, comments);
+        $.post("${pageContext.request.contextPath}/add/reject", params ,function(data){
+            if(data == "success") {
+                window.location.reload();
+            } else {
                 alert("There was an issue rejecting this entry. Please try again.");
-            });
-        }
+            }
+        }).fail(function() {
+            alert("There was an issue rejecting this entry. Please try again.");
+        });
+    }
+
+    function addComment() {
+        var toAppend = "<div>" +
+            "<input class='form-control reject-input'/>" +
+            "<button class='btn btn-sm btn-danger reject-input-btn' onclick='$(this).parent().remove()'>" +
+            "<icon class='glyphicon glyphicon-trash'></icon>" +
+            "</button>" +
+            "<div>";
+
+        $('#reject-comments').append(toAppend);
     }
 </script>
+
+<style>
+    .reject-input {
+        margin-bottom:5px;
+        width:80%;
+        display:inline-block;
+    }
+
+    .reject-input-btn {
+        margin-left:10px;
+        display:inline-block;
+    }
+</style>
 <myTags:softwareModal/>
+<myTags:viewModal/>
+<myTags:reviewModal id="approveModal"
+                    modalHeader="Approve Submission"
+                    type="approve"
+                    categoryPaths="${categoryPaths}"/>
+<myTags:reviewModal id="commentModal"
+                    modalHeader="Comments"
+                    type="comments"
+                    categoryPaths="${categoryPaths}"/>
+<myTags:reviewModal id="rejectModal"
+                    modalHeader="Reject Submission"
+                    type="reject"
+                    categoryPaths="${categoryPaths}"/>
 <div class="col-md-12 container">
     <h3 class="title-font" id="subtitle">
         Review Submissions

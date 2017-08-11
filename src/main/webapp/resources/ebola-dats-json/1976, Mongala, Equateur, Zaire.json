@@ -30,14 +30,14 @@
         {
             "name": "Ebola virus - Eckron (Zaire, 1976)",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=129000",
+                "identifier": "129000",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -55,7 +55,7 @@
             "description": "Cases were located in a 70 km radius around Yambuku, Republic of Zaire, in an area called the Bumba Zone",
             "identifier": {
                 "identifier": "85128",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85128"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         }

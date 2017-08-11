@@ -30,21 +30,21 @@
         {
             "name": "Zika virus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=64320",
+                "identifier": "64320",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Zika virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=3928002",
+                "identifier": "3928002",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Fetal microcephaly",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=431265009",
+                "identifier": "431265009",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         }
@@ -54,7 +54,7 @@
             "name": "Colombia",
             "identifier": {
                 "identifier": "5076",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=5076"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -136,7 +136,7 @@
                     },
                     {
                         "value": "case series",
-                        "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000558"
                     }
                 ],
                 "types": [

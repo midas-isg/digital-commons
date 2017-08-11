@@ -2,13 +2,14 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.pitt.isg.dc.entry.PopulateDatastore;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.EntryHelper;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.vm.EntryView;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,10 +35,14 @@ public class ApproveEntryController {
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
 
-    @RequestMapping(value = "/review", method = RequestMethod.GET)
-    public String review(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
-            List<EntryView> entries = entryApprovalInterface.getPendingEntries();
+    @Autowired
+    private CategoryOrderRepository categoryOrderRepository;
+
+    @RequestMapping(value = "/add/review", method = RequestMethod.GET)
+    public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
+//        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+        if(ifISGAdmin(session)) {
+            List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
             List<EntryView> softwareEntries = new ArrayList<>();
@@ -52,23 +57,33 @@ public class ApproveEntryController {
                 }
             }
 
+            CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
+            Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
+
             model.addAttribute("entries", entries);
+            model.addAttribute("categoryPaths", categoryPaths);
             model.addAttribute("datasetEntries", datasetEntries);
             model.addAttribute("dataStandardEntries", dataStandardEntries);
             model.addAttribute("softwareEntries", softwareEntries);
             return "reviewEntries";
         } else {
-            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+            return "accessDenied";
+//            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
     }
 
-    @RequestMapping(value = "/approve", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/approve", method = RequestMethod.POST)
     @ResponseBody
-    public String approve(@RequestParam(value = "auth", required = false) String auth, @RequestParam(value = "id", required = true) long id, Model model) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    public String approve(HttpSession session,
+                          @RequestParam(value = "entryId", required = true) long id,
+                          @RequestParam(value = "revisionId", required = true) long revisionId,
+                          @RequestParam(value = "categoryId", required = true) long categoryId,
+                          Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
             String status = "success";
             try {
-                entryApprovalInterface.acceptEntry(id, EntryHelper.getServerAuthentication());
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.acceptEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }
@@ -78,13 +93,18 @@ public class ApproveEntryController {
         }
     }
 
-    @RequestMapping(value = "/reject", method = RequestMethod.POST)
+    @RequestMapping(value = "/add/reject", method = RequestMethod.POST)
     @ResponseBody
-    public String reject(@RequestParam(value = "auth", required = false) String auth, @RequestParam(value = "id", required = true) long id, Model model) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    public String reject(HttpSession session,
+                         @RequestParam(value = "entryId", required = true) long id,
+                         @RequestParam(value = "revisionId", required = true) long revisionId,
+                         @RequestParam(value = "comments[]", required = false) String[] comments,
+                         Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
             String status = "success";
             try {
-                entryApprovalInterface.rejectEntry(id, EntryHelper.getServerAuthentication(), "");
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.rejectEntry(entryId, EntryHelper.getServerAuthentication(), comments);
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }
@@ -94,9 +114,10 @@ public class ApproveEntryController {
         }
     }
 
-    @RequestMapping(value = "/populate", method = RequestMethod.GET)
-    public ResponseEntity<String> populate(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    @RequestMapping(value = "/add/populate", method = RequestMethod.GET)
+    public ResponseEntity<String> populate(HttpSession session,
+                                           Model model) throws MdcEntryDatastoreException  {
+        if(ifISGAdmin(session)) {
             try {
                 PopulateDatastore populateDatastore = new PopulateDatastore(datastore);
 
@@ -111,9 +132,10 @@ public class ApproveEntryController {
 
     }
 
-    @RequestMapping(value = "/items", method = RequestMethod.GET)
-    public ResponseEntity<String> addItems(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    @RequestMapping(value = "/add/items", method = RequestMethod.GET)
+    public ResponseEntity<String> addItems(HttpSession session,
+                                           Model model) throws MdcEntryDatastoreException  {
+        if(ifISGAdmin(session)) {
             try {
                 return ResponseEntity.ok(datastore.getEntryIds().size() + " total entries.");
             } catch (Exception e) {
@@ -124,9 +146,10 @@ public class ApproveEntryController {
         }
     }
 
-    @RequestMapping(value = "/exportDatastore", method = RequestMethod.GET)
-    public ResponseEntity<String> exportDatastore(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException  {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    @RequestMapping(value = "/add/exportDatastore", method = RequestMethod.GET)
+    public ResponseEntity<String> exportDatastore(HttpSession session,
+                                                  Model model) throws MdcEntryDatastoreException  {
+        if(ifISGAdmin(session)) {
             try {
                 datastore.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
                 EntryHelper.copyDatastore();
@@ -139,27 +162,22 @@ public class ApproveEntryController {
         }
     }
 
-    @RequestMapping(value = "/item/{itemId}", method = RequestMethod.GET)
-
-    public ResponseEntity<String> getItem(@RequestParam(value = "auth", required = false) String auth, Model model, @PathVariable(value="itemId") int itemId) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
+    @RequestMapping(value = "/add/item/{itemId}", method = RequestMethod.GET)
+    public ResponseEntity<String> getItem(@PathVariable(value="itemId") long itemId,
+                                          @RequestParam(value = "revisionId", required = false) long revisionId,
+                                          Model model) throws MdcEntryDatastoreException {
             try {
-
                 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-
-                return ResponseEntity.ok(gson.toJson(datastore.getEntry(itemId)));
+                return ResponseEntity.ok(gson.toJson(datastore.getEntry(new EntryId(itemId, revisionId))));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
             }
-        } else {
-            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
-        }
     }
 
-    @RequestMapping(value = "/pending", method = RequestMethod.GET)
-    public ResponseEntity<String> getPending(@RequestParam(value = "auth", required = false) String auth, Model model) throws MdcEntryDatastoreException {
-        if(auth != null && auth.equals(EntryHelper.ENTRIES_ADMIN_AUTHENTICATION)) {
+    @RequestMapping(value = "/add/pending", method = RequestMethod.GET)
+    public ResponseEntity<String> getPending(HttpSession session,
+                                             Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
             try {
                 List<EntryView> entries = datastore.getPendingEntries();
                 String ids = "";

@@ -1,0 +1,30 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:epivis-csv-v38",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "EpiVis Input Format",
+    "type": {
+        "value": "",
+        "valueIRI": ""
+    },
+    "description": "This specification describes the tabular format used to import time series data into EpiVis.",
+    "licenses": [
+        {
+            "name": "No License Specified."
+        }
+    ],
+    "version": "38",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/midas-isg/data-format-repository/wiki/EpiVis-CSV---v38",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

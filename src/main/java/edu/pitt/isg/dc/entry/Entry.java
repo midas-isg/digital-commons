@@ -6,32 +6,32 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
-//@Table(indexes = {@Index(columnList = "status")})
 @TypeDef(name = JsonbType.NAME, typeClass = JsonbType.class, parameters = {
         @Parameter(name = JsonbType.CLASS, value = "java.util.HashMap")})
 public class Entry {
-    private Long id;
+    @EmbeddedId
+    private EntryId id;
+    @Type(type = JsonbType.NAME)
     private HashMap content;
-    private String status = Values.PENDING;
+    private String status;
+    private boolean isPublic = Values.PENDING;
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    public Long getId() {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    public EntryId getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(EntryId id) {
         this.id = id;
     }
 
@@ -50,5 +50,21 @@ public class Entry {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public boolean getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
     }
 }

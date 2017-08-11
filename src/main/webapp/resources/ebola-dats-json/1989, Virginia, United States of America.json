@@ -30,14 +30,14 @@
         {
             "name": "Reston ebolavirus - Reston (1989)",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=386032",
+                "identifier": "386032",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Simian hemorrhagic fever (disorder)",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=76493004",
+                "identifier": "76493004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "4826.02",
             "identifier": {
                 "identifier": "84022",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=84022"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

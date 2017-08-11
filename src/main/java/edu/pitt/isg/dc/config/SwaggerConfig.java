@@ -7,6 +7,7 @@ import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import com.wordnik.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -44,7 +45,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
     public SwaggerSpringMvcPlugin customImplementation(){
 
         return new SwaggerSpringMvcPlugin(this.springSwaggerConfig)
-                .apiInfo(apiInfo()); // assuming the API lives at something like http://myapp/api
+                .apiInfo(apiInfo()).includePatterns("/api/.*?"); // assuming the API lives at something like http://myapp/api
     }
 
     @Override
@@ -74,7 +75,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
       //  String contextForSite = configProperties.getProperty("contextPathForSite");
         ApiInfo apiInfo = new ApiInfo(
                 "MIDAS Digital Commons API",
-                "This API allows a user to retrieve an object's DOI (digital object indentifier) and it's associated information (both data and metadata) from the MDC. ",
+                "This API allows a user to retrieve an object's DOI (digital object identifier) and it's associated information (both data and metadata) from the MDC. ",
                 /*contextForSite+*/"/main#about",
                 "jdl50@pitt.edu",
                 null,

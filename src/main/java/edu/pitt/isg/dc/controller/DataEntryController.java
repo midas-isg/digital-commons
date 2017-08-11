@@ -12,7 +12,10 @@ import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -83,12 +87,29 @@ public class DataEntryController {
     @Autowired
     EntrySubmissionInterface entrySubmissionInterface;
 
+    @Autowired
+    private ServletContext context;
+
+    @Component
+    public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
+        @Override
+        public void onApplicationEvent(final ContextRefreshedEvent event) {
+            try {
+                readXSDFiles(context);
+            }
+            catch (Exception e){
+
+            }
+        }
+    }
+
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
     public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
                                             @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
+        String category = java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8");
         String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 
@@ -139,7 +160,7 @@ public class DataEntryController {
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, HttpServletRequest request) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, ServletContext context) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -151,7 +172,7 @@ public class DataEntryController {
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-            writeFormToPath(request.getSession().getServletContext().getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
+            writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
     }
 
@@ -165,7 +186,7 @@ public class DataEntryController {
         }
     }
 
-    public static String readXSDFiles(HttpServletRequest request) throws Exception {
+    public static String readXSDFiles(ServletContext context) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -191,7 +212,7 @@ public class DataEntryController {
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext, request);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, context);
                     }
                 }
             }

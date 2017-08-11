@@ -217,6 +217,10 @@
     width: 100% !important;
 }
 
+.full-width {
+    width:100%;
+}
+
 .background-nav {
     background-color: #0c2b65;
 }
@@ -292,6 +296,10 @@ a {
     border-color: #ccc !important;
 }
 
+.display-none {
+    display:none;
+}
+
 .page-divider {display:none}
 
 .publication-info {
@@ -319,7 +327,7 @@ a {
     white-space: pre-wrap;
 }
 
-@media screen and (min-width: 861px) {
+@media screen and (min-width: 981px) {
     .navbar-padding {
         padding-left: 30px !important;
     }
@@ -351,7 +359,7 @@ a {
     }
 }
 
-@media screen and (max-width: 860px) {
+@media screen and (max-width: 981px) {
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
         background-color: rgba(0,0,0,0.25) !important;
     }
@@ -375,7 +383,7 @@ a {
         box-shadow: none !important;
     }
 }
-@media (min-width: 766px) and (max-width: 860px) {
+@media (min-width: 766px) and (max-width: 981px) {
     .navbar-collapse.collapse {
         display: none !important;
         overflow-y:auto !important;
@@ -722,4 +730,28 @@ label[disabled="disabled"]{
 
 .visible {
     display: inline-block !important;
+}
+
+.legend-large {
+    margin-bottom: 45px;
+    position: fixed;
+    margin-right: 10px;
+    right: 15px;
+    bottom: 0;
+    z-index:100;
+}
+
+#legend-button {
+    position:absolute;
+    right:6px;
+    top:9px
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.modal-body p {
+    word-wrap: break-word;
 }

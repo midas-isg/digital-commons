@@ -43,14 +43,14 @@
         {
             "name": "Homo sapiens",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifier": "9606",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Household",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000076",
                 "identifierSource": "https://biosharing.org/bsg-s000097"
             }
         },
@@ -78,8 +78,8 @@
         {
             "name": "United States of America",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "1216",
+                "identifierSource": "ApolloLS"
             }
         }
     ],
@@ -88,8 +88,8 @@
             "name": "United States of America",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=1216",
-                "identifierSource": "apollo location service"
+                "identifier": "1216",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

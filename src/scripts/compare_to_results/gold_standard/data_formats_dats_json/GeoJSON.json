@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "IETF:rfc7946",
+        "identifierSource": "IETF"
+    },
+    "name": "GeoJSON",
+    "type": {
+        "value": "location information",
+        "valueIRI": ""
+    },
+    "description": "GeoJSON is a format for encoding a variety of geographic data structures.",
+    "licenses": [
+        {
+            "name": "CC BY 3.0 US"
+        }
+    ],
+    "version": "RFC 7946",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://tools.ietf.org/html/rfc7946",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}
