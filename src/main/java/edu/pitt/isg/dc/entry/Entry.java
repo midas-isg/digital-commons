@@ -18,10 +18,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Entry {
     @EmbeddedId
     private EntryId id;
-    //private Long id;
     @Type(type = JsonbType.NAME)
     private HashMap content;
     private String status;
+    private boolean isPublic;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -57,5 +57,13 @@ public class Entry {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public boolean getIsPublic() {
+        return isPublic;
+    }
+
+    public void setIsPublic(boolean isPublic) {
+        this.isPublic = isPublic;
     }
 }
