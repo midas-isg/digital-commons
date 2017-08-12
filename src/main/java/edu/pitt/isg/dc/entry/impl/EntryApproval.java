@@ -4,7 +4,7 @@ import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.CategoryRepository;
 import edu.pitt.isg.dc.entry.Comments;
 import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.vm.EntryView;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
@@ -12,8 +12,12 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import static edu.pitt.isg.dc.entry.Keys.STATUS;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static edu.pitt.isg.dc.controller.ws.MediaType.Application.JSON;
-import static edu.pitt.isg.dc.controller.ws.MediaType.Text.XML;
+import static edu.pitt.isg.dc.controller.MediaType.Application.JSON;
+import static edu.pitt.isg.dc.controller.MediaType.Text.XML;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 

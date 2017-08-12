@@ -35,35 +35,40 @@ public class EntryRule {
     private String lsIdentifierSource;
 
     public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
-        List<BigInteger> results = listIdsByHostRelativesOfNcbiId(q.getHostId());
+        List<EntryId> results = listIdsByHostRelativesOfNcbiId(q.getHostId());
         results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenId()));
         results = merge(results, listIdsByRelativesOfLsId(q.getLocationId()));
         results = merge(results, listIdsByType(q.getType()));
 
-        final List<Long> longs = toLongs(results);
-        if (longs == null)
-            return repo.findAllByStatus(APPROVED, pageRequest);
-        return repo.findByIdIn(longs, pageRequest);
+        if (results == null)
+            return repo.findByStatus(APPROVED, pageRequest);
+        return repo.findByIdIn(results, pageRequest);
     }
 
-    private List<BigInteger> listIdsByType(String... types) {
+    private List<EntryId> listIdsByType(String... types) {
         if (types == null || types.length == 0 || types[0] == null)
             return null;
-        return repo.filterIdsByTypes(types);
+        return toEntryIdList(repo.filterIdsByTypes(types));
     }
 
-    private List<BigInteger> listIdsByRelativesOfLsId(Long lsId) {
+    private List<EntryId> toEntryIdList(List<Object[]> list) {
+        return list.stream()
+                .map(EntryId::new)
+                .collect(Collectors.toList());
+    }
+
+    private List<EntryId> listIdsByRelativesOfLsId(Long lsId) {
         if (lsId == null)
             return null;
         final List<String> lsIds = toLsRelativeIds(lsId);
         final Stream<String> stream = Stream.of(SPATIAL_COVERAGE, LOCATION_COVERAGE);
-        final List<BigInteger> ids = parallelFilter(stream, lsIdentifierSource, lsIds);
+        final List<EntryId> ids = parallelFilter(stream, lsIdentifierSource, lsIds);
         out.println("LS:" +lsIds +  "=>" + ids.size() + " entries:" + ids);
         return ids;
     }
 
-    private List<BigInteger> listIdsByPathogenRelativesOfNcbiId(Long id) {
-        List<BigInteger> results = null;
+    private List<EntryId> listIdsByPathogenRelativesOfNcbiId(Long id) {
+        List<EntryId> results = null;
         if (id != null) {
             final List<String> ncbiIds = ncbi.toAllRelativeNcbiIds(id);
             results = listIdsByFieldPlusIsAboutAndNcbiIds(ncbi.findPathogensInEntries(), PATHOGEN_COVERAGE, ncbiIds);
@@ -71,8 +76,8 @@ public class EntryRule {
         return results;
     }
 
-    private List<BigInteger> listIdsByHostRelativesOfNcbiId(Long id) {
-        List<BigInteger> results = null;
+    private List<EntryId> listIdsByHostRelativesOfNcbiId(Long id) {
+        List<EntryId> results = null;
         if (id != null) {
             final List<String> ncbiIds = ncbi.toAllRelativeNcbiIds(id);
             results = listIdsByFieldPlusIsAboutAndNcbiIds(ncbi.findHostsInEntries(), HOST_SPECIES, ncbiIds);
@@ -80,7 +85,7 @@ public class EntryRule {
         return results;
     }
 
-    private List<BigInteger> listIdsByFieldPlusIsAboutAndNcbiIds(
+    private List<EntryId> listIdsByFieldPlusIsAboutAndNcbiIds(
             List<Ncbi> ncbiIdsInEntries, String field, List<String> ncbiIds) {
         final Set<Long> ncbis = ncbiIdsInEntries.stream()
                 .map(Ncbi::getId)
@@ -91,22 +96,22 @@ public class EntryRule {
                 .map(Object::toString)
                 .collect(Collectors.toList());
         final Stream<String> stream = Stream.of(IS_ABOUT, field);
-        final List<BigInteger> ids = parallelFilter(stream, ncbiIdentifierSource, filteredIds);
+        final List<EntryId> ids = parallelFilter(stream, ncbiIdentifierSource, filteredIds);
         out.println(field + ":" +
                 ncbiIds.size() + "->" + filteredIds.size() + " ncbis:"
                 + filteredIds + "=>" + ids.size() + " entries:" + ids);
         return ids;
     }
 
-    private List<BigInteger> parallelFilter(Stream<String> stream, String idSrc, List<String> onlyIds) {
+    private List<EntryId> parallelFilter(Stream<String> stream, String idSrc, List<String> onlyIds) {
         return stream.parallel()
                 .map(f -> repo.filterIdsByFieldAndIdentifierSource(f, idSrc, onlyIds))
                 .flatMap(Collection::stream)
-                .distinct()
+                .map(EntryId::new)
                 .collect(Collectors.toList());
     }
 
-    private List<BigInteger> merge(List<BigInteger> list1, List<BigInteger> list2) {
+    private <T> List<T> merge(List<T> list1, List<T> list2) {
         if (list1 == null)
             return list2;
         if (list2 == null)
@@ -126,7 +131,6 @@ public class EntryRule {
     private List<String> toLsRelativeIds(long lsId) {
         final List<String> urls = new ArrayList<>();
         urls.add(toLsUrl(lsId));
-        //System.out.println(urls);
         return urls;
     }
 

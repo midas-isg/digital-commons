@@ -2,8 +2,6 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.digital.spew.SpewLocation;
-import edu.pitt.isg.dc.digital.spew.SpewRule;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.CategoryOrder;
 import edu.pitt.isg.dc.entry.CategoryOrderRepository;

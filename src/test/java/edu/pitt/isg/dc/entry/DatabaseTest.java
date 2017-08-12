@@ -3,10 +3,10 @@ package edu.pitt.isg.dc.entry;
 
 import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

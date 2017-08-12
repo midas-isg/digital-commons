@@ -1,7 +1,7 @@
 package edu.pitt.isg.dc.entry.interfaces;
 
 import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.vm.EntryView;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 
 import java.util.List;

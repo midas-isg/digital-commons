@@ -2,9 +2,10 @@ package edu.pitt.isg.dc.entry;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import edu.pitt.isg.dc.vm.EntryView;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;

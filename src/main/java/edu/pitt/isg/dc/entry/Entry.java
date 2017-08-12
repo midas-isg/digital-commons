@@ -20,8 +20,8 @@ public class Entry {
     private EntryId id;
     @Type(type = JsonbType.NAME)
     private HashMap content;
-    private String status;
-    private boolean isPublic = Values.PENDING;
+    private String status = Values.PENDING;
+    private boolean isPublic;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

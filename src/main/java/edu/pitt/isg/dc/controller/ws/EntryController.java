@@ -4,19 +4,16 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryRule;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.transaction.Transactional;
 
-import static edu.pitt.isg.dc.controller.ws.MediaType.Application.JSON;
-import static edu.pitt.isg.dc.controller.ws.MediaType.Text.XML;
+import static edu.pitt.isg.dc.controller.MediaType.Application.JSON;
+import static edu.pitt.isg.dc.controller.MediaType.Text.XML;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
