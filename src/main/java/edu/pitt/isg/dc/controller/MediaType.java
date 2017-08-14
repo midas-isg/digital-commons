@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
-class MediaType {
+public class MediaType {
     public static class Application {
         public static final String JSON = "application/json";
         private Application(){

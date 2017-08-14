@@ -4,25 +4,23 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
-import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
-import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Properties;
+
+import static edu.pitt.isg.dc.entry.Keys.STATUS;
+import static edu.pitt.isg.dc.entry.Keys.SUBTYPE;
+import static edu.pitt.isg.dc.entry.Keys.TYPE;
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
+import static edu.pitt.isg.dc.entry.Values.PENDING;
 
 public class PopulateDatastore {
-    private static String ENTRIES_FILEPATH = "";
-
-    static {
-        Properties configurationProperties = DigitalCommonsProperties.getProperties();
-        ENTRIES_FILEPATH = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_FILEPATH);
-    }
+    private static String ENTRIES_FILEPATH = EntryHelper.getEntriesFilepath();
 
     private final MdcEntryDatastoreInterface mdcEntryDatastoreInterface;
 
@@ -47,17 +45,17 @@ public class PopulateDatastore {
             EntryView entryObject = new EntryView();
             entryObject.setEntry(jsonEntryObject);
 
-            if(file.getPath().contains("pending"))
-                entryObject.setProperty("status", "pending");
+            if(file.getPath().contains(PENDING))
+                entryObject.setProperty(STATUS, PENDING);
             else
-                entryObject.setProperty("status", "approved");
+                entryObject.setProperty(STATUS, APPROVED);
 
             String type = EntryHelper.getTypeFromPath(file.getPath());
-            entryObject.setProperty("type", type);
+            entryObject.setProperty(TYPE, type);
 
             String subtype = EntryHelper.getSubtypeFromPath(file.getPath());
             if (subtype != null)
-                entryObject.setProperty("subtype", subtype);
+                entryObject.setProperty(SUBTYPE, subtype);
 
             mdcEntryDatastoreInterface.addEntry(entryObject);
         }

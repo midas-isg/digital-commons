@@ -1,0 +1,80 @@
+{
+  "title": "pFRED",
+  "source": "https://github.com/PSC-PublicHealth/pFRED",
+  "product": "FRED",
+  "subtype": "Disease transmission models",
+  "version": [
+    "0.0.4"
+  ],
+  "identifier": {
+    "identifier": "\u003ca href\u003d\"http://dx.doi.org/10.5281/zenodo.268051\", class\u003d\"underline\"\u003e10.5281/zenodo.268051\u003c/a\u003e"
+  },
+  "availableOnUIDS": true,
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "quarantine"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "reactive school closures"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "global school closures"
+      }
+    }
+  ],
+  "dataInputFormats": [
+    "APOLLO:InfectiousDiseaseScenario-v4.0.1",
+    "MIDAS-ISG:synthia-us-v2010"
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "1216",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "us national"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "communicable human-to-human"
+      }
+    }
+  ],
+  "dataOutputFormats": [
+    "MIDAS-ISG:galapagos-output-format-v2.0"
+  ],
+  "sourceCodeRelease": "\u003ca href\u003d\"https://zenodo.org/record/268051#.WJiO4mV8-sM\" class\u003d\"underline\"\u003ehttps://zenodo.org/record/268051#.WJiO4mV8-sM\u003c/a\u003e",
+  "availableOnOlympus": true,
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "\u003cp\u003eA version of \u003ca href\u003d\"http://fred.publichealth.pitt.edu/simulator/\", class\u003d\"underline\"\u003eFRED\u003c/a\u003e forked by the Pittsburgh Supercomputing Center that works with the Apollo Web Services.\u003c/p\u003e \u003cp\u003eThis disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available \u003ca href\u003d\"http://research.rods.pitt.edu/apollo-web-client/\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e \u003cp\u003e This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click \u003ca href\u003d\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e"
+}

@@ -1,11 +1,8 @@
 package edu.pitt.isg.dc.entry;
 
 import javax.persistence.Embeddable;
-import javax.persistence.GeneratedValue;
 import java.io.Serializable;
-
-import static javax.persistence.GenerationType.IDENTITY;
-import static javax.persistence.GenerationType.SEQUENCE;
+import java.math.BigInteger;
 
 /**
  * Created by amd176 on 8/8/17.
@@ -22,6 +19,11 @@ public class EntryId implements Serializable {
     public EntryId(Long entryId, Long revisionId) {
         this.entryId = entryId;
         this.revisionId = revisionId;
+    }
+
+    public EntryId(Object[] bigIntegersForPrimaryKey) {
+        this.entryId = ((BigInteger)bigIntegersForPrimaryKey[0]).longValue();
+        this.revisionId = ((BigInteger)bigIntegersForPrimaryKey[1]).longValue();
     }
 
     public Long getEntryId() {
@@ -56,5 +58,10 @@ public class EntryId implements Serializable {
         int result = entryId.hashCode();
         result = 31 * result + revisionId.hashCode();
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return entryId + "r" + revisionId;
     }
 }

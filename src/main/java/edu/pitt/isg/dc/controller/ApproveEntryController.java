@@ -2,14 +2,16 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.pitt.isg.dc.entry.*;
+import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.PopulateDatastore;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
 
@@ -32,10 +36,8 @@ import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
  */
 @Controller
 public class ApproveEntryController {
-
     @Autowired
     private MdcEntryDatastoreInterface datastore;
-
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
 

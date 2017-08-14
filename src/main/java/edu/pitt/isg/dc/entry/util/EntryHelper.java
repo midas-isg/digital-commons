@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry.util;
 
+import com.google.common.annotations.VisibleForTesting;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -15,6 +16,12 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Properties;
+
+import static edu.pitt.isg.dc.entry.Keys.STATUS;
+import static edu.pitt.isg.dc.entry.Keys.SUBTYPE;
+import static edu.pitt.isg.dc.entry.Keys.TYPE;
+import static edu.pitt.isg.dc.entry.Values.*;
+import static edu.pitt.isg.dc.entry.Values.PENDING;
 
 /**
  * Created by amd176 on 6/6/17.
@@ -35,6 +42,11 @@ public class EntryHelper {
 
     private static final Object dumpLock = new Object();
     private static final Object copyLock = new Object();
+
+    @VisibleForTesting
+    public static void setEntriesFilepath(String path) {
+        ENTRIES_FILEPATH = path;
+    }
 
     public static String getTypeFromPath(String path) {
         if (path != null && path.length() > 0) {
@@ -89,7 +101,7 @@ public class EntryHelper {
     public static String getSubtypeFromPath(String path) {
         String subtype = null;
 
-        String[] typesWithSubtypes = new String[] {"Dataset"};
+        String[] typesWithSubtypes = new String[] {DATASET};
         String typeWithSubtype = null;
         for(String type : typesWithSubtypes) {
             if(path.contains(type)) {
@@ -142,9 +154,9 @@ public class EntryHelper {
                 JsonElement jsonElement = gson.toJsonTree(entryObject.getEntry());
                 String json = gson.toJson(jsonElement);
 
-                String type = entryObject.getProperty("type");
-                String subtype = entryObject.getProperty("subtype");
-                boolean isPending = entryObject.getProperty("status").equals("pending");
+                String type = entryObject.getProperty(TYPE);
+                String subtype = entryObject.getProperty(SUBTYPE);
+                boolean isPending = entryObject.getProperty(STATUS).equals(PENDING);
 
                 String path = EntryHelper.getPathFromType(type, subtype, isPending);
                 File file = Paths.get(path, String.format("%05d", id.hashCode()) + ".json").toFile();

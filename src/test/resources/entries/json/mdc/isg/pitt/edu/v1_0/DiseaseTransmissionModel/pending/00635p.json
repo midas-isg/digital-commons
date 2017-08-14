@@ -1,0 +1,103 @@
+{
+  "title": "Apollo FluTE",
+  "source": "https://github.com/PSC-PublicHealth/FluTE",
+  "license": "\u003ca class\u003d\"underline\" href\u003d\"https://www.gnu.org/licenses/gpl-3.0.en.html\"\u003eGNU Public License\u003c/a\u003e",
+  "product": "FluTE",
+  "subtype": "Disease transmission models",
+  "version": [
+    "apollo-flute-1.1"
+  ],
+  "identifier": {
+    "identifier": "\u003ca href\u003d\"http://dx.doi.org/10.5281/zenodo.268028\", class\u003d\"underline\"\u003e10.5281/zenodo.268028\u003c/a\u003e"
+  },
+  "documentation": "\u003ca href\u003d\"https://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\" class\u003d\"underline\"\u003ehttps://github.com/PSC-PublicHealth/FluTE/blob/apollo-flute-1.1/README\u003c/a\u003e",
+  "availableOnUIDS": true,
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "antivirals"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "isolation"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "liberal sick leave"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "quarantine"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "school closure"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "travel restriction"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    }
+  ],
+  "dataInputFormats": [
+    "APOLLO:InfectiousDiseaseScenario-v4.0.1",
+    "MIDAS-ISG:flute-synthetic-ecosystem-v1.1"
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "1216",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "us national"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "11309",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "influenza"
+      }
+    }
+  ],
+  "dataOutputFormats": [
+    "MIDAS-ISG:galapagos-output-format-v2.0"
+  ],
+  "sourceCodeRelease": "\u003ca href\u003d\"https://zenodo.org/record/268028#.WJiSt2V8-sM\" class\u003d\"underline\"\u003ehttps://zenodo.org/record/268028#.WJiSt2V8-sM\u003c/a\u003e",
+  "availableOnOlympus": true,
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "\u003cp\u003eA version of \u003ca href\u003d\"https://github.com/dlchao/FluTE\", class\u003d\"underline\"\u003eFluTE\u003c/a\u003e forked by the Pittsburgh Supercomputing Center that supports simulating over the whole US population and works with Apollo Web Services.\u003c/p\u003e \u003cp\u003eThis disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available \u003ca href\u003d\"http://research.rods.pitt.edu/apollo-web-client/\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e \u003cp\u003e This DTM can also be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click \u003ca href\u003d\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e"
+}

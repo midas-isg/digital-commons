@@ -24,7 +24,9 @@ public class EntryIdManager {
             String sqlString = "SELECT max(entry_id) AS entry_id FROM entry";
             Query query = entityManager.createNativeQuery(sqlString);
             BigInteger maxEntryId = (BigInteger) query.getSingleResult();
-            entryId = new EntryId(maxEntryId.longValue() + 1, (long) 1);
+            if (maxEntryId == null)
+                maxEntryId = BigInteger.ZERO;
+            entryId = new EntryId(maxEntryId.longValue() + 1, 1L);
         } catch (HibernateException e) {
             e.printStackTrace();
         }

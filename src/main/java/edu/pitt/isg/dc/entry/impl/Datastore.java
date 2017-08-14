@@ -4,18 +4,22 @@ package edu.pitt.isg.dc.entry.impl;
  * Created by jdl50 on 6/5/17.
  */
 
-import edu.pitt.isg.dc.entry.*;
+import edu.pitt.isg.dc.entry.Comments;
+import edu.pitt.isg.dc.entry.CommentsRepository;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.EntryIdManager;
+import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Component
 public class Datastore implements MdcEntryDatastoreInterface {

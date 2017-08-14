@@ -1,0 +1,100 @@
+{
+  "title": "FluTE",
+  "source": "https://github.com/dlchao/FluTE",
+  "product": "FluTE",
+  "subtype": "Disease transmission models",
+  "version": [
+    "1.12",
+    "1.15",
+    "1.16"
+  ],
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "antivirals"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "isolation"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "liberal sick leave"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "quarantine"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "school closure"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "travel restriction"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    }
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "366188",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "los angeles"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "510873",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "seattle"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "11309",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "influenza"
+      }
+    }
+  ],
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "FluTE is a stochastic model of the spread of influenza across a large population. Individuals in this model have realistic social contact networks, and transmission and infections are based on the current state of knowledge of the natural history of influenza. The model has been calibrated so that outcomes are consistent with the 1957/1958 Asian A(H2N2) and 2009 pandemic A(H1N1) influenza viruses.",
+  "publicationsAboutRelease": [
+    "Chao DL, Halloran ME, Obenchain VJ, Longini IM Jr (2010) FluTE, a Publicly Available Stochastic Influenza Epidemic Simulation Model. PLoS Comput Biol 6(1): e1000656.  (doi:\u003ca href\u003d\"http://dx.doi.org/10.1371/journal.pcbi.1000656\" class\u003d\"underline\"\u003e10.1371/journal.pcbi.1000656\u003c/a\u003e)"
+  ]
+}

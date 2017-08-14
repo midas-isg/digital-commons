@@ -20,7 +20,7 @@ public class Entry {
     private EntryId id;
     @Type(type = JsonbType.NAME)
     private HashMap content;
-    private String status;
+    private String status = Values.PENDING;
     private boolean isPublic;
 
     @ManyToOne
@@ -35,6 +35,7 @@ public class Entry {
         this.id = id;
     }
 
+    @Type(type = JsonbType.NAME)
     public HashMap getContent() {
         return content;
     }

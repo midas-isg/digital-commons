@@ -1,0 +1,80 @@
+{
+  "title": "CLARA",
+  "source": "https://github.com/PSC-PublicHealth/CLARA",
+  "subtype": "Disease transmission models",
+  "version": [
+    "0.5"
+  ],
+  "developers": [
+    "Shawn T. Brown"
+  ],
+  "identifier": {
+    "identifier": "\u003ca href\u003d\"http://doi.org/10.5281/zenodo.322422\", class\u003d\"underline\"\u003e10.5281/zenodo.322422\u003c/a\u003e"
+  },
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "wolbachia"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vector control"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "larviciding"
+      }
+    }
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "542924",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "cairns, australia"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "12637",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "dengue"
+      }
+    }
+  ],
+  "availableOnOlympus": true,
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "7157",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "mosquitoes"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "\u003cp\u003eThe ComputationaL ARthropod Agents (CLARA) is a Netlogo agent-based model for vector-borne diseases. CLARA is still under development.\u003c/p\u003e \u003cp\u003e This DTM can be run from the command line of the Olympus Cluster. Note that an account is required. For information on how to register for an account on Olympus please click \u003ca href\u003d\"https://git.isg.pitt.edu/hpc/olympus/wikis/home\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e"
+}

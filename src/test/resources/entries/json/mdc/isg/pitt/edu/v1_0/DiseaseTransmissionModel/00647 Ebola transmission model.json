@@ -1,0 +1,56 @@
+{
+  "title": "Ebola transmission model",
+  "isUdsi": true,
+  "subtype": "Disease transmission models",
+  "version": [
+    "commit 720c16"
+  ],
+  "availableOnUIDS": true,
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    }
+  ],
+  "dataInputFormats": [
+    "APOLLO:InfectiousDiseaseScenario-v4.0.1"
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "11",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "sierra leone"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "1570291",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "ebola virus"
+      }
+    }
+  ],
+  "dataOutputFormats": [
+    "MIDAS-ISG:galapagos-output-format-v2.0"
+  ],
+  "sourceCodeRelease": "\u003ca href \u003d \"https://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\" style\u003d\"text-decoration:underline\"\u003ehttps://github.com/sbellan61/EbolaVaccPowerSL/commit/720c1638b9f40907213745b4d8c179e3227fe9b4\u003c/a\u003e",
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "\u003cp\u003eRepository for Bellan et al. (2015). The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis. Lancet Infectious Diseases.\u003c/p\u003e \u003cp\u003eThis disease transmission model (DTM) can be run using the Universal Interface to Disease Simulators available \u003ca href\u003d\"http://research.rods.pitt.edu/apollo-web-client/\" class\u003d\"underline\"\u003ehere\u003c/a\u003e.\u003c/p\u003e",
+  "publicationsThatUsedRelease": [
+    "Bellan SE, Pulliam J, Pearson C, Champredon D, Fox S, Skrip L, Galvani AP, Gambhir M, Lopman BA, Porco TC, Meyers LA, Dushoff J (2015) The statistical power and validity of Ebola vaccine trials in Sierra Leone: A simulation study of trial design and analysis.  Lancet Infect Dis 15:703-10 (\u003ca href\u003d\"http://dx.doi.org/10.1016/S1473-3099(15)70139-8\" class\u003d\"underline\"\u003edoi:10.1016/S1473-3099(15)70139-8\u003c/a\u003e)"
+  ]
+}

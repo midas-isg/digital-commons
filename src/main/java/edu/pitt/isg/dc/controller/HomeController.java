@@ -2,8 +2,6 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.digital.spew.SpewLocation;
-import edu.pitt.isg.dc.digital.spew.SpewRule;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.CategoryOrder;
 import edu.pitt.isg.dc.entry.CategoryOrderRepository;
@@ -13,6 +11,11 @@ import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.EntryApproval;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.Ncbi;
+import edu.pitt.isg.dc.entry.NcbiRule;
+import edu.pitt.isg.dc.entry.TypeRule;
+import edu.pitt.isg.dc.spew.SpewLocation;
+import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
@@ -25,14 +28,36 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.ws.rs.QueryParam;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.Properties;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Comparator.comparing;
 import java.util.*;
 
 import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
@@ -59,6 +84,10 @@ public class HomeController {
 
     @Autowired
     private SpewRule spewRule;
+    @Autowired
+    private NcbiRule ncbiRule;
+    @Autowired
+    private TypeRule typeRule;
 
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
@@ -165,6 +194,33 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirectHome() {
         return "redirect:/main";
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String ncbis(Model model) throws Exception {
+        final List<Ncbi> hosts = sort(ncbiRule.findHostsInEntries());
+        final List<Ncbi> pathogens = sort(ncbiRule.findPathogensInEntries());
+        final List<String[]> types = typeRule.findAll().stream()
+                .map(this::formatType)
+                .sorted(comparing(s -> s[1]))
+                .collect(Collectors.toList());
+        model.addAttribute("hosts", hosts);
+        model.addAttribute("pathogens", pathogens);
+        model.addAttribute("types", types);
+        return "search";
+    }
+
+    private List<Ncbi> sort(List<Ncbi> list) {
+        return list.stream()
+                .sorted(comparing(Ncbi::getName, String::compareToIgnoreCase))
+                .collect(Collectors.toList());
+    }
+
+    private String[] formatType(String fullyQualifiedName) {
+        final String[] tokens = fullyQualifiedName.split("\\.");
+        final String token = tokens[tokens.length - 1];
+        final String name = token.replaceAll("([A-Z])", " $1").trim();
+        return new String[]{fullyQualifiedName, name};
     }
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)

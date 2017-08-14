@@ -12,7 +12,15 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Properties;
+import java.util.Set;
+
+import static edu.pitt.isg.dc.entry.Keys.STATUS;
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
 
 /**
  * Created by amd176 on 6/5/17.
@@ -36,7 +44,7 @@ public class EntryApproval implements EntryApprovalInterface {
     public void acceptEntry(EntryId entryId, long categoryId, String authenticationToken) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-            entryObject.setProperty("status", "approved");
+            entryObject.setProperty(STATUS, APPROVED);
 
             Category category = categoryRepository.findOne(categoryId);
             entryObject.setCategory(category);
@@ -50,7 +58,7 @@ public class EntryApproval implements EntryApprovalInterface {
     public void rejectEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-            entryObject.setProperty("status", "rejected");
+            entryObject.setProperty(STATUS, APPROVED);
 
             if(commentsArr != null && commentsArr.length > 0) {
                 Set<String> commentsContent = new HashSet(Arrays.asList(commentsArr));
