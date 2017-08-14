@@ -49,6 +49,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
+            console.log(data['xml']);
             if(data !== undefined && data.hasOwnProperty('json')) {
                 if(data['json'] !== undefined) {
                     showModal(JSON.parse(data['json']), data['type']);

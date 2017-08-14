@@ -122,12 +122,8 @@ class EntryObject {
 
     public String getUnescapedEntryJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(this.getEntry());
 
-        if(this.getEntryType().contains("edu.pitt.isg.mdc.v1_0")) {
-            return DigitalCommonsHelper.jsonToXml((Software) getEntryAsTypeClass());
-        } else {
-            return gson.toJson(this.getEntry());
-        }
     }
 
     public String getEntryType() {
@@ -153,5 +149,13 @@ class EntryObject {
         }
 
         return returnObject;
+    }
+
+    public String getXmlString() {
+        if(this.getEntryType().contains("edu.pitt.isg.mdc.v1_0")) {
+            return DigitalCommonsHelper.jsonToXml((Software) getEntryAsTypeClass());
+        } else {
+            return null;
+        }
     }
 }
