@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.entry;
 
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import edu.pitt.isg.dc.vm.MatchedSoftware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,7 @@ import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.SPATIAL_COVERAGE;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
 import static java.lang.System.out;
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class EntryRule {
@@ -45,6 +47,13 @@ public class EntryRule {
         return repo.findByIdIn(results, pageRequest);
     }
 
+    public List<MatchedSoftware> listSoftwareMatched(){
+        final List<Object[]> list = repo.match2Software();
+        return list.stream()
+                .map(MatchedSoftware::of)
+                .collect(toList());
+    }
+
     private List<EntryId> listIdsByType(String... types) {
         if (types == null || types.length == 0 || types[0] == null)
             return null;
@@ -54,7 +63,7 @@ public class EntryRule {
     private List<EntryId> toEntryIdList(List<Object[]> list) {
         return list.stream()
                 .map(EntryId::new)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private List<EntryId> listIdsByRelativesOfLsId(Long lsId) {
@@ -94,7 +103,7 @@ public class EntryRule {
                 .map(Long::parseLong)
                 .filter(ncbis::contains)
                 .map(Object::toString)
-                .collect(Collectors.toList());
+                .collect(toList());
         final Stream<String> stream = Stream.of(IS_ABOUT, field);
         final List<EntryId> ids = parallelFilter(stream, ncbiIdentifierSource, filteredIds);
         out.println(field + ":" +
@@ -108,7 +117,7 @@ public class EntryRule {
                 .map(f -> repo.filterIdsByFieldAndIdentifierSource(f, idSrc, onlyIds))
                 .flatMap(Collection::stream)
                 .map(EntryId::new)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private <T> List<T> merge(List<T> list1, List<T> list2) {
@@ -125,7 +134,7 @@ public class EntryRule {
             return null;
         return results.stream()
                 .map(BigInteger::longValueExact)
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     private List<String> toLsRelativeIds(long lsId) {
@@ -136,5 +145,9 @@ public class EntryRule {
 
     private String toLsUrl(Long id) {
         return id.toString();
+    }
+
+    public Entry read(EntryId entryId) {
+        return repo.findOne(entryId);
     }
 }

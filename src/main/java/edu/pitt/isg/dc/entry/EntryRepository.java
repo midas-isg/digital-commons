@@ -14,8 +14,10 @@ import static edu.pitt.isg.dc.entry.Values.APPROVED;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, EntryId> {
-    String IS_APPROVED = "status = '" + APPROVED + "'";
+    String IS_APPROVED = "status = '" + APPROVED + "' ";
     String AND_APPROVED = "AND " + IS_APPROVED;
+    String AND_A_APPROVED = "AND a." + IS_APPROVED;
+    String AND_B_APPROVED = "AND b." + IS_APPROVED;
 
     @Transactional(readOnly=true)
     Entry findOne(EntryId id);
@@ -51,7 +53,9 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "FROM entry WHERE " + IS_APPROVED)
     List<String> listTypes();
 
-    @Query(nativeQuery = true, value = "select a.entry_id as s1, b.entry_id as s2 \n" +
+    //@Query(nativeQuery = true, value = "select a.entry_id as s1, a.revision_id, b.entry_id as s2, b.revision_id \n" +
+    @Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, text(a.content #> '{entry, dataOutputFormats}') as o," +
+                                       "       b.content #>> '{entry, title}' as s2 \n" +
             "from entry a, entry b\n" +
             "where a.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
             "and b.content #>> '{properties, type}' like 'edu.pitt.isg.mdc.v1_0.%'\n" +
@@ -61,7 +65,8 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "   or \n" +
             "   ( b.content #> '{entry, dataInputFormats}' <@ (a.content #> '{entry, dataOutputFormats}')  )\n" +
             ")\n" +
-            "order by a.content #>> '{entry, title}'" //+ AND_APPROVED
+            AND_A_APPROVED + AND_B_APPROVED +
+            "order by s1"
     )
-    List<List<BigInteger>> matchSoftware();
+    List<Object[]> match2Software();
 }

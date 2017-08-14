@@ -1,10 +1,12 @@
 package edu.pitt.isg.dc.entry;
 
 
+import com.google.gson.Gson;
 import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import edu.pitt.isg.dc.vm.MatchedSoftware;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,7 +17,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigInteger;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
@@ -123,8 +124,25 @@ public class DatabaseTest {
 
     @Test
     public void matchSoftware() throws Exception {
-        final List<List<BigInteger>> lists = entryRepo.matchSoftware();
-        assertThat(lists.size()).isGreaterThan(0);
+        final List<MatchedSoftware> list = entryRule.listSoftwareMatched();
+
+        assertThat(list.size()).isGreaterThan(0);
+        assertThat(list).allSatisfy(this::assertMatchSoftware);
+    }
+
+    public void assertMatchSoftware(MatchedSoftware m) {
+        assertThat(m.getSourceSoftwareName()).isNotEmpty();
+        assertThat(m.getSinkSoftwareName()).isNotEmpty();
+        final String linkDataFormatName = m.getLinkDataFormatName();
+        assertThat(linkDataFormatName).isNotEmpty();
+        final String[] formats = fromJsonToStringArray(linkDataFormatName);
+        assertThat(formats)
+                .isNotEmpty()
+                .allSatisfy(f -> assertThat(f).isNotEmpty());
+    }
+
+    private static String[] fromJsonToStringArray(String linkDataFormatName) {
+        return new Gson().fromJson(linkDataFormatName, String[].class);
     }
 
     @Test

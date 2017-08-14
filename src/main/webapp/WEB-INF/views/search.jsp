@@ -35,7 +35,7 @@
     </c:forEach>
 </select>
 
-<table id="ncbi-table" class="display" cellspacing="0" width="100%">
+<table id="entry-table" class="display" cellspacing="0" width="100%">
     <thead>
     <tr>
         <th>Title/Name</th>
@@ -49,22 +49,41 @@
     </tr>
     </tfoot>
 </table>
+<%--<button id="software-match-button">Software matching by input and output formats</button>--%>
+<table id="software-table" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+        <th>Source Software</th>
+        <th>Connected via</th>
+        <th>Sink Software</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+        <th>Source Software</th>
+        <th>Type</th>
+        <th>Sink Software</th>
+    </tr>
+    </tfoot>
+</table>
 <script>
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
         var my = {
             '$': {
+//                softwareMatchButton: $('#software-match-button'),
                 hostSelect: $('#host-select'),
                 pathogenSelect: $('#pathogen-select'),
                 typeSelect: $('#type-select')
             }
         };
 
+        //my.$.softwareMatchButton.click(onClickSoftwareMatchButton);
         my.$.hostSelect.change(reloadEntryTable);
         my.$.pathogenSelect.change(reloadEntryTable);
         my.$.typeSelect.change(reloadEntryTable);
 
-        my.entryTable = $('#ncbi-table').DataTable({
+        my.entryTable = $('#entry-table').DataTable({
             ajax: {
                 url: urlSearch(),
                 dataSrc: dataSrcAvoidingUndefined,
@@ -87,6 +106,22 @@
             processing: true
         });
 
+        $('#software-table').DataTable({
+            ajax: {
+                url: entryApi + 'software-matched',
+                deferRender: true,
+                dataSrc: function (data) {
+                    return data;
+                }
+            },
+            columns: [
+                { data: 'sourceSoftwareName'},
+                { data: 'linkDataFormatName'},
+                { data: 'sinkSoftwareName'}
+            ],
+            processing: true
+        });
+
         function dataSrcAvoidingUndefined(data) {
             var result = data._embedded && data._embedded.entries;
             if (result)
@@ -94,6 +129,9 @@
             return [];
         }
 
+//        function onClickSoftwareMatchButton(){
+//        }
+//
         function reloadEntryTable(){
             my.host = my.$.hostSelect.val();
             my.pathogen = my.$.pathogenSelect.val();
@@ -112,10 +150,10 @@
         function renderLinkWithTitleOrName(data) {
             var entry = data.content.entry;
             var name = entry.title || entry.name || '<i>N/A</i>';
-            return linkHtml(data.id, name);
+            return linkHtml(data.id.entryId, data.id.revisionId, name);
 
-            function linkHtml(id, name) {
-                return '<a href="' + entryApi + id + '">' + name + '</a>';
+            function linkHtml(id, rev, name) {
+                return '<a href="' + entryApi + id + '/' + rev + '">' + name + '</a>';
             }
         }
     });
