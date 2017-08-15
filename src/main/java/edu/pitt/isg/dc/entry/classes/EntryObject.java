@@ -20,7 +20,7 @@ class EntryObject {
     private Object entry;
     private Category category;
     private boolean isPublic;
-    private Comments comments;
+    private List<String> comments;
     private Map<String, String> properties = new HashMap<>();
 
     public EntryId getId() {
@@ -55,11 +55,11 @@ class EntryObject {
         this.isPublic = isPublic;
     }
 
-    public Comments getComments() {
+    public List<String> getComments() {
         return comments;
     }
 
-    public void setComments(Comments comments) {
+    public void setComments(List<String> comments) {
         this.comments = comments;
     }
 
@@ -96,6 +96,10 @@ class EntryObject {
             name = String.valueOf(entryData.get("name"));
         }
 
+        if(name.endsWith(" Synthetic Ecosystem")) {
+            name = name.replace(" Synthetic Ecosystem", "");
+        }
+
         if(entryData.containsKey("version")) {
             Object versionObj = entryData.get("version");
             if(versionObj instanceof String) {
@@ -108,7 +112,7 @@ class EntryObject {
             }
 
             if(version.length() > 0) {
-                if(!version.toUpperCase().matches("^[A-Z].*$")) {
+                if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
                     version = " - v" + version;
                 } else {
                     version = " - " + version;
@@ -117,6 +121,46 @@ class EntryObject {
         }
 
         title = name + version;
+        title = addBadges(title, entryData);
+        return title;
+    }
+
+    private boolean hasBadge(LinkedHashMap entryData, String key) {
+        boolean hasBadge = false;
+        if(entryData.containsKey(key)) {
+            hasBadge = (boolean) entryData.get(key);
+        }
+        return hasBadge;
+    }
+
+    private String getBadge(String key) {
+        if(key.equals("availableOnOlympus")) {
+            return " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>";
+        } else if(key.equals("availableOnUIDS")) {
+            return " <b><i class=\"udsi-color\"><sup>UIDS</sup></i></b>";
+        } else if(key.equals("signInRequired")) {
+            return " <b><i class=\"sso-color\"><sup>SSO</sup></i></b>";
+        } else {
+            return "";
+        }
+    }
+
+    private String addBadges(String title, LinkedHashMap entryData) {
+        String key = "availableOnOlympus";
+        if(hasBadge(entryData, key)) {
+            title += getBadge(key);
+        }
+
+        key = "availableOnUIDS";
+        if(hasBadge(entryData, key)) {
+            title += getBadge(key);
+        }
+
+        key = "signInRequired";
+        if(hasBadge(entryData, key)) {
+            title += getBadge(key);
+        }
+
         return title;
     }
 

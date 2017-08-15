@@ -23,6 +23,15 @@
     </thead>
     <tbody>
     <c:forEach items="${entries}" var="entry">
+        <c:if test="${entry.comments != null}">
+            <script>
+                entryComments["${entry.id.entryId}-${entry.id.revisionId}"] = [];
+                <c:forEach items="${entry.comments}" var="comment">
+                    entryComments["${entry.id.entryId}-${entry.id.revisionId}"].push("${comment}");
+                </c:forEach>
+            </script>
+        </c:if>
+
         <tr id="tr-${entry.id.entryId}-${entry.id.revisionId}">
             <c:choose>
                 <c:when test="${entry.entry.title != null}">
@@ -73,10 +82,10 @@
             <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
             <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
             <td><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}")'><icon class="glyphicon glyphicon-eye-open"></icon></button></td>
-            <td><a href="${pageContext.request.contextPath}/add/${splitEntryType[fn:length(splitEntryType) - 1]}?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}"><button class="btn btn-xs btn-default"><icon class="glyphicon glyphicon-edit"></icon></button></a></td>
-            <td><button class="btn btn-xs btn-primary" onclick="showReviewEntryModal('commentModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this);"><icon class="glyphicon glyphicon-comment"></icon></button></td>
+            <td><a href="${pageContext.request.contextPath}/add/${splitEntryType[fn:length(splitEntryType) - 1]}?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}&categoryId=${entry.category.id}"><button class="btn btn-xs btn-default"><icon class="glyphicon glyphicon-edit"></icon></button></a></td>
+            <td><button class="btn btn-xs btn-primary" onclick="showReviewEntryModal('commentModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-comment"></icon></button></td>
             <td><button class="btn btn-xs btn-success" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this);"><icon class="glyphicon glyphicon-check"></icon></button></td>
-            <td><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-danger" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
+            <td><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-danger" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
         </tr>
         <script>
             <c:choose>
@@ -85,7 +94,7 @@
                     $("#reject-btn-${entry.id.entryId}-${entry.id.revisionId}").addClass('disabled');
                 </c:when>
                 <c:when test="${entry.getProperty('status') == 'revised'}">
-                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}").css('background-color', '#f2dede');
+                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}").css('background-color', '#feffb1');
                 </c:when>
             </c:choose>
         </script>

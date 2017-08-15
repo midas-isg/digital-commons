@@ -46,6 +46,29 @@ public class Datastore implements MdcEntryDatastoreInterface {
 
     @Override
     @Transactional
+    public String addEntryRevision(Long id, Long revisionId, EntryView entryObject) throws MdcEntryDatastoreException {
+        try {
+            EntryId entryId = new EntryId(id, revisionId);
+            EntryView previousEntry = this.getEntry(entryId);
+            String status = previousEntry.getProperty("status");
+
+            Entry entry = EntryView.toEntry(entryIdManager.getLatestRevisionEntryId(id), entryObject);
+
+            if(status.equals("rejected") || status.equals("revised")) {
+                entry.setStatus("revised");
+            } else {
+                entry.setStatus("pending");
+            }
+
+            repo.save(entry);
+            return entry.getId().toString();
+        } catch (Exception e) {
+            throw new MdcEntryDatastoreException(e);
+        }
+    }
+
+    @Override
+    @Transactional
     public String editEntry(EntryId id, EntryView entryObject) throws MdcEntryDatastoreException {
         try {
             final Entry entry = EntryView.toEntry(id, entryObject);
@@ -68,6 +91,16 @@ public class Datastore implements MdcEntryDatastoreInterface {
     public List<EntryView> getPendingEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
         for (Entry entry: repo.findAllByStatus("pending")) {
+            list.add(new EntryView(entry));
+        }
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public List<EntryView> getLatestUnapprovedEntries() throws MdcEntryDatastoreException {
+        List<EntryView> list = new ArrayList<>();
+        for (Entry entry: repo.findLatestUnapprovedEntries()) {
             list.add(new EntryView(entry));
         }
         return list;

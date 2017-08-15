@@ -14,10 +14,10 @@
                 <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
             </div>
             <div class="modal-body">
-                <c:if test="${type != 'comments'}">
-                    <input id="approve-entry-id-${id}" class="hidden">
-                    <input id="approve-entry-revision-id-${id}" class="hidden">
+                <input id="approve-entry-id-${id}" class="hidden">
+                <input id="approve-entry-revision-id-${id}" class="hidden">
 
+                <c:if test="${type != 'comments'}">
                     <div class="sub-title-font font-size-16 modal-software-item">
                         <h4 class="inline bold">Title: </h4><br>
                         <span id="approve-entry-title-${id}"></span>
@@ -57,8 +57,8 @@
                             <c:if test="${type == 'reject'}">
                                 <h4 class="inline bold">Comment(s): </h4><br>
                             </c:if>
-                            <div id="reject-comments"></div>
-                            <button type="button" class="btn btn-default" style="margin-top:5px" onclick="addComment()">Add comment</button>
+                            <div id="reject-comments-${id}"></div>
+                            <button type="button" class="btn btn-default" style="margin-top:5px" onclick="addComment('${id}')">Add comment</button>
                         </div>
                     </c:if>
                 </div>
@@ -85,6 +85,6 @@
     $('#${id}').on('hidden.bs.modal', function () {
         hideCategoryErrors();
         $('#category-select-${id}').val('none');
-        $("#reject-comments").html("");
+        $("#reject-comments-${id}").html("");
     });
 </script>

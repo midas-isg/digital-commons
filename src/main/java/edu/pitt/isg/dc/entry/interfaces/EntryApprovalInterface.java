@@ -15,6 +15,10 @@ public interface EntryApprovalInterface {
                      String authenticationToken,
                      String[] commentsArr) throws MdcEntryDatastoreException;
 
+    void commentEntry(EntryId entryId,
+                     String authenticationToken,
+                     String[] commentsArr) throws MdcEntryDatastoreException;
+
     List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
 
     List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException;

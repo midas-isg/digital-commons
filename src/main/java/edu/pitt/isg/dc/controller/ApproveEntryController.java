@@ -120,6 +120,27 @@ public class ApproveEntryController {
         }
     }
 
+    @RequestMapping(value = "/add/comment", method = RequestMethod.POST)
+    @ResponseBody
+    public String comment(HttpSession session,
+                         @RequestParam(value = "entryId", required = true) long id,
+                         @RequestParam(value = "revisionId", required = true) long revisionId,
+                         @RequestParam(value = "comments[]", required = false) String[] comments,
+                         Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
+            String status = "success";
+            try {
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.commentEntry(entryId, EntryHelper.getServerAuthentication(), comments);
+            } catch(MdcEntryDatastoreException e) {
+                status = "fail";
+            }
+            return status;
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
     @RequestMapping(value = "/add/populate", method = RequestMethod.GET)
     public ResponseEntity<String> populate(HttpSession session,
                                            Model model) throws MdcEntryDatastoreException  {

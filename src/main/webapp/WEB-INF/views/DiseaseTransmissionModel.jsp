@@ -22,6 +22,8 @@
           rel="stylesheet"/>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/xsd-forms/css/timepicker.css"
           rel="stylesheet"/>
+    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/header.css"
+          rel="stylesheet"/>
     <style type="text/css">
         
     </style>
@@ -29,6 +31,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/xml2json.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.deserialize.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>
@@ -401,315 +404,45 @@ $('#min-occurs-zero-5-instance-1').change();
       { elem.show(); return; }
   })
 
-  $('#repeat-button-5-instance-1').click( function() {
+  $('#remove-button-8-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-8-instance-1_1_1').hide();
+  });
+
+  $('#item-8-instance-1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate8instance1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-8-instance-1_1_1');
+    var pathDiv = $('#item-path-8-instance-1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-8-instance-1_1_1').change( function() {
+    var ok = validate8instance1_1_1();
+    showError('item-error-8-instance-1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-8-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-8-instance-1_1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-5-instance-1_1');
+    elem = $('#repeating-enclosing-8-instance-1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
 
-  $('#remove-button-8-instance-1_1').click(function() {
-    $('#repeating-enclosing-8-instance-1_1').hide();
-  });
-
-  $('#item-8-instance-1_1').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_1 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_1');
-    var pathDiv = $('#item-path-8-instance-1_1');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_1').change( function() {
-    var ok = validate8instance1_1();
-    showError('item-error-8-instance-1_1',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_1').attr('enabled','false');
-  $('#remove-button-8-instance-1_2').click(function() {
-    $('#repeating-enclosing-8-instance-1_2').hide();
-  });
-
-  $('#item-8-instance-1_2').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_2');
-    var pathDiv = $('#item-path-8-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_2').change( function() {
-    var ok = validate8instance1_2();
-    showError('item-error-8-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_2').attr('enabled','false');
-  $('#remove-button-8-instance-1_3').click(function() {
-    $('#repeating-enclosing-8-instance-1_3').hide();
-  });
-
-  $('#item-8-instance-1_3').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_3');
-    var pathDiv = $('#item-path-8-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_3').change( function() {
-    var ok = validate8instance1_3();
-    showError('item-error-8-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_3').attr('enabled','false');
-  $('#remove-button-8-instance-1_4').click(function() {
-    $('#repeating-enclosing-8-instance-1_4').hide();
-  });
-
-  $('#item-8-instance-1_4').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_4');
-    var pathDiv = $('#item-path-8-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_4').change( function() {
-    var ok = validate8instance1_4();
-    showError('item-error-8-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_4').attr('enabled','false');
-  $('#remove-button-8-instance-1_5').click(function() {
-    $('#repeating-enclosing-8-instance-1_5').hide();
-  });
-
-  $('#item-8-instance-1_5').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_5');
-    var pathDiv = $('#item-path-8-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_5').change( function() {
-    var ok = validate8instance1_5();
-    showError('item-error-8-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_5').attr('enabled','false');
-  $('#remove-button-8-instance-1_6').click(function() {
-    $('#repeating-enclosing-8-instance-1_6').hide();
-  });
-
-  $('#item-8-instance-1_6').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_6');
-    var pathDiv = $('#item-path-8-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_6').change( function() {
-    var ok = validate8instance1_6();
-    showError('item-error-8-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_6').attr('enabled','false');
-  $('#remove-button-8-instance-1_7').click(function() {
-    $('#repeating-enclosing-8-instance-1_7').hide();
-  });
-
-  $('#item-8-instance-1_7').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_7');
-    var pathDiv = $('#item-path-8-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_7').change( function() {
-    var ok = validate8instance1_7();
-    showError('item-error-8-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_7').attr('enabled','false');
-  $('#remove-button-8-instance-1_8').click(function() {
-    $('#repeating-enclosing-8-instance-1_8').hide();
-  });
-
-  $('#item-8-instance-1_8').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_8');
-    var pathDiv = $('#item-path-8-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_8').change( function() {
-    var ok = validate8instance1_8();
-    showError('item-error-8-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_8').attr('enabled','false');
-  $('#remove-button-8-instance-1_9').click(function() {
-    $('#repeating-enclosing-8-instance-1_9').hide();
-  });
-
-  $('#item-8-instance-1_9').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_9');
-    var pathDiv = $('#item-path-8-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_9').change( function() {
-    var ok = validate8instance1_9();
-    showError('item-error-8-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_9').attr('enabled','false');
-  $('#remove-button-8-instance-1_10').click(function() {
-    $('#repeating-enclosing-8-instance-1_10').hide();
-  });
-
-  $('#item-8-instance-1_10').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_10');
-    var pathDiv = $('#item-path-8-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_10').change( function() {
-    var ok = validate8instance1_10();
-    showError('item-error-8-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_10').attr('enabled','false');
-  $('#repeat-button-8-instance-1').click( function() {
+  $('#repeat-button-5-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-8-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_10');
+    elem = $('#repeating-enclosing-5-instance-1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -720,7 +453,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_1').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_1 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_1');
@@ -747,7 +480,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_2').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_2 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_2');
@@ -774,7 +507,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_3').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_3 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_3');
@@ -801,7 +534,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_4').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_4 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_4');
@@ -828,7 +561,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_5').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_5 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_5');
@@ -855,7 +588,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_6').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_6 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_6');
@@ -882,7 +615,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_7').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_7 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_7');
@@ -909,7 +642,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_8').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_8 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_8');
@@ -936,7 +669,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_9').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_9 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_9');
@@ -963,7 +696,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_10').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_10 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_10');
@@ -1025,7 +758,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-10-instance-1_1').prop('checked',false);
 
-  // sourceCodeRelease
+  // dataOutputFormats
   var validate10instance1_1 = function () {
     var ok = true;
     var v = $('#item-10-instance-1_1');
@@ -1046,10 +779,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-10-instance-1_1').attr('enabled','false');
+  $('#remove-button-10-instance-1_2').click(function() {
+    $('#repeating-enclosing-10-instance-1_2').hide();
+  });
+
+  $('#item-10-instance-1_2').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_2');
+    var pathDiv = $('#item-path-10-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_2').change( function() {
+    var ok = validate10instance1_2();
+    showError('item-error-10-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_2').attr('enabled','false');
+  $('#remove-button-10-instance-1_3').click(function() {
+    $('#repeating-enclosing-10-instance-1_3').hide();
+  });
+
+  $('#item-10-instance-1_3').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_3');
+    var pathDiv = $('#item-path-10-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_3').change( function() {
+    var ok = validate10instance1_3();
+    showError('item-error-10-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_3').attr('enabled','false');
+  $('#remove-button-10-instance-1_4').click(function() {
+    $('#repeating-enclosing-10-instance-1_4').hide();
+  });
+
+  $('#item-10-instance-1_4').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_4');
+    var pathDiv = $('#item-path-10-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_4').change( function() {
+    var ok = validate10instance1_4();
+    showError('item-error-10-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_4').attr('enabled','false');
+  $('#remove-button-10-instance-1_5').click(function() {
+    $('#repeating-enclosing-10-instance-1_5').hide();
+  });
+
+  $('#item-10-instance-1_5').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_5');
+    var pathDiv = $('#item-path-10-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_5').change( function() {
+    var ok = validate10instance1_5();
+    showError('item-error-10-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_5').attr('enabled','false');
+  $('#remove-button-10-instance-1_6').click(function() {
+    $('#repeating-enclosing-10-instance-1_6').hide();
+  });
+
+  $('#item-10-instance-1_6').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_6');
+    var pathDiv = $('#item-path-10-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_6').change( function() {
+    var ok = validate10instance1_6();
+    showError('item-error-10-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_6').attr('enabled','false');
+  $('#remove-button-10-instance-1_7').click(function() {
+    $('#repeating-enclosing-10-instance-1_7').hide();
+  });
+
+  $('#item-10-instance-1_7').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_7');
+    var pathDiv = $('#item-path-10-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_7').change( function() {
+    var ok = validate10instance1_7();
+    showError('item-error-10-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_7').attr('enabled','false');
+  $('#remove-button-10-instance-1_8').click(function() {
+    $('#repeating-enclosing-10-instance-1_8').hide();
+  });
+
+  $('#item-10-instance-1_8').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_8');
+    var pathDiv = $('#item-path-10-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_8').change( function() {
+    var ok = validate10instance1_8();
+    showError('item-error-10-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_8').attr('enabled','false');
+  $('#remove-button-10-instance-1_9').click(function() {
+    $('#repeating-enclosing-10-instance-1_9').hide();
+  });
+
+  $('#item-10-instance-1_9').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_9');
+    var pathDiv = $('#item-path-10-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_9').change( function() {
+    var ok = validate10instance1_9();
+    showError('item-error-10-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_9').attr('enabled','false');
+  $('#remove-button-10-instance-1_10').click(function() {
+    $('#repeating-enclosing-10-instance-1_10').hide();
+  });
+
+  $('#item-10-instance-1_10').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_10');
+    var pathDiv = $('#item-path-10-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_10').change( function() {
+    var ok = validate10instance1_10();
+    showError('item-error-10-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_10').attr('enabled','false');
   $('#repeat-button-10-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-10-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1060,7 +1063,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-11-instance-1_1').prop('checked',false);
 
-  // webApplication
+  // sourceCodeRelease
   var validate11instance1_1 = function () {
     var ok = true;
     var v = $('#item-11-instance-1_1');
@@ -1081,280 +1084,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-11-instance-1_1').attr('enabled','false');
-  $('#remove-button-11-instance-1_2').click(function() {
-    $('#repeating-enclosing-11-instance-1_2').hide();
-  });
-
-  $('#item-11-instance-1_2').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_2');
-    var pathDiv = $('#item-path-11-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_2').change( function() {
-    var ok = validate11instance1_2();
-    showError('item-error-11-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_2').attr('enabled','false');
-  $('#remove-button-11-instance-1_3').click(function() {
-    $('#repeating-enclosing-11-instance-1_3').hide();
-  });
-
-  $('#item-11-instance-1_3').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_3');
-    var pathDiv = $('#item-path-11-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_3').change( function() {
-    var ok = validate11instance1_3();
-    showError('item-error-11-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_3').attr('enabled','false');
-  $('#remove-button-11-instance-1_4').click(function() {
-    $('#repeating-enclosing-11-instance-1_4').hide();
-  });
-
-  $('#item-11-instance-1_4').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_4');
-    var pathDiv = $('#item-path-11-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_4').change( function() {
-    var ok = validate11instance1_4();
-    showError('item-error-11-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_4').attr('enabled','false');
-  $('#remove-button-11-instance-1_5').click(function() {
-    $('#repeating-enclosing-11-instance-1_5').hide();
-  });
-
-  $('#item-11-instance-1_5').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_5');
-    var pathDiv = $('#item-path-11-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_5').change( function() {
-    var ok = validate11instance1_5();
-    showError('item-error-11-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_5').attr('enabled','false');
-  $('#remove-button-11-instance-1_6').click(function() {
-    $('#repeating-enclosing-11-instance-1_6').hide();
-  });
-
-  $('#item-11-instance-1_6').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_6');
-    var pathDiv = $('#item-path-11-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_6').change( function() {
-    var ok = validate11instance1_6();
-    showError('item-error-11-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_6').attr('enabled','false');
-  $('#remove-button-11-instance-1_7').click(function() {
-    $('#repeating-enclosing-11-instance-1_7').hide();
-  });
-
-  $('#item-11-instance-1_7').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_7');
-    var pathDiv = $('#item-path-11-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_7').change( function() {
-    var ok = validate11instance1_7();
-    showError('item-error-11-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_7').attr('enabled','false');
-  $('#remove-button-11-instance-1_8').click(function() {
-    $('#repeating-enclosing-11-instance-1_8').hide();
-  });
-
-  $('#item-11-instance-1_8').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_8');
-    var pathDiv = $('#item-path-11-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_8').change( function() {
-    var ok = validate11instance1_8();
-    showError('item-error-11-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_8').attr('enabled','false');
-  $('#remove-button-11-instance-1_9').click(function() {
-    $('#repeating-enclosing-11-instance-1_9').hide();
-  });
-
-  $('#item-11-instance-1_9').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_9');
-    var pathDiv = $('#item-path-11-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_9').change( function() {
-    var ok = validate11instance1_9();
-    showError('item-error-11-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_9').attr('enabled','false');
-  $('#remove-button-11-instance-1_10').click(function() {
-    $('#repeating-enclosing-11-instance-1_10').hide();
-  });
-
-  $('#item-11-instance-1_10').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_10');
-    var pathDiv = $('#item-path-11-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_10').change( function() {
-    var ok = validate11instance1_10();
-    showError('item-error-11-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_10').attr('enabled','false');
   $('#repeat-button-11-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-11-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1365,7 +1098,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-12-instance-1_1').prop('checked',false);
 
-  // license
+  // webApplication
   var validate12instance1_1 = function () {
     var ok = true;
     var v = $('#item-12-instance-1_1');
@@ -1386,10 +1119,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-12-instance-1_1').attr('enabled','false');
+  $('#remove-button-12-instance-1_2').click(function() {
+    $('#repeating-enclosing-12-instance-1_2').hide();
+  });
+
+  $('#item-12-instance-1_2').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_2');
+    var pathDiv = $('#item-path-12-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_2').change( function() {
+    var ok = validate12instance1_2();
+    showError('item-error-12-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_2').attr('enabled','false');
+  $('#remove-button-12-instance-1_3').click(function() {
+    $('#repeating-enclosing-12-instance-1_3').hide();
+  });
+
+  $('#item-12-instance-1_3').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_3');
+    var pathDiv = $('#item-path-12-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_3').change( function() {
+    var ok = validate12instance1_3();
+    showError('item-error-12-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_3').attr('enabled','false');
+  $('#remove-button-12-instance-1_4').click(function() {
+    $('#repeating-enclosing-12-instance-1_4').hide();
+  });
+
+  $('#item-12-instance-1_4').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_4');
+    var pathDiv = $('#item-path-12-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_4').change( function() {
+    var ok = validate12instance1_4();
+    showError('item-error-12-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_4').attr('enabled','false');
+  $('#remove-button-12-instance-1_5').click(function() {
+    $('#repeating-enclosing-12-instance-1_5').hide();
+  });
+
+  $('#item-12-instance-1_5').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_5');
+    var pathDiv = $('#item-path-12-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_5').change( function() {
+    var ok = validate12instance1_5();
+    showError('item-error-12-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_5').attr('enabled','false');
+  $('#remove-button-12-instance-1_6').click(function() {
+    $('#repeating-enclosing-12-instance-1_6').hide();
+  });
+
+  $('#item-12-instance-1_6').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_6');
+    var pathDiv = $('#item-path-12-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_6').change( function() {
+    var ok = validate12instance1_6();
+    showError('item-error-12-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_6').attr('enabled','false');
+  $('#remove-button-12-instance-1_7').click(function() {
+    $('#repeating-enclosing-12-instance-1_7').hide();
+  });
+
+  $('#item-12-instance-1_7').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_7');
+    var pathDiv = $('#item-path-12-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_7').change( function() {
+    var ok = validate12instance1_7();
+    showError('item-error-12-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_7').attr('enabled','false');
+  $('#remove-button-12-instance-1_8').click(function() {
+    $('#repeating-enclosing-12-instance-1_8').hide();
+  });
+
+  $('#item-12-instance-1_8').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_8');
+    var pathDiv = $('#item-path-12-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_8').change( function() {
+    var ok = validate12instance1_8();
+    showError('item-error-12-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_8').attr('enabled','false');
+  $('#remove-button-12-instance-1_9').click(function() {
+    $('#repeating-enclosing-12-instance-1_9').hide();
+  });
+
+  $('#item-12-instance-1_9').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_9');
+    var pathDiv = $('#item-path-12-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_9').change( function() {
+    var ok = validate12instance1_9();
+    showError('item-error-12-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_9').attr('enabled','false');
+  $('#remove-button-12-instance-1_10').click(function() {
+    $('#repeating-enclosing-12-instance-1_10').hide();
+  });
+
+  $('#item-12-instance-1_10').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_10');
+    var pathDiv = $('#item-path-12-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_10').change( function() {
+    var ok = validate12instance1_10();
+    showError('item-error-12-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_10').attr('enabled','false');
   $('#repeat-button-12-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-12-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1400,7 +1403,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-13-instance-1_1').prop('checked',false);
 
-  // source
+  // license
   var validate13instance1_1 = function () {
     var ok = true;
     var v = $('#item-13-instance-1_1');
@@ -1435,7 +1438,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-14-instance-1_1').prop('checked',false);
 
-  // developers
+  // source
   var validate14instance1_1 = function () {
     var ok = true;
     var v = $('#item-14-instance-1_1');
@@ -1456,280 +1459,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-14-instance-1_1').attr('enabled','false');
-  $('#remove-button-14-instance-1_2').click(function() {
-    $('#repeating-enclosing-14-instance-1_2').hide();
-  });
-
-  $('#item-14-instance-1_2').prop('checked',false);
-
-  // developers
-  var validate14instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_2');
-    var pathDiv = $('#item-path-14-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_2').change( function() {
-    var ok = validate14instance1_2();
-    showError('item-error-14-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_2').attr('enabled','false');
-  $('#remove-button-14-instance-1_3').click(function() {
-    $('#repeating-enclosing-14-instance-1_3').hide();
-  });
-
-  $('#item-14-instance-1_3').prop('checked',false);
-
-  // developers
-  var validate14instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_3');
-    var pathDiv = $('#item-path-14-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_3').change( function() {
-    var ok = validate14instance1_3();
-    showError('item-error-14-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_3').attr('enabled','false');
-  $('#remove-button-14-instance-1_4').click(function() {
-    $('#repeating-enclosing-14-instance-1_4').hide();
-  });
-
-  $('#item-14-instance-1_4').prop('checked',false);
-
-  // developers
-  var validate14instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_4');
-    var pathDiv = $('#item-path-14-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_4').change( function() {
-    var ok = validate14instance1_4();
-    showError('item-error-14-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_4').attr('enabled','false');
-  $('#remove-button-14-instance-1_5').click(function() {
-    $('#repeating-enclosing-14-instance-1_5').hide();
-  });
-
-  $('#item-14-instance-1_5').prop('checked',false);
-
-  // developers
-  var validate14instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_5');
-    var pathDiv = $('#item-path-14-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_5').change( function() {
-    var ok = validate14instance1_5();
-    showError('item-error-14-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_5').attr('enabled','false');
-  $('#remove-button-14-instance-1_6').click(function() {
-    $('#repeating-enclosing-14-instance-1_6').hide();
-  });
-
-  $('#item-14-instance-1_6').prop('checked',false);
-
-  // developers
-  var validate14instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_6');
-    var pathDiv = $('#item-path-14-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_6').change( function() {
-    var ok = validate14instance1_6();
-    showError('item-error-14-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_6').attr('enabled','false');
-  $('#remove-button-14-instance-1_7').click(function() {
-    $('#repeating-enclosing-14-instance-1_7').hide();
-  });
-
-  $('#item-14-instance-1_7').prop('checked',false);
-
-  // developers
-  var validate14instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_7');
-    var pathDiv = $('#item-path-14-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_7').change( function() {
-    var ok = validate14instance1_7();
-    showError('item-error-14-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_7').attr('enabled','false');
-  $('#remove-button-14-instance-1_8').click(function() {
-    $('#repeating-enclosing-14-instance-1_8').hide();
-  });
-
-  $('#item-14-instance-1_8').prop('checked',false);
-
-  // developers
-  var validate14instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_8');
-    var pathDiv = $('#item-path-14-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_8').change( function() {
-    var ok = validate14instance1_8();
-    showError('item-error-14-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_8').attr('enabled','false');
-  $('#remove-button-14-instance-1_9').click(function() {
-    $('#repeating-enclosing-14-instance-1_9').hide();
-  });
-
-  $('#item-14-instance-1_9').prop('checked',false);
-
-  // developers
-  var validate14instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_9');
-    var pathDiv = $('#item-path-14-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_9').change( function() {
-    var ok = validate14instance1_9();
-    showError('item-error-14-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_9').attr('enabled','false');
-  $('#remove-button-14-instance-1_10').click(function() {
-    $('#repeating-enclosing-14-instance-1_10').hide();
-  });
-
-  $('#item-14-instance-1_10').prop('checked',false);
-
-  // developers
-  var validate14instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_10');
-    var pathDiv = $('#item-path-14-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_10').change( function() {
-    var ok = validate14instance1_10();
-    showError('item-error-14-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_10').attr('enabled','false');
   $('#repeat-button-14-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-14-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1740,7 +1473,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-15-instance-1_1').prop('checked',false);
 
-  // website
+  // developers
   var validate15instance1_1 = function () {
     var ok = true;
     var v = $('#item-15-instance-1_1');
@@ -1761,10 +1494,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-15-instance-1_1').attr('enabled','false');
+  $('#remove-button-15-instance-1_2').click(function() {
+    $('#repeating-enclosing-15-instance-1_2').hide();
+  });
+
+  $('#item-15-instance-1_2').prop('checked',false);
+
+  // developers
+  var validate15instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_2');
+    var pathDiv = $('#item-path-15-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_2').change( function() {
+    var ok = validate15instance1_2();
+    showError('item-error-15-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_2').attr('enabled','false');
+  $('#remove-button-15-instance-1_3').click(function() {
+    $('#repeating-enclosing-15-instance-1_3').hide();
+  });
+
+  $('#item-15-instance-1_3').prop('checked',false);
+
+  // developers
+  var validate15instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_3');
+    var pathDiv = $('#item-path-15-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_3').change( function() {
+    var ok = validate15instance1_3();
+    showError('item-error-15-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_3').attr('enabled','false');
+  $('#remove-button-15-instance-1_4').click(function() {
+    $('#repeating-enclosing-15-instance-1_4').hide();
+  });
+
+  $('#item-15-instance-1_4').prop('checked',false);
+
+  // developers
+  var validate15instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_4');
+    var pathDiv = $('#item-path-15-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_4').change( function() {
+    var ok = validate15instance1_4();
+    showError('item-error-15-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_4').attr('enabled','false');
+  $('#remove-button-15-instance-1_5').click(function() {
+    $('#repeating-enclosing-15-instance-1_5').hide();
+  });
+
+  $('#item-15-instance-1_5').prop('checked',false);
+
+  // developers
+  var validate15instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_5');
+    var pathDiv = $('#item-path-15-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_5').change( function() {
+    var ok = validate15instance1_5();
+    showError('item-error-15-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_5').attr('enabled','false');
+  $('#remove-button-15-instance-1_6').click(function() {
+    $('#repeating-enclosing-15-instance-1_6').hide();
+  });
+
+  $('#item-15-instance-1_6').prop('checked',false);
+
+  // developers
+  var validate15instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_6');
+    var pathDiv = $('#item-path-15-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_6').change( function() {
+    var ok = validate15instance1_6();
+    showError('item-error-15-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_6').attr('enabled','false');
+  $('#remove-button-15-instance-1_7').click(function() {
+    $('#repeating-enclosing-15-instance-1_7').hide();
+  });
+
+  $('#item-15-instance-1_7').prop('checked',false);
+
+  // developers
+  var validate15instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_7');
+    var pathDiv = $('#item-path-15-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_7').change( function() {
+    var ok = validate15instance1_7();
+    showError('item-error-15-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_7').attr('enabled','false');
+  $('#remove-button-15-instance-1_8').click(function() {
+    $('#repeating-enclosing-15-instance-1_8').hide();
+  });
+
+  $('#item-15-instance-1_8').prop('checked',false);
+
+  // developers
+  var validate15instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_8');
+    var pathDiv = $('#item-path-15-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_8').change( function() {
+    var ok = validate15instance1_8();
+    showError('item-error-15-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_8').attr('enabled','false');
+  $('#remove-button-15-instance-1_9').click(function() {
+    $('#repeating-enclosing-15-instance-1_9').hide();
+  });
+
+  $('#item-15-instance-1_9').prop('checked',false);
+
+  // developers
+  var validate15instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_9');
+    var pathDiv = $('#item-path-15-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_9').change( function() {
+    var ok = validate15instance1_9();
+    showError('item-error-15-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_9').attr('enabled','false');
+  $('#remove-button-15-instance-1_10').click(function() {
+    $('#repeating-enclosing-15-instance-1_10').hide();
+  });
+
+  $('#item-15-instance-1_10').prop('checked',false);
+
+  // developers
+  var validate15instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_10');
+    var pathDiv = $('#item-path-15-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_10').change( function() {
+    var ok = validate15instance1_10();
+    showError('item-error-15-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_10').attr('enabled','false');
   $('#repeat-button-15-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-15-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1775,7 +1778,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-16-instance-1_1').prop('checked',false);
 
-  // documentation
+  // website
   var validate16instance1_1 = function () {
     var ok = true;
     var v = $('#item-16-instance-1_1');
@@ -1810,7 +1813,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-17-instance-1_1').prop('checked',false);
 
-  // publicationsThatUsedRelease
+  // documentation
   var validate17instance1_1 = function () {
     var ok = true;
     var v = $('#item-17-instance-1_1');
@@ -1831,280 +1834,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-17-instance-1_1').attr('enabled','false');
-  $('#remove-button-17-instance-1_2').click(function() {
-    $('#repeating-enclosing-17-instance-1_2').hide();
-  });
-
-  $('#item-17-instance-1_2').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_2');
-    var pathDiv = $('#item-path-17-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_2').change( function() {
-    var ok = validate17instance1_2();
-    showError('item-error-17-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_2').attr('enabled','false');
-  $('#remove-button-17-instance-1_3').click(function() {
-    $('#repeating-enclosing-17-instance-1_3').hide();
-  });
-
-  $('#item-17-instance-1_3').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_3');
-    var pathDiv = $('#item-path-17-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_3').change( function() {
-    var ok = validate17instance1_3();
-    showError('item-error-17-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_3').attr('enabled','false');
-  $('#remove-button-17-instance-1_4').click(function() {
-    $('#repeating-enclosing-17-instance-1_4').hide();
-  });
-
-  $('#item-17-instance-1_4').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_4');
-    var pathDiv = $('#item-path-17-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_4').change( function() {
-    var ok = validate17instance1_4();
-    showError('item-error-17-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_4').attr('enabled','false');
-  $('#remove-button-17-instance-1_5').click(function() {
-    $('#repeating-enclosing-17-instance-1_5').hide();
-  });
-
-  $('#item-17-instance-1_5').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_5');
-    var pathDiv = $('#item-path-17-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_5').change( function() {
-    var ok = validate17instance1_5();
-    showError('item-error-17-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_5').attr('enabled','false');
-  $('#remove-button-17-instance-1_6').click(function() {
-    $('#repeating-enclosing-17-instance-1_6').hide();
-  });
-
-  $('#item-17-instance-1_6').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_6');
-    var pathDiv = $('#item-path-17-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_6').change( function() {
-    var ok = validate17instance1_6();
-    showError('item-error-17-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_6').attr('enabled','false');
-  $('#remove-button-17-instance-1_7').click(function() {
-    $('#repeating-enclosing-17-instance-1_7').hide();
-  });
-
-  $('#item-17-instance-1_7').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_7');
-    var pathDiv = $('#item-path-17-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_7').change( function() {
-    var ok = validate17instance1_7();
-    showError('item-error-17-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_7').attr('enabled','false');
-  $('#remove-button-17-instance-1_8').click(function() {
-    $('#repeating-enclosing-17-instance-1_8').hide();
-  });
-
-  $('#item-17-instance-1_8').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_8');
-    var pathDiv = $('#item-path-17-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_8').change( function() {
-    var ok = validate17instance1_8();
-    showError('item-error-17-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_8').attr('enabled','false');
-  $('#remove-button-17-instance-1_9').click(function() {
-    $('#repeating-enclosing-17-instance-1_9').hide();
-  });
-
-  $('#item-17-instance-1_9').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_9');
-    var pathDiv = $('#item-path-17-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_9').change( function() {
-    var ok = validate17instance1_9();
-    showError('item-error-17-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_9').attr('enabled','false');
-  $('#remove-button-17-instance-1_10').click(function() {
-    $('#repeating-enclosing-17-instance-1_10').hide();
-  });
-
-  $('#item-17-instance-1_10').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_10');
-    var pathDiv = $('#item-path-17-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_10').change( function() {
-    var ok = validate17instance1_10();
-    showError('item-error-17-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_10').attr('enabled','false');
   $('#repeat-button-17-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-17-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -2115,7 +1848,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_1').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_1 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_1');
@@ -2142,7 +1875,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_2').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_2 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_2');
@@ -2169,7 +1902,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_3').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_3 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_3');
@@ -2196,7 +1929,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_4').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_4 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_4');
@@ -2223,7 +1956,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_5').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_5 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_5');
@@ -2250,7 +1983,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_6').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_6 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_6');
@@ -2277,7 +2010,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_7').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_7 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_7');
@@ -2304,7 +2037,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_8').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_8 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_8');
@@ -2331,7 +2064,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_9').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_9 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_9');
@@ -2358,7 +2091,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_10').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_10 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_10');
@@ -2420,7 +2153,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_1').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_1 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_1');
@@ -2447,7 +2180,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_2').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_2 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_2');
@@ -2474,7 +2207,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_3').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_3 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_3');
@@ -2501,7 +2234,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_4').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_4 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_4');
@@ -2528,7 +2261,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_5').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_5 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_5');
@@ -2555,7 +2288,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_6').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_6 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_6');
@@ -2582,7 +2315,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_7').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_7 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_7');
@@ -2609,7 +2342,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_8').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_8 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_8');
@@ -2636,7 +2369,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_9').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_9 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_9');
@@ -2663,7 +2396,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_10').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_10 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_10');
@@ -2725,7 +2458,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_1').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_1 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_1');
@@ -2752,7 +2485,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_2').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_2 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_2');
@@ -2779,7 +2512,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_3').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_3 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_3');
@@ -2806,7 +2539,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_4').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_4 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_4');
@@ -2833,7 +2566,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_5').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_5 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_5');
@@ -2860,7 +2593,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_6').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_6 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_6');
@@ -2887,7 +2620,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_7').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_7 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_7');
@@ -2914,7 +2647,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_8').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_8 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_8');
@@ -2941,7 +2674,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_9').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_9 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_9');
@@ -2968,7 +2701,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_10').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_10 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_10');
@@ -3030,7 +2763,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_1').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_1 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_1');
@@ -3057,7 +2790,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_2').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_2 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_2');
@@ -3084,7 +2817,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_3').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_3 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_3');
@@ -3111,7 +2844,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_4').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_4 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_4');
@@ -3138,7 +2871,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_5').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_5 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_5');
@@ -3165,7 +2898,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_6').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_6 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_6');
@@ -3192,7 +2925,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_7').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_7 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_7');
@@ -3219,7 +2952,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_8').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_8 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_8');
@@ -3246,7 +2979,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_9').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_9 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_9');
@@ -3273,7 +3006,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_10').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_10 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_10');
@@ -3335,11 +3068,17 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-22-instance-1_1').prop('checked',false);
 
-  // availableOnOlympus
+  // grants
   var validate22instance1_1 = function () {
     var ok = true;
     var v = $('#item-22-instance-1_1');
     var pathDiv = $('#item-path-22-instance-1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
@@ -3348,13 +3087,293 @@ $('#min-occurs-zero-5-instance-1').change();
     showError('item-error-22-instance-1_1',ok);
   });
   
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_1').attr('enabled','false');
+  $('#remove-button-22-instance-1_2').click(function() {
+    $('#repeating-enclosing-22-instance-1_2').hide();
+  });
+
+  $('#item-22-instance-1_2').prop('checked',false);
+
+  // grants
+  var validate22instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_2');
+    var pathDiv = $('#item-path-22-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_2').change( function() {
+    var ok = validate22instance1_2();
+    showError('item-error-22-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_2').attr('enabled','false');
+  $('#remove-button-22-instance-1_3').click(function() {
+    $('#repeating-enclosing-22-instance-1_3').hide();
+  });
+
+  $('#item-22-instance-1_3').prop('checked',false);
+
+  // grants
+  var validate22instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_3');
+    var pathDiv = $('#item-path-22-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_3').change( function() {
+    var ok = validate22instance1_3();
+    showError('item-error-22-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_3').attr('enabled','false');
+  $('#remove-button-22-instance-1_4').click(function() {
+    $('#repeating-enclosing-22-instance-1_4').hide();
+  });
+
+  $('#item-22-instance-1_4').prop('checked',false);
+
+  // grants
+  var validate22instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_4');
+    var pathDiv = $('#item-path-22-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_4').change( function() {
+    var ok = validate22instance1_4();
+    showError('item-error-22-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_4').attr('enabled','false');
+  $('#remove-button-22-instance-1_5').click(function() {
+    $('#repeating-enclosing-22-instance-1_5').hide();
+  });
+
+  $('#item-22-instance-1_5').prop('checked',false);
+
+  // grants
+  var validate22instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_5');
+    var pathDiv = $('#item-path-22-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_5').change( function() {
+    var ok = validate22instance1_5();
+    showError('item-error-22-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_5').attr('enabled','false');
+  $('#remove-button-22-instance-1_6').click(function() {
+    $('#repeating-enclosing-22-instance-1_6').hide();
+  });
+
+  $('#item-22-instance-1_6').prop('checked',false);
+
+  // grants
+  var validate22instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_6');
+    var pathDiv = $('#item-path-22-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_6').change( function() {
+    var ok = validate22instance1_6();
+    showError('item-error-22-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_6').attr('enabled','false');
+  $('#remove-button-22-instance-1_7').click(function() {
+    $('#repeating-enclosing-22-instance-1_7').hide();
+  });
+
+  $('#item-22-instance-1_7').prop('checked',false);
+
+  // grants
+  var validate22instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_7');
+    var pathDiv = $('#item-path-22-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_7').change( function() {
+    var ok = validate22instance1_7();
+    showError('item-error-22-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_7').attr('enabled','false');
+  $('#remove-button-22-instance-1_8').click(function() {
+    $('#repeating-enclosing-22-instance-1_8').hide();
+  });
+
+  $('#item-22-instance-1_8').prop('checked',false);
+
+  // grants
+  var validate22instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_8');
+    var pathDiv = $('#item-path-22-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_8').change( function() {
+    var ok = validate22instance1_8();
+    showError('item-error-22-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_8').attr('enabled','false');
+  $('#remove-button-22-instance-1_9').click(function() {
+    $('#repeating-enclosing-22-instance-1_9').hide();
+  });
+
+  $('#item-22-instance-1_9').prop('checked',false);
+
+  // grants
+  var validate22instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_9');
+    var pathDiv = $('#item-path-22-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_9').change( function() {
+    var ok = validate22instance1_9();
+    showError('item-error-22-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_9').attr('enabled','false');
+  $('#remove-button-22-instance-1_10').click(function() {
+    $('#repeating-enclosing-22-instance-1_10').hide();
+  });
+
+  $('#item-22-instance-1_10').prop('checked',false);
+
+  // grants
+  var validate22instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_10');
+    var pathDiv = $('#item-path-22-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_10').change( function() {
+    var ok = validate22instance1_10();
+    showError('item-error-22-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_10').attr('enabled','false');
+  $('#repeat-button-22-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-22-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_10');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-23-instance-1_1').click(function() {
     $('#repeating-enclosing-23-instance-1_1').hide();
   });
 
   $('#item-23-instance-1_1').prop('checked',false);
 
-  // availableOnUIDS
+  // availableOnOlympus
   var validate23instance1_1 = function () {
     var ok = true;
     var v = $('#item-23-instance-1_1');
@@ -3373,7 +3392,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-24-instance-1_1').prop('checked',false);
 
-  // signInRequired
+  // availableOnUIDS
   var validate24instance1_1 = function () {
     var ok = true;
     var v = $('#item-24-instance-1_1');
@@ -3392,17 +3411,11 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-25-instance-1_1').prop('checked',false);
 
-  // controlMeasures
+  // signInRequired
   var validate25instance1_1 = function () {
     var ok = true;
     var v = $('#item-25-instance-1_1');
     var pathDiv = $('#item-path-25-instance-1_1');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
     return ok;
   }
   
@@ -3411,515 +3424,1280 @@ $('#min-occurs-zero-5-instance-1').change();
     showError('item-error-25-instance-1_1',ok);
   });
   
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_1').attr('enabled','false');
-  $('#remove-button-25-instance-1_2').click(function() {
-    $('#repeating-enclosing-25-instance-1_2').hide();
-  });
+$('#min-occurs-zero-26-instance-1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_1'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_2'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_3'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_4'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_5'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_6'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_7'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_8'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_9'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-26-instance-1_10'));
+})
 
-  $('#item-25-instance-1_2').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_2');
-    var pathDiv = $('#item-path-25-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_2').change( function() {
-    var ok = validate25instance1_2();
-    showError('item-error-25-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_2').attr('enabled','false');
-  $('#remove-button-25-instance-1_3').click(function() {
-    $('#repeating-enclosing-25-instance-1_3').hide();
-  });
-
-  $('#item-25-instance-1_3').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_3');
-    var pathDiv = $('#item-path-25-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_3').change( function() {
-    var ok = validate25instance1_3();
-    showError('item-error-25-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_3').attr('enabled','false');
-  $('#remove-button-25-instance-1_4').click(function() {
-    $('#repeating-enclosing-25-instance-1_4').hide();
-  });
-
-  $('#item-25-instance-1_4').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_4');
-    var pathDiv = $('#item-path-25-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_4').change( function() {
-    var ok = validate25instance1_4();
-    showError('item-error-25-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_4').attr('enabled','false');
-  $('#remove-button-25-instance-1_5').click(function() {
-    $('#repeating-enclosing-25-instance-1_5').hide();
-  });
-
-  $('#item-25-instance-1_5').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_5');
-    var pathDiv = $('#item-path-25-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_5').change( function() {
-    var ok = validate25instance1_5();
-    showError('item-error-25-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_5').attr('enabled','false');
-  $('#remove-button-25-instance-1_6').click(function() {
-    $('#repeating-enclosing-25-instance-1_6').hide();
-  });
-
-  $('#item-25-instance-1_6').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_6');
-    var pathDiv = $('#item-path-25-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_6').change( function() {
-    var ok = validate25instance1_6();
-    showError('item-error-25-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_6').attr('enabled','false');
-  $('#remove-button-25-instance-1_7').click(function() {
-    $('#repeating-enclosing-25-instance-1_7').hide();
-  });
-
-  $('#item-25-instance-1_7').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_7');
-    var pathDiv = $('#item-path-25-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_7').change( function() {
-    var ok = validate25instance1_7();
-    showError('item-error-25-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_7').attr('enabled','false');
-  $('#remove-button-25-instance-1_8').click(function() {
-    $('#repeating-enclosing-25-instance-1_8').hide();
-  });
-
-  $('#item-25-instance-1_8').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_8');
-    var pathDiv = $('#item-path-25-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_8').change( function() {
-    var ok = validate25instance1_8();
-    showError('item-error-25-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_8').attr('enabled','false');
-  $('#remove-button-25-instance-1_9').click(function() {
-    $('#repeating-enclosing-25-instance-1_9').hide();
-  });
-
-  $('#item-25-instance-1_9').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_9');
-    var pathDiv = $('#item-path-25-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_9').change( function() {
-    var ok = validate25instance1_9();
-    showError('item-error-25-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_9').attr('enabled','false');
-  $('#remove-button-25-instance-1_10').click(function() {
-    $('#repeating-enclosing-25-instance-1_10').hide();
-  });
-
-  $('#item-25-instance-1_10').prop('checked',false);
-
-  // controlMeasures
-  var validate25instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-25-instance-1_10');
-    var pathDiv = $('#item-path-25-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-25-instance-1_10').change( function() {
-    var ok = validate25instance1_10();
-    showError('item-error-25-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-25-instance-1_10').attr('enabled','false');
-  $('#repeat-button-25-instance-1').click( function() {
-    // loop through all repeats until find first nonInvisible repeat and make it visible
-    var elem;
-    elem = $('#repeating-enclosing-25-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-25-instance-1_10');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-  })
-
+$('#min-occurs-zero-26-instance-1').change();
   $('#remove-button-26-instance-1_1').click(function() {
     $('#repeating-enclosing-26-instance-1_1').hide();
   });
 
-  $('#item-26-instance-1_1').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_1_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_1 = function () {
+$('#min-occurs-zero-27-instance-1_1').change();
+  $('#remove-button-27-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_1_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_1_1_1').hide();
+  });
+
+  $('#item-28-instance-1_1_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_1_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_1');
-    var pathDiv = $('#item-path-26-instance-1_1');
+    var v = $('#item-28-instance-1_1_1_1');
+    var pathDiv = $('#item-path-28-instance-1_1_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_1').change( function() {
-    var ok = validate26instance1_1();
-    showError('item-error-26-instance-1_1',ok);
+  $('#item-28-instance-1_1_1_1').change( function() {
+    var ok = validate28instance1_1_1_1();
+    showError('item-error-28-instance-1_1_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_2').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_1_1_1').hide();
+  });
+
+  $('#item-29-instance-1_1_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_1_1_1');
+    var pathDiv = $('#item-path-29-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_1_1_1').change( function() {
+    var ok = validate29instance1_1_1_1();
+    showError('item-error-29-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_1_1_1').hide();
+  });
+
+  $('#item-30-instance-1_1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_1_1_1');
+    var pathDiv = $('#item-path-30-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_1_1_1').change( function() {
+    var ok = validate30instance1_1_1_1();
+    showError('item-error-30-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_2').click(function() {
     $('#repeating-enclosing-26-instance-1_2').hide();
   });
 
-  $('#item-26-instance-1_2').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_2').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_2_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_2 = function () {
+$('#min-occurs-zero-27-instance-1_2').change();
+  $('#remove-button-27-instance-1_2_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_2_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_2_1_1').hide();
+  });
+
+  $('#item-28-instance-1_2_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_2_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_2');
-    var pathDiv = $('#item-path-26-instance-1_2');
+    var v = $('#item-28-instance-1_2_1_1');
+    var pathDiv = $('#item-path-28-instance-1_2_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_2').change( function() {
-    var ok = validate26instance1_2();
-    showError('item-error-26-instance-1_2',ok);
+  $('#item-28-instance-1_2_1_1').change( function() {
+    var ok = validate28instance1_2_1_1();
+    showError('item-error-28-instance-1_2_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_3').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_2_1_1').hide();
+  });
+
+  $('#item-29-instance-1_2_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_2_1_1');
+    var pathDiv = $('#item-path-29-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_2_1_1').change( function() {
+    var ok = validate29instance1_2_1_1();
+    showError('item-error-29-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_2_1_1').hide();
+  });
+
+  $('#item-30-instance-1_2_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_2_1_1');
+    var pathDiv = $('#item-path-30-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_2_1_1').change( function() {
+    var ok = validate30instance1_2_1_1();
+    showError('item-error-30-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_2').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_2_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_3').click(function() {
     $('#repeating-enclosing-26-instance-1_3').hide();
   });
 
-  $('#item-26-instance-1_3').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_3').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_3_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_3 = function () {
+$('#min-occurs-zero-27-instance-1_3').change();
+  $('#remove-button-27-instance-1_3_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_3_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_3_1_1').hide();
+  });
+
+  $('#item-28-instance-1_3_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_3_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_3');
-    var pathDiv = $('#item-path-26-instance-1_3');
+    var v = $('#item-28-instance-1_3_1_1');
+    var pathDiv = $('#item-path-28-instance-1_3_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_3').change( function() {
-    var ok = validate26instance1_3();
-    showError('item-error-26-instance-1_3',ok);
+  $('#item-28-instance-1_3_1_1').change( function() {
+    var ok = validate28instance1_3_1_1();
+    showError('item-error-28-instance-1_3_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_4').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_3_1_1').hide();
+  });
+
+  $('#item-29-instance-1_3_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_3_1_1');
+    var pathDiv = $('#item-path-29-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_3_1_1').change( function() {
+    var ok = validate29instance1_3_1_1();
+    showError('item-error-29-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_3_1_1').hide();
+  });
+
+  $('#item-30-instance-1_3_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_3_1_1');
+    var pathDiv = $('#item-path-30-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_3_1_1').change( function() {
+    var ok = validate30instance1_3_1_1();
+    showError('item-error-30-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_3').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_3_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_4').click(function() {
     $('#repeating-enclosing-26-instance-1_4').hide();
   });
 
-  $('#item-26-instance-1_4').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_4').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_4_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_4 = function () {
+$('#min-occurs-zero-27-instance-1_4').change();
+  $('#remove-button-27-instance-1_4_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_4_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_4_1_1').hide();
+  });
+
+  $('#item-28-instance-1_4_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_4_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_4');
-    var pathDiv = $('#item-path-26-instance-1_4');
+    var v = $('#item-28-instance-1_4_1_1');
+    var pathDiv = $('#item-path-28-instance-1_4_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_4').change( function() {
-    var ok = validate26instance1_4();
-    showError('item-error-26-instance-1_4',ok);
+  $('#item-28-instance-1_4_1_1').change( function() {
+    var ok = validate28instance1_4_1_1();
+    showError('item-error-28-instance-1_4_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_5').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_4_1_1').hide();
+  });
+
+  $('#item-29-instance-1_4_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_4_1_1');
+    var pathDiv = $('#item-path-29-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_4_1_1').change( function() {
+    var ok = validate29instance1_4_1_1();
+    showError('item-error-29-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_4_1_1').hide();
+  });
+
+  $('#item-30-instance-1_4_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_4_1_1');
+    var pathDiv = $('#item-path-30-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_4_1_1').change( function() {
+    var ok = validate30instance1_4_1_1();
+    showError('item-error-30-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_4').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_4_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_5').click(function() {
     $('#repeating-enclosing-26-instance-1_5').hide();
   });
 
-  $('#item-26-instance-1_5').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_5').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_5_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_5 = function () {
+$('#min-occurs-zero-27-instance-1_5').change();
+  $('#remove-button-27-instance-1_5_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_5_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_5_1_1').hide();
+  });
+
+  $('#item-28-instance-1_5_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_5_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_5');
-    var pathDiv = $('#item-path-26-instance-1_5');
+    var v = $('#item-28-instance-1_5_1_1');
+    var pathDiv = $('#item-path-28-instance-1_5_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_5').change( function() {
-    var ok = validate26instance1_5();
-    showError('item-error-26-instance-1_5',ok);
+  $('#item-28-instance-1_5_1_1').change( function() {
+    var ok = validate28instance1_5_1_1();
+    showError('item-error-28-instance-1_5_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_6').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_5_1_1').hide();
+  });
+
+  $('#item-29-instance-1_5_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_5_1_1');
+    var pathDiv = $('#item-path-29-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_5_1_1').change( function() {
+    var ok = validate29instance1_5_1_1();
+    showError('item-error-29-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_5_1_1').hide();
+  });
+
+  $('#item-30-instance-1_5_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_5_1_1');
+    var pathDiv = $('#item-path-30-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_5_1_1').change( function() {
+    var ok = validate30instance1_5_1_1();
+    showError('item-error-30-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_5').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_5_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_6').click(function() {
     $('#repeating-enclosing-26-instance-1_6').hide();
   });
 
-  $('#item-26-instance-1_6').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_6').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_6_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_6 = function () {
+$('#min-occurs-zero-27-instance-1_6').change();
+  $('#remove-button-27-instance-1_6_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_6_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_6_1_1').hide();
+  });
+
+  $('#item-28-instance-1_6_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_6_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_6');
-    var pathDiv = $('#item-path-26-instance-1_6');
+    var v = $('#item-28-instance-1_6_1_1');
+    var pathDiv = $('#item-path-28-instance-1_6_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_6').change( function() {
-    var ok = validate26instance1_6();
-    showError('item-error-26-instance-1_6',ok);
+  $('#item-28-instance-1_6_1_1').change( function() {
+    var ok = validate28instance1_6_1_1();
+    showError('item-error-28-instance-1_6_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_7').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_6_1_1').hide();
+  });
+
+  $('#item-29-instance-1_6_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_6_1_1');
+    var pathDiv = $('#item-path-29-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_6_1_1').change( function() {
+    var ok = validate29instance1_6_1_1();
+    showError('item-error-29-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_6_1_1').hide();
+  });
+
+  $('#item-30-instance-1_6_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_6_1_1');
+    var pathDiv = $('#item-path-30-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_6_1_1').change( function() {
+    var ok = validate30instance1_6_1_1();
+    showError('item-error-30-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_6').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_6_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_7').click(function() {
     $('#repeating-enclosing-26-instance-1_7').hide();
   });
 
-  $('#item-26-instance-1_7').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_7').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_7_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_7 = function () {
+$('#min-occurs-zero-27-instance-1_7').change();
+  $('#remove-button-27-instance-1_7_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_7_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_7_1_1').hide();
+  });
+
+  $('#item-28-instance-1_7_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_7_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_7');
-    var pathDiv = $('#item-path-26-instance-1_7');
+    var v = $('#item-28-instance-1_7_1_1');
+    var pathDiv = $('#item-path-28-instance-1_7_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_7').change( function() {
-    var ok = validate26instance1_7();
-    showError('item-error-26-instance-1_7',ok);
+  $('#item-28-instance-1_7_1_1').change( function() {
+    var ok = validate28instance1_7_1_1();
+    showError('item-error-28-instance-1_7_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_8').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_7_1_1').hide();
+  });
+
+  $('#item-29-instance-1_7_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_7_1_1');
+    var pathDiv = $('#item-path-29-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_7_1_1').change( function() {
+    var ok = validate29instance1_7_1_1();
+    showError('item-error-29-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_7_1_1').hide();
+  });
+
+  $('#item-30-instance-1_7_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_7_1_1');
+    var pathDiv = $('#item-path-30-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_7_1_1').change( function() {
+    var ok = validate30instance1_7_1_1();
+    showError('item-error-30-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_7').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_7_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_8').click(function() {
     $('#repeating-enclosing-26-instance-1_8').hide();
   });
 
-  $('#item-26-instance-1_8').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_8').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_8_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_8 = function () {
+$('#min-occurs-zero-27-instance-1_8').change();
+  $('#remove-button-27-instance-1_8_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_8_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_8_1_1').hide();
+  });
+
+  $('#item-28-instance-1_8_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_8_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_8');
-    var pathDiv = $('#item-path-26-instance-1_8');
+    var v = $('#item-28-instance-1_8_1_1');
+    var pathDiv = $('#item-path-28-instance-1_8_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_8').change( function() {
-    var ok = validate26instance1_8();
-    showError('item-error-26-instance-1_8',ok);
+  $('#item-28-instance-1_8_1_1').change( function() {
+    var ok = validate28instance1_8_1_1();
+    showError('item-error-28-instance-1_8_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_9').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_8_1_1').hide();
+  });
+
+  $('#item-29-instance-1_8_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_8_1_1');
+    var pathDiv = $('#item-path-29-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_8_1_1').change( function() {
+    var ok = validate29instance1_8_1_1();
+    showError('item-error-29-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_8_1_1').hide();
+  });
+
+  $('#item-30-instance-1_8_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_8_1_1');
+    var pathDiv = $('#item-path-30-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_8_1_1').change( function() {
+    var ok = validate30instance1_8_1_1();
+    showError('item-error-30-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_8').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_8_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_9').click(function() {
     $('#repeating-enclosing-26-instance-1_9').hide();
   });
 
-  $('#item-26-instance-1_9').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_9').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_9_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_9 = function () {
+$('#min-occurs-zero-27-instance-1_9').change();
+  $('#remove-button-27-instance-1_9_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_9_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_9_1_1').hide();
+  });
+
+  $('#item-28-instance-1_9_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_9_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_9');
-    var pathDiv = $('#item-path-26-instance-1_9');
+    var v = $('#item-28-instance-1_9_1_1');
+    var pathDiv = $('#item-path-28-instance-1_9_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_9').change( function() {
-    var ok = validate26instance1_9();
-    showError('item-error-26-instance-1_9',ok);
+  $('#item-28-instance-1_9_1_1').change( function() {
+    var ok = validate28instance1_9_1_1();
+    showError('item-error-28-instance-1_9_1_1',ok);
   });
   
-  $('#repeating-enclosing-26-instance-1_10').hide();
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_9_1_1').hide();
+  });
+
+  $('#item-29-instance-1_9_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_9_1_1');
+    var pathDiv = $('#item-path-29-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_9_1_1').change( function() {
+    var ok = validate29instance1_9_1_1();
+    showError('item-error-29-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_9_1_1').hide();
+  });
+
+  $('#item-30-instance-1_9_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_9_1_1');
+    var pathDiv = $('#item-path-30-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_9_1_1').change( function() {
+    var ok = validate30instance1_9_1_1();
+    showError('item-error-30-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_9').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_9_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-26-instance-1_10').click(function() {
     $('#repeating-enclosing-26-instance-1_10').hide();
   });
 
-  $('#item-26-instance-1_10').prop('checked',false);
+$('#min-occurs-zero-27-instance-1_10').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-27-instance-1_10_1'));
+})
 
-  // hostSpeciesIncluded
-  var validate26instance1_10 = function () {
+$('#min-occurs-zero-27-instance-1_10').change();
+  $('#remove-button-27-instance-1_10_1').click(function() {
+    $('#repeating-enclosing-27-instance-1_10_1').hide();
+  });
+
+  $('#remove-button-28-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-28-instance-1_10_1_1').hide();
+  });
+
+  $('#item-28-instance-1_10_1_1').prop('checked',false);
+
+  // identifier
+  var validate28instance1_10_1_1 = function () {
     var ok = true;
-    var v = $('#item-26-instance-1_10');
-    var pathDiv = $('#item-path-26-instance-1_10');
+    var v = $('#item-28-instance-1_10_1_1');
+    var pathDiv = $('#item-path-28-instance-1_10_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-26-instance-1_10').change( function() {
-    var ok = validate26instance1_10();
-    showError('item-error-26-instance-1_10',ok);
+  $('#item-28-instance-1_10_1_1').change( function() {
+    var ok = validate28instance1_10_1_1();
+    showError('item-error-28-instance-1_10_1_1',ok);
   });
   
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-28-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-28-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-28-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-29-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-29-instance-1_10_1_1').hide();
+  });
+
+  $('#item-29-instance-1_10_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate29instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-29-instance-1_10_1_1');
+    var pathDiv = $('#item-path-29-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-29-instance-1_10_1_1').change( function() {
+    var ok = validate29instance1_10_1_1();
+    showError('item-error-29-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-29-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-29-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-29-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-30-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-30-instance-1_10_1_1').hide();
+  });
+
+  $('#item-30-instance-1_10_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate30instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-30-instance-1_10_1_1');
+    var pathDiv = $('#item-path-30-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-30-instance-1_10_1_1').change( function() {
+    var ok = validate30instance1_10_1_1();
+    showError('item-error-30-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-30-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-30-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-30-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-27-instance-1_10').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-27-instance-1_10_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#repeat-button-26-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
@@ -3955,530 +4733,3914 @@ $('#min-occurs-zero-5-instance-1').change();
       { elem.show(); return; }
   })
 
-  $('#remove-button-27-instance-1_1').click(function() {
-    $('#repeating-enclosing-27-instance-1_1').hide();
+  $('#remove-button-31-instance-1_1').click(function() {
+    $('#repeating-enclosing-31-instance-1_1').hide();
   });
 
-  $('#item-27-instance-1_1').prop('checked',false);
+$('#min-occurs-zero-32-instance-1_1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_1_1'));
+})
 
-  // locationCoverage
-  var validate27instance1_1 = function () {
+$('#min-occurs-zero-32-instance-1_1').change();
+  $('#remove-button-32-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_1_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_1_1_1').hide();
+  });
+
+  $('#item-33-instance-1_1_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_1_1_1 = function () {
     var ok = true;
-    var v = $('#item-27-instance-1_1');
-    var pathDiv = $('#item-path-27-instance-1_1');
+    var v = $('#item-33-instance-1_1_1_1');
+    var pathDiv = $('#item-path-33-instance-1_1_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-27-instance-1_1').change( function() {
-    var ok = validate27instance1_1();
-    showError('item-error-27-instance-1_1',ok);
+  $('#item-33-instance-1_1_1_1').change( function() {
+    var ok = validate33instance1_1_1_1();
+    showError('item-error-33-instance-1_1_1_1',ok);
   });
   
-  $('#repeating-enclosing-27-instance-1_2').hide();
-  $('#remove-button-27-instance-1_2').click(function() {
-    $('#repeating-enclosing-27-instance-1_2').hide();
-  });
-
-  $('#item-27-instance-1_2').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_2');
-    var pathDiv = $('#item-path-27-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_2').change( function() {
-    var ok = validate27instance1_2();
-    showError('item-error-27-instance-1_2',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_3').hide();
-  $('#remove-button-27-instance-1_3').click(function() {
-    $('#repeating-enclosing-27-instance-1_3').hide();
-  });
-
-  $('#item-27-instance-1_3').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_3');
-    var pathDiv = $('#item-path-27-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_3').change( function() {
-    var ok = validate27instance1_3();
-    showError('item-error-27-instance-1_3',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_4').hide();
-  $('#remove-button-27-instance-1_4').click(function() {
-    $('#repeating-enclosing-27-instance-1_4').hide();
-  });
-
-  $('#item-27-instance-1_4').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_4');
-    var pathDiv = $('#item-path-27-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_4').change( function() {
-    var ok = validate27instance1_4();
-    showError('item-error-27-instance-1_4',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_5').hide();
-  $('#remove-button-27-instance-1_5').click(function() {
-    $('#repeating-enclosing-27-instance-1_5').hide();
-  });
-
-  $('#item-27-instance-1_5').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_5');
-    var pathDiv = $('#item-path-27-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_5').change( function() {
-    var ok = validate27instance1_5();
-    showError('item-error-27-instance-1_5',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_6').hide();
-  $('#remove-button-27-instance-1_6').click(function() {
-    $('#repeating-enclosing-27-instance-1_6').hide();
-  });
-
-  $('#item-27-instance-1_6').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_6');
-    var pathDiv = $('#item-path-27-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_6').change( function() {
-    var ok = validate27instance1_6();
-    showError('item-error-27-instance-1_6',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_7').hide();
-  $('#remove-button-27-instance-1_7').click(function() {
-    $('#repeating-enclosing-27-instance-1_7').hide();
-  });
-
-  $('#item-27-instance-1_7').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_7');
-    var pathDiv = $('#item-path-27-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_7').change( function() {
-    var ok = validate27instance1_7();
-    showError('item-error-27-instance-1_7',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_8').hide();
-  $('#remove-button-27-instance-1_8').click(function() {
-    $('#repeating-enclosing-27-instance-1_8').hide();
-  });
-
-  $('#item-27-instance-1_8').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_8');
-    var pathDiv = $('#item-path-27-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_8').change( function() {
-    var ok = validate27instance1_8();
-    showError('item-error-27-instance-1_8',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_9').hide();
-  $('#remove-button-27-instance-1_9').click(function() {
-    $('#repeating-enclosing-27-instance-1_9').hide();
-  });
-
-  $('#item-27-instance-1_9').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_9');
-    var pathDiv = $('#item-path-27-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_9').change( function() {
-    var ok = validate27instance1_9();
-    showError('item-error-27-instance-1_9',ok);
-  });
-  
-  $('#repeating-enclosing-27-instance-1_10').hide();
-  $('#remove-button-27-instance-1_10').click(function() {
-    $('#repeating-enclosing-27-instance-1_10').hide();
-  });
-
-  $('#item-27-instance-1_10').prop('checked',false);
-
-  // locationCoverage
-  var validate27instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-27-instance-1_10');
-    var pathDiv = $('#item-path-27-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-27-instance-1_10').change( function() {
-    var ok = validate27instance1_10();
-    showError('item-error-27-instance-1_10',ok);
-  });
-  
-  $('#repeat-button-27-instance-1').click( function() {
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_1_1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-27-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-27-instance-1_10');
+    elem = $('#repeating-enclosing-33-instance-1_1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
 
-  $('#remove-button-28-instance-1_1').click(function() {
-    $('#repeating-enclosing-28-instance-1_1').hide();
+  $('#remove-button-34-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_1_1_1').hide();
   });
 
-  $('#item-28-instance-1_1').prop('checked',false);
+  $('#item-34-instance-1_1_1_1').prop('checked',false);
 
-  // pathogenCoverage
-  var validate28instance1_1 = function () {
+  // identifierSource
+  var validate34instance1_1_1_1 = function () {
     var ok = true;
-    var v = $('#item-28-instance-1_1');
-    var pathDiv = $('#item-path-28-instance-1_1');
+    var v = $('#item-34-instance-1_1_1_1');
+    var pathDiv = $('#item-path-34-instance-1_1_1_1');
     //length test
     if (v.val().length <1)
       ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
-  $('#item-28-instance-1_1').change( function() {
-    var ok = validate28instance1_1();
-    showError('item-error-28-instance-1_1',ok);
+  $('#item-34-instance-1_1_1_1').change( function() {
+    var ok = validate34instance1_1_1_1();
+    showError('item-error-34-instance-1_1_1_1',ok);
   });
   
-  $('#repeating-enclosing-28-instance-1_2').hide();
-  $('#remove-button-28-instance-1_2').click(function() {
-    $('#repeating-enclosing-28-instance-1_2').hide();
-  });
-
-  $('#item-28-instance-1_2').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_2');
-    var pathDiv = $('#item-path-28-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_2').change( function() {
-    var ok = validate28instance1_2();
-    showError('item-error-28-instance-1_2',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_3').hide();
-  $('#remove-button-28-instance-1_3').click(function() {
-    $('#repeating-enclosing-28-instance-1_3').hide();
-  });
-
-  $('#item-28-instance-1_3').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_3');
-    var pathDiv = $('#item-path-28-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_3').change( function() {
-    var ok = validate28instance1_3();
-    showError('item-error-28-instance-1_3',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_4').hide();
-  $('#remove-button-28-instance-1_4').click(function() {
-    $('#repeating-enclosing-28-instance-1_4').hide();
-  });
-
-  $('#item-28-instance-1_4').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_4');
-    var pathDiv = $('#item-path-28-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_4').change( function() {
-    var ok = validate28instance1_4();
-    showError('item-error-28-instance-1_4',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_5').hide();
-  $('#remove-button-28-instance-1_5').click(function() {
-    $('#repeating-enclosing-28-instance-1_5').hide();
-  });
-
-  $('#item-28-instance-1_5').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_5');
-    var pathDiv = $('#item-path-28-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_5').change( function() {
-    var ok = validate28instance1_5();
-    showError('item-error-28-instance-1_5',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_6').hide();
-  $('#remove-button-28-instance-1_6').click(function() {
-    $('#repeating-enclosing-28-instance-1_6').hide();
-  });
-
-  $('#item-28-instance-1_6').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_6');
-    var pathDiv = $('#item-path-28-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_6').change( function() {
-    var ok = validate28instance1_6();
-    showError('item-error-28-instance-1_6',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_7').hide();
-  $('#remove-button-28-instance-1_7').click(function() {
-    $('#repeating-enclosing-28-instance-1_7').hide();
-  });
-
-  $('#item-28-instance-1_7').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_7');
-    var pathDiv = $('#item-path-28-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_7').change( function() {
-    var ok = validate28instance1_7();
-    showError('item-error-28-instance-1_7',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_8').hide();
-  $('#remove-button-28-instance-1_8').click(function() {
-    $('#repeating-enclosing-28-instance-1_8').hide();
-  });
-
-  $('#item-28-instance-1_8').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_8');
-    var pathDiv = $('#item-path-28-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_8').change( function() {
-    var ok = validate28instance1_8();
-    showError('item-error-28-instance-1_8',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_9').hide();
-  $('#remove-button-28-instance-1_9').click(function() {
-    $('#repeating-enclosing-28-instance-1_9').hide();
-  });
-
-  $('#item-28-instance-1_9').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_9');
-    var pathDiv = $('#item-path-28-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_9').change( function() {
-    var ok = validate28instance1_9();
-    showError('item-error-28-instance-1_9',ok);
-  });
-  
-  $('#repeating-enclosing-28-instance-1_10').hide();
-  $('#remove-button-28-instance-1_10').click(function() {
-    $('#repeating-enclosing-28-instance-1_10').hide();
-  });
-
-  $('#item-28-instance-1_10').prop('checked',false);
-
-  // pathogenCoverage
-  var validate28instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-28-instance-1_10');
-    var pathDiv = $('#item-path-28-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    return ok;
-  }
-  
-  $('#item-28-instance-1_10').change( function() {
-    var ok = validate28instance1_10();
-    showError('item-error-28-instance-1_10',ok);
-  });
-  
-  $('#repeat-button-28-instance-1').click( function() {
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_1_1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-28-instance-1_1');
+    elem = $('#repeating-enclosing-34-instance-1_1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_2');
+  })
+
+  $('#remove-button-35-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_1_1_1').hide();
+  });
+
+  $('#item-35-instance-1_1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_1_1_1');
+    var pathDiv = $('#item-path-35-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_1_1_1').change( function() {
+    var ok = validate35instance1_1_1_1();
+    showError('item-error-35-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_3');
+  })
+
+  $('#repeat-button-32-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_4');
+  })
+
+  $('#repeating-enclosing-31-instance-1_2').hide();
+  $('#remove-button-31-instance-1_2').click(function() {
+    $('#repeating-enclosing-31-instance-1_2').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_2').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_2_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_2').change();
+  $('#remove-button-32-instance-1_2_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_2_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_2_1_1').hide();
+  });
+
+  $('#item-33-instance-1_2_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_2_1_1');
+    var pathDiv = $('#item-path-33-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_2_1_1').change( function() {
+    var ok = validate33instance1_2_1_1();
+    showError('item-error-33-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_2_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_5');
+  })
+
+  $('#remove-button-34-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_2_1_1').hide();
+  });
+
+  $('#item-34-instance-1_2_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_2_1_1');
+    var pathDiv = $('#item-path-34-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_2_1_1').change( function() {
+    var ok = validate34instance1_2_1_1();
+    showError('item-error-34-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_2_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_6');
+  })
+
+  $('#remove-button-35-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_2_1_1').hide();
+  });
+
+  $('#item-35-instance-1_2_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_2_1_1');
+    var pathDiv = $('#item-path-35-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_2_1_1').change( function() {
+    var ok = validate35instance1_2_1_1();
+    showError('item-error-35-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_2_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_7');
+  })
+
+  $('#repeat-button-32-instance-1_2').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_2_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_8');
+  })
+
+  $('#repeating-enclosing-31-instance-1_3').hide();
+  $('#remove-button-31-instance-1_3').click(function() {
+    $('#repeating-enclosing-31-instance-1_3').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_3').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_3_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_3').change();
+  $('#remove-button-32-instance-1_3_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_3_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_3_1_1').hide();
+  });
+
+  $('#item-33-instance-1_3_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_3_1_1');
+    var pathDiv = $('#item-path-33-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_3_1_1').change( function() {
+    var ok = validate33instance1_3_1_1();
+    showError('item-error-33-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_3_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_9');
+  })
+
+  $('#remove-button-34-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_3_1_1').hide();
+  });
+
+  $('#item-34-instance-1_3_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_3_1_1');
+    var pathDiv = $('#item-path-34-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_3_1_1').change( function() {
+    var ok = validate34instance1_3_1_1();
+    showError('item-error-34-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_3_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
-    elem = $('#repeating-enclosing-28-instance-1_10');
+  })
+
+  $('#remove-button-35-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_3_1_1').hide();
+  });
+
+  $('#item-35-instance-1_3_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_3_1_1');
+    var pathDiv = $('#item-path-35-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_3_1_1').change( function() {
+    var ok = validate35instance1_3_1_1();
+    showError('item-error-35-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_3').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_3_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_4').hide();
+  $('#remove-button-31-instance-1_4').click(function() {
+    $('#repeating-enclosing-31-instance-1_4').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_4').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_4_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_4').change();
+  $('#remove-button-32-instance-1_4_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_4_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_4_1_1').hide();
+  });
+
+  $('#item-33-instance-1_4_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_4_1_1');
+    var pathDiv = $('#item-path-33-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_4_1_1').change( function() {
+    var ok = validate33instance1_4_1_1();
+    showError('item-error-33-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_4_1_1').hide();
+  });
+
+  $('#item-34-instance-1_4_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_4_1_1');
+    var pathDiv = $('#item-path-34-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_4_1_1').change( function() {
+    var ok = validate34instance1_4_1_1();
+    showError('item-error-34-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_4_1_1').hide();
+  });
+
+  $('#item-35-instance-1_4_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_4_1_1');
+    var pathDiv = $('#item-path-35-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_4_1_1').change( function() {
+    var ok = validate35instance1_4_1_1();
+    showError('item-error-35-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_4').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_4_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_5').hide();
+  $('#remove-button-31-instance-1_5').click(function() {
+    $('#repeating-enclosing-31-instance-1_5').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_5').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_5_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_5').change();
+  $('#remove-button-32-instance-1_5_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_5_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_5_1_1').hide();
+  });
+
+  $('#item-33-instance-1_5_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_5_1_1');
+    var pathDiv = $('#item-path-33-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_5_1_1').change( function() {
+    var ok = validate33instance1_5_1_1();
+    showError('item-error-33-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_5_1_1').hide();
+  });
+
+  $('#item-34-instance-1_5_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_5_1_1');
+    var pathDiv = $('#item-path-34-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_5_1_1').change( function() {
+    var ok = validate34instance1_5_1_1();
+    showError('item-error-34-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_5_1_1').hide();
+  });
+
+  $('#item-35-instance-1_5_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_5_1_1');
+    var pathDiv = $('#item-path-35-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_5_1_1').change( function() {
+    var ok = validate35instance1_5_1_1();
+    showError('item-error-35-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_5').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_5_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_6').hide();
+  $('#remove-button-31-instance-1_6').click(function() {
+    $('#repeating-enclosing-31-instance-1_6').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_6').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_6_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_6').change();
+  $('#remove-button-32-instance-1_6_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_6_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_6_1_1').hide();
+  });
+
+  $('#item-33-instance-1_6_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_6_1_1');
+    var pathDiv = $('#item-path-33-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_6_1_1').change( function() {
+    var ok = validate33instance1_6_1_1();
+    showError('item-error-33-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_6_1_1').hide();
+  });
+
+  $('#item-34-instance-1_6_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_6_1_1');
+    var pathDiv = $('#item-path-34-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_6_1_1').change( function() {
+    var ok = validate34instance1_6_1_1();
+    showError('item-error-34-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_6_1_1').hide();
+  });
+
+  $('#item-35-instance-1_6_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_6_1_1');
+    var pathDiv = $('#item-path-35-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_6_1_1').change( function() {
+    var ok = validate35instance1_6_1_1();
+    showError('item-error-35-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_6').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_6_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_7').hide();
+  $('#remove-button-31-instance-1_7').click(function() {
+    $('#repeating-enclosing-31-instance-1_7').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_7').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_7_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_7').change();
+  $('#remove-button-32-instance-1_7_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_7_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_7_1_1').hide();
+  });
+
+  $('#item-33-instance-1_7_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_7_1_1');
+    var pathDiv = $('#item-path-33-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_7_1_1').change( function() {
+    var ok = validate33instance1_7_1_1();
+    showError('item-error-33-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_7_1_1').hide();
+  });
+
+  $('#item-34-instance-1_7_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_7_1_1');
+    var pathDiv = $('#item-path-34-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_7_1_1').change( function() {
+    var ok = validate34instance1_7_1_1();
+    showError('item-error-34-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_7_1_1').hide();
+  });
+
+  $('#item-35-instance-1_7_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_7_1_1');
+    var pathDiv = $('#item-path-35-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_7_1_1').change( function() {
+    var ok = validate35instance1_7_1_1();
+    showError('item-error-35-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_7').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_7_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_8').hide();
+  $('#remove-button-31-instance-1_8').click(function() {
+    $('#repeating-enclosing-31-instance-1_8').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_8').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_8_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_8').change();
+  $('#remove-button-32-instance-1_8_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_8_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_8_1_1').hide();
+  });
+
+  $('#item-33-instance-1_8_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_8_1_1');
+    var pathDiv = $('#item-path-33-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_8_1_1').change( function() {
+    var ok = validate33instance1_8_1_1();
+    showError('item-error-33-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_8_1_1').hide();
+  });
+
+  $('#item-34-instance-1_8_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_8_1_1');
+    var pathDiv = $('#item-path-34-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_8_1_1').change( function() {
+    var ok = validate34instance1_8_1_1();
+    showError('item-error-34-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_8_1_1').hide();
+  });
+
+  $('#item-35-instance-1_8_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_8_1_1');
+    var pathDiv = $('#item-path-35-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_8_1_1').change( function() {
+    var ok = validate35instance1_8_1_1();
+    showError('item-error-35-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_8').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_8_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_9').hide();
+  $('#remove-button-31-instance-1_9').click(function() {
+    $('#repeating-enclosing-31-instance-1_9').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_9').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_9_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_9').change();
+  $('#remove-button-32-instance-1_9_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_9_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_9_1_1').hide();
+  });
+
+  $('#item-33-instance-1_9_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_9_1_1');
+    var pathDiv = $('#item-path-33-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_9_1_1').change( function() {
+    var ok = validate33instance1_9_1_1();
+    showError('item-error-33-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_9_1_1').hide();
+  });
+
+  $('#item-34-instance-1_9_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_9_1_1');
+    var pathDiv = $('#item-path-34-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_9_1_1').change( function() {
+    var ok = validate34instance1_9_1_1();
+    showError('item-error-34-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_9_1_1').hide();
+  });
+
+  $('#item-35-instance-1_9_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_9_1_1');
+    var pathDiv = $('#item-path-35-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_9_1_1').change( function() {
+    var ok = validate35instance1_9_1_1();
+    showError('item-error-35-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_9').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_9_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-31-instance-1_10').hide();
+  $('#remove-button-31-instance-1_10').click(function() {
+    $('#repeating-enclosing-31-instance-1_10').hide();
+  });
+
+$('#min-occurs-zero-32-instance-1_10').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-32-instance-1_10_1'));
+})
+
+$('#min-occurs-zero-32-instance-1_10').change();
+  $('#remove-button-32-instance-1_10_1').click(function() {
+    $('#repeating-enclosing-32-instance-1_10_1').hide();
+  });
+
+  $('#remove-button-33-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-33-instance-1_10_1_1').hide();
+  });
+
+  $('#item-33-instance-1_10_1_1').prop('checked',false);
+
+  // identifier
+  var validate33instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-33-instance-1_10_1_1');
+    var pathDiv = $('#item-path-33-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-33-instance-1_10_1_1').change( function() {
+    var ok = validate33instance1_10_1_1();
+    showError('item-error-33-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-33-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-33-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-33-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-34-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-34-instance-1_10_1_1').hide();
+  });
+
+  $('#item-34-instance-1_10_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate34instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-34-instance-1_10_1_1');
+    var pathDiv = $('#item-path-34-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-34-instance-1_10_1_1').change( function() {
+    var ok = validate34instance1_10_1_1();
+    showError('item-error-34-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-34-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-34-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-34-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-35-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-35-instance-1_10_1_1').hide();
+  });
+
+  $('#item-35-instance-1_10_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate35instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-35-instance-1_10_1_1');
+    var pathDiv = $('#item-path-35-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-35-instance-1_10_1_1').change( function() {
+    var ok = validate35instance1_10_1_1();
+    showError('item-error-35-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-35-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-35-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-35-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-32-instance-1_10').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-32-instance-1_10_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-31-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-31-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-31-instance-1_10');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-36-instance-1_1').click(function() {
+    $('#repeating-enclosing-36-instance-1_1').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_1_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_1').change();
+  $('#remove-button-37-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_1_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_1_1_1').hide();
+  });
+
+  $('#item-38-instance-1_1_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_1_1_1');
+    var pathDiv = $('#item-path-38-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_1_1_1').change( function() {
+    var ok = validate38instance1_1_1_1();
+    showError('item-error-38-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_1_1_1').hide();
+  });
+
+  $('#item-39-instance-1_1_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_1_1_1');
+    var pathDiv = $('#item-path-39-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_1_1_1').change( function() {
+    var ok = validate39instance1_1_1_1();
+    showError('item-error-39-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_1_1_1').hide();
+  });
+
+  $('#item-40-instance-1_1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_1_1_1');
+    var pathDiv = $('#item-path-40-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_1_1_1').change( function() {
+    var ok = validate40instance1_1_1_1();
+    showError('item-error-40-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_2').hide();
+  $('#remove-button-36-instance-1_2').click(function() {
+    $('#repeating-enclosing-36-instance-1_2').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_2').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_2_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_2').change();
+  $('#remove-button-37-instance-1_2_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_2_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_2_1_1').hide();
+  });
+
+  $('#item-38-instance-1_2_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_2_1_1');
+    var pathDiv = $('#item-path-38-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_2_1_1').change( function() {
+    var ok = validate38instance1_2_1_1();
+    showError('item-error-38-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_2_1_1').hide();
+  });
+
+  $('#item-39-instance-1_2_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_2_1_1');
+    var pathDiv = $('#item-path-39-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_2_1_1').change( function() {
+    var ok = validate39instance1_2_1_1();
+    showError('item-error-39-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_2_1_1').hide();
+  });
+
+  $('#item-40-instance-1_2_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_2_1_1');
+    var pathDiv = $('#item-path-40-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_2_1_1').change( function() {
+    var ok = validate40instance1_2_1_1();
+    showError('item-error-40-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_2').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_2_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_3').hide();
+  $('#remove-button-36-instance-1_3').click(function() {
+    $('#repeating-enclosing-36-instance-1_3').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_3').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_3_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_3').change();
+  $('#remove-button-37-instance-1_3_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_3_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_3_1_1').hide();
+  });
+
+  $('#item-38-instance-1_3_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_3_1_1');
+    var pathDiv = $('#item-path-38-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_3_1_1').change( function() {
+    var ok = validate38instance1_3_1_1();
+    showError('item-error-38-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_3_1_1').hide();
+  });
+
+  $('#item-39-instance-1_3_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_3_1_1');
+    var pathDiv = $('#item-path-39-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_3_1_1').change( function() {
+    var ok = validate39instance1_3_1_1();
+    showError('item-error-39-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_3_1_1').hide();
+  });
+
+  $('#item-40-instance-1_3_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_3_1_1');
+    var pathDiv = $('#item-path-40-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_3_1_1').change( function() {
+    var ok = validate40instance1_3_1_1();
+    showError('item-error-40-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_3').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_3_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_4').hide();
+  $('#remove-button-36-instance-1_4').click(function() {
+    $('#repeating-enclosing-36-instance-1_4').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_4').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_4_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_4').change();
+  $('#remove-button-37-instance-1_4_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_4_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_4_1_1').hide();
+  });
+
+  $('#item-38-instance-1_4_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_4_1_1');
+    var pathDiv = $('#item-path-38-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_4_1_1').change( function() {
+    var ok = validate38instance1_4_1_1();
+    showError('item-error-38-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_4_1_1').hide();
+  });
+
+  $('#item-39-instance-1_4_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_4_1_1');
+    var pathDiv = $('#item-path-39-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_4_1_1').change( function() {
+    var ok = validate39instance1_4_1_1();
+    showError('item-error-39-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_4_1_1').hide();
+  });
+
+  $('#item-40-instance-1_4_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_4_1_1');
+    var pathDiv = $('#item-path-40-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_4_1_1').change( function() {
+    var ok = validate40instance1_4_1_1();
+    showError('item-error-40-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_4').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_4_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_5').hide();
+  $('#remove-button-36-instance-1_5').click(function() {
+    $('#repeating-enclosing-36-instance-1_5').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_5').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_5_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_5').change();
+  $('#remove-button-37-instance-1_5_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_5_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_5_1_1').hide();
+  });
+
+  $('#item-38-instance-1_5_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_5_1_1');
+    var pathDiv = $('#item-path-38-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_5_1_1').change( function() {
+    var ok = validate38instance1_5_1_1();
+    showError('item-error-38-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_5_1_1').hide();
+  });
+
+  $('#item-39-instance-1_5_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_5_1_1');
+    var pathDiv = $('#item-path-39-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_5_1_1').change( function() {
+    var ok = validate39instance1_5_1_1();
+    showError('item-error-39-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_5_1_1').hide();
+  });
+
+  $('#item-40-instance-1_5_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_5_1_1');
+    var pathDiv = $('#item-path-40-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_5_1_1').change( function() {
+    var ok = validate40instance1_5_1_1();
+    showError('item-error-40-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_5').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_5_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_6').hide();
+  $('#remove-button-36-instance-1_6').click(function() {
+    $('#repeating-enclosing-36-instance-1_6').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_6').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_6_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_6').change();
+  $('#remove-button-37-instance-1_6_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_6_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_6_1_1').hide();
+  });
+
+  $('#item-38-instance-1_6_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_6_1_1');
+    var pathDiv = $('#item-path-38-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_6_1_1').change( function() {
+    var ok = validate38instance1_6_1_1();
+    showError('item-error-38-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_6_1_1').hide();
+  });
+
+  $('#item-39-instance-1_6_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_6_1_1');
+    var pathDiv = $('#item-path-39-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_6_1_1').change( function() {
+    var ok = validate39instance1_6_1_1();
+    showError('item-error-39-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_6_1_1').hide();
+  });
+
+  $('#item-40-instance-1_6_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_6_1_1');
+    var pathDiv = $('#item-path-40-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_6_1_1').change( function() {
+    var ok = validate40instance1_6_1_1();
+    showError('item-error-40-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_6').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_6_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_7').hide();
+  $('#remove-button-36-instance-1_7').click(function() {
+    $('#repeating-enclosing-36-instance-1_7').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_7').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_7_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_7').change();
+  $('#remove-button-37-instance-1_7_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_7_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_7_1_1').hide();
+  });
+
+  $('#item-38-instance-1_7_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_7_1_1');
+    var pathDiv = $('#item-path-38-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_7_1_1').change( function() {
+    var ok = validate38instance1_7_1_1();
+    showError('item-error-38-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_7_1_1').hide();
+  });
+
+  $('#item-39-instance-1_7_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_7_1_1');
+    var pathDiv = $('#item-path-39-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_7_1_1').change( function() {
+    var ok = validate39instance1_7_1_1();
+    showError('item-error-39-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_7_1_1').hide();
+  });
+
+  $('#item-40-instance-1_7_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_7_1_1');
+    var pathDiv = $('#item-path-40-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_7_1_1').change( function() {
+    var ok = validate40instance1_7_1_1();
+    showError('item-error-40-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_7').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_7_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_8').hide();
+  $('#remove-button-36-instance-1_8').click(function() {
+    $('#repeating-enclosing-36-instance-1_8').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_8').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_8_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_8').change();
+  $('#remove-button-37-instance-1_8_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_8_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_8_1_1').hide();
+  });
+
+  $('#item-38-instance-1_8_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_8_1_1');
+    var pathDiv = $('#item-path-38-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_8_1_1').change( function() {
+    var ok = validate38instance1_8_1_1();
+    showError('item-error-38-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_8_1_1').hide();
+  });
+
+  $('#item-39-instance-1_8_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_8_1_1');
+    var pathDiv = $('#item-path-39-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_8_1_1').change( function() {
+    var ok = validate39instance1_8_1_1();
+    showError('item-error-39-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_8_1_1').hide();
+  });
+
+  $('#item-40-instance-1_8_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_8_1_1');
+    var pathDiv = $('#item-path-40-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_8_1_1').change( function() {
+    var ok = validate40instance1_8_1_1();
+    showError('item-error-40-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_8').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_8_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_9').hide();
+  $('#remove-button-36-instance-1_9').click(function() {
+    $('#repeating-enclosing-36-instance-1_9').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_9').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_9_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_9').change();
+  $('#remove-button-37-instance-1_9_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_9_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_9_1_1').hide();
+  });
+
+  $('#item-38-instance-1_9_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_9_1_1');
+    var pathDiv = $('#item-path-38-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_9_1_1').change( function() {
+    var ok = validate38instance1_9_1_1();
+    showError('item-error-38-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_9_1_1').hide();
+  });
+
+  $('#item-39-instance-1_9_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_9_1_1');
+    var pathDiv = $('#item-path-39-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_9_1_1').change( function() {
+    var ok = validate39instance1_9_1_1();
+    showError('item-error-39-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_9_1_1').hide();
+  });
+
+  $('#item-40-instance-1_9_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_9_1_1');
+    var pathDiv = $('#item-path-40-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_9_1_1').change( function() {
+    var ok = validate40instance1_9_1_1();
+    showError('item-error-40-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_9').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_9_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-36-instance-1_10').hide();
+  $('#remove-button-36-instance-1_10').click(function() {
+    $('#repeating-enclosing-36-instance-1_10').hide();
+  });
+
+$('#min-occurs-zero-37-instance-1_10').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-37-instance-1_10_1'));
+})
+
+$('#min-occurs-zero-37-instance-1_10').change();
+  $('#remove-button-37-instance-1_10_1').click(function() {
+    $('#repeating-enclosing-37-instance-1_10_1').hide();
+  });
+
+  $('#remove-button-38-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-38-instance-1_10_1_1').hide();
+  });
+
+  $('#item-38-instance-1_10_1_1').prop('checked',false);
+
+  // identifier
+  var validate38instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-38-instance-1_10_1_1');
+    var pathDiv = $('#item-path-38-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-38-instance-1_10_1_1').change( function() {
+    var ok = validate38instance1_10_1_1();
+    showError('item-error-38-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-38-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-38-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-38-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-39-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-39-instance-1_10_1_1').hide();
+  });
+
+  $('#item-39-instance-1_10_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate39instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-39-instance-1_10_1_1');
+    var pathDiv = $('#item-path-39-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-39-instance-1_10_1_1').change( function() {
+    var ok = validate39instance1_10_1_1();
+    showError('item-error-39-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-39-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-39-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-39-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-40-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-40-instance-1_10_1_1').hide();
+  });
+
+  $('#item-40-instance-1_10_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate40instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-40-instance-1_10_1_1');
+    var pathDiv = $('#item-path-40-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-40-instance-1_10_1_1').change( function() {
+    var ok = validate40instance1_10_1_1();
+    showError('item-error-40-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-40-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-40-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-40-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-37-instance-1_10').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-37-instance-1_10_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-36-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-36-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-36-instance-1_10');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-41-instance-1_1').click(function() {
+    $('#repeating-enclosing-41-instance-1_1').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_1_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_1').change();
+  $('#remove-button-42-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_1_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_1_1_1').hide();
+  });
+
+  $('#item-43-instance-1_1_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_1_1_1');
+    var pathDiv = $('#item-path-43-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_1_1_1').change( function() {
+    var ok = validate43instance1_1_1_1();
+    showError('item-error-43-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_1_1_1').hide();
+  });
+
+  $('#item-44-instance-1_1_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_1_1_1');
+    var pathDiv = $('#item-path-44-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_1_1_1').change( function() {
+    var ok = validate44instance1_1_1_1();
+    showError('item-error-44-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_1_1_1').hide();
+  });
+
+  $('#item-45-instance-1_1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_1_1_1');
+    var pathDiv = $('#item-path-45-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_1_1_1').change( function() {
+    var ok = validate45instance1_1_1_1();
+    showError('item-error-45-instance-1_1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_1_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_2').hide();
+  $('#remove-button-41-instance-1_2').click(function() {
+    $('#repeating-enclosing-41-instance-1_2').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_2').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_2_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_2').change();
+  $('#remove-button-42-instance-1_2_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_2_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_2_1_1').hide();
+  });
+
+  $('#item-43-instance-1_2_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_2_1_1');
+    var pathDiv = $('#item-path-43-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_2_1_1').change( function() {
+    var ok = validate43instance1_2_1_1();
+    showError('item-error-43-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_2_1_1').hide();
+  });
+
+  $('#item-44-instance-1_2_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_2_1_1');
+    var pathDiv = $('#item-path-44-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_2_1_1').change( function() {
+    var ok = validate44instance1_2_1_1();
+    showError('item-error-44-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_2_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_2_1_1').hide();
+  });
+
+  $('#item-45-instance-1_2_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_2_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_2_1_1');
+    var pathDiv = $('#item-path-45-instance-1_2_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_2_1_1').change( function() {
+    var ok = validate45instance1_2_1_1();
+    showError('item-error-45-instance-1_2_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_2_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_2_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_2_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_2').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_2_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_3').hide();
+  $('#remove-button-41-instance-1_3').click(function() {
+    $('#repeating-enclosing-41-instance-1_3').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_3').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_3_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_3').change();
+  $('#remove-button-42-instance-1_3_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_3_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_3_1_1').hide();
+  });
+
+  $('#item-43-instance-1_3_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_3_1_1');
+    var pathDiv = $('#item-path-43-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_3_1_1').change( function() {
+    var ok = validate43instance1_3_1_1();
+    showError('item-error-43-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_3_1_1').hide();
+  });
+
+  $('#item-44-instance-1_3_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_3_1_1');
+    var pathDiv = $('#item-path-44-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_3_1_1').change( function() {
+    var ok = validate44instance1_3_1_1();
+    showError('item-error-44-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_3_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_3_1_1').hide();
+  });
+
+  $('#item-45-instance-1_3_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_3_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_3_1_1');
+    var pathDiv = $('#item-path-45-instance-1_3_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_3_1_1').change( function() {
+    var ok = validate45instance1_3_1_1();
+    showError('item-error-45-instance-1_3_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_3_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_3_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_3_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_3').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_3_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_4').hide();
+  $('#remove-button-41-instance-1_4').click(function() {
+    $('#repeating-enclosing-41-instance-1_4').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_4').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_4_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_4').change();
+  $('#remove-button-42-instance-1_4_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_4_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_4_1_1').hide();
+  });
+
+  $('#item-43-instance-1_4_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_4_1_1');
+    var pathDiv = $('#item-path-43-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_4_1_1').change( function() {
+    var ok = validate43instance1_4_1_1();
+    showError('item-error-43-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_4_1_1').hide();
+  });
+
+  $('#item-44-instance-1_4_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_4_1_1');
+    var pathDiv = $('#item-path-44-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_4_1_1').change( function() {
+    var ok = validate44instance1_4_1_1();
+    showError('item-error-44-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_4_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_4_1_1').hide();
+  });
+
+  $('#item-45-instance-1_4_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_4_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_4_1_1');
+    var pathDiv = $('#item-path-45-instance-1_4_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_4_1_1').change( function() {
+    var ok = validate45instance1_4_1_1();
+    showError('item-error-45-instance-1_4_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_4_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_4_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_4_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_4').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_4_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_5').hide();
+  $('#remove-button-41-instance-1_5').click(function() {
+    $('#repeating-enclosing-41-instance-1_5').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_5').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_5_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_5').change();
+  $('#remove-button-42-instance-1_5_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_5_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_5_1_1').hide();
+  });
+
+  $('#item-43-instance-1_5_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_5_1_1');
+    var pathDiv = $('#item-path-43-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_5_1_1').change( function() {
+    var ok = validate43instance1_5_1_1();
+    showError('item-error-43-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_5_1_1').hide();
+  });
+
+  $('#item-44-instance-1_5_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_5_1_1');
+    var pathDiv = $('#item-path-44-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_5_1_1').change( function() {
+    var ok = validate44instance1_5_1_1();
+    showError('item-error-44-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_5_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_5_1_1').hide();
+  });
+
+  $('#item-45-instance-1_5_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_5_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_5_1_1');
+    var pathDiv = $('#item-path-45-instance-1_5_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_5_1_1').change( function() {
+    var ok = validate45instance1_5_1_1();
+    showError('item-error-45-instance-1_5_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_5_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_5_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_5_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_5').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_5_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_6').hide();
+  $('#remove-button-41-instance-1_6').click(function() {
+    $('#repeating-enclosing-41-instance-1_6').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_6').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_6_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_6').change();
+  $('#remove-button-42-instance-1_6_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_6_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_6_1_1').hide();
+  });
+
+  $('#item-43-instance-1_6_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_6_1_1');
+    var pathDiv = $('#item-path-43-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_6_1_1').change( function() {
+    var ok = validate43instance1_6_1_1();
+    showError('item-error-43-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_6_1_1').hide();
+  });
+
+  $('#item-44-instance-1_6_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_6_1_1');
+    var pathDiv = $('#item-path-44-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_6_1_1').change( function() {
+    var ok = validate44instance1_6_1_1();
+    showError('item-error-44-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_6_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_6_1_1').hide();
+  });
+
+  $('#item-45-instance-1_6_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_6_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_6_1_1');
+    var pathDiv = $('#item-path-45-instance-1_6_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_6_1_1').change( function() {
+    var ok = validate45instance1_6_1_1();
+    showError('item-error-45-instance-1_6_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_6_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_6_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_6_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_6').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_6_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_7').hide();
+  $('#remove-button-41-instance-1_7').click(function() {
+    $('#repeating-enclosing-41-instance-1_7').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_7').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_7_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_7').change();
+  $('#remove-button-42-instance-1_7_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_7_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_7_1_1').hide();
+  });
+
+  $('#item-43-instance-1_7_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_7_1_1');
+    var pathDiv = $('#item-path-43-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_7_1_1').change( function() {
+    var ok = validate43instance1_7_1_1();
+    showError('item-error-43-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_7_1_1').hide();
+  });
+
+  $('#item-44-instance-1_7_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_7_1_1');
+    var pathDiv = $('#item-path-44-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_7_1_1').change( function() {
+    var ok = validate44instance1_7_1_1();
+    showError('item-error-44-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_7_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_7_1_1').hide();
+  });
+
+  $('#item-45-instance-1_7_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_7_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_7_1_1');
+    var pathDiv = $('#item-path-45-instance-1_7_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_7_1_1').change( function() {
+    var ok = validate45instance1_7_1_1();
+    showError('item-error-45-instance-1_7_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_7_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_7_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_7_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_7').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_7_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_8').hide();
+  $('#remove-button-41-instance-1_8').click(function() {
+    $('#repeating-enclosing-41-instance-1_8').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_8').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_8_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_8').change();
+  $('#remove-button-42-instance-1_8_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_8_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_8_1_1').hide();
+  });
+
+  $('#item-43-instance-1_8_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_8_1_1');
+    var pathDiv = $('#item-path-43-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_8_1_1').change( function() {
+    var ok = validate43instance1_8_1_1();
+    showError('item-error-43-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_8_1_1').hide();
+  });
+
+  $('#item-44-instance-1_8_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_8_1_1');
+    var pathDiv = $('#item-path-44-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_8_1_1').change( function() {
+    var ok = validate44instance1_8_1_1();
+    showError('item-error-44-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_8_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_8_1_1').hide();
+  });
+
+  $('#item-45-instance-1_8_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_8_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_8_1_1');
+    var pathDiv = $('#item-path-45-instance-1_8_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_8_1_1').change( function() {
+    var ok = validate45instance1_8_1_1();
+    showError('item-error-45-instance-1_8_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_8_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_8_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_8_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_8').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_8_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_9').hide();
+  $('#remove-button-41-instance-1_9').click(function() {
+    $('#repeating-enclosing-41-instance-1_9').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_9').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_9_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_9').change();
+  $('#remove-button-42-instance-1_9_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_9_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_9_1_1').hide();
+  });
+
+  $('#item-43-instance-1_9_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_9_1_1');
+    var pathDiv = $('#item-path-43-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_9_1_1').change( function() {
+    var ok = validate43instance1_9_1_1();
+    showError('item-error-43-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_9_1_1').hide();
+  });
+
+  $('#item-44-instance-1_9_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_9_1_1');
+    var pathDiv = $('#item-path-44-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_9_1_1').change( function() {
+    var ok = validate44instance1_9_1_1();
+    showError('item-error-44-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_9_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_9_1_1').hide();
+  });
+
+  $('#item-45-instance-1_9_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_9_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_9_1_1');
+    var pathDiv = $('#item-path-45-instance-1_9_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_9_1_1').change( function() {
+    var ok = validate45instance1_9_1_1();
+    showError('item-error-45-instance-1_9_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_9_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_9_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_9_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_9').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_9_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeating-enclosing-41-instance-1_10').hide();
+  $('#remove-button-41-instance-1_10').click(function() {
+    $('#repeating-enclosing-41-instance-1_10').hide();
+  });
+
+$('#min-occurs-zero-42-instance-1_10').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-42-instance-1_10_1'));
+})
+
+$('#min-occurs-zero-42-instance-1_10').change();
+  $('#remove-button-42-instance-1_10_1').click(function() {
+    $('#repeating-enclosing-42-instance-1_10_1').hide();
+  });
+
+  $('#remove-button-43-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-43-instance-1_10_1_1').hide();
+  });
+
+  $('#item-43-instance-1_10_1_1').prop('checked',false);
+
+  // identifier
+  var validate43instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-43-instance-1_10_1_1');
+    var pathDiv = $('#item-path-43-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-43-instance-1_10_1_1').change( function() {
+    var ok = validate43instance1_10_1_1();
+    showError('item-error-43-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-43-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-43-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-43-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-44-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-44-instance-1_10_1_1').hide();
+  });
+
+  $('#item-44-instance-1_10_1_1').prop('checked',false);
+
+  // identifierSource
+  var validate44instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-44-instance-1_10_1_1');
+    var pathDiv = $('#item-path-44-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-44-instance-1_10_1_1').change( function() {
+    var ok = validate44instance1_10_1_1();
+    showError('item-error-44-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-44-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-44-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-44-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-45-instance-1_10_1_1').click(function() {
+    $('#repeating-enclosing-45-instance-1_10_1_1').hide();
+  });
+
+  $('#item-45-instance-1_10_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate45instance1_10_1_1 = function () {
+    var ok = true;
+    var v = $('#item-45-instance-1_10_1_1');
+    var pathDiv = $('#item-path-45-instance-1_10_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-45-instance-1_10_1_1').change( function() {
+    var ok = validate45instance1_10_1_1();
+    showError('item-error-45-instance-1_10_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-45-instance-1_10_1_1').attr('enabled','false');
+  $('#repeat-button-45-instance-1_10_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-45-instance-1_10_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-42-instance-1_10').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-42-instance-1_10_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-41-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-41-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-41-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -4541,6 +8703,18 @@ $('#min-occurs-zero-5-instance-1').change();
    return xml;
   }
 
+  //extract xml from element <identifierDescription>
+  function getXml8instance1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-8-instance-1_1_1')) {
+    var v = encodedValueById("item-8-instance-1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
   //extract xml from element <identifier>
   function getXml5instance1() {
 
@@ -4550,62 +8724,63 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
     if (idVisible('repeating-enclosing-5-instance-1_1')) {
       xml += getXml6instance1_1();
       xml += getXml7instance1_1();
+      xml += getXml8instance1_1();
     }
     xml += '\n' + spaces(2) + '</identifier>';
     return xml;
   }
 
   //extract xml from element <dataInputFormats>
-  function getXml8instance1() {
+  function getXml9instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-8-instance-1_1')) {
-    var v = encodedValueById("item-8-instance-1_1");
+  if (idVisible('repeating-enclosing-9-instance-1_1')) {
+    var v = encodedValueById("item-9-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_2')) {
-    var v = encodedValueById("item-8-instance-1_2");
+  if (idVisible('repeating-enclosing-9-instance-1_2')) {
+    var v = encodedValueById("item-9-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_3')) {
-    var v = encodedValueById("item-8-instance-1_3");
+  if (idVisible('repeating-enclosing-9-instance-1_3')) {
+    var v = encodedValueById("item-9-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_4')) {
-    var v = encodedValueById("item-8-instance-1_4");
+  if (idVisible('repeating-enclosing-9-instance-1_4')) {
+    var v = encodedValueById("item-9-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_5')) {
-    var v = encodedValueById("item-8-instance-1_5");
+  if (idVisible('repeating-enclosing-9-instance-1_5')) {
+    var v = encodedValueById("item-9-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_6')) {
-    var v = encodedValueById("item-8-instance-1_6");
+  if (idVisible('repeating-enclosing-9-instance-1_6')) {
+    var v = encodedValueById("item-9-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_7')) {
-    var v = encodedValueById("item-8-instance-1_7");
+  if (idVisible('repeating-enclosing-9-instance-1_7')) {
+    var v = encodedValueById("item-9-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_8')) {
-    var v = encodedValueById("item-8-instance-1_8");
+  if (idVisible('repeating-enclosing-9-instance-1_8')) {
+    var v = encodedValueById("item-9-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_9')) {
-    var v = encodedValueById("item-8-instance-1_9");
+  if (idVisible('repeating-enclosing-9-instance-1_9')) {
+    var v = encodedValueById("item-9-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_10')) {
-    var v = encodedValueById("item-8-instance-1_10");
+  if (idVisible('repeating-enclosing-9-instance-1_10')) {
+    var v = encodedValueById("item-9-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
@@ -4613,56 +8788,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <dataOutputFormats>
-  function getXml9instance1() {
+  function getXml10instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-9-instance-1_1')) {
-    var v = encodedValueById("item-9-instance-1_1");
+  if (idVisible('repeating-enclosing-10-instance-1_1')) {
+    var v = encodedValueById("item-10-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_2')) {
-    var v = encodedValueById("item-9-instance-1_2");
+  if (idVisible('repeating-enclosing-10-instance-1_2')) {
+    var v = encodedValueById("item-10-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_3')) {
-    var v = encodedValueById("item-9-instance-1_3");
+  if (idVisible('repeating-enclosing-10-instance-1_3')) {
+    var v = encodedValueById("item-10-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_4')) {
-    var v = encodedValueById("item-9-instance-1_4");
+  if (idVisible('repeating-enclosing-10-instance-1_4')) {
+    var v = encodedValueById("item-10-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_5')) {
-    var v = encodedValueById("item-9-instance-1_5");
+  if (idVisible('repeating-enclosing-10-instance-1_5')) {
+    var v = encodedValueById("item-10-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_6')) {
-    var v = encodedValueById("item-9-instance-1_6");
+  if (idVisible('repeating-enclosing-10-instance-1_6')) {
+    var v = encodedValueById("item-10-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_7')) {
-    var v = encodedValueById("item-9-instance-1_7");
+  if (idVisible('repeating-enclosing-10-instance-1_7')) {
+    var v = encodedValueById("item-10-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_8')) {
-    var v = encodedValueById("item-9-instance-1_8");
+  if (idVisible('repeating-enclosing-10-instance-1_8')) {
+    var v = encodedValueById("item-10-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_9')) {
-    var v = encodedValueById("item-9-instance-1_9");
+  if (idVisible('repeating-enclosing-10-instance-1_9')) {
+    var v = encodedValueById("item-10-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_10')) {
-    var v = encodedValueById("item-9-instance-1_10");
+  if (idVisible('repeating-enclosing-10-instance-1_10')) {
+    var v = encodedValueById("item-10-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
@@ -4670,11 +8845,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <sourceCodeRelease>
-  function getXml10instance1() {
+  function getXml11instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-10-instance-1_1')) {
-    var v = encodedValueById("item-10-instance-1_1");
+  if (idVisible('repeating-enclosing-11-instance-1_1')) {
+    var v = encodedValueById("item-11-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<sourceCodeRelease>' + v + '</sourceCodeRelease>';
   }
@@ -4682,56 +8857,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <webApplication>
-  function getXml11instance1() {
+  function getXml12instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-11-instance-1_1')) {
-    var v = encodedValueById("item-11-instance-1_1");
+  if (idVisible('repeating-enclosing-12-instance-1_1')) {
+    var v = encodedValueById("item-12-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_2')) {
-    var v = encodedValueById("item-11-instance-1_2");
+  if (idVisible('repeating-enclosing-12-instance-1_2')) {
+    var v = encodedValueById("item-12-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_3')) {
-    var v = encodedValueById("item-11-instance-1_3");
+  if (idVisible('repeating-enclosing-12-instance-1_3')) {
+    var v = encodedValueById("item-12-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_4')) {
-    var v = encodedValueById("item-11-instance-1_4");
+  if (idVisible('repeating-enclosing-12-instance-1_4')) {
+    var v = encodedValueById("item-12-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_5')) {
-    var v = encodedValueById("item-11-instance-1_5");
+  if (idVisible('repeating-enclosing-12-instance-1_5')) {
+    var v = encodedValueById("item-12-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_6')) {
-    var v = encodedValueById("item-11-instance-1_6");
+  if (idVisible('repeating-enclosing-12-instance-1_6')) {
+    var v = encodedValueById("item-12-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_7')) {
-    var v = encodedValueById("item-11-instance-1_7");
+  if (idVisible('repeating-enclosing-12-instance-1_7')) {
+    var v = encodedValueById("item-12-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_8')) {
-    var v = encodedValueById("item-11-instance-1_8");
+  if (idVisible('repeating-enclosing-12-instance-1_8')) {
+    var v = encodedValueById("item-12-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_9')) {
-    var v = encodedValueById("item-11-instance-1_9");
+  if (idVisible('repeating-enclosing-12-instance-1_9')) {
+    var v = encodedValueById("item-12-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_10')) {
-    var v = encodedValueById("item-11-instance-1_10");
+  if (idVisible('repeating-enclosing-12-instance-1_10')) {
+    var v = encodedValueById("item-12-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
@@ -4739,11 +8914,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <license>
-  function getXml12instance1() {
+  function getXml13instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-12-instance-1_1')) {
-    var v = encodedValueById("item-12-instance-1_1");
+  if (idVisible('repeating-enclosing-13-instance-1_1')) {
+    var v = encodedValueById("item-13-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<license>' + v + '</license>';
   }
@@ -4751,11 +8926,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <source>
-  function getXml13instance1() {
+  function getXml14instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-13-instance-1_1')) {
-    var v = encodedValueById("item-13-instance-1_1");
+  if (idVisible('repeating-enclosing-14-instance-1_1')) {
+    var v = encodedValueById("item-14-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<source>' + v + '</source>';
   }
@@ -4763,56 +8938,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <developers>
-  function getXml14instance1() {
+  function getXml15instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-14-instance-1_1')) {
-    var v = encodedValueById("item-14-instance-1_1");
+  if (idVisible('repeating-enclosing-15-instance-1_1')) {
+    var v = encodedValueById("item-15-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_2')) {
-    var v = encodedValueById("item-14-instance-1_2");
+  if (idVisible('repeating-enclosing-15-instance-1_2')) {
+    var v = encodedValueById("item-15-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_3')) {
-    var v = encodedValueById("item-14-instance-1_3");
+  if (idVisible('repeating-enclosing-15-instance-1_3')) {
+    var v = encodedValueById("item-15-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_4')) {
-    var v = encodedValueById("item-14-instance-1_4");
+  if (idVisible('repeating-enclosing-15-instance-1_4')) {
+    var v = encodedValueById("item-15-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_5')) {
-    var v = encodedValueById("item-14-instance-1_5");
+  if (idVisible('repeating-enclosing-15-instance-1_5')) {
+    var v = encodedValueById("item-15-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_6')) {
-    var v = encodedValueById("item-14-instance-1_6");
+  if (idVisible('repeating-enclosing-15-instance-1_6')) {
+    var v = encodedValueById("item-15-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_7')) {
-    var v = encodedValueById("item-14-instance-1_7");
+  if (idVisible('repeating-enclosing-15-instance-1_7')) {
+    var v = encodedValueById("item-15-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_8')) {
-    var v = encodedValueById("item-14-instance-1_8");
+  if (idVisible('repeating-enclosing-15-instance-1_8')) {
+    var v = encodedValueById("item-15-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_9')) {
-    var v = encodedValueById("item-14-instance-1_9");
+  if (idVisible('repeating-enclosing-15-instance-1_9')) {
+    var v = encodedValueById("item-15-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_10')) {
-    var v = encodedValueById("item-14-instance-1_10");
+  if (idVisible('repeating-enclosing-15-instance-1_10')) {
+    var v = encodedValueById("item-15-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
@@ -4820,11 +8995,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <website>
-  function getXml15instance1() {
+  function getXml16instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-15-instance-1_1')) {
-    var v = encodedValueById("item-15-instance-1_1");
+  if (idVisible('repeating-enclosing-16-instance-1_1')) {
+    var v = encodedValueById("item-16-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<website>' + v + '</website>';
   }
@@ -4832,11 +9007,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <documentation>
-  function getXml16instance1() {
+  function getXml17instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-16-instance-1_1')) {
-    var v = encodedValueById("item-16-instance-1_1");
+  if (idVisible('repeating-enclosing-17-instance-1_1')) {
+    var v = encodedValueById("item-17-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<documentation>' + v + '</documentation>';
   }
@@ -4844,56 +9019,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <publicationsThatUsedRelease>
-  function getXml17instance1() {
+  function getXml18instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-17-instance-1_1')) {
-    var v = encodedValueById("item-17-instance-1_1");
+  if (idVisible('repeating-enclosing-18-instance-1_1')) {
+    var v = encodedValueById("item-18-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_2')) {
-    var v = encodedValueById("item-17-instance-1_2");
+  if (idVisible('repeating-enclosing-18-instance-1_2')) {
+    var v = encodedValueById("item-18-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_3')) {
-    var v = encodedValueById("item-17-instance-1_3");
+  if (idVisible('repeating-enclosing-18-instance-1_3')) {
+    var v = encodedValueById("item-18-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_4')) {
-    var v = encodedValueById("item-17-instance-1_4");
+  if (idVisible('repeating-enclosing-18-instance-1_4')) {
+    var v = encodedValueById("item-18-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_5')) {
-    var v = encodedValueById("item-17-instance-1_5");
+  if (idVisible('repeating-enclosing-18-instance-1_5')) {
+    var v = encodedValueById("item-18-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_6')) {
-    var v = encodedValueById("item-17-instance-1_6");
+  if (idVisible('repeating-enclosing-18-instance-1_6')) {
+    var v = encodedValueById("item-18-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_7')) {
-    var v = encodedValueById("item-17-instance-1_7");
+  if (idVisible('repeating-enclosing-18-instance-1_7')) {
+    var v = encodedValueById("item-18-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_8')) {
-    var v = encodedValueById("item-17-instance-1_8");
+  if (idVisible('repeating-enclosing-18-instance-1_8')) {
+    var v = encodedValueById("item-18-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_9')) {
-    var v = encodedValueById("item-17-instance-1_9");
+  if (idVisible('repeating-enclosing-18-instance-1_9')) {
+    var v = encodedValueById("item-18-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_10')) {
-    var v = encodedValueById("item-17-instance-1_10");
+  if (idVisible('repeating-enclosing-18-instance-1_10')) {
+    var v = encodedValueById("item-18-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
@@ -4901,56 +9076,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <executables>
-  function getXml18instance1() {
+  function getXml19instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-18-instance-1_1')) {
-    var v = encodedValueById("item-18-instance-1_1");
+  if (idVisible('repeating-enclosing-19-instance-1_1')) {
+    var v = encodedValueById("item-19-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_2')) {
-    var v = encodedValueById("item-18-instance-1_2");
+  if (idVisible('repeating-enclosing-19-instance-1_2')) {
+    var v = encodedValueById("item-19-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_3')) {
-    var v = encodedValueById("item-18-instance-1_3");
+  if (idVisible('repeating-enclosing-19-instance-1_3')) {
+    var v = encodedValueById("item-19-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_4')) {
-    var v = encodedValueById("item-18-instance-1_4");
+  if (idVisible('repeating-enclosing-19-instance-1_4')) {
+    var v = encodedValueById("item-19-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_5')) {
-    var v = encodedValueById("item-18-instance-1_5");
+  if (idVisible('repeating-enclosing-19-instance-1_5')) {
+    var v = encodedValueById("item-19-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_6')) {
-    var v = encodedValueById("item-18-instance-1_6");
+  if (idVisible('repeating-enclosing-19-instance-1_6')) {
+    var v = encodedValueById("item-19-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_7')) {
-    var v = encodedValueById("item-18-instance-1_7");
+  if (idVisible('repeating-enclosing-19-instance-1_7')) {
+    var v = encodedValueById("item-19-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_8')) {
-    var v = encodedValueById("item-18-instance-1_8");
+  if (idVisible('repeating-enclosing-19-instance-1_8')) {
+    var v = encodedValueById("item-19-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_9')) {
-    var v = encodedValueById("item-18-instance-1_9");
+  if (idVisible('repeating-enclosing-19-instance-1_9')) {
+    var v = encodedValueById("item-19-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_10')) {
-    var v = encodedValueById("item-18-instance-1_10");
+  if (idVisible('repeating-enclosing-19-instance-1_10')) {
+    var v = encodedValueById("item-19-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
@@ -4958,56 +9133,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <version>
-  function getXml19instance1() {
+  function getXml20instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-19-instance-1_1')) {
-    var v = encodedValueById("item-19-instance-1_1");
+  if (idVisible('repeating-enclosing-20-instance-1_1')) {
+    var v = encodedValueById("item-20-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_2')) {
-    var v = encodedValueById("item-19-instance-1_2");
+  if (idVisible('repeating-enclosing-20-instance-1_2')) {
+    var v = encodedValueById("item-20-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_3')) {
-    var v = encodedValueById("item-19-instance-1_3");
+  if (idVisible('repeating-enclosing-20-instance-1_3')) {
+    var v = encodedValueById("item-20-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_4')) {
-    var v = encodedValueById("item-19-instance-1_4");
+  if (idVisible('repeating-enclosing-20-instance-1_4')) {
+    var v = encodedValueById("item-20-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_5')) {
-    var v = encodedValueById("item-19-instance-1_5");
+  if (idVisible('repeating-enclosing-20-instance-1_5')) {
+    var v = encodedValueById("item-20-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_6')) {
-    var v = encodedValueById("item-19-instance-1_6");
+  if (idVisible('repeating-enclosing-20-instance-1_6')) {
+    var v = encodedValueById("item-20-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_7')) {
-    var v = encodedValueById("item-19-instance-1_7");
+  if (idVisible('repeating-enclosing-20-instance-1_7')) {
+    var v = encodedValueById("item-20-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_8')) {
-    var v = encodedValueById("item-19-instance-1_8");
+  if (idVisible('repeating-enclosing-20-instance-1_8')) {
+    var v = encodedValueById("item-20-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_9')) {
-    var v = encodedValueById("item-19-instance-1_9");
+  if (idVisible('repeating-enclosing-20-instance-1_9')) {
+    var v = encodedValueById("item-20-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_10')) {
-    var v = encodedValueById("item-19-instance-1_10");
+  if (idVisible('repeating-enclosing-20-instance-1_10')) {
+    var v = encodedValueById("item-20-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
@@ -5015,56 +9190,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <publicationsAboutRelease>
-  function getXml20instance1() {
+  function getXml21instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-20-instance-1_1')) {
-    var v = encodedValueById("item-20-instance-1_1");
+  if (idVisible('repeating-enclosing-21-instance-1_1')) {
+    var v = encodedValueById("item-21-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_2')) {
-    var v = encodedValueById("item-20-instance-1_2");
+  if (idVisible('repeating-enclosing-21-instance-1_2')) {
+    var v = encodedValueById("item-21-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_3')) {
-    var v = encodedValueById("item-20-instance-1_3");
+  if (idVisible('repeating-enclosing-21-instance-1_3')) {
+    var v = encodedValueById("item-21-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_4')) {
-    var v = encodedValueById("item-20-instance-1_4");
+  if (idVisible('repeating-enclosing-21-instance-1_4')) {
+    var v = encodedValueById("item-21-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_5')) {
-    var v = encodedValueById("item-20-instance-1_5");
+  if (idVisible('repeating-enclosing-21-instance-1_5')) {
+    var v = encodedValueById("item-21-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_6')) {
-    var v = encodedValueById("item-20-instance-1_6");
+  if (idVisible('repeating-enclosing-21-instance-1_6')) {
+    var v = encodedValueById("item-21-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_7')) {
-    var v = encodedValueById("item-20-instance-1_7");
+  if (idVisible('repeating-enclosing-21-instance-1_7')) {
+    var v = encodedValueById("item-21-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_8')) {
-    var v = encodedValueById("item-20-instance-1_8");
+  if (idVisible('repeating-enclosing-21-instance-1_8')) {
+    var v = encodedValueById("item-21-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_9')) {
-    var v = encodedValueById("item-20-instance-1_9");
+  if (idVisible('repeating-enclosing-21-instance-1_9')) {
+    var v = encodedValueById("item-21-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_10')) {
-    var v = encodedValueById("item-20-instance-1_10");
+  if (idVisible('repeating-enclosing-21-instance-1_10')) {
+    var v = encodedValueById("item-21-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
@@ -5072,56 +9247,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <grants>
-  function getXml21instance1() {
+  function getXml22instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-21-instance-1_1')) {
-    var v = encodedValueById("item-21-instance-1_1");
+  if (idVisible('repeating-enclosing-22-instance-1_1')) {
+    var v = encodedValueById("item-22-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_2')) {
-    var v = encodedValueById("item-21-instance-1_2");
+  if (idVisible('repeating-enclosing-22-instance-1_2')) {
+    var v = encodedValueById("item-22-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_3')) {
-    var v = encodedValueById("item-21-instance-1_3");
+  if (idVisible('repeating-enclosing-22-instance-1_3')) {
+    var v = encodedValueById("item-22-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_4')) {
-    var v = encodedValueById("item-21-instance-1_4");
+  if (idVisible('repeating-enclosing-22-instance-1_4')) {
+    var v = encodedValueById("item-22-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_5')) {
-    var v = encodedValueById("item-21-instance-1_5");
+  if (idVisible('repeating-enclosing-22-instance-1_5')) {
+    var v = encodedValueById("item-22-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_6')) {
-    var v = encodedValueById("item-21-instance-1_6");
+  if (idVisible('repeating-enclosing-22-instance-1_6')) {
+    var v = encodedValueById("item-22-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_7')) {
-    var v = encodedValueById("item-21-instance-1_7");
+  if (idVisible('repeating-enclosing-22-instance-1_7')) {
+    var v = encodedValueById("item-22-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_8')) {
-    var v = encodedValueById("item-21-instance-1_8");
+  if (idVisible('repeating-enclosing-22-instance-1_8')) {
+    var v = encodedValueById("item-22-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_9')) {
-    var v = encodedValueById("item-21-instance-1_9");
+  if (idVisible('repeating-enclosing-22-instance-1_9')) {
+    var v = encodedValueById("item-22-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_10')) {
-    var v = encodedValueById("item-21-instance-1_10");
+  if (idVisible('repeating-enclosing-22-instance-1_10')) {
+    var v = encodedValueById("item-22-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
@@ -5129,234 +9304,2233 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <availableOnOlympus>
-  function getXml22instance1() {
+  function getXml23instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-22-instance-1_1')) {
-    var v = $('#item-22-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-23-instance-1_1')) {
+    var v = $('#item-23-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<availableOnOlympus>' + toBoolean(v) + '</availableOnOlympus>';
   }
    return xml;
   }
 
   //extract xml from element <availableOnUIDS>
-  function getXml23instance1() {
+  function getXml24instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-23-instance-1_1')) {
-    var v = $('#item-23-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-24-instance-1_1')) {
+    var v = $('#item-24-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<availableOnUIDS>' + toBoolean(v) + '</availableOnUIDS>';
   }
    return xml;
   }
 
   //extract xml from element <signInRequired>
-  function getXml24instance1() {
+  function getXml25instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-24-instance-1_1')) {
-    var v = $('#item-24-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-25-instance-1_1')) {
+    var v = $('#item-25-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<signInRequired>' + toBoolean(v) + '</signInRequired>';
   }
    return xml;
   }
 
-  //extract xml from element <controlMeasures>
-  function getXml25instance1() {
+  //extract xml from element <identifier>
+  function getXml28instance1_1_1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-25-instance-1_1')) {
-    var v = encodedValueById("item-25-instance-1_1");
+  if (idVisible('repeating-enclosing-28-instance-1_1_1_1')) {
+    var v = encodedValueById("item-28-instance-1_1_1_1");
     if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_2')) {
-    var v = encodedValueById("item-25-instance-1_2");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_3')) {
-    var v = encodedValueById("item-25-instance-1_3");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_4')) {
-    var v = encodedValueById("item-25-instance-1_4");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_5')) {
-    var v = encodedValueById("item-25-instance-1_5");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_6')) {
-    var v = encodedValueById("item-25-instance-1_6");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_7')) {
-    var v = encodedValueById("item-25-instance-1_7");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_8')) {
-    var v = encodedValueById("item-25-instance-1_8");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_9')) {
-    var v = encodedValueById("item-25-instance-1_9");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
-  }
-  if (idVisible('repeating-enclosing-25-instance-1_10')) {
-    var v = encodedValueById("item-25-instance-1_10");
-    if (v.length>0)
-      xml += '\n' + spaces(2) + '<controlMeasures>' + v + '</controlMeasures>';
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
   }
    return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_1_1_1')) {
+    var v = encodedValueById("item-29-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_1_1_1')) {
+    var v = encodedValueById("item-30-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_1() {
+
+if (!$('#min-occurs-zero-27-instance-1_1').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_1_1')) {
+      xml += getXml28instance1_1_1();
+      xml += getXml29instance1_1_1();
+      xml += getXml30instance1_1_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_2_1_1')) {
+    var v = encodedValueById("item-28-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_2_1_1')) {
+    var v = encodedValueById("item-29-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_2_1_1')) {
+    var v = encodedValueById("item-30-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_2() {
+
+if (!$('#min-occurs-zero-27-instance-1_2').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_2_1')) {
+      xml += getXml28instance1_2_1();
+      xml += getXml29instance1_2_1();
+      xml += getXml30instance1_2_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_3_1_1')) {
+    var v = encodedValueById("item-28-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_3_1_1')) {
+    var v = encodedValueById("item-29-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_3_1_1')) {
+    var v = encodedValueById("item-30-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_3() {
+
+if (!$('#min-occurs-zero-27-instance-1_3').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_3_1')) {
+      xml += getXml28instance1_3_1();
+      xml += getXml29instance1_3_1();
+      xml += getXml30instance1_3_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_4_1_1')) {
+    var v = encodedValueById("item-28-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_4_1_1')) {
+    var v = encodedValueById("item-29-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_4_1_1')) {
+    var v = encodedValueById("item-30-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_4() {
+
+if (!$('#min-occurs-zero-27-instance-1_4').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_4_1')) {
+      xml += getXml28instance1_4_1();
+      xml += getXml29instance1_4_1();
+      xml += getXml30instance1_4_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_5_1_1')) {
+    var v = encodedValueById("item-28-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_5_1_1')) {
+    var v = encodedValueById("item-29-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_5_1_1')) {
+    var v = encodedValueById("item-30-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_5() {
+
+if (!$('#min-occurs-zero-27-instance-1_5').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_5_1')) {
+      xml += getXml28instance1_5_1();
+      xml += getXml29instance1_5_1();
+      xml += getXml30instance1_5_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_6_1_1')) {
+    var v = encodedValueById("item-28-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_6_1_1')) {
+    var v = encodedValueById("item-29-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_6_1_1')) {
+    var v = encodedValueById("item-30-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_6() {
+
+if (!$('#min-occurs-zero-27-instance-1_6').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_6_1')) {
+      xml += getXml28instance1_6_1();
+      xml += getXml29instance1_6_1();
+      xml += getXml30instance1_6_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_7_1_1')) {
+    var v = encodedValueById("item-28-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_7_1_1')) {
+    var v = encodedValueById("item-29-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_7_1_1')) {
+    var v = encodedValueById("item-30-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_7() {
+
+if (!$('#min-occurs-zero-27-instance-1_7').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_7_1')) {
+      xml += getXml28instance1_7_1();
+      xml += getXml29instance1_7_1();
+      xml += getXml30instance1_7_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_8_1_1')) {
+    var v = encodedValueById("item-28-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_8_1_1')) {
+    var v = encodedValueById("item-29-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_8_1_1')) {
+    var v = encodedValueById("item-30-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_8() {
+
+if (!$('#min-occurs-zero-27-instance-1_8').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_8_1')) {
+      xml += getXml28instance1_8_1();
+      xml += getXml29instance1_8_1();
+      xml += getXml30instance1_8_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_9_1_1')) {
+    var v = encodedValueById("item-28-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_9_1_1')) {
+    var v = encodedValueById("item-29-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_9_1_1')) {
+    var v = encodedValueById("item-30-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_9() {
+
+if (!$('#min-occurs-zero-27-instance-1_9').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_9_1')) {
+      xml += getXml28instance1_9_1();
+      xml += getXml29instance1_9_1();
+      xml += getXml30instance1_9_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml28instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-28-instance-1_10_1_1')) {
+    var v = encodedValueById("item-28-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml29instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-29-instance-1_10_1_1')) {
+    var v = encodedValueById("item-29-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml30instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-30-instance-1_10_1_1')) {
+    var v = encodedValueById("item-30-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml27instance1_10() {
+
+if (!$('#min-occurs-zero-27-instance-1_10').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-27-instance-1_10_1')) {
+      xml += getXml28instance1_10_1();
+      xml += getXml29instance1_10_1();
+      xml += getXml30instance1_10_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <controlMeasures>
+  function getXml26instance1() {
+
+if (!$('#min-occurs-zero-26-instance-1').is(':checked')) return '';
+    var xml = '\n' + spaces(2) + '<controlMeasures>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-26-instance-1_1')) {
+      xml += getXml27instance1_1();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_2')) {
+      xml += getXml27instance1_2();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_3')) {
+      xml += getXml27instance1_3();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_4')) {
+      xml += getXml27instance1_4();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_5')) {
+      xml += getXml27instance1_5();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_6')) {
+      xml += getXml27instance1_6();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_7')) {
+      xml += getXml27instance1_7();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_8')) {
+      xml += getXml27instance1_8();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_9')) {
+      xml += getXml27instance1_9();
+    }
+    if (idVisible('repeating-enclosing-26-instance-1_10')) {
+      xml += getXml27instance1_10();
+    }
+    xml += '\n' + spaces(2) + '</controlMeasures>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_1_1_1')) {
+    var v = encodedValueById("item-33-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_1_1_1')) {
+    var v = encodedValueById("item-34-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_1_1_1')) {
+    var v = encodedValueById("item-35-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_1() {
+
+if (!$('#min-occurs-zero-32-instance-1_1').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_1_1')) {
+      xml += getXml33instance1_1_1();
+      xml += getXml34instance1_1_1();
+      xml += getXml35instance1_1_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_2_1_1')) {
+    var v = encodedValueById("item-33-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_2_1_1')) {
+    var v = encodedValueById("item-34-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_2_1_1')) {
+    var v = encodedValueById("item-35-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_2() {
+
+if (!$('#min-occurs-zero-32-instance-1_2').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_2_1')) {
+      xml += getXml33instance1_2_1();
+      xml += getXml34instance1_2_1();
+      xml += getXml35instance1_2_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_3_1_1')) {
+    var v = encodedValueById("item-33-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_3_1_1')) {
+    var v = encodedValueById("item-34-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_3_1_1')) {
+    var v = encodedValueById("item-35-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_3() {
+
+if (!$('#min-occurs-zero-32-instance-1_3').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_3_1')) {
+      xml += getXml33instance1_3_1();
+      xml += getXml34instance1_3_1();
+      xml += getXml35instance1_3_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_4_1_1')) {
+    var v = encodedValueById("item-33-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_4_1_1')) {
+    var v = encodedValueById("item-34-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_4_1_1')) {
+    var v = encodedValueById("item-35-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_4() {
+
+if (!$('#min-occurs-zero-32-instance-1_4').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_4_1')) {
+      xml += getXml33instance1_4_1();
+      xml += getXml34instance1_4_1();
+      xml += getXml35instance1_4_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_5_1_1')) {
+    var v = encodedValueById("item-33-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_5_1_1')) {
+    var v = encodedValueById("item-34-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_5_1_1')) {
+    var v = encodedValueById("item-35-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_5() {
+
+if (!$('#min-occurs-zero-32-instance-1_5').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_5_1')) {
+      xml += getXml33instance1_5_1();
+      xml += getXml34instance1_5_1();
+      xml += getXml35instance1_5_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_6_1_1')) {
+    var v = encodedValueById("item-33-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_6_1_1')) {
+    var v = encodedValueById("item-34-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_6_1_1')) {
+    var v = encodedValueById("item-35-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_6() {
+
+if (!$('#min-occurs-zero-32-instance-1_6').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_6_1')) {
+      xml += getXml33instance1_6_1();
+      xml += getXml34instance1_6_1();
+      xml += getXml35instance1_6_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_7_1_1')) {
+    var v = encodedValueById("item-33-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_7_1_1')) {
+    var v = encodedValueById("item-34-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_7_1_1')) {
+    var v = encodedValueById("item-35-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_7() {
+
+if (!$('#min-occurs-zero-32-instance-1_7').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_7_1')) {
+      xml += getXml33instance1_7_1();
+      xml += getXml34instance1_7_1();
+      xml += getXml35instance1_7_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_8_1_1')) {
+    var v = encodedValueById("item-33-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_8_1_1')) {
+    var v = encodedValueById("item-34-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_8_1_1')) {
+    var v = encodedValueById("item-35-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_8() {
+
+if (!$('#min-occurs-zero-32-instance-1_8').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_8_1')) {
+      xml += getXml33instance1_8_1();
+      xml += getXml34instance1_8_1();
+      xml += getXml35instance1_8_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_9_1_1')) {
+    var v = encodedValueById("item-33-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_9_1_1')) {
+    var v = encodedValueById("item-34-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_9_1_1')) {
+    var v = encodedValueById("item-35-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_9() {
+
+if (!$('#min-occurs-zero-32-instance-1_9').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_9_1')) {
+      xml += getXml33instance1_9_1();
+      xml += getXml34instance1_9_1();
+      xml += getXml35instance1_9_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml33instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-33-instance-1_10_1_1')) {
+    var v = encodedValueById("item-33-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml34instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-34-instance-1_10_1_1')) {
+    var v = encodedValueById("item-34-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml35instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-35-instance-1_10_1_1')) {
+    var v = encodedValueById("item-35-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml32instance1_10() {
+
+if (!$('#min-occurs-zero-32-instance-1_10').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-32-instance-1_10_1')) {
+      xml += getXml33instance1_10_1();
+      xml += getXml34instance1_10_1();
+      xml += getXml35instance1_10_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
   }
 
   //extract xml from element <hostSpeciesIncluded>
-  function getXml26instance1() {
+  function getXml31instance1() {
+
+    var xml = '\n' + spaces(2) + '<hostSpeciesIncluded>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-31-instance-1_1')) {
+      xml += getXml32instance1_1();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_2')) {
+      xml += getXml32instance1_2();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_3')) {
+      xml += getXml32instance1_3();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_4')) {
+      xml += getXml32instance1_4();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_5')) {
+      xml += getXml32instance1_5();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_6')) {
+      xml += getXml32instance1_6();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_7')) {
+      xml += getXml32instance1_7();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_8')) {
+      xml += getXml32instance1_8();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_9')) {
+      xml += getXml32instance1_9();
+    }
+    if (idVisible('repeating-enclosing-31-instance-1_10')) {
+      xml += getXml32instance1_10();
+    }
+    xml += '\n' + spaces(2) + '</hostSpeciesIncluded>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_1_1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-26-instance-1_1')) {
-    var v = encodedValueById("item-26-instance-1_1");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_2')) {
-    var v = encodedValueById("item-26-instance-1_2");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_3')) {
-    var v = encodedValueById("item-26-instance-1_3");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_4')) {
-    var v = encodedValueById("item-26-instance-1_4");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_5')) {
-    var v = encodedValueById("item-26-instance-1_5");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_6')) {
-    var v = encodedValueById("item-26-instance-1_6");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_7')) {
-    var v = encodedValueById("item-26-instance-1_7");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_8')) {
-    var v = encodedValueById("item-26-instance-1_8");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_9')) {
-    var v = encodedValueById("item-26-instance-1_9");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
-  }
-  if (idVisible('repeating-enclosing-26-instance-1_10')) {
-    var v = encodedValueById("item-26-instance-1_10");
-    xml += '\n' + spaces(2) + '<hostSpeciesIncluded>' + v + '</hostSpeciesIncluded>';
+  if (idVisible('repeating-enclosing-38-instance-1_1_1_1')) {
+    var v = encodedValueById("item-38-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
   }
    return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_1_1_1')) {
+    var v = encodedValueById("item-39-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_1_1_1')) {
+    var v = encodedValueById("item-40-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_1() {
+
+if (!$('#min-occurs-zero-37-instance-1_1').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_1_1')) {
+      xml += getXml38instance1_1_1();
+      xml += getXml39instance1_1_1();
+      xml += getXml40instance1_1_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_2_1_1')) {
+    var v = encodedValueById("item-38-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_2_1_1')) {
+    var v = encodedValueById("item-39-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_2_1_1')) {
+    var v = encodedValueById("item-40-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_2() {
+
+if (!$('#min-occurs-zero-37-instance-1_2').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_2_1')) {
+      xml += getXml38instance1_2_1();
+      xml += getXml39instance1_2_1();
+      xml += getXml40instance1_2_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_3_1_1')) {
+    var v = encodedValueById("item-38-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_3_1_1')) {
+    var v = encodedValueById("item-39-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_3_1_1')) {
+    var v = encodedValueById("item-40-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_3() {
+
+if (!$('#min-occurs-zero-37-instance-1_3').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_3_1')) {
+      xml += getXml38instance1_3_1();
+      xml += getXml39instance1_3_1();
+      xml += getXml40instance1_3_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_4_1_1')) {
+    var v = encodedValueById("item-38-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_4_1_1')) {
+    var v = encodedValueById("item-39-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_4_1_1')) {
+    var v = encodedValueById("item-40-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_4() {
+
+if (!$('#min-occurs-zero-37-instance-1_4').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_4_1')) {
+      xml += getXml38instance1_4_1();
+      xml += getXml39instance1_4_1();
+      xml += getXml40instance1_4_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_5_1_1')) {
+    var v = encodedValueById("item-38-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_5_1_1')) {
+    var v = encodedValueById("item-39-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_5_1_1')) {
+    var v = encodedValueById("item-40-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_5() {
+
+if (!$('#min-occurs-zero-37-instance-1_5').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_5_1')) {
+      xml += getXml38instance1_5_1();
+      xml += getXml39instance1_5_1();
+      xml += getXml40instance1_5_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_6_1_1')) {
+    var v = encodedValueById("item-38-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_6_1_1')) {
+    var v = encodedValueById("item-39-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_6_1_1')) {
+    var v = encodedValueById("item-40-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_6() {
+
+if (!$('#min-occurs-zero-37-instance-1_6').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_6_1')) {
+      xml += getXml38instance1_6_1();
+      xml += getXml39instance1_6_1();
+      xml += getXml40instance1_6_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_7_1_1')) {
+    var v = encodedValueById("item-38-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_7_1_1')) {
+    var v = encodedValueById("item-39-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_7_1_1')) {
+    var v = encodedValueById("item-40-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_7() {
+
+if (!$('#min-occurs-zero-37-instance-1_7').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_7_1')) {
+      xml += getXml38instance1_7_1();
+      xml += getXml39instance1_7_1();
+      xml += getXml40instance1_7_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_8_1_1')) {
+    var v = encodedValueById("item-38-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_8_1_1')) {
+    var v = encodedValueById("item-39-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_8_1_1')) {
+    var v = encodedValueById("item-40-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_8() {
+
+if (!$('#min-occurs-zero-37-instance-1_8').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_8_1')) {
+      xml += getXml38instance1_8_1();
+      xml += getXml39instance1_8_1();
+      xml += getXml40instance1_8_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_9_1_1')) {
+    var v = encodedValueById("item-38-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_9_1_1')) {
+    var v = encodedValueById("item-39-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_9_1_1')) {
+    var v = encodedValueById("item-40-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_9() {
+
+if (!$('#min-occurs-zero-37-instance-1_9').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_9_1')) {
+      xml += getXml38instance1_9_1();
+      xml += getXml39instance1_9_1();
+      xml += getXml40instance1_9_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml38instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-38-instance-1_10_1_1')) {
+    var v = encodedValueById("item-38-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml39instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-39-instance-1_10_1_1')) {
+    var v = encodedValueById("item-39-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml40instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-40-instance-1_10_1_1')) {
+    var v = encodedValueById("item-40-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml37instance1_10() {
+
+if (!$('#min-occurs-zero-37-instance-1_10').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-37-instance-1_10_1')) {
+      xml += getXml38instance1_10_1();
+      xml += getXml39instance1_10_1();
+      xml += getXml40instance1_10_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
   }
 
   //extract xml from element <locationCoverage>
-  function getXml27instance1() {
+  function getXml36instance1() {
+
+    var xml = '\n' + spaces(2) + '<locationCoverage>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-36-instance-1_1')) {
+      xml += getXml37instance1_1();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_2')) {
+      xml += getXml37instance1_2();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_3')) {
+      xml += getXml37instance1_3();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_4')) {
+      xml += getXml37instance1_4();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_5')) {
+      xml += getXml37instance1_5();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_6')) {
+      xml += getXml37instance1_6();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_7')) {
+      xml += getXml37instance1_7();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_8')) {
+      xml += getXml37instance1_8();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_9')) {
+      xml += getXml37instance1_9();
+    }
+    if (idVisible('repeating-enclosing-36-instance-1_10')) {
+      xml += getXml37instance1_10();
+    }
+    xml += '\n' + spaces(2) + '</locationCoverage>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_1_1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-27-instance-1_1')) {
-    var v = encodedValueById("item-27-instance-1_1");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_2')) {
-    var v = encodedValueById("item-27-instance-1_2");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_3')) {
-    var v = encodedValueById("item-27-instance-1_3");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_4')) {
-    var v = encodedValueById("item-27-instance-1_4");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_5')) {
-    var v = encodedValueById("item-27-instance-1_5");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_6')) {
-    var v = encodedValueById("item-27-instance-1_6");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_7')) {
-    var v = encodedValueById("item-27-instance-1_7");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_8')) {
-    var v = encodedValueById("item-27-instance-1_8");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_9')) {
-    var v = encodedValueById("item-27-instance-1_9");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
-  }
-  if (idVisible('repeating-enclosing-27-instance-1_10')) {
-    var v = encodedValueById("item-27-instance-1_10");
-    xml += '\n' + spaces(2) + '<locationCoverage>' + v + '</locationCoverage>';
+  if (idVisible('repeating-enclosing-43-instance-1_1_1_1')) {
+    var v = encodedValueById("item-43-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
   }
    return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_1_1_1')) {
+    var v = encodedValueById("item-44-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_1_1_1')) {
+    var v = encodedValueById("item-45-instance-1_1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_1() {
+
+if (!$('#min-occurs-zero-42-instance-1_1').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_1_1')) {
+      xml += getXml43instance1_1_1();
+      xml += getXml44instance1_1_1();
+      xml += getXml45instance1_1_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_2_1_1')) {
+    var v = encodedValueById("item-43-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_2_1_1')) {
+    var v = encodedValueById("item-44-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_2_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_2_1_1')) {
+    var v = encodedValueById("item-45-instance-1_2_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_2() {
+
+if (!$('#min-occurs-zero-42-instance-1_2').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_2_1')) {
+      xml += getXml43instance1_2_1();
+      xml += getXml44instance1_2_1();
+      xml += getXml45instance1_2_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_3_1_1')) {
+    var v = encodedValueById("item-43-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_3_1_1')) {
+    var v = encodedValueById("item-44-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_3_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_3_1_1')) {
+    var v = encodedValueById("item-45-instance-1_3_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_3() {
+
+if (!$('#min-occurs-zero-42-instance-1_3').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_3_1')) {
+      xml += getXml43instance1_3_1();
+      xml += getXml44instance1_3_1();
+      xml += getXml45instance1_3_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_4_1_1')) {
+    var v = encodedValueById("item-43-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_4_1_1')) {
+    var v = encodedValueById("item-44-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_4_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_4_1_1')) {
+    var v = encodedValueById("item-45-instance-1_4_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_4() {
+
+if (!$('#min-occurs-zero-42-instance-1_4').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_4_1')) {
+      xml += getXml43instance1_4_1();
+      xml += getXml44instance1_4_1();
+      xml += getXml45instance1_4_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_5_1_1')) {
+    var v = encodedValueById("item-43-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_5_1_1')) {
+    var v = encodedValueById("item-44-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_5_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_5_1_1')) {
+    var v = encodedValueById("item-45-instance-1_5_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_5() {
+
+if (!$('#min-occurs-zero-42-instance-1_5').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_5_1')) {
+      xml += getXml43instance1_5_1();
+      xml += getXml44instance1_5_1();
+      xml += getXml45instance1_5_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_6_1_1')) {
+    var v = encodedValueById("item-43-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_6_1_1')) {
+    var v = encodedValueById("item-44-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_6_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_6_1_1')) {
+    var v = encodedValueById("item-45-instance-1_6_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_6() {
+
+if (!$('#min-occurs-zero-42-instance-1_6').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_6_1')) {
+      xml += getXml43instance1_6_1();
+      xml += getXml44instance1_6_1();
+      xml += getXml45instance1_6_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_7_1_1')) {
+    var v = encodedValueById("item-43-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_7_1_1')) {
+    var v = encodedValueById("item-44-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_7_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_7_1_1')) {
+    var v = encodedValueById("item-45-instance-1_7_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_7() {
+
+if (!$('#min-occurs-zero-42-instance-1_7').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_7_1')) {
+      xml += getXml43instance1_7_1();
+      xml += getXml44instance1_7_1();
+      xml += getXml45instance1_7_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_8_1_1')) {
+    var v = encodedValueById("item-43-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_8_1_1')) {
+    var v = encodedValueById("item-44-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_8_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_8_1_1')) {
+    var v = encodedValueById("item-45-instance-1_8_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_8() {
+
+if (!$('#min-occurs-zero-42-instance-1_8').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_8_1')) {
+      xml += getXml43instance1_8_1();
+      xml += getXml44instance1_8_1();
+      xml += getXml45instance1_8_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_9_1_1')) {
+    var v = encodedValueById("item-43-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_9_1_1')) {
+    var v = encodedValueById("item-44-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_9_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_9_1_1')) {
+    var v = encodedValueById("item-45-instance-1_9_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_9() {
+
+if (!$('#min-occurs-zero-42-instance-1_9').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_9_1')) {
+      xml += getXml43instance1_9_1();
+      xml += getXml44instance1_9_1();
+      xml += getXml45instance1_9_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml43instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-43-instance-1_10_1_1')) {
+    var v = encodedValueById("item-43-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifier>' + v + '</identifier>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierSource>
+  function getXml44instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-44-instance-1_10_1_1')) {
+    var v = encodedValueById("item-44-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierSource>' + v + '</identifierSource>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifierDescription>
+  function getXml45instance1_10_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-45-instance-1_10_1_1')) {
+    var v = encodedValueById("item-45-instance-1_10_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(6) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <identifier>
+  function getXml42instance1_10() {
+
+if (!$('#min-occurs-zero-42-instance-1_10').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<identifier>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-42-instance-1_10_1')) {
+      xml += getXml43instance1_10_1();
+      xml += getXml44instance1_10_1();
+      xml += getXml45instance1_10_1();
+    }
+    xml += '\n' + spaces(4) + '</identifier>';
+    return xml;
   }
 
   //extract xml from element <pathogenCoverage>
-  function getXml28instance1() {
+  function getXml41instance1() {
 
-  var xml='';
-  if (idVisible('repeating-enclosing-28-instance-1_1')) {
-    var v = encodedValueById("item-28-instance-1_1");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_2')) {
-    var v = encodedValueById("item-28-instance-1_2");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_3')) {
-    var v = encodedValueById("item-28-instance-1_3");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_4')) {
-    var v = encodedValueById("item-28-instance-1_4");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_5')) {
-    var v = encodedValueById("item-28-instance-1_5");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_6')) {
-    var v = encodedValueById("item-28-instance-1_6");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_7')) {
-    var v = encodedValueById("item-28-instance-1_7");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_8')) {
-    var v = encodedValueById("item-28-instance-1_8");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_9')) {
-    var v = encodedValueById("item-28-instance-1_9");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-  if (idVisible('repeating-enclosing-28-instance-1_10')) {
-    var v = encodedValueById("item-28-instance-1_10");
-    xml += '\n' + spaces(2) + '<pathogenCoverage>' + v + '</pathogenCoverage>';
-  }
-   return xml;
+    var xml = '\n' + spaces(2) + '<pathogenCoverage>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-41-instance-1_1')) {
+      xml += getXml42instance1_1();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_2')) {
+      xml += getXml42instance1_2();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_3')) {
+      xml += getXml42instance1_3();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_4')) {
+      xml += getXml42instance1_4();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_5')) {
+      xml += getXml42instance1_5();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_6')) {
+      xml += getXml42instance1_6();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_7')) {
+      xml += getXml42instance1_7();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_8')) {
+      xml += getXml42instance1_8();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_9')) {
+      xml += getXml42instance1_9();
+    }
+    if (idVisible('repeating-enclosing-41-instance-1_10')) {
+      xml += getXml42instance1_10();
+    }
+    xml += '\n' + spaces(2) + '</pathogenCoverage>';
+    return xml;
   }
 
   //extract xml from element <DiseaseTransmissionModel>
@@ -5369,7 +11543,6 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       xml += getXml3instance1();
       xml += getXml4instance1();
       xml += getXml5instance1();
-      xml += getXml8instance1();
       xml += getXml9instance1();
       xml += getXml10instance1();
       xml += getXml11instance1();
@@ -5388,8 +11561,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       xml += getXml24instance1();
       xml += getXml25instance1();
       xml += getXml26instance1();
-      xml += getXml27instance1();
-      xml += getXml28instance1();
+      xml += getXml31instance1();
+      xml += getXml36instance1();
+      xml += getXml41instance1();
     }
     xml += '\n' + spaces(0) + '</DiseaseTransmissionModel>';
     return xml;
@@ -5399,16 +11573,52 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             $("#form").submit(function () { return false; }); // so it won't submit
 
             
-            var keyPressed = false;
-            document.onkeypress = function (e) {
-                keyPressed = true;
-            };
-
             window.onbeforeunload = function() {
-                if(keyPressed) {
+                var empty_inputs=0;
+                $('.form :text').each(function(){
+                    if( $.trim($(this).val()) != "" ) {
+                        empty_inputs++;
+                    }
+                });
+
+                if (empty_inputs>0) {
                     return "Are you sure you want to leave this page?";
+                } else {
+                    window.onbeforeunload = null;
                 }
             };
+
+            
+            $.urlParam = function(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return results[1] || 0;
+            };
+            try {
+                var entryId = $.urlParam("entryId");
+                var requestUrl = "${pageContext.request.contextPath}" + "/item/" + entryId;
+                $.getJSON(requestUrl, function(data) {
+                   var entryData = data['entry'];
+                   $("input").each(function( index ) {
+                       var path = $(this).attr("path");
+                       if(path != null) {
+                           try {
+                               var value = eval("entryData" + path);
+                               if(value != null) {
+                                   $(this).val(value);
+
+                                   if($(this).is(":hidden")) {
+                                       $(this).parents().show();
+                                   }
+                               }
+                           } catch(err) {
+                               // pass
+                           }
+                       }
+                   });
+                });
+            } catch(err) {
+                // pass
+            }
 
             $(document).ready(function () {
                 var xsdFormsPath = location.origin + "${pageContext.request.contextPath}" + "/resources/xsd-forms/";
@@ -5424,6 +11634,15 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                 document.getElementById("submit").classList.add("btn-default");
                 document.getElementById("submit").onclick = function () {
                     var xmlString;
+                    /*var serialized = $(document.getElementsByTagName("form")[0]).serialize();
+                    console.log(serialized);*/
+                    /*$.each($('input'), function(index, input) {
+                        var value = $(input).val();
+                        if(value !== undefined) {
+                            $(input).attr('value', value)
+                        }
+                    });
+                    console.log(document.getElementsByTagName('html')[0].innerHTML);*/
                     if (document.getElementById("submit-comments").getElementsByTagName("pre")[0]) {
                         xmlString = document.getElementById("submit-comments").getElementsByTagName("pre")[0].textContent;
                         if (XSD_FORM.validate()) {
@@ -5482,7 +11701,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       <div class="sequence-label">Disease Transmission Model</div>
       <div id="sequence-1-instance-1" class="sequence-content">
         <div id="item-enclosing-2-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-2-instance-1" class="btn btn-sm btn-default">Add Product</div>
+          <div id="repeat-button-2-instance-1" class="btn btn-sm btn-default">Add Product Name</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-2-instance-1_1" class="repeating-enclosing invisible">
@@ -5490,9 +11709,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-2-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">2</div>
-            <label class="item-label" for="item-input-2-instance-1_1">Product</label>
+            <label class="item-label" for="item-input-2-instance-1_1">Product Name</label>
             <div class="item-input">
-              <input number="2" name="item-input-2-instance-1_1" id="item-2-instance-1_1" class=" item-input-text" type="text">
+              <input number="2" name="item-input-2-instance-1_1" path="['product']" id="item-2-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-2-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5506,7 +11725,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             <div class="item-number">3</div>
             <label class="item-label" for="item-input-3-instance-1_1">Title</label>
             <div class="item-input">
-              <input number="3" name="item-input-3-instance-1_1" id="item-3-instance-1_1" class=" item-input-text" type="text">
+              <input number="3" name="item-input-3-instance-1_1" path="['title']" id="item-3-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-3-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5520,7 +11739,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             <div class="item-number">4</div>
             <label class="item-label" for="item-input-4-instance-1_1">Human Readable Synopsis</label>
             <div class="item-input">
-              <input number="4" name="item-input-4-instance-1_1" id="item-4-instance-1_1" class=" item-input-text" type="text">
+              <input number="4" name="item-input-4-instance-1_1" path="['humanReadableSynopsis']" id="item-4-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-4-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5555,7 +11774,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div class="item-number">6</div>
                   <label class="item-label" for="item-input-6-instance-1_1_1">Identifier</label>
                   <div class="item-input">
-                    <input number="6" name="item-input-6-instance-1_1_1" id="item-6-instance-1_1_1" class=" item-input-text" type="text">
+                    <input number="6" name="item-input-6-instance-1_1_1" path="['identifier']['identifier']" id="item-6-instance-1_1_1" class=" item-input-text" type="text">
                     </input>
                     <div id="item-path-6-instance-1_1_1" class="item-path" enabled="true"></div>
                   </div>
@@ -5575,7 +11794,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div class="item-number">7</div>
                   <label class="item-label" for="item-input-7-instance-1_1_1">Identifier Source</label>
                   <div class="item-input">
-                    <input number="7" name="item-input-7-instance-1_1_1" id="item-7-instance-1_1_1" class=" item-input-text" type="text">
+                    <input number="7" name="item-input-7-instance-1_1_1" path="['identifier']['identifierSource']" id="item-7-instance-1_1_1" class=" item-input-text" type="text">
                     </input>
                     <div id="item-path-7-instance-1_1_1" class="item-path" enabled="true"></div>
                   </div>
@@ -5584,166 +11803,31 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div id="item-error-7-instance-1_1_1" class="item-error">Invalid</div>
                 </div>
               </div>
+              <div id="item-enclosing-8-instance-1_1_1" class="item-enclosing">
+                <div id="repeat-button-8-instance-1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-8-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-8-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                  </div>
+                  <div class="item-number">8</div>
+                  <label class="item-label" for="item-input-8-instance-1_1_1">Identifier Description</label>
+                  <div class="item-input">
+                    <input number="8" name="item-input-8-instance-1_1_1" path="['identifier']['identifierDescription']" id="item-8-instance-1_1_1" class=" item-input-text" type="text">
+                    </input>
+                    <div id="item-path-8-instance-1_1_1" class="item-path" enabled="true"></div>
+                  </div>
+                  <div class="clr">
+                  </div>
+                  <div id="item-error-8-instance-1_1_1" class="item-error">Invalid</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="item-enclosing-8-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-8-instance-1" class="btn btn-sm btn-default">Add Data Input Formats</div>
-          <div class="clr">
-          </div>
-          <div id="repeating-enclosing-8-instance-1_1" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_1" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_1">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_1" id="item-8-instance-1_1" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_1" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_1" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_2">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_2" id="item-8-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_3">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_3" id="item-8-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_4">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_4" id="item-8-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_5">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_5" id="item-8-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_6">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_6" id="item-8-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_7">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_7" id="item-8-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_8">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_8" id="item-8-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_9">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_9" id="item-8-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_10">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_10" id="item-8-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_10" class="item-error">Invalid</div>
           </div>
         </div>
         <div id="item-enclosing-9-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-9-instance-1" class="btn btn-sm btn-default">Add Data Output Formats</div>
+          <div id="repeat-button-9-instance-1" class="btn btn-sm btn-default">Add Data Input Format</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-9-instance-1_1" class="repeating-enclosing invisible">
@@ -5751,9 +11835,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_1">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_1">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_1" id="item-9-instance-1_1" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_1" path="['dataInputFormats'][0]" id="item-9-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5766,9 +11850,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_2">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_2">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_2" id="item-9-instance-1_2" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_2" path="['dataInputFormats'][1]" id="item-9-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -5781,9 +11865,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_3">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_3">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_3" id="item-9-instance-1_3" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_3" path="['dataInputFormats'][2]" id="item-9-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -5796,9 +11880,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_4">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_4">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_4" id="item-9-instance-1_4" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_4" path="['dataInputFormats'][3]" id="item-9-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -5811,9 +11895,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_5">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_5">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_5" id="item-9-instance-1_5" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_5" path="['dataInputFormats'][4]" id="item-9-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -5826,9 +11910,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_6">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_6">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_6" id="item-9-instance-1_6" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_6" path="['dataInputFormats'][5]" id="item-9-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -5841,9 +11925,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_7">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_7">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_7" id="item-9-instance-1_7" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_7" path="['dataInputFormats'][6]" id="item-9-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -5856,9 +11940,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_8">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_8">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_8" id="item-9-instance-1_8" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_8" path="['dataInputFormats'][7]" id="item-9-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -5871,9 +11955,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_9">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_9">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_9" id="item-9-instance-1_9" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_9" path="['dataInputFormats'][8]" id="item-9-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -5886,9 +11970,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_10">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_10">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_10" id="item-9-instance-1_10" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_10" path="['dataInputFormats'][9]" id="item-9-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -5898,7 +11982,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-10-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-10-instance-1" class="btn btn-sm btn-default">Add Source Code Release</div>
+          <div id="repeat-button-10-instance-1" class="btn btn-sm btn-default">Add Data Output Format</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-10-instance-1_1" class="repeating-enclosing invisible">
@@ -5906,9 +11990,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-10-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">10</div>
-            <label class="item-label" for="item-input-10-instance-1_1">Source Code Release</label>
+            <label class="item-label" for="item-input-10-instance-1_1">Data Output Format</label>
             <div class="item-input">
-              <input number="10" name="item-input-10-instance-1_1" id="item-10-instance-1_1" class=" item-input-text" type="text">
+              <input number="10" name="item-input-10-instance-1_1" path="['dataOutputFormats'][0]" id="item-10-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-10-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5916,9 +12000,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-10-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_2">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_2" path="['dataOutputFormats'][1]" id="item-10-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_3">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_3" path="['dataOutputFormats'][2]" id="item-10-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_4">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_4" path="['dataOutputFormats'][3]" id="item-10-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_5">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_5" path="['dataOutputFormats'][4]" id="item-10-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_6">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_6" path="['dataOutputFormats'][5]" id="item-10-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_7">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_7" path="['dataOutputFormats'][6]" id="item-10-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_8">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_8" path="['dataOutputFormats'][7]" id="item-10-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_9">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_9" path="['dataOutputFormats'][8]" id="item-10-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_10">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_10" path="['dataOutputFormats'][9]" id="item-10-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-11-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-11-instance-1" class="btn btn-sm btn-default">Add Web Application</div>
+          <div id="repeat-button-11-instance-1" class="btn btn-sm btn-default">Add Source Code Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-11-instance-1_1" class="repeating-enclosing invisible">
@@ -5926,9 +12145,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-11-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_1">Web Application</label>
+            <label class="item-label" for="item-input-11-instance-1_1">Source Code Release</label>
             <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_1" id="item-11-instance-1_1" class=" item-input-text" type="text">
+              <input number="11" name="item-input-11-instance-1_1" path="['sourceCodeRelease']" id="item-11-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-11-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5936,144 +12155,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-11-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-11-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_2">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_2" id="item-11-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_3">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_3" id="item-11-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_4">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_4" id="item-11-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_5">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_5" id="item-11-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_6">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_6" id="item-11-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_7">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_7" id="item-11-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_8">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_8" id="item-11-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_9">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_9" id="item-11-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_10">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_10" id="item-11-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-12-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-12-instance-1" class="btn btn-sm btn-default">Add License</div>
+          <div id="repeat-button-12-instance-1" class="btn btn-sm btn-default">Add Web Application</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-12-instance-1_1" class="repeating-enclosing invisible">
@@ -6081,9 +12165,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-12-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">12</div>
-            <label class="item-label" for="item-input-12-instance-1_1">License</label>
+            <label class="item-label" for="item-input-12-instance-1_1">Web Application</label>
             <div class="item-input">
-              <input number="12" name="item-input-12-instance-1_1" id="item-12-instance-1_1" class=" item-input-text" type="text">
+              <input number="12" name="item-input-12-instance-1_1" path="['webApplication'][0]" id="item-12-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-12-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6091,9 +12175,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-12-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-12-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_2">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_2" path="['webApplication'][1]" id="item-12-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_3">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_3" path="['webApplication'][2]" id="item-12-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_4">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_4" path="['webApplication'][3]" id="item-12-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_5">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_5" path="['webApplication'][4]" id="item-12-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_6">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_6" path="['webApplication'][5]" id="item-12-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_7">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_7" path="['webApplication'][6]" id="item-12-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_8">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_8" path="['webApplication'][7]" id="item-12-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_9">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_9" path="['webApplication'][8]" id="item-12-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_10">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_10" path="['webApplication'][9]" id="item-12-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-13-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-13-instance-1" class="btn btn-sm btn-default">Add Source</div>
+          <div id="repeat-button-13-instance-1" class="btn btn-sm btn-default">Add License</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-13-instance-1_1" class="repeating-enclosing invisible">
@@ -6101,9 +12320,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-13-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">13</div>
-            <label class="item-label" for="item-input-13-instance-1_1">Source</label>
+            <label class="item-label" for="item-input-13-instance-1_1">License</label>
             <div class="item-input">
-              <input number="13" name="item-input-13-instance-1_1" id="item-13-instance-1_1" class=" item-input-text" type="text">
+              <input number="13" name="item-input-13-instance-1_1" path="['license']" id="item-13-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-13-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6113,7 +12332,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-14-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-14-instance-1" class="btn btn-sm btn-default">Add Developers</div>
+          <div id="repeat-button-14-instance-1" class="btn btn-sm btn-default">Add Source</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-14-instance-1_1" class="repeating-enclosing invisible">
@@ -6121,9 +12340,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-14-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_1">Developers</label>
+            <label class="item-label" for="item-input-14-instance-1_1">Source</label>
             <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_1" id="item-14-instance-1_1" class=" item-input-text" type="text">
+              <input number="14" name="item-input-14-instance-1_1" path="['source']" id="item-14-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-14-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6131,144 +12350,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-14-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-14-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_2">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_2" id="item-14-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_3">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_3" id="item-14-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_4">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_4" id="item-14-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_5">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_5" id="item-14-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_6">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_6" id="item-14-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_7">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_7" id="item-14-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_8">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_8" id="item-14-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_9">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_9" id="item-14-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_10">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_10" id="item-14-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-15-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-15-instance-1" class="btn btn-sm btn-default">Add Website</div>
+          <div id="repeat-button-15-instance-1" class="btn btn-sm btn-default">Add Developer</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-15-instance-1_1" class="repeating-enclosing invisible">
@@ -6276,9 +12360,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-15-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">15</div>
-            <label class="item-label" for="item-input-15-instance-1_1">Website</label>
+            <label class="item-label" for="item-input-15-instance-1_1">Developer</label>
             <div class="item-input">
-              <input number="15" name="item-input-15-instance-1_1" id="item-15-instance-1_1" class=" item-input-text" type="text">
+              <input number="15" name="item-input-15-instance-1_1" path="['developers'][0]" id="item-15-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-15-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6286,9 +12370,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-15-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-15-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_2">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_2" path="['developers'][1]" id="item-15-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_3">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_3" path="['developers'][2]" id="item-15-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_4">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_4" path="['developers'][3]" id="item-15-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_5">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_5" path="['developers'][4]" id="item-15-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_6">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_6" path="['developers'][5]" id="item-15-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_7">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_7" path="['developers'][6]" id="item-15-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_8">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_8" path="['developers'][7]" id="item-15-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_9">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_9" path="['developers'][8]" id="item-15-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_10">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_10" path="['developers'][9]" id="item-15-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-16-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-16-instance-1" class="btn btn-sm btn-default">Add Documentation</div>
+          <div id="repeat-button-16-instance-1" class="btn btn-sm btn-default">Add Website</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-16-instance-1_1" class="repeating-enclosing invisible">
@@ -6296,9 +12515,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-16-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">16</div>
-            <label class="item-label" for="item-input-16-instance-1_1">Documentation</label>
+            <label class="item-label" for="item-input-16-instance-1_1">Website</label>
             <div class="item-input">
-              <input number="16" name="item-input-16-instance-1_1" id="item-16-instance-1_1" class=" item-input-text" type="text">
+              <input number="16" name="item-input-16-instance-1_1" path="['website']" id="item-16-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-16-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6308,7 +12527,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-17-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-17-instance-1" class="btn btn-sm btn-default">Add Publications That Used Release</div>
+          <div id="repeat-button-17-instance-1" class="btn btn-sm btn-default">Add Documentation</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-17-instance-1_1" class="repeating-enclosing invisible">
@@ -6316,9 +12535,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-17-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_1">Publications That Used Release</label>
+            <label class="item-label" for="item-input-17-instance-1_1">Documentation</label>
             <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_1" id="item-17-instance-1_1" class=" item-input-text" type="text">
+              <input number="17" name="item-input-17-instance-1_1" path="['documentation']" id="item-17-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-17-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6326,144 +12545,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_2">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_2" id="item-17-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_3">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_3" id="item-17-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_4">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_4" id="item-17-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_5">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_5" id="item-17-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_6">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_6" id="item-17-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_7">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_7" id="item-17-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_8">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_8" id="item-17-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_9">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_9" id="item-17-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_10">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_10" id="item-17-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-18-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-18-instance-1" class="btn btn-sm btn-default">Add Executables</div>
+          <div id="repeat-button-18-instance-1" class="btn btn-sm btn-default">Add Publication That Used Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-18-instance-1_1" class="repeating-enclosing invisible">
@@ -6471,9 +12555,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_1">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_1">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_1" id="item-18-instance-1_1" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_1" path="['publicationsThatUsedRelease'][0]" id="item-18-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6486,9 +12570,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_2">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_2">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_2" id="item-18-instance-1_2" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_2" path="['publicationsThatUsedRelease'][1]" id="item-18-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -6501,9 +12585,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_3">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_3">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_3" id="item-18-instance-1_3" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_3" path="['publicationsThatUsedRelease'][2]" id="item-18-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -6516,9 +12600,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_4">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_4">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_4" id="item-18-instance-1_4" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_4" path="['publicationsThatUsedRelease'][3]" id="item-18-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -6531,9 +12615,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_5">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_5">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_5" id="item-18-instance-1_5" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_5" path="['publicationsThatUsedRelease'][4]" id="item-18-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -6546,9 +12630,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_6">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_6">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_6" id="item-18-instance-1_6" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_6" path="['publicationsThatUsedRelease'][5]" id="item-18-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -6561,9 +12645,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_7">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_7">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_7" id="item-18-instance-1_7" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_7" path="['publicationsThatUsedRelease'][6]" id="item-18-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -6576,9 +12660,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_8">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_8">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_8" id="item-18-instance-1_8" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_8" path="['publicationsThatUsedRelease'][7]" id="item-18-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -6591,9 +12675,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_9">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_9">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_9" id="item-18-instance-1_9" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_9" path="['publicationsThatUsedRelease'][8]" id="item-18-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -6606,9 +12690,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_10">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_10">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_10" id="item-18-instance-1_10" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_10" path="['publicationsThatUsedRelease'][9]" id="item-18-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -6618,7 +12702,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-19-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-19-instance-1" class="btn btn-sm btn-default">Add Version</div>
+          <div id="repeat-button-19-instance-1" class="btn btn-sm btn-default">Add Executable</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-19-instance-1_1" class="repeating-enclosing invisible">
@@ -6626,9 +12710,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_1">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_1">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_1" id="item-19-instance-1_1" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_1" path="['executables'][0]" id="item-19-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6641,9 +12725,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_2">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_2">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_2" id="item-19-instance-1_2" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_2" path="['executables'][1]" id="item-19-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -6656,9 +12740,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_3">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_3">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_3" id="item-19-instance-1_3" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_3" path="['executables'][2]" id="item-19-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -6671,9 +12755,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_4">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_4">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_4" id="item-19-instance-1_4" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_4" path="['executables'][3]" id="item-19-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -6686,9 +12770,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_5">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_5">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_5" id="item-19-instance-1_5" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_5" path="['executables'][4]" id="item-19-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -6701,9 +12785,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_6">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_6">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_6" id="item-19-instance-1_6" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_6" path="['executables'][5]" id="item-19-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -6716,9 +12800,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_7">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_7">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_7" id="item-19-instance-1_7" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_7" path="['executables'][6]" id="item-19-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -6731,9 +12815,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_8">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_8">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_8" id="item-19-instance-1_8" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_8" path="['executables'][7]" id="item-19-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -6746,9 +12830,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_9">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_9">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_9" id="item-19-instance-1_9" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_9" path="['executables'][8]" id="item-19-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -6761,9 +12845,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_10">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_10">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_10" id="item-19-instance-1_10" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_10" path="['executables'][9]" id="item-19-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -6773,7 +12857,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-20-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-20-instance-1" class="btn btn-sm btn-default">Add Publications About Release</div>
+          <div id="repeat-button-20-instance-1" class="btn btn-sm btn-default">Add Version</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-20-instance-1_1" class="repeating-enclosing invisible">
@@ -6781,9 +12865,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_1">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_1">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_1" id="item-20-instance-1_1" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_1" path="['version'][0]" id="item-20-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6796,9 +12880,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_2">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_2">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_2" id="item-20-instance-1_2" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_2" path="['version'][1]" id="item-20-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -6811,9 +12895,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_3">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_3">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_3" id="item-20-instance-1_3" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_3" path="['version'][2]" id="item-20-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -6826,9 +12910,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_4">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_4">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_4" id="item-20-instance-1_4" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_4" path="['version'][3]" id="item-20-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -6841,9 +12925,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_5">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_5">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_5" id="item-20-instance-1_5" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_5" path="['version'][4]" id="item-20-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -6856,9 +12940,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_6">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_6">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_6" id="item-20-instance-1_6" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_6" path="['version'][5]" id="item-20-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -6871,9 +12955,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_7">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_7">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_7" id="item-20-instance-1_7" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_7" path="['version'][6]" id="item-20-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -6886,9 +12970,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_8">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_8">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_8" id="item-20-instance-1_8" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_8" path="['version'][7]" id="item-20-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -6901,9 +12985,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_9">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_9">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_9" id="item-20-instance-1_9" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_9" path="['version'][8]" id="item-20-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -6916,9 +13000,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_10">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_10">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_10" id="item-20-instance-1_10" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_10" path="['version'][9]" id="item-20-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -6928,7 +13012,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-21-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-21-instance-1" class="btn btn-sm btn-default">Add Grants</div>
+          <div id="repeat-button-21-instance-1" class="btn btn-sm btn-default">Add Publication About Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-21-instance-1_1" class="repeating-enclosing invisible">
@@ -6936,9 +13020,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_1">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_1">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_1" id="item-21-instance-1_1" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_1" path="['publicationsAboutRelease'][0]" id="item-21-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -6951,9 +13035,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_2">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_2">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_2" id="item-21-instance-1_2" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_2" path="['publicationsAboutRelease'][1]" id="item-21-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -6966,9 +13050,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_3">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_3">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_3" id="item-21-instance-1_3" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_3" path="['publicationsAboutRelease'][2]" id="item-21-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -6981,9 +13065,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_4">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_4">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_4" id="item-21-instance-1_4" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_4" path="['publicationsAboutRelease'][3]" id="item-21-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -6996,9 +13080,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_5">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_5">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_5" id="item-21-instance-1_5" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_5" path="['publicationsAboutRelease'][4]" id="item-21-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -7011,9 +13095,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_6">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_6">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_6" id="item-21-instance-1_6" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_6" path="['publicationsAboutRelease'][5]" id="item-21-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -7026,9 +13110,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_7">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_7">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_7" id="item-21-instance-1_7" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_7" path="['publicationsAboutRelease'][6]" id="item-21-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -7041,9 +13125,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_8">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_8">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_8" id="item-21-instance-1_8" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_8" path="['publicationsAboutRelease'][7]" id="item-21-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -7056,9 +13140,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_9">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_9">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_9" id="item-21-instance-1_9" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_9" path="['publicationsAboutRelease'][8]" id="item-21-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -7071,9 +13155,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_10">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_10">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_10" id="item-21-instance-1_10" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_10" path="['publicationsAboutRelease'][9]" id="item-21-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -7083,11 +13167,17 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-22-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-22-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-22-instance-1" class="btn btn-sm btn-default">Add Grant</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-22-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_1" class="btn btn-xs btn-default">-</div>
+            </div>
             <div class="item-number">22</div>
-            <label class="item-label" for="item-input-22-instance-1_1">Available On Olympus</label>
+            <label class="item-label" for="item-input-22-instance-1_1">Grant</label>
             <div class="item-input">
-              <input number="22" name="item-input-22-instance-1_1" id="item-22-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="22" name="item-input-22-instance-1_1" path="['grants'][0]" id="item-22-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-22-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -7095,13 +13185,148 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-22-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-22-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_2">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_2" path="['grants'][1]" id="item-22-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_3">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_3" path="['grants'][2]" id="item-22-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_4">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_4" path="['grants'][3]" id="item-22-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_5">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_5" path="['grants'][4]" id="item-22-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_6">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_6" path="['grants'][5]" id="item-22-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_7">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_7" path="['grants'][6]" id="item-22-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_8">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_8" path="['grants'][7]" id="item-22-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_9">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_9" path="['grants'][8]" id="item-22-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_10">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_10" path="['grants'][9]" id="item-22-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-23-instance-1_1" class="item-enclosing">
           <div id="repeating-enclosing-23-instance-1_1" class="repeating-enclosing">
             <div class="item-number">23</div>
-            <label class="item-label" for="item-input-23-instance-1_1">Available On UIDS</label>
+            <label class="item-label" for="item-input-23-instance-1_1">Available On Olympus</label>
             <div class="item-input">
-              <input number="23" name="item-input-23-instance-1_1" id="item-23-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="23" name="item-input-23-instance-1_1" path="['availableOnOlympus']" id="item-23-instance-1_1" class=" item-input-text" type="checkbox">
               </input>
               <div id="item-path-23-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -7113,9 +13338,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
         <div id="item-enclosing-24-instance-1_1" class="item-enclosing">
           <div id="repeating-enclosing-24-instance-1_1" class="repeating-enclosing">
             <div class="item-number">24</div>
-            <label class="item-label" for="item-input-24-instance-1_1">Sign In Required</label>
+            <label class="item-label" for="item-input-24-instance-1_1">Available On UIDS</label>
             <div class="item-input">
-              <input number="24" name="item-input-24-instance-1_1" id="item-24-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="24" name="item-input-24-instance-1_1" path="['availableOnUIDS']" id="item-24-instance-1_1" class=" item-input-text" type="checkbox">
               </input>
               <div id="item-path-24-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -7125,17 +13350,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-25-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-25-instance-1" class="btn btn-sm btn-default">Add Control Measures</div>
-          <div class="clr">
-          </div>
-          <div id="repeating-enclosing-25-instance-1_1" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_1" class="btn btn-xs btn-default">-</div>
-            </div>
+          <div id="repeating-enclosing-25-instance-1_1" class="repeating-enclosing">
             <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_1">Control Measures</label>
+            <label class="item-label" for="item-input-25-instance-1_1">Sign In Required</label>
             <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_1" id="item-25-instance-1_1" class=" item-input-text" type="text">
+              <input number="25" name="item-input-25-instance-1_1" path="['signInRequired']" id="item-25-instance-1_1" class=" item-input-text" type="checkbox">
               </input>
               <div id="item-path-25-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -7143,596 +13362,3461 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-25-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-25-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_2">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_2" id="item-25-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_3">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_3" id="item-25-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_4">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_4" id="item-25-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_5">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_5" id="item-25-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_6">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_6" id="item-25-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_7">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_7" id="item-25-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_8">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_8" id="item-25-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_9">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_9" id="item-25-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-25-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-25-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">25</div>
-            <label class="item-label" for="item-input-25-instance-1_10">Control Measures</label>
-            <div class="item-input">
-              <input number="25" name="item-input-25-instance-1_10" id="item-25-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-25-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-25-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
-        <div id="item-enclosing-26-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-26-instance-1" class="btn btn-sm btn-default">Add Host Species Included</div>
+        <div id="item-enclosing-26-instance-1_1" class="sequence">
+          <div class="min-occurs-zero-container invisible">
+            <div class="min-occurs-zero-label">Click to enable</div>
+            <input number="26" name="min-occurs-zero-name26-instance-1" checked="true" id="min-occurs-zero-26-instance-1" class="min-occurs-zero" type="checkbox">
+            </input>
+          </div>
+          <div id="repeat-button-26-instance-1" class="btn btn-sm btn-default">Add Control Measure</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-26-instance-1_1" class="repeating-enclosing">
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_1">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_1" id="item-26-instance-1_1" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_1" class="item-path" enabled="true"></div>
+          <div id="repeating-enclosing-26-instance-1_1" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-1" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_1" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_1_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_1" checked="true" id="min-occurs-zero-27-instance-1_1" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_1_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_1_1_1" path="['controlMeasures'][0]['identifier']['identifier']" id="item-28-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_1_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_1_1_1" path="['controlMeasures'][0]['identifier']['identifierSource']" id="item-29-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_1_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_1_1_1" path="['controlMeasures'][0]['identifier']['identifierDescription']" id="item-30-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_2" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_2" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_2" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-2" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_2" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_2_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_2" checked="true" id="min-occurs-zero-27-instance-1_2" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_2" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_2_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_2_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_2_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_2_1_1" path="['controlMeasures'][1]['identifier']['identifier']" id="item-28-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_2_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_2_1_1" path="['controlMeasures'][1]['identifier']['identifierSource']" id="item-29-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_2_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_2_1_1" path="['controlMeasures'][1]['identifier']['identifierDescription']" id="item-30-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_2">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_2" id="item-26-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_3" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_3" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_3" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-3" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_3" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_3_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_3" checked="true" id="min-occurs-zero-27-instance-1_3" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_3" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_3_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_3_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_3_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_3_1_1" path="['controlMeasures'][2]['identifier']['identifier']" id="item-28-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_3_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_3_1_1" path="['controlMeasures'][2]['identifier']['identifierSource']" id="item-29-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_3_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_3_1_1" path="['controlMeasures'][2]['identifier']['identifierDescription']" id="item-30-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_3">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_3" id="item-26-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_4" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_4" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_4" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-4" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_4" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_4_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_4" checked="true" id="min-occurs-zero-27-instance-1_4" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_4" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_4_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_4_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_4_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_4_1_1" path="['controlMeasures'][3]['identifier']['identifier']" id="item-28-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_4_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_4_1_1" path="['controlMeasures'][3]['identifier']['identifierSource']" id="item-29-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_4_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_4_1_1" path="['controlMeasures'][3]['identifier']['identifierDescription']" id="item-30-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_4">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_4" id="item-26-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_5" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_5" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_5" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-5" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_5" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_5_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_5" checked="true" id="min-occurs-zero-27-instance-1_5" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_5" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_5_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_5_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_5_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_5_1_1" path="['controlMeasures'][4]['identifier']['identifier']" id="item-28-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_5_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_5_1_1" path="['controlMeasures'][4]['identifier']['identifierSource']" id="item-29-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_5_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_5_1_1" path="['controlMeasures'][4]['identifier']['identifierDescription']" id="item-30-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_5">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_5" id="item-26-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_5" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_6" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_6" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_6" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-6" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_6" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_6_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_6" checked="true" id="min-occurs-zero-27-instance-1_6" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_6" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_6_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_6_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_6_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_6_1_1" path="['controlMeasures'][5]['identifier']['identifier']" id="item-28-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_6_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_6_1_1" path="['controlMeasures'][5]['identifier']['identifierSource']" id="item-29-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_6_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_6_1_1" path="['controlMeasures'][5]['identifier']['identifierDescription']" id="item-30-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_6">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_6" id="item-26-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_6" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_7" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_7" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_7" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-7" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_7" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_7_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_7" checked="true" id="min-occurs-zero-27-instance-1_7" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_7" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_7_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_7_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_7_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_7_1_1" path="['controlMeasures'][6]['identifier']['identifier']" id="item-28-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_7_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_7_1_1" path="['controlMeasures'][6]['identifier']['identifierSource']" id="item-29-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_7_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_7_1_1" path="['controlMeasures'][6]['identifier']['identifierDescription']" id="item-30-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_7">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_7" id="item-26-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_7" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_8" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_8" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_8" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-8" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_8" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_8_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_8" checked="true" id="min-occurs-zero-27-instance-1_8" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_8" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_8_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_8_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_8_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_8_1_1" path="['controlMeasures'][7]['identifier']['identifier']" id="item-28-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_8_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_8_1_1" path="['controlMeasures'][7]['identifier']['identifierSource']" id="item-29-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_8_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_8_1_1" path="['controlMeasures'][7]['identifier']['identifierDescription']" id="item-30-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_8">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_8" id="item-26-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_8" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_9" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_9" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_9" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-9" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_9" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_9_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_9" checked="true" id="min-occurs-zero-27-instance-1_9" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_9" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_9_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_9_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_9_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_9_1_1" path="['controlMeasures'][8]['identifier']['identifier']" id="item-28-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_9_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_9_1_1" path="['controlMeasures'][8]['identifier']['identifierSource']" id="item-29-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_9_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_9_1_1" path="['controlMeasures'][8]['identifier']['identifierDescription']" id="item-30-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_9">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_9" id="item-26-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_9" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-26-instance-1_10" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-26-instance-1_10" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-26-instance-1_10" class="repeating-enclosing invisible">
+            <div class="sequence-label">Control Measure</div>
+            <div id="sequence-26-instance-10" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-26-instance-1_10" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-27-instance-1_10_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="27" name="min-occurs-zero-name27-instance-1_10" checked="true" id="min-occurs-zero-27-instance-1_10" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-27-instance-1_10" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-27-instance-1_10_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-27-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-27-instance-1_10_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-28-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-28-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-28-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-28-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">28</div>
+                        <label class="item-label" for="item-input-28-instance-1_10_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="28" name="item-input-28-instance-1_10_1_1" path="['controlMeasures'][9]['identifier']['identifier']" id="item-28-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-28-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-28-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-29-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-29-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-29-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-29-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">29</div>
+                        <label class="item-label" for="item-input-29-instance-1_10_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="29" name="item-input-29-instance-1_10_1_1" path="['controlMeasures'][9]['identifier']['identifierSource']" id="item-29-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-29-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-29-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-30-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-30-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-30-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-30-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">30</div>
+                        <label class="item-label" for="item-input-30-instance-1_10_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="30" name="item-input-30-instance-1_10_1_1" path="['controlMeasures'][9]['identifier']['identifierDescription']" id="item-30-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-30-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-30-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">26</div>
-            <label class="item-label" for="item-input-26-instance-1_10">Host Species Included</label>
-            <div class="item-input">
-              <input number="26" name="item-input-26-instance-1_10" id="item-26-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-26-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-26-instance-1_10" class="item-error">Invalid</div>
           </div>
         </div>
-        <div id="item-enclosing-27-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-27-instance-1" class="btn btn-sm btn-default">Add Location Coverage</div>
+        <div id="item-enclosing-31-instance-1_1" class="sequence">
+          <div id="repeat-button-31-instance-1" class="btn btn-sm btn-default">Add Host Species Included</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-27-instance-1_1" class="repeating-enclosing">
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_1">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_1" id="item-27-instance-1_1" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_1" class="item-path" enabled="true"></div>
+          <div id="repeating-enclosing-31-instance-1_1" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-1" class="sequence-content">
+              <div id="item-enclosing-32-instance-1_1_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_1" checked="true" id="min-occurs-zero-32-instance-1_1" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_1_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_1_1_1" path="['hostSpeciesIncluded'][0]['identifier']['identifier']" id="item-33-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_1_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_1_1_1" path="['hostSpeciesIncluded'][0]['identifier']['identifierSource']" id="item-34-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_1_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_1_1_1" path="['hostSpeciesIncluded'][0]['identifier']['identifierDescription']" id="item-35-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_2" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_2" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_2" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-2" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_2" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_2_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_2" checked="true" id="min-occurs-zero-32-instance-1_2" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_2" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_2_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_2_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_2_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_2_1_1" path="['hostSpeciesIncluded'][1]['identifier']['identifier']" id="item-33-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_2_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_2_1_1" path="['hostSpeciesIncluded'][1]['identifier']['identifierSource']" id="item-34-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_2_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_2_1_1" path="['hostSpeciesIncluded'][1]['identifier']['identifierDescription']" id="item-35-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_2">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_2" id="item-27-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_3" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_3" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_3" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-3" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_3" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_3_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_3" checked="true" id="min-occurs-zero-32-instance-1_3" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_3" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_3_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_3_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_3_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_3_1_1" path="['hostSpeciesIncluded'][2]['identifier']['identifier']" id="item-33-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_3_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_3_1_1" path="['hostSpeciesIncluded'][2]['identifier']['identifierSource']" id="item-34-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_3_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_3_1_1" path="['hostSpeciesIncluded'][2]['identifier']['identifierDescription']" id="item-35-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_3">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_3" id="item-27-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_4" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_4" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_4" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-4" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_4" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_4_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_4" checked="true" id="min-occurs-zero-32-instance-1_4" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_4" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_4_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_4_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_4_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_4_1_1" path="['hostSpeciesIncluded'][3]['identifier']['identifier']" id="item-33-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_4_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_4_1_1" path="['hostSpeciesIncluded'][3]['identifier']['identifierSource']" id="item-34-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_4_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_4_1_1" path="['hostSpeciesIncluded'][3]['identifier']['identifierDescription']" id="item-35-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_4">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_4" id="item-27-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_5" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_5" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_5" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-5" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_5" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_5_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_5" checked="true" id="min-occurs-zero-32-instance-1_5" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_5" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_5_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_5_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_5_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_5_1_1" path="['hostSpeciesIncluded'][4]['identifier']['identifier']" id="item-33-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_5_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_5_1_1" path="['hostSpeciesIncluded'][4]['identifier']['identifierSource']" id="item-34-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_5_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_5_1_1" path="['hostSpeciesIncluded'][4]['identifier']['identifierDescription']" id="item-35-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_5">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_5" id="item-27-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_5" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_6" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_6" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_6" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-6" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_6" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_6_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_6" checked="true" id="min-occurs-zero-32-instance-1_6" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_6" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_6_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_6_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_6_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_6_1_1" path="['hostSpeciesIncluded'][5]['identifier']['identifier']" id="item-33-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_6_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_6_1_1" path="['hostSpeciesIncluded'][5]['identifier']['identifierSource']" id="item-34-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_6_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_6_1_1" path="['hostSpeciesIncluded'][5]['identifier']['identifierDescription']" id="item-35-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_6">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_6" id="item-27-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_6" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_7" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_7" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_7" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-7" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_7" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_7_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_7" checked="true" id="min-occurs-zero-32-instance-1_7" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_7" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_7_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_7_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_7_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_7_1_1" path="['hostSpeciesIncluded'][6]['identifier']['identifier']" id="item-33-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_7_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_7_1_1" path="['hostSpeciesIncluded'][6]['identifier']['identifierSource']" id="item-34-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_7_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_7_1_1" path="['hostSpeciesIncluded'][6]['identifier']['identifierDescription']" id="item-35-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_7">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_7" id="item-27-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_7" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_8" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_8" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_8" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-8" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_8" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_8_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_8" checked="true" id="min-occurs-zero-32-instance-1_8" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_8" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_8_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_8_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_8_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_8_1_1" path="['hostSpeciesIncluded'][7]['identifier']['identifier']" id="item-33-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_8_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_8_1_1" path="['hostSpeciesIncluded'][7]['identifier']['identifierSource']" id="item-34-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_8_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_8_1_1" path="['hostSpeciesIncluded'][7]['identifier']['identifierDescription']" id="item-35-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_8">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_8" id="item-27-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_8" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_9" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_9" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_9" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-9" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_9" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_9_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_9" checked="true" id="min-occurs-zero-32-instance-1_9" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_9" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_9_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_9_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_9_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_9_1_1" path="['hostSpeciesIncluded'][8]['identifier']['identifier']" id="item-33-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_9_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_9_1_1" path="['hostSpeciesIncluded'][8]['identifier']['identifierSource']" id="item-34-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_9_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_9_1_1" path="['hostSpeciesIncluded'][8]['identifier']['identifierDescription']" id="item-35-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_9">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_9" id="item-27-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_9" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-27-instance-1_10" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-27-instance-1_10" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-31-instance-1_10" class="repeating-enclosing">
+            <div class="sequence-label">Host Species Included</div>
+            <div id="sequence-31-instance-10" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-31-instance-1_10" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-32-instance-1_10_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="32" name="min-occurs-zero-name32-instance-1_10" checked="true" id="min-occurs-zero-32-instance-1_10" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-32-instance-1_10" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-32-instance-1_10_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-32-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-32-instance-1_10_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-33-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-33-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-33-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-33-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">33</div>
+                        <label class="item-label" for="item-input-33-instance-1_10_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="33" name="item-input-33-instance-1_10_1_1" path="['hostSpeciesIncluded'][9]['identifier']['identifier']" id="item-33-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-33-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-33-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-34-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-34-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-34-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-34-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">34</div>
+                        <label class="item-label" for="item-input-34-instance-1_10_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="34" name="item-input-34-instance-1_10_1_1" path="['hostSpeciesIncluded'][9]['identifier']['identifierSource']" id="item-34-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-34-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-34-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-35-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-35-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-35-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-35-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">35</div>
+                        <label class="item-label" for="item-input-35-instance-1_10_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="35" name="item-input-35-instance-1_10_1_1" path="['hostSpeciesIncluded'][9]['identifier']['identifierDescription']" id="item-35-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-35-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-35-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">27</div>
-            <label class="item-label" for="item-input-27-instance-1_10">Location Coverage</label>
-            <div class="item-input">
-              <input number="27" name="item-input-27-instance-1_10" id="item-27-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-27-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-27-instance-1_10" class="item-error">Invalid</div>
           </div>
         </div>
-        <div id="item-enclosing-28-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-28-instance-1" class="btn btn-sm btn-default">Add Pathogen Coverage</div>
+        <div id="item-enclosing-36-instance-1_1" class="sequence">
+          <div id="repeat-button-36-instance-1" class="btn btn-sm btn-default">Add Location Coverage</div>
           <div class="clr">
           </div>
-          <div id="repeating-enclosing-28-instance-1_1" class="repeating-enclosing">
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_1">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_1" id="item-28-instance-1_1" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_1" class="item-path" enabled="true"></div>
+          <div id="repeating-enclosing-36-instance-1_1" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-1" class="sequence-content">
+              <div id="item-enclosing-37-instance-1_1_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_1" checked="true" id="min-occurs-zero-37-instance-1_1" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_1_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_1_1_1" path="['locationCoverage'][0]['identifier']['identifier']" id="item-38-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_1_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_1_1_1" path="['locationCoverage'][0]['identifier']['identifierSource']" id="item-39-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_1_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_1_1_1" path="['locationCoverage'][0]['identifier']['identifierDescription']" id="item-40-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_2" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_2" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_2" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-2" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_2" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_2_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_2" checked="true" id="min-occurs-zero-37-instance-1_2" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_2" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_2_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_2_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_2_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_2_1_1" path="['locationCoverage'][1]['identifier']['identifier']" id="item-38-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_2_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_2_1_1" path="['locationCoverage'][1]['identifier']['identifierSource']" id="item-39-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_2_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_2_1_1" path="['locationCoverage'][1]['identifier']['identifierDescription']" id="item-40-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_2">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_2" id="item-28-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_2" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_3" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_3" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_3" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-3" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_3" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_3_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_3" checked="true" id="min-occurs-zero-37-instance-1_3" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_3" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_3_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_3_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_3_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_3_1_1" path="['locationCoverage'][2]['identifier']['identifier']" id="item-38-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_3_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_3_1_1" path="['locationCoverage'][2]['identifier']['identifierSource']" id="item-39-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_3_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_3_1_1" path="['locationCoverage'][2]['identifier']['identifierDescription']" id="item-40-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_3">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_3" id="item-28-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_3" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_4" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_4" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_4" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-4" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_4" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_4_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_4" checked="true" id="min-occurs-zero-37-instance-1_4" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_4" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_4_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_4_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_4_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_4_1_1" path="['locationCoverage'][3]['identifier']['identifier']" id="item-38-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_4_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_4_1_1" path="['locationCoverage'][3]['identifier']['identifierSource']" id="item-39-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_4_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_4_1_1" path="['locationCoverage'][3]['identifier']['identifierDescription']" id="item-40-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_4">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_4" id="item-28-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_4" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_5" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_5" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_5" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-5" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_5" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_5_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_5" checked="true" id="min-occurs-zero-37-instance-1_5" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_5" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_5_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_5_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_5_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_5_1_1" path="['locationCoverage'][4]['identifier']['identifier']" id="item-38-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_5_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_5_1_1" path="['locationCoverage'][4]['identifier']['identifierSource']" id="item-39-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_5_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_5_1_1" path="['locationCoverage'][4]['identifier']['identifierDescription']" id="item-40-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_5">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_5" id="item-28-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_5" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_6" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_6" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_6" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-6" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_6" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_6_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_6" checked="true" id="min-occurs-zero-37-instance-1_6" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_6" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_6_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_6_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_6_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_6_1_1" path="['locationCoverage'][5]['identifier']['identifier']" id="item-38-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_6_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_6_1_1" path="['locationCoverage'][5]['identifier']['identifierSource']" id="item-39-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_6_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_6_1_1" path="['locationCoverage'][5]['identifier']['identifierDescription']" id="item-40-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_6">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_6" id="item-28-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_6" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_7" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_7" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_7" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-7" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_7" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_7_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_7" checked="true" id="min-occurs-zero-37-instance-1_7" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_7" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_7_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_7_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_7_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_7_1_1" path="['locationCoverage'][6]['identifier']['identifier']" id="item-38-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_7_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_7_1_1" path="['locationCoverage'][6]['identifier']['identifierSource']" id="item-39-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_7_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_7_1_1" path="['locationCoverage'][6]['identifier']['identifierDescription']" id="item-40-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_7">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_7" id="item-28-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_7" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_8" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_8" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_8" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-8" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_8" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_8_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_8" checked="true" id="min-occurs-zero-37-instance-1_8" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_8" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_8_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_8_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_8_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_8_1_1" path="['locationCoverage'][7]['identifier']['identifier']" id="item-38-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_8_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_8_1_1" path="['locationCoverage'][7]['identifier']['identifierSource']" id="item-39-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_8_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_8_1_1" path="['locationCoverage'][7]['identifier']['identifierDescription']" id="item-40-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_8">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_8" id="item-28-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_8" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_9" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_9" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_9" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-9" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_9" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_9_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_9" checked="true" id="min-occurs-zero-37-instance-1_9" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_9" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_9_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_9_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_9_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_9_1_1" path="['locationCoverage'][8]['identifier']['identifier']" id="item-38-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_9_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_9_1_1" path="['locationCoverage'][8]['identifier']['identifierSource']" id="item-39-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_9_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_9_1_1" path="['locationCoverage'][8]['identifier']['identifierDescription']" id="item-40-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_9">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_9" id="item-28-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-28-instance-1_9" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-28-instance-1_10" class="repeating-enclosing">
-            <div class="remove-button-container">
-              <div id="remove-button-28-instance-1_10" class="btn btn-xs btn-default">-</div>
+          <div id="repeating-enclosing-36-instance-1_10" class="repeating-enclosing">
+            <div class="sequence-label">Location Coverage</div>
+            <div id="sequence-36-instance-10" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-36-instance-1_10" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-37-instance-1_10_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="37" name="min-occurs-zero-name37-instance-1_10" checked="true" id="min-occurs-zero-37-instance-1_10" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-37-instance-1_10" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-37-instance-1_10_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-37-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-37-instance-1_10_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-38-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-38-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-38-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-38-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">38</div>
+                        <label class="item-label" for="item-input-38-instance-1_10_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="38" name="item-input-38-instance-1_10_1_1" path="['locationCoverage'][9]['identifier']['identifier']" id="item-38-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-38-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-38-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-39-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-39-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-39-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-39-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">39</div>
+                        <label class="item-label" for="item-input-39-instance-1_10_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="39" name="item-input-39-instance-1_10_1_1" path="['locationCoverage'][9]['identifier']['identifierSource']" id="item-39-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-39-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-39-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-40-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-40-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-40-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-40-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">40</div>
+                        <label class="item-label" for="item-input-40-instance-1_10_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="40" name="item-input-40-instance-1_10_1_1" path="['locationCoverage'][9]['identifier']['identifierDescription']" id="item-40-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-40-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-40-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="item-number">28</div>
-            <label class="item-label" for="item-input-28-instance-1_10">Pathogen Coverage</label>
-            <div class="item-input">
-              <input number="28" name="item-input-28-instance-1_10" id="item-28-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-28-instance-1_10" class="item-path" enabled="true"></div>
+          </div>
+        </div>
+        <div id="item-enclosing-41-instance-1_1" class="sequence">
+          <div id="repeat-button-41-instance-1" class="btn btn-sm btn-default">Add Pathogen Coverage</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-41-instance-1_1" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-1" class="sequence-content">
+              <div id="item-enclosing-42-instance-1_1_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_1" checked="true" id="min-occurs-zero-42-instance-1_1" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_1_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_1_1_1" path="['pathogenCoverage'][0]['identifier']['identifier']" id="item-43-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_1_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_1_1_1" path="['pathogenCoverage'][0]['identifier']['identifierSource']" id="item-44-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_1_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_1_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_1_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_1_1_1" path="['pathogenCoverage'][0]['identifier']['identifierDescription']" id="item-45-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="clr">
+          </div>
+          <div id="repeating-enclosing-41-instance-1_2" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-2" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_2" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_2_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_2" checked="true" id="min-occurs-zero-42-instance-1_2" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_2" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_2_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_2_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_2_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_2_1_1" path="['pathogenCoverage'][1]['identifier']['identifier']" id="item-43-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_2_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_2_1_1" path="['pathogenCoverage'][1]['identifier']['identifierSource']" id="item-44-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_2_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_2_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_2_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_2_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_2_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_2_1_1" path="['pathogenCoverage'][1]['identifier']['identifierDescription']" id="item-45-instance-1_2_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_2_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_2_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div id="item-error-28-instance-1_10" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_3" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-3" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_3" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_3_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_3" checked="true" id="min-occurs-zero-42-instance-1_3" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_3" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_3_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_3_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_3_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_3_1_1" path="['pathogenCoverage'][2]['identifier']['identifier']" id="item-43-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_3_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_3_1_1" path="['pathogenCoverage'][2]['identifier']['identifierSource']" id="item-44-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_3_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_3_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_3_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_3_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_3_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_3_1_1" path="['pathogenCoverage'][2]['identifier']['identifierDescription']" id="item-45-instance-1_3_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_3_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_3_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_4" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-4" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_4" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_4_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_4" checked="true" id="min-occurs-zero-42-instance-1_4" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_4" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_4_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_4_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_4_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_4_1_1" path="['pathogenCoverage'][3]['identifier']['identifier']" id="item-43-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_4_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_4_1_1" path="['pathogenCoverage'][3]['identifier']['identifierSource']" id="item-44-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_4_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_4_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_4_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_4_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_4_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_4_1_1" path="['pathogenCoverage'][3]['identifier']['identifierDescription']" id="item-45-instance-1_4_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_4_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_4_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_5" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-5" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_5" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_5_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_5" checked="true" id="min-occurs-zero-42-instance-1_5" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_5" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_5_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_5_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_5_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_5_1_1" path="['pathogenCoverage'][4]['identifier']['identifier']" id="item-43-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_5_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_5_1_1" path="['pathogenCoverage'][4]['identifier']['identifierSource']" id="item-44-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_5_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_5_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_5_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_5_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_5_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_5_1_1" path="['pathogenCoverage'][4]['identifier']['identifierDescription']" id="item-45-instance-1_5_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_5_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_5_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_6" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-6" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_6" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_6_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_6" checked="true" id="min-occurs-zero-42-instance-1_6" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_6" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_6_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_6_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_6_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_6_1_1" path="['pathogenCoverage'][5]['identifier']['identifier']" id="item-43-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_6_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_6_1_1" path="['pathogenCoverage'][5]['identifier']['identifierSource']" id="item-44-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_6_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_6_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_6_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_6_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_6_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_6_1_1" path="['pathogenCoverage'][5]['identifier']['identifierDescription']" id="item-45-instance-1_6_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_6_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_6_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_7" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-7" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_7" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_7_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_7" checked="true" id="min-occurs-zero-42-instance-1_7" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_7" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_7_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_7_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_7_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_7_1_1" path="['pathogenCoverage'][6]['identifier']['identifier']" id="item-43-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_7_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_7_1_1" path="['pathogenCoverage'][6]['identifier']['identifierSource']" id="item-44-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_7_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_7_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_7_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_7_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_7_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_7_1_1" path="['pathogenCoverage'][6]['identifier']['identifierDescription']" id="item-45-instance-1_7_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_7_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_7_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_8" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-8" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_8" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_8_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_8" checked="true" id="min-occurs-zero-42-instance-1_8" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_8" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_8_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_8_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_8_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_8_1_1" path="['pathogenCoverage'][7]['identifier']['identifier']" id="item-43-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_8_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_8_1_1" path="['pathogenCoverage'][7]['identifier']['identifierSource']" id="item-44-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_8_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_8_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_8_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_8_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_8_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_8_1_1" path="['pathogenCoverage'][7]['identifier']['identifierDescription']" id="item-45-instance-1_8_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_8_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_8_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_9" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-9" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_9" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_9_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_9" checked="true" id="min-occurs-zero-42-instance-1_9" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_9" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_9_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_9_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_9_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_9_1_1" path="['pathogenCoverage'][8]['identifier']['identifier']" id="item-43-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_9_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_9_1_1" path="['pathogenCoverage'][8]['identifier']['identifierSource']" id="item-44-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_9_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_9_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_9_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_9_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_9_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_9_1_1" path="['pathogenCoverage'][8]['identifier']['identifierDescription']" id="item-45-instance-1_9_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_9_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_9_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="repeating-enclosing-41-instance-1_10" class="repeating-enclosing">
+            <div class="sequence-label">Pathogen Coverage</div>
+            <div id="sequence-41-instance-10" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-41-instance-1_10" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-42-instance-1_10_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="42" name="min-occurs-zero-name42-instance-1_10" checked="true" id="min-occurs-zero-42-instance-1_10" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-42-instance-1_10" class="btn btn-sm btn-default">Add Identifier</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-42-instance-1_10_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Identifier</div>
+                  <div id="sequence-42-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-42-instance-1_10_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-43-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-43-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-43-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-43-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">43</div>
+                        <label class="item-label" for="item-input-43-instance-1_10_1_1">Identifier</label>
+                        <div class="item-input">
+                          <input number="43" name="item-input-43-instance-1_10_1_1" path="['pathogenCoverage'][9]['identifier']['identifier']" id="item-43-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-43-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-43-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-44-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-44-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Source</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-44-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-44-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">44</div>
+                        <label class="item-label" for="item-input-44-instance-1_10_1_1">Identifier Source</label>
+                        <div class="item-input">
+                          <input number="44" name="item-input-44-instance-1_10_1_1" path="['pathogenCoverage'][9]['identifier']['identifierSource']" id="item-44-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-44-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-44-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-45-instance-1_10_1_1" class="item-enclosing">
+                      <div id="repeat-button-45-instance-1_10_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                      <div class="clr">
+                      </div>
+                      <div id="repeating-enclosing-45-instance-1_10_1_1" class="repeating-enclosing invisible">
+                        <div class="remove-button-container">
+                          <div id="remove-button-45-instance-1_10_1_1" class="btn btn-xs btn-default">-</div>
+                        </div>
+                        <div class="item-number">45</div>
+                        <label class="item-label" for="item-input-45-instance-1_10_1_1">Identifier Description</label>
+                        <div class="item-input">
+                          <input number="45" name="item-input-45-instance-1_10_1_1" path="['pathogenCoverage'][9]['identifier']['identifierDescription']" id="item-45-instance-1_10_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-45-instance-1_10_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-45-instance-1_10_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

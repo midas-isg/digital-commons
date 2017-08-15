@@ -24,6 +24,12 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     List<Entry> findAllByStatus(String status);
 
+    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+            "WHERE (entry_id, revision_id) IN\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "WHERE status != 'approved' GROUP BY entry_id)")
+    List<Entry> findLatestUnapprovedEntries();
+
     Page<Entry> findByStatus(String status, Pageable pageable);
     Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
 

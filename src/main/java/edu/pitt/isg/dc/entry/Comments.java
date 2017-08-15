@@ -1,8 +1,8 @@
 package edu.pitt.isg.dc.entry;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import org.hibernate.annotations.Fetch;
+
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -10,7 +10,7 @@ public class Comments {
     @EmbeddedId
     private EntryId id;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> content;
 
     public EntryId getId() {

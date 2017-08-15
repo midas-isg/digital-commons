@@ -11,6 +11,8 @@ import java.util.List;
 public interface MdcEntryDatastoreInterface {
     String addEntry(EntryView entryObject) throws MdcEntryDatastoreException;
 
+    String addEntryRevision(Long id, Long revisionId, EntryView entryObject) throws MdcEntryDatastoreException;
+
     EntryView getEntry(EntryId id) throws MdcEntryDatastoreException;
 
     List<EntryView> getPendingEntries() throws MdcEntryDatastoreException;
@@ -21,6 +23,8 @@ public interface MdcEntryDatastoreInterface {
                      EntryView entryObject) throws MdcEntryDatastoreException;
 
     String deleteEntry(EntryId id) throws MdcEntryDatastoreException;
+
+    List<EntryView> getLatestUnapprovedEntries() throws MdcEntryDatastoreException;
 
     void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException;
 
