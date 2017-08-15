@@ -49,10 +49,9 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         collapseIcon: "glyphicon glyphicon-chevron-down",
 
         onNodeSelected: function(event, data) {
-            console.log(data['xml']);
             if(data !== undefined && data.hasOwnProperty('json')) {
                 if(data['json'] !== undefined) {
-                    showModal(JSON.parse(data['json']), data['type']);
+                    showModal(JSON.parse(data['json']), data['type'], data['xml']);
                 }
             }
             if(typeof data['nodes'] !== undefined) {
@@ -100,7 +99,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
     };
 }
 
-function showModal(entry, type) {
+function showModal(entry, type, xml) {
     if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $('#dats-json').hide();
         $('#mdc-json').show();
@@ -109,7 +108,11 @@ function showModal(entry, type) {
         $('#mdc-json').hide();
     }
 
-    $('#display-json').text(JSON.stringify(entry, null, "\t"));
+    if(xml !== null) {
+        $('#display-json').text(xml);
+    } else {
+        $('#display-json').text(JSON.stringify(entry, null, "\t"));
+    }
     toggleModalItems(entry, type);
     $('#pageModal').modal('show');
 }

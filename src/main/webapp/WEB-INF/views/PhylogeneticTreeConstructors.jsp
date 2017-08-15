@@ -22,6 +22,8 @@
           rel="stylesheet"/>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/xsd-forms/css/timepicker.css"
           rel="stylesheet"/>
+    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/header.css"
+          rel="stylesheet"/>
     <style type="text/css">
         
     </style>
@@ -29,6 +31,7 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/xml2json.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.deserialize.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>
@@ -401,315 +404,45 @@ $('#min-occurs-zero-5-instance-1').change();
       { elem.show(); return; }
   })
 
-  $('#repeat-button-5-instance-1').click( function() {
+  $('#remove-button-8-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-8-instance-1_1_1').hide();
+  });
+
+  $('#item-8-instance-1_1_1').prop('checked',false);
+
+  // identifierDescription
+  var validate8instance1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-8-instance-1_1_1');
+    var pathDiv = $('#item-path-8-instance-1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-8-instance-1_1_1').change( function() {
+    var ok = validate8instance1_1_1();
+    showError('item-error-8-instance-1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-8-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-8-instance-1_1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-5-instance-1_1');
+    elem = $('#repeating-enclosing-8-instance-1_1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
 
-  $('#remove-button-8-instance-1_1').click(function() {
-    $('#repeating-enclosing-8-instance-1_1').hide();
-  });
-
-  $('#item-8-instance-1_1').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_1 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_1');
-    var pathDiv = $('#item-path-8-instance-1_1');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_1').change( function() {
-    var ok = validate8instance1_1();
-    showError('item-error-8-instance-1_1',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_1').attr('enabled','false');
-  $('#remove-button-8-instance-1_2').click(function() {
-    $('#repeating-enclosing-8-instance-1_2').hide();
-  });
-
-  $('#item-8-instance-1_2').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_2');
-    var pathDiv = $('#item-path-8-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_2').change( function() {
-    var ok = validate8instance1_2();
-    showError('item-error-8-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_2').attr('enabled','false');
-  $('#remove-button-8-instance-1_3').click(function() {
-    $('#repeating-enclosing-8-instance-1_3').hide();
-  });
-
-  $('#item-8-instance-1_3').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_3');
-    var pathDiv = $('#item-path-8-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_3').change( function() {
-    var ok = validate8instance1_3();
-    showError('item-error-8-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_3').attr('enabled','false');
-  $('#remove-button-8-instance-1_4').click(function() {
-    $('#repeating-enclosing-8-instance-1_4').hide();
-  });
-
-  $('#item-8-instance-1_4').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_4');
-    var pathDiv = $('#item-path-8-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_4').change( function() {
-    var ok = validate8instance1_4();
-    showError('item-error-8-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_4').attr('enabled','false');
-  $('#remove-button-8-instance-1_5').click(function() {
-    $('#repeating-enclosing-8-instance-1_5').hide();
-  });
-
-  $('#item-8-instance-1_5').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_5');
-    var pathDiv = $('#item-path-8-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_5').change( function() {
-    var ok = validate8instance1_5();
-    showError('item-error-8-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_5').attr('enabled','false');
-  $('#remove-button-8-instance-1_6').click(function() {
-    $('#repeating-enclosing-8-instance-1_6').hide();
-  });
-
-  $('#item-8-instance-1_6').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_6');
-    var pathDiv = $('#item-path-8-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_6').change( function() {
-    var ok = validate8instance1_6();
-    showError('item-error-8-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_6').attr('enabled','false');
-  $('#remove-button-8-instance-1_7').click(function() {
-    $('#repeating-enclosing-8-instance-1_7').hide();
-  });
-
-  $('#item-8-instance-1_7').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_7');
-    var pathDiv = $('#item-path-8-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_7').change( function() {
-    var ok = validate8instance1_7();
-    showError('item-error-8-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_7').attr('enabled','false');
-  $('#remove-button-8-instance-1_8').click(function() {
-    $('#repeating-enclosing-8-instance-1_8').hide();
-  });
-
-  $('#item-8-instance-1_8').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_8');
-    var pathDiv = $('#item-path-8-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_8').change( function() {
-    var ok = validate8instance1_8();
-    showError('item-error-8-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_8').attr('enabled','false');
-  $('#remove-button-8-instance-1_9').click(function() {
-    $('#repeating-enclosing-8-instance-1_9').hide();
-  });
-
-  $('#item-8-instance-1_9').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_9');
-    var pathDiv = $('#item-path-8-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_9').change( function() {
-    var ok = validate8instance1_9();
-    showError('item-error-8-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_9').attr('enabled','false');
-  $('#remove-button-8-instance-1_10').click(function() {
-    $('#repeating-enclosing-8-instance-1_10').hide();
-  });
-
-  $('#item-8-instance-1_10').prop('checked',false);
-
-  // dataInputFormats
-  var validate8instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-8-instance-1_10');
-    var pathDiv = $('#item-path-8-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-8-instance-1_10').change( function() {
-    var ok = validate8instance1_10();
-    showError('item-error-8-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-8-instance-1_10').attr('enabled','false');
-  $('#repeat-button-8-instance-1').click( function() {
+  $('#repeat-button-5-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
-    elem = $('#repeating-enclosing-8-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-8-instance-1_10');
+    elem = $('#repeating-enclosing-5-instance-1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -720,7 +453,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_1').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_1 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_1');
@@ -747,7 +480,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_2').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_2 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_2');
@@ -774,7 +507,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_3').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_3 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_3');
@@ -801,7 +534,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_4').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_4 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_4');
@@ -828,7 +561,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_5').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_5 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_5');
@@ -855,7 +588,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_6').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_6 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_6');
@@ -882,7 +615,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_7').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_7 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_7');
@@ -909,7 +642,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_8').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_8 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_8');
@@ -936,7 +669,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_9').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_9 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_9');
@@ -963,7 +696,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-9-instance-1_10').prop('checked',false);
 
-  // dataOutputFormats
+  // dataInputFormats
   var validate9instance1_10 = function () {
     var ok = true;
     var v = $('#item-9-instance-1_10');
@@ -1025,7 +758,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-10-instance-1_1').prop('checked',false);
 
-  // sourceCodeRelease
+  // dataOutputFormats
   var validate10instance1_1 = function () {
     var ok = true;
     var v = $('#item-10-instance-1_1');
@@ -1046,10 +779,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-10-instance-1_1').attr('enabled','false');
+  $('#remove-button-10-instance-1_2').click(function() {
+    $('#repeating-enclosing-10-instance-1_2').hide();
+  });
+
+  $('#item-10-instance-1_2').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_2');
+    var pathDiv = $('#item-path-10-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_2').change( function() {
+    var ok = validate10instance1_2();
+    showError('item-error-10-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_2').attr('enabled','false');
+  $('#remove-button-10-instance-1_3').click(function() {
+    $('#repeating-enclosing-10-instance-1_3').hide();
+  });
+
+  $('#item-10-instance-1_3').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_3');
+    var pathDiv = $('#item-path-10-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_3').change( function() {
+    var ok = validate10instance1_3();
+    showError('item-error-10-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_3').attr('enabled','false');
+  $('#remove-button-10-instance-1_4').click(function() {
+    $('#repeating-enclosing-10-instance-1_4').hide();
+  });
+
+  $('#item-10-instance-1_4').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_4');
+    var pathDiv = $('#item-path-10-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_4').change( function() {
+    var ok = validate10instance1_4();
+    showError('item-error-10-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_4').attr('enabled','false');
+  $('#remove-button-10-instance-1_5').click(function() {
+    $('#repeating-enclosing-10-instance-1_5').hide();
+  });
+
+  $('#item-10-instance-1_5').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_5');
+    var pathDiv = $('#item-path-10-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_5').change( function() {
+    var ok = validate10instance1_5();
+    showError('item-error-10-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_5').attr('enabled','false');
+  $('#remove-button-10-instance-1_6').click(function() {
+    $('#repeating-enclosing-10-instance-1_6').hide();
+  });
+
+  $('#item-10-instance-1_6').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_6');
+    var pathDiv = $('#item-path-10-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_6').change( function() {
+    var ok = validate10instance1_6();
+    showError('item-error-10-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_6').attr('enabled','false');
+  $('#remove-button-10-instance-1_7').click(function() {
+    $('#repeating-enclosing-10-instance-1_7').hide();
+  });
+
+  $('#item-10-instance-1_7').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_7');
+    var pathDiv = $('#item-path-10-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_7').change( function() {
+    var ok = validate10instance1_7();
+    showError('item-error-10-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_7').attr('enabled','false');
+  $('#remove-button-10-instance-1_8').click(function() {
+    $('#repeating-enclosing-10-instance-1_8').hide();
+  });
+
+  $('#item-10-instance-1_8').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_8');
+    var pathDiv = $('#item-path-10-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_8').change( function() {
+    var ok = validate10instance1_8();
+    showError('item-error-10-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_8').attr('enabled','false');
+  $('#remove-button-10-instance-1_9').click(function() {
+    $('#repeating-enclosing-10-instance-1_9').hide();
+  });
+
+  $('#item-10-instance-1_9').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_9');
+    var pathDiv = $('#item-path-10-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_9').change( function() {
+    var ok = validate10instance1_9();
+    showError('item-error-10-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_9').attr('enabled','false');
+  $('#remove-button-10-instance-1_10').click(function() {
+    $('#repeating-enclosing-10-instance-1_10').hide();
+  });
+
+  $('#item-10-instance-1_10').prop('checked',false);
+
+  // dataOutputFormats
+  var validate10instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-10-instance-1_10');
+    var pathDiv = $('#item-path-10-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-10-instance-1_10').change( function() {
+    var ok = validate10instance1_10();
+    showError('item-error-10-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-10-instance-1_10').attr('enabled','false');
   $('#repeat-button-10-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-10-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-10-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1060,7 +1063,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-11-instance-1_1').prop('checked',false);
 
-  // webApplication
+  // sourceCodeRelease
   var validate11instance1_1 = function () {
     var ok = true;
     var v = $('#item-11-instance-1_1');
@@ -1081,280 +1084,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-11-instance-1_1').attr('enabled','false');
-  $('#remove-button-11-instance-1_2').click(function() {
-    $('#repeating-enclosing-11-instance-1_2').hide();
-  });
-
-  $('#item-11-instance-1_2').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_2');
-    var pathDiv = $('#item-path-11-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_2').change( function() {
-    var ok = validate11instance1_2();
-    showError('item-error-11-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_2').attr('enabled','false');
-  $('#remove-button-11-instance-1_3').click(function() {
-    $('#repeating-enclosing-11-instance-1_3').hide();
-  });
-
-  $('#item-11-instance-1_3').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_3');
-    var pathDiv = $('#item-path-11-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_3').change( function() {
-    var ok = validate11instance1_3();
-    showError('item-error-11-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_3').attr('enabled','false');
-  $('#remove-button-11-instance-1_4').click(function() {
-    $('#repeating-enclosing-11-instance-1_4').hide();
-  });
-
-  $('#item-11-instance-1_4').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_4');
-    var pathDiv = $('#item-path-11-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_4').change( function() {
-    var ok = validate11instance1_4();
-    showError('item-error-11-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_4').attr('enabled','false');
-  $('#remove-button-11-instance-1_5').click(function() {
-    $('#repeating-enclosing-11-instance-1_5').hide();
-  });
-
-  $('#item-11-instance-1_5').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_5');
-    var pathDiv = $('#item-path-11-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_5').change( function() {
-    var ok = validate11instance1_5();
-    showError('item-error-11-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_5').attr('enabled','false');
-  $('#remove-button-11-instance-1_6').click(function() {
-    $('#repeating-enclosing-11-instance-1_6').hide();
-  });
-
-  $('#item-11-instance-1_6').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_6');
-    var pathDiv = $('#item-path-11-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_6').change( function() {
-    var ok = validate11instance1_6();
-    showError('item-error-11-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_6').attr('enabled','false');
-  $('#remove-button-11-instance-1_7').click(function() {
-    $('#repeating-enclosing-11-instance-1_7').hide();
-  });
-
-  $('#item-11-instance-1_7').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_7');
-    var pathDiv = $('#item-path-11-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_7').change( function() {
-    var ok = validate11instance1_7();
-    showError('item-error-11-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_7').attr('enabled','false');
-  $('#remove-button-11-instance-1_8').click(function() {
-    $('#repeating-enclosing-11-instance-1_8').hide();
-  });
-
-  $('#item-11-instance-1_8').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_8');
-    var pathDiv = $('#item-path-11-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_8').change( function() {
-    var ok = validate11instance1_8();
-    showError('item-error-11-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_8').attr('enabled','false');
-  $('#remove-button-11-instance-1_9').click(function() {
-    $('#repeating-enclosing-11-instance-1_9').hide();
-  });
-
-  $('#item-11-instance-1_9').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_9');
-    var pathDiv = $('#item-path-11-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_9').change( function() {
-    var ok = validate11instance1_9();
-    showError('item-error-11-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_9').attr('enabled','false');
-  $('#remove-button-11-instance-1_10').click(function() {
-    $('#repeating-enclosing-11-instance-1_10').hide();
-  });
-
-  $('#item-11-instance-1_10').prop('checked',false);
-
-  // webApplication
-  var validate11instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-11-instance-1_10');
-    var pathDiv = $('#item-path-11-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-11-instance-1_10').change( function() {
-    var ok = validate11instance1_10();
-    showError('item-error-11-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-11-instance-1_10').attr('enabled','false');
   $('#repeat-button-11-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-11-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-11-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1365,7 +1098,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-12-instance-1_1').prop('checked',false);
 
-  // license
+  // webApplication
   var validate12instance1_1 = function () {
     var ok = true;
     var v = $('#item-12-instance-1_1');
@@ -1386,10 +1119,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-12-instance-1_1').attr('enabled','false');
+  $('#remove-button-12-instance-1_2').click(function() {
+    $('#repeating-enclosing-12-instance-1_2').hide();
+  });
+
+  $('#item-12-instance-1_2').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_2');
+    var pathDiv = $('#item-path-12-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_2').change( function() {
+    var ok = validate12instance1_2();
+    showError('item-error-12-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_2').attr('enabled','false');
+  $('#remove-button-12-instance-1_3').click(function() {
+    $('#repeating-enclosing-12-instance-1_3').hide();
+  });
+
+  $('#item-12-instance-1_3').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_3');
+    var pathDiv = $('#item-path-12-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_3').change( function() {
+    var ok = validate12instance1_3();
+    showError('item-error-12-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_3').attr('enabled','false');
+  $('#remove-button-12-instance-1_4').click(function() {
+    $('#repeating-enclosing-12-instance-1_4').hide();
+  });
+
+  $('#item-12-instance-1_4').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_4');
+    var pathDiv = $('#item-path-12-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_4').change( function() {
+    var ok = validate12instance1_4();
+    showError('item-error-12-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_4').attr('enabled','false');
+  $('#remove-button-12-instance-1_5').click(function() {
+    $('#repeating-enclosing-12-instance-1_5').hide();
+  });
+
+  $('#item-12-instance-1_5').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_5');
+    var pathDiv = $('#item-path-12-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_5').change( function() {
+    var ok = validate12instance1_5();
+    showError('item-error-12-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_5').attr('enabled','false');
+  $('#remove-button-12-instance-1_6').click(function() {
+    $('#repeating-enclosing-12-instance-1_6').hide();
+  });
+
+  $('#item-12-instance-1_6').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_6');
+    var pathDiv = $('#item-path-12-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_6').change( function() {
+    var ok = validate12instance1_6();
+    showError('item-error-12-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_6').attr('enabled','false');
+  $('#remove-button-12-instance-1_7').click(function() {
+    $('#repeating-enclosing-12-instance-1_7').hide();
+  });
+
+  $('#item-12-instance-1_7').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_7');
+    var pathDiv = $('#item-path-12-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_7').change( function() {
+    var ok = validate12instance1_7();
+    showError('item-error-12-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_7').attr('enabled','false');
+  $('#remove-button-12-instance-1_8').click(function() {
+    $('#repeating-enclosing-12-instance-1_8').hide();
+  });
+
+  $('#item-12-instance-1_8').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_8');
+    var pathDiv = $('#item-path-12-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_8').change( function() {
+    var ok = validate12instance1_8();
+    showError('item-error-12-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_8').attr('enabled','false');
+  $('#remove-button-12-instance-1_9').click(function() {
+    $('#repeating-enclosing-12-instance-1_9').hide();
+  });
+
+  $('#item-12-instance-1_9').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_9');
+    var pathDiv = $('#item-path-12-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_9').change( function() {
+    var ok = validate12instance1_9();
+    showError('item-error-12-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_9').attr('enabled','false');
+  $('#remove-button-12-instance-1_10').click(function() {
+    $('#repeating-enclosing-12-instance-1_10').hide();
+  });
+
+  $('#item-12-instance-1_10').prop('checked',false);
+
+  // webApplication
+  var validate12instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-12-instance-1_10');
+    var pathDiv = $('#item-path-12-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-12-instance-1_10').change( function() {
+    var ok = validate12instance1_10();
+    showError('item-error-12-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-12-instance-1_10').attr('enabled','false');
   $('#repeat-button-12-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-12-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-12-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1400,7 +1403,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-13-instance-1_1').prop('checked',false);
 
-  // source
+  // license
   var validate13instance1_1 = function () {
     var ok = true;
     var v = $('#item-13-instance-1_1');
@@ -1435,7 +1438,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-14-instance-1_1').prop('checked',false);
 
-  // developers
+  // source
   var validate14instance1_1 = function () {
     var ok = true;
     var v = $('#item-14-instance-1_1');
@@ -1456,280 +1459,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-14-instance-1_1').attr('enabled','false');
-  $('#remove-button-14-instance-1_2').click(function() {
-    $('#repeating-enclosing-14-instance-1_2').hide();
-  });
-
-  $('#item-14-instance-1_2').prop('checked',false);
-
-  // developers
-  var validate14instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_2');
-    var pathDiv = $('#item-path-14-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_2').change( function() {
-    var ok = validate14instance1_2();
-    showError('item-error-14-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_2').attr('enabled','false');
-  $('#remove-button-14-instance-1_3').click(function() {
-    $('#repeating-enclosing-14-instance-1_3').hide();
-  });
-
-  $('#item-14-instance-1_3').prop('checked',false);
-
-  // developers
-  var validate14instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_3');
-    var pathDiv = $('#item-path-14-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_3').change( function() {
-    var ok = validate14instance1_3();
-    showError('item-error-14-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_3').attr('enabled','false');
-  $('#remove-button-14-instance-1_4').click(function() {
-    $('#repeating-enclosing-14-instance-1_4').hide();
-  });
-
-  $('#item-14-instance-1_4').prop('checked',false);
-
-  // developers
-  var validate14instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_4');
-    var pathDiv = $('#item-path-14-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_4').change( function() {
-    var ok = validate14instance1_4();
-    showError('item-error-14-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_4').attr('enabled','false');
-  $('#remove-button-14-instance-1_5').click(function() {
-    $('#repeating-enclosing-14-instance-1_5').hide();
-  });
-
-  $('#item-14-instance-1_5').prop('checked',false);
-
-  // developers
-  var validate14instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_5');
-    var pathDiv = $('#item-path-14-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_5').change( function() {
-    var ok = validate14instance1_5();
-    showError('item-error-14-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_5').attr('enabled','false');
-  $('#remove-button-14-instance-1_6').click(function() {
-    $('#repeating-enclosing-14-instance-1_6').hide();
-  });
-
-  $('#item-14-instance-1_6').prop('checked',false);
-
-  // developers
-  var validate14instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_6');
-    var pathDiv = $('#item-path-14-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_6').change( function() {
-    var ok = validate14instance1_6();
-    showError('item-error-14-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_6').attr('enabled','false');
-  $('#remove-button-14-instance-1_7').click(function() {
-    $('#repeating-enclosing-14-instance-1_7').hide();
-  });
-
-  $('#item-14-instance-1_7').prop('checked',false);
-
-  // developers
-  var validate14instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_7');
-    var pathDiv = $('#item-path-14-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_7').change( function() {
-    var ok = validate14instance1_7();
-    showError('item-error-14-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_7').attr('enabled','false');
-  $('#remove-button-14-instance-1_8').click(function() {
-    $('#repeating-enclosing-14-instance-1_8').hide();
-  });
-
-  $('#item-14-instance-1_8').prop('checked',false);
-
-  // developers
-  var validate14instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_8');
-    var pathDiv = $('#item-path-14-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_8').change( function() {
-    var ok = validate14instance1_8();
-    showError('item-error-14-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_8').attr('enabled','false');
-  $('#remove-button-14-instance-1_9').click(function() {
-    $('#repeating-enclosing-14-instance-1_9').hide();
-  });
-
-  $('#item-14-instance-1_9').prop('checked',false);
-
-  // developers
-  var validate14instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_9');
-    var pathDiv = $('#item-path-14-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_9').change( function() {
-    var ok = validate14instance1_9();
-    showError('item-error-14-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_9').attr('enabled','false');
-  $('#remove-button-14-instance-1_10').click(function() {
-    $('#repeating-enclosing-14-instance-1_10').hide();
-  });
-
-  $('#item-14-instance-1_10').prop('checked',false);
-
-  // developers
-  var validate14instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-14-instance-1_10');
-    var pathDiv = $('#item-path-14-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-14-instance-1_10').change( function() {
-    var ok = validate14instance1_10();
-    showError('item-error-14-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-14-instance-1_10').attr('enabled','false');
   $('#repeat-button-14-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-14-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-14-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1740,7 +1473,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-15-instance-1_1').prop('checked',false);
 
-  // website
+  // developers
   var validate15instance1_1 = function () {
     var ok = true;
     var v = $('#item-15-instance-1_1');
@@ -1761,10 +1494,280 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-15-instance-1_1').attr('enabled','false');
+  $('#remove-button-15-instance-1_2').click(function() {
+    $('#repeating-enclosing-15-instance-1_2').hide();
+  });
+
+  $('#item-15-instance-1_2').prop('checked',false);
+
+  // developers
+  var validate15instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_2');
+    var pathDiv = $('#item-path-15-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_2').change( function() {
+    var ok = validate15instance1_2();
+    showError('item-error-15-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_2').attr('enabled','false');
+  $('#remove-button-15-instance-1_3').click(function() {
+    $('#repeating-enclosing-15-instance-1_3').hide();
+  });
+
+  $('#item-15-instance-1_3').prop('checked',false);
+
+  // developers
+  var validate15instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_3');
+    var pathDiv = $('#item-path-15-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_3').change( function() {
+    var ok = validate15instance1_3();
+    showError('item-error-15-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_3').attr('enabled','false');
+  $('#remove-button-15-instance-1_4').click(function() {
+    $('#repeating-enclosing-15-instance-1_4').hide();
+  });
+
+  $('#item-15-instance-1_4').prop('checked',false);
+
+  // developers
+  var validate15instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_4');
+    var pathDiv = $('#item-path-15-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_4').change( function() {
+    var ok = validate15instance1_4();
+    showError('item-error-15-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_4').attr('enabled','false');
+  $('#remove-button-15-instance-1_5').click(function() {
+    $('#repeating-enclosing-15-instance-1_5').hide();
+  });
+
+  $('#item-15-instance-1_5').prop('checked',false);
+
+  // developers
+  var validate15instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_5');
+    var pathDiv = $('#item-path-15-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_5').change( function() {
+    var ok = validate15instance1_5();
+    showError('item-error-15-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_5').attr('enabled','false');
+  $('#remove-button-15-instance-1_6').click(function() {
+    $('#repeating-enclosing-15-instance-1_6').hide();
+  });
+
+  $('#item-15-instance-1_6').prop('checked',false);
+
+  // developers
+  var validate15instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_6');
+    var pathDiv = $('#item-path-15-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_6').change( function() {
+    var ok = validate15instance1_6();
+    showError('item-error-15-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_6').attr('enabled','false');
+  $('#remove-button-15-instance-1_7').click(function() {
+    $('#repeating-enclosing-15-instance-1_7').hide();
+  });
+
+  $('#item-15-instance-1_7').prop('checked',false);
+
+  // developers
+  var validate15instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_7');
+    var pathDiv = $('#item-path-15-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_7').change( function() {
+    var ok = validate15instance1_7();
+    showError('item-error-15-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_7').attr('enabled','false');
+  $('#remove-button-15-instance-1_8').click(function() {
+    $('#repeating-enclosing-15-instance-1_8').hide();
+  });
+
+  $('#item-15-instance-1_8').prop('checked',false);
+
+  // developers
+  var validate15instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_8');
+    var pathDiv = $('#item-path-15-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_8').change( function() {
+    var ok = validate15instance1_8();
+    showError('item-error-15-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_8').attr('enabled','false');
+  $('#remove-button-15-instance-1_9').click(function() {
+    $('#repeating-enclosing-15-instance-1_9').hide();
+  });
+
+  $('#item-15-instance-1_9').prop('checked',false);
+
+  // developers
+  var validate15instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_9');
+    var pathDiv = $('#item-path-15-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_9').change( function() {
+    var ok = validate15instance1_9();
+    showError('item-error-15-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_9').attr('enabled','false');
+  $('#remove-button-15-instance-1_10').click(function() {
+    $('#repeating-enclosing-15-instance-1_10').hide();
+  });
+
+  $('#item-15-instance-1_10').prop('checked',false);
+
+  // developers
+  var validate15instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-15-instance-1_10');
+    var pathDiv = $('#item-path-15-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-15-instance-1_10').change( function() {
+    var ok = validate15instance1_10();
+    showError('item-error-15-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-15-instance-1_10').attr('enabled','false');
   $('#repeat-button-15-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-15-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-15-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -1775,7 +1778,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-16-instance-1_1').prop('checked',false);
 
-  // documentation
+  // website
   var validate16instance1_1 = function () {
     var ok = true;
     var v = $('#item-16-instance-1_1');
@@ -1810,7 +1813,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-17-instance-1_1').prop('checked',false);
 
-  // publicationsThatUsedRelease
+  // documentation
   var validate17instance1_1 = function () {
     var ok = true;
     var v = $('#item-17-instance-1_1');
@@ -1831,280 +1834,10 @@ $('#min-occurs-zero-5-instance-1').change();
   
   //disable item-path due to minOccurs=0 and default is empty
   $('#item-path-17-instance-1_1').attr('enabled','false');
-  $('#remove-button-17-instance-1_2').click(function() {
-    $('#repeating-enclosing-17-instance-1_2').hide();
-  });
-
-  $('#item-17-instance-1_2').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_2 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_2');
-    var pathDiv = $('#item-path-17-instance-1_2');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_2').change( function() {
-    var ok = validate17instance1_2();
-    showError('item-error-17-instance-1_2',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_2').attr('enabled','false');
-  $('#remove-button-17-instance-1_3').click(function() {
-    $('#repeating-enclosing-17-instance-1_3').hide();
-  });
-
-  $('#item-17-instance-1_3').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_3 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_3');
-    var pathDiv = $('#item-path-17-instance-1_3');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_3').change( function() {
-    var ok = validate17instance1_3();
-    showError('item-error-17-instance-1_3',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_3').attr('enabled','false');
-  $('#remove-button-17-instance-1_4').click(function() {
-    $('#repeating-enclosing-17-instance-1_4').hide();
-  });
-
-  $('#item-17-instance-1_4').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_4 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_4');
-    var pathDiv = $('#item-path-17-instance-1_4');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_4').change( function() {
-    var ok = validate17instance1_4();
-    showError('item-error-17-instance-1_4',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_4').attr('enabled','false');
-  $('#remove-button-17-instance-1_5').click(function() {
-    $('#repeating-enclosing-17-instance-1_5').hide();
-  });
-
-  $('#item-17-instance-1_5').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_5 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_5');
-    var pathDiv = $('#item-path-17-instance-1_5');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_5').change( function() {
-    var ok = validate17instance1_5();
-    showError('item-error-17-instance-1_5',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_5').attr('enabled','false');
-  $('#remove-button-17-instance-1_6').click(function() {
-    $('#repeating-enclosing-17-instance-1_6').hide();
-  });
-
-  $('#item-17-instance-1_6').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_6 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_6');
-    var pathDiv = $('#item-path-17-instance-1_6');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_6').change( function() {
-    var ok = validate17instance1_6();
-    showError('item-error-17-instance-1_6',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_6').attr('enabled','false');
-  $('#remove-button-17-instance-1_7').click(function() {
-    $('#repeating-enclosing-17-instance-1_7').hide();
-  });
-
-  $('#item-17-instance-1_7').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_7 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_7');
-    var pathDiv = $('#item-path-17-instance-1_7');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_7').change( function() {
-    var ok = validate17instance1_7();
-    showError('item-error-17-instance-1_7',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_7').attr('enabled','false');
-  $('#remove-button-17-instance-1_8').click(function() {
-    $('#repeating-enclosing-17-instance-1_8').hide();
-  });
-
-  $('#item-17-instance-1_8').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_8 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_8');
-    var pathDiv = $('#item-path-17-instance-1_8');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_8').change( function() {
-    var ok = validate17instance1_8();
-    showError('item-error-17-instance-1_8',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_8').attr('enabled','false');
-  $('#remove-button-17-instance-1_9').click(function() {
-    $('#repeating-enclosing-17-instance-1_9').hide();
-  });
-
-  $('#item-17-instance-1_9').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_9 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_9');
-    var pathDiv = $('#item-path-17-instance-1_9');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_9').change( function() {
-    var ok = validate17instance1_9();
-    showError('item-error-17-instance-1_9',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_9').attr('enabled','false');
-  $('#remove-button-17-instance-1_10').click(function() {
-    $('#repeating-enclosing-17-instance-1_10').hide();
-  });
-
-  $('#item-17-instance-1_10').prop('checked',false);
-
-  // publicationsThatUsedRelease
-  var validate17instance1_10 = function () {
-    var ok = true;
-    var v = $('#item-17-instance-1_10');
-    var pathDiv = $('#item-path-17-instance-1_10');
-    //length test
-    if (v.val().length <1)
-      ok = false;
-    // minOccurs=0, ok if blank
-    var isBlank  = (v.val() == null) || (v.val().length==0);
-    if (isBlank) ok = true;
-    return ok;
-  }
-  
-  $('#item-17-instance-1_10').change( function() {
-    var ok = validate17instance1_10();
-    showError('item-error-17-instance-1_10',ok);
-  });
-  
-  //disable item-path due to minOccurs=0 and default is empty
-  $('#item-path-17-instance-1_10').attr('enabled','false');
   $('#repeat-button-17-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-17-instance-1_1');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_2');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_3');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_4');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_5');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_6');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_7');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_8');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_9');
-    if (!elemVisible(elem))
-      { elem.show(); return; }
-    elem = $('#repeating-enclosing-17-instance-1_10');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -2115,7 +1848,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_1').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_1 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_1');
@@ -2142,7 +1875,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_2').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_2 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_2');
@@ -2169,7 +1902,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_3').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_3 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_3');
@@ -2196,7 +1929,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_4').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_4 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_4');
@@ -2223,7 +1956,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_5').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_5 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_5');
@@ -2250,7 +1983,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_6').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_6 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_6');
@@ -2277,7 +2010,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_7').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_7 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_7');
@@ -2304,7 +2037,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_8').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_8 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_8');
@@ -2331,7 +2064,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_9').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_9 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_9');
@@ -2358,7 +2091,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-18-instance-1_10').prop('checked',false);
 
-  // executables
+  // publicationsThatUsedRelease
   var validate18instance1_10 = function () {
     var ok = true;
     var v = $('#item-18-instance-1_10');
@@ -2420,7 +2153,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_1').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_1 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_1');
@@ -2447,7 +2180,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_2').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_2 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_2');
@@ -2474,7 +2207,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_3').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_3 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_3');
@@ -2501,7 +2234,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_4').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_4 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_4');
@@ -2528,7 +2261,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_5').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_5 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_5');
@@ -2555,7 +2288,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_6').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_6 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_6');
@@ -2582,7 +2315,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_7').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_7 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_7');
@@ -2609,7 +2342,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_8').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_8 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_8');
@@ -2636,7 +2369,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_9').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_9 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_9');
@@ -2663,7 +2396,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-19-instance-1_10').prop('checked',false);
 
-  // version
+  // executables
   var validate19instance1_10 = function () {
     var ok = true;
     var v = $('#item-19-instance-1_10');
@@ -2725,7 +2458,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_1').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_1 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_1');
@@ -2752,7 +2485,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_2').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_2 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_2');
@@ -2779,7 +2512,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_3').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_3 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_3');
@@ -2806,7 +2539,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_4').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_4 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_4');
@@ -2833,7 +2566,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_5').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_5 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_5');
@@ -2860,7 +2593,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_6').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_6 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_6');
@@ -2887,7 +2620,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_7').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_7 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_7');
@@ -2914,7 +2647,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_8').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_8 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_8');
@@ -2941,7 +2674,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_9').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_9 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_9');
@@ -2968,7 +2701,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-20-instance-1_10').prop('checked',false);
 
-  // publicationsAboutRelease
+  // version
   var validate20instance1_10 = function () {
     var ok = true;
     var v = $('#item-20-instance-1_10');
@@ -3030,7 +2763,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_1').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_1 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_1');
@@ -3057,7 +2790,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_2').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_2 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_2');
@@ -3084,7 +2817,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_3').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_3 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_3');
@@ -3111,7 +2844,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_4').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_4 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_4');
@@ -3138,7 +2871,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_5').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_5 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_5');
@@ -3165,7 +2898,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_6').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_6 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_6');
@@ -3192,7 +2925,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_7').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_7 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_7');
@@ -3219,7 +2952,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_8').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_8 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_8');
@@ -3246,7 +2979,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_9').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_9 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_9');
@@ -3273,7 +3006,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-21-instance-1_10').prop('checked',false);
 
-  // grants
+  // publicationsAboutRelease
   var validate21instance1_10 = function () {
     var ok = true;
     var v = $('#item-21-instance-1_10');
@@ -3335,11 +3068,17 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-22-instance-1_1').prop('checked',false);
 
-  // availableOnOlympus
+  // grants
   var validate22instance1_1 = function () {
     var ok = true;
     var v = $('#item-22-instance-1_1');
     var pathDiv = $('#item-path-22-instance-1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
     return ok;
   }
   
@@ -3348,13 +3087,293 @@ $('#min-occurs-zero-5-instance-1').change();
     showError('item-error-22-instance-1_1',ok);
   });
   
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_1').attr('enabled','false');
+  $('#remove-button-22-instance-1_2').click(function() {
+    $('#repeating-enclosing-22-instance-1_2').hide();
+  });
+
+  $('#item-22-instance-1_2').prop('checked',false);
+
+  // grants
+  var validate22instance1_2 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_2');
+    var pathDiv = $('#item-path-22-instance-1_2');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_2').change( function() {
+    var ok = validate22instance1_2();
+    showError('item-error-22-instance-1_2',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_2').attr('enabled','false');
+  $('#remove-button-22-instance-1_3').click(function() {
+    $('#repeating-enclosing-22-instance-1_3').hide();
+  });
+
+  $('#item-22-instance-1_3').prop('checked',false);
+
+  // grants
+  var validate22instance1_3 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_3');
+    var pathDiv = $('#item-path-22-instance-1_3');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_3').change( function() {
+    var ok = validate22instance1_3();
+    showError('item-error-22-instance-1_3',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_3').attr('enabled','false');
+  $('#remove-button-22-instance-1_4').click(function() {
+    $('#repeating-enclosing-22-instance-1_4').hide();
+  });
+
+  $('#item-22-instance-1_4').prop('checked',false);
+
+  // grants
+  var validate22instance1_4 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_4');
+    var pathDiv = $('#item-path-22-instance-1_4');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_4').change( function() {
+    var ok = validate22instance1_4();
+    showError('item-error-22-instance-1_4',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_4').attr('enabled','false');
+  $('#remove-button-22-instance-1_5').click(function() {
+    $('#repeating-enclosing-22-instance-1_5').hide();
+  });
+
+  $('#item-22-instance-1_5').prop('checked',false);
+
+  // grants
+  var validate22instance1_5 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_5');
+    var pathDiv = $('#item-path-22-instance-1_5');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_5').change( function() {
+    var ok = validate22instance1_5();
+    showError('item-error-22-instance-1_5',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_5').attr('enabled','false');
+  $('#remove-button-22-instance-1_6').click(function() {
+    $('#repeating-enclosing-22-instance-1_6').hide();
+  });
+
+  $('#item-22-instance-1_6').prop('checked',false);
+
+  // grants
+  var validate22instance1_6 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_6');
+    var pathDiv = $('#item-path-22-instance-1_6');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_6').change( function() {
+    var ok = validate22instance1_6();
+    showError('item-error-22-instance-1_6',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_6').attr('enabled','false');
+  $('#remove-button-22-instance-1_7').click(function() {
+    $('#repeating-enclosing-22-instance-1_7').hide();
+  });
+
+  $('#item-22-instance-1_7').prop('checked',false);
+
+  // grants
+  var validate22instance1_7 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_7');
+    var pathDiv = $('#item-path-22-instance-1_7');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_7').change( function() {
+    var ok = validate22instance1_7();
+    showError('item-error-22-instance-1_7',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_7').attr('enabled','false');
+  $('#remove-button-22-instance-1_8').click(function() {
+    $('#repeating-enclosing-22-instance-1_8').hide();
+  });
+
+  $('#item-22-instance-1_8').prop('checked',false);
+
+  // grants
+  var validate22instance1_8 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_8');
+    var pathDiv = $('#item-path-22-instance-1_8');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_8').change( function() {
+    var ok = validate22instance1_8();
+    showError('item-error-22-instance-1_8',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_8').attr('enabled','false');
+  $('#remove-button-22-instance-1_9').click(function() {
+    $('#repeating-enclosing-22-instance-1_9').hide();
+  });
+
+  $('#item-22-instance-1_9').prop('checked',false);
+
+  // grants
+  var validate22instance1_9 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_9');
+    var pathDiv = $('#item-path-22-instance-1_9');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_9').change( function() {
+    var ok = validate22instance1_9();
+    showError('item-error-22-instance-1_9',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_9').attr('enabled','false');
+  $('#remove-button-22-instance-1_10').click(function() {
+    $('#repeating-enclosing-22-instance-1_10').hide();
+  });
+
+  $('#item-22-instance-1_10').prop('checked',false);
+
+  // grants
+  var validate22instance1_10 = function () {
+    var ok = true;
+    var v = $('#item-22-instance-1_10');
+    var pathDiv = $('#item-path-22-instance-1_10');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-22-instance-1_10').change( function() {
+    var ok = validate22instance1_10();
+    showError('item-error-22-instance-1_10',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-22-instance-1_10').attr('enabled','false');
+  $('#repeat-button-22-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-22-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-22-instance-1_10');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#remove-button-23-instance-1_1').click(function() {
     $('#repeating-enclosing-23-instance-1_1').hide();
   });
 
   $('#item-23-instance-1_1').prop('checked',false);
 
-  // availableOnUIDS
+  // availableOnOlympus
   var validate23instance1_1 = function () {
     var ok = true;
     var v = $('#item-23-instance-1_1');
@@ -3373,7 +3392,7 @@ $('#min-occurs-zero-5-instance-1').change();
 
   $('#item-24-instance-1_1').prop('checked',false);
 
-  // signInRequired
+  // availableOnUIDS
   var validate24instance1_1 = function () {
     var ok = true;
     var v = $('#item-24-instance-1_1');
@@ -3384,6 +3403,25 @@ $('#min-occurs-zero-5-instance-1').change();
   $('#item-24-instance-1_1').change( function() {
     var ok = validate24instance1_1();
     showError('item-error-24-instance-1_1',ok);
+  });
+  
+  $('#remove-button-25-instance-1_1').click(function() {
+    $('#repeating-enclosing-25-instance-1_1').hide();
+  });
+
+  $('#item-25-instance-1_1').prop('checked',false);
+
+  // signInRequired
+  var validate25instance1_1 = function () {
+    var ok = true;
+    var v = $('#item-25-instance-1_1');
+    var pathDiv = $('#item-path-25-instance-1_1');
+    return ok;
+  }
+  
+  $('#item-25-instance-1_1').change( function() {
+    var ok = validate25instance1_1();
+    showError('item-error-25-instance-1_1',ok);
   });
   
   //extract xml from element <product>
@@ -3444,6 +3482,18 @@ $('#min-occurs-zero-5-instance-1').change();
    return xml;
   }
 
+  //extract xml from element <identifierDescription>
+  function getXml8instance1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-8-instance-1_1_1')) {
+    var v = encodedValueById("item-8-instance-1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<identifierDescription>' + v + '</identifierDescription>';
+  }
+   return xml;
+  }
+
   //extract xml from element <identifier>
   function getXml5instance1() {
 
@@ -3453,62 +3503,63 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
     if (idVisible('repeating-enclosing-5-instance-1_1')) {
       xml += getXml6instance1_1();
       xml += getXml7instance1_1();
+      xml += getXml8instance1_1();
     }
     xml += '\n' + spaces(2) + '</identifier>';
     return xml;
   }
 
   //extract xml from element <dataInputFormats>
-  function getXml8instance1() {
+  function getXml9instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-8-instance-1_1')) {
-    var v = encodedValueById("item-8-instance-1_1");
+  if (idVisible('repeating-enclosing-9-instance-1_1')) {
+    var v = encodedValueById("item-9-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_2')) {
-    var v = encodedValueById("item-8-instance-1_2");
+  if (idVisible('repeating-enclosing-9-instance-1_2')) {
+    var v = encodedValueById("item-9-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_3')) {
-    var v = encodedValueById("item-8-instance-1_3");
+  if (idVisible('repeating-enclosing-9-instance-1_3')) {
+    var v = encodedValueById("item-9-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_4')) {
-    var v = encodedValueById("item-8-instance-1_4");
+  if (idVisible('repeating-enclosing-9-instance-1_4')) {
+    var v = encodedValueById("item-9-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_5')) {
-    var v = encodedValueById("item-8-instance-1_5");
+  if (idVisible('repeating-enclosing-9-instance-1_5')) {
+    var v = encodedValueById("item-9-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_6')) {
-    var v = encodedValueById("item-8-instance-1_6");
+  if (idVisible('repeating-enclosing-9-instance-1_6')) {
+    var v = encodedValueById("item-9-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_7')) {
-    var v = encodedValueById("item-8-instance-1_7");
+  if (idVisible('repeating-enclosing-9-instance-1_7')) {
+    var v = encodedValueById("item-9-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_8')) {
-    var v = encodedValueById("item-8-instance-1_8");
+  if (idVisible('repeating-enclosing-9-instance-1_8')) {
+    var v = encodedValueById("item-9-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_9')) {
-    var v = encodedValueById("item-8-instance-1_9");
+  if (idVisible('repeating-enclosing-9-instance-1_9')) {
+    var v = encodedValueById("item-9-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
-  if (idVisible('repeating-enclosing-8-instance-1_10')) {
-    var v = encodedValueById("item-8-instance-1_10");
+  if (idVisible('repeating-enclosing-9-instance-1_10')) {
+    var v = encodedValueById("item-9-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataInputFormats>' + v + '</dataInputFormats>';
   }
@@ -3516,56 +3567,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <dataOutputFormats>
-  function getXml9instance1() {
+  function getXml10instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-9-instance-1_1')) {
-    var v = encodedValueById("item-9-instance-1_1");
+  if (idVisible('repeating-enclosing-10-instance-1_1')) {
+    var v = encodedValueById("item-10-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_2')) {
-    var v = encodedValueById("item-9-instance-1_2");
+  if (idVisible('repeating-enclosing-10-instance-1_2')) {
+    var v = encodedValueById("item-10-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_3')) {
-    var v = encodedValueById("item-9-instance-1_3");
+  if (idVisible('repeating-enclosing-10-instance-1_3')) {
+    var v = encodedValueById("item-10-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_4')) {
-    var v = encodedValueById("item-9-instance-1_4");
+  if (idVisible('repeating-enclosing-10-instance-1_4')) {
+    var v = encodedValueById("item-10-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_5')) {
-    var v = encodedValueById("item-9-instance-1_5");
+  if (idVisible('repeating-enclosing-10-instance-1_5')) {
+    var v = encodedValueById("item-10-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_6')) {
-    var v = encodedValueById("item-9-instance-1_6");
+  if (idVisible('repeating-enclosing-10-instance-1_6')) {
+    var v = encodedValueById("item-10-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_7')) {
-    var v = encodedValueById("item-9-instance-1_7");
+  if (idVisible('repeating-enclosing-10-instance-1_7')) {
+    var v = encodedValueById("item-10-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_8')) {
-    var v = encodedValueById("item-9-instance-1_8");
+  if (idVisible('repeating-enclosing-10-instance-1_8')) {
+    var v = encodedValueById("item-10-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_9')) {
-    var v = encodedValueById("item-9-instance-1_9");
+  if (idVisible('repeating-enclosing-10-instance-1_9')) {
+    var v = encodedValueById("item-10-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
-  if (idVisible('repeating-enclosing-9-instance-1_10')) {
-    var v = encodedValueById("item-9-instance-1_10");
+  if (idVisible('repeating-enclosing-10-instance-1_10')) {
+    var v = encodedValueById("item-10-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<dataOutputFormats>' + v + '</dataOutputFormats>';
   }
@@ -3573,11 +3624,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <sourceCodeRelease>
-  function getXml10instance1() {
+  function getXml11instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-10-instance-1_1')) {
-    var v = encodedValueById("item-10-instance-1_1");
+  if (idVisible('repeating-enclosing-11-instance-1_1')) {
+    var v = encodedValueById("item-11-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<sourceCodeRelease>' + v + '</sourceCodeRelease>';
   }
@@ -3585,56 +3636,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <webApplication>
-  function getXml11instance1() {
+  function getXml12instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-11-instance-1_1')) {
-    var v = encodedValueById("item-11-instance-1_1");
+  if (idVisible('repeating-enclosing-12-instance-1_1')) {
+    var v = encodedValueById("item-12-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_2')) {
-    var v = encodedValueById("item-11-instance-1_2");
+  if (idVisible('repeating-enclosing-12-instance-1_2')) {
+    var v = encodedValueById("item-12-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_3')) {
-    var v = encodedValueById("item-11-instance-1_3");
+  if (idVisible('repeating-enclosing-12-instance-1_3')) {
+    var v = encodedValueById("item-12-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_4')) {
-    var v = encodedValueById("item-11-instance-1_4");
+  if (idVisible('repeating-enclosing-12-instance-1_4')) {
+    var v = encodedValueById("item-12-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_5')) {
-    var v = encodedValueById("item-11-instance-1_5");
+  if (idVisible('repeating-enclosing-12-instance-1_5')) {
+    var v = encodedValueById("item-12-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_6')) {
-    var v = encodedValueById("item-11-instance-1_6");
+  if (idVisible('repeating-enclosing-12-instance-1_6')) {
+    var v = encodedValueById("item-12-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_7')) {
-    var v = encodedValueById("item-11-instance-1_7");
+  if (idVisible('repeating-enclosing-12-instance-1_7')) {
+    var v = encodedValueById("item-12-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_8')) {
-    var v = encodedValueById("item-11-instance-1_8");
+  if (idVisible('repeating-enclosing-12-instance-1_8')) {
+    var v = encodedValueById("item-12-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_9')) {
-    var v = encodedValueById("item-11-instance-1_9");
+  if (idVisible('repeating-enclosing-12-instance-1_9')) {
+    var v = encodedValueById("item-12-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
-  if (idVisible('repeating-enclosing-11-instance-1_10')) {
-    var v = encodedValueById("item-11-instance-1_10");
+  if (idVisible('repeating-enclosing-12-instance-1_10')) {
+    var v = encodedValueById("item-12-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<webApplication>' + v + '</webApplication>';
   }
@@ -3642,11 +3693,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <license>
-  function getXml12instance1() {
+  function getXml13instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-12-instance-1_1')) {
-    var v = encodedValueById("item-12-instance-1_1");
+  if (idVisible('repeating-enclosing-13-instance-1_1')) {
+    var v = encodedValueById("item-13-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<license>' + v + '</license>';
   }
@@ -3654,11 +3705,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <source>
-  function getXml13instance1() {
+  function getXml14instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-13-instance-1_1')) {
-    var v = encodedValueById("item-13-instance-1_1");
+  if (idVisible('repeating-enclosing-14-instance-1_1')) {
+    var v = encodedValueById("item-14-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<source>' + v + '</source>';
   }
@@ -3666,56 +3717,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <developers>
-  function getXml14instance1() {
+  function getXml15instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-14-instance-1_1')) {
-    var v = encodedValueById("item-14-instance-1_1");
+  if (idVisible('repeating-enclosing-15-instance-1_1')) {
+    var v = encodedValueById("item-15-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_2')) {
-    var v = encodedValueById("item-14-instance-1_2");
+  if (idVisible('repeating-enclosing-15-instance-1_2')) {
+    var v = encodedValueById("item-15-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_3')) {
-    var v = encodedValueById("item-14-instance-1_3");
+  if (idVisible('repeating-enclosing-15-instance-1_3')) {
+    var v = encodedValueById("item-15-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_4')) {
-    var v = encodedValueById("item-14-instance-1_4");
+  if (idVisible('repeating-enclosing-15-instance-1_4')) {
+    var v = encodedValueById("item-15-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_5')) {
-    var v = encodedValueById("item-14-instance-1_5");
+  if (idVisible('repeating-enclosing-15-instance-1_5')) {
+    var v = encodedValueById("item-15-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_6')) {
-    var v = encodedValueById("item-14-instance-1_6");
+  if (idVisible('repeating-enclosing-15-instance-1_6')) {
+    var v = encodedValueById("item-15-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_7')) {
-    var v = encodedValueById("item-14-instance-1_7");
+  if (idVisible('repeating-enclosing-15-instance-1_7')) {
+    var v = encodedValueById("item-15-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_8')) {
-    var v = encodedValueById("item-14-instance-1_8");
+  if (idVisible('repeating-enclosing-15-instance-1_8')) {
+    var v = encodedValueById("item-15-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_9')) {
-    var v = encodedValueById("item-14-instance-1_9");
+  if (idVisible('repeating-enclosing-15-instance-1_9')) {
+    var v = encodedValueById("item-15-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
-  if (idVisible('repeating-enclosing-14-instance-1_10')) {
-    var v = encodedValueById("item-14-instance-1_10");
+  if (idVisible('repeating-enclosing-15-instance-1_10')) {
+    var v = encodedValueById("item-15-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<developers>' + v + '</developers>';
   }
@@ -3723,11 +3774,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <website>
-  function getXml15instance1() {
+  function getXml16instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-15-instance-1_1')) {
-    var v = encodedValueById("item-15-instance-1_1");
+  if (idVisible('repeating-enclosing-16-instance-1_1')) {
+    var v = encodedValueById("item-16-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<website>' + v + '</website>';
   }
@@ -3735,11 +3786,11 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <documentation>
-  function getXml16instance1() {
+  function getXml17instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-16-instance-1_1')) {
-    var v = encodedValueById("item-16-instance-1_1");
+  if (idVisible('repeating-enclosing-17-instance-1_1')) {
+    var v = encodedValueById("item-17-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<documentation>' + v + '</documentation>';
   }
@@ -3747,56 +3798,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <publicationsThatUsedRelease>
-  function getXml17instance1() {
+  function getXml18instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-17-instance-1_1')) {
-    var v = encodedValueById("item-17-instance-1_1");
+  if (idVisible('repeating-enclosing-18-instance-1_1')) {
+    var v = encodedValueById("item-18-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_2')) {
-    var v = encodedValueById("item-17-instance-1_2");
+  if (idVisible('repeating-enclosing-18-instance-1_2')) {
+    var v = encodedValueById("item-18-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_3')) {
-    var v = encodedValueById("item-17-instance-1_3");
+  if (idVisible('repeating-enclosing-18-instance-1_3')) {
+    var v = encodedValueById("item-18-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_4')) {
-    var v = encodedValueById("item-17-instance-1_4");
+  if (idVisible('repeating-enclosing-18-instance-1_4')) {
+    var v = encodedValueById("item-18-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_5')) {
-    var v = encodedValueById("item-17-instance-1_5");
+  if (idVisible('repeating-enclosing-18-instance-1_5')) {
+    var v = encodedValueById("item-18-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_6')) {
-    var v = encodedValueById("item-17-instance-1_6");
+  if (idVisible('repeating-enclosing-18-instance-1_6')) {
+    var v = encodedValueById("item-18-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_7')) {
-    var v = encodedValueById("item-17-instance-1_7");
+  if (idVisible('repeating-enclosing-18-instance-1_7')) {
+    var v = encodedValueById("item-18-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_8')) {
-    var v = encodedValueById("item-17-instance-1_8");
+  if (idVisible('repeating-enclosing-18-instance-1_8')) {
+    var v = encodedValueById("item-18-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_9')) {
-    var v = encodedValueById("item-17-instance-1_9");
+  if (idVisible('repeating-enclosing-18-instance-1_9')) {
+    var v = encodedValueById("item-18-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
-  if (idVisible('repeating-enclosing-17-instance-1_10')) {
-    var v = encodedValueById("item-17-instance-1_10");
+  if (idVisible('repeating-enclosing-18-instance-1_10')) {
+    var v = encodedValueById("item-18-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsThatUsedRelease>' + v + '</publicationsThatUsedRelease>';
   }
@@ -3804,56 +3855,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <executables>
-  function getXml18instance1() {
+  function getXml19instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-18-instance-1_1')) {
-    var v = encodedValueById("item-18-instance-1_1");
+  if (idVisible('repeating-enclosing-19-instance-1_1')) {
+    var v = encodedValueById("item-19-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_2')) {
-    var v = encodedValueById("item-18-instance-1_2");
+  if (idVisible('repeating-enclosing-19-instance-1_2')) {
+    var v = encodedValueById("item-19-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_3')) {
-    var v = encodedValueById("item-18-instance-1_3");
+  if (idVisible('repeating-enclosing-19-instance-1_3')) {
+    var v = encodedValueById("item-19-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_4')) {
-    var v = encodedValueById("item-18-instance-1_4");
+  if (idVisible('repeating-enclosing-19-instance-1_4')) {
+    var v = encodedValueById("item-19-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_5')) {
-    var v = encodedValueById("item-18-instance-1_5");
+  if (idVisible('repeating-enclosing-19-instance-1_5')) {
+    var v = encodedValueById("item-19-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_6')) {
-    var v = encodedValueById("item-18-instance-1_6");
+  if (idVisible('repeating-enclosing-19-instance-1_6')) {
+    var v = encodedValueById("item-19-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_7')) {
-    var v = encodedValueById("item-18-instance-1_7");
+  if (idVisible('repeating-enclosing-19-instance-1_7')) {
+    var v = encodedValueById("item-19-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_8')) {
-    var v = encodedValueById("item-18-instance-1_8");
+  if (idVisible('repeating-enclosing-19-instance-1_8')) {
+    var v = encodedValueById("item-19-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_9')) {
-    var v = encodedValueById("item-18-instance-1_9");
+  if (idVisible('repeating-enclosing-19-instance-1_9')) {
+    var v = encodedValueById("item-19-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
-  if (idVisible('repeating-enclosing-18-instance-1_10')) {
-    var v = encodedValueById("item-18-instance-1_10");
+  if (idVisible('repeating-enclosing-19-instance-1_10')) {
+    var v = encodedValueById("item-19-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<executables>' + v + '</executables>';
   }
@@ -3861,56 +3912,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <version>
-  function getXml19instance1() {
+  function getXml20instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-19-instance-1_1')) {
-    var v = encodedValueById("item-19-instance-1_1");
+  if (idVisible('repeating-enclosing-20-instance-1_1')) {
+    var v = encodedValueById("item-20-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_2')) {
-    var v = encodedValueById("item-19-instance-1_2");
+  if (idVisible('repeating-enclosing-20-instance-1_2')) {
+    var v = encodedValueById("item-20-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_3')) {
-    var v = encodedValueById("item-19-instance-1_3");
+  if (idVisible('repeating-enclosing-20-instance-1_3')) {
+    var v = encodedValueById("item-20-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_4')) {
-    var v = encodedValueById("item-19-instance-1_4");
+  if (idVisible('repeating-enclosing-20-instance-1_4')) {
+    var v = encodedValueById("item-20-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_5')) {
-    var v = encodedValueById("item-19-instance-1_5");
+  if (idVisible('repeating-enclosing-20-instance-1_5')) {
+    var v = encodedValueById("item-20-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_6')) {
-    var v = encodedValueById("item-19-instance-1_6");
+  if (idVisible('repeating-enclosing-20-instance-1_6')) {
+    var v = encodedValueById("item-20-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_7')) {
-    var v = encodedValueById("item-19-instance-1_7");
+  if (idVisible('repeating-enclosing-20-instance-1_7')) {
+    var v = encodedValueById("item-20-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_8')) {
-    var v = encodedValueById("item-19-instance-1_8");
+  if (idVisible('repeating-enclosing-20-instance-1_8')) {
+    var v = encodedValueById("item-20-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_9')) {
-    var v = encodedValueById("item-19-instance-1_9");
+  if (idVisible('repeating-enclosing-20-instance-1_9')) {
+    var v = encodedValueById("item-20-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
-  if (idVisible('repeating-enclosing-19-instance-1_10')) {
-    var v = encodedValueById("item-19-instance-1_10");
+  if (idVisible('repeating-enclosing-20-instance-1_10')) {
+    var v = encodedValueById("item-20-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<version>' + v + '</version>';
   }
@@ -3918,56 +3969,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <publicationsAboutRelease>
-  function getXml20instance1() {
+  function getXml21instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-20-instance-1_1')) {
-    var v = encodedValueById("item-20-instance-1_1");
+  if (idVisible('repeating-enclosing-21-instance-1_1')) {
+    var v = encodedValueById("item-21-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_2')) {
-    var v = encodedValueById("item-20-instance-1_2");
+  if (idVisible('repeating-enclosing-21-instance-1_2')) {
+    var v = encodedValueById("item-21-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_3')) {
-    var v = encodedValueById("item-20-instance-1_3");
+  if (idVisible('repeating-enclosing-21-instance-1_3')) {
+    var v = encodedValueById("item-21-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_4')) {
-    var v = encodedValueById("item-20-instance-1_4");
+  if (idVisible('repeating-enclosing-21-instance-1_4')) {
+    var v = encodedValueById("item-21-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_5')) {
-    var v = encodedValueById("item-20-instance-1_5");
+  if (idVisible('repeating-enclosing-21-instance-1_5')) {
+    var v = encodedValueById("item-21-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_6')) {
-    var v = encodedValueById("item-20-instance-1_6");
+  if (idVisible('repeating-enclosing-21-instance-1_6')) {
+    var v = encodedValueById("item-21-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_7')) {
-    var v = encodedValueById("item-20-instance-1_7");
+  if (idVisible('repeating-enclosing-21-instance-1_7')) {
+    var v = encodedValueById("item-21-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_8')) {
-    var v = encodedValueById("item-20-instance-1_8");
+  if (idVisible('repeating-enclosing-21-instance-1_8')) {
+    var v = encodedValueById("item-21-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_9')) {
-    var v = encodedValueById("item-20-instance-1_9");
+  if (idVisible('repeating-enclosing-21-instance-1_9')) {
+    var v = encodedValueById("item-21-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
-  if (idVisible('repeating-enclosing-20-instance-1_10')) {
-    var v = encodedValueById("item-20-instance-1_10");
+  if (idVisible('repeating-enclosing-21-instance-1_10')) {
+    var v = encodedValueById("item-21-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<publicationsAboutRelease>' + v + '</publicationsAboutRelease>';
   }
@@ -3975,56 +4026,56 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <grants>
-  function getXml21instance1() {
+  function getXml22instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-21-instance-1_1')) {
-    var v = encodedValueById("item-21-instance-1_1");
+  if (idVisible('repeating-enclosing-22-instance-1_1')) {
+    var v = encodedValueById("item-22-instance-1_1");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_2')) {
-    var v = encodedValueById("item-21-instance-1_2");
+  if (idVisible('repeating-enclosing-22-instance-1_2')) {
+    var v = encodedValueById("item-22-instance-1_2");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_3')) {
-    var v = encodedValueById("item-21-instance-1_3");
+  if (idVisible('repeating-enclosing-22-instance-1_3')) {
+    var v = encodedValueById("item-22-instance-1_3");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_4')) {
-    var v = encodedValueById("item-21-instance-1_4");
+  if (idVisible('repeating-enclosing-22-instance-1_4')) {
+    var v = encodedValueById("item-22-instance-1_4");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_5')) {
-    var v = encodedValueById("item-21-instance-1_5");
+  if (idVisible('repeating-enclosing-22-instance-1_5')) {
+    var v = encodedValueById("item-22-instance-1_5");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_6')) {
-    var v = encodedValueById("item-21-instance-1_6");
+  if (idVisible('repeating-enclosing-22-instance-1_6')) {
+    var v = encodedValueById("item-22-instance-1_6");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_7')) {
-    var v = encodedValueById("item-21-instance-1_7");
+  if (idVisible('repeating-enclosing-22-instance-1_7')) {
+    var v = encodedValueById("item-22-instance-1_7");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_8')) {
-    var v = encodedValueById("item-21-instance-1_8");
+  if (idVisible('repeating-enclosing-22-instance-1_8')) {
+    var v = encodedValueById("item-22-instance-1_8");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_9')) {
-    var v = encodedValueById("item-21-instance-1_9");
+  if (idVisible('repeating-enclosing-22-instance-1_9')) {
+    var v = encodedValueById("item-22-instance-1_9");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
-  if (idVisible('repeating-enclosing-21-instance-1_10')) {
-    var v = encodedValueById("item-21-instance-1_10");
+  if (idVisible('repeating-enclosing-22-instance-1_10')) {
+    var v = encodedValueById("item-22-instance-1_10");
     if (v.length>0)
       xml += '\n' + spaces(2) + '<grants>' + v + '</grants>';
   }
@@ -4032,33 +4083,33 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
   }
 
   //extract xml from element <availableOnOlympus>
-  function getXml22instance1() {
+  function getXml23instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-22-instance-1_1')) {
-    var v = $('#item-22-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-23-instance-1_1')) {
+    var v = $('#item-23-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<availableOnOlympus>' + toBoolean(v) + '</availableOnOlympus>';
   }
    return xml;
   }
 
   //extract xml from element <availableOnUIDS>
-  function getXml23instance1() {
+  function getXml24instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-23-instance-1_1')) {
-    var v = $('#item-23-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-24-instance-1_1')) {
+    var v = $('#item-24-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<availableOnUIDS>' + toBoolean(v) + '</availableOnUIDS>';
   }
    return xml;
   }
 
   //extract xml from element <signInRequired>
-  function getXml24instance1() {
+  function getXml25instance1() {
 
   var xml='';
-  if (idVisible('repeating-enclosing-24-instance-1_1')) {
-    var v = $('#item-24-instance-1_1').is(':checked');
+  if (idVisible('repeating-enclosing-25-instance-1_1')) {
+    var v = $('#item-25-instance-1_1').is(':checked');
     xml += '\n' + spaces(2) + '<signInRequired>' + toBoolean(v) + '</signInRequired>';
   }
    return xml;
@@ -4074,7 +4125,6 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       xml += getXml3instance1();
       xml += getXml4instance1();
       xml += getXml5instance1();
-      xml += getXml8instance1();
       xml += getXml9instance1();
       xml += getXml10instance1();
       xml += getXml11instance1();
@@ -4091,6 +4141,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
       xml += getXml22instance1();
       xml += getXml23instance1();
       xml += getXml24instance1();
+      xml += getXml25instance1();
     }
     xml += '\n' + spaces(0) + '</PhylogeneticTreeConstructors>';
     return xml;
@@ -4100,18 +4151,62 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             $("#form").submit(function () { return false; }); // so it won't submit
 
             
-            var keyPressed = false;
-            document.onkeypress = function (e) {
-                keyPressed = true;
-            };
-
             window.onbeforeunload = function() {
-                if(keyPressed) {
+                var empty_inputs=0;
+                $('.form :text').each(function(){
+                    if( $.trim($(this).val()) != "" ) {
+                        empty_inputs++;
+                    }
+                });
+
+                if (empty_inputs>0) {
                     return "Are you sure you want to leave this page?";
+                } else {
+                    window.onbeforeunload = null;
                 }
             };
 
+            
+            $.urlParam = function(name){
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                return results[1] || 0;
+            };
+            try {
+                var entryId = $.urlParam("entryId");
+                var revisionId = $.urlParam("revisionId");
+                var requestUrl = "${pageContext.request.contextPath}" + "/add/item/" + entryId + "?revisionId=" + revisionId;
+                $.getJSON(requestUrl, function(data) {
+                   var entryData = data['entry'];
+                   $("input").each(function( index ) {
+                       var path = $(this).attr("path");
+                       if(path != null) {
+                           try {
+                               var value = eval("entryData" + path);
+                               if(value != null) {
+                                   $(this).val(value);
+
+                                   if($(this).is(":hidden")) {
+                                       $(this).parents().show();
+                                   }
+                               }
+                           } catch(err) {
+                               // pass
+                           }
+                       }
+                   });
+                });
+            } catch(err) {
+                // pass
+            }
+
             $(document).ready(function () {
+                $('.category-div').clone().attr("id", "category-div").prependTo('.sequence-content:first');
+                $('#category-div').show();
+
+                $('#category-div').find(".item-input-text").change(function() {
+                    $('#category-div').find('.item-error').hide();
+                });
+
                 var xsdFormsPath = location.origin + "${pageContext.request.contextPath}" + "/resources/xsd-forms/";
                 var addEntryPath = location.origin + "${pageContext.request.contextPath}" + "/add-entry";
 
@@ -4124,27 +4219,47 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                 document.getElementById("submit").classList.add("btn");
                 document.getElementById("submit").classList.add("btn-default");
                 document.getElementById("submit").onclick = function () {
+                    $("#submit").addClass("disabled");
+                    $("#submit-spinner").show();
+
                     var xmlString;
-                    if (document.getElementById("submit-comments").getElementsByTagName("pre")[0]) {
+
+                    var hasCategory = true;
+                    var categoryValue = $('#category-div').find(".item-input-text").val();
+                    if(categoryValue == 'none' || categoryValue == null) {
+                        hasCategory = false;
+                        $('#category-div').find('.item-error').show();
+                    }
+                    if (document.getElementById("submit-comments").getElementsByTagName("pre")[0] && hasCategory) {
                         xmlString = document.getElementById("submit-comments").getElementsByTagName("pre")[0].textContent;
                         if (XSD_FORM.validate()) {
                             $.post(
                                 addEntryPath + getQueryParamString(),
-                                {'xmlString': xmlString},
+                                {'xmlString': xmlString,
+                                'categoryValue': categoryValue},
                                 function onSuccess(data, status, xhr) {
                                     console.info(data);
                                     console.info(status);
                                     console.info(xhr);
                                     alert("An email request has been sent to the administrator. Approval is pending.");
+                                    $("#submit").removeClass("disabled");
+                                    $("#submit-spinner").hide();
                                     return;
                                 },
                                 "json"
                             ).fail(function() {
                                 alert("There was an error submitting your entry. Please refresh your page and try again.");
+                                $("#submit").removeClass("disabled");
+                                $("#submit-spinner").hide();
                             });
+                        } else {
+                            $("#submit").removeClass("disabled");
+                            $("#submit-spinner").hide();
                         }
+                    } else {
+                        $("#submit").removeClass("disabled");
+                        $("#submit-spinner").hide();
                     }
-
                     return;
                 }
             });
@@ -4162,28 +4277,19 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
     </script>
 
 </head>
-<c:choose>
-    <c:when test="${preview eq true}">
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
-    </c:when>
-    <c:otherwise>
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
-
-    </c:otherwise>
-</c:choose>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
 <body>
 <div class="form col-xs-12 margin-bottom-30">
     
     <div id="start"></div>
     <form method="POST" action="form.html" name="form">
-
         
   <div id="item-enclosing-1-instance-1" class="sequence">
     <div id="repeating-enclosing-1-instance-1" class="repeating-enclosing">
-      <div class="sequence-label">Phylogenetic Tree Constructors</div>
+      <div class="sequence-label">Phylogenetic Tree Constructor</div>
       <div id="sequence-1-instance-1" class="sequence-content">
         <div id="item-enclosing-2-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-2-instance-1" class="btn btn-sm btn-default">Add Product</div>
+          <div id="repeat-button-2-instance-1" class="btn btn-sm btn-default">Add Product Name</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-2-instance-1_1" class="repeating-enclosing invisible">
@@ -4191,9 +4297,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-2-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">2</div>
-            <label class="item-label" for="item-input-2-instance-1_1">Product</label>
+            <label class="item-label" for="item-input-2-instance-1_1">Product Name</label>
             <div class="item-input">
-              <input number="2" name="item-input-2-instance-1_1" id="item-2-instance-1_1" class=" item-input-text" type="text">
+              <input number="2" name="item-input-2-instance-1_1" path="['product']" id="item-2-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-2-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4207,7 +4313,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             <div class="item-number">3</div>
             <label class="item-label" for="item-input-3-instance-1_1">Title</label>
             <div class="item-input">
-              <input number="3" name="item-input-3-instance-1_1" id="item-3-instance-1_1" class=" item-input-text" type="text">
+              <input number="3" name="item-input-3-instance-1_1" path="['title']" id="item-3-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-3-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4221,7 +4327,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             <div class="item-number">4</div>
             <label class="item-label" for="item-input-4-instance-1_1">Human Readable Synopsis</label>
             <div class="item-input">
-              <input number="4" name="item-input-4-instance-1_1" id="item-4-instance-1_1" class=" item-input-text" type="text">
+              <input number="4" name="item-input-4-instance-1_1" path="['humanReadableSynopsis']" id="item-4-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-4-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4256,7 +4362,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div class="item-number">6</div>
                   <label class="item-label" for="item-input-6-instance-1_1_1">Identifier</label>
                   <div class="item-input">
-                    <input number="6" name="item-input-6-instance-1_1_1" id="item-6-instance-1_1_1" class=" item-input-text" type="text">
+                    <input number="6" name="item-input-6-instance-1_1_1" path="['identifier']['identifier']" id="item-6-instance-1_1_1" class=" item-input-text" type="text">
                     </input>
                     <div id="item-path-6-instance-1_1_1" class="item-path" enabled="true"></div>
                   </div>
@@ -4276,7 +4382,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div class="item-number">7</div>
                   <label class="item-label" for="item-input-7-instance-1_1_1">Identifier Source</label>
                   <div class="item-input">
-                    <input number="7" name="item-input-7-instance-1_1_1" id="item-7-instance-1_1_1" class=" item-input-text" type="text">
+                    <input number="7" name="item-input-7-instance-1_1_1" path="['identifier']['identifierSource']" id="item-7-instance-1_1_1" class=" item-input-text" type="text">
                     </input>
                     <div id="item-path-7-instance-1_1_1" class="item-path" enabled="true"></div>
                   </div>
@@ -4285,166 +4391,31 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
                   <div id="item-error-7-instance-1_1_1" class="item-error">Invalid</div>
                 </div>
               </div>
+              <div id="item-enclosing-8-instance-1_1_1" class="item-enclosing">
+                <div id="repeat-button-8-instance-1_1" class="btn btn-sm btn-default">Add Identifier Description</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-8-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-8-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                  </div>
+                  <div class="item-number">8</div>
+                  <label class="item-label" for="item-input-8-instance-1_1_1">Identifier Description</label>
+                  <div class="item-input">
+                    <input number="8" name="item-input-8-instance-1_1_1" path="['identifier']['identifierDescription']" id="item-8-instance-1_1_1" class=" item-input-text" type="text">
+                    </input>
+                    <div id="item-path-8-instance-1_1_1" class="item-path" enabled="true"></div>
+                  </div>
+                  <div class="clr">
+                  </div>
+                  <div id="item-error-8-instance-1_1_1" class="item-error">Invalid</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div id="item-enclosing-8-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-8-instance-1" class="btn btn-sm btn-default">Add Data Input Formats</div>
-          <div class="clr">
-          </div>
-          <div id="repeating-enclosing-8-instance-1_1" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_1" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_1">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_1" id="item-8-instance-1_1" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_1" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_1" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_2">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_2" id="item-8-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_3">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_3" id="item-8-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_4">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_4" id="item-8-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_5">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_5" id="item-8-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_6">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_6" id="item-8-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_7">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_7" id="item-8-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_8">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_8" id="item-8-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_9">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_9" id="item-8-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-8-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-8-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">8</div>
-            <label class="item-label" for="item-input-8-instance-1_10">Data Input Formats</label>
-            <div class="item-input">
-              <input number="8" name="item-input-8-instance-1_10" id="item-8-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-8-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-8-instance-1_10" class="item-error">Invalid</div>
           </div>
         </div>
         <div id="item-enclosing-9-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-9-instance-1" class="btn btn-sm btn-default">Add Data Output Formats</div>
+          <div id="repeat-button-9-instance-1" class="btn btn-sm btn-default">Add Data Input Format</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-9-instance-1_1" class="repeating-enclosing invisible">
@@ -4452,9 +4423,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_1">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_1">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_1" id="item-9-instance-1_1" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_1" path="['dataInputFormats'][0]" id="item-9-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4467,9 +4438,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_2">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_2">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_2" id="item-9-instance-1_2" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_2" path="['dataInputFormats'][1]" id="item-9-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -4482,9 +4453,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_3">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_3">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_3" id="item-9-instance-1_3" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_3" path="['dataInputFormats'][2]" id="item-9-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -4497,9 +4468,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_4">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_4">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_4" id="item-9-instance-1_4" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_4" path="['dataInputFormats'][3]" id="item-9-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -4512,9 +4483,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_5">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_5">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_5" id="item-9-instance-1_5" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_5" path="['dataInputFormats'][4]" id="item-9-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -4527,9 +4498,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_6">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_6">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_6" id="item-9-instance-1_6" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_6" path="['dataInputFormats'][5]" id="item-9-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -4542,9 +4513,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_7">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_7">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_7" id="item-9-instance-1_7" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_7" path="['dataInputFormats'][6]" id="item-9-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -4557,9 +4528,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_8">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_8">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_8" id="item-9-instance-1_8" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_8" path="['dataInputFormats'][7]" id="item-9-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -4572,9 +4543,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_9">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_9">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_9" id="item-9-instance-1_9" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_9" path="['dataInputFormats'][8]" id="item-9-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -4587,9 +4558,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-9-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">9</div>
-            <label class="item-label" for="item-input-9-instance-1_10">Data Output Formats</label>
+            <label class="item-label" for="item-input-9-instance-1_10">Data Input Format</label>
             <div class="item-input">
-              <input number="9" name="item-input-9-instance-1_10" id="item-9-instance-1_10" class=" item-input-text" type="text">
+              <input number="9" name="item-input-9-instance-1_10" path="['dataInputFormats'][9]" id="item-9-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-9-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -4599,7 +4570,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-10-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-10-instance-1" class="btn btn-sm btn-default">Add Source Code Release</div>
+          <div id="repeat-button-10-instance-1" class="btn btn-sm btn-default">Add Data Output Format</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-10-instance-1_1" class="repeating-enclosing invisible">
@@ -4607,9 +4578,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-10-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">10</div>
-            <label class="item-label" for="item-input-10-instance-1_1">Source Code Release</label>
+            <label class="item-label" for="item-input-10-instance-1_1">Data Output Format</label>
             <div class="item-input">
-              <input number="10" name="item-input-10-instance-1_1" id="item-10-instance-1_1" class=" item-input-text" type="text">
+              <input number="10" name="item-input-10-instance-1_1" path="['dataOutputFormats'][0]" id="item-10-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-10-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4617,9 +4588,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-10-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-10-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_2">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_2" path="['dataOutputFormats'][1]" id="item-10-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_3">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_3" path="['dataOutputFormats'][2]" id="item-10-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_4">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_4" path="['dataOutputFormats'][3]" id="item-10-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_5">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_5" path="['dataOutputFormats'][4]" id="item-10-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_6">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_6" path="['dataOutputFormats'][5]" id="item-10-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_7">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_7" path="['dataOutputFormats'][6]" id="item-10-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_8">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_8" path="['dataOutputFormats'][7]" id="item-10-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_9">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_9" path="['dataOutputFormats'][8]" id="item-10-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-10-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-10-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">10</div>
+            <label class="item-label" for="item-input-10-instance-1_10">Data Output Format</label>
+            <div class="item-input">
+              <input number="10" name="item-input-10-instance-1_10" path="['dataOutputFormats'][9]" id="item-10-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-10-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-10-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-11-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-11-instance-1" class="btn btn-sm btn-default">Add Web Application</div>
+          <div id="repeat-button-11-instance-1" class="btn btn-sm btn-default">Add Source Code Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-11-instance-1_1" class="repeating-enclosing invisible">
@@ -4627,9 +4733,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-11-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_1">Web Application</label>
+            <label class="item-label" for="item-input-11-instance-1_1">Source Code Release</label>
             <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_1" id="item-11-instance-1_1" class=" item-input-text" type="text">
+              <input number="11" name="item-input-11-instance-1_1" path="['sourceCodeRelease']" id="item-11-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-11-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4637,144 +4743,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-11-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-11-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_2">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_2" id="item-11-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_3">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_3" id="item-11-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_4">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_4" id="item-11-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_5">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_5" id="item-11-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_6">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_6" id="item-11-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_7">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_7" id="item-11-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_8">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_8" id="item-11-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_9">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_9" id="item-11-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-11-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-11-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">11</div>
-            <label class="item-label" for="item-input-11-instance-1_10">Web Application</label>
-            <div class="item-input">
-              <input number="11" name="item-input-11-instance-1_10" id="item-11-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-11-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-11-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-12-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-12-instance-1" class="btn btn-sm btn-default">Add License</div>
+          <div id="repeat-button-12-instance-1" class="btn btn-sm btn-default">Add Web Application</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-12-instance-1_1" class="repeating-enclosing invisible">
@@ -4782,9 +4753,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-12-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">12</div>
-            <label class="item-label" for="item-input-12-instance-1_1">License</label>
+            <label class="item-label" for="item-input-12-instance-1_1">Web Application</label>
             <div class="item-input">
-              <input number="12" name="item-input-12-instance-1_1" id="item-12-instance-1_1" class=" item-input-text" type="text">
+              <input number="12" name="item-input-12-instance-1_1" path="['webApplication'][0]" id="item-12-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-12-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4792,9 +4763,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-12-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-12-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_2">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_2" path="['webApplication'][1]" id="item-12-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_3">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_3" path="['webApplication'][2]" id="item-12-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_4">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_4" path="['webApplication'][3]" id="item-12-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_5">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_5" path="['webApplication'][4]" id="item-12-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_6">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_6" path="['webApplication'][5]" id="item-12-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_7">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_7" path="['webApplication'][6]" id="item-12-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_8">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_8" path="['webApplication'][7]" id="item-12-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_9">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_9" path="['webApplication'][8]" id="item-12-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-12-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-12-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">12</div>
+            <label class="item-label" for="item-input-12-instance-1_10">Web Application</label>
+            <div class="item-input">
+              <input number="12" name="item-input-12-instance-1_10" path="['webApplication'][9]" id="item-12-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-12-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-12-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-13-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-13-instance-1" class="btn btn-sm btn-default">Add Source</div>
+          <div id="repeat-button-13-instance-1" class="btn btn-sm btn-default">Add License</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-13-instance-1_1" class="repeating-enclosing invisible">
@@ -4802,9 +4908,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-13-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">13</div>
-            <label class="item-label" for="item-input-13-instance-1_1">Source</label>
+            <label class="item-label" for="item-input-13-instance-1_1">License</label>
             <div class="item-input">
-              <input number="13" name="item-input-13-instance-1_1" id="item-13-instance-1_1" class=" item-input-text" type="text">
+              <input number="13" name="item-input-13-instance-1_1" path="['license']" id="item-13-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-13-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4814,7 +4920,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-14-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-14-instance-1" class="btn btn-sm btn-default">Add Developers</div>
+          <div id="repeat-button-14-instance-1" class="btn btn-sm btn-default">Add Source</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-14-instance-1_1" class="repeating-enclosing invisible">
@@ -4822,9 +4928,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-14-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_1">Developers</label>
+            <label class="item-label" for="item-input-14-instance-1_1">Source</label>
             <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_1" id="item-14-instance-1_1" class=" item-input-text" type="text">
+              <input number="14" name="item-input-14-instance-1_1" path="['source']" id="item-14-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-14-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4832,144 +4938,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-14-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-14-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_2">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_2" id="item-14-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_3">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_3" id="item-14-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_4">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_4" id="item-14-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_5">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_5" id="item-14-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_6">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_6" id="item-14-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_7">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_7" id="item-14-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_8">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_8" id="item-14-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_9">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_9" id="item-14-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-14-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-14-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">14</div>
-            <label class="item-label" for="item-input-14-instance-1_10">Developers</label>
-            <div class="item-input">
-              <input number="14" name="item-input-14-instance-1_10" id="item-14-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-14-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-14-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-15-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-15-instance-1" class="btn btn-sm btn-default">Add Website</div>
+          <div id="repeat-button-15-instance-1" class="btn btn-sm btn-default">Add Developer</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-15-instance-1_1" class="repeating-enclosing invisible">
@@ -4977,9 +4948,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-15-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">15</div>
-            <label class="item-label" for="item-input-15-instance-1_1">Website</label>
+            <label class="item-label" for="item-input-15-instance-1_1">Developer</label>
             <div class="item-input">
-              <input number="15" name="item-input-15-instance-1_1" id="item-15-instance-1_1" class=" item-input-text" type="text">
+              <input number="15" name="item-input-15-instance-1_1" path="['developers'][0]" id="item-15-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-15-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -4987,9 +4958,144 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-15-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-15-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_2">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_2" path="['developers'][1]" id="item-15-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_3">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_3" path="['developers'][2]" id="item-15-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_4">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_4" path="['developers'][3]" id="item-15-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_5">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_5" path="['developers'][4]" id="item-15-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_6">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_6" path="['developers'][5]" id="item-15-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_7">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_7" path="['developers'][6]" id="item-15-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_8">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_8" path="['developers'][7]" id="item-15-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_9">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_9" path="['developers'][8]" id="item-15-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-15-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-15-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">15</div>
+            <label class="item-label" for="item-input-15-instance-1_10">Developer</label>
+            <div class="item-input">
+              <input number="15" name="item-input-15-instance-1_10" path="['developers'][9]" id="item-15-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-15-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-15-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-16-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-16-instance-1" class="btn btn-sm btn-default">Add Documentation</div>
+          <div id="repeat-button-16-instance-1" class="btn btn-sm btn-default">Add Website</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-16-instance-1_1" class="repeating-enclosing invisible">
@@ -4997,9 +5103,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-16-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">16</div>
-            <label class="item-label" for="item-input-16-instance-1_1">Documentation</label>
+            <label class="item-label" for="item-input-16-instance-1_1">Website</label>
             <div class="item-input">
-              <input number="16" name="item-input-16-instance-1_1" id="item-16-instance-1_1" class=" item-input-text" type="text">
+              <input number="16" name="item-input-16-instance-1_1" path="['website']" id="item-16-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-16-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5009,7 +5115,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-17-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-17-instance-1" class="btn btn-sm btn-default">Add Publications That Used Release</div>
+          <div id="repeat-button-17-instance-1" class="btn btn-sm btn-default">Add Documentation</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-17-instance-1_1" class="repeating-enclosing invisible">
@@ -5017,9 +5123,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-17-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_1">Publications That Used Release</label>
+            <label class="item-label" for="item-input-17-instance-1_1">Documentation</label>
             <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_1" id="item-17-instance-1_1" class=" item-input-text" type="text">
+              <input number="17" name="item-input-17-instance-1_1" path="['documentation']" id="item-17-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-17-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5027,144 +5133,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-17-instance-1_1" class="item-error">Invalid</div>
           </div>
-          <div id="repeating-enclosing-17-instance-1_2" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_2" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_2">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_2" id="item-17-instance-1_2" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_2" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_2" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_3" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_3" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_3">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_3" id="item-17-instance-1_3" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_3" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_3" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_4" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_4" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_4">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_4" id="item-17-instance-1_4" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_4" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_4" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_5" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_5" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_5">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_5" id="item-17-instance-1_5" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_5" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_5" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_6" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_6" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_6">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_6" id="item-17-instance-1_6" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_6" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_6" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_7" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_7" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_7">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_7" id="item-17-instance-1_7" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_7" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_7" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_8" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_8" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_8">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_8" id="item-17-instance-1_8" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_8" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_8" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_9" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_9" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_9">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_9" id="item-17-instance-1_9" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_9" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_9" class="item-error">Invalid</div>
-          </div>
-          <div id="repeating-enclosing-17-instance-1_10" class="repeating-enclosing invisible">
-            <div class="remove-button-container">
-              <div id="remove-button-17-instance-1_10" class="btn btn-xs btn-default">-</div>
-            </div>
-            <div class="item-number">17</div>
-            <label class="item-label" for="item-input-17-instance-1_10">Publications That Used Release</label>
-            <div class="item-input">
-              <input number="17" name="item-input-17-instance-1_10" id="item-17-instance-1_10" class=" item-input-text" type="text">
-              </input>
-              <div id="item-path-17-instance-1_10" class="item-path" enabled="true"></div>
-            </div>
-            <div class="clr">
-            </div>
-            <div id="item-error-17-instance-1_10" class="item-error">Invalid</div>
-          </div>
         </div>
         <div id="item-enclosing-18-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-18-instance-1" class="btn btn-sm btn-default">Add Executables</div>
+          <div id="repeat-button-18-instance-1" class="btn btn-sm btn-default">Add Publication That Used Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-18-instance-1_1" class="repeating-enclosing invisible">
@@ -5172,9 +5143,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_1">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_1">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_1" id="item-18-instance-1_1" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_1" path="['publicationsThatUsedRelease'][0]" id="item-18-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5187,9 +5158,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_2">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_2">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_2" id="item-18-instance-1_2" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_2" path="['publicationsThatUsedRelease'][1]" id="item-18-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -5202,9 +5173,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_3">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_3">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_3" id="item-18-instance-1_3" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_3" path="['publicationsThatUsedRelease'][2]" id="item-18-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -5217,9 +5188,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_4">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_4">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_4" id="item-18-instance-1_4" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_4" path="['publicationsThatUsedRelease'][3]" id="item-18-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -5232,9 +5203,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_5">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_5">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_5" id="item-18-instance-1_5" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_5" path="['publicationsThatUsedRelease'][4]" id="item-18-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -5247,9 +5218,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_6">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_6">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_6" id="item-18-instance-1_6" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_6" path="['publicationsThatUsedRelease'][5]" id="item-18-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -5262,9 +5233,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_7">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_7">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_7" id="item-18-instance-1_7" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_7" path="['publicationsThatUsedRelease'][6]" id="item-18-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -5277,9 +5248,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_8">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_8">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_8" id="item-18-instance-1_8" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_8" path="['publicationsThatUsedRelease'][7]" id="item-18-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -5292,9 +5263,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_9">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_9">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_9" id="item-18-instance-1_9" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_9" path="['publicationsThatUsedRelease'][8]" id="item-18-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -5307,9 +5278,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-18-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">18</div>
-            <label class="item-label" for="item-input-18-instance-1_10">Executables</label>
+            <label class="item-label" for="item-input-18-instance-1_10">Publication That Used Release</label>
             <div class="item-input">
-              <input number="18" name="item-input-18-instance-1_10" id="item-18-instance-1_10" class=" item-input-text" type="text">
+              <input number="18" name="item-input-18-instance-1_10" path="['publicationsThatUsedRelease'][9]" id="item-18-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-18-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -5319,7 +5290,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-19-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-19-instance-1" class="btn btn-sm btn-default">Add Version</div>
+          <div id="repeat-button-19-instance-1" class="btn btn-sm btn-default">Add Executable</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-19-instance-1_1" class="repeating-enclosing invisible">
@@ -5327,9 +5298,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_1">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_1">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_1" id="item-19-instance-1_1" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_1" path="['executables'][0]" id="item-19-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5342,9 +5313,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_2">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_2">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_2" id="item-19-instance-1_2" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_2" path="['executables'][1]" id="item-19-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -5357,9 +5328,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_3">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_3">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_3" id="item-19-instance-1_3" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_3" path="['executables'][2]" id="item-19-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -5372,9 +5343,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_4">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_4">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_4" id="item-19-instance-1_4" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_4" path="['executables'][3]" id="item-19-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -5387,9 +5358,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_5">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_5">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_5" id="item-19-instance-1_5" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_5" path="['executables'][4]" id="item-19-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -5402,9 +5373,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_6">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_6">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_6" id="item-19-instance-1_6" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_6" path="['executables'][5]" id="item-19-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -5417,9 +5388,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_7">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_7">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_7" id="item-19-instance-1_7" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_7" path="['executables'][6]" id="item-19-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -5432,9 +5403,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_8">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_8">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_8" id="item-19-instance-1_8" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_8" path="['executables'][7]" id="item-19-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -5447,9 +5418,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_9">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_9">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_9" id="item-19-instance-1_9" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_9" path="['executables'][8]" id="item-19-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -5462,9 +5433,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-19-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">19</div>
-            <label class="item-label" for="item-input-19-instance-1_10">Version</label>
+            <label class="item-label" for="item-input-19-instance-1_10">Executable</label>
             <div class="item-input">
-              <input number="19" name="item-input-19-instance-1_10" id="item-19-instance-1_10" class=" item-input-text" type="text">
+              <input number="19" name="item-input-19-instance-1_10" path="['executables'][9]" id="item-19-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-19-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -5474,7 +5445,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-20-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-20-instance-1" class="btn btn-sm btn-default">Add Publications About Release</div>
+          <div id="repeat-button-20-instance-1" class="btn btn-sm btn-default">Add Version</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-20-instance-1_1" class="repeating-enclosing invisible">
@@ -5482,9 +5453,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_1">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_1">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_1" id="item-20-instance-1_1" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_1" path="['version'][0]" id="item-20-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5497,9 +5468,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_2">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_2">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_2" id="item-20-instance-1_2" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_2" path="['version'][1]" id="item-20-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -5512,9 +5483,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_3">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_3">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_3" id="item-20-instance-1_3" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_3" path="['version'][2]" id="item-20-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -5527,9 +5498,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_4">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_4">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_4" id="item-20-instance-1_4" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_4" path="['version'][3]" id="item-20-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -5542,9 +5513,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_5">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_5">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_5" id="item-20-instance-1_5" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_5" path="['version'][4]" id="item-20-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -5557,9 +5528,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_6">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_6">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_6" id="item-20-instance-1_6" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_6" path="['version'][5]" id="item-20-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -5572,9 +5543,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_7">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_7">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_7" id="item-20-instance-1_7" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_7" path="['version'][6]" id="item-20-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -5587,9 +5558,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_8">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_8">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_8" id="item-20-instance-1_8" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_8" path="['version'][7]" id="item-20-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -5602,9 +5573,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_9">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_9">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_9" id="item-20-instance-1_9" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_9" path="['version'][8]" id="item-20-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -5617,9 +5588,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-20-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">20</div>
-            <label class="item-label" for="item-input-20-instance-1_10">Publications About Release</label>
+            <label class="item-label" for="item-input-20-instance-1_10">Version</label>
             <div class="item-input">
-              <input number="20" name="item-input-20-instance-1_10" id="item-20-instance-1_10" class=" item-input-text" type="text">
+              <input number="20" name="item-input-20-instance-1_10" path="['version'][9]" id="item-20-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-20-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -5629,7 +5600,7 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-21-instance-1_1" class="item-enclosing">
-          <div id="repeat-button-21-instance-1" class="btn btn-sm btn-default">Add Grants</div>
+          <div id="repeat-button-21-instance-1" class="btn btn-sm btn-default">Add Publication About Release</div>
           <div class="clr">
           </div>
           <div id="repeating-enclosing-21-instance-1_1" class="repeating-enclosing invisible">
@@ -5637,9 +5608,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_1" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_1">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_1">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_1" id="item-21-instance-1_1" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_1" path="['publicationsAboutRelease'][0]" id="item-21-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5652,9 +5623,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_2" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_2">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_2">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_2" id="item-21-instance-1_2" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_2" path="['publicationsAboutRelease'][1]" id="item-21-instance-1_2" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_2" class="item-path" enabled="true"></div>
             </div>
@@ -5667,9 +5638,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_3" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_3">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_3">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_3" id="item-21-instance-1_3" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_3" path="['publicationsAboutRelease'][2]" id="item-21-instance-1_3" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_3" class="item-path" enabled="true"></div>
             </div>
@@ -5682,9 +5653,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_4" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_4">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_4">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_4" id="item-21-instance-1_4" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_4" path="['publicationsAboutRelease'][3]" id="item-21-instance-1_4" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_4" class="item-path" enabled="true"></div>
             </div>
@@ -5697,9 +5668,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_5" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_5">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_5">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_5" id="item-21-instance-1_5" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_5" path="['publicationsAboutRelease'][4]" id="item-21-instance-1_5" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_5" class="item-path" enabled="true"></div>
             </div>
@@ -5712,9 +5683,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_6" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_6">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_6">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_6" id="item-21-instance-1_6" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_6" path="['publicationsAboutRelease'][5]" id="item-21-instance-1_6" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_6" class="item-path" enabled="true"></div>
             </div>
@@ -5727,9 +5698,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_7" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_7">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_7">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_7" id="item-21-instance-1_7" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_7" path="['publicationsAboutRelease'][6]" id="item-21-instance-1_7" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_7" class="item-path" enabled="true"></div>
             </div>
@@ -5742,9 +5713,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_8" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_8">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_8">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_8" id="item-21-instance-1_8" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_8" path="['publicationsAboutRelease'][7]" id="item-21-instance-1_8" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_8" class="item-path" enabled="true"></div>
             </div>
@@ -5757,9 +5728,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_9" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_9">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_9">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_9" id="item-21-instance-1_9" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_9" path="['publicationsAboutRelease'][8]" id="item-21-instance-1_9" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_9" class="item-path" enabled="true"></div>
             </div>
@@ -5772,9 +5743,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
               <div id="remove-button-21-instance-1_10" class="btn btn-xs btn-default">-</div>
             </div>
             <div class="item-number">21</div>
-            <label class="item-label" for="item-input-21-instance-1_10">Grants</label>
+            <label class="item-label" for="item-input-21-instance-1_10">Publication About Release</label>
             <div class="item-input">
-              <input number="21" name="item-input-21-instance-1_10" id="item-21-instance-1_10" class=" item-input-text" type="text">
+              <input number="21" name="item-input-21-instance-1_10" path="['publicationsAboutRelease'][9]" id="item-21-instance-1_10" class=" item-input-text" type="text">
               </input>
               <div id="item-path-21-instance-1_10" class="item-path" enabled="true"></div>
             </div>
@@ -5784,11 +5755,17 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
           </div>
         </div>
         <div id="item-enclosing-22-instance-1_1" class="item-enclosing">
-          <div id="repeating-enclosing-22-instance-1_1" class="repeating-enclosing">
+          <div id="repeat-button-22-instance-1" class="btn btn-sm btn-default">Add Grant</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-22-instance-1_1" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_1" class="btn btn-xs btn-default">-</div>
+            </div>
             <div class="item-number">22</div>
-            <label class="item-label" for="item-input-22-instance-1_1">Available On Olympus</label>
+            <label class="item-label" for="item-input-22-instance-1_1">Grant</label>
             <div class="item-input">
-              <input number="22" name="item-input-22-instance-1_1" id="item-22-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="22" name="item-input-22-instance-1_1" path="['grants'][0]" id="item-22-instance-1_1" class=" item-input-text" type="text">
               </input>
               <div id="item-path-22-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5796,13 +5773,148 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             </div>
             <div id="item-error-22-instance-1_1" class="item-error">Invalid</div>
           </div>
+          <div id="repeating-enclosing-22-instance-1_2" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_2" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_2">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_2" path="['grants'][1]" id="item-22-instance-1_2" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_2" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_2" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_3" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_3" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_3">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_3" path="['grants'][2]" id="item-22-instance-1_3" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_3" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_3" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_4" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_4" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_4">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_4" path="['grants'][3]" id="item-22-instance-1_4" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_4" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_4" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_5" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_5" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_5">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_5" path="['grants'][4]" id="item-22-instance-1_5" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_5" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_5" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_6" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_6" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_6">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_6" path="['grants'][5]" id="item-22-instance-1_6" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_6" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_6" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_7" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_7" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_7">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_7" path="['grants'][6]" id="item-22-instance-1_7" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_7" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_7" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_8" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_8" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_8">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_8" path="['grants'][7]" id="item-22-instance-1_8" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_8" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_8" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_9" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_9" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_9">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_9" path="['grants'][8]" id="item-22-instance-1_9" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_9" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_9" class="item-error">Invalid</div>
+          </div>
+          <div id="repeating-enclosing-22-instance-1_10" class="repeating-enclosing invisible">
+            <div class="remove-button-container">
+              <div id="remove-button-22-instance-1_10" class="btn btn-xs btn-default">-</div>
+            </div>
+            <div class="item-number">22</div>
+            <label class="item-label" for="item-input-22-instance-1_10">Grant</label>
+            <div class="item-input">
+              <input number="22" name="item-input-22-instance-1_10" path="['grants'][9]" id="item-22-instance-1_10" class=" item-input-text" type="text">
+              </input>
+              <div id="item-path-22-instance-1_10" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-22-instance-1_10" class="item-error">Invalid</div>
+          </div>
         </div>
         <div id="item-enclosing-23-instance-1_1" class="item-enclosing">
           <div id="repeating-enclosing-23-instance-1_1" class="repeating-enclosing">
             <div class="item-number">23</div>
-            <label class="item-label" for="item-input-23-instance-1_1">Available On UIDS</label>
+            <label class="item-label" for="item-input-23-instance-1_1">Available On Olympus</label>
             <div class="item-input">
-              <input number="23" name="item-input-23-instance-1_1" id="item-23-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="23" name="item-input-23-instance-1_1" path="['availableOnOlympus']" id="item-23-instance-1_1" class=" item-input-text" type="checkbox">
               </input>
               <div id="item-path-23-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5814,9 +5926,9 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
         <div id="item-enclosing-24-instance-1_1" class="item-enclosing">
           <div id="repeating-enclosing-24-instance-1_1" class="repeating-enclosing">
             <div class="item-number">24</div>
-            <label class="item-label" for="item-input-24-instance-1_1">Sign In Required</label>
+            <label class="item-label" for="item-input-24-instance-1_1">Available On UIDS</label>
             <div class="item-input">
-              <input number="24" name="item-input-24-instance-1_1" id="item-24-instance-1_1" class=" item-input-text" type="checkbox">
+              <input number="24" name="item-input-24-instance-1_1" path="['availableOnUIDS']" id="item-24-instance-1_1" class=" item-input-text" type="checkbox">
               </input>
               <div id="item-path-24-instance-1_1" class="item-path" enabled="true"></div>
             </div>
@@ -5825,12 +5937,42 @@ if (!$('#min-occurs-zero-5-instance-1').is(':checked')) return '';
             <div id="item-error-24-instance-1_1" class="item-error">Invalid</div>
           </div>
         </div>
+        <div id="item-enclosing-25-instance-1_1" class="item-enclosing">
+          <div id="repeating-enclosing-25-instance-1_1" class="repeating-enclosing">
+            <div class="item-number">25</div>
+            <label class="item-label" for="item-input-25-instance-1_1">Sign In Required</label>
+            <div class="item-input">
+              <input number="25" name="item-input-25-instance-1_1" path="['signInRequired']" id="item-25-instance-1_1" class=" item-input-text" type="checkbox">
+              </input>
+              <div id="item-path-25-instance-1_1" class="item-path" enabled="true"></div>
+            </div>
+            <div class="clr">
+            </div>
+            <div id="item-error-25-instance-1_1" class="item-error">Invalid</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
         <div id="validation-errors" class="validationErrors">The form is not yet complete. Check through the form for error messages</div>
+        <div class="repeating-enclosing category-div" style="display:none">
+            <label class="item-label">Category</label>
+            <div class="item-input">
+                <select class="item-input-text">
+                    <option value="none">None provided</option>
+                    <c:forEach items="${categoryPaths}" var="categoryPath">
+                        <option value="${categoryPath.key}">${categoryPath.value}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="item-error" style="display: none;">Invalid</div>
+        </div>
         <div id="submit" class="submit btn btn-sm btn-default">Submit</div>
+        <span id="submit-spinner" style="display:none;">
+            <img src="<c:url value='/resources/img/spinner.gif'/>"></img>
+        </span>
+
         <p><div id="submit-comments"></div></p>
 
     </form>
