@@ -6,3 +6,16 @@ target
 /target
 .idea/
 out/
+/src/main/webapp/WEB-INF/views/DataFormatConverters.jsp
+/src/main/webapp/WEB-INF/views/DataService.jsp
+/src/main/webapp/WEB-INF/views/Dataset.jsp
+/src/main/webapp/WEB-INF/views/DataStandard.jsp
+/src/main/webapp/WEB-INF/views/DataVisualizers.jsp
+/src/main/webapp/WEB-INF/views/DiseaseForecasters.jsp
+/src/main/webapp/WEB-INF/views/DiseaseTransmissionModel.jsp
+/src/main/webapp/WEB-INF/views/DiseaseTransmissionTreeEstimator.jsp
+/src/main/webapp/WEB-INF/views/ModelingPlatforms.jsp
+/src/main/webapp/WEB-INF/views/PathogenEvolutionModels.jsp
+/src/main/webapp/WEB-INF/views/PhylogeneticTreeConstructors.jsp
+/src/main/webapp/WEB-INF/views/PopulationDynamicsModel.jsp
+/src/main/webapp/WEB-INF/views/SyntheticEcosystemConstructors.jsp
