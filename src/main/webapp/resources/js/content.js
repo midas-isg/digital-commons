@@ -1,25 +1,19 @@
 function expandNodesInSessionVariable(treeId, sessionVariable) {
+    console.log(sessionVariable);
     var expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
     var toRemove = [];
 
-    /*if(expanded === null) {
-        var openByDefaultIds = [];
-        for(var i = 0; i < openByDefault.length; i++) {
-            var matchingNode = $(treeId).treeview('search', [ openByDefault[i], {
-                ignoreCase: false,     // case insensitive
-                exactMatch: false,    // like or equals
-                revealResults: false  // reveal matching nodes
-            }])[0];
-            $(treeId).treeview('clearSearch');
-            if(matchingNode !== null) {
-                openByDefaultIds.push(matchingNode.nodeId);
-            }
+    if(expanded === null) {
+        var defaultExpandedNodes = $(treeId).treeview('getExpanded');
+        var defaultExpandedNodeIds = [];
+        for(var i = 0; i < defaultExpandedNodes.length; i++) {
+            defaultExpandedNodeIds.push(defaultExpandedNodes[i].nodeId);
         }
+        sessionStorage.setItem(sessionVariable, JSON.stringify(defaultExpandedNodeIds));
+        expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
+    }
 
-        expanded = openByDefaultIds;
-        sessionStorage.setItem(expandedInfo, JSON.stringify(openByDefaultIds));
-    }*/
-
+    $(treeId).treeview('collapseAll', { silent: true });
     if(expanded !== null) {
         for(var j = 0; j < expanded.length; j++) {
             try {

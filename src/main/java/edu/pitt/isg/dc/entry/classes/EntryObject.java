@@ -8,10 +8,12 @@ import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Comments;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.mdc.v1_0.Software;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import scala.util.parsing.combinator.testing.Str;
 
 import java.util.*;
 
@@ -19,8 +21,10 @@ class EntryObject {
     transient private EntryId id;
     private Object entry;
     private Category category;
+    private String displayName;
     private boolean isPublic;
     private List<String> comments;
+    private Set<String> tags;
     private Map<String, String> properties = new HashMap<>();
 
     public EntryId getId() {
@@ -79,6 +83,14 @@ class EntryObject {
         this.properties.put(key, value);
     }
 
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
+    }
+
     public String getEntryJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(this.getEntry());
@@ -86,42 +98,43 @@ class EntryObject {
     }
 
     public String getTitle() {
-        String title = "";
-        String name = "";
-        String version = "";
         LinkedHashMap entryData = (LinkedHashMap) this.getEntry();
-        if(entryData.containsKey("title")) {
-            name = String.valueOf(entryData.get("title"));
-        } else if(entryData.containsKey("name")) {
-            name = String.valueOf(entryData.get("name"));
-        }
+        String title = this.getDisplayName();
 
-        if(name.endsWith(" Synthetic Ecosystem")) {
-            name = name.replace(" Synthetic Ecosystem", "");
-        }
-
-        if(entryData.containsKey("version")) {
-            Object versionObj = entryData.get("version");
-            if(versionObj instanceof String) {
-                version = (String) versionObj;
-            } else {
-                List<String> versionList = (ArrayList<String>) entryData.get("version");
-                String[] versions = new String[versionList.size()];
-                versionList.toArray(versions);
-                version = StringUtils.join(versions, ", ");
+        if(title == null) {
+            String name = "";
+            String version = "";
+            if(entryData.containsKey("title")) {
+                name = String.valueOf(entryData.get("title"));
+            } else if(entryData.containsKey("name")) {
+                name = String.valueOf(entryData.get("name"));
             }
 
-            if(version.length() > 0) {
-                if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
-                    version = " - v" + version;
+            if(entryData.containsKey("version")) {
+                Object versionObj = entryData.get("version");
+                if(versionObj instanceof String) {
+                    version = (String) versionObj;
                 } else {
-                    version = " - " + version;
+                    List<String> versionList = (ArrayList<String>) entryData.get("version");
+                    String[] versions = new String[versionList.size()];
+                    versionList.toArray(versions);
+                    version = StringUtils.join(versions, ", ");
+                }
+
+                if(version.length() > 0) {
+                    if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
+                        version = " - v" + version;
+                    } else {
+                        version = " - " + version;
+                    }
                 }
             }
+
+            title = name + version;
         }
 
-        title = name + version;
         title = addBadges(title, entryData);
+
         return title;
     }
 
@@ -133,32 +146,25 @@ class EntryObject {
         return hasBadge;
     }
 
-    private String getBadge(String key) {
-        if(key.equals("availableOnOlympus")) {
-            return " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>";
-        } else if(key.equals("availableOnUIDS")) {
-            return " <b><i class=\"udsi-color\"><sup>UIDS</sup></i></b>";
-        } else if(key.equals("signInRequired")) {
-            return " <b><i class=\"sso-color\"><sup>SSO</sup></i></b>";
-        } else {
-            return "";
-        }
-    }
-
     private String addBadges(String title, LinkedHashMap entryData) {
-        String key = "availableOnOlympus";
-        if(hasBadge(entryData, key)) {
-            title += getBadge(key);
-        }
+        Set<String> tags = this.getTags();
+        if(tags != null && tags.size() > 0) {
+            title = EntryHelper.addBadges(title, tags);
+        } else {
+            String key = "availableOnOlympus";
+            if(hasBadge(entryData, key)) {
+                title += EntryHelper.getBadge(key);
+            }
 
-        key = "availableOnUIDS";
-        if(hasBadge(entryData, key)) {
-            title += getBadge(key);
-        }
+            key = "availableOnUIDS";
+            if(hasBadge(entryData, key)) {
+                title += EntryHelper.getBadge(key);
+            }
 
-        key = "signInRequired";
-        if(hasBadge(entryData, key)) {
-            title += getBadge(key);
+            key = "signInRequired";
+            if(hasBadge(entryData, key)) {
+                title += EntryHelper.getBadge(key);
+            }
         }
 
         return title;
@@ -201,5 +207,13 @@ class EntryObject {
         } else {
             return null;
         }
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 }

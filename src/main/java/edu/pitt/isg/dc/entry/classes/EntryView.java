@@ -33,6 +33,8 @@ public class EntryView extends EntryObject {
         setEntry(entry.getContent().get("entry"));
         setCategory(entry.getCategory());
         setIsPublic(entry.getIsPublic());
+        setDisplayName(entry.getDisplayName());
+        setTags(entry.getTags());
         copyPropertiesFrom(entry.getContent().get("properties"));
         setProperty("status", entry.getStatus());
     }

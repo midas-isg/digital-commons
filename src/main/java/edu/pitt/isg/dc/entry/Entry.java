@@ -7,10 +7,8 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.HashMap;
-
-import static javax.persistence.GenerationType.IDENTITY;
+import java.util.Set;
 
 @Entity
 @TypeDef(name = JsonbType.NAME, typeClass = JsonbType.class, parameters = {
@@ -22,6 +20,10 @@ public class Entry {
     private HashMap content;
     private String status = Values.PENDING;
     private boolean isPublic;
+    private String displayName;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> tags;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -66,5 +68,21 @@ public class Entry {
 
     public void setIsPublic(boolean isPublic) {
         this.isPublic = isPublic;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
     }
 }

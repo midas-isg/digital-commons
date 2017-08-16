@@ -2,6 +2,8 @@ package edu.pitt.isg.dc.entry;
 
 import javax.persistence.*;
 
+import java.util.Set;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -9,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class  Category {
     private Long id;
     private String category;
+    private Set<String> tags;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -27,4 +30,14 @@ public class  Category {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
+    }
 }
+

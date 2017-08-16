@@ -14,8 +14,10 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 
 import static edu.pitt.isg.dc.entry.Keys.STATUS;
 import static edu.pitt.isg.dc.entry.Keys.SUBTYPE;
@@ -167,6 +169,37 @@ public class EntryHelper {
                 }
             }
         }
+    }
+
+    public static String getBadge(String key) {
+        if(key.equals("availableOnOlympus")) {
+            return " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>";
+        } else if(key.equals("availableOnUIDS")) {
+            return " <b><i class=\"udsi-color\"><sup>UIDS</sup></i></b>";
+        } else if(key.equals("signInRequired")) {
+            return " <b><i class=\"sso-color\"><sup>SSO</sup></i></b>";
+        } else if(key.equals("apolloEncoded")) {
+            return " <b><i class=\"ae-color\"><sup>AE</sup></i></b>";
+        } else {
+            return "";
+        }
+    }
+
+    public static String addBadges(String title, Set<String> tags) {
+        if(tags != null && tags.size() > 0) {
+            for(String tag : tags) {
+                if(tag.equals("AE")) {
+                    title += getBadge("apolloEncoded");
+                } else if(tag.equals("AOC")) {
+                    title += getBadge("availableOnOlympus");
+                } else if(tag.equals("UIDS")) {
+                    title += getBadge("availableOnUIDS");
+                } else if(tag.equals("SSO")) {
+                    title += getBadge("signInRequired");
+                }
+            }
+        }
+        return title;
     }
 
     public static void copyDatastore() {

@@ -148,7 +148,7 @@ public class CategoryHelper {
     private JsonArray recurseCategories(Category category, Map<Category, List<CategoryWithOrder>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, JsonArray tree) {
         JsonObject treeNode = new JsonObject();
         treeNode.addProperty("categoryId", category.getId());
-        treeNode.addProperty("text", category.getCategory());
+        treeNode.addProperty("text",  EntryHelper.addBadges(category.getCategory(), category.getTags()));
         treeNode.addProperty("count", 0);
         treeNode.add("nodes", new JsonArray());
 
