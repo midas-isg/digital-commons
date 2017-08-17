@@ -11,6 +11,8 @@
               type="java.util.List"%>
 <%@ attribute name="softwareEntries" required="true"
               type="java.util.List"%>
+<%@ attribute name="approvedEntries" required="true"
+              type="java.util.List"%>
 <%@ attribute name="categoryPaths" required="true"
               type="java.util.Map"%>
 
@@ -49,7 +51,7 @@
         hideCategoryErrors();
     });
 
-    function showReviewEntryModal(htmlId, entryId, revisionId, category, elem, comments) {
+    function showReviewEntryModal(htmlId, entryId, revisionId, category, elem, comments, status) {
         var tableRow = $(elem).parent().parent();
         var tableData = tableRow.children();
 
@@ -62,6 +64,7 @@
         var endId = "-" + htmlId;
         $(baseId + "id" + endId).val(entryId);
         $(baseId + "revision-id" + endId).val(revisionId);
+        $(baseId + "status" + endId).val(status);
         $(baseId + "title" + endId).text(elemInfo[0]);
         $(baseId + "version" + endId).text(elemInfo[1]);
         $(baseId + "author" + endId).text(elemInfo[2]);
@@ -70,6 +73,10 @@
         if(htmlId == "approveModal") {
             if(category !== null && category !== '') {
                 $('#category-select' + endId).val(category);
+            }
+
+            if(status == "approved") {
+                $("#approve-btn" + endId).text("Make Public");
             }
         } else if(htmlId == "rejectModal") {
             if(category !== null && category !== '') {
@@ -93,6 +100,7 @@
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
         var revisionId = $("#approve-entry-revision-id" + endId).val();
+        var status = $("#approve-entry-status" + endId).val();
         var categoryId = $("#category-select" + endId).val();
         var params = getEntryParams(entryId, revisionId, categoryId);
         if(categoryId === null || categoryId === '' || categoryId === 'none') {
@@ -100,15 +108,30 @@
             $('#category-label' + endId).addClass("error-color");
             $('#category-feedback' + endId).show();
         } else {
-            $.post("${pageContext.request.contextPath}/add/approve", params ,function(data){
-                if(data === "success") {
-                    window.location.reload();
-                } else {
-                    alert("There was an issue approving this entry. Please try again.");
-                }
-            }).fail(function() {
-                alert("There was an issue approving this entry. Please try again.");
-            });
+            var alertMsg;
+            if(status === 'approved') {
+                alertMsg = "There was an issue making this entry public. Please try again.";
+                $.post("${pageContext.request.contextPath}/add/make-public", params ,function(data){
+                    if(data === "success") {
+                        window.location.reload();
+                    } else {
+                        alert(alertMsg);
+                    }
+                }).fail(function() {
+                    alert(alertMsg);
+                });
+            } else {
+                alertMsg = "There was an issue approving this entry. Please try again.";
+                $.post("${pageContext.request.contextPath}/add/approve", params ,function(data){
+                    if(data === "success") {
+                        window.location.reload();
+                    } else {
+                        alert(alertMsg);
+                    }
+                }).fail(function() {
+                    alert(alertMsg);
+                });
+            }
         }
     }
 
@@ -213,6 +236,7 @@
         <li><a href="#dataset">Dataset</a></li>
         <li><a href="#data-standard">Data Standard</a></li>
         <li><a href="#software">Software</a></li>
+        <li><a href="#approved-entries">Approved</a></li>
     </ul>
 
     <div class="tab-content">
@@ -227,6 +251,9 @@
         </div>
         <div id="software" class="tab-pane fade">
             <myTags:approveTable title="Software" entries="${softwareEntries}"></myTags:approveTable>
+        </div>
+        <div id="approved-entries" class="tab-pane fade">
+            <myTags:approveTable title="Approved" entries="${approvedEntries}"></myTags:approveTable>
         </div>
     </div>
 </div>

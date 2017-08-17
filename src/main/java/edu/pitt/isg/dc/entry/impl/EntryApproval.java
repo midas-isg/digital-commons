@@ -56,6 +56,20 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     @Override
+    public void makePublicEntry(EntryId entryId, long categoryId, String authenticationToken) throws MdcEntryDatastoreException {
+        if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
+            EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
+            entryObject.setIsPublic(true);
+
+            Category category = categoryRepository.findOne(categoryId);
+            entryObject.setCategory(category);
+
+            mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
+            //TODO: Do we need? mdcEntryDatastoreInterface.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
+        }
+    }
+
+    @Override
     public void rejectEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
@@ -95,13 +109,11 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException {
-        List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
-        List<EntryView> entries = new ArrayList<>();
-        for(EntryId entryId : entryIds) {
-            EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
-            String status = entryView.getProperty(STATUS);
-            if(status.equals(APPROVED)) {
-                entries.add(entryView);
+        List<EntryView> entries = mdcEntryDatastoreInterface.getLatestApprovedNotPublicEntries();
+        for(EntryView entryView : entries) {
+            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
+            if(comments != null && comments.getContent() != null) {
+                entryView.setComments(new ArrayList<>(comments.getContent()));
             }
         }
         return entries;

@@ -11,6 +11,10 @@ public interface EntryApprovalInterface {
                      long categoryId,
                      String authenticationToken) throws MdcEntryDatastoreException;
 
+    void makePublicEntry(EntryId entryId,
+                     long categoryId,
+                     String authenticationToken) throws MdcEntryDatastoreException;
+
     void rejectEntry(EntryId entryId,
                      String authenticationToken,
                      String[] commentsArr) throws MdcEntryDatastoreException;

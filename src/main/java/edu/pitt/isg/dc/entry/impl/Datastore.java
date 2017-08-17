@@ -72,6 +72,15 @@ public class Datastore implements MdcEntryDatastoreInterface {
     public String editEntry(EntryId id, EntryView entryObject) throws MdcEntryDatastoreException {
         try {
             final Entry entry = EntryView.toEntry(id, entryObject);
+
+            // find out if there are other public entries with the same entry id
+            if(entry.getIsPublic()) {
+                for(Entry publicEntry : repo.findDistinctPublicEntries(id.getEntryId(), id.getRevisionId())) {
+                    publicEntry.setIsPublic(false);
+                    repo.save(publicEntry);
+                }
+            }
+
             repo.save(entry);
             return entry.getId().toString();
         } catch (Exception e) {
@@ -101,6 +110,16 @@ public class Datastore implements MdcEntryDatastoreInterface {
     public List<EntryView> getLatestUnapprovedEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
         for (Entry entry: repo.findLatestUnapprovedEntries()) {
+            list.add(new EntryView(entry));
+        }
+        return list;
+    }
+
+    @Override
+    @Transactional
+    public List<EntryView> getLatestApprovedNotPublicEntries() throws MdcEntryDatastoreException {
+        List<EntryView> list = new ArrayList<>();
+        for (Entry entry: repo.findLatestApprovedNotPublicEntries()) {
             list.add(new EntryView(entry));
         }
         return list;

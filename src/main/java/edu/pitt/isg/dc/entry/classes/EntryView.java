@@ -21,6 +21,9 @@ public class EntryView extends EntryObject {
         entry.setContent(hashMap);
         entry.setStatus(entryObject.getProperty("status"));
         entry.setCategory(entryObject.getCategory());
+        entry.setIsPublic(entryObject.getIsPublic());
+        entry.setDisplayName(entryObject.getDisplayName());
+        entry.setTags(entryObject.getTags());
         return entry;
     }
 

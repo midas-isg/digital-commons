@@ -71,6 +71,7 @@ public class ApproveEntryController {
             model.addAttribute("datasetEntries", datasetEntries);
             model.addAttribute("dataStandardEntries", dataStandardEntries);
             model.addAttribute("softwareEntries", softwareEntries);
+            model.addAttribute("approvedEntries", entryApprovalInterface.getApprovedEntries());
             return "reviewEntries";
         } else {
             return "accessDenied";
@@ -90,6 +91,27 @@ public class ApproveEntryController {
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 entryApprovalInterface.acceptEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
+            } catch(MdcEntryDatastoreException e) {
+                status = "fail";
+            }
+            return status;
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
+    @RequestMapping(value = "/add/make-public", method = RequestMethod.POST)
+    @ResponseBody
+    public String makePublic(HttpSession session,
+                          @RequestParam(value = "entryId", required = true) long id,
+                          @RequestParam(value = "revisionId", required = true) long revisionId,
+                          @RequestParam(value = "categoryId", required = true) long categoryId,
+                          Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
+            String status = "success";
+            try {
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.makePublicEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }

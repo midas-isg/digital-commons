@@ -24,7 +24,8 @@
                         categoryPaths="${categoryPaths}"
                         datasetEntries="${datasetEntries}"
                         dataStandardEntries="${dataStandardEntries}"
-                        softwareEntries="${softwareEntries}"/>
+                        softwareEntries="${softwareEntries}"
+                        approvedEntries="${approvedEntries}"/>
             </div>
         </div>
     </div>

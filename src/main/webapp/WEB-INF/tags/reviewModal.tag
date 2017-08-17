@@ -16,6 +16,7 @@
             <div class="modal-body">
                 <input id="approve-entry-id-${id}" class="hidden">
                 <input id="approve-entry-revision-id-${id}" class="hidden">
+                <input id="approve-entry-status-${id}" class="hidden">
 
                 <c:if test="${type != 'comments'}">
                     <div class="sub-title-font font-size-16 modal-software-item">
@@ -67,7 +68,7 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <c:choose>
                     <c:when test="${type == 'approve'}">
-                        <button type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
+                        <button id="approve-btn-${id}" type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
                     </c:when>
                     <c:when test="${type == 'reject'}">
                         <button type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
@@ -86,5 +87,6 @@
         hideCategoryErrors();
         $('#category-select-${id}').val('none');
         $("#reject-comments-${id}").html("");
+        $("#approve-btn-${id}").text("Approve");
     });
 </script>

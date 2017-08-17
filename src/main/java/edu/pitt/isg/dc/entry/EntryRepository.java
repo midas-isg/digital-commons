@@ -30,6 +30,15 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "WHERE status != 'approved' GROUP BY entry_id)")
     List<Entry> findLatestUnapprovedEntries();
 
+    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+            "WHERE (entry_id, revision_id) IN\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "WHERE status = 'approved' GROUP BY entry_id) AND is_public = false")
+    List<Entry> findLatestApprovedNotPublicEntries();
+
+    @Query(nativeQuery = true, value="SELECT * from entry where entry_id = ?1 and revision_id != ?2 and is_public = true;")
+    List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
+
     Page<Entry> findByStatus(String status, Pageable pageable);
     Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
 
