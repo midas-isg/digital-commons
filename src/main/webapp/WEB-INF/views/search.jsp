@@ -27,6 +27,14 @@
     </c:forEach>
 </select>
 
+<span>Control Measure:</span>
+<select id="control-measure-select">
+    <option value="${null}">Any</option>
+    <c:forEach var="it" items="${controlMeasures}">
+        <option value="${it.id}">${it.name}</option>
+    </c:forEach>
+</select>
+
 <span>Type:</span>
 <select id="type-select">
     <option value="${null}">Any</option>

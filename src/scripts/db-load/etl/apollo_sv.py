@@ -17,6 +17,17 @@ about2kids = defaultdict(list)
 
 def main():
     _load_owl_from_github()
+    _create_view_ncbi()
+
+
+
+def _create_view_ncbi():
+    conn, cursor = _connect()
+    cursor.execute( """CREATE VIEW asv AS
+        SELECT id, label as name, iri, ancestors, leaf
+        FROM owl_class
+    """)
+    conn.commit()
 
 
 def _load_owl_from_github():
@@ -43,7 +54,6 @@ def _load_owl_from_github():
                     if resource == IDCS_IRI:
                         control_measures.append(owl_class)
         _fill_db(control_measures)
-        # _recursive_print(control_measures, '-')
 
 
 def _fill_db(control_measures):
@@ -72,9 +82,10 @@ def _create_table_owl(conn, cursor):
       label VARCHAR(512),
       iri VARCHAR(1024),
       ancestors  VARCHAR(""" + str(max_pg_varchar) + """), 
-
+      leaf boolean DEFAULT TRUE,
       id BIGSERIAL PRIMARY KEY
     );""")
+
     conn.commit()
 
 
@@ -122,7 +133,8 @@ def _load_owl_recursive(cursor, classes, ancestors):
             kid_iris = about2kids[about]
             kids = [about2class[k] for k in kid_iris]
             _load_owl_recursive(cursor, kids, new_ancestors)
-
+            if kids:
+                cursor.execute("update owl_class SET leaf = FALSE where iri = '" + about + "'")
 
 def quote(txt):
     return "'" + txt + "'"

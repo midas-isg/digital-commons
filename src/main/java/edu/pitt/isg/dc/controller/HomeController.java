@@ -2,6 +2,8 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
+import edu.pitt.isg.dc.entry.Asv;
+import edu.pitt.isg.dc.entry.AsvRule;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.CategoryOrder;
 import edu.pitt.isg.dc.entry.CategoryOrderRepository;
@@ -88,6 +90,8 @@ public class HomeController {
     private NcbiRule ncbiRule;
     @Autowired
     private TypeRule typeRule;
+    @Autowired
+    private AsvRule asvRule;
 
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
@@ -197,9 +201,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String ncbis(Model model) throws Exception {
+    public String search(Model model) throws Exception {
         final List<Ncbi> hosts = sort(ncbiRule.findHostsInEntries());
         final List<Ncbi> pathogens = sort(ncbiRule.findPathogensInEntries());
+        final List<Asv> controlMeasures = asvRule.findControlMeasuresInEntries();
         final List<String[]> types = typeRule.findAll().stream()
                 .map(this::formatType)
                 .sorted(comparing(s -> s[1]))
@@ -207,6 +212,7 @@ public class HomeController {
         model.addAttribute("hosts", hosts);
         model.addAttribute("pathogens", pathogens);
         model.addAttribute("types", types);
+        model.addAttribute("controlMeasures", controlMeasures);
         return "search";
     }
 

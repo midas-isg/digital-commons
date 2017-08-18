@@ -1,17 +1,17 @@
 package edu.pitt.isg.dc.vm;
 
 public class EntryOntologyQuery {
-    private Long controlMeasureId;
+    private String controlMeasureId;
     private Long locationId;
     private Long hostId;
     private Long pathogenId;
     private String type;
 
-    public Long getControlMeasureId() {
+    public String getControlMeasureId() {
         return controlMeasureId;
     }
 
-    public void setControlMeasureId(Long controlMeasureId) {
+    public void setControlMeasureId(String controlMeasureId) {
         this.controlMeasureId = controlMeasureId;
     }
 

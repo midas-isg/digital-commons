@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+import static edu.pitt.isg.dc.entry.Keys.CONTROL_MEASURES;
 import static edu.pitt.isg.dc.entry.Keys.ENTRY;
 import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
 import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
@@ -43,7 +44,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = {
         "app.identifierSource.ncbi=https://biosharing.org/bsg-s000154",
         "app.identifierSource.ls=https://biosharing.org/bsg-s000708",
-        "app.identifierSource.asv=https://biosharing.org/bsg-s002688",
+        "app.identifierSource.sv=https://biosharing.org/bsg-s002688",
         "app.ncbi.host.root.path=1/33208",
 
         "spring.datasource.url=jdbc:postgresql://localhost:54320/mdc?currentSchema=test",
@@ -58,7 +59,7 @@ public class DatabaseTest {
     private static Long entryCount = null;
     private static Long ncbiCount = null;
     private static Long asvCount = null;
-    private static final List<String> list = asList("123", "286", "308", "327", "328", "390");
+    private static final List<String> asvList = asList("123", "286", "308", "327", "328", "390");
 
     @Autowired
     private Datastore datastore;
@@ -106,7 +107,7 @@ public class DatabaseTest {
         final String last3digit = "086";
         final String rIri = toAsvIri(last3digit);
         final Asv root = saveAsv(rIri, null, false);
-        list.forEach(s -> saveAsv(toAsvIri(s), rIri, true));
+        asvList.forEach(s -> saveAsv(toAsvIri(s), rIri, true));
         asvCount = asvRepo.count();
     }
 
@@ -161,9 +162,9 @@ public class DatabaseTest {
     @Test
     public void allControlMeasures() throws Exception {
         final List<String> all = asvRule.listAsvIdsAsControlMeasureInEntries();
-        assertThat(all).containsExactlyInAnyOrder(list.stream()
+        assertThat(all).containsExactlyInAnyOrder(asvList.stream()
                 .map(this::toAsvIri)
-                .collect(Collectors.toList()).toArray(new String[list.size()]));
+                .collect(Collectors.toList()).toArray(new String[asvList.size()]));
     }
 
     @Test
@@ -224,6 +225,19 @@ public class DatabaseTest {
     }
 
     @Test
+    public void entriesQuarantineAsControlMeasure() throws Exception {
+        final EntryOntologyQuery q = new EntryOntologyQuery();
+        q.setControlMeasureId("http://purl.obolibrary.org/obo/APOLLO_SV_00000327");
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .allSatisfy(this::assertTypeIsDTM)
+                .allSatisfy(this::assertQuarantineDtm);
+    }
+
+    @Test
     public void entriesWithHostAndPathogenAndType() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
         q.setHostId(humanId);
@@ -279,6 +293,12 @@ public class DatabaseTest {
         map.get(type).accept(entry);
     }
 
+    private void assertQuarantineDtm(Entry entry) {
+        final Map<String, Object> content = toContent(entry);
+        final List<Object> list = getList(getMap(content, ENTRY), CONTROL_MEASURES);
+        assertThat(list).anySatisfy(this::assertQuarantineIdentifiers);
+    }
+
     private void assertEbolaDtm(Map<String, Object> entry) {
         assertThat(getList(entry, PATHOGEN_COVERAGE)).anySatisfy(this::assertEbolaIdentifiers);
     }
@@ -289,6 +309,10 @@ public class DatabaseTest {
 
     private void assertEbolaIdentifiers(Object o) {
         assertIdentifier(o, ebolaId + "", ebolaZaireId + "");
+    }
+
+    private void assertQuarantineIdentifiers(Object o) {
+        assertIdentifier(o, "http://purl.obolibrary.org/obo/APOLLO_SV_00000327");
     }
 
     private Ncbi saveNcbi(long id, Ncbi parent, boolean leaf) {

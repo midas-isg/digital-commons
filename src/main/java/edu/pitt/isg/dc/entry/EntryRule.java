@@ -16,6 +16,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static edu.pitt.isg.dc.entry.Keys.CONTROL_MEASURES;
 import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
 import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
 import static edu.pitt.isg.dc.entry.Keys.LOCATION_COVERAGE;
@@ -23,6 +24,7 @@ import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.SPATIAL_COVERAGE;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
 import static java.lang.System.out;
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -35,11 +37,14 @@ public class EntryRule {
     private String ncbiIdentifierSource;
     @Value("${app.identifierSource.ls}")
     private String lsIdentifierSource;
+    @Value("${app.identifierSource.sv}")
+    private String svIdentifierSource;
 
     public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
         List<EntryId> results = listIdsByHostRelativesOfNcbiId(q.getHostId());
         results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenId()));
         results = merge(results, listIdsByRelativesOfLsId(q.getLocationId()));
+        results = merge(results, listIdsByRelativesOfControlMeasureId(q.getControlMeasureId()));
         results = merge(results, listIdsByType(q.getType()));
 
         if (results == null)
@@ -64,6 +69,16 @@ public class EntryRule {
         return list.stream()
                 .map(EntryId::new)
                 .collect(toList());
+    }
+
+    private List<EntryId> listIdsByRelativesOfControlMeasureId(String id) {
+        if (id == null)
+            return null;
+        final List<String> asvIds = asList(id);
+        final Stream<String> stream = Stream.of(CONTROL_MEASURES);
+        final List<EntryId> ids = parallelFilter(stream, svIdentifierSource, asvIds);
+        out.println("ASV:" + asvIds +  "=>" + ids.size() + " entries:" + ids);
+        return ids;
     }
 
     private List<EntryId> listIdsByRelativesOfLsId(Long lsId) {

@@ -12,11 +12,16 @@ import static edu.pitt.isg.dc.entry.Keys.CONTROL_MEASURES;
 @RequiredArgsConstructor
 public class AsvRule {
     private final EntryRepository entryRepo;
+    private final AsvRepository repo;
 
     @Value("${app.identifierSource.sv}")
     private String identifierSource;
 
     public List<String> listAsvIdsAsControlMeasureInEntries() {
         return entryRepo.listIdentifiersByFieldAndIdentifierSource(CONTROL_MEASURES, identifierSource);
+    }
+
+    public List<Asv> findControlMeasuresInEntries() {
+        return repo.findByIriIn(listAsvIdsAsControlMeasureInEntries());
     }
 }
