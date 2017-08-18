@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import static edu.pitt.isg.dc.entry.Keys.ENTRY;
 import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
@@ -34,6 +35,7 @@ import static edu.pitt.isg.dc.entry.Values.DATASET_2_2;
 import static edu.pitt.isg.dc.entry.Values.DATA_FORMAT_CONVERTERS1_0;
 import static edu.pitt.isg.dc.entry.Values.DTM_1_0;
 import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
+import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -41,6 +43,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestPropertySource(properties = {
         "app.identifierSource.ncbi=https://biosharing.org/bsg-s000154",
         "app.identifierSource.ls=https://biosharing.org/bsg-s000708",
+        "app.identifierSource.asv=https://biosharing.org/bsg-s002688",
         "app.ncbi.host.root.path=1/33208",
 
         "spring.datasource.url=jdbc:postgresql://localhost:54320/mdc?currentSchema=test",
@@ -54,6 +57,8 @@ public class DatabaseTest {
     private static final long ebolaZaireId = 128951;
     private static Long entryCount = null;
     private static Long ncbiCount = null;
+    private static Long asvCount = null;
+    private static final List<String> list = asList("123", "286", "308", "327", "328", "390");
 
     @Autowired
     private Datastore datastore;
@@ -62,9 +67,13 @@ public class DatabaseTest {
     @Autowired
     private NcbiRepository ncbiRepo;
     @Autowired
+    private AsvRepository asvRepo;
+    @Autowired
     private EntryRule entryRule;
     @Autowired
     private TypeRule typeRule;
+    @Autowired
+    private AsvRule asvRule;
 
     @BeforeClass
     public static void changePath() {
@@ -89,6 +98,24 @@ public class DatabaseTest {
     }
 
     @Before
+    public void fillAsv() throws Exception {
+        if (asvCount != null)
+            return;
+        asvRepo.deleteAllInBatch();
+
+        final String last3digit = "086";
+        final String rIri = toAsvIri(last3digit);
+        final Asv root = saveAsv(rIri, null, false);
+        list.forEach(s -> saveAsv(toAsvIri(s), rIri, true));
+        asvCount = asvRepo.count();
+    }
+
+    private String toAsvIri(String last3digit) {
+        final String prefix = "http://purl.obolibrary.org/obo/APOLLO_SV_00000";
+        return prefix + last3digit;
+    }
+
+    @Before
     public void fillNcbi() throws Exception {
         if (ncbiCount != null)
             return;
@@ -99,6 +126,21 @@ public class DatabaseTest {
         final Ncbi ebola = saveNcbi(ebolaId, root, false);
         saveNcbi(ebolaZaireId, ebola, true);
         ncbiCount = ncbiRepo.count();
+    }
+
+    private Asv saveAsv(String iri, String parentAncestors, boolean leaf) {
+        final Asv e = toAsv(iri, parentAncestors, leaf);
+        asvRepo.save(e);
+        return e;
+    }
+
+    private Asv toAsv(String iri, String parentAncestors, boolean leaf) {
+        final Asv asv = new Asv();
+        asv.setIri(iri);
+        final String parentPath = parentAncestors == null ? "" : parentAncestors + ",";
+        asv.setAncestors(parentPath + iri);
+        asv.setLeaf(leaf);
+        return asv;
     }
 
     @Test
@@ -114,6 +156,14 @@ public class DatabaseTest {
 
         assertAllElementsIn1Page(page);
         assertThat(page).allSatisfy(this::assertStatusIsApproved);
+    }
+
+    @Test
+    public void allControlMeasures() throws Exception {
+        final List<String> all = asvRule.listAsvIdsAsControlMeasureInEntries();
+        assertThat(all).containsExactlyInAnyOrder(list.stream()
+                .map(this::toAsvIri)
+                .collect(Collectors.toList()).toArray(new String[list.size()]));
     }
 
     @Test

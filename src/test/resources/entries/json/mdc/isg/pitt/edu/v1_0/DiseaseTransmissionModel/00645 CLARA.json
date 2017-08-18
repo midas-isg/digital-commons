@@ -14,15 +14,15 @@
   "controlMeasures": [
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000390",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "wolbachia"
       }
     },
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000308",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "vector control"
       }
     },
@@ -35,8 +35,8 @@
     },
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000328",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "larviciding"
       }
     }
