@@ -755,3 +755,7 @@ label[disabled="disabled"]{
 .modal-body p {
     word-wrap: break-word;
 }
+
+.text-center {
+    text-align: center;
+}

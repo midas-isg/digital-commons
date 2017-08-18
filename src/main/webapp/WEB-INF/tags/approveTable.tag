@@ -86,11 +86,11 @@
             </c:choose>
             <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
             <td>${splitEntryType[fn:length(splitEntryType) - 1]}</td>
-            <td><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}")'><icon class="glyphicon glyphicon-eye-open"></icon></button></td>
-            <td><a href="${pageContext.request.contextPath}/add/${splitEntryType[fn:length(splitEntryType) - 1]}?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}&categoryId=${entry.category.id}"><button class="btn btn-xs btn-default"><icon class="glyphicon glyphicon-edit"></icon></button></a></td>
-            <td><button class="btn btn-xs btn-primary" onclick="showReviewEntryModal('commentModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-comment"></icon></button></td>
-            <td><button class="btn btn-xs btn-success" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, null, '${entry.getProperty('status')}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
-            <td><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-danger" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
+            <td class="text-center"><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}")'><icon class="glyphicon glyphicon-eye-open"></icon></button></td>
+            <td class="text-center"><a href="${pageContext.request.contextPath}/add/${splitEntryType[fn:length(splitEntryType) - 1]}?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}&categoryId=${entry.category.id}"><button class="btn btn-xs btn-default"><icon class="glyphicon glyphicon-edit"></icon></button></a></td>
+            <td class="text-center"><button class="btn btn-xs btn-default" onclick="showReviewEntryModal('commentModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-comment"></icon></button></td>
+            <td class="text-center"><button class="btn btn-xs btn-default" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, null, '${entry.getProperty('status')}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
+            <td class="text-center"><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-default" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, entryComments['${entry.id.entryId}-${entry.id.revisionId}']);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
         </tr>
         <script>
             <c:choose>

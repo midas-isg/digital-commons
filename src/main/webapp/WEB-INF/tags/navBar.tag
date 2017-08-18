@@ -44,9 +44,9 @@
                     <li role="presentation" class="divider"></li>
                 </c:if>
                 <li class="dropdown-header">Add</li>
-                <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converter</a></li>
-                <li><a href="${contextPath}/add/dataService">Data Service</a></li>
-                <li><a href="${contextPath}/add/dataset">Dataset</a></li>
+                <li><a href="${contextPath}/add/dataFormatConverters?categoryId=6">Data Format Converter</a></li>
+                <li><a href="${contextPath}/add/dataService?categoryId=7">Data Service</a></li>
+                <li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>
                 <%--<li class="dropdown-submenu">
                     <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                     <ul class="dropdown-menu">
@@ -55,16 +55,16 @@
                         <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                     </ul>
                 </li>--%>
-                <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Format</a></li>
-                <li><a href="${contextPath}/add/dataVisualizers">Data Visualizer</a></li>
-                <li><a href="${contextPath}/add/diseaseForecasters">Disease Forecaster</a></li>
-                <li><a href="${contextPath}/add/diseaseTransmissionModel">Disease Transmission Model</a></li>
-                <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a></li>
-                <li><a href="${contextPath}/add/modelingPlatforms">Modeling Platform</a></li>
-                <li><a href="${contextPath}/add/pathogenEvolutionModels">Pathogen Evolution Model</a></li>
-                <li><a href="${contextPath}/add/phylogeneticTreeConstructors">Phylogenetic Tree Constructor</a></li>
-                <li><a href="${contextPath}/add/populationDynamicsModel">Population Dynamics Model</a></li>
-                <li><a href="${contextPath}/add/syntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a></li>
+                <li><a href="${pageContext.request.contextPath}/add/dataStandard?categoryId=4">Data Format</a></li>
+                <li><a href="${contextPath}/add/dataVisualizers?categoryId=8">Data Visualizer</a></li>
+                <li><a href="${contextPath}/add/diseaseForecasters?categoryId=9">Disease Forecaster</a></li>
+                <li><a href="${contextPath}/add/diseaseTransmissionModel?categoryId=10">Disease Transmission Model</a></li>
+                <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators?categoryId=12">Disease Transmission Tree Estimator</a></li>
+                <li><a href="${contextPath}/add/modelingPlatforms?categoryId=13">Modeling Platform</a></li>
+                <li><a href="${contextPath}/add/pathogenEvolutionModels?categoryId=14">Pathogen Evolution Model</a></li>
+                <li><a href="${contextPath}/add/phylogeneticTreeConstructors?categoryId=15">Phylogenetic Tree Constructor</a></li>
+                <li><a href="${contextPath}/add/populationDynamicsModel?categoryId=11">Population Dynamics Model</a></li>
+                <li><a href="${contextPath}/add/syntheticEcosystemConstructors?categoryId=16">Synthetic Ecosystem Constructor</a></li>
             </ul>
         </li>
     </c:if>
