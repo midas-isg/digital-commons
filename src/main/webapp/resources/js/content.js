@@ -1,5 +1,4 @@
 function expandNodesInSessionVariable(treeId, sessionVariable) {
-    console.log(sessionVariable);
     var expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
     var toRemove = [];
 
@@ -249,7 +248,7 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
 
         attribute = attribute.map(function(elem){
             return elem.firstName + " " + elem.lastName;
-        }).join(",");
+        }).join(", ");
 
         $(containerId).show();
         $(elementId).html(attribute);

@@ -11,6 +11,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class  Category {
     private Long id;
     private String category;
+    private Boolean expanded;
     private Set<String> tags;
 
     @Id
@@ -29,6 +30,14 @@ public class  Category {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Boolean isExpanded() {
+        return expanded;
+    }
+
+    public void setExpanded(Boolean expanded) {
+        this.expanded = expanded;
     }
 
     @ElementCollection(fetch = FetchType.EAGER)

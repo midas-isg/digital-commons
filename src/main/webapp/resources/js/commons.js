@@ -1362,6 +1362,10 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         }
 
         if(!hasNulls) {
+            if(attribute.startsWith('http') && !attribute.includes(' ')) {
+                attribute = "<a class='underline' href='" + attribute + "'>" + attribute + "</a>";
+            }
+
             if(renderHtml) {
                 $(elementId).html(attribute);
             } else {
@@ -1517,9 +1521,8 @@ function openModal(type, name, json) {
     }
 
     if('creator' in attrs) {
-        var attribute = attrs['creator'];
-        var length = attribute.length;
-
+        attribute = attrs['creator'];
+        length = attribute.length;
         attribute = attribute.join(', ');
 
         $('#software-creator-container').show();
@@ -1873,6 +1876,12 @@ $(document).ready(function() {
     });
 
     $('#navbar-collapse').collapse('hide');
+
+    $('#pageModal').on('hidden.bs.modal', function () {
+        $('#modal-switch-btn').text('Switch to Metadata View');
+        $('#modal-html-link').click();
+        location.hash = '_';
+    });
 });
 
 $(window).on("popstate", function() {
@@ -2129,12 +2138,6 @@ function toggleElementById(id, element) {
         }
     }
 }
-
-$('#pageModal').on('hidden.bs.modal', function () {
-    $('#modal-switch-btn').text('Switch to Metadata View');
-    $('#modal-html-link').click();
-    location.hash = '_';
-});
 
 function populateFieldValues() {
     var field = $('#field-select').val();

@@ -72,8 +72,8 @@
 <script>
     $(window).on("resize", function () {
         var maxWidthLarge = 1300;
-        var maxWidthMedium = 1186;
-        var maxWidthSmall = 982;
+        var maxWidthMedium = 1230;
+        var maxWidthSmall = 1010;
         if ($(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');
         } else {

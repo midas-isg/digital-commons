@@ -54,7 +54,7 @@ public class Datastore implements MdcEntryDatastoreInterface {
 
             Entry entry = EntryView.toEntry(entryIdManager.getLatestRevisionEntryId(id), entryObject);
 
-            if(status.equals("rejected") || status.equals("revised")) {
+            if(status.equals("rejected") || status.equals("revised") || status.equals("pending")) {
                 entry.setStatus("revised");
             } else {
                 entry.setStatus("pending");

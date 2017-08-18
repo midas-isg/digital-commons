@@ -110,9 +110,15 @@ public class DataEntryController {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
-        Long category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8"));
-        Long entryId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("entryId"), "UTF-8"));
-        Long revisionId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("revisionId"), "UTF-8"));
+        Long category = null, entryId = null, revisionId = null;
+        try {
+            category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8"));
+            entryId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("entryId"), "UTF-8"));
+            revisionId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("revisionId"), "UTF-8"));
+        } catch (NumberFormatException e) {
+            // pass
+        }
+
         String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 
@@ -132,23 +138,6 @@ public class DataEntryController {
 
             EntryView entryObject = new EntryView();
             entryObject.setProperty("type", entry.get("class").getAsString());
-
-            if(datasetType != null) {
-                if (customValue != null && !customValue.equals("")) {
-                    customValue = customValue.toLowerCase().replaceAll("[^a-zA-Z0-9_\\-]", "-");
-                    entryObject.setProperty("subtype", customValue);
-                } else {
-                    if (datasetType.equals("DiseaseSurveillanceData")) {
-                        entryObject.setProperty("subtype", "disease-surveillance");
-                    } else if(datasetType.equals("MortalityData")) {
-                        entryObject.setProperty("subtype", "mortality");
-                    } else {
-                        entryObject.setProperty("subtype", datasetType);
-                    }
-                }
-            } else if(entry.get("class").getAsString().contains("Dataset")) {
-                throw new MdcEntryDatastoreException("Unsupported Dataset Type");
-            }
 
             entry.remove("class");
             entryObject.setEntry(entry);

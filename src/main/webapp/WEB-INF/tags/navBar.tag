@@ -36,18 +36,25 @@
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown">
-            <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Add Digital Object <span class="caret"></span></a>
+            <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <ul class="dropdown-menu pull-right">
+                <c:if test="${adminType == 'ISG_ADMIN'}">
+                    <li class="dropdown-header">Admin</li>
+                    <li><a href="${contextPath}/add/review">Review Submissions</a></li>
+                    <li role="presentation" class="divider"></li>
+                </c:if>
+                <li class="dropdown-header">Add</li>
                 <li><a href="${contextPath}/add/dataFormatConverters">Data Format Converter</a></li>
                 <li><a href="${contextPath}/add/dataService">Data Service</a></li>
-                <li class="dropdown-submenu">
+                <li><a href="${contextPath}/add/dataset">Dataset</a></li>
+                <%--<li class="dropdown-submenu">
                     <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
                         <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
                         <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
                     </ul>
-                </li>
+                </li>--%>
                 <li><a href="${pageContext.request.contextPath}/add/dataStandard">Data Format</a></li>
                 <li><a href="${contextPath}/add/dataVisualizers">Data Visualizer</a></li>
                 <li><a href="${contextPath}/add/diseaseForecasters">Disease Forecaster</a></li>

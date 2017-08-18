@@ -152,6 +152,12 @@ public class CategoryHelper {
         treeNode.addProperty("count", 0);
         treeNode.add("nodes", new JsonArray());
 
+        if(category.isExpanded() != null && category.isExpanded()) {
+            JsonObject state = new JsonObject();
+            state.addProperty("expanded", true);
+            treeNode.add("state", state);
+        }
+
         if(categoryEntryMap.containsKey(category.getId())) {
             List<EntryView> entries = categoryEntryMap.get(category.getId());
             for(EntryView entry : entries) {
