@@ -15,9 +15,12 @@
               type="java.util.List"%>
 <%@ attribute name="categoryPaths" required="true"
               type="java.util.Map"%>
+<%@ attribute name="adminType" required="true"
+              type="java.lang.String"%>
 
 <script>
     var entryComments = {};
+    var softwareXml = {};
 
     function getEntryParams(entryId, revisionId, categoryId, comments) {
         var auth = getParameterByName("auth");
@@ -241,19 +244,19 @@
 
     <div class="tab-content">
         <div id="all" class="tab-pane fade in active">
-            <myTags:approveTable title="All" entries="${entries}"></myTags:approveTable>
+            <myTags:approveTable title="All" entries="${entries}" adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="dataset" class="tab-pane fade">
-            <myTags:approveTable title="Dataset" entries="${datasetEntries}"></myTags:approveTable>
+            <myTags:approveTable title="Dataset" entries="${datasetEntries}" adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="data-standard" class="tab-pane fade">
-            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}"></myTags:approveTable>
+            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}" adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="software" class="tab-pane fade">
-            <myTags:approveTable title="Software" entries="${softwareEntries}"></myTags:approveTable>
+            <myTags:approveTable title="Software" entries="${softwareEntries}" adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="approved-entries" class="tab-pane fade">
-            <myTags:approveTable title="Approved" entries="${approvedEntries}"></myTags:approveTable>
+            <myTags:approveTable title="Approved" entries="${approvedEntries}" adminType="${adminType}"></myTags:approveTable>
         </div>
     </div>
 </div>

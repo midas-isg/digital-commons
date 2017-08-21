@@ -101,35 +101,13 @@ function showModal(entry, type, xml) {
         $('#mdc-json').hide();
     }
 
-    if(xml !== null) {
+    if(xml !== null && xml.length > 0) {
         $('#display-json').text(xml);
     } else {
         $('#display-json').text(JSON.stringify(entry, null, "\t"));
     }
     toggleModalItems(entry, type);
     $('#pageModal').modal('show');
-}
-
-function sortAndCountSoftware(softwareData) {
-    for(var i = 0; i < softwareData.length; i++) {
-        var nodeLength = softwareData[i].nodes.length;
-        for(var h = 0; h < softwareData[i].nodes.length; h++) {
-            if(softwareData[i].nodes[h].nodes !== undefined) {
-                var innerNodeLength = softwareData[i].nodes[h].nodes.length;
-                nodeLength += innerNodeLength - 1;
-
-                softwareData[i].nodes[h].text += getCountBadge(innerNodeLength);
-                softwareData[i].nodes[h].text = wrapInSpan(softwareData[i].nodes[h].text);
-
-                softwareData[i].nodes[h].nodes.sort(compareNodes);
-            }
-        }
-        softwareData[i].text += getCountBadge(nodeLength);
-        softwareData[i].text = wrapInSpan(softwareData[i].text);
-
-        softwareData[i].nodes.sort(compareNodes);
-    }
-    return softwareData;
 }
 
 function getCountBadge(count) {

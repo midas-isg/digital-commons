@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.utils;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.mdc.v1_0.Software;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ public class DigitalCommonsHelper {
         String xml = null;
         try {
             xml = converter.convertToXml(sw);
-            xml = xml.replaceAll("<humanReadableSynopsis> ", "<humanReadableSynopsis>");
+            xml = xml.replaceAll("(?s)&lt;.*?&gt;", "");
         } catch(Exception e) {
             System.out.println("Error: " + e);
         }

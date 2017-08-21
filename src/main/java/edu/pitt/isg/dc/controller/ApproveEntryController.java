@@ -29,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static edu.pitt.isg.dc.controller.HomeController.ADMIN_TYPE;
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -46,8 +48,7 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/review", method = RequestMethod.GET)
     public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
-//        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
-        if(ifISGAdmin(session)) {
+        if(ifISGAdmin(session) || ifMDCEditor(session)) {
             List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
@@ -66,6 +67,7 @@ public class ApproveEntryController {
             CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
             Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
 
+            model.addAttribute("adminType", session.getAttribute(ADMIN_TYPE));
             model.addAttribute("entries", entries);
             model.addAttribute("categoryPaths", categoryPaths);
             model.addAttribute("datasetEntries", datasetEntries);
@@ -75,7 +77,6 @@ public class ApproveEntryController {
             return "reviewEntries";
         } else {
             return "accessDenied";
-//            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
     }
 

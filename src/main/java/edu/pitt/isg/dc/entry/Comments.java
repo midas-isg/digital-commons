@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry;
 import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,7 +12,7 @@ public class Comments {
     private EntryId id;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> content;
+    private List<String> content;
 
     public EntryId getId() {
         return id;
@@ -21,11 +22,11 @@ public class Comments {
         this.id = id;
     }
 
-    public Set<String> getContent() {
+    public List<String> getContent() {
         return content;
     }
 
-    public void setContent(Set<String> content) {
+    public void setContent(List<String> content) {
         this.content = content;
     }
 }

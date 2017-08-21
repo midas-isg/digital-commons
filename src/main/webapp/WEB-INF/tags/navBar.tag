@@ -38,11 +38,16 @@
         <li class="dropdown">
             <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <ul class="dropdown-menu pull-right">
-                <c:if test="${adminType == 'ISG_ADMIN'}">
-                    <li class="dropdown-header">Admin</li>
-                    <li><a href="${contextPath}/add/review">Review Submissions</a></li>
-                    <li role="presentation" class="divider"></li>
-                </c:if>
+                <c:choose>
+                    <c:when test="${adminType == 'ISG_ADMIN'}">
+                        <li class="dropdown-header">Admin</li>
+                    </c:when>
+                    <c:when test="${adminType == 'MDC_EDITOR'}">
+                        <li class="dropdown-header">Edit</li>
+                    </c:when>
+                </c:choose>
+                <li><a href="${contextPath}/add/review">Review Submissions</a></li>
+                <li role="presentation" class="divider"></li>
                 <li class="dropdown-header">Add</li>
                 <li><a href="${contextPath}/add/dataFormatConverters?categoryId=6">Data Format Converter</a></li>
                 <li><a href="${contextPath}/add/dataService?categoryId=7">Data Service</a></li>

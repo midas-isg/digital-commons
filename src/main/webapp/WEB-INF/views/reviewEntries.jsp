@@ -25,7 +25,8 @@
                         datasetEntries="${datasetEntries}"
                         dataStandardEntries="${dataStandardEntries}"
                         softwareEntries="${softwareEntries}"
-                        approvedEntries="${approvedEntries}"/>
+                        approvedEntries="${approvedEntries}"
+                        adminType="${adminType}"/>
             </div>
         </div>
     </div>

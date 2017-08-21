@@ -76,10 +76,7 @@ public class EntryApproval implements EntryApprovalInterface {
             entryObject.setProperty(STATUS, REJECTED);
 
             if(commentsArr != null && commentsArr.length > 0) {
-                Set<String> commentsContent = new HashSet(Arrays.asList(commentsArr));
-                Comments comments = new Comments();
-                comments.setId(entryId);
-                comments.setContent(commentsContent);
+                Comments comments = parseComments(entryId, commentsArr);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
 
@@ -93,13 +90,18 @@ public class EntryApproval implements EntryApprovalInterface {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
 
             if(entryObject != null && commentsArr != null && commentsArr.length > 0) {
-                Set<String> commentsContent = new HashSet(Arrays.asList(commentsArr));
-                Comments comments = new Comments();
-                comments.setId(entryId);
-                comments.setContent(commentsContent);
+                Comments comments = parseComments(entryId, commentsArr);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
         }
+    }
+
+    private Comments parseComments(EntryId entryId, String[] commentsArr) {
+        List<String> commentsContent = Arrays.asList(commentsArr);
+        Comments comments = new Comments();
+        comments.setId(entryId);
+        comments.setContent(commentsContent);
+        return comments;
     }
 
     @Override

@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <c:choose>
                     <c:when test="${type == 'approve'}">
                         <button id="approve-btn-${id}" type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>

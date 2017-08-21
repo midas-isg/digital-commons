@@ -91,6 +91,14 @@ class EntryObject {
         this.tags = tags;
     }
 
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
     public String getEntryJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String json = gson.toJson(this.getEntry());
@@ -173,7 +181,6 @@ class EntryObject {
     public String getUnescapedEntryJsonString() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         return gson.toJson(this.getEntry());
-
     }
 
     public String getEntryType() {
@@ -209,11 +216,21 @@ class EntryObject {
         }
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getEscapedXmlString() {
+        String xmlString = this.getXmlString();
+        if(xmlString != null) {
+            xmlString = StringEscapeUtils.escapeJavaScript(xmlString);
+        }
+        return xmlString;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public List<String> getSanitizedComments() {
+        List<String> sanitizedComments = new ArrayList<>();
+        for(String comment : this.getComments()) {
+            String sanitizedComment = comment.replaceAll("\"", "");
+            sanitizedComment = StringEscapeUtils.escapeJavaScript(sanitizedComment);
+            sanitizedComments.add(sanitizedComment);
+        }
+        return sanitizedComments;
     }
 }
