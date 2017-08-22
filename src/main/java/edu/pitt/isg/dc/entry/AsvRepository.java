@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface AsvRepository extends JpaRepository<Asv, Long> {
     List<Asv> findByIriIn(List<String> iris);
+    List<Asv> findByAncestorsContaining(String iri);
 }

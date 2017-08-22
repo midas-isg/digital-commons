@@ -33,6 +33,8 @@ public class EntryRule {
     private EntryRepository repo;
     @Autowired
     private NcbiRule ncbi;
+    @Autowired
+    private AsvRule asv;
     @Value("${app.identifierSource.ncbi}")
     private String ncbiIdentifierSource;
     @Value("${app.identifierSource.ls}")
@@ -71,13 +73,14 @@ public class EntryRule {
                 .collect(toList());
     }
 
-    private List<EntryId> listIdsByRelativesOfControlMeasureId(String id) {
-        if (id == null)
+    private List<EntryId> listIdsByRelativesOfControlMeasureId(String iri) {
+        if (iri == null)
             return null;
-        final List<String> asvIds = asList(id);
+        final List<String> asvIris = new ArrayList<>(asv.toAllRelativeAsvIds(iri));
+        // out.println(iri + "->" + asvIris);
         final Stream<String> stream = Stream.of(CONTROL_MEASURES);
-        final List<EntryId> ids = parallelFilter(stream, svIdentifierSource, asvIds);
-        out.println("ASV:" + asvIds +  "=>" + ids.size() + " entries:" + ids);
+        final List<EntryId> ids = parallelFilter(stream, svIdentifierSource, asvIris);
+        out.println("ASV:" + asvIris +  "=>" + ids.size() + " entries:" + ids);
         return ids;
     }
 

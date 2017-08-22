@@ -58,6 +58,7 @@ public class DatabaseTest {
     private static final long ebolaId = 1570291;
     private static final long ebolaZaireId = 128951;
     private static final long usaId = 1216;
+    private static final String rootIri = toAsvIri("086");
     private static final String QuarantineIri = "http://purl.obolibrary.org/obo/APOLLO_SV_00000327";
     private static Long entryCount = null;
     private static Long ncbiCount = null;
@@ -110,14 +111,12 @@ public class DatabaseTest {
             return;
         asvRepo.deleteAllInBatch();
 
-        final String last3digit = "086";
-        final String rIri = toAsvIri(last3digit);
-        final Asv root = saveAsv(rIri, null, false);
-        asvList.forEach(s -> saveAsv(toAsvIri(s), rIri, true));
+        saveAsv(rootIri, null, false);
+        asvList.forEach(s -> saveAsv(toAsvIri(s), rootIri, true));
         asvCount = asvRepo.count();
     }
 
-    private String toAsvIri(String last3digit) {
+    private static String toAsvIri(String last3digit) {
         final String prefix = "http://purl.obolibrary.org/obo/APOLLO_SV_00000";
         return prefix + last3digit;
     }
@@ -169,7 +168,7 @@ public class DatabaseTest {
     public void allControlMeasures() throws Exception {
         final List<String> all = asvRule.listAsvIdsAsControlMeasureInEntries();
         assertThat(all).containsExactlyInAnyOrder(asvList.stream()
-                .map(this::toAsvIri)
+                .map(DatabaseTest::toAsvIri)
                 .collect(Collectors.toList()).toArray(new String[asvList.size()]));
     }
 
@@ -191,21 +190,6 @@ public class DatabaseTest {
 
         assertThat(list.size()).isGreaterThan(0);
         assertThat(list).allSatisfy(this::assertMatchSoftware);
-    }
-
-    public void assertMatchSoftware(MatchedSoftware m) {
-        assertThat(m.getSourceSoftwareName()).isNotEmpty();
-        assertThat(m.getSinkSoftwareName()).isNotEmpty();
-        final String linkDataFormatName = m.getLinkDataFormatName();
-        assertThat(linkDataFormatName).isNotEmpty();
-        final String[] formats = fromJsonToStringArray(linkDataFormatName);
-        assertThat(formats)
-                .isNotEmpty()
-                .allSatisfy(f -> assertThat(f).isNotEmpty());
-    }
-
-    private static String[] fromJsonToStringArray(String linkDataFormatName) {
-        return new Gson().fromJson(linkDataFormatName, String[].class);
     }
 
     @Test
@@ -247,6 +231,19 @@ public class DatabaseTest {
                 .allSatisfy(this::assertStatusIsApproved)
                 .allSatisfy(this::assertTypeIsDtm)
                 .allSatisfy(this::assertQuarantineDtm);
+    }
+
+    @Test
+    public void entriesAllControlMeasures() throws Exception {
+        final EntryOntologyQuery q = new EntryOntologyQuery();
+        q.setControlMeasureId(rootIri);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .allSatisfy(this::assertTypeIsDtm)
+                .anySatisfy(this::assertQuarantineDtm);
     }
 
     @Test
@@ -304,6 +301,21 @@ public class DatabaseTest {
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .allSatisfy(this::assertTypeIsDataset);
+    }
+
+    private void assertMatchSoftware(MatchedSoftware m) {
+        assertThat(m.getSourceSoftwareName()).isNotEmpty();
+        assertThat(m.getSinkSoftwareName()).isNotEmpty();
+        final String linkDataFormatName = m.getLinkDataFormatName();
+        assertThat(linkDataFormatName).isNotEmpty();
+        final String[] formats = fromJsonToStringArray(linkDataFormatName);
+        assertThat(formats)
+                .isNotEmpty()
+                .allSatisfy(f -> assertThat(f).isNotEmpty());
+    }
+
+    private static String[] fromJsonToStringArray(String linkDataFormatName) {
+        return new Gson().fromJson(linkDataFormatName, String[].class);
     }
 
     private void assertAllElementsIn1Page(Page<Entry> page) {
