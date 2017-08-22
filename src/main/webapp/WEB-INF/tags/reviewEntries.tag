@@ -80,6 +80,7 @@
 
             if(status == "approved") {
                 $("#approve-btn" + endId).text("Make Public");
+                $("#approve-modal-header" + endId).text("Make Submission Public");
             }
         } else if(htmlId == "rejectModal") {
             if(category !== null && category !== '') {

@@ -11,7 +11,14 @@
     <div class="modal-dialog" style="max-width:600px;">
         <div class="modal-content">
             <div class="modal-header software-header">
-                <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                <c:choose>
+                    <c:when test="${type == 'approve'}">
+                        <h2 id="approve-modal-header-${id}" class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                    </c:when>
+                    <c:otherwise>
+                        <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="modal-body">
                 <input id="approve-entry-id-${id}" class="hidden">
@@ -88,5 +95,6 @@
         $('#category-select-${id}').val('none');
         $("#reject-comments-${id}").html("");
         $("#approve-btn-${id}").text("Approve");
+        $("#approve-modal-header-${id}").text("Approve Submission");
     });
 </script>

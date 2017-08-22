@@ -75,7 +75,7 @@ public class EntryApproval implements EntryApprovalInterface {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
             entryObject.setProperty(STATUS, REJECTED);
 
-            if(commentsArr != null && commentsArr.length > 0) {
+            if(commentsArr != null) {
                 Comments comments = parseComments(entryId, commentsArr);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
@@ -89,7 +89,7 @@ public class EntryApproval implements EntryApprovalInterface {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
 
-            if(entryObject != null && commentsArr != null && commentsArr.length > 0) {
+            if(entryObject != null) {
                 Comments comments = parseComments(entryId, commentsArr);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
@@ -97,7 +97,10 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     private Comments parseComments(EntryId entryId, String[] commentsArr) {
-        List<String> commentsContent = Arrays.asList(commentsArr);
+        List<String> commentsContent = null;
+        if(commentsArr != null) {
+            commentsContent = Arrays.asList(commentsArr);
+        }
         Comments comments = new Comments();
         comments.setId(entryId);
         comments.setContent(commentsContent);
