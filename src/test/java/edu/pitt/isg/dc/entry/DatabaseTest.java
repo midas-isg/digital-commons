@@ -28,6 +28,7 @@ import static edu.pitt.isg.dc.entry.Keys.CONTROL_MEASURES;
 import static edu.pitt.isg.dc.entry.Keys.ENTRY;
 import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
 import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
+import static edu.pitt.isg.dc.entry.Keys.LOCATION_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.PROPERTIES;
 import static edu.pitt.isg.dc.entry.Keys.TYPE;
@@ -56,10 +57,13 @@ public class DatabaseTest {
     private static final long hostRootId = 33208;
     private static final long ebolaId = 1570291;
     private static final long ebolaZaireId = 128951;
+    private static final long usaId = 1216;
+    private static final String QuarantineIri = "http://purl.obolibrary.org/obo/APOLLO_SV_00000327";
     private static Long entryCount = null;
     private static Long ncbiCount = null;
     private static Long asvCount = null;
-    private static final List<String> asvList = asList("123", "286", "308", "327", "328", "390");
+    private static final List<String> asvList = asList("123", "231", "286", "308", "327", "328", "390");
+
 
     @Autowired
     private Datastore datastore;
@@ -75,6 +79,8 @@ public class DatabaseTest {
     private TypeRule typeRule;
     @Autowired
     private AsvRule asvRule;
+    @Autowired
+    private LsRule lsRule;
 
     @BeforeClass
     public static void changePath() {
@@ -168,6 +174,12 @@ public class DatabaseTest {
     }
 
     @Test
+    public void allLocations() throws Exception {
+        final List<String> all = lsRule.listlsIdsAsLocationInEntries();
+        assertThat(all).containsExactlyInAnyOrder("11", "1216", "366188", "510873", "542924", "544694");
+    }
+
+    @Test
     public void allTypes() throws Exception {
         final List<String> all = typeRule.findAll();
         assertThat(all).containsExactlyInAnyOrder(DATASET_2_2, DATA_FORMAT_CONVERTERS1_0, DTM_1_0);
@@ -206,7 +218,7 @@ public class DatabaseTest {
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .anySatisfy(this::assertTypeIsDataset)
-                .anySatisfy(this::assertTypeIsDTM)
+                .anySatisfy(this::assertTypeIsDtm)
                 .allSatisfy(this::assertBaseOnTypeForHumanAsHost);
     }
 
@@ -220,21 +232,35 @@ public class DatabaseTest {
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .anySatisfy(this::assertTypeIsDataset)
-                .anySatisfy(this::assertTypeIsDTM)
+                .anySatisfy(this::assertTypeIsDtm)
                 .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
     }
 
     @Test
     public void entriesQuarantineAsControlMeasure() throws Exception {
         final EntryOntologyQuery q = new EntryOntologyQuery();
-        q.setControlMeasureId("http://purl.obolibrary.org/obo/APOLLO_SV_00000327");
+        q.setControlMeasureId(QuarantineIri);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
-                .allSatisfy(this::assertTypeIsDTM)
+                .allSatisfy(this::assertTypeIsDtm)
                 .allSatisfy(this::assertQuarantineDtm);
+    }
+
+    @Test
+    public void entriesUsaAsLocation() throws Exception {
+        final EntryOntologyQuery q = new EntryOntologyQuery();
+        q.setLocationId(usaId);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .anySatisfy(this::assertTypeIsDataset)
+                .anySatisfy(this::assertTypeIsDtm)
+                .allSatisfy(this::assertBaseOnTypeForUsaAsLocation);
     }
 
     @Test
@@ -248,9 +274,24 @@ public class DatabaseTest {
         assertThat(entries.getTotalElements()).isGreaterThan(0);
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
-                .allSatisfy(this::assertTypeIsDTM)
+                .allSatisfy(this::assertTypeIsDtm)
                 .allSatisfy(this::assertBaseOnTypeForHumanAsHost)
                 .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
+    }
+
+    @Test
+    public void entriesWithControlMeasureAndLocation() throws Exception {
+        final EntryOntologyQuery q = new EntryOntologyQuery();
+        q.setControlMeasureId(QuarantineIri);
+        q.setLocationId(usaId);
+        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .allSatisfy(this::assertTypeIsDtm)
+                .allSatisfy(this::assertQuarantineDtm)
+                .allSatisfy(this::assertBaseOnTypeForUsaAsLocation);
     }
 
     @Test
@@ -275,6 +316,13 @@ public class DatabaseTest {
         Map<String, Consumer<Map<String, Object>>> map = new HashMap<>();
         map.put(DTM_1_0, this::assertHumanDtm);
         map.put(DATASET_2_2, this::assertHumanDataset);
+        assertBaseOnType(e, map);
+    }
+
+    private void assertBaseOnTypeForUsaAsLocation(Entry e) {
+        Map<String, Consumer<Map<String, Object>>> map = new HashMap<>();
+        map.put(DTM_1_0, this::assertUsaDtm);
+        map.put(DATASET_2_2, this::assertUsaDataset);
         assertBaseOnType(e, map);
     }
 
@@ -312,7 +360,7 @@ public class DatabaseTest {
     }
 
     private void assertQuarantineIdentifiers(Object o) {
-        assertIdentifier(o, "http://purl.obolibrary.org/obo/APOLLO_SV_00000327");
+        assertIdentifier(o, QuarantineIri);
     }
 
     private Ncbi saveNcbi(long id, Ncbi parent, boolean leaf) {
@@ -348,8 +396,20 @@ public class DatabaseTest {
         assertThat(getList(entry, IS_ABOUT)).anySatisfy(this::assertHumanIdentifier);
     }
 
+    private void assertUsaDtm(Map<String, Object> entry) {
+        assertThat(getList(entry, LOCATION_COVERAGE)).anySatisfy(this::assertUsaIdentifier);
+    }
+
+    private void assertUsaDataset(Map<String, Object> entry) {
+        assertThat(getList(entry, "spatialCoverage")).anySatisfy(this::assertUsaIdentifier);
+    }
+
     private void assertHumanIdentifier(Object o) {
         assertIdentifier(o, humanId + "");
+    }
+
+    private void assertUsaIdentifier(Object o) {
+        assertIdentifier(o, "1216");
     }
 
     private void assertIdentifier(Object o, String... expects) {
@@ -367,7 +427,7 @@ public class DatabaseTest {
         return (HashMap<String, Object>)((HashMap<String, Object>)map).get(key);
     }
 
-    private void assertTypeIsDTM(Entry entry) {
+    private void assertTypeIsDtm(Entry entry) {
         assertType(entry, DTM_1_0);
     }
 
