@@ -4,16 +4,11 @@ package edu.pitt.isg.dc.entry.impl;
  * Created by jdl50 on 6/5/17.
  */
 
-import edu.pitt.isg.dc.entry.Comments;
-import edu.pitt.isg.dc.entry.CommentsRepository;
-import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
-import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.entry.EntryIdManager;
-import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +26,9 @@ public class Datastore implements MdcEntryDatastoreInterface {
 
     @Autowired
     private EntryIdManager entryIdManager;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     @Transactional
@@ -135,7 +133,6 @@ public class Datastore implements MdcEntryDatastoreInterface {
     }
 
 
-
     @Override
     @Transactional
     public String deleteEntry(EntryId id) throws MdcEntryDatastoreException {
@@ -170,6 +167,23 @@ public class Datastore implements MdcEntryDatastoreInterface {
         try {
             commentsRepo.save(comments);
             return comments.getId().toString();
+        } catch (Exception e) {
+            throw new MdcEntryDatastoreException(e);
+        }
+    }
+
+    @Override
+    public Users addUser(String userId, String email, String name) throws MdcEntryDatastoreException {
+        try {
+            final Users users = new Users(userId, email, name);
+            Long id = userRepository.getIdFromUser(userId, email, name);
+            if(id == null) {
+                userRepository.save(users);
+                return users;
+            } else {
+                users.setId(id);
+                return users;
+            }
         } catch (Exception e) {
             throw new MdcEntryDatastoreException(e);
         }

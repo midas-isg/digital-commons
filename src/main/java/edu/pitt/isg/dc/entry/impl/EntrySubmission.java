@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.entry.impl;
 
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
@@ -28,12 +29,12 @@ public class EntrySubmission implements EntrySubmissionInterface {
     private MdcEntryDatastoreInterface mdcEntryDatastoreInterface;
 
     @Override
-    public String submitEntry(EntryView entryObject, Long entryId, Long revisionId, Long categoryValue, String authenticationToken) throws MdcEntryDatastoreException {
+    public String submitEntry(EntryView entryObject, Long entryId, Long revisionId, Long categoryValue, Users userId, String authenticationToken) throws MdcEntryDatastoreException {
         String returnValue = null;
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             Category category = new Category();
             category.setId(categoryValue);
-
+            entryObject.setUsersId(userId);
             entryObject.setProperty("status", "pending");
 
             if(category != null) {

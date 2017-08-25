@@ -6,10 +6,10 @@ import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
-import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +27,7 @@ import org.w3c.dom.NodeList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedWriter;
@@ -89,6 +90,9 @@ public class DataEntryController {
     EntrySubmissionInterface entrySubmissionInterface;
 
     @Autowired
+    UsersSubmissionInterface usersSubmissionInterface;
+
+    @Autowired
     private ServletContext context;
 
     @Component
@@ -106,7 +110,7 @@ public class DataEntryController {
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
     public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
-                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request) throws Exception {
+                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request, HttpSession session) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
@@ -142,7 +146,9 @@ public class DataEntryController {
             entry.remove("class");
             entryObject.setEntry(entry);
 
-            entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, ENTRIES_AUTHENTICATION);
+            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+            entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
             DCEmailService emailService = new DCEmailService();

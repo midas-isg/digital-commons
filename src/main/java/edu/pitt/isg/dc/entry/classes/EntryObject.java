@@ -2,22 +2,16 @@ package edu.pitt.isg.dc.entry.classes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import edu.pitt.isg.dc.entry.Category;
-import edu.pitt.isg.dc.entry.Comments;
-import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.mdc.v1_0.Software;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
-import scala.util.parsing.combinator.testing.Str;
 
 import java.util.*;
 
-class EntryObject {
+public class EntryObject {
     transient private EntryId id;
     private Object entry;
     private Category category;
@@ -26,6 +20,15 @@ class EntryObject {
     private List<String> comments;
     private Set<String> tags;
     private Map<String, String> properties = new HashMap<>();
+    private Users usersId;
+
+    public Users getUsersId() {
+        return usersId;
+    }
+
+    public void setUsersId(Users usersId) {
+        this.usersId = usersId;
+    }
 
     public EntryId getId() {
         return id;

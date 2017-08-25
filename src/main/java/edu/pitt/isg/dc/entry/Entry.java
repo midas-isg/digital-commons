@@ -21,13 +21,16 @@ public class Entry {
     private String status = Values.PENDING;
     private boolean isPublic;
     private String displayName;
-
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> tags;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users users;
 
     public EntryId getId() {
         return id;
@@ -76,6 +79,14 @@ public class Entry {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 
     public Set<String> getTags() {

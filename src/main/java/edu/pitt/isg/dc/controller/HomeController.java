@@ -148,38 +148,38 @@ public class HomeController {
     }
 
     public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
-        try {
-            model.addAttribute("spewRegions", spewRule.treeRegions());
-            spewCount=0;
-            spewAmericaCount = 0;
-            for(SpewLocation location : spewRule.treeRegions()) {
-                if (location.getName().toLowerCase().contains("america")) {
-                    recureAmericaTree(location, false);
-                }
-                recurseSpewTree(location, false);
-            }
-            //we do not show burkina faso
-            spewCount--;
-            model.addAttribute("spewRegionCount", spewCount);
-            model.addAttribute("spewAmericaCount", spewAmericaCount);
-
-        } catch (Exception e) {
-            try {
-                Path path = Paths.get(SPEW_CACHE_FILE);
-
-                FileInputStream fis = new FileInputStream(path.toFile());
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
-
-                model.addAttribute("spewRegions", spewLocationIterable);
-            } catch (Exception ee) {
-                SpewLocation emptySpew = new SpewLocation();
-                emptySpew.setName("Error loading data from SPEW");
-                List<SpewLocation> tree = new ArrayList<>();
-                tree.add(emptySpew);
-                model.addAttribute("spewRegions", tree);
-            }
-        }
+//        try {
+//            model.addAttribute("spewRegions", spewRule.treeRegions());
+//            spewCount=0;
+//            spewAmericaCount = 0;
+//            for(SpewLocation location : spewRule.treeRegions()) {
+//                if (location.getName().toLowerCase().contains("america")) {
+//                    recureAmericaTree(location, false);
+//                }
+//                recurseSpewTree(location, false);
+//            }
+//            //we do not show burkina faso
+//            spewCount--;
+//            model.addAttribute("spewRegionCount", spewCount);
+//            model.addAttribute("spewAmericaCount", spewAmericaCount);
+//
+//        } catch (Exception e) {
+//            try {
+//                Path path = Paths.get(SPEW_CACHE_FILE);
+//
+//                FileInputStream fis = new FileInputStream(path.toFile());
+//                ObjectInputStream ois = new ObjectInputStream(fis);
+//                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
+//
+//                model.addAttribute("spewRegions", spewLocationIterable);
+//            } catch (Exception ee) {
+//                SpewLocation emptySpew = new SpewLocation();
+//                emptySpew.setName("Error loading data from SPEW");
+//                List<SpewLocation> tree = new ArrayList<>();
+//                tree.add(emptySpew);
+//                model.addAttribute("spewRegions", tree);
+//            }
+//        }
 
         CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();

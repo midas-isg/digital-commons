@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.entry.interfaces;
 
 import edu.pitt.isg.dc.entry.Comments;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
@@ -33,4 +34,6 @@ public interface MdcEntryDatastoreInterface {
     Comments getComments(EntryId id);
 
     String updateComments(Comments comments) throws MdcEntryDatastoreException;
+
+    Users addUser(String userId, String email, String name) throws MdcEntryDatastoreException;
 }

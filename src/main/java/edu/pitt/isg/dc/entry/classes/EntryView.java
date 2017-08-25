@@ -24,6 +24,7 @@ public class EntryView extends EntryObject {
         entry.setIsPublic(entryObject.getIsPublic());
         entry.setDisplayName(entryObject.getDisplayName());
         entry.setTags(entryObject.getTags());
+        entry.setUsers(entryObject.getUsersId());
         return entry;
     }
 
@@ -40,6 +41,7 @@ public class EntryView extends EntryObject {
         setTags(entry.getTags());
         copyPropertiesFrom(entry.getContent().get("properties"));
         setProperty("status", entry.getStatus());
+        setUsersId(entry.getUsers());
     }
 
     private void copyPropertiesFrom(Object obj) {
