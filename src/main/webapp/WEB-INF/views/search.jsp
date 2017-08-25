@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
@@ -8,7 +7,6 @@
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
-
 </head>
 <body>
 <span>Host:</span>
@@ -35,6 +33,14 @@
     </c:forEach>
 </select>
 
+<span>Location:</span>
+<select id="location-select">
+    <option value="${null}">Any</option>
+    <c:forEach var="it" items="${locations}">
+        <option value="${it.alc}">${it.name}</option>
+    </c:forEach>
+</select>
+
 <span>Type:</span>
 <select id="type-select">
     <option value="${null}">Any</option>
@@ -57,6 +63,7 @@
     </tr>
     </tfoot>
 </table>
+
 <%--<button id="software-match-button">Software matching by input and output formats</button>--%>
 <table id="software-table" class="display" cellspacing="0" width="100%">
     <thead>
@@ -82,6 +89,8 @@
 //                softwareMatchButton: $('#software-match-button'),
                 hostSelect: $('#host-select'),
                 pathogenSelect: $('#pathogen-select'),
+                controlMeasureSelect: $('#control-measure-select'),
+                locationSelect: $('#location-select'),
                 typeSelect: $('#type-select')
             }
         };
@@ -89,6 +98,8 @@
         //my.$.softwareMatchButton.click(onClickSoftwareMatchButton);
         my.$.hostSelect.change(reloadEntryTable);
         my.$.pathogenSelect.change(reloadEntryTable);
+        my.$.controlMeasureSelect.change(reloadEntryTable);
+        my.$.locationSelect.change(reloadEntryTable);
         my.$.typeSelect.change(reloadEntryTable);
 
         my.entryTable = $('#entry-table').DataTable({
@@ -101,6 +112,10 @@
                         param.hostId = my.host;
                     if(my.pathogen)
                         param.pathogenId = my.pathogen;
+                    if(my.controlMeasure)
+                        param.controlMeasureId = my.controlMeasure;
+                    if(my.location)
+                        param.locationId = my.location;
                     if(my.type)
                         param.type = my.type;
                 }
@@ -143,6 +158,8 @@
         function reloadEntryTable(){
             my.host = my.$.hostSelect.val();
             my.pathogen = my.$.pathogenSelect.val();
+            my.controlMeasure = my.$.controlMeasureSelect.val();
+            my.location = my.$.locationSelect.val();
             my.type = my.$.typeSelect.val();
             my.entryTable.ajax.reload();
         }

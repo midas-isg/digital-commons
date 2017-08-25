@@ -24,7 +24,6 @@ import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.SPATIAL_COVERAGE;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
 import static java.lang.System.out;
-import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -35,6 +34,8 @@ public class EntryRule {
     private NcbiRule ncbi;
     @Autowired
     private AsvRule asv;
+    @Autowired
+    private LocationRule ls;
     @Value("${app.identifierSource.ncbi}")
     private String ncbiIdentifierSource;
     @Value("${app.identifierSource.ls}")
@@ -87,7 +88,7 @@ public class EntryRule {
     private List<EntryId> listIdsByRelativesOfLsId(Long lsId) {
         if (lsId == null)
             return null;
-        final List<String> lsIds = toLsRelativeIds(lsId);
+        final List<String> lsIds = ls.toRelativeAlcs(lsId);
         final Stream<String> stream = Stream.of(SPATIAL_COVERAGE, LOCATION_COVERAGE);
         final List<EntryId> ids = parallelFilter(stream, lsIdentifierSource, lsIds);
         out.println("LS:" +lsIds +  "=>" + ids.size() + " entries:" + ids);
@@ -153,16 +154,6 @@ public class EntryRule {
         return results.stream()
                 .map(BigInteger::longValueExact)
                 .collect(toList());
-    }
-
-    private List<String> toLsRelativeIds(long lsId) {
-        final List<String> urls = new ArrayList<>();
-        urls.add(toLsUrl(lsId));
-        return urls;
-    }
-
-    private String toLsUrl(Long id) {
-        return id.toString();
     }
 
     public Entry read(EntryId entryId) {

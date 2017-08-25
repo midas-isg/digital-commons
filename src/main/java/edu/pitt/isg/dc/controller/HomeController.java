@@ -1,27 +1,22 @@
 package edu.pitt.isg.dc.controller;
 
-import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.entry.Asv;
 import edu.pitt.isg.dc.entry.AsvRule;
-import edu.pitt.isg.dc.entry.Category;
-import edu.pitt.isg.dc.entry.CategoryOrder;
 import edu.pitt.isg.dc.entry.CategoryOrderRepository;
-import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
-import edu.pitt.isg.dc.entry.impl.EntryApproval;
-import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
-import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.Location;
+import edu.pitt.isg.dc.entry.LocationRule;
 import edu.pitt.isg.dc.entry.Ncbi;
 import edu.pitt.isg.dc.entry.NcbiRule;
 import edu.pitt.isg.dc.entry.TypeRule;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -37,7 +32,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.File;
@@ -51,19 +45,14 @@ import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
-
-import static java.util.Comparator.comparing;
-import java.util.*;
 
 import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
 import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
+import static java.util.Comparator.comparing;
 
 @ApiIgnore
 @Controller
@@ -92,6 +81,8 @@ public class HomeController {
     private TypeRule typeRule;
     @Autowired
     private AsvRule asvRule;
+    @Autowired
+    private LocationRule locationRule;
 
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
@@ -204,7 +195,12 @@ public class HomeController {
     public String search(Model model) throws Exception {
         final List<Ncbi> hosts = sort(ncbiRule.findHostsInEntries());
         final List<Ncbi> pathogens = sort(ncbiRule.findPathogensInEntries());
-        final List<Asv> controlMeasures = asvRule.findControlMeasuresInEntries();
+        final List<Asv> controlMeasures = asvRule.findControlMeasuresInEntries().stream()
+                .sorted(comparing(Asv::getName))
+                .collect(Collectors.toList());;
+        final List<Location> locations = locationRule.findLocationsInEntries().stream()
+                .sorted(comparing(Location::getName))
+                .collect(Collectors.toList());
         final List<String[]> types = typeRule.findAll().stream()
                 .map(this::formatType)
                 .sorted(comparing(s -> s[1]))
@@ -213,6 +209,7 @@ public class HomeController {
         model.addAttribute("pathogens", pathogens);
         model.addAttribute("types", types);
         model.addAttribute("controlMeasures", controlMeasures);
+        model.addAttribute("locations", locations);
         return "search";
     }
 
