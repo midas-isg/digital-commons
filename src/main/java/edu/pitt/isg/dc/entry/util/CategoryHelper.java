@@ -9,6 +9,7 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import org.apache.commons.lang.StringEscapeUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.lang.reflect.Type;
 import java.util.*;
@@ -16,7 +17,10 @@ import java.util.*;
 @Component
 public class CategoryHelper {
 
+    @Autowired
     private CategoryOrderRepository categoryOrderRepository;
+
+    @Autowired
     private EntryApprovalInterface entryApprovalInterface;
 
     public CategoryHelper(CategoryOrderRepository categoryOrderRepository, EntryApprovalInterface entryApprovalInterface) {

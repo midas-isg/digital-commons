@@ -39,11 +39,12 @@ import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
 public class ApproveEntryController {
     @Autowired
     private MdcEntryDatastoreInterface datastore;
+
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
 
     @Autowired
-    private CategoryOrderRepository categoryOrderRepository;
+    private CategoryHelper categoryHelper;
 
     @Autowired
     private UserRepository userRepository;
@@ -77,7 +78,6 @@ public class ApproveEntryController {
                 }
             }
 
-            CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
             Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
 
             model.addAttribute("adminType", session.getAttribute(ADMIN_TYPE));
