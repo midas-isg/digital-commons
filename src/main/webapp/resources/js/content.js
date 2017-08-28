@@ -106,7 +106,9 @@ function showModal(entry, type, xml) {
     } else {
         $('#display-json').text(JSON.stringify(entry, null, "\t"));
     }
+
     toggleModalItems(entry, type);
+
     $('#pageModal').modal('show');
 }
 
@@ -163,7 +165,7 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function setModalHeader(entry) {
+function setModalHeader(entry, type) {
     var title = entry["title"];
     if(title === undefined && Object.keys(entry['name']).length !== 0) {
         title = entry['name'];
@@ -181,6 +183,13 @@ function setModalHeader(entry) {
                 modalHeaderText = getSoftwareTitle(title, version);
             }
         }
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'User Activity',
+            eventAction: type + ' - ' + modalHeaderText
+        });
+
         $(modalHeaderId).text(modalHeaderText);
         $(modalHeaderId).show();
     } else {
@@ -259,7 +268,7 @@ function setDataServiceDescription(entry) {
 }
 
 function toggleModalItems(entry, type) {
-    setModalHeader(entry);
+    setModalHeader(entry, type);
 
     setSingularOrPluralModalItem(entry, 'developers', 'developer');
     setSingularOrPluralModalItem(entry, 'creator', 'creator');

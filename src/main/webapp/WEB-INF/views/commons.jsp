@@ -33,7 +33,7 @@
                         <myTags:computePlatform/>
                     </div>
                     <div id="workflows" class="tab-pane fade">
-                        <myTags:workflows/>
+                        <myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>
                     </div>
                     <div id="search" class="tab-pane fade">
                         <myTags:search/>
@@ -46,12 +46,12 @@
 
             <%--<myTags:software
                     software="${software}"/>--%>
-            <myTags:libraryViewerCollections
+            <%--<myTags:libraryViewerCollections
                     libraryViewerUrl="${libraryViewerUrl}"
                     libraryViewerToken="${libraryViewerToken}"
                     spewRegions="${spewRegions}"/>
             <myTags:webServices/>
-            <myTags:dataFormats/>
+            <myTags:dataFormats/>--%>
             <myTags:standardIdentifiers/>
             <myTags:computePlatformImports/>
         </div>

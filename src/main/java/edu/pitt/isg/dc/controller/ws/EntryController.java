@@ -26,8 +26,8 @@ public class EntryController{
     @RequestMapping(value = "/entries/search/by-ontology",
             method = GET,
             produces = {JSON, XML})
-    public Object findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
-        final Page<Entry> page = rule.findViaOntology(q, pageRequest);
+    public Object findViaOntology(EntryOntologyQuery q/*, Pageable pageRequest*/) {
+        final Page<Entry> page = rule.findViaOntology(q, null);
         return pagedAssembler.toResource(page);
     }
 }
