@@ -9,6 +9,7 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.EntryApproval;
+import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.Ncbi;
@@ -53,6 +54,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -94,6 +97,9 @@ public class HomeController {
 
     @Autowired
     private CategoryOrderRepository categoryOrderRepository;
+
+    @Autowired
+    private WorkflowsImpl workflows;
 
     private Integer spewCount;
     private Integer spewAmericaCount;
@@ -181,10 +187,24 @@ public class HomeController {
 //            }
 //        }
 
+        List<Object[]> spewLocationsAndAccessUrls = workflows.getSpewLocationsAndAccessUrls();
+
+        Pattern pattern = Pattern.compile(".*(\\d{2}).tar.gz");
+        List<String[]> workflowLocationsAndIds = new ArrayList<>();
+        for(Object[] spewLocationAndAccessUrl : spewLocationsAndAccessUrls) {
+            Matcher matcher = pattern.matcher(spewLocationAndAccessUrl[1].toString());
+            if(matcher.matches()) {
+                String location = spewLocationAndAccessUrl[0].toString();
+                String id = matcher.group(1);
+                String[] locationAndId = {location, id};
+                workflowLocationsAndIds.add(locationAndId);
+            }
+        }
+
         CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
-        categoryHelper.getBottomLevelCategories();
 
+        model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);

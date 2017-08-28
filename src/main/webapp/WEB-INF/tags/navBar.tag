@@ -51,15 +51,14 @@
                 <li class="dropdown-header">Add</li>
                 <li><a href="${contextPath}/add/dataFormatConverters?categoryId=6">Data Format Converter</a></li>
                 <li><a href="${contextPath}/add/dataService?categoryId=7">Data Service</a></li>
-                <li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>
-                <%--<li class="dropdown-submenu">
+                <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
+                <li class="dropdown-submenu">
                     <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                     <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=DiseaseSurveillanceData">Disease Surveillance Data</a></li>
-                        <li><a tabindex="-1" href="${pageContext.request.contextPath}/add/dataset?datasetType=MortalityData">Mortality Data</a></li>
-                        <li><a tabindex="-1" href="" onclick='customDatasetClick()'>Custom</a></li>
+                        <li><a tabindex="-1" href="${contextPath}/add/dataset?categoryId=">Dataset with Person</a></li>
+                        <li><a tabindex="-1" href="${contextPath}/add/datasetWithOrganization?categoryId=">Dataset with Organization</a></li>
                     </ul>
-                </li>--%>
+                </li>
                 <li><a href="${pageContext.request.contextPath}/add/dataStandard?categoryId=4">Data Format</a></li>
                 <li><a href="${contextPath}/add/dataVisualizers?categoryId=8">Data Visualizer</a></li>
                 <li><a href="${contextPath}/add/diseaseForecasters?categoryId=9">Disease Forecaster</a></li>

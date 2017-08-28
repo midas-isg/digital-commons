@@ -33,7 +33,7 @@
                         <myTags:computePlatform/>
                     </div>
                     <div id="workflows" class="tab-pane fade">
-                        <myTags:workflows/>
+                        <myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>
                     </div>
                     <div id="search" class="tab-pane fade">
                         <myTags:search/>

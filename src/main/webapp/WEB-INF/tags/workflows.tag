@@ -2,6 +2,8 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ attribute name="workflowLocationsAndIds" required="true"
+              type="java.util.List"%>
 
 <div class="col-sm-12">
     <h3 class="title-font">Workflows on Olympus</h3>
@@ -26,7 +28,12 @@
                 </div>
                 <div style="margin-top:10px">
                     <label>Select location:</label><br>
-                    <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()"><option value=""></option></select>
+                    <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()">
+                        <option value=""></option>
+                        <c:forEach items="${workflowLocationsAndIds}" var="locationAndId">
+                            <option value="${locationAndId[1]}_${locationAndId[1]}">${locationAndId[0]}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div style="margin-top:10px" id="synthpop-radios">
                     <label disabled="disabled">Select available synthetic population(s) for location:</label><br>
