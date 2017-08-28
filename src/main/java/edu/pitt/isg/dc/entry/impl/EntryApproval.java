@@ -1,9 +1,6 @@
 package edu.pitt.isg.dc.entry.impl;
 
-import edu.pitt.isg.dc.entry.Category;
-import edu.pitt.isg.dc.entry.CategoryRepository;
-import edu.pitt.isg.dc.entry.Comments;
-import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
@@ -11,6 +8,7 @@ import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import xsd.Use;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -70,13 +68,13 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     @Override
-    public void rejectEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
+    public void rejectEntry(EntryId entryId, String authenticationToken, String[] commentsArr, Users users) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
             entryObject.setProperty(STATUS, REJECTED);
 
             if(commentsArr != null) {
-                Comments comments = parseComments(entryId, commentsArr);
+                Comments comments = parseComments(entryId, commentsArr, users);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
 
@@ -85,18 +83,18 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     @Override
-    public void commentEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
+    public void commentEntry(EntryId entryId, String authenticationToken, String[] commentsArr, Users users) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
 
             if(entryObject != null) {
-                Comments comments = parseComments(entryId, commentsArr);
+                Comments comments = parseComments(entryId, commentsArr, users);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
         }
     }
 
-    private Comments parseComments(EntryId entryId, String[] commentsArr) {
+    private Comments parseComments(EntryId entryId, String[] commentsArr, Users user_id) {
         List<String> commentsContent = null;
         if(commentsArr != null) {
             commentsContent = Arrays.asList(commentsArr);
@@ -104,6 +102,7 @@ public class EntryApproval implements EntryApprovalInterface {
         Comments comments = new Comments();
         comments.setId(entryId);
         comments.setContent(commentsContent);
+        comments.setUsers(user_id);
         return comments;
     }
 
@@ -149,4 +148,15 @@ public class EntryApproval implements EntryApprovalInterface {
         }
         return entries;
     }
+
+    @Override
+    public List<EntryView> getUserCreatedUnapprovedEntries(Long userId) throws MdcEntryDatastoreException {
+        List<EntryView> entries = mdcEntryDatastoreInterface.getUserLatestUnapprovedEntries(userId);
+        for(EntryView entryView : entries) {
+            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
+            if(comments != null && comments.getContent() != null) {
+                entryView.setComments(new ArrayList<>(comments.getContent()));
+            }
+        }
+        return entries;    }
 }

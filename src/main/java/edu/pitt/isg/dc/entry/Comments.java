@@ -11,6 +11,10 @@ public class Comments {
     @EmbeddedId
     private EntryId id;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private Users users;
+
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> content;
 
@@ -28,5 +32,13 @@ public class Comments {
 
     public void setContent(List<String> content) {
         this.content = content;
+    }
+
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
     }
 }

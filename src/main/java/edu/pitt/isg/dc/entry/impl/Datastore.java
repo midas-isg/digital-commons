@@ -114,6 +114,15 @@ public class Datastore implements MdcEntryDatastoreInterface {
     }
 
     @Override
+    public List<EntryView> getUserLatestUnapprovedEntries(Long userId) throws MdcEntryDatastoreException {
+        List<EntryView> list = new ArrayList<>();
+        for (Entry entry: repo.findUserLatestUnapprovedEntries(userId)) {
+            list.add(new EntryView(entry));
+        }
+        return list;
+    }
+
+    @Override
     @Transactional
     public List<EntryView> getLatestApprovedNotPublicEntries() throws MdcEntryDatastoreException {
         List<EntryView> list = new ArrayList<>();
