@@ -36,7 +36,6 @@
     <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
     <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
-    <script src="http://flowchart.js.org/flowchart-latest.js"></script>
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
 </head>

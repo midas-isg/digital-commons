@@ -6,18 +6,18 @@
 <div class="col-sm-12">
     <h3 class="title-font">Workflows on Olympus</h3>
     <div class="font-size-16 standard-font">
-                        <span>
-                            These scripts and all the programs they invoke are staged on the Olympus cluster.
-                            Follow the instructions below to execute a workflow on your Olympus account.
-                            Alternatively, you can copy and edit the script before running on Olympus.
-                        </span>
+        <span>
+            These scripts and all the programs they invoke are staged on the Olympus cluster.
+            Follow the instructions below to execute a workflow on your Olympus account.
+            Alternatively, you can copy and edit the script before running on Olympus.
+        </span>
     </div>
     <div>
         <h3 class="title-font">Obtaining a Synthetic Population in Synthia Format</h3>
         <div class="font-size-16 standard-font">
-                            <span class="col-md-12 col-lg-12 no-padding">
-                                The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location. It creates a runnable instance of pFRED for that location.
-                            </span>
+        <span class="col-md-12 col-lg-12 no-padding">
+            The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location. It creates a runnable instance of pFRED for that location.
+        </span>
 
             <div class="col-md-12 col-lg-12 no-padding">
                 <div style="margin-top:10px">

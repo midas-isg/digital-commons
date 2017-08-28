@@ -8,7 +8,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "category")
-public class  Category {
+public class Category {
     private Long id;
     private String category;
     private Boolean expanded;
