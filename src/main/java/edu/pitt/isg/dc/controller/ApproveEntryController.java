@@ -2,10 +2,9 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.*;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
-import edu.pitt.isg.dc.entry.EntryId;
-import edu.pitt.isg.dc.entry.PopulateDatastore;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
@@ -46,10 +45,24 @@ public class ApproveEntryController {
     @Autowired
     private CategoryOrderRepository categoryOrderRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private UsersSubmissionInterface usersSubmissionInterface;
+
     @RequestMapping(value = "/add/review", method = RequestMethod.GET)
     public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
         if(ifISGAdmin(session) || ifMDCEditor(session)) {
-            List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
+            List<EntryView> entries = new ArrayList<>();
+
+            if(ifISGAdmin(session)) {
+                entries = entryApprovalInterface.getUnapprovedEntries();
+            }
+            if(ifMDCEditor(session)) {
+                Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+                entries = entryApprovalInterface.getUserCreatedUnapprovedEntries(user.getId());
+            }
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
             List<EntryView> softwareEntries = new ArrayList<>();
@@ -133,7 +146,8 @@ public class ApproveEntryController {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
-                entryApprovalInterface.rejectEntry(entryId, EntryHelper.getServerAuthentication(), comments);
+                Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+                entryApprovalInterface.rejectEntry(entryId, EntryHelper.getServerAuthentication(), comments, user);
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }
@@ -154,7 +168,8 @@ public class ApproveEntryController {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
-                entryApprovalInterface.commentEntry(entryId, EntryHelper.getServerAuthentication(), comments);
+                Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+                entryApprovalInterface.commentEntry(entryId, EntryHelper.getServerAuthentication(), comments, user);
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }

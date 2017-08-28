@@ -33,6 +33,12 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
             "WHERE (entry_id, revision_id) IN\n" +
             "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "GROUP BY entry_id) AND status != 'approved' AND user_id = ?1")
+    List<Entry> findUserLatestUnapprovedEntries(Long userId);
+
+    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+            "WHERE (entry_id, revision_id) IN\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
             "WHERE status = 'approved' GROUP BY entry_id) AND is_public = false")
     List<Entry> findLatestApprovedNotPublicEntries();
 
