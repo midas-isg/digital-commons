@@ -90,6 +90,6 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
-            "as access_url from dev.entry where category_id = 39 order by display_name")
+            "as access_url from entry where category_id = 39 order by display_name")
     List<Object[]> spewLocationsAndAccessUrls();
 }
