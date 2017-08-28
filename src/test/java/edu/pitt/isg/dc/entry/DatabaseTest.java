@@ -54,6 +54,8 @@ import static org.assertj.core.api.Assertions.assertThat;
         "app.ncbi.host.root.path=1/33208",
 
         "spring.datasource.url=jdbc:postgresql://localhost:54320/mdc?currentSchema=test",
+        "spring.datasource.username=dev",
+        "spring.datasource.password=dev",
         "spring.jpa.hibernate.ddl-auto=create"
 })
 public class DatabaseTest {
