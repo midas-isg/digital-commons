@@ -29,6 +29,7 @@
     </div>
     <script>
         $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
+        expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
     </script>
 </c:forEach>
 

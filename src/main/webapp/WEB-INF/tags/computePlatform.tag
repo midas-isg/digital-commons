@@ -48,7 +48,7 @@
 
 <div class="col-sm-4">
     <h4 class="subtitle-font">Disease Transmission Models</h4>
-    <div class="dtm-disclaimer"><i>These entries are cross-references of disease transmission models listed on the ‘Content’ page.</i></div>
+    <div class="dtm-disclaimer"><i>These entries are cross-references of disease transmission models listed on the 'Content' page.</i></div>
     <div id="disease-transmission-models-treeview" class="treeview"></div>
 
     <h4 class="subtitle-font">Modeling Platforms</h4>

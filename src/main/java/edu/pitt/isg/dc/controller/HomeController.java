@@ -143,38 +143,38 @@ public class HomeController {
     }
 
     public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
-        try {
-            model.addAttribute("spewRegions", spewRule.treeRegions());
-            spewCount=0;
-            spewAmericaCount = 0;
-            for(SpewLocation location : spewRule.treeRegions()) {
-                if (location.getName().toLowerCase().contains("america")) {
-                    recureAmericaTree(location, false);
-                }
-                recurseSpewTree(location, false);
-            }
-            //we do not show burkina faso
-            spewCount--;
-            model.addAttribute("spewRegionCount", spewCount);
-            model.addAttribute("spewAmericaCount", spewAmericaCount);
-
-        } catch (Exception e) {
-            try {
-                Path path = Paths.get(SPEW_CACHE_FILE);
-
-                FileInputStream fis = new FileInputStream(path.toFile());
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
-
-                model.addAttribute("spewRegions", spewLocationIterable);
-            } catch (Exception ee) {
-                SpewLocation emptySpew = new SpewLocation();
-                emptySpew.setName("Error loading data from SPEW");
-                List<SpewLocation> tree = new ArrayList<>();
-                tree.add(emptySpew);
-                model.addAttribute("spewRegions", tree);
-            }
-        }
+//        try {
+//            model.addAttribute("spewRegions", spewRule.treeRegions());
+//            spewCount=0;
+//            spewAmericaCount = 0;
+//            for(SpewLocation location : spewRule.treeRegions()) {
+//                if (location.getName().toLowerCase().contains("america")) {
+//                    recureAmericaTree(location, false);
+//                }
+//                recurseSpewTree(location, false);
+//            }
+//            //we do not show burkina faso
+//            spewCount--;
+//            model.addAttribute("spewRegionCount", spewCount);
+//            model.addAttribute("spewAmericaCount", spewAmericaCount);
+//
+//        } catch (Exception e) {
+//            try {
+//                Path path = Paths.get(SPEW_CACHE_FILE);
+//
+//                FileInputStream fis = new FileInputStream(path.toFile());
+//                ObjectInputStream ois = new ObjectInputStream(fis);
+//                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
+//
+//                model.addAttribute("spewRegions", spewLocationIterable);
+//            } catch (Exception ee) {
+//                SpewLocation emptySpew = new SpewLocation();
+//                emptySpew.setName("Error loading data from SPEW");
+//                List<SpewLocation> tree = new ArrayList<>();
+//                tree.add(emptySpew);
+//                model.addAttribute("spewRegions", tree);
+//            }
+//        }
 
         CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
@@ -364,19 +364,6 @@ public class HomeController {
         String json = FileUtils.readFileToString(jsonFile);
 
         return json;
-    }
-
-    @RequestMapping(value = "/getSoftwareXml", method = RequestMethod.GET, headers = "Accept=application/xml; charset=utf-8")
-    public
-    @ResponseBody
-    String getSoftwareXml(@RequestParam(value = "index") int index) throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File jsonFile = new File(classLoader.getResource("json/hardcoded-software.json").getFile());
-        String json = FileUtils.readFileToString(jsonFile);
-        List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(json);
-        String xml = softwareXmlList.get(index);
-
-        return xml;
     }
 
     @RequestMapping(value = "/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")

@@ -146,7 +146,7 @@
         });
 
         function dataSrcAvoidingUndefined(data) {
-            var result = data._embedded && data._embedded.entries;
+            var result = data.content; /*&& data._embedded.entries;*/
             if (result)
                 return result;
             return [];

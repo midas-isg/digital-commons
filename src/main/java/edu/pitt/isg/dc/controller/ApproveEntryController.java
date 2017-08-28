@@ -29,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static edu.pitt.isg.dc.controller.HomeController.ADMIN_TYPE;
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -46,8 +48,7 @@ public class ApproveEntryController {
 
     @RequestMapping(value = "/add/review", method = RequestMethod.GET)
     public String review(HttpSession session, Model model) throws MdcEntryDatastoreException {
-//        if(auth != null && auth.equals(EntryHelper.getAdminAuthentication())) {
-        if(ifISGAdmin(session)) {
+        if(ifISGAdmin(session) || ifMDCEditor(session)) {
             List<EntryView> entries = entryApprovalInterface.getUnapprovedEntries();
             List<EntryView> datasetEntries = new ArrayList<>();
             List<EntryView> dataStandardEntries = new ArrayList<>();
@@ -66,15 +67,16 @@ public class ApproveEntryController {
             CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
             Map<Long, String> categoryPaths = categoryHelper.getTreePaths();
 
+            model.addAttribute("adminType", session.getAttribute(ADMIN_TYPE));
             model.addAttribute("entries", entries);
             model.addAttribute("categoryPaths", categoryPaths);
             model.addAttribute("datasetEntries", datasetEntries);
             model.addAttribute("dataStandardEntries", dataStandardEntries);
             model.addAttribute("softwareEntries", softwareEntries);
+            model.addAttribute("approvedEntries", entryApprovalInterface.getApprovedEntries());
             return "reviewEntries";
         } else {
             return "accessDenied";
-//            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
         }
     }
 
@@ -99,6 +101,27 @@ public class ApproveEntryController {
         }
     }
 
+    @RequestMapping(value = "/add/make-public", method = RequestMethod.POST)
+    @ResponseBody
+    public String makePublic(HttpSession session,
+                          @RequestParam(value = "entryId", required = true) long id,
+                          @RequestParam(value = "revisionId", required = true) long revisionId,
+                          @RequestParam(value = "categoryId", required = true) long categoryId,
+                          Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
+            String status = "success";
+            try {
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.makePublicEntry(entryId, categoryId, EntryHelper.getServerAuthentication());
+            } catch(MdcEntryDatastoreException e) {
+                status = "fail";
+            }
+            return status;
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
     @RequestMapping(value = "/add/reject", method = RequestMethod.POST)
     @ResponseBody
     public String reject(HttpSession session,
@@ -111,6 +134,27 @@ public class ApproveEntryController {
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 entryApprovalInterface.rejectEntry(entryId, EntryHelper.getServerAuthentication(), comments);
+            } catch(MdcEntryDatastoreException e) {
+                status = "fail";
+            }
+            return status;
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
+    @RequestMapping(value = "/add/comment", method = RequestMethod.POST)
+    @ResponseBody
+    public String comment(HttpSession session,
+                         @RequestParam(value = "entryId", required = true) long id,
+                         @RequestParam(value = "revisionId", required = true) long revisionId,
+                         @RequestParam(value = "comments[]", required = false) String[] comments,
+                         Model model) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
+            String status = "success";
+            try {
+                EntryId entryId = new EntryId(id, revisionId);
+                entryApprovalInterface.commentEntry(entryId, EntryHelper.getServerAuthentication(), comments);
             } catch(MdcEntryDatastoreException e) {
                 status = "fail";
             }

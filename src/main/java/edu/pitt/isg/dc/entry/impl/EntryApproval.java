@@ -21,6 +21,7 @@ import java.util.Set;
 
 import static edu.pitt.isg.dc.entry.Keys.STATUS;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
+import static edu.pitt.isg.dc.entry.Values.REJECTED;
 
 /**
  * Created by amd176 on 6/5/17.
@@ -55,21 +56,55 @@ public class EntryApproval implements EntryApprovalInterface {
     }
 
     @Override
+    public void makePublicEntry(EntryId entryId, long categoryId, String authenticationToken) throws MdcEntryDatastoreException {
+        if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
+            EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
+            entryObject.setIsPublic(true);
+
+            Category category = categoryRepository.findOne(categoryId);
+            entryObject.setCategory(category);
+
+            mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
+            //TODO: Do we need? mdcEntryDatastoreInterface.exportDatastore(MdcDatastoreFormat.MDC_DATA_DIRECTORY_FORMAT);
+        }
+    }
+
+    @Override
     public void rejectEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-            entryObject.setProperty(STATUS, APPROVED);
+            entryObject.setProperty(STATUS, REJECTED);
 
-            if(commentsArr != null && commentsArr.length > 0) {
-                Set<String> commentsContent = new HashSet(Arrays.asList(commentsArr));
-                Comments comments = new Comments();
-                comments.setId(entryId);
-                comments.setContent(commentsContent);
+            if(commentsArr != null) {
+                Comments comments = parseComments(entryId, commentsArr);
                 mdcEntryDatastoreInterface.updateComments(comments);
             }
 
             mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
         }
+    }
+
+    @Override
+    public void commentEntry(EntryId entryId, String authenticationToken, String[] commentsArr) throws MdcEntryDatastoreException {
+        if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
+            EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
+
+            if(entryObject != null) {
+                Comments comments = parseComments(entryId, commentsArr);
+                mdcEntryDatastoreInterface.updateComments(comments);
+            }
+        }
+    }
+
+    private Comments parseComments(EntryId entryId, String[] commentsArr) {
+        List<String> commentsContent = null;
+        if(commentsArr != null) {
+            commentsContent = Arrays.asList(commentsArr);
+        }
+        Comments comments = new Comments();
+        comments.setId(entryId);
+        comments.setContent(commentsContent);
+        return comments;
     }
 
     @Override
@@ -79,12 +114,24 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException {
+        List<EntryView> entries = mdcEntryDatastoreInterface.getLatestApprovedNotPublicEntries();
+        for(EntryView entryView : entries) {
+            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
+            if(comments != null && comments.getContent() != null) {
+                entryView.setComments(new ArrayList<>(comments.getContent()));
+            }
+        }
+        return entries;
+    }
+
+    @Override
+    public List<EntryView> getPublicEntries() throws MdcEntryDatastoreException {
         List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
         List<EntryView> entries = new ArrayList<>();
         for(EntryId entryId : entryIds) {
             EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
-            String status = entryView.getProperty("status");
-            if(status.equals("approved")) {
+            boolean isPublic = entryView.getIsPublic();
+            if(isPublic) {
                 entries.add(entryView);
             }
         }
@@ -93,13 +140,11 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException {
-        List<EntryId> entryIds = mdcEntryDatastoreInterface.getEntryIds();
-        List<EntryView> entries = new ArrayList<>();
-        for(EntryId entryId : entryIds) {
-            EntryView entryView = mdcEntryDatastoreInterface.getEntry(entryId);
-            String status = entryView.getProperty("status");
-            if(!status.equals("approved")) {
-                entries.add(entryView);
+        List<EntryView> entries = mdcEntryDatastoreInterface.getLatestUnapprovedEntries();
+        for(EntryView entryView : entries) {
+            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
+            if(comments != null && comments.getContent() != null) {
+                entryView.setComments(new ArrayList<>(comments.getContent()));
             }
         }
         return entries;

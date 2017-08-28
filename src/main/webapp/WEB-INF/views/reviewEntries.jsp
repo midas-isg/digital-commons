@@ -10,7 +10,9 @@
 <myTags:head title="MIDAS Digital Commons"/>
 <myTags:header
         pageTitle="MIDAS Digital Commons"
-        loggedIn="${loggedIn}"/>
+        loggedIn="${loggedIn}"
+        addEntry="true"
+/>
 
 <body id="commons-body">
     <div id="content-body">
@@ -22,7 +24,9 @@
                         categoryPaths="${categoryPaths}"
                         datasetEntries="${datasetEntries}"
                         dataStandardEntries="${dataStandardEntries}"
-                        softwareEntries="${softwareEntries}"/>
+                        softwareEntries="${softwareEntries}"
+                        approvedEntries="${approvedEntries}"
+                        adminType="${adminType}"/>
             </div>
         </div>
     </div>

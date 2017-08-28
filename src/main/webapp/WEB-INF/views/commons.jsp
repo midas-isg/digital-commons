@@ -46,12 +46,12 @@
 
             <%--<myTags:software
                     software="${software}"/>--%>
-            <myTags:libraryViewerCollections
+            <%--<myTags:libraryViewerCollections
                     libraryViewerUrl="${libraryViewerUrl}"
                     libraryViewerToken="${libraryViewerToken}"
                     spewRegions="${spewRegions}"/>
             <myTags:webServices/>
-            <myTags:dataFormats/>
+            <myTags:dataFormats/>--%>
             <myTags:standardIdentifiers/>
             <myTags:computePlatformImports/>
         </div>

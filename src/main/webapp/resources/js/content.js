@@ -2,24 +2,17 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
     var expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
     var toRemove = [];
 
-    /*if(expanded === null) {
-        var openByDefaultIds = [];
-        for(var i = 0; i < openByDefault.length; i++) {
-            var matchingNode = $(treeId).treeview('search', [ openByDefault[i], {
-                ignoreCase: false,     // case insensitive
-                exactMatch: false,    // like or equals
-                revealResults: false  // reveal matching nodes
-            }])[0];
-            $(treeId).treeview('clearSearch');
-            if(matchingNode !== null) {
-                openByDefaultIds.push(matchingNode.nodeId);
-            }
+    if(expanded === null) {
+        var defaultExpandedNodes = $(treeId).treeview('getExpanded');
+        var defaultExpandedNodeIds = [];
+        for(var i = 0; i < defaultExpandedNodes.length; i++) {
+            defaultExpandedNodeIds.push(defaultExpandedNodes[i].nodeId);
         }
+        sessionStorage.setItem(sessionVariable, JSON.stringify(defaultExpandedNodeIds));
+        expanded = $.parseJSON(sessionStorage.getItem(sessionVariable));
+    }
 
-        expanded = openByDefaultIds;
-        sessionStorage.setItem(expandedInfo, JSON.stringify(openByDefaultIds));
-    }*/
-
+    $(treeId).treeview('collapseAll', { silent: true });
     if(expanded !== null) {
         for(var j = 0; j < expanded.length; j++) {
             try {
@@ -51,7 +44,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         onNodeSelected: function(event, data) {
             if(data !== undefined && data.hasOwnProperty('json')) {
                 if(data['json'] !== undefined) {
-                    showModal(JSON.parse(data['json']), data['type']);
+                    showModal(JSON.parse(data['json']), data['type'], data['xml']);
                 }
             }
             if(typeof data['nodes'] !== undefined) {
@@ -99,7 +92,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
     };
 }
 
-function showModal(entry, type) {
+function showModal(entry, type, xml) {
     if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $('#dats-json').hide();
         $('#mdc-json').show();
@@ -108,31 +101,15 @@ function showModal(entry, type) {
         $('#mdc-json').hide();
     }
 
-    $('#display-json').text(JSON.stringify(entry, null, "\t"));
-    toggleModalItems(entry, type);
-    $('#pageModal').modal('show');
-}
-
-function sortAndCountSoftware(softwareData) {
-    for(var i = 0; i < softwareData.length; i++) {
-        var nodeLength = softwareData[i].nodes.length;
-        for(var h = 0; h < softwareData[i].nodes.length; h++) {
-            if(softwareData[i].nodes[h].nodes !== undefined) {
-                var innerNodeLength = softwareData[i].nodes[h].nodes.length;
-                nodeLength += innerNodeLength - 1;
-
-                softwareData[i].nodes[h].text += getCountBadge(innerNodeLength);
-                softwareData[i].nodes[h].text = wrapInSpan(softwareData[i].nodes[h].text);
-
-                softwareData[i].nodes[h].nodes.sort(compareNodes);
-            }
-        }
-        softwareData[i].text += getCountBadge(nodeLength);
-        softwareData[i].text = wrapInSpan(softwareData[i].text);
-
-        softwareData[i].nodes.sort(compareNodes);
+    if(xml !== null && xml.length > 0) {
+        $('#display-json').text(xml);
+    } else {
+        $('#display-json').text(JSON.stringify(entry, null, "\t"));
     }
-    return softwareData;
+
+    toggleModalItems(entry, type);
+
+    $('#pageModal').modal('show');
 }
 
 function getCountBadge(count) {
@@ -188,7 +165,7 @@ function capitalizeFirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function setModalHeader(entry) {
+function setModalHeader(entry, type) {
     var title = entry["title"];
     if(title === undefined && Object.keys(entry['name']).length !== 0) {
         title = entry['name'];
@@ -206,6 +183,13 @@ function setModalHeader(entry) {
                 modalHeaderText = getSoftwareTitle(title, version);
             }
         }
+
+        ga('send', {
+            hitType: 'event',
+            eventCategory: 'User Activity',
+            eventAction: type + ' - ' + modalHeaderText
+        });
+
         $(modalHeaderId).text(modalHeaderText);
         $(modalHeaderId).show();
     } else {
@@ -251,7 +235,7 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
 
         attribute = attribute.map(function(elem){
             return elem.firstName + " " + elem.lastName;
-        }).join(",");
+        }).join(", ");
 
         $(containerId).show();
         $(elementId).html(attribute);
@@ -284,7 +268,7 @@ function setDataServiceDescription(entry) {
 }
 
 function toggleModalItems(entry, type) {
-    setModalHeader(entry);
+    setModalHeader(entry, type);
 
     setSingularOrPluralModalItem(entry, 'developers', 'developer');
     setSingularOrPluralModalItem(entry, 'creator', 'creator');

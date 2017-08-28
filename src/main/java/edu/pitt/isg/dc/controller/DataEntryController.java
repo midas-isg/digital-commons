@@ -6,9 +6,10 @@ import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -26,6 +27,7 @@ import org.w3c.dom.NodeList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedWriter;
@@ -88,6 +90,9 @@ public class DataEntryController {
     EntrySubmissionInterface entrySubmissionInterface;
 
     @Autowired
+    UsersSubmissionInterface usersSubmissionInterface;
+
+    @Autowired
     private ServletContext context;
 
     @Component
@@ -105,11 +110,19 @@ public class DataEntryController {
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
     public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
-                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request) throws Exception {
+                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request, HttpSession session) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
-        String category = java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8");
+        Long category = null, entryId = null, revisionId = null;
+        try {
+            category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8"));
+            entryId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("entryId"), "UTF-8"));
+            revisionId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("revisionId"), "UTF-8"));
+        } catch (NumberFormatException e) {
+            // pass
+        }
+
         String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
         xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
 
@@ -130,27 +143,12 @@ public class DataEntryController {
             EntryView entryObject = new EntryView();
             entryObject.setProperty("type", entry.get("class").getAsString());
 
-            if(datasetType != null) {
-                if (customValue != null && !customValue.equals("")) {
-                    customValue = customValue.toLowerCase().replaceAll("[^a-zA-Z0-9_\\-]", "-");
-                    entryObject.setProperty("subtype", customValue);
-                } else {
-                    if (datasetType.equals("DiseaseSurveillanceData")) {
-                        entryObject.setProperty("subtype", "disease-surveillance");
-                    } else if(datasetType.equals("MortalityData")) {
-                        entryObject.setProperty("subtype", "mortality");
-                    } else {
-                        entryObject.setProperty("subtype", datasetType);
-                    }
-                }
-            } else if(entry.get("class").getAsString().contains("Dataset")) {
-                throw new MdcEntryDatastoreException("Unsupported Dataset Type");
-            }
-
             entry.remove("class");
             entryObject.setEntry(entry);
 
-            entrySubmissionInterface.submitEntry(entryObject, "", ENTRIES_AUTHENTICATION);
+            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+            entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
             DCEmailService emailService = new DCEmailService();

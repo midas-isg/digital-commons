@@ -2,6 +2,8 @@ package edu.pitt.isg.dc.entry;
 
 import javax.persistence.*;
 
+import java.math.BigInteger;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
@@ -9,6 +11,7 @@ public class CategoryOrder {
     private Long id;
     private Category category;
     private Category subcategory;
+    private Integer ordering;
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -37,4 +40,14 @@ public class CategoryOrder {
     public void setSubcategory(Category subcategory) {
         this.subcategory = subcategory;
     }
+
+    public Integer getOrdering() {
+        return ordering;
+    }
+
+    public void setOrdering(Integer ordering) {
+        this.ordering = ordering;
+    }
+
+
 }

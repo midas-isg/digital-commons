@@ -23,6 +23,21 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     List<Entry> findAllByStatus(String status);
 
+    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+            "WHERE (entry_id, revision_id) IN\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "GROUP BY entry_id) AND status != 'approved' ")
+    List<Entry> findLatestUnapprovedEntries();
+
+    @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
+            "WHERE (entry_id, revision_id) IN\n" +
+            "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "WHERE status = 'approved' GROUP BY entry_id) AND is_public = false")
+    List<Entry> findLatestApprovedNotPublicEntries();
+
+    @Query(nativeQuery = true, value="SELECT * from entry where entry_id = ?1 and revision_id != ?2 and is_public = true;")
+    List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
+
     Page<Entry> findByStatus(String status, Pageable pageable);
     Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
 
@@ -65,4 +80,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "order by s1"
     )
     List<Object[]> match2Software();
+
+
+    @Query(nativeQuery = true, value = "select display_name, " +
+            "content->'entry'#>'{distributions,0}'->'access'->'accessURL' as access_url " +
+            "from dev.entry where category_id = 39 order by display_name"
+    )
+    List<Object[]> spewLocationsAndAccessUrls();
 }

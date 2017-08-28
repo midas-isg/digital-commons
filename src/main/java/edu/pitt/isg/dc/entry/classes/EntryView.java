@@ -25,6 +25,10 @@ public class EntryView extends EntryObject {
         entry.setStatus(status);
         entry.setIsPublic(status.equalsIgnoreCase(APPROVED));
         entry.setCategory(entryObject.getCategory());
+        entry.setIsPublic(entryObject.getIsPublic());
+        entry.setDisplayName(entryObject.getDisplayName());
+        entry.setTags(entryObject.getTags());
+        entry.setUsers(entryObject.getUsersId());
         return entry;
     }
 
@@ -36,8 +40,12 @@ public class EntryView extends EntryObject {
         setId(entry.getId());
         setEntry(entry.getContent().get("entry"));
         setCategory(entry.getCategory());
+        setIsPublic(entry.getIsPublic());
+        setDisplayName(entry.getDisplayName());
+        setTags(entry.getTags());
         copyPropertiesFrom(entry.getContent().get("properties"));
         setProperty("status", entry.getStatus());
+        setUsersId(entry.getUsers());
     }
 
     private void copyPropertiesFrom(Object obj) {

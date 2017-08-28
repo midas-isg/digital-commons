@@ -11,7 +11,15 @@ public interface EntryApprovalInterface {
                      long categoryId,
                      String authenticationToken) throws MdcEntryDatastoreException;
 
+    void makePublicEntry(EntryId entryId,
+                     long categoryId,
+                     String authenticationToken) throws MdcEntryDatastoreException;
+
     void rejectEntry(EntryId entryId,
+                     String authenticationToken,
+                     String[] commentsArr) throws MdcEntryDatastoreException;
+
+    void commentEntry(EntryId entryId,
                      String authenticationToken,
                      String[] commentsArr) throws MdcEntryDatastoreException;
 
@@ -20,4 +28,6 @@ public interface EntryApprovalInterface {
     List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException;
 
     List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException;
+
+    List<EntryView> getPublicEntries() throws MdcEntryDatastoreException;
 }

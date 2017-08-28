@@ -6,35 +6,43 @@
 <%@ attribute name="subTitle" type="java.lang.String" %>
 <%@ attribute name="loggedIn" type="java.lang.Boolean" %>
 <%@ attribute name="adminType" type="java.lang.String" %>
+<%@ attribute name="addEntry" type="java.lang.Boolean" %>
 
-<c:if test="${iframe != true}">
-    <div class="spacer">
-        <nav class="navbar navbar-default navbar-fixed-top" id="header">
-            <div class="main-nav container-fluid ">
-                <div class="navbar-header">
-                    <button type="button"
-                            class="navbar-toggle collapsed margin-top-22"
-                            data-toggle="collapse"
-                            data-target="#navbar-collapse"
-                            aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="${pageContext.request.contextPath}">
-                        <img alt="MIDAS"
-                             class="navbar-brand-mod"
-                             src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
-                    <h2 id="page-title-big"
-                        class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
-                    <h3 id="page-title"
-                        class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
-                </div>
+<div class="spacer">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header">
+        <div class="main-nav container-fluid ">
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle collapsed margin-top-22"
+                        data-toggle="collapse"
+                        data-target="#navbar-collapse"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="${pageContext.request.contextPath}">
+                    <img alt="MIDAS"
+                         class="navbar-brand-mod"
+                         src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                <h2 id="page-title-big"
+                    class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
+                <h3 id="page-title"
+                    class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+            </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                        <%--<myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>--%>
-                        <myTags:navBar contextPath="${pageContext.request.contextPath}" adminType="${adminType}" mainPath="" dataToggle="tab"></myTags:navBar>
+                <c:choose>
+                    <c:when test="${addEntry == true}">
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}"
+                                       mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>
+                    </c:when>
+                    <c:otherwise>
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath=""
+                                       dataToggle="tab"></myTags:navBar>
+                    </c:otherwise>
+                </c:choose>
                 <ul class="nav navbar-nav navbar-right">
                     <c:choose>
                         <c:when test="${loggedIn == true}">
@@ -59,18 +67,13 @@
             </div>
         </div><!-- /.container-fluid -->
     </nav>
-    </div>
-</c:if>
+</div>
 
 <script>
-    function loadExternalSite() {
-        window.open(document.getElementById("libraryFrame").src);
-    }
-
     $(window).on("resize", function () {
         var maxWidthLarge = 1300;
-        var maxWidthMedium = 1186;
-        var maxWidthSmall = 982;
+        var maxWidthMedium = 1230;
+        var maxWidthSmall = 1010;
         if ($(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');
         } else {

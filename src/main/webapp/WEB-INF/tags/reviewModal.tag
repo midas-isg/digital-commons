@@ -11,13 +11,21 @@
     <div class="modal-dialog" style="max-width:600px;">
         <div class="modal-content">
             <div class="modal-header software-header">
-                <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                <c:choose>
+                    <c:when test="${type == 'approve'}">
+                        <h2 id="approve-modal-header-${id}" class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                    </c:when>
+                    <c:otherwise>
+                        <h2 class="sub-title-font pull-left color-white">${modalHeader}</h2>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <div class="modal-body">
-                <c:if test="${type != 'comments'}">
-                    <input id="approve-entry-id-${id}" class="hidden">
-                    <input id="approve-entry-revision-id-${id}" class="hidden">
+                <input id="approve-entry-id-${id}" class="hidden">
+                <input id="approve-entry-revision-id-${id}" class="hidden">
+                <input id="approve-entry-status-${id}" class="hidden">
 
+                <c:if test="${type != 'comments'}">
                     <div class="sub-title-font font-size-16 modal-software-item">
                         <h4 class="inline bold">Title: </h4><br>
                         <span id="approve-entry-title-${id}"></span>
@@ -57,17 +65,17 @@
                             <c:if test="${type == 'reject'}">
                                 <h4 class="inline bold">Comment(s): </h4><br>
                             </c:if>
-                            <div id="reject-comments"></div>
-                            <button type="button" class="btn btn-default" style="margin-top:5px" onclick="addComment()">Add comment</button>
+                            <div id="reject-comments-${id}"></div>
+                            <button type="button" class="btn btn-default" style="margin-top:5px" onclick="addComment('${id}')">Add comment</button>
                         </div>
                     </c:if>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <c:choose>
                     <c:when test="${type == 'approve'}">
-                        <button type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
+                        <button id="approve-btn-${id}" type="button" class="btn btn-success" onclick="approveButton('${id}')">Approve</button>
                     </c:when>
                     <c:when test="${type == 'reject'}">
                         <button type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
@@ -85,6 +93,8 @@
     $('#${id}').on('hidden.bs.modal', function () {
         hideCategoryErrors();
         $('#category-select-${id}').val('none');
-        $("#reject-comments").html("");
+        $("#reject-comments-${id}").html("");
+        $("#approve-btn-${id}").text("Approve");
+        $("#approve-modal-header-${id}").text("Approve Submission");
     });
 </script>
