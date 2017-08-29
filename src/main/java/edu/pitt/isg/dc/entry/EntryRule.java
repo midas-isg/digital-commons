@@ -1,7 +1,9 @@
 package edu.pitt.isg.dc.entry;
 
-import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import edu.pitt.isg.dc.vm.EntryComplexQuery;
+import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import edu.pitt.isg.dc.vm.MatchedSoftware;
+import edu.pitt.isg.dc.vm.OntologyQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,8 +25,8 @@ import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
 import static edu.pitt.isg.dc.entry.Keys.LOCATION_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Keys.SPATIAL_COVERAGE;
-import static edu.pitt.isg.dc.entry.Values.APPROVED;
 import static java.lang.System.out;
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -43,7 +46,12 @@ public class EntryRule {
     @Value("${app.identifierSource.sv}")
     private String svIdentifierSource;
 
-    public Page<Entry> findViaOntology(EntryOntologyQuery q, Pageable pageRequest) {
+    public Page<Entry> findViaOntology(EntrySimpleQuery q, Pageable pageRequest) {
+        //return search(q, pageRequest);
+        return search(EntryComplexQuery.of(q), pageRequest);
+    }
+
+    private Page<Entry> search(EntrySimpleQuery q, Pageable pageRequest) {
         List<EntryId> results = listIdsByHostRelativesOfNcbiId(q.getHostId());
         results = merge(results, listIdsByPathogenRelativesOfNcbiId(q.getPathogenId()));
         results = merge(results, listIdsByRelativesOfLsId(q.getLocationId()));
@@ -53,6 +61,24 @@ public class EntryRule {
         if (results == null)
             return repo.findAllByIsPublic(true, pageRequest);
         return repo.findByIdIn(results, pageRequest);
+    }
+
+    public Page<Entry> search(EntryComplexQuery q, Pageable pageRequest) {
+        List<EntryId> results = listIdsByHostRelativesOfNcbiId(firstId(q.getHosts()));
+        results = merge(results, listIdsByPathogenRelativesOfNcbiId(firstId(q.getPathogens())));
+        results = merge(results, listIdsByRelativesOfLsId(firstId(q.getLocations())));
+        results = merge(results, listIdsByRelativesOfControlMeasureId(firstId(q.getControlMeasures())));
+        results = merge(results, listIdsByType(firstId(q.getTypes())));
+
+        if (results == null)
+            return repo.findAllByIsPublic(true, pageRequest);
+        return repo.findByIdIn(results, pageRequest);
+    }
+
+    private <T> T firstId(List<OntologyQuery<T>> list) {
+        if (list == null)
+            return null;
+        return list.get(0).getId();
     }
 
     public List<MatchedSoftware> listSoftwareMatched(){

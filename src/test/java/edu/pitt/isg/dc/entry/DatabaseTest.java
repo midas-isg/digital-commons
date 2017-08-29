@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
-import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import edu.pitt.isg.dc.vm.MatchedSoftware;
 import org.assertj.core.api.IterableAssert;
 import org.assertj.core.api.ListAssert;
@@ -168,7 +168,7 @@ public class DatabaseTest {
 
     @Test
     public void allApprovedEntries() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         final Page<Entry> page = entryRule.findViaOntology(q, null);
 
         assertAllElementsIn1Page(page);
@@ -213,7 +213,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesWithHumanAsHost() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setHostId(humanId);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
@@ -227,7 +227,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesEbolaAsPathogen() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setPathogenId(ebolaId);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
@@ -241,7 +241,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesQuarantineAsControlMeasure() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setControlMeasureId(quarantineIri);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
@@ -254,7 +254,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesAllControlMeasures() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setControlMeasureId(rootIri);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
@@ -267,7 +267,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesUsaAsLocation() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setLocationId(usaAlc);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 
@@ -284,7 +284,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesWithHostAndPathogenAndType() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setHostId(humanId);
         q.setPathogenId(ebolaId);
         q.setType(DTM_1_0);
@@ -300,7 +300,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesWithControlMeasureAndLocation() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setControlMeasureId(quarantineIri);
         q.setLocationId(usaAlc);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
@@ -315,7 +315,7 @@ public class DatabaseTest {
 
     @Test
     public void entriesDataset() throws Exception {
-        final EntryOntologyQuery q = new EntryOntologyQuery();
+        final EntrySimpleQuery q = new EntrySimpleQuery();
         q.setType(DATASET_2_2);
         final Page<Entry> entries = entryRule.findViaOntology(q, null);
 

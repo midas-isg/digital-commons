@@ -2,7 +2,7 @@ package edu.pitt.isg.dc.controller.ws;
 
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRule;
-import edu.pitt.isg.dc.vm.EntryOntologyQuery;
+import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +23,7 @@ public class EntryController{
     @RequestMapping(value = "/entries/search/by-ontology",
             method = GET,
             produces = {JSON, XML})
-    public Object findViaOntology(EntryOntologyQuery q/*, Pageable pageRequest*/) {
+    public Object findViaOntology(EntrySimpleQuery q/*, Pageable pageRequest*/) {
         return rule.findViaOntology(q, null);
     }
 

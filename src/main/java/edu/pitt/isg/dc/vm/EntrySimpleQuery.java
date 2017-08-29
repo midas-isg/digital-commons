@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.vm;
 
-public class EntryOntologyQuery {
+public class EntrySimpleQuery {
     private String controlMeasureId;
     private Long locationId;
     private Long hostId;
