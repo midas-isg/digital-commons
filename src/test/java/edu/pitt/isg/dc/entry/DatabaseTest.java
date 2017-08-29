@@ -199,7 +199,8 @@ public class DatabaseTest {
     public void allTypes() throws Exception {
         final List<String> all = typeRule.findAll();
         final List<String> expects = asList(DATASET_2_2, DATA_FORMAT_CONVERTERS1_0, DTM_1_0);
-        assertThat(all).containsExactlyElementsOf(expects);
+        assertThat(all).containsAll(expects);
+        assertThat(all).containsOnlyElementsOf(expects);
     }
 
     @Test

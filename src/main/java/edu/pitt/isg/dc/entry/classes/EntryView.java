@@ -21,9 +21,8 @@ public class EntryView extends EntryObject {
         final HashMap hashMap = gson.fromJson(json, HashMap.class);
         entry.setId(id);
         entry.setContent(hashMap);
-        final String status = entryObject.getProperty("status");
-        entry.setStatus(status);
-        entry.setIsPublic(status.equalsIgnoreCase(APPROVED));
+        entry.setStatus(entryObject.getProperty("status"));
+        entry.setIsPublic(entryObject.getIsPublic());
         entry.setCategory(entryObject.getCategory());
         entry.setIsPublic(entryObject.getIsPublic());
         entry.setDisplayName(entryObject.getDisplayName());

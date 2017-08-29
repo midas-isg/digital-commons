@@ -47,8 +47,10 @@ public class PopulateDatastore {
 
             if(file.getPath().contains(PENDING))
                 entryObject.setProperty(STATUS, PENDING);
-            else
+            else {
                 entryObject.setProperty(STATUS, APPROVED);
+                entryObject.setIsPublic(true);
+            }
 
             String type = EntryHelper.getTypeFromPath(file.getPath());
             entryObject.setProperty(TYPE, type);
