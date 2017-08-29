@@ -1,32 +1,44 @@
 package edu.pitt.isg.dc.controller;
 
 import com.github.davidmoten.xsdforms.Generator;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import edu.pitt.isg.dc.entry.Users;
+import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
+import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Date;
 import java.util.Properties;
-
-import static java.nio.file.StandardOpenOption.APPEND;
-import static java.nio.file.StandardOpenOption.CREATE;
 
 /**
  * Created by TPS23 on 5/10/2017.
@@ -35,7 +47,7 @@ import static java.nio.file.StandardOpenOption.CREATE;
 @ApiIgnore
 @Controller
 public class DataEntryController {
-    private static boolean GENERATE_XSD_FORMS = false;
+    private static boolean GENERATE_XSD_FORMS = true;
     private static final String [] XSD_FILES = {
             "software.xsd",
             "dats.xsd"
@@ -43,6 +55,13 @@ public class DataEntryController {
     private static final String XSD_FORMS_PATH;
     private static final String OUTPUT_DIRECTORY;
     private static final String DC_ENTRY_REQUESTS_LOG;
+
+    private static String ENTRIES_AUTHENTICATION = "";
+
+    static {
+        Properties configurationProperties = DigitalCommonsProperties.getProperties();
+        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
+    }
 
     static {
         String outputDirectory = "";
@@ -66,38 +85,70 @@ public class DataEntryController {
         DC_ENTRY_REQUESTS_LOG = dcEntryRequestsLog;
     }
 
+
+    @Autowired
+    EntrySubmissionInterface entrySubmissionInterface;
+
+    @Autowired
+    UsersSubmissionInterface usersSubmissionInterface;
+
+    @Autowired
+    private ServletContext context;
+
+    @Component
+    public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
+        @Override
+        public void onApplicationEvent(final ContextRefreshedEvent event) {
+            try {
+                readXSDFiles(context);
+            }
+            catch (Exception e){
+
+            }
+        }
+    }
+
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-    public @ResponseBody String addNewEntry(@RequestBody String rawInputString) throws Exception {
+    public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
+                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request, HttpSession session) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
-        String xmlString = java.net.URLDecoder.decode(rawInputString, "UTF-8");
+
+        Long category = null, entryId = null, revisionId = null;
+        try {
+            category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("categoryValue"), "UTF-8"));
+            entryId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("entryId"), "UTF-8"));
+            revisionId = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("revisionId"), "UTF-8"));
+        } catch (NumberFormatException e) {
+            // pass
+        }
+
+        String xmlString = java.net.URLDecoder.decode(request.getParameter("xmlString"), "UTF-8");
+        xmlString = xmlString.substring(0, xmlString.lastIndexOf('>') + 1);
+
         String jsonString = null;
 
-System.out.println(xmlString);
+        System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-System.out.println("~~~~~~~~~~~~");
-System.out.println(jsonString);
         }
         catch(Exception exception) {
             exception.printStackTrace();
         }
 
         if(jsonString.length() > 0) {
-            // Append {timestamp: timestamp, entry: jsonString} to OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG
-            String fileOutput = "{\n" +
-                "    'timestamp': '" + date + "',\n" +
-                "    'entry': " + jsonString + "\n}\n\n";
-            byte data[] = fileOutput.getBytes();
-            Path logPath = Paths.get(OUTPUT_DIRECTORY + DC_ENTRY_REQUESTS_LOG);
+            JsonParser parser = new JsonParser();
+            JsonObject entry = parser.parse(jsonString).getAsJsonObject();
 
-            try (OutputStream out = new BufferedOutputStream(
-                    Files.newOutputStream(logPath, CREATE, APPEND))) {
-                out.write(data, 0, data.length);
-            }
-            catch (IOException exception) {
-                exception.printStackTrace();
-            }
+            EntryView entryObject = new EntryView();
+            entryObject.setProperty("type", entry.get("class").getAsString());
+
+            entry.remove("class");
+            entryObject.setEntry(entry);
+
+            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+            entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
 
             //E-mail to someone it concerns
             DCEmailService emailService = new DCEmailService();
@@ -107,7 +158,7 @@ System.out.println(jsonString);
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext) throws IOException {
+    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, ServletContext context) throws IOException {
         InputStream schema;
         String idPrefix = "";
         String htmlString;
@@ -119,26 +170,21 @@ System.out.println(jsonString);
             schema = appContext.getResource(xsdFile).getInputStream();
             htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
-
-            htmlString = htmlString.replace("<head>", "<head><base href='.'>" +
-                    "<link rel='stylesheet' type='text/css' href='../css/main.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap/3.3.6/bootstrap.min.css'>" +
-                    "<link rel='stylesheet' href='../css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'>" +
-                    "<link rel='stylesheet' href='../css/font-awesome-4.7.0/css/font-awesome.min.css'>");
-
-            Path file = FileSystems.getDefault().getPath(OUTPUT_DIRECTORY + rootElementName + ".html");
-            Charset charset = Charset.forName("US-ASCII");
-            try (BufferedWriter writer = Files.newBufferedWriter(file, charset)) {
-                writer.write(htmlString, 0, htmlString.length());
-            } catch (IOException x) {
-                System.err.format("IOException: %s%n", x);
-            }
+            writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
-
-        return;
     }
 
-    public static String readXSDFiles() throws Exception {
+    private static void writeFormToPath(String realPath, String className, String htmlString) {
+        Path path = FileSystems.getDefault().getPath(realPath, className + ".jsp");
+        Charset charset = Charset.forName("US-ASCII");
+        try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
+            writer.write(htmlString, 0, htmlString.length());
+        } catch (IOException x) {
+            System.err.format("IOException: %s%n", x);
+        }
+    }
+
+    public static String readXSDFiles(ServletContext context) throws Exception {
         ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
@@ -164,7 +210,7 @@ System.out.println(jsonString);
                     typeList += (rootElementName + ";");
 
                     if(GENERATE_XSD_FORMS){
-                        generateForm(XSD_FILES[i], rootElementName, appContext);
+                        generateForm(XSD_FILES[i], rootElementName, appContext, context);
                     }
                 }
             }

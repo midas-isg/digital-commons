@@ -30,14 +30,14 @@
         {
             "name": "Chikungunya virus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=37124",
+                "identifier": "37124",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Chikungunya fever",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=111864006",
+                "identifier": "111864006",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         }
@@ -47,7 +47,7 @@
             "name": "Cayman Islands",
             "identifier": {
                 "identifier": "5145",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=5145"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -158,7 +158,7 @@
                     },
                     {
                         "value": "case series",
-                        "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000558"
                     }
                 ],
                 "types": [

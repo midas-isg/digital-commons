@@ -30,14 +30,14 @@
         {
             "name": "Sudan ebolavirus - Uganda (2000)",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=386033",
+                "identifier": "386033",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "Masindi",
             "identifier": {
                 "identifier": "56",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=56"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,14 +67,14 @@
             "name": "Mbarara",
             "identifier": {
                 "identifier": "65",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=65"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Gulu",
             "identifier": {
                 "identifier": "147",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=147"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

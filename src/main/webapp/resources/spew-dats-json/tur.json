@@ -58,22 +58,22 @@
         {
             "name": "Homo sapiens",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifier": "9606",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Household",
             "identifier": {
-                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_00000076",
                 "identifierSource": "https://biosharing.org/bsg-s000097"
             }
         },
         {
             "name": "Turkey",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5100",
-                "identifierSource": "apollo location service"
+                "identifier": "5100",
+                "identifierSource": "ApolloLS"
             }
         }
     ],
@@ -82,8 +82,8 @@
             "name": "Turkey",
             "description": "",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5100",
-                "identifierSource": "apollo location service"
+                "identifier": "5100",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

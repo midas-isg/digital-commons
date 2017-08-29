@@ -1,0 +1,74 @@
+{
+  "title": "FRED",
+  "source": "https://github.com/PublicHealthDynamicsLab/FRED/tree/FRED-v2.12.0",
+  "product": "FRED",
+  "subtype": "Disease transmission models",
+  "version": [
+    "2.12.0"
+  ],
+  "webApplication": [
+    "http://fred.publichealth.pitt.edu/simulator/"
+  ],
+  "controlMeasures": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "vaccination"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "quarantine"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "reactive school closures"
+      }
+    },
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "",
+        "identifierDescription": "global school closures"
+      }
+    }
+  ],
+  "dataInputFormats": [
+    "MIDAS-ISG:synthia-us-v2010",
+    "Proprietary"
+  ],
+  "locationCoverage": [
+    {
+      "identifier": {
+        "identifier": "1216",
+        "identifierSource": "https://biosharing.org/bsg-s000708",
+        "identifierDescription": "us national"
+      }
+    }
+  ],
+  "pathogenCoverage": [
+    {
+      "identifier": {
+        "identifier": "",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "communicable human-to-human"
+      }
+    }
+  ],
+  "hostSpeciesIncluded": [
+    {
+      "identifier": {
+        "identifier": "9606",
+        "identifierSource": "https://biosharing.org/bsg-s000154",
+        "identifierDescription": "homo sapiens"
+      }
+    }
+  ],
+  "humanReadableSynopsis": "FRED (A Framework for Reconstructing Epidemiological Dynamics) is an open source modeling system developed by the University of Pittsburgh Public Health Dynamics Laboratory in collaboration with the Pittsburgh Supercomputing Center and the School of Computer Science at Carnegie Mellon University."
+}

@@ -30,14 +30,14 @@
         {
             "name": "Zaire ebolavirus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=186538",
+                "identifier": "186538",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "Lagos",
             "identifier": {
                 "identifier": "343",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=343"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -67,7 +67,7 @@
             "name": "Rivers",
             "identifier": {
                 "identifier": "351",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=351"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

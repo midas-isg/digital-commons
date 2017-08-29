@@ -30,14 +30,14 @@
         {
             "name": "Zaire ebolavirus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=186538",
+                "identifier": "186538",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "Nimba",
             "identifier": {
                 "identifier": "85181",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85181"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -62,98 +62,98 @@
             "name": "Rivercess",
             "identifier": {
                 "identifier": "85183",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85183"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "River Gee",
             "identifier": {
                 "identifier": "85182",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85182"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Sinoe",
             "identifier": {
                 "identifier": "85185",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85185"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Bomi",
             "identifier": {
                 "identifier": "85170",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85170"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Bong",
             "identifier": {
                 "identifier": "85171",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85171"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Gbarpolu",
             "identifier": {
                 "identifier": "85173",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85173"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Grand Cape Mount",
             "identifier": {
                 "identifier": "85175",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85175"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Grand Bassa",
             "identifier": {
                 "identifier": "85174",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85174"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Grand Kru",
             "identifier": {
                 "identifier": "85176",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85176"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Lofa",
             "identifier": {
                 "identifier": "85177",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85177"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Margibi",
             "identifier": {
                 "identifier": "85178",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85178"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Maryland",
             "identifier": {
                 "identifier": "85179",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85179"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Montserrado",
             "identifier": {
                 "identifier": "85180",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85180"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Liberia",
             "identifier": {
                 "identifier": "85172",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85172"
+                "identifierSource": "ApolloLS"
             }
         }
     ],

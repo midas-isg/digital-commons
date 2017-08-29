@@ -49,21 +49,21 @@ def process():
                 {
                     'name': "Rabies lyssavirus",
                     'identifier': {
-                        "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=11292",
+                        "identifier": "11292",
                         "identifierSource": "https://biosharing.org/bsg-s000154"
                     }
                 },
                 {
                     "name": "Rabies virus silver-haired bat-associated SHBRV",
                     "identifier": {
-                        "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=445793",
+                        "identifier": "445793",
                         "identifierSource": "https://biosharing.org/bsg-s000154"
                     }
                 },
                 {
                     "name": "Rabies (disorder)",
                     "identifier": {
-                        "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=14168008",
+                        "identifier": "14168008",
                         "identifierSource": "https://biosharing.org/bsg-s000098"
                     }
                 }   
@@ -73,8 +73,8 @@ def process():
                 {
                     "name": "United States",
                     "identifier": {
-                        "identifier": "http://betaweb.rods.pitt.edu/ls/read-only?id=1216",
-                        "identifierSource": "apollo location service"
+                        "identifier": "1216",
+                        "identifierSource": "ApolloLS"
                     },
                     "alternateIdentifiers": [
                         {
@@ -216,7 +216,7 @@ def process():
                     },
                     {
                         "value": "case series",
-                        "valueIRI": "http://purl.obolibrary.org/obo/apollo_sv.owl"
+                        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000558"
                     }
                 ],
                 "types": [

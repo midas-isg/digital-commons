@@ -1,0 +1,29 @@
+{
+  "subtype": "Data-format converters",
+  "humanReadableSynopsis": "<p>Epidemic case count data are an important source of information for infectious disease researchers, but these counts are often distributed by health agencies in non-standard formats. Analysts typically spend a lot of time reformatting or \u201cmunging\u201d these data before they can conduct their analysis.</p> <p>We created Omnivore, a web-based tool for converting case count reports from health agencies into a standard data format.  Omnivore, which is still under development, uses custom-developed parsers to automatically ingest data from various sources that include: Zika data from the US Centers for Disease Control and Prevention, and Chikungunya data from the Pan American Health Organization, the Mexican Ministry of Health, and the Colombian Ministry of Health.</p> <p>Omnivore automatically detects the data format and automatically extracts information such as the type of case counts (e.g. cumulative vs. intervals), report dates, and location. Omnivore automatically detects missing counts and duplicate counts, flagging missing counts removing duplicates after detection. Omnivore is currently undergoing final testing and will be a valuable tool to help researchers and practitioners to significantly speed up their workflow for analysis of epidemic time series data.</p>",
+  "webApplication": [
+    "http://betaweb.rods.pitt.edu/omnivore"
+  ],
+  "signInRequired": true,
+  "version": [
+    "0.5"
+  ],
+  "developers": [
+    "Wilbert Van Panhuis",
+    "Max Sibilla",
+    "John Levander"
+  ],
+  "dataOutputFormats": [
+    "MIDAS-ISG:omnivore-v0.5"
+  ],
+  "dataInputFormats": [
+    "MIDAS-ISG:epidemiological-bulletin-national-system-of-epidemiological-surveillance-system-v1.0",
+    "MIDAS-ISG:number-reported-cases-of-chikungunya-fever-in-the-americas-v1.0",
+    "MIDAS-ISG:colombia-moh-chikungunya-weekly-summary-v1.0",
+    "MIDAS-ISG:colombia-municipal-routine-surveillance-events-by-week-v1.0"
+  ],
+  "identifier": {
+    "identifier": "MIDAS-ISG:omnivore-v0.5"
+  },
+  "title": "Omnivore"
+}

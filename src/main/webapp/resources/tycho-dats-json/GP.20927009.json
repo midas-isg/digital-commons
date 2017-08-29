@@ -186,15 +186,15 @@
         {
             "name": "Dengue hemorrhagic fever",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=20927009",
+                "identifier": "20927009",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Guadeloupe",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=7169",
-                "identifierSource": "apollo location service"
+                "identifier": "7169",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -571,8 +571,8 @@
             "name": "Guadeloupe",
             "description": "Guadeloupe, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=7169",
-                "identifierSource": "apollo location service"
+                "identifier": "7169",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

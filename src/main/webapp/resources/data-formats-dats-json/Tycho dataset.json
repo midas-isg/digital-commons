@@ -1,7 +1,7 @@
 {
     "identifier": {
-        "identifier": "biosharing id will be available soon",
-        "identifierSource": "biosharing.org"
+        "identifier": "MIDAS-ISG:tycho-dataset-format-v2.0",
+        "identifierSource": "MIDAS-ISG"
     },
     "name": "Tycho Dataset Format",
     "type": {

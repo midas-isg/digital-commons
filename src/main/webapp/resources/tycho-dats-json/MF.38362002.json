@@ -186,15 +186,15 @@
         {
             "name": "Dengue",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=38362002",
+                "identifier": "38362002",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Saint Martin",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=6941",
-                "identifierSource": "apollo location service"
+                "identifier": "6941",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -210,8 +210,8 @@
             "name": "Saint Martin",
             "description": "Saint Martin, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=6941",
-                "identifierSource": "apollo location service"
+                "identifier": "6941",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

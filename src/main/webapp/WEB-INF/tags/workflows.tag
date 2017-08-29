@@ -2,22 +2,24 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ attribute name="workflowLocationsAndIds" required="true"
+              type="java.util.List"%>
 
 <div class="col-sm-12">
     <h3 class="title-font">Workflows on Olympus</h3>
     <div class="font-size-16 standard-font">
-                        <span>
-                            These scripts and all the programs they invoke are staged on the Olympus cluster.
-                            Follow the instructions below to execute a workflow on your Olympus account.
-                            Alternatively, you can copy and edit the script before running on Olympus.
-                        </span>
+        <span>
+            These scripts and all the programs they invoke are staged on the Olympus cluster.
+            Follow the instructions below to execute a workflow on your Olympus account.
+            Alternatively, you can copy and edit the script before running on Olympus.
+        </span>
     </div>
     <div>
         <h3 class="title-font">Obtaining a Synthetic Population in Synthia Format</h3>
         <div class="font-size-16 standard-font">
-                            <span class="col-md-12 col-lg-12 no-padding">
-                                The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location. It creates a runnable instance of pFRED for that location.
-                            </span>
+        <span class="col-md-12 col-lg-12 no-padding">
+            The LSDTM script requests the name of the synthetic population ('Synthia' or 'SPEW') and the location. It creates a runnable instance of pFRED for that location.
+        </span>
 
             <div class="col-md-12 col-lg-12 no-padding">
                 <div style="margin-top:10px">
@@ -26,7 +28,12 @@
                 </div>
                 <div style="margin-top:10px">
                     <label>Select location:</label><br>
-                    <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()"><option value=""></option></select>
+                    <select class="form-control" id="location-select" style="max-width:280px" onchange="checkLocationSelect()">
+                        <option value=""></option>
+                        <c:forEach items="${workflowLocationsAndIds}" var="locationAndId">
+                            <option value="${locationAndId[1]}_${locationAndId[1]}">${locationAndId[0]}</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div style="margin-top:10px" id="synthpop-radios">
                     <label disabled="disabled">Select available synthetic population(s) for location:</label><br>

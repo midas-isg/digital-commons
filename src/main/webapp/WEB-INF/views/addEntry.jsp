@@ -36,16 +36,15 @@
     <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
     <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
-    <script src="http://flowchart.js.org/flowchart-latest.js"></script>
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
 </head>
 <c:choose>
     <c:when test="${preview eq true}">
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="true" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" preview="true" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
     </c:when>
     <c:otherwise>
-        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="true" preview="false" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
+        <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" preview="false" wantCollapse="true" iframe="false" addEntry="true"></myTags:header>
 
     </c:otherwise>
 </c:choose>

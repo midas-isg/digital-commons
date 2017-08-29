@@ -30,14 +30,14 @@
         {
             "name": "Sudan ebolavirus",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=186540",
+                "identifier": "186540",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "Kibaale",
             "identifier": {
                 "identifier": "55",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=55"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

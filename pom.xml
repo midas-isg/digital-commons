@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+       xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>edu.pitt.isg</groupId>
     <artifactId>digital-commons</artifactId>
     <name>Digital Commons</name>
     <description>MIDAS Digital Commons</description>
     <packaging>war</packaging>
-    <version>1.0</version>
+    <version>0.0.2</version>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -15,44 +15,17 @@
     </parent>
 
     <repositories>
-        <repository>
-            <id>oss-jfrog-artifactory</id>
-            <name>oss-jfrog-artifactory-releases</name>
-            <url>http://oss.jfrog.org/artifactory/oss-release-local</url>
-        </repository>
-
-        <repository>
-            <id>mdc-xsd-and-types</id>
-            <url>https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/1.0-repo</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>object-serializer-mvn-repo</id>
-            <url>https://raw.githubusercontent.com/midas-isg/object-serializer/1.0-repo</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-
-        <repository>
-            <id>xsd-forms</id>
-            <url>https://raw.githubusercontent.com/midas-isg/xsd-forms/1.0-mvn-repo</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
+    <repository>
+        <id>oss-jfrog-artifactory</id>
+        <name>oss-jfrog-artifactory-releases</name>
+        <url>http://oss.jfrog.org/artifactory/oss-release-local</url>
+    </repository>
     </repositories>
 
     <properties>
         <java.version>1.8</java.version>
-        <github.global.server>github</github.global.server>
     </properties>
+
 
     <dependencies>
         <!-- Auth0 -->
@@ -66,11 +39,14 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-rest</artifactId>
         </dependency>
 
         <dependency>
@@ -96,10 +72,13 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4-1201-jdbc41</version>
-            <scope>runtime</scope>
+            <version>9.4.1212</version>
         </dependency>
 
         <dependency>
@@ -134,11 +113,6 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-        </dependency>
-        <dependency>
             <groupId>com.mangofactory</groupId>
             <artifactId>swagger-springmvc</artifactId>
             <version>1.0.2</version>
@@ -153,17 +127,54 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.4</version>
-
         </dependency>
         <dependency>
             <groupId>org.jsoup</groupId>
             <artifactId>jsoup</artifactId>
             <version>1.8.3</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-devtools</artifactId>-->
+            <!--<scope>provided</scope>-->
+        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.8.0</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
-
-
     <build>
+        <pluginManagement>
+            <plugins>
+                <!--
+                    If we e.g. execute on JDK 1.7, we should compile for Java 7 to get
+                    the same (or higher) JAXB API version as used during the xjc execution.
+                -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -180,7 +191,9 @@
                 <includes>
                     <include>**/*</include>
                 </includes>
+
             </resource>
         </resources>
+
     </build>
 </project>

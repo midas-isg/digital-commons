@@ -1,11 +1,27 @@
 package edu.pitt.isg.dc.controller;
 
+import com.google.gson.*;
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.digital.spew.SpewLocation;
-import edu.pitt.isg.dc.digital.spew.SpewRule;
+import edu.pitt.isg.dc.entry.Category;
+import edu.pitt.isg.dc.entry.CategoryOrder;
+import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.impl.EntryApproval;
+import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
+import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.Ncbi;
+import edu.pitt.isg.dc.entry.NcbiRule;
+import edu.pitt.isg.dc.entry.TypeRule;
+import edu.pitt.isg.dc.spew.SpewLocation;
+import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -13,15 +29,42 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import static java.util.Comparator.comparing;
+import java.util.*;
+
+import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
 
 @ApiIgnore
 @Controller
@@ -31,6 +74,8 @@ public class HomeController {
     private static String SPEW_CACHE_FILE = "";
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
+    public static final String LOGGED_IN_PROPERTY = "loggedIn";
+    public static final String ADMIN_TYPE = "adminType";
 
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
@@ -42,9 +87,40 @@ public class HomeController {
 
     @Autowired
     private SpewRule spewRule;
+    @Autowired
+    private NcbiRule ncbiRule;
+    @Autowired
+    private TypeRule typeRule;
+
+    @Autowired
+    private CategoryHelper categoryHelper;
+
+    @Autowired
+    private WorkflowsImpl workflows;
 
     private Integer spewCount;
     private Integer spewAmericaCount;
+
+    public static Boolean ifLoggedIn(HttpSession session) {
+        if(session.getAttribute(LOGGED_IN_PROPERTY) != null && session.getAttribute(LOGGED_IN_PROPERTY).equals(true)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifMDCEditor(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(MDC_EDITOR_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static Boolean ifISGAdmin(HttpSession session) {
+        if(session.getAttribute(ADMIN_TYPE) != null && session.getAttribute(ADMIN_TYPE).equals(ISG_ADMIN_TOKEN)) {
+            return true;
+        }
+        return false;
+    }
 
     private void recurseSpewTree(SpewLocation location, boolean usa) {
         for (Map.Entry<String,SpewLocation> entry : location.getChildren().entrySet()) {
@@ -74,39 +150,58 @@ public class HomeController {
         }
     }
 
-    public void populateCommonsMainModel(Model model) {
-        try {
-            model.addAttribute("spewRegions", spewRule.treeRegions());
-            spewCount=0;
-            spewAmericaCount = 0;
-            for(SpewLocation location : spewRule.treeRegions()) {
-                if (location.getName().toLowerCase().contains("america")) {
-                    recureAmericaTree(location, false);
-                }
-                recurseSpewTree(location, false);
-            }
-            //we do not show burkina faso
-            spewCount--;
-            model.addAttribute("spewRegionCount", spewCount);
-            model.addAttribute("spewAmericaCount", spewAmericaCount);
+    public void populateCommonsMainModel(Model model) throws MdcEntryDatastoreException {
+//        try {
+//            model.addAttribute("spewRegions", spewRule.treeRegions());
+//            spewCount=0;
+//            spewAmericaCount = 0;
+//            for(SpewLocation location : spewRule.treeRegions()) {
+//                if (location.getName().toLowerCase().contains("america")) {
+//                    recureAmericaTree(location, false);
+//                }
+//                recurseSpewTree(location, false);
+//            }
+//            //we do not show burkina faso
+//            spewCount--;
+//            model.addAttribute("spewRegionCount", spewCount);
+//            model.addAttribute("spewAmericaCount", spewAmericaCount);
+//
+//        } catch (Exception e) {
+//            try {
+//                Path path = Paths.get(SPEW_CACHE_FILE);
+//
+//                FileInputStream fis = new FileInputStream(path.toFile());
+//                ObjectInputStream ois = new ObjectInputStream(fis);
+//                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
+//
+//                model.addAttribute("spewRegions", spewLocationIterable);
+//            } catch (Exception ee) {
+//                SpewLocation emptySpew = new SpewLocation();
+//                emptySpew.setName("Error loading data from SPEW");
+//                List<SpewLocation> tree = new ArrayList<>();
+//                tree.add(emptySpew);
+//                model.addAttribute("spewRegions", tree);
+//            }
+//        }
 
-        } catch (Exception e) {
-            try {
-                Path path = Paths.get(SPEW_CACHE_FILE);
+        List<Object[]> spewLocationsAndAccessUrls = workflows.getSpewLocationsAndAccessUrls();
 
-                FileInputStream fis = new FileInputStream(path.toFile());
-                ObjectInputStream ois = new ObjectInputStream(fis);
-                Iterable<SpewLocation> spewLocationIterable = (Iterable<SpewLocation>) ois.readObject();
-
-                model.addAttribute("spewRegions", spewLocationIterable);
-            } catch (Exception ee) {
-                SpewLocation emptySpew = new SpewLocation();
-                emptySpew.setName("Error loading data from SPEW");
-                List<SpewLocation> tree = new ArrayList<>();
-                tree.add(emptySpew);
-                model.addAttribute("spewRegions", tree);
+        Pattern pattern = Pattern.compile(".*(\\d{2}).tar.gz");
+        List<String[]> workflowLocationsAndIds = new ArrayList<>();
+        for(Object[] spewLocationAndAccessUrl : spewLocationsAndAccessUrls) {
+            Matcher matcher = pattern.matcher(spewLocationAndAccessUrl[1].toString());
+            if(matcher.matches()) {
+                String location = spewLocationAndAccessUrl[0].toString();
+                String id = matcher.group(1);
+                String[] locationAndId = {location, id};
+                workflowLocationsAndIds.add(locationAndId);
             }
         }
+
+        List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
+
+        model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
+        model.addAttribute("treeInfoArr", treeInfoArr);
         model.addAttribute("libraryViewerUrl", VIEWER_URL);
         model.addAttribute("libraryViewerToken", VIEWER_TOKEN);
         model.addAttribute("preview", true);
@@ -117,17 +212,78 @@ public class HomeController {
         return "redirect:/main";
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String ncbis(Model model) throws Exception {
+        final List<Ncbi> hosts = sort(ncbiRule.findHostsInEntries());
+        final List<Ncbi> pathogens = sort(ncbiRule.findPathogensInEntries());
+        final List<String[]> types = typeRule.findAll().stream()
+                .map(this::formatType)
+                .sorted(comparing(s -> s[1]))
+                .collect(Collectors.toList());
+        model.addAttribute("hosts", hosts);
+        model.addAttribute("pathogens", pathogens);
+        model.addAttribute("types", types);
+        return "search";
+    }
+
+    private List<Ncbi> sort(List<Ncbi> list) {
+        return list.stream()
+                .sorted(comparing(Ncbi::getName, String::compareToIgnoreCase))
+                .collect(Collectors.toList());
+    }
+
+    private String[] formatType(String fullyQualifiedName) {
+        final String[] tokens = fullyQualifiedName.split("\\.");
+        final String token = tokens[tokens.length - 1];
+        final String name = token.replaceAll("([A-Z])", " $1").trim();
+        return new String[]{fullyQualifiedName, name};
+    }
+
     @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String hello(Model model) throws Exception {
+    public String hello(Model model, HttpSession session) throws Exception {
         populateCommonsMainModel(model);
+
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "commons";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String addEntry(Model model) throws Exception {
-        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
+//    @RequestMapping(value = "/add", method = RequestMethod.GET)
+//    public String addEntry(Model model) throws Exception {
+//        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
+//        return "addEntry";
+//    }
 
-        return "addEntry";
+    @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
+    public String addNewDataFormatConverters(HttpSession session, @PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
+                                             @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        model.addAttribute("category", category);
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if(!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+        if(category.toLowerCase().equals("dataset")) {
+            model.addAttribute("datasetType", datasetType);
+            model.addAttribute("customValue", customValue);
+            return "Dataset";
+        } else {
+            return WordUtils.capitalize(category);
+        }
     }
 
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
@@ -221,19 +377,6 @@ public class HomeController {
         return json;
     }
 
-    @RequestMapping(value = "/getSoftwareXml", method = RequestMethod.GET, headers = "Accept=application/xml; charset=utf-8")
-    public
-    @ResponseBody
-    String getSoftwareXml(@RequestParam(value = "index") int index) throws Exception {
-        ClassLoader classLoader = getClass().getClassLoader();
-        File jsonFile = new File(classLoader.getResource("json/hardcoded-software.json").getFile());
-        String json = FileUtils.readFileToString(jsonFile);
-        List<String> softwareXmlList = DigitalCommonsHelper.jsonToXml(json);
-        String xml = softwareXmlList.get(index);
-
-        return xml;
-    }
-
     @RequestMapping(value = "/api/cache-library", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
@@ -274,11 +417,5 @@ public class HomeController {
     @RequestMapping(value = "/main/about", method = RequestMethod.GET)
     public String about(Model model) {
         return "about";
-    }
-
-    @RequestMapping(value = "/preview", method = RequestMethod.GET)
-    public String preview(Model model) throws Exception {
-        populateCommonsMainModel(model);
-        return "commons";
     }
 }

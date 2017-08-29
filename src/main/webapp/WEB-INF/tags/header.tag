@@ -5,131 +5,115 @@
 <%@ attribute name="pageTitle" type="java.lang.String" %>
 <%@ attribute name="subTitle" type="java.lang.String" %>
 <%@ attribute name="loggedIn" type="java.lang.Boolean" %>
-<%@ attribute name="preview" type="java.lang.Boolean" %>
-<%@ attribute name="wantCollapse" type="java.lang.Boolean" %>
-<%@ attribute name="iframe" type="java.lang.Boolean" %>
+<%@ attribute name="adminType" type="java.lang.String" %>
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
 
+<div class="spacer">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header">
+        <div class="main-nav container-fluid ">
+            <div class="navbar-header">
+                <button type="button"
+                        class="navbar-toggle collapsed margin-top-22"
+                        data-toggle="collapse"
+                        data-target="#navbar-collapse"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="${pageContext.request.contextPath}">
+                    <img alt="MIDAS"
+                         class="navbar-brand-mod"
+                         src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                <h2 id="page-title-big"
+                    class="leaf visible hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
+                <h3 id="page-title"
+                    class="font-size-20 leaf hidden hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
+            </div>
 
-    <c:if test="${iframe != true}">
-        <div class="spacer">
-        <nav class="navbar navbar-default navbar-fixed-top" id="header">
-            <div class="main-nav container-fluid ">
-                <div class="navbar-header">
-                    <c:if test="${wantCollapse == true}">
-                        <button type="button" class="navbar-toggle collapsed margin-top-22" data-toggle="collapse"
-                                data-target="#navbar-collapse" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                    </c:if>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <c:choose>
+                    <c:when test="${addEntry == true}">
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}"
+                                       mainPath="${pageContext.request.contextPath}/main" dataToggle=""></myTags:navBar>
+                    </c:when>
+                    <c:otherwise>
+                        <myTags:navBar contextPath="${pageContext.request.contextPath}" mainPath=""
+                                       dataToggle="tab"></myTags:navBar>
+                    </c:otherwise>
+                </c:choose>
+                <ul class="nav navbar-nav navbar-right">
                     <c:choose>
-                        <c:when test="${preview}">
-                            <a href="${pageContext.request.contextPath}/main">
-                                <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                        <c:when test="${loggedIn == true}">
+                            <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
+                            <form class="navbar-form" action="${urlLevel}" method="GET">
+                                <button type="submit" class="btn btn-default margin-top-13"
+                                        onclick="sessionStorage.clear();">Logout
+                                </button>
+                            </form>
                         </c:when>
                         <c:otherwise>
-                            <a href="${pageContext.request.contextPath}">
-                                <img alt="MIDAS" class="navbar-brand-mod"
-                                     src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png"></a>
+                            <c:set var="urlLevel" value="${pageContext.request.contextPath}/login"/>
+                            <form class="navbar-form" action="${urlLevel}" method="GET">
+                                <button type="submit" class="btn btn-default margin-top-13"
+                                        onclick="sessionStorage.clear();">Log in
+                                </button>
+                            </form>
                         </c:otherwise>
                     </c:choose>
-                    <h2 id="page-title-big" style="display: inline-block!important;" class="leaf hidden-xs hidden-sm hidden-md margin-top-22">${pageTitle}</h2>
-                    <h3 id="page-title" class="font-size-20 leaf inline-block hidden-sm hidden-md hidden-lg margin-top-30">${pageTitle}</h3>
-                </div>
 
-                <div class="collapse navbar-collapse" id="navbar-collapse">
-                    <c:if test="${loggedIn == true && iframe == false}">
-                        <ul class="nav navbar-nav navbar-padding">
-                            <c:if test="${addEntry == true}">
-                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" href="${pageContext.request.contextPath}/main#content">Content</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#compute-platform">Compute Platform</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li class="active "><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
-                                <li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/main#about">About</a></li>
-                            </c:if>
-                            <c:if test="${addEntry != true}">
-                                <li><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="tab" href="#content">Content</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#search">Search<sup><i style="color: gold">beta</i></sup></a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#compute-platform">Compute Platform</a></li>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-                                <%--<li><a class="leaf font-size-18 padding-top-30 " href="${pageContext.request.contextPath}/midas-sso/add">Add Entry</a></li>--%>
-                                <li><a class="leaf font-size-18 padding-top-30 " data-toggle="tab" href="#about">About</a></li>
-                            </c:if>
-                        </ul>
-                    </c:if>
-                    <ul class="nav navbar-nav navbar-right">
-                        <c:if test="${(loggedIn == true and preview == false) and addEntry != true}">
-                            <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                        <form class="navbar-form" action="${urlLevel}" method="GET">
-                            <button type="submit" class="btn btn-default margin-top-13" onclick="sessionStorage.clear();">Logout</button>
-                        </form>
-                        </c:if>
-                    </ul>
-                </div>
-            </div><!-- /.container-fluid -->
-        </nav>
-        </div>
-    </c:if>
-    <c:if test="${iframe == true}">
-        <div class="spacer-small"></div>
-
-        <div style="height:30px; width:100%; background-color:#0c2b65; position:fixed; top:0">
-            <div class="pull-right" style="margin-top:5px; margin-right:5px">
-                <a class="leaf" href="#" onclick="loadExternalSite()">
-                    <span class="hidden-extra-xs">Open external site</span>
-                    <icon class="glyphicon glyphicon-chevron-right"></icon>
-                </a>
+                </ul>
             </div>
-
-            <div style="margin-top:5px; margin-right:5px; position:absolute; left:40%">
-                <span class="leaf hidden-xs">MIDAS SSO-enabled site</span>
-            </div>
-
-            <div class="pull-left leaf" style="margin-top:5px; margin-left:5px">
-                <a class="leaf" href="${pageContext.request.contextPath}/main">
-                    <icon class="glyphicon glyphicon-chevron-left"></icon>
-                    <span class="hidden-extra-xs">Back to Digital Commons</span>
-                </a>
-            </div>
-        </div>
-    </c:if>
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
 
 <script>
-    function loadExternalSite() {
-        window.open(document.getElementById("libraryFrame").src);
-    }
+    $(window).on("resize", function () {
+        var maxWidthLarge;
+        var maxWidthMedium;
+        var maxWidthSmall;
 
-    $(window).on("resize", function() {
-//        if( $(window).width() < 945) {
-        if( $(window).width() < 815) {
-            hideBigTitle();
-//            document.getElementById("page-title-big").style.display = 'none';
+        <c:choose>
+            <c:when test="${loggedIn == true}">
+                maxWidthLarge = 1300;
+                maxWidthMedium = 1230;
+                maxWidthSmall = 1010;
+            </c:when>
+            <c:otherwise>
+                maxWidthLarge = 1110;
+                maxWidthMedium = 810;
+                maxWidthSmall = 810;
+            </c:otherwise>
+        </c:choose>
+
+        if ($(window).width() < maxWidthLarge) {
+            hideTitle('page-title-big');
         } else {
-            showBigTitle();
-//            document.getElementById("page-title-big").style.display = 'inline-block';
+            showTitle('page-title-big');
+        }
+
+        if ($(window).width() >= maxWidthMedium && $(window).width() < maxWidthLarge) {
+            showTitle('page-title');
+        } else {
+            hideTitle('page-title');
+        }
+
+        if ($(window).width() < maxWidthSmall) {
+            showTitle('page-title');
         }
     }).resize();
 
-    function hideBigTitle() {
-        var d = document.getElementById('page-title-big');
-        d.style.display = '';
-        d.style.display = 'none';
-    }
-    function showBigTitle() {
-        var d = document.getElementById('page-title-big');
-        d.style.display = '';
-        d.style.display = 'inline-block';
+    function hideTitle(title) {
+        var d = document.getElementById(title);
+        d.classList.remove('visible');
+        d.classList.add('hidden');
     }
 
-    $('.nav a').on('click', function () {
-        if ($(window).width() < 768) {
-            $('.navbar-toggle').click();
-        }
-    });
-
+    function showTitle(title) {
+        var d = document.getElementById(title);
+        d.classList.remove('hidden');
+        d.classList.add('visible');
+    }
 </script>

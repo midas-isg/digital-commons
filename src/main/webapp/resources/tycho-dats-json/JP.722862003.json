@@ -186,15 +186,15 @@
         {
             "name": "Dengue without warning signs",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=722862003",
+                "identifier": "722862003",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Japan",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5068",
-                "identifierSource": "apollo location service"
+                "identifier": "5068",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -218,8 +218,8 @@
             "name": "Japan",
             "description": "Japan, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5068",
-                "identifierSource": "apollo location service"
+                "identifier": "5068",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

@@ -186,15 +186,15 @@
         {
             "name": "Dengue",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=38362002",
+                "identifier": "38362002",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Nicaragua",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
-                "identifierSource": "apollo location service"
+                "identifier": "5070",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -579,8 +579,8 @@
             "name": "Nicaragua",
             "description": "Nicaragua, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5070",
-                "identifierSource": "apollo location service"
+                "identifier": "5070",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

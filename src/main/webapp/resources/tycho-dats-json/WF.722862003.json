@@ -186,15 +186,15 @@
         {
             "name": "Dengue without warning signs",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=722862003",
+                "identifier": "722862003",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
         {
             "name": "Wallis and Futuna",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=7058",
-                "identifierSource": "apollo location service"
+                "identifier": "7058",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {
@@ -210,8 +210,8 @@
             "name": "Wallis and Futuna",
             "description": "Wallis and Futuna, but may be incomplete for some areas",
             "identifier": {
-                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=7058",
-                "identifierSource": "apollo location service"
+                "identifier": "7058",
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": [
                 {

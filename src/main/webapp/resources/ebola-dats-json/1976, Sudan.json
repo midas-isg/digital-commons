@@ -30,14 +30,14 @@
         {
             "name": "Sudan virus - Boniface, Sudan,1976",
             "identifier": {
-                "identifier": "https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=128948",
+                "identifier": "128948",
                 "identifierSource": "https://biosharing.org/bsg-s000154"
             }
         },
         {
             "name": "Ebola virus disease",
             "identifier": {
-                "identifier": "http://bioportal.bioontology.org/ontologies/SNOMEDCT?p=classes&conceptid=37109004",
+                "identifier": "37109004",
                 "identifierSource": "https://biosharing.org/bsg-s000098"
             }
         },
@@ -54,7 +54,7 @@
             "name": "Maridi",
             "identifier": {
                 "identifier": "85129",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85129"
+                "identifierSource": "ApolloLS"
             },
             "alternateIdentifiers": []
         },
@@ -62,21 +62,21 @@
             "name": "Tambura Town",
             "identifier": {
                 "identifier": "85130",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85130"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Nazara Town",
             "identifier": {
                 "identifier": "85131",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85131"
+                "identifierSource": "ApolloLS"
             }
         },
         {
             "name": "Juba City",
             "identifier": {
                 "identifier": "85132",
-                "identifierSource": "http://betaweb.rods.pitt.edu/ls/read-only?id=85132"
+                "identifierSource": "ApolloLS"
             }
         }
     ],
