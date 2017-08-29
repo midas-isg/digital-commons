@@ -9,6 +9,8 @@ import org.apache.commons.lang.StringEscapeUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+import static edu.pitt.isg.dc.entry.Values.APPROVED;
+
 public class EntryView extends EntryObject {
     transient private String content;
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -20,6 +22,7 @@ public class EntryView extends EntryObject {
         entry.setId(id);
         entry.setContent(hashMap);
         entry.setStatus(entryObject.getProperty("status"));
+        entry.setIsPublic(entryObject.getIsPublic());
         entry.setCategory(entryObject.getCategory());
         entry.setIsPublic(entryObject.getIsPublic());
         entry.setDisplayName(entryObject.getDisplayName());

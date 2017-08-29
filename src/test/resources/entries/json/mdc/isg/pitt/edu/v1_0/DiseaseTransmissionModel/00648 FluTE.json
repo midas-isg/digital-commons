@@ -32,22 +32,22 @@
     },
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000327",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "quarantine"
       }
     },
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000123",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "school closure"
       }
     },
     {
       "identifier": {
-        "identifier": "",
-        "identifierSource": "",
+        "identifier": "http://purl.obolibrary.org/obo/APOLLO_SV_00000231",
+        "identifierSource": "https://biosharing.org/bsg-s002688",
         "identifierDescription": "travel restriction"
       }
     },

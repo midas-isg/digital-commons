@@ -3,10 +3,8 @@
 import csv
 import queue
 
+import conf
 import psycopg2
-
-connect_str = "dbname=mdc user=dev host=localhost port=54320 password='dev'"
-schema_name = 'dev'
 
 in_dialect = 'bar'
 out_dialect = 'csv'
@@ -17,7 +15,7 @@ max_pg_varchar = 10485760
 
 def main():
     try:
-        conn, cursor = _connect(schema_name)
+        conn, cursor = _connect(conf.schema_name)
 
         _create_table_node(conn, cursor)
         _load_nodes(conn, cursor)
@@ -197,7 +195,7 @@ def _to_sql_values(line):
 
 
 def _connect(schema):
-    conn = psycopg2.connect(connect_str)
+    conn = psycopg2.connect(conf.connect_str)
     cursor = conn.cursor()
     cursor.execute("SET SCHEMA '" + schema + "'")
     return conn, cursor

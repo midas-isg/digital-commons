@@ -67,7 +67,7 @@
       "name": "United States of America",
       "identifier": {
         "identifier": "1216",
-        "identifierSource": "ApolloLS"
+        "identifierSource": "https://biosharing.org/bsg-s000708"
       }
     }
   ],
@@ -166,7 +166,7 @@
       "name": "United States of America",
       "identifier": {
         "identifier": "1216",
-        "identifierSource": "ApolloLS"
+        "identifierSource": "https://biosharing.org/bsg-s000708"
       },
       "description": "",
       "alternateIdentifiers": [
