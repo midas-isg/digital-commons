@@ -253,7 +253,7 @@
         });
 
         function dataSrcAvoidingUndefined(data) {
-            var result = data.content; /*&& data._embedded.entries;*/
+            var result = data.content;
             if (result)
                 return result;
             return [];
