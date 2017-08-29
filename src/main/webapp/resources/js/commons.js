@@ -295,9 +295,9 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         }
     };
 
-    if(name == "diseaseTransmissionModels" || name == "systemSoftware" || name == "tools") {
-        treeviewInfo['expandIcon'] = "bullet-point	";
-        treeviewInfo['collapseIcon'] = "bullet-point	";
+    if(name == "diseaseTransmissionModels" || name == "systemSoftware" || name == "tools" || name == "standardIdentifiers") {
+        treeviewInfo['expandIcon'] = "bullet-point";
+        treeviewInfo['collapseIcon'] = "bullet-point";
         treeviewInfo['highlightSelected'] = false;
         treeviewInfo['onNodeSelected'] = function(event, data) {
             $('[data-toggle="tooltip"]').tooltip('destroy');

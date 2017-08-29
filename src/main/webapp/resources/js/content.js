@@ -32,14 +32,37 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
     }
 }
 
+function getTreeDepth (obj) {
+    var depth = 0;
+    if (obj.children) {
+        obj.children.forEach(function (d) {
+            var tmpDepth = getDepth(d)
+            if (tmpDepth > depth) {
+                depth = tmpDepth
+            }
+        })
+    }
+    return 1 + depth
+}
+
 function getTreeviewInfo(entriesData, treeId, sessionVariable) {
+    var expandIcon = "glyphicon glyphicon-chevron-right";
+    var collapseIcon = "glyphicon glyphicon-chevron-down";
+
+    var jsonEntries = JSON.parse(entriesData);
+    var entryType = jsonEntries[0]["type"];
+    if(entryType != null && entryType.includes("DataStandard")) {
+        var emptyIcon = "bullet-point";
+    }
+
     return {
         data: entriesData,
         showBorder: false,
         collapseAll: true,
 
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
+        expandIcon: expandIcon,
+        collapseIcon: collapseIcon,
+        emptyIcon: emptyIcon,
 
         onNodeSelected: function(event, data) {
             if(data !== undefined && data.hasOwnProperty('json')) {

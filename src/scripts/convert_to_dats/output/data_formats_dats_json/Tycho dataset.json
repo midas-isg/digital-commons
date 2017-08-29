@@ -1,0 +1,30 @@
+{
+    "identifier": {
+        "identifier": "biosharing id will be available soon",
+        "identifierSource": "biosharing.org"
+    },
+    "name": "Tycho Dataset Format",
+    "type": {
+        "value": "disease surveillance data",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000554"
+    },
+    "description": "Project Tycho 2.0 datasets include counts of cases for conditions (i.e. disorders) in countries reported by health agencies. These counts can be specified for different geographical regions within a country, for different time intervals, for various age ranges and/or subpopulations, and can represent fatalities (deaths) or not. Each datafile includes variables to specify the attributes of each count, as indicated below. Counts may not be available for all locations and time periods; missing information is indicated as \"NA\".",
+    "licenses": [
+        {
+            "name": "https://www.tycho.pitt.edu/legal/license_agreement.html"
+        }
+    ],
+    "version": "2",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://w3id.org/mdc-docs/0000018",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

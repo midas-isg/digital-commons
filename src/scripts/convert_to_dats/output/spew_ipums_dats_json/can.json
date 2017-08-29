@@ -1,0 +1,176 @@
+{
+    "title": "Canada Synthetic Ecosystem",
+    "description": "Canada synthetic ecosystem dataset consisting of tables for persons and households. This dataset was created by the SPEW R Package using the following input data sources: Public Use Microdata Files (PUMFS), National Household Survey, 2011.",
+    "identifier": {
+        "identifier": "",
+        "identifierSource": "n/a"
+    },
+    "creators": [
+        {
+            "firstName": "Lee",
+            "lastName": "Richardson",
+            "email": ""
+        },
+        {
+            "firstName": "Shannon",
+            "lastName": "Gallagher",
+            "email": ""
+        },
+        {
+            "firstName": "Samuel",
+            "lastName": "Ventura",
+            "email": ""
+        },
+        {
+            "firstName": "Bill",
+            "lastName": "Eddy",
+            "email": ""
+        }
+    ],
+    "types": [
+        {
+            "information": {
+                "value": "agent level population and environment census",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000197"
+            }
+        },
+        {
+            "method": {
+                "value": "agent-level ecosystem data generation",
+                "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000164"
+            }
+        },
+        {
+            "platform": {
+                "value": "SPEW 1.20",
+                "valueIRI": "https://github.com/leerichardson/spew"
+            }
+        }
+    ],
+    "isAbout": [
+        {
+            "name": "Individual",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OBI_0100026l",
+                "identifierSource": "https://biosharing.org/bsg-s000070"
+            }
+        },
+        {
+            "name": "Homo sapiens",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/NBCITaxon_9606",
+                "identifierSource": "https://biosharing.org/bsg-s000154"
+            }
+        },
+        {
+            "name": "Household",
+            "identifier": {
+                "identifier": "http://purl.obolibrary.org/obo/OMRSE_0000007",
+                "identifierSource": "https://biosharing.org/bsg-s000097"
+            }
+        },
+        {
+            "name": "Canada",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5091",
+                "identifierSource": "apollo location service"
+            }
+        }
+    ],
+    "spatialCoverage": [
+        {
+            "name": "Canada",
+            "description": "",
+            "identifier": {
+                "identifier": "http://betaweb.rods.pitt.edu/ls/browser?id=5091",
+                "identifierSource": "apollo location service"
+            },
+            "alternateIdentifiers": [
+                {
+                    "identifier": "CA",
+                    "identifierSource": "ISO 3166"
+                },
+                {
+                    "identifier": "CAN",
+                    "identifierSource": "ISO 3166-1 alpha-3"
+                },
+                {
+                    "identifier": "124",
+                    "identifierSource": "ISO 3166-1 numeric"
+                }
+            ]
+        }
+    ],
+    "producedBy": {
+        "name": "Carnegie Mellon University, Department of Statistics",
+        "location": {
+            "postalAddress": "5000 Forbes Ave., Baker Hall 132, Pittsburgh, PA, United States"
+        },
+        "startDate": {
+            "date": "2017",
+            "type": {}
+        },
+        "endDate": {
+            "date": "2017",
+            "type": {}
+        }
+    },
+    "distributions": [
+        {
+            "identifier": {
+                "identifier": "1",
+                "identifierSource": ""
+            },
+            "dates": [
+                {
+                    "date": "2016-11-05",
+                    "type": {
+                        "value": "creation",
+                        "valueIRI": ""
+                    }
+                }
+            ],
+            "access": {
+                "landingPage": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/can/diags/ipums_diags_can.html",
+                "accessURL": "http://data.olympus.psc.edu/syneco/spew_1.2.0/americas/northern_america/can/"
+            },
+            "conformsTo": [
+                {
+                    "identifier": {
+                        "identifier": "SPEW.CANADA format",
+                        "identifierSource": "RODS Laboratory, University of Pittsburgh"
+                    },
+                    "name": "SPEW.CANADA format",
+                    "type": {
+                        "value": "SPEW.CANADA-File-Formats",
+                        "valueIRI": "https://github.com/midas-isg/data-format-repository/wiki/SPEW.CANADA-File-Formats"
+                    }
+                }
+            ],
+            "storedIn": {
+                "name": "MIDAS Digital Commons",
+                "identifier": {
+                    "identifier": "",
+                    "identifierSource": "http"
+                },
+                "licenses": [
+                    {
+                        "name": ""
+                    }
+                ],
+                "types": [
+                    {
+                        "value": "primary repository",
+                        "valueIRI": ""
+                    }
+                ],
+                "version": ""
+            },
+            "size": -1,
+            "unit": {
+                "value": "megabyte",
+                "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+            }
+        }
+    ]
+}

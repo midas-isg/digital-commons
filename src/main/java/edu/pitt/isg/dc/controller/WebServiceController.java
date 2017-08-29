@@ -1,24 +1,19 @@
 package edu.pitt.isg.dc.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.gson.*;
 import com.wordnik.swagger.annotations.*;
-import edu.pitt.isg.Converter;
-import edu.pitt.isg.dc.repository.Repository;
-import edu.pitt.isg.dc.repository.RepositoryEntry;
-import edu.pitt.isg.dc.repository.utils.ExtractIdentifiersFromRepositoryEntry;
-import edu.pitt.isg.mdc.dats2_2.DataStandard;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.Distribution;
-import edu.pitt.isg.mdc.v1_0.Software;
-import edu.pitt.isg.objectserializer.exceptions.SerializationException;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import scala.Int;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.text.html.Option;
 import javax.ws.rs.GET;
 import java.util.*;
 
@@ -32,12 +27,9 @@ import java.util.*;
 @Controller
 @Api(value = "Identifier controller", description = "List digital objects and retrieve their data/metadata")
 public class WebServiceController {
-    private static Repository repository;
+    @Autowired
+    private ApiUtil apiUtil;
 
-    static {
-        repository = new Repository();
-    }
-    
     @GET
     @ApiOperation(value = "Retrieves every global identifier in the MIDAS Digital Commons.", notes = "This method retrieves every global identifier in the MIDAS Digital Commons. ", response = String.class)
     @ApiResponses(value = {
@@ -47,18 +39,8 @@ public class WebServiceController {
     public @ResponseBody
     String getIdentifiers(ModelMap model) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Set<String> identifierSet = new HashSet<>();
-
-        for (RepositoryEntry entry : repository.repository) {
-            String identifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
-            if (identifier != null) {
-                identifierSet.add(identifier);
-            }
-        }
-
-        List<String> sortedIdentifiers = new ArrayList<>(identifierSet);
-        Collections.sort(sortedIdentifiers);
-        return gson.toJson(sortedIdentifiers);
+        List<String> identifiers = apiUtil.getIdentifiers();
+        return gson.toJson(identifiers);
     }
 
     @GET
@@ -69,9 +51,14 @@ public class WebServiceController {
     @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml"})
     public @ResponseBody
     ResponseEntity getMetadata(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String header = request.getHeader("Accept");
+        String metadata = apiUtil.getMetadata(identifier, header);
+        if(metadata != null) return ResponseEntity.status(HttpStatus.OK).body(metadata);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier " + identifier + " with response content type " + header + ".");
+    }
+    /*    Gson gson = new GsonBuilder().setPrettyPrinting().create();
         for (RepositoryEntry entry : repository.repository) {
-            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
+            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.getIdentifiers(entry);
             if (entryIdentifier != null) {
                 if (entryIdentifier.equalsIgnoreCase(identifier)) {
                     JsonParser jp = new JsonParser();
@@ -97,37 +84,27 @@ public class WebServiceController {
             }
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
-    }
+    }*/
 
     @GET
-    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distributionId.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distributionId.", response = String.class)
+    @ApiOperation(value = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distribution index.", notes = "Retrieves the data for an entry in the MIDAS Digital Commons given an identifier and distribution index.", response = String.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "You will be redirected to the data if the identifier is found.")
     })
     @RequestMapping(value = "/identifiers/data", method = RequestMethod.GET, headers = "Accept=text/html")
-    public Object getData(@RequestParam("identifier") String identifier, @ApiParam(value = "The index in the list of distributions for the dataset.  The index starts at 0.") @RequestParam("distributionId") Integer distribution) {
+    public Object getData(@RequestParam("identifier") String identifier, @ApiParam(value = "The index in the list of distributions for the dataset. The index starts at 0.") @RequestParam("distributionIndex") Optional<Integer> distribution) {
+        Integer distributionId = null;
 
-        for (RepositoryEntry entry : repository.repository) {
-            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
-            if (entryIdentifier != null) {
-                if (entryIdentifier.equalsIgnoreCase(identifier)) {
-                    if (entry.getInstance() instanceof Dataset) {
-                        Dataset d = (Dataset) entry.getInstance();
-                        for (int i = 0; i < d.getDistributions().size(); i++) {
-                            if (i == distribution) {
-                                Distribution dist = d.getDistributions().get(i);
-                                return "redirect:" + dist.getAccess().getAccessURL();
-                            }
-                        }
-                        //if we are here, the specified distribtuion was not found
-                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The requested distribution (" + distribution + ") was not found for identifier " + identifier);
-                    } else {
-                        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("This method is only available for methods of type dataset.");
-                    }
-                }
-            }
+        if(distribution.isPresent()) distributionId = distribution.get();
+
+        if(distributionId == null) distributionId = 0;
+
+        String accessUrl = apiUtil.getAccessUrl(identifier, distributionId.toString());
+        if(accessUrl != null) {
+            return "redirect:" + accessUrl;
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for identifier " + identifier + " and distribution index " + distributionId);
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
     }
 
     @GET
@@ -137,37 +114,28 @@ public class WebServiceController {
     })
     @RequestMapping(value = "/identifiers/metadata-type", method = RequestMethod.GET, headers = "Accept=application/json")
     public Object getMetadataType(@RequestParam("identifier") String identifier) {
+        String type = apiUtil.getMetadataType(identifier);
 
-        for (RepositoryEntry entry : repository.repository) {
-            String entryIdentifier = ExtractIdentifiersFromRepositoryEntry.extractIdentifiers(entry);
-            if (entryIdentifier != null) {
-                if (entryIdentifier.equalsIgnoreCase(identifier)) {
-                    String type = "";
-                    String schema = "";
+        if(type != null) {
+            String simpleName = type.substring(type.lastIndexOf('.') + 1, type.length());
+            String schema = null;
 
-                    if (entry.getInstance() instanceof Dataset) {
-                        Dataset d = (Dataset) entry.getInstance();
-                        type = "DATS v2.2 " + d.getClass().getSimpleName();
-                        schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/dataset_schema.json";
-                    } else if(entry.getInstance() instanceof DataStandard) {
-                        DataStandard ds = (DataStandard) entry.getInstance();
-                        type = "DATS v2.2 " +ds.getClass().getSimpleName();
-                        schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/data_standard_schema.json";
-                    } else if(entry.getInstance() instanceof Software) {
-                        Software s = (Software) entry.getInstance();
-                        type = s.getClass().getSimpleName();
-                        schema = "https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/master/src/main/resources/software.xsd";
-                    }
-
-                    JsonObject responseObj = new JsonObject();
-                    responseObj.addProperty("datatype", type);
-                    responseObj.addProperty("schema", schema);
-
-                    String responseJson = responseObj.toString();
-                    return ResponseEntity.status(HttpStatus.OK).body(responseJson);
-                }
+            if(simpleName.equals("Dataset")) {
+                schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/dataset_schema.json";
+            } else if(simpleName.equals("DataStandard")) {
+                schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/data_standard_schema.json";
+            } else {
+                schema = "https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/master/src/main/resources/software.xsd";
             }
+
+            JsonObject responseObj = new JsonObject();
+            responseObj.addProperty("datatype", simpleName);
+            responseObj.addProperty("schema", schema);
+
+            String responseJson = responseObj.toString();
+            return ResponseEntity.status(HttpStatus.OK).body(responseJson);
         }
+
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
     }
 

@@ -71,9 +71,23 @@
 
 <script>
     $(window).on("resize", function () {
-        var maxWidthLarge = 1300;
-        var maxWidthMedium = 1230;
-        var maxWidthSmall = 1010;
+        var maxWidthLarge;
+        var maxWidthMedium;
+        var maxWidthSmall;
+
+        <c:choose>
+            <c:when test="${loggedIn == true}">
+                maxWidthLarge = 1300;
+                maxWidthMedium = 1230;
+                maxWidthSmall = 1010;
+            </c:when>
+            <c:otherwise>
+                maxWidthLarge = 1110;
+                maxWidthMedium = 810;
+                maxWidthSmall = 810;
+            </c:otherwise>
+        </c:choose>
+
         if ($(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');
         } else {

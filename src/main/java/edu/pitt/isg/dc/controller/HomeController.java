@@ -95,10 +95,7 @@ public class HomeController {
     private LocationRule locationRule;
 
     @Autowired
-    private EntryApprovalInterface entryApprovalInterface;
-
-    @Autowired
-    private CategoryOrderRepository categoryOrderRepository;
+    private CategoryHelper categoryHelper;
 
     @Autowired
     private WorkflowsImpl workflows;
@@ -203,7 +200,6 @@ public class HomeController {
             }
         }
 
-        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
@@ -277,8 +273,6 @@ public class HomeController {
     @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
     public String addNewDataFormatConverters(HttpSession session, @PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
                                              @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
-        CategoryHelper categoryHelper = new CategoryHelper(categoryOrderRepository, entryApprovalInterface);
-
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         model.addAttribute("category", category);
         if(ifLoggedIn(session))
