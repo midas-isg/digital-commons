@@ -44,7 +44,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value="SELECT * from entry where entry_id = ?1 and revision_id != ?2 and is_public = true;")
     List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
 
-    Page<Entry> findByStatus(String status, Pageable pageable);
+    Page<Entry> findAllByIsPublic(boolean status, Pageable pageable);
     Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT entry_id, revision_id  FROM entry\n" +

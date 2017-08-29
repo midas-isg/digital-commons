@@ -51,7 +51,7 @@ public class EntryRule {
         results = merge(results, listIdsByType(q.getType()));
 
         if (results == null)
-            return repo.findByStatus(APPROVED, pageRequest);
+            return repo.findAllByIsPublic(true, pageRequest);
         return repo.findByIdIn(results, pageRequest);
     }
 
