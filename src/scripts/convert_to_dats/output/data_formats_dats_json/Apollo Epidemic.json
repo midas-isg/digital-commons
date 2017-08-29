@@ -1,0 +1,50 @@
+{
+    "identifier": {
+        "identifier": "APOLLO:Epidemic-v4.0.1",
+        "identifierSource": "APOLLO"
+    },
+    "name": "Apollo Epidemic",
+    "type": {
+        "value": "epidemic",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000298"
+    },
+    "description": "Epidemic is a data type defined in the Apollo Standard, which represents a process whose beginning is demarcated by accelerating infection acquisition by one or more host species of a particular pathogen in a particular location and whose end is demarcated by the time when the rate of of infection acquisition becomes constant.",
+    "licenses": [
+        {
+            "name": "Apache License 2.0"
+        }
+    ],
+    "version": "4.0.1",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/ApolloDev/apollo-xsd-and-types",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "machine-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "https://github.com/ApolloDev/apollo-xsd-and-types",
+                    "valueIRI": "https://raw.githubusercontent.com/ApolloDev/apollo-xsd-and-types/master/src/main/resources/apollo_types_v4.xsd"
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}

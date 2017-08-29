@@ -1,0 +1,40 @@
+{
+    "identifier": {
+        "identifier": "MIDAS-ISG:nexus-v1.0",
+        "identifierSource": "MIDAS-ISG"
+    },
+    "name": "NEXUS",
+    "type": {
+        "value": "",
+        "valueIRI": ""
+    },
+    "description": "NEXUS is a file format designed to contain systematic data for use by computer programs.  The format is widely used in bioinformatics. Several popular phylogenetic programs such as PAUP*, MrBayes, Mesquite, MacClade and SplitsTree use this format.",
+    "licenses": [
+        {
+            "name": "No License Specified."
+        }
+    ],
+    "version": "1",
+    "extraProperties": [
+        {
+            "category": "human-readable specification of data format",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "http://wiki.christophchamp.com/index.php?title=NEXUS_file_format",
+                    "valueIRI": ""
+                }
+            ]
+        },
+        {
+            "category": "validator",
+            "categoryIRI": "",
+            "values": [
+                {
+                    "value": "",
+                    "valueIRI": ""
+                }
+            ]
+        }
+    ]
+}
