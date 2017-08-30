@@ -166,8 +166,18 @@ public class Datastore implements MdcEntryDatastoreInterface {
 
     @Override
     @Transactional
-    public Comments getComments(EntryId id) {
+    public Comments getComments(Long id) {
         return commentsRepo.findOne(id);
+    }
+
+    @Override
+    public List<Comments> findComments(EntryId entryId) {
+        return commentsRepo.findComment(entryId.getEntryId(), entryId.getRevisionId());
+    }
+
+    @Override
+    public Long getCommentId(Long entryId, Long revisionId, String content) {
+        return commentsRepo.getCommentId(entryId, revisionId, content);
     }
 
     @Override

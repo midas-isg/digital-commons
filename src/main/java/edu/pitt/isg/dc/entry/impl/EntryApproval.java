@@ -8,14 +8,8 @@ import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import xsd.Use;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 import static edu.pitt.isg.dc.entry.Keys.STATUS;
 import static edu.pitt.isg.dc.entry.Values.APPROVED;
@@ -74,8 +68,10 @@ public class EntryApproval implements EntryApprovalInterface {
             entryObject.setProperty(STATUS, REJECTED);
 
             if(commentsArr != null) {
-                Comments comments = parseComments(entryId, commentsArr, users);
-                mdcEntryDatastoreInterface.updateComments(comments);
+                for(String comment : commentsArr) {
+                    Comments comments = parseComments(entryId, comment, users);
+                    mdcEntryDatastoreInterface.updateComments(comments);
+                }
             }
 
             mdcEntryDatastoreInterface.editEntry(entryId, entryObject);
@@ -86,22 +82,23 @@ public class EntryApproval implements EntryApprovalInterface {
     public void commentEntry(EntryId entryId, String authenticationToken, String[] commentsArr, Users users) throws MdcEntryDatastoreException {
         if(authenticationToken.equals(ENTRIES_AUTHENTICATION)) {
             EntryView entryObject = mdcEntryDatastoreInterface.getEntry(entryId);
-
+            Set<String> commentSet =  new HashSet<String>(Arrays.asList(commentsArr));
             if(entryObject != null) {
-                Comments comments = parseComments(entryId, commentsArr, users);
-                mdcEntryDatastoreInterface.updateComments(comments);
+                for(String comment : commentSet) {
+                    Comments comments = parseComments(entryId, comment, users);
+                    //ensure the comment doesnt already exist
+                    if(mdcEntryDatastoreInterface.getCommentId(entryId.getEntryId(), entryId.getRevisionId(), comment) == null) {
+                        mdcEntryDatastoreInterface.updateComments(comments);
+                    }
+                }
             }
         }
     }
 
-    private Comments parseComments(EntryId entryId, String[] commentsArr, Users user_id) {
-        List<String> commentsContent = null;
-        if(commentsArr != null) {
-            commentsContent = Arrays.asList(commentsArr);
-        }
+    private Comments parseComments(EntryId entryId, String comment, Users user_id) {
         Comments comments = new Comments();
-        comments.setId(entryId);
-        comments.setContent(commentsContent);
+        comments.setEntryId(entryId);
+        comments.setContent(comment);
         comments.setUsers(user_id);
         return comments;
     }
@@ -113,12 +110,17 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException {
+        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getLatestApprovedNotPublicEntries();
         for(EntryView entryView : entries) {
-            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
-            if(comments != null && comments.getContent() != null) {
-                entryView.setComments(new ArrayList<>(comments.getContent()));
+            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
+            List<String> commentsList = new ArrayList<>();
+            for (Comments comments : allComments) {
+                if(comments != null) {
+                    commentsList.add(comments.getContent());
+                }
             }
+            entryView.setComments(commentsList);
         }
         return entries;
     }
@@ -139,24 +141,35 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException {
+        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getLatestUnapprovedEntries();
-        for(EntryView entryView : entries) {
-            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
-            if(comments != null && comments.getContent() != null) {
-                entryView.setComments(new ArrayList<>(comments.getContent()));
+        for (EntryView entryView : entries) {
+            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
+            List<String> commentsList = new ArrayList<>();
+            for (Comments comments : allComments) {
+                if(comments != null) {
+                    commentsList.add(comments.getContent());
+                }
             }
+            entryView.setComments(commentsList);
         }
         return entries;
     }
 
     @Override
     public List<EntryView> getUserCreatedUnapprovedEntries(Long userId) throws MdcEntryDatastoreException {
+        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getUserLatestUnapprovedEntries(userId);
-        for(EntryView entryView : entries) {
-            Comments comments = mdcEntryDatastoreInterface.getComments(entryView.getId());
-            if(comments != null && comments.getContent() != null) {
-                entryView.setComments(new ArrayList<>(comments.getContent()));
+        for (EntryView entryView : entries) {
+            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
+            List<String> commentsList = new ArrayList<>();
+            for (Comments comments : allComments) {
+                if (comments != null) {
+                    commentsList.add(comments.getContent());
+                }
             }
+            entryView.setComments(commentsList);
         }
-        return entries;    }
+        return entries;
+    }
 }
