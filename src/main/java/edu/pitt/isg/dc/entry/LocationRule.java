@@ -36,7 +36,7 @@ public class LocationRule {
         return entryRepo.listIdentifiersByFieldAndIdentifierSource(field, identifierSource);
     }
 
-    List<String> toRelativeAlcs(long alc) {
+    public List<String> toRelativeAlcs(long alc) {
         final List<Long> longs = proxy.findRelatives(alc);
         final Set<String> alcs = listAlcsAsLocationInEntries();
         final List<String> result = longs.stream()

@@ -73,6 +73,7 @@ public class DatabaseTest {
     private static Long entryCount = null;
     private static Long ncbiCount = null;
     private static Long asvCount = null;
+    private static Long lsCount = null;
     private static final List<String> usaIds = asList(usaAlc + "", seattleId, laId, earthId);
     private static final List<String> asvList = asList("123", "231", "286", "308", "327", "328", "390");
 
@@ -85,6 +86,8 @@ public class DatabaseTest {
     private NcbiRepository ncbiRepo;
     @Autowired
     private AsvRepository asvRepo;
+    @Autowired
+    private LocationRepository lsRepo;
     @Autowired
     private EntryRule entryRule;
     @Autowired
@@ -125,6 +128,47 @@ public class DatabaseTest {
         saveAsv(rootIri, null, false);
         asvList.forEach(s -> saveAsv(toAsvIri(s), rootIri, true));
         asvCount = asvRepo.count();
+    }
+
+    @Before
+    public void fillLsCache() throws Exception {
+        if (lsCount != null)
+            return;
+        lsRepo.deleteAllInBatch();
+        fillLsMap().forEach(this::saveLocation);
+    }
+
+    private static Map<Long, List<String>> fillLsMap() {
+        long earthId = 544694;
+        final String prefix = earthId + ",";
+
+        final Map<Long, List<String>> map = new HashMap<>();
+        final long usaId = 1216L;
+        final String usaPrefix = prefix + usaId + ",";
+        map.put(366188L, asList("Los Angeles", "Populated Place", usaPrefix + "366188"));
+        map.put(510873L, asList("Seattle", "Populated Place", usaPrefix + "510873"));
+        map.put(usaId, asList("USA", "Country", usaPrefix + toAllRelativeCsv(map)));
+        map.put(11L, asList("Sierra Leone", "Country", prefix + "11"));
+        map.put(542924L, asList("Cairns", "City", prefix + "542924"));
+        map.put(85164L, asList("Kikwit", "Epidemic Zone", prefix + "85164"));
+        map.put(earthId, asList("Earth", "Planet", prefix + toAllRelativeCsv(map)));
+        return map;
+    }
+
+    private static String toAllRelativeCsv(Map<Long, List<String>> map) {
+        final Set<String> ids = map.keySet().stream()
+                .map(Object::toString)
+                .collect(Collectors.toSet());
+        return String.join(",", ids);
+    }
+
+    private void saveLocation(long id, List<String> v) {
+        final Location l = new Location();
+        l.setAlc(id);
+        l.setName(v.get(0));
+        l.setLocationTypeName(v.get(1));
+        l.setRelatives(v.get(2));
+        lsRepo.save(l);
     }
 
     private static String toAsvIri(String last3digit) {
@@ -323,6 +367,15 @@ public class DatabaseTest {
         assertThat(entries)
                 .allSatisfy(this::assertStatusIsApproved)
                 .allSatisfy(this::assertTypeIsDataset);
+    }
+
+    @Test
+    public void lsZaire() throws Exception {
+        final long zaireId = 4898;
+        assertThat(lsRepo.findOne(zaireId)).isNull();
+        lsRule.toRelativeAlcs(zaireId);
+        final Location zaire = lsRepo.findOne(zaireId);
+        assertThat(zaire.getAlc()).isEqualTo(zaireId);
     }
 
     private void assertMatchSoftware(MatchedSoftware m) {
