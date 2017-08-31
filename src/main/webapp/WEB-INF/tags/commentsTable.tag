@@ -19,7 +19,7 @@
     <tbody>
     <c:forEach items="${comments}" var="comment">
         <tr>
-            <td>${comment.content}</td>
+            <td>${fn:escapeXml(comment.content)}</td>
             <td>${comment.users.name}</td>
             <td><fmt:formatDate type="both"
                                 dateStyle="short" timeStyle="short" value="${comment.dateAdded}"/></td>
