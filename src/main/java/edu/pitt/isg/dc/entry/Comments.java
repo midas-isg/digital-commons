@@ -1,36 +1,49 @@
 package edu.pitt.isg.dc.entry;
 
-import org.hibernate.annotations.Fetch;
-
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
-import java.util.Set;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 public class Comments {
-    @EmbeddedId
-    private EntryId id;
-
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+//    @ManyToOne(fetch=FetchType.EAGER)
+//    @JoinColumns ({
+//            @JoinColumn(name="entry_id", referencedColumnName = "entry_id"),
+//            @JoinColumn(name="revision_id", referencedColumnName = "revision_id")
+//            })
+    private EntryId entryId;
+    private String content;
     @OneToOne
     @JoinColumn(name = "user_id")
     private Users users;
+    private Date dateAdded;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private List<String> content;
+    public EntryId getEntryId() {
+        return entryId;
+    }
 
-    public EntryId getId() {
+    public void setEntryId(EntryId entryId) {
+        this.entryId = entryId;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(EntryId id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public List<String> getContent() {
+    public String getContent() {
         return content;
     }
 
-    public void setContent(List<String> content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -40,5 +53,14 @@ public class Comments {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        dateAdded = new Date();
     }
 }
