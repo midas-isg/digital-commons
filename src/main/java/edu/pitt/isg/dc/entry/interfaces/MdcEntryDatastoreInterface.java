@@ -34,11 +34,13 @@ public interface MdcEntryDatastoreInterface {
 
     void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException;
 
-    Comments getComments(Long id);
+    Comments getComments(Long id) throws MdcEntryDatastoreException;
 
-    List<Comments> findComments(EntryId entryId);
+    String deleteComment(Long commentId) throws MdcEntryDatastoreException;
 
-    Long getCommentId(Long entryId, Long revisionId, String content);
+    List<Comments> findComments(EntryId entryId) throws MdcEntryDatastoreException;
+
+    Long getCommentId(Long entryId, Long revisionId, String content) throws MdcEntryDatastoreException;
 
     String updateComments(Comments comments) throws MdcEntryDatastoreException;
 

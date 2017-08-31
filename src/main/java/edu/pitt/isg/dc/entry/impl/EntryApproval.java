@@ -110,17 +110,9 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getApprovedEntries() throws MdcEntryDatastoreException {
-        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getLatestApprovedNotPublicEntries();
         for(EntryView entryView : entries) {
-            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
-            List<String> commentsList = new ArrayList<>();
-            for (Comments comments : allComments) {
-                if(comments != null) {
-                    commentsList.add(comments.getContent());
-                }
-            }
-            entryView.setComments(commentsList);
+            entryView.setComments( mdcEntryDatastoreInterface.findComments(entryView.getId()));
         }
         return entries;
     }
@@ -141,34 +133,18 @@ public class EntryApproval implements EntryApprovalInterface {
 
     @Override
     public List<EntryView> getUnapprovedEntries() throws MdcEntryDatastoreException {
-        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getLatestUnapprovedEntries();
         for (EntryView entryView : entries) {
-            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
-            List<String> commentsList = new ArrayList<>();
-            for (Comments comments : allComments) {
-                if(comments != null) {
-                    commentsList.add(comments.getContent());
-                }
-            }
-            entryView.setComments(commentsList);
+            entryView.setComments( mdcEntryDatastoreInterface.findComments(entryView.getId()));
         }
         return entries;
     }
 
     @Override
     public List<EntryView> getUserCreatedUnapprovedEntries(Long userId) throws MdcEntryDatastoreException {
-        List<Comments> allComments = new ArrayList<>();
         List<EntryView> entries = mdcEntryDatastoreInterface.getUserLatestUnapprovedEntries(userId);
         for (EntryView entryView : entries) {
-            allComments = mdcEntryDatastoreInterface.findComments(entryView.getId());
-            List<String> commentsList = new ArrayList<>();
-            for (Comments comments : allComments) {
-                if (comments != null) {
-                    commentsList.add(comments.getContent());
-                }
-            }
-            entryView.setComments(commentsList);
+            entryView.setComments( mdcEntryDatastoreInterface.findComments(entryView.getId()));
         }
         return entries;
     }

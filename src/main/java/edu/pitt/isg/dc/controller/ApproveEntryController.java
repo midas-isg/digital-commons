@@ -3,34 +3,27 @@ package edu.pitt.isg.dc.controller;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import edu.pitt.isg.dc.entry.*;
-import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
 import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static edu.pitt.isg.dc.controller.HomeController.ADMIN_TYPE;
-import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
-import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
+import static edu.pitt.isg.dc.controller.HomeController.*;
 
 /**
  * Created by jdl50 on 6/5/17.
@@ -176,6 +169,41 @@ public class ApproveEntryController {
             return status;
         } else {
             throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
+    @RequestMapping(value = "/add/comment/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public String deleteComment(HttpSession session, @RequestParam(value = "commentId", required = true) long commentId) throws MdcEntryDatastoreException {
+        if(ifISGAdmin(session)) {
+            String status = "success";
+            try {
+                datastore.deleteComment(commentId);
+            } catch(MdcEntryDatastoreException e) {
+                status = "fail";
+            }
+            return status;
+        } else {
+            throw new MdcEntryDatastoreException("Unauthorized Access Attempt");
+        }
+    }
+
+
+    @RequestMapping(value = "/add/review/comments", method = RequestMethod.GET)
+    public String deleteComment(HttpSession session, Model model,
+                                @RequestParam(value = "entryId", required = true) Long entryId,
+                                @RequestParam(value = "revisionId", required = true) Long revisionId) throws MdcEntryDatastoreException {
+        if (ifISGAdmin(session) || ifMDCEditor(session)) {
+            EntryView entryView = datastore.getEntry(new EntryId(entryId, revisionId));
+            List<Comments> commentsList = datastore.findComments(new EntryId(entryId, revisionId));
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("comments", commentsList);
+            model.addAttribute("entryTitle", entryView.getTitle());
+            model.addAttribute("entry", entryView);
+            return "reviewComments";
+        } else {
+            return "accessDenied";
         }
     }
 

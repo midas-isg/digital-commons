@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.entry;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -20,6 +21,7 @@ public class Comments {
     @OneToOne
     @JoinColumn(name = "user_id")
     private Users users;
+    private Date dateAdded;
 
     public EntryId getEntryId() {
         return entryId;
@@ -51,5 +53,14 @@ public class Comments {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        dateAdded = new Date();
     }
 }
