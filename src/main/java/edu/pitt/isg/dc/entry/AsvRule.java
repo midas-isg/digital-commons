@@ -23,11 +23,11 @@ public class AsvRule {
     @Value("${app.identifierSource.sv}")
     private String identifierSource;
 
-    public List<String> listAsvIdsAsControlMeasureInEntries() {
+    public Set<String> listAsvIdsAsControlMeasureInEntries() {
         return entryRepo.listIdentifiersByFieldAndIdentifierSource(CONTROL_MEASURES, identifierSource);
     }
 
-    public List<Asv> findControlMeasuresInEntries() {
+    public Set<Asv> findControlMeasuresInEntries() {
         return repo.findByIriIn(listAsvIdsAsControlMeasureInEntries());
     }
 

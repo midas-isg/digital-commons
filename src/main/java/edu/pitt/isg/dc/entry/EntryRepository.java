@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, EntryId> {
@@ -45,7 +46,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
 
     Page<Entry> findAllByIsPublic(boolean status, Pageable pageable);
-    Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
+    Page<Entry> findByIdIn(Set<EntryId> ids, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT entry_id, revision_id  FROM entry\n" +
             "WHERE EXISTS (\n" +
@@ -60,7 +61,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
             "WHERE about #>> '{identifier,identifierSource}' = ?2 " +
             AND_PUBLIC)
-    List<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
+    Set<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
 
     @Query(nativeQuery = true, value = "SELECT entry_id, revision_id from entry " +
             "WHERE content #>> '{properties,type}' IN ?1 " +

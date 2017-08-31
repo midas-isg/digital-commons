@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry;
 
+import com.google.common.annotations.VisibleForTesting;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -26,16 +27,17 @@ public class LocationRule {
     }
 
     Set<String> listAlcsAsLocationInEntries() {
-        final List<String> locations = listAlcsAs(LOCATION_COVERAGE);
+        final Set<String> locations = listAlcsAs(LOCATION_COVERAGE);
         final Set<String> alcs = new HashSet<>(locations);
         alcs.addAll(listAlcsAs(SPATIAL_COVERAGE));
         return alcs;
     }
 
-    private List<String> listAlcsAs(String field) {
+    private Set<String> listAlcsAs(String field) {
         return entryRepo.listIdentifiersByFieldAndIdentifierSource(field, identifierSource);
     }
 
+    @VisibleForTesting
     public List<String> toRelativeAlcs(long alc) {
         final List<Long> longs = proxy.findRelatives(alc);
         final Set<String> alcs = listAlcsAsLocationInEntries();
