@@ -1,6 +1,7 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ attribute name="entries" required="true" type="java.util.List"%>
@@ -11,6 +12,7 @@
 <table class="table table-condensed">
     <thead>
     <tr>
+        <th>Date Added</th>
         <th>Title</th>
         <th>Version(s)</th>
         <th>Author(s)</th>
@@ -45,6 +47,18 @@
         </script>
 
         <tr id="tr-${entry.id.entryId}-${entry.id.revisionId}-${title}">
+            <td>
+                <c:choose>
+                    <c:when test="${entry.dateAdded != null}">
+                        <fmt:formatDate type = "date"
+                                        dateStyle = "short"
+                                        value="${entry.dateAdded}"/>
+                    </c:when>
+                    <c:otherwise>
+                        N/A
+                    </c:otherwise>
+                </c:choose>
+            </td>
             <c:choose>
                 <c:when test="${entry.entry.title != null}">
                     <td>${fn:escapeXml(entry.entry.title)}</td>

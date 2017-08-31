@@ -21,6 +21,7 @@ public class EntryObject {
     private Set<String> tags;
     private Map<String, String> properties = new HashMap<>();
     private Users usersId;
+    private Date dateAdded;
 
     public Users getUsersId() {
         return usersId;
@@ -100,6 +101,14 @@ public class EntryObject {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public String getEntryJsonString() {

@@ -103,6 +103,10 @@ public class Entry {
         return dateAdded;
     }
 
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
     @PrePersist
     protected void onCreate() {
         dateAdded = new Date();
