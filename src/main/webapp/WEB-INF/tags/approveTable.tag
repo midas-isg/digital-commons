@@ -97,12 +97,12 @@
                 <c:when test="${entry.entry.creators != null && fn:length(entry.entry.creators) > 0}">
                     <td>
                         <c:forEach items="${entry.entry.creators}" var="creator" varStatus="creatorLoop">
-                            <c:catch var="firstNameException">${creator.firstName}</c:catch>
-                            <c:catch var="lastNameException">${creator.lastName}</c:catch>
-                            <c:catch var="nameException">${creator.name}</c:catch>
+                            <c:catch var="firstNameException">${fn:escapeXml(creator.firstName)}</c:catch>
+                            <c:catch var="lastNameException">${fn:escapeXml(creator.lastName)}</c:catch>
+                            <c:catch var="nameException">${fn:escapeXml(creator.name)}</c:catch>
 
-                            <c:choose>
-                                <c:when test="${empty firstNameException}">
+                            <%--<c:choose>
+                                <%--<c:when test="${empty firstNameException}">
                                     ${fn:escapeXml(creator.firstName)}
                                 </c:when>
                                 <c:when test="${empty lastNameException}">
@@ -111,7 +111,7 @@
                                 <c:when test="${empty nameException}">
                                     ${fn:escapeXml(creator.name)}
                                 </c:when>
-                            </c:choose>
+                            </c:choose>--%>
                             <c:if test="${!creatorLoop.last}">,</c:if>
                         </c:forEach>
                     </td>

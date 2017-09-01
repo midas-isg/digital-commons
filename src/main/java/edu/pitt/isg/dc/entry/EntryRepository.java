@@ -108,4 +108,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value = "select * from entry where " +
             "content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     Entry findByMetadataIdentifier(String identifier);
+
+    @Query(nativeQuery = true, value="select content->>'entry' from entry where is_public = true;")
+    List<String> findPublicEntryContents();
 }

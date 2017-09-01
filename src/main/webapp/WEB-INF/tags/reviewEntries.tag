@@ -59,7 +59,7 @@
         var tableData = tableRow.children();
 
         var elemInfo = [];
-        for(var i = 0; i < 4; i++) {
+        for(var i = 1; i < 5; i++) {
             elemInfo.push($(tableData[i]).text().trim());
         }
 
