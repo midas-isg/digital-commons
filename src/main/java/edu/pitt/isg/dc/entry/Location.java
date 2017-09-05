@@ -19,16 +19,22 @@ public class Location {
     private String name;
     @Column(length = 10485760)
     private String relatives;
+    private String path;
 
     public static Location of(Properties p, List<Long> alcs) {
         final Location location = new Location();
-        location.setAlc(p.getGid());
+        final Long gid = p.getGid();
+        location.setAlc(gid);
         location.setLocationTypeName(p.getLocationTypeName());
         location.setName(p.getName());
 
         location.setRelatives(alcs.stream()
                 .map(Object::toString)
                 .collect(Collectors.joining(",")));
+        location.setPath(p.getLineage().stream()
+                .map(Properties::getGid)
+                .map(Object::toString)
+                .collect(Collectors.joining("/")) + "/" + gid);
         return location;
     }
 }

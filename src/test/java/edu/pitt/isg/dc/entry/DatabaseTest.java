@@ -5,13 +5,14 @@ import com.google.gson.Gson;
 import edu.pitt.isg.dc.entry.impl.Datastore;
 import edu.pitt.isg.dc.entry.impl.MdcDatastoreFormat;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.vm.EntryComplexQuery;
 import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import edu.pitt.isg.dc.vm.MatchedSoftware;
+import edu.pitt.isg.dc.vm.OntologyQuery;
 import org.assertj.core.api.IterableAssert;
 import org.assertj.core.api.ListAssert;
 import org.junit.Before;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URL;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -44,6 +46,7 @@ import static edu.pitt.isg.dc.entry.Values.DATA_FORMAT_CONVERTERS1_0;
 import static edu.pitt.isg.dc.entry.Values.DTM_1_0;
 import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
 import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
@@ -61,12 +64,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 })
 public class DatabaseTest {
     private static final String KEY_IDENTIFIER = "identifier";
+    private static final long rootId = 1L;
     private static final long humanId = 9606;
     private static final long hostRootId = 33208;
     private static final long ebolaId = 1570291;
     private static final long ebolaZaireId = 128951;
     private static final long usaAlc = 1216;
-    private static final String laId = "366188";
+    private static final long laAlc = 366188;
+    private static final String laId = laAlc + "";
     private static final String seattleId = "510873";
     private static final String earthId = "544694";
     private static final String rootIri = toAsvIri("086");
@@ -97,6 +102,8 @@ public class DatabaseTest {
     private AsvRule asvRule;
     @Autowired
     private LocationRule lsRule;
+    @Autowired
+    private NcbiRule ncbiRule;
 
     @BeforeClass
     public static void changePath() {
@@ -142,17 +149,19 @@ public class DatabaseTest {
     private static Map<Long, List<String>> fillLsMap() {
         long earthId = 544694;
         final String prefix = earthId + ",";
+        final String path = earthId + "";
 
         final Map<Long, List<String>> map = new HashMap<>();
         final long usaId = 1216L;
         final String usaPrefix = prefix + usaId + ",";
-        map.put(366188L, asList("Los Angeles", "Populated Place", usaPrefix + "366188"));
-        map.put(510873L, asList("Seattle", "Populated Place", usaPrefix + "510873"));
-        map.put(usaId, asList("USA", "Country", usaPrefix + toAllRelativeCsv(map)));
-        map.put(11L, asList("Sierra Leone", "Country", prefix + "11"));
-        map.put(542924L, asList("Cairns", "City", prefix + "542924"));
-        map.put(85164L, asList("Kikwit", "Epidemic Zone", prefix + "85164"));
-        map.put(earthId, asList("Earth", "Planet", prefix + toAllRelativeCsv(map)));
+        final String usaPath = path + "/" + usaId;
+        map.put(366188L, asList("Los Angeles", "Populated Place", usaPrefix + "366188", usaPath + "/366188"));
+        map.put(510873L, asList("Seattle", "Populated Place", usaPrefix + "510873", usaPath + "/510873"));
+        map.put(usaId, asList("USA", "Country", prefix + toAllRelativeCsv(map), usaPath));
+        map.put(11L, asList("Sierra Leone", "Country", prefix + "11", path + "/11"));
+        map.put(542924L, asList("Cairns", "City", prefix + "542924", path + "/542924"));
+        map.put(85164L, asList("Kikwit", "Epidemic Zone", prefix + "85164", path + "/85164"));
+        map.put(earthId, asList("Earth", "Planet", toAllRelativeCsv(map), path));
         return map;
     }
 
@@ -169,6 +178,7 @@ public class DatabaseTest {
         l.setName(v.get(0));
         l.setLocationTypeName(v.get(1));
         l.setRelatives(v.get(2));
+        l.setPath(v.get(3));
         lsRepo.save(l);
     }
 
@@ -237,15 +247,14 @@ public class DatabaseTest {
                 .collect(Collectors.toSet());
         final Set<String> expects = new HashSet<>(usaIds);
         expects.addAll(asList("11", "85164", "542924"));
-        assertThat(set).containsExactlyElementsOf(expects);
+        assertContainsExactlyInAnyOrder(set,expects);
     }
 
     @Test
     public void allTypes() throws Exception {
         final List<String> all = typeRule.findAll();
         final List<String> expects = asList(DATASET_2_2, DATA_FORMAT_CONVERTERS1_0, DTM_1_0);
-        assertThat(all).containsAll(expects);
-        assertThat(all).containsOnlyElementsOf(expects);
+        assertContainsExactlyInAnyOrder(all, expects);
     }
 
     @Test
@@ -272,16 +281,36 @@ public class DatabaseTest {
 
     @Test
     public void entriesEbolaAsPathogen() throws Exception {
-        final EntrySimpleQuery q = new EntrySimpleQuery();
-        q.setPathogenId(ebolaId);
-        final Page<Entry> entries = entryRule.findViaOntology(q, null);
+        final EntryComplexQuery q = new EntryComplexQuery();
+        final OntologyQuery<Long> ebola = new OntologyQuery<>(ebolaId);
+        q.setPathogens(singletonList(ebola));
+        testEntriesEbolaAndDescendantsAsPathogen(q);
+    }
 
-        assertThat(entries.getTotalElements()).isGreaterThan(0);
-        assertThat(entries)
-                .allSatisfy(this::assertStatusIsApproved)
-                .anySatisfy(this::assertTypeIsDataset)
-                .anySatisfy(this::assertTypeIsDtm)
-                .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
+    @Test
+    public void entriesEbolaOnlyAsPathogen() throws Exception {
+        final EntryComplexQuery q = new EntryComplexQuery();
+        final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
+        q.setPathogens(singletonList(ebola));
+        testEntriesEbolaOnlyAsPathogen(q);
+    }
+
+    @Test
+    public void entriesEbolaAndAncestorsAsPathogen() throws Exception {
+        final EntryComplexQuery q = new EntryComplexQuery();
+        final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
+        ebola.setIncludeAncestors(true);
+        q.setPathogens(singletonList(ebola));
+        testEntriesEbolaOnlyAsPathogen(q);
+    }
+
+    @Test
+    public void entriesEbolaAndDescendantsAsPathogen() throws Exception {
+        final EntryComplexQuery q = new EntryComplexQuery();
+        final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
+        ebola.setIncludeDescendants(true);
+        q.setPathogens(singletonList(ebola));
+        testEntriesEbolaAndDescendantsAsPathogen(q);
     }
 
     @Test
@@ -370,13 +399,118 @@ public class DatabaseTest {
                 .allSatisfy(this::assertTypeIsDataset);
     }
 
-    @Test @Ignore("LS is down")
+    @Test // @Ignore("LS is down")
     public void cacheLsZaire() throws Exception {
         final long zaireId = 4898;
         assertThat(lsRepo.findOne(zaireId)).isNull();
-        lsRule.toRelativeAlcs(zaireId);
+        lsRule.findAll(Collections.singleton(zaireId + ""));
         final Location zaire = lsRepo.findOne(zaireId);
         assertThat(zaire.getAlc()).isEqualTo(zaireId);
+        assertThat(zaire.getPath()).endsWith("/" + zaireId);
+        assertThat(zaire.getRelatives().split(",")).doesNotContain(zaireId + "");
+    }
+
+    @Test
+    public void relevantIdentifiersForEbola() throws Exception {
+        OntologyQuery<Long> q = new OntologyQuery<>(ebolaId);
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(rootId + "", ebolaId + "", ebolaZaireId +"");
+    }
+
+    @Test
+    public void relevantIdentifiersForEbolaOnly() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(DatabaseTest.ebolaId + "");
+    }
+
+    @Test
+    public void relevantIdentifiersForEbolaOrHumanOnly() throws Exception {
+        OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
+        OntologyQuery<Long> human = newOntologyQueryOnly(humanId);
+
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(asList(ebola, human));
+        assertThat(identifiers).containsExactlyInAnyOrder(ebolaId + "", humanId + "");
+    }
+
+    @Test
+    public void relevantIdentifiersForEbolaAndDescendants() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
+        q.setIncludeDescendants(true);
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(ebolaId + "", ebolaZaireId +"");
+    }
+
+    @Test
+    public void relevantIdentifiersForEbolaAndAncestors() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
+        q.setIncludeAncestors(true);
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(rootId + "",ebolaId + "");
+    }
+
+    @Test
+    public void relevantIdentifiersForUsa() throws Exception {
+        OntologyQuery<Long> q = new OntologyQuery<>(usaAlc);
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        assertContainsExactlyInAnyOrder(identifiers, usaIds);
+    }
+
+    @Test
+    public void relevantIdentifiersForUsaOnly() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + ""));
+    }
+
+    @Test
+    public void relevantIdentifiersForUsaAndAncestors() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
+        q.setIncludeAncestors(true);
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", earthId + ""));
+    }
+
+    @Test
+    public void relevantIdentifiersForUsaAndDescendants() throws Exception {
+        OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
+        q.setIncludeDescendants(true);
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", laId, seattleId));
+    }
+
+    @Test
+    public void relevantIdentifiersForUsaAndLaOnly() throws Exception {
+        OntologyQuery<Long> usa = newOntologyQueryOnly(usaAlc);
+        OntologyQuery<Long> la = newOntologyQueryOnly(laAlc);
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(asList(usa, la));
+        assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", laId));
+    }
+
+    private void testEntriesEbolaAndDescendantsAsPathogen(EntryComplexQuery q) {
+        final Page<Entry> entries = entryRule.search(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .anySatisfy(this::assertTypeIsDataset)
+                .anySatisfy(this::assertTypeIsDtm)
+                .allSatisfy(this::assertBaseOnTypeForEbolaAsPathogen);
+    }
+
+    private void testEntriesEbolaOnlyAsPathogen(EntryComplexQuery q) {
+        final Page<Entry> entries = entryRule.search(q, null);
+
+        assertThat(entries.getTotalElements()).isGreaterThan(0);
+        assertThat(entries)
+                .allSatisfy(this::assertStatusIsApproved)
+                .allSatisfy(this::assertTypeIsDtm)
+                .allSatisfy(e -> {
+                    final Map<String, Object> content = toContent(e);
+                    final Map<String, Object> entry = getMap(content, ENTRY);
+                    assertThat(getList(entry, PATHOGEN_COVERAGE))
+                            .anySatisfy(o -> assertIdentifier(o, ebolaId + ""));
+                });
     }
 
     private void assertMatchSoftware(MatchedSoftware m) {
@@ -543,5 +677,18 @@ public class DatabaseTest {
         final Map<String, Object> content = toContent(entry);
         final Map<String, Object> properties = getMap(content, PROPERTIES);
         assertThat(properties.get(TYPE)).isEqualTo(expected);
+    }
+
+    private static <T> OntologyQuery<T> newOntologyQueryOnly(T id) {
+        final OntologyQuery<T> q = new OntologyQuery<>(id);
+        q.setIncludeAncestors(false);
+        q.setIncludeDescendants(false);
+        return q;
+    }
+
+    private static <T> void assertContainsExactlyInAnyOrder(Iterable<T> iterable, Iterable<T> expects) {
+        final IterableAssert<T> iterableAssert = assertThat(iterable);
+        iterableAssert.containsAll(expects);
+        iterableAssert.containsOnlyElementsOf(expects);
     }
 }

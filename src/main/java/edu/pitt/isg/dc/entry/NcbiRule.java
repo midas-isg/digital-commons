@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry;
 
+import com.google.common.annotations.VisibleForTesting;
 import edu.pitt.isg.dc.vm.OntologyQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Stream;
 
+import static edu.pitt.isg.dc.entry.EntryAid.optimizeIdentifiersWithIds;
 import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
 import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
 import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
@@ -53,13 +55,13 @@ public class NcbiRule {
                 .collect(toList());
     }
 
-    Set<EntryId> listEntryIdsByHost(List<OntologyQuery<Long>> queries) {
+    Set<EntryId> searchEntryIdsByHost(List<OntologyQuery<Long>> queries) {
         final List<Ncbi> hosts = findHostsInEntries();
         final Stream<String> stream = Stream.of(IS_ABOUT, HOST_SPECIES);
         return listEntryIds(queries, stream.parallel(), hosts);
     }
 
-    Set<EntryId> listEntryIdsByPathogens(List<OntologyQuery<Long>> queries) {
+    Set<EntryId> searchEntryIdsByPathogens(List<OntologyQuery<Long>> queries) {
         final List<Ncbi> pathogens = findPathogensInEntries();
         final Stream<String> stream = Stream.of(IS_ABOUT, PATHOGEN_COVERAGE);
         return listEntryIds(queries, stream.parallel(), pathogens);
@@ -89,7 +91,7 @@ public class NcbiRule {
             return null;
         if (relevantIds.isEmpty())
             return Collections.emptySet();
-        final List<String> optimizedIds = optimizeIds(ncbisInEntries, relevantIds);
+        final Set<String> optimizedIds = optimizeIds(ncbisInEntries, relevantIds);
         if (optimizedIds.isEmpty())
             return Collections.emptySet();
 
@@ -99,19 +101,12 @@ public class NcbiRule {
         return entryIds;
     }
 
-    private Set<EntryId> filterEntryIds(Stream<String> stream, List<String> ids) {
-        return stream
-                .map(f -> filterEntryIds(f, ids))
-                .flatMap(Collection::stream)
-                .map(EntryId::new)
-                .collect(toSet());
+    private Set<EntryId> filterEntryIds(Stream<String> stream, Set<String> ids) {
+        return EntryAid.filterEntryId(entryRepo, stream, identifierSource, ids);
     }
 
-    private List<Object[]> filterEntryIds(String field, List<String> ids) {
-        return entryRepo.filterIdsByFieldAndIdentifierSource(field, identifierSource, ids);
-    }
-
-    private Set<String> toRelevantIdentifiers(List<OntologyQuery<Long>> queries) {
+    @VisibleForTesting
+    Set<String> toRelevantIdentifiers(List<OntologyQuery<Long>> queries) {
         if (queries == null || queries.isEmpty())
             return null;
         final Map<Long, OntologyQuery<Long>> map = queries.stream()
@@ -147,15 +142,11 @@ public class NcbiRule {
                 .collect(toSet());
     }
 
-    static List<String> optimizeIds(List<Ncbi> ncbisInEntries, Set<String> relevantIds) {
+    static Set<String> optimizeIds(List<Ncbi> ncbisInEntries, Set<String> relevantIds) {
         final Set<Long> ncbiIdsInEntries = ncbisInEntries.stream()
                 .map(Ncbi::getId)
                 .collect(toSet());
-        return relevantIds.stream()
-                .map(Long::parseLong)
-                .filter(ncbiIdsInEntries::contains)
-                .map(Object::toString)
-                .collect(toList());
+        return optimizeIdentifiersWithIds(relevantIds, ncbiIdsInEntries);
     }
 
     static Stream<Long> toIdStream(Set<String> identifiers) {

@@ -55,7 +55,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "    AND about #>> '{identifier,identifier}' IN ?3\n" +
             "    " + AND_PUBLIC +"\n" +
             ")")
-    List<Object[]> filterIdsByFieldAndIdentifierSource(String field, String srcId, List<String> onlyIds);
+    List<Object[]> filterIdsByFieldAndIdentifierSource(String field, String srcId, Set<String> onlyIds);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' " +
             "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
