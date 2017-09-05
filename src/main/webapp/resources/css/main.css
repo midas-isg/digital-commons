@@ -222,7 +222,7 @@
 }
 
 .background-nav {
-    background-color: #0c2b65;
+    background-color: #0c2b65 !important;
 }
 
 .leaf {

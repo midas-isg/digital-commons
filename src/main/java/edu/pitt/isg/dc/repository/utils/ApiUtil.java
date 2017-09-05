@@ -72,6 +72,10 @@ public class ApiUtil {
         return null;
     }
 
+    public List<String> getPublicEntryContents() {
+        return repo.findPublicEntryContents();
+    }
+
     private Map<String, String> getParsedToUnparsedIdentifierMapping() {
         Map<String, String> parsedToUnparsedIdentifierMap = new HashMap<>();
         for(String unparsedIdentifier : repo.findPublicIdentifiers()) {

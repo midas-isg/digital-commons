@@ -28,6 +28,7 @@ public class EntryView extends EntryObject {
         entry.setDisplayName(entryObject.getDisplayName());
         entry.setTags(entryObject.getTags());
         entry.setUsers(entryObject.getUsersId());
+        entry.setDateAdded(entryObject.getDateAdded());
         return entry;
     }
 
@@ -45,6 +46,7 @@ public class EntryView extends EntryObject {
         copyPropertiesFrom(entry.getContent().get("properties"));
         setProperty("status", entry.getStatus());
         setUsersId(entry.getUsers());
+        setDateAdded(entry.getDateAdded());
     }
 
     private void copyPropertiesFrom(Object obj) {

@@ -17,10 +17,11 @@ public class EntryObject {
     private Category category;
     private String displayName;
     private boolean isPublic;
-    private List<String> comments;
+    private List<Comments> comments;
     private Set<String> tags;
     private Map<String, String> properties = new HashMap<>();
     private Users usersId;
+    private Date dateAdded;
 
     public Users getUsersId() {
         return usersId;
@@ -62,11 +63,11 @@ public class EntryObject {
         this.isPublic = isPublic;
     }
 
-    public List<String> getComments() {
+    public List<Comments> getComments() {
         return comments;
     }
 
-    public void setComments(List<String> comments) {
+    public void setComments(List<Comments> comments) {
         this.comments = comments;
     }
 
@@ -100,6 +101,14 @@ public class EntryObject {
 
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public String getEntryJsonString() {
@@ -229,11 +238,20 @@ public class EntryObject {
 
     public List<String> getSanitizedComments() {
         List<String> sanitizedComments = new ArrayList<>();
-        for(String comment : this.getComments()) {
-            String sanitizedComment = comment.replaceAll("\"", "");
+        for(Comments comment : this.getComments()) {
+            String sanitizedComment = comment.getContent().replaceAll("\"", "");
             sanitizedComment = StringEscapeUtils.escapeJavaScript(sanitizedComment);
             sanitizedComments.add(sanitizedComment);
         }
         return sanitizedComments;
+    }
+
+    public List<Long> getCommentIds() {
+        List<Long> commentIds = new ArrayList<>();
+        for(Comments comment : this.getComments()) {
+            commentIds.add(comment.getId());
+        }
+
+        return commentIds;
     }
 }

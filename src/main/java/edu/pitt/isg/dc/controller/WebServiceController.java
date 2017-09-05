@@ -139,4 +139,25 @@ public class WebServiceController {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
     }
 
+    @GET
+    @ApiOperation(value = "Retrieves the contents of every public entry in the MIDAS Digital Commons.", notes = "This method retrieves the contents of every public entry in the MIDAS Digital Commons.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "A JSON array containing the contents of every public entry.")
+    })
+    @RequestMapping(value = "/contents", method = RequestMethod.GET, headers = "Accept=application/json")
+    public @ResponseBody
+    String getPublicEntryContents(ModelMap model) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<String> contents = apiUtil.getPublicEntryContents();
+
+        JsonParser parser = new JsonParser();
+        JsonArray jsonArray = new JsonArray();
+        for(int i = 0; i < contents.size(); i++) {
+            JsonElement element = parser.parse(contents.get(i)).getAsJsonObject();
+            jsonArray.add(element);
+        }
+
+        return gson.toJson(jsonArray);
+    }
+
 }

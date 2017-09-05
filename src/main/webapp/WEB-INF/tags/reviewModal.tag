@@ -60,7 +60,7 @@
                             <span id="category-span-${id}"></span>
                         </c:when>
                     </c:choose>
-                    <c:if test="${type == 'reject' || type == 'comments'}">
+                    <c:if test="${  type == 'comments'}">
                         <div class="sub-title-font font-size-16 modal-software-item">
                             <c:if test="${type == 'reject'}">
                                 <h4 class="inline bold">Comment(s): </h4><br>

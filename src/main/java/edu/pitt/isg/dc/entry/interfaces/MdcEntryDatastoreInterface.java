@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.entry.interfaces;
 
 import edu.pitt.isg.dc.entry.Comments;
+import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
@@ -33,7 +34,13 @@ public interface MdcEntryDatastoreInterface {
 
     void exportDatastore(MdcDatastoreFormat mdcDatastoreFormat) throws MdcEntryDatastoreException;
 
-    Comments getComments(EntryId id);
+    Comments getComments(Long id) throws MdcEntryDatastoreException;
+
+    String deleteComment(Long commentId) throws MdcEntryDatastoreException;
+
+    List<Comments> findComments(EntryId entryId) throws MdcEntryDatastoreException;
+
+    Long getCommentId(Long entryId, Long revisionId, String content) throws MdcEntryDatastoreException;
 
     String updateComments(Comments comments) throws MdcEntryDatastoreException;
 

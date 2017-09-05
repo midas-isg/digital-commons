@@ -27,7 +27,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
             "WHERE (entry_id, revision_id) IN\n" +
             "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
-            "GROUP BY entry_id) AND status != 'approved' ")
+            "GROUP BY entry_id) AND status != 'approved'")
     List<Entry> findLatestUnapprovedEntries();
 
     @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
@@ -96,17 +96,20 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value = "select distinct " +
             "content->'entry'->'identifier'->>'identifier' " +
-            "from dev.entry where is_public = true and " +
+            "from entry where is_public = true and " +
             "content->'entry'->'identifier'->>'identifier' is not null")
     List<String> findPublicIdentifiers();
 
     @Query(nativeQuery = true, value = "select distinct content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' " +
-            "from dev.entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' is not null " +
+            "from entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' is not null " +
             "and content->'entry'->'identifier'->>'identifier' is not null " +
             "and content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     String findAccessUrlByIdentifierAndDistributionId(String identifier, String distributionId);
 
-    @Query(nativeQuery = true, value = "select * from dev.entry where " +
+    @Query(nativeQuery = true, value = "select * from entry where " +
             "content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     Entry findByMetadataIdentifier(String identifier);
+
+    @Query(nativeQuery = true, value="select content->>'entry' from entry where is_public = true;")
+    List<String> findPublicEntryContents();
 }

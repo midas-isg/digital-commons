@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ public class Entry {
     private String displayName;
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> tags;
+    private Date dateAdded;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -95,5 +97,18 @@ public class Entry {
 
     public void setTags(Set<String> tags) {
         this.tags = tags;
+    }
+
+    public Date getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(Date dateAdded) {
+        this.dateAdded = dateAdded;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        dateAdded = new Date();
     }
 }

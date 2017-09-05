@@ -54,12 +54,12 @@
         hideCategoryErrors();
     });
 
-    function showReviewEntryModal(htmlId, entryId, revisionId, category, elem, comments, status) {
+    function showReviewEntryModal(htmlId, entryId, revisionId, category, elem, status) {
         var tableRow = $(elem).parent().parent();
         var tableData = tableRow.children();
 
         var elemInfo = [];
-        for(var i = 0; i < 4; i++) {
+        for(var i = 1; i < 5; i++) {
             elemInfo.push($(tableData[i]).text().trim());
         }
 
@@ -87,12 +87,6 @@
                 $('#category-span' + endId).text(category);
             } else {
                 $('#category-span' + endId).text("None");
-            }
-        }
-
-        if(comments !== null && comments !== undefined && comments.length > 0) {
-            for(i = 0; i < comments.length; i++) {
-                addComment(htmlId, comments[i]);
             }
         }
 
@@ -164,45 +158,6 @@
         });
     }
 
-    function commentButton(id) {
-        var endId = "-" + id;
-        var entryId = $("#approve-entry-id" + endId).val();
-        var revisionId = $("#approve-entry-revision-id" + endId).val();
-
-        var comments = [];
-        $.each($("#reject-comments-" + id).children(), function(index, child) {
-            var comment = $(child).find(">:first-child").val();
-            if(comment != null && comment != '') {
-                comments.push(comment);
-            }
-        });
-
-        var params = getEntryParams(entryId, revisionId, null, comments);
-        $.post("${pageContext.request.contextPath}/add/comment", params ,function(data){
-            if(data == "success") {
-                window.location.reload();
-            } else {
-                alert("There was an issue commenting on this entry. Please try again.");
-            }
-        }).fail(function() {
-            alert("There was an issue commenting on this entry. Please try again.");
-        });
-    }
-
-    function addComment(id, value) {
-        if(value === null || value === undefined || value.length === 0) {
-            value = "";
-        }
-
-        var toAppend = "<div>" +
-            "<input class='form-control reject-input' value=\"" + value + "\"/>" +
-            "<button class='btn btn-sm btn-danger reject-input-btn' onclick='$(this).parent().remove()'>" +
-            "<icon class='glyphicon glyphicon-trash'></icon>" +
-            "</button>" +
-            "</div>";
-
-        $('#reject-comments-' + id).append(toAppend);
-    }
 </script>
 
 <style>
@@ -222,10 +177,6 @@
 <myTags:reviewModal id="approveModal"
                     modalHeader="Approve Submission"
                     type="approve"
-                    categoryPaths="${categoryPaths}"/>
-<myTags:reviewModal id="commentModal"
-                    modalHeader="Comments"
-                    type="comments"
                     categoryPaths="${categoryPaths}"/>
 <myTags:reviewModal id="rejectModal"
                     modalHeader="Reject Submission"
