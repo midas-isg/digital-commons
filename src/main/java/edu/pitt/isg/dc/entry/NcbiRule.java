@@ -70,7 +70,7 @@ public class NcbiRule {
         final Map<String, NcbiTree> path2tree = new HashMap<>();
         final List<NcbiTree> roots = new ArrayList<>();
         for (NcbiTree tree : trees){
-            final NcbiTree parent = path2tree.getOrDefault(toPartentPath(tree), null);
+            final NcbiTree parent = path2tree.getOrDefault(toParentPath(tree), null);
             path2tree.put(tree.getSelf().getPath(), tree);
             if (parent == null)
                 roots.add(tree);
@@ -192,7 +192,7 @@ public class NcbiRule {
         return s;
     }
 
-    private static String toPartentPath(NcbiTree tree) {
+    private static String toParentPath(NcbiTree tree) {
         final Ncbi self = tree.getSelf();
         return self.getPath().replace("/" + self.getId(), "");
     }
