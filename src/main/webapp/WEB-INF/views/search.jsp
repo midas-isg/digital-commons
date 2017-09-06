@@ -80,6 +80,7 @@
                                 </td>
 
                                 <td>
+                                    <%--<div id="control-measure-widget"></div>--%>
                                     <select id="control-measure-select" type="text" class="form-control">
                                         <option value="${null}">Any</option>
                                         <c:forEach var="it" items="${controlMeasures}">
@@ -89,12 +90,7 @@
                                 </td>
 
                                 <td>
-                                    <select id="type-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${types}">
-                                            <option value="${it[0]}">${it[1]}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <div id="type-widget"></div>
                                 </td>
 
                             </tr>
@@ -193,27 +189,31 @@
             pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget'),
             hostWidget: FOREST_WIDGET_CREATOR.create('host-widget'),
             locationWidget: FOREST_WIDGET_CREATOR.create('location-widget'),
+            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget'),
             entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
                 searchButton: $('#search-button'),
                 controlMeasureSelect: $('#control-measure-select'),
-                typeSelect: $('#type-select')
             }
         };
 
-        fillTree(my.pathogenWidget, null, JSON.parse('${pathogens}'));
-        fillTree(my.hostWidget, null, JSON.parse('${hosts}'));
-        fillTree(my.locationWidget, null, JSON.parse('${locations}'));
+        fillForest(my.pathogenWidget, null, JSON.parse('${pathogens}'));
+        fillForest(my.hostWidget, null, JSON.parse('${hosts}'));
+        fillForest(my.locationWidget, null, JSON.parse('${locations}'));
 
-        function fillTree(widget, parent, trees) {
-            var node, self, tree;
+        <c:forEach var="it" items="${types}">
+            my.typeWidget.addNode({id: '${it[0]}', label: '${it[1]}'});
+        </c:forEach>
+
+        function fillForest(widget, parent, trees) {
+            var node, it, tree;
             var i = 0;
             for (; i < trees.length; i++){
                 tree = trees[i];
-                self = tree.self;
-                node = widget.addNode({id: self.id, label: self.name, parent: parent});
-                fillTree(widget, node, tree.children);
+                it = tree.self;
+                node = widget.addNode({id: it.id, label: it.name, parent: parent});
+                fillForest(widget, node, tree.children);
             }
         }
 
@@ -272,7 +272,7 @@
                 pathogens: filter(my.pathogenWidget.getUserSelectedNodes()),
                 controlMeasures: toOntologies(my.$.controlMeasureSelect.val()),
                 locations: filter(my.locationWidget.getUserSelectedNodes()),
-                types: toOntologies(my.$.typeSelect.val())
+                types: filter(my.typeWidget.getUserSelectedNodes())
             };
             my.entryTable.ajax.reload();
 

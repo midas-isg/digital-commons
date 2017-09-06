@@ -66,7 +66,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value = "SELECT entry_id, revision_id from entry " +
             "WHERE content #>> '{properties,type}' IN ?1 " +
             AND_PUBLIC)
-    List<Object[]> filterIdsByTypes(String[] onlyTypes);
+    List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             "FROM entry WHERE " + IS_PUBLIC)

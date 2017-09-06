@@ -42,7 +42,7 @@ public class EntryRule {
         results = merge(results, ncbi.searchEntryIdsByPathogens(q.getPathogens()));
         results = merge(results, ls.searchEntryIdsByAlc(q.getLocations()));
         results = merge(results, asv.searchEntryIdsByControlMeasureId(firstId(q.getControlMeasures())));
-        results = merge(results, listIdsByType(firstId(q.getTypes())));
+        results = merge(results, listEntryIdsByType(toIds(q.getTypes())));
         return results;
     }
 
@@ -59,8 +59,8 @@ public class EntryRule {
                 .collect(toList());
     }
 
-    private Set<EntryId> listIdsByType(String... types) {
-        if (types == null || types.length == 0 || types[0] == null)
+    private Set<EntryId> listEntryIdsByType(Set<String> types) {
+        if (types == null || types.isEmpty() || types.contains(null))
             return null;
         return toEntryIdList(repo.filterIdsByTypes(types));
     }
@@ -82,5 +82,13 @@ public class EntryRule {
 
     public Entry read(EntryId entryId) {
         return repo.findOne(entryId);
+    }
+
+    private static Set<String> toIds(List<OntologyQuery<String>> types) {
+        if (types == null)
+            return null;
+        return types.stream()
+                .map(OntologyQuery::getId)
+                .collect(toSet());
     }
 }
