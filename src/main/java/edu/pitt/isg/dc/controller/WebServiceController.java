@@ -2,6 +2,8 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.wordnik.swagger.annotations.*;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -148,13 +150,20 @@ public class WebServiceController {
     public @ResponseBody
     String getPublicEntryContents(ModelMap model) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        List<String> contents = apiUtil.getPublicEntryContents();
+        List<Entry> entries = apiUtil.getPublicEntryContents();
 
         JsonParser parser = new JsonParser();
         JsonArray jsonArray = new JsonArray();
-        for(int i = 0; i < contents.size(); i++) {
-            JsonElement element = parser.parse(contents.get(i)).getAsJsonObject();
-            jsonArray.add(element);
+        for(int i = 0; i < entries.size(); i++) {
+            EntryView entryView = new EntryView(entries.get(i));
+            String json = entryView.getUnescapedEntryJsonString();
+            JsonElement element = parser.parse(json).getAsJsonObject();
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", entryView.getEntryType());
+            jsonObject.add("content", element);
+
+            jsonArray.add(jsonObject);
         }
 
         return gson.toJson(jsonArray);
