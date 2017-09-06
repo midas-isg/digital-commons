@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Long> {
-    List<Location> findByAlcIn(String parentIdWithDelimitors);
+    List<Location> findByIdIn(String parentIdWithDelimitors);
 }

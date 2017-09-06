@@ -6,16 +6,16 @@ import edu.pitt.isg.dc.entry.Asv;
 import edu.pitt.isg.dc.entry.AsvRule;
 import edu.pitt.isg.dc.entry.Location;
 import edu.pitt.isg.dc.entry.LocationRule;
-import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
-import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
-import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.Ncbi;
 import edu.pitt.isg.dc.entry.NcbiRule;
 import edu.pitt.isg.dc.entry.TypeRule;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
+import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
-import edu.pitt.isg.dc.vm.NcbiTree;
+import edu.pitt.isg.dc.vm.QueryTree;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
@@ -54,7 +54,7 @@ import java.util.stream.Collectors;
 
 import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
 import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
-import static edu.pitt.isg.dc.entry.NcbiRule.tree;
+import static edu.pitt.isg.dc.entry.util.TreeAid.toForest;
 import static java.util.Comparator.comparing;
 
 @ApiIgnore
@@ -209,14 +209,12 @@ public class HomeController {
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(Model model) throws Exception {
-        final List<NcbiTree> hosts = tree(ncbiRule.findHostsInEntries());
-        final List<NcbiTree> pathogens = tree(ncbiRule.findPathogensInEntries());
+        final List<QueryTree<Ncbi>> hosts = toForest(ncbiRule.findHostsInEntries());
+        final List<QueryTree<Ncbi>> pathogens = toForest(ncbiRule.findPathogensInEntries());
         final List<Asv> controlMeasures = asvRule.findControlMeasuresInEntries().stream()
                 .sorted(comparing(Asv::getName))
                 .collect(Collectors.toList());;
-        final List<Location> locations = locationRule.findLocationsInEntries().stream()
-                .sorted(comparing(Location::getName))
-                .collect(Collectors.toList());
+        final List<QueryTree<Location>> locations = toForest(locationRule.findLocationsInEntries());
         final List<String[]> types = typeRule.findAll().stream()
                 .map(this::formatType)
                 .sorted(comparing(s -> s[1]))
@@ -226,7 +224,7 @@ public class HomeController {
         model.addAttribute("pathogens", gson.toJson(pathogens));
         model.addAttribute("types", types);
         model.addAttribute("controlMeasures", controlMeasures);
-        model.addAttribute("locations", locations);
+        model.addAttribute("locations", gson.toJson(locations));
         return "search";
     }
 

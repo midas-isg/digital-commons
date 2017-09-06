@@ -1,14 +1,14 @@
 package edu.pitt.isg.dc.entry;
 
-import edu.pitt.isg.dc.vm.NcbiTree;
+import edu.pitt.isg.dc.vm.QueryTree;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
+import static edu.pitt.isg.dc.entry.util.TreeAid.toForest;
 import static java.util.Arrays.asList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,26 +48,26 @@ public class NcbiTreeTest {
 
     @Test
     public void nullInput() throws Exception {
-        final List<NcbiTree> tree = NcbiRule.tree(null);
+        final List<QueryTree<Ncbi>> tree = toForest(null);
         assertThat(tree).isEmpty();
     }
 
     @Test
     public void emptyInput() throws Exception {
-        final List<NcbiTree> tree = NcbiRule.tree(Collections.emptyList());
+        final List<QueryTree<Ncbi>> tree = toForest(Collections.emptyList());
         assertThat(tree).isEmpty();
     }
 
     @Test
     public void oneInput() throws Exception {
-        final List<NcbiTree> tree = NcbiRule.tree(Collections.singletonList(a5));
+        final List<QueryTree<Ncbi>> tree = toForest(Collections.singletonList(a5));
         assertThat(tree).isNotEmpty();
         assertThat(tree.get(0).getSelf()).isEqualTo(a5);
     }
 
     @Test
     public void twoInputs() throws Exception {
-        final List<NcbiTree> tree = NcbiRule.tree(asList(a5, b3));
+        final List<QueryTree<Ncbi>> tree = toForest(asList(a5, b3));
         assertThat(tree).isNotEmpty();
         assertThat(tree.get(0).getSelf()).isEqualTo(a5);
         assertThat(tree.get(1).getSelf()).isEqualTo(b3);
@@ -75,20 +75,20 @@ public class NcbiTreeTest {
 
     @Test
     public void treeA() throws Exception {
-        final List<NcbiTree> tree = NcbiRule.tree(asList(a5, ad, ac, acf, acg));
+        final List<QueryTree<Ncbi>> tree = toForest(asList(a5, ad, ac, acf, acg));
         assertThat(tree).isNotEmpty();
-        final NcbiTree treeA = tree.get(0);
+        final QueryTree treeA = tree.get(0);
         assertThat(treeA.getSelf()).isEqualTo(a5);
-        final NcbiTree treeAc = toChildList(treeA).get(0);
+        final QueryTree treeAc = toChildList(treeA).get(0);
         assertThat(treeAc.getSelf()).isEqualTo(ac);
-        final List<NcbiTree> aChildren = toChildList(treeA);
+        final List<QueryTree> aChildren = toChildList(treeA);
         assertThat(aChildren.get(1).getSelf()).isEqualTo(ad);
-        final List<NcbiTree> acChildren = toChildList(treeAc);
+        final List<QueryTree> acChildren = toChildList(treeAc);
         assertThat(acChildren.get(0).getSelf()).isEqualTo(acf);
         assertThat(acChildren.get(1).getSelf()).isEqualTo(acg);
     }
 
-    private List<NcbiTree> toChildList(NcbiTree tree) {
+    private List<QueryTree> toChildList(QueryTree tree) {
         return new ArrayList<>(tree.getChildren());
     }
 

@@ -18,12 +18,12 @@ p {
 }
 
 form {
-    display: inline-block;
     background-color: #ffffff;
 
     border-width: 1px;
     border-style: solid;
     border-radius: 5px;
+    margin-bottom: 2px;
 }
 
 div.widget-body {
@@ -48,4 +48,5 @@ div.node div.node {
 form.options-body {
     vertical-align: top;
     padding: 2px;
+    margin-bottom: 5px;
 }

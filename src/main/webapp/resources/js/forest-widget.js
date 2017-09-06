@@ -23,6 +23,7 @@ var FOREST_WIDGET_CREATOR =
             if(parentNode) {
                 if(!parentNode.data.userSelected) {
                     parentNode.input.checked = truth;
+                    parentNode.graphicBox.innerHTML = truth ? "&#9745;": "&#9744;";
                 }
 
                 if(parentNode.data.parent) {
@@ -45,6 +46,7 @@ var FOREST_WIDGET_CREATOR =
 
                 if(!currentNode.data.userSelected) {
                     currentNode.input.checked = truth;
+                    currentNode.graphicBox.innerHTML = truth ? "&#9745;": "&#9744;";
                 }
 
                 for(i = 0; i < currentNode.data.children.length; i++) {
@@ -87,6 +89,7 @@ var FOREST_WIDGET_CREATOR =
             this.input = document.createElement("input");
             this.input.id = "node-" + this.data.id;
             this.input.type = "checkbox";
+            this.input.style.display = "none";
             this.input.onchange = function() {
                 thisNode.data.userSelected = this.checked;
                 thisNode.data.includeAncestors = dataInstance.includeAncestors;
@@ -101,6 +104,9 @@ var FOREST_WIDGET_CREATOR =
                 }
 
                 if(thisNode.data.userSelected) {
+                    thisNode.graphicBox.innerHTML = "&#9949;";
+                    thisNode.graphicBox.style.fontWeight = "900";
+
                     for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
                         if(dataInstance.userSelectedNodes[i] === thisNode.data) {
                             return;
@@ -110,6 +116,9 @@ var FOREST_WIDGET_CREATOR =
                     dataInstance.userSelectedNodes.push(thisNode.data);
                 }
                 else {
+                    thisNode.graphicBox.innerHTML = "&#9744;";
+                    thisNode.graphicBox.style.fontWeight = "100";
+
                     thisNode.data.includeAncestors = dataInstance.includeAncestors;
                     thisNode.data.includeDescendants = dataInstance.includeDescendants;
 
@@ -127,7 +136,17 @@ var FOREST_WIDGET_CREATOR =
             span = document.createElement("span");
             span.innerHTML = this.data.label;
 
+            this.graphicBox = document.createElement("label");
+            this.graphicBox.style.marginRight = "2px";
+            this.graphicBox.innerHTML = "&#9744;";
+            this.graphicBox.style.fontWeight = "100";
+            this.graphicBox.onclick = function() {
+                thisNode.input.checked = !thisNode.input.checked;
+                thisNode.input.onchange();
+            };
+
             this.element.appendChild(this.input);
+            this.element.appendChild(this.graphicBox);
             this.element.appendChild(span);
 
             return;
@@ -186,8 +205,8 @@ var FOREST_WIDGET_CREATOR =
                 optionsBody.appendChild(createCheckbox("ancestors", "Include ancestors"));
                 optionsBody.appendChild(createCheckbox("descendants", "Include descendants"));
 
-                widgetBody.appendChild(forestBody);
                 widgetBody.appendChild(optionsBody);
+                widgetBody.appendChild(forestBody);
                 parentElement.appendChild(widgetBody);
 
                 thisForestWidget.createNode = function(node) {

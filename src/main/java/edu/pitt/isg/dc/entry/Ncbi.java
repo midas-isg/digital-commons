@@ -1,17 +1,15 @@
 package edu.pitt.isg.dc.entry;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import edu.pitt.isg.dc.entry.util.Treeable;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 @Data
-public class Ncbi {
+public class Ncbi implements Treeable {
     @Id
     private Long id;
     private String name;

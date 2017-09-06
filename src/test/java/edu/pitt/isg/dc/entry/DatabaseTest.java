@@ -174,7 +174,7 @@ public class DatabaseTest {
 
     private void saveLocation(long id, List<String> v) {
         final Location l = new Location();
-        l.setAlc(id);
+        l.setId(id);
         l.setName(v.get(0));
         l.setLocationTypeName(v.get(1));
         l.setRelatives(v.get(2));
@@ -242,7 +242,7 @@ public class DatabaseTest {
     public void allLocations() throws Exception {
         final List<Location> all = lsRule.findLocationsInEntries();
         final Set<String> set = all.stream()
-                .map(Location::getAlc)
+                .map(Location::getId)
                 .map(Object::toString)
                 .collect(Collectors.toSet());
         final Set<String> expects = new HashSet<>(usaIds);
@@ -405,7 +405,7 @@ public class DatabaseTest {
         assertThat(lsRepo.findOne(zaireId)).isNull();
         lsRule.findAll(Collections.singleton(zaireId + ""));
         final Location zaire = lsRepo.findOne(zaireId);
-        assertThat(zaire.getAlc()).isEqualTo(zaireId);
+        assertThat(zaire.getId()).isEqualTo(zaireId);
         assertThat(zaire.getPath()).endsWith("/" + zaireId);
         assertThat(zaire.getRelatives().split(",")).doesNotContain(zaireId + "");
     }

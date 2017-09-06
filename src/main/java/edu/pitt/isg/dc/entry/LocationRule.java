@@ -82,7 +82,7 @@ public class LocationRule {
                 .collect(toMap(OntologyQuery::getId, identity()));
         final List<Location> locations = proxy.findAllByIds(map.keySet());
         return locations.stream()
-                .map(l -> toIdentifiers(l, map.get(l.getAlc())))
+                .map(l -> toIdentifiers(l, map.get(l.getId())))
                 .flatMap(Collection::stream)
                 .collect(toSet());
     }
@@ -97,8 +97,7 @@ public class LocationRule {
             identifiers.addAll(toAllAncestors(l));
         else if (d) // d only
             identifiers.addAll(toAllDescendants(l));
-        identifiers.add(l.getAlc() + "");
-        // TODO other cases
+        identifiers.add(l.getId() + "");
         return identifiers;
     }
 

@@ -75,14 +75,8 @@
                                 <td>
                                     <div id="host-widget"></div>
                                 </td>
-
                                 <td>
-                                    <select id="location-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${locations}">
-                                            <option value="${it.alc}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <div id="location-widget"></div>
                                 </td>
 
                                 <td>
@@ -162,7 +156,7 @@
 
             <!-- Option one table -->
             <div class="panel panel-primary ng-hide" id="option1Panel" ng-show="showOptionSearch">
-                <div class="panel-heading clearfix">Results
+                <div class="panel-heading clearfix">Software matching by input and output formats
                     <div class="pull-right">
                     </div>
                 </div>
@@ -198,18 +192,19 @@
         var my = {
             pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget'),
             hostWidget: FOREST_WIDGET_CREATOR.create('host-widget'),
+            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget'),
             entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
                 searchButton: $('#search-button'),
                 controlMeasureSelect: $('#control-measure-select'),
-                locationSelect: $('#location-select'),
                 typeSelect: $('#type-select')
             }
         };
 
         fillTree(my.pathogenWidget, null, JSON.parse('${pathogens}'));
         fillTree(my.hostWidget, null, JSON.parse('${hosts}'));
+        fillTree(my.locationWidget, null, JSON.parse('${locations}'));
 
         function fillTree(widget, parent, trees) {
             var node, self, tree;
@@ -276,7 +271,7 @@
                 hosts:  filter(my.hostWidget.getUserSelectedNodes()),
                 pathogens: filter(my.pathogenWidget.getUserSelectedNodes()),
                 controlMeasures: toOntologies(my.$.controlMeasureSelect.val()),
-                locations: toOntologies(my.$.locationSelect.val()),
+                locations: filter(my.locationWidget.getUserSelectedNodes()),
                 types: toOntologies(my.$.typeSelect.val())
             };
             my.entryTable.ajax.reload();
