@@ -3,6 +3,7 @@
 <html lang="en">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 
 <html>
@@ -35,6 +36,12 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+    <!-- LoDash JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+
+    <!-- forest-widget.js -->
+    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>
 
 <body>
 <%--<myTags:header--%>
@@ -54,28 +61,21 @@
                     <div class="col-xs-12">
                         <h4>MDC Search</h4>
                         <table class="table">
+                            <c:set var="csv" value='Pathogen,Host,Location,Control measure,Type' scope="application" />
+                            <c:set var="all" value="${fn:split(csv, ',')}" scope="application" />
+                            <thead>
+                            <c:forEach var="it" items="${all}">
+                                <td>${it}</td>
+                            </c:forEach>
+                            </thead>
                             <tbody><tr>
-                                <td>Pathogen</td>
                                 <td>
-                                    <select id="pathogen-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${pathogens}">
-                                            <option value="${it.id}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <div id="pathogen-widget"></div>
+                                </td>
+                                <td>
+                                    <div id="host-widget"></div>
                                 </td>
 
-                                <td>Host</td>
-                                <td>
-                                    <select id="host-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${hosts}">
-                                            <option value="${it.id}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                                <td>Location</td>
                                 <td>
                                     <select id="location-select" type="text" class="form-control">
                                         <option value="${null}">Any</option>
@@ -85,7 +85,6 @@
                                     </select>
                                 </td>
 
-                                <td>Control measure</td>
                                 <td>
                                     <select id="control-measure-select" type="text" class="form-control">
                                         <option value="${null}">Any</option>
@@ -95,7 +94,6 @@
                                     </select>
                                 </td>
 
-                                <td>Type</td>
                                 <td>
                                     <select id="type-select" type="text" class="form-control">
                                         <option value="${null}">Any</option>
@@ -107,8 +105,14 @@
 
                             </tr>
                             </tbody>
+                            <tfoot>
+                            <c:forEach var="it" items="${all}">
+                                <td>${it}</td>
+                            </c:forEach>
+                            </tfoot>
+
                         </table>
-                        <button type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
+                        <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
                     </div>
                 </div>
             </div>
@@ -192,39 +196,44 @@
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
         var my = {
+            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget'),
+            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget'),
+            entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
-                hostSelect: $('#host-select'),
-                pathogenSelect: $('#pathogen-select'),
+                searchButton: $('#search-button'),
                 controlMeasureSelect: $('#control-measure-select'),
                 locationSelect: $('#location-select'),
                 typeSelect: $('#type-select')
             }
         };
 
+        fillTree(my.pathogenWidget, null, JSON.parse('${pathogens}'));
+        fillTree(my.hostWidget, null, JSON.parse('${hosts}'));
+
+        function fillTree(widget, parent, trees) {
+            var node, self, tree;
+            var i = 0;
+            for (; i < trees.length; i++){
+                tree = trees[i];
+                self = tree.self;
+                node = widget.addNode({id: self.id, label: self.name, parent: parent});
+                fillTree(widget, node, tree.children);
+            }
+        }
+
         //my.$.softwareMatchButton.click(onClickSoftwareMatchButton);
-        my.$.hostSelect.change(reloadEntryTable);
-        my.$.pathogenSelect.change(reloadEntryTable);
-        my.$.controlMeasureSelect.change(reloadEntryTable);
-        my.$.locationSelect.change(reloadEntryTable);
-        my.$.typeSelect.change(reloadEntryTable);
+        my.$.searchButton.click(reloadEntryTable);
 
         my.entryTable = $('#entry-table').DataTable({
             ajax: {
                 url: urlSearch(),
+                type: "POST",
                 dataSrc: dataSrcAvoidingUndefined,
                 deferRender: true,
-                data: function (param) {
-                    if(my.host)
-                        param.hostId = my.host;
-                    if(my.pathogen)
-                        param.pathogenId = my.pathogen;
-                    if(my.controlMeasure)
-                        param.controlMeasureId = my.controlMeasure;
-                    if(my.location)
-                        param.locationId = my.location;
-                    if(my.type)
-                        param.type = my.type;
+                contentType: 'application/json',
+                data: function () {
+                    return JSON.stringify(my.entryPayload);
                 }
             },
             columns: [
@@ -263,16 +272,32 @@
 //        }
 //
         function reloadEntryTable(){
-            my.host = my.$.hostSelect.val();
-            my.pathogen = my.$.pathogenSelect.val();
-            my.controlMeasure = my.$.controlMeasureSelect.val();
-            my.location = my.$.locationSelect.val();
-            my.type = my.$.typeSelect.val();
+            my.entryPayload = {
+                hosts:  filter(my.hostWidget.getUserSelectedNodes()),
+                pathogens: filter(my.pathogenWidget.getUserSelectedNodes()),
+                controlMeasures: toOntologies(my.$.controlMeasureSelect.val()),
+                locations: toOntologies(my.$.locationSelect.val()),
+                types: toOntologies(my.$.typeSelect.val())
+            };
             my.entryTable.ajax.reload();
+
+            function filter(array) {
+                if (! array || array.length === 0)
+                    return array;
+                return _.map(array, function(o) {
+                    return _.pick(o, ['id', 'includeAncestors', 'includeDescendants']);
+                });
+            }
+
+            function toOntologies(id) {
+                if (! id)
+                    return null;
+                return [{id: id, includeAncestors: true, includeDescendants: true}];
+            }
         }
 
         function urlSearch(size) {
-            return entryApi + 'search/by-ontology?size=' + (size || 1000000);
+            return entryApi + 'search/via-ontology?size=' + (size || 1000000);
         }
 
         function wholeRow(row){

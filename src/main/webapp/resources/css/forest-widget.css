@@ -1,0 +1,51 @@
+body {
+    background-color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 3px;
+    margin: 0px;
+}
+
+.extra-bottom-space {
+    margin-bottom: 10px;
+}
+
+form {
+    display: inline-block;
+    background-color: #ffffff;
+
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+}
+
+div.widget-body {
+    border-radius: 5px;
+    padding: 2px;
+    display: inline-block;
+    background-color: #c0c0a0;
+}
+
+form.forest-body div.node{
+    padding-left: 0px;
+}
+
+div.node {
+    padding-right: 2px;
+}
+
+div.node div.node {
+    padding-left: 15px;
+}
+
+form.options-body {
+    vertical-align: top;
+    padding: 2px;
+}

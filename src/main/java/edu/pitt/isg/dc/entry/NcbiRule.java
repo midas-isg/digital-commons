@@ -1,15 +1,18 @@
 package edu.pitt.isg.dc.entry;
 
 import com.google.common.annotations.VisibleForTesting;
+import edu.pitt.isg.dc.vm.NcbiTree;
 import edu.pitt.isg.dc.vm.OntologyQuery;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +24,7 @@ import static edu.pitt.isg.dc.entry.Keys.HOST_SPECIES;
 import static edu.pitt.isg.dc.entry.Keys.IS_ABOUT;
 import static edu.pitt.isg.dc.entry.Keys.PATHOGEN_COVERAGE;
 import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
+import static java.util.Comparator.comparing;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
@@ -52,6 +56,30 @@ public class NcbiRule {
         final Set<Long> pathogens = listIdsInEntries(stream.parallel());
         return repo.findAll(pathogens).stream()
                 .filter(n -> ! isHost(n))
+                .collect(toList());
+    }
+
+    public static List<NcbiTree> tree(List<Ncbi> list) {
+        if (list == null)
+            return Collections.emptyList();
+        final List<NcbiTree> trees = list.stream()
+                .sorted(comparing(Ncbi::getPath)
+                        .thenComparing(comparing(Ncbi::getName, String::compareToIgnoreCase)))
+                .map(NcbiTree::of)
+                .collect(toList());
+        final Map<String, NcbiTree> path2tree = new HashMap<>();
+        final List<NcbiTree> roots = new ArrayList<>();
+        for (NcbiTree tree : trees){
+            final NcbiTree parent = path2tree.getOrDefault(toPartentPath(tree), null);
+            path2tree.put(tree.getSelf().getPath(), tree);
+            if (parent == null)
+                roots.add(tree);
+            else
+                parent.addChild(tree);
+        }
+
+        return roots.stream()
+                .sorted(comparing(t -> t.getSelf().getName()))
                 .collect(toList());
     }
 
@@ -135,7 +163,7 @@ public class NcbiRule {
         final String like = PATH_SEPARATOR + ncbi.getId() + PATH_SEPARATOR;
         final List<Ncbi> ncbis = repo.findAllByPathContaining(like);
         return ncbis.stream()
-                .filter(Ncbi::getLeaf)
+                .filter(Ncbi::getIsLeaf)
                 .map(Ncbi::getPath)
                 .map(p -> p.replace(path + PATH_SEPARATOR, ""))
                 .flatMap(p -> Arrays.stream(p.split(PATH_SEPARATOR)))
@@ -162,5 +190,10 @@ public class NcbiRule {
         if (tokens.length > 1)
             return tokens[1];
         return s;
+    }
+
+    private static String toPartentPath(NcbiTree tree) {
+        final Ncbi self = tree.getSelf();
+        return self.getPath().replace("/" + self.getId(), "");
     }
 }

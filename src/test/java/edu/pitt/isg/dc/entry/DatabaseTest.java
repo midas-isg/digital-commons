@@ -596,8 +596,7 @@ public class DatabaseTest {
         ncbi.setId(id);
         final String parentPath = parent == null ? "" : parent.getPath() + PATH_SEPARATOR;
         ncbi.setPath(parentPath + id);
-        ncbi.setLeaf(leaf);
-        ncbi.setParent(parent);
+        ncbi.setIsLeaf(leaf);
         return ncbi;
     }
 
