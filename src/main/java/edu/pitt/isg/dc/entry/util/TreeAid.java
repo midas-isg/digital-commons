@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.entry.util;
 
+import com.google.common.annotations.VisibleForTesting;
 import edu.pitt.isg.dc.vm.QueryTree;
 
 import java.util.ArrayList;
@@ -26,7 +27,8 @@ public class TreeAid {
         final Map<String, QueryTree<T>> path2tree = new HashMap<>();
         final List<QueryTree<T>> roots = new ArrayList<>();
         for (QueryTree<T> tree : trees){
-            final QueryTree<T> parent = path2tree.getOrDefault(toParentNcbiPath(tree), null);
+            final String parentPath = toParentPath(tree);
+            final QueryTree<T> parent = toBestParent(path2tree, parentPath);
             path2tree.put(tree.getSelf().getPath(), tree);
             if (parent == null)
                 roots.add(tree);
@@ -39,8 +41,19 @@ public class TreeAid {
                 .collect(toList());
     }
 
-    private static <T extends Treeable> String toParentNcbiPath(QueryTree<T> tree) {
+    private static <T extends Treeable> QueryTree<T> toBestParent(
+            Map<String, QueryTree<T>> path2tree,
+            String parentPath) {
+        return path2tree.getOrDefault(parentPath, null);
+    }
+
+    @VisibleForTesting
+    static String toParentPath(String path) {
+        return path.replaceAll("/[0-9]*$", "");
+    }
+
+    private static <T extends Treeable> String toParentPath(QueryTree<T> tree) {
         final T self = tree.getSelf();
-        return self.getPath().replace("/" + self.getId(), "");
+        return toParentPath(self.getPath());
     }
 }
