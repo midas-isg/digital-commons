@@ -1,3 +1,7 @@
+/*
+Forest Widget Example CSS
+*/
+
 body {
     background-color: #f0f0f0;
 }
@@ -31,7 +35,7 @@ div.widget-body {
     border-radius: 5px;
     padding: 2px;
     display: inline-block;
-    background-color: #c0c0a0;
+    background-color: #a0a0c0;
     vertical-align: top;
 }
 
@@ -45,10 +49,6 @@ form.forest-body div.node{
 
 div.node {
     padding-right: 2px;
-}
-
-div.node div.node {
-    padding-left: 15px;
 }
 
 form.options-body {

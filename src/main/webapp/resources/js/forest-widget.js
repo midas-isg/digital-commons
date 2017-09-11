@@ -79,12 +79,14 @@ var FOREST_WIDGET_CREATOR =
                 this.data.id = id;
             }
 
-            if(parent) {
-                this.data.parent = parent;
-            }
-
             this.element = document.createElement("div");
             this.element.className = "node";
+            this.element.style.width = "100%";
+
+            if(parent) {
+                this.data.parent = parent;
+                this.element.style.marginLeft = "15px";
+            }
 
             this.input = document.createElement("input");
             this.input.id = "node-" + this.data.id;
@@ -137,7 +139,7 @@ var FOREST_WIDGET_CREATOR =
             span.innerHTML = this.data.label;
 
             this.graphicBox = document.createElement("label");
-            this.graphicBox.style.marginRight = "3px";
+            this.graphicBox.style.margin = "3px 3px 3px 4px";
             this.graphicBox.innerHTML = "&#9744;";
             this.graphicBox.style.fontWeight = "100";
             this.graphicBox.onclick = function() {
@@ -179,7 +181,8 @@ var FOREST_WIDGET_CREATOR =
                     widgetBody.style.height = height;
                 }
 
-                widgetBody.style.overflow = "auto";
+                widgetBody.style.overflowX = "auto";
+                widgetBody.style.overflowY = "auto";
                 optionsBody.style.width = "100%";
                 forestBody.style.width = "100%";
 
@@ -236,6 +239,7 @@ var FOREST_WIDGET_CREATOR =
                     }
                     else {
                         node.data.parent = parent;
+                        node.element.style.marginLeft = "15px";
                         parent.data.children.push(node);
                         parent.element.appendChild(node.element);
                     }
