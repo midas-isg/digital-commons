@@ -10,13 +10,13 @@ var FOREST_WIDGET_CREATOR =
             return;
         }
 
-        ForestWidgetCreator.prototype.create = function(parentElementID) {
+        ForestWidgetCreator.prototype.create = function(parentElementID, width, height) {
             if(!parentElementID) {
                 console.error("Failed to provide parent element ID to ForestWidgetCreator.create(parentElementID)");
                 return null;
             }
 
-            return new ForestWidget(parentElementID);
+            return new ForestWidget(parentElementID, width, height);
         }
 
         function toggleAncestors(parentNode, truth) {
@@ -137,7 +137,7 @@ var FOREST_WIDGET_CREATOR =
             span.innerHTML = this.data.label;
 
             this.graphicBox = document.createElement("label");
-            this.graphicBox.style.marginRight = "2px";
+            this.graphicBox.style.marginRight = "3px";
             this.graphicBox.innerHTML = "&#9744;";
             this.graphicBox.style.fontWeight = "100";
             this.graphicBox.onclick = function() {
@@ -152,7 +152,7 @@ var FOREST_WIDGET_CREATOR =
             return;
         }
 
-        function ForestWidget(parentElementID) {
+        function ForestWidget(parentElementID, width, height) {
             var thisForestWidget = this;
 
             (function() {
@@ -170,6 +170,18 @@ var FOREST_WIDGET_CREATOR =
                 widgetBody.className = "widget-body";
                 forestBody.className = "tree-body";
                 optionsBody.className = "options-body";
+
+                if(width) {
+                    widgetBody.style.width = width;
+                }
+
+                if(height) {
+                    widgetBody.style.height = height;
+                }
+
+                widgetBody.style.overflow = "auto";
+                optionsBody.style.width = "100%";
+                forestBody.style.width = "100%";
 
                 function createCheckbox(value, label) {
                     var div = document.createElement("div"),

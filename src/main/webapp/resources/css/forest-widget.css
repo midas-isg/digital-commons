@@ -26,11 +26,17 @@ form {
     margin-bottom: 2px;
 }
 
+/* Forest Widget Classes */
 div.widget-body {
     border-radius: 5px;
     padding: 2px;
     display: inline-block;
     background-color: #c0c0a0;
+    vertical-align: top;
+}
+
+form.tree-body {
+    padding: 2px;
 }
 
 form.forest-body div.node{
@@ -46,7 +52,6 @@ div.node div.node {
 }
 
 form.options-body {
-    vertical-align: top;
     padding: 2px;
     margin-bottom: 5px;
 }

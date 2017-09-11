@@ -21,7 +21,7 @@ public class QueryTree<T extends Treeable> {
     private QueryTree(){
     }
 
-    public static <T extends Treeable> QueryTree of(T self){
+    public static <T extends Treeable> QueryTree<T> of(T self){
         final QueryTree tree = new QueryTree();
         tree.self = self;
         tree.children = new TreeSet<>(comparator);
