@@ -84,7 +84,7 @@
                                     <select id="control-measure-select" type="text" class="form-control">
                                         <option value="${null}">Any</option>
                                         <c:forEach var="it" items="${controlMeasures}">
-                                            <option value="${it.id}">${it.name}</option>
+                                            <option value="${it.iri}">${it.name}</option>
                                         </c:forEach>
                                     </select>
                                 </td>

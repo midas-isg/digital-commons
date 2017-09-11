@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.entry;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -15,6 +16,8 @@ class EntryAid {
             Stream<String> stream,
             String idSrc,
             Set<String> onlyIds) {
+        if (onlyIds.isEmpty())
+            return Collections.emptySet();
         return stream
                 .map(f -> repo.filterIdsByFieldAndIdentifierSource(f, idSrc, onlyIds))
                 .flatMap(Collection::stream)
