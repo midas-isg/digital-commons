@@ -10,18 +10,20 @@ host = 'raw.githubusercontent.com'
 resource_path = "/ApolloDev/apollo-sv/master/src/ontology/apollo-sv.owl"
 
 rdf_about = '@rdf:about'
-IDCS_IRI = 'http://purl.obolibrary.org/obo/APOLLO_SV_00000086'
+IDCS_IRI = 'http://purl.obolibrary.org/obo/APOLLO_SV_00000086' # infectious disease control strategy
+ITCS_IRI = 'http://purl.obolibrary.org/obo/APOLLO_SV_00000194' # individual treatment control strategy
+T_IRI = 'http://purl.obolibrary.org/obo/OGMS_0000090' # treatment
 
 about2class = {}
 about2kids = defaultdict(list)
 
 def main():
     _load_owl_from_github()
-    _create_view_ncbi()
+    _create_view_asv()
 
 
 
-def _create_view_ncbi():
+def _create_view_asv():
     conn, cursor = _connect()
     cursor.execute( """CREATE VIEW asv AS
         SELECT id, label as name, iri, ancestors, leaf
@@ -51,7 +53,7 @@ def _load_owl_from_github():
                 if super_class is not None:
                     resource = super_class.get('@rdf:resource')
                     about2kids[resource].append(about)
-                    if resource == IDCS_IRI:
+                    if resource in {ITCS_IRI, IDCS_IRI, T_IRI}:
                         control_measures.append(owl_class)
         _fill_db(control_measures)
 
