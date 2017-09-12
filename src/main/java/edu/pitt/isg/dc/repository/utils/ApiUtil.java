@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.repository.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.dc.entry.classes.EntryObject;
@@ -72,8 +74,8 @@ public class ApiUtil {
         return null;
     }
 
-    public List<String> getPublicEntryContents() {
-        return repo.findPublicEntryContents();
+    public List<Entry> getPublicEntryContents() {
+        return repo.findPublicEntries();
     }
 
     private Map<String, String> getParsedToUnparsedIdentifierMapping() {
