@@ -22,6 +22,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -46,6 +47,7 @@ import static edu.pitt.isg.dc.entry.Values.DATA_FORMAT_CONVERTERS1_0;
 import static edu.pitt.isg.dc.entry.Values.DTM_1_0;
 import static edu.pitt.isg.dc.entry.Values.PATH_SEPARATOR;
 import static java.util.Arrays.asList;
+import static java.util.Collections.singleton;
 import static java.util.Collections.singletonList;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -76,12 +78,14 @@ public class DatabaseTest {
     private static final String earthId = "544694";
     private static final String rootIri = toAsvIri("086");
     private static final String quarantineIri = "http://purl.obolibrary.org/obo/APOLLO_SV_00000327";
+    private static final String vectorIri = "http://purl.obolibrary.org/obo/APOLLO_SV_00000308";
+    private static final String wolbachiaVectorIri = "http://purl.obolibrary.org/obo/APOLLO_SV_00000390";
     private static Long entryCount = null;
     private static Long ncbiCount = null;
     private static Long asvCount = null;
     private static Long lsCount = null;
     private static final List<String> usaIds = asList(usaAlc + "", seattleId, laId, earthId);
-    private static final List<String> asvList = asList("123", "231", "286", "308", "327", "328", "390");
+    private static final List<String> asvList = asList("123", "231", "286", "308", "327", "328");
 
 
     @Autowired
@@ -135,6 +139,9 @@ public class DatabaseTest {
 
         saveAsv(rootIri, null, false);
         asvList.forEach(s -> saveAsv(toAsvIri(s), rootIri, true));
+        final Asv vector = new ArrayList<>(asvRepo.findByIriIn(singleton(vectorIri))).get(0);
+        vector.setLeaf(false);
+        saveAsv(wolbachiaVectorIri, vectorIri, true);
         asvCount = asvRepo.count();
     }
 
@@ -232,10 +239,12 @@ public class DatabaseTest {
 
     @Test
     public void allControlMeasures() throws Exception {
-        final Set<String> all = asvRule.listAsvIdsAsControlMeasureInEntries();
-        assertThat(all).containsExactlyInAnyOrder(asvList.stream()
+        final Set<String> all = asvRule.listAsvIrisAsControlMeasureInEntries();
+        final List<String> expected = new ArrayList<>(asvList);
+        expected.add("390");
+        assertThat(all).containsExactlyInAnyOrder(expected.stream()
                 .map(DatabaseTest::toAsvIri)
-                .collect(Collectors.toList()).toArray(new String[asvList.size()]));
+                .collect(Collectors.toList()).toArray(new String[expected.size()]));
     }
 
     @Test
@@ -485,6 +494,45 @@ public class DatabaseTest {
         OntologyQuery<Long> la = newOntologyQueryOnly(laAlc);
         final Set<String> identifiers = lsRule.toRelevantIdentifiers(asList(usa, la));
         assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", laId));
+    }
+    @Test
+    public void relevantIdentifiersForQuarantine() throws Exception {
+        OntologyQuery<String> q = new OntologyQuery<>(quarantineIri);
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(rootIri, quarantineIri);
+    }
+
+
+    @Test
+    public void relevantIdentifiersForQuarantineOnly() throws Exception {
+        OntologyQuery<String> q = newOntologyQueryOnly(quarantineIri);
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(quarantineIri);
+    }
+
+    @Test
+    public void relevantIdentifiersForQuarantineOrVectorOnly() throws Exception {
+        OntologyQuery<String> quarantine = newOntologyQueryOnly(quarantineIri);
+        OntologyQuery<String> vector = newOntologyQueryOnly(vectorIri);
+
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(asList(quarantine, vector));
+        assertThat(identifiers).containsExactlyInAnyOrder(quarantineIri, vectorIri);
+    }
+
+    @Test
+    public void relevantIdentifiersForVectorAndDescendants() throws Exception {
+        OntologyQuery<String> q = newOntologyQueryOnly(vectorIri);
+        q.setIncludeDescendants(true);
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(vectorIri, wolbachiaVectorIri);
+    }
+
+    @Test
+    public void relevantIdentifiersForVectorAndAncestors() throws Exception {
+        OntologyQuery<String> q = newOntologyQueryOnly(vectorIri);
+        q.setIncludeAncestors(true);
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        assertThat(identifiers).containsExactlyInAnyOrder(rootIri, vectorIri);
     }
 
     private void testEntriesEbolaAndDescendantsAsPathogen(EntryComplexQuery q) {

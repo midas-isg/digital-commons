@@ -41,15 +41,9 @@ public class EntryRule {
         Set<EntryId> results = ncbi.searchEntryIdsByHost(q.getHosts());
         results = merge(results, ncbi.searchEntryIdsByPathogens(q.getPathogens()));
         results = merge(results, ls.searchEntryIdsByAlc(q.getLocations()));
-        results = merge(results, asv.searchEntryIdsByControlMeasureId(firstId(q.getControlMeasures())));
+        results = merge(results, asv.searchEntryIdsByIri(q.getControlMeasures()));
         results = merge(results, listEntryIdsByType(toIds(q.getTypes())));
         return results;
-    }
-
-    private <T> T firstId(List<OntologyQuery<T>> list) { //TODO 2 be removed
-        if (list == null)
-            return null;
-        return list.get(0).getId();
     }
 
     public List<MatchedSoftware> listSoftwareMatched(){

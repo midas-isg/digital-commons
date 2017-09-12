@@ -211,9 +211,7 @@ public class HomeController {
     public String search(Model model) throws Exception {
         final List<QueryTree<Ncbi>> hosts = toForest(ncbiRule.findHostsInEntries());
         final List<QueryTree<Ncbi>> pathogens = toForest(ncbiRule.findPathogensInEntries());
-        final List<Asv> controlMeasures = asvRule.findControlMeasuresInEntries().stream()
-                .sorted(comparing(Asv::getName))
-                .collect(Collectors.toList());;
+        final List<QueryTree<Asv>> controlMeasures = toForest(asvRule.findControlMeasuresInEntries());;
         final List<QueryTree<Location>> locations = toForest(locationRule.findLocationsInEntries());
         final List<String[]> types = typeRule.findAll().stream()
                 .map(this::formatType)
@@ -223,7 +221,7 @@ public class HomeController {
         model.addAttribute("hosts", gson.toJson(hosts));
         model.addAttribute("pathogens", gson.toJson(pathogens));
         model.addAttribute("types", types);
-        model.addAttribute("controlMeasures", controlMeasures);
+        model.addAttribute("controlMeasures", gson.toJson(controlMeasures));
         model.addAttribute("locations", gson.toJson(locations));
         return "search";
     }

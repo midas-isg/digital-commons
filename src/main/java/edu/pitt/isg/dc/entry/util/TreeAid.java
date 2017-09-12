@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.entry.util;
 
 import com.google.common.annotations.VisibleForTesting;
+import edu.pitt.isg.dc.entry.Asv;
 import edu.pitt.isg.dc.vm.QueryTree;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ import static java.util.stream.Collectors.toList;
 public class TreeAid {
     @VisibleForTesting
     static int LIMIT_PARENT_LEVEL_SEARCH = 3;
+    static final String regex_path = "/[0-9]*$";
 
     private TreeAid() {
     }
@@ -58,16 +60,30 @@ public class TreeAid {
             String parentPath) {
         QueryTree<T> parent = path2tree.getOrDefault(parentPath, null);
         String path = parentPath;
+        String regex = toRegex(parent);
         for (int i = 0; parent == null && i < LIMIT_PARENT_LEVEL_SEARCH; i++) {
-            path = toParentPath(path);
+            path = toParentPath(path, regex);
             parent = path2tree.getOrDefault(path, null);
         }
         return parent;
     }
 
+    private static <T extends Treeable> String toRegex(QueryTree<T> parent) {
+        if (parent == null)
+            return regex_path;
+        if (parent.getSelf() instanceof Asv){
+            return ",[^,]*$";
+        }
+        return regex_path;
+    }
+
     @VisibleForTesting
     static String toParentPath(String path) {
-        return path.replaceAll("/[0-9]*$", "");
+        return toParentPath(path, regex_path);
+    }
+
+    private static String toParentPath(String path, String regex) {
+        return path.replaceAll(regex, "");
     }
 
     private static <T extends Treeable> Comparator<QueryTree<T>> nameIgnoreCase() {
@@ -75,6 +91,7 @@ public class TreeAid {
     }
 
     private static <T extends Treeable> String toParentPath(QueryTree<T> tree) {
-        return toParentPath(tree.getSelf().getPath());
+        final String regex = toRegex(tree);
+        return toParentPath(tree.getSelf().getPath(), regex);
     }
 }

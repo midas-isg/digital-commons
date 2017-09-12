@@ -80,19 +80,11 @@
                                 </td>
 
                                 <td>
-                                    <%--<div id="control-measure-widget"></div>--%>
-                                    <select id="control-measure-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${controlMeasures}">
-                                            <option value="${it.iri}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
+                                    <div id="control-measure-widget"></div>
                                 </td>
-
                                 <td>
                                     <div id="type-widget"></div>
                                 </td>
-
                             </tr>
                             </tbody>
                             <tfoot>
@@ -185,23 +177,27 @@
 <script>
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
+        var v = {
+            h: '400px',
+            w: '200px'
+        };
         var my = {
-            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget'),
-            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget'),
-            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget'),
-            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget'),
+            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget', v.w, v.h),
+            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget', v.w, v.h),
+            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget', v.w, v.h),
+            controlMeasureWidget: FOREST_WIDGET_CREATOR.create('control-measure-widget', v.w, v.h),
+            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget', v.w, v.h),
             entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
-                searchButton: $('#search-button'),
-                controlMeasureSelect: $('#control-measure-select'),
+                searchButton: $('#search-button')
             }
         };
 
         fillForest(my.pathogenWidget, null, JSON.parse('${pathogens}'));
         fillForest(my.hostWidget, null, JSON.parse('${hosts}'));
         fillForest(my.locationWidget, null, JSON.parse('${locations}'));
-
+        fillForest(my.controlMeasureWidget, null, JSON.parse('${controlMeasures}'));
         <c:forEach var="it" items="${types}">
             my.typeWidget.addNode({id: '${it[0]}', label: '${it[1]}'});
         </c:forEach>
@@ -212,7 +208,7 @@
             for (; i < trees.length; i++){
                 tree = trees[i];
                 it = tree.self;
-                node = widget.addNode({id: it.id, label: it.name, parent: parent});
+                node = widget.addNode({id: it.iri || it.id, label: it.name, parent: parent});
                 fillForest(widget, node, tree.children);
             }
         }
@@ -270,7 +266,7 @@
             my.entryPayload = {
                 hosts:  filter(my.hostWidget.getUserSelectedNodes()),
                 pathogens: filter(my.pathogenWidget.getUserSelectedNodes()),
-                controlMeasures: toOntologies(my.$.controlMeasureSelect.val()),
+                controlMeasures: filter(my.controlMeasureWidget.getUserSelectedNodes()),
                 locations: filter(my.locationWidget.getUserSelectedNodes()),
                 types: filter(my.typeWidget.getUserSelectedNodes())
             };
@@ -282,12 +278,6 @@
                 return _.map(array, function(o) {
                     return _.pick(o, ['id', 'includeAncestors', 'includeDescendants']);
                 });
-            }
-
-            function toOntologies(id) {
-                if (! id)
-                    return null;
-                return [{id: id, includeAncestors: true, includeDescendants: true}];
             }
         }
 
