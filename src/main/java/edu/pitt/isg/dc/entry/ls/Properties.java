@@ -9,5 +9,5 @@ public class Properties {
     private Long gid;
     private String locationTypeName;
     private String name;
-    // private List<Properties> lineage;
+    private List<Properties> lineage;
 }

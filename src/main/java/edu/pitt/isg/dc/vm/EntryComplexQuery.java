@@ -28,6 +28,4 @@ public class EntryComplexQuery {
             return null;
         return Collections.singletonList(new OntologyQuery<T>(id));
     }
-
-
 }

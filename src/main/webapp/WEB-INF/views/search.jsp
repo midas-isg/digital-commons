@@ -3,6 +3,7 @@
 <html lang="en">
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 
 <html>
@@ -35,82 +36,54 @@
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
+    <!-- LoDash JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+
+    <!-- forest-widget.js -->
+    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>
 
 <body>
 <%--<myTags:header--%>
         <%--pageTitle="Search"--%>
         <%--loggedIn="${loggedIn}"/>--%>
 
-<div class="container">
+<div >
     <div id="retrievalTermsContainer">
         <div class=" panel panel-primary">
             <div class="panel-heading clearfix">
-        <span class="pull-right">
-          <%--<button class="btn btn-info" ng-show="searchHidden" ng-click="searchHidden = false" hidden>Show Controls</button>--%>
-        </span>
+                <span class="pull-right">
+                  <%--<button class="btn btn-info" ng-show="searchHidden" ng-click="searchHidden = false" hidden>Show Controls</button>--%>
+                </span>
             </div>
             <div class="panel-body" ng-hide="searchHidden">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <h4>MDC Search</h4>
-                        <table class="table">
-                            <tbody><tr>
-                                <td>Pathogen</td>
-                                <td>
-                                    <select id="pathogen-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${pathogens}">
-                                            <option value="${it.id}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                                <td>Host</td>
-                                <td>
-                                    <select id="host-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${hosts}">
-                                            <option value="${it.id}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                                <td>Location</td>
-                                <td>
-                                    <select id="location-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${locations}">
-                                            <option value="${it.alc}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                                <td>Control measure</td>
-                                <td>
-                                    <select id="control-measure-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${controlMeasures}">
-                                            <option value="${it.id}">${it.name}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                                <td>Type</td>
-                                <td>
-                                    <select id="type-select" type="text" class="form-control">
-                                        <option value="${null}">Any</option>
-                                        <c:forEach var="it" items="${types}">
-                                            <option value="${it[0]}">${it[1]}</option>
-                                        </c:forEach>
-                                    </select>
-                                </td>
-
-                            </tr>
-                            </tbody>
-                        </table>
-                        <button type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
+                    <%--<div class="col-md-1"></div>--%>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Location</h4>
+                        <div id="location-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Pathogen</h4>
+                        <div id="pathogen-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Host</h4>
+                        <div id="host-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Control Measure</h4>
+                        <div id="control-measure-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Type</h4>
+                        <div id="type-widget" style="max-height: 250px"></div>
                     </div>
                 </div>
+            </div>
+            <div class="panel-footer">
+                <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
+                <div class="clearfix"></div>
             </div>
         </div>
 
@@ -158,7 +131,7 @@
 
             <!-- Option one table -->
             <div class="panel panel-primary ng-hide" id="option1Panel" ng-show="showOptionSearch">
-                <div class="panel-heading clearfix">Results
+                <div class="panel-heading clearfix">Software matching by input and output formats
                     <div class="pull-right">
                     </div>
                 </div>
@@ -191,40 +164,55 @@
 <script>
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
+        var v = {
+           /* h: '250px',
+            w2: '175px',
+            w: '400px'*/
+        };
         var my = {
+            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget', v.w, v.h),
+            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget', v.w, v.h),
+            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget', v.w, v.h),
+            controlMeasureWidget: FOREST_WIDGET_CREATOR.create('control-measure-widget', v.w, v.h),
+            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget', v.w, v.h),
+            entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
-                hostSelect: $('#host-select'),
-                pathogenSelect: $('#pathogen-select'),
-                controlMeasureSelect: $('#control-measure-select'),
-                locationSelect: $('#location-select'),
-                typeSelect: $('#type-select')
+                searchButton: $('#search-button')
             }
         };
 
+        fillForest(my.pathogenWidget, null, JSON.parse('${pathogens}'));
+        fillForest(my.hostWidget, null, JSON.parse('${hosts}'));
+        fillForest(my.locationWidget, null, JSON.parse('${locations}'));
+        fillForest(my.controlMeasureWidget, null, JSON.parse('${controlMeasures}'));
+        <c:forEach var="it" items="${types}">
+            my.typeWidget.addNode({id: '${it[0]}', label: '${it[1]}'});
+        </c:forEach>
+
+        function fillForest(widget, parent, trees) {
+            var node, it, tree;
+            var i = 0;
+            for (; i < trees.length; i++){
+                tree = trees[i];
+                it = tree.self;
+                node = widget.addNode({id: it.iri || it.id, label: it.name, parent: parent});
+                fillForest(widget, node, tree.children);
+            }
+        }
+
         //my.$.softwareMatchButton.click(onClickSoftwareMatchButton);
-        my.$.hostSelect.change(reloadEntryTable);
-        my.$.pathogenSelect.change(reloadEntryTable);
-        my.$.controlMeasureSelect.change(reloadEntryTable);
-        my.$.locationSelect.change(reloadEntryTable);
-        my.$.typeSelect.change(reloadEntryTable);
+        my.$.searchButton.click(reloadEntryTable);
 
         my.entryTable = $('#entry-table').DataTable({
             ajax: {
                 url: urlSearch(),
+                type: "POST",
                 dataSrc: dataSrcAvoidingUndefined,
                 deferRender: true,
-                data: function (param) {
-                    if(my.host)
-                        param.hostId = my.host;
-                    if(my.pathogen)
-                        param.pathogenId = my.pathogen;
-                    if(my.controlMeasure)
-                        param.controlMeasureId = my.controlMeasure;
-                    if(my.location)
-                        param.locationId = my.location;
-                    if(my.type)
-                        param.type = my.type;
+                contentType: 'application/json',
+                data: function () {
+                    return JSON.stringify(my.entryPayload);
                 }
             },
             columns: [
@@ -263,16 +251,26 @@
 //        }
 //
         function reloadEntryTable(){
-            my.host = my.$.hostSelect.val();
-            my.pathogen = my.$.pathogenSelect.val();
-            my.controlMeasure = my.$.controlMeasureSelect.val();
-            my.location = my.$.locationSelect.val();
-            my.type = my.$.typeSelect.val();
+            my.entryPayload = {
+                hosts:  filter(my.hostWidget.getUserSelectedNodes()),
+                pathogens: filter(my.pathogenWidget.getUserSelectedNodes()),
+                controlMeasures: filter(my.controlMeasureWidget.getUserSelectedNodes()),
+                locations: filter(my.locationWidget.getUserSelectedNodes()),
+                types: filter(my.typeWidget.getUserSelectedNodes())
+            };
             my.entryTable.ajax.reload();
+
+            function filter(array) {
+                if (! array || array.length === 0)
+                    return array;
+                return _.map(array, function(o) {
+                    return _.pick(o, ['id', 'includeAncestors', 'includeDescendants']);
+                });
+            }
         }
 
         function urlSearch(size) {
-            return entryApi + 'search/by-ontology?size=' + (size || 1000000);
+            return entryApi + 'search/via-ontology?size=' + (size || 1000000);
         }
 
         function wholeRow(row){
