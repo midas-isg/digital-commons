@@ -48,55 +48,42 @@
         <%--pageTitle="Search"--%>
         <%--loggedIn="${loggedIn}"/>--%>
 
-<div class="container">
+<div >
     <div id="retrievalTermsContainer">
         <div class=" panel panel-primary">
             <div class="panel-heading clearfix">
-        <span class="pull-right">
-          <%--<button class="btn btn-info" ng-show="searchHidden" ng-click="searchHidden = false" hidden>Show Controls</button>--%>
-        </span>
+                <span class="pull-right">
+                  <%--<button class="btn btn-info" ng-show="searchHidden" ng-click="searchHidden = false" hidden>Show Controls</button>--%>
+                </span>
             </div>
             <div class="panel-body" ng-hide="searchHidden">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <h4>MDC Search</h4>
-                        <table class="table">
-                            <c:set var="csv" value='Pathogen,Host,Location,Control measure,Type' scope="application" />
-                            <c:set var="all" value="${fn:split(csv, ',')}" scope="application" />
-                            <thead>
-                            <c:forEach var="it" items="${all}">
-                                <td>${it}</td>
-                            </c:forEach>
-                            </thead>
-                            <tbody><tr>
-                                <td>
-                                    <div id="pathogen-widget"></div>
-                                </td>
-                                <td>
-                                    <div id="host-widget"></div>
-                                </td>
-                                <td>
-                                    <div id="location-widget"></div>
-                                </td>
-
-                                <td>
-                                    <div id="control-measure-widget"></div>
-                                </td>
-                                <td>
-                                    <div id="type-widget"></div>
-                                </td>
-                            </tr>
-                            </tbody>
-                            <tfoot>
-                            <c:forEach var="it" items="${all}">
-                                <td>${it}</td>
-                            </c:forEach>
-                            </tfoot>
-
-                        </table>
-                        <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
+                    <%--<div class="col-md-1"></div>--%>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Location</h4>
+                        <div id="location-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Pathogen</h4>
+                        <div id="pathogen-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Host</h4>
+                        <div id="host-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Control Measure</h4>
+                        <div id="control-measure-widget" style="max-height: 250px"></div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <h4 class="content-title-font">Type</h4>
+                        <div id="type-widget" style="max-height: 250px"></div>
                     </div>
                 </div>
+            </div>
+            <div class="panel-footer">
+                <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-primary pull-right">Search</button>
+                <div class="clearfix"></div>
             </div>
         </div>
 
@@ -178,8 +165,9 @@
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
         var v = {
-            h: '400px',
-            w: '200px'
+           /* h: '250px',
+            w2: '175px',
+            w: '400px'*/
         };
         var my = {
             pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget', v.w, v.h),
