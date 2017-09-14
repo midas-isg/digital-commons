@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, EntryId> {
@@ -45,7 +46,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<Entry> findDistinctPublicEntries(Long entryId, Long revisionId);
 
     Page<Entry> findAllByIsPublic(boolean status, Pageable pageable);
-    Page<Entry> findByIdIn(List<EntryId> ids, Pageable pageable);
+    Page<Entry> findByIdIn(Set<EntryId> ids, Pageable pageable);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT entry_id, revision_id  FROM entry\n" +
             "WHERE EXISTS (\n" +
@@ -54,18 +55,18 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "    AND about #>> '{identifier,identifier}' IN ?3\n" +
             "    " + AND_PUBLIC +"\n" +
             ")")
-    List<Object[]> filterIdsByFieldAndIdentifierSource(String field, String srcId, List<String> onlyIds);
+    List<Object[]> filterIdsByFieldAndIdentifierSource(String field, String srcId, Set<String> onlyIds);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT about #>> '{identifier,identifier}' " +
             "FROM entry, jsonb_array_elements(content #> ARRAY['entry',?1]) AS about " +
             "WHERE about #>> '{identifier,identifierSource}' = ?2 " +
             AND_PUBLIC)
-    List<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
+    Set<String> listIdentifiersByFieldAndIdentifierSource(String field, String srcId);
 
     @Query(nativeQuery = true, value = "SELECT entry_id, revision_id from entry " +
             "WHERE content #>> '{properties,type}' IN ?1 " +
             AND_PUBLIC)
-    List<Object[]> filterIdsByTypes(String[] onlyTypes);
+    List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             "FROM entry WHERE " + IS_PUBLIC)
@@ -108,4 +109,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value = "select * from entry where " +
             "content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     Entry findByMetadataIdentifier(String identifier);
+
+    @Query(nativeQuery = true, value="select * from entry where is_public = true;")
+    List<Entry> findPublicEntries();
 }

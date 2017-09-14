@@ -2,6 +2,8 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.wordnik.swagger.annotations.*;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -137,6 +139,34 @@ public class WebServiceController {
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier: " + identifier);
+    }
+
+    @GET
+    @ApiOperation(value = "Retrieves the contents of every public entry in the MIDAS Digital Commons.", notes = "This method retrieves the contents of every public entry in the MIDAS Digital Commons.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "A JSON array containing the contents of every public entry.")
+    })
+    @RequestMapping(value = "/contents", method = RequestMethod.GET, headers = "Accept=application/json")
+    public @ResponseBody
+    String getPublicEntryContents(ModelMap model) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        List<Entry> entries = apiUtil.getPublicEntryContents();
+
+        JsonParser parser = new JsonParser();
+        JsonArray jsonArray = new JsonArray();
+        for(int i = 0; i < entries.size(); i++) {
+            EntryView entryView = new EntryView(entries.get(i));
+            String json = entryView.getUnescapedEntryJsonString();
+            JsonElement element = parser.parse(json).getAsJsonObject();
+
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("type", entryView.getEntryType());
+            jsonObject.add("content", element);
+
+            jsonArray.add(jsonObject);
+        }
+
+        return gson.toJson(jsonArray);
     }
 
 }

@@ -2,9 +2,11 @@ package edu.pitt.isg.dc.controller.ws;
 
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRule;
+import edu.pitt.isg.dc.vm.EntryComplexQuery;
 import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +15,7 @@ import javax.transaction.Transactional;
 import static edu.pitt.isg.dc.controller.MediaType.Application.JSON;
 import static edu.pitt.isg.dc.controller.MediaType.Text.XML;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequiredArgsConstructor
@@ -25,6 +28,14 @@ public class EntryController{
             produces = {JSON, XML})
     public Object findViaOntology(EntrySimpleQuery q/*, Pageable pageRequest*/) {
         return rule.findViaOntology(q, null);
+    }
+
+    @Transactional
+    @RequestMapping(value = "/entries/search/via-ontology",
+            method = POST,
+            produces = {JSON, XML})
+    public Object search(@RequestBody EntryComplexQuery q/*, Pageable pageRequest*/) {
+        return rule.search(q, null);
     }
 
     @RequestMapping(value = "/entries/{id}/{rev}",
