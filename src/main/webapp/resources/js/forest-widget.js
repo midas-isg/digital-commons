@@ -6,6 +6,10 @@
 
 var FOREST_WIDGET_CREATOR =
     (function() {
+        var ballotBox = "&#9744;",
+            checkedBox = "&#9745;",
+            boldCheck = "&#10004;";
+
         function ForestWidgetCreator() {
             return;
         }
@@ -23,7 +27,7 @@ var FOREST_WIDGET_CREATOR =
             if(parentNode) {
                 if(!parentNode.data.userSelected) {
                     parentNode.input.checked = truth;
-                    parentNode.graphicBox.innerHTML = truth ? "&#9745;": "&#9744;";
+                    parentNode.graphicBox.innerHTML = truth ? checkedBox: ballotBox;
                 }
 
                 if(parentNode.data.parent) {
@@ -46,7 +50,7 @@ var FOREST_WIDGET_CREATOR =
 
                 if(!currentNode.data.userSelected) {
                     currentNode.input.checked = truth;
-                    currentNode.graphicBox.innerHTML = truth ? "&#9745;": "&#9744;";
+                    currentNode.graphicBox.innerHTML = truth ? checkedBox: ballotBox;
                 }
 
                 for(i = 0; i < currentNode.data.children.length; i++) {
@@ -81,7 +85,6 @@ var FOREST_WIDGET_CREATOR =
 
             this.element = document.createElement("div");
             this.element.className = "node";
-            this.element.style.width = "100%";
 
             if(parent) {
                 this.data.parent = parent;
@@ -92,7 +95,6 @@ var FOREST_WIDGET_CREATOR =
             this.input = document.createElement("input");
             this.input.id = "node-" + this.data.id;
             this.input.type = "checkbox";
-            this.input.style.display = "none";
             this.input.onchange = function() {
                 thisNode.data.userSelected = this.checked;
                 thisNode.data.includeAncestors = dataInstance.includeAncestors;
@@ -107,8 +109,9 @@ var FOREST_WIDGET_CREATOR =
                 }
 
                 if(thisNode.data.userSelected) {
-                    thisNode.graphicBox.innerHTML = "&#10004;";
-                    thisNode.graphicBox.style.fontWeight = "900";
+                    thisNode.graphicBox.innerHTML = boldCheck;
+                    thisNode.graphicBox.classList.remove("light-font");
+                    thisNode.graphicBox.classList.add("bold-font");
 
                     for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
                         if(dataInstance.userSelectedNodes[i] === thisNode.data) {
@@ -119,8 +122,9 @@ var FOREST_WIDGET_CREATOR =
                     dataInstance.userSelectedNodes.push(thisNode.data);
                 }
                 else {
-                    thisNode.graphicBox.innerHTML = "&#9744;";
-                    thisNode.graphicBox.style.fontWeight = "100";
+                    thisNode.graphicBox.innerHTML = ballotBox;
+                    thisNode.graphicBox.classList.remove("bold-font");
+                    thisNode.graphicBox.classList.add("light-font");
 
                     thisNode.data.includeAncestors = dataInstance.includeAncestors;
                     thisNode.data.includeDescendants = dataInstance.includeDescendants;
@@ -140,9 +144,9 @@ var FOREST_WIDGET_CREATOR =
             span.innerHTML = this.data.label;
 
             this.graphicBox = document.createElement("label");
-            this.graphicBox.style.margin = "3px 3px 3px 4px";
-            this.graphicBox.innerHTML = "&#9744;";
-            this.graphicBox.style.fontWeight = "100";
+            this.graphicBox.className = "neo-checkbox";
+            this.graphicBox.innerHTML = ballotBox;
+            this.graphicBox.classList.add("light-font");
             this.graphicBox.onclick = function() {
                 thisNode.input.checked = !thisNode.input.checked;
                 thisNode.input.onchange();
@@ -183,13 +187,6 @@ var FOREST_WIDGET_CREATOR =
 
                 widgetBody.style.width = dataInstance.width;
                 widgetBody.style.height = dataInstance.height;
-                widgetBody.style.boxSizing = "border-box";
-
-                optionsBody.style.width = "100%";
-
-                forestContainer.style.width = "100%";
-                forestContainer.style.overflowX = "auto";
-                forestContainer.style.overflowY = "auto";
 
                 function createCheckbox(value, label) {
                     var div = document.createElement("div"),
@@ -198,8 +195,6 @@ var FOREST_WIDGET_CREATOR =
 
                     input.type = "checkbox";
                     input.value = value;
-                    input.style.boxSizing = "border-box";
-                    input.style.margin = "3px 3px 3px 4px";
 
                     if(value === "ancestors") {
                         input.onchange = function() {

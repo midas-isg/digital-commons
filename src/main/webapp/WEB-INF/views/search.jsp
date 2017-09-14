@@ -59,25 +59,25 @@
             <div class="panel-body" ng-hide="searchHidden">
                 <div class="row">
                     <%--<div class="col-md-1"></div>--%>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Location</h4>
-                        <div id="location-widget" style="max-height: 250px"></div>
+                        <div id="location-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Pathogen</h4>
-                        <div id="pathogen-widget" style="max-height: 250px"></div>
+                        <div id="pathogen-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Host</h4>
-                        <div id="host-widget" style="max-height: 250px"></div>
+                        <div id="host-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Control Measure</h4>
-                        <div id="control-measure-widget" style="max-height: 250px"></div>
+                        <div id="control-measure-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Type</h4>
-                        <div id="type-widget" style="max-height: 250px"></div>
+                        <div id="type-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
                     </div>
                 </div>
             </div>
@@ -164,17 +164,13 @@
 <script>
     $(document).ready(function (){
         var entryApi = '${pageContext.request.contextPath}/entries/';
-        var v = {
-           /* h: '250px',
-            w2: '175px',
-            w: '400px'*/
-        };
+
         var my = {
-            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget', v.w, v.h),
-            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget', v.w, v.h),
-            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget', v.w, v.h),
-            controlMeasureWidget: FOREST_WIDGET_CREATOR.create('control-measure-widget', v.w, v.h),
-            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget', v.w, v.h),
+            pathogenWidget: FOREST_WIDGET_CREATOR.create('pathogen-widget'),
+            hostWidget: FOREST_WIDGET_CREATOR.create('host-widget'),
+            locationWidget: FOREST_WIDGET_CREATOR.create('location-widget'),
+            controlMeasureWidget: FOREST_WIDGET_CREATOR.create('control-measure-widget'),
+            typeWidget: FOREST_WIDGET_CREATOR.create('type-widget'),
             entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
