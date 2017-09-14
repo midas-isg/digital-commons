@@ -1,57 +1,54 @@
 /*
-Forest Widget Example CSS
+	Forest Widget Classes
 */
 
-body {
-    background-color: #f0f0f0;
-}
-
-h1 {
-    text-align: center;
-}
-
-p {
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 3px;
-    margin: 0px;
-}
-
-.extra-bottom-space {
-    margin-bottom: 10px;
-}
-
-form {
-    background-color: #ffffff;
-
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 5px;
-    margin-bottom: 2px;
-}
-
-/* Forest Widget Classes */
 div.widget-body {
     border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
     padding: 2px;
     display: inline-block;
-    background-color: #a0a0c0;
     vertical-align: top;
+    box-sizing: border-box;
 }
 
-form.tree-body {
-    padding: 2px;
+div.widget-body form.options-body {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 2px;
+    width: 100%;
 }
 
-form.forest-body div.node{
-    padding-left: 0px;
+div.widget-body form.options-body input[type=checkbox] {
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
 }
 
-div.node {
-    padding-right: 2px;
+div.widget-body form.forest-container {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 1px;
+    width: 100%;
+    overflow: auto;
 }
 
-form.options-body {
-    padding: 2px;
-    margin-bottom: 5px;
+div.widget-body form.forest-container div.forest-body div.node {
+    width: 100%;
+}
+
+div.widget-body form.forest-container div.forest-body div.node input[type=checkbox] {
+    display: none;
+}
+
+div.widget-body form.forest-container div.forest-body div.node label.neo-checkbox {
+    margin: 3px 3px 3px 4px;
+}
+
+.light-font {
+    font-weight: 100;
+}
+
+.bold-font {
+    font-weight: 900;
 }
