@@ -55,9 +55,9 @@ public class EntryController{
         Entry entry = rule.read(new EntryId(id, rev));
         EntryView entryView = new EntryView(entry);
 
-        String jsonString = entryView.getEntryJsonString();
+        String jsonString = entryView.getUnescapedEntryJsonString();
         String type = entryView.getEntryTypeBaseName();
-        String xmlString = entryView.getEscapedXmlString();
+        String xmlString = entryView.getXmlString();
 
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("json", jsonString);
