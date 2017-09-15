@@ -203,6 +203,14 @@ public class EntryObject {
         }
     }
 
+    public String getEntryTypeBaseName() {
+        String type = this.getEntryType();
+        if(!type.equals("N/A")) {
+            type = type.substring(type.lastIndexOf('.') + 1, type.length());
+        }
+        return type;
+    }
+
     public Object getEntryAsTypeClass() {
         GsonBuilder gsonBuilder = new GsonBuilder().serializeNulls();
         Gson gson = gsonBuilder.create();

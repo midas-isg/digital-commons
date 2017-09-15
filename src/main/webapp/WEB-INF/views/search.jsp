@@ -276,11 +276,18 @@
         function renderLinkWithTitleOrName(data) {
             var entry = data.content.entry;
             var name = entry.title || entry.name || '<i>N/A</i>';
-            return linkHtml(data.id.entryId, data.id.revisionId, name);
 
-            function linkHtml(id, rev, name) {
-                return '<a href="' + entryApi + id + '/' + rev + '">' + name + '</a>';
-            }
+            return linkHtml(data.id.entryId, data.id.revisionId, name);
+        }
+
+        function getDataAndOpenModal(id, rev) {
+            $.post("${pageContext.request.contextPath}" + "/entryInfo/" + id + '/' + rev, function(data){
+                console.log(data);
+            });
+        }
+
+        function linkHtml(id, rev, name) {
+            return '<a href="" onclick=\'event.preventDefault(); getDataAndOpenModal("' + id + '","' + rev + '")\'>' + name + '</a>';
         }
     });
 </script>
