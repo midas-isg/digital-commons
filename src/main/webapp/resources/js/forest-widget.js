@@ -1,14 +1,14 @@
 /*
-	Forest Widget
-*/
+ Forest Widget
+ */
 
 "use strict";
 
 var FOREST_WIDGET_CREATOR =
     (function() {
-        var ballotBox = "&#9744;",
-            checkedBox = "&#9745;",
-            boldCheck = "&#10004;";
+        var ballotBox = "inherit",
+            checkedBox = "#AAAAFF",
+            boldCheck = "#AAFFAA";
 
         function ForestWidgetCreator() {
             return;
@@ -27,7 +27,7 @@ var FOREST_WIDGET_CREATOR =
             if(parentNode) {
                 if(!parentNode.data.userSelected) {
                     parentNode.input.checked = truth;
-                    parentNode.graphicBox.innerHTML = truth ? checkedBox: ballotBox;
+                    parentNode.span.style.backgroundColor = truth ? checkedBox: ballotBox;
                 }
 
                 if(parentNode.data.parent) {
@@ -50,7 +50,7 @@ var FOREST_WIDGET_CREATOR =
 
                 if(!currentNode.data.userSelected) {
                     currentNode.input.checked = truth;
-                    currentNode.graphicBox.innerHTML = truth ? checkedBox: ballotBox;
+                    currentNode.span.style.backgroundColor = truth ? checkedBox: ballotBox;
                 }
 
                 for(i = 0; i < currentNode.data.children.length; i++) {
@@ -63,7 +63,6 @@ var FOREST_WIDGET_CREATOR =
 
         function Node(label, id, parent, dataInstance) {
             var thisNode = this,
-                span,
                 i;
 
             this.input;
@@ -109,9 +108,7 @@ var FOREST_WIDGET_CREATOR =
                 }
 
                 if(thisNode.data.userSelected) {
-                    thisNode.graphicBox.innerHTML = boldCheck;
-                    thisNode.graphicBox.classList.remove("light-font");
-                    thisNode.graphicBox.classList.add("bold-font");
+                    thisNode.span.style.backgroundColor = boldCheck;
 
                     for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
                         if(dataInstance.userSelectedNodes[i] === thisNode.data) {
@@ -122,9 +119,7 @@ var FOREST_WIDGET_CREATOR =
                     dataInstance.userSelectedNodes.push(thisNode.data);
                 }
                 else {
-                    thisNode.graphicBox.innerHTML = ballotBox;
-                    thisNode.graphicBox.classList.remove("bold-font");
-                    thisNode.graphicBox.classList.add("light-font");
+                    thisNode.span.style.backgroundColor = ballotBox;
 
                     thisNode.data.includeAncestors = dataInstance.includeAncestors;
                     thisNode.data.includeDescendants = dataInstance.includeDescendants;
@@ -140,21 +135,13 @@ var FOREST_WIDGET_CREATOR =
                 return;
             }
 
-            span = document.createElement("span");
-            span.innerHTML = this.data.label;
+            this.span = document.createElement("span");
+            this.span.innerHTML = this.data.label;
 
-            this.graphicBox = document.createElement("label");
-            this.graphicBox.className = "neo-checkbox";
-            this.graphicBox.innerHTML = ballotBox;
-            this.graphicBox.classList.add("light-font");
-            this.graphicBox.onclick = function() {
-                thisNode.input.checked = !thisNode.input.checked;
-                thisNode.input.onchange();
-            };
+            this.span.style.backgroundColor = ballotBox;
 
             this.element.appendChild(this.input);
-            this.element.appendChild(this.graphicBox);
-            this.element.appendChild(span);
+            this.element.appendChild(this.span);
 
             return;
         }
@@ -228,9 +215,10 @@ var FOREST_WIDGET_CREATOR =
                 parentElement.appendChild(widgetBody);
 
                 function resize() {
-                    //TODO: get proper width
-                    forestBody.style.width = (document.getElementsByTagName("body")[0].clientWidth * 0.34) + "px";
-                    forestContainer.style.height = (widgetBody.clientHeight - (optionsBody.offsetHeight + 8)) + "px";
+                    var diff = (widgetBody.offsetHeight - widgetBody.clientHeight) << 1,
+                        neoSize = widgetBody.clientHeight - (optionsBody.offsetHeight + diff);
+
+                    forestContainer.style.height = neoSize + "px";
 
                     return;
                 }

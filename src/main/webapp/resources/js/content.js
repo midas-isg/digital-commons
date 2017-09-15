@@ -351,3 +351,14 @@ function toggleModalItems(entry, type) {
     toggleModalItem('validator', entry, 'validator', true, false);
     toggleModalItem('spatialCoverage', entry, 'spatial-coverage', false, false);
 }
+
+function getDataAndOpenModal(id, rev) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
+        var entry = JSON.parse(data.json);
+        console.log(data, entry);
+        showModal(entry, data.type, data.xml);
+    });
+}

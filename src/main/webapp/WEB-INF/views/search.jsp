@@ -9,13 +9,16 @@
 <html>
 <head>
     <myTags:head/>
+    <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
     <myTags:header
             pageTitle="Search"
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
+    <myTags:analytics/>
 <body id="commons-body">
 
+<myTags:softwareModal/>
 
 <div class="margin-top-22">
     <div id="retrievalTermsContainer">
@@ -186,7 +189,7 @@
                 { data: 'linkDataFormatName'},
                 { data: 'sinkSoftwareName'}
             ],
-            processing: true
+            processing: true,
         });
 
         function dataSrcAvoidingUndefined(data) {
@@ -229,11 +232,12 @@
         function renderLinkWithTitleOrName(data) {
             var entry = data.content.entry;
             var name = entry.title || entry.name || '<i>N/A</i>';
-            return linkHtml(data.id.entryId, data.id.revisionId, name);
 
-            function linkHtml(id, rev, name) {
-                return '<a href="' + entryApi + id + '/' + rev + '">' + name + '</a>';
-            }
+            return linkHtml(data.id.entryId, data.id.revisionId, name);
+        }
+
+        function linkHtml(id, rev, name) {
+            return '<a href="#" onclick=\'' + "getDataAndOpenModal(" + id + "," + rev + ")" + '\'>' + name + '</a>';
         }
     });
 </script>

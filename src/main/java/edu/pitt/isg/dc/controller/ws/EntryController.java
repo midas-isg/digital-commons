@@ -1,7 +1,10 @@
 package edu.pitt.isg.dc.controller.ws;
 
+import com.google.gson.JsonObject;
+import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRule;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.vm.EntryComplexQuery;
 import edu.pitt.isg.dc.vm.EntrySimpleQuery;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +46,25 @@ public class EntryController{
             produces = {JSON, XML})
     public Object read(@PathVariable long id, @PathVariable long rev) {
         return rule.read(new EntryId(id, rev));
+    }
+
+    @RequestMapping(value = "/entryInfo/{id}/{rev}",
+            method = POST,
+            produces = {JSON, XML})
+    public String getEntryInfo(@PathVariable long id, @PathVariable long rev) {
+        Entry entry = rule.read(new EntryId(id, rev));
+        EntryView entryView = new EntryView(entry);
+
+        String jsonString = entryView.getUnescapedEntryJsonString();
+        String type = entryView.getEntryTypeBaseName();
+        String xmlString = entryView.getXmlString();
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("json", jsonString);
+        jsonObject.addProperty("type", type);
+        jsonObject.addProperty("xml", xmlString);
+
+        return jsonObject.toString();
     }
 
     @RequestMapping(value = "/entries/software-matched",
