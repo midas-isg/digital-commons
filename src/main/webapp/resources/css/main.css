@@ -777,3 +777,7 @@ label[disabled="disabled"]{
 .panel-primary {
     border-color: #0c2b65 !important;
 }
+
+tfoot {
+    display: none !important;
+}
