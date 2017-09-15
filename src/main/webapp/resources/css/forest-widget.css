@@ -20,6 +20,7 @@ div.widget-body form.options-body {
     width: 100%;
     white-space: nowrap;
     overflow: auto;
+    background: whitesmoke;
 }
 
 div.widget-body form.options-body input[type=checkbox],

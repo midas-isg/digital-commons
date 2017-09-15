@@ -773,3 +773,7 @@ label[disabled="disabled"]{
     background-color: #0c2b65;
     border-color: #0c2b65;
 }
+
+.panel-primary {
+    border-color: #0c2b65 !important;
+}
