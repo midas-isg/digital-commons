@@ -759,3 +759,9 @@ label[disabled="disabled"]{
 .text-center {
     text-align: center;
 }
+
+.panel-primary>.panel-heading {
+    color: #fff;
+    background-color: #0c2b65;
+    border-color: #0c2b65;
+}

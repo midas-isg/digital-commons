@@ -17,6 +17,8 @@
     <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
 
     <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/dt/dt-1.10.15/datatables.min.css"/>
+
     <title>${title}</title>
 
     <!-- jQuery imports -->
@@ -39,5 +41,16 @@
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
     <script src="${pageContext.request.contextPath}/resources/js/content.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+
+    <!-- LoDash JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+
+    <!-- forest-widget.js -->
+    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>
 
 </head>
