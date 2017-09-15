@@ -43,7 +43,6 @@
     <script>var ctx = "${pageContext.request.contextPath}"</script>
     <script src="${pageContext.request.contextPath}/resources/js/content.js"></script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
 
