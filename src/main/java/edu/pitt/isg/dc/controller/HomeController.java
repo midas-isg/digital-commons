@@ -208,7 +208,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(Model model) throws Exception {
+    public String search(Model model, HttpSession session) throws Exception {
         final List<QueryTree<Ncbi>> hosts = toForest(ncbiRule.findHostsInEntries());
         final List<QueryTree<Ncbi>> pathogens = toForest(ncbiRule.findPathogensInEntries());
         final List<QueryTree<Asv>> controlMeasures = toForest(asvRule.findControlMeasuresInEntries());;
@@ -223,6 +223,15 @@ public class HomeController {
         model.addAttribute("types", types);
         model.addAttribute("controlMeasures", gson.toJson(controlMeasures));
         model.addAttribute("locations", gson.toJson(locations));
+
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
         return "search";
     }
 
