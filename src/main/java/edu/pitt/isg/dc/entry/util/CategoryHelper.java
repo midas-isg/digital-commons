@@ -10,8 +10,12 @@ import edu.pitt.isg.dc.vm.OntologyQuery;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import scala.Char;
+
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.IntStream;
 
 @Component
 public class CategoryHelper {
@@ -28,16 +32,29 @@ public class CategoryHelper {
     @Autowired
     private LocationRule locationRule;
 
+    private Map<String, String> subcategoriesToCategories;
+
     public CategoryHelper(CategoryOrderRepository categoryOrderRepository, EntryApprovalInterface entryApprovalInterface) {
         this.categoryOrderRepository = categoryOrderRepository;
         this.entryApprovalInterface = entryApprovalInterface;
+        this.subcategoriesToCategories = new HashMap<>();
     }
 
     private Map<String, Object> getCategoryOrderMap() {
         List<CategoryOrder> categoryOrders = categoryOrderRepository.findAll();
+
         Category rootCategory = new Category();
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = new HashMap<>();
+
+        boolean populateSubcategoriesToCategories = false;
+        if(subcategoriesToCategories.size() == 0) {
+            populateSubcategoriesToCategories = true;
+        }
+
         for(CategoryOrder co : categoryOrders) {
+            if(populateSubcategoriesToCategories)
+                subcategoriesToCategories.put(co.getSubcategory().getCategory(), co.getCategory().getCategory());
+
             Category category = co.getCategory();
             CategoryWithOrder subcategory = new CategoryWithOrder(co.getSubcategory(), co.getOrdering());
 
@@ -128,6 +145,14 @@ public class CategoryHelper {
         return categoryEntryMap;
     }
 
+    private String getTopCategory(String category) {
+        List<String> list = Arrays.asList("Root", "Software", "Data", "Data Formats", "Standard Identifiers");
+        while(!list.contains(subcategoriesToCategories.get(category))) {
+            category = subcategoriesToCategories.get(category);
+        }
+        return category;
+    }
+
     public List<Map<String,String>> getEntryTrees() throws MdcEntryDatastoreException {
         Map<String, Object> map = this.getCategoryOrderMap();
         Category rootCategory = (Category) map.get("root");
@@ -153,6 +178,30 @@ public class CategoryHelper {
 
         List<Location> locations = locationRule.findLocationsInEntries();
         JsonArray treeNodes = new JsonArray();
+
+        String[] bins = new String[]{"A-B", "C-F", "G-L", "M-P", "R-S", "T-Z"};
+        int[] binSizes = new int[]{0,0,0,0,0,0};
+        for(String bin : bins) {
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("text", bin);
+            jsonObject.add("nodes", new JsonArray());
+            treeNodes.add(jsonObject);
+        }
+
+
+        Map<Character, Integer> binMap = new HashMap<>();
+        int index = 0;
+        for(char alphabet = 'a'; alphabet <= 'z'; alphabet++) {
+            int currentChar = (int) alphabet;
+            int lowerBound = (int) bins[index].toLowerCase().charAt(0);
+            int upperBound = (int) bins[index].toLowerCase().charAt(2);
+
+            if (!(currentChar >= lowerBound && currentChar <= upperBound))
+                index++;
+
+            binMap.put(alphabet, index);
+        }
+
         for(Location location : locations) {
             String locationType = location.getLocationTypeName();
             boolean isCountry = locationType.equalsIgnoreCase("country");
@@ -164,7 +213,12 @@ public class CategoryHelper {
                 state.addProperty("expanded", false);
                 node.add("state", state);
 
-                treeNodes.add(node);
+                int binIndex = binMap.get(location.getName().toLowerCase().charAt(0));
+                treeNodes.getAsJsonArray()
+                        .get(binIndex)
+                        .getAsJsonObject()
+                        .get("nodes").getAsJsonArray()
+                        .add(node);
 
                 List<OntologyQuery<Long>> queries = new ArrayList<>();
                 OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
@@ -176,12 +230,12 @@ public class CategoryHelper {
                 queries.add(ontologyQuery);
 
                 Set<EntryId> ids = locationRule.searchEntryIdsByAlc(queries);
-                List<String> typesAndTitles = new ArrayList<>();
                 for(EntryId id : ids) {
                     Entry entry = entryRule.read(id);
                     EntryView entryView = new EntryView(entry);
-                    String typeAndTitle = "[<span class=\"data-label\">" + entryView.getEntryTypeBaseName() + "</span>] " + entryView.getTitle() + " ";
-                    typesAndTitles.add(typeAndTitle);
+
+                    String topCategory = this.getTopCategory(entryView.getCategory().getCategory());
+                    String typeAndTitle = "[<span class=\"data-label\">" + topCategory + "</span>] " + entryView.getTitle();
 
                     JsonObject leafNode = new JsonObject();
                     leafNode.addProperty("entryId", entryView.getId().toString());
@@ -191,9 +245,24 @@ public class CategoryHelper {
                     leafNode.addProperty("type", entryView.getEntryType());
                     node.getAsJsonArray("nodes").add(leafNode);
                 }
-                node.addProperty("text", location.getName() + " [" + node.getAsJsonArray("nodes").size() + "]");
+
+                int size = node.getAsJsonArray("nodes").size();
+                binSizes[binIndex] += size;
+
+                node.addProperty("text", location.getName() + " [" + size + "]");
                 node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
-                System.out.println(location.getName() + " " + typesAndTitles.toString());
+            }
+        }
+
+        for(int i = 0; i < treeNodes.size(); i++) {
+            JsonObject jsonObject = treeNodes.get(i).getAsJsonObject();
+            jsonObject.addProperty("text", jsonObject.get("text").getAsString() + " [" + binSizes[i] + "]");
+            jsonObject.add("nodes", EntryHelper.sortedJsonArray(jsonObject.getAsJsonArray("nodes")));
+
+            if(i > 0) {
+                JsonObject state = new JsonObject();
+                state.addProperty("expanded", false);
+                jsonObject.add("state", state);
             }
         }
 
