@@ -2,12 +2,11 @@ package edu.pitt.isg.dc.entry.util;
 
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
-import edu.pitt.isg.dc.entry.Category;
-import edu.pitt.isg.dc.entry.CategoryOrder;
-import edu.pitt.isg.dc.entry.CategoryOrderRepository;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.vm.OntologyQuery;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -22,6 +21,12 @@ public class CategoryHelper {
 
     @Autowired
     private EntryApprovalInterface entryApprovalInterface;
+
+    @Autowired
+    private EntryRule entryRule;
+
+    @Autowired
+    private LocationRule locationRule;
 
     public CategoryHelper(CategoryOrderRepository categoryOrderRepository, EntryApprovalInterface entryApprovalInterface) {
         this.categoryOrderRepository = categoryOrderRepository;
@@ -145,6 +150,57 @@ public class CategoryHelper {
                 treeInfoArr.add(treeInfo);
             }
         }
+
+        List<Location> locations = locationRule.findLocationsInEntries();
+        JsonArray treeNodes = new JsonArray();
+        for(Location location : locations) {
+            String locationType = location.getLocationTypeName();
+            boolean isCountry = locationType.equalsIgnoreCase("country");
+            if(isCountry) {
+                JsonObject node = new JsonObject();
+                node.add("nodes", new JsonArray());
+
+                JsonObject state = new JsonObject();
+                state.addProperty("expanded", false);
+                node.add("state", state);
+
+                treeNodes.add(node);
+
+                List<OntologyQuery<Long>> queries = new ArrayList<>();
+                OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
+                ontologyQuery.setIncludeAncestors(false);
+
+                if(location.getName().equals("United States of America (the)"))
+                    ontologyQuery.setIncludeDescendants(false);
+
+                queries.add(ontologyQuery);
+
+                Set<EntryId> ids = locationRule.searchEntryIdsByAlc(queries);
+                List<String> typesAndTitles = new ArrayList<>();
+                for(EntryId id : ids) {
+                    Entry entry = entryRule.read(id);
+                    EntryView entryView = new EntryView(entry);
+                    String typeAndTitle = "<span id=\"data-label\">[" + entryView.getEntryTypeBaseName() + "]</span> " + entryView.getTitle() + " ";
+                    typesAndTitles.add(typeAndTitle);
+
+                    JsonObject leafNode = new JsonObject();
+                    leafNode.addProperty("entryId", entryView.getId().toString());
+                    leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
+                    leafNode.addProperty("xml", entryView.getXmlString());
+                    leafNode.addProperty("text", typeAndTitle);
+                    leafNode.addProperty("type", entryView.getEntryType());
+                    node.getAsJsonArray("nodes").add(leafNode);
+                }
+                node.addProperty("text", location.getName() + " [" + node.getAsJsonArray("nodes").size() + "]");
+                node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
+                System.out.println(location.getName() + " " + typesAndTitles.toString());
+            }
+        }
+
+        Map<String, String> treeInfo = new HashMap<>();
+        treeInfo.put("category", "Country");
+        treeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
+        treeInfoArr.add(treeInfo);
 
         return treeInfoArr;
     }

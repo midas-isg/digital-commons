@@ -75,8 +75,6 @@ public class HomeController {
     }
 
     @Autowired
-    private EntryRule entryRule;
-    @Autowired
     private SpewRule spewRule;
     @Autowired
     private NcbiRule ncbiRule;
@@ -194,54 +192,6 @@ public class HomeController {
         }
 
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
-
-        List<Location> locations = locationRule.findLocationsInEntries();
-        JsonArray treeNodes = new JsonArray();
-        for(Location location : locations) {
-            String locationType = location.getLocationTypeName();
-            boolean isCountry = locationType.equalsIgnoreCase("country");
-            if(isCountry) {
-                JsonObject node = new JsonObject();
-                node.addProperty("text", location.getName());
-                node.add("nodes", new JsonArray());
-
-                JsonObject state = new JsonObject();
-                state.addProperty("expanded", false);
-                node.add("state", state);
-
-                treeNodes.add(node);
-
-                List<OntologyQuery<Long>> queries = new ArrayList<>();
-                OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
-                ontologyQuery.setIncludeAncestors(false);
-                ontologyQuery.setIncludeDescendants(false);
-                queries.add(ontologyQuery);
-
-                Set<EntryId> ids = locationRule.searchEntryIdsByAlc(queries);
-                List<String> typesAndTitles = new ArrayList<>();
-                for(EntryId id : ids) {
-                    Entry entry = entryRule.read(id);
-                    EntryView entryView = new EntryView(entry);
-                    String typeAndTitle = "[" + entryView.getEntryTypeBaseName() + "] " + entryView.getTitle();
-                    typesAndTitles.add(typeAndTitle);
-
-                    JsonObject leafNode = new JsonObject();
-                    leafNode.addProperty("entryId", entryView.getId().toString());
-                    leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
-                    leafNode.addProperty("xml", entryView.getXmlString());
-                    leafNode.addProperty("text", typeAndTitle);
-                    leafNode.addProperty("type", entryView.getEntryType());
-                    node.getAsJsonArray("nodes").add(leafNode);
-                }
-                node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
-                System.out.println(location.getName() + " " + typesAndTitles.toString());
-            }
-        }
-
-        Map<String, String> treeInfo = new HashMap<>();
-        treeInfo.put("category", "Country");
-        treeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
-        treeInfoArr.add(treeInfo);
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
