@@ -180,7 +180,7 @@ public class CategoryHelper {
                 for(EntryId id : ids) {
                     Entry entry = entryRule.read(id);
                     EntryView entryView = new EntryView(entry);
-                    String typeAndTitle = "<span class=\"data-label\">[" + entryView.getEntryTypeBaseName() + "]</span> " + entryView.getTitle() + " ";
+                    String typeAndTitle = "[<span class=\"data-label\">" + entryView.getEntryTypeBaseName() + "</span>] " + entryView.getTitle() + " ";
                     typesAndTitles.add(typeAndTitle);
 
                     JsonObject leafNode = new JsonObject();
