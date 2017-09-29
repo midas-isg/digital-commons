@@ -33,7 +33,7 @@
                         <input type="radio" checked="checked" name="dataradio" id="data" value="${treeLoop.index}">Data
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location
+                        <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location (by country)
                     </label>
                 </form>
                 <div id="tree-${location_index}" class="treeview" style="display: none"></div>
