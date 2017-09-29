@@ -1,22 +1,23 @@
 package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.entry.Asv;
-import edu.pitt.isg.dc.entry.AsvRule;
-import edu.pitt.isg.dc.entry.Location;
-import edu.pitt.isg.dc.entry.LocationRule;
-import edu.pitt.isg.dc.entry.Ncbi;
-import edu.pitt.isg.dc.entry.NcbiRule;
-import edu.pitt.isg.dc.entry.TypeRule;
+import edu.pitt.isg.dc.entry.*;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import edu.pitt.isg.dc.vm.EntryComplexQuery;
+import edu.pitt.isg.dc.vm.OntologyQuery;
 import edu.pitt.isg.dc.vm.QueryTree;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -44,10 +45,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -76,6 +74,8 @@ public class HomeController {
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
     }
 
+    @Autowired
+    private EntryRule entryRule;
     @Autowired
     private SpewRule spewRule;
     @Autowired
@@ -194,6 +194,54 @@ public class HomeController {
         }
 
         List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
+
+        List<Location> locations = locationRule.findLocationsInEntries();
+        JsonArray treeNodes = new JsonArray();
+        for(Location location : locations) {
+            String locationType = location.getLocationTypeName();
+            boolean isCountry = locationType.equalsIgnoreCase("country");
+            if(isCountry) {
+                JsonObject node = new JsonObject();
+                node.addProperty("text", location.getName());
+                node.add("nodes", new JsonArray());
+
+                JsonObject state = new JsonObject();
+                state.addProperty("expanded", false);
+                node.add("state", state);
+
+                treeNodes.add(node);
+
+                List<OntologyQuery<Long>> queries = new ArrayList<>();
+                OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
+                ontologyQuery.setIncludeAncestors(false);
+                ontologyQuery.setIncludeDescendants(false);
+                queries.add(ontologyQuery);
+
+                Set<EntryId> ids = locationRule.searchEntryIdsByAlc(queries);
+                List<String> typesAndTitles = new ArrayList<>();
+                for(EntryId id : ids) {
+                    Entry entry = entryRule.read(id);
+                    EntryView entryView = new EntryView(entry);
+                    String typeAndTitle = "[" + entryView.getEntryTypeBaseName() + "] " + entryView.getTitle();
+                    typesAndTitles.add(typeAndTitle);
+
+                    JsonObject leafNode = new JsonObject();
+                    leafNode.addProperty("entryId", entryView.getId().toString());
+                    leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
+                    leafNode.addProperty("xml", entryView.getXmlString());
+                    leafNode.addProperty("text", typeAndTitle);
+                    leafNode.addProperty("type", entryView.getEntryType());
+                    node.getAsJsonArray("nodes").add(leafNode);
+                }
+                node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
+                System.out.println(location.getName() + " " + typesAndTitles.toString());
+            }
+        }
+
+        Map<String, String> treeInfo = new HashMap<>();
+        treeInfo.put("category", "Country");
+        treeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
+        treeInfoArr.add(treeInfo);
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);

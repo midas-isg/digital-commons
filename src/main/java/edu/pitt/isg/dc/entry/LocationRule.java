@@ -42,7 +42,7 @@ public class LocationRule {
         return findAll(listAlcsAsLocationInEntries());
     }
 
-    Set<EntryId> searchEntryIdsByAlc(List<OntologyQuery<Long>> queries) {
+    public Set<EntryId> searchEntryIdsByAlc(List<OntologyQuery<Long>> queries) {
         final Set<String> alcs = toRelevantIdentifiers(queries);
         if (alcs == null)
             return null;
