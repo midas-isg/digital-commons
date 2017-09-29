@@ -779,3 +779,9 @@ label[disabled="disabled"]{
 tfoot {
     display: none !important;
 }
+
+.data-label {
+    font-style: italic;
+    color: #0c2b65;
+    font-size: 13px;
+}
