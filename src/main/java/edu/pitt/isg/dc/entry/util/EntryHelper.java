@@ -1,9 +1,8 @@
 package edu.pitt.isg.dc.entry.util;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
+import com.google.gson.*;
+import com.google.gson.reflect.TypeToken;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
@@ -13,11 +12,9 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.nio.file.Paths;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 import static edu.pitt.isg.dc.entry.Keys.STATUS;
 import static edu.pitt.isg.dc.entry.Keys.SUBTYPE;
@@ -219,6 +216,25 @@ public class EntryHelper {
     public static void pushDatastoreToGitHub() {
         synchronized (copyLock) {
 
+        }
+    }
+
+    public static JsonArray sortedJsonArray(JsonArray jsonArray) {
+        Type listType = new TypeToken<List<JsonObject>>() {}.getType();
+        List<JsonObject> myList = new Gson().fromJson(jsonArray, listType);
+        Collections.sort(myList, new JsonObjectTextComparator());
+
+        JsonArray sortedJsonArray = new JsonArray();
+        for(JsonObject listItem : myList)
+            sortedJsonArray.add(listItem);
+
+        return sortedJsonArray;
+    }
+
+    private static class JsonObjectTextComparator implements Comparator<JsonObject> {
+        @Override
+        public int compare(JsonObject o1, JsonObject o2) {
+            return o1.get("text").getAsString().toLowerCase().compareTo(o2.get("text").getAsString().toLowerCase());
         }
     }
 }

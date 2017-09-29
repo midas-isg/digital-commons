@@ -199,7 +199,7 @@ public class CategoryHelper {
             }
 
             if(nodeObj.has("nodes")) {
-                nodeObj.add("nodes", sortedJsonArray(nodeObj.getAsJsonArray("nodes")));
+                nodeObj.add("nodes", EntryHelper.sortedJsonArray(nodeObj.getAsJsonArray("nodes")));
             }
         }
         text += " [" + count + "]";
@@ -237,25 +237,6 @@ public class CategoryHelper {
         }
 
         return paths;
-    }
-
-    private JsonArray sortedJsonArray(JsonArray jsonArray) {
-        Type listType = new TypeToken<List<JsonObject>>() {}.getType();
-        List<JsonObject> myList = new Gson().fromJson(jsonArray, listType);
-        Collections.sort(myList, new JsonObjectTextComparator());
-
-        JsonArray sortedJsonArray = new JsonArray();
-        for(JsonObject listItem : myList)
-            sortedJsonArray.add(listItem);
-
-        return sortedJsonArray;
-    }
-
-    private class JsonObjectTextComparator implements Comparator<JsonObject> {
-        @Override
-        public int compare(JsonObject o1, JsonObject o2) {
-            return o1.get("text").getAsString().toLowerCase().compareTo(o2.get("text").getAsString().toLowerCase());
-        }
     }
 
     public Collection<Category> getBottomLevelCategories() throws MdcEntryDatastoreException {
