@@ -21,6 +21,16 @@
             </div>
         </c:if>
         <h3 class="content-title-font">${treeInfo.category}</h3>
+        <c:if test="${treeInfo.category == 'Data'}">
+            <form>
+                <label class="radio-inline">
+                    <input type="radio" checked="checked" name="dataradio" id="data" value="${treeLoop.index}">Data
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location
+                </label>
+            </form>
+        </c:if>
         <div id="tree-${treeLoop.index}" class="treeview"></div>
         <c:if test="${treeLoop.last}">
             <h3 class="content-title-font">Standard Identifiers</h3>
@@ -28,6 +38,19 @@
         </c:if>
     </div>
     <script>
+        $(document).ready(function() {
+            $("input[name$='dataradio']").click(function() {
+                var treeIndex = $(this).val();
+                var id =  $(this).attr("id");
+
+                if(id == "location") {
+                    $("#tree-" + treeIndex).hide();
+                } else {
+                    $("#tree-" + treeIndex).show();
+                }
+            });
+        });
+
         $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
         expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
     </script>
