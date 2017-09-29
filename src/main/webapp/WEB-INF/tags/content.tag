@@ -50,7 +50,6 @@
             $("input[name$='dataradio']").click(function() {
                 var treeIndex = $(this).val();
                 var id =  $(this).attr("id");
-                console.log("#${location_index}")
                 if(id == "location") {
                     $("#tree-${location_index}").show();
                     $("#tree-" + treeIndex).hide();
