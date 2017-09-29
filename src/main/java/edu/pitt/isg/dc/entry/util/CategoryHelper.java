@@ -193,7 +193,7 @@ public class CategoryHelper {
                 }
                 node.addProperty("text", location.getName() + " [" + node.getAsJsonArray("nodes").size() + "]");
                 node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
-                System.out.println(location.getName() + " " + typesAndTitles.toString());
+//                System.out.println(location.getName() + " " + typesAndTitles.toString());
             }
         }
 
