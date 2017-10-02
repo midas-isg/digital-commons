@@ -241,9 +241,15 @@ public class CategoryHelper {
                     JsonObject categoryJsonObject = null;
                     for(JsonElement nodeElement : nodeByCategory.getAsJsonArray("nodes")) {
                         JsonObject nodeObject = nodeElement.getAsJsonObject();
-                        if(nodeObject.get("text").getAsString().equals(topCategory)) {
+                        String nodeText = nodeObject.get("text").getAsString().replaceAll(" \\[.*?\\]", "");
+                        if(nodeText.equals(topCategory)) {
                             categoryJsonObject = nodeObject;
                             categoryJsonObject.getAsJsonArray("nodes").add(leafNodeByCategory);
+
+                            int count = categoryJsonObject.get("count").getAsInt() + 1;
+                            categoryJsonObject.addProperty("count", count);
+                            categoryJsonObject.addProperty("text", nodeText + " [" + count + "]");
+
                             break;
                         }
                     }
@@ -253,7 +259,8 @@ public class CategoryHelper {
                         categoryObjectNodes.add(leafNodeByCategory);
 
                         categoryJsonObject = new JsonObject();
-                        categoryJsonObject.addProperty("text", topCategory);
+                        categoryJsonObject.addProperty("text", topCategory + " [1]");
+                        categoryJsonObject.addProperty("count", 1);
                         categoryJsonObject.add("nodes", categoryObjectNodes);
 
                         JsonObject categoryState = new JsonObject();
@@ -293,13 +300,6 @@ public class CategoryHelper {
                 jsonObject.add("state", state);
                 categoryJsonObject.add("state", state);
             }
-
-            /*JsonArray categoryJsonObjectNodes = categoryJsonObject.get("nodes").getAsJsonArray();
-            for(int h = 0; h < categoryJsonObjectNodes.size(); i++) {
-                String text = categoryJsonObjectNodes.get(h).getAsJsonObject().get("text").getAsString();
-                int length = categoryJsonObjectNodes.get(h).getAsJsonObject().get("nodes").getAsJsonArray().size();
-                categoryJsonObjectNodes.get(h).getAsJsonObject().addProperty("text", text + " [" + length +  "]");
-            }*/
         }
 
         Map<String, String> countryTreeInfo = new HashMap<>();
