@@ -280,14 +280,26 @@ public class CategoryHelper {
         for(int i = 0; i < treeNodes.size(); i++) {
             JsonObject jsonObject = treeNodes.get(i).getAsJsonObject();
             jsonObject.addProperty("text", jsonObject.get("text").getAsString() + " [" + binSizes[i] + "]");
+
+            JsonObject categoryJsonObject = treeNodesByCategory.get(i).getAsJsonObject();
+            categoryJsonObject.addProperty("text", categoryJsonObject.get("text").getAsString() + " [" + binSizes[i] + "]");
+
             jsonObject.add("nodes", EntryHelper.sortedJsonArray(jsonObject.getAsJsonArray("nodes")));
+            categoryJsonObject.add("nodes", EntryHelper.sortedJsonArray(categoryJsonObject.getAsJsonArray("nodes")));
 
             if(i > 0) {
                 JsonObject state = new JsonObject();
                 state.addProperty("expanded", false);
                 jsonObject.add("state", state);
-                treeNodesByCategory.get(i).getAsJsonObject().add("state", state);
+                categoryJsonObject.add("state", state);
             }
+
+            /*JsonArray categoryJsonObjectNodes = categoryJsonObject.get("nodes").getAsJsonArray();
+            for(int h = 0; h < categoryJsonObjectNodes.size(); i++) {
+                String text = categoryJsonObjectNodes.get(h).getAsJsonObject().get("text").getAsString();
+                int length = categoryJsonObjectNodes.get(h).getAsJsonObject().get("nodes").getAsJsonArray().size();
+                categoryJsonObjectNodes.get(h).getAsJsonObject().addProperty("text", text + " [" + length +  "]");
+            }*/
         }
 
         Map<String, String> countryTreeInfo = new HashMap<>();
@@ -295,8 +307,8 @@ public class CategoryHelper {
         countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
 
         Map<String, String> countryTreeInfoByCategory = new HashMap<>();
-        countryTreeInfo.put("category", "Country by Category");
-        countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodesByCategory).toString()));
+        countryTreeInfoByCategory.put("category", "Country by Category");
+        countryTreeInfoByCategory.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodesByCategory).toString()));
 
         List<Map<String, String>> infoList = new ArrayList<>();
         infoList.add(countryTreeInfo);
