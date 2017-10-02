@@ -11,6 +11,7 @@ import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import scala.Char;
+import scala.util.parsing.json.JSON;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
@@ -153,29 +154,7 @@ public class CategoryHelper {
         return category;
     }
 
-    public List<Map<String,String>> getEntryTrees() throws MdcEntryDatastoreException {
-        Map<String, Object> map = this.getCategoryOrderMap();
-        Category rootCategory = (Category) map.get("root");
-        Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
-
-        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
-        this.getTreePaths();
-
-        JsonParser jsonParser = new JsonParser();
-        List<Map<String,String>> treeInfoArr = new ArrayList<>();
-        if(categoryOrderMap.size() > 0) {
-            for (CategoryWithOrder node : categoryOrderMap.get(rootCategory)) {
-                JsonArray tree = new JsonArray();
-                tree = this.recurseCategories(node.getCategory(), categoryOrderMap, categoryEntryMap, tree);
-                JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
-
-                Map<String, String> treeInfo = new HashMap<>();
-                treeInfo.put("category", node.getCategoryName());
-                treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
-                treeInfoArr.add(treeInfo);
-            }
-        }
-
+    private List<Map<String, String>> getInfoByCountry() {
         List<Location> locations = locationRule.findLocationsInEntries();
         JsonArray treeNodes = new JsonArray();
 
@@ -202,6 +181,8 @@ public class CategoryHelper {
             binMap.put(alphabet, index);
         }
 
+        Gson gson = new Gson();
+        JsonArray treeNodesByCategory = gson.fromJson(gson.toJson(treeNodes.getAsJsonArray()), JsonArray.class);
         for(Location location : locations) {
             String locationType = location.getLocationTypeName();
             boolean isCountry = locationType.equalsIgnoreCase("country");
@@ -213,19 +194,29 @@ public class CategoryHelper {
                 state.addProperty("expanded", false);
                 node.add("state", state);
 
+                JsonObject nodeByCategory = gson.fromJson(node.getAsJsonObject(), JsonObject.class);
+
                 int binIndex = binMap.get(location.getName().toLowerCase().charAt(0));
                 treeNodes.getAsJsonArray()
                         .get(binIndex)
                         .getAsJsonObject()
-                        .get("nodes").getAsJsonArray()
+                        .get("nodes")
+                        .getAsJsonArray()
                         .add(node);
+
+                treeNodesByCategory.getAsJsonArray()
+                        .get(binIndex)
+                        .getAsJsonObject()
+                        .get("nodes")
+                        .getAsJsonArray()
+                        .add(nodeByCategory);
 
                 List<OntologyQuery<Long>> queries = new ArrayList<>();
                 OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
                 ontologyQuery.setIncludeAncestors(false);
 
                 if(location.getName().equals("United States of America (the)"))
-                    ontologyQuery.setIncludeDescendants(false);
+                    ontologyQuery.setIncludeDescendants(true);
 
                 queries.add(ontologyQuery);
 
@@ -243,6 +234,35 @@ public class CategoryHelper {
                     leafNode.addProperty("xml", entryView.getXmlString());
                     leafNode.addProperty("text", typeAndTitle);
                     leafNode.addProperty("type", entryView.getEntryType());
+
+                    JsonObject leafNodeByCategory = gson.fromJson(leafNode.getAsJsonObject(), JsonObject.class);
+                    leafNodeByCategory.addProperty("text", entryView.getTitle());
+
+                    JsonObject categoryJsonObject = null;
+                    for(JsonElement nodeElement : nodeByCategory.getAsJsonArray("nodes")) {
+                        JsonObject nodeObject = nodeElement.getAsJsonObject();
+                        if(nodeObject.get("text").getAsString().equals(topCategory)) {
+                            categoryJsonObject = nodeObject;
+                            categoryJsonObject.getAsJsonArray("nodes").add(leafNodeByCategory);
+                            break;
+                        }
+                    }
+
+                    if(categoryJsonObject == null) {
+                        JsonArray categoryObjectNodes = new JsonArray();
+                        categoryObjectNodes.add(leafNodeByCategory);
+
+                        categoryJsonObject = new JsonObject();
+                        categoryJsonObject.addProperty("text", topCategory);
+                        categoryJsonObject.add("nodes", categoryObjectNodes);
+
+                        JsonObject categoryState = new JsonObject();
+                        categoryState.addProperty("expanded", true);
+                        categoryJsonObject.add("state", categoryState);
+
+                        nodeByCategory.getAsJsonArray("nodes").add(categoryJsonObject);
+                    }
+
                     node.getAsJsonArray("nodes").add(leafNode);
                 }
 
@@ -251,6 +271,9 @@ public class CategoryHelper {
 
                 node.addProperty("text", location.getName() + " [" + size + "]");
                 node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
+
+                nodeByCategory.addProperty("text", location.getName() + " [" + size + "]");
+                nodeByCategory.add("nodes", EntryHelper.sortedJsonArray(nodeByCategory.getAsJsonArray("nodes")));
             }
         }
 
@@ -263,13 +286,50 @@ public class CategoryHelper {
                 JsonObject state = new JsonObject();
                 state.addProperty("expanded", false);
                 jsonObject.add("state", state);
+                treeNodesByCategory.get(i).getAsJsonObject().add("state", state);
             }
         }
 
-        Map<String, String> treeInfo = new HashMap<>();
-        treeInfo.put("category", "Country");
-        treeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
-        treeInfoArr.add(treeInfo);
+        Map<String, String> countryTreeInfo = new HashMap<>();
+        countryTreeInfo.put("category", "Country");
+        countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
+
+        Map<String, String> countryTreeInfoByCategory = new HashMap<>();
+        countryTreeInfo.put("category", "Country by Category");
+        countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodesByCategory).toString()));
+
+        List<Map<String, String>> infoList = new ArrayList<>();
+        infoList.add(countryTreeInfo);
+        infoList.add(countryTreeInfoByCategory);
+
+        return infoList;
+    }
+
+    public List<Map<String,String>> getEntryTrees() throws MdcEntryDatastoreException {
+        Map<String, Object> map = this.getCategoryOrderMap();
+        Category rootCategory = (Category) map.get("root");
+        Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
+
+        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
+        this.getTreePaths();
+
+        List<Map<String,String>> treeInfoArr = new ArrayList<>();
+        if(categoryOrderMap.size() > 0) {
+            for (CategoryWithOrder node : categoryOrderMap.get(rootCategory)) {
+                JsonArray tree = new JsonArray();
+                tree = this.recurseCategories(node.getCategory(), categoryOrderMap, categoryEntryMap, tree);
+                JsonArray treeNodes = (JsonArray) tree.get(0).getAsJsonObject().get("nodes");
+
+                Map<String, String> treeInfo = new HashMap<>();
+                treeInfo.put("category", node.getCategoryName());
+                treeInfo.put("json", StringEscapeUtils.escapeJavaScript(treeNodes.toString()));
+                treeInfoArr.add(treeInfo);
+            }
+        }
+
+        List<Map<String, String>> infoList = this.getInfoByCountry();
+        treeInfoArr.add(infoList.get(0));
+        treeInfoArr.add(infoList.get(1));
 
         return treeInfoArr;
     }
