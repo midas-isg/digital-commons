@@ -10,7 +10,7 @@
               type="java.util.List"%>
 
 <c:forEach items="${treeInfoArr}" var="treeInfo" varStatus="treeLoop">
-    <c:if test="${treeInfo.category != 'Country'}">
+    <c:if test="${treeInfo.category != 'Country' and  treeInfo.category != 'Country by Category'}">
         <div class="col-sm-4">
             <c:if test="${treeLoop.last}">
                 <div class="legend-large hidden-xs">
@@ -25,7 +25,10 @@
             <c:if test="${treeInfo.category == 'Data'}">
                 <c:forEach items="${treeInfoArr}" var="checkTreeInfo" varStatus="loop">
                     <c:if test="${checkTreeInfo.category == 'Country'}">
-                        <c:set var = "location_index" value = "${loop.index}"/>
+                        <c:set var ="country_index" value = "${loop.index}"/>
+                    </c:if>
+                    <c:if test="${checkTreeInfo.category == 'Country by Category'}">
+                        <c:set var = "country_by_category_index" value = "${loop.index}"/>
                     </c:if>
                 </c:forEach>
                 <form>
@@ -36,7 +39,14 @@
                         <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location (by country)
                     </label>
                 </form>
-                <div id="tree-${location_index}" class="treeview" style="display: none"></div>
+                <div class="form-check form-check-inline" id="tree-check-box-div" style="display: none" onclick="toggleListing()">
+                    <span class="form-check-label">
+                        <input class="form-check-input" id="tree-check-box" type="checkbox" value="">
+                        Organize by datatype
+                    </span>
+                </div>
+                <div id="tree-${country_index}" class="treeview" style="display: none"></div>
+                <div id="tree-${country_by_category_index}" class="treeview" style="display: none"></div>
             </c:if>
             <div id="tree-${treeLoop.index}" class="treeview"></div>
             <c:if test="${treeLoop.last}">
@@ -51,14 +61,27 @@
                 var treeIndex = $(this).val();
                 var id =  $(this).attr("id");
                 if(id == "location") {
-                    $("#tree-${location_index}").show();
+                    $("#tree-check-box-div").show();
+                    toggleListing();
                     $("#tree-" + treeIndex).hide();
                 } else {
-                    $("#tree-${location_index}").hide();
+                    $("#tree-check-box-div").hide();
+                    $("#tree-${country_by_category_index}").hide();
+                    $("#tree-${country_index}").hide();
                     $("#tree-" + treeIndex).show();
                 }
             });
         });
+
+        function toggleListing() {
+            if (document.getElementById('tree-check-box').checked) {
+                $("#tree-${country_index}").hide();
+                $("#tree-${country_by_category_index}").show();
+            } else {
+                $("#tree-${country_index}").show();
+                $("#tree-${country_by_category_index}").hide();
+            }
+        }
 
         $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
         expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
