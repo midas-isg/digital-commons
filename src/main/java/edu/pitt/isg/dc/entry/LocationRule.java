@@ -54,8 +54,8 @@ public class LocationRule {
             return Collections.emptySet();
 
         final Stream<String> stream = fields.stream().parallel();
-        final Set<EntryId> ids = filterEntryId(stream, alcs);
-        log.debug("LS: " + alcs +  "=>" + ids.size() + " entries:" + ids);
+        final Set<EntryId> ids = filterEntryId(stream, optimizedIds);
+        log.debug("LS: " + optimizedIds +  "=>" + ids.size() + " entries:" + ids);
         return ids;
     }
 
