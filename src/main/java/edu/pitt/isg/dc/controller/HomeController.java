@@ -196,6 +196,7 @@ public class HomeController {
 
         if(treeInfoArr == null) {
             treeInfoArr = categoryHelper.getEntryTrees();
+            writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
         }
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
