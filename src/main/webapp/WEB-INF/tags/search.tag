@@ -10,11 +10,13 @@
 
     <iframe class="frame" scrolling="yes" allowfullscreen id="searchFrame"></iframe>
 
-   <script>
-       $(document).ready(function(){
-           $('#nav-serach-button').click(function(event){
-               $('iframe#searchFrame').attr('src', 'http://mdcsearchdev.onbc.io/#/');
-           });
-       });
-   </script>
+
+    <script>
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = $(e.target).attr("href") // activated tab
+            if(target == '#search') {
+                $('iframe#searchFrame').attr('src', 'http://mdcsearchdev.onbc.io/#/');
+            }
+        });
+    </script>
 </div>
