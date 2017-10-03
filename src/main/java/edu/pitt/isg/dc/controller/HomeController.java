@@ -23,6 +23,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,16 +63,18 @@ public class HomeController {
     private static String VIEWER_TOKEN = "";
     private static String SPEW_CACHE_FILE = "";
     private static String LIBRARY_COLLECTIONS_CACHE_FILE = "";
+    private static String TREE_INFO_CACHE_FILE = "";
     private String libraryCollectionsJson = "";
     public static final String LOGGED_IN_PROPERTY = "loggedIn";
     public static final String ADMIN_TYPE = "adminType";
-
+    private static List<Map<String,String>> treeInfoArr;
     static {
         Properties configurationProperties = DigitalCommonsProperties.getProperties();
         VIEWER_URL = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_URL);
         VIEWER_TOKEN = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_VIEWER_TOKEN);
         SPEW_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.SPEW_CACHE_FILE_LOCATION);
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
+        TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.TREE_INFO_CACHE_FILE_LOCATION);
     }
 
     @Autowired
@@ -191,7 +194,9 @@ public class HomeController {
             }
         }
 
-        List<Map<String,String>> treeInfoArr = categoryHelper.getEntryTrees();
+        if(treeInfoArr == null) {
+            treeInfoArr = categoryHelper.getEntryTrees();
+        }
 
         model.addAttribute("workflowLocationsAndIds", workflowLocationsAndIds);
         model.addAttribute("treeInfoArr", treeInfoArr);
@@ -350,21 +355,7 @@ public class HomeController {
 //        in.close();
 
         libraryCollectionsJson = result.toString();
-        writeCollectionsJson();
-    }
-
-    private void writeCollectionsJson() {
-        try {
-            Path path = Paths.get(LIBRARY_COLLECTIONS_CACHE_FILE);
-            FileOutputStream fos = new FileOutputStream(path.toFile());
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-            oos.writeObject(libraryCollectionsJson);
-        }catch (FileNotFoundException e) {
-            System.out.println(e.getMessage());
-        }catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
+        writeFile(libraryCollectionsJson, LIBRARY_COLLECTIONS_CACHE_FILE);
     }
 
     @RequestMapping(value = "/getSoftwareJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
@@ -396,7 +387,7 @@ public class HomeController {
         return "iframeView";
     }
 
-    @RequestMapping(value = "/main/api/cache-spew", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/cache-spew", method = RequestMethod.GET)
     public String cacheSpew(Model model) {
         try {
             Path path = Paths.get(SPEW_CACHE_FILE);
@@ -406,6 +397,60 @@ public class HomeController {
             Iterable<SpewLocation> spewRegions = spewRule.treeRegions();
 
             oos.writeObject(spewRegions);
+
+            model.addAttribute("status", "success");
+        } catch (Exception e) {
+            model.addAttribute("status", "fail");
+        }
+
+        return "cacheStatus";
+    }
+
+    @RequestMapping(value = "/getTreeInformation", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
+    public
+    @ResponseBody
+    List<Map<String,String>> getTreeInformation() throws Exception {
+
+        if(!treeInfoArr.isEmpty() && treeInfoArr != null) {
+            return treeInfoArr;
+        } else {
+            try {
+                Path path = Paths.get(TREE_INFO_CACHE_FILE);
+                FileInputStream fis = new FileInputStream(path.toFile());
+                ObjectInputStream ois = new ObjectInputStream(fis);
+                treeInfoArr = (List<Map<String,String>>) ois.readObject();
+                return treeInfoArr;
+            } catch (Exception e) {
+                treeInfoArr = categoryHelper.getEntryTrees();
+                writeFile(treeInfoArr, TREE_INFO_CACHE_FILE);
+                return treeInfoArr;
+            }
+        }
+    }
+
+    private void writeFile(Object fileToWrite, String fileString) {
+        try {
+            Path path = Paths.get(fileString);
+            FileOutputStream fos = new FileOutputStream(path.toFile());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(fileToWrite);
+        }catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        }catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    @RequestMapping(value = "api/cache-tree-info", method = RequestMethod.GET)
+    public String cacheTreeInfo(Model model) {
+        try {
+            treeInfoArr = categoryHelper.getEntryTrees();
+            Path path = Paths.get(TREE_INFO_CACHE_FILE);
+            FileOutputStream fos = new FileOutputStream(path.toFile());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(treeInfoArr);
 
             model.addAttribute("status", "success");
         } catch (Exception e) {

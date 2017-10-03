@@ -16,6 +16,7 @@ public class DigitalCommonsProperties extends Properties {
     public static final String ENTRIES_FILEPATH = "entriesFilepath";
     public static final String ENTRIES_AUTHENTICATION = "entriesAuthentication";
     public static final String ENTRIES_ADMIN_AUTHENTICATION = "entriesAdminAuthentication";
+    public static final String TREE_INFO_CACHE_FILE_LOCATION = "treeInfoCacheFileLocation";
     public static final String TEMP_FILEPATH = "tempFilepath";
 
 
