@@ -8,11 +8,13 @@
         Search
     </h3>
 
-    <iframe class="frame" src="http://mdcsearchdev.onbc.io/#/"  scrolling="yes" allowfullscreen id="searchFrame"></iframe>
+    <iframe class="frame" scrolling="yes" allowfullscreen id="searchFrame"></iframe>
 
    <script>
        $(document).ready(function(){
-           $('iframe#searchFrame').attr('src', 'http://mdcsearchdev.onbc.io/#/');
+           $('#nav-serach-button').click(function(event){
+               $('iframe#searchFrame').attr('src', 'http://mdcsearchdev.onbc.io/#/');
+           });
        });
    </script>
 </div>
