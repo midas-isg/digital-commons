@@ -9,7 +9,7 @@
 <html>
 <head>
     <myTags:head/>
-    <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
     <myTags:header
             pageTitle="Search"
             loggedIn="${loggedIn}"
