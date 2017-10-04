@@ -128,7 +128,7 @@ public class DataEntryController {
 
         String jsonString = null;
 
-        System.out.println(xmlString);
+//        System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
         }
