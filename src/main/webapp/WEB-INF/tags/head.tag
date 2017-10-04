@@ -41,7 +41,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
+    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
     <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>
 
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
@@ -53,6 +53,6 @@
 
     <!-- forest-widget.js -->
     <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
 
 </head>
