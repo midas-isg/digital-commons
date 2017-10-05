@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
+<myTags:computePlatformImports/>
+
 <div class="col-sm-12">
     <h3 class="title-font">Olympus</h3>
     <div class="font-size-16 standard-font">
@@ -15,7 +17,7 @@
             <br><br>
         </div>
         <div class="col-sm-5 no-padding">
-            <iframe id="olympus-video" class="full-width" height="275" src="" data-src="//www.youtube.com/embed/8DoMUjl_yCw" frameborder="0" allowfullscreen></iframe>
+            <iframe id="olympus-video" class="full-width" height="275" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 </div>
@@ -54,3 +56,12 @@
     <h4 class="subtitle-font">Modeling Platforms</h4>
     <div id="modeling-platforms-treeview" class="treeview"></div>
 </div>
+
+<script>
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var target = $(e.target).attr("href") // activated tab
+        if(target == '#compute-platform') {
+            $('iframe#olympus-video').attr('src', '//www.youtube.com/embed/8DoMUjl_yCw');
+        }
+    });
+</script>

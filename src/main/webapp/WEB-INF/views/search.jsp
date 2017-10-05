@@ -9,12 +9,16 @@
 <html>
 <head>
     <myTags:head/>
-    <script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
     <myTags:header
             pageTitle="Search"
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
+    <!-- forest-widget.js -->
+    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
+
     <myTags:analytics/>
 <body id="commons-body">
 
