@@ -206,7 +206,7 @@ public class CategoryHelper {
                     JsonObject categoryJsonObject = null;
                     for(JsonElement nodeElement : nodeByCategory.getAsJsonArray("nodes")) {
                         JsonObject nodeObject = nodeElement.getAsJsonObject();
-                        String nodeText = nodeObject.get("text").getAsString().replaceAll(" \\[.*?\\]", "");
+                        String nodeText = nodeObject.get("text")O;
                         if(nodeText.equals(topCategory)) {
                             categoryJsonObject = nodeObject;
                             categoryJsonObject.getAsJsonArray("nodes").add(leafNodeByCategory);

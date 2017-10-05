@@ -119,8 +119,8 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
 
         JsonObject leafNode = new JsonObject();
         leafNode.addProperty("entryId", entryView.getId().toString());
-        leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
-        leafNode.addProperty("xml", entryView.getXmlString());
+        //leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
+        //leafNode.addProperty("xml", entryView.getXmlString());
         leafNode.addProperty("text", title);
         leafNode.addProperty("type", entryView.getEntryType());
 
