@@ -1,22 +1,16 @@
 package edu.pitt.isg.dc.entry.util;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.classes.datatree.LocationDataTreeWithBins;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
-import edu.pitt.isg.dc.vm.OntologyQuery;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import scala.Char;
-import scala.util.parsing.json.JSON;
 
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.util.*;
-import java.util.stream.IntStream;
 
 @Component
 public class CategoryHelper {
@@ -34,6 +28,10 @@ public class CategoryHelper {
     private LocationRule locationRule;
 
     private Map<String, String> subcategoriesToCategories;
+
+    public CategoryHelper() {
+        this.subcategoriesToCategories = new HashMap<>();
+    }
 
     public CategoryHelper(CategoryOrderRepository categoryOrderRepository, EntryApprovalInterface entryApprovalInterface) {
         this.categoryOrderRepository = categoryOrderRepository;
@@ -146,7 +144,11 @@ public class CategoryHelper {
         return categoryEntryMap;
     }
 
-    private String getTopCategory(String category) {
+    public String getTopCategory(Category categoryObject) {
+        if(subcategoriesToCategories.size() == 0) {
+            this.getCategoryOrderMap();
+        }
+        String category = categoryObject.getCategory();
         List<String> list = Arrays.asList("Root", "Software", "Data", "Data Formats", "Standard Identifiers");
         while(!list.contains(subcategoriesToCategories.get(category))) {
             category = subcategoriesToCategories.get(category);
@@ -155,77 +157,40 @@ public class CategoryHelper {
     }
 
     private List<Map<String, String>> getInfoByCountry() {
-        List<Location> locations = locationRule.findLocationsInEntries();
-        JsonArray treeNodes = new JsonArray();
+        LocationDataTreeWithBins locationDataTree = new LocationDataTreeWithBins(locationRule, entryRule, this);
+        locationDataTree.populateTree();
 
-        String[] bins = new String[]{"A-B", "C-F", "G-L", "M-P", "R-S", "T-Z"};
-        int[] binSizes = new int[]{0,0,0,0,0,0};
-        for(String bin : bins) {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("text", bin);
-            jsonObject.add("nodes", new JsonArray());
-            treeNodes.add(jsonObject);
-        }
-
-
-        Map<Character, Integer> binMap = new HashMap<>();
-        int index = 0;
-        for(char alphabet = 'a'; alphabet <= 'z'; alphabet++) {
-            int currentChar = (int) alphabet;
-            int lowerBound = (int) bins[index].toLowerCase().charAt(0);
-            int upperBound = (int) bins[index].toLowerCase().charAt(2);
-
-            if (!(currentChar >= lowerBound && currentChar <= upperBound))
-                index++;
-
-            binMap.put(alphabet, index);
-        }
+        /*LocationDataTreeWithBins categoryDataTree = new LocationDataTreeWithBins(locationRule, entryRule);
+        JsonArray treeNodesByCategory = categoryDataTree.getTreeNodes();
 
         Gson gson = new Gson();
-        JsonArray treeNodesByCategory = gson.fromJson(gson.toJson(treeNodes.getAsJsonArray()), JsonArray.class);
         for(Location location : locations) {
             String locationType = location.getLocationTypeName();
             boolean isCountry = locationType.equalsIgnoreCase("country");
-            if(isCountry) {
-                JsonObject node = new JsonObject();
-                node.add("nodes", new JsonArray());
+            boolean isState = locationType.equalsIgnoreCase("state") && location.getPath().contains("544694/544695/542917/1216");
 
-                JsonObject state = new JsonObject();
-                state.addProperty("expanded", false);
-                node.add("state", state);
+            // countries or states that are not the US
+            if((isCountry || isState) && location.getId() != 1216) {
+                JsonObject node = dataTree.getEmptyNodeWithInnerNodes();
+                node.addProperty("isState", isState);
+                node.add("state", dataTree.getStateNode(false));
 
-                JsonObject nodeByCategory = gson.fromJson(node.getAsJsonObject(), JsonObject.class);
+                JsonObject nodeByCategory = categoryDataTree.getEmptyNodeWithInnerNodes();
+                nodeByCategory.addProperty("isState", isState);
+                nodeByCategory.add("state", categoryDataTree.getStateNode(false));
 
-                int binIndex = binMap.get(location.getName().toLowerCase().charAt(0));
-                treeNodes.getAsJsonArray()
-                        .get(binIndex)
-                        .getAsJsonObject()
-                        .get("nodes")
-                        .getAsJsonArray()
-                        .add(node);
+                dataTree.addNodeToBin(location.getName(), node);
+                treeNodes = dataTree.getTreeNodes();
 
-                treeNodesByCategory.getAsJsonArray()
-                        .get(binIndex)
-                        .getAsJsonObject()
-                        .get("nodes")
-                        .getAsJsonArray()
-                        .add(nodeByCategory);
+                categoryDataTree.addNodeToBin(location.getName(), node);
+                treeNodesByCategory = categoryDataTree.getTreeNodes();
 
-                List<OntologyQuery<Long>> queries = new ArrayList<>();
-                OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
-                ontologyQuery.setIncludeAncestors(false);
-
-                if(location.getName().equals("United States of America (the)"))
-                    ontologyQuery.setIncludeDescendants(true);
-
-                queries.add(ontologyQuery);
-
-                Set<EntryId> ids = locationRule.searchEntryIdsByAlc(queries);
+                Set<EntryId> ids = dataTree.getEntryIdsForLocation(location);
                 for(EntryId id : ids) {
                     Entry entry = entryRule.read(id);
                     EntryView entryView = new EntryView(entry);
 
-                    String topCategory = this.getTopCategory(entryView.getCategory().getCategory());
+                    String topCategory = this.getTopCategory(entryView.getCategory());
                     String typeAndTitle = "[<span class=\"data-label\">" + topCategory + "</span>] " + entryView.getTitle();
 
                     JsonObject leafNode = new JsonObject();
@@ -274,7 +239,7 @@ public class CategoryHelper {
                 }
 
                 int size = node.getAsJsonArray("nodes").size();
-                binSizes[binIndex] += size;
+                dataTree.adjustBinSizes(location.getName(), size);
 
                 node.addProperty("text", location.getName() + " [" + size + "]");
                 node.add("nodes", EntryHelper.sortedJsonArray(node.getAsJsonArray("nodes")));
@@ -284,12 +249,43 @@ public class CategoryHelper {
             }
         }
 
+
+        JsonObject unitedStates = new JsonObject();
+        unitedStates.add("nodes", new JsonArray());
+
+        JsonObject categoryUnitedStates = new JsonObject();
+        categoryUnitedStates.add("nodes", new JsonArray());
+
         for(int i = 0; i < treeNodes.size(); i++) {
             JsonObject jsonObject = treeNodes.get(i).getAsJsonObject();
-            jsonObject.addProperty("text", jsonObject.get("text").getAsString() + " [" + binSizes[i] + "]");
+
+            JsonArray innerNodes = jsonObject.getAsJsonArray("nodes");
+            for(Iterator<JsonElement> iterator = innerNodes.iterator(); iterator.hasNext();) {
+                JsonElement element = iterator.next();
+                JsonObject innerObject = element.getAsJsonObject();
+                boolean isState = innerObject.get("isState").getAsBoolean();
+                if(isState) {
+                    unitedStates.getAsJsonArray("nodes").add(innerObject);
+                    iterator.remove();
+                }
+            }
+
+            jsonObject.addProperty("text", jsonObject.get("text").getAsString() + " [" + dataTree.getBinSizes()[i] + "]");
 
             JsonObject categoryJsonObject = treeNodesByCategory.get(i).getAsJsonObject();
-            categoryJsonObject.addProperty("text", categoryJsonObject.get("text").getAsString() + " [" + binSizes[i] + "]");
+
+            JsonArray innerCategoryNodes = categoryJsonObject.getAsJsonArray("nodes");
+            for(Iterator<JsonElement> iterator = innerCategoryNodes.iterator(); iterator.hasNext();) {
+                JsonElement element = iterator.next();
+                JsonObject innerObject = element.getAsJsonObject();
+                boolean isState = innerObject.get("isState").getAsBoolean();
+                if(isState) {
+                    categoryUnitedStates.getAsJsonArray("nodes").add(innerObject);
+                    iterator.remove();
+                }
+            }
+
+            categoryJsonObject.addProperty("text", categoryJsonObject.get("text").getAsString() + " [" + dataTree.getBinSizes()[i] + "]");
 
             jsonObject.add("nodes", EntryHelper.sortedJsonArray(jsonObject.getAsJsonArray("nodes")));
             categoryJsonObject.add("nodes", EntryHelper.sortedJsonArray(categoryJsonObject.getAsJsonArray("nodes")));
@@ -302,6 +298,12 @@ public class CategoryHelper {
             }
         }
 
+        unitedStates.addProperty("text", "United States of America (the)");
+        categoryUnitedStates.addProperty("text", "United States of America (the)");
+
+        treeNodes.get(dataTree.getBins().length - 1).getAsJsonObject().getAsJsonArray("nodes").add(unitedStates);
+        treeNodesByCategory.get(dataTree.getBins().length - 1).getAsJsonObject().getAsJsonArray("nodes").add(categoryUnitedStates);
+
         Map<String, String> countryTreeInfo = new HashMap<>();
         countryTreeInfo.put("category", "Country");
         countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodes).toString()));
@@ -309,10 +311,15 @@ public class CategoryHelper {
         Map<String, String> countryTreeInfoByCategory = new HashMap<>();
         countryTreeInfoByCategory.put("category", "Country by Category");
         countryTreeInfoByCategory.put("json", StringEscapeUtils.escapeJavaScript(EntryHelper.sortedJsonArray(treeNodesByCategory).toString()));
+        */
+        Map<String, String> countryTreeInfo = new HashMap<>();
+        countryTreeInfo.put("category", "Country");
+        countryTreeInfo.put("json", StringEscapeUtils.escapeJavaScript(locationDataTree.getTreeNodes().toString()));
 
         List<Map<String, String>> infoList = new ArrayList<>();
         infoList.add(countryTreeInfo);
-        infoList.add(countryTreeInfoByCategory);
+        /*infoList.add(countryTreeInfo);
+        infoList.add(countryTreeInfoByCategory);*/
 
         return infoList;
     }
@@ -341,7 +348,7 @@ public class CategoryHelper {
 
         List<Map<String, String>> infoList = this.getInfoByCountry();
         treeInfoArr.add(infoList.get(0));
-        treeInfoArr.add(infoList.get(1));
+        //treeInfoArr.add(infoList.get(1));
 
         return treeInfoArr;
     }
