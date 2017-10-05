@@ -76,7 +76,8 @@ public class HomeController {
         LIBRARY_COLLECTIONS_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.LIBRARY_COLLECTIONS_CACHE_FILE_LOCATION);
         TREE_INFO_CACHE_FILE = configurationProperties.getProperty(DigitalCommonsProperties.TREE_INFO_CACHE_FILE_LOCATION);
     }
-
+    @Autowired
+    private EntryRule entryRule;
     @Autowired
     private SpewRule spewRule;
     @Autowired

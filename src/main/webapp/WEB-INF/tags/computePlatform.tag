@@ -3,6 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
+<myTags:computePlatformImports/>
+
 <div class="col-sm-12">
     <h3 class="title-font">Olympus</h3>
     <div class="font-size-16 standard-font">

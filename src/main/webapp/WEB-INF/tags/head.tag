@@ -14,11 +14,13 @@
 
     <myTags:favicon></myTags:favicon>
 
-    <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/combined.css" rel="stylesheet">
 
-    <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <%--<link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">--%>
+
+    <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>
+    <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>--%>
 
     <title>${title}</title>
 
@@ -27,32 +29,29 @@
             integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 
     <!-- Bootstrap CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"
-          rel="stylesheet">
+    <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">--%>
+    <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"--%>
+          <%--rel="stylesheet">--%>
 
     <!-- Bootstrap JS -->
-    <script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>
-    <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>--%>
+    <%--<script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>--%>
 
-    <script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>--%>
 
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>--%>
 
     <script>var ctx = "${pageContext.request.contextPath}"</script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>
-    <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>
+    <%--<script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.min.js?v=" + Date.now() + "'><\/script>");</script>--%>
+    <%--<script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>--%>
 
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>
+    <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+    <%--<script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>--%>
 
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/combined.min.js"></script>
 
-    <!-- LoDash JS -->
-    <script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
-
-    <!-- forest-widget.js -->
-    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
+<%--<!-- LoDash JS -->--%>
+    <%--<script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>--%>
 
 </head>

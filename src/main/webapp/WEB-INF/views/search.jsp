@@ -15,6 +15,10 @@
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
+    <!-- forest-widget.js -->
+    <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
+    <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
+
     <myTags:analytics/>
 <body id="commons-body">
 

@@ -46,9 +46,9 @@
                 </div>
 
                 <label id="workflow-diagram-label"></label>
-                <img id="workflow-none-img" src="${pageContext.request.contextPath}/resources/img/workflow_none.jpg" style="width:60%">
-                <img id="workflow-spew-img" src="${pageContext.request.contextPath}/resources/img/workflow_spew.jpg" style="width:60%; display:none;">
-                <img id="workflow-synthia-img" src="${pageContext.request.contextPath}/resources/img/workflow_synthia.jpg" style="width:60%; display:none;">
+                <img id="workflow-none-img" style="width:60%">
+                <img id="workflow-spew-img" style="width:60%; display:none;">
+                <img id="workflow-synthia-img" style="width:60%; display:none;">
                 <!--<div id="workflow-diagram" style="overflow:scroll"></div>-->
             </div>
 
@@ -150,3 +150,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        var target = $(e.target).attr("href") // activated tab
+        if(target == '#workflows') {
+            $('img#workflow-none-img').attr('src', '${pageContext.request.contextPath}/resources/img/workflow_none.jpg');
+            $('img#workflow-spew-img').attr('src', '${pageContext.request.contextPath}/resources/img/workflow_spew.jpg');
+            $('img#workflow-synthia-img').attr('src', '${pageContext.request.contextPath}/resources/img/workflow_synthia.jpg');
+
+        }
+    });
+</script>

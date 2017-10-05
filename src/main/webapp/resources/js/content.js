@@ -65,9 +65,15 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
         emptyIcon: emptyIcon,
 
         onNodeSelected: function(event, data) {
-            if(data !== undefined && data.hasOwnProperty('json')) {
-                if(data['json'] !== undefined) {
-                    showModal(JSON.parse(data['json']), data['type'], data['xml']);
+            if(data !== undefined) {
+                // if(data['json'] !== undefined) {
+                //     showModal(JSON.parse(data['json']), data['type'], data['xml']);
+                // }
+                if(data["entryId"] !== undefined) {
+                    var idArr = data["entryId"].split("r");
+                    var id = idArr[0];
+                    var rev = idArr[1];
+                    getDataAndOpenModal(id, rev);
                 }
             }
             if(typeof data['nodes'] !== undefined) {
