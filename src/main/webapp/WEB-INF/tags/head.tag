@@ -19,20 +19,19 @@
     <%--<link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">--%>
 
     <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
+    <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>--%>
 
     <title>${title}</title>
 
     <!-- jQuery imports -->
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"
-            integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <!-- Bootstrap CSS -->
     <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">--%>
     <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"--%>
           <%--rel="stylesheet">--%>
-
+ow l
     <!-- Bootstrap JS -->
     <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
     <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>--%>
