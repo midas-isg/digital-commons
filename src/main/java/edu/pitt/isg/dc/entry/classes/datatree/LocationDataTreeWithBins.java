@@ -35,7 +35,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
     private BinHelper dsdBinHelper = null;
 
     public LocationDataTreeWithBins(LocationRule locationRule, EntryRule entryRule, CategoryHelper categoryHelper) {
-        super();
+        super(1);
         this.locationRule = locationRule;
         this.entryRule = entryRule;
         this.categoryHelper = categoryHelper;
@@ -75,14 +75,18 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
         statesBinHelper.addBinSizesToJson(statesObj.getAsJsonArray("nodes"));
 
         JsonObject countryObj = unitedStatesObj.getAsJsonArray("nodes").get(0).getAsJsonObject();
-        JsonArray countryArray = countryObj.getAsJsonArray("nodes");
-        countryObj.add("nodes", EntryHelper.sortedJsonArray(countryArray));
+        JsonArray countryArray = unitedStatesObj.getAsJsonArray("nodes").get(0).getAsJsonObject().getAsJsonArray("nodes");
 
         for(int i = 0; i < countryArray.size(); i++) {
             JsonObject jsonObject = countryArray.get(i).getAsJsonObject();
             JsonArray jsonArray = jsonObject.getAsJsonArray("nodes");
+            if(jsonObject.get("text").getAsString().contains("Disease surveillance data")) {
+                jsonArray = dsdBinHelper.sortBinNodes(jsonArray);
+            }
             jsonObject.add("nodes", EntryHelper.sortedJsonArray(jsonArray));
         }
+
+        countryObj.add("nodes", EntryHelper.sortedJsonArray(countryArray));
 
         this.appendCountToNodeText(countryObj);
         this.appendCountToNodeText(statesObj);
@@ -119,8 +123,6 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
 
         JsonObject leafNode = new JsonObject();
         leafNode.addProperty("entryId", entryView.getId().toString());
-        //leafNode.addProperty("json", entryView.getUnescapedEntryJsonString());
-        //leafNode.addProperty("xml", entryView.getXmlString());
         leafNode.addProperty("text", title);
         leafNode.addProperty("type", entryView.getEntryType());
 

@@ -9,9 +9,9 @@ import com.google.gson.JsonObject;
 public class DataTreeWithBins extends DataTree {
     private BinHelper binHelper;
 
-    public DataTreeWithBins() {
+    public DataTreeWithBins(int numOpen) {
         binHelper = new BinHelper();
-        binHelper.addBinsToJsonArray(this.getTreeNodes());
+        binHelper.addBinsToJsonArray(this.getTreeNodes(), numOpen);
     }
 
     public DataTreeWithBins(String[] bins) {

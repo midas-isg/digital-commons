@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.entry.classes.datatree;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
+import scala.util.parsing.json.JSON;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -46,13 +47,14 @@ public class BinHelper {
         return binMap;
     }
 
-    public void sortBinNodes(JsonArray jsonArray) {
+    public JsonArray sortBinNodes(JsonArray jsonArray) {
         for(int i = 0; i < this.getBins().length; i++) {
             JsonArray binNodes = jsonArray.get(i)
                     .getAsJsonObject().get("nodes").getAsJsonArray();
             JsonArray sortedNodes = EntryHelper.sortedJsonArray(binNodes);
             jsonArray.get(i).getAsJsonObject().add("nodes", sortedNodes);
         }
+        return jsonArray;
     }
 
     public void setBinMap(Map<Character, Integer> binMap) {
@@ -73,6 +75,29 @@ public class BinHelper {
             jsonObject.addProperty("text", text);
             jsonObject.add("nodes", new JsonArray());
             jsonArray.add(jsonObject);
+        }
+    }
+
+    public void addBinsToJsonArray(JsonArray jsonArray, int numOpen) {
+        int count = 0;
+        for(String bin : this.bins) {
+            String text = bin;
+            if(bin.charAt(0) == bin.charAt(2)) {
+                text = "" + bin.charAt(0);
+            }
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("text", text);
+            jsonObject.add("nodes", new JsonArray());
+
+            if(count >= numOpen) {
+                JsonObject stateObj = new JsonObject();
+                stateObj.addProperty("expanded", false);
+                jsonObject.add("state", stateObj);
+            }
+
+            jsonArray.add(jsonObject);
+
+            count++;
         }
     }
 
