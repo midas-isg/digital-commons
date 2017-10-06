@@ -32,19 +32,16 @@
                     </c:if>
                 </c:forEach>
                 <form>
-                    <label class="radio-inline">
-                        <input type="radio" checked="checked" name="dataradio" id="data" value="${treeLoop.index}">Data
+                    <label class="theme-primary-color">
+                        Organize by:
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location (by country)
+                        <input type="radio" checked="checked" name="dataradio" id="data" value="${treeLoop.index}">Category
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="dataradio" id="location" value="${treeLoop.index}">Location
                     </label>
                 </form>
-                <div class="form-check form-check-inline" id="tree-check-box-div" style="display: none" onclick="toggleListing()">
-                    <span class="form-check-label">
-                        <input class="form-check-input" id="tree-check-box" type="checkbox" value="">
-                        Organize by datatype
-                    </span>
-                </div>
                 <div id="tree-${country_index}" class="treeview" style="display: none"></div>
                 <div id="tree-${country_by_category_index}" class="treeview" style="display: none"></div>
             </c:if>
@@ -74,13 +71,8 @@
         });
 
         function toggleListing() {
-            if (document.getElementById('tree-check-box').checked) {
-                $("#tree-${country_index}").hide();
-                $("#tree-${country_by_category_index}").show();
-            } else {
-                $("#tree-${country_index}").show();
-                $("#tree-${country_by_category_index}").hide();
-            }
+            $("#tree-${country_index}").show();
+            $("#tree-${country_by_category_index}").hide();
         }
 
         $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
