@@ -4,14 +4,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!-- uncomment for dev and production -->
-<script async>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<%--<script>--%>
+    <%--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){--%>
+            <%--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),--%>
+        <%--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)--%>
+    <%--})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');--%>
 
-    ga('create', 'UA-91508504-1', 'auto');
-    /*ga('create', 'UA-91508504-1', {
-     'cookieDomain': 'none'
-     });*/
-</script>
+    <%--ga('create', 'UA-91508504-1', 'auto');--%>
+    <%--/*ga('create', 'UA-91508504-1', {--%>
+     <%--'cookieDomain': 'none'--%>
+     <%--});*/--%>
+<%--</script>--%>
+
+
+<!-- Google Analytics -->
+<%--<script>--%>
+    <%--window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;--%>
+    <%--ga('create', 'UA-91508504-1', {--%>
+        <%--'cookieDomain': 'none'--%>
+        <%--});--%>
+    <%--ga('send', 'pageview');--%>
+<%--</script>--%>
+<%--<script async src='https://www.google-analytics.com/analytics.js'></script>--%>
+<!-- End Google Analytics -->
