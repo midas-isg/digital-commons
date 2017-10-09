@@ -52,11 +52,8 @@ public class CategoryHelper {
 
         for(CategoryOrder co : categoryOrders) {
             if(populateSubcategoriesToCategories) {
-                /*String subcategory = co.getSubcategory().getCategory() + " " + co.getSubcategory().getId();
-                String category = co.getCategory().getCategory() + " " + co.getId();*/
-
-                String subcategory = co.getSubcategory().getCategory();
-                String category = co.getCategory().getCategory();
+                String subcategory = co.getSubcategory().getCategory() + " " + co.getSubcategory().getId();
+                String category = co.getCategory().getCategory() + " " + co.getCategory().getId();
 
                 subcategoriesToCategories.put(subcategory, category);
             }
@@ -155,12 +152,13 @@ public class CategoryHelper {
         if(subcategoriesToCategories.size() == 0) {
             this.getCategoryOrderMap();
         }
-        String category = categoryObject.getCategory();
-        List<String> list = Arrays.asList("Root", "Software", "Data", "Data Formats", "Standard Identifiers");
+        String category = categoryObject.getCategory() + " " + categoryObject.getId();
+        List<String> list = Arrays.asList("Root 1", "Software 2", "Data 3", "Data Formats 4", "Standard Identifiers 5");
         while(!list.contains(subcategoriesToCategories.get(category))) {
             category = subcategoriesToCategories.get(category);
         }
-        return category;
+        String[] tokens = category.split(" ");
+        return String.join(" ", Arrays.copyOf(tokens, tokens.length - 1));
     }
 
     private Map<String, String> getInfoByCountry() {

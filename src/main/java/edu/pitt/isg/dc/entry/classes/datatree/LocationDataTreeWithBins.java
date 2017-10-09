@@ -7,15 +7,8 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.vm.OntologyQuery;
-import scala.Int;
-import scala.util.parsing.json.JSON;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.*;
 
 /**
  * Created by amd176 on 10/3/17.
@@ -114,6 +107,21 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
         return new EntryView(entry);
     }
 
+    private String getLeafLabel(String category, String title) {
+        Map<String, String> abbreviations = new HashMap<>();
+        abbreviations.put("Synthetic population and ecosystem", "Synthpop");
+        abbreviations.put("Disease surveillance data", "Disease surveillance");
+
+        String[] tokens = category.split(" ");
+        for(int i = 0; i < tokens.length; i++) {
+            if(tokens[i].endsWith("s")) tokens[i] = tokens[i].substring(0, tokens[i].length() - 1);
+        }
+        category = String.join(" ", tokens);
+
+        if(abbreviations.containsKey(category)) category = abbreviations.get(category);
+        return "[<span class=\"data-label\">" + category + "</span>] " + title;
+    }
+
     private JsonObject getLeafNode(EntryView entryView, String title) {
         Category category = entryView.getCategory();
         if(entryView.getEntryName().contains("Virginia")) {
@@ -122,9 +130,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
         String topCategory = categoryHelper.getTopCategory(category);
 
         if(title == null) {
-            title = "[<span class=\"data-label\">" + topCategory + "</span>] " + entryView.getEntryName();
-        } else if(!topCategory.equals(category.getCategory())) {
-            title = "[<span class=\"data-label\">" + category.getCategory() + "</span>] " + title;
+            title = getLeafLabel(topCategory, entryView.getEntryName());
         }
 
         JsonObject leafNode = new JsonObject();
