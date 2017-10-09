@@ -124,6 +124,23 @@ public class BinHelper {
                 .add(node);
     }
 
+    private String getBinName(JsonObject jsonObject) {
+        return jsonObject
+                .get("text").getAsString()
+                .replaceAll(" \\[.*\\]", "")
+                .split(",")[0];
+    }
+
+    public void setBinsToFirstAndLastElements(JsonArray jsonArray) {
+        for(int i = 0; i < jsonArray.size(); i++) {
+            JsonObject jsonBin = jsonArray.get(i).getAsJsonObject();
+            JsonArray nodes = jsonBin.getAsJsonArray("nodes");
+            String firstObjectName = this.getBinName(nodes.get(0).getAsJsonObject());
+            String lastObjectName = this.getBinName(nodes.get(nodes.size() - 1).getAsJsonObject());
+            jsonBin.addProperty("text", firstObjectName + "-" + lastObjectName + " [" + binSizes[i] + "]");
+        }
+    }
+
     private void populateBins() {
         int index = 0;
         for(char alphabet = 'a'; alphabet <= 'z'; alphabet++) {

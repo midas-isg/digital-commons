@@ -51,8 +51,15 @@ public class CategoryHelper {
         }
 
         for(CategoryOrder co : categoryOrders) {
-            if(populateSubcategoriesToCategories)
-                subcategoriesToCategories.put(co.getSubcategory().getCategory(), co.getCategory().getCategory());
+            if(populateSubcategoriesToCategories) {
+                /*String subcategory = co.getSubcategory().getCategory() + " " + co.getSubcategory().getId();
+                String category = co.getCategory().getCategory() + " " + co.getId();*/
+
+                String subcategory = co.getSubcategory().getCategory();
+                String category = co.getCategory().getCategory();
+
+                subcategoriesToCategories.put(subcategory, category);
+            }
 
             Category category = co.getCategory();
             CategoryWithOrder subcategory = new CategoryWithOrder(co.getSubcategory(), co.getOrdering());

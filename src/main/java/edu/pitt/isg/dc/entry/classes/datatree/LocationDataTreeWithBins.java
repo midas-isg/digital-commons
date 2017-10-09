@@ -95,6 +95,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
         unitedStatesObj.getAsJsonArray("nodes").add(statesObj);
 
         this.sortBinNodes();
+        this.setBinsToFirstAndLastElements();
     }
 
     private void appendCountToNodeText(JsonObject jsonObject) {
@@ -115,10 +116,15 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
 
     private JsonObject getLeafNode(EntryView entryView, String title) {
         Category category = entryView.getCategory();
+        if(entryView.getEntryName().contains("Virginia")) {
+            System.out.println("here");
+        }
         String topCategory = categoryHelper.getTopCategory(category);
 
         if(title == null) {
-            title = "[<span class=\"data-label\">" + topCategory + "</span>] " + entryView.getTitle();
+            title = "[<span class=\"data-label\">" + topCategory + "</span>] " + entryView.getEntryName();
+        } else if(!topCategory.equals(category.getCategory())) {
+            title = "[<span class=\"data-label\">" + category.getCategory() + "</span>] " + title;
         }
 
         JsonObject leafNode = new JsonObject();
@@ -230,7 +236,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
                     unitedStatesObj = node;
 
                     JsonObject countryNode = this.getEmptyNodeWithInnerNodes();
-                    countryNode.addProperty("text", "Country level data");
+                    countryNode.addProperty("text", "National data");
 
                     unitedStatesObj.getAsJsonArray("nodes").add(countryNode);
 
@@ -247,11 +253,13 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
             Set<EntryId> ids = this.getEntryIdsForLocation(location);
             for(EntryId id : ids) {
                 EntryView entryView = this.getEntry(id);
-                if(location.getId() == US_ALC) {
-                    addUnitedStatesNode(entryView, node);
-                } else {
-                    JsonObject leafNode = this.getLeafNode(entryView, null);
-                    node.getAsJsonArray("nodes").add(leafNode);
+                if (entryView.getEntryTypeBaseName().equals("Dataset")) {
+                    if (location.getId() == US_ALC) {
+                        addUnitedStatesNode(entryView, node);
+                    } else {
+                        JsonObject leafNode = this.getLeafNode(entryView, null);
+                        node.getAsJsonArray("nodes").add(leafNode);
+                    }
                 }
             }
 

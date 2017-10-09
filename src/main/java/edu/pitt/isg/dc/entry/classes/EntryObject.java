@@ -117,44 +117,47 @@ public class EntryObject {
         return StringEscapeUtils.escapeJavaScript(json);
     }
 
+    public String getEntryName() {
+        LinkedHashMap entryData = (LinkedHashMap) this.getEntry();
+        String title;
+
+        String name = "";
+        String version = "";
+        if(entryData.containsKey("title")) {
+            name = String.valueOf(entryData.get("title"));
+        } else if(entryData.containsKey("name")) {
+            name = String.valueOf(entryData.get("name"));
+        }
+
+        if(entryData.containsKey("version")) {
+            Object versionObj = entryData.get("version");
+            if(versionObj instanceof String) {
+                version = (String) versionObj;
+            } else {
+                List<String> versionList = (ArrayList<String>) entryData.get("version");
+                String[] versions = new String[versionList.size()];
+                versionList.toArray(versions);
+                version = StringUtils.join(versions, ", ");
+            }
+
+            if(version.length() > 0) {
+                if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
+                    version = " - v" + version;
+                } else {
+                    version = " - " + version;
+                }
+            }
+        }
+
+        title = name + version;
+        return title;
+    }
+
     public String getTitle() {
         LinkedHashMap entryData = (LinkedHashMap) this.getEntry();
         String title = this.getDisplayName();
-
-        if(title == null) {
-            String name = "";
-            String version = "";
-            if(entryData.containsKey("title")) {
-                name = String.valueOf(entryData.get("title"));
-            } else if(entryData.containsKey("name")) {
-                name = String.valueOf(entryData.get("name"));
-            }
-
-            if(entryData.containsKey("version")) {
-                Object versionObj = entryData.get("version");
-                if(versionObj instanceof String) {
-                    version = (String) versionObj;
-                } else {
-                    List<String> versionList = (ArrayList<String>) entryData.get("version");
-                    String[] versions = new String[versionList.size()];
-                    versionList.toArray(versions);
-                    version = StringUtils.join(versions, ", ");
-                }
-
-                if(version.length() > 0) {
-                    if(!version.toUpperCase().matches("^[A-Z].*$") && !version.toUpperCase().matches("^\\d{4}.*$")) {
-                        version = " - v" + version;
-                    } else {
-                        version = " - " + version;
-                    }
-                }
-            }
-
-            title = name + version;
-        }
-
+        if(title == null) title = this.getEntryName();
         title = addBadges(title, entryData);
-
         return title;
     }
 

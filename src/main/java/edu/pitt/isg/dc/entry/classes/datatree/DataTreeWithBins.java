@@ -43,6 +43,10 @@ public class DataTreeWithBins extends DataTree {
         binHelper.addBinSizesToJson(jsonArray);
     }
 
+    public void setBinsToFirstAndLastElements() {
+        this.binHelper.setBinsToFirstAndLastElements(this.getTreeNodes());
+    }
+
     public int getBinIndex(String name) {
         return binHelper.getBinIndex(name);
     }
