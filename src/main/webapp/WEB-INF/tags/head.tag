@@ -31,7 +31,7 @@
     <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">--%>
     <%--<link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"--%>
           <%--rel="stylesheet">--%>
-ow l
+
     <!-- Bootstrap JS -->
     <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
     <%--<script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>--%>
