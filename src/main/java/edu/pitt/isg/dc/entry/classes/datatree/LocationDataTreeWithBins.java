@@ -129,8 +129,13 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
         }
         String topCategory = categoryHelper.getTopCategory(category);
 
-        if(title == null) {
-            title = getLeafLabel(topCategory, entryView.getEntryName());
+        String entryName = entryView.getEntryName();
+        if(entryName.contains("Synthetic Ecosystem")) {
+            title = "[<span class=\"data-label\">SPEW</span>] " + entryName;
+        } else if(entryName.contains("Synthetic Population")) {
+            title = "[<span class=\"data-label\">Synthia™</span>] " + entryName;
+        } else if(title == null) {
+            title = getLeafLabel(topCategory, entryName);
         }
 
         JsonObject leafNode = new JsonObject();
@@ -151,7 +156,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
     }
 
     private void addUnitedStatesNode(EntryView entryView, JsonObject node) {
-        JsonObject leafNode = this.getLeafNode(entryView, entryView.getTitle());
+        JsonObject leafNode = this.getLeafNode(entryView, entryView.getEntryName());
 
         String entryType = categoryHelper.getTopCategory(entryView.getCategory());
         JsonArray innerNodes = node.getAsJsonArray("nodes");
