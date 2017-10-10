@@ -10,7 +10,7 @@
               type="java.util.List"%>
 
 <c:forEach items="${treeInfoArr}" var="treeInfo" varStatus="treeLoop">
-    <c:if test="${treeInfo.category != 'Country' and  treeInfo.category != 'Country by Category'}">
+    <c:if test="${treeInfo.category != 'Country' }">
         <div class="col-sm-4">
             <c:if test="${treeLoop.last}">
                 <div class="legend-large hidden-xs">
@@ -26,10 +26,10 @@
             <c:when test="${treeInfo.category == 'Data'}">
                 <c:forEach items="${treeInfoArr}" var="checkTreeInfo" varStatus="loop">
                     <c:if test="${checkTreeInfo.category == 'Country'}">
+                        <script>
+                            console.log("${loop.index}");
+                        </script>
                         <c:set var ="country_index" value = "${loop.index}"/>
-                    </c:if>
-                    <c:if test="${checkTreeInfo.category == 'Country by Category'}">
-                        <c:set var = "country_by_category_index" value = "${loop.index}"/>
                     </c:if>
                 </c:forEach>
 
@@ -47,16 +47,14 @@
                         </ul>
                     </div>
                 </h3>
-
                 <div id="tree-${country_index}" class="treeview" style="display: none"></div>
-                <div id="tree-${country_by_category_index}" class="treeview" style="display: none"></div>
             </c:when>
                 <c:otherwise>
                     <h3 class="content-title-font">${treeInfo.category}</h3>
                 </c:otherwise>
             </c:choose>
 
-    <div id="tree-${treeLoop.index}" class="treeview"></div>
+    <div id="tree-${treeLoop.index}" class="treeview" style="display: block"></div>
             <c:if test="${treeLoop.last}">
                 <h3 class="content-title-font">Standard Identifiers</h3>
                 <div id="standard-identifiers-treeview" class="treeview"></div>
@@ -68,9 +66,9 @@
             $("#drop-down-category").click(function () {
                 $(this).parents(".dropdown").find('.btn').html('Sort by Category <span class="caret"></span>');
                 $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-                var treeIndex = $(this).val();
+
+                var treeIndex = $(this).attr("value");
                 $("#tree-check-box-div").hide();
-                $("#tree-${country_by_category_index}").hide();
                 $("#tree-${country_index}").hide();
                 $("#tree-" + treeIndex).show();
             });
@@ -78,18 +76,14 @@
             $("#drop-down-location").click(function () {
                 $(this).parents(".dropdown").find('.btn').html('Sort by Location <span class="caret"></span>');
                 $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-                var treeIndex = $(this).val();
+
+                var treeIndex = $(this).attr("value");
                 $("#tree-check-box-div").show();
-                toggleListing();
+                $("#tree-${country_index}").show();
                 $("#tree-" + treeIndex).hide();
             });
 
         });
-
-        function toggleListing() {
-            $("#tree-${country_index}").show();
-            $("#tree-${country_by_category_index}").hide();
-        }
 
         $('#tree-${treeLoop.index}').treeview(getTreeviewInfo('${treeInfo.json}', '#tree-${treeLoop.index}', 'tree${treeLoop.index}'));
         expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
