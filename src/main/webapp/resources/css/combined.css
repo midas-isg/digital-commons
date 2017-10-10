@@ -1041,6 +1041,22 @@ div.span-div {
 }
 
 .content-title-font:after {
+  content: "";
+  display: block;
+  background-color: #0c2b65;
+  height: 5px;
+  height: 0.425rem;
+  margin-top: 16px!important;
+  margin-top: 0.8125rem;
+}
+
+.data-content-title-font {
+  color: #0c2b65;
+  font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+  font-weight: normal;
+}
+
+.data-content-title-font:after {
     content: "";
     display: block;
     background-color: #0c2b65;
@@ -1061,7 +1077,7 @@ div.span-div {
         background-color: rgba(0,0,0,0.25) !important;
         padding-bottom: 30px !important;
     }
-    .content-title-font {
+    .content-title-font .data-content-title-font{
         color: #0c2b65;
         font-size:19px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -1070,7 +1086,7 @@ div.span-div {
 }
 
 @media screen and (max-width: 860px) {
-    .content-title-font {
+    .content-title-font .data-content-title-font{
         color: #0c2b65;
         font-size:16px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -1108,7 +1124,7 @@ div.span-div {
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
-    .content-title-font {
+    .content-title-font .data-content-title-font {
         color: #0c2b65;
         font-size:24px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -1707,4 +1723,8 @@ tfoot {
     font-style: italic;
     color: #0c2b65;
     font-size: 13px;
+}
+
+.dropdown-menu {
+  margin-top: 10px !important;
 }

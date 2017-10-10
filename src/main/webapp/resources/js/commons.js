@@ -166,9 +166,14 @@ function hardcodeFromJson(contextPath, location, treeArray, treeDictionary, tree
 
         var openByDefault = JSON.parse(JSON.stringify(directories));
 
-        addTreeDirectories(directories, treeArray);
-        addTreeNodes(name, data, treeDictionary, treeArray);
-        buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
+        var uniqueTreeArray = [];
+        $.each(treeArray, function(i, el){
+            if($.inArray(el, uniqueTreeArray) === -1) uniqueTreeArray.push(el);
+        });
+
+        addTreeDirectories(directories, uniqueTreeArray);
+        addTreeNodes(name, data, treeDictionary, uniqueTreeArray);
+        buildBootstrapTree(name, contextPath, uniqueTreeArray, treeviewTag, expandedInfo, treeDictionary, openByDefault);
 
         $('[data-toggle="tooltip"]').tooltip({
             trigger : 'hover',

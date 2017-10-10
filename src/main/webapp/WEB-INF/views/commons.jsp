@@ -51,7 +51,6 @@
             <myTags:webServices/>
             <myTags:dataFormats/>--%>
             <myTags:standardIdentifiers/>
-            <myTags:computePlatformImports/>
         </div>
 
         <myTags:analytics/>
