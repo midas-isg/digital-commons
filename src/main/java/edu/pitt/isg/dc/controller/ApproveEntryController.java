@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
@@ -18,8 +19,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -153,17 +156,33 @@ public class ApproveEntryController {
     @RequestMapping(value = "/add/comment", method = RequestMethod.POST)
     @ResponseBody
     public String comment(HttpSession session,
-                         @RequestParam(value = "entryId", required = true) long id,
-                         @RequestParam(value = "revisionId", required = true) long revisionId,
-                         @RequestParam(value = "comments[]", required = false) String[] comments,
-                         Model model) throws MdcEntryDatastoreException {
-        if(ifISGAdmin(session)) {
+                          @RequestParam(value = "entryId", required = true) long id,
+                          @RequestParam(value = "revisionId", required = true) long revisionId,
+                          @RequestParam(value = "comments[]", required = false) String[] comments,
+                          Model model, HttpServletRequest request) throws Exception {
+        if (ifISGAdmin(session)) {
             String status = "success";
             try {
                 EntryId entryId = new EntryId(id, revisionId);
                 Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
                 entryApprovalInterface.commentEntry(entryId, EntryHelper.getServerAuthentication(), comments, user);
-            } catch(MdcEntryDatastoreException e) {
+
+
+                //E-mail to someone it concerns
+                String directUrl = request.getRequestURL().toString().replace("comment", "review/comments") + "?entryId=" + entryId.getEntryId() + "&revisionId=" + entryId.getRevisionId();
+                DCEmailService emailService = new DCEmailService();
+                StringBuilder allComments = new StringBuilder();
+                allComments.append("The following comments were added to an entry you created:");
+                allComments.append("\n");
+                for (String comment : comments) {
+                    allComments.append(comment);
+                    allComments.append('\n');
+                }
+                allComments.append("Please visit: " + directUrl + " to view these comments");
+                Date date = new Date();
+
+                emailService.mailToUser("[Digital Commons New Comment(s)] " + date, allComments.toString(), user.getEmail());
+            } catch (MdcEntryDatastoreException e) {
                 status = "fail";
             }
             return status;

@@ -50,7 +50,15 @@ public class DCEmailService {
     }
 
     public static void mailToAdmin(String subject, String payload) throws Exception {
-        // set the message content here
+        sendMail(subject, payload, ADMIN_EMAIL);
+
+    }
+
+    public static void mailToUser(String subject, String payload, String userEmail) throws Exception {
+        sendMail(subject, payload, userEmail);
+    }
+
+    private static void sendMail(String subject, String payload, String email) throws Exception {
         Transport t = null;
         try {
             Properties props = new Properties();
@@ -61,8 +69,7 @@ public class DCEmailService {
             msg.setFrom(new InternetAddress(USERNAME));
 
             msg.setRecipients(Message.RecipientType.TO,
-                    InternetAddress.parse(ADMIN_EMAIL));
-            //msg.addRecipients(Message.RecipientType.CC, InternetAddress.parse());
+                    InternetAddress.parse(email));
 
             msg.setSubject(subject);
             msg.setSentDate(new Date());
@@ -78,7 +85,5 @@ public class DCEmailService {
         finally {
             t.close();
         }
-
-        return;
     }
 }
