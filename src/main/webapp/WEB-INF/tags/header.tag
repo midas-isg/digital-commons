@@ -77,7 +77,7 @@
 
         <c:choose>
             <c:when test="${loggedIn == true}">
-                maxWidthLarge = 1300;
+                maxWidthLarge = 1350;
                 maxWidthMedium = 1230;
                 maxWidthSmall = 1010;
             </c:when>

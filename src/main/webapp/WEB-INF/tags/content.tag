@@ -26,18 +26,15 @@
             <c:when test="${treeInfo.category == 'Data'}">
                 <c:forEach items="${treeInfoArr}" var="checkTreeInfo" varStatus="loop">
                     <c:if test="${checkTreeInfo.category == 'Country'}">
-                        <script>
-                            console.log("${loop.index}");
-                        </script>
                         <c:set var ="country_index" value = "${loop.index}"/>
                     </c:if>
                 </c:forEach>
 
 
-                <h3 class="data-content-title-font">${treeInfo.category}
+                <h3 class="content-title-font">${treeInfo.category}
 
                     <div class="dropdown inline">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <button class="btn btn-default dropdown-toggle sort-by-dropdown" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                             Sort by Category
                             <span class="caret"></span>
                         </button>

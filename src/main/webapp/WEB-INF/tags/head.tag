@@ -13,13 +13,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <myTags:favicon></myTags:favicon>
+    <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
 
     <link href="${pageContext.request.contextPath}/resources/css/combined.css" rel="stylesheet">
 
     <%--<link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">--%>
 
     <%--<link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">--%>
-    <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
     <%--<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>--%>
 
     <title>${title}</title>

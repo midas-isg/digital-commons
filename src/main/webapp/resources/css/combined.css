@@ -1035,9 +1035,9 @@ div.span-div {
 }
 
 .content-title-font {
-    color: #0c2b65;
-    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-    font-weight: normal;
+  color: #0c2b65;
+  font-family: "TransportNewMedium", Helvetica, Arial, sans-serif;
+  font-weight: normal;
 }
 
 .content-title-font:after {
@@ -1046,24 +1046,8 @@ div.span-div {
   background-color: #0c2b65;
   height: 5px;
   height: 0.425rem;
-  margin-top: 16px!important;
+  margin-top: 11px;
   margin-top: 0.8125rem;
-}
-
-.data-content-title-font {
-  color: #0c2b65;
-  font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-  font-weight: normal;
-}
-
-.data-content-title-font:after {
-    content: "";
-    display: block;
-    background-color: #0c2b65;
-    height: 5px;
-    height: 0.425rem;
-    margin-top: 11px;
-    margin-top: 0.8125rem;
 }
 
 .dtm-disclaimer {
@@ -1077,16 +1061,11 @@ div.span-div {
         background-color: rgba(0,0,0,0.25) !important;
         padding-bottom: 30px !important;
     }
-    .content-title-font .data-content-title-font{
-        color: #0c2b65;
-        font-size:19px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
+
 }
 
 @media screen and (max-width: 860px) {
-    .content-title-font .data-content-title-font{
+    .content-title-font {
         color: #0c2b65;
         font-size:16px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -1124,7 +1103,7 @@ div.span-div {
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
         font-weight: normal;
     }
-    .content-title-font .data-content-title-font {
+    .content-title-font {
         color: #0c2b65;
         font-size:24px;
         font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
@@ -1727,4 +1706,10 @@ tfoot {
 
 .dropdown-menu {
   margin-top: 10px !important;
+}
+
+.sort-by-dropdown {
+  font-size: 13px;
+  padding: 0px;
+  border: 0;
 }
