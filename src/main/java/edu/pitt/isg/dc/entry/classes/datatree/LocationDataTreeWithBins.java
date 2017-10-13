@@ -109,27 +109,26 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
 
     private String getLeafLabel(String category, String title) {
         Map<String, String> abbreviations = new HashMap<>();
-        abbreviations.put("Synthetic population and ecosystem", "Synthpop");
+        abbreviations.put("Synthetic population and ecosystem", "Synth. pop.");
         abbreviations.put("Disease surveillance data", "Disease surveillance");
+        abbreviations.put("Infectious disease scenario dataset", "Inf. dis. scen. dataset");
 
-        String[] tokens = category.split(" ");
-        for(int i = 0; i < tokens.length; i++) {
-            if(tokens[i].endsWith("s")) tokens[i] = tokens[i].substring(0, tokens[i].length() - 1);
-        }
-        category = String.join(" ", tokens);
-
+        if(category.endsWith("s")) category = category.substring(0, category.length() - 1);
         if(abbreviations.containsKey(category)) category = abbreviations.get(category);
+
         return "[<span class=\"data-label\">" + category + "</span>] " + title;
     }
 
-    private JsonObject getLeafNode(EntryView entryView, String title) {
+    private JsonObject getLeafNode(EntryView entryView, boolean hasLabel, String title) {
         Category category = entryView.getCategory();
-        if(entryView.getEntryName().contains("Virginia")) {
-            System.out.println("here");
-        }
         String topCategory = categoryHelper.getTopCategory(category);
 
+        String identifier = entryView.getIdentifier();
         String entryName = entryView.getEntryName();
+        if(identifier != null && identifier.contains("TYCHO")) {
+            if(hasLabel) title = getLeafLabel(topCategory, entryView.getTitle());
+            else title = entryView.getTitle();
+        }
         if(entryName.contains("Synthetic Ecosystem")) {
             title = "[<span class=\"data-label\">SPEW</span>] " + entryName;
         } else if(entryName.contains("Synthetic Population")) {
@@ -156,7 +155,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
     }
 
     private void addUnitedStatesNode(EntryView entryView, JsonObject node) {
-        JsonObject leafNode = this.getLeafNode(entryView, entryView.getEntryName());
+        JsonObject leafNode = this.getLeafNode(entryView, false, entryView.getEntryName());
 
         String entryType = categoryHelper.getTopCategory(entryView.getCategory());
         JsonArray innerNodes = node.getAsJsonArray("nodes");
@@ -258,6 +257,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
                     }
                 }
             } else {
+                //node.add("state", this.getStateNode(true));
                 statesBinHelper.addNodeToBin(location.getName(), node, statesObj.getAsJsonArray("nodes"));
             }
 
@@ -268,8 +268,17 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
                     if (location.getId() == US_ALC) {
                         addUnitedStatesNode(entryView, node);
                     } else {
-                        JsonObject leafNode = this.getLeafNode(entryView, null);
-                        node.getAsJsonArray("nodes").add(leafNode);
+                        JsonObject leafNode = this.getLeafNode(entryView, true, null);
+
+                        /*if(isState) {
+                            statesBinHelper.addNodeToBin(location.getName(), leafNode, statesObj.getAsJsonArray("nodes"));
+                            statesBinHelper.adjustBinSizes(location.getName(), 1);
+                            this.incrementCount(statesObj, 1);
+                            this.incrementCount(unitedStatesObj, 1);
+                            this.adjustBinSizes("United States", 1);
+                        } else {*/
+                            node.getAsJsonArray("nodes").add(leafNode);
+                        //}
                     }
                 }
             }
