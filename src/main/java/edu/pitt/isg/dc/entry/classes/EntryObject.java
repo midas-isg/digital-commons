@@ -265,4 +265,9 @@ public class EntryObject {
 
         return commentIds;
     }
+
+    public String getIdentifier() {
+        LinkedHashMap entryData = (LinkedHashMap) this.getEntry();
+        return String.valueOf(entryData.get("identifier"));
+    }
 }
