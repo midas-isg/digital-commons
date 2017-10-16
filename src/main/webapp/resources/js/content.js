@@ -263,6 +263,9 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
         length = attribute.length;
 
         attribute = attribute.map(function(elem){
+            if('name' in elem) {
+                return elem.name;
+            }
             return elem.firstName + " " + elem.lastName;
         }).join(", ");
 
