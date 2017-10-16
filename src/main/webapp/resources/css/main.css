@@ -113,7 +113,7 @@
 
 .content-title-font {
     color: #0c2b65;
-    font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
+    font-family: "TransportNewMedium", Helvetica, Arial, sans-serif;
     font-weight: normal;
 }
 
@@ -138,12 +138,7 @@
         background-color: rgba(0,0,0,0.25) !important;
         padding-bottom: 30px !important;
     }
-    .content-title-font {
-        color: #0c2b65;
-        font-size:19px;
-        font-family: "TransportNewMedium",Helvetica,Arial,sans-serif;
-        font-weight: normal;
-    }
+
 }
 
 @media screen and (max-width: 860px) {
@@ -620,8 +615,8 @@ body {
 }
 
 .tooltip > .tooltip-inner {
-    background-color: rgba(255, 255, 255, 1); 
-    color: black; 
+    background-color: rgba(255, 255, 255, 1);
+    color: black;
     border: 1px solid rgba(6, 36, 75, 1);
     padding: 5px;
     font-size: 14px;
@@ -693,8 +688,8 @@ label[disabled="disabled"]{
     box-sizing: border-box;
 }
 .frame::-webkit-scrollbar {
-     display: none;
- }
+    display: none;
+}
 
 
 
@@ -784,4 +779,14 @@ tfoot {
     font-style: italic;
     color: #0c2b65;
     font-size: 13px;
+}
+
+.dropdown-menu {
+    margin-top: 10px !important;
+}
+
+.sort-by-dropdown {
+    font-size: 13px;
+    padding: 0px;
+    border: 0;
 }
