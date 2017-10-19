@@ -94,15 +94,16 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "as access_url from entry where category_id = 39 order by display_name")
     List<Object[]> spewLocationsAndAccessUrls();
 
-    @Query(nativeQuery = true, value = "select distinct " +
-            "content->'entry'->'identifier'->>'identifier' " +
-            "from entry where is_public = true and " +
-            "content->'entry'->'identifier'->>'identifier' is not null")
+    @Query(nativeQuery = true, value = "select distinct\n" +
+            "  content->'entry'->'identifier'->>'identifier'\n" +
+            "  from entry where is_public = true\n" +
+            "                   and content->'entry'->>'identifier' != ''\n" +
+            "                   and content->'entry'->'identifier'->>'identifier' != '';")
     List<String> findPublicIdentifiers();
 
     @Query(nativeQuery = true, value = "select distinct content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' " +
-            "from entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' is not null " +
-            "and content->'entry'->'identifier'->>'identifier' is not null " +
+            "from entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' != '' " +
+            "and content->'entry'->'identifier'->>'identifier' != ''" +
             "and content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     String findAccessUrlByIdentifierAndDistributionId(String identifier, String distributionId);
 
