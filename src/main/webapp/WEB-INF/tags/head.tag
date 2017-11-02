@@ -43,8 +43,8 @@
 
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 
-            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js?v=" + Date.now() + "'><\/script>");</script>
-            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>
+            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/commons.js'><\/script>");</script>
+            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js'><\/script>");</script>
 
             <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
             <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>

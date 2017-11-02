@@ -484,6 +484,11 @@ var locationData = {
     nodes: []
 };
 
+var websitesWithData = {
+    text: "Websites with data",
+    nodes: []
+};
+
 var dsd = {
     text: "Disease surveillance data",
     nodes: []
@@ -521,6 +526,8 @@ function getDataAndKnowledgeTree(libraryData, syntheticEcosystems, libraryViewer
             syntheticPopulations
         ]
     };
+
+    collections.push(websitesWithData);
 
     collections.push(
         syntheticPopulationsAndEcosystems

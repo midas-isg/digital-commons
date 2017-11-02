@@ -129,10 +129,19 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
             if(hasLabel) title = getLeafLabel(topCategory, entryView.getTitle());
             else title = entryView.getTitle();
         }
+        if (entryName.equalsIgnoreCase("Storm Events Database")) {
+            System.out.println("hmmm.");
+        }
         if(entryName.contains("Synthetic Ecosystem")) {
             title = "[<span class=\"data-label\">SPEW</span>] " + entryName;
         } else if(entryName.contains("Synthetic Population")) {
             title = "[<span class=\"data-label\">Synthia™</span>] " + entryName;
+        } else if(entryView.getCategory().getCategory().equalsIgnoreCase ("Databases")) {
+            title = "[<span class=\"data-label\">Database</span>] " + entryName;
+        } else if(entryView.getCategory().getCategory().equalsIgnoreCase ("Dataset")) {
+            title = "[<span class=\"data-label\">Dataset</span>] " + entryName;
+        } else if(entryView.getCategory().getCategory().equalsIgnoreCase ("Webpage")) {
+            title = "[<span class=\"data-label\">Webpage</span>] " + entryName;
         } else if(title == null) {
             title = getLeafLabel(topCategory, entryName);
         }
