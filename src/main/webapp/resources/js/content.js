@@ -32,19 +32,6 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
     }
 }
 
-function getTreeDepth (obj) {
-    var depth = 0;
-    if (obj.children) {
-        obj.children.forEach(function (d) {
-            var tmpDepth = getDepth(d)
-            if (tmpDepth > depth) {
-                depth = tmpDepth
-            }
-        })
-    }
-    return 1 + depth
-}
-
 function getTreeviewInfo(entriesData, treeId, sessionVariable) {
     var expandIcon = "glyphicon glyphicon-chevron-right";
     var collapseIcon = "glyphicon glyphicon-chevron-down";
@@ -139,55 +126,6 @@ function showModal(entry, type, xml) {
     toggleModalItems(entry, type);
 
     $('#pageModal').modal('show');
-}
-
-function getCountBadge(count) {
-    return " <span class='badge'>[" + count + "]</span>";
-}
-
-function addLegendBadge(entryObj, title) {
-    var availableOnOlympus = entryObj["availableOnOlympus"];
-    var availableOnUIDS = entryObj["availableOnUIDS"];
-    var signInRequired = entryObj["signInRequired"];
-
-    if(availableOnOlympus !== undefined && availableOnOlympus) {
-        title += " <b><i class=\"olympus-color\"><sup>AOC</sup></i></b>";
-    }
-
-    if(availableOnUIDS !== undefined && availableOnUIDS) {
-        title += " <b><i class=\"udsi-color\"><sup>UIDS</sup></i></b>";
-    }
-
-    if(signInRequired !== undefined && signInRequired) {
-        title += " <b><i class=\"sso-color\"><sup>SSO</sup></i></b>";
-    }
-
-    return title;
-}
-
-function wrapInSpan(str) {
-    return "<span onmouseover=\"toggleTitle(this)\">" + str + "</span>";
-}
-
-function getSoftwareNode(entryObj) {
-    var title = entryObj["title"];
-    var version = entryObj["version"];
-
-    if(version !== undefined) {
-        version = version.join(", ");
-        title = getSoftwareTitle(title, version);
-    }
-
-    title = addLegendBadge(entryObj, title);
-
-    title = wrapInSpan(title);
-    return {
-        text: title,
-        name: entryObj["title"],
-        info: {
-            entry: entryObj
-        }
-    };
 }
 
 function capitalizeFirst(string) {
@@ -367,7 +305,7 @@ function getDataAndOpenModal(id, rev) {
 
     $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
         var entry = JSON.parse(data.json);
-        console.log(data, entry);
+        //console.log(data, entry);
         showModal(entry, data.type, data.xml);
     });
 }
