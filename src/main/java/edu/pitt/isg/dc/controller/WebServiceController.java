@@ -2,20 +2,17 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.*;
 import com.wordnik.swagger.annotations.*;
+import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import scala.Int;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.text.html.Option;
 import javax.ws.rs.GET;
 import java.util.*;
 
@@ -168,5 +165,27 @@ public class WebServiceController {
 
         return gson.toJson(jsonArray);
     }
+
+    @GET
+    @ApiOperation(value = "Retrieves the category of a provided identifier.", notes = "The results are returned in an array, where the first entry in the array is the root category and every additional entry is a subcategory of the previous entry.", response = String.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Identifier found."), @ApiResponse(code = 404, message = "Identifier not found.")
+    })
+    @RequestMapping(value = "/identifiers/category", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<String> getCategory(@RequestParam("identifier") String identifier) {
+        List<Category> categories = apiUtil.getCategoryLineage(identifier);
+        if (categories == null || categories.size() == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{ \"Error\":\"Identifier '" + identifier + "' not found.\"}");
+        }
+
+        JsonArray categoryNameArray = new JsonArray();
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        for (int i = categories.size() - 1; i >=0; i--)
+            categoryNameArray.add(categories.get(i).getCategory());
+
+        return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(categoryNameArray));
+    }
+
 
 }

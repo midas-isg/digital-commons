@@ -4,6 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -111,6 +112,15 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true limit 1")
     Entry findByMetadataIdentifier(String identifier);
 
+    @Query(nativeQuery = true, value = "select category_id from entry where " +
+            "content->'entry'->'identifier'->>'identifier' = :identifier or " +
+            "content->'entry'->'identifier'->>'identifier' = concat('https://doi.org/', :identifier) or " +
+            "content->'entry'->'identifier'->>'identifier' = concat('http://doi.org/', :identifier) and " +
+            "is_public = true limit 1")
+    Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
+
     @Query(nativeQuery = true, value="select * from entry where is_public = true;")
     List<Entry> findPublicEntries();
+
+
 }
