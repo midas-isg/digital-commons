@@ -25,7 +25,7 @@ public class ApiUtil {
         List<String> parsedIdentifiers = new ArrayList<>();
         for (String unparsedIdentifier : unparsedIdentifiers) {
             String parsedIdentifier = Jsoup.parse(unparsedIdentifier).text();
-            parsedIdentifier = parsedIdentifier.replaceAll("https?://doi\\.org/", "");
+            //parsedIdentifier = parsedIdentifier.replaceAll("https?://doi\\.org/", "");
             parsedIdentifiers.add(parsedIdentifier);
         }
         Collections.sort(parsedIdentifiers);

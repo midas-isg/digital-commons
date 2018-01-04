@@ -7,12 +7,9 @@
     <myTags:favicon></myTags:favicon>
     <title>MIDAS Digital Commons</title>
     <base href='.'>
-    <link rel='stylesheet' type='text/css' href='${pageContext.request.contextPath}/resources/css/main.css'>
-    <link rel='stylesheet' href='${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css'>
-    <link rel='stylesheet'
-          href='${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css'>
-    <link rel='stylesheet'
-          href='${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css'>
+    <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css">
+    <link href="${pageContext.request.contextPath}/resources/css/combined.css" rel="stylesheet">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/xsd-forms/css/xsd-forms-style.css"
           type="text/css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/xsd-forms/css/xsd-forms-style-override.css"
@@ -22,8 +19,7 @@
           rel="stylesheet"/>
     <link type="text/css" href="${pageContext.request.contextPath}/resources/xsd-forms/css/timepicker.css"
           rel="stylesheet"/>
-    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/header.css"
-          rel="stylesheet"/>
+
     <style type="text/css">
         
     </style>
@@ -31,7 +27,6 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/jquery-ui-timepicker-addon.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/xsd-forms/js/xml2json.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.deserialize.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>

@@ -113,9 +113,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     Entry findByMetadataIdentifier(String identifier);
 
     @Query(nativeQuery = true, value = "select category_id from entry where " +
-            "content->'entry'->'identifier'->>'identifier' = :identifier or " +
-            "content->'entry'->'identifier'->>'identifier' = concat('https://doi.org/', :identifier) or " +
-            "content->'entry'->'identifier'->>'identifier' = concat('http://doi.org/', :identifier) and " +
+            "content->'entry'->'identifier'->>'identifier' = :identifier  and " +
             "is_public = true limit 1")
     Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
 
