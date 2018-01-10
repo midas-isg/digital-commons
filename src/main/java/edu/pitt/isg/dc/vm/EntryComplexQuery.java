@@ -3,29 +3,29 @@ package edu.pitt.isg.dc.vm;
 import lombok.Data;
 
 import java.util.Collections;
-import java.util.List;
+import java.util.Set;
 
 @Data
 public class EntryComplexQuery {
-    private List<OntologyQuery<String>> controlMeasures;
-    private List<OntologyQuery<Long>> locations;
-    private List<OntologyQuery<Long>> hosts;
-    private List<OntologyQuery<Long>> pathogens;
-    private List<OntologyQuery<String>> types;
+    private Set<OntologyQuery<String>> controlMeasures;
+    private Set<OntologyQuery<Long>> locations;
+    private Set<OntologyQuery<Long>> hosts;
+    private Set<OntologyQuery<Long>> pathogens;
+    private Set<OntologyQuery<String>> types;
 
     public static EntryComplexQuery of(EntrySimpleQuery q) {
         final EntryComplexQuery query = new EntryComplexQuery();
-        query.setControlMeasures(list(q.getControlMeasureId()));
-        query.setLocations(list(q.getLocationId()));
-        query.setHosts(list(q.getHostId()));
-        query.setPathogens(list(q.getPathogenId()));
-        query.setTypes(list(q.getType()));
+        query.setControlMeasures(setOf(q.getControlMeasureId()));
+        query.setLocations(setOf(q.getLocationId()));
+        query.setHosts(setOf(q.getHostId()));
+        query.setPathogens(setOf(q.getPathogenId()));
+        query.setTypes(setOf(q.getType()));
         return query;
     }
 
-    private static <T> List<OntologyQuery<T>> list(T id) {
+    private static <T> Set<OntologyQuery<T>> setOf(T id) {
         if (id == null)
             return null;
-        return Collections.singletonList(new OntologyQuery<T>(id));
+        return Collections.singleton(new OntologyQuery<T>(id));
     }
 }

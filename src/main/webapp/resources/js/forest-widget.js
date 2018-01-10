@@ -1,6 +1,6 @@
 /*
- Forest Widget
- */
+	Forest Widget
+*/
 
 "use strict";
 
@@ -11,7 +11,11 @@ var FOREST_WIDGET_CREATOR =
             straightPipe = "&#9475;",
             pipeSpace = "&emsp;",
             LPipe = "&#9494;",
-            forkPipe = "&#9507;";
+            forkPipe = "&#9507;",
+            spacer = "&emsp;",
+            ascendantIcon = "<div class='ancestors'><span>Ancestors</span></div>",
+            descendantIcon = "<div class='descendants'><span class='ancestors'>" + spacer + "</span><span>Descendants</span></div>",
+            selfIcon = "<div class='self'><span class='ancestors'>" + spacer + "</span><span class='descendants'>" + spacer + "</span><span>Self</span></div>";
 
         function ForestWidgetCreator() {
             return;
@@ -71,10 +75,40 @@ var FOREST_WIDGET_CREATOR =
             return;
         }
 
-        function createCheckboxes(node, dataInstance) {
-            var i;
+        function applyToAllNodes(forest, method) {
+            var toVisit = [],
+                currentNode,
+                i,
+                j;
 
-            node.span = document.createElement("span")
+            for(i = 0; i < forest.length; i++) {
+                toVisit.push(forest[i]);
+            }
+
+            while(toVisit.length > 0) {
+                currentNode = toVisit.shift();
+
+                method(currentNode);
+
+                for(j = 0; j < currentNode.data.children.length; j++) {
+                    toVisit.push(currentNode.data.children[j]);
+                }
+            }
+
+            return;
+        }
+
+        function createCheckboxes(node, dataInstance) {
+            var i,
+                ancestorSpan = document.createElement("span"),
+                descendantSpan = document.createElement("span"),
+                selfSpan = document.createElement("span");
+
+            ancestorSpan.classList = "ancestors";
+            descendantSpan.classList = "descendants";
+            selfSpan.classList = "self";
+
+            node.span = document.createElement("span");
 
             node.rowDiv = document.createElement("div");
             node.spanDiv = document.createElement("div");
@@ -83,24 +117,65 @@ var FOREST_WIDGET_CREATOR =
             node.inputDiv.classList.add("checkbox-div");
             node.spanDiv.classList.add("span-div");
 
-            node.ancestorsInput = document.createElement("input"),
-                node.descendantsInput = document.createElement("input"),
-                node.selfInput = document.createElement("input");
+            node.ancestorsInput = document.createElement("input");
+            node.ancestorsInput.hidden = dataInstance.headerBody.hidden;
+            node.descendantsInput = document.createElement("input");
+            node.descendantsInput.hidden = dataInstance.headerBody.hidden;
+            node.selfInput = document.createElement("input");
 
             node.span.innerHTML = node.data.label;
 
+            function enlistCurrentNode() {
+                for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
+                    if(dataInstance.userSelectedNodes[i] === node.data) {
+                        return;
+                    }
+                }
+
+                dataInstance.userSelectedNodes.push(node.data);
+
+                return;
+            }
+
+            function delistCurrentNode() {
+                for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
+                    if(dataInstance.userSelectedNodes[i] === node.data) {
+                        dataInstance.userSelectedNodes.splice(i, 1);
+                        break;
+                    }
+                }
+
+                return;
+            }
+
             node.ancestorsInput.type = "checkbox";
+            node.ancestorsInput.disabled = true;
             node.ancestorsInput.onchange = function() {
                 node.data.includeAncestors = node.ancestorsInput.checked;
                 toggleAncestors(node, node.data.includeAncestors);
+
+                if(node.data.includeAncestors) {
+                    enlistCurrentNode();
+                }
+                else if((!node.data.userSelected) && (!node.data.includeDescendants)) {
+                    delistCurrentNode();
+                }
 
                 return;
             }
 
             node.descendantsInput.type = "checkbox";
+            node.descendantsInput.disabled = true;
             node.descendantsInput.onchange = function() {
                 node.data.includeDescendants = node.descendantsInput.checked;
                 toggleDescendants(node, node.data.includeDescendants);
+
+                if(node.data.includeDescendants) {
+                    enlistCurrentNode();
+                }
+                else if((!node.data.userSelected) && (!node.data.includeAncestors)) {
+                    delistCurrentNode();
+                }
 
                 return;
             }
@@ -112,33 +187,23 @@ var FOREST_WIDGET_CREATOR =
                 node.data.userSelected = this.checked;
 
                 if(node.data.userSelected) {
+                    enlistCurrentNode();
                     node.rowDiv.classList.add(boldCheck);
-
-                    for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
-                        if(dataInstance.userSelectedNodes[i] === node.data) {
-                            return;
-                        }
-                    }
-
-                    dataInstance.userSelectedNodes.push(node.data);
                 }
-                else {
+                else if((!node.data.includeAncestors) && (!node.data.includeDescendants)) {
+                    delistCurrentNode();
                     node.rowDiv.classList.remove(boldCheck);
-
-                    for(i = 0; i < dataInstance.userSelectedNodes.length; i++) {
-                        if(dataInstance.userSelectedNodes[i] === node.data) {
-                            dataInstance.userSelectedNodes.splice(i, 1);
-                            break;
-                        }
-                    }
                 }
 
                 return;
             }
 
-            node.inputDiv.appendChild(node.ancestorsInput);
-            node.inputDiv.appendChild(node.descendantsInput);
-            node.inputDiv.appendChild(node.selfInput);
+            ancestorSpan.appendChild(node.ancestorsInput);
+            descendantSpan.appendChild(node.descendantsInput);
+            selfSpan.appendChild(node.selfInput);
+            node.inputDiv.appendChild(ancestorSpan);
+            node.inputDiv.appendChild(descendantSpan);
+            node.inputDiv.appendChild(selfSpan);
 
             node.spanDiv.appendChild(node.span);
             node.rowDiv.appendChild(node.inputDiv);
@@ -161,7 +226,7 @@ var FOREST_WIDGET_CREATOR =
             }
 
             if(dataInstance.forest[dataInstance.forest.length - 1] === currentNode) {
-                pipeArray.push(pipeSpace);
+                pipeArray.push("");
             }
             else {
                 pipeArray.push(straightPipe);
@@ -250,6 +315,7 @@ var FOREST_WIDGET_CREATOR =
                         includeDescendants: false,
                         width: width ? width: "100%",
                         height: height ? height: "100%",
+                        headerBody: headerBody,
                         widgetBody: widgetBody,
                         forest: forest
                     };
@@ -259,7 +325,8 @@ var FOREST_WIDGET_CREATOR =
                 widgetBody.style.height = dataInstance.height;
 
                 headerBody.className = "header-body";
-                headerBody.innerHTML = "<div><span>A</span><span>D</span><span>S</span></div>";
+                headerBody.hidden = true;
+                headerBody.innerHTML = "<div>" + ascendantIcon + descendantIcon + selfIcon + "</div>";
 
                 forestContainer.className = "forest-container";
                 forestBody.className = "forest-body";
@@ -288,6 +355,13 @@ var FOREST_WIDGET_CREATOR =
                     return new Node(node, null, null, dataInstance);
                 }
 
+                function displayCheckboxes(node) {
+                    node.ancestorsInput.hidden = false;
+                    node.descendantsInput.hidden = false;
+
+                    return;
+                }
+
                 thisForestWidget.addNodeByReference = function(node, parent) {
                     forestBody.appendChild(node.element);
 
@@ -295,12 +369,19 @@ var FOREST_WIDGET_CREATOR =
                         forest.push(node);
                     }
                     else {
+                        node.ancestorsInput.disabled = false;
+                        parent.descendantsInput.disabled = false;
                         node.data.parent = parent;
                         node.depth = parent.depth + 1;
+                        parent.data.children.push(node);
                         regenerateNodeLabels(node, dataInstance);
 
-                        parent.data.children.push(node);
                         parent.element.appendChild(node.element);
+
+                        if(headerBody.hidden) {
+                            headerBody.hidden = false;
+                            applyToAllNodes(forest, displayCheckboxes);
+                        }
                     }
 
                     resize();
@@ -317,8 +398,16 @@ var FOREST_WIDGET_CREATOR =
                         forest.push(node);
                     }
                     else {
+                        node.ancestorsInput.disabled = false;
+                        node.data.parent.descendantsInput.disabled = false;
                         node.data.parent.data.children.push(node);
+                        regenerateNodeLabels(node, dataInstance);
                         node.data.parent.element.appendChild(node.element);
+
+                        if(headerBody.hidden) {
+                            headerBody.hidden = false;
+                            applyToAllNodes(forest, displayCheckboxes);
+                        }
                     }
 
                     resize();

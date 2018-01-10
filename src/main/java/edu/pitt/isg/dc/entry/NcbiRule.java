@@ -56,13 +56,13 @@ public class NcbiRule {
                 .collect(toList());
     }
 
-    Set<EntryId> searchEntryIdsByHost(List<OntologyQuery<Long>> queries) {
+    Set<EntryId> searchEntryIdsByHost(Set<OntologyQuery<Long>> queries) {
         final List<Ncbi> hosts = findHostsInEntries();
         final Stream<String> stream = Stream.of(IS_ABOUT, HOST_SPECIES);
         return listEntryIds(queries, stream.parallel(), hosts);
     }
 
-    Set<EntryId> searchEntryIdsByPathogens(List<OntologyQuery<Long>> queries) {
+    Set<EntryId> searchEntryIdsByPathogens(Set<OntologyQuery<Long>> queries) {
         final List<Ncbi> pathogens = findPathogensInEntries();
         final Stream<String> stream = Stream.of(IS_ABOUT, PATHOGEN_COVERAGE);
         return listEntryIds(queries, stream.parallel(), pathogens);
@@ -84,7 +84,7 @@ public class NcbiRule {
     }
 
     private Set<EntryId> listEntryIds(
-            List<OntologyQuery<Long>> queries,
+            Set<OntologyQuery<Long>> queries,
             Stream<String> stream,
             List<Ncbi> ncbisInEntries) {
         final Set<String> relevantIds = toRelevantIdentifiers(queries);
@@ -107,7 +107,7 @@ public class NcbiRule {
     }
 
     @VisibleForTesting
-    Set<String> toRelevantIdentifiers(List<OntologyQuery<Long>> queries) {
+    Set<String> toRelevantIdentifiers(Set<OntologyQuery<Long>> queries) {
         if (queries == null || queries.isEmpty())
             return null;
         final Map<Long, OntologyQuery<Long>> map = queries.stream()

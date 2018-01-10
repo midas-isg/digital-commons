@@ -12,7 +12,6 @@ div.widget-body {
     box-sizing: border-box;
 }
 
-div.widget-body form.header-body,
 div.widget-body form.options-body {
     border-radius: 5px;
     border-style: solid;
@@ -23,15 +22,16 @@ div.widget-body form.options-body {
     overflow: auto;
 }
 
-div.widget-body form.header-body div span {
-    margin: 0px 2px 0px 3px;
+div.widget-body form.options-body,
+div.widget-body form.forest-container {
+    padding: 1px;
 }
 
 div.widget-body form.options-body input[type=checkbox],
 div.widget-body form.forest-container div.forest-body div.node input[type=checkbox]
 {
     box-sizing: border-box;
-    margin: 0px 1px 1px 1px;
+    margin: 1px 1px 0px 1px;
 }
 
 div.widget-body form.forest-container {
@@ -43,10 +43,11 @@ div.widget-body form.forest-container {
     box-sizing: border-box;
 }
 
-div.widget-body form.forest-container div.forest-body div.node {
+div.widget-body form.forest-container div.forest-body,
+div.widget-body form.options-body div {
     width: 100%;
     white-space: nowrap;
-    line-height: 0px;
+    line-height: 1.0;
 }
 
 div.widget-body form.forest-container div.forest-body {
@@ -64,7 +65,7 @@ div.span-div {
 
 .selected,
 .selected.included {
-    background-color: #AAFFAA;
+    background-color: #b1df8a;
     font-weight: 900;
 }
 
