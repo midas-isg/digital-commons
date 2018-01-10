@@ -42,7 +42,7 @@ public class LocationRule {
         return findAll(listAlcsAsLocationInEntries());
     }
 
-    public Set<EntryId> searchEntryIdsByAlc(List<OntologyQuery<Long>> queries) {
+    public Set<EntryId> searchEntryIdsByAlc(Set<OntologyQuery<Long>> queries) {
         final Set<String> alcs = toRelevantIdentifiers(queries);
         if (alcs == null)
             return null;
@@ -75,7 +75,7 @@ public class LocationRule {
     }
 
     @VisibleForTesting
-    Set<String> toRelevantIdentifiers(List<OntologyQuery<Long>> queries) {
+    Set<String> toRelevantIdentifiers(Set<OntologyQuery<Long>> queries) {
         if (queries == null || queries.isEmpty())
             return null;
         final Map<Long, OntologyQuery<Long>> map = queries.stream()

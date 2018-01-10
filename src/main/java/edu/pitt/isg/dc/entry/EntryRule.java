@@ -78,7 +78,7 @@ public class EntryRule {
         return repo.findOne(entryId);
     }
 
-    private static Set<String> toIds(List<OntologyQuery<String>> types) {
+    private static Set<String> toIds(Set<OntologyQuery<String>> types) {
         if (types == null)
             return null;
         return types.stream()

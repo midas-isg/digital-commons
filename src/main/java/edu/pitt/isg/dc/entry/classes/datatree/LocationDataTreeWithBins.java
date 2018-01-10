@@ -42,7 +42,7 @@ public class LocationDataTreeWithBins extends DataTreeWithBins {
     }
 
     public Set<EntryId> getEntryIdsForLocation(Location location) {
-        List<OntologyQuery<Long>> queries = new ArrayList<>();
+        Set<OntologyQuery<Long>> queries = new HashSet<>();
         OntologyQuery<Long> ontologyQuery = new OntologyQuery<>(location.getId());
         ontologyQuery.setIncludeAncestors(false);
 

@@ -292,7 +292,7 @@ public class DatabaseTest {
     public void entriesEbolaAsPathogen() throws Exception {
         final EntryComplexQuery q = new EntryComplexQuery();
         final OntologyQuery<Long> ebola = new OntologyQuery<>(ebolaId);
-        q.setPathogens(singletonList(ebola));
+        q.setPathogens(singleton(ebola));
         testEntriesEbolaAndDescendantsAsPathogen(q);
     }
 
@@ -300,7 +300,7 @@ public class DatabaseTest {
     public void entriesEbolaOnlyAsPathogen() throws Exception {
         final EntryComplexQuery q = new EntryComplexQuery();
         final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
-        q.setPathogens(singletonList(ebola));
+        q.setPathogens(singleton(ebola));
         testEntriesEbolaOnlyAsPathogen(q);
     }
 
@@ -309,7 +309,7 @@ public class DatabaseTest {
         final EntryComplexQuery q = new EntryComplexQuery();
         final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
         ebola.setIncludeAncestors(true);
-        q.setPathogens(singletonList(ebola));
+        q.setPathogens(singleton(ebola));
         testEntriesEbolaOnlyAsPathogen(q);
     }
 
@@ -318,7 +318,7 @@ public class DatabaseTest {
         final EntryComplexQuery q = new EntryComplexQuery();
         final OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
         ebola.setIncludeDescendants(true);
-        q.setPathogens(singletonList(ebola));
+        q.setPathogens(singleton(ebola));
         testEntriesEbolaAndDescendantsAsPathogen(q);
     }
 
@@ -422,14 +422,14 @@ public class DatabaseTest {
     @Test
     public void relevantIdentifiersForEbola() throws Exception {
         OntologyQuery<Long> q = new OntologyQuery<>(ebolaId);
-        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(rootId + "", ebolaId + "", ebolaZaireId +"");
     }
 
     @Test
     public void relevantIdentifiersForEbolaOnly() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
-        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(DatabaseTest.ebolaId + "");
     }
 
@@ -438,15 +438,19 @@ public class DatabaseTest {
         OntologyQuery<Long> ebola = newOntologyQueryOnly(ebolaId);
         OntologyQuery<Long> human = newOntologyQueryOnly(humanId);
 
-        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(asList(ebola, human));
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(asSet(ebola, human));
         assertThat(identifiers).containsExactlyInAnyOrder(ebolaId + "", humanId + "");
+    }
+
+    private <T> Set<T> asSet(T... array) {
+        return new HashSet<>(asList(array));
     }
 
     @Test
     public void relevantIdentifiersForEbolaAndDescendants() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
         q.setIncludeDescendants(true);
-        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(ebolaId + "", ebolaZaireId +"");
     }
 
@@ -454,21 +458,21 @@ public class DatabaseTest {
     public void relevantIdentifiersForEbolaAndAncestors() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(ebolaId);
         q.setIncludeAncestors(true);
-        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = ncbiRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(rootId + "",ebolaId + "");
     }
 
     @Test
     public void relevantIdentifiersForUsa() throws Exception {
         OntologyQuery<Long> q = new OntologyQuery<>(usaAlc);
-        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singleton(q));
         assertContainsExactlyInAnyOrder(identifiers, usaIds);
     }
 
     @Test
     public void relevantIdentifiersForUsaOnly() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
-        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singleton(q));
         assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + ""));
     }
 
@@ -476,7 +480,7 @@ public class DatabaseTest {
     public void relevantIdentifiersForUsaAndAncestors() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
         q.setIncludeAncestors(true);
-        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singleton(q));
         assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", earthId + ""));
     }
 
@@ -484,7 +488,7 @@ public class DatabaseTest {
     public void relevantIdentifiersForUsaAndDescendants() throws Exception {
         OntologyQuery<Long> q = newOntologyQueryOnly(usaAlc);
         q.setIncludeDescendants(true);
-        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(singleton(q));
         assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", laId, seattleId));
     }
 
@@ -492,13 +496,13 @@ public class DatabaseTest {
     public void relevantIdentifiersForUsaAndLaOnly() throws Exception {
         OntologyQuery<Long> usa = newOntologyQueryOnly(usaAlc);
         OntologyQuery<Long> la = newOntologyQueryOnly(laAlc);
-        final Set<String> identifiers = lsRule.toRelevantIdentifiers(asList(usa, la));
+        final Set<String> identifiers = lsRule.toRelevantIdentifiers(asSet(usa, la));
         assertContainsExactlyInAnyOrder(identifiers, asList(usaAlc + "", laId));
     }
     @Test
     public void relevantIdentifiersForQuarantine() throws Exception {
         OntologyQuery<String> q = new OntologyQuery<>(quarantineIri);
-        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(rootIri, quarantineIri);
     }
 
@@ -506,7 +510,7 @@ public class DatabaseTest {
     @Test
     public void relevantIdentifiersForQuarantineOnly() throws Exception {
         OntologyQuery<String> q = newOntologyQueryOnly(quarantineIri);
-        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(quarantineIri);
     }
 
@@ -515,7 +519,7 @@ public class DatabaseTest {
         OntologyQuery<String> quarantine = newOntologyQueryOnly(quarantineIri);
         OntologyQuery<String> vector = newOntologyQueryOnly(vectorIri);
 
-        final Set<String> identifiers = asvRule.toRelevantIdentifiers(asList(quarantine, vector));
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(asSet(quarantine, vector));
         assertThat(identifiers).containsExactlyInAnyOrder(quarantineIri, vectorIri);
     }
 
@@ -523,7 +527,7 @@ public class DatabaseTest {
     public void relevantIdentifiersForVectorAndDescendants() throws Exception {
         OntologyQuery<String> q = newOntologyQueryOnly(vectorIri);
         q.setIncludeDescendants(true);
-        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(vectorIri, wolbachiaVectorIri);
     }
 
@@ -531,7 +535,7 @@ public class DatabaseTest {
     public void relevantIdentifiersForVectorAndAncestors() throws Exception {
         OntologyQuery<String> q = newOntologyQueryOnly(vectorIri);
         q.setIncludeAncestors(true);
-        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singletonList(q));
+        final Set<String> identifiers = asvRule.toRelevantIdentifiers(singleton(q));
         assertThat(identifiers).containsExactlyInAnyOrder(rootIri, vectorIri);
     }
 

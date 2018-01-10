@@ -41,7 +41,7 @@ public class AsvRule {
         return repo.findByIriIn(listAsvIrisAsControlMeasureInEntries());
     }
 
-    Set<EntryId> searchEntryIdsByIri(List<OntologyQuery<String>> queries) {
+    Set<EntryId> searchEntryIdsByIri(Set<OntologyQuery<String>> queries) {
         final Set<String> iris = toRelevantIdentifiers(queries);
         if (iris == null)
             return null;
@@ -59,7 +59,7 @@ public class AsvRule {
     }
 
     @VisibleForTesting
-    Set<String> toRelevantIdentifiers(List<OntologyQuery<String>> queries) {
+    Set<String> toRelevantIdentifiers(Set<OntologyQuery<String>> queries) {
         if (queries == null || queries.isEmpty())
             return null;
         final Map<String, OntologyQuery<String>> map = queries.stream()
