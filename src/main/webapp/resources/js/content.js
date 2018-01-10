@@ -202,6 +202,11 @@ function setSingularOrPluralModalItem(entry, key, elementName) {
 
         attribute = attribute.map(function(elem){
             if('name' in elem) {
+                if ('description' in elem.name) {
+                    plural = singular;
+                    return elem.name.description;
+
+                }
                 return elem.name;
             }
             return elem.firstName + " " + elem.lastName;

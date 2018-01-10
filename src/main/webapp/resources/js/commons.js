@@ -549,7 +549,21 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         var attribute = attrs[key];
         var hasNulls = true;
 
-        if(Object.prototype.toString.call( attribute ) === '[object Array]') {
+        if (key === 'identifier') {
+            if (Object.prototype.toString.call( attribute ) === '[object Array]') {
+                for(var i = 0; i < attribute.length; i++) {
+                    attribute[i] = identifierToString(attribute[i]);
+                    if(attribute[i].identifier !== 'undefined') {
+                        attribute = attribute[i].identifier;
+                        hasNulls = false;
+                        break;
+                    }
+                }
+            } else {
+                attribute = attribute['identifier'];
+            }
+            hasNulls = attribute === null;
+        } else if (Object.prototype.toString.call( attribute ) === '[object Array]')  {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
                 if(attribute[i] !== null && attribute[i].length > 0) {
@@ -566,10 +580,6 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             } else {
                 attribute = displayList(attribute);
             }
-        } else if(key === 'identifier') {
-            attribute = attribute['identifier'];
-
-            hasNulls = attribute === null;
         } else {
             hasNulls = false;
         }
@@ -589,13 +599,15 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 $(elementId).attr('href', attribute);
             }
 
-            $(containerId).show();
-        } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
-            $(containerId).show();
-            $(elementId).html('N/A');
-        } else {
-            $(containerId).hide();
+        //    $(containerId).show();
+        //} else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
+        //    $(containerId).show();
+        //    $(elementId).html('N/A');
         }
+        //else {
+//      }
+        //let's always show the identifier and see how it goes
+        $(containerId).show();
     } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
         $(elementId).html('N/A');
