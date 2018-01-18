@@ -20,6 +20,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
     <%--<script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 
     <myTags:analytics/>
 <body id="commons-body">
@@ -56,6 +57,7 @@
                 </div>
             </div>
             <div class="panel-footer">
+                <span id="search-query-text" class="pull-left"></span>
                 <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-default pull-right">
                     Search
                 </button>
@@ -136,7 +138,8 @@
             entryPayload: {},
             '$': {
 //                softwareMatchButton: $('#software-match-button'),
-                searchButton: $('#search-button')
+                searchButton: $('#search-button'),
+                searchQueryText: $('#search-query-text')
             }
         };
 
@@ -216,15 +219,37 @@
                 locations: filter(my.locationWidget.getUserSelectedNodes()),
                 types: filter(my.typeWidget.getUserSelectedNodes())
             };
+            my.$.searchQueryText.text(text(my.entryPayload));
             my.entryTable.ajax.reload();
 
             function filter(array) {
                 if (! array || array.length === 0)
                     return array;
                 return _.map(array, function(o) {
-                    return _.pick(o, ['id', 'includeAncestors', 'includeDescendants']);
+                    return _.pick(o, ['id', 'includeAncestors', 'includeDescendants', 'label']);
                 });
             }
+
+            function text(entryPayload) {
+                return 'DEBUG: ' + JSON.stringify(entryPayload);
+                //return [nodesText('hosts', entryPayload)].join(' + ')
+            }
+
+            /*function nodesText(label, entryPayload) {
+                nodes = entryPayload[label];
+                if (nodes.length == 0)
+                    return '(' + label + ': Any' + ')'
+
+            }
+
+            function nodeText(node) {
+                return node.lable + '(' description(node) + ')';
+            }
+            function description(node) {
+                if (node.includeAncestors && node.includeDescendants)
+                    return 'including both Ancestors and Descendants'
+
+            }*/
         }
 
         function urlSearch(size) {
