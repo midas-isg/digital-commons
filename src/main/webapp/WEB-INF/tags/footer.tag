@@ -7,7 +7,7 @@
     <div class="leaf">
         <div class="footer-container-lg">
             <div class="pull-left">
-                &#0169; 2017 University of Pittsburgh
+                &#0169; 2018 University of Pittsburgh
             </div>
 
             <!--<div class="hidden-sm" style="position: absolute; margin-left: 38%; font-style: italic;">
