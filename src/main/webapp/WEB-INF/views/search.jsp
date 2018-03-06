@@ -11,8 +11,9 @@
     <myTags:head/>
     <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
+        <%--pageTitle="Search"--%>
     <myTags:header
-            pageTitle="Search"
+            pageTitle="MIDAS Digital Commons"
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
