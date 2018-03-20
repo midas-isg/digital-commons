@@ -1,49 +1,28 @@
 package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.entry.*;
-import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
-import edu.pitt.isg.dc.entry.util.EntryHelper;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
-import edu.pitt.isg.dc.vm.EntryComplexQuery;
-import edu.pitt.isg.dc.vm.OntologyQuery;
 import edu.pitt.isg.dc.vm.QueryTree;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.WordUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
@@ -460,6 +439,29 @@ public class HomeController {
         }
 
         return "cacheStatus";
+    }
+
+
+    @RequestMapping(value = "api/cache-tree-info-json", method = RequestMethod.GET)
+    public @ResponseBody Map<String, String> cacheTreeInfoJSON() {
+
+        Map<String,String> resultMap = new HashMap<>();
+        try {
+
+            treeInfoArr = categoryHelper.getEntryTrees();
+            Path path = Paths.get(TREE_INFO_CACHE_FILE);
+            FileOutputStream fos = new FileOutputStream(path.toFile());
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            oos.writeObject(treeInfoArr);
+
+            resultMap.put("result","success");
+
+        } catch (Exception e) {
+            resultMap.put("result","fail");
+        }
+
+        return resultMap;
     }
 
     @RequestMapping(value = "/main/about", method = RequestMethod.GET)
