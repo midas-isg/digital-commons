@@ -817,4 +817,15 @@ tfoot {
     text-align: left;
 }
 
+.ajax-loader {
+    padding: 10px;
+    text-align: center;
+}
 
+.status-modal-body {
+    height: 130px;
+}
+
+.btn-publish {
+    float: right;
+}

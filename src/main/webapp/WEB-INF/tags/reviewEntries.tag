@@ -94,6 +94,56 @@
     }
 
 
+    function evalPublishModal() {
+
+        $.ajax({
+            type : "GET",
+            contentType : "application/json; charset=utf-8",
+            url : "${pageContext.request.contextPath}/api/cache-tree-info-json",
+            dataType : 'json',
+            data: {},
+            cache: false,
+            timeout : 100000,
+            beforeSend: function() {
+                $(".ajax-loader").html("<img src='../img/spinner.gif'>");
+                },
+            complete: function(){
+                $(".ajax-loader").html("");
+            },
+            success : function(data) {
+                console.log(data);
+                showPublishModal(data);
+            },
+            error : function(xhr, textStatus, errorThrown) {
+                console.log(xhr.responseText);
+                console.log(textStatus);
+                console.log(errorThrown);
+                showPublishModal(null);
+            }
+        });
+
+        $('#statusModal').modal({backdrop: 'static', keyboard: false});
+        $('#statusModalTitle').text("Publish");
+        $('#statusModalBody').text("Publishing updates...");
+        $('#btnStatusModalClose').prop('disabled', true);
+        //$('#statusModalFooter').hide();
+        $('#statusModal').modal('show');
+    }
+
+
+    function showPublishModal(publishData) {
+        //console.log(publishData.valueOf("result"));
+        $('#btnStatusModalClose').prop('disabled', false);
+        //$('#statusModalFooter').show();
+        if(publishData.result === "success") {
+            $('#statusModalBody').text("All updates have been published.");
+        }
+        else {
+            $('#statusModalBody').text("There was an error attempting to publish updates!");
+        }
+    }
+
+
     function approveButton(id) {
         var endId = "-" + id;
         var entryId = $("#approve-entry-id" + endId).val();
@@ -174,6 +224,7 @@
 </style>
 <myTags:softwareModal/>
 <myTags:viewModal/>
+<myTags:statusModal/>
 <myTags:reviewModal id="approveModal"
                     modalHeader="Approve Submission"
                     type="approve"
@@ -192,6 +243,12 @@
         <li><a href="#data-standard">Data Standard</a></li>
         <li><a href="#software">Software</a></li>
         <li><a href="#approved-entries">Approved</a></li>
+        <c:choose>
+            <c:when test="${adminType == 'ISG_ADMIN'}">
+                    <button type="button" class="btn btn-default btn-publish" name="btnPublish"
+                            onclick="evalPublishModal();">Publish</button>
+            </c:when>
+        </c:choose>
     </ul>
 
     <div class="tab-content">
