@@ -294,7 +294,7 @@ function toggleModalItems(entry, type) {
     toggleModalItem('grants', entry, 'grant', false, false);
     toggleModalItem('platform', entry, 'platform', false, false);
     toggleModalItem('producedBy', entry, 'produced-by', false, false);
-    toggleModalItem('description', entry, 'description', false, false);
+    toggleModalItem('description', entry, 'description', false, true);
     toggleModalItem('landingPage', entry, 'landing-page', true, false);
     toggleModalItem('accessURL', entry, 'access-url', true, false);
     toggleModalItem('authorizations', entry, 'authorizations', false, false);
@@ -312,5 +312,13 @@ function getDataAndOpenModal(id, rev) {
         var entry = JSON.parse(data.json);
         //console.log(data, entry);
         showModal(entry, data.type, data.xml);
+    });
+}
+
+function replaceNewlineChars() {
+    $("#software-description").text(function() {
+        var text = $(this).text();
+        text = text.replace("\n", "<br>");
+        $(this).text(text);
     });
 }

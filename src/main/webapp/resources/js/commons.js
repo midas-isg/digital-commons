@@ -523,6 +523,9 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
 
         if (!hasNulls) {
             if(renderHtml) {
+                if(elementId === '#software-description'){
+                    attribute = replaceAll(attribute,'\n', '<br>');
+                }
                 $(elementId).html(attribute);
             } else {
                 $(elementId).text(attribute);
@@ -539,6 +542,14 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
     } else {
         $(containerId).hide();
     }
+}
+
+function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
 function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {

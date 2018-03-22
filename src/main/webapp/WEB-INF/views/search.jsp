@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="panel-footer">
-                <span id="search-query-text" class="pull-left"></span>
+                <span id="search-query-text" class="pull-left" hidden="true"></span>
                 <button id="search-button" type="submit" ng-click="initiateSearch()" class="btn btn-default pull-right">
                     Search
                 </button>
