@@ -462,7 +462,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                 return;
             }
 
-            if(attribute === null) {
+            if(attribute === null || attribute === undefined) {
                 $(containerId).hide();
                 return;
             }
