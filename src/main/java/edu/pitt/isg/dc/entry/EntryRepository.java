@@ -73,6 +73,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "FROM entry WHERE " + IS_PUBLIC)
     List<String> listTypes();
 
+    @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
+            "FROM entry " +
+            "WHERE content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true")
+    List<String> listTypesForIdentifier(String identifier);
+
     @Query(nativeQuery = true, value = "select a.content #>> '{entry, title}' as s1, text(a.content #> '{entry, dataOutputFormats}') as o," +
                                        "       b.content #>> '{entry, title}' as s2 \n" +
             "from entry a, entry b\n" +
@@ -119,6 +124,49 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value="select * from entry where is_public = true;")
     List<Entry> findPublicEntries();
+
+    @Query(nativeQuery = true, value="select c2.category from entry " +
+            "join category c2 ON entry.category_id = c2.id " +
+            "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true;")
+    List<String> getCategoryForIdentifier(@Param("identifier") String identifier);
+
+
+    @Query(nativeQuery = true, value=
+            "WITH RECURSIVE set_subset as ( \n" +
+                "SELECT \n" +
+                    "co.category_id AS set, \n" +
+                    "co.subcategory_id AS subset \n" +
+                "FROM category_order AS co \n" +
+                "UNION ALL \n" +
+                "SELECT \n" +
+                    "ss.set as set, \n" +
+                    "co2.subcategory_id AS subset \n" +
+                "FROM category_order as co2 \n" +
+                "INNER JOIN set_subset AS ss \n" +
+                "ON  ss.subset = co2.category_id and ss.set <> 1 \n" +
+                ") \n" +
+            "SELECT DISTINCT \n" +
+                "--ss2.set, \n" +
+                "c1.category as setname \n" +
+                "--ss2.subset, \n" +
+                "--c2.category as subsetname \n" +
+            "FROM set_subset ss2 \n" +
+            "join entry as e \n" +
+            "on ss2.subset = e.category_id \n" +
+            "join category c1 ON ss2.set = c1.id \n" +
+            "join category c2 ON ss2.subset = c2.id \n" +
+            "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true \n" +
+            "UNION \n" +
+                "SELECT \n" +
+                    "--c.id as set, \n" +
+                    "c.category as setname \n" +
+                    "--c.id as subset, \n" +
+                    "--c.category as subsetname \n" +
+                "FROM category as c \n" +
+                "join entry e2 ON c.id = e2.category_id \n" +
+                "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true;")
+    List<String> getCategoriesForIdentifier(@Param("identifier") String identifier);
+
 
 
 }
