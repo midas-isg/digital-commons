@@ -138,8 +138,8 @@ public class WebService {
         OAIPMHtype record = new OAIPMHtype();
 
         if(!identifier.isEmpty()) {
-            String accessUrl = apiUtil.getAccessUrl(identifier, "0");
-            if(accessUrl != null) {
+            List<String> identifiersList = apiUtil.getIdentifiers();
+            if(identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
                 //String body = DigitalCommonsHelper.jsonToXml(record);
                 return ResponseEntity.status(HttpStatus.OK).body(record);
@@ -176,8 +176,8 @@ public class WebService {
         if(identifier.isPresent()) {
             identifierId = identifier.get();
 
-            String accessUrl = apiUtil.getAccessUrl(identifierId, "0");
-            if(accessUrl != null) {
+            List<String> identifiersList = apiUtil.getIdentifiers();
+            if(identifiersList.contains(identifierId)) {
                 types = apiUtil.getMetadataFormatsForIdentifier(identifierId);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifierId + " argument is unknown or illegal in this repository.");
