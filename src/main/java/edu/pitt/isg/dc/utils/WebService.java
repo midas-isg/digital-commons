@@ -10,13 +10,17 @@ import org.openarchives.oai._2.ListSetsType;
 import org.openarchives.oai._2.OAIPMHtype;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 //import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
+import edu.pitt.isg.Converter;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.bind.JAXB;
+import javax.xml.bind.JAXBElement;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,7 +120,7 @@ public class WebService {
         return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(categoryNameArray));
     }
 
-    public Object getIdentifiersWebService(ModelMap model) {
+    public ResponseEntity getIdentifiersWebService(ModelMap model) {
         OAIPMHtype identifiers = new OAIPMHtype();
         identifiers = apiUtil.getIdentifiersList();
 
@@ -129,20 +133,34 @@ public class WebService {
 
     }
 
-    public Object getIdentifyInfo(){
+    public ResponseEntity getIdentifyInfo(){
         OAIPMHtype oaipmHtype = new OAIPMHtype();
         return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
 
-    public Object getRecordForIdentifierWebService(ModelMap model, String identifier) {
+    public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier) {
         OAIPMHtype record = new OAIPMHtype();
+        HttpHeaders headers = new HttpHeaders();
+        Converter converter = new Converter();
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
 
         if(!identifier.isEmpty()) {
             List<String> identifiersList = apiUtil.getIdentifiers();
             if(identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
-                //String body = DigitalCommonsHelper.jsonToXml(record);
-                return ResponseEntity.status(HttpStatus.OK).body(record);
+                try {
+                    String body = converter.convertToXml(record);
+                    body = body.replaceAll("(?s)&lt;.*?&gt;", "");
+                    //JAXBElement jaxbElement = null;
+                    //jaxbElement.setValue(record);
+                    //return ResponseEntity.status(HttpStatus.OK).headers(headers).body(record);
+
+                } catch(Exception e) {
+                    System.out.println("Error: " + e);
+                }
+
+                return ResponseEntity.status(HttpStatus.OK).headers(headers).body(record);
+                //return ResponseEntity.status(HttpStatus.OK).body(record);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
             }
@@ -152,7 +170,7 @@ public class WebService {
 
     }
 
-    public Object getRecordsWebService(ModelMap model) {
+    public ResponseEntity getRecordsWebService(ModelMap model) {
         OAIPMHtype records = new OAIPMHtype();
         records = apiUtil.getRecords();
 
@@ -165,7 +183,7 @@ public class WebService {
 
     }
 
-    public Object getMetadataFormatsWebService(ModelMap model, Optional<String> identifier) {
+    public ResponseEntity getMetadataFormatsWebService(ModelMap model, Optional<String> identifier) {
         String identifierId = null;
         //List<String> types = null;
         OAIPMHtype types = new OAIPMHtype();
@@ -200,7 +218,7 @@ public class WebService {
     }
 
 
-    public Object getSetsWebService(ModelMap model) {
+    public ResponseEntity getSetsWebService(ModelMap model) {
         //ListSetsType sets = null;
         OAIPMHtype sets = null;
         //Gson gson = new GsonBuilder().setPrettyPrinting().create();

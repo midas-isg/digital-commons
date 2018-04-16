@@ -41,8 +41,8 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "The metadata in XML format.")
     })
     @RequestMapping(value = "/GetRecord", method = RequestMethod.GET, headers = {"Accept=application/xml"})
-    //public @ResponseBody
-    public Object getRecord(ModelMap model, @RequestParam("identifier") String identifier) {
+    public @ResponseBody
+    ResponseEntity getRecord(ModelMap model, @RequestParam("identifier") String identifier) {
         //return DigitalCommonsHelper.jsonToXml(webService.getRecordForIdentifierWebService(model, identifier));
         return webService.getRecordForIdentifierWebService(model, identifier);
     }
@@ -53,8 +53,8 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "XML information about the MIDAS Digital Commons")
     })
     @RequestMapping(value = "/Identify", method = RequestMethod.GET, headers = "Accept=application/xml")
-    //public @ResponseBody
-    public Object getIdentify(ModelMap model) {
+    public @ResponseBody
+    ResponseEntity getIdentify(ModelMap model) {
         return webService.getIdentifyInfo();
     }
 
@@ -65,8 +65,8 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "XML containing the identifiers.")
     })
     @RequestMapping(value = "/ListIdentifiers", method = RequestMethod.GET, headers = "Accept=application/xml")
-    //public @ResponseBody
-    public Object getIdentifiers(ModelMap model) {
+    public @ResponseBody
+    ResponseEntity getIdentifiers(ModelMap model) {
         return webService.getIdentifiersWebService(model);
     }
 
@@ -76,8 +76,8 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "XML containing the contents of every public entry.")
     })
     @RequestMapping(value = "/ListRecords", method = RequestMethod.GET, headers = "Accept=application/xml")
-    //public @ResponseBody
-    public Object getRecords(ModelMap model) {
+    public @ResponseBody
+    ResponseEntity getRecords(ModelMap model) {
         return webService.getRecordsWebService(model);
     }
 
@@ -87,9 +87,9 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "XML containing Metadata Formats.")
     })
     @RequestMapping(value = "/ListMetaDataFormats", method = RequestMethod.GET, headers = "Accept=application/xml")
-    //public @ResponseBody
+    public @ResponseBody
     //ResponseEntity<String> getMetaDataFormats(ModelMap model, @RequestParam("identifier") Optional<String> identifier) {
-    public Object getMetaDataFormats(ModelMap model, @RequestParam("identifier") Optional<String> identifier) {
+    ResponseEntity getMetaDataFormats(ModelMap model, @RequestParam("identifier") Optional<String> identifier) {
         return webService.getMetadataFormatsWebService(model, identifier);
     }
 
@@ -99,8 +99,8 @@ public class WebServiceOAIPMHController {
             @ApiResponse(code = 200, message = "XML containing the set structure of MIDAS Digital Commons")
     })
     @RequestMapping(value = "/ListSets", method = RequestMethod.GET, headers = "Accept=application/xml")
-    //public @ResponseBody
-    public Object getSetsWebService(ModelMap model) {
+    public @ResponseBody
+    ResponseEntity getSetsWebService(ModelMap model) {
         return webService.getSetsWebService(model);
     }
 
