@@ -148,8 +148,9 @@ public class WebService {
             List<String> identifiersList = apiUtil.getIdentifiers();
             if(identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
+                String body = null;
                 try {
-                    String body = converter.convertToXml(record);
+                    body = converter.convertToXml(record);
                     body = body.replaceAll("(?s)&lt;.*?&gt;", "");
                     //JAXBElement jaxbElement = null;
                     //jaxbElement.setValue(record);
@@ -159,7 +160,7 @@ public class WebService {
                     System.out.println("Error: " + e);
                 }
 
-                return ResponseEntity.status(HttpStatus.OK).headers(headers).body(record);
+                return ResponseEntity.status(HttpStatus.OK).headers(headers).body(body);
                 //return ResponseEntity.status(HttpStatus.OK).body(record);
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");

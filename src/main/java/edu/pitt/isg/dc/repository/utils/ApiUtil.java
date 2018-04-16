@@ -126,8 +126,12 @@ in the record. Depending on the level at which a repository tracks deletions, a 
 the status attribute may be returned, in case the metadata format specified by the metadataPrefix is no longer
 available from the repository or from the specified item.
 Arguments
-identifier a required argument that specifies the unique identifier of the item in the repository from which the record must be disseminated.
-metadataPrefix a required argument that specifies the metadataPrefix of the format that should be included in the metadata part of the returned record . A record should only be returned if the format specified by the metadataPrefix can be disseminated from the item identified by the value of the identifier argument. The metadata formats supported by a repository and for a particular record can be retrieved using the ListMetadataFormats request.
+identifier a required argument that specifies the unique identifier of the item in the repository from which the
+    record must be disseminated.
+metadataPrefix a required argument that specifies the metadataPrefix of the format that should be included in the
+    metadata part of the returned record . A record should only be returned if the format specified by the metadataPrefix
+    can be disseminated from the item identified by the value of the identifier argument. The metadata formats supported
+    by a repository and for a particular record can be retrieved using the ListMetadataFormats request.
  */
 public OAIPMHtype getRecord(String identifier){
     OAIPMHtype oaipmHtype = new OAIPMHtype();
@@ -199,9 +203,13 @@ record matching the arguments specified in the request has been deleted.
 Arguments
 from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
 until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
-metadataPrefix a required argument, which specifies that headers should be returned only if the metadata format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions, has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.
+metadataPrefix a required argument, which specifies that headers should be returned only if the metadata
+    format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions,
+    has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using
+    the ListMetadataFormats request.
 set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.
+resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
+    ListIdentifiers request that issued an incomplete list.
 */
     public OAIPMHtype getIdentifiersList(){
         List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
@@ -252,7 +260,10 @@ Summary and Usage Notes
 This verb is used to retrieve the metadata formats available from a repository. An optional argument restricts the
 request to the formats available for a specific item.
 Arguments
-identifier an optional argument that specifies the unique identifier of the item for which available metadata formats are being requested. If this argument is omitted, then the response includes all metadata formats supported by this repository. Note that the fact that a metadata format is supported by a repository does not mean that it can be disseminated from all items in the repository.
+identifier an optional argument that specifies the unique identifier of the item for which available metadata
+    formats are being requested. If this argument is omitted, then the response includes all metadata formats
+    supported by this repository. Note that the fact that a metadata format is supported by a repository does
+    not mean that it can be disseminated from all items in the repository.
 */
     private OAIPMHtype getMetadataFormats(OAIPMHtype oaipmHtype, List<String> unparsedTypes) {
         oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_METADATA_FORMATS);
@@ -305,9 +316,13 @@ Arguments
 from an optional argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting.
 until an optional argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.
 set an optional argument with a setSpec value , which specifies set criteria for selective harvesting.
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListRecords request that issued an incomplete list.
-metadataPrefix a required argument (unless the exclusive argument resumptionToken is used) that specifies the metadataPrefix of the format that should be included in the metadata part of the returned records. Records should be included only for items from which the metadata format
-matching the metadataPrefix can be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.
+resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
+    ListRecords request that issued an incomplete list.
+metadataPrefix a required argument (unless the exclusive argument resumptionToken is used) that specifies the
+    metadataPrefix of the format that should be included in the metadata part of the returned records.
+    Records should be included only for items from which the metadata format matching the metadataPrefix can
+    be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved
+    using the ListMetadataFormats request.
 */
     public OAIPMHtype getRecords() {
         List<Entry> unparsedRecords = getPublicEntryContents();
@@ -348,7 +363,8 @@ matching the metadataPrefix can be disseminated. The metadata formats supported 
 Summary and Usage Notes
 This verb is used to retrieve the set structure of a repository, useful for selective harvesting.
 Arguments
-resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListSets request that issued an incomplete list.
+resumptionToken an exclusive argument with a value that is the flow control token returned by a previous ListSets
+    request that issued an incomplete list.
  */
     public OAIPMHtype getSets() {
         List<String> unparsedSets = categoryRepository.findSets();
