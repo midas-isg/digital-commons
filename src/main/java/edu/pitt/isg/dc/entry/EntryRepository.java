@@ -69,6 +69,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             AND_PUBLIC)
     List<Object[]> filterIdsByTypes(Set<String> onlyTypes);
 
+    @Query(nativeQuery = true, value = "SELECT * from entry " +
+            "WHERE content #>> '{properties,type}' IN ?1 " +
+            AND_PUBLIC)
+    List<Entry> filterEntryIdsByTypes(Set<String> onlyTypes);
+
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
             "FROM entry WHERE " + IS_PUBLIC)
     List<String> listTypes();
@@ -130,6 +135,38 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true;")
     List<String> getCategoryForIdentifier(@Param("identifier") String identifier);
 
+/*
+    @Query(nativeQuery = true, value =
+            "SELECT a.path, e.content \n" +
+                    "FROM ( WITH RECURSIVE set_subset AS ( \n" +
+                    "SELECT c2.id AS set, \n" +
+                    "(c2.category)::text AS path \n" +
+                    "FROM (category_order co \n" +
+                    "JOIN category c2 ON ((co.category_id = c2.id))) \n" +
+                    "WHERE (co.category_id = ANY (ARRAY[(\2)::bigint, (\3)::bigint, (\4)::bigint, (\5)::bigint])) \n" +
+                    "UNION ALL \n" +
+                    "SELECT co2.subcategory_id AS set, \n" +
+                    "((ss.path || ': '::text) || (c1.category)::text) AS path \n" +
+                    "FROM ((category_order co2 \n" +
+                    "JOIN category c1 ON ((co2.subcategory_id = c1.id))) \n" +
+                    "JOIN set_subset ss ON ((ss.set = co2.category_id))) \n" +
+                    ") \n" +
+                    "SELECT DISTINCT \n" +
+                    "set_subset.set as setid, \n" +
+                    "CASE \n" +
+                    "WHEN (\"position\"(set_subset.path, ': '::text) > \0) THEN (\"overlay\"(set_subset.path, '('::text, ((char_length(set_subset.path) - \"position\"(reverse(set_subset.path), ' :'::text)) + \2), \0) || ')'::text) \n" +
+                    "ELSE set_subset.path \n" +
+                    "END AS path \n" +
+                    "FROM set_subset \n" +
+                    "UNION \n" +
+                    "SELECT category.id as setid, \n" +
+                    "category.category AS path \n" +
+                    "FROM category \n" +
+                    "WHERE (category.id = ANY (ARRAY[(\4)::bigint, (\5)::bigint]))) a \n" +
+                    "JOIN entry as e ON a.setid = e.category_id \n" +
+                    "WHERE e.is_public = TRUE ;")
+    List<Object> getCategoriesForAllIdentifiers();
+*/
 
     @Query(nativeQuery = true, value=
             "WITH RECURSIVE set_subset as ( \n" +

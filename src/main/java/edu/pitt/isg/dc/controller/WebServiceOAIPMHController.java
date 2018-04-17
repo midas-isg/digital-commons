@@ -77,8 +77,8 @@ public class WebServiceOAIPMHController {
     })
     @RequestMapping(value = "/ListRecords", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
-    ResponseEntity getRecords(ModelMap model) {
-        return webService.getRecordsWebService(model);
+    ResponseEntity getRecords(ModelMap model, @RequestParam("Metadata Format") String metadataformat) {
+        return webService.getRecordsWebService(model,metadataformat);
     }
 
     @GET

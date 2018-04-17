@@ -4,10 +4,13 @@ import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import org.jsoup.Jsoup;
 import org.openarchives.oai._2.*;
+import org.openarchives.oai._2_0.oai_dc.OaiDcType;
+import org.purl.dc.elements._1.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.bind.JAXBElement;
 import java.util.*;
 
 /**
@@ -155,7 +158,11 @@ public OAIPMHtype getRecord(String identifier){
 
     MetadataType metadataType = new MetadataType();
     if(entry.getContent() != null){
-        metadataType.setAny(entry.getContent());
+        OaiDcType oaiDcType = new OaiDcType();
+        oaiDcType = setOaiDcType(entry);
+
+        metadataType.setAny(oaiDcType);
+        //metadataType.setAny(entry.getContent());
     }
     recordType.setMetadata(metadataType);
 
@@ -274,8 +281,8 @@ identifier an optional argument that specifies the unique identifier of the item
             int lastPeriod = parsedType.lastIndexOf('.');
             int strLength = parsedType.length();
             MetadataFormatType metadataFormatType = new MetadataFormatType();
-            metadataFormatType.setMetadataNamespace(parsedType.substring(lastPeriod+1,strLength));
-            metadataFormatType.setMetadataPrefix(parsedType.substring(0,lastPeriod));
+            metadataFormatType.setMetadataPrefix(parsedType.substring(lastPeriod+1,strLength));
+            metadataFormatType.setMetadataNamespace(parsedType.substring(0,lastPeriod));
             //metadataFormatType.setSchema();
 
             listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
@@ -324,8 +331,15 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
     be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved
     using the ListMetadataFormats request.
 */
-    public OAIPMHtype getRecords() {
-        List<Entry> unparsedRecords = getPublicEntryContents();
+    public OAIPMHtype getRecords(String metadataFormat) {
+        //List<Entry> unparsedRecords = getPublicEntryContents();
+        List<Entry> unparsedRecords = null;
+        Set<String> metadataFormatSet = new HashSet<String>();
+        if(metadataFormat != null){
+            metadataFormatSet.add(metadataFormat);
+            unparsedRecords = repo.filterEntryIdsByTypes(metadataFormatSet);
+        }
+        //List<Entry> unparsedRecords = repo.filterIdsByTypes();
         ListRecordsType listRecordsType = new ListRecordsType();
 
         OAIPMHtype oaipmHtype = new OAIPMHtype();
@@ -344,9 +358,14 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
             recordType.setHeader(headerType);
             MetadataType metadataType = new MetadataType();
             if(unparsedRecord.getContent() != null){
-                metadataType.setAny(unparsedRecord.getContent());
+                OaiDcType oaiDcType = new OaiDcType();
+                oaiDcType = setOaiDcType(unparsedRecord);
+
+                metadataType.setAny(oaiDcType);
+                //metadataType.setAny(unparsedRecord.getContent());
             }
             recordType.setMetadata(metadataType);
+
 
             listRecordsType.getRecord().add(recordType);
         }
@@ -412,5 +431,83 @@ resumptionToken an exclusive argument with a value that is the flow control toke
     */
         return oaipmHtype;
 
+    }
+
+    private OaiDcType setOaiDcType(Entry entry){
+        OaiDcType oaiDcType = new OaiDcType();
+        HashMap entryMap;
+        entryMap = entry.getContent();
+
+        org.purl.dc.elements._1.ObjectFactory elementFactory = new org.purl.dc.elements._1.ObjectFactory();
+
+        //source
+        ElementType sourceValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("source")){
+            sourceValue.setValue(((HashMap)entryMap.get("entry")).get("source").toString());
+        }
+        JAXBElement<ElementType> sourceElement = elementFactory.createSource(sourceValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(sourceElement);
+
+        //title
+        ElementType titleValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("title")){
+            titleValue.setValue(((HashMap)entryMap.get("entry")).get("title").toString());
+        }
+        JAXBElement<ElementType> titleElement = elementFactory.createTitle(titleValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(titleElement);
+
+        //identifier
+        ElementType identifierValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("identifier")){
+            identifierValue.setValue(((HashMap)((HashMap)entryMap.get("entry")).get("identifier")).get("identifier").toString());
+        }
+        JAXBElement<ElementType> identifierElement = elementFactory.createIdentifier(identifierValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(identifierElement);
+
+        //description
+        ElementType descriptionValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("description")){
+            descriptionValue.setValue(((HashMap)entryMap.get("entry")).get("description").toString());
+        }
+        JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
+        /*
+        ElementType descriptionValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("humanReadableSynopsis")){
+            descriptionValue.setValue(((HashMap)entryMap.get("entry")).get("humanReadableSynopsis").toString());
+        }
+        JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
+        */
+
+        //creator
+        ElementType creatorValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("creator")){
+            creatorValue.setValue(((HashMap)entryMap.get("entry")).get("creator").toString());
+        }
+        JAXBElement<ElementType> creatorElement = elementFactory.createCreator(creatorValue);
+        oaiDcType.getTitleOrCreatorOrSubject().add(creatorElement);
+
+        /*
+            @XmlElementRef(name = "source", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "title", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "rights", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "identifier", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "description", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "relation", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "contributor", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "subject", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "type", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "creator", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "publisher", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "coverage", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "language", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "date", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+        @XmlElementRef(name = "format", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false)
+
+         */
+
+
+        return oaiDcType;
     }
 }

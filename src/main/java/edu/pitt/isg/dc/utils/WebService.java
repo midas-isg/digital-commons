@@ -140,14 +140,17 @@ public class WebService {
 
     public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier) {
         OAIPMHtype record = new OAIPMHtype();
-        HttpHeaders headers = new HttpHeaders();
-        Converter converter = new Converter();
-        headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
+        String notFound = "The value of the  " + identifier + " argument is unknown or illegal in this repository.";
+        //HttpHeaders headers = new HttpHeaders();
+        //Converter converter = new Converter();
+        //headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
 
         if(!identifier.isEmpty()) {
             List<String> identifiersList = apiUtil.getIdentifiers();
             if(identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
+                return convertRecordsToXML(record, notFound);
+                /*
                 String body = null;
                 try {
                     body = converter.convertToXml(record);
@@ -158,30 +161,44 @@ public class WebService {
 
                 } catch(Exception e) {
                     System.out.println("Error: " + e);
+                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
                 }
 
                 return ResponseEntity.status(HttpStatus.OK).headers(headers).body(body);
                 //return ResponseEntity.status(HttpStatus.OK).body(record);
+                */
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
             }
         }
         else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
-
     }
 
-    public ResponseEntity getRecordsWebService(ModelMap model) {
+    public ResponseEntity getRecordsWebService(ModelMap model, String metadataFormat) {
         OAIPMHtype records = new OAIPMHtype();
-        records = apiUtil.getRecords();
+        records = apiUtil.getRecords(metadataFormat);
+        String notFound = "There are no records available.";
 
+        return convertRecordsToXML(records, notFound);
+/*
+        Converter converter = new Converter();
         if(records != null && !records.getListRecords().getRecord().isEmpty()) {
-            //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
-            return ResponseEntity.status(HttpStatus.OK).body(records);
+            String body = null;
+            try {
+                body = converter.convertToXml(records);
+                body = body.replaceAll("(?s)&lt;.*?&gt;", "");
+
+            } catch(Exception e) {
+                System.out.println("Error: " + e);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+            }
+
+            return ResponseEntity.status(HttpStatus.OK).body(body);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no records available.");
         }
-
+*/
     }
 
     public ResponseEntity getMetadataFormatsWebService(ModelMap model, Optional<String> identifier) {
@@ -234,4 +251,23 @@ public class WebService {
 
     }
 
+    private ResponseEntity convertRecordsToXML(OAIPMHtype records, String notFound){
+        Converter converter = new Converter();
+        if(records != null) {
+            String body = null;
+            try {
+                body = converter.convertToXml(records);
+                body = body.replaceAll("(?s)&lt;.*?&gt;", "");
+                //return ResponseEntity.status(HttpStatus.OK).body(records);
+                return ResponseEntity.status(HttpStatus.OK).body(body);
+
+            } catch(Exception e) {
+                System.out.println("Error: " + e);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+            }
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
+        }
+
+    }
 }
