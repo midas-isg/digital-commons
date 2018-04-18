@@ -75,7 +75,7 @@ public class SwaggerConfig extends WebMvcConfigurerAdapter {
       //  String contextForSite = configProperties.getProperty("contextPathForSite");
         ApiInfo apiInfo = new ApiInfo(
                 "MIDAS Digital Commons API",
-                "This API allows a user to retrieve an object's DOI (digital object identifier) and it's associated information (both data and metadata) from the MDC. ",
+                "This webservice is an implementation of the Open Archives Initiative Protocol for Metadata Harvesting (OAI-PMH) protocol, version 2.0.  The protocol defines an application-independent interoperability framework based on metadata harvesting.  The protocol definition is located here: <a href=\"http://www.openarchives.org/OAI/openarchivesprotocol.html\">The Open Archives Initiative Protocol for Metadata Harvesting</a>",
                 /*contextForSite+*/"/main#about",
                 "jdl50@pitt.edu",
                 null,

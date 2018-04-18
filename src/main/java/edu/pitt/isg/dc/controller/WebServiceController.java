@@ -24,7 +24,7 @@ import java.util.*;
 
 @RequestMapping("/api/v1")
 @Controller
-@Api(value = "Identifier controller", description = "List digital objects and retrieve their data/metadata")
+@Api(value = "Identifier controller (deprecated)", description = "List digital objects and retrieve their data/metadata")
 public class WebServiceController {
     @Autowired
     private ApiUtil apiUtil;
