@@ -41,7 +41,9 @@ public class WebServiceOAIPMHController {
     })
     @RequestMapping(value = "/GetRecord", method = RequestMethod.GET, headers = {"Accept=application/xml"})
     public @ResponseBody
-    ResponseEntity getRecord(ModelMap model, @ApiParam(value = "specifies the unique identifier of the item in the repository from which the record will be disseminated.") @RequestParam("identifier") String identifier, @ApiParam("specifies the metadataPrefix of the format (e.g. \"oai_dc\") that will be included in the metadata part of the returned record.") @RequestParam("metadataPrefix") String metadataPrefix) {
+    ResponseEntity getRecord(ModelMap model,
+                             @ApiParam(value = "[required] an argument that specifies the unique identifier of the item in the repository from which the record will be disseminated.") @RequestParam("identifier") String identifier,
+                             @ApiParam(value = "[required] an argument that specifies the metadataPrefix of the format (e.g. \"oai_dc\") that will be included in the metadata part of the returned record.") @RequestParam("metadataPrefix") String metadataPrefix) {
         //return DigitalCommonsHelper.jsonToXml(webService.getRecordForIdentifierWebService(model, identifier));
         return webService.getRecordForIdentifierWebService(model, identifier);
     }
@@ -117,7 +119,7 @@ public class WebServiceOAIPMHController {
     @RequestMapping(value = "/ListMetaDataFormats", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
         //ResponseEntity<String> getMetaDataFormats(ModelMap model, @RequestParam("identifier") Optional<String> identifier) {
-    ResponseEntity getMetaDataFormats(ModelMap model, @ApiParam(required = false, value = "[optional] argument that specifies the unique identifier of the item for which available metadata formats are being requested. If this argument is omitted, then the response includes all metadata formats supported by this repository. Note that the fact that a metadata format is supported by a repository does not mean that it can be disseminated from all items in the repository.") @RequestParam("identifier") Optional<String> identifier) {
+    ResponseEntity getMetaDataFormats(ModelMap model, @ApiParam(required = false, value = "[optional] an argument that specifies the unique identifier of the item for which available metadata formats are being requested. If this argument is omitted, then the response includes all metadata formats supported by this repository. Note that the fact that a metadata format is supported by a repository does not mean that it can be disseminated from all items in the repository.") @RequestParam("identifier") Optional<String> identifier) {
         return webService.getMetadataFormatsWebService(model, identifier);
     }
 
