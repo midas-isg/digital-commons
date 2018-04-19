@@ -122,20 +122,25 @@ public class WebService {
 
     public ResponseEntity getIdentifiersWebService(ModelMap model) {
         OAIPMHtype identifiers = new OAIPMHtype();
+        String notFound = "There are no records available.";
         identifiers = apiUtil.getIdentifiersList();
-
+        return convertRecordsToXML(identifiers, notFound);
+/*
         if(identifiers != null && !identifiers.getListIdentifiers().getHeader().isEmpty()) {
             //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
             return ResponseEntity.status(HttpStatus.OK).body(identifiers);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no records available.");
         }
-
+*/
     }
 
     public ResponseEntity getIdentifyInfo(){
         OAIPMHtype oaipmHtype = new OAIPMHtype();
-        return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
+        String notFound = "There are no information available.";
+        oaipmHtype = apiUtil.getIdentifyInfo();
+        return convertRecordsToXML(oaipmHtype, notFound);
+        //return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
 
     public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier) {
@@ -202,13 +207,15 @@ public class WebService {
     }
 
     public ResponseEntity getMetadataFormatsWebService(ModelMap model, Optional<String> identifier) {
-        String identifierId = null;
+        //String identifierId = null;
         //List<String> types = null;
         OAIPMHtype types = new OAIPMHtype();
+        String notFound = "There are no metadata formats available for the specified item.";
         types = null;
 
-        //Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
+        types = apiUtil.getMetadataFormatsAll();
+        return convertRecordsToXML(types, notFound);
+/*
         if(identifier.isPresent()) {
             identifierId = identifier.get();
 
@@ -232,23 +239,25 @@ public class WebService {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no metadata formats available for the specified item.");
         }
-
+*/
     }
 
 
     public ResponseEntity getSetsWebService(ModelMap model) {
         //ListSetsType sets = null;
         OAIPMHtype sets = null;
-        //Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String notFound = "There are no sets available.";
         sets = apiUtil.getSets();
 
+        return convertRecordsToXML(sets, notFound);
+/*
         if(sets != null && !sets.getListSets().getSet().isEmpty()) {
             //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
             return ResponseEntity.status(HttpStatus.OK).body(sets);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no sets available.");
         }
-
+*/
     }
 
     private ResponseEntity convertRecordsToXML(OAIPMHtype records, String notFound){

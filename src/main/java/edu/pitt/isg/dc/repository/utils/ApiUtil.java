@@ -9,7 +9,11 @@ import org.purl.dc.elements._1.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.bind.JAXBElement;
 import java.util.*;
 
@@ -151,11 +155,29 @@ public OAIPMHtype getRecord(String identifier){
         headerType.setIdentifier(identifier);
     }
     if(entry.getDateAdded() != null){
-        headerType.setDatestamp(entry.getDateAdded().toString());
+        XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(entry.getDateAdded());
+        headerType.setDatestamp(xmlGregorianCalendar.toString());
+        //headerType.setDatestamp(entry.getDateAdded().toString());
     }
+
+/*
+    headerType.getSetSpec().add(categoryRepository.getCategoryPathForIdentifier(identifier));
+
+    List<String> categories = categoryRepository.getCategoryPathForIdentifier(identifier);
+    for(String category : categories){
+        headerType.getSetSpec().add(category);
+    }
+*/
     headerType = getCategoriesforIdentifier(headerType, identifier);
     recordType.setHeader(headerType);
-
+    MetadataType metadataType = new MetadataType();
+    if(entry.getContent() != null){
+        OaiDcType oaiDcType = setOaiDcType(entry);
+        JAXBElement<OaiDcType> jaxbOaiDcType = new org.openarchives.oai._2_0.oai_dc.ObjectFactory().createDc(oaiDcType);
+        metadataType.setAny(jaxbOaiDcType);
+    }
+    recordType.setMetadata(metadataType);
+/*
     MetadataType metadataType = new MetadataType();
     if(entry.getContent() != null){
         OaiDcType oaiDcType = new OaiDcType();
@@ -165,7 +187,7 @@ public OAIPMHtype getRecord(String identifier){
         //metadataType.setAny(entry.getContent());
     }
     recordType.setMetadata(metadataType);
-
+*/
     GetRecordType getRecordType = new GetRecordType();
     getRecordType.setRecord(recordType);
     oaipmHtype.setGetRecord(getRecordType);
@@ -185,21 +207,28 @@ public OAIPMHtype getIdentifyInfo(){
     oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.IDENTIFY);
 
     IdentifyType identifyType = new IdentifyType();
+    identifyType.setRepositoryName("MIDAS Digital Commons");
     identifyType.setBaseURL("http://epimodels.org/apps/mdc");
-    identifyType.getAdminEmail().add("admin@mdc.pitt.edu");
-    //identifyType.getRepositoryName() = "MIDAS Digital Commons";
-    //identifyType.getDeletedRecord().value() = "no";
-/*
-    DeletedRecordType deletedRecordType;// = new DeletedRecordType();
-    deletedRecordType.value() = "no";
-    identifyType.setDeletedRecord(deletedRecordType);
-*/
+    //identifyType.getAdminEmail().add("admin@mdc.pitt.edu");
+    identifyType.getAdminEmail().add("isg-feedback@list.pitt.edu");
+    identifyType.setProtocolVersion("2.0");
 
+    identifyType.setGranularity(GranularityType.YYYY_MM_DD_THH_MM_SS_Z);
+    identifyType.setDeletedRecord(DeletedRecordType.NO);
+/*
+    String earliestDateStamp = "2017-10-10 12:30:16.857000";
+    String formatter = "yyyy-MM-dd'T'HH:mm:ss";
+    DateFormat format = new SimpleDateFormat(formatter);
+    try {
+        Date date = format.parse(earliestDateStamp);
+    }catch (Exception e){
+        System.out.println("Error: " + e);
+    }
+*/
     oaipmHtype.setIdentify(identifyType);
     return oaipmHtype;
 }
 
-//Double check why ROOT is a set/category for some.
 /*
 4.3 ListIdentifiers
 Summary and Usage Notes
@@ -230,11 +259,13 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
             HeaderType headerType = new HeaderType();
             headerType.setIdentifier(unparsedIdentifier);
-
+/*
             if(entryView.getDateAdded() != null){
-                headerType.setDatestamp(entryView.getDateAdded().toString());
+                XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(entryView.getDateAdded());
+                headerType.setDatestamp(xmlGregorianCalendar.toString());
+                //headerType.setDatestamp(entryView.getDateAdded().toString());
             }
-
+*/
             headerType = getCategoriesforIdentifier(headerType, unparsedIdentifier);
 
             listIdentifiersType.getHeader().add(headerType);
@@ -246,8 +277,11 @@ resumptionToken an exclusive argument with a value that is the flow control toke
     }
 
     private HeaderType getCategoriesforIdentifier(HeaderType headerType,String identifier){
+        //String category = categoryRepository.getCategoryPathForIdentifier(identifier);
+
         List<String> categories;
-        categories = repo.getCategoriesForIdentifier(identifier);
+        //categories = repo.getCategoriesForIdentifier(identifier);
+        categories = categoryRepository.getCategoryPathForIdentifier(identifier);
         //categories = repo.getCategoryForIdentifier(unparsedIdentifier);
 
         //headerType.getSetSpec().add(categoryRepository.findOne(entryView.getCategory().getId()).toString());
@@ -259,8 +293,6 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
     }
 
-//Fix Namespace, Prefix, Schema
-//Namespace and Schema are URL's
 /*
 4.4 ListMetadataFormats
 Summary and Usage Notes
@@ -272,6 +304,24 @@ identifier an optional argument that specifies the unique identifier of the item
     supported by this repository. Note that the fact that a metadata format is supported by a repository does
     not mean that it can be disseminated from all items in the repository.
 */
+public OAIPMHtype getMetadataFormatsAll() {
+    //List<String> unparsedTypes = repo.listTypes();
+    OAIPMHtype oaipmHtype = new OAIPMHtype();
+    oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_METADATA_FORMATS);
+    ListMetadataFormatsType listMetadataFormatsType = new ListMetadataFormatsType();
+
+    MetadataFormatType metadataFormatType = new MetadataFormatType();
+    metadataFormatType.setMetadataPrefix("oai_dc");
+    metadataFormatType.setMetadataNamespace("http://www.openarchives.org/OAI/2.0/oai_dc.xsd");
+    metadataFormatType.setSchema("http://www.openarchives.org/OAI/2.0/oai_dc/");
+
+    //oaipmHtype = getMetadataFormats(oaipmHtype, unparsedTypes);
+    listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
+    oaipmHtype.setListMetadataFormats(listMetadataFormatsType);
+
+    return oaipmHtype;
+}
+/*
     private OAIPMHtype getMetadataFormats(OAIPMHtype oaipmHtype, List<String> unparsedTypes) {
         oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_METADATA_FORMATS);
         ListMetadataFormatsType listMetadataFormatsType = new ListMetadataFormatsType();
@@ -280,9 +330,8 @@ identifier an optional argument that specifies the unique identifier of the item
             String parsedType = Jsoup.parse(unparsedType).text();
             int lastPeriod = parsedType.lastIndexOf('.');
             int strLength = parsedType.length();
-            MetadataFormatType metadataFormatType = new MetadataFormatType();
-            metadataFormatType.setMetadataPrefix(parsedType.substring(lastPeriod+1,strLength));
-            metadataFormatType.setMetadataNamespace(parsedType.substring(0,lastPeriod));
+            //metadataFormatType.setMetadataPrefix(parsedType.substring(lastPeriod+1,strLength));
+            //metadataFormatType.setMetadataNamespace(parsedType.substring(0,lastPeriod));
             //metadataFormatType.setSchema();
 
             listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
@@ -292,16 +341,8 @@ identifier an optional argument that specifies the unique identifier of the item
 
         return oaipmHtype;
     }
-
-    public OAIPMHtype getMetadataFormatsAll() {
-        List<String> unparsedTypes = repo.listTypes();
-        OAIPMHtype oaipmHtype = new OAIPMHtype();
-
-        oaipmHtype = getMetadataFormats(oaipmHtype, unparsedTypes);
-
-        return oaipmHtype;
-    }
-
+*/
+/*
     public OAIPMHtype getMetadataFormatsForIdentifier(String identifier) {
         List<String> unparsedTypes = repo.listTypesForIdentifier(identifier);
         OAIPMHtype oaipmHtype = new OAIPMHtype();
@@ -310,7 +351,7 @@ identifier an optional argument that specifies the unique identifier of the item
 
         return oaipmHtype;
     }
-
+*/
 //check Header and Metadata
 /*
 4.5 ListRecords
@@ -337,7 +378,11 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
         Set<String> metadataFormatSet = new HashSet<String>();
         if(metadataFormat != null){
             metadataFormatSet.add(metadataFormat);
-            unparsedRecords = repo.filterEntryIdsByTypes(metadataFormatSet);
+            //Currently only supporting 'oai_dc' metadata Format
+            //this will need updated if we support other formats
+            //in the meantime return all public records
+            //unparsedRecords = repo.filterEntryIdsByTypes(metadataFormatSet);
+            unparsedRecords = repo.findPublicEntries();
         }
         //List<Entry> unparsedRecords = repo.filterIdsByTypes();
         ListRecordsType listRecordsType = new ListRecordsType();
@@ -353,16 +398,23 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
                 headerType.setIdentifier(unparsedRecord.getId().toString());
             }
             if(unparsedRecord.getDateAdded() != null){
-                headerType.setDatestamp(unparsedRecord.getDateAdded().toString());
+                XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(unparsedRecord.getDateAdded());
+                headerType.setDatestamp(xmlGregorianCalendar.toString());
+                //headerType.setDatestamp(unparsedRecord.getDateAdded().toString());
             }
             recordType.setHeader(headerType);
             MetadataType metadataType = new MetadataType();
             if(unparsedRecord.getContent() != null){
+                OaiDcType oaiDcType = setOaiDcType(unparsedRecord);
+                JAXBElement<OaiDcType> jaxbOaiDcType = new org.openarchives.oai._2_0.oai_dc.ObjectFactory().createDc(oaiDcType);
+                metadataType.setAny(jaxbOaiDcType);
+/*
                 OaiDcType oaiDcType = new OaiDcType();
                 oaiDcType = setOaiDcType(unparsedRecord);
 
                 metadataType.setAny(oaiDcType);
                 //metadataType.setAny(unparsedRecord.getContent());
+*/
             }
             recordType.setMetadata(metadataType);
 
@@ -375,7 +427,6 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
         return oaipmHtype;
     }
 
-//Parse and create a more human readable SetName
 //Specify Description for Set
 /*
 4.6 ListSets
@@ -396,7 +447,20 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             String parsedSet = Jsoup.parse(unparsedSet).text();
             SetType setType = new SetType();
             setType.setSetSpec(parsedSet);
-            setType.setSetName(parsedSet);
+
+
+            String setName = parsedSet;
+            setName = setName.replace(": ([Project Tycho Datasets])"," contained in Project Tycho.");
+            setName = setName.replace("Root: ","");
+            setName = setName.replace("(","");
+            setName = setName.replace(")","");
+            setName = setName.replace("Data: ","");
+            setName = setName.replaceFirst(":"," for");
+            //setName.replace("Software: ","Software for ");
+            //setName.replace("Data Formats: ","");
+            setName = setName.replaceAll(":"," in");
+            setType.setSetName(setName);
+
             listSets.getSet().add(setType);
         }
 
@@ -416,21 +480,35 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         ListMetadataFormatsType listMetadataFormatsType = new ListMetadataFormatsType();
         MetadataFormatType metadataFormatType = new MetadataFormatType();
         metadataFormatType.setMetadataPrefix("oai_dc");
+        metadataFormatType.setMetadataNamespace("http://www.openarchives.org/OAI/2.0/oai_dc.xsd");
+        metadataFormatType.setSchema("http://www.openarchives.org/OAI/2.0/oai_dc/");
         listMetadataFormatsType.getMetadataFormat().add(metadataFormatType);
 
         oaipmHtype.setListMetadataFormats(listMetadataFormatsType);
 
-    /*
         Date today = new Date();
-        GregorianCalendar c = new GregorianCalendar();
-        c.setTime(today);
-        //XMLGregorianCalendar xmlGregorianCalendar
-        //XMLGregorianCalendar date2 = DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
+        XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(today);
 
-        //oaipmHtype.getResponseDate(date2);
-    */
+        oaipmHtype.setResponseDate(xmlGregorianCalendar);
+
         return oaipmHtype;
 
+    }
+
+    private XMLGregorianCalendar formatToXMLGregorianCalendar(Date date){
+        String formatter = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        //simpleDateFormat.format(formatter);
+        XMLGregorianCalendar xmlGregorianCalendar = null;
+        try{
+            xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(simpleDateFormat.format(date));
+        }
+        catch (DatatypeConfigurationException e){
+            System.out.println("Error: " + e);
+        }
+
+        return xmlGregorianCalendar;
     }
 
     private OaiDcType setOaiDcType(Entry entry){
@@ -444,33 +522,33 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         ElementType sourceValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("source")){
             sourceValue.setValue(((HashMap)entryMap.get("entry")).get("source").toString());
+            JAXBElement<ElementType> sourceElement = elementFactory.createSource(sourceValue);
+            oaiDcType.getTitleOrCreatorOrSubject().add(sourceElement);
         }
-        JAXBElement<ElementType> sourceElement = elementFactory.createSource(sourceValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(sourceElement);
 
         //title
         ElementType titleValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("title")){
             titleValue.setValue(((HashMap)entryMap.get("entry")).get("title").toString());
+            JAXBElement<ElementType> titleElement = elementFactory.createTitle(titleValue);
+            oaiDcType.getTitleOrCreatorOrSubject().add(titleElement);
         }
-        JAXBElement<ElementType> titleElement = elementFactory.createTitle(titleValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(titleElement);
 
         //identifier
         ElementType identifierValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("identifier")){
             identifierValue.setValue(((HashMap)((HashMap)entryMap.get("entry")).get("identifier")).get("identifier").toString());
+            JAXBElement<ElementType> identifierElement = elementFactory.createIdentifier(identifierValue);
+            oaiDcType.getTitleOrCreatorOrSubject().add(identifierElement);
         }
-        JAXBElement<ElementType> identifierElement = elementFactory.createIdentifier(identifierValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(identifierElement);
 
         //description
         ElementType descriptionValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("description")){
             descriptionValue.setValue(((HashMap)entryMap.get("entry")).get("description").toString());
+            JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
+            oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
         }
-        JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
         /*
         ElementType descriptionValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("humanReadableSynopsis")){
@@ -482,11 +560,17 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
         //creator
         ElementType creatorValue = elementFactory.createElementType();
-        if(((HashMap)entryMap.get("entry")).containsKey("creator")){
-            creatorValue.setValue(((HashMap)entryMap.get("entry")).get("creator").toString());
+        if(((HashMap)entryMap.get("entry")).containsKey("creators")){
+/*
+            List<HashMap> creators = ((List<HashMap>)((HashMap)entryMap.get("entry")).get("creators"));
+            for(HashMap creator : creators){
+
+            }
+ */
+            creatorValue.setValue(((HashMap)entryMap.get("entry")).get("creators").toString());
+            JAXBElement<ElementType> creatorElement = elementFactory.createCreator(creatorValue);
+            oaiDcType.getTitleOrCreatorOrSubject().add(creatorElement);
         }
-        JAXBElement<ElementType> creatorElement = elementFactory.createCreator(creatorValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(creatorElement);
 
         /*
             @XmlElementRef(name = "source", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
