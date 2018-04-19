@@ -215,8 +215,9 @@ public OAIPMHtype getIdentifyInfo(){
 
     identifyType.setGranularity(GranularityType.YYYY_MM_DD_THH_MM_SS_Z);
     identifyType.setDeletedRecord(DeletedRecordType.NO);
+    identifyType.setEarliestDatestamp("2017-10-10T12:30:16Z");
 /*
-    String earliestDateStamp = "2017-10-10 12:30:16.857000";
+    String earliestDateStamp = "2017-10-10T12:30:16.857000";
     String formatter = "yyyy-MM-dd'T'HH:mm:ss";
     DateFormat format = new SimpleDateFormat(formatter);
     try {
@@ -496,10 +497,9 @@ resumptionToken an exclusive argument with a value that is the flow control toke
     }
 
     private XMLGregorianCalendar formatToXMLGregorianCalendar(Date date){
-        String formatter = "yyyy-MM-dd'T'HH:mm:ss'Z'";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+        //String formatter = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        //simpleDateFormat.format(formatter);
         XMLGregorianCalendar xmlGregorianCalendar = null;
         try{
             xmlGregorianCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(simpleDateFormat.format(date));
