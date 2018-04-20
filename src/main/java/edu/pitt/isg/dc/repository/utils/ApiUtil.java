@@ -5,16 +5,15 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import org.jsoup.Jsoup;
 import org.openarchives.oai._2.*;
 import org.openarchives.oai._2_0.oai_dc.OaiDcType;
-import org.purl.dc.elements._1.*;
+import org.purl.dc.elements._1.ElementType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import javax.xml.bind.JAXBElement;
+import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.bind.JAXBElement;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -258,6 +257,24 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             EntryView entryView = new EntryView();
             entryView = getEntryView(unparsedIdentifier);
 
+            if(from != null || until != null) {
+                if(entryView.getDateAdded() == null) {
+                    continue;
+                } else {
+                    if (from != null) {
+                        if(from.after(entryView.getDateAdded())) {
+                            continue;
+                        }
+                    }
+
+                    if (until != null) {
+                        if(until.before(entryView.getDateAdded())) {
+                            continue;
+                        }
+                    }
+                }
+            }
+
             HeaderType headerType = new HeaderType();
             headerType.setIdentifier(unparsedIdentifier);
 /*
@@ -392,6 +409,24 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
         oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_RECORDS);
 
         for (Entry unparsedRecord : unparsedRecords) {
+            if (from != null || until != null) {
+                if (unparsedRecord.getDateAdded() == null) {
+                    continue;
+                } else {
+                    if (from != null) {
+                        if (from.after(unparsedRecord.getDateAdded())) {
+                            continue;
+                        }
+                    }
+
+                    if (until != null) {
+                        if (until.before(unparsedRecord.getDateAdded())) {
+                            continue;
+                        }
+                    }
+                }
+            }
+
             //Entry parsedRecord = Jsoup.parse(unparsedRecord).text();
             RecordType recordType = new RecordType();
             HeaderType headerType = new HeaderType();

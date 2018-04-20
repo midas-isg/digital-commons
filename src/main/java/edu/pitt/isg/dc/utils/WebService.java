@@ -128,15 +128,25 @@ public class WebService {
         }
 
         // Convert UTC datetime string to date
-        Date fromDate;
-        Date untilDate;
-        try {
-            fromDate = convertUtcDateTimeStringToDate(from);
-            untilDate = convertUtcDateTimeStringToDate(until);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        Date fromDate = null;
+        Date untilDate = null;
+        if (from != null && !from.isEmpty()) {
+            try {
+                fromDate = convertUtcDateTimeStringToDate(from);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
         }
+        if (until != null && !until.isEmpty()) {
+            try {
+                untilDate = convertUtcDateTimeStringToDate(until);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
+        }
+
 
         OAIPMHtype identifiers = new OAIPMHtype();
         String notFound = "There are no records available.";
@@ -206,15 +216,25 @@ public class WebService {
         }
 
         // Convert UTC datetime string to date
-        Date fromDate;
-        Date untilDate;
-        try {
-            fromDate = convertUtcDateTimeStringToDate(from);
-            untilDate = convertUtcDateTimeStringToDate(until);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        Date fromDate = null;
+        Date untilDate = null;
+        if (from!= null && !from.isEmpty()) {
+            try {
+                fromDate = convertUtcDateTimeStringToDate(from);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
         }
+        if (until!= null && !until.isEmpty()) {
+            try {
+                untilDate = convertUtcDateTimeStringToDate(until);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
+        }
+
 
         OAIPMHtype records = new OAIPMHtype();
         records = apiUtil.getRecords(fromDate, untilDate, metadataPrefix, set, resumptionToken);
