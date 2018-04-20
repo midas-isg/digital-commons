@@ -14,13 +14,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.TimeZone;
+
+import static edu.pitt.isg.dc.repository.utils.ApiUtil.convertUtcDateTimeStringToDate;
 
 //import com.wordnik.swagger.annotations.ApiParam;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -128,15 +127,25 @@ public class WebService {
         }
 
         // Convert UTC datetime string to date
-        Date fromDate;
-        Date untilDate;
-        try {
-            fromDate = convertUtcDateTimeStringToDate(from);
-            untilDate = convertUtcDateTimeStringToDate(until);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        Date fromDate = null;
+        Date untilDate = null;
+        if (from != null && !from.isEmpty()) {
+            try {
+                fromDate = convertUtcDateTimeStringToDate(from);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
         }
+        if (until != null && !until.isEmpty()) {
+            try {
+                untilDate = convertUtcDateTimeStringToDate(until);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
+        }
+
 
         OAIPMHtype identifiers = new OAIPMHtype();
         String notFound = "There are no records available.";
@@ -206,15 +215,25 @@ public class WebService {
         }
 
         // Convert UTC datetime string to date
-        Date fromDate;
-        Date untilDate;
-        try {
-            fromDate = convertUtcDateTimeStringToDate(from);
-            untilDate = convertUtcDateTimeStringToDate(until);
-        } catch (ParseException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        Date fromDate = null;
+        Date untilDate = null;
+        if (from!= null && !from.isEmpty()) {
+            try {
+                fromDate = convertUtcDateTimeStringToDate(from);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
         }
+        if (until!= null && !until.isEmpty()) {
+            try {
+                untilDate = convertUtcDateTimeStringToDate(until);
+            } catch (ParseException e) {
+                e.printStackTrace();
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+            }
+        }
+
 
         OAIPMHtype records = new OAIPMHtype();
         records = apiUtil.getRecords(fromDate, untilDate, metadataPrefix, set, resumptionToken);
@@ -313,11 +332,5 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
         }
 
-    }
-
-    private Date convertUtcDateTimeStringToDate(String utcDateTimeString) throws ParseException {
-        DateFormat utcDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        utcDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return utcDateFormat.parse(utcDateTimeString);
     }
 }
