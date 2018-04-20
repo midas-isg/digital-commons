@@ -454,7 +454,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             setName = setName.replace(": ([Project Tycho Datasets])"," contained in Project Tycho.");
             setName = setName.replace("Root: ","");
             setName = setName.replace("(","");
-            setName = setName.replace(")","");
+            setName = setName.replace(")",".");
             setName = setName.replace("Data: ","");
             setName = setName.replaceFirst(":"," for");
             //setName.replace("Software: ","Software for ");
@@ -496,7 +496,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
     }
 
-    private XMLGregorianCalendar formatToXMLGregorianCalendar(Date date){
+    public XMLGregorianCalendar formatToXMLGregorianCalendar(Date date){
         //String formatter = "yyyy-MM-dd'T'HH:mm:ss'Z'";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
@@ -519,32 +519,32 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         org.purl.dc.elements._1.ObjectFactory elementFactory = new org.purl.dc.elements._1.ObjectFactory();
 
         //source
-        ElementType sourceValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("source")){
+            ElementType sourceValue = elementFactory.createElementType();
             sourceValue.setValue(((HashMap)entryMap.get("entry")).get("source").toString());
             JAXBElement<ElementType> sourceElement = elementFactory.createSource(sourceValue);
             oaiDcType.getTitleOrCreatorOrSubject().add(sourceElement);
         }
 
         //title
-        ElementType titleValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("title")){
+            ElementType titleValue = elementFactory.createElementType();
             titleValue.setValue(((HashMap)entryMap.get("entry")).get("title").toString());
             JAXBElement<ElementType> titleElement = elementFactory.createTitle(titleValue);
             oaiDcType.getTitleOrCreatorOrSubject().add(titleElement);
         }
 
         //identifier
-        ElementType identifierValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("identifier")){
+            ElementType identifierValue = elementFactory.createElementType();
             identifierValue.setValue(((HashMap)((HashMap)entryMap.get("entry")).get("identifier")).get("identifier").toString());
             JAXBElement<ElementType> identifierElement = elementFactory.createIdentifier(identifierValue);
             oaiDcType.getTitleOrCreatorOrSubject().add(identifierElement);
         }
 
         //description
-        ElementType descriptionValue = elementFactory.createElementType();
         if(((HashMap)entryMap.get("entry")).containsKey("description")){
+            ElementType descriptionValue = elementFactory.createElementType();
             descriptionValue.setValue(((HashMap)entryMap.get("entry")).get("description").toString());
             JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
             oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
@@ -558,20 +558,168 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
         */
 
-        //creator
-        ElementType creatorValue = elementFactory.createElementType();
-        if(((HashMap)entryMap.get("entry")).containsKey("creators")){
-/*
-            List<HashMap> creators = ((List<HashMap>)((HashMap)entryMap.get("entry")).get("creators"));
-            for(HashMap creator : creators){
+        //subject
+        if(((HashMap)entryMap.get("entry")).containsKey("isAbout")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> subject = (ArrayList)entryHashMap.get("isAbout");
 
+            for(Map<String,String> subjectMap : subject) {
+                Iterator<String> iterator = subjectMap.keySet().iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                    if (key == "name") {
+                        String subjectName = subjectMap.get("name");
+                        ElementType subjectValue = elementFactory.createElementType();
+                        subjectValue.setValue(subjectName);
+                        JAXBElement<ElementType> subjectElement = elementFactory.createSubject(subjectValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(subjectElement);
+                    } //if
+                } //while
+            } //for
+        } //if
+
+        //creator
+        //ElementType creatorValue = elementFactory.createElementType();
+        if(((HashMap)entryMap.get("entry")).containsKey("creators")){
+            //HashMap creators = ((HashMap((HashMap)entryMap.get("entry")).get("creators"));
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> creators = (ArrayList)entryHashMap.get("creators");
+
+            for(Map<String,String> creatorMap : creators){
+                String firstname = "";
+                String middleinitial = "";
+                String lastname = "";
+                String space ="";
+                String mispace ="";
+                Boolean organization = false;
+                String organizationName = "";
+                Iterator<String> iterator = creatorMap.keySet().iterator();
+                while (iterator.hasNext()){
+                    String key = iterator.next();
+                    //String value = creatorMap.get(key);
+                    if(key == "firstName") {
+                        firstname = creatorMap.get(key);
+                        space = " ";
+                    }
+                    if(key == "middleInitial") {
+                        middleinitial = creatorMap.get(key);
+                        mispace = " ";
+                    }
+                    if(key == "lastName") {
+                        lastname = creatorMap.get(key);
+                    }
+                    if(key == "type" && creatorMap.get(key) == "organization") {
+                        organization = true;
+                    }
+                    if(organization && key == "description") {
+                        organizationName = creatorMap.get(key);
+                    }
+                    //System.out.println(key + " = " + value);
+                }
+
+                ElementType creatorValue = elementFactory.createElementType();
+                creatorValue.setValue(firstname + space + middleinitial + mispace + lastname + organization);
+                JAXBElement<ElementType> creatorElement = elementFactory.createCreator(creatorValue);
+                oaiDcType.getTitleOrCreatorOrSubject().add(creatorElement);
             }
- */
-            creatorValue.setValue(((HashMap)entryMap.get("entry")).get("creators").toString());
-            JAXBElement<ElementType> creatorElement = elementFactory.createCreator(creatorValue);
-            oaiDcType.getTitleOrCreatorOrSubject().add(creatorElement);
         }
 
+        //publishers
+        if(((HashMap)entryMap.get("entry")).containsKey("publishers")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> publishers = (ArrayList)entryHashMap.get("publishers");
+
+            for(Map<String,String> publisherMap : publishers) {
+                Iterator<String> iterator = publisherMap.keySet().iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                    if (key == "name") {
+                        String publisherName = publisherMap.get("name");
+                        ElementType publisherValue = elementFactory.createElementType();
+                        publisherValue.setValue(publisherName);
+                        JAXBElement<ElementType> publisherElement = elementFactory.createPublisher(publisherValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(publisherElement);
+                    } //if
+                } //while
+            } //for
+        } //if
+
+        //Date
+        if(((HashMap)entryMap.get("entry")).containsKey("dates")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> dates = (ArrayList)entryHashMap.get("dates");
+
+            for(Map<String,String> dateMap : dates) {
+                Iterator<String> iterator = dateMap.keySet().iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                    if (key == "date") {
+                        String date = dateMap.get("name");
+                        ElementType dateValue = elementFactory.createElementType();
+                        dateValue.setValue(date);
+                        JAXBElement<ElementType> dateElement = elementFactory.createDate(dateValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(dateElement);
+/*
+                        String formatter = "yyyy-MM-dd";
+                        DateFormat format = new SimpleDateFormat(formatter);
+                        Date date = null;
+                        try {
+                            date = format.parse(dateMap.get("date"));
+                        }catch (Exception e){
+                            System.out.println("Error: " + e);
+                        }
+                        XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(date);
+                        ElementType dateValue = elementFactory.createElementType();
+                        dateValue.setValue(xmlGregorianCalendar.toString());
+                        JAXBElement<ElementType> dateElement = elementFactory.createDate(dateValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(dateElement);
+*/
+                    } //if
+                } //while
+            } //for
+        } //if
+
+        //coverage
+        if(((HashMap)entryMap.get("entry")).containsKey("spatialCoverage")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> spatialCoverage = (ArrayList)entryHashMap.get("spatialCoverage");
+
+            for(Map<String,String> spatialCoverageMap : spatialCoverage) {
+                Iterator<String> iterator = spatialCoverageMap.keySet().iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                    if (key == "name") {
+                        String spatialCoverageName = spatialCoverageMap.get("name");
+                        ElementType spatialCoverageValue = elementFactory.createElementType();
+                        spatialCoverageValue.setValue(spatialCoverageName);
+                        JAXBElement<ElementType> coverageElement = elementFactory.createCoverage(spatialCoverageValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(coverageElement);
+                    } //if
+                } //while
+            } //for
+        } //if
+/*
+        //formats
+        if(((HashMap)entryMap.get("entry")).containsKey("distributions")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> distributions = (ArrayList)entryHashMap.get("distributions");
+
+            for(Map<String,String> distributionsMap : distributions) {
+                Iterator<String> iterator = distributionsMap.keySet().iterator();
+                while (iterator.hasNext()) {
+                    String key = iterator.next();
+                    if (key == "formats") {
+                        ArrayList<String> formats = (distributionsMap.get("formats");
+                        String formats = distributionsMap.get("formats");
+                        ElementType formatsValue = elementFactory.createElementType();
+                        formatsValue.setValue(formats);
+                        JAXBElement<ElementType> formatsElement = elementFactory.createFormat(formatsValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(formatsElement);
+                    } //if
+                } //while
+            } //for
+        } //if
+*/
         /*
             @XmlElementRef(name = "source", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "title", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
@@ -580,13 +728,13 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             @XmlElementRef(name = "description", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "relation", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "contributor", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "subject", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "subject", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "type", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "creator", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "publisher", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "coverage", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "coverage", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "language", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "date", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "date", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "format", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false)
 
          */
