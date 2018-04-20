@@ -77,11 +77,11 @@ public class WebServiceOAIPMHController {
     @RequestMapping(value = "/ListIdentifiers", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
     ResponseEntity getIdentifiers(ModelMap model,
-                                  @ApiParam(required = false, value = "[optional] an argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting") @RequestParam("from") String from,
-                                  @ApiParam(required = false, value = "[optional] an argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.") @RequestParam("until") String until,
+                                  @ApiParam(value = "an argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting") @RequestParam(value = "from", required = false) String from,
+                                  @ApiParam(value = "an argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.") @RequestParam(value = "until", required = false) String until,
                                   @ApiParam(required = true, value = "[required] an argument, which specifies that headers should be returned only if the metadata format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions, has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.") @RequestParam("metadataPrefix") String metadataPrefix,
-                                  @ApiParam(required = false, value = "[optional] an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam("set") String set,
-                                  @ApiParam(required = false, value = "[optional] an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam("resumptionToken") String resumptionToken) {
+                                  @ApiParam(value = "an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam(value = "set", required = false) String set,
+                                  @ApiParam(value = "an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam(value = "resumptionToken", required = false) String resumptionToken) {
         return webService.getIdentifiersWebService(model);
     }
 
@@ -99,11 +99,11 @@ public class WebServiceOAIPMHController {
     @RequestMapping(value = "/ListRecords", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
     ResponseEntity getRecords(ModelMap model,
-                              @ApiParam(required = false, value = "[optional] an argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting") @RequestParam("from") String from,
-                              @ApiParam(required = false, value = "[optional] an  argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.") @RequestParam("until") String until,
+                              @ApiParam(value = "an argument with a UTCdatetime value, which specifies a lower bound for datestamp-based selective harvesting") @RequestParam(value = "from", required = false) String from,
+                              @ApiParam(value = "an  argument with a UTCdatetime value, which specifies a upper bound for datestamp-based selective harvesting.") @RequestParam(value = "until", required = false) String until,
                               @ApiParam(required = true, value = "[required] an argument, which specifies that headers should be returned only if the metadata format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions, has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.") @RequestParam("metadataPrefix") String metadataPrefix,
-                              @ApiParam(required = false, value = "[optional] an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam("set") String set,
-                              @ApiParam(required = false, value = "[optional] an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam("resumptionToken") String resumptionToken) {
+                              @ApiParam(value = "an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam(value = "set", required = false) String set,
+                              @ApiParam(value = "an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam(value = "resumptionToken", required = false) String resumptionToken) {
         return webService.getRecordsWebService(model, metadataPrefix);
     }
 
@@ -119,7 +119,7 @@ public class WebServiceOAIPMHController {
     @RequestMapping(value = "/ListMetaDataFormats", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
         //ResponseEntity<String> getMetaDataFormats(ModelMap model, @RequestParam("identifier") Optional<String> identifier) {
-    ResponseEntity getMetaDataFormats(ModelMap model, @ApiParam(required = false, value = "[optional] an argument that specifies the unique identifier of the item for which available metadata formats are being requested. If this argument is omitted, then the response includes all metadata formats supported by this repository. Note that the fact that a metadata format is supported by a repository does not mean that it can be disseminated from all items in the repository.") @RequestParam("identifier") Optional<String> identifier) {
+    ResponseEntity getMetaDataFormats(ModelMap model, @ApiParam(required = false, value = "an argument that specifies the unique identifier of the item for which available metadata formats are being requested. If this argument is omitted, then the response includes all metadata formats supported by this repository. Note that the fact that a metadata format is supported by a repository does not mean that it can be disseminated from all items in the repository.") @RequestParam(value = "identifier", required = false) Optional<String> identifier) {
         return webService.getMetadataFormatsWebService(model, identifier);
     }
 
@@ -134,7 +134,7 @@ public class WebServiceOAIPMHController {
     @RequestMapping(value = "/ListSets", method = RequestMethod.GET, headers = "Accept=application/xml")
     public @ResponseBody
     ResponseEntity getSetsWebService(ModelMap model,
-                                     @ApiParam(required = false, value = "[optional] an argument with a value that is the flow control token returned by a previous ListSets request that issued an incomplete list.") @RequestParam("resumptionToken") String resumptionToken) {
+                                     @ApiParam(value = "an argument with a value that is the flow control token returned by a previous ListSets request that issued an incomplete list.") @RequestParam(value = "resumptionToken", required = false) String resumptionToken) {
         return webService.getSetsWebService(model);
     }
 
