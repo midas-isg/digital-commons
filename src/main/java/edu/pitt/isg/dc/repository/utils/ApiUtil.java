@@ -248,7 +248,7 @@ set an optional argument with a setSpec value , which specifies set criteria for
 resumptionToken an exclusive argument with a value that is the flow control token returned by a previous
     ListIdentifiers request that issued an incomplete list.
 */
-    public OAIPMHtype getIdentifiersList(){
+    public OAIPMHtype getIdentifiersList(Date from, Date until, String metadataPrefix, String set, String resumptionToken){
         List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
         ListIdentifiersType listIdentifiersType = new ListIdentifiersType();
         OAIPMHtype oaipmHtype = new OAIPMHtype();
@@ -373,7 +373,7 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
     be disseminated. The metadata formats supported by a repository and for a particular item can be retrieved
     using the ListMetadataFormats request.
 */
-    public OAIPMHtype getRecords(String metadataFormat) {
+    public OAIPMHtype getRecords(Date from, Date until, String metadataFormat, String set, String resumptionToken) {
         //List<Entry> unparsedRecords = getPublicEntryContents();
         List<Entry> unparsedRecords = null;
         Set<String> metadataFormatSet = new HashSet<String>();

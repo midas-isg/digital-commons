@@ -140,7 +140,7 @@ public class WebService {
 
         OAIPMHtype identifiers = new OAIPMHtype();
         String notFound = "There are no records available.";
-        identifiers = apiUtil.getIdentifiersList();
+        identifiers = apiUtil.getIdentifiersList(fromDate, untilDate, metadataPrefix, set, resumptionToken);
         return convertRecordsToXML(identifiers, notFound);
 /*
         if(identifiers != null && !identifiers.getListIdentifiers().getHeader().isEmpty()) {
@@ -217,7 +217,7 @@ public class WebService {
         }
 
         OAIPMHtype records = new OAIPMHtype();
-        records = apiUtil.getRecords(metadataPrefix);
+        records = apiUtil.getRecords(fromDate, untilDate, metadataPrefix, set, resumptionToken);
         String notFound = "There are no records available.";
 
         return convertRecordsToXML(records, notFound);
