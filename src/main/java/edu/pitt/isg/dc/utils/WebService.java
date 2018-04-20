@@ -14,13 +14,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.TimeZone;
+
+import static edu.pitt.isg.dc.repository.utils.ApiUtil.convertUtcDateTimeStringToDate;
 
 //import com.wordnik.swagger.annotations.ApiParam;
 //import org.springframework.web.bind.annotation.RequestParam;
@@ -333,11 +332,5 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
         }
 
-    }
-
-    private Date convertUtcDateTimeStringToDate(String utcDateTimeString) throws ParseException {
-        DateFormat utcDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
-        utcDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return utcDateFormat.parse(utcDateTimeString);
     }
 }

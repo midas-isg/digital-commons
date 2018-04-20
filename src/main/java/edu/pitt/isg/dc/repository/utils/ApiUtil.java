@@ -13,6 +13,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -167,7 +169,7 @@ public OAIPMHtype getRecord(String identifier){
         headerType.getSetSpec().add(category);
     }
 */
-    headerType = getCategoriesforIdentifier(headerType, identifier);
+    headerType = getCategoriesforIdentifier(headerType, identifier, null);
     recordType.setHeader(headerType);
     MetadataType metadataType = new MetadataType();
     if(entry.getContent() != null){
@@ -284,9 +286,10 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                 //headerType.setDatestamp(entryView.getDateAdded().toString());
             }
 */
-            headerType = getCategoriesforIdentifier(headerType, unparsedIdentifier);
-
-            listIdentifiersType.getHeader().add(headerType);
+            headerType = getCategoriesforIdentifier(headerType, unparsedIdentifier, set);
+            if (headerType != null) {
+                listIdentifiersType.getHeader().add(headerType);
+            }
         }
 
         oaipmHtype.setListIdentifiers(listIdentifiersType);
@@ -294,21 +297,32 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         return oaipmHtype;
     }
 
-    private HeaderType getCategoriesforIdentifier(HeaderType headerType,String identifier){
+    private HeaderType getCategoriesforIdentifier(HeaderType headerType,String identifier, String setSpec){
         //String category = categoryRepository.getCategoryPathForIdentifier(identifier);
-
         List<String> categories;
         //categories = repo.getCategoriesForIdentifier(identifier);
         categories = categoryRepository.getCategoryPathForIdentifier(identifier);
+        Boolean containsSpec = false;
         //categories = repo.getCategoryForIdentifier(unparsedIdentifier);
 
         //headerType.getSetSpec().add(categoryRepository.findOne(entryView.getCategory().getId()).toString());
         for(String category : categories){
+            if(setSpec != null && !setSpec.isEmpty()) {
+                String baseSetSpec = setSpec.replace("(", "").replace(")", "");
+
+                if (category.contains(setSpec.trim()) || category.contains(baseSetSpec.trim())) {
+                    containsSpec = true;
+                }
+            } else {
+                containsSpec = true;
+            }
             headerType.getSetSpec().add(category);
         }
-
-        return headerType;
-
+        if (containsSpec) {
+            return headerType;
+        } else {
+            return null;
+        }
     }
 
 /*
@@ -425,6 +439,17 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
                         }
                     }
                 }
+            }
+
+            // Checks setSpec
+            try {
+                LinkedHashMap entry = (LinkedHashMap) unparsedRecord.getContent().get("entry");
+                LinkedHashMap identifierMap = (LinkedHashMap) entry.get("identifier");
+                if (getCategoriesforIdentifier(new HeaderType(), (String) identifierMap.get("identifier"), set) == null) {
+                    continue;
+                }
+            } catch (NullPointerException e) {
+                continue;
             }
 
             //Entry parsedRecord = Jsoup.parse(unparsedRecord).text();
@@ -776,5 +801,11 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
 
         return oaiDcType;
+    }
+
+    public static Date convertUtcDateTimeStringToDate(String utcDateTimeString) throws ParseException {
+        DateFormat utcDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        utcDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return utcDateFormat.parse(utcDateTimeString);
     }
 }
