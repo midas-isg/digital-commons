@@ -1,28 +1,30 @@
 package edu.pitt.isg.dc.utils;
 
 import com.google.gson.*;
-//import com.wordnik.swagger.annotations.ApiParam;
+import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
-import org.openarchives.oai._2.ListSetsType;
 import org.openarchives.oai._2.OAIPMHtype;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.ResponseBody;
-import edu.pitt.isg.Converter;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.bind.JAXB;
-import javax.xml.bind.JAXBElement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
+
+//import com.wordnik.swagger.annotations.ApiParam;
+//import org.springframework.web.bind.annotation.RequestParam;
+//import org.springframework.web.bind.annotation.ResponseBody;
 
 @Component
 public class WebService {
@@ -120,7 +122,22 @@ public class WebService {
         return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(categoryNameArray));
     }
 
-    public ResponseEntity getIdentifiersWebService(ModelMap model) {
+    public ResponseEntity getIdentifiersWebService(ModelMap model, String from, String until, String metadataPrefix, String set, String resumptionToken) {
+        if (!metadataPrefix.toLowerCase().equals("oai_dc")) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
+        }
+
+        // Convert UTC datetime string to date
+        Date fromDate;
+        Date untilDate;
+        try {
+            fromDate = convertUtcDateTimeStringToDate(from);
+            untilDate = convertUtcDateTimeStringToDate(until);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        }
+
         OAIPMHtype identifiers = new OAIPMHtype();
         String notFound = "There are no records available.";
         identifiers = apiUtil.getIdentifiersList();
@@ -143,8 +160,11 @@ public class WebService {
         //return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
 
-    public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier) {
+    public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier, String metadataPrefix) {
         OAIPMHtype record = new OAIPMHtype();
+        if (!metadataPrefix.toLowerCase().equals("oai_dc")) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
+        }
         String notFound = "The value of the  " + identifier + " argument is unknown or illegal in this repository.";
         //HttpHeaders headers = new HttpHeaders();
         //Converter converter = new Converter();
@@ -180,9 +200,24 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
     }
 
-    public ResponseEntity getRecordsWebService(ModelMap model, String metadataFormat) {
+    public ResponseEntity getRecordsWebService(ModelMap model, String from, String until, String metadataPrefix, String set, String resumptionToken) {
+        if (!metadataPrefix.toLowerCase().equals("oai_dc")) {
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
+        }
+
+        // Convert UTC datetime string to date
+        Date fromDate;
+        Date untilDate;
+        try {
+            fromDate = convertUtcDateTimeStringToDate(from);
+            untilDate = convertUtcDateTimeStringToDate(until);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
+        }
+
         OAIPMHtype records = new OAIPMHtype();
-        records = apiUtil.getRecords(metadataFormat);
+        records = apiUtil.getRecords(metadataPrefix);
         String notFound = "There are no records available.";
 
         return convertRecordsToXML(records, notFound);
@@ -278,5 +313,11 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(notFound);
         }
 
+    }
+
+    private Date convertUtcDateTimeStringToDate(String utcDateTimeString) throws ParseException {
+        DateFormat utcDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+        utcDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return utcDateFormat.parse(utcDateTimeString);
     }
 }

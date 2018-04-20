@@ -45,7 +45,7 @@ public class WebServiceOAIPMHController {
                              @ApiParam(value = "[required] an argument that specifies the unique identifier of the item in the repository from which the record will be disseminated.") @RequestParam("identifier") String identifier,
                              @ApiParam(value = "[required] an argument that specifies the metadataPrefix of the format (e.g. \"oai_dc\") that will be included in the metadata part of the returned record.") @RequestParam("metadataPrefix") String metadataPrefix) {
         //return DigitalCommonsHelper.jsonToXml(webService.getRecordForIdentifierWebService(model, identifier));
-        return webService.getRecordForIdentifierWebService(model, identifier);
+        return webService.getRecordForIdentifierWebService(model, identifier, metadataPrefix);
     }
 
     @GET
@@ -82,7 +82,7 @@ public class WebServiceOAIPMHController {
                                   @ApiParam(required = true, value = "[required] an argument, which specifies that headers should be returned only if the metadata format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions, has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.") @RequestParam("metadataPrefix") String metadataPrefix,
                                   @ApiParam(value = "an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam(value = "set", required = false) String set,
                                   @ApiParam(value = "an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam(value = "resumptionToken", required = false) String resumptionToken) {
-        return webService.getIdentifiersWebService(model);
+        return webService.getIdentifiersWebService(model, from, until, metadataPrefix, set, resumptionToken);
     }
 
     @GET
@@ -104,7 +104,7 @@ public class WebServiceOAIPMHController {
                               @ApiParam(required = true, value = "[required] an argument, which specifies that headers should be returned only if the metadata format matching the supplied metadataPrefix is available or, depending on the repository's support for deletions, has been deleted. The metadata formats supported by a repository and for a particular item can be retrieved using the ListMetadataFormats request.") @RequestParam("metadataPrefix") String metadataPrefix,
                               @ApiParam(value = "an argument with a setSpec value, which specifies set criteria for selective harvesting.") @RequestParam(value = "set", required = false) String set,
                               @ApiParam(value = "an argument with a value that is the flow control token returned by a previous ListIdentifiers request that issued an incomplete list.") @RequestParam(value = "resumptionToken", required = false) String resumptionToken) {
-        return webService.getRecordsWebService(model, metadataPrefix);
+        return webService.getRecordsWebService(model, from, until, metadataPrefix, set, resumptionToken);
     }
 
 
