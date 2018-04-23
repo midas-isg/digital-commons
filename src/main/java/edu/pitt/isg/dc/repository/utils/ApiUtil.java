@@ -307,6 +307,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
         //headerType.getSetSpec().add(categoryRepository.findOne(entryView.getCategory().getId()).toString());
         for(String category : categories){
+            category = category.replaceAll("\u2122","");
             if(setSpec != null && !setSpec.isEmpty()) {
                 String baseSetSpec = setSpec.replace("(", "").replace(")", "");
 
@@ -514,6 +515,8 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         for (String unparsedSet : unparsedSets) {
             String parsedSet = Jsoup.parse(unparsedSet).text();
             SetType setType = new SetType();
+
+            parsedSet = parsedSet.replaceAll("\u2122","");  //replace trademark ™
             setType.setSetSpec(parsedSet);
 
 
@@ -527,6 +530,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             //setName.replace("Software: ","Software for ");
             //setName.replace("Data Formats: ","");
             setName = setName.replaceAll(":"," in");
+            //setName = setName.replaceAll("\u2122","");  //replace trademark ™
             setType.setSetName(setName);
 
             listSets.getSet().add(setType);
