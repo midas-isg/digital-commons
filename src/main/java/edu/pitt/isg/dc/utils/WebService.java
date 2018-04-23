@@ -180,7 +180,8 @@ public class WebService {
         if(identifiers.getListIdentifiers().getHeader().size() == 0){
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.");
         }
-        return convertRecordsToXML(identifiers, notFound);
+        return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(identifiers));
+        //return convertRecordsToXML(identifiers, notFound);
 /*
         if(identifiers != null && !identifiers.getListIdentifiers().getHeader().isEmpty()) {
             //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
@@ -191,13 +192,25 @@ public class WebService {
 */
     }
 
+    private String getXMLResultString(OAIPMHtype oaipmHtype){
+        StringResult stringResult = new StringResult();
+        marshaller.marshal( new ObjectFactory().createOAIPMH(oaipmHtype),stringResult );
+        return stringResult.toString();
+    }
+
     public ResponseEntity getIdentifyInfo() {
         OAIPMHtype oaipmHtype = new OAIPMHtype();
         String notFound = "There are no information available.";
         oaipmHtype = apiUtil.getIdentifyInfo();
-        StringResult stringResult = new StringResult();
-        marshaller.marshal( new ObjectFactory().createOAIPMH(oaipmHtype),stringResult );
-        return ResponseEntity.status(HttpStatus.OK).body(stringResult.toString());
+//*******************************************************************
+//*******************************************************************
+//*******************************************************************
+//*******************************************************************
+        return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(oaipmHtype));
+
+        //StringResult stringResult = new StringResult();
+        //marshaller.marshal( new ObjectFactory().createOAIPMH(oaipmHtype),stringResult );
+        //return ResponseEntity.status(HttpStatus.OK).body(stringResult.toString());
         //return convertRecordsToXML(oaipmHtype, notFound);
         //return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
@@ -216,7 +229,8 @@ public class WebService {
             List<String> identifiersList = apiUtil.getIdentifiers();
             if (identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
-                return convertRecordsToXML(record, notFound);
+                return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(record));
+                //return convertRecordsToXML(record, notFound);
                 /*
                 String body = null;
                 try {
@@ -276,7 +290,8 @@ public class WebService {
         }
         String notFound = "noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.";
 
-        return convertRecordsToXML(records, notFound);
+        return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(records));
+        //return convertRecordsToXML(records, notFound);
 /*
         Converter converter = new Converter();
         if(records != null && !records.getListRecords().getRecord().isEmpty()) {
@@ -313,7 +328,8 @@ public class WebService {
         types = null;
 
         types = apiUtil.getMetadataFormatsAll();
-        return convertRecordsToXML(types, notFound);
+        return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(types));
+        //return convertRecordsToXML(types, notFound);
 /*
         if(identifier.isPresent()) {
             identifierId = identifier.get();
@@ -348,7 +364,8 @@ public class WebService {
         String notFound = "noSetHierarchy - The repository does not support sets.";
         sets = apiUtil.getSets();
 
-        return convertRecordsToXML(sets, notFound);
+        return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(sets));
+        //return convertRecordsToXML(sets, notFound);
 /*
         if(sets != null && !sets.getListSets().getSet().isEmpty()) {
             //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));

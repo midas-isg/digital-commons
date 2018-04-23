@@ -23,11 +23,12 @@ import static org.junit.Assert.assertEquals;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 public class WebServiceTest {
-    WebService ws = new WebService();
+    static WebService ws = new WebService();
     private static Jaxb2Marshaller marshaller;
 
     @BeforeClass
     public static void setup() {
+        ws.setupApiUtilForTesting();
 
         marshaller = new Jaxb2Marshaller();
         marshaller.setClassesToBeBound(new Class[]{
@@ -51,7 +52,6 @@ public class WebServiceTest {
 
     @Test
     public void testGetIdentityInfo() {
-        ws.setupApiUtilForTesting();
         ResponseEntity responseEntity = ws.getIdentifyInfo();
         OAIPMHtype oaipmhType = getOAIPMHtypeFromBody(responseEntity);
         IdentifyType identifyType = oaipmhType.getIdentify();
