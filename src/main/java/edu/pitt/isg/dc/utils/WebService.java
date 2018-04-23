@@ -150,6 +150,9 @@ public class WebService {
         OAIPMHtype identifiers = new OAIPMHtype();
         String notFound = "There are no records available.";
         identifiers = apiUtil.getIdentifiersList(fromDate, untilDate, metadataPrefix, set, resumptionToken);
+        if(identifiers.getListIdentifiers().getHeader().size() == 0){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.");
+        }
         return convertRecordsToXML(identifiers, notFound);
 /*
         if(identifiers != null && !identifiers.getListIdentifiers().getHeader().isEmpty()) {
