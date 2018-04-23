@@ -204,7 +204,7 @@ public class WebService {
         if (!metadataPrefix.toLowerCase().equals("oai_dc")) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
         }
-        String notFound = "The value of the  " + identifier + " argument is unknown or illegal in this repository.";
+        String notFound = "idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.";
         //HttpHeaders headers = new HttpHeaders();
         //Converter converter = new Converter();
         //headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
@@ -232,10 +232,12 @@ public class WebService {
                 //return ResponseEntity.status(HttpStatus.OK).body(record);
                 */
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
             }
+
         } else
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
+
     }
 
     public ResponseEntity getRecordsWebService(ModelMap model, String from, String until, String metadataPrefix, String set, String resumptionToken) {
@@ -266,7 +268,10 @@ public class WebService {
 
         OAIPMHtype records = new OAIPMHtype();
         records = apiUtil.getRecords(fromDate, untilDate, metadataPrefix, set, resumptionToken);
-        String notFound = "There are no records available.";
+        if(records.getListRecords().getRecord().size() == 0){
+            return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.");
+        }
+        String notFound = "noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.";
 
         return convertRecordsToXML(records, notFound);
 /*
@@ -293,7 +298,15 @@ public class WebService {
         //String identifierId = null;
         //List<String> types = null;
         OAIPMHtype types = new OAIPMHtype();
-        String notFound = "There are no metadata formats available for the specified item.";
+        OAIPMHtype record = new OAIPMHtype();
+        String notFound = "noMetadataFormats - There are no metadata formats available for the specified item.";
+
+        if(identifier.isPresent() && !identifier.toString().isEmpty()) {
+            List<String> identifiersList = apiUtil.getIdentifiers();
+            if(!identifiersList.contains(identifier.toString())) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
+            }
+        }
         types = null;
 
         types = apiUtil.getMetadataFormatsAll();
@@ -329,7 +342,7 @@ public class WebService {
     public ResponseEntity getSetsWebService(ModelMap model) {
         //ListSetsType sets = null;
         OAIPMHtype sets = null;
-        String notFound = "There are no sets available.";
+        String notFound = "noSetHierarchy - The repository does not support sets.";
         sets = apiUtil.getSets();
 
         return convertRecordsToXML(sets, notFound);
