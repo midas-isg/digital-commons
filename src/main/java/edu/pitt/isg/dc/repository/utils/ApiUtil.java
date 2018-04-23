@@ -609,14 +609,6 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
             oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
         }
-        /*
-        ElementType descriptionValue = elementFactory.createElementType();
-        if(((HashMap)entryMap.get("entry")).containsKey("humanReadableSynopsis")){
-            descriptionValue.setValue(((HashMap)entryMap.get("entry")).get("humanReadableSynopsis").toString());
-        }
-        JAXBElement<ElementType> descriptionElement = elementFactory.createDescription(descriptionValue);
-        oaiDcType.getTitleOrCreatorOrSubject().add(descriptionElement);
-        */
 
         //subject
         if(((HashMap)entryMap.get("entry")).containsKey("isAbout")){
@@ -691,22 +683,54 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         if(((HashMap)entryMap.get("entry")).containsKey("storedIn")){
             Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
             HashMap storedinMap = (HashMap)entryHashMap.get("storedIn");
-            List<LinkedHashMap> publishers = (ArrayList)storedinMap.get("publishers");
+            if(storedinMap.containsKey("publishers")){
+                List<LinkedHashMap> publishers = (ArrayList)storedinMap.get("publishers");
 
-            for(Map<String,Object> publisherMap : publishers) {
-                Iterator<String> iterator = publisherMap.keySet().iterator();
-                while (iterator.hasNext()) {
+                for(Map<String,Object> publisherMap : publishers) {
+                    Iterator<String> iterator = publisherMap.keySet().iterator();
+                    while (iterator.hasNext()) {
+                        String key = iterator.next();
+                        if (key == "name") {
+                            String publisherName = publisherMap.get(key).toString();
+                            ElementType publisherValue = elementFactory.createElementType();
+                            publisherValue.setValue(publisherName);
+                            JAXBElement<ElementType> publisherElement = elementFactory.createPublisher(publisherValue);
+                            oaiDcType.getTitleOrCreatorOrSubject().add(publisherElement);
+                        } //if
+                    } //while
+                } //for
+            } //if
+        } else if(((HashMap)entryMap.get("entry")).containsKey("distributions")){
+            Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
+            List<LinkedHashMap> distributions = (ArrayList)entryHashMap.get("distributions");
+
+            for(Map<String,Object> distributionMap : distributions){
+                Iterator<String> iterator = distributionMap.keySet().iterator();
+                while (iterator.hasNext()){
                     String key = iterator.next();
-                    if (key == "name") {
-                        String publisherName = publisherMap.get(key).toString();
-                        ElementType publisherValue = elementFactory.createElementType();
-                        publisherValue.setValue(publisherName);
-                        JAXBElement<ElementType> publisherElement = elementFactory.createPublisher(publisherValue);
-                        oaiDcType.getTitleOrCreatorOrSubject().add(publisherElement);
+                    if(key == "storedIn"){
+                        HashMap storedIn = (HashMap)distributionMap.get(key);
+                        if(storedIn.containsKey("publishers")){
+                            List<LinkedHashMap> publishers = (ArrayList)storedIn.get("publishers");
+                            for(Map<String,String> publish : publishers){
+                                Iterator<String> publishIterator = publish.keySet().iterator();
+                                while (publishIterator.hasNext()){
+                                    String publishKey = publishIterator.next();
+                                    HashMap publishNameMap = (HashMap)publish;
+                                    if(publishNameMap.containsKey("name")){
+                                        String publisherName = publishNameMap.get("name").toString();
+                                        ElementType publisherValue = elementFactory.createElementType();
+                                        publisherValue.setValue(publisherName);
+                                        JAXBElement<ElementType> publisherElement = elementFactory.createPublisher(publisherValue);
+                                        oaiDcType.getTitleOrCreatorOrSubject().add(publisherElement);
+                                    } //if
+                                } //while
+                            } //for
+                        } //if
                     } //if
                 } //while
             } //for
-        } //if
+        } //else
 
         //Date
         if(((HashMap)entryMap.get("entry")).containsKey("dates")){
