@@ -441,10 +441,14 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
                 }
             }
 
+            LinkedHashMap entry;
+            LinkedHashMap identifierMap;
+            String identifier = null;
             // Checks setSpec
             try {
-                LinkedHashMap entry = (LinkedHashMap) unparsedRecord.getContent().get("entry");
-                LinkedHashMap identifierMap = (LinkedHashMap) entry.get("identifier");
+                entry = (LinkedHashMap) unparsedRecord.getContent().get("entry");
+                identifierMap = (LinkedHashMap) entry.get("identifier");
+                identifier = identifierMap.get("identifier").toString();
                 if (getCategoriesforIdentifier(new HeaderType(), (String) identifierMap.get("identifier"), set) == null) {
                     continue;
                 }
@@ -455,8 +459,11 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
             //Entry parsedRecord = Jsoup.parse(unparsedRecord).text();
             RecordType recordType = new RecordType();
             HeaderType headerType = new HeaderType();
-            if(unparsedRecord.getId() != null){
-                headerType.setIdentifier(unparsedRecord.getId().toString());
+            if(identifier !=null){
+                headerType.setIdentifier(identifier);
+                //headerType.setIdentifier(((LinkedHashMap)((LinkedHashMap) unparsedRecord.getContent().get("entry")).get("identifier")).get("identifier").toString());
+                //headerType.setIdentifier(unparsedRecord.getId().toString());
+                getCategoriesforIdentifier(headerType, identifier, null);
             }
             if(unparsedRecord.getDateAdded() != null){
                 XMLGregorianCalendar xmlGregorianCalendar = formatToXMLGregorianCalendar(unparsedRecord.getDateAdded());
@@ -511,10 +518,10 @@ resumptionToken an exclusive argument with a value that is the flow control toke
 
 
             String setName = parsedSet;
-            setName = setName.replace(": ([Project Tycho Datasets])"," contained in Project Tycho.");
+            setName = setName.replace(": ([Project Tycho Datasets])"," contained in Project Tycho");
             setName = setName.replace("Root: ","");
             setName = setName.replace("(","");
-            setName = setName.replace(")",".");
+            setName = setName.replace(")","");
             setName = setName.replace("Data: ","");
             setName = setName.replaceFirst(":"," for");
             //setName.replace("Software: ","Software for ");
