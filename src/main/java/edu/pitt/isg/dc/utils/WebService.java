@@ -7,15 +7,19 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.openarchives.oai._2.OAIPMHtype;
+import org.openarchives.oai._2.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.ModelMap;
+import org.springframework.xml.transform.StringResult;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +32,7 @@ import static edu.pitt.isg.dc.repository.utils.ApiUtil.convertUtcDateTimeStringT
 @Component
 public class WebService {
 
+    Jaxb2Marshaller marshaller;
     @Autowired
     private ApiUtil apiUtil;
 /*
@@ -37,22 +42,44 @@ public class WebService {
         return gson.toJson(identifiers);
     }
 */
+
+    public WebService() {
+        marshaller = new Jaxb2Marshaller();
+        marshaller.setClassesToBeBound(new Class[]{
+                //all the classes the context needs to know about
+                org.openarchives.oai._2.ObjectFactory.class,
+                org.openarchives.oai._2_0.oai_dc.ObjectFactory.class,
+                org.purl.dc.elements._1.ObjectFactory.class,
+        }); //"alternatively" setContextPath(<jaxb.context>),
+
+
+        marshaller.setMarshallerProperties(new HashMap<String, Object>() {{
+            put(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, true);
+        }});
+    }
+
+
+
+    public void setupApiUtilForTesting() {
+        apiUtil = new ApiUtil();
+    }
+
     public ResponseEntity getMetadataWebService(ModelMap model, String identifier, HttpServletRequest request) {
         String header = request.getHeader("Accept");
         String metadata = apiUtil.getMetadata(identifier, header);
-        if(metadata != null) return ResponseEntity.status(HttpStatus.OK).body(metadata);
+        if (metadata != null) return ResponseEntity.status(HttpStatus.OK).body(metadata);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier " + identifier + " with response content type " + header + ".");
     }
 
     public Object getDataWebService(String identifier, Optional<Integer> distribution) {
         Integer distributionId = null;
 
-        if(distribution.isPresent()) distributionId = distribution.get();
+        if (distribution.isPresent()) distributionId = distribution.get();
 
-        if(distributionId == null) distributionId = 0;
+        if (distributionId == null) distributionId = 0;
 
         String accessUrl = apiUtil.getAccessUrl(identifier, distributionId.toString());
-        if(accessUrl != null) {
+        if (accessUrl != null) {
             return "redirect:" + accessUrl;
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No data found for identifier " + identifier + " and distribution index " + distributionId);
@@ -62,13 +89,13 @@ public class WebService {
     public Object getMetadataTypeWebService(String identifier) {
         String type = apiUtil.getMetadataType(identifier);
 
-        if(type != null) {
+        if (type != null) {
             String simpleName = type.substring(type.lastIndexOf('.') + 1, type.length());
             String schema = null;
 
-            if(simpleName.equals("Dataset")) {
+            if (simpleName.equals("Dataset")) {
                 schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/dataset_schema.json";
-            } else if(simpleName.equals("DataStandard")) {
+            } else if (simpleName.equals("DataStandard")) {
                 schema = "https://raw.githubusercontent.com/biocaddie/WG3-MetadataSpecifications/v2.2/json-schemas/data_standard_schema.json";
             } else {
                 schema = "https://raw.githubusercontent.com/midas-isg/mdc-xsd-and-types/master/src/main/resources/software.xsd";
@@ -91,7 +118,7 @@ public class WebService {
 
         JsonParser parser = new JsonParser();
         JsonArray jsonArray = new JsonArray();
-        for(int i = 0; i < entries.size(); i++) {
+        for (int i = 0; i < entries.size(); i++) {
             EntryView entryView = new EntryView(entries.get(i));
             String json = entryView.getUnescapedEntryJsonString();
             JsonElement element = parser.parse(json).getAsJsonObject();
@@ -115,7 +142,7 @@ public class WebService {
         JsonArray categoryNameArray = new JsonArray();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        for (int i = categories.size() - 1; i >=0; i--)
+        for (int i = categories.size() - 1; i >= 0; i--)
             categoryNameArray.add(categories.get(i).getCategory());
 
         return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(categoryNameArray));
@@ -164,11 +191,14 @@ public class WebService {
 */
     }
 
-    public ResponseEntity getIdentifyInfo(){
+    public ResponseEntity getIdentifyInfo() {
         OAIPMHtype oaipmHtype = new OAIPMHtype();
         String notFound = "There are no information available.";
         oaipmHtype = apiUtil.getIdentifyInfo();
-        return convertRecordsToXML(oaipmHtype, notFound);
+        StringResult stringResult = new StringResult();
+        marshaller.marshal( new ObjectFactory().createOAIPMH(oaipmHtype),stringResult );
+        return ResponseEntity.status(HttpStatus.OK).body(stringResult.toString());
+        //return convertRecordsToXML(oaipmHtype, notFound);
         //return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
 
@@ -182,9 +212,9 @@ public class WebService {
         //Converter converter = new Converter();
         //headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
 
-        if(!identifier.isEmpty()) {
+        if (!identifier.isEmpty()) {
             List<String> identifiersList = apiUtil.getIdentifiers();
-            if(identifiersList.contains(identifier)) {
+            if (identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
                 return convertRecordsToXML(record, notFound);
                 /*
@@ -207,9 +237,10 @@ public class WebService {
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
             }
-        }
-        else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
+
+        } else
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
+
     }
 
     public ResponseEntity getRecordsWebService(ModelMap model, String from, String until, String metadataPrefix, String set, String resumptionToken) {
@@ -220,7 +251,7 @@ public class WebService {
         // Convert UTC datetime string to date
         Date fromDate = null;
         Date untilDate = null;
-        if (from!= null && !from.isEmpty()) {
+        if (from != null && !from.isEmpty()) {
             try {
                 fromDate = convertUtcDateTimeStringToDate(from);
             } catch (ParseException e) {
@@ -228,7 +259,7 @@ public class WebService {
                 return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("badArgument - The request includes illegal arguments or is missing required arguments.");
             }
         }
-        if (until!= null && !until.isEmpty()) {
+        if (until != null && !until.isEmpty()) {
             try {
                 untilDate = convertUtcDateTimeStringToDate(until);
             } catch (ParseException e) {
@@ -328,9 +359,9 @@ public class WebService {
 */
     }
 
-    private ResponseEntity convertRecordsToXML(OAIPMHtype records, String notFound){
+    private ResponseEntity convertRecordsToXML(OAIPMHtype records, String notFound) {
         Converter converter = new Converter();
-        if(records != null) {
+        if (records != null) {
             String body = null;
             try {
                 body = converter.convertToXml(records);
@@ -338,7 +369,7 @@ public class WebService {
                 //return ResponseEntity.status(HttpStatus.OK).body(records);
                 return ResponseEntity.status(HttpStatus.OK).body(body);
 
-            } catch(Exception e) {
+            } catch (Exception e) {
                 System.out.println("Error: " + e);
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
             }
