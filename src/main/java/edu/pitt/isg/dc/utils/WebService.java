@@ -60,9 +60,9 @@ public class WebService {
 
 
 
-    public void setupApiUtilForTesting() {
-        apiUtil = new ApiUtil();
-    }
+    //public void setupApiUtilForTesting(ApiUtil apiUtil) {
+    //    this.apiUtil = apiUtil;
+    //}
 
     public ResponseEntity getMetadataWebService(ModelMap model, String identifier, HttpServletRequest request) {
         String header = request.getHeader("Accept");
