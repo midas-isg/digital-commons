@@ -202,17 +202,8 @@ public class WebService {
         OAIPMHtype oaipmHtype = new OAIPMHtype();
         String notFound = "There are no information available.";
         oaipmHtype = apiUtil.getIdentifyInfo();
-//*******************************************************************
-//*******************************************************************
-//*******************************************************************
-//*******************************************************************
         return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(oaipmHtype));
 
-        //StringResult stringResult = new StringResult();
-        //marshaller.marshal( new ObjectFactory().createOAIPMH(oaipmHtype),stringResult );
-        //return ResponseEntity.status(HttpStatus.OK).body(stringResult.toString());
-        //return convertRecordsToXML(oaipmHtype, notFound);
-        //return ResponseEntity.status(HttpStatus.OK).body(oaipmHtype);
     }
 
     public ResponseEntity getRecordForIdentifierWebService(ModelMap model, String identifier, String metadataPrefix) {
@@ -318,10 +309,12 @@ public class WebService {
         OAIPMHtype types = new OAIPMHtype();
         OAIPMHtype record = new OAIPMHtype();
         String notFound = "noMetadataFormats - There are no metadata formats available for the specified item.";
+        String identifierId = "";
 
         if(identifier.isPresent() && !identifier.toString().isEmpty()) {
+            identifierId = identifier.get();
             List<String> identifiersList = apiUtil.getIdentifiers();
-            if(!identifiersList.contains(identifier.toString())) {
+            if(!identifiersList.contains(identifierId)) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
             }
         }
