@@ -415,7 +415,24 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
             //this will need updated if we support other formats
             //in the meantime return all public records
             //unparsedRecords = repo.filterEntryIdsByTypes(metadataFormatSet);
-            unparsedRecords = repo.findPublicEntries();
+            if (from == null && until == null) {
+                unparsedRecords = repo.findPublicEntries();
+            }
+            else {
+                if(from == null){
+                    SimpleDateFormat simpleDateFormatFrom = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                    simpleDateFormatFrom.setTimeZone(TimeZone.getTimeZone("UTC"));
+                    try{
+                        from = simpleDateFormatFrom.parse("2010-01-01T12:00:00");
+                    } catch (ParseException e) {
+
+                    }
+                }
+                if(until == null){
+                    until = new Date();
+                }
+                unparsedRecords = repo.getListRecordsByDate(from, until);
+            }
         }
         //List<Entry> unparsedRecords = repo.filterIdsByTypes();
         ListRecordsType listRecordsType = new ListRecordsType();
@@ -424,7 +441,7 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
         oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_RECORDS);
 
         for (Entry unparsedRecord : unparsedRecords) {
-            if (from != null || until != null) {
+/*            if (from != null || until != null) {
                 if (unparsedRecord.getDateAdded() == null) {
                     continue;
                 } else {
@@ -441,7 +458,7 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
                     }
                 }
             }
-
+*/
             LinkedHashMap entry;
             LinkedHashMap identifierMap;
             String identifier = null;

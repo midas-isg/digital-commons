@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -172,6 +173,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
                 "where content->'entry'->'identifier'->>'identifier' = ?1 and is_public = true;")
     List<String> getCategoriesForIdentifier(@Param("identifier") String identifier);
 
+    @Query(nativeQuery = true, value=
+    "select * from entry \n" +
+    "where date_added BETWEEN ?1 AND ?2 \n" +
+    "and is_public = true;")
+    List<Entry> getListRecordsByDate(@Param("from") java.util.Date from, @Param("until") java.util.Date until);
 
 
 }

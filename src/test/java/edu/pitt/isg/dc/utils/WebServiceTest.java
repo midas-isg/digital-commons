@@ -90,22 +90,31 @@ public class WebServiceTest {
         OaiDcType oaiDcType = getOaiDcTypeFromBody(getRecordType.getRecord().getMetadata().getAny());
 
         JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertTrue(elementTypeTitle.getName().getLocalPart().equals("title"));
         assertEquals("Counts of Dengue without warning signs reported in ANTIGUA AND BARBUDA: 1960-2005", elementTypeTitle.getValue().getValue());
         JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertTrue(elementTypeIdentifier.getName().getLocalPart().equals("identifier"));
         assertEquals("10.25337/T7/ptycho.v2.0/AG.722862003", elementTypeIdentifier.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertTrue(elementTypeSubject.getName().getLocalPart().equals("subject"));
         assertEquals("Dengue without warning signs", elementTypeSubject.getValue().getValue());
         JAXBElement<ElementType> elementTypeCreator1 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertTrue(elementTypeCreator1.getName().getLocalPart().equals("creator"));
         assertEquals("Willem G Van Panhuis", elementTypeCreator1.getValue().getValue());
         JAXBElement<ElementType> elementTypeCreator2 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertTrue(elementTypeCreator2.getName().getLocalPart().equals("creator"));
         assertEquals("Anne L Cross", elementTypeCreator2.getValue().getValue());
         JAXBElement<ElementType> elementTypeCreator3 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertTrue(elementTypeCreator3.getName().getLocalPart().equals("creator"));
         assertEquals("Donald S Burke", elementTypeCreator3.getValue().getValue());
         JAXBElement<ElementType> elementTypePublisher = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertTrue(elementTypePublisher.getName().getLocalPart().equals("publisher"));
         assertEquals("Project Tycho", elementTypePublisher.getValue().getValue());
         JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(9));
+        assertTrue(elementTypeCoverage.getName().getLocalPart().equals("coverage"));
         assertEquals("ANTIGUA AND BARBUDA", elementTypeCoverage.getValue().getValue());
         JAXBElement<ElementType> elementTypeFormat = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(10));
+        assertTrue(elementTypeFormat.getName().getLocalPart().equals("format"));
         assertEquals("CSV", elementTypeFormat.getValue().getValue());
 
         assertEquals("10.25337/T7/ptycho.v2.0/AG.722862003", getRecordType.getRecord().getHeader().getIdentifier());
@@ -124,26 +133,37 @@ public class WebServiceTest {
         OaiDcType oaiDcType = getOaiDcTypeFromBody(getRecordType.getRecord().getMetadata().getAny());
 
         JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertTrue(elementTypeTitle.getName().getLocalPart().equals("title"));
         assertEquals("2010 U.S. Synthetic Populations by County", elementTypeTitle.getValue().getValue());
         JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertTrue(elementTypeIdentifier.getName().getLocalPart().equals("identifier"));
         assertEquals("http://www.epimodels.org/drupal/?q=node/81", elementTypeIdentifier.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject1 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertTrue(elementTypeSubject1.getName().getLocalPart().equals("subject"));
         assertEquals("Individual", elementTypeSubject1.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject2 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertTrue(elementTypeSubject2.getName().getLocalPart().equals("subject"));
         assertEquals("Homo sapiens", elementTypeSubject2.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject3 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertTrue(elementTypeSubject3 .getName().getLocalPart().equals("subject"));
         assertEquals("Household", elementTypeSubject3.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject4 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertTrue(elementTypeSubject4.getName().getLocalPart().equals("subject"));
         assertEquals("Group quarters", elementTypeSubject4.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject5 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertTrue(elementTypeSubject5.getName().getLocalPart().equals("subject"));
         assertEquals("Schools", elementTypeSubject5.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject6 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(8));
+        assertTrue(elementTypeSubject6.getName().getLocalPart().equals("subject"));
         assertEquals("Workplace facility", elementTypeSubject6.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject7 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(9));
+        assertTrue(elementTypeSubject7.getName().getLocalPart().equals("subject"));
         assertEquals("United States of America", elementTypeSubject7.getValue().getValue());
         JAXBElement<ElementType> elementTypeCreator = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(10));
+        assertTrue(elementTypeCreator.getName().getLocalPart().equals("creator"));
         assertEquals("William Wheaton", elementTypeCreator.getValue().getValue());
         JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(11));
+        assertTrue(elementTypeCoverage.getName().getLocalPart().equals("coverage"));
         assertEquals("United States of America", elementTypeCoverage.getValue().getValue());
 
         assertEquals("http://www.epimodels.org/drupal/?q=node/81", getRecordType.getRecord().getHeader().getIdentifier());
@@ -233,7 +253,19 @@ public class WebServiceTest {
         OaiDcType oaiDcType = getOaiDcTypeFromBody(listRecordsType.getRecord().get(0).getMetadata().getAny());
 
         JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertTrue(elementTypeIdentifier.getName().getLocalPart().equals("identifier"));
         assertEquals("MIDAS-ISG:epidemiological-bulletin-national-system-of-epidemiological-surveillance-system-v1.0", elementTypeIdentifier.getValue().getValue());
+
+        //additional from/until tests
+        ResponseEntity responseEntityFromNull = ws.getRecordsWebService(model, null, "2018-04-01T12:00:00","oai_dc" , null, null);
+        OAIPMHtype oaipmhTypeFromNull = getOAIPMHtypeFromBody(responseEntityFromNull);
+        ListRecordsType listRecordsTypeFromNull = oaipmhTypeFromNull.getListRecords();
+        assertTrue(listRecordsTypeFromNull.getRecord().size() == 1);
+
+        ResponseEntity responseEntityToNull = ws.getRecordsWebService(model, "2018-04-01T12:00:00", null,"oai_dc" , null, null);
+        OAIPMHtype oaipmhTypeToNull = getOAIPMHtypeFromBody(responseEntityToNull);
+        ListRecordsType listRecordsTypeToNull = oaipmhTypeToNull.getListRecords();
+        assertTrue(listRecordsTypeToNull.getRecord().size() >= 4);
     }
 
     @Test
@@ -252,18 +284,25 @@ public class WebServiceTest {
         OaiDcType oaiDcType = getOaiDcTypeFromBody(listRecordsType.getRecord().get(0).getMetadata().getAny());
 
         JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertTrue(elementTypeTitle.getName().getLocalPart().equals("title"));
         assertEquals("Demographics in Honduras, 2008", elementTypeTitle.getValue().getValue());
         JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertTrue(elementTypeIdentifier.getName().getLocalPart().equals("identifier"));
         assertEquals("MIDAS-ISG:WS-000164", elementTypeIdentifier.getValue().getValue());
         JAXBElement<ElementType> elementTypeSubject = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertTrue(elementTypeSubject.getName().getLocalPart().equals("subject"));
         assertEquals("Statistics on demographic in Honduras", elementTypeSubject.getValue().getValue());
         JAXBElement<ElementType> elementTypeCreator = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertTrue(elementTypeCreator.getName().getLocalPart().equals("creator"));
         assertEquals("Wikidot", elementTypeCreator.getValue().getValue());
         JAXBElement<ElementType> elementTypeDate = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertTrue(elementTypeDate.getName().getLocalPart().equals("date"));
         assertEquals("2008", elementTypeDate.getValue().getValue());
         JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertTrue(elementTypeCoverage.getName().getLocalPart().equals("coverage"));
         assertEquals("Honduras", elementTypeCoverage.getValue().getValue());
         JAXBElement<ElementType> elementTypeFormat = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertTrue(elementTypeFormat.getName().getLocalPart().equals("format"));
         assertEquals("HTML", elementTypeFormat.getValue().getValue());
 
     }
