@@ -244,7 +244,7 @@ public class WebService {
             }
 
         } else
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifier + " argument is unknown or illegal in this repository.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
 
     }
 

@@ -86,10 +86,28 @@ public class WebServiceTest {
         OAIPMHtype oaipmhType = getOAIPMHtypeFromBody(responseEntity);
         GetRecordType getRecordType = oaipmhType.getGetRecord();
 
-        //((JAXBElement<OAIPMHtype>).getRecord().get(0).metadata.getAny()).getValue();
+        //Test Dublin Core elements
         OaiDcType oaiDcType = getOaiDcTypeFromBody(getRecordType.getRecord().getMetadata().getAny());
-        JAXBElement<ElementType> elementType = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
-        //elementType.getValue()        .getValue()
+
+        JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertEquals("Counts of Dengue without warning signs reported in ANTIGUA AND BARBUDA: 1960-2005", elementTypeTitle.getValue().getValue());
+        JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertEquals("10.25337/T7/ptycho.v2.0/AG.722862003", elementTypeIdentifier.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertEquals("Dengue without warning signs", elementTypeSubject.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCreator1 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertEquals("Willem G Van Panhuis", elementTypeCreator1.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCreator2 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertEquals("Anne L Cross", elementTypeCreator2.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCreator3 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertEquals("Donald S Burke", elementTypeCreator3.getValue().getValue());
+        JAXBElement<ElementType> elementTypePublisher = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertEquals("Project Tycho", elementTypePublisher.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(9));
+        assertEquals("ANTIGUA AND BARBUDA", elementTypeCoverage.getValue().getValue());
+        JAXBElement<ElementType> elementTypeFormat = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(10));
+        assertEquals("CSV", elementTypeFormat.getValue().getValue());
+
         assertEquals("10.25337/T7/ptycho.v2.0/AG.722862003", getRecordType.getRecord().getHeader().getIdentifier());
         assertEquals("[Root: Data: Disease surveillance data: Americas: Antigua and Barbuda: ([Project Tycho Datasets])]", getRecordType.getRecord().getHeader().getSetSpec().toString());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
@@ -101,6 +119,32 @@ public class WebServiceTest {
         ResponseEntity responseEntity = ws.getRecordForIdentifierWebService(model, "http://www.epimodels.org/drupal/?q=node/81","oai_dc");
         OAIPMHtype oaipmhType = getOAIPMHtypeFromBody(responseEntity);
         GetRecordType getRecordType = oaipmhType.getGetRecord();
+
+        //Test Dublin Core elements
+        OaiDcType oaiDcType = getOaiDcTypeFromBody(getRecordType.getRecord().getMetadata().getAny());
+
+        JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertEquals("2010 U.S. Synthetic Populations by County", elementTypeTitle.getValue().getValue());
+        JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertEquals("http://www.epimodels.org/drupal/?q=node/81", elementTypeIdentifier.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject1 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertEquals("Individual", elementTypeSubject1.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject2 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertEquals("Homo sapiens", elementTypeSubject2.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject3 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertEquals("Household", elementTypeSubject3.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject4 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertEquals("Group quarters", elementTypeSubject4.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject5 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertEquals("Schools", elementTypeSubject5.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject6 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(8));
+        assertEquals("Workplace facility", elementTypeSubject6.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject7 = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(9));
+        assertEquals("United States of America", elementTypeSubject7.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCreator = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(10));
+        assertEquals("William Wheaton", elementTypeCreator.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(11));
+        assertEquals("United States of America", elementTypeCoverage.getValue().getValue());
 
         assertEquals("http://www.epimodels.org/drupal/?q=node/81", getRecordType.getRecord().getHeader().getIdentifier());
         assertEquals("[Root: Data: Synthetic populations and ecosystems: (Synthia datasets)]", getRecordType.getRecord().getHeader().getSetSpec().toString());
@@ -161,7 +205,7 @@ public class WebServiceTest {
         assertEquals("http://www.openarchives.org/OAI/2.0/oai_dc.xsd", metadataFormatType.getMetadataNamespace());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }
-/*
+
     @Test
     public void testGetRecordsAll() {
         ModelMap model = null;
@@ -172,7 +216,6 @@ public class WebServiceTest {
         assertTrue(listRecordsType.getRecord().size() > 1000);
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }
-*/
 
     @Test
     public void testGetRecordsWithDate() {
@@ -185,6 +228,12 @@ public class WebServiceTest {
         assertEquals("MIDAS-ISG:epidemiological-bulletin-national-system-of-epidemiological-surveillance-system-v1.0", listRecordsType.getRecord().get(0).getHeader().getIdentifier());
         assertEquals("[Root: (Data Formats)]", listRecordsType.getRecord().get(0).getHeader().getSetSpec().toString());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+
+        //Test Dublin Core elements
+        OaiDcType oaiDcType = getOaiDcTypeFromBody(listRecordsType.getRecord().get(0).getMetadata().getAny());
+
+        JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertEquals("MIDAS-ISG:epidemiological-bulletin-national-system-of-epidemiological-surveillance-system-v1.0", elementTypeIdentifier.getValue().getValue());
     }
 
     @Test
@@ -198,16 +247,26 @@ public class WebServiceTest {
         assertEquals("MIDAS-ISG:WS-000164", listRecordsType.getRecord().get(0).getHeader().getIdentifier());
         assertEquals("[Root: Data: Websites with data: (Americas)]", listRecordsType.getRecord().get(0).getHeader().getSetSpec().toString());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+
+        //Test Dublin Core elements
+        OaiDcType oaiDcType = getOaiDcTypeFromBody(listRecordsType.getRecord().get(0).getMetadata().getAny());
+
+        JAXBElement<ElementType> elementTypeTitle = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(0));
+        assertEquals("Demographics in Honduras, 2008", elementTypeTitle.getValue().getValue());
+        JAXBElement<ElementType> elementTypeIdentifier = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(1));
+        assertEquals("MIDAS-ISG:WS-000164", elementTypeIdentifier.getValue().getValue());
+        JAXBElement<ElementType> elementTypeSubject = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(3));
+        assertEquals("Statistics on demographic in Honduras", elementTypeSubject.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCreator = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(4));
+        assertEquals("Wikidot", elementTypeCreator.getValue().getValue());
+        JAXBElement<ElementType> elementTypeDate = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(5));
+        assertEquals("2008", elementTypeDate.getValue().getValue());
+        JAXBElement<ElementType> elementTypeCoverage = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(6));
+        assertEquals("Honduras", elementTypeCoverage.getValue().getValue());
+        JAXBElement<ElementType> elementTypeFormat = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
+        assertEquals("HTML", elementTypeFormat.getValue().getValue());
+
     }
-
-    @Test
-    public void testGetRecordsNoneReturned() {
-        ModelMap model = null;
-        ResponseEntity responseEntity = ws.getRecordsWebService(model, "2018-04-01T12:00:00", "2018-04-23T12:00:00","oai_dc" , "Root: Software: (Data visualizers)", null);
-
-        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntity.getStatusCode());
-    }
-
 
     @Test
     public void testGetSets() {
@@ -226,6 +285,78 @@ public class WebServiceTest {
         assertTrue(listSetsType.getSet().size() > 320);
         assertEquals("Root", listSetsType.getSet().get(0).getSetSpec());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
+    }
+
+    //Error Testing -- Identify and GetSets do not take any arguments
+    @Test
+    public void testGetRecordForIdentifierErrorTest() {
+        ModelMap model = null;
+        ResponseEntity responseEntityOaiDC = ws.getRecordForIdentifierWebService(model, "10.25337/T7/ptycho.v2.0/AG.722862003","oai_d");
+        assertEquals("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.",responseEntityOaiDC.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityOaiDC.getStatusCode());
+
+        ResponseEntity responseEntityBadIdentifier = ws.getRecordForIdentifierWebService(model, "MIDAS-ISG:WS-000078A","oai_dc");
+        assertEquals("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.",responseEntityBadIdentifier.getBody());
+        assertEquals(HttpStatus.NOT_FOUND,responseEntityBadIdentifier.getStatusCode());
+
+        ResponseEntity responseEntityNoIdentifier = ws.getRecordForIdentifierWebService(model, "","oai_dc");
+        assertEquals("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.",responseEntityNoIdentifier.getBody());
+        assertEquals(HttpStatus.NOT_FOUND,responseEntityNoIdentifier.getStatusCode());
+
+    }
+
+
+    @Test
+    public void testGetIdentifiersErrorTest() {
+        ModelMap model = null;
+
+        ResponseEntity responseEntityOaiDC = ws.getIdentifiersWebService(model, null, null,"ai_dc" , null, null);
+        assertEquals("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.",responseEntityOaiDC.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityOaiDC.getStatusCode());
+
+        ResponseEntity responseEntityBadFromFormat = ws.getIdentifiersWebService(model, "2018-03-01 12:00:00", "2018-03-30T12:00:00","oai_dc" , "Root: Software: (Data visualizers)", null);
+        assertEquals("badArgument - The request includes illegal arguments or is missing required arguments.",responseEntityBadFromFormat.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityBadFromFormat.getStatusCode());
+
+        ResponseEntity responseEntityBadToFormat = ws.getIdentifiersWebService(model, "2018-03-01T12:00:00", "2018-03-30","oai_dc" , null, null);
+        assertEquals("badArgument - The request includes illegal arguments or is missing required arguments.",responseEntityBadToFormat.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityBadToFormat.getStatusCode());
+
+        ResponseEntity responseEntityNoRecords = ws.getIdentifiersWebService(model, "2018-03-01T12:00:00", "2018-03-30T12:00:00","oai_dc" , "Root: (Data formats)", null);
+        assertEquals("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.",responseEntityNoRecords.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityNoRecords.getStatusCode());
+
+    }
+
+    @Test
+    public void testGetRecordsErrorTest() {
+        ModelMap model = null;
+
+        ResponseEntity responseEntityOaiDC = ws.getRecordsWebService(model, null, null,"oaidc" , null, null);
+        assertEquals("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.",responseEntityOaiDC.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityOaiDC.getStatusCode());
+
+        ResponseEntity responseEntityBadFromFormat = ws.getRecordsWebService(model, "2018-03-01 T12:00:00", "2018-03-30T12:00:00","oai_dc" , "Root: Software: (Data visualizers)", null);
+        assertEquals("badArgument - The request includes illegal arguments or is missing required arguments.",responseEntityBadFromFormat.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityBadFromFormat.getStatusCode());
+
+        ResponseEntity responseEntityBadToFormat = ws.getRecordsWebService(model, "2018-03-01T12:00:00", "2018-03-30 12:00:00","oai_dc" , null, null);
+        assertEquals("badArgument - The request includes illegal arguments or is missing required arguments.",responseEntityBadToFormat.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityBadToFormat.getStatusCode());
+
+        ResponseEntity responseEntityNoRecords = ws.getRecordsWebService(model, "2018-04-01T12:00:00", "2018-04-23T12:00:00","oai_dc" , "Root: Software: (Data visualizers)", null);
+        assertEquals("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.",responseEntityNoRecords.getBody());
+        assertEquals(HttpStatus.UNPROCESSABLE_ENTITY,responseEntityNoRecords.getStatusCode());
+
+    }
+
+    @Test
+    public void testGetMetadataErrorTest() {
+        ModelMap model = null;
+        Optional<String> identifier = Optional.of("http://www.epimodels.org/drupal/?q=node/"); //"http://www.epimodels.org/drupal/?q=node/81"
+        ResponseEntity responseEntityBadIdentifier = ws.getMetadataFormatsWebService(model, identifier);
+        assertEquals("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.",responseEntityBadIdentifier.getBody());
+        assertEquals(HttpStatus.NOT_FOUND,responseEntityBadIdentifier.getStatusCode());
     }
 
 
