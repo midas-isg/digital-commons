@@ -16,7 +16,9 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Transactional(readOnly=true)
     public Category findOne(Long id);
 
-    @Query(nativeQuery = true, value="select path from vw_findsetsview;")
+    @Query(nativeQuery = true, value="select path \n" +
+            "from vw_findsetsview as fs \n" +
+            "where fs.path not LIKE '%Websites with data%' ;")
     List<String> findSets();
 
     @Query(nativeQuery = true, value =

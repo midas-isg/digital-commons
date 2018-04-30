@@ -113,6 +113,17 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "                   and content->'entry'->'identifier'->>'identifier' != '';")
     List<String> findPublicIdentifiers();
 
+    @Query(nativeQuery = true, value = "select distinct \n" +
+            "  e.content->'entry'->'identifier'->>'identifier'\n" +
+            "  from entry as e \n" +
+            "  JOIN vw_findsetsview as fs \n" +
+            "  ON fs.setid = e.category_id \n" +
+            "  where e.is_public = true\n" +
+            "                   and fs.path not LIKE '%Websites with data%' \n" +
+            "                   and e.content->'entry'->>'identifier' != ''\n" +
+            "                   and e.content->'entry'->'identifier'->>'identifier' != '';")
+    List<String> findFirstClassPublicIdentifiers();
+
     @Query(nativeQuery = true, value = "select distinct content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' " +
             "from entry where content->'entry'#>ARRAY['distributions',?2]->'access'->>'accessURL' != '' " +
             "and content->'entry'->'identifier'->>'identifier' != ''" +
@@ -130,6 +141,15 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
 
     @Query(nativeQuery = true, value="select * from entry where is_public = true;")
     List<Entry> findPublicEntries();
+
+    @Query(nativeQuery = true, value="select e.* \n" +
+            "from entry as e \n" +
+            "JOIN vw_findsetsview as fs \n" +
+            "ON fs.setid = e.category_id \n" +
+            "where \n" +
+            "fs.path not LIKE '%Websites with data%' \n" +
+            "and is_public = true;")
+    List<Entry> findFirstClassPublicEntries();
 
     @Query(nativeQuery = true, value="select c2.category from entry " +
             "join category c2 ON entry.category_id = c2.id " +
@@ -174,8 +194,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<String> getCategoriesForIdentifier(@Param("identifier") String identifier);
 
     @Query(nativeQuery = true, value=
-    "select * from entry \n" +
+    "select e.* from entry as e \n" +
+    "JOIN vw_findsetsview as fs \n" +
+    "ON fs.setid = e.category_id \n" +
     "where date_added BETWEEN ?1 AND ?2 \n" +
+    "and fs.path not LIKE '%Websites with data%' \n" +
     "and is_public = true;")
     List<Entry> getListRecordsByDate(@Param("from") java.util.Date from, @Param("until") java.util.Date until);
 

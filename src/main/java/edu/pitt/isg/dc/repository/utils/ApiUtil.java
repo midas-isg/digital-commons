@@ -42,6 +42,18 @@ public class ApiUtil {
         return parsedIdentifiers;
     }
 
+    public List<String> getFirstClassIdentifiers() {
+        List<String> unparsedIdentifiers = repo.findFirstClassPublicIdentifiers();
+        List<String> parsedIdentifiers = new ArrayList<>();
+        for (String unparsedIdentifier : unparsedIdentifiers) {
+            String parsedIdentifier = Jsoup.parse(unparsedIdentifier).text();
+            //parsedIdentifier = parsedIdentifier.replaceAll("https?://doi\\.org/", "");
+            parsedIdentifiers.add(parsedIdentifier);
+        }
+        Collections.sort(parsedIdentifiers);
+        return parsedIdentifiers;
+    }
+
     public String getAccessUrl(String identifier, String distributionId) {
         if (distributionId == null) distributionId = "0";
         String accessUrl = repo.findAccessUrlByIdentifierAndDistributionId(identifier, distributionId);
@@ -221,7 +233,8 @@ resumptionToken an exclusive argument with a value that is the flow control toke
     ListIdentifiers request that issued an incomplete list.
 */
     public OAIPMHtype getIdentifiersList(Date from, Date until, String metadataPrefix, String set, String resumptionToken){
-        List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
+        //List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
+        List<String> unparsedIdentifiers = repo.findFirstClassPublicIdentifiers();
         ListIdentifiersType listIdentifiersType = new ListIdentifiersType();
         OAIPMHtype oaipmHtype = new OAIPMHtype();
         oaipmHtype = setDefaultInfoOAIPMHtype(oaipmHtype, VerbType.LIST_IDENTIFIERS);
@@ -346,7 +359,8 @@ metadataPrefix a required argument (unless the exclusive argument resumptionToke
             //in the meantime return all public records
             //unparsedRecords = repo.filterEntryIdsByTypes(metadataFormatSet);
             if (from == null && until == null) {
-                unparsedRecords = repo.findPublicEntries();
+                //unparsedRecords = repo.findPublicEntries();
+                unparsedRecords = repo.findFirstClassPublicEntries();
             }
             else {
                 if(from == null){

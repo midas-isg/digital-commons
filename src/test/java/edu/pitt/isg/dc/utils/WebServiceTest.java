@@ -193,9 +193,9 @@ public class WebServiceTest {
         assertEquals("http://www.openarchives.org/OAI/2.0/oai_dc.xsd", metadataFormatType.getMetadataNamespace());
 
         ListIdentifiersType listIdentifiersType = oaipmhType.getListIdentifiers();
-        assertTrue(listIdentifiersType.getHeader().size() > 900);
-        assertEquals("MIDAS-ISG:WS-000356",listIdentifiersType.getHeader().get(0).getIdentifier());
-        assertEquals("[Root: Data: Disease surveillance data: Americas: (Peru)]",listIdentifiersType.getHeader().get(0).getSetSpec().toString());
+        assertTrue(listIdentifiersType.getHeader().size() > 550);
+        assertEquals("10.25337/T7/ptycho.v2.0/MH.20927009",listIdentifiersType.getHeader().get(0).getIdentifier());
+        assertEquals("[Root: Data: Disease surveillance data: Oceania: Marshall Islands: ([Project Tycho Datasets])]",listIdentifiersType.getHeader().get(0).getSetSpec().toString());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }
 
@@ -233,7 +233,7 @@ public class WebServiceTest {
         OAIPMHtype oaipmhType = getOAIPMHtypeFromBody(responseEntity);
 
         ListRecordsType listRecordsType = oaipmhType.getListRecords();
-        assertTrue(listRecordsType.getRecord().size() > 1000);
+        assertTrue(listRecordsType.getRecord().size() > 600);
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }
 
@@ -271,11 +271,12 @@ public class WebServiceTest {
     @Test
     public void testGetRecordsWithSet() {
         ModelMap model = null;
-        ResponseEntity responseEntity = ws.getRecordsWebService(model, null, null,"oai_dc" , "Root: Data: (Websites with data)", null);
+        ResponseEntity responseEntity = ws.getRecordsWebService(model, null, null,"oai_dc" , "Root: (Software)", null);
         OAIPMHtype oaipmhType = getOAIPMHtypeFromBody(responseEntity);
 
         ListRecordsType listRecordsType = oaipmhType.getListRecords();
-        assertTrue(listRecordsType.getRecord().size() > 90);
+        assertTrue(listRecordsType.getRecord().size() > 40);
+/*
         assertEquals("MIDAS-ISG:WS-000164", listRecordsType.getRecord().get(0).getHeader().getIdentifier());
         assertEquals("[Root: Data: Websites with data: (Americas)]", listRecordsType.getRecord().get(0).getHeader().getSetSpec().toString());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
@@ -304,7 +305,7 @@ public class WebServiceTest {
         JAXBElement<ElementType> elementTypeFormat = ((JAXBElement<ElementType>)oaiDcType.getTitleOrCreatorOrSubject().get(7));
         assertTrue(elementTypeFormat.getName().getLocalPart().equals("format"));
         assertEquals("HTML", elementTypeFormat.getValue().getValue());
-
+*/
     }
 
     @Test
@@ -321,7 +322,7 @@ public class WebServiceTest {
         assertEquals("http://www.openarchives.org/OAI/2.0/oai_dc/", metadataFormatType.getSchema());
         assertEquals("http://www.openarchives.org/OAI/2.0/oai_dc.xsd", metadataFormatType.getMetadataNamespace());
 
-        assertTrue(listSetsType.getSet().size() > 320);
+        assertTrue(listSetsType.getSet().size() > 225);
         assertEquals("Root", listSetsType.getSet().get(0).getSetSpec());
         assertEquals(HttpStatus.OK,responseEntity.getStatusCode());
     }

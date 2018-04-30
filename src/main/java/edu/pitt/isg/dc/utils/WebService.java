@@ -208,7 +208,8 @@ public class WebService {
         String notFound = "idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.";
 
         if (!identifier.isEmpty()) {
-            List<String> identifiersList = apiUtil.getIdentifiers();
+            //List<String> identifiersList = apiUtil.getIdentifiers();
+            List<String> identifiersList = apiUtil.getFirstClassIdentifiers();
             if (identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
                 return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(record));
@@ -267,7 +268,8 @@ public class WebService {
 
         if(identifier.isPresent() && !identifier.toString().isEmpty()) {
             identifierId = identifier.get();
-            List<String> identifiersList = apiUtil.getIdentifiers();
+            //List<String> identifiersList = apiUtil.getIdentifiers();
+            List<String> identifiersList = apiUtil.getFirstClassIdentifiers();
             if(!identifiersList.contains(identifierId)) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
             }
