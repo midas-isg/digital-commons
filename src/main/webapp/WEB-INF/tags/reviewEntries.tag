@@ -103,7 +103,7 @@
             dataType : 'json',
             data: {},
             cache: false,
-            timeout : 100000,
+            timeout : 500000,
             beforeSend: function() {
                 $(".ajax-loader").html("<img src='../img/spinner.gif'>");
                 },

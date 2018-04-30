@@ -29,6 +29,9 @@ import static edu.pitt.isg.dc.repository.utils.ApiUtil.convertUtcDateTimeStringT
 //import org.springframework.web.bind.annotation.RequestParam;
 //import org.springframework.web.bind.annotation.ResponseBody;
 
+/**
+ * Created by jbs82 on 4/17/17.
+ */
 @Component
 public class WebService {
 
@@ -63,7 +66,7 @@ public class WebService {
     //public void setupApiUtilForTesting(ApiUtil apiUtil) {
     //    this.apiUtil = apiUtil;
     //}
-
+/*
     public ResponseEntity getMetadataWebService(ModelMap model, String identifier, HttpServletRequest request) {
         String header = request.getHeader("Accept");
         String metadata = apiUtil.getMetadata(identifier, header);
@@ -147,7 +150,7 @@ public class WebService {
 
         return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(categoryNameArray));
     }
-
+*/
     public ResponseEntity getIdentifiersWebService(ModelMap model, String from, String until, String metadataPrefix, String set, String resumptionToken) {
         if (!metadataPrefix.toLowerCase().equals("oai_dc")) {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
@@ -181,15 +184,6 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.");
         }
         return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(identifiers));
-        //return convertRecordsToXML(identifiers, notFound);
-/*
-        if(identifiers != null && !identifiers.getListIdentifiers().getHeader().isEmpty()) {
-            //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
-            return ResponseEntity.status(HttpStatus.OK).body(identifiers);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no records available.");
-        }
-*/
     }
 
     private String getXMLResultString(OAIPMHtype oaipmHtype){
@@ -212,33 +206,12 @@ public class WebService {
             return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY).body("cannotDisseminateFormat - The value of the metadataPrefix argument is not supported by the item identified by the value of the identifier argument.");
         }
         String notFound = "idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.";
-        //HttpHeaders headers = new HttpHeaders();
-        //Converter converter = new Converter();
-        //headers.add(HttpHeaders.CONTENT_TYPE, "application/xml; charset=UTF-8");
 
         if (!identifier.isEmpty()) {
             List<String> identifiersList = apiUtil.getIdentifiers();
             if (identifiersList.contains(identifier)) {
                 record = apiUtil.getRecord(identifier);
                 return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(record));
-                //return convertRecordsToXML(record, notFound);
-                /*
-                String body = null;
-                try {
-                    body = converter.convertToXml(record);
-                    body = body.replaceAll("(?s)&lt;.*?&gt;", "");
-                    //JAXBElement jaxbElement = null;
-                    //jaxbElement.setValue(record);
-                    //return ResponseEntity.status(HttpStatus.OK).headers(headers).body(record);
-
-                } catch(Exception e) {
-                    System.out.println("Error: " + e);
-                    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
-                }
-
-                return ResponseEntity.status(HttpStatus.OK).headers(headers).body(body);
-                //return ResponseEntity.status(HttpStatus.OK).body(record);
-                */
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("idDoesNotExist - The value of the identifier argument is unknown or illegal in this repository.");
             }
@@ -282,25 +255,6 @@ public class WebService {
         String notFound = "noRecordsMatch - The combination of the values of the from, until, and set arguments results in an empty list.";
 
         return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(records));
-        //return convertRecordsToXML(records, notFound);
-/*
-        Converter converter = new Converter();
-        if(records != null && !records.getListRecords().getRecord().isEmpty()) {
-            String body = null;
-            try {
-                body = converter.convertToXml(records);
-                body = body.replaceAll("(?s)&lt;.*?&gt;", "");
-
-            } catch(Exception e) {
-                System.out.println("Error: " + e);
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
-            }
-
-            return ResponseEntity.status(HttpStatus.OK).body(body);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no records available.");
-        }
-*/
     }
 
     public ResponseEntity getMetadataFormatsWebService(ModelMap model, Optional<String> identifier) {
@@ -322,32 +276,6 @@ public class WebService {
 
         types = apiUtil.getMetadataFormatsAll();
         return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(types));
-        //return convertRecordsToXML(types, notFound);
-/*
-        if(identifier.isPresent()) {
-            identifierId = identifier.get();
-
-            List<String> identifiersList = apiUtil.getIdentifiers();
-            if(identifiersList.contains(identifierId)) {
-                types = apiUtil.getMetadataFormatsForIdentifier(identifierId);
-            } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The value of the  " + identifierId + " argument is unknown or illegal in this repository.");
-            }
-        }
-        if(identifierId == null) {
-            identifierId = "";
-            types = apiUtil.getMetadataFormatsAll();
-        }
-        //return gson.toJson(types);
-
-        if(types != null && !types.getListMetadataFormats().getMetadataFormat().isEmpty()) {
-            //return "redirect:" + accessUrl;
-            //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(types));
-            return ResponseEntity.status(HttpStatus.OK).body(types);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no metadata formats available for the specified item.");
-        }
-*/
     }
 
 
@@ -358,15 +286,6 @@ public class WebService {
         sets = apiUtil.getSets();
 
         return ResponseEntity.status(HttpStatus.OK).body(getXMLResultString(sets));
-        //return convertRecordsToXML(sets, notFound);
-/*
-        if(sets != null && !sets.getListSets().getSet().isEmpty()) {
-            //return ResponseEntity.status(HttpStatus.OK).body(gson.toJson(sets));
-            return ResponseEntity.status(HttpStatus.OK).body(sets);
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no sets available.");
-        }
-*/
     }
 
     private ResponseEntity convertRecordsToXML(OAIPMHtype records, String notFound) {
