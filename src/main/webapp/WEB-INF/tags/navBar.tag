@@ -73,6 +73,7 @@
                 <li><a href="${contextPath}/add/diseaseForecasters?categoryId=9">Disease Forecaster</a></li>
                 <li><a href="${contextPath}/add/diseaseTransmissionModel?categoryId=10">Disease Transmission Model</a></li>
                 <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators?categoryId=12">Disease Transmission Tree Estimator</a></li>
+                <li><a href="${contextPath}/add/modelingPlatforms?categoryId=448">Metagenomic Analysis</a></li>
                 <li><a href="${contextPath}/add/modelingPlatforms?categoryId=13">Modeling Platform</a></li>
                 <li><a href="${contextPath}/add/pathogenEvolutionModels?categoryId=14">Pathogen Evolution Model</a></li>
                 <li><a href="${contextPath}/add/phylogeneticTreeConstructors?categoryId=15">Phylogenetic Tree Constructor</a></li>
