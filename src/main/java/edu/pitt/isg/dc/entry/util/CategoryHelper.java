@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.classes.datatree.LocationDataTreeWithBins;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntryApprovalInterface;
+import edu.pitt.isg.dc.utils.MapUtil;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +15,9 @@ import java.util.*;
 
 @Component
 public class CategoryHelper {
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private CategoryOrderRepository categoryOrderRepository;
@@ -28,6 +32,8 @@ public class CategoryHelper {
     private LocationRule locationRule;
 
     private Map<String, String> subcategoriesToCategories;
+
+    Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
 
     public CategoryHelper() {
         this.subcategoriesToCategories = new HashMap<>();
@@ -121,30 +127,36 @@ public class CategoryHelper {
     }
 
     private Map<Long, List<EntryView>> getCategoryEntryMap() throws MdcEntryDatastoreException {
-        List<EntryView> entries = entryApprovalInterface.getPublicEntries();
-        Map<Long, List<EntryView>> categoryEntryMap = new HashMap<>();
-        for(EntryView entry : entries) {
-            Category category = entry.getCategory();
-            if(category != null) {
-                Long categoryId = category.getId();
+        if (categoryEntryMap.size() == 0) {
+            List<Category> categories = categoryRepository.findAll();
+            for (Category category : categories) {
+                categoryEntryMap.put(category.getId(), new ArrayList<>());
+            }
 
-                if(categoryEntryMap.containsKey(categoryId)) {
-                    List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
-                    categoryEntries.add(entry);
-                    categoryEntryMap.put(categoryId, categoryEntries);
-                } else {
-                    List<EntryView> categoryEntries = new ArrayList<>();
-                    categoryEntries.add(entry);
-                    categoryEntryMap.put(categoryId, categoryEntries);
+            List<EntryView> entries = entryApprovalInterface.getPublicEntries();
+
+            for (EntryView entry : entries) {
+                Category category = entry.getCategory();
+                if (category != null) {
+                    Long categoryId = category.getId();
+
+                    if (categoryEntryMap.containsKey(categoryId)) {
+                        List<EntryView> categoryEntries = categoryEntryMap.get(categoryId);
+                        categoryEntries.add(entry);
+                        categoryEntryMap.put(categoryId, categoryEntries);
+                    } else {
+                        List<EntryView> categoryEntries = new ArrayList<>();
+                        categoryEntries.add(entry);
+                        categoryEntryMap.put(categoryId, categoryEntries);
+                    }
                 }
             }
-        }
 
-        for(Long id : categoryEntryMap.keySet()) {
-            List<EntryView> items = categoryEntryMap.get(id);
-            items.sort(Comparator.comparing(EntryView::getTitle, String.CASE_INSENSITIVE_ORDER));
+            for (Long id : categoryEntryMap.keySet()) {
+                List<EntryView> items = categoryEntryMap.get(id);
+                items.sort(Comparator.comparing(EntryView::getTitle, String.CASE_INSENSITIVE_ORDER));
+            }
         }
-
         return categoryEntryMap;
     }
 
@@ -265,8 +277,8 @@ public class CategoryHelper {
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
 
         Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
-
-        return this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
+        Map<Long, String> result = this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
+        return MapUtil.sortByValue(result);
     }
 
     private Map<Long,String> recurseTreePaths(Category category, Map<Category, List<CategoryWithOrder>> categoryOrderMap, Map<Long, List<EntryView>> categoryEntryMap, Map<Long, String> paths, String path) {
