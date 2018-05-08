@@ -203,4 +203,40 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<Entry> getListRecordsByDate(@Param("from") java.util.Date from, @Param("until") java.util.Date until);
 
 
+    @Query(nativeQuery = true, value=
+    "SELECT DISTINCT \n" +
+    "content->'entry'->'identifier'->>'identifier' as identifier \n" +
+    "from entry as e \n" +
+    "JOIN \n" +
+            "(select entry_id, max(revision_id) as revision_id \n" +
+            "from entry \n" +
+            "group by entry_id) as eid \n" +
+            "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id; ")
+    List<String> getAllIdentifiers();
+
+    @Query(nativeQuery = true, value=
+    "SELECT \n" +
+    "content #>> '{properties, status}' as status \n" +
+    "from entry as e \n" +
+    "JOIN \n" +
+            "(select entry_id, max(revision_id) as revision_id \n" +
+    "from entry \n" +
+    "group by entry_id) as eid \n" +
+    "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id \n" +
+    "WHERE content->'entry'->'identifier'->>'identifier' = ?1 ; ")
+    String getStatusForIdentifier(@Param("identifier") String identifier);
+
+    @Query(nativeQuery = true, value =
+    "SELECT * \n" +
+    "from entry as e \n" +
+    "JOIN \n" +
+    "(select entry_id, max(revision_id) as revision_id \n" +
+    "from entry \n" +
+    "group by entry_id) as eid \n" +
+    "on e.entry_id = eid.entry_id and e.revision_id = eid.revision_id \n" +
+    "WHERE content->'entry'->'identifier'->>'identifier' = ?1 ; ")
+    Entry findByMetadataIdentifierIncludeNotPublic(String identifier);
+
+
+
 }
