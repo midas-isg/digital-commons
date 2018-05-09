@@ -215,8 +215,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     List<String> getAllIdentifiers();
 
     @Query(nativeQuery = true, value=
-    "SELECT \n" +
-    "content #>> '{properties, status}' as status \n" +
+    "SELECT status \n" +
     "from entry as e \n" +
     "JOIN \n" +
             "(select entry_id, max(revision_id) as revision_id \n" +

@@ -44,7 +44,12 @@
                     <select class="item-input-text" name="category" value="191" id="categoryValue">
                         <option value="none">None provided</option>
                         <c:forEach items="${categoryPaths}" var="categoryPath">
-                            <option value="${categoryPath.key}">${categoryPath.value}</option>
+                            <c:choose>
+                                <c:when test="${categoryPath.key==191}"><option selected value="${categoryPath.key}">${categoryPath.value}</option></c:when>
+                                <c:otherwise>
+                                    <option value="${categoryPath.key}">${categoryPath.value}</option>
+                                </c:otherwise>
+                            </c:choose>
                         </c:forEach>
                     </select>
                 </div>

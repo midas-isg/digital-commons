@@ -23,6 +23,9 @@
                     returnMessage="${returnMessasge}"/>
         </div>
     </div>
+    <div id="add-another">
+        <a href="${pageContext.request.contextPath}/addDataGovRecordById">Add another record</a>
+    </div>
 </div>
 
 <myTags:analytics/>
