@@ -5,6 +5,7 @@ import edu.pitt.isg.dc.entry.exceptions.DataGovGeneralException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.mdc.dats2_2.*;
+import eu.trentorise.opendata.jackan.model.CkanDataset;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -16,16 +17,15 @@ public interface DataGovInterface {
     //https://catalog.data.gov/api/3/action/tag_show?id=nndss
     String searchForTag(String tagId);
 
-    //https://catalog.data.gov/api/3/action/package_show?id=02b5e413-d746-43ee-bd52-eac4e33ecb41
-    String searchForPackage(String packageId);
+    CkanDataset getDatasetFromClient(String catalogURL, String dataGovIdentifier);
 
     String getIdentifierFromPackage(DatasetWithOrganization dataGovPackage);
 
-    Boolean identifierExistsInMDC (String identifier, EntryRepository repo);
+    Boolean identifierExistsInMDC (String identifier);
 
-    String getidentifierStatus(String identifier, EntryRepository repo);
+    String getidentifierStatus(String identifier);
 
-    Entry getEntryFromMDC(String identifier, EntryRepository repo);
+    Entry getEntryFromMDC(String identifier);
 
     Long getEntryId(Entry entry);
 
@@ -45,6 +45,6 @@ public interface DataGovInterface {
 
     JsonObject datasetToJSonObject(DatasetWithOrganization dataGovPackage);
 
-    String submitDataGovEntry(DatasetWithOrganization dataGovPackage, EntryRepository repo, EntrySubmissionInterface entrySubmissionInterface, UsersSubmissionInterface usersSubmissionInterface) throws DataGovGeneralException;
+    String submitDataGovEntry(Users user, String catalogURL, Long categoryId, String dataGovIdentifier, String title) throws DataGovGeneralException;
 
 }

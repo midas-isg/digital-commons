@@ -1,12 +1,15 @@
 package edu.pitt.isg.dc.entry;
 
 import com.google.gson.JsonObject;
+import edu.pitt.isg.CkanToDatsConverter;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.DataGovGeneralException;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import eu.trentorise.opendata.jackan.CkanClient;
+import eu.trentorise.opendata.jackan.model.CkanDataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 
@@ -16,11 +19,13 @@ import java.util.*;
 import java.util.Date;
 
 import edu.pitt.isg.mdc.dats2_2.*;
+import org.springframework.stereotype.Service;
 
 
 /**
  * Created by jbs82 on 5/1/2018.
  */
+@Service
 public class DataGov implements DataGovInterface {
     @Autowired
     private EntryRepository repo;
@@ -33,6 +38,7 @@ public class DataGov implements DataGovInterface {
     private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
     private static final String CKAN_DATE_REVISIONID = "CKAN revision_id";
     private static final String SDF_PATTERN = "yyyy-MM-dd";
+    private static final String DATASET_SET = "edu.pitt.isg.mdc.dats2_2.Dataset";
     private static String ENTRIES_AUTHENTICATION = "";
 
     static {
@@ -47,8 +53,10 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public String searchForPackage(String packageId) {
-        return null;
+    public CkanDataset getDatasetFromClient(String catalogURL, String dataGovIdentifier) {
+        CkanClient ckanClient = new CkanClient(catalogURL);
+        CkanDataset dataset = ckanClient.getDataset(dataGovIdentifier);
+        return dataset;
     }
 
     @Override
@@ -57,7 +65,7 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public Boolean identifierExistsInMDC(String identifier, EntryRepository repo) {
+    public Boolean identifierExistsInMDC(String identifier) {
         Boolean doesIdentifierExist = false;
         if (!identifier.isEmpty()) {
             List<String> identifiersList = repo.getAllIdentifiers();
@@ -69,12 +77,12 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public String getidentifierStatus(String identifier, EntryRepository repo) {
+    public String getidentifierStatus(String identifier) {
         return repo.getStatusForIdentifier(identifier);
     }
 
     @Override
-    public Entry getEntryFromMDC(String identifier, EntryRepository repo) {
+    public Entry getEntryFromMDC(String identifier) {
         return repo.findByMetadataIdentifierIncludeNotPublic(identifier);
     }
 
@@ -240,8 +248,7 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public String submitDataGovEntry(DatasetWithOrganization dataGovPackage, EntryRepository repo, EntrySubmissionInterface entrySubmissionInterface,
-                                     UsersSubmissionInterface usersSubmissionInterface) throws DataGovGeneralException{
+    public String submitDataGovEntry(Users user, String catalogURL, Long categoryId, String dataGovIdentifier, String title) throws DataGovGeneralException{
         EntryView entryObject = new EntryView();
         JsonObject entry = null;
         Entry entryFromMDC;
@@ -249,47 +256,72 @@ public class DataGov implements DataGovInterface {
         Long entryId = null;
         Long revisionId = null;
         Boolean addOrUpdateEntry = false;
-        String identifier = this.getIdentifierFromPackage(dataGovPackage);
+        String message = "";
 
+        CkanDataset dataset = getDatasetFromClient(catalogURL, dataGovIdentifier);
+        CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
+        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
 
-        if (identifierExistsInMDC(identifier, repo)) {
-            String status = getidentifierStatus(identifier, repo);
+        if(!title.isEmpty()){
+            dataGovPackage.setTitle(title);
+        }
+
+        String identifier = getIdentifierFromPackage(dataGovPackage);
+        List<String> logMessagesList = result.getDiseaseLookupLogMessages();
+
+        String logmessages = ""; //this needs updated to get log messages from array
+
+        if (identifierExistsInMDC(identifier)) {
+            String status = getidentifierStatus(identifier);
             if (status.equals("pending") || status.equals("approved")) {
-                entryFromMDC = getEntryFromMDC(identifier, repo);
+                entryFromMDC = getEntryFromMDC(identifier);
                 if (modifiedDataGovPackage(entryFromMDC, dataGovPackage)) {
                     addOrUpdateEntry = true;
                     category = getCategoryId(entryFromMDC);
                     entryId = getEntryId(entryFromMDC);
                     revisionId = getRevisionId(entryFromMDC);
-                } else addOrUpdateEntry = false; // entry has not been updated by data.gov since last check
-            } else addOrUpdateEntry = false;  // entry has previously been rejected
+                } else {
+                    addOrUpdateEntry = false; // entry has not been updated by data.gov since last check
+                    message = "This identifier has not been updated since last check";
+                }
+            } else {
+                addOrUpdateEntry = false;  // entry has previously been rejected
+                message = "This identifier has previously been rejected";
+            }
         } else addOrUpdateEntry = true; // entry is new
 
         if (addOrUpdateEntry) {
             if (category == null) {
-                //Will this always be DSD-A-USA?  if not, need to have user set it
-                category = 191L; //Root: Data: Disease surveillance data: Americas: (United States of America)
+                category = categoryId; //191L = Root: Data: Disease surveillance data: Americas: (United States of America)
             }
 
             //Serialize or Marshall Java to JSON
             entry = datasetToJSonObject(dataGovPackage);
 
-            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.Dataset");
+            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization");
 
             entry.remove("class");
             entryObject.setEntry(entry);
 
             try {
-                Users user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
+                //Users user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
                 entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
+                message = "This record has been inserted into the MDC<br><br>";
             } catch (MdcEntryDatastoreException e) {
                 System.out.println(e.toString());
+                message = "There was an error inserting the record";
             }
 
 
-        } else return "Entry already exists.";
-        // Need to return something more interesting than these options
-        return "Success";
+        } else return message;
+
+        if(logMessagesList != null){
+            for(String line : logMessagesList){
+                logmessages += "\t" + line + "<br>";
+            }
+        }
+
+        return message + "Log messages = " + "<br>"  + logmessages;
     }
 
 

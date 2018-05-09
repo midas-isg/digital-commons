@@ -1,9 +1,9 @@
 package edu.pitt.isg.dc.utils;
 
 import edu.pitt.isg.dc.WebApplication;
-import edu.pitt.isg.dc.entry.EntryRepository;
-import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.exceptions.DataGovGeneralException;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
@@ -11,7 +11,6 @@ import eu.trentorise.opendata.jackan.CkanClient;
 import eu.trentorise.opendata.jackan.model.CkanDataset;
 import edu.pitt.isg.CkanToDatsConverter;
 import org.junit.Test;
-import edu.pitt.isg.dc.entry.DataGov;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -39,12 +38,13 @@ public class DataGovTest {
     private EntrySubmissionInterface entrySubmissionInterface;
     @Autowired
     private UsersSubmissionInterface usersSubmissionInterface;
+    @Autowired
+    private DataGovInterface dg;
 
     @Test
     public void getEntryRevisionCategoryId(){
         String identifier = "MIDAS-ISG:epidemiological-bulletin-national-system-of-epidemiological-surveillance-system-v1.0";
-        DataGov dg = new DataGov();
-        Entry entryFromMDC = dg.getEntryFromMDC(identifier, repo);
+        Entry entryFromMDC = dg.getEntryFromMDC(identifier);
 
         Long entryId = 1102L;
         Long revisionId = 5L;
@@ -54,12 +54,16 @@ public class DataGovTest {
         assertEquals(categoryId,dg.getCategoryId(entryFromMDC));
     }
 
+
     @Test
     public void lastModifiedDataGov(){
-        CkanClient ckanClient = new CkanClient("http://catalog.data.gov/");
+        String catalogURL = "http://catalog.data.gov/";
+        CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
         //System.out.println(dataset.getNotes());
-        DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
+        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
 
         DataGov dg = new DataGov();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -75,8 +79,7 @@ public class DataGovTest {
     @Test
     public void lastModifiedEntry(){
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
-        DataGov dg = new DataGov();
-        Entry entryFromMDC = dg.getEntryFromMDC(identifier, repo);
+        Entry entryFromMDC = dg.getEntryFromMDC(identifier);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
@@ -90,20 +93,20 @@ public class DataGovTest {
 
     @Test
     public void getRevisionIdFromDataGovPackageTest(){
-        CkanClient ckanClient = new CkanClient("http://catalog.data.gov/");
+        String catalogURL = "http://catalog.data.gov/";
+        CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
-        //System.out.println(dataset.getNotes());
-        DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
+        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
 
-        DataGov dg = new DataGov();
         assertEquals("e60ad9ce-4333-43bd-bcbf-3b58d5767d77",dg.getRevisionIdFromDataGovPackage(dataGovPackage));
     }
 
     @Test
     public void getRevisionIdFromEntryTest(){
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
-        DataGov dg = new DataGov();
-        Entry entryFromMDC = dg.getEntryFromMDC(identifier, repo);
+        Entry entryFromMDC = dg.getEntryFromMDC(identifier);
 
         assertEquals("e60ad9ce-4333-43bd-bcbf-3b58d5767d77", dg.getRevisionIdFromEntry(entryFromMDC));
     }
@@ -111,44 +114,46 @@ public class DataGovTest {
 
     @Test
     public void getIdentifierFromPackageTest(){
-        CkanClient ckanClient = new CkanClient("http://catalog.data.gov/");
+        String catalogURL = "http://catalog.data.gov/";
+        CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
         System.out.println(dataset.getNotes());
-        DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
+        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
 
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
 
-        DataGov dg = new DataGov();
         assertEquals(identifier, dg.getIdentifierFromPackage(dataGovPackage));
     }
 
     @Test
     public void identifierExistsInMDCTest(){
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
-        DataGov dg = new DataGov();
-        assertTrue(dg.identifierExistsInMDC(identifier, repo));
+        assertTrue(dg.identifierExistsInMDC(identifier));
     }
 
     @Test
     public void getIdentifierStatusTest(){
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
-        DataGov dg = new DataGov();
-        assertEquals("pending", dg.getidentifierStatus(identifier, repo));
+        assertEquals("pending", dg.getidentifierStatus(identifier));
 
         identifier = "10.25337/T7/ptycho.v2.0/US.409498004";
-        assertEquals("approved", dg.getidentifierStatus(identifier, repo));
+        assertEquals("approved", dg.getidentifierStatus(identifier));
     }
 
     @Test
     public void modifiedDataGovPackageTest(){
-        CkanClient ckanClient = new CkanClient("http://catalog.data.gov/");
+        String catalogURL = "http://catalog.data.gov/";
+        CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
         System.out.println(dataset.getNotes());
-        DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
+        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
 
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
-        DataGov dg = new DataGov();
-        Entry entryFromMDC = dg.getEntryFromMDC(identifier, repo);
+        Entry entryFromMDC = dg.getEntryFromMDC(identifier);
         try {
             assertFalse(dg.modifiedDataGovPackage(entryFromMDC, dataGovPackage));
         } catch (DataGovGeneralException e){
@@ -160,14 +165,22 @@ public class DataGovTest {
 
     @Test
     public void submitDataGovEntryTest(){
-        CkanClient ckanClient = new CkanClient("http://catalog.data.gov/");
-        CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
-        System.out.println(dataset.getNotes());
-        DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        String catalogURL = "http://catalog.data.gov/";
+        Long categoryId = 191L;
+        String identifier = "02b5e413-d746-43ee-bd52-eac4e33ecb41";
+        String title = "NNDSS - Table I. infrequently reported notifiable diseases (2017)";
         String result = "";
-        DataGov dg = new DataGov();
+        Users user = null;
         try {
-            result = dg.submitDataGovEntry(dataGovPackage, repo, entrySubmissionInterface, usersSubmissionInterface);
+            user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
+        } catch (MdcEntryDatastoreException e) {
+            e.printStackTrace();
+            e.getMessage();
+            assertTrue(false);
+        }
+
+        try {
+            result = dg.submitDataGovEntry(user, catalogURL, categoryId, identifier, title);
         } catch (DataGovGeneralException e){
             e.printStackTrace();
             e.getMessage();
@@ -175,4 +188,5 @@ public class DataGovTest {
         assertEquals("Success", result);
 
     }
+
 }

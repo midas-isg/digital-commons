@@ -6,10 +6,13 @@ import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
+import edu.pitt.isg.dc.entry.DataGov;
+import edu.pitt.isg.dc.entry.DataGovInterface;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
+import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -18,6 +21,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +44,12 @@ import java.nio.file.Path;
 import java.util.Date;
 import java.util.Properties;
 
+import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
+import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
+import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.HomeController.ifLoggedIn;
+import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
+
 /**
  * Created by TPS23 on 5/10/2017.
  */
@@ -47,6 +57,7 @@ import java.util.Properties;
 @ApiIgnore
 @Controller
 public class DataEntryController {
+
     private static boolean GENERATE_XSD_FORMS = true;
     private static final String [] XSD_FILES = {
             "software.xsd",
@@ -94,6 +105,12 @@ public class DataEntryController {
 
     @Autowired
     private ServletContext context;
+
+    @Autowired
+    private CategoryHelper categoryHelper;
+
+    @Autowired
+    private DataGovInterface dataGovInterface;
 
     @Component
     public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
@@ -221,4 +238,53 @@ public class DataEntryController {
 
         return typeList;
     }
+
+    @RequestMapping(value = "/addDataGovRecordById", method = RequestMethod.GET)
+    public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        //model.addAttribute("category", category);
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if(!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        return "addDataGovRecordById";
+    }
+
+    @RequestMapping(value = "/add-datagov-entry" , method = RequestMethod.POST)
+    public String addNewEntry(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+        Long category = null;
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        try {
+            category = Long.valueOf(java.net.URLDecoder.decode(request.getParameter("category"), "UTF-8"));
+        } catch (NumberFormatException e) {
+            // pass
+        }
+
+        String catalogURL = java.net.URLDecoder.decode(request.getParameter("catalogURL"), "UTF-8");
+        String dataGovIdentifier = java.net.URLDecoder.decode(request.getParameter("identifier_from_data_gov"), "UTF-8");
+        String title = java.net.URLDecoder.decode(request.getParameter("title"), "UTF-8");
+
+        String result = dataGovInterface.submitDataGovEntry(user, catalogURL, category, dataGovIdentifier, title);
+
+        //E-mail to someone it concerns
+        //Date date = new Date();
+        //DCEmailService emailService = new DCEmailService();
+        //emailService.mailToAdmin("[Digital Commons New Entry Request] " + date, result);
+
+        model.addAttribute("returnMessasge",result);
+
+        return "reviewDataGovEntry";
+    }
+
+
 }

@@ -30183,10 +30183,658 @@ $('#min-occurs-zero-102-instance-1_1').change();
       { elem.show(); return; }
   })
 
+  $('#remove-button-105-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-105-instance-1_1_1').hide();
+  });
+
+  $('#item-105-instance-1_1_1').prop('checked',false);
+
+  // formats
+  var validate105instance1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-105-instance-1_1_1');
+    var pathDiv = $('#item-path-105-instance-1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-105-instance-1_1_1').change( function() {
+    var ok = validate105instance1_1_1();
+    showError('item-error-105-instance-1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-105-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-105-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-105-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
   $('#repeat-button-56-instance-1').click( function() {
     // loop through all repeats until find first nonInvisible repeat and make it visible
     var elem;
     elem = $('#repeating-enclosing-56-instance-1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+$('#min-occurs-zero-106-instance-1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-106-instance-1_1'));
+})
+
+$('#min-occurs-zero-106-instance-1').change();
+  $('#remove-button-106-instance-1_1').click(function() {
+    $('#repeating-enclosing-106-instance-1_1').hide();
+  });
+
+  $('#remove-button-107-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-107-instance-1_1_1').hide();
+  });
+
+  $('#item-107-instance-1_1_1').prop('checked',false);
+
+  // category
+  var validate107instance1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-107-instance-1_1_1');
+    var pathDiv = $('#item-path-107-instance-1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-107-instance-1_1_1').change( function() {
+    var ok = validate107instance1_1_1();
+    showError('item-error-107-instance-1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-107-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-107-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-107-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#remove-button-108-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-108-instance-1_1_1').hide();
+  });
+
+  $('#item-108-instance-1_1_1').prop('checked',false);
+
+  // categoryIRI
+  var validate108instance1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-108-instance-1_1_1');
+    var pathDiv = $('#item-path-108-instance-1_1_1');
+    // minOccurs=0, ok if blank
+    var isBlank  = (v.val() == null) || (v.val().length==0);
+    if (isBlank) ok = true;
+    return ok;
+  }
+  
+  $('#item-108-instance-1_1_1').change( function() {
+    var ok = validate108instance1_1_1();
+    showError('item-error-108-instance-1_1_1',ok);
+  });
+  
+  //disable item-path due to minOccurs=0 and default is empty
+  $('#item-path-108-instance-1_1_1').attr('enabled','false');
+  $('#repeat-button-108-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-108-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+$('#min-occurs-zero-109-instance-1_1').change( function () {
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_1'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_2'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_3'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_4'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_5'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_6'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_7'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_8'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_9'));
+  changeMinOccursZeroCheckbox($(this),$('#repeating-enclosing-109-instance-1_1_10'));
+})
+
+$('#min-occurs-zero-109-instance-1_1').change();
+  $('#remove-button-109-instance-1_1_1').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_1').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_1_1').hide();
+  });
+
+  $('#item-110-instance-1_1_1_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_1_1');
+    var pathDiv = $('#item-path-110-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_1_1').change( function() {
+    var ok = validate110instance1_1_1_1();
+    showError('item-error-110-instance-1_1_1_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_1_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_1_1').hide();
+  });
+
+  $('#item-111-instance-1_1_1_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_1_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_1_1');
+    var pathDiv = $('#item-path-111-instance-1_1_1_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_1_1').change( function() {
+    var ok = validate111instance1_1_1_1();
+    showError('item-error-111-instance-1_1_1_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_2').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_2').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_2_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_2_1').hide();
+  });
+
+  $('#item-110-instance-1_1_2_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_2_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_2_1');
+    var pathDiv = $('#item-path-110-instance-1_1_2_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_2_1').change( function() {
+    var ok = validate110instance1_1_2_1();
+    showError('item-error-110-instance-1_1_2_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_2_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_2_1').hide();
+  });
+
+  $('#item-111-instance-1_1_2_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_2_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_2_1');
+    var pathDiv = $('#item-path-111-instance-1_1_2_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_2_1').change( function() {
+    var ok = validate111instance1_1_2_1();
+    showError('item-error-111-instance-1_1_2_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_3').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_3').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_3_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_3_1').hide();
+  });
+
+  $('#item-110-instance-1_1_3_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_3_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_3_1');
+    var pathDiv = $('#item-path-110-instance-1_1_3_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_3_1').change( function() {
+    var ok = validate110instance1_1_3_1();
+    showError('item-error-110-instance-1_1_3_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_3_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_3_1').hide();
+  });
+
+  $('#item-111-instance-1_1_3_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_3_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_3_1');
+    var pathDiv = $('#item-path-111-instance-1_1_3_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_3_1').change( function() {
+    var ok = validate111instance1_1_3_1();
+    showError('item-error-111-instance-1_1_3_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_4').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_4').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_4_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_4_1').hide();
+  });
+
+  $('#item-110-instance-1_1_4_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_4_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_4_1');
+    var pathDiv = $('#item-path-110-instance-1_1_4_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_4_1').change( function() {
+    var ok = validate110instance1_1_4_1();
+    showError('item-error-110-instance-1_1_4_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_4_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_4_1').hide();
+  });
+
+  $('#item-111-instance-1_1_4_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_4_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_4_1');
+    var pathDiv = $('#item-path-111-instance-1_1_4_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_4_1').change( function() {
+    var ok = validate111instance1_1_4_1();
+    showError('item-error-111-instance-1_1_4_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_5').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_5').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_5_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_5_1').hide();
+  });
+
+  $('#item-110-instance-1_1_5_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_5_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_5_1');
+    var pathDiv = $('#item-path-110-instance-1_1_5_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_5_1').change( function() {
+    var ok = validate110instance1_1_5_1();
+    showError('item-error-110-instance-1_1_5_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_5_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_5_1').hide();
+  });
+
+  $('#item-111-instance-1_1_5_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_5_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_5_1');
+    var pathDiv = $('#item-path-111-instance-1_1_5_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_5_1').change( function() {
+    var ok = validate111instance1_1_5_1();
+    showError('item-error-111-instance-1_1_5_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_6').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_6').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_6_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_6_1').hide();
+  });
+
+  $('#item-110-instance-1_1_6_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_6_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_6_1');
+    var pathDiv = $('#item-path-110-instance-1_1_6_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_6_1').change( function() {
+    var ok = validate110instance1_1_6_1();
+    showError('item-error-110-instance-1_1_6_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_6_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_6_1').hide();
+  });
+
+  $('#item-111-instance-1_1_6_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_6_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_6_1');
+    var pathDiv = $('#item-path-111-instance-1_1_6_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_6_1').change( function() {
+    var ok = validate111instance1_1_6_1();
+    showError('item-error-111-instance-1_1_6_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_7').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_7').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_7_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_7_1').hide();
+  });
+
+  $('#item-110-instance-1_1_7_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_7_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_7_1');
+    var pathDiv = $('#item-path-110-instance-1_1_7_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_7_1').change( function() {
+    var ok = validate110instance1_1_7_1();
+    showError('item-error-110-instance-1_1_7_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_7_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_7_1').hide();
+  });
+
+  $('#item-111-instance-1_1_7_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_7_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_7_1');
+    var pathDiv = $('#item-path-111-instance-1_1_7_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_7_1').change( function() {
+    var ok = validate111instance1_1_7_1();
+    showError('item-error-111-instance-1_1_7_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_8').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_8').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_8_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_8_1').hide();
+  });
+
+  $('#item-110-instance-1_1_8_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_8_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_8_1');
+    var pathDiv = $('#item-path-110-instance-1_1_8_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_8_1').change( function() {
+    var ok = validate110instance1_1_8_1();
+    showError('item-error-110-instance-1_1_8_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_8_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_8_1').hide();
+  });
+
+  $('#item-111-instance-1_1_8_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_8_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_8_1');
+    var pathDiv = $('#item-path-111-instance-1_1_8_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_8_1').change( function() {
+    var ok = validate111instance1_1_8_1();
+    showError('item-error-111-instance-1_1_8_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_9').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_9').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_9_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_9_1').hide();
+  });
+
+  $('#item-110-instance-1_1_9_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_9_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_9_1');
+    var pathDiv = $('#item-path-110-instance-1_1_9_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_9_1').change( function() {
+    var ok = validate110instance1_1_9_1();
+    showError('item-error-110-instance-1_1_9_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_9_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_9_1').hide();
+  });
+
+  $('#item-111-instance-1_1_9_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_9_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_9_1');
+    var pathDiv = $('#item-path-111-instance-1_1_9_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_9_1').change( function() {
+    var ok = validate111instance1_1_9_1();
+    showError('item-error-111-instance-1_1_9_1',ok);
+  });
+  
+  $('#remove-button-109-instance-1_1_10').click(function() {
+    $('#repeating-enclosing-109-instance-1_1_10').hide();
+  });
+
+  $('#remove-button-110-instance-1_1_10_1').click(function() {
+    $('#repeating-enclosing-110-instance-1_1_10_1').hide();
+  });
+
+  $('#item-110-instance-1_1_10_1').prop('checked',false);
+
+  // value
+  var validate110instance1_1_10_1 = function () {
+    var ok = true;
+    var v = $('#item-110-instance-1_1_10_1');
+    var pathDiv = $('#item-path-110-instance-1_1_10_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-110-instance-1_1_10_1').change( function() {
+    var ok = validate110instance1_1_10_1();
+    showError('item-error-110-instance-1_1_10_1',ok);
+  });
+  
+  $('#remove-button-111-instance-1_1_10_1').click(function() {
+    $('#repeating-enclosing-111-instance-1_1_10_1').hide();
+  });
+
+  $('#item-111-instance-1_1_10_1').prop('checked',false);
+
+  // valueIRI
+  var validate111instance1_1_10_1 = function () {
+    var ok = true;
+    var v = $('#item-111-instance-1_1_10_1');
+    var pathDiv = $('#item-path-111-instance-1_1_10_1');
+    //length test
+    if (v.val().length <1)
+      ok = false;
+    return ok;
+  }
+  
+  $('#item-111-instance-1_1_10_1').change( function() {
+    var ok = validate111instance1_1_10_1();
+    showError('item-error-111-instance-1_1_10_1',ok);
+  });
+  
+  $('#repeat-button-109-instance-1_1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-109-instance-1_1_1');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_2');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_3');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_4');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_5');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_6');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_7');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_8');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_9');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+    elem = $('#repeating-enclosing-109-instance-1_1_10');
+    if (!elemVisible(elem))
+      { elem.show(); return; }
+  })
+
+  $('#repeat-button-106-instance-1').click( function() {
+    // loop through all repeats until find first nonInvisible repeat and make it visible
+    var elem;
+    elem = $('#repeating-enclosing-106-instance-1_1');
     if (!elemVisible(elem))
       { elem.show(); return; }
   })
@@ -44213,6 +44861,18 @@ if (!$('#min-occurs-zero-102-instance-1_1').is(':checked')) return '';
     return xml;
   }
 
+  //extract xml from element <formats>
+  function getXml105instance1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-105-instance-1_1_1')) {
+    var v = encodedValueById("item-105-instance-1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<formats>' + v + '</formats>';
+  }
+   return xml;
+  }
+
   //extract xml from element <distributions>
   function getXml56instance1() {
 
@@ -44227,8 +44887,318 @@ if (!$('#min-occurs-zero-56-instance-1').is(':checked')) return '';
       xml += getXml88instance1_1();
       xml += getXml101instance1_1();
       xml += getXml102instance1_1();
+      xml += getXml105instance1_1();
     }
     xml += '\n' + spaces(2) + '</distributions>';
+    return xml;
+  }
+
+  //extract xml from element <category>
+  function getXml107instance1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-107-instance-1_1_1')) {
+    var v = encodedValueById("item-107-instance-1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<category>' + v + '</category>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <categoryIRI>
+  function getXml108instance1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-108-instance-1_1_1')) {
+    var v = encodedValueById("item-108-instance-1_1_1");
+    if (v.length>0)
+      xml += '\n' + spaces(4) + '<categoryIRI>' + v + '</categoryIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_1_1')) {
+    var v = encodedValueById("item-110-instance-1_1_1_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_1() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_1_1')) {
+    var v = encodedValueById("item-111-instance-1_1_1_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_2() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_2_1')) {
+    var v = encodedValueById("item-110-instance-1_1_2_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_2() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_2_1')) {
+    var v = encodedValueById("item-111-instance-1_1_2_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_3() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_3_1')) {
+    var v = encodedValueById("item-110-instance-1_1_3_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_3() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_3_1')) {
+    var v = encodedValueById("item-111-instance-1_1_3_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_4() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_4_1')) {
+    var v = encodedValueById("item-110-instance-1_1_4_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_4() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_4_1')) {
+    var v = encodedValueById("item-111-instance-1_1_4_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_5() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_5_1')) {
+    var v = encodedValueById("item-110-instance-1_1_5_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_5() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_5_1')) {
+    var v = encodedValueById("item-111-instance-1_1_5_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_6() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_6_1')) {
+    var v = encodedValueById("item-110-instance-1_1_6_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_6() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_6_1')) {
+    var v = encodedValueById("item-111-instance-1_1_6_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_7() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_7_1')) {
+    var v = encodedValueById("item-110-instance-1_1_7_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_7() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_7_1')) {
+    var v = encodedValueById("item-111-instance-1_1_7_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_8() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_8_1')) {
+    var v = encodedValueById("item-110-instance-1_1_8_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_8() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_8_1')) {
+    var v = encodedValueById("item-111-instance-1_1_8_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_9() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_9_1')) {
+    var v = encodedValueById("item-110-instance-1_1_9_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_9() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_9_1')) {
+    var v = encodedValueById("item-111-instance-1_1_9_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <value>
+  function getXml110instance1_1_10() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-110-instance-1_1_10_1')) {
+    var v = encodedValueById("item-110-instance-1_1_10_1");
+    xml += '\n' + spaces(6) + '<value>' + v + '</value>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <valueIRI>
+  function getXml111instance1_1_10() {
+
+  var xml='';
+  if (idVisible('repeating-enclosing-111-instance-1_1_10_1')) {
+    var v = encodedValueById("item-111-instance-1_1_10_1");
+    xml += '\n' + spaces(6) + '<valueIRI>' + v + '</valueIRI>';
+  }
+   return xml;
+  }
+
+  //extract xml from element <values>
+  function getXml109instance1_1() {
+
+if (!$('#min-occurs-zero-109-instance-1_1').is(':checked')) return '';
+    var xml = '\n' + spaces(4) + '<values>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-109-instance-1_1_1')) {
+      xml += getXml110instance1_1_1();
+      xml += getXml111instance1_1_1();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_2')) {
+      xml += getXml110instance1_1_2();
+      xml += getXml111instance1_1_2();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_3')) {
+      xml += getXml110instance1_1_3();
+      xml += getXml111instance1_1_3();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_4')) {
+      xml += getXml110instance1_1_4();
+      xml += getXml111instance1_1_4();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_5')) {
+      xml += getXml110instance1_1_5();
+      xml += getXml111instance1_1_5();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_6')) {
+      xml += getXml110instance1_1_6();
+      xml += getXml111instance1_1_6();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_7')) {
+      xml += getXml110instance1_1_7();
+      xml += getXml111instance1_1_7();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_8')) {
+      xml += getXml110instance1_1_8();
+      xml += getXml111instance1_1_8();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_9')) {
+      xml += getXml110instance1_1_9();
+      xml += getXml111instance1_1_9();
+    }
+    if (idVisible('repeating-enclosing-109-instance-1_1_10')) {
+      xml += getXml110instance1_1_10();
+      xml += getXml111instance1_1_10();
+    }
+    xml += '\n' + spaces(4) + '</values>';
+    return xml;
+  }
+
+  //extract xml from element <extraProperties>
+  function getXml106instance1() {
+
+if (!$('#min-occurs-zero-106-instance-1').is(':checked')) return '';
+    var xml = '\n' + spaces(2) + '<extraProperties>';
+    //now add sequence children for each instanceNo
+    if (idVisible('repeating-enclosing-106-instance-1_1')) {
+      xml += getXml107instance1_1();
+      xml += getXml108instance1_1();
+      xml += getXml109instance1_1();
+    }
+    xml += '\n' + spaces(2) + '</extraProperties>';
     return xml;
   }
 
@@ -44247,6 +45217,7 @@ if (!$('#min-occurs-zero-56-instance-1').is(':checked')) return '';
       xml += getXml33instance1();
       xml += getXml42instance1();
       xml += getXml56instance1();
+      xml += getXml106instance1();
     }
     xml += '\n' + spaces(0) + '</DatasetWithOrganization>';
     return xml;
@@ -64622,6 +65593,454 @@ if (!$('#min-occurs-zero-56-instance-1').is(':checked')) return '';
                         <div class="clr">
                         </div>
                         <div id="item-error-104-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="item-enclosing-105-instance-1_1_1" class="item-enclosing">
+                <div id="repeat-button-105-instance-1_1" class="btn btn-sm btn-default">Add Formats</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-105-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-105-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                  </div>
+                  <div class="item-number">105</div>
+                  <label class="item-label" for="item-input-105-instance-1_1_1">Formats</label>
+                  <div class="item-input">
+                    <input number="105" name="item-input-105-instance-1_1_1" path="['distributions'][0]['formats'][0]" id="item-105-instance-1_1_1" class=" item-input-text" type="text">
+                    </input>
+                    <div id="item-path-105-instance-1_1_1" class="item-path" enabled="true"></div>
+                  </div>
+                  <div class="clr">
+                  </div>
+                  <div id="item-error-105-instance-1_1_1" class="item-error">Invalid</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="item-enclosing-106-instance-1_1" class="sequence">
+          <div class="min-occurs-zero-container invisible">
+            <div class="min-occurs-zero-label">Click to enable</div>
+            <input number="106" name="min-occurs-zero-name106-instance-1" checked="true" id="min-occurs-zero-106-instance-1" class="min-occurs-zero" type="checkbox">
+            </input>
+          </div>
+          <div id="repeat-button-106-instance-1" class="btn btn-sm btn-default">Add CategoryValuePair</div>
+          <div class="clr">
+          </div>
+          <div id="repeating-enclosing-106-instance-1_1" class="repeating-enclosing invisible">
+            <div class="sequence-label">CategoryValuePair</div>
+            <div id="sequence-106-instance-1" class="sequence-content">
+              <div class="remove-button-container">
+                <div id="remove-button-106-instance-1_1" class="btn btn-xs btn-default">-</div>
+              </div>
+              <div id="item-enclosing-107-instance-1_1_1" class="item-enclosing">
+                <div id="repeat-button-107-instance-1_1" class="btn btn-sm btn-default">Add Category</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-107-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-107-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                  </div>
+                  <div class="item-number">107</div>
+                  <label class="item-label" for="item-input-107-instance-1_1_1">Category</label>
+                  <div class="item-input">
+                    <input number="107" name="item-input-107-instance-1_1_1" path="['extraProperties'][0]['category']" id="item-107-instance-1_1_1" class=" item-input-text" type="text">
+                    </input>
+                    <div id="item-path-107-instance-1_1_1" class="item-path" enabled="true"></div>
+                  </div>
+                  <div class="clr">
+                  </div>
+                  <div id="item-error-107-instance-1_1_1" class="item-error">Invalid</div>
+                </div>
+              </div>
+              <div id="item-enclosing-108-instance-1_1_1" class="item-enclosing">
+                <div id="repeat-button-108-instance-1_1" class="btn btn-sm btn-default">Add Category Iri</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-108-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="remove-button-container">
+                    <div id="remove-button-108-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                  </div>
+                  <div class="item-number">108</div>
+                  <label class="item-label" for="item-input-108-instance-1_1_1">Category IRI</label>
+                  <div class="item-input">
+                    <input number="108" name="item-input-108-instance-1_1_1" path="['extraProperties'][0]['categoryIRI']" id="item-108-instance-1_1_1" class=" item-input-text" type="text">
+                    </input>
+                    <div id="item-path-108-instance-1_1_1" class="item-path" enabled="true"></div>
+                  </div>
+                  <div class="clr">
+                  </div>
+                  <div id="item-error-108-instance-1_1_1" class="item-error">Invalid</div>
+                </div>
+              </div>
+              <div id="item-enclosing-109-instance-1_1_1" class="sequence">
+                <div class="min-occurs-zero-container invisible">
+                  <div class="min-occurs-zero-label">Click to enable</div>
+                  <input number="109" name="min-occurs-zero-name109-instance-1_1" checked="true" id="min-occurs-zero-109-instance-1_1" class="min-occurs-zero" type="checkbox">
+                  </input>
+                </div>
+                <div id="repeat-button-109-instance-1_1" class="btn btn-sm btn-default">Add Value</div>
+                <div class="clr">
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_1" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-1" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_1" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_1_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_1_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_1_1" path="['extraProperties'][0]['values'][0]['value']" id="item-110-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_1_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_1_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_1_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_1_1" path="['extraProperties'][0]['values'][0]['valueIRI']" id="item-111-instance-1_1_1_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_1_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_1_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_2" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-2" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_2" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_2_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_2_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_2_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_2_1" path="['extraProperties'][0]['values'][1]['value']" id="item-110-instance-1_1_2_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_2_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_2_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_2_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_2_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_2_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_2_1" path="['extraProperties'][0]['values'][1]['valueIRI']" id="item-111-instance-1_1_2_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_2_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_2_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_3" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-3" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_3" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_3_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_3_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_3_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_3_1" path="['extraProperties'][0]['values'][2]['value']" id="item-110-instance-1_1_3_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_3_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_3_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_3_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_3_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_3_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_3_1" path="['extraProperties'][0]['values'][2]['valueIRI']" id="item-111-instance-1_1_3_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_3_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_3_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_4" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-4" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_4" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_4_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_4_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_4_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_4_1" path="['extraProperties'][0]['values'][3]['value']" id="item-110-instance-1_1_4_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_4_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_4_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_4_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_4_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_4_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_4_1" path="['extraProperties'][0]['values'][3]['valueIRI']" id="item-111-instance-1_1_4_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_4_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_4_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_5" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-5" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_5" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_5_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_5_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_5_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_5_1" path="['extraProperties'][0]['values'][4]['value']" id="item-110-instance-1_1_5_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_5_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_5_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_5_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_5_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_5_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_5_1" path="['extraProperties'][0]['values'][4]['valueIRI']" id="item-111-instance-1_1_5_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_5_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_5_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_6" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-6" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_6" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_6_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_6_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_6_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_6_1" path="['extraProperties'][0]['values'][5]['value']" id="item-110-instance-1_1_6_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_6_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_6_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_6_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_6_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_6_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_6_1" path="['extraProperties'][0]['values'][5]['valueIRI']" id="item-111-instance-1_1_6_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_6_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_6_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_7" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-7" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_7" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_7_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_7_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_7_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_7_1" path="['extraProperties'][0]['values'][6]['value']" id="item-110-instance-1_1_7_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_7_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_7_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_7_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_7_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_7_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_7_1" path="['extraProperties'][0]['values'][6]['valueIRI']" id="item-111-instance-1_1_7_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_7_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_7_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_8" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-8" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_8" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_8_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_8_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_8_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_8_1" path="['extraProperties'][0]['values'][7]['value']" id="item-110-instance-1_1_8_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_8_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_8_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_8_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_8_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_8_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_8_1" path="['extraProperties'][0]['values'][7]['valueIRI']" id="item-111-instance-1_1_8_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_8_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_8_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_9" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-9" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_9" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_9_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_9_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_9_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_9_1" path="['extraProperties'][0]['values'][8]['value']" id="item-110-instance-1_1_9_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_9_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_9_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_9_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_9_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_9_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_9_1" path="['extraProperties'][0]['values'][8]['valueIRI']" id="item-111-instance-1_1_9_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_9_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_9_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="repeating-enclosing-109-instance-1_1_10" class="repeating-enclosing invisible">
+                  <div class="sequence-label">Value</div>
+                  <div id="sequence-109-instance-10" class="sequence-content">
+                    <div class="remove-button-container">
+                      <div id="remove-button-109-instance-1_1_10" class="btn btn-xs btn-default">-</div>
+                    </div>
+                    <div id="item-enclosing-110-instance-1_1_10_1" class="item-enclosing">
+                      <div id="repeating-enclosing-110-instance-1_1_10_1" class="repeating-enclosing">
+                        <div class="item-number">110</div>
+                        <label class="item-label" for="item-input-110-instance-1_1_10_1">Value</label>
+                        <div class="item-input">
+                          <input number="110" name="item-input-110-instance-1_1_10_1" path="['extraProperties'][0]['values'][9]['value']" id="item-110-instance-1_1_10_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-110-instance-1_1_10_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-110-instance-1_1_10_1" class="item-error">Invalid</div>
+                      </div>
+                    </div>
+                    <div id="item-enclosing-111-instance-1_1_10_1" class="item-enclosing">
+                      <div id="repeating-enclosing-111-instance-1_1_10_1" class="repeating-enclosing">
+                        <div class="item-number">111</div>
+                        <label class="item-label" for="item-input-111-instance-1_1_10_1">Value IRI</label>
+                        <div class="item-input">
+                          <input number="111" name="item-input-111-instance-1_1_10_1" path="['extraProperties'][0]['values'][9]['valueIRI']" id="item-111-instance-1_1_10_1" class=" item-input-text" type="text">
+                          </input>
+                          <div id="item-path-111-instance-1_1_10_1" class="item-path" enabled="true"></div>
+                        </div>
+                        <div class="clr">
+                        </div>
+                        <div id="item-error-111-instance-1_1_10_1" class="item-error">Invalid</div>
                       </div>
                     </div>
                   </div>
