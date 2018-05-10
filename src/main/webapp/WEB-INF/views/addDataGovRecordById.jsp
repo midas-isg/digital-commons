@@ -24,7 +24,7 @@
         loggedIn="${loggedIn}"
         addEntry="${true}"
 />
-    <h1 id="header" class="h1">Add Record from Data.gov by Identifier</h1>
+    <h1 id="header" class="h1">Harvest Record from Data.gov by Package Identifier</h1>
 <body id="commons-body">
 <div id="content-body">
     <form method="POST" action="add-datagov-entry" name="form">

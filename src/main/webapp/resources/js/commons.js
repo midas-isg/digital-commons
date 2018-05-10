@@ -497,7 +497,7 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             }
         } else if(key === 'producedBy') {
             if(Object.keys(attribute).length !== 0) {
-                if(Object.keys(attribute['location']).length !== 0) {
+                if(Object.keys(attribute).includes('location') && Object.keys(attribute['location']).length !== 0) {
                     attribute = attribute['name'] + ", " + attribute['location']['postalAddress'];
                 } else {
                     attribute = attribute['name'];

@@ -57,6 +57,9 @@
                 </c:choose>
                 <li><a href="${contextPath}/add/review">Review Submissions</a></li>
                 <li role="presentation" class="divider"></li>
+                <li class="dropdown-header">Harvest</li>
+                <li><a href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a></li>
+                <li role="presentation" class="divider"></li>
                 <li class="dropdown-header">Add</li>
                 <li><a href="${contextPath}/add/dataFormatConverters?categoryId=6">Data Format Converter</a></li>
                 <li><a href="${contextPath}/add/dataService?categoryId=7">Data Service</a></li>

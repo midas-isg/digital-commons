@@ -280,6 +280,7 @@ public class DataGov implements DataGovInterface {
                     category = getCategoryId(entryFromMDC);
                     entryId = getEntryId(entryFromMDC);
                     revisionId = getRevisionId(entryFromMDC);
+                    message = "This record has been updated in the MDC<br><br>";
                 } else {
                     addOrUpdateEntry = false; // entry has not been updated by data.gov since last check
                     message = "This identifier has not been updated since last check";
@@ -288,7 +289,10 @@ public class DataGov implements DataGovInterface {
                 addOrUpdateEntry = false;  // entry has previously been rejected
                 message = "This identifier has previously been rejected";
             }
-        } else addOrUpdateEntry = true; // entry is new
+        } else {
+            addOrUpdateEntry = true; // entry is new
+            message = "This record has been inserted into the MDC<br><br>";
+        }
 
         if (addOrUpdateEntry) {
             if (category == null) {
@@ -306,7 +310,6 @@ public class DataGov implements DataGovInterface {
             try {
                 //Users user = usersSubmissionInterface.submitUser("auth0|5aa0446e88eaf04ed4039052", "jbs82@pitt.edu", "jbs82@pitt.edu");
                 entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, category, user, ENTRIES_AUTHENTICATION);
-                message = "This record has been inserted into the MDC<br><br>";
             } catch (MdcEntryDatastoreException e) {
                 System.out.println(e.toString());
                 message = "There was an error inserting the record";
