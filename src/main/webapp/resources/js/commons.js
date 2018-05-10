@@ -443,8 +443,7 @@ var convertToHtml = [
     "forecasts",
     "executables",
     "dataInputFormats",
-    "dataOutputFormats",
-    "accessURL"
+    "dataOutputFormats"
 ];
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
@@ -461,11 +460,19 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
                     if(attrs['distributions'].length > 1) {
                         attribute = new Array();
                         for (var i = 0; i < attrs['distributions'].length; i++) {
-                            attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['access'][key] + '</a>');
+                            if(attrs['distributions'][i]['formats'][0] != null) {
+                                attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['formats'][0] + '</a>');
+                            } else {
+                                attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['access'][key] + '</a>');
+                            }
                         }
                         attribute = uniqueArray(attribute);
                     } else {
-                        attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['access'][key] + '</a>';
+                        if(attrs['distributions'][0]['formats'][0] != null) {
+                            attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['formats'][0] + '</a>';
+                        } else {
+                            attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['access'][key] + '</a>';
+                        }
                     }
                 } else {
                     attribute = attrs['distributions'][0]['access'][key];
