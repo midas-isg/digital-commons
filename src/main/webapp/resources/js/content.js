@@ -296,7 +296,7 @@ function toggleModalItems(entry, type) {
     toggleModalItem('producedBy', entry, 'produced-by', false, false);
     toggleModalItem('description', entry, 'description', false, true);
     toggleModalItem('landingPage', entry, 'landing-page', true, false);
-    toggleModalItem('accessURL', entry, 'access-url', true, false);
+    toggleModalItem('accessURL', entry, 'access-url', false, true);
     toggleModalItem('authorizations', entry, 'authorizations', false, false);
     toggleModalItem('humanReadableSpecification', entry, 'human-readable-specification', true, false);
     toggleModalItem('machineReadableSpecification', entry, 'machine-readable-specification', true, false);

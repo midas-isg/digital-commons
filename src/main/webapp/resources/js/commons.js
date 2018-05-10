@@ -443,7 +443,8 @@ var convertToHtml = [
     "forecasts",
     "executables",
     "dataInputFormats",
-    "dataOutputFormats"
+    "dataOutputFormats",
+    "accessURL"
 ];
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
@@ -456,7 +457,19 @@ function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
             attribute = attrs[key];
         } else if(attrs['distributions'] !== null) {
             try {
-                attribute = attrs['distributions'][0]['access'][key];
+                if(key == "accessURL") {
+                    if(attrs['distributions'].length > 1) {
+                        attribute = new Array();
+                        for (var i = 0; i < attrs['distributions'].length; i++) {
+                            attribute.push('<a class="underline" href="' + attrs['distributions'][i]['access'][key] + '">' + attrs['distributions'][i]['access'][key] + '</a>');
+                        }
+                        attribute = uniqueArray(attribute);
+                    } else {
+                        attribute = '<a class="underline" href="' + attrs['distributions'][0]['access'][key] + '">' + attrs['distributions'][0]['access'][key] + '</a>';
+                    }
+                } else {
+                    attribute = attrs['distributions'][0]['access'][key];
+                }
             } catch (err) {
                 $(containerId).hide();
                 return;
@@ -830,3 +843,9 @@ function toggleLegend(cmd) {
         $('#main-legend').show();
     }
 }
+
+function uniqueArray(arrArg) {
+    return arrArg.filter(function(elem, pos,arr) {
+        return arr.indexOf(elem) == pos;
+    });
+};
