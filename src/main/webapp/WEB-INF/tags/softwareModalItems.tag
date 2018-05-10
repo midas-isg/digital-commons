@@ -19,7 +19,7 @@
 
 <myTags:softwareModalItem id="landing-page" title="Landing page" hasHref="true"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="access-url" title="Access URL" hasHref="true"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="access-url" title="Access URL" hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="authorizations" title="Authorizations" hasHref="false"></myTags:softwareModalItem>
 
