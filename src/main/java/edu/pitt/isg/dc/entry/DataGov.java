@@ -273,7 +273,7 @@ public class DataGov implements DataGovInterface {
 
         if (identifierExistsInMDC(identifier)) {
             String status = getidentifierStatus(identifier);
-            if (status.equals("pending") || status.equals("approved")) {
+            if (status.equals("pending") || status.equals("approved") || status.equals("revised")) {
                 entryFromMDC = getEntryFromMDC(identifier);
                 if (modifiedDataGovPackage(entryFromMDC, dataGovPackage)) {
                     addOrUpdateEntry = true;
