@@ -121,3 +121,6 @@
                           hasHref="false"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="spatial-coverage" title="Spatial coverage" hasHref="false"></myTags:softwareModalItem>
+
+<myTags:softwareModalItem id="is-about" title="Is About" hasHref="false"></myTags:softwareModalItem>
+

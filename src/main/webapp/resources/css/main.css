@@ -829,3 +829,32 @@ tfoot {
 .btn-publish {
     float: right;
 }
+
+#software-description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 161px;      /* fallback */
+    -webkit-line-clamp: 10; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+#software-description.expanded {
+    max-height: none;
+    -webkit-line-clamp: unset;
+}
+
+
+#software-is-about {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 16px;     /* fallback */
+    max-height: 49px;      /* fallback */
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+#software-is-about.expanded {
+    max-height: none;
+    -webkit-line-clamp: unset;
+}

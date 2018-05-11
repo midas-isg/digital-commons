@@ -421,6 +421,11 @@ function listToHtmlString(attributeList) {
 }
 
 function displayList(attributeList) {
+    for(var i=attributeList.length-1; i>=0; i--) {
+        if(Object.prototype.toString.call( attributeList[i] ) === '[object Object]') {
+            attributeList.splice(i, 1);
+        }
+    }
     var attribute = attributeList.join(', ');
     if(!attribute.includes('http')) {
         attribute = attribute.charAt(0).toUpperCase() + attribute.slice(1);
@@ -856,3 +861,17 @@ function uniqueArray(arrArg) {
         return arr.indexOf(elem) == pos;
     });
 };
+
+
+function expand(id) {
+    $('#software-' + id).addClass('expanded');
+    $(".helpicon-" + id).hide();
+    $(".hideicon-" + id).show();
+
+}
+
+function truncate(id) {
+    $('#software-'+id).removeClass('expanded');
+    $(".helpicon-" + id).show();
+    $(".hideicon-" + id).hide();
+}
