@@ -76,6 +76,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button class="btn btn-default" id="detailed-view-button">Detailed view</button>
                 <button id="modal-switch-btn"
                         type="button"
                         class="btn btn-default"
