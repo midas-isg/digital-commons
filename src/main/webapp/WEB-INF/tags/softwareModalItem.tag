@@ -12,20 +12,23 @@
 
 <div class="sub-title-font font-size-16 modal-software-item" id="software-${id}-container">
     <h4 class="inline bold" id="software-${id}-tag">${title}: </h4>
-    <c:if test="${id == 'description' || id == 'is-about'}">
-        <a class="helpicon-${id}" href="javascript:;" onclick="expand('${id}')">
-            <i class="fa fa-question-circle" width="15" height="15"></i>
-        </a>
-        <a class="hideicon-${id}" href="javascript:;" style="display: none;" onclick="truncate('${id}')">
-            <i class="fa fa fa-ban" width="15" height="15"></i>
-        </a>
-    </c:if>
     <br>
     <c:if test="${hasHref == 'true'}">
         <a href="" id="software-${id}" class="underline"></a>
     </c:if>
 
-    <c:if test="${hasHref != 'true'}">
-        <span id="software-${id}"></span>
-    </c:if>
+    <c:choose>
+        <c:when test="${id == 'description' || id == 'is-about'}">
+            <div id="software-${id}"></div>
+            <button class="btn btn-default helpicon-${id} pull-right" onclick="expand('${id}')">
+                Show more
+            </button>
+            <br>
+        </c:when>
+        <c:otherwise>
+            <c:if test="${hasHref != 'true'}">
+                <span id="software-${id}"></span>
+            </c:if>
+        </c:otherwise>
+    </c:choose>
 </div>

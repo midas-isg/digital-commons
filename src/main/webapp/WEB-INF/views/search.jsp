@@ -269,7 +269,7 @@
         }
 
         function linkHtml(id, rev, name) {
-            return '<a href="#" onclick=\'' + "getDataAndOpenModal(" + id + "," + rev + ")" + '\'>' + name + '</a>';
+            return '<a href="#" onclick=\'' + "getDataOpenModal(" + id + "," + rev + ")" + '\'>' + name + '</a>';
         }
     });
 </script>

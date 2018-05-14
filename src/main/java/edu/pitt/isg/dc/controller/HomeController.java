@@ -2,7 +2,9 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.mangofactory.swagger.annotations.ApiIgnore;
+import edu.pitt.isg.dc.controller.ws.EntryController;
 import edu.pitt.isg.dc.entry.*;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
@@ -467,5 +469,22 @@ public class HomeController {
     @RequestMapping(value = "/main/about", method = RequestMethod.GET)
     public String about(Model model) {
         return "about";
+    }
+
+
+    @RequestMapping(value = "/detailedView", method = RequestMethod.GET)
+    public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
+        model.addAttribute("id", id);
+        model.addAttribute("revId", revId);
+        Entry entry = entryRule.read(new EntryId(id, revId));
+        EntryView entryView = new EntryView(entry);
+        String jsonString = entryView.getUnescapedEntryJsonString();
+        String type = entryView.getEntryTypeBaseName();
+        model.addAttribute("entryJson", jsonString);
+        model.addAttribute("type", type);
+        model.addAttribute("title", entryView.getTitle());
+
+        System.out.print(id);
+        return "detailedView";
     }
 }

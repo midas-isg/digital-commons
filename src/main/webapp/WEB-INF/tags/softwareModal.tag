@@ -76,6 +76,15 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button class="btn btn-default hideicon-description pull-right" style="display: none;"
+                        onclick="truncate('')">
+                    Show less description
+                </button>
+                <button class="btn btn-default hideicon-is-about pull-right" style="display: none;"
+                        onclick="truncate('')">
+                    Show less is about
+                </button>
+                <button class="btn btn-default" id="detailed-view-button">Detailed view</button>
                 <button id="modal-switch-btn"
                         type="button"
                         class="btn btn-default"

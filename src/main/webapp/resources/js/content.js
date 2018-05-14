@@ -60,7 +60,9 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
                     var idArr = data["entryId"].split("r");
                     var id = idArr[0];
                     var rev = idArr[1];
-                    getDataAndOpenModal(id, rev);
+                    getDataAndOpenModal(event, id, rev);
+                    $("#detailed-view-button").attr("onClick", "location.href='" + ctx + "/detailedView/?id=" + id + "&revId=" + rev + "'");
+
                 }
             }
             if(typeof data['nodes'] !== undefined) {
@@ -305,10 +307,18 @@ function toggleModalItems(entry, type) {
     toggleModalItem('isAbout', entry, 'is-about', false, false);
 }
 
-function getDataAndOpenModal(id, rev) {
+function getDataAndOpenModal(event, id, rev) {
     event.preventDefault();
     event.stopPropagation();
 
+    $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
+        var entry = JSON.parse(data.json);
+        //console.log(data, entry);
+        showModal(entry, data.type, data.xml);
+    });
+}
+
+function getDataOpenModal(id, rev) {
     $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
         var entry = JSON.parse(data.json);
         //console.log(data, entry);

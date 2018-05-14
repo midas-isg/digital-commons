@@ -78,6 +78,46 @@
     </c:if>
     <script>
         $(document).ready(function () {
+            function setModalMaxHeight(element) {
+                this.$element     = $(element);
+                this.$content     = this.$element.find('.modal-content');
+                var borderWidth   = this.$content.outerHeight() - this.$content.innerHeight();
+                var dialogMargin  = $(window).width() < 768 ? 20 : 100;
+                var contentHeight = $(window).height() - (dialogMargin + borderWidth);
+                var headerHeight  = 96;
+                var footerHeight  = this.$element.find('.modal-footer').outerHeight() || 0;
+                var maxHeight     = contentHeight - (headerHeight + footerHeight);
+                this.$content.css({
+                    'overflow': 'hidden'
+                });
+
+                this.$element
+                    .find('.modal-body').css({
+                    'max-height': maxHeight,
+                    'height': maxHeight,
+                    'overflow-y': 'auto'
+                });
+            }
+
+            $('.modal').on('show.bs.modal', function() {
+                $(this).show();
+                setModalMaxHeight(this);
+
+                $("#software-description").attr('style', '');
+                $(".helpicon-description").show();
+                $(".hideicon-description").hide();
+                $("#software-is-about").attr('style', '');
+                $(".helpicon-is-about").show();
+                $(".hideicon-is-about").hide();
+            });
+
+            $(window).resize(function() {
+                if ($('.modal.in').length != 0) {
+                    setModalMaxHeight($('.modal.in'));
+                }
+            });
+
+
             $("#drop-down-category").click(function () {
                 $(this).parents(".dropdown").find('.btn').html('Sort by Category <span class="caret"></span>');
                 $(this).parents(".dropdown").find('.btn').val($(this).data('value'));

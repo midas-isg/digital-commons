@@ -173,7 +173,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
             if(typeof data['nodes'] !== undefined) {
                 $(treeviewTag).treeview('toggleNodeExpanded', [data.nodeId, { levels: 1, silent: true } ]).treeview('unselectNode', [data.nodeId, {silent: true}]);
             }
-            
+
             var expandedSoftware = $.parseJSON(sessionStorage.getItem(expandedInfo));
 
             if(data.state.expanded) {
@@ -832,7 +832,11 @@ function openJsonInNewTab(elementId) {
     if(text.includes('xmlns')) {
         type = 'application/xml';
     }
-    window.open('data:' + type + ';charset=utf-8,' + encodeURIComponent(text), '_blank');
+    var x = window.open();
+    x.document.open();
+    x.document.write('<html><body><pre>' + text + '</pre></body></html>');
+    x.document.close();
+
 }
 
 function toggleModalView() {
@@ -862,16 +866,52 @@ function uniqueArray(arrArg) {
     });
 };
 
+var reducedHeightDescription;
+var reducedHeightIsAbout;
 
 function expand(id) {
-    $('#software-' + id).addClass('expanded');
+    var fullHeight;
+    if(id == 'description') {
+        reducedHeightDescription = $("#software-" + id).height();
+        $("#software-" + id).css('height', 'auto');
+        // $("#software-" + id).css('position', 'absolute');
+        // $("#software-" + id).css('top', $("#software-"+ id + "-container").offset().top - $(".modal-body").offset());
+        // $("#software-" + id).css('background', 'white');
+
+        $("#software-" + id).css('max-height', 'none');
+        fullHeight =  $("#software-" + id).height();
+        $("#software-" + id).height(reducedHeightDescription);
+    }
+    if(id == 'is-about') {
+        reducedHeightIsAbout = $("#software-" + id).height();
+        $("#software-" + id).css('height', 'auto');
+        $("#software-" + id).css('max-height', 'none');
+        fullHeight =  $("#software-" + id).height();
+        $("#software-" + id).height(reducedHeightIsAbout);
+    }
+
+    $("#software-" + id).animate({height: fullHeight}, 500);
+
     $(".helpicon-" + id).hide();
     $(".hideicon-" + id).show();
 
 }
 
 function truncate(id) {
-    $('#software-'+id).removeClass('expanded');
+    var height;
+    if(id == "description") {
+        height = "10em";
+        $("#software-" + id).animate({height: reducedHeightDescription + 4}, 500);
+
+    } if(id == "is-about") {
+        height = "3em";
+        $("#software-" + id).animate({height: reducedHeightIsAbout + 4}, 500);
+
+    }
+
+    // $("#software-" + id).css('max-height', height);
+
+
     $(".helpicon-" + id).show();
     $(".hideicon-" + id).hide();
 }
