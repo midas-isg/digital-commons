@@ -17,18 +17,7 @@
         <a href="" id="software-${id}" class="underline"></a>
     </c:if>
 
-    <c:choose>
-        <c:when test="${id == 'description' || id == 'is-about'}">
-            <div id="software-${id}"></div>
-            <button class="btn btn-default helpicon-${id} pull-right" onclick="expand('${id}')">
-                Show more
-            </button>
-            <br>
-        </c:when>
-        <c:otherwise>
-            <c:if test="${hasHref != 'true'}">
-                <span id="software-${id}"></span>
-            </c:if>
-        </c:otherwise>
-    </c:choose>
+    <c:if test="${hasHref != 'true'}">
+        <span id="software-${id}"></span>
+    </c:if>
 </div>

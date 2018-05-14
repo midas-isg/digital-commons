@@ -829,17 +829,3 @@ tfoot {
 .btn-publish {
     float: right;
 }
-
-#software-description {
-    max-height: 10em;
-    padding: 2px;
-    overflow: hidden;
-}
-
-
-#software-is-about {
-    max-height: 3em;
-    padding: 2px;
-    overflow: hidden;
-}
-
