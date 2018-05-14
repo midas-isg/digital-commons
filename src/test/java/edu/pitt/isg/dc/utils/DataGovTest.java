@@ -117,6 +117,8 @@ public class DataGovTest {
         String catalogURL = "http://catalog.data.gov/";
         CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
+        //CkanDataset dataset = ckanClient.getDataset("dfedaac8-8ede-4c1a-a988-17c230fe63ac");
+        //CkanDataset dataset = ckanClient.getDataset("75b2f0dc-ed03-454a-b02d-951da90c91c1");
         System.out.println(dataset.getNotes());
         //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
