@@ -30,6 +30,10 @@ public class ApiUtil {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    private static final String CKAN_DATE_CREATED = "CKAN metadata_created";
+    private static final String CKAN_DATE_MODIFIED = "CKAN metadata_modified";
+
+
     public List<String> getIdentifiers() {
         List<String> unparsedIdentifiers = repo.findPublicIdentifiers();
         List<String> parsedIdentifiers = new ArrayList<>();
@@ -598,12 +602,17 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                         lastname = creatorMap.get(key).toString();
                     }
                     if(key == "name"){
-                        HashMap nameMap = (HashMap)creatorMap.get(key);
-                        if(nameMap.containsKey("type") && nameMap.get("type").equals("organization")) {
-                            organization = true;
+                        if(creatorMap.get(key).getClass().getName().equalsIgnoreCase("java.lang.String")){
+                            organizationName = creatorMap.get(key).toString();
                         }
-                        if(organization && nameMap.containsKey("description")) {
-                            organizationName = nameMap.get("description").toString();
+                        else {
+                            HashMap nameMap = (HashMap)creatorMap.get(key);
+                            if(nameMap.containsKey("type") && nameMap.get("type").equals("organization")) {
+                                organization = true;
+                            }
+                            if(organization && nameMap.containsKey("description")) {
+                                organizationName = nameMap.get("description").toString();
+                            }
                         }
                     } //if
                     //System.out.println(key + " = " + value);
@@ -617,6 +626,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         }
 
         //publishers
+        Boolean foundPublisher = false;
         if(((HashMap)entryMap.get("entry")).containsKey("storedIn")){
             Map entryHashMap = (LinkedHashMap)entryMap.get("entry");
             HashMap storedinMap = (HashMap)entryHashMap.get("storedIn");
@@ -628,6 +638,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                     while (iterator.hasNext()) {
                         String key = iterator.next();
                         if (key == "name") {
+                            foundPublisher = true;
                             String publisherName = publisherMap.get(key).toString();
                             ElementType publisherValue = elementFactory.createElementType();
                             publisherValue.setValue(publisherName);
@@ -655,6 +666,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                                     String publishKey = publishIterator.next();
                                     HashMap publishNameMap = (HashMap)publish;
                                     if(publishNameMap.containsKey("name")){
+                                        foundPublisher = true;
                                         String publisherName = publishNameMap.get("name").toString();
                                         ElementType publisherValue = elementFactory.createElementType();
                                         publisherValue.setValue(publisherName);
@@ -668,6 +680,20 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                 } //while
             } //for
         } //else
+        //get Publisher for data.gov entries
+        if(!foundPublisher){
+            if (((Map)entryMap.get("entry")).containsKey("producedBy")) {
+                Map publisherMap = (Map)((Map)entryMap.get("entry")).get("producedBy");
+                if(publisherMap.containsKey("name")){
+                    foundPublisher = true;
+                    String publisherName = publisherMap.get("name").toString();
+                    ElementType publisherValue = elementFactory.createElementType();
+                    publisherValue.setValue(publisherName);
+                    JAXBElement<ElementType> publisherElement = elementFactory.createPublisher(publisherValue);
+                    oaiDcType.getTitleOrCreatorOrSubject().add(publisherElement);
+                }
+            }
+        }
 
         //Date
         if(((HashMap)entryMap.get("entry")).containsKey("dates")){
@@ -688,6 +714,42 @@ resumptionToken an exclusive argument with a value that is the flow control toke
                 } //while
             } //for
         } //if
+
+        //Date from extra properties for data.gov entries
+        if (((Map)entryMap.get("entry")).containsKey("extraProperties")) {
+            String date = null;
+            Map entryMapDataGov = (Map) entry.getContent().get("entry");
+            List<Map> extraPropertiesList = (List<Map>) entryMapDataGov.get("extraProperties");
+            for (Map extraPropertiesMap : extraPropertiesList) {
+                if (extraPropertiesMap.containsKey("category")) {
+                    String category = extraPropertiesMap.get("category").toString();
+                    if (extraPropertiesMap.containsKey("values")) {
+                        List<Map> valuesList = (List<Map>) extraPropertiesMap.get("values");
+                        for (Map value : valuesList) {
+                            if (value.containsKey("value")) {
+                                date = value.get("value").toString();
+                            } // if
+                        } // for
+                    } // if
+
+                    if (category.equalsIgnoreCase(CKAN_DATE_CREATED) && date != null) {
+                        ElementType dateValue = elementFactory.createElementType();
+                        dateValue.setValue(date);
+                        JAXBElement<ElementType> dateElement = elementFactory.createDate(dateValue);
+                        oaiDcType.getTitleOrCreatorOrSubject().add(dateElement);
+                    }
+                    //only setting creation date for now
+//                    if (category.equalsIgnoreCase(CKAN_DATE_MODIFIED)) {
+//                        ElementType dateValue = elementFactory.createElementType();
+//                        dateValue.setValue(date);
+//                        JAXBElement<ElementType> dateElement = elementFactory.createDate(dateValue);
+//                        oaiDcType.getTitleOrCreatorOrSubject().add(dateElement);
+//                    }
+
+                } // if
+            } // for
+        }
+
 
         //coverage
         if(((HashMap)entryMap.get("entry")).containsKey("spatialCoverage")){
