@@ -870,7 +870,7 @@ tfoot {
 }
 
 /*Detailed View Page CSS*/
-.detailed-view-page {
+#detailed-view-body {
     background: #f6f6f6;
 }
 
@@ -887,6 +887,79 @@ div.container.metadata-container .metadata-column.fancy {
     margin: 0;
 }
 
+.metadata-wrapper .metadata-row {
+    margin-top: 15px;
+    margin-right: 0px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+}
+
 .metadata-wrapper .metadata-section {
     margin: 15px;
+}
+
+.metadata-detail-groups {
+    justify-content: flex-start;
+}
+
+.metadata-wrapper .metadata-pair .metadata-pair-title {
+    font-size: 15px;
+    color: #0c2b65;
+}
+
+.metadata-wrapper .metadata-pair .metadata-pair-value {
+    font-size: 24px;
+    line-height: 27px;
+    color: #1c6387;
+    letter-spacing: -0.5px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+}
+
+.metadata-detail-group {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.metadata-detail-group-title {
+    font-size: 12px;
+    color: #727272;
+    font-weight: 600;
+}
+
+.metadata-detail-group-value {
+    font-size: 12px;
+    margin: 0;
+}
+
+.metadata-wrapper .metadata-table {
+    padding: 0 15px;
+}
+
+.metadata-column.tables{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.metadata-wrapper .metadata-table table {
+    border-collapse: collapse;
+}
+
+.metadata-table table tr td:first-child {
+    color: #474747;
+    width: 35%;
+    padding: 3px 11px;
+}
+
+.metadata-table table tr td {
+    vertical-align: middle;
+    padding: 3px;
+}
+
+.table.table-condensed th, .table.table-condensed td {
+    padding: 8px;
+    font-size: 13px;
 }

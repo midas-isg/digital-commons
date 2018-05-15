@@ -24,13 +24,13 @@
         <div class="col-sm-12">
             <h3>${title}</h3>
             <hr>
-            <h4>Description</h4>
+            <h4 class="sub-title-font">Description</h4>
             <span>${entryView.entry.description}</span>
         </div>
 
 
         <%--<div class="col-md-4 col-sm-12">--%>
-        <%--<h4>Updated</h4>--%>
+        <%--<h4 class="sub-title-font">Updated</h4>--%>
         <%--<h2>${entryView.entry.producedBy.startDate.date}</h2>--%>
         <%--</div>--%>
 
@@ -44,7 +44,7 @@
     <div class="metadata-wrapper">
         <section>
             <div class="metadata-header-wrapper">
-                <h2>About this Dataset</h2>
+                <h2 class="sub-title-font">About this Dataset</h2>
             </div>
             <div class="section-content">
                 <dl class="metadata-column fancy">
@@ -52,17 +52,17 @@
                         <div class="metadata-section">
                             <div class="metadata-row">
                                 <div class="metadata-pair">
-                                    <dt class="metadata-pair-key">Updated</dt>
+                                    <dt class="metadata-pair-title">Updated</dt>
                                     <dd class="metadata-pair-value">August 27, 2015</dd>
                                 </div>
                             </div>
-                            <div class="metadata-row middle metadata-flex metadata-detail-groups">
+                            <div class="metadata-row metadata-detail-groups">
                                 <div class="metadata-detail-group">
-                                    <dt class="metadata-detail-group-title">Data Last Updated</dt>
+                                    <dt class="metadata-detail-group-title">Data Updated</dt>
                                     <dd class="metadata-detail-group-value">June 19, 2013</dd>
                                 </div>
                                 <div class="metadata-detail-group">
-                                    <dt class="metadata-detail-group-title">Metadata Last Updated</dt>
+                                    <dt class="metadata-detail-group-title">Metadata Updated</dt>
                                     <dd class="metadata-detail-group-value">August 27, 2015</dd>
                                 </div>
                             </div>
@@ -76,20 +76,20 @@
                         <hr aria-hidden="true">
                     </div>
                     <div class="metadata-section">
-                        <div class="metadata-row metadata-flex">
-                            <div class="metadata-pair">
-                                <dt class="metadata-pair-key">Views</dt>
+                        <div class="metadata-row">
+                            <div class="metadata-pair metadata-detail-group">
+                                <dt class="metadata-pair-title">Views</dt>
                                 <dd class="metadata-pair-value">2,241</dd>
                             </div>
-                            <div class="metadata-pair download-count">
-                                <dt class="metadata-pair-key">Downloads</dt>
+                            <div class="metadata-pair metadata-detail-group">
+                                <dt class="metadata-pair-title">Downloads</dt>
                                 <dd class="metadata-pair-value">8,317</dd>
                             </div>
                         </div>
                     </div>
                     <hr aria-hidden="true">
                     <div class="metadata-section">
-                        <div class="metadata-row metadata-flex metadata-detail-groups">
+                        <div class="metadata-row metadata-detail-groups">
                             <div class="metadata-detail-group">
                                 <dt class="metadata-detail-group-title">Data Provided by</dt>
                                 <dd class="metadata-detail-group-value">PRAMS</dd>
@@ -105,7 +105,7 @@
                     </div>
                 </dl>
                 <div class="metadata-column tables" style="padding-bottom: 0px;">
-                    <div class="metadata-table"><h3 class="metadata-table-title">Common Core</h3>
+                    <div class="metadata-table"><h4 class="sub-title-font">Common Core</h4>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             <tr>
@@ -129,7 +129,7 @@
                         </table>
                     </div>
                     <div class="metadata-table"></div>
-                    <div class="metadata-table"><h3 class="metadata-table-title">Topics</h3>
+                    <div class="metadata-table"><h4 class="sub-title-font">Topics</h4>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             <tr>
@@ -159,7 +159,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="metadata-table"><h3 class="metadata-table-title">Licensing and Attribution</h3>
+                    <div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             <tr>
