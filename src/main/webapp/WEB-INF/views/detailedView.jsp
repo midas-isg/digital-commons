@@ -54,6 +54,7 @@
                     <div>
                         <div class="metadata-section">
                             <div class="metadata-row">
+
                                 <div class="metadata-pair">
                                     <dt class="metadata-pair-title">Updated</dt>
                                     <dd class="metadata-pair-value">August 27, 2015</dd>
