@@ -480,6 +480,7 @@ public class HomeController {
         EntryView entryView = new EntryView(entry);
         String jsonString = entryView.getUnescapedEntryJsonString();
         String type = entryView.getEntryTypeBaseName();
+        model.addAttribute("entryView", entryView);
         model.addAttribute("entryJson", jsonString);
         model.addAttribute("type", type);
         model.addAttribute("title", entryView.getTitle());
