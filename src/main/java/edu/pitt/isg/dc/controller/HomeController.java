@@ -2,12 +2,12 @@ package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
 import com.mangofactory.swagger.annotations.ApiIgnore;
-import edu.pitt.isg.dc.controller.ws.EntryController;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.impl.WorkflowsImpl;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.spew.SpewLocation;
 import edu.pitt.isg.dc.spew.SpewRule;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
@@ -69,7 +69,8 @@ public class HomeController {
     private AsvRule asvRule;
     @Autowired
     private LocationRule locationRule;
-
+    @Autowired
+    private ApiUtil apiUtil;
     @Autowired
     private CategoryHelper categoryHelper;
 
@@ -481,6 +482,14 @@ public class HomeController {
         String jsonString = entryView.getUnescapedEntryJsonString();
         String type = entryView.getEntryTypeBaseName();
         model.addAttribute("entryView", entryView);
+
+        List<Category> categories = apiUtil.getCategoryLineage((String) ((LinkedHashMap) ((LinkedHashMap) entry.getContent().get("entry")).get("identifier")).get("identifier"));
+        List<String> lineage = new ArrayList<>();
+        for (int i = categories.size() - 1; i >= 0; i--)
+            lineage.add(categories.get(i).getCategory());
+        model.addAttribute("lineage", lineage);
+
+
         model.addAttribute("entryJson", jsonString);
         model.addAttribute("type", type);
         model.addAttribute("title", entryView.getTitle());

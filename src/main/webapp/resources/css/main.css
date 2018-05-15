@@ -963,3 +963,22 @@ div.container.metadata-container .metadata-column.fancy {
     padding: 8px;
     font-size: 13px;
 }
+
+.lineage{
+    background-color: #f6f6f6;
+    margin: 0;
+    padding: 10px;
+}
+
+.background-white {
+    background: white;
+}
+
+.breadcrumb {
+    margin-bottom: 0px;
+    font-size: 17px;
+}
+
+.collapsible {
+    overflow: hidden;
+}

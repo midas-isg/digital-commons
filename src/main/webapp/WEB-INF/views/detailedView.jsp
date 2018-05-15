@@ -21,7 +21,10 @@
 <body id="detailed-view-body">
 <div class="container">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="lineage">
+            <myTags:categoryLineage lineage="${lineage}"/>
+        </div>
+        <div class="col-sm-12 background-white">
             <h3>${title}</h3>
             <hr>
             <h4 class="sub-title-font">Description</h4>
@@ -139,19 +142,12 @@
                             <tr>
                                 <td>Tags</td>
                                 <td>
-                                    <div class="tag-list-container collapsible">
-                                        <div class="tag-list" style="word-wrap: break-word;"><span><a
-                                                href="/browse?tags=prams">prams</a><!-- react-text: 218 -->,
-                                            <!-- /react-text --></span><span><a
-                                                href="/browse?tags=flu shot">flu shot</a><!-- react-text: 221 -->,
-                                            <!-- /react-text --></span><span><a href="/browse?tags=pregnant women">pregnant women</a>
-                                            <!-- react-text: 224 -->, <!-- /react-text --></span><span><a
-                                                href="/browse?tags=immunization">immunization</a>
-                                            <!-- react-text: 227 --><!-- /react-text --></span>
-                                            <button class="collapse-toggle more" style="display: none;">Show More
-                                            </button>
-                                            <button class="collapse-toggle less" style="display: none;">Show Less
-                                            </button>
+                                    <div class="collapsible">
+                                        <div class="tag-list" style="word-wrap: break-word;">
+                                            <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
+                                                       varStatus="status">
+                                                ${isAbout.name}${!status.last ? ',' : ''}
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </td>
