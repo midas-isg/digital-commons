@@ -136,6 +136,9 @@
                                                 <c:when test="${not empty creator.fullName}">
                                                     ${creator.fullName}${!status.last ? ',' : ''}
                                                 </c:when>
+                                                <c:otherwise>
+                                                    ${creator.firstName} ${creator.lastName}${!status.last ? ',' : ''}
+                                                </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
                                     </td>
@@ -172,7 +175,22 @@
                             <tbody>
                             <tr>
                                 <td>Category</td>
-                                <td>Pregnancy &amp; Vaccination</td>
+                                <td>${lineage[2]}</td>
+                            </tr>
+                            <tr>
+                                <td>Spatial coverage</td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${not empty entryView.entry.spatialCoverage}">
+                                            <c:forEach items="${entryView.entry.spatialCoverage}" var="coverage"
+                                                       varStatus="status">
+                                                <%--${fn:toUpperCase(fn:substring(coverage.name, 0, 1))}${fn:toLowerCase(fn:substring(coverage.name, 1,fn:length(coverage.name)))}${!status.last ? ',' : ''}--%>
+                                                ${coverage.name}${!status.last ? ',' : ''}
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>${entryView.category.category}</c:otherwise>
+                                    </c:choose>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Tags</td>
@@ -181,9 +199,14 @@
                                         <div class="tag-list" style="word-wrap: break-word;">
                                             <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
                                                        varStatus="status">
-                                                <c:if test="${not empty isAbout.name}">
-                                                    ${isAbout.name}
-                                                </c:if>
+                                                <c:choose>
+                                                    <c:when test="${not empty isAbout.name}">
+                                                        ${isAbout.name}${!status.last ? ',' : ''}
+                                                    </c:when>
+                                                    <c:when test="${not empty isAbout.value}">
+                                                        ${isAbout.value}${!status.last ? ',' : ''}
+                                                    </c:when>
+                                                </c:choose>
                                             </c:forEach>
                                         </div>
                                     </div>
@@ -205,19 +228,36 @@
                                                 <td>
                                                         ${distribution.formats[0]}
                                                 </td>
-                                                <td>
-                                                    <a href="${distribution.access.accessURL}"
-                                                       class="underline">${distribution.access.accessURL}</a>
-                                                </td>
                                             </c:when>
                                             <c:otherwise>
                                                 <td>Access URL</td>
-                                                <td>
-                                                    <a href="${distribution.access.accessURL}"
-                                                       class="underline">${distribution.access.accessURL}</a>
-                                                </td>
                                             </c:otherwise>
                                         </c:choose>
+                                        <td>
+                                            <a href="${distribution.access.accessURL}"
+                                               class="underline">${distribution.access.accessURL}</a>
+                                            <c:if test="${not empty distribution.conformsTo}">
+                                                <br>
+                                                Conforms to:
+                                                <c:forEach items="${distribution.conformsTo}" var="conforms" varStatus="status">
+                                                    <c:choose>
+                                                        <c:when test="${not empty conforms.alternateIdentifiers}">
+                                                            <a href="${conforms.alternateIdentifiers[0].identifier}" class="underline">
+                                                                ${conforms.name}${!status.last ? ',' : ''}
+                                                            </a>
+                                                        </c:when>
+                                                        <c:when test="${not empty conforms.type}">
+                                                            <a href="${conforms.valueIRI}" class="underline">
+                                                                    ${conforms.name}${!status.last ? ',' : ''}
+                                                            </a>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            ${conforms.name}${!status.last ? ',' : ''}
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:forEach>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

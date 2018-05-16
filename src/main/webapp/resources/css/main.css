@@ -982,3 +982,18 @@ div.container.metadata-container .metadata-column.fancy {
 .collapsible {
     overflow: hidden;
 }
+
+
+@media (max-width: 768px){
+    div.container.metadata-container .metadata-column.fancy {
+        flex: 1 0 100%;
+    }
+
+    div.container.metadata-container .metadata-column {
+        flex: 1 0 100%;
+    }
+
+    div.container.metadata-container .section-content {
+        flex-wrap: wrap;
+    }
+}
