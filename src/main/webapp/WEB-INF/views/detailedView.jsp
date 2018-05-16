@@ -13,10 +13,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <myTags:head title="MIDAS Digital Commons"/>
+<myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
 
-<myTags:header
-        pageTitle="MIDAS Digital Commons"
-        loggedIn="${loggedIn}"/>
 
 <body id="detailed-view-body">
 <div class="container metadata-container">
@@ -90,34 +88,34 @@
                         </div>
                         <hr aria-hidden="true">
                     </div>
-                    <div class="metadata-section">
-                        <div class="metadata-row">
-                            <div class="metadata-pair metadata-detail-group">
-                                <dt class="metadata-pair-title">Views</dt>
-                                <dd class="metadata-pair-value">2,241</dd>
-                            </div>
-                            <div class="metadata-pair metadata-detail-group">
-                                <dt class="metadata-pair-title">Downloads</dt>
-                                <dd class="metadata-pair-value">8,317</dd>
-                            </div>
-                        </div>
-                    </div>
-                    <hr aria-hidden="true">
-                    <div class="metadata-section">
-                        <div class="metadata-row metadata-detail-groups">
-                            <div class="metadata-detail-group">
-                                <dt class="metadata-detail-group-title">Data Provided by</dt>
-                                <dd class="metadata-detail-group-value">PRAMS</dd>
-                            </div>
-                            <div class="metadata-detail-group">
-                                <dt class="metadata-detail-group-title">Dataset Owner</dt>
-                                <dd class="metadata-detail-group-value">Helen Ding</dd>
-                            </div>
-                        </div>
-                        <button class="btn btn-sm btn-primary btn-block contact-dataset-owner"
-                                data-modal="contact-form">Contact Dataset Owner
-                        </button>
-                    </div>
+                    <%--<div class="metadata-section">--%>
+                        <%--<div class="metadata-row">--%>
+                            <%--<div class="metadata-pair metadata-detail-group">--%>
+                                <%--<dt class="metadata-pair-title">Views</dt>--%>
+                                <%--<dd class="metadata-pair-value">2,241</dd>--%>
+                            <%--</div>--%>
+                            <%--<div class="metadata-pair metadata-detail-group">--%>
+                                <%--<dt class="metadata-pair-title">Downloads</dt>--%>
+                                <%--<dd class="metadata-pair-value">8,317</dd>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<hr aria-hidden="true">--%>
+                    <%--<div class="metadata-section">--%>
+                        <%--<div class="metadata-row metadata-detail-groups">--%>
+                            <%--<div class="metadata-detail-group">--%>
+                                <%--<dt class="metadata-detail-group-title">Data Provided by</dt>--%>
+                                <%--<dd class="metadata-detail-group-value">PRAMS</dd>--%>
+                            <%--</div>--%>
+                            <%--<div class="metadata-detail-group">--%>
+                                <%--<dt class="metadata-detail-group-title">Dataset Owner</dt>--%>
+                                <%--<dd class="metadata-detail-group-value">Helen Ding</dd>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<button class="btn btn-sm btn-primary btn-block contact-dataset-owner"--%>
+                                <%--data-modal="contact-form">Contact Dataset Owner--%>
+                        <%--</button>--%>
+                    <%--</div>--%>
                 </dl>
                 <div class="metadata-column tables" style="padding-bottom: 0px;">
                     <div class="metadata-table"><h4 class="sub-title-font">Common Core</h4>
@@ -157,6 +155,17 @@
                                     </tr>
                                 </c:if>
                             </c:if>
+                            <c:if test="${not empty entryView.entry.developers}">
+                                <tr>
+                                    <td>Developers</td>
+                                    <td>
+                                        <c:forEach items="${entryView.entry.developers}" var="developer"
+                                                   varStatus="status">
+                                            ${developer}${!status.last ? ',' : ''}
+                                        </c:forEach>
+                                    </td>
+                                </tr>
+                            </c:if>
                             <c:if test="${not empty entryView.entry.producedBy}">
                                 <tr>
                                     <td>Produced by</td>
@@ -165,6 +174,14 @@
                                     </td>
                                 </tr>
                             </c:if>
+                            <c:if test="${not empty entryView.entry.source}">
+                                <tr>
+                                    <td>Code repository source</td>
+                                    <td><a href="${entryView.entry.source}"
+                                           class="underline">${entryView.entry.source}</a></td>
+                                </tr>
+                            </c:if>
+
                             </tbody>
                         </table>
                     </div>
@@ -176,41 +193,84 @@
                                 <td>Category</td>
                                 <td>${lineage[2]}</td>
                             </tr>
-                            <tr>
-                                <td>Spatial coverage</td>
+                            <c:if test="${not empty entryView.entry.pathogenCoverage}">
                                 <td>
-                                    <c:choose>
-                                        <c:when test="${not empty entryView.entry.spatialCoverage}">
-                                            <c:forEach items="${entryView.entry.spatialCoverage}" var="coverage"
-                                                       varStatus="status">
-                                                <%--${fn:toUpperCase(fn:substring(coverage.name, 0, 1))}${fn:toLowerCase(fn:substring(coverage.name, 1,fn:length(coverage.name)))}${!status.last ? ',' : ''}--%>
-                                                ${coverage.name}${!status.last ? ',' : ''}
-                                            </c:forEach>
-                                        </c:when>
-                                        <c:otherwise>${entryView.category.category}</c:otherwise>
-                                    </c:choose>
+                                    Pathogen coverage
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>Tags</td>
                                 <td>
-                                    <div class="collapsible">
-                                        <div class="tag-list" style="word-wrap: break-word;">
-                                            <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
-                                                       varStatus="status">
-                                                <c:choose>
-                                                    <c:when test="${not empty isAbout.name}">
-                                                        ${isAbout.name}${!status.last ? ',' : ''}
-                                                    </c:when>
-                                                    <c:when test="${not empty isAbout.value}">
-                                                        ${isAbout.value}${!status.last ? ',' : ''}
-                                                    </c:when>
-                                                </c:choose>
-                                            </c:forEach>
+                                    <c:forEach items="${entryView.entry.pathogenCoverage}" var="coverage"
+                                               varStatus="status">
+                                        <span style="text-transform: capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                                    </c:forEach>
+                                </td>
+                            </c:if>
+                            <c:if test="${not empty entryView.entry.spatialCoverage or not empty entryView.entry.locationCoverage or not lineage.contains('Software')}">
+                                <tr>
+                                    <td>Spatial coverage</td>
+                                    <td>
+                                        <c:choose>
+                                            <c:when test="${not empty entryView.entry.spatialCoverage}">
+                                                <c:forEach items="${entryView.entry.spatialCoverage}" var="coverage"
+                                                           varStatus="status">
+                                                    <%--${fn:toUpperCase(fn:substring(coverage.name, 0, 1))}${fn:toLowerCase(fn:substring(coverage.name, 1,fn:length(coverage.name)))}${!status.last ? ',' : ''}--%>
+                                                    ${coverage.name}${!status.last ? ',' : ''}
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:when test="${not empty entryView.entry.locationCoverage}">
+                                                <c:forEach items="${entryView.entry.locationCoverage}" var="coverage"
+                                                           varStatus="status">
+                                                    <span style="text-transform: capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                                                </c:forEach>
+                                            </c:when>
+                                            <c:otherwise>
+                                                ${entryView.category.category}
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${not empty entryView.entry.isAbout}">
+                                <tr>
+                                    <td>Tags</td>
+                                    <td>
+                                        <div class="collapsible">
+                                            <div class="tag-list" style="word-wrap: break-word;">
+                                                <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
+                                                           varStatus="status">
+                                                    <c:choose>
+                                                        <c:when test="${not empty isAbout.name}">
+                                                            ${isAbout.name}${!status.last ? ',' : ''}
+                                                        </c:when>
+                                                        <c:when test="${not empty isAbout.value}">
+                                                            ${isAbout.value}${!status.last ? ',' : ''}
+                                                        </c:when>
+                                                    </c:choose>
+                                                </c:forEach>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            </c:if>
+                            <c:if test="${not empty entryView.entry.hostSpeciesIncluded}">
+                                <tr>
+                                    <td>Host species included</td>
+                                    <td>
+                                        <div class="collapsible">
+                                            <div class="tag-list" style="word-wrap: break-word;">
+                                                <c:forEach items="${entryView.entry.hostSpeciesIncluded}"
+                                                           var="hostSpeciesIncluded"
+                                                           varStatus="status">
+                                                    <c:choose>
+                                                        <c:when test="${not empty hostSpeciesIncluded.identifier.identifierDescription}">
+                                                            ${fn:toUpperCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 0, 1))}${fn:toLowerCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 1,fn:length(hostSpeciesIncluded.identifier.identifierDescription)))}${!status.last ? ',' : ''}
+                                                        </c:when>
+                                                    </c:choose>
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </c:if>
                             </tbody>
                         </table>
                     </div>
@@ -220,12 +280,21 @@
                             <h4 class="sub-title-font">Distributions</h4>
                             <table class="table table-condensed table-borderless table-discrete table-striped">
                                 <tbody>
+                                <c:if test="${not empty entryView.entry.distributions[0].access.landingPage}">
+                                    <tr>
+                                        <td>Landing page</td>
+                                        <td><a href="${entryView.entry.distributions[0].access.landingPage}"
+                                               class="underline">${entryView.entry.distributions[0].access.landingPage}</a>
+                                        </td>
+                                    </tr>
+                                </c:if>
+
                                 <c:forEach items="${entryView.entry.distributions}" var="distribution">
                                     <tr>
                                         <c:choose>
                                             <c:when test="${not empty distribution.formats}">
                                                 <td>
-                                                        ${distribution.formats[0]}
+                                                        ${fn:toUpperCase(distribution.formats[0])}
                                                 </td>
                                             </c:when>
                                             <c:otherwise>
@@ -248,7 +317,7 @@
                                                             </a>
                                                         </c:when>
                                                         <c:when test="${not empty conforms.type}">
-                                                            <a href="${conforms.valueIRI}" class="underline">
+                                                            <a href="${conforms.type.valueIRI}" class="underline">
                                                                     ${conforms.name}${!status.last ? ',' : ''}
                                                             </a>
                                                         </c:when>
@@ -261,6 +330,22 @@
                                         </td>
                                     </tr>
                                 </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
+
+                    <c:if test="${not empty entryView.entry.sourceCodeRelease}">
+                        <div class="metadata-table">
+                            <h4 class="sub-title-font">Source code release</h4>
+                            <table class="table table-condensed table-borderless table-discrete table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>Source code links</td>
+                                    <td>
+                                            ${entryView.entry.sourceCodeRelease}
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

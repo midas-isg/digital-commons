@@ -62,7 +62,7 @@ function getTreeviewInfo(entriesData, treeId, sessionVariable) {
                     var rev = idArr[1];
                     getDataAndOpenModal(event, id, rev);
                     $("#detailed-view-button").attr("onClick", "location.href='" + ctx + "/detailed-view/?id=" + id + "&revId=" + rev + "'");
-                    $("#detailed-metadata-view-button").attr("onClick", "location.href='" + ctx + "/detailed-metadata-view/?id=" + id + "&revId=" + rev + "'");
+                    $("#detailed-metadata-view-button").attr("onClick", "window.open('" + ctx + "/detailed-metadata-view/?id=" + id + "&revId=" + rev + "')");
 
 
                 }
