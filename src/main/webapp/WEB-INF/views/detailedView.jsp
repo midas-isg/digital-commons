@@ -193,6 +193,38 @@
                         </table>
                     </div>
 
+                    <c:if test="${not empty entryView.entry.distributions}">
+                        <div class="metadata-table">
+                            <h4 class="sub-title-font">Distributions</h4>
+                            <table class="table table-condensed table-borderless table-discrete table-striped">
+                                <tbody>
+                                <c:forEach items="${entryView.entry.distributions}" var="distribution">
+                                    <tr>
+                                        <c:choose>
+                                            <c:when test="${not empty distribution.formats}">
+                                                <td>
+                                                        ${distribution.formats[0]}
+                                                </td>
+                                                <td>
+                                                    <a href="${distribution.access.accessURL}"
+                                                       class="underline">${distribution.access.accessURL}</a>
+                                                </td>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <td>Access URL</td>
+                                                <td>
+                                                    <a href="${distribution.access.accessURL}"
+                                                       class="underline">${distribution.access.accessURL}</a>
+                                                </td>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
+
                     <c:if test="${not empty entryView.entry.licenses}">
                         <div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
                             <table class="table table-condensed table-borderless table-discrete table-striped">
