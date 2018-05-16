@@ -19,38 +19,37 @@
         loggedIn="${loggedIn}"/>
 
 <body id="detailed-view-body">
-<div class="container">
-    <div class="row">
-        <div class="lineage">
-            <myTags:categoryLineage lineage="${lineage}"/>
-        </div>
+<div class="container metadata-container">
+    <div class="lineage">
+        <myTags:categoryLineage lineage="${lineage}"/>
+    </div>
+    <div class="section-content">
         <div class="col-sm-12 background-white">
             <h3>${title}</h3>
             <hr>
-            <h4 class="sub-title-font">Identifier</h4>
-            <c:choose>
-                <c:when test="${fn:contains(entryView.entry.identifier.identifier, 'http') or fn:contains(entryView.entry.identifier.identifier, 'www')}">
-                    <a class="underline"
-                       href="${entryView.entry.identifier.identifier}">${entryView.entry.identifier.identifier}</a>
-                </c:when>
-                <c:otherwise>
-                    <span>${entryView.entry.identifier.identifier}</span>
-                </c:otherwise>
-            </c:choose>
+            <c:if test="${not empty entryView.entry.identifier}">
+                <h4 class="sub-title-font">Identifier</h4>
+                <c:choose>
+                    <c:when test="${fn:contains(entryView.entry.identifier.identifier, 'http') or fn:contains(entryView.entry.identifier.identifier, 'www')}">
+                        <a class="underline"
+                           href="${entryView.entry.identifier.identifier}">${entryView.entry.identifier.identifier}</a>
+                    </c:when>
+                    <c:otherwise>
+                        <span>${entryView.entry.identifier.identifier}</span>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
 
             <h4 class="sub-title-font">Description</h4>
-            <span>${entryView.entry.description}</span>
+            <c:choose>
+                <c:when test="${ not empty entryView.entry.description}">
+                    <span>${entryView.entry.description}</span>
+                </c:when>
+                <c:otherwise>
+                    <span>${entryView.entry.humanReadableSynopsis}</span>
+                </c:otherwise>
+            </c:choose>
         </div>
-
-
-        <%--<div class="col-md-4 col-sm-12">--%>
-        <%--<h4 class="sub-title-font">Updated</h4>--%>
-        <%--<h2>${entryView.entry.producedBy.startDate.date}</h2>--%>
-        <%--</div>--%>
-
-        <%--<div class="col-md-8 col-sm-12">--%>
-
-        <%--</div>--%>
     </div>
 </div>
 
@@ -239,11 +238,13 @@
                                             <c:if test="${not empty distribution.conformsTo}">
                                                 <br>
                                                 Conforms to:
-                                                <c:forEach items="${distribution.conformsTo}" var="conforms" varStatus="status">
+                                                <c:forEach items="${distribution.conformsTo}" var="conforms"
+                                                           varStatus="status">
                                                     <c:choose>
                                                         <c:when test="${not empty conforms.alternateIdentifiers}">
-                                                            <a href="${conforms.alternateIdentifiers[0].identifier}" class="underline">
-                                                                ${conforms.name}${!status.last ? ',' : ''}
+                                                            <a href="${conforms.alternateIdentifiers[0].identifier}"
+                                                               class="underline">
+                                                                    ${conforms.name}${!status.last ? ',' : ''}
                                                             </a>
                                                         </c:when>
                                                         <c:when test="${not empty conforms.type}">

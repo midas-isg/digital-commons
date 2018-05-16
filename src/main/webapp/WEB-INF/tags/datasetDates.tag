@@ -13,19 +13,67 @@
 <%--</div>--%>
 <%--</div>--%>
 
-<%--Date modified for data.gov datasets--%>
-<c:if test="${not empty entryView.entry.producedBy.startDate}">
-    <div class="metadata-row">
-        <div class="metadata-pair">
-            <dt class="metadata-pair-title">
-                <c:if test="${not empty entryView.entry.producedBy.startDate.type}">
-                    ${fn:toUpperCase(fn:substring(entryView.entry.producedBy.startDate.type.value, 0, 1))}${fn:substring(entryView.entry.producedBy.startDate.type.value, 1,fn:length(entryView.entry.producedBy.startDate.type.value))}
-                </c:if>
-            </dt>
-            <dd class="metadata-pair-value">${entryView.entry.producedBy.startDate.date}</dd>
+<%--Dates for Tycho datasets--%>
+<c:if test="${not empty entryView.entry.dates}">
+    <c:forEach items="${entryView.entry.dates}" var="date">
+        <div class="metadata-row">
+            <div class="metadata-pair">
+                <dt class="metadata-pair-title">
+                        ${fn:toUpperCase(fn:substring(date.type.value, 0, 1))}${fn:substring(date.type.value, 1,fn:length(date.type.value))}
+                </dt>
+                <dd class="metadata-pair-value">
+                        ${date.date}
+                </dd>
+            </div>
         </div>
-    </div>
+    </c:forEach>
 </c:if>
+<c:if test="${not empty entryView.entry.producedBy}">
+    <%--Date modified for data.gov datasets--%>
+    <c:if test="${not empty entryView.entry.producedBy.startDate}">
+        <c:choose>
+            <c:when test="${not empty entryView.entry.producedBy.startDate.type}">
+                <div class="metadata-row">
+                    <div class="metadata-pair">
+                        <dt class="metadata-pair-title">
+                                ${fn:toUpperCase(fn:substring(entryView.entry.producedBy.startDate.type.value, 0, 1))}${fn:substring(entryView.entry.producedBy.startDate.type.value, 1,fn:length(entryView.entry.producedBy.startDate.type.value))}
+                        </dt>
+                        <dd class="metadata-pair-value">${entryView.entry.producedBy.startDate.date}</dd>
+                    </div>
+                </div>
+            </c:when>
+            <%--Start Date for producedby--%>
+            <c:otherwise>
+                <div class="metadata-row metadata-detail-groups">
+                    <div class="metadata-detail-group">
+                        <dt class="metadata-detail-group-title">
+                            Start Date
+                        </dt>
+                        <dd class="metadata-detail-group-value">
+                                ${entryView.entry.producedBy.startDate.date}
+                        </dd>
+                    </div>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </c:if>
+
+
+    <%--End Date for producedby--%>
+    <c:if test="${not empty entryView.entry.producedBy.endDate}">
+        <div class="metadata-row metadata-detail-groups">
+            <div class="metadata-detail-group">
+                <dt class="metadata-detail-group-title">
+                    End Date
+                </dt>
+                <dd class="metadata-detail-group-value">
+                        ${entryView.entry.producedBy.endDate.date}
+                </dd>
+            </div>
+        </div>
+    </c:if>
+</c:if>
+
 <%--Date metadata dates for data.gov datasets--%>
 <c:if test="${not empty entryView.entry.extraProperties}">
     <c:forEach items="${entryView.entry.extraProperties}" var="extraProperty">
@@ -45,49 +93,6 @@
             </div>
         </c:if>
     </c:forEach>
-</c:if>
-<%--Dates for Tycho datasets--%>
-<c:if test="${not empty entryView.entry.dates}">
-    <c:forEach items="${entryView.entry.dates}" var="date">
-        <div class="metadata-row">
-            <div class="metadata-pair">
-                <dt class="metadata-pair-title">
-                        ${fn:toUpperCase(fn:substring(date.type.value, 0, 1))}${fn:substring(date.type.value, 1,fn:length(date.type.value))}
-                </dt>
-                <dd class="metadata-pair-value">
-                        ${date.date}
-                </dd>
-            </div>
-        </div>
-    </c:forEach>
-</c:if>
-<c:if test="${not empty entryView.entry.producedBy}">
-    <%--Start Date for producedby--%>
-    <c:if test="${not empty entryView.entry.producedBy.startDate}">
-        <div class="metadata-row metadata-detail-groups">
-            <div class="metadata-detail-group">
-                <dt class="metadata-detail-group-title">
-                    Start Date
-                </dt>
-                <dd class="metadata-detail-group-value">
-                        ${entryView.entry.producedBy.startDate.date}
-                </dd>
-            </div>
-        </div>
-    </c:if>
-    <%--End Date for producedby--%>
-    <c:if test="${not empty entryView.entry.producedBy.endDate}">
-        <div class="metadata-row metadata-detail-groups">
-            <div class="metadata-detail-group">
-                <dt class="metadata-detail-group-title">
-                    End Date
-                </dt>
-                <dd class="metadata-detail-group-value">
-                        ${entryView.entry.producedBy.endDate.date}
-                </dd>
-            </div>
-        </div>
-    </c:if>
 </c:if>
 
 <%--Date when added to our repo--%>

@@ -483,10 +483,17 @@ public class HomeController {
         String type = entryView.getEntryTypeBaseName();
         model.addAttribute("entryView", entryView);
 
-        List<Category> categories = apiUtil.getCategoryLineage((String) ((LinkedHashMap) ((LinkedHashMap) entry.getContent().get("entry")).get("identifier")).get("identifier"));
         List<String> lineage = new ArrayList<>();
-        for (int i = categories.size() - 1; i >= 0; i--)
-            lineage.add(categories.get(i).getCategory());
+
+        try {
+            List<Category> categories = apiUtil.getCategoryLineage((String) ((LinkedHashMap) ((LinkedHashMap) entry.getContent().get("entry")).get("identifier")).get("identifier"));
+            for (int i = categories.size() - 1; i >= 0; i--)
+                lineage.add(categories.get(i).getCategory());
+        } catch (NullPointerException e) {
+            lineage.add("Root");
+            lineage.add("Software");
+            lineage.add(entry.getCategory().getCategory());
+        }
         model.addAttribute("lineage", lineage);
 
 
