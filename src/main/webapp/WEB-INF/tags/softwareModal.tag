@@ -64,9 +64,9 @@
                                         onclick="download($('#software-name').text() + '.json', '#display-json')">
                                     <icon class="glyphicon glyphicon glyphicon-download"></icon>
                                 </button>
-                                <button class="btn btn-xs btn-default"
+                                <button class="btn btn-xs btn-default" id="detailed-metadata-view-button"
                                         style="top: 48px;right: 18px; position:absolute;"
-                                        onclick="openJsonInNewTab($('#display-json'))">
+                                        >
                                     <icon class="glyphicon glyphicon-new-window"></icon>
                                 </button>
                             </div>

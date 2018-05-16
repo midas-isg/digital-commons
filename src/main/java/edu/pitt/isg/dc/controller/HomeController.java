@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
@@ -19,9 +20,12 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import sun.plugin2.util.PojoUtil;
 
 import javax.servlet.http.HttpSession;
 import java.io.*;
@@ -473,7 +477,7 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value = "/detailedView", method = RequestMethod.GET)
+    @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
     public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
         model.addAttribute("id", id);
         model.addAttribute("revId", revId);
@@ -503,5 +507,28 @@ public class HomeController {
 
         System.out.print(id);
         return "detailedView";
+    }
+
+    @RequestMapping(value = "/detailed-metadata-view", method = RequestMethod.GET)
+    public HttpEntity<byte[]> detailedMetaDataView(@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
+        Entry entry = entryRule.read(new EntryId(id, revId));
+        EntryView entryView = new EntryView(entry);
+        String documentText;
+
+        HttpHeaders header = new HttpHeaders();
+        if(entryView.getXmlString() != null) {
+            documentText = entryView.getXmlString();
+            header.setContentType(new org.springframework.http.MediaType("application", "xml"));
+
+        } else {
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            documentText = gson.toJson(entry.getContent());
+            header.setContentType(new org.springframework.http.MediaType("application", "json"));
+        }
+        byte[] documentBody = documentText.getBytes();
+        header.setContentLength(documentBody.length);
+
+        return new HttpEntity<byte[]>(documentBody, header);
+
     }
 }

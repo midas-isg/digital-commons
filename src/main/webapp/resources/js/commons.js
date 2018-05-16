@@ -826,19 +826,6 @@ function download(filename, elementId) {
     document.body.removeChild(element);
 }
 
-function openJsonInNewTab(elementId) {
-    var text = $(elementId).text();
-    var type = 'application/json';
-    if(text.includes('xmlns')) {
-        type = 'application/xml';
-    }
-    var x = window.open();
-    x.document.open();
-    x.document.write('<html><body><pre>' + text + '</pre></body></html>');
-    x.document.close();
-
-}
-
 function toggleModalView() {
     if($('#modal-html').hasClass('active')) {
         $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
