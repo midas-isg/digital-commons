@@ -27,6 +27,17 @@
         <div class="col-sm-12 background-white">
             <h3>${title}</h3>
             <hr>
+            <h4 class="sub-title-font">Identifier</h4>
+            <c:choose>
+                <c:when test="${fn:contains(entryView.entry.identifier.identifier, 'http') or fn:contains(entryView.entry.identifier.identifier, 'www')}">
+                    <a class="underline"
+                       href="${entryView.entry.identifier.identifier}">${entryView.entry.identifier.identifier}</a>
+                </c:when>
+                <c:otherwise>
+                    <span>${entryView.entry.identifier.identifier}</span>
+                </c:otherwise>
+            </c:choose>
+
             <h4 class="sub-title-font">Description</h4>
             <span>${entryView.entry.description}</span>
         </div>
@@ -53,29 +64,30 @@
                 <dl class="metadata-column fancy">
                     <div>
                         <div class="metadata-section">
-                            <div class="metadata-row">
+                            <myTags:datasetDates entryView="${entryView}"></myTags:datasetDates>
+                            <%--<div class="metadata-row">--%>
 
-                                <div class="metadata-pair">
-                                    <dt class="metadata-pair-title">Updated</dt>
-                                    <dd class="metadata-pair-value">August 27, 2015</dd>
-                                </div>
-                            </div>
-                            <div class="metadata-row metadata-detail-groups">
-                                <div class="metadata-detail-group">
-                                    <dt class="metadata-detail-group-title">Data Updated</dt>
-                                    <dd class="metadata-detail-group-value">June 19, 2013</dd>
-                                </div>
-                                <div class="metadata-detail-group">
-                                    <dt class="metadata-detail-group-title">Metadata Updated</dt>
-                                    <dd class="metadata-detail-group-value">August 27, 2015</dd>
-                                </div>
-                            </div>
-                            <div class="metadata-row metadata-detail-groups">
-                                <div class="metadata-detail-group">
-                                    <dt class="metadata-detail-group-title">Date Created</dt>
-                                    <dd class="metadata-detail-group-value">June 19, 2013</dd>
-                                </div>
-                            </div>
+                            <%--<div class="metadata-pair">--%>
+                            <%--<dt class="metadata-pair-title">Updated</dt>--%>
+                            <%--<dd class="metadata-pair-value">August 27, 2015</dd>--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="metadata-row metadata-detail-groups">--%>
+                            <%--<div class="metadata-detail-group">--%>
+                            <%--<dt class="metadata-detail-group-title">Data Updated</dt>--%>
+                            <%--<dd class="metadata-detail-group-value">June 19, 2013</dd>--%>
+                            <%--</div>--%>
+                            <%--<div class="metadata-detail-group">--%>
+                            <%--<dt class="metadata-detail-group-title">Metadata Updated</dt>--%>
+                            <%--<dd class="metadata-detail-group-value">August 27, 2015</dd>--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<div class="metadata-row metadata-detail-groups">--%>
+                            <%--<div class="metadata-detail-group">--%>
+                            <%--<dt class="metadata-detail-group-title">Date Created</dt>--%>
+                            <%--<dd class="metadata-detail-group-value">June 19, 2013</dd>--%>
+                            <%--</div>--%>
+                            <%--</div>--%>
                         </div>
                         <hr aria-hidden="true">
                     </div>
@@ -112,23 +124,45 @@
                     <div class="metadata-table"><h4 class="sub-title-font">Common Core</h4>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
-                            <tr>
-                                <td>Contact Email</td>
-                                <td><span class="Linkify"><a href="mailto:cdcinfo@cdc.gov" rel="nofollow"
-                                                             target="_blank">cdcinfo@cdc.gov</a></span></td>
-                            </tr>
-                            <tr>
-                                <td>Contact Name</td>
-                                <td><span class="Linkify">CDC INFO</span></td>
-                            </tr>
-                            <tr>
-                                <td>Program Code</td>
-                                <td><span class="Linkify">009:020</span></td>
-                            </tr>
-                            <tr>
-                                <td>Bureau Code</td>
-                                <td><span class="Linkify">009:00</span></td>
-                            </tr>
+                            <c:if test="${not empty entryView.entry.creators}">
+                                <tr>
+                                    <td>Created by</td>
+                                    <td>
+                                        <c:forEach items="${entryView.entry.creators}" var="creator" varStatus="status">
+                                            <c:choose>
+                                                <c:when test="${not empty creator.name}">
+                                                    ${creator.name}${!status.last ? ',' : ''}
+                                                </c:when>
+                                                <c:when test="${not empty creator.fullName}">
+                                                    ${creator.fullName}${!status.last ? ',' : ''}
+                                                </c:when>
+                                            </c:choose>
+                                        </c:forEach>
+                                    </td>
+                                </tr>
+                                <c:if test="${not empty entryView.entry.creators[0].email}">
+                                    <tr>
+                                        <td>Creator emails</td>
+                                        <td>
+                                            <c:forEach items="${entryView.entry.creators}" var="creator"
+                                                       varStatus="status">
+                                                <c:if test="${not empty creator.email}">
+                                                    <a href="mailto:${creator.email}"
+                                                       class="underline">${creator.email}</a>${!status.last ? ',' : ''}
+                                                </c:if>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                </c:if>
+                            </c:if>
+                            <c:if test="${not empty entryView.entry.producedBy}">
+                                <tr>
+                                    <td>Produced by</td>
+                                    <td>
+                                            ${entryView.entry.producedBy.name}
+                                    </td>
+                                </tr>
+                            </c:if>
                             </tbody>
                         </table>
                     </div>
@@ -147,7 +181,9 @@
                                         <div class="tag-list" style="word-wrap: break-word;">
                                             <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
                                                        varStatus="status">
-                                                ${isAbout.name}${!status.last ? ',' : ''}
+                                                <c:if test="${not empty isAbout.name}">
+                                                    ${isAbout.name}
+                                                </c:if>
                                             </c:forEach>
                                         </div>
                                     </div>
@@ -156,23 +192,35 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
-                        <table class="table table-condensed table-borderless table-discrete table-striped">
-                            <tbody>
-                            <tr>
-                                <td>License</td>
-                                <td class="empty">The license for this dataset is unspecified</td>
-                            </tr>
-                            <tr>
-                                <td>Source Link</td>
-                                <td class="attribution"><a href="http://www.cdc.gov/prams/" target="_blank"
-                                                           rel="nofollow external"><!-- react-text: 241 -->
-                                    http://www.cdc.gov/prams/<!-- /react-text --><span
-                                            class="icon-external-square"></span></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+
+                    <c:if test="${not empty entryView.entry.licenses}">
+                        <div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
+                            <table class="table table-condensed table-borderless table-discrete table-striped">
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        License
+                                    </td>
+                                    <td>
+                                        <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="status">
+                                            ${license.name}${!status.last ? ',' : ''}
+                                        </c:forEach>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Source</td>
+                                    <td>
+                                        <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="status">
+                                            <a href="${license.identifier.identifier}"
+                                               class="underline">${license.identifier.identifier}</a>${!status.last ? ',' : ''}
+                                        </c:forEach>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
+
                     <div class="metadata-table-toggle-group desktop" style="display: none;"><a
                             class="metadata-table-toggle more" tabindex="0" role="button">Show More</a><a
                             class="metadata-table-toggle less" tabindex="0" role="button">Show Less</a></div>
