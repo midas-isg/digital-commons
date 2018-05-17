@@ -30,7 +30,7 @@
     <div class="leaf">
         <div class="footer-container-xs">
             <div class="col-xs-12">
-                &#0169; 2017 University of Pittsburgh
+                &#0169; 2018 University of Pittsburgh
             </div>
 
             <!--<div style="float:right; margin-right: 20px; font-style: italic;">
