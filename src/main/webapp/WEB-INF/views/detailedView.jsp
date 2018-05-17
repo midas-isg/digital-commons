@@ -378,6 +378,7 @@
                             </table>
                         </div>
                     </c:if>
+                    <myTags:datasetCitations entryView="${entryView}"></myTags:datasetCitations>
 
                     <div class="metadata-table-toggle-group desktop" style="display: none;"><a
                             class="metadata-table-toggle more" tabindex="0" role="button">Show More</a><a

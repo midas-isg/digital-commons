@@ -1,0 +1,123 @@
+<%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ attribute name="entryView" required="true" type="edu.pitt.isg.dc.entry.classes.EntryView"%>
+
+
+<div>
+
+
+    <div>title</div>
+    <div>${entryView.entry.title}</div>
+    <div>description</div>
+    <div>${entryView.entry.description}</div>
+    <div>human-readable-synopsis</div>
+    <div>${entryView.entry.human-readable-synopsis}</div>
+    <div>creator</div>
+    <div>${entryView.entry.creator}</div>
+    <div>landing-page</div>
+    <div>${entryView.entry.landing-page}</div>
+    <div>access-url</div>
+    <div>${entryView.entry.access-url}</div>
+    <div>authorizations</div>
+    <div>${entryView.entry.authorizations}</div>
+    <div>pathogens</div>
+    <div>${entryView.entry.pathogens}</div>
+    <div>locations</div>
+    <div>${entryView.entry.locations}</div>
+    <div>pathogen-coverage</div>
+    <div>${entryView.entry.pathogen-coverage}</div>
+    <div>location-coverage</div>
+    <div>${entryView.entry.location-coverage}</div>
+    <div>species-included</div>
+    <div>${entryView.entry.species-included}</div>
+    <div>host-species-included</div>
+    <div>${entryView.entry.host-species-included}</div>
+    <div>population-species</div>
+    <div>${entryView.entry.population-species}</div>
+    <div>control-measures</div>
+    <div>${entryView.entry.control-measures}</div>
+    <div>developer</div>
+    <div>${entryView.entry.developer}</div>
+    <div>version</div>
+    <div>${entryView.entry.version}</div>
+    <div>human-readable-specification</div>
+    <div>${entryView.entry.human-readable-specification}</div>
+    <div>machine-readable-specification</div>
+    <div>${entryView.entry.machine-readable-specification}</div>
+    <div>validator</div>
+    <div>${entryView.entry.validator}</div>
+    <div>type</div>
+    <div>${entryView.entry.type}</div>
+    <div>forecast-frequency</div>
+    <div>${entryView.entry.forecast-frequency}</div>
+    <div>diseases</div>
+    <div>${entryView.entry.diseases}</div>
+    <div>outcomes</div>
+    <div>${entryView.entry.outcomes}</div>
+    <div>region</div>
+    <div>${entryView.entry.region}</div>
+    <div>forecasts</div>
+    <div>${entryView.entry.forecasts}</div>
+    <div>nowcasts</div>
+    <div>${entryView.entry.nowcasts}</div>
+    <div>web-application</div>
+    <div>${entryView.entry.web-application}</div>
+    <div>website</div>
+    <div>${entryView.entry.website}</div>
+    <div>executables</div>
+    <div>${entryView.entry.executables}</div>
+    <div>data-input-formats</div>
+    <div>${entryView.entry.data-input-formats}</div>
+    <div>data-output-formats</div>
+    <div>${entryView.entry.data-output-formats}</div>
+    <%--
+        <div>visualization-type</div>
+        <div>${entryView.entry.visualization-type}</div>
+        --%>
+        <div>platform</div>
+        <div>${entryView.entry.platform}</div>
+        <div>grant</div>
+        <div>${entryView.entry.grant}</div>
+        <div>produced-by</div>
+        <div>${entryView.entry.produced-by}</div>
+        <div>source-code</div>
+        <div>${entryView.entry.source-code}</div>
+        <div>source-code-release</div>
+        <div>${entryView.entry.source-code-release}</div>
+        <div>documentation</div>
+        <div>${entryView.entry.documentation}</div>
+        <div>rest-documentation</div>
+        <div>${entryView.entry.rest-documentation}</div>
+        <div>end-point-prefix</div>
+        <div>${entryView.entry.end-point-prefix}</div>
+        <div>rest-source-code</div>
+        <div>${entryView.entry.rest-source-code}</div>
+        <div>soap-documentation</div>
+        <div>${entryView.entry.soap-documentation}</div>
+        <div>soap-endpoint</div>
+        <div>${entryView.entry.soap-endpoint}</div>
+        <div>soap-source-code</div>
+        <div>${entryView.entry.soap-source-code}</div>
+        <div>example-queries</div>
+        <div>${entryView.entry.example-queries}</div>
+        <div>project-source-code</div>
+        <div>${entryView.entry.project-source-code}</div>
+        <div>user-guides-and-manuals</div>
+    <%--
+        <div>${entryView.entry.user-guides-and-manuals}</div>
+    --%>
+        <div>license</div>
+        <div>${entryView.entry.license}</div>
+        <div>publications-about-release</div>
+        <div>${entryView.entry.publications-about-release}</div>
+        <div>publications-that-used-release</div>
+        <div>${entryView.entry.publications-that-used-release}</div>
+        <div>spatial-coverage</div>
+        <div>${entryView.entry.spatial-coverage.name}</div>
+        <div>is-about</div>
+        <div>${entryView.entry.is-about}</div>
+</div>

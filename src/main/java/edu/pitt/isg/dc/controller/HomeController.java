@@ -25,7 +25,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import sun.plugin2.util.PojoUtil;
 
 import javax.servlet.http.HttpSession;
 import java.io.*;
