@@ -41,8 +41,8 @@
             <h4 class="sub-title-font">Description</h4>
             <div class="description-section">
                 <c:choose>
-                    <c:when test="${ not empty entryView.entry.description}">
-                        ${entryView.entry.description}
+                    <c:when test="${ not empty description}">
+                        ${description}
                     </c:when>
                     <c:otherwise>
                         ${entryView.entry.humanReadableSynopsis}
@@ -64,29 +64,6 @@
                     <div>
                         <div class="metadata-section">
                             <myTags:datasetDates entryView="${entryView}"></myTags:datasetDates>
-                            <%--<div class="metadata-row">--%>
-
-                            <%--<div class="metadata-pair">--%>
-                            <%--<dt class="metadata-pair-title">Updated</dt>--%>
-                            <%--<dd class="metadata-pair-value">August 27, 2015</dd>--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="metadata-row metadata-detail-groups">--%>
-                            <%--<div class="metadata-detail-group">--%>
-                            <%--<dt class="metadata-detail-group-title">Data Updated</dt>--%>
-                            <%--<dd class="metadata-detail-group-value">June 19, 2013</dd>--%>
-                            <%--</div>--%>
-                            <%--<div class="metadata-detail-group">--%>
-                            <%--<dt class="metadata-detail-group-title">Metadata Updated</dt>--%>
-                            <%--<dd class="metadata-detail-group-value">August 27, 2015</dd>--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
-                            <%--<div class="metadata-row metadata-detail-groups">--%>
-                            <%--<div class="metadata-detail-group">--%>
-                            <%--<dt class="metadata-detail-group-title">Date Created</dt>--%>
-                            <%--<dd class="metadata-detail-group-value">June 19, 2013</dd>--%>
-                            <%--</div>--%>
-                            <%--</div>--%>
                         </div>
                         <hr aria-hidden="true">
                     </div>

@@ -11,24 +11,36 @@
     <table class="table table-condensed table-borderless table-discrete">
 
         <tbody>
-        <c:forEach items="${entryView.entry.distributions}" var="distribution">
+        <c:forEach items="${entryView.entry.distributions}" var="distribution" varStatus="status">
             <tr>
                 <td>
                     <h4 class="sub-title-font">
-                        <c:choose>
-                            <c:when test="${not empty distribution.title}">
-                                ${distribution.title}
-                            </c:when>
-                            <c:when test="${not empty distribution.identifier}">
-                                ${distribution.identifier.identifier}
-                            </c:when>
-                        </c:choose>
-                        <c:if test="${not empty distribution.formats}">
-                            (${distribution.formats[0]})
-                        </c:if>
+                        Distribution ${status.count}
                     </h4>
                     <table class="table table-condensed table-borderless table-discrete table-striped">
                         <tbody>
+                        <c:if test="${not empty distribution.title}">
+                            <tr>
+                                <td>Title</td>
+                                <td>${distribution.title}</td>
+                            </tr>
+                        </c:if>
+                        <c:if test="${not empty distribution.identifier}">
+                            <tr>
+                                <td>Identifier</td>
+                                <td>${distribution.identifier.identifier}</td>
+                            </tr>
+                        </c:if>
+                        <c:if test="${not empty distribution.formats}">
+                            <tr>
+                                <td>Format</td>
+                                <td>
+                                <c:forEach items="${distribution.formats}" var="format" varStatus="status">
+                                    ${format}${!status.last ? ',' : ''}
+                                </c:forEach>
+                               </td>
+                            </tr>
+                        </c:if>
                         <c:if test="${not empty distribution.access.landingPage}">
                             <tr>
                                 <td>Landing page</td>
@@ -80,7 +92,11 @@
                                         ${distribution.dates[0].type.value}
                                 </td>
                                 <td>
-                                        ${distribution.dates[0].date}
+                                    <fmt:parseDate value="${distribution.dates[0].date}" var="parsedDate"
+                                                   pattern="yyyy-MM-dd"/>
+
+                                    <fmt:formatDate dateStyle="medium"
+                                                    value="${parsedDate}"></fmt:formatDate>
                                 </td>
                             </tr>
                         </c:if>

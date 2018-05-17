@@ -498,13 +498,14 @@ public class HomeController {
             lineage.add(entry.getCategory().getCategory());
         }
         model.addAttribute("lineage", lineage);
-
-
         model.addAttribute("entryJson", jsonString);
         model.addAttribute("type", type);
-        model.addAttribute("title", entryView.getTitle());
 
-        System.out.print(id);
+        try {
+            String description = (String) ((LinkedHashMap) entry.getContent().get("entry")).get("description");
+            description = description.replaceAll("[�ʉ]", "").replaceAll(" (\\*+)", "<br>$1").replace("\n", "<br>").replaceAll("(Footnotes?:)", "<br>$1");
+            model.addAttribute("description", description);
+        } catch (NullPointerException e){}
         return "detailedView";
     }
 
