@@ -101,7 +101,9 @@
                                     <c:when test="${type != 'DataStandard' and type != 'Dataset' and type != 'DatasetWithOrganization'}">
                                         MDC Software Metadata Format
                                     </c:when>
-                                    <c:otherwise><a href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a></c:otherwise>
+                                    <c:otherwise><a
+                                            href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit"
+                                            class="underline">DATS v2.2</a></c:otherwise>
                                 </c:choose>
                             </dd>
                         </div>
@@ -213,7 +215,7 @@
                                 <td>
                                     <c:forEach items="${entryView.entry.pathogenCoverage}" var="coverage"
                                                varStatus="status">
-                                        <span style="text-transform: capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                                        <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
                                     </c:forEach>
                                 </td>
                             </c:if>
@@ -232,7 +234,7 @@
                                             <c:when test="${not empty entryView.entry.locationCoverage}">
                                                 <c:forEach items="${entryView.entry.locationCoverage}" var="coverage"
                                                            varStatus="status">
-                                                    <span style="text-transform: capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                                                    <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
                                                 </c:forEach>
                                             </c:when>
                                             <c:otherwise>
@@ -289,63 +291,7 @@
                     </div>
 
                     <c:if test="${not empty entryView.entry.distributions}">
-                        <div class="metadata-table">
-                            <h4 class="sub-title-font">Distributions</h4>
-                            <table class="table table-condensed table-borderless table-discrete table-striped">
-                                <tbody>
-                                <c:if test="${not empty entryView.entry.distributions[0].access.landingPage}">
-                                    <tr>
-                                        <td>Landing page</td>
-                                        <td><a href="${entryView.entry.distributions[0].access.landingPage}"
-                                               class="underline">${entryView.entry.distributions[0].access.landingPage}</a>
-                                        </td>
-                                    </tr>
-                                </c:if>
-
-                                <c:forEach items="${entryView.entry.distributions}" var="distribution">
-                                    <tr>
-                                        <c:choose>
-                                            <c:when test="${not empty distribution.formats}">
-                                                <td>
-                                                        ${fn:toUpperCase(distribution.formats[0])}
-                                                </td>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <td>Access URL</td>
-                                            </c:otherwise>
-                                        </c:choose>
-                                        <td>
-                                            <a href="${distribution.access.accessURL}"
-                                               class="underline">${distribution.access.accessURL}</a>
-                                            <c:if test="${not empty distribution.conformsTo}">
-                                                <br>
-                                                Conforms to:
-                                                <c:forEach items="${distribution.conformsTo}" var="conforms"
-                                                           varStatus="status">
-                                                    <c:choose>
-                                                        <c:when test="${not empty conforms.alternateIdentifiers}">
-                                                            <a href="${conforms.alternateIdentifiers[0].identifier}"
-                                                               class="underline">
-                                                                    ${conforms.name}${!status.last ? ',' : ''}
-                                                            </a>
-                                                        </c:when>
-                                                        <c:when test="${not empty conforms.type}">
-                                                            <a href="${conforms.type.valueIRI}" class="underline">
-                                                                    ${conforms.name}${!status.last ? ',' : ''}
-                                                            </a>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            ${conforms.name}${!status.last ? ',' : ''}
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </c:forEach>
-                                            </c:if>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                        <myTags:datasetDistributions entryView="${entryView}"></myTags:datasetDistributions>
                     </c:if>
 
                     <c:if test="${not empty entryView.entry.sourceCodeRelease}">
@@ -396,13 +342,6 @@
                     </c:if>
                     <myTags:datasetCitations entryView="${entryView}"></myTags:datasetCitations>
 
-                    <div class="metadata-table-toggle-group desktop" style="display: none;"><a
-                            class="metadata-table-toggle more" tabindex="0" role="button">Show More</a><a
-                            class="metadata-table-toggle less" tabindex="0" role="button">Show Less</a></div>
-                    <div class="metadata-table-toggle-group mobile" style="display: none;">
-                        <button class="btn btn-block btn-default metadata-table-toggle more mobile">Show More</button>
-                        <button class="btn btn-block btn-default metadata-table-toggle less mobile">Show Less</button>
-                    </div>
                 </div>
             </div>
         </section>
@@ -410,24 +349,10 @@
 </div>
 
 
-<script>
-    $(document).ready(function () {
-        toggleModalItems(${entryJson}, "${type}");
-    });
-
-
-</script>
-
 <myTags:analytics/>
 
 </body>
 
 <myTags:footer/>
 
-</html>
-</title>
-</head>
-<body>
-
-</body>
 </html>

@@ -947,6 +947,7 @@ div.container.metadata-container .metadata-column.fancy {
 
 .metadata-wrapper .metadata-table {
     padding: 0 15px;
+    overflow-x:auto;
 }
 
 .metadata-column.tables{
@@ -1000,6 +1001,9 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
 
 @media (max-width: 768px){
     div.container.metadata-container .metadata-column.fancy {
@@ -1012,5 +1016,9 @@ div.container.metadata-container .metadata-column.fancy {
 
     div.container.metadata-container .section-content {
         flex-wrap: wrap;
+    }
+
+    td div.metadata-table {
+        padding: 0px !important;
     }
 }
