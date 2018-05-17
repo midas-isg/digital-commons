@@ -887,6 +887,18 @@ div.container.metadata-container .metadata-column.fancy {
     margin: 0;
 }
 
+.description-section {
+    padding-bottom: 25px;
+}
+
+.metadata-header-wrapper{
+    margin-left: 15px;
+}
+
+.metadata-wrapper {
+    padding-bottom: 40px;
+}
+
 .metadata-wrapper .metadata-row {
     margin-top: 5px;
     margin-right: 0px;
@@ -923,13 +935,13 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 .metadata-detail-group-title {
-    font-size: 12px;
+    font-size: 14px;
     color: #727272;
     font-weight: 600;
 }
 
 .metadata-detail-group-value {
-    font-size: 12px;
+    font-size: 14px;
     margin: 0;
 }
 
@@ -961,13 +973,14 @@ div.container.metadata-container .metadata-column.fancy {
 
 .table.table-condensed th, .table.table-condensed td {
     padding: 8px;
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .lineage{
     background-color: #f6f6f6;
     margin: 0;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .background-white {
@@ -981,6 +994,10 @@ div.container.metadata-container .metadata-column.fancy {
 
 .collapsible {
     overflow: hidden;
+}
+
+.metadata-button {
+    width: 100%;
 }
 
 
