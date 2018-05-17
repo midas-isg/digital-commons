@@ -39,14 +39,16 @@
             </c:if>
 
             <h4 class="sub-title-font">Description</h4>
-            <c:choose>
-                <c:when test="${ not empty entryView.entry.description}">
-                    <span>${entryView.entry.description}</span>
-                </c:when>
-                <c:otherwise>
-                    <span>${entryView.entry.humanReadableSynopsis}</span>
-                </c:otherwise>
-            </c:choose>
+            <div class="description-section">
+                <c:choose>
+                    <c:when test="${ not empty entryView.entry.description}">
+                        <span>${entryView.entry.description}</span>
+                    </c:when>
+                    <c:otherwise>
+                        <span>${entryView.entry.humanReadableSynopsis}</span>
+                    </c:otherwise>
+                </c:choose>
+            </div>
         </div>
     </div>
 </div>
@@ -55,7 +57,7 @@
     <div class="metadata-wrapper">
         <section>
             <div class="metadata-header-wrapper">
-                <h2 class="sub-title-font">About this Dataset</h2>
+                <h2 class="sub-title-font">About this ${type.replaceAll("(\\p{Ll})(\\p{Lu})","$1 $2")}</h2>
             </div>
             <div class="section-content">
                 <dl class="metadata-column fancy">
@@ -88,110 +90,121 @@
                         </div>
                         <hr aria-hidden="true">
                     </div>
-                    <%--<div class="metadata-section">--%>
-                        <%--<div class="metadata-row">--%>
-                            <%--<div class="metadata-pair metadata-detail-group">--%>
-                                <%--<dt class="metadata-pair-title">Views</dt>--%>
-                                <%--<dd class="metadata-pair-value">2,241</dd>--%>
-                            <%--</div>--%>
-                            <%--<div class="metadata-pair metadata-detail-group">--%>
-                                <%--<dt class="metadata-pair-title">Downloads</dt>--%>
-                                <%--<dd class="metadata-pair-value">8,317</dd>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                    <%--<hr aria-hidden="true">--%>
-                    <%--<div class="metadata-section">--%>
-                        <%--<div class="metadata-row metadata-detail-groups">--%>
-                            <%--<div class="metadata-detail-group">--%>
-                                <%--<dt class="metadata-detail-group-title">Data Provided by</dt>--%>
-                                <%--<dd class="metadata-detail-group-value">PRAMS</dd>--%>
-                            <%--</div>--%>
-                            <%--<div class="metadata-detail-group">--%>
-                                <%--<dt class="metadata-detail-group-title">Dataset Owner</dt>--%>
-                                <%--<dd class="metadata-detail-group-value">Helen Ding</dd>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<button class="btn btn-sm btn-primary btn-block contact-dataset-owner"--%>
-                                <%--data-modal="contact-form">Contact Dataset Owner--%>
-                        <%--</button>--%>
-                    <%--</div>--%>
+
+                    <div class="metadata-section">
+                        <div class="metadata-pair">
+                            <dt class="metadata-pair-title">
+                                Metadata format
+                            </dt>
+                            <dd class="metadata-detail-group-value">
+                                <c:choose>
+                                    <c:when test="${type != 'DataStandard' and type != 'Dataset' and type != 'DatasetWithOrganization'}">
+                                        MDC Software Metadata Format
+                                    </c:when>
+                                    <c:otherwise><a href="https://docs.google.com/document/d/1hVcYRleE6-dFfn7qbF9Bv1Ohs1kTF6a8OwWUvoZlDto/edit" class="underline">DATS v2.2</a></c:otherwise>
+                                </c:choose>
+                            </dd>
+                        </div>
+                        <br>
+
+                        <button class="btn btn-lg btn-primary metadata-button"
+                                onclick="location.href='${pageContext.request.contextPath}/detailed-metadata-view/?id=${id}&revId=${revId}'">
+                            View Metadata
+                        </button>
+                    </div>
                 </dl>
                 <div class="metadata-column tables" style="padding-bottom: 0px;">
-                    <div class="metadata-table"><h4 class="sub-title-font">Common Core</h4>
-                        <table class="table table-condensed table-borderless table-discrete table-striped">
-                            <tbody>
-                            <c:if test="${not empty entryView.entry.creators}">
-                                <tr>
-                                    <td>Created by</td>
-                                    <td>
-                                        <c:forEach items="${entryView.entry.creators}" var="creator" varStatus="status">
-                                            <c:choose>
-                                                <c:when test="${not empty creator.name}">
-                                                    ${creator.name}${!status.last ? ',' : ''}
-                                                </c:when>
-                                                <c:when test="${not empty creator.fullName}">
-                                                    ${creator.fullName}${!status.last ? ',' : ''}
-                                                </c:when>
-                                                <c:otherwise>
-                                                    ${creator.firstName} ${creator.lastName}${!status.last ? ',' : ''}
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
-                                    </td>
-                                </tr>
-                                <c:if test="${not empty entryView.entry.creators[0].email}">
+                    <c:if test="${type != 'DataStandard'}">
+                        <div class="metadata-table"><h4 class="sub-title-font">Creator Information</h4>
+                            <table class="table table-condensed table-borderless table-discrete table-striped">
+                                <tbody>
+                                <c:if test="${not empty entryView.entry.creators}">
                                     <tr>
-                                        <td>Creator emails</td>
+                                        <td>Created by</td>
                                         <td>
                                             <c:forEach items="${entryView.entry.creators}" var="creator"
                                                        varStatus="status">
-                                                <c:if test="${not empty creator.email}">
-                                                    <a href="mailto:${creator.email}"
-                                                       class="underline">${creator.email}</a>${!status.last ? ',' : ''}
-                                                </c:if>
+                                                <c:choose>
+                                                    <c:when test="${not empty creator.name}">
+                                                        <c:choose>
+                                                            <c:when test="${creator.name.getClass().simpleName == 'String'}">
+                                                                ${creator.name}${!status.last ? ',' : ''}
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                ${creator.name.description}${!status.last ? ',' : ''}
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </c:when>
+                                                    <c:when test="${not empty creator.fullName}">
+                                                        ${creator.fullName}${!status.last ? ',' : ''}
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        ${creator.firstName} ${creator.lastName}${!status.last ? ',' : ''}
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                    <c:if test="${not empty entryView.entry.creators[0].email}">
+                                        <tr>
+                                            <td>Creator emails</td>
+                                            <td>
+                                                <c:forEach items="${entryView.entry.creators}" var="creator"
+                                                           varStatus="status">
+                                                    <c:if test="${not empty creator.email}">
+                                                        <a href="mailto:${creator.email}"
+                                                           class="underline">${creator.email}</a>${!status.last ? ',' : ''}
+                                                    </c:if>
+                                                </c:forEach>
+                                            </td>
+                                        </tr>
+                                    </c:if>
+                                </c:if>
+                                <c:if test="${not empty entryView.entry.developers}">
+                                    <tr>
+                                        <td>Developers</td>
+                                        <td>
+                                            <c:forEach items="${entryView.entry.developers}" var="developer"
+                                                       varStatus="status">
+                                                ${developer}${!status.last ? ',' : ''}
                                             </c:forEach>
                                         </td>
                                     </tr>
                                 </c:if>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.developers}">
-                                <tr>
-                                    <td>Developers</td>
-                                    <td>
-                                        <c:forEach items="${entryView.entry.developers}" var="developer"
-                                                   varStatus="status">
-                                            ${developer}${!status.last ? ',' : ''}
-                                        </c:forEach>
-                                    </td>
-                                </tr>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.producedBy}">
-                                <tr>
-                                    <td>Produced by</td>
-                                    <td>
-                                            ${entryView.entry.producedBy.name}
-                                    </td>
-                                </tr>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.source}">
-                                <tr>
-                                    <td>Code repository source</td>
-                                    <td><a href="${entryView.entry.source}"
-                                           class="underline">${entryView.entry.source}</a></td>
-                                </tr>
-                            </c:if>
+                                <c:if test="${not empty entryView.entry.producedBy}">
+                                    <tr>
+                                        <td>Produced by</td>
+                                        <td>
+                                                ${entryView.entry.producedBy.name}
+                                        </td>
+                                    </tr>
+                                </c:if>
+                                <c:if test="${not empty entryView.entry.source}">
+                                    <tr>
+                                        <td>Code repository source</td>
+                                        <td><a href="${entryView.entry.source}"
+                                               class="underline">${entryView.entry.source}</a></td>
+                                    </tr>
+                                </c:if>
 
-                            </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
                     <div class="metadata-table"></div>
                     <div class="metadata-table"><h4 class="sub-title-font">Topics</h4>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             <tr>
                                 <td>Category</td>
-                                <td>${lineage[2]}</td>
+                                <c:choose>
+                                    <c:when test="${fn:length(lineage) > 2}">
+                                        <td>${lineage[2]}</td>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <td>${lineage[1]}</td>
+                                    </c:otherwise>
+                                </c:choose>
                             </tr>
                             <c:if test="${not empty entryView.entry.pathogenCoverage}">
                                 <td>
@@ -233,7 +246,7 @@
                                 <tr>
                                     <td>Tags</td>
                                     <td>
-                                        <div class="collapsible">
+                                        <div>
                                             <div class="tag-list" style="word-wrap: break-word;">
                                                 <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
                                                            varStatus="status">
@@ -255,7 +268,7 @@
                                 <tr>
                                     <td>Host species included</td>
                                     <td>
-                                        <div class="collapsible">
+                                        <div>
                                             <div class="tag-list" style="word-wrap: break-word;">
                                                 <c:forEach items="${entryView.entry.hostSpeciesIncluded}"
                                                            var="hostSpeciesIncluded"
@@ -365,15 +378,18 @@
                                         </c:forEach>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>Source</td>
-                                    <td>
-                                        <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="status">
-                                            <a href="${license.identifier.identifier}"
-                                               class="underline">${license.identifier.identifier}</a>${!status.last ? ',' : ''}
-                                        </c:forEach>
-                                    </td>
-                                </tr>
+                                <c:if test="${not empty entryView.entry.licenses[0].identifier}">
+                                    <tr>
+                                        <td>Source</td>
+                                        <td>
+                                            <c:forEach items="${entryView.entry.licenses}" var="license"
+                                                       varStatus="status">
+                                                <a href="${license.identifier.identifier}"
+                                                   class="underline">${license.identifier.identifier}</a>${!status.last ? ',' : ''}
+                                            </c:forEach>
+                                        </td>
+                                    </tr>
+                                </c:if>
                                 </tbody>
                             </table>
                         </div>
