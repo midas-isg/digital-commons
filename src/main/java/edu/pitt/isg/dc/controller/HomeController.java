@@ -453,7 +453,6 @@ public class HomeController {
 
         Map<String,String> resultMap = new HashMap<>();
         try {
-
             treeInfoArr = categoryHelper.getEntryTrees();
             Path path = Paths.get(TREE_INFO_CACHE_FILE);
             FileOutputStream fos = new FileOutputStream(path.toFile());
