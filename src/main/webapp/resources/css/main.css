@@ -888,6 +888,7 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 .description-section {
+    word-wrap: break-word;
     padding-bottom: 25px;
 }
 
@@ -947,6 +948,7 @@ div.container.metadata-container .metadata-column.fancy {
 
 .metadata-wrapper .metadata-table {
     padding: 0 15px;
+    /*overflow-x:auto;*/
 }
 
 .metadata-column.tables{
@@ -957,7 +959,7 @@ div.container.metadata-container .metadata-column.fancy {
 
 
 .metadata-wrapper .metadata-table table {
-    border-collapse: collapse;
+    /*border-collapse: collapse;*/
 }
 
 .metadata-table table tr td:first-child {
@@ -974,6 +976,7 @@ div.container.metadata-container .metadata-column.fancy {
 .table.table-condensed th, .table.table-condensed td {
     padding: 8px;
     font-size: 14px;
+    word-break: break-word;
 }
 
 .lineage{
@@ -1000,6 +1003,9 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
 
 @media (max-width: 768px){
     div.container.metadata-container .metadata-column.fancy {
@@ -1012,5 +1018,9 @@ div.container.metadata-container .metadata-column.fancy {
 
     div.container.metadata-container .section-content {
         flex-wrap: wrap;
+    }
+
+    td div.metadata-table {
+        padding: 0px !important;
     }
 }
