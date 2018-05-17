@@ -22,7 +22,7 @@
         <myTags:categoryLineage lineage="${lineage}"/>
     </div>
     <div class="section-content">
-        <div class="col-sm-12 background-white">
+        <div class="col-xs-12 background-white">
             <h3>${title}</h3>
             <hr>
             <c:if test="${not empty entryView.entry.identifier}">
@@ -42,10 +42,10 @@
             <div class="description-section">
                 <c:choose>
                     <c:when test="${ not empty entryView.entry.description}">
-                        <span>${entryView.entry.description}</span>
+                        ${entryView.entry.description}
                     </c:when>
                     <c:otherwise>
-                        <span>${entryView.entry.humanReadableSynopsis}</span>
+                        ${entryView.entry.humanReadableSynopsis}
                     </c:otherwise>
                 </c:choose>
             </div>
