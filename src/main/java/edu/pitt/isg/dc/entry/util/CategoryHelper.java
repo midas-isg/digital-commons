@@ -126,8 +126,8 @@ public class CategoryHelper {
         }
     }
 
-    private Map<Long, List<EntryView>> getCategoryEntryMap() throws MdcEntryDatastoreException {
-        if (categoryEntryMap.size() == 0) {
+    private Map<Long, List<EntryView>> getCategoryEntryMap(Boolean resetTree) throws MdcEntryDatastoreException {
+        if (categoryEntryMap.size() == 0 || resetTree) {
             List<Category> categories = categoryRepository.findAll();
             for (Category category : categories) {
                 categoryEntryMap.put(category.getId(), new ArrayList<>());
@@ -189,7 +189,8 @@ public class CategoryHelper {
         Category rootCategory = (Category) map.get("root");
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
 
-        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
+        Boolean resetTree = true;
+        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree);
         this.getTreePaths();
 
         List<Map<String,String>> treeInfoArr = new ArrayList<>();
@@ -276,7 +277,8 @@ public class CategoryHelper {
         Category rootCategory = (Category) map.get("root");
         Map<Category, List<CategoryWithOrder>> categoryOrderMap = (HashMap<Category, List<CategoryWithOrder>>) map.get("categoryOrderMap");
 
-        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap();
+        Boolean resetTree = false;
+        Map<Long, List<EntryView>> categoryEntryMap = this.getCategoryEntryMap(resetTree);
         Map<Long, String> result = this.recurseTreePaths(rootCategory, categoryOrderMap, categoryEntryMap, new HashMap<Long, String>(), "");
         return MapUtil.sortByValue(result);
     }
