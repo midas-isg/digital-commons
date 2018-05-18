@@ -23,7 +23,7 @@
     </div>
     <div class="section-content">
         <div class="col-xs-12 background-white">
-            <h3>${title}</h3>
+            <h3>${entryView.entry.title}</h3>
             <hr>
             <c:if test="${not empty entryView.entry.identifier}">
                 <h4 class="sub-title-font">Identifier</h4>
