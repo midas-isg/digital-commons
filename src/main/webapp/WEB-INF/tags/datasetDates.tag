@@ -32,11 +32,16 @@
                             ${fn:toUpperCase(fn:substring(date.type.value, 0, 1))}${fn:substring(date.type.value, 1,fn:length(date.type.value))}
                     </dt>
                     <dd class="metadata-pair-value">
-                        <fmt:parseDate value="${date.date}" var="parsedDate"
-                                       pattern="yyyy-MM-dd"/>
+                        <c:catch var="ex">
+                            <fmt:parseDate value="${date.date}" var="parsedDate"
+                                           pattern="yyyy-MM-dd"/>
 
-                        <fmt:formatDate dateStyle="medium"
-                                        value="${parsedDate}"></fmt:formatDate>
+                            <fmt:formatDate dateStyle="medium"
+                                            value="${parsedDate}"></fmt:formatDate>
+                        </c:catch>
+                        <c:if test="${not empty ex}">
+                            ${date.date}
+                        </c:if>
                     </dd>
                     </c:otherwise>
                 </c:choose>
@@ -55,11 +60,16 @@
                                 ${fn:toUpperCase(fn:substring(entryView.entry.producedBy.startDate.type.value, 0, 1))}${fn:substring(entryView.entry.producedBy.startDate.type.value, 1,fn:length(entryView.entry.producedBy.startDate.type.value))}
                         </dt>
                         <dd class="metadata-pair-value">
-                            <fmt:parseDate value="${entryView.entry.producedBy.startDate.date}" var="parsedDate"
-                                           pattern="yyyy-MM-dd"/>
+                            <c:catch var="ex">
+                                <fmt:parseDate value="${entryView.entry.producedBy.startDate.date}" var="parsedDate"
+                                               pattern="yyyy-MM-dd"/>
 
-                            <fmt:formatDate dateStyle="medium"
-                                            value="${parsedDate}"></fmt:formatDate>
+                                <fmt:formatDate dateStyle="medium"
+                                                value="${parsedDate}"></fmt:formatDate>
+                            </c:catch>
+                            <c:if test="${not empty ex}">
+                                ${entryView.entry.producedBy.startDate.date}
+                            </c:if>
                         </dd>
                     </div>
                 </div>
@@ -127,11 +137,16 @@
                             ${fn:toUpperCase(fn:substring(title, 0, 1))}${fn:substring(title, 1,fn:length(title))}
                     </dt>
                     <dd class="metadata-detail-group-value">
-                        <fmt:parseDate value="${extraProperty.values[0].value}" var="parsedDate"
-                                       pattern="yyyy-MM-dd"/>
+                        <c:catch var="ex">
+                            <fmt:parseDate value="${extraProperty.values[0].value}" var="parsedDate"
+                                           pattern="yyyy-MM-dd"/>
 
-                        <fmt:formatDate dateStyle="medium"
-                                        value="${parsedDate}"></fmt:formatDate>
+                            <fmt:formatDate dateStyle="medium"
+                                            value="${parsedDate}"></fmt:formatDate>
+                        </c:catch>
+                        <c:if test="${not empty ex}">
+                            ${extraProperty.values[0].value}
+                        </c:if>
                     </dd>
                 </div>
             </div>
@@ -147,11 +162,16 @@
                 Added to repository
             </dt>
             <dd class="metadata-detail-group-value">
-                <fmt:parseDate value="${entryView.dateAdded}" var="parsedDate"
-                               pattern="yyyy-MM-dd"/>
+                <c:catch var="ex">
+                    <fmt:parseDate value="${entryView.dateAdded}" var="parsedDate"
+                                   pattern="yyyy-MM-dd"/>
 
-                <fmt:formatDate dateStyle="medium"
-                                value="${parsedDate}"></fmt:formatDate>
+                    <fmt:formatDate dateStyle="medium"
+                                    value="${parsedDate}"></fmt:formatDate>
+                </c:catch>
+                <c:if test="${not empty ex}">
+                    ${entryView.dateAdded}
+                </c:if>
             </dd>
         </div>
     </div>

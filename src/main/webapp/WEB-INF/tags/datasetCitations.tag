@@ -42,11 +42,16 @@
                                             <c:forEach items="${citation.dates}" var="date"
                                                        varStatus="status">
                                                 <c:if test="${not empty date.date}">
-                                                    <fmt:parseDate value="${date.date}" var="parsedDate"
-                                                                   pattern="yyyy-MM-dd"/>
+                                                    <c:catch var="ex">
+                                                        <fmt:parseDate value="${date.date}" var="parsedDate"
+                                                                       pattern="yyyy-MM-dd"/>
 
-                                                    <fmt:formatDate dateStyle="medium"
-                                                                    value="${parsedDate}"></fmt:formatDate>${!status.last ? ',' : ''}
+                                                        <fmt:formatDate dateStyle="medium"
+                                                                        value="${parsedDate}"></fmt:formatDate>${!status.last ? ',' : ''}
+                                                    </c:catch>
+                                                    <c:if test="${not empty ex}">
+                                                        ${date.date}
+                                                    </c:if>
                                                 </c:if>
                                             </c:forEach>
                                         </td>

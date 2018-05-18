@@ -92,11 +92,16 @@
                                         ${distribution.dates[0].type.value}
                                 </td>
                                 <td>
-                                    <fmt:parseDate value="${distribution.dates[0].date}" var="parsedDate"
-                                                   pattern="yyyy-MM-dd"/>
+                                    <c:catch var="ex">
+                                        <fmt:parseDate value="${distribution.dates[0].date}" var="parsedDate"
+                                                       pattern="yyyy-MM-dd"/>
 
-                                    <fmt:formatDate dateStyle="medium"
-                                                    value="${parsedDate}"></fmt:formatDate>
+                                        <fmt:formatDate dateStyle="medium"
+                                                        value="${parsedDate}"></fmt:formatDate>
+                                    </c:catch>
+                                    <c:if test="${not empty ex}">
+                                        ${distribution.dates[0].date}
+                                    </c:if>
                                 </td>
                             </tr>
                         </c:if>
