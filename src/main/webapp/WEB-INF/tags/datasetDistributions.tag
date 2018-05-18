@@ -86,7 +86,7 @@
                                 </td>
                             </tr>
                         </c:if>
-                        <c:if test="${not empty distribution.dates}">
+                        <c:if test="${not empty distribution.dates && not empty distribution.dates[0].date}">
                             <tr>
                                 <td class="capitalize">
                                         ${distribution.dates[0].type.value}

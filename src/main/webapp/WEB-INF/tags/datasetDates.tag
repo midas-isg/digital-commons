@@ -18,16 +18,28 @@
     <c:forEach items="${entryView.entry.dates}" var="date">
         <div class="metadata-row">
             <div class="metadata-pair">
-                <dt class="metadata-pair-title">
-                        ${fn:toUpperCase(fn:substring(date.type.value, 0, 1))}${fn:substring(date.type.value, 1,fn:length(date.type.value))}
-                </dt>
-                <dd class="metadata-pair-value">
-                    <fmt:parseDate value="${date.date}" var="parsedDate"
-                                   pattern="yyyy-MM-dd"/>
+                <c:choose>
+                    <c:when test="${fn:contains(date.type.value,'interval')}">
+                        <dt class="metadata-pair-title">
+                                Interval
+                        </dt>
+                        <dd class="metadata-pair-value">
+                        ${fn:toUpperCase(fn:substring(date.date, 0, 1))}${fn:substring(date.date, 1,fn:length(date.date))}
+                        </dd>
+                    </c:when>
+                    <c:otherwise>
+                    <dt class="metadata-pair-title">
+                            ${fn:toUpperCase(fn:substring(date.type.value, 0, 1))}${fn:substring(date.type.value, 1,fn:length(date.type.value))}
+                    </dt>
+                    <dd class="metadata-pair-value">
+                        <fmt:parseDate value="${date.date}" var="parsedDate"
+                                       pattern="yyyy-MM-dd"/>
 
-                    <fmt:formatDate dateStyle="medium"
-                                    value="${parsedDate}"></fmt:formatDate>
-                </dd>
+                        <fmt:formatDate dateStyle="medium"
+                                        value="${parsedDate}"></fmt:formatDate>
+                    </dd>
+                    </c:otherwise>
+                </c:choose>
             </div>
         </div>
     </c:forEach>
