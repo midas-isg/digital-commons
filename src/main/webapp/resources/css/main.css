@@ -555,6 +555,7 @@ body {
 }
 
 .footer-lg {
+    z-index: 3;
     margin-top: 10px;
     position: fixed;
     left: 0;
@@ -868,8 +869,10 @@ tfoot {
 .btn-publish {
     float: right;
 }
-
+/*//////////////////////////*/
 /*Detailed View Page CSS*/
+/*//////////////////////////*/
+
 #detailed-view-body {
     background: #f6f6f6;
 }
@@ -1023,4 +1026,19 @@ div.container.metadata-container .metadata-column.fancy {
     td div.metadata-table {
         padding: 0px !important;
     }
+}
+/*//////////////////////////*/
+/*//////////////////////////*/
+
+
+/*//////////////////////////*/
+/*Edit dataset and software css*/
+/*//////////////////////////*/
+.edit-form-group {
+    margin: 1px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }

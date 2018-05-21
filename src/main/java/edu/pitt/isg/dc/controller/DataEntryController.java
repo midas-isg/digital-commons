@@ -14,6 +14,7 @@ import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -22,16 +23,17 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedWriter;
@@ -123,6 +125,41 @@ public class DataEntryController {
 
             }
         }
+    }
+
+    @RequestMapping(value = "/test-add-entry", method = RequestMethod.GET)
+    public String testAddNewEntry(HttpSession session, Model model) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+
+        if(ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if(ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if(ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if(!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        Dataset dataset = new Dataset();
+        model.addAttribute("dataset", dataset);
+
+       return"newDigitalObjectForm";
+    }
+
+    @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("dataset")Dataset dataset,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "error";
+        }
+//        model.addAttribute("name", employee.getName());
+//        model.addAttribute("contactNumber", employee.getContactNumber());
+//        model.addAttribute("id", employee.getId());
+        return "dataset";
     }
 
     @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
