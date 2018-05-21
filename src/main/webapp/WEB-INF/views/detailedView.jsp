@@ -87,7 +87,7 @@
                         <br>
 
                         <button class="btn btn-lg btn-primary metadata-button"
-                                onclick="location.href='${pageContext.request.contextPath}/detailed-metadata-view/?id=${id}&revId=${revId}'">
+                                onclick="location.href='${pageContext.request.contextPath}/detailed-metadata-view/?id=${id}'">
                             View Metadata
                         </button>
                     </div>
