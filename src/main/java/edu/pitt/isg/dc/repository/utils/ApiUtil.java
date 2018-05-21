@@ -540,6 +540,19 @@ resumptionToken an exclusive argument with a value that is the flow control toke
             oaiDcType.getTitleOrCreatorOrSubject().add(titleElement);
         }
 
+        //rights
+        if(((HashMap)entryMap.get("entry")).containsKey("licenses")){
+            List<Map> licensesListMap = (List)((HashMap)entryMap.get("entry")).get("licenses");
+            for(Map<String, Object> licensesMap : licensesListMap){
+                if(licensesMap.containsKey("name") && !licensesMap.get("name").toString().equals("")){
+                    ElementType rightsValue = elementFactory.createElementType();
+                    rightsValue.setValue(licensesMap.get("name").toString());
+                    JAXBElement<ElementType> rightsElement = elementFactory.createRights(rightsValue);
+                    oaiDcType.getTitleOrCreatorOrSubject().add(rightsElement);
+                }
+            }
+        }
+
         //identifier
         if(((HashMap)entryMap.get("entry")).containsKey("identifier")){
             ElementType identifierValue = elementFactory.createElementType();
@@ -801,7 +814,7 @@ resumptionToken an exclusive argument with a value that is the flow control toke
         /*
             @XmlElementRef(name = "source", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "title", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "rights", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
+            @XmlElementRef(name = "rights", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "identifier", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
             @XmlElementRef(name = "description", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
         @XmlElementRef(name = "relation", namespace = "http://purl.org/dc/elements/1.1/", type = JAXBElement.class, required = false),
