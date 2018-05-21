@@ -87,235 +87,28 @@
                         <br>
 
                         <button class="btn btn-lg btn-primary metadata-button"
-                                onclick="location.href='${pageContext.request.contextPath}/detailed-metadata-view/?id=${id}&revId=${revId}'">
+                                onclick="location.href='${pageContext.request.contextPath}/detailed-metadata-view/?id=${id}'">
                             View Metadata
                         </button>
                     </div>
                 </dl>
                 <div class="metadata-column tables" style="padding-bottom: 0px;">
                     <c:if test="${type != 'DataStandard'}">
-                        <div class="metadata-table"><h4 class="sub-title-font">Creator Information</h4>
-                            <table class="table table-condensed table-borderless table-discrete table-striped">
-                                <tbody>
-                                <c:if test="${not empty entryView.entry.creators}">
-                                    <tr>
-                                        <td>Created by</td>
-                                        <td>
-                                            <c:forEach items="${entryView.entry.creators}" var="creator"
-                                                       varStatus="status">
-                                                <c:choose>
-                                                    <c:when test="${not empty creator.name}">
-                                                        <c:choose>
-                                                            <c:when test="${creator.name.getClass().simpleName == 'String'}">
-                                                                ${creator.name}${!status.last ? ',' : ''}
-                                                            </c:when>
-                                                            <c:otherwise>
-                                                                ${creator.name.description}${!status.last ? ',' : ''}
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                    </c:when>
-                                                    <c:when test="${not empty creator.fullName}">
-                                                        ${creator.fullName}${!status.last ? ',' : ''}
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        ${creator.firstName} ${creator.lastName}${!status.last ? ',' : ''}
-                                                    </c:otherwise>
-                                                </c:choose>
-                                            </c:forEach>
-                                        </td>
-                                    </tr>
-                                    <c:if test="${not empty entryView.entry.creators[0].email}">
-                                        <tr>
-                                            <td>Creator emails</td>
-                                            <td>
-                                                <c:forEach items="${entryView.entry.creators}" var="creator"
-                                                           varStatus="status">
-                                                    <c:if test="${not empty creator.email}">
-                                                        <a href="mailto:${creator.email}"
-                                                           class="underline">${creator.email}</a>${!status.last ? ',' : ''}
-                                                    </c:if>
-                                                </c:forEach>
-                                            </td>
-                                        </tr>
-                                    </c:if>
-                                </c:if>
-                                <c:if test="${not empty entryView.entry.developers}">
-                                    <tr>
-                                        <td>Developers</td>
-                                        <td>
-                                            <c:forEach items="${entryView.entry.developers}" var="developer"
-                                                       varStatus="status">
-                                                ${developer}${!status.last ? ',' : ''}
-                                            </c:forEach>
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                <c:if test="${not empty entryView.entry.producedBy}">
-                                    <tr>
-                                        <td>Produced by</td>
-                                        <td>
-                                                ${entryView.entry.producedBy.name}
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                <c:if test="${not empty entryView.entry.source}">
-                                    <tr>
-                                        <td>Code repository source</td>
-                                        <td><a href="${entryView.entry.source}"
-                                               class="underline">${entryView.entry.source}</a></td>
-                                    </tr>
-                                </c:if>
-
-                                </tbody>
-                            </table>
-                        </div>
+                        <myTags:datasetCreatorInfo entryView="${entryView}"></myTags:datasetCreatorInfo>
                     </c:if>
                     <div class="metadata-table"></div>
-                    <div class="metadata-table"><h4 class="sub-title-font">Topics</h4>
-                        <table class="table table-condensed table-borderless table-discrete table-striped">
-                            <tbody>
-                            <tr>
-                                <td>Category</td>
-                                <c:choose>
-                                    <c:when test="${fn:length(lineage) > 2}">
-                                        <td>${lineage[2]}</td>
-                                    </c:when>
-                                    <c:otherwise>
-                                        <td>${lineage[1]}</td>
-                                    </c:otherwise>
-                                </c:choose>
-                            </tr>
-                            <c:if test="${not empty entryView.entry.pathogenCoverage}">
-                                <td>
-                                    Pathogen coverage
-                                </td>
-                                <td>
-                                    <c:forEach items="${entryView.entry.pathogenCoverage}" var="coverage"
-                                               varStatus="status">
-                                        <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
-                                    </c:forEach>
-                                </td>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.spatialCoverage or not empty entryView.entry.locationCoverage or not lineage.contains('Software')}">
-                                <tr>
-                                    <td>Spatial coverage</td>
-                                    <td>
-                                        <c:choose>
-                                            <c:when test="${not empty entryView.entry.spatialCoverage}">
-                                                <c:forEach items="${entryView.entry.spatialCoverage}" var="coverage"
-                                                           varStatus="status">
-                                                    <%--${fn:toUpperCase(fn:substring(coverage.name, 0, 1))}${fn:toLowerCase(fn:substring(coverage.name, 1,fn:length(coverage.name)))}${!status.last ? ',' : ''}--%>
-                                                    ${coverage.name}${!status.last ? ',' : ''}
-                                                </c:forEach>
-                                            </c:when>
-                                            <c:when test="${not empty entryView.entry.locationCoverage}">
-                                                <c:forEach items="${entryView.entry.locationCoverage}" var="coverage"
-                                                           varStatus="status">
-                                                    <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
-                                                </c:forEach>
-                                            </c:when>
-                                            <c:otherwise>
-                                                ${entryView.category.category}
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                </tr>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.isAbout}">
-                                <tr>
-                                    <td>Tags</td>
-                                    <td>
-                                        <div>
-                                            <div class="tag-list" style="word-wrap: break-word;">
-                                                <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
-                                                           varStatus="status">
-                                                    <c:choose>
-                                                        <c:when test="${not empty isAbout.name}">
-                                                            ${isAbout.name}${!status.last ? ',' : ''}
-                                                        </c:when>
-                                                        <c:when test="${not empty isAbout.value}">
-                                                            ${isAbout.value}${!status.last ? ',' : ''}
-                                                        </c:when>
-                                                    </c:choose>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:if>
-                            <c:if test="${not empty entryView.entry.hostSpeciesIncluded}">
-                                <tr>
-                                    <td>Host species included</td>
-                                    <td>
-                                        <div>
-                                            <div class="tag-list" style="word-wrap: break-word;">
-                                                <c:forEach items="${entryView.entry.hostSpeciesIncluded}"
-                                                           var="hostSpeciesIncluded"
-                                                           varStatus="status">
-                                                    <c:choose>
-                                                        <c:when test="${not empty hostSpeciesIncluded.identifier.identifierDescription}">
-                                                            ${fn:toUpperCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 0, 1))}${fn:toLowerCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 1,fn:length(hostSpeciesIncluded.identifier.identifierDescription)))}${!status.last ? ',' : ''}
-                                                        </c:when>
-                                                    </c:choose>
-                                                </c:forEach>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:if>
-                            </tbody>
-                        </table>
-                    </div>
+                    <myTags:datasetTopics entryView="${entryView}" lineage="${lineage}"/>
 
                     <c:if test="${not empty entryView.entry.distributions}">
                         <myTags:datasetDistributions entryView="${entryView}"></myTags:datasetDistributions>
                     </c:if>
 
                     <c:if test="${not empty entryView.entry.sourceCodeRelease}">
-                        <div class="metadata-table">
-                            <h4 class="sub-title-font">Source code release</h4>
-                            <table class="table table-condensed table-borderless table-discrete table-striped">
-                                <tbody>
-                                <tr>
-                                    <td>Source code links</td>
-                                    <td>
-                                            ${entryView.entry.sourceCodeRelease}
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <myTags:datasetSourceCode entryView="${entryView}"></myTags:datasetSourceCode>
                     </c:if>
 
                     <c:if test="${not empty entryView.entry.licenses}">
-                        <div class="metadata-table"><h4 class="sub-title-font">Licensing and Attribution</h4>
-                            <table class="table table-condensed table-borderless table-discrete table-striped">
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        License
-                                    </td>
-                                    <td>
-                                        <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="status">
-                                            ${license.name}${!status.last ? ',' : ''}
-                                        </c:forEach>
-                                    </td>
-                                </tr>
-                                <c:if test="${not empty entryView.entry.licenses[0].identifier}">
-                                    <tr>
-                                        <td>Source</td>
-                                        <td>
-                                            <c:forEach items="${entryView.entry.licenses}" var="license"
-                                                       varStatus="status">
-                                                <a href="${license.identifier.identifier}"
-                                                   class="underline">${license.identifier.identifier}</a>${!status.last ? ',' : ''}
-                                            </c:forEach>
-                                        </td>
-                                    </tr>
-                                </c:if>
-                                </tbody>
-                            </table>
-                        </div>
+                        <myTags:datasetLicenses entryView="${entryView}"></myTags:datasetLicenses>
                     </c:if>
                     <myTags:datasetCitations entryView="${entryView}"></myTags:datasetCitations>
 

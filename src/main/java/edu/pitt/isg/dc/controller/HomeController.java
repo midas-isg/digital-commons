@@ -476,10 +476,14 @@ public class HomeController {
 
 
     @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
-    public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
+    public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id) throws Exception {
+        //public String detailedView(Model model, HttpSession session,@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
         model.addAttribute("id", id);
-        model.addAttribute("revId", revId);
-        Entry entry = entryRule.read(new EntryId(id, revId));
+        //model.addAttribute("revId", revId);
+        //Entry entry = entryRule.read(new EntryId(id, revId));
+        Entry entry = apiUtil.getEntryById(id);
+        EntryId entryId = entry.getId();
+        model.addAttribute("revId", entryId.getRevisionId());
         EntryView entryView = new EntryView(entry);
         String jsonString = entryView.getUnescapedEntryJsonString();
         String type = entryView.getEntryTypeBaseName();
@@ -509,8 +513,10 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/detailed-metadata-view", method = RequestMethod.GET)
-    public HttpEntity<byte[]> detailedMetaDataView(@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
-        Entry entry = entryRule.read(new EntryId(id, revId));
+    public HttpEntity<byte[]> detailedMetaDataView(@RequestParam(value = "id") long id) throws Exception {
+        //public HttpEntity<byte[]> detailedMetaDataView(@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
+        //Entry entry = entryRule.read(new EntryId(id, revId));
+        Entry entry = apiUtil.getEntryById(id);
         EntryView entryView = new EntryView(entry);
         String documentText;
 
