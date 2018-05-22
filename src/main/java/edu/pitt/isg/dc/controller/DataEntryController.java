@@ -6,13 +6,14 @@ import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
-import edu.pitt.isg.dc.entry.DataGov;
 import edu.pitt.isg.dc.entry.DataGovInterface;
+import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,6 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -48,9 +48,7 @@ import java.util.Properties;
 
 import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
 import static edu.pitt.isg.dc.controller.Auth0Controller.MDC_EDITOR_TOKEN;
-import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
-import static edu.pitt.isg.dc.controller.HomeController.ifLoggedIn;
-import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
+import static edu.pitt.isg.dc.controller.HomeController.*;
 
 /**
  * Created by TPS23 on 5/10/2017.
@@ -61,10 +59,16 @@ import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
 public class DataEntryController {
 
     private static boolean GENERATE_XSD_FORMS = true;
-    private static final String [] XSD_FILES = {
+    private static final String[] XSD_FILES = {
             "software.xsd",
             "dats.xsd"
     };
+
+    @Autowired
+    private ApiUtil apiUtil;
+
+    private Converter converter = new Converter();
+
     private static final String XSD_FORMS_PATH;
     private static final String OUTPUT_DIRECTORY;
     private static final String DC_ENTRY_REQUESTS_LOG;
@@ -88,8 +92,7 @@ public class DataEntryController {
             outputDirectory = dataEntryConfig.getProperty("outputDirectory");
             xsdFormsPath = dataEntryConfig.getProperty("xsdFormsPath");
             dcEntryRequestsLog = dataEntryConfig.getProperty("dcEntryRequestsLog");
-        }
-        catch(Exception exception) {
+        } catch (Exception exception) {
             System.err.print(exception);
         }
 
@@ -120,38 +123,43 @@ public class DataEntryController {
         public void onApplicationEvent(final ContextRefreshedEvent event) {
             try {
                 readXSDFiles(context);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
 
             }
         }
     }
 
     @RequestMapping(value = "/test-add-entry", method = RequestMethod.GET)
-    public String testAddNewEntry(HttpSession session, Model model) throws Exception {
+    public String testAddNewEntry(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        Dataset dataset = new Dataset();
+        if(entryId != null) {
+            Entry entry = apiUtil.getEntryById(entryId);
+            EntryView entryView = new EntryView(entry);
 
-        if(ifLoggedIn(session))
+            dataset =converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+        }
+        model.addAttribute("dataset", dataset);
+
+        if (ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
 
-        if(ifMDCEditor(session))
+        if (ifMDCEditor(session))
             model.addAttribute("adminType", MDC_EDITOR_TOKEN);
 
-        if(ifISGAdmin(session))
+        if (ifISGAdmin(session))
             model.addAttribute("adminType", ISG_ADMIN_TOKEN);
 
-        if(!model.containsAttribute("adminType")) {
+        if (!model.containsAttribute("adminType")) {
             return "accessDenied";
         }
 
-        Dataset dataset = new Dataset();
-        model.addAttribute("dataset", dataset);
 
-       return"newDigitalObjectForm";
+        return "newDigitalObjectForm";
     }
 
     @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataset")Dataset dataset,
+    public String submit(@Valid @ModelAttribute("dataset") Dataset dataset,
                          BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
             return "error";
@@ -162,9 +170,10 @@ public class DataEntryController {
         return "dataset";
     }
 
-    @RequestMapping(value = "/add-entry" , method = RequestMethod.POST)
-    public @ResponseBody String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
-                                            @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request, HttpSession session) throws Exception {
+    @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
+    public @ResponseBody
+    String addNewEntry(@RequestParam(value = "datasetType", required = false) String datasetType,
+                       @RequestParam(value = "customValue", required = false) String customValue, HttpServletRequest request, HttpSession session) throws Exception {
         Date date = new Date();
         Converter xml2JSONConverter = new Converter();
 
@@ -185,12 +194,11 @@ public class DataEntryController {
 //        System.out.println(xmlString);
         try {
             jsonString = xml2JSONConverter.xmlToJson(xmlString);
-        }
-        catch(Exception exception) {
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
 
-        if(jsonString.length() > 0) {
+        if (jsonString.length() > 0) {
             JsonParser parser = new JsonParser();
             JsonObject entry = parser.parse(jsonString).getAsJsonObject();
 
@@ -218,7 +226,7 @@ public class DataEntryController {
         String htmlString;
         scala.Option<String> rootElement;
 
-        if(rootElementName != null) {
+        if (rootElementName != null) {
             rootElement = scala.Option.apply(rootElementName);
 
             schema = appContext.getResource(xsdFile).getInputStream();
@@ -239,7 +247,7 @@ public class DataEntryController {
     }
 
     public static String readXSDFiles(ServletContext context) throws Exception {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[] {});
+        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[]{});
         InputStream schema;
         DocumentBuilderFactory dbFactory;
         DocumentBuilder dBuilder;
@@ -247,7 +255,7 @@ public class DataEntryController {
         String rootElementName;
         String typeList = "";
 
-        for(int i = 0; i < XSD_FILES.length; i++) {
+        for (int i = 0; i < XSD_FILES.length; i++) {
             typeList += (XSD_FILES[i] + ":");
             schema = appContext.getResource(XSD_FILES[i]).getInputStream();
             dbFactory = DocumentBuilderFactory.newInstance();
@@ -258,12 +266,12 @@ public class DataEntryController {
             NodeList nodes = document.getElementsByTagName("schema").item(0).getChildNodes();
             int nodesLength = nodes.getLength();
 
-            for(int j = 0; j < nodesLength; j++) {
-                if(nodes.item(j).getNodeName().equals("element")){
+            for (int j = 0; j < nodesLength; j++) {
+                if (nodes.item(j).getNodeName().equals("element")) {
                     rootElementName = nodes.item(j).getAttributes().getNamedItem("name").getNodeValue();
                     typeList += (rootElementName + ";");
 
-                    if(GENERATE_XSD_FORMS){
+                    if (GENERATE_XSD_FORMS) {
                         generateForm(XSD_FILES[i], rootElementName, appContext, context);
                     }
                 }
@@ -280,23 +288,23 @@ public class DataEntryController {
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         //model.addAttribute("category", category);
-        if(ifLoggedIn(session))
+        if (ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
 
-        if(ifMDCEditor(session))
+        if (ifMDCEditor(session))
             model.addAttribute("adminType", MDC_EDITOR_TOKEN);
 
-        if(ifISGAdmin(session))
+        if (ifISGAdmin(session))
             model.addAttribute("adminType", ISG_ADMIN_TOKEN);
 
-        if(!model.containsAttribute("adminType")) {
+        if (!model.containsAttribute("adminType")) {
             return "accessDenied";
         }
 
         return "addDataGovRecordById";
     }
 
-    @RequestMapping(value = "/add-datagov-entry" , method = RequestMethod.POST)
+    @RequestMapping(value = "/add-datagov-entry", method = RequestMethod.POST)
     public String addNewEntry(HttpServletRequest request, HttpSession session, Model model) throws Exception {
         Long category = null;
         Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
@@ -318,7 +326,7 @@ public class DataEntryController {
         //DCEmailService emailService = new DCEmailService();
         //emailService.mailToAdmin("[Digital Commons New Entry Request] " + date, result);
 
-        model.addAttribute("returnMessasge",result);
+        model.addAttribute("returnMessasge", result);
 
         return "reviewDataGovEntry";
     }

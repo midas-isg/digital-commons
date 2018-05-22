@@ -5,19 +5,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ attribute name="annotation" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Annotation" %>
-<%@ attribute name="prefix" required="true"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
 
 <div class="form-group control-group edit-form-group">
 
     <div class="form-group edit-form-group">
         <label>Value</label>
-        <input type="text" class="form-control" name="${prefix}value" placeholder="Value">
+        <input type="text" class="form-control" value="${annotation.value}" name="${path}value" placeholder="Value">
     </div>
 
     <div class="form-group edit-form-group">
         <label>Value IRI</label>
-        <input type="text" class="form-control" name="${prefix}valueIRI" placeholder="Value IRI">
+        <input type="text" class="form-control" value="${annotation.value}" name="${path}valueIRI" placeholder="Value IRI">
     </div>
 
 </div>

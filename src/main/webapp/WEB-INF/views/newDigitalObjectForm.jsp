@@ -19,11 +19,11 @@
             <form:form id="entry-form" action="${pageContext.request.contextPath}/testAddDataset" modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
-                    <myTags:editTitle title="${title}"></myTags:editTitle>
-                    <myTags:editDescription path="description" description="${description}" specifier="description"></myTags:editDescription>
-                    <myTags:editIdentifier identifier="${identifer}" specifier="identifier" path="identifier" name="Identifier"></myTags:editIdentifier>
-                    <myTags:editCreators creators="${creators}"></myTags:editCreators>
-                    <myTags:editType types="${types}"></myTags:editType>
+                    <myTags:editTitle></myTags:editTitle>
+                    <myTags:editDescription path="description" description="${dataset.description}" specifier="description"></myTags:editDescription>
+                    <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" name="Identifier"></myTags:editIdentifier>
+                    <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
+                    <myTags:editType types="${dataset.types}"></myTags:editType>
                     <myTags:editBiologicalEntity specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
 

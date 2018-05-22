@@ -4,8 +4,6 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ attribute name="title" required="false"
-              type="java.lang.String" %>
 
 <div class="form-group edit-form-group">
     <form:label path="title">Title</form:label>
