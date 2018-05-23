@@ -63,7 +63,7 @@
 //            });
 
             var html = $(".copy-creator").html();
-            html = html.replace('name="fistName"', 'name="creators['+ creatorCount + '].firstName"').replace('name="lastName"', 'name="creators['+ creatorCount + '].lastName"').replace('name="email"', 'name="creators['+ creatorCount + '].email"');
+            html = html.replace('name="firstName"', 'name="creators['+ creatorCount + '].firstName"').replace('name="lastName"', 'name="creators['+ creatorCount + '].lastName"').replace('name="email"', 'name="creators['+ creatorCount + '].email"');
             creatorCount += 1;
 
             $(".creator-add-more").after(html);

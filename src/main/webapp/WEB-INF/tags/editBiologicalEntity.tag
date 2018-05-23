@@ -27,20 +27,20 @@
         <br><br>
         <div class="form-group edit-form-group">
             <label>Name</label>
-            <input name="isAbout[0].name" type="text" class="form-control" placeholder="Name">
+            <input name="${specifier}[0].name" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="form-group">
-            <myTags:editDescription path="isAbout[0].description" specifier="isAbout-0"></myTags:editDescription>
+            <myTags:editDescription path="${specifier}[0].description" specifier="${specifier}-0"></myTags:editDescription>
         </div>
 
         <div class="form-group">
-            <myTags:editIdentifier path="isAbout[0].identifier" specifier="isAbout-0"
+            <myTags:editIdentifier path="${specifier}[0].identifier" specifier="${specifier}-0"
                                    name="Identifier"></myTags:editIdentifier>
         </div>
 
         <div class="form-group">
-            <myTags:editIdentifier path="isAbout[0].alternateIdentifiers" unbounded="${true}"
-                                   specifier="isAbout-alternate-0" name="Alternate Identifier"></myTags:editIdentifier>
+            <myTags:editIdentifier path="${specifier}[0].alternateIdentifiers" unbounded="${true}"
+                                   specifier="${specifier}-alternate-0" name="Alternate Identifier"></myTags:editIdentifier>
         </div>
     </div>
 </div>
@@ -48,13 +48,13 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var isAboutCount = 0;
+        var ${specifier}Count = 0;
         //Add section
         $(".${specifier}-add-biological-entity").click(function () {
             var html = $(".copy-biological-entity").html();
             html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>");
             $(".${specifier}-biological-entity-add-more").after(html);
-            isAboutCount += 1;
+            ${specifier}Count += 1;
         });
 
         //Remove section

@@ -28,7 +28,7 @@
 </div>
 
 
-<div class="copy-identifier hide">
+<div class="${specifier}-copy-identifier hide">
     <div class="form-group control-group">
         <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
@@ -52,8 +52,8 @@
 
     $(document).ready(function () {
         var identifierCount = 0;
-        $("body").on("click", ".${specifier}-add-identifier", function () {
-            var html = $(".copy-identifier").html();
+        $("body").on("click", ".${specifier}-add-identifier", function (e) {
+            var html = $(".${specifier}-copy-identifier").html();
             //Add section
             <c:choose>
             <c:when test="${unbounded}">
@@ -67,6 +67,7 @@
             $(".${specifier}-identifier-add-more").hide();
             </c:otherwise>
             </c:choose>
+            e.stopImmediatePropagation();
         });
         //Remove section
         $("body").on("click", ".${specifier}-identifier-remove", function () {

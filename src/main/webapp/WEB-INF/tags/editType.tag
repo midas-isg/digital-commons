@@ -37,7 +37,7 @@
         <button class="btn btn-danger annotation-remove" id="information" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation prefix="prefix"></myTags:editAnnotation>
+        <myTags:editAnnotation path="prefix"></myTags:editAnnotation>
     </div>
 </div>
 
@@ -47,7 +47,7 @@
         <button class="btn btn-danger annotation-remove" id="method" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation prefix="prefix"></myTags:editAnnotation>
+        <myTags:editAnnotation path="prefix"></myTags:editAnnotation>
     </div>
 </div>
 
@@ -57,7 +57,7 @@
         <button class="btn btn-danger annotation-remove" id="platform" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation prefix="prefix"></myTags:editAnnotation>
+        <myTags:editAnnotation path="prefix"></myTags:editAnnotation>
     </div>
 </div>
 
