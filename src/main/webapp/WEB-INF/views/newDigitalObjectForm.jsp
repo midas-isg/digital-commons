@@ -31,7 +31,7 @@
                     <myTags:editBiologicalEntity specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
                     <myTags:editStudy specifier="producedBy" path="producedBy"></myTags:editStudy>
-                    <myTags:editDistributions specifier="distribution" path="distribution"></myTags:editDistributions>
+                    <myTags:editDistributions specifier="distributions" path="distributions"></myTags:editDistributions>
 
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
