@@ -10,15 +10,17 @@
 <c:choose>
     <c:when test="${not empty types}">
         <c:forEach items="${types}" varStatus="status" var="type">
-            <div class="form-group control-group edit-form-group type-add-more">
-                <label>Type</label>
                 <c:choose>
                     <c:when test="${status.first}">
+                        <div class="form-group control-group edit-form-group type-add-more">
+                        <label>Type</label>
                         <button class="btn btn-success add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
                             Add Type
                         </button>
                     </c:when>
                     <c:otherwise>
+                        <div class="form-group control-group edit-form-group">
+                        <label>Type</label>
                         <button class="btn btn-danger type-remove" type="button"><i
                                 class="glyphicon glyphicon-remove"></i> Remove
                         </button>
@@ -116,6 +118,7 @@
                 </div>
 
             </div>
+            <c:set var = "typeCount" scope = "page" value = "${status.count}"/>
 
         </c:forEach>
     </c:when>
@@ -146,6 +149,8 @@
                 </button>
             </div>
         </div>
+        <c:set var = "typeCount" scope = "page" value = "1"/>
+
     </c:otherwise>
 </c:choose>
 
@@ -216,14 +221,15 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var typeCount = 0;
+        var typeCount = ${typeCount};
         //Add section
         $("body").on("click", ".add-type", function () {
             var html = $(".copy-type").html();
-            typeCount += 1;
 
             html = html.replace(/id="add/g, 'id="' + typeCount + '-add');
             $(".type-add-more").after(html);
+            typeCount += 1;
+
         });
 
         //Remove section

@@ -48,7 +48,7 @@
         $("body").on("click", ".${specifier}-description-remove", function (e) {
             e.stopImmediatePropagation();
 
-            $(this).parents(".control-group").remove();
+            $(this).parents(".control-group")[0].remove();
             $(".${specifier}-description-add-more").show();
         });
 

@@ -3,26 +3,87 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%--<%@ attribute name="types" required="false"--%>
-<%--type="java.util.ArrayList" %>--%>
+<%@ attribute name="entities" required="false"
+              type="java.util.ArrayList" %>
 <%@ attribute name="name" required="false"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="path" required="false"
+              type="java.lang.String" %>
 
-<div class="form-group edit-form-group ${specifier}-biological-entity-add-more">
-    <label>${name}</label>
-    <br>
-    <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i class="glyphicon glyphicon-plus"></i> Add ${name}
-    </button>
-</div>
+<c:choose>
+    <c:when test="${not empty entities}">
+        <c:forEach items="${entities}" var="entity" varStatus="status">
+                <c:choose>
+                    <c:when test="${status.first}">
+                        <div class="form-group control-group edit-form-group ${specifier}-biological-entity-add-more">
+                        <label>${name}</label>
+                        <br>
+                        <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
+                                class="glyphicon glyphicon-plus"></i> Add ${name}
+                        </button>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="form-group control-group edit-form-group">
+                        <label>${name}</label>
+                        <br>
+                        <button class="btn btn-danger  ${specifier}-biological-entity-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                    </c:otherwise>
+                </c:choose>
+
+                <div class="form-group control-group edit-form-group">
+                    <div class="form-group edit-form-group">
+                        <label>Name</label>
+                        <input name="${specifier}[${status.count-1}].name" value="${entity.name}" type="text"
+                               class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <myTags:editDescription description="${entity.description}"
+                                                path="${path}[${status.count-1}].description"
+                                                specifier="${specifier}-${status.count-1}"></myTags:editDescription>
+                    </div>
+
+                    <div class="form-group">
+                        <myTags:editIdentifier identifier="${entity.identifier}"
+                                               path="${path}[${status.count-1}].identifier"
+                                               specifier="${specifier}-${status.count-1}"
+                                               name="Identifier"></myTags:editIdentifier>
+                    </div>
+
+                    <div class="form-group">
+                        <myTags:editIdentifier path="${path}[${status.count-1}].alternateIdentifiers"
+                                               unbounded="${true}"
+                                               specifier="${specifier}-alternate-${status.count-1}"
+                                               name="Alternate Identifier"></myTags:editIdentifier>
+                    </div>
+                </div>
+            </div>
+            <c:set var = "count" scope = "page" value = "${status.count}"/>
+        </c:forEach>
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group ${specifier}-biological-entity-add-more">
+            <label>${name}</label>
+            <br>
+            <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add ${name}
+            </button>
+        </div>
+        <c:set var = "count" scope = "page" value = "0"/>
+    </c:otherwise>
+</c:choose>
 
 
-<div class="copy-biological-entity hide">
+<div class="${specifier}-copy-biological-entity hide">
     <div class="form-group control-group edit-form-group">
         <label></label>
         <br>
-        <button class="btn btn-danger biological-entity-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+        <button class="btn btn-danger biological-entity-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+            Remove
         </button>
         <br><br>
         <div class="form-group edit-form-group">
@@ -30,17 +91,20 @@
             <input name="${specifier}[0].name" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="form-group">
-            <myTags:editDescription path="${specifier}[0].description" specifier="${specifier}-0"></myTags:editDescription>
+            <myTags:editDescription path="${path}[0].description"
+                                    specifier="${specifier}-0"></myTags:editDescription>
         </div>
 
         <div class="form-group">
-            <myTags:editIdentifier path="${specifier}[0].identifier" specifier="${specifier}-0"
+            <myTags:editIdentifier path="${path}[0].identifier"
+                                   specifier="${specifier}-0"
                                    name="Identifier"></myTags:editIdentifier>
         </div>
 
         <div class="form-group">
-            <myTags:editIdentifier path="${specifier}[0].alternateIdentifiers" unbounded="${true}"
-                                   specifier="${specifier}-alternate-0" name="Alternate Identifier"></myTags:editIdentifier>
+            <myTags:editIdentifier path="${path}[0].alternateIdentifiers" unbounded="${true}"
+                                   specifier="${specifier}-0-alternate"
+                                   name="Alternate Identifier"></myTags:editIdentifier>
         </div>
     </div>
 </div>
@@ -48,13 +112,18 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var ${specifier}Count = 0;
+        var count = ${count};
+        var specifier = "${specifier}";
+
         //Add section
-        $(".${specifier}-add-biological-entity").click(function () {
-            var html = $(".copy-biological-entity").html();
-            html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>");
+        $("body").on("click", ".${specifier}-add-biological-entity", function () {
+            var html = $(".${specifier}-copy-biological-entity").html();
+            var regex = new RegExp(specifier + '\\[0\\]', "g");
+            html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>").replace(regex, specifier+'[' + count + ']');
+            regex = new RegExp(specifier + '-0', "g");
+            html = html.replace(regex, specifier + '-' + count);
             $(".${specifier}-biological-entity-add-more").after(html);
-            ${specifier}Count += 1;
+            count += 1;
         });
 
         //Remove section
