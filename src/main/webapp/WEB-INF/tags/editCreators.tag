@@ -14,17 +14,17 @@
 
     <div class="form-group edit-form-group">
         <label>First Name</label>
-        <input type="text" class="form-control" name="creators[0].firstName" placeholder="Last Name">
+        <input type="text" class="form-control" value="${creators[0].firstName}" name="creators[0].firstName" placeholder="Last Name">
     </div>
 
     <div class="form-group edit-form-group">
         <label>Last Name</label>
-        <input type="text" class="form-control" name="creators[0].lastName" placeholder="Last Name">
+        <input type="text" class="form-control" value="${creators[0].lastName}" name="creators[0].lastName" placeholder="Last Name">
     </div>
 
     <div class="form-group edit-form-group">
         <label>Email</label>
-        <input type="email" class="form-control" name="creators[0].email" placeholder="Email">
+        <input type="email" class="form-control" value="${creators[0].email}" name="creators[0].email" placeholder="Email">
     </div>
 </div>
 
@@ -73,6 +73,17 @@
         $("body").on("click", ".creator-remove", function () {
             $(this).parents(".control-group").remove();
         });
+        
+        <c:if test="${not empty creators and fn:length(creators) gt 1}">
+        <c:forEach items="${creators}" var="person" varStatus="status">
+        <c:if test="${not status.first}">
+        var html = $(".copy-creator").html();
+        html = html.replace('name="firstName"', 'name="creators[${status.count-1}].firstName" value="${creators[status.count-1].firstName}"').replace('name="lastName"', 'name="creators[${status.count-1}].lastName" value="${creators[status.count-1].lastName}"').replace('name="email"', 'name="creators[${status.count-1}].email" value="${creators[status.count-1].email}"');
+        creatorCount += 1;
+        $(".creator-add-more").after(html);
+        </c:if>
+        </c:forEach>
+        </c:if>
 
     });
 </script>

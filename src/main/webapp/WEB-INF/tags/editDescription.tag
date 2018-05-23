@@ -24,7 +24,7 @@
 
 <div class="copy-description hide">
     <div class="input-group control-group full-width">
-        <input type="text" class="form-control" name="" placeholder="Description"/>
+        <input type="text" class="form-control" value="${description}" name="" placeholder="Description"/>
         <div class="input-group-btn">
             <button class="btn btn-danger description-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
             </button>
@@ -51,6 +51,15 @@
             $(this).parents(".control-group").remove();
             $(".${specifier}-description-add-more").show();
         });
+
+        <c:if test="${not empty description}">
+        var html = $(".copy-description").html();
+        html = html.replace('name=""', 'name="${path}"').replace('description-remove', '${specifier}-description-remove');
+
+        //Add section
+        $(".${specifier}-description-add-more").after(html);
+        $(".${specifier}-description-add-more").hide();
+        </c:if>
     });
 
 </script>

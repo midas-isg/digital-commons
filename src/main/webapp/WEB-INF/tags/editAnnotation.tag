@@ -12,12 +12,12 @@
 
     <div class="form-group edit-form-group">
         <label>Value</label>
-        <input type="text" class="form-control" name="${path}value" placeholder="Value">
+        <input type="text" class="form-control" value="${annotation.value}" name="${path}value" placeholder="Value">
     </div>
 
     <div class="form-group edit-form-group">
         <label>Value IRI</label>
-        <input type="text" class="form-control" name="${path}valueIRI" placeholder="Value IRI">
+        <input type="text" class="form-control" value="${annotation.value}" name="${path}valueIRI" placeholder="Value IRI">
     </div>
 
 </div>

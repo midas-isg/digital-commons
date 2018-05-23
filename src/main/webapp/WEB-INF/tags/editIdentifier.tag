@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="identifier" required="false"
-              type="java.lang.String" %>
+              type="edu.pitt.isg.mdc.dats2_2.Identifier" %>
 <%@ attribute name="path" required="false"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
@@ -36,12 +36,12 @@
 
         <div class="form-group edit-form-group">
             <label>Identifier</label>
-            <input type="text" class="form-control" name="identifier" placeholder="Identifier">
+            <input type="text" class="form-control" value="${identifier.identifier}" name="identifier" placeholder="Identifier">
         </div>
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
-            <input type="text" class="form-control" name="identifierSource" placeholder="Identifier Source">
+            <input type="text" class="form-control" value="${identifier.identifierSource}" name="identifierSource" placeholder="Identifier Source">
         </div>
 
     </div>
@@ -74,6 +74,24 @@
             $(this).parents(".control-group").remove();
             $(".${specifier}-identifier-add-more").show();
         });
+
+        <c:if test="${not empty identifier}">
+        var html = $(".copy-identifier").html();
+        <c:choose>
+        <c:when test="${unbounded}">
+        <c:forEach items="${identifier}" var="singleIdentifier" varStatus="status">
+        html = html.replace('name="identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+        $(".${specifier}-identifier-add-more").after(html);
+        identifierCount += 1;
+        </c:forEach>
+        </c:when>
+        <c:otherwise>
+        html = html.replace('name="identifier"', 'name="${path}.identifier"').replace('name="identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+        $(".${specifier}-identifier-add-more").after(html);
+        $(".${specifier}-identifier-add-more").hide();
+        </c:otherwise>
+        </c:choose>
+        </c:if>
     });
 
 </script>
