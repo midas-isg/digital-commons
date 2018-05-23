@@ -28,8 +28,8 @@
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" name="Identifier"></myTags:editIdentifier>
                     <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
                     <myTags:editType types="${dataset.types}"></myTags:editType>
-                    <myTags:editBiologicalEntity specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
-                    <myTags:editBiologicalEntity specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
+                    <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
+                    <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}" specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
                     <myTags:editStudy specifier="producedBy" path="producedBy"></myTags:editStudy>
                     <myTags:editDistributions specifier="distributions" path="distributions"></myTags:editDistributions>
 

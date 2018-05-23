@@ -11,22 +11,52 @@
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
 
-<div class="form-group edit-form-group">
-    <label>Description</label>
-    <div class="input-group control-group ${specifier}-description-add-more">
-        <div class="input-group-btn">
-            <button class="btn btn-success ${specifier}-add-description" type="button"><i class="glyphicon glyphicon-plus"></i> Add
-                Description
-            </button>
+
+<c:choose>
+    <c:when test="${not empty description}">
+        <div class="form-group edit-form-group">
+            <label>Description</label>
+            <div class="input-group control-group ${specifier}-description-add-more" style="display: none">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-description" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Description
+                    </button>
+                </div>
+            </div>
+            <div class="input-group control-group full-width">
+                <input type="text" class="form-control" value="${description}" name="" id="${specifier}-description" placeholder="Description"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-description-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group">
+            <label>Description</label>
+            <div class="input-group control-group ${specifier}-description-add-more">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-description" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Description
+                    </button>
+                </div>
+            </div>
+        </div>
+    </c:otherwise>
+</c:choose>
+
 
 <div class="copy-description hide">
     <div class="input-group control-group full-width">
         <input type="text" class="form-control" value="${description}" name="" placeholder="Description"/>
         <div class="input-group-btn">
-            <button class="btn btn-danger description-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+            <button class="btn btn-danger description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                Remove
             </button>
         </div>
     </div>
@@ -38,28 +68,20 @@
             e.stopImmediatePropagation();
 
             var html = $(".copy-description").html();
-            html = html.replace('name=""', 'name="${path}"').replace('description-remove', '${specifier}-description-remove');
-
+            html = html.replace('name=""', 'name="${path}" id=${specifier}-description').replace('description-remove', '${specifier}-description-remove');
             //Add section
             $(".${specifier}-description-add-more").after(html);
             $(".${specifier}-description-add-more").hide();
+            $("#${specifier}-description").val("");
+
         });
         //Remove section
         $("body").on("click", ".${specifier}-description-remove", function (e) {
             e.stopImmediatePropagation();
 
-            $(this).parents(".control-group").remove();
+            $(this).parents(".control-group")[0].remove();
             $(".${specifier}-description-add-more").show();
         });
-
-        <c:if test="${not empty description}">
-        var html = $(".copy-description").html();
-        html = html.replace('name=""', 'name="${path}"').replace('description-remove', '${specifier}-description-remove');
-
-        //Add section
-        $(".${specifier}-description-add-more").after(html);
-        $(".${specifier}-description-add-more").hide();
-        </c:if>
     });
 
 </script>
