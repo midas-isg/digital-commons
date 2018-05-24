@@ -4,8 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ attribute name="annotation" required="false"
-              type="edu.pitt.isg.mdc.dats2_2.Annotation" %>
+<%@ attribute name="date" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.Date" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -14,8 +14,19 @@
 <div class="form-group control-group edit-form-group">
     <div class="form-group edit-form-group">
         <label>Date</label>
-        <input type="text" class="form-control" name="${path}.date" id="${specifier}-date-picker">
+        <input type="text" class="form-control" value="${date.date}" name="${path}.date" id="${specifier}-date-picker">
     </div>
-    <myTags:editAnnotation path="${path}.type." annotation="${annotation}"></myTags:editAnnotation>
+    <myTags:editAnnotation path="${path}.type." annotation="${date.type}"></myTags:editAnnotation>
 </div>
 
+<script>
+    $(document).ready(function () {
+
+        $(function () {
+            $("#${specifier}-date-picker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    });
+</script>

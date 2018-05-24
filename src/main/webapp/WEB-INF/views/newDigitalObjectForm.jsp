@@ -30,7 +30,7 @@
                     <myTags:editType types="${dataset.types}"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}" specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
-                    <myTags:editStudy specifier="producedBy" path="producedBy"></myTags:editStudy>
+                    <myTags:editStudy study="${dataset.producedBy}" specifier="producedBy" path="producedBy"></myTags:editStudy>
                     <myTags:editDistributions specifier="distribution" path="distribution"></myTags:editDistributions>
 
                 </div>
