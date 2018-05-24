@@ -10,7 +10,7 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
-<%@ attribute name="name" required="false"
+<%@ attribute name="label" required="false"
               type="java.lang.String" %>
 <%@ attribute name="unbounded" required="false"
               type="java.lang.Boolean" %>
@@ -18,7 +18,7 @@
 <c:choose>
     <c:when test="${not empty identifier}">
         <div class="form-group edit-form-group">
-        <label>${name}</label>
+        <label>${label}</label>
         <c:choose>
             <c:when test="${unbounded}">
                 <c:forEach items="${identifier}" var="singleIdentifier" varStatus="status">
@@ -27,7 +27,7 @@
                             <c:when test="${status.first}">
                                 <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                                         class="glyphicon glyphicon-plus"></i> Add
-                                        ${name}
+                                        ${label}
                                 </button>
                             </c:when>
                             <c:otherwise>
@@ -58,7 +58,7 @@
                     <div class="input-group-btn">
                         <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                                 class="glyphicon glyphicon-plus"></i> Add
-                                ${name}
+                                ${label}
                         </button>
                     </div>
                 </div>
@@ -87,12 +87,12 @@
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <label>${name}</label>
+            <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
-                            ${name}
+                            ${label}
                     </button>
                 </div>
             </div>
@@ -109,13 +109,13 @@
 
         <div class="form-group edit-form-group">
             <label>Identifier</label>
-            <input type="text" class="form-control" value="${identifier.identifier}" name="identifier"
+            <input type="text" class="form-control" value="${identifier.identifier}" name="specifier-identifier"
                    placeholder="Identifier">
         </div>
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
-            <input type="text" class="form-control" value="${identifier.identifierSource}" name="identifierSource"
+            <input type="text" class="form-control" value="${identifier.identifierSource}" name="specifier-identifierSource"
                    placeholder="Identifier Source">
         </div>
 
@@ -132,12 +132,12 @@
             //Add section
             <c:choose>
             <c:when test="${unbounded}">
-            html = html.replace('name="identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+            html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
             $(".${specifier}-identifier-add-more").after(html);
             identifierCount += 1;
             </c:when>
             <c:otherwise>
-            html = html.replace('name="identifier"', 'name="${path}.identifier"').replace('name="identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+            html = html.replace('name="specifier-identifier"', 'name="${path}.identifier"').replace('name="specifier-identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
             $(".${specifier}-identifier-add-more").after(html);
             $(".${specifier}-identifier-add-more").hide();
             </c:otherwise>

@@ -3,13 +3,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="types" required="false"
               type="java.util.ArrayList" %>
 
 
 <c:choose>
     <c:when test="${not empty types}">
-        <c:forEach items="${types}" varStatus="status" var="type">
+        <spring:bind path="types[0]">
+            <div class=" ${status.error ? 'has-error' : ''}">
+            <c:forEach items="${types}" varStatus="status" var="type">
                 <c:choose>
                     <c:when test="${status.first}">
                         <div class="form-group control-group edit-form-group type-add-more">
@@ -116,41 +120,48 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
+                <c:if test="${status.first}">
+                    <form:errors path="types[0]" class="error-color"/>
+                </c:if>
+                </div>
+                <c:set var="typeCount" scope="page" value="${status.count}"/>
 
+            </c:forEach>
             </div>
-            <c:set var = "typeCount" scope = "page" value = "${status.count}"/>
-
-        </c:forEach>
+        </spring:bind>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group type-add-more">
-            <label>Type</label>
-            <button class="btn btn-success add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
-            </button>
-            <br><br>
-            <div>
-                <button class="btn btn-success add-annotation" id="0-add-information" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Information
+        <spring:bind path="types[0]">
+            <div class="form-group edit-form-group type-add-more ${status.error ? 'has-error' : ''}">
+                <label>Type</label>
+                <button class="btn btn-success add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
                 </button>
+                <br><br>
+                <div>
+                    <button class="btn btn-success add-annotation" id="0-add-information" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Information
+                    </button>
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-success add-annotation" id="0-add-method" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Method
+                    </button>
+                </div>
+                <br>
+                <div>
+                    <button class="btn btn-success add-annotation" id="0-add-platform" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Platform
+                    </button>
+                </div>
             </div>
-            <br>
-            <div>
-                <button class="btn btn-success add-annotation" id="0-add-method" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Method
-                </button>
-            </div>
-            <br>
-            <div>
-                <button class="btn btn-success add-annotation" id="0-add-platform" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Platform
-                </button>
-            </div>
-        </div>
-        <c:set var = "typeCount" scope = "page" value = "1"/>
+            <form:errors path="types[0]" class="error-color"/>
 
+            <c:set var="typeCount" scope="page" value="1"/>
+        </spring:bind>
     </c:otherwise>
 </c:choose>
 

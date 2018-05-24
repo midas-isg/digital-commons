@@ -51,14 +51,14 @@
                         <myTags:editIdentifier identifier="${entity.identifier}"
                                                path="${path}[${status.count-1}].identifier"
                                                specifier="${specifier}-${status.count-1}"
-                                               name="Identifier"></myTags:editIdentifier>
+                                               label="Identifier"></myTags:editIdentifier>
                     </div>
 
                     <div class="form-group">
                         <myTags:editIdentifier path="${path}[${status.count-1}].alternateIdentifiers"
                                                unbounded="${true}"
                                                specifier="${specifier}-alternate-${status.count-1}"
-                                               name="Alternate Identifier"></myTags:editIdentifier>
+                                               label="Alternate Identifier"></myTags:editIdentifier>
                     </div>
                 </div>
             </div>
@@ -98,13 +98,13 @@
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].identifier"
                                    specifier="${specifier}-0"
-                                   name="Identifier"></myTags:editIdentifier>
+                                   label="Identifier"></myTags:editIdentifier>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].alternateIdentifiers" unbounded="${true}"
                                    specifier="${specifier}-0-alternate"
-                                   name="Alternate Identifier"></myTags:editIdentifier>
+                                   label="Alternate Identifier"></myTags:editIdentifier>
         </div>
     </div>
 </div>

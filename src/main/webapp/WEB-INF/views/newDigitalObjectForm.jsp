@@ -22,10 +22,10 @@
             <form:form id="entry-form" action="${pageContext.request.contextPath}/testAddDataset" modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
-                    <myTags:editCategory categoryPaths="${categoryPaths}"></myTags:editCategory>
+                    <myTags:editCategory selectedID="${categoryID}" categoryPaths="${categoryPaths}"></myTags:editCategory>
                     <myTags:editTitle></myTags:editTitle>
                     <myTags:editDescription path="description" description="${dataset.description}" specifier="description"></myTags:editDescription>
-                    <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" name="Identifier"></myTags:editIdentifier>
+                    <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" label="Identifier"></myTags:editIdentifier>
                     <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
                     <myTags:editType types="${dataset.types}"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>

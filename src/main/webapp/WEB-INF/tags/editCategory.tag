@@ -6,6 +6,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="categoryPaths" required="false"
               type="java.util.Map" %>
+<%@ attribute name="selectedID" required="false"
+              type="java.lang.Integer" %>
 
 
 <div class="form-group edit-form-group">
@@ -16,6 +18,9 @@
             <c:forEach items="${categoryPaths}" var="categoryPath">
                 <c:choose>
                     <c:when test="${categoryPath.key==0}"><option selected value="${categoryPath.key}">${categoryPath.value}</option></c:when>
+                    <c:when test="${categoryPath.key==selectedID}">
+                        <option selected value="${categoryPath.key}">${categoryPath.value}</option>
+                    </c:when>
                     <c:otherwise>
                         <option value="${categoryPath.key}">${categoryPath.value}</option>
                     </c:otherwise>

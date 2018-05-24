@@ -19,10 +19,10 @@ http://www.springframework.org/schema/context/spring-context-3.2.xsd">
           <!--class="edu.pitt.apollo.aceViewer.controller.test.FileValidator" />-->
 
 
-    <bean id="messageSource"
-          class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="digital_commons" />
-    </bean>
+    <!--<bean id="messageSource"-->
+          <!--class="org.springframework.context.support.ResourceBundleMessageSource">-->
+        <!--<property name="basename" value="digital_commons" />-->
+    <!--</bean>-->
 
 
     <!--<mvc:interceptors>-->

@@ -4,8 +4,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<div class="form-group edit-form-group">
-    <form:label path="title">Title</form:label>
-    <form:input path="title" type="text" class="form-control" placeholder="Title"></form:input>
-</div>
+<spring:bind path="title">
+    <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
+        <form:label path="title">Title</form:label>
+        <form:input path="title" type="text" class="form-control" placeholder="Title"></form:input>
+        <form:errors path="title" class="error-color"/>
+    </div>
+</spring:bind>
