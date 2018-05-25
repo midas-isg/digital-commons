@@ -35,6 +35,7 @@
         <div class="form-group">
             <myTags:editDescription specifier="${specifier}" path="${path}[0].description"></myTags:editDescription>
         </div>
+        <%--THIS SHOULD BE TYPE ANNOTATION--%>
         <%--<div class="form-group">--%>
             <%--<myTags:editType specifier="${specifier}-type" path="${path}[0].type"></myTags:editType>--%>
         <%--</div>--%>

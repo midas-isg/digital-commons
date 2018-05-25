@@ -17,7 +17,7 @@
 
     <div class="form-group edit-form-group">
         <label>Value IRI</label>
-        <input type="text" class="form-control" value="${annotation.value}" name="${path}valueIRI" placeholder="Value IRI">
+        <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}valueIRI" placeholder="Value IRI">
     </div>
 
 </div>

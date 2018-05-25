@@ -20,16 +20,16 @@
             <c:forEach items="${types}" varStatus="status" var="type">
                 <c:choose>
                     <c:when test="${status.first}">
-                        <div class="form-group control-group edit-form-group type-add-more">
+                        <div class="form-group control-group edit-form-group ${specifier}-type-add-more">
                         <label>Type</label>
-                        <button class="btn btn-success add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
+                        <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
                             Add Type
                         </button>
                     </c:when>
                     <c:otherwise>
                         <div class="form-group control-group edit-form-group">
                         <label>Type</label>
-                        <button class="btn btn-danger type-remove" type="button"><i
+                        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
                                 class="glyphicon glyphicon-remove"></i> Remove
                         </button>
                     </c:otherwise>
@@ -39,8 +39,8 @@
                 <div>
                     <c:choose>
                         <c:when test="${not empty type.information}">
-                            <button class="btn btn-success add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-information" type="button"><i
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${status.count-1}-add-information-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
                             </button>
@@ -52,11 +52,11 @@
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.information}"
-                                                       path="types[${status.count-1}].information."></myTags:editAnnotation>
+                                                       path="${path}[${status.count-1}].information."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success add-annotation" id="${status.count-1}-add-information"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-information-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
@@ -69,8 +69,8 @@
                 <div>
                     <c:choose>
                         <c:when test="${not empty type.method}">
-                            <button class="btn btn-success add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-method" type="button"><i
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${status.count-1}-add-method-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
                             </button>
@@ -82,11 +82,11 @@
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.method}"
-                                                       path="types[${status.count-1}].method."></myTags:editAnnotation>
+                                                       path="${path}[${status.count-1}].method."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success add-annotation" id="${status.count-1}-add-method"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-method-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
@@ -99,8 +99,8 @@
                 <div>
                     <c:choose>
                         <c:when test="${not empty type.platform}">
-                            <button class="btn btn-success add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-platform" type="button"><i
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${status.count-1}-add-platform-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
                             </button>
@@ -112,11 +112,11 @@
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.platform}"
-                                                       path="types[${status.count-1}].platform."></myTags:editAnnotation>
+                                                       path="${path}[${status.count-1}].platform."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success add-annotation" id="${status.count-1}-add-platform"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-platform-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
@@ -125,7 +125,7 @@
                     </c:choose>
                 </div>
                 <c:if test="${status.first}">
-                    <form:errors path="types[0]" class="error-color"/>
+                    <form:errors path="${path}[0]" class="error-color"/>
                 </c:if>
                 </div>
                 <c:set var="typeCount" scope="page" value="${status.count}"/>
@@ -135,34 +135,34 @@
         </spring:bind>
     </c:when>
     <c:otherwise>
-        <spring:bind path="types[0]">
-            <div class="form-group edit-form-group type-add-more ${status.error ? 'has-error' : ''}">
+        <spring:bind path="${path}[0]">
+            <div class="form-group edit-form-group ${specifier}-type-add-more ${status.error ? 'has-error' : ''}">
                 <label>Type</label>
-                <button class="btn btn-success add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
+                <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
                 </button>
                 <br><br>
                 <div>
-                    <button class="btn btn-success add-annotation" id="0-add-information" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-information-${specifier}" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Information
                     </button>
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-success add-annotation" id="0-add-method" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-method-${specifier}" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Method
                     </button>
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-success add-annotation" id="0-add-platform" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-platform-${specifier}" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Platform
                     </button>
                 </div>
             </div>
-            <form:errors path="types[0]" class="error-color"/>
+            <form:errors path="${path}[0]" class="error-color"/>
 
             <c:set var="typeCount" scope="page" value="1"/>
         </spring:bind>
@@ -207,25 +207,25 @@
 <div class="copy-type hide">
     <div class="form-group control-group edit-form-group">
         <label>Type</label>
-        <button class="btn btn-danger type-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
         <br><br>
         <div>
-            <button class="btn btn-success add-annotation" id="add-information" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="add-information-${specifier}" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Information
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success add-annotation" id="add-method" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="add-method-${specifier}" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Method
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success add-annotation" id="add-platform" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="add-platform-${specifier}" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Platform
             </button>
@@ -238,23 +238,27 @@
     $(document).ready(function () {
         var typeCount = ${typeCount};
         //Add section
-        $("body").on("click", ".add-type", function () {
+        $("body").on("click", ".${specifier}-add-type", function (e) {
+            e.stopImmediatePropagation();
+
             var html = $(".copy-type").html();
 
             html = html.replace(/id="add/g, 'id="' + typeCount + '-add');
-            $(".type-add-more").after(html);
+            $(".${specifier}-type-add-more").after(html);
             typeCount += 1;
 
         });
 
         //Remove section
-        $("body").on("click", ".type-remove", function () {
+        $("body").on("click", ".${specifier}-type-remove", function () {
             $(this).parents(".control-group").remove();
         });
 
 
         //Show/Hide Annotation
-        $("body").on("click", ".add-annotation", function () {
+        $("body").on("click", ".${specifier}-add-annotation", function (e) {
+            e.stopImmediatePropagation();
+
             var id = event.target.id;
             var count = id.split('-')[0];
             var attributeName = id.split('-')[2];
@@ -276,7 +280,7 @@
 
                 $(this).parents(".control-group")[0].remove();
                 console.log("#" + count + "-add-" + attributeName);
-                $("#" + count + "-add-" + attributeName).show();
+                $("#" + count + "-add-" + attributeName + "-${specifier}").show();
             } else {
                 console.log(event.target);
             }

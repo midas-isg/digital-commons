@@ -42,7 +42,8 @@
             <myTags:editLicense path="${path}.license"
                                    specifier="${specifier}-license"></myTags:editLicense>
         </div>
-        <%--<div class="form-group">--%>
+        <%--THIS SHOULD BE TYPE ANNOTATION--%>
+    <%--<div class="form-group">--%>
             <%--<myTags:editType path="${path}.type"--%>
                                 <%--specifier="${specifier}-type"></myTags:editType>--%>
         <%--</div>--%>
