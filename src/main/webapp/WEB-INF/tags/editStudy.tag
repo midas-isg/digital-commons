@@ -12,7 +12,7 @@
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty study}">
+    <c:when test="${not empty study and not empty study.name}">
         <div class="form-group edit-form-group">
             <label>Produced By</label>
             <div class="input-group control-group ${specifier}-study-add-more" style="display: none">

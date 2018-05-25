@@ -13,7 +13,7 @@
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty entities}">
+    <c:when test="${not empty entities and not empty entities[0].name}">
         <c:forEach items="${entities}" var="entity" varStatus="status">
                 <c:choose>
                     <c:when test="${status.first}">
