@@ -156,12 +156,6 @@
             $(this).after(html);
             $(this).hide();
 
-            $(function() {
-                $("#study-endDate-date-picker").datepicker({
-                    changeMonth:true,
-                    changeYear:true
-                });
-            });
         });
         $("body").on("click", ".end-date-remove", function () {
             $(this).parent(".control-group").remove();

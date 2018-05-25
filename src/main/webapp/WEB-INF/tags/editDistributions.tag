@@ -22,64 +22,32 @@
         <button class="btn btn-danger distribution-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
         <div class="form-group">
-            <myTags:editIdentifier name="Identifier" specifier="${specifier}-" path="${path}.identifier" unbounded="False"></myTags:editIdentifier>
+            <myTags:editIdentifier name="Identifier" specifier="${specifier}-" path="${path}[0].identifier" unbounded="False"></myTags:editIdentifier>
         </div>
-        <div class="form-group edit-form-group">
-            <label>Dates</label>
-            <div class="input-group control-group ${specifier}--date-add-more">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}--add-date" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                        Date
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="${specifier}--copy-date hide">
-            <div class="form-group control-group edit-form-group">
-                <label>Date</label>
-                <br>
-                <button class="btn btn-danger ${specifier}--date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-                <myTags:editDates path="${path}.Date" specifier="${specifier}-date"></myTags:editDates>
-            </div>
-<script>
-    //Show/Hide Date
-    $("body").on("click", "${specifier}--add-date", function () {
-        var htmlDate = $(".${specifier}--copy-date").html();
-
-        $(this).after(htmlDate);
-        $(this).hide();
-
-        $(function() {
-            $("#${specifier}--date-date-picker".datepicker({
-                changeMonth:true,
-                changeYear:true
-            }));
-        });
-    });
-    $("body").on("click", ".${specifier}--date-remove", function () {
-        $(this).parent(".control-group").remove();
-        $(".${specifier}--add-date").show();
-    });
-</script>
-        </div>
+        <myTags:editDatesUnbounded path="${path}[0]" specifier="${specifier}"></myTags:editDatesUnbounded>
+        <myTags:editAccess path="${path}[0].access" specifier="${specifier}-access"></myTags:editAccess>
+        <myTags:editDataStandard path="${path}[0].conformsTo" specifier="${specifier}-conformsTo"></myTags:editDataStandard>
+        <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn" specifier="${specifier}-storedIn"></myTags:editDataRepository>
+        <myTags:editSize path="${path}[0].size" specifier="${specifier}-size"></myTags:editSize>
+        <myTags:editUnit path="${path}[0].unit" specifier="${specifier}-unit"></myTags:editUnit>
+        <myTags:editFormats path="${path}[0].formats" specifier="${specifier}-formats"></myTags:editFormats>
 
     </div>
 </div>
 
 
-
 <script type="text/javascript">
     $(document).ready(function () {
         var distributionCount = 0;
+        var specifier = "${specifier}";
+        var path = "${path}";
         //Add section
         $(".add-distribution").click(function () {
             var html = $(".copy-distribution").html();
-            html = html.replace(/${path}.identifier/g, '${path}['+ distributionCount + '].identifier').replace(/${specifier}--/g,'${specifier}-' + distributionCount + '-');
-            html = html.replace(/${path}.date/g, '${path}['+ distributionCount + '].date');
+            //html = html.replace(/${path}.identifier/g, '${path}['+ distributionCount + '].identifier').replace(/${specifier}--/g,'${specifier}-' + distributionCount + '-');
+            var regexPath = new RegExp(path + '\\[0\\]', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            html = html.replace(regexPath, '${path}['+ distributionCount + ']').replace(regexSpecifier,'${specifier}-' + distributionCount + '-');
 
             $(".distribution-add-more").after(html);
             distributionCount += 1;
