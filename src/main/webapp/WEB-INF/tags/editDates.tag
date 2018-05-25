@@ -14,19 +14,18 @@
 <div class="form-group control-group edit-form-group">
     <div class="form-group edit-form-group">
         <label>Date</label>
-        <input type="text" class="form-control" value="${date.date}" name="${path}.date" id="${specifier}-date-picker">
+        <input type="text" class="form-control date" value="${date.date}" name="${path}.date" id="${specifier}-date-picker">
     </div>
     <myTags:editAnnotation path="${path}.type." annotation="${date.type}"></myTags:editAnnotation>
 </div>
 
 <script>
-    $(document).ready(function () {
-
-        $(function () {
-            $("#${specifier}-date-picker").datepicker({
+    $( document ).on( "focus", "input.date:not(.hasDatepicker)", function() {
+        <%--$("#${specifier}-date-picker").live("click", function () {--%>
+            $(this).datepicker({
                 changeMonth: true,
                 changeYear: true
             });
-        });
+//        });
     });
 </script>

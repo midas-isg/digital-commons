@@ -81,7 +81,7 @@
                                 <button class="btn btn-danger start-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                     Remove
                                 </button>
-                                <myTags:editDates date="${study.startDate}" path="${path}.startDate" specifier="study-startDate"></myTags:editDates>
+                                <myTags:editDates date="${study.startDate}" path="${path}.startDate" specifier="${specifier}-startDate"></myTags:editDates>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -109,7 +109,7 @@
                                 <button class="btn btn-danger end-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                     Remove
                                 </button>
-                                <myTags:editDates date="${study.endDate}" path="${path}.endDate" specifier="study-endDate"></myTags:editDates>
+                                <myTags:editDates date="${study.endDate}" path="${path}.endDate" specifier="${specifier}-endDate"></myTags:editDates>
                             </div>
                         </c:when>
                         <c:otherwise>
