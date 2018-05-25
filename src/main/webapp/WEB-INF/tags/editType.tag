@@ -7,11 +7,15 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="types" required="false"
               type="java.util.ArrayList" %>
+<%@ attribute name="path" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="specifier" required="false"
+              type="java.lang.String" %>
 
 
 <c:choose>
     <c:when test="${not empty types}">
-        <spring:bind path="types[0]">
+        <spring:bind path="${path}[0]">
             <div class=" ${status.error ? 'has-error' : ''}">
             <c:forEach items="${types}" varStatus="status" var="type">
                 <c:choose>
@@ -258,7 +262,7 @@
 
                 var html = $(".copy-annotation-" + attributeName).html();
                 //use '//g' regex for global capture, otherwise only first instance is repalced
-                html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="types[' + count + '].' + attributeName + '.');
+                html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.');
 
                 $(this).after(html);
                 $(this).hide();
