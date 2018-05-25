@@ -73,7 +73,7 @@
     </div>
 
     <div class="${specifier}-copy-values hide">
-        <div class="input-group control-group full-width">
+        <div class="form-group control-group full-width">
             <div class="form-group edit-form-group">
                 <label>Value</label>
                 <div class="input-group-btn">
@@ -111,7 +111,6 @@
             });
             $("body").on("click", ".${specifier}-0-category-remove", function () {
                 $(this).parent(".control-group").remove();
-                console.log($(this).parent());
                 $(".${specifier}-0-add-category").show();
             });
 
@@ -125,7 +124,7 @@
             });
             $("body").on("click", ".${specifier}-0-categoryIRI-remove", function () {
                 $(this).parent(".control-group").remove();
-                console.log($(this).parent());
+                console.log($(this).parent(".control-group"));
                 $(".${specifier}-0-add-categoryIRI").show();
             });
 
