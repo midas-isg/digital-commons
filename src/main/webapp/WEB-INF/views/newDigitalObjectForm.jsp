@@ -27,7 +27,7 @@
                     <myTags:editDescription path="description" description="${dataset.description}" specifier="description"></myTags:editDescription>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" label="Identifier"></myTags:editIdentifier>
                     <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
-                    <myTags:editType types="${dataset.types}"></myTags:editType>
+                    <myTags:editType path="types" types="${dataset.types}"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}" specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
                     <myTags:editStudy study="${dataset.producedBy}" specifier="producedBy" path="producedBy"></myTags:editStudy>
