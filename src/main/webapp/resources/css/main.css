@@ -718,6 +718,7 @@ label[disabled="disabled"] {
     color: #a94442;
 }
 
+
 .frame {
     display: block;
     width: 100vw;
@@ -1041,4 +1042,12 @@ div.container.metadata-container .metadata-column.fancy {
     padding: 5px;
     margin-bottom: 15px;
     margin-top: 5px;
+}
+
+.has-error {
+    border-color: #a94442;
+}
+
+.has-error .edit-form-group {
+    border-color: #a94442;
 }

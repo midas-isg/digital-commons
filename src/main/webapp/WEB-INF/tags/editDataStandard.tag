@@ -26,7 +26,7 @@
         </button>
         <br><br>
         <div class="form-group">
-            <myTags:editIdentifier name="Identifier" specifier="${specifier}-" path="${path}[0].identifier" unbounded="False"></myTags:editIdentifier>
+            <myTags:editIdentifier label="Identifier" specifier="${specifier}-" path="${path}[0].identifier" unbounded="False"></myTags:editIdentifier>
         </div>
         <div class="form-group edit-form-group">
             <label>Name</label>

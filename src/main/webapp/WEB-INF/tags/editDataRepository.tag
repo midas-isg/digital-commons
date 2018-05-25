@@ -36,7 +36,7 @@
         <div class="form-group">
             <myTags:editIdentifier path="${path}.identifier"
                                    specifier="${specifier}-identifier"
-                                   name="Identifier"></myTags:editIdentifier>
+                                   label="Identifier"></myTags:editIdentifier>
         </div>
         <div class="form-group">
             <myTags:editLicense path="${path}.license"

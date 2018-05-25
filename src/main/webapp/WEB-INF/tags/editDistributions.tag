@@ -22,7 +22,7 @@
         <button class="btn btn-danger distribution-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
         <div class="form-group">
-            <myTags:editIdentifier name="Identifier" specifier="${specifier}-" path="${path}[0].identifier" unbounded="False"></myTags:editIdentifier>
+            <myTags:editIdentifier label="Identifier" specifier="${specifier}-0" path="${path}[0].identifier" unbounded="False"></myTags:editIdentifier>
         </div>
         <myTags:editDatesUnbounded path="${path}[0]" specifier="${specifier}"></myTags:editDatesUnbounded>
         <myTags:editAccess path="${path}[0].access" specifier="${specifier}-access"></myTags:editAccess>

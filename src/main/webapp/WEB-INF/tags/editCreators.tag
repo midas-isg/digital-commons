@@ -4,11 +4,12 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ attribute name="creators" required="false"
               type="java.util.ArrayList" %>
 
-
-<div class="form-group edit-form-group creator-add-more">
+<spring:bind path="creators[0]">
+<div class="form-group edit-form-group creator-add-more ${status.error ? 'has-error' : ''}">
     <label>Creator</label>
     <button class="btn btn-success add-creator" type="button"><i class="glyphicon glyphicon-plus"></i> Add Creator</button>
 
@@ -26,8 +27,9 @@
         <label>Email</label>
         <input type="email" class="form-control" value="${creators[0].email}" name="creators[0].email" placeholder="Email">
     </div>
+    <form:errors path="creators[0]" class="error-color"/>
 </div>
-
+</spring:bind>
 
 <div class="copy-creator hide">
     <div class="form-group  control-group edit-form-group">

@@ -15,8 +15,10 @@ import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import edu.pitt.isg.dc.validator.DatasetValidator;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -26,6 +28,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
@@ -66,6 +70,14 @@ public class DataEntryController {
 
     @Autowired
     private ApiUtil apiUtil;
+    @Autowired
+    DatasetValidator datasetValidator;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.setValidator(datasetValidator);
+    }
 
     private Converter converter = new Converter();
 
@@ -133,11 +145,14 @@ public class DataEntryController {
     public String testAddNewEntry(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
+        model.addAttribute("categoryID",0);
+
         if(entryId != null) {
             Entry entry = apiUtil.getEntryById(entryId);
             EntryView entryView = new EntryView(entry);
 
             dataset =converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+            model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
 
@@ -159,10 +174,10 @@ public class DataEntryController {
     }
 
     @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataset") Dataset dataset,
+    public String submit(@Valid @ModelAttribute("dataset") @Validated Dataset dataset,
                          BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "error";
+            return "newDigitalObjectForm";
         }
 //        model.addAttribute("name", employee.getName());
 //        model.addAttribute("contactNumber", employee.getContactNumber());

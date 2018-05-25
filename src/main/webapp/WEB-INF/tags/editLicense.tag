@@ -17,7 +17,7 @@
     </button>
 </div>
 <div class="form-group edit-form-group">
-    <myTags:editIdentifier name="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
+    <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
 </div>
 <div class="input-group-btn">
     <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
@@ -42,7 +42,7 @@
 
 <div class="${specifier}-copy-license hide">
     <div class="form-group edit-form-group">
-        <myTags:editIdentifier name="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
+        <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
     </div>
     <div class="input-group-btn">
         <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
