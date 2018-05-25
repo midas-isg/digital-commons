@@ -12,7 +12,7 @@
 
 <div class="form-group edit-form-group">
     <label>Dates</label>
-    <div class="input-group control-group ${specifier}-date-add-more">
+    <div class="form-group control-group ${specifier}-date-add-more">
         <div class="input-group-btn">
             <button class="btn btn-success ${specifier}-add-date" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
@@ -25,14 +25,12 @@
 <div class="${specifier}-copy-date hide">
     <div class="form-group control-group edit-form-group">
         <label>Date</label>
-        <br>
+        <br><br>
         <button class="btn btn-danger ${specifier}-date--remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
         <br><br>
-        <div class="form-group">
-            <myTags:editDates path="${path}.dates[0]" specifier="${specifier}-date-"></myTags:editDates>
-        </div>
+        <myTags:editDates path="${path}.dates[0]" specifier="${specifier}-date-"></myTags:editDates>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
