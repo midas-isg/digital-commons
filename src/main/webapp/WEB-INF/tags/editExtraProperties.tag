@@ -37,14 +37,14 @@
                 Category IRI
             </button>
         </div>
-        <%--<br>--%>
-        <%--<div>--%>
-            <%--<button class="btn btn-success ${specifier}-0-add-values" id="${specifier}-0-add-values" type="button"><i--%>
-                    <%--class="glyphicon glyphicon-plus"></i> Add--%>
-                <%--Value--%>
-            <%--</button>--%>
-        <%--</div>--%>
-        <%--<br>--%>
+        <br>
+        <div>
+            <button class="btn btn-success ${specifier}-0-add-values" id="${specifier}-0-add-values" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add
+                Value
+            </button>
+        </div>
+        <br>
     </div>
 
     <div class="${specifier}-0-copy-category hide">
@@ -70,6 +70,33 @@
                 </button>
             </div>
         </div>
+    </div>
+
+    <div class="${specifier}-copy-values hide">
+        <div class="input-group control-group full-width">
+            <div class="form-group edit-form-group">
+                <label>Value</label>
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-0-values-0-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
+                <myTags:editAnnotation path="${path}[0].values[0]."></myTags:editAnnotation>
+                <%--<div class="form-group">--%>
+                    <%--<myTags:editAnnotation path="${path}[0].values[0]."></myTags:editAnnotation>--%>
+                <%--</div>--%>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                //Hide Values
+                $("body").on("click", ".${specifier}-0-values-0-remove", function () {
+                    $(this).parent(".control-group").remove();
+                    //$(".${specifier}-add-values").show();
+                });
+
+            });
+        </script>
     </div>
 
     <script type="text/javascript">
@@ -101,6 +128,27 @@
                 console.log($(this).parent());
                 $(".${specifier}-0-add-categoryIRI").show();
             });
+
+            var valuesCount = 0;
+            //Show/Hide Values
+            $("body").on("click", ".${specifier}-0-add-values", function (e) {
+                var specifier = "${specifier}-values";
+                var path = "${path}.values";
+                var html = $(".${specifier}-copy-values").html();
+                console.log(html);
+                var regexEscapeOpenBracket = new RegExp('\\[',"g");
+                var regexEscapeClosedBracket = new RegExp('\\]',"g");
+                path = path.replace(regexEscapeOpenBracket,'\\[').replace(regexEscapeClosedBracket,'\\]');
+                var regexPath = new RegExp(path + '\\[0\\]', "g");
+                var regexSpecifier = new RegExp(specifier + '\\-0', "g");
+                html = html.replace(regexPath, '${path}['+ valuesCount + ']').replace(regexSpecifier,'${specifier}-' + valuesCount);
+
+                $(this).after(html);
+                valuesCount += 1;
+                //$(this).hide();
+                e.stopImmediatePropagation()
+            });
+
         });
     </script>
 </div>
@@ -121,7 +169,7 @@
             var html = $(".${specifier}-copy").html();
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}['+ extraPropertiesCount + ']').replace(regexSpecifier,'${specifier}-' + extraPropertiesCount + '-');
+            html = html.replace(regexPath, '${path}['+ extraPropertiesCount + ']').replace(regexSpecifier,'${specifier}-' + extraPropertiesCount);
 
             //console.log(html);
             $(this).after(html);
