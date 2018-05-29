@@ -35,21 +35,21 @@
                 <div class="form-group edit-form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" value="${creator.firstName}"
-                           name="${creators[status.count-1].firstName}"
-                           placeholder=" Last Name">
+                           name="creators[${status.count-1}].firstName"
+                           placeholder=" First Name">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" value="${creator.lastName}"
-                           name="${creators[status.count-1].lastName}"
+                           name="creators[${status.count-1}].lastName"
                            placeholder="Last Name">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" value="${creator.email}"
-                           name="${creators[status.count-1].email}"
+                           name="creators[${status.count-1}].email"
                            placeholder="Email">
                 </div>
                 <c:if test="${status.first}">
@@ -74,7 +74,7 @@
                     <label>First Name</label>
                     <input type="text" class="form-control" value="${creators[0].firstName}"
                            name="creators[0].firstName"
-                           placeholder="Last Name">
+                           placeholder="First Name">
                 </div>
 
                 <div class="form-group edit-form-group">
