@@ -8,28 +8,92 @@
 <%@ attribute name="creators" required="false"
               type="java.util.ArrayList" %>
 
-<spring:bind path="creators[0]">
-<div class="form-group edit-form-group creator-add-more ${status.error ? 'has-error' : ''}">
-    <label>Creator</label>
-    <button class="btn btn-success add-creator" type="button"><i class="glyphicon glyphicon-plus"></i> Add Creator</button>
 
-    <div class="form-group edit-form-group">
-        <label>First Name</label>
-        <input type="text" class="form-control" value="${creators[0].firstName}" name="creators[0].firstName" placeholder="Last Name">
-    </div>
+<c:choose>
+    <c:when test="${not empty creators}">
+        <spring:bind path="creators[0]">
+            <div class=" ${status.error ? 'has-error' : ''}">
+            <c:forEach items="${creators}" varStatus="status" var="creator">
+                <c:choose>
+                    <c:when test="${status.first}">
+                        <div class="form-group edit-form-group creator-add-more">
+                        <label>Creator</label>
+                        <button class="btn btn-success add-creator" type="button"><i
+                                class="glyphicon glyphicon-plus"></i> Add Creator
+                        </button>
+                    </c:when>
+                    <c:otherwise>
 
-    <div class="form-group edit-form-group">
-        <label>Last Name</label>
-        <input type="text" class="form-control" value="${creators[0].lastName}" name="creators[0].lastName" placeholder="Last Name">
-    </div>
+                        <div class="form-group control-group edit-form-group">
+                        <label>Creator</label>
+                        <button class="btn btn-danger creator-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i> Remove
+                        </button>
+                    </c:otherwise>
+                </c:choose>
 
-    <div class="form-group edit-form-group">
-        <label>Email</label>
-        <input type="email" class="form-control" value="${creators[0].email}" name="creators[0].email" placeholder="Email">
-    </div>
-    <form:errors path="creators[0]" class="error-color"/>
-</div>
-</spring:bind>
+                <div class="form-group edit-form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" value="${creator.firstName}"
+                           name="${creators[status.count-1].firstName}"
+                           placeholder=" Last Name">
+                </div>
+
+                <div class="form-group edit-form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" value="${creator.lastName}"
+                           name="${creators[status.count-1].lastName}"
+                           placeholder="Last Name">
+                </div>
+
+                <div class="form-group edit-form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" value="${creator.email}"
+                           name="${creators[status.count-1].email}"
+                           placeholder="Email">
+                </div>
+                <c:if test="${status.first}">
+
+                    <form:errors path="creators[0]" class="error-color"/>
+                </c:if>
+
+                </div>
+            </c:forEach>
+            </div>
+        </spring:bind>
+    </c:when>
+    <c:otherwise>
+        <spring:bind path="creators[0]">
+            <div class="form-group edit-form-group creator-add-more ${status.error ? 'has-error' : ''}">
+                <label>Creator</label>
+                <button class="btn btn-success add-creator" type="button"><i class="glyphicon glyphicon-plus"></i> Add
+                    Creator
+                </button>
+
+                <div class="form-group edit-form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" value="${creators[0].firstName}"
+                           name="creators[0].firstName"
+                           placeholder="Last Name">
+                </div>
+
+                <div class="form-group edit-form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" value="${creators[0].lastName}" name="creators[0].lastName"
+                           placeholder="Last Name">
+                </div>
+
+                <div class="form-group edit-form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" value="${creators[0].email}" name="creators[0].email"
+                           placeholder="Email">
+                </div>
+                <form:errors path="creators[0]" class="error-color"/>
+            </div>
+        </spring:bind>
+    </c:otherwise>
+</c:choose>
+
 
 <div class="copy-creator hide">
     <div class="form-group  control-group edit-form-group">
@@ -65,7 +129,7 @@
 //            });
 
             var html = $(".copy-creator").html();
-            html = html.replace('name="firstName"', 'name="creators['+ creatorCount + '].firstName"').replace('name="lastName"', 'name="creators['+ creatorCount + '].lastName"').replace('name="email"', 'name="creators['+ creatorCount + '].email"');
+            html = html.replace('name="firstName"', 'name="creators[' + creatorCount + '].firstName"').replace('name="lastName"', 'name="creators[' + creatorCount + '].lastName"').replace('name="email"', 'name="creators[' + creatorCount + '].email"');
             creatorCount += 1;
 
             $(".creator-add-more").after(html);
@@ -75,17 +139,5 @@
         $("body").on("click", ".creator-remove", function () {
             $(this).parents(".control-group").remove();
         });
-        
-        <c:if test="${not empty creators and fn:length(creators) gt 1}">
-        <c:forEach items="${creators}" var="person" varStatus="status">
-        <c:if test="${not status.first}">
-        var html = $(".copy-creator").html();
-        html = html.replace('name="firstName"', 'name="creators[${status.count-1}].firstName" value="${creators[status.count-1].firstName}"').replace('name="lastName"', 'name="creators[${status.count-1}].lastName" value="${creators[status.count-1].lastName}"').replace('name="email"', 'name="creators[${status.count-1}].email" value="${creators[status.count-1].email}"');
-        creatorCount += 1;
-        $(".creator-add-more").after(html);
-        </c:if>
-        </c:forEach>
-        </c:if>
-
     });
 </script>
