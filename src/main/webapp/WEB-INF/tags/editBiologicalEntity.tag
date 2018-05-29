@@ -88,7 +88,7 @@
         <br><br>
         <div class="form-group edit-form-group">
             <label>Name</label>
-            <input name="${specifier}[0].name" type="text" class="form-control" placeholder="Name">
+            <input name="name" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="form-group">
             <myTags:editDescription path="${path}[0].description"
@@ -118,6 +118,7 @@
         //Add section
         $("body").on("click", ".${specifier}-add-biological-entity", function () {
             var html = $(".${specifier}-copy-biological-entity").html();
+            html = html.replace('name="name"', 'name=${specifier}[' + count + '].name');
             var regex = new RegExp(specifier + '\\[0\\]', "g");
             html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>").replace(regex, specifier+'[' + count + ']');
             regex = new RegExp(specifier + '-0', "g");
