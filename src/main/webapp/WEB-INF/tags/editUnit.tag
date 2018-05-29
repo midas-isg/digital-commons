@@ -27,10 +27,7 @@
             Remove
         </button>
         <br><br>
-        <div class="form-group edit-form-group">
-            <label>unit</label>
-            <myTags:editAnnotation path="${path}."></myTags:editAnnotation>
-        </div>
+        <myTags:editAnnotation path="${path}."></myTags:editAnnotation>
     </div>
 </div>
 

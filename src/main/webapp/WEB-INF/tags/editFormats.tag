@@ -31,7 +31,7 @@
         $(document).ready(function () {
             //Hide Formats
             $("body").on("click", ".${specifier}-0-remove", function () {
-                $(this).parent(".control-group").remove();
+                $(this).closest(".control-group").remove();
                 //$(".${specifier}-add-formats").show();
             });
 

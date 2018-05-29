@@ -48,7 +48,7 @@
     </div>
 
     <div class="${specifier}-0-copy-category hide">
-        <div class="form-group control-group edit-form-group full-width">
+        <div class="input-group control-group edit-form-group full-width">
             <label>Category</label>
             <input name="${path}[0].Category" type="text" class="form-control" placeholder="Category">
             <div class="input-group-btn">
@@ -61,7 +61,7 @@
 
 
     <div class="${specifier}-0-copy-categoryIRI hide">
-        <div class="form-group control-group edit-form-group full-width">
+        <div class="input-group control-group edit-form-group full-width">
             <label>Category IRI</label>
             <input name="${path}[0].CategoryIRI" type="text" class="form-control" placeholder="Category IRI">
             <div class="input-group-btn">
@@ -91,7 +91,7 @@
             $(document).ready(function () {
                 //Hide Values
                 $("body").on("click", ".${specifier}-0-values-0-remove", function () {
-                    $(this).parent(".control-group").remove();
+                    $(this).closest(".control-group").remove();
                     //$(".${specifier}-add-values").show();
                 });
 
@@ -110,7 +110,7 @@
                 e.stopImmediatePropagation()
             });
             $("body").on("click", ".${specifier}-0-category-remove", function () {
-                $(this).parent(".control-group").remove();
+                $(this).closest(".control-group").remove();
                 $(".${specifier}-0-add-category").show();
             });
 
@@ -123,7 +123,7 @@
                 e.stopImmediatePropagation()
             });
             $("body").on("click", ".${specifier}-0-categoryIRI-remove", function () {
-                $(this).parent(".control-group").remove();
+                $(this).closest(".control-group").remove();
                 console.log($(this).parent(".control-group"));
                 $(".${specifier}-0-add-categoryIRI").show();
             });
@@ -148,6 +148,10 @@
                 e.stopImmediatePropagation()
             });
 
+            $("body").on("click", ".${specifier}-0-remove", function () {
+                $(this).closest(".control-group").remove();
+                //$(".${specifier}-0-add").show();
+            });
         });
     </script>
 </div>
@@ -170,15 +174,11 @@
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
             html = html.replace(regexPath, '${path}['+ extraPropertiesCount + ']').replace(regexSpecifier,'${specifier}-' + extraPropertiesCount);
 
-            //console.log(html);
+            //console.log($(this));
             $(this).after(html);
             //$(this).hide();
             extraPropertiesCount += 1;
             e.stopImmediatePropagation()
-        });
-        $("body").on("click", ".${specifier}-0-remove", function () {
-            $(this).parent(".control-group").remove();
-            $(".${specifier}-0-add").show();
         });
 
     });

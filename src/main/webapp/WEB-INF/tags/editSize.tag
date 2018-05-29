@@ -20,16 +20,13 @@
 </div>
 
 <div class="${specifier}-copy-size hide">
-    <div class="form-group control-group edit-form-group">
-        <label></label>
-        <br>
-        <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
-        <div class="form-group edit-form-group">
-            <label>Size</label>
-            <input name="${path}" type="text" class="form-control" placeholder="Size">
+    <div class="input-group control-group edit-form-group full-width">
+        <label>Size</label>
+        <input name="${path}" type="text" class="form-control" placeholder="Size">
+        <div class="input-group-btn">
+            <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
         </div>
     </div>
 </div>
@@ -46,7 +43,7 @@
             //e.stopImmediatePropagation()
         });
         $("body").on("click", ".${specifier}-remove", function () {
-            $(this).parent(".control-group").remove();
+            $(this).closest(".control-group").remove();
             $(".${specifier}-add-size").show();
         });
 

@@ -24,16 +24,13 @@
 </div>
 
 <div class="${specifier}-copy-accessURL hide">
-    <div class="form-group control-group edit-form-group">
-        <label></label>
-        <br>
-        <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
-        <div class="form-group edit-form-group">
-            <label>Access URL</label>
-            <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
+    <div class="input-group control-group edit-form-group full-width">
+        <label>Access URL</label>
+        <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
+        <div class="input-group-btn">
+            <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
         </div>
     </div>
 </div>
@@ -50,7 +47,7 @@
             //e.stopImmediatePropagation()
         });
         $("body").on("click", ".${specifier}-accessURL-remove", function () {
-            $(this).parent(".control-group").remove();
+            $(this).closest(".control-group").remove();
             $(".${specifier}-add-accessURL").show();
         });
 

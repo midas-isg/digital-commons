@@ -26,7 +26,7 @@
         </div>
         <myTags:editDatesUnbounded path="${path}[0]" specifier="${specifier}"></myTags:editDatesUnbounded>
         <myTags:editAccess path="${path}[0].access" specifier="${specifier}-access"></myTags:editAccess>
-        <myTags:editDataStandard path="${path}[0].conformsTo" specifier="${specifier}-conformsTo"></myTags:editDataStandard>
+        <myTags:editDataStandard name="Conforms To" path="${path}[0].conformsTo" specifier="${specifier}-conformsTo"></myTags:editDataStandard>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn" specifier="${specifier}-storedIn"></myTags:editDataRepository>
         <myTags:editSize path="${path}[0].size" specifier="${specifier}-size"></myTags:editSize>
         <myTags:editUnit path="${path}[0].unit" specifier="${specifier}-unit"></myTags:editUnit>
