@@ -41,41 +41,59 @@
 </div>
 
 <div class="${specifier}-copy-license hide">
-    <div class="form-group edit-form-group">
-        <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
-    </div>
-    <div class="input-group-btn">
-        <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
-            Version
+    <div class="form-group control-group edit-form-group">
+        <label>License</label>
+        <br>
+        <button class="btn btn-danger ${specifier}-0-license-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+            Remove
         </button>
-    </div>
+        <br><br>
+        <div class="form-group">
+            <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
+        </div>
+        <div class="input-group-btn">
+            <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add
+                Version
+            </button>
+        </div>
 
-    <div class="${specifier}-0-copy-version hide">
-        <div class="input-group control-group edit-form-group full-width">
-            <label>Version</label>
-            <input name="${path}.version[0]" type="text" class="form-control" placeholder="Version">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
+        <div class="${specifier}-0-copy-version hide">
+            <div class="input-group control-group edit-form-group full-width">
+                <label>Version</label>
+                <input name="${path}.version[0]" type="text" class="form-control" placeholder="Version">
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
             </div>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    //Show/Hide Location
+                    $("body").on("click", ".${specifier}-0-add-version", function (e) {
+                        var html = $(".${specifier}-0-copy-version").html();
+
+                        $(this).after(html);
+                        $(this).hide();
+                        e.stopImmediatePropagation()
+                    });
+                    $("body").on("click", ".${specifier}-0-version-remove", function () {
+                        //console.log($(this).closest('.control-group'));
+                        $(this).closest(".control-group").remove();
+                        //$(this).parent(".control-group").remove();
+                        $(".${specifier}-0-add-version").show();
+                    });
+
+                });
+            </script>
         </div>
         <script type="text/javascript">
             $(document).ready(function () {
-                //Show/Hide Location
-                $("body").on("click", ".${specifier}-0-add-version", function (e) {
-                    var html = $(".${specifier}-0-copy-version").html();
-
-                    $(this).after(html);
-                    $(this).hide();
-                    e.stopImmediatePropagation()
-                });
-                $("body").on("click", ".${specifier}-0-version-remove", function () {
+                $("body").on("click", ".${specifier}-0-license-remove", function () {
                     $(this).parent(".control-group").remove();
-                    $(".${specifier}-0-add-version").show();
+                    $(".${specifier}-0-add-license").show();
                 });
-
             });
         </script>
     </div>
@@ -116,13 +134,9 @@
 
             //console.log(html);
             $(this).after(html);
-            $(this).hide();
+            //$(this).hide();
             licenseCount += 1;
             e.stopImmediatePropagation()
-        });
-        $("body").on("click", ".${specifier}-0-license-remove", function () {
-            $(this).parent(".control-group").remove();
-            $(".${specifier}-0-add-license").show();
         });
 
     });

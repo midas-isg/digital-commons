@@ -21,7 +21,7 @@
     <div class="form-group control-group edit-form-group">
         <label>Conforms To</label>
         <br>
-        <button class="btn btn-danger ${specifier}[0]-dataStandard-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+        <button class="btn btn-danger ${specifier}-0-dataStandard-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
         <br><br>
@@ -35,10 +35,9 @@
         <div class="form-group">
             <myTags:editDescription specifier="${specifier}" path="${path}[0].description"></myTags:editDescription>
         </div>
-        <%--THIS SHOULD BE TYPE ANNOTATION--%>
-        <%--<div class="form-group">--%>
-            <%--<myTags:editType specifier="${specifier}-type" path="${path}[0].type"></myTags:editType>--%>
-        <%--</div>--%>
+        <div class="form-group">
+            <myTags:editAnnotation path="${path}[0].type"></myTags:editAnnotation>
+        </div>
         <div class="form-group">
             <myTags:editLicense specifier="${specifier}-licenses" path="${path}[0].licenses"></myTags:editLicense>
         </div>
@@ -48,7 +47,7 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $("body").on("click", ".${specifier}-dataStandard-remove", function () {
+            $("body").on("click", ".${specifier}-0-dataStandard-remove", function () {
                 $(this).parent(".control-group").remove();
                 $(".${specifier}-add-dataStandard").show();
             });

@@ -42,11 +42,9 @@
             <myTags:editLicense path="${path}.license"
                                    specifier="${specifier}-license"></myTags:editLicense>
         </div>
-        <%--THIS SHOULD BE TYPE ANNOTATION--%>
-    <%--<div class="form-group">--%>
-            <%--<myTags:editType path="${path}.type"--%>
-                                <%--specifier="${specifier}-type"></myTags:editType>--%>
-        <%--</div>--%>
+        <div class="form-group">
+            <myTags:editAnnotation path="${path}.type"></myTags:editAnnotation>
+        </div>
         <div class="form-group">
             <label>Version</label>
             <button class="btn btn-success ${specifier}-add-version" type="button"><i
