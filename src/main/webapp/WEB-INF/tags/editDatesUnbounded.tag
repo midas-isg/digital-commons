@@ -13,7 +13,7 @@
 <div class="form-group edit-form-group">
     <label>Dates</label>
     <div class="form-group control-group ${specifier}-date-add-more">
-        <div class="input-group-btn">
+        <div class="form-group">
             <button class="btn btn-success ${specifier}-add-date" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Date
@@ -25,7 +25,6 @@
 <div class="${specifier}-copy-date hide">
     <div class="form-group control-group edit-form-group">
         <label>Date</label>
-        <br><br>
         <button class="btn btn-danger ${specifier}-date--remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>

@@ -11,7 +11,7 @@
 
 <div class="form-group edit-form-group">
     <form:label path="${path}">Unit</form:label>
-    <div class="input-group-btn">
+    <div class="form-group">
         <button class="btn btn-success ${specifier}-add-unit" type="button"><i
                 class="glyphicon glyphicon-plus"></i> Add
             Unit
@@ -21,7 +21,7 @@
 
 <div class="${specifier}-copy-unit hide">
     <div class="form-group control-group edit-form-group">
-        <label></label>
+        <label>Unit</label>
         <br>
         <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove

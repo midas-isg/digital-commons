@@ -11,19 +11,23 @@
 
 <div class="form-group edit-form-group">
     <label>Extra Properties</label>
-    <button class="btn btn-success ${specifier}-add" type="button"><i
-            class="glyphicon glyphicon-plus"></i> Add
-        Extra Properties
-    </button>
+    <div class="form-group">
+        <button class="btn btn-success ${specifier}-add" type="button"><i
+                class="glyphicon glyphicon-plus"></i> Add
+            Extra Properties
+        </button>
+    </div>
 </div>
 
 <div class="${specifier}-copy hide">
     <div class="form-group control-group edit-form-group">
         <label>Extra Properties</label>
-        <button class="btn btn-danger ${specifier}-0-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
+        <div class="form-group">
+            <button class="btn btn-danger ${specifier}-0-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
+        </div>
+        <br>
         <div>
             <button class="btn btn-success ${specifier}-0-add-category" id="${specifier}-0-add-category" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
@@ -50,11 +54,13 @@
     <div class="${specifier}-0-copy-category hide">
         <div class="input-group control-group edit-form-group full-width">
             <label>Category</label>
-            <input name="${path}[0].Category" type="text" class="form-control" placeholder="Category">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-category-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
+            <div class="input-group">
+                <input name="${path}[0].Category" type="text" class="form-control" placeholder="Category">
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-0-category-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -63,11 +69,13 @@
     <div class="${specifier}-0-copy-categoryIRI hide">
         <div class="input-group control-group edit-form-group full-width">
             <label>Category IRI</label>
-            <input name="${path}[0].CategoryIRI" type="text" class="form-control" placeholder="Category IRI">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-categoryIRI-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
+            <div class="input-group">
+                <input name="${path}[0].CategoryIRI" type="text" class="form-control" placeholder="Category IRI">
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-0-categoryIRI-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
             </div>
         </div>
     </div>

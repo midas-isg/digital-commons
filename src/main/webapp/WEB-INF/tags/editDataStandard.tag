@@ -23,7 +23,7 @@
 
 <div class="${specifier}-copy-dataStandard hide">
     <div class="form-group control-group edit-form-group">
-        <label></label>
+        <label>${name}</label>
         <br>
         <button class="btn btn-danger ${specifier}-0-dataStandard-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
@@ -40,7 +40,7 @@
             <myTags:editDescription specifier="${specifier}" path="${path}[0].description"></myTags:editDescription>
         </div>
         <div class="form-group edit-form-group">
-            <label>Types</label>
+            <label>Type</label>
             <myTags:editAnnotation path="${path}[0].type."></myTags:editAnnotation>
         </div>
         <div class="form-group">
@@ -48,10 +48,12 @@
         </div>
         <div class="form-group edit-form-group">
             <label>Version</label>
-            <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Version
-            </button>
+            <div class="form-group">
+                <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    Version
+                </button>
+            </div>
         </div>
         <div class="form-group">
             <myTags:editExtraProperties specifier="${specifier}-0-extraProperties" path="${path}[0].extraProperties"></myTags:editExtraProperties>

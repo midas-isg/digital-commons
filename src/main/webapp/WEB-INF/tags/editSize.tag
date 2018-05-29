@@ -11,7 +11,7 @@
 
 <div class="form-group edit-form-group">
     <form:label path="${path}">Size</form:label>
-    <div class="input-group-btn">
+    <div class="form-group">
         <button class="btn btn-success ${specifier}-add-size" type="button"><i
                 class="glyphicon glyphicon-plus"></i> Add
             Size

@@ -11,10 +11,12 @@
 
 <div class="form-group edit-form-group">
     <label>License</label>
-    <button class="btn btn-success ${specifier}-add-license" type="button"><i
-            class="glyphicon glyphicon-plus"></i> Add
-        License
-    </button>
+    <div class="form-group">
+        <button class="btn btn-success ${specifier}-add-license" type="button"><i
+                class="glyphicon glyphicon-plus"></i> Add
+            License
+        </button>
+    </div>
 </div>
 
 <div class="${specifier}-0-copy-version hide">
@@ -51,16 +53,18 @@
         <div class="form-group">
             <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
         </div>
-        <div class="input-group-btn">
-            <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Version
-            </button>
+        <div class="form-group edit-form-group">
+            <label>Version</label>
+            <div class="input-group-btn">
+                <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    Version
+                </button>
+            </div>
         </div>
 
         <div class="${specifier}-0-copy-version hide">
             <div class="input-group control-group edit-form-group full-width">
-                <label>Version</label>
                 <input name="${path}[0].version" type="text" class="form-control" placeholder="Version">
                 <div class="input-group-btn">
                     <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i class="glyphicon glyphicon-remove"></i>

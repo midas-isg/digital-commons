@@ -11,10 +11,12 @@
 
 <div class="form-group edit-form-group formats-add-more">
     <label>Formats</label>
+    <div class="form-group">
         <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                 class="glyphicon glyphicon-plus"></i> Add
             Formats
         </button>
+    </div>
 </div>
 
 

@@ -15,7 +15,7 @@
         <label>Landing Page</label>
         <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
     </div>
-    <div class="input-group-btn">
+    <div class="form-group">
         <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
                 class="glyphicon glyphicon-plus"></i> Add
             Access URL
@@ -26,11 +26,13 @@
 <div class="${specifier}-copy-accessURL hide">
     <div class="input-group control-group edit-form-group full-width">
         <label>Access URL</label>
-        <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
-        <div class="input-group-btn">
-            <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
+        <div class="input-group edit-form-group">
+            <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
+            <div class="input-group-btn">
+                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+            </div>
         </div>
     </div>
 </div>

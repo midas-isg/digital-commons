@@ -13,7 +13,9 @@
 
 <div class="form-group edit-form-group distribution-add-more">
     <label>Distribution</label>
-    <button class="btn btn-success add-distribution" type="button"><i class="glyphicon glyphicon-plus"></i> Add Distribution</button>
+    <div class="form-group">
+        <button class="btn btn-success add-distribution" type="button"><i class="glyphicon glyphicon-plus"></i> Add Distribution</button>
+    </div>
 </div>
 
 <div class="copy-distribution hide">

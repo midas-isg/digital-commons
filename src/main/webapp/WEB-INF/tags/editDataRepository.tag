@@ -48,23 +48,31 @@
                     class="glyphicon glyphicon-plus"></i> Add
                 Types
             </button>
-            <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
+            <div class="form-group edit-form-group">
+                <label>Type</label>
+                <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
+            </div>
         </div>
         <div class="form-group">
             <label>Version</label>
-            <button class="btn btn-success ${specifier}-add-version" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Version
-            </button>
+            <div class="form-group">
+                <button class="btn btn-success ${specifier}-add-version" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    Version
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="${specifier}-copy-types hide">
     <div class="form-group control-group edit-form-group full-width">
-        <button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
+        <label>Type</label>
+        <div class="form-group">
+            <button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
+        </div>
         <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
     </div>
     <script type="text/javascript">
