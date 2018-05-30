@@ -32,7 +32,7 @@
                     <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}" specifier="spatialCoverage" name="Spatial Coverage"></myTags:editBiologicalEntity>
                     <myTags:editStudy study="${dataset.producedBy}" specifier="producedBy" path="producedBy"></myTags:editStudy>
                     <myTags:editDistributions specifier="distributions" path="distributions"></myTags:editDistributions>
-                    <myTags:editExtraProperties specifier="extraProperties" path="extraProperties"></myTags:editExtraProperties>
+                    <myTags:editExtraProperties categoryValuePairs="${dataset.extraProperties}" specifier="extraProperties" path="extraProperties"></myTags:editExtraProperties>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
