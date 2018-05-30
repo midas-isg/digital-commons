@@ -73,7 +73,7 @@
                         </button>
                     </c:otherwise>
                 </c:choose>
-
+                <br><br>
                 <c:choose>
                     <c:when test="${not empty categoryValuePair.categoryIRI}">
                         <div>

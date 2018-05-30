@@ -6,6 +6,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.util.List;
 import java.util.ListIterator;
 
 @Component
@@ -86,6 +87,25 @@ public class DatasetValidator implements Validator {
 
             if (hasError) {
                 errors.rejectValue("types[0]", "NotEmpty.dataset.type");
+            }
+        }
+
+        // Remove empty extra properties
+        if(dataset.getExtraProperties().size() > 0) {
+            ListIterator<CategoryValuePair> iterator = dataset.getExtraProperties().listIterator();
+            while (iterator.hasNext()) {
+                CategoryValuePair property = iterator.next();
+                ListIterator<Annotation> valueIterator = property.getValues().listIterator();
+                while(valueIterator.hasNext()) {
+                    Annotation value = valueIterator.next();
+                    if(isEmpty(value.getValue()) && isEmpty(value.getValueIRI())) {
+                        valueIterator.remove();
+                    }
+                }
+
+                if(isEmpty(property.getCategory()) && isEmpty(property.getCategoryIRI()) && property.getValues().size() == 0) {
+                    iterator.remove();
+                }
             }
         }
 
