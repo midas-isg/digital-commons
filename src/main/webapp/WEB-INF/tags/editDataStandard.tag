@@ -106,15 +106,15 @@
         var dataStandardCount = 0;
         //Show/Hide Location
         $("body").on("click", ".${specifier}-add-dataStandard", function () {
-            var specifier = "${specifier}-dataStandard";
-            var path = "${path}.dataStandard";
+            var specifier = "${specifier}";
+            var path = "${path}";
             var html = $(".${specifier}-copy-dataStandard").html();
             var regexEscapeOpenBracket = new RegExp('\\[',"g");
             var regexEscapeClosedBracket = new RegExp('\\]',"g");
             path = path.replace(regexEscapeOpenBracket,'\\[').replace(regexEscapeClosedBracket,'\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}.dataStandard['+ dataStandardCount + ']').replace(regexSpecifier,'${specifier}-dataStandard-' + dataStandardCount);
+            html = html.replace(regexPath, '${path}['+ dataStandardCount + ']').replace(regexSpecifier,'${specifier}-' + dataStandardCount);
 
             $(this).after(html);
             dataStandardCount += 1;

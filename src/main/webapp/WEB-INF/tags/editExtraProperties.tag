@@ -132,7 +132,7 @@
             });
             $("body").on("click", ".${specifier}-0-categoryIRI-remove", function () {
                 $(this).closest(".control-group").remove();
-                console.log($(this).parent(".control-group"));
+                //console.log($(this).parent(".control-group"));
                 $(".${specifier}-0-add-categoryIRI").show();
             });
 
@@ -142,7 +142,7 @@
                 var specifier = "${specifier}-values";
                 var path = "${path}.values";
                 var html = $(".${specifier}-copy-values").html();
-                console.log(html);
+                //console.log(html);
                 var regexEscapeOpenBracket = new RegExp('\\[',"g");
                 var regexEscapeClosedBracket = new RegExp('\\]',"g");
                 path = path.replace(regexEscapeOpenBracket,'\\[').replace(regexEscapeClosedBracket,'\\]');
