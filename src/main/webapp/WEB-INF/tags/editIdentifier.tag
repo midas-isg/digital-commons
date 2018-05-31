@@ -14,75 +14,110 @@
               type="java.lang.String" %>
 <%@ attribute name="unbounded" required="false"
               type="java.lang.Boolean" %>
-
+<%@ attribute name="identifierName" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="identifierSource" required="false"
+              type="java.lang.String" %>
 <c:choose>
     <c:when test="${not empty identifier}">
         <div class="form-group edit-form-group">
-        <label>${label}</label>
-        <c:choose>
-            <c:when test="${unbounded}">
-                <c:forEach items="${identifier}" var="singleIdentifier" varStatus="status">
-                    <div class="form-group control-group ${specifier}-identifier-add-more">
-                        <c:choose>
-                            <c:when test="${status.first}">
-                                <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                        ${label}
-                                </button>
-                            </c:when>
-                            <c:otherwise>
-                                <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                                        class="glyphicon glyphicon-remove"></i>
-                                    Remove
-                                </button>
-                            </c:otherwise>
-                        </c:choose>
+            <label>${label}</label>
+            <c:choose>
+                <c:when test="${unbounded}">
+                    <c:forEach items="${identifier}" var="singleIdentifier" varStatus="status">
+                        <div class="form-group control-group ${specifier}-identifier-add-more">
+                            <c:choose>
+                                <c:when test="${status.first}">
+                                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
+                                            class="glyphicon glyphicon-plus"></i> Add
+                                            ${label}
+                                    </button>
+                                </c:when>
+                                <c:otherwise>
+                                    <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                                            class="glyphicon glyphicon-remove"></i>
+                                        Remove
+                                    </button>
+                                </c:otherwise>
+                            </c:choose>
+
+                            <div class="form-group edit-form-group">
+                                <label>Identifier</label>
+                                <input type="text" class="form-control" value="${singleIdentifier.identifier}"
+                                       name="${path}.identifier" placeholder="Identifier">
+                            </div>
+
+                            <div class="form-group edit-form-group">
+                                <label>Identifier Source</label>
+                                <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
+                                       name="${path}.identifierSource" placeholder="Identifier Source">
+                            </div>
+
+                        </div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                    ${label}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group control-group">
+                        <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
 
                         <div class="form-group edit-form-group">
                             <label>Identifier</label>
-                            <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                                   name="${path}.identifier" placeholder="Identifier">
+                            <input type="text" class="form-control" value="${identifier.identifier}"
+                                   name="${path}.identifier"
+                                   placeholder="Identifier">
                         </div>
 
                         <div class="form-group edit-form-group">
                             <label>Identifier Source</label>
-                            <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
+                            <input type="text" class="form-control" value="${identifier.identifierSource}"
                                    name="${path}.identifierSource" placeholder="Identifier Source">
                         </div>
-
                     </div>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
-                    <div class="input-group-btn">
-                        <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                                ${label}
-                        </button>
-                    </div>
-                </div>
-                <div class="form-group control-group">
-                    <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </c:when>
+    <c:when test="${not empty identifierName or not empty identifierSource}">
+        <div class="form-group edit-form-group">
+            <label>${label}</label>
+            <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                            ${label}
                     </button>
-
-                    <div class="form-group edit-form-group">
-                        <label>Identifier</label>
-                        <input type="text" class="form-control" value="${identifier.identifier}"
-                               name="${path}.identifier"
-                               placeholder="Identifier">
-                    </div>
-
-                    <div class="form-group edit-form-group">
-                        <label>Identifier Source</label>
-                        <input type="text" class="form-control" value="${identifier.identifierSource}"
-                               name="${path}.identifierSource" placeholder="Identifier Source">
-                    </div>
                 </div>
-            </c:otherwise>
-        </c:choose>
+            </div>
+            <div class="form-group control-group">
+                <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+
+                <div class="form-group edit-form-group">
+                    <label>Identifier</label>
+                    <input type="text" class="form-control" value="${identifierName}"
+                           name="${path}.identifier"
+                           placeholder="Identifier">
+                </div>
+
+                <div class="form-group edit-form-group">
+                    <label>Identifier Source</label>
+                    <input type="text" class="form-control" value="${identifierSource}"
+                           name="${path}.identifierSource" placeholder="Identifier Source">
+                </div>
+            </div>
         </div>
     </c:when>
     <c:otherwise>
@@ -115,7 +150,8 @@
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
-            <input type="text" class="form-control" value="${identifier.identifierSource}" name="specifier-identifierSource"
+            <input type="text" class="form-control" value="${identifier.identifierSource}"
+                   name="specifier-identifierSource"
                    placeholder="Identifier Source">
         </div>
 

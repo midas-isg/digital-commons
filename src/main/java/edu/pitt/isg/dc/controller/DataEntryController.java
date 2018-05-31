@@ -15,6 +15,7 @@ import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import edu.pitt.isg.dc.validator.CustomDatasetEditor;
 import edu.pitt.isg.dc.validator.DatasetValidator;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +77,7 @@ public class DataEntryController {
     @InitBinder
     protected void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
     }
 
