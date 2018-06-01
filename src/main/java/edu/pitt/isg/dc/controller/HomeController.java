@@ -527,7 +527,7 @@ public class HomeController {
 
         } else {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            documentText = gson.toJson(entry.getContent());
+            documentText = gson.toJson(entry.getContent().get("entry"));
             header.setContentType(new org.springframework.http.MediaType("application", "json"));
         }
         byte[] documentBody = documentText.getBytes();
