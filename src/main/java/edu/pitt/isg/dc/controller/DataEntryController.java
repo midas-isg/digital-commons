@@ -89,7 +89,7 @@ public class DataEntryController {
     @InitBinder("datasetWithOrganization")
     protected void initBinderOrganization(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(",", true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         //binder.setValidator(datasetValidator);
         binder.setValidator(datasetWithOrganizationValidator);
     }
@@ -198,7 +198,7 @@ public class DataEntryController {
             Entry entry = apiUtil.getEntryById(entryId);
             EntryView entryView = new EntryView(entry);
 
-            datasetWithOrganization =converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
+            datasetWithOrganization = converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("datasetWithOrganization", datasetWithOrganization);
