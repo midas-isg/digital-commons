@@ -8,21 +8,52 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="size" required="false"
+              type="java.lang.Integer" %>
 
-<div class="form-group edit-form-group">
-    <form:label path="${path}">Size</form:label>
-    <div class="form-group">
-        <button class="btn btn-success ${specifier}-add-size" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
-            Size
-        </button>
-    </div>
-</div>
+<c:choose>
+    <c:when test="${not empty size}">
+        <div class="form-group edit-form-group">
+            <form:label path="${path}">Size</form:label>
+            <div class="input-group control-group ${specifier}-size-add-more">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-size" style="display: none" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Size
+                    </button>
+                </div>
+            </div>
+            <div class="input-group control-group full-width">
+                <input type="number" class="form-control" value="${size}" name="${path}"
+                       id="${specifier}-size" placeholder="Size"/>
+                <div class="input-group-btn">
+                    <button class="btn btn-danger ${specifier}-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group">
+            <form:label path="${path}">Size</form:label>
+            <div class="input-group control-group ${specifier}-size-add-more">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-size" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        Size
+                    </button>
+                </div>
+            </div>
+        </div>
+    </c:otherwise>
+</c:choose>
+
 
 <div class="${specifier}-copy-size hide">
-    <div class="input-group control-group edit-form-group full-width">
-        <label>Size</label>
-        <input name="${path}" type="text" class="form-control" placeholder="Size">
+    <div class="input-group control-group full-width">
+        <input type="number" class="form-control" name="${path}" placeholder="Size"/>
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
@@ -42,8 +73,10 @@
             $(this).hide();
             //e.stopImmediatePropagation()
         });
-        $("body").on("click", ".${specifier}-remove", function () {
-            $(this).closest(".control-group").remove();
+        $("body").on("click", ".${specifier}-remove", function (e) {
+            e.stopImmediatePropagation();
+
+            $(this).parents(".control-group")[0].remove();
             $(".${specifier}-add-size").show();
         });
 

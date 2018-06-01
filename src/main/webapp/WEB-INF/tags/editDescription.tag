@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="input-group control-group full-width">
-                <input type="text" class="form-control" value="${description}" name="${specifier}" id="${specifier}-description" placeholder="Description"/>
+                <input type="text" class="form-control" value="${description}" name="${path}" id="${specifier}-description" placeholder="Description"/>
                 <div class="input-group-btn">
                     <button class="btn btn-danger ${specifier}-description-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
@@ -53,7 +53,7 @@
 
 <div class="copy-description hide">
     <div class="input-group control-group full-width">
-        <input type="text" class="form-control" value="${description}" name="" placeholder="Description"/>
+        <input type="text" class="form-control" name="" placeholder="Description"/>
         <div class="input-group-btn">
             <button class="btn btn-danger description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove

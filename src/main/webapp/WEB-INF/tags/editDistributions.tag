@@ -36,7 +36,8 @@
                                        identifier="${distribution.identifier}"
                                        unbounded="False"></myTags:editIdentifier>
 
-                <myTags:editDatesUnbounded dates="${distribution.dates}" path="${path}[${status.count-1}]" specifier="${specifier}"></myTags:editDatesUnbounded>
+                <myTags:editDatesUnbounded dates="${distribution.dates}" path="${path}[${status.count-1}]"
+                                           specifier="${specifier}"></myTags:editDatesUnbounded>
 
                 <myTags:editAccess path="${path}[${status.count-1}].access"
                                    specifier="${specifier}-${status.count-1}-access"
@@ -46,6 +47,18 @@
                                          dataStandards="${distribution.conformsTo}"
                                          specifier="${specifier}-${status.count-1}-conformsTo"></myTags:editDataStandard>
 
+                <myTags:editDataRepository name="Stored In" path="${path}[${status.count-1}].storedIn"
+                                           dataRepository="${distribution.storedIn}"
+                                           specifier="${specifier}-${status.count-1}-storedIn"></myTags:editDataRepository>
+
+                <myTags:editSize size="${distribution.size}" path="${path}[${status.count-1}].size"
+                                 specifier="${specifier}-${status.count-1}"></myTags:editSize>
+
+                <myTags:editUnit unit="${distribution.unit}" path="${path}[${status.count-1}].unit"
+                                 specifier="${specifier}-${status.count-1}-unit"></myTags:editUnit>
+
+                <myTags:editFormats formats="${distribution.formats}" path="${path}[${status.count-1}].formats"
+                                    specifier="${specifier}-${status.count-1}-formats"></myTags:editFormats>
             </div>
             <c:set var="distributionCount" scope="page" value="${status.count}"/>
 
