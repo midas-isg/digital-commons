@@ -135,24 +135,87 @@ public class DatasetWithOrganizationValidator implements Validator {
         }
 
         //Remove empty distributions
-        if(dataset.getDistributions().size() > 0) {
+        if (dataset.getDistributions().size() > 0) {
             ListIterator<Distribution> iterator = dataset.getDistributions().listIterator();
-            while(iterator.hasNext()) {
+            while (iterator.hasNext()) {
                 Distribution distribution = iterator.next();
-                if(!isEmpty(distribution.getIdentifier())) {
+                if (!isEmpty(distribution.getIdentifier())) {
                     if (isEmpty(distribution.getIdentifier().getIdentifier()) && isEmpty(distribution.getIdentifier().getIdentifierSource())) {
                         distribution.setIdentifier(null);
                     }
                 }
 
+                //Clean up Access
+                if (isEmpty(distribution.getAccess().getAccessURL()) && isEmpty(distribution.getAccess().getLandingPage())) {
+                    distribution.setAccess(null);
+                }
+
+                //Clean up Unit
+                if (isEmpty(distribution.getUnit().getValue()) && isEmpty(distribution.getUnit().getValueIRI())) {
+                    distribution.setUnit(null);
+                }
+
+                //Clean up Dates
                 ListIterator<Date> dateListIterator = distribution.getDates().listIterator();
-                while(dateListIterator.hasNext()) {
+                while (dateListIterator.hasNext()) {
                     Date date = dateListIterator.next();
-                    if(isEmpty(date.getDate()) && isEmpty(date.getType())) {
+                    if (isEmpty(date.getDate()) && isEmpty(date.getType().getValue()) && isEmpty(date.getType().getValueIRI())) {
                         dateListIterator.remove();
                     }
                 }
 
+                //Clean up ConformsTo
+                ListIterator<DataStandard> conformsToIterator = distribution.getConformsTo().listIterator();
+                while (conformsToIterator.hasNext()) {
+                    DataStandard conformsTo = conformsToIterator.next();
+
+                    ListIterator<License> licenseListIterator = conformsTo.getLicenses().listIterator();
+                    while (licenseListIterator.hasNext()) {
+                        License license = licenseListIterator.next();
+                        if (isEmpty(license.getIdentifier()) && isEmpty(license.getIdentifierSource()) && isEmpty(license.getVersion())) {
+                            licenseListIterator.remove();
+                        }
+                    }
+
+                    if (isEmpty(conformsTo.getIdentifier()) && isEmpty(conformsTo.getName()) && isEmpty(conformsTo.getDescription()) && isEmpty(conformsTo.getVersion()) && conformsTo.getExtraProperties().size() == 0 && isEmpty(conformsTo.getType().getValueIRI()) && isEmpty(conformsTo.getType().getValue()) && conformsTo.getLicenses().size() == 0) {
+                        conformsToIterator.remove();
+                    }
+                }
+
+
+                //Clean up Stored In
+                DataRepository storedIn = distribution.getStoredIn();
+                ListIterator<License> licenseListIterator = storedIn.getLicenses().listIterator();
+                while (licenseListIterator.hasNext()) {
+                    License license = licenseListIterator.next();
+                    if (isEmpty(license.getIdentifier()) && isEmpty(license.getIdentifierSource()) && isEmpty(license.getVersion())) {
+                        licenseListIterator.remove();
+                    }
+                }
+                ListIterator<Annotation> typesIterator = storedIn.getTypes().listIterator();
+                while (typesIterator.hasNext()) {
+                    Annotation annotation = typesIterator.next();
+                    if (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue())) {
+                        typesIterator.remove();
+                    }
+                }
+                if (isEmpty(storedIn.getName()) && isEmpty(storedIn.getIdentifier()) && isEmpty(storedIn.getVersion()) && storedIn.getLicenses().size() == 0 && storedIn.getTypes().size() == 0) {
+                    distribution.setStoredIn(null);
+                }
+
+
+                // Clean up Formats
+                ListIterator<String> formatIterator = distribution.getFormats().listIterator();
+                while (formatIterator.hasNext()) {
+                    String format = formatIterator.next();
+                    if (isEmpty(format)) {
+                        formatIterator.remove();
+                    }
+                }
+
+                if (isEmpty(distribution.getIdentifier()) && isEmpty(distribution.getSize()) && distribution.getDates().size() == 0 && distribution.getConformsTo().size() == 0 && isEmpty(distribution.getStoredIn()) && isEmpty(distribution.getUnit()) && distribution.getFormats().size() == 0) {
+                    iterator.remove();
+                }
             }
         }
 
