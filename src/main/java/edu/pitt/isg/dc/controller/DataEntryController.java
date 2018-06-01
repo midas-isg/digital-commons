@@ -16,7 +16,9 @@ import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.DatasetValidator;
+import edu.pitt.isg.dc.validator.DatasetWithOrganizationValidator;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
@@ -72,11 +74,23 @@ public class DataEntryController {
     private ApiUtil apiUtil;
     @Autowired
     DatasetValidator datasetValidator;
+    @Autowired
+    DatasetWithOrganizationValidator datasetWithOrganizationValidator;
 
-    @InitBinder
+    @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(",", true));
         binder.setValidator(datasetValidator);
+//        binder.setValidator(datasetWithOrganizationValidator);
+    }
+
+    @InitBinder("datasetWithOrganization")
+    protected void initBinderOrganization(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(",", true));
+        //binder.setValidator(datasetValidator);
+        binder.setValidator(datasetWithOrganizationValidator);
     }
 
     private Converter converter = new Converter();
@@ -173,6 +187,38 @@ public class DataEntryController {
         return "newDigitalObjectForm";
     }
 
+    @RequestMapping(value = "/test-add-entry-org", method = RequestMethod.GET)
+    public String testAddNewEntryWithOrg(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
+        model.addAttribute("categoryID",0);
+
+        if(entryId != null) {
+            Entry entry = apiUtil.getEntryById(entryId);
+            EntryView entryView = new EntryView(entry);
+
+            datasetWithOrganization =converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+        model.addAttribute("datasetWithOrganization", datasetWithOrganization);
+
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "newDigitalObjectFormOrganization";
+    }
+
     @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("dataset") @Validated Dataset dataset,
                          BindingResult result, ModelMap model) {
@@ -183,6 +229,18 @@ public class DataEntryController {
 //        model.addAttribute("contactNumber", employee.getContactNumber());
 //        model.addAttribute("id", employee.getId());
         return "dataset";
+    }
+
+    @RequestMapping(value = "/testAddDatasetOrg", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "newDigitalObjectFormOrganization";
+        }
+//        model.addAttribute("name", employee.getName());
+//        model.addAttribute("contactNumber", employee.getContactNumber());
+//        model.addAttribute("id", employee.getId());
+        return "datasetWithOrganization";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
