@@ -8,20 +8,69 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="access" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.Access" %>
 
-<div class="form-group edit-form-group">
-    <form:label path="${path}">Access</form:label>
-    <div class="form-group edit-form-group">
-        <label>Landing Page</label>
-        <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
-            Access URL
-        </button>
-    </div>
-</div>
+<c:choose>
+    <c:when test="${not empty access}">
+        <div class="form-group edit-form-group">
+            <label>Access</label>
+
+            <div class="form-group edit-form-group">
+                <label>Landing Page</label>
+                <input type="text" class="form-control" value="${access.landingPage}" name="${path}.landingPage"
+                       id="${specifier}-landingPage">
+            </div>
+
+            <c:choose>
+                <c:when test="${not empty access.accessURL}">
+                    <button class="btn btn-success ${specifier}-add-accessURL" style="display: none" type="button">
+                        <i
+                                class="glyphicon glyphicon-plus"></i> Add
+                        Access URL
+                    </button>
+                    <div class="input-group control-group edit-form-group full-width">
+                        <label>Access URL</label>
+
+                        <div class="input-group edit-form-group">
+                            <input name="${path}.accessURL" value="${access.accessURL}" type="text" class="form-control"
+                                   placeholder="Access URL">
+                            <div class="input-group-btn">
+                                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
+                                        class="glyphicon glyphicon-remove"></i>
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    <div class="form-group">
+                        <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
+                                class="glyphicon glyphicon-plus"></i> Add
+                            Access URL
+                        </button>
+                    </div>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group">
+            <form:label path="${path}">Access</form:label>
+            <div class="form-group edit-form-group">
+                <label>Landing Page</label>
+                <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    Access URL
+                </button>
+            </div>
+        </div>
+    </c:otherwise>
+</c:choose>
 
 <div class="${specifier}-copy-accessURL hide">
     <div class="input-group control-group edit-form-group full-width">
@@ -29,7 +78,8 @@
         <div class="input-group edit-form-group">
             <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
             <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
             </div>

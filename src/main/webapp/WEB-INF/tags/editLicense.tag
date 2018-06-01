@@ -8,16 +8,98 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="licenses" required="false"
+              type="java.util.ArrayList" %>
 
-<div class="form-group edit-form-group">
-    <label>License</label>
-    <div class="form-group">
-        <button class="btn btn-success ${specifier}-add-license" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
-            License
-        </button>
-    </div>
-</div>
+
+<c:choose>
+    <c:when test="${not empty licenses}">
+        <c:forEach items="${licenses}" var="license" varStatus="status">
+            <c:if test="${status.first}">
+                <div class="form-group edit-form-group">
+                <label>License</label>
+                <div class="form-group">
+                    <button class="btn btn-success ${specifier}-add-license" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                        License
+                    </button>
+                </div>
+            </c:if>
+            <div class="form-group control-group edit-form-group">
+                <label>License</label>
+                <br>
+                <button class="btn btn-danger ${specifier}-${status.count-1}-license-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+
+
+                <div class="form-group">
+                    <myTags:editIdentifier label="Identifier" path="${path}[${status.count-1}]"
+                                           identifierName="${license.identifier}"
+                                           identifierSource="${license.identifierSource}"
+                                           specifier="${specifier}-${status.count-1}"></myTags:editIdentifier>
+                </div>
+
+                <c:choose>
+                    <c:when test="${not empty license.version}">
+                        <div class="form-group edit-form-group">
+                            <label>Version</label>
+                            <div class="input-group-btn">
+                                <button class="btn btn-success ${specifier}-${status.count-1}-add-version"
+                                        style="display: none" type="button"><i
+                                        class="glyphicon glyphicon-plus"></i> Add
+                                    Version
+                                </button>
+                                <div class="input-group control-group edit-form-group full-width">
+                                    <input name="${path}[${status.count-1}].version" value="${license.version}"
+                                           type="text"
+                                           class="form-control" placeholder="Version">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-danger ${specifier}-${status.count-1}-version-remove"
+                                                type="button"><i
+                                                class="glyphicon glyphicon-remove"></i>
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="form-group edit-form-group">
+                            <label>Version</label>
+                            <div class="input-group-btn">
+                                <button class="btn btn-success ${specifier}-${status.count-1}-add-version"
+                                        type="button"><i
+                                        class="glyphicon glyphicon-plus"></i> Add
+                                    Version
+                                </button>
+                            </div>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </div>
+            <c:set var="licenseCount" scope="page" value="${status.count}"/>
+
+        </c:forEach>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group">
+            <label>License</label>
+            <div class="form-group">
+                <button class="btn btn-success ${specifier}-add-license" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    License
+                </button>
+            </div>
+        </div>
+
+        <c:set var="licenseCount" scope="page" value="0"/>
+
+    </c:otherwise>
+</c:choose>
 
 <div class="${specifier}-0-copy-version hide">
     <div class="form-group edit-form-group">
@@ -34,7 +116,8 @@
             <label>Version</label>
             <input name="${path}[0].version" type="text" class="form-control" placeholder="Version">
             <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
             </div>
@@ -46,12 +129,14 @@
     <div class="form-group control-group edit-form-group">
         <label>License</label>
         <br>
-        <button class="btn btn-danger ${specifier}-0-license-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+        <button class="btn btn-danger ${specifier}-0-license-remove" type="button"><i
+                class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
         <br><br>
         <div class="form-group">
-            <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
+            <myTags:editIdentifier label="Identifier" path="${path}[0]"
+                                   specifier="${specifier}-0"></myTags:editIdentifier>
         </div>
         <div class="form-group edit-form-group">
             <label>Version</label>
@@ -67,7 +152,8 @@
             <div class="input-group control-group edit-form-group full-width">
                 <input name="${path}[0].version" type="text" class="form-control" placeholder="Version">
                 <div class="input-group-btn">
-                    <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                    <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
                         Remove
                     </button>
                 </div>
@@ -121,28 +207,22 @@
         });
 
 
-        var dataRepositoryLicenseCount = 0;
-        var dataStandardLicenseCount = 0;
+        var licenseCount = ${licenseCount};
         //Show/Hide Location
         $("body").on("click", ".${specifier}-add-license", function (e) {
             var specifier = "${specifier}";
             var path = "${path}";
             //console.log(path);
-            var regexEscapeOpenBracket = new RegExp('\\[',"g");
-            var regexEscapeClosedBracket = new RegExp('\\]',"g");
-            path = path.replace(regexEscapeOpenBracket,'\\[').replace(regexEscapeClosedBracket,'\\]');
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             //console.log(path);
             var html = $(".${specifier}-copy-license").html();
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            if(specifier.includes("storedIn")){
-                html = html.replace(regexPath, '${path}['+ dataRepositoryLicenseCount + ']').replace(regexSpecifier,'${specifier}-' + dataRepositoryLicenseCount + '-');
-                dataRepositoryLicenseCount += 1;
-            }
-            if(specifier.includes("conformsTo")){
-                html = html.replace(regexPath, '${path}['+ dataStandardLicenseCount + ']').replace(regexSpecifier,'${specifier}-' + dataStandardLicenseCount + '-');
-                dataStandardLicenseCount += 1;
-            }
+            html = html.replace(regexPath, '${path}[' + licenseCount + ']').replace(regexSpecifier, '${specifier}-' + licenseCount + '-');
+            licenseCount += 1;
+
 
             //console.log(html);
             $(this).after(html);

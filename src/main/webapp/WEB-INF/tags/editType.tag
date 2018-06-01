@@ -51,7 +51,7 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.information}"
+                                <myTags:editAnnotation annotation="${type.information}" supportError="${true}"
                                                        path="${path}[${status.count-1}].information."></myTags:editAnnotation>
                             </div>
                         </c:when>
@@ -81,7 +81,7 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.method}"
+                                <myTags:editAnnotation annotation="${type.method}" supportError="${true}"
                                                        path="${path}[${status.count-1}].method."></myTags:editAnnotation>
                             </div>
                         </c:when>
@@ -111,7 +111,7 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.platform}"
+                                <myTags:editAnnotation annotation="${type.platform}" supportError="${true}"
                                                        path="${path}[${status.count-1}].platform."></myTags:editAnnotation>
                             </div>
                         </c:when>
@@ -266,7 +266,7 @@
 
                 var html = $(".copy-annotation-" + attributeName).html();
                 //use '//g' regex for global capture, otherwise only first instance is repalced
-                html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.');
+                html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.').replace(/path="path/g, 'path="${path}[' + count + '].' + attributeName + '.');
 
                 $(this).after(html);
                 $(this).hide();
