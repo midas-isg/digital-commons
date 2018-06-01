@@ -58,6 +58,7 @@
                         <myTags:editIdentifier path="${path}[${status.count-1}].alternateIdentifiers"
                                                unbounded="${true}"
                                                specifier="${specifier}-alternate-${status.count-1}"
+                                               identifiers="${entity.alternateIdentifiers}"
                                                label="Alternate Identifier"></myTags:editIdentifier>
                     </div>
                 </div>
