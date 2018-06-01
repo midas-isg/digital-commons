@@ -60,31 +60,34 @@
         </div>
     </c:when>
     <c:when test="${not empty identifier}">
-        <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
-            <div class="input-group-btn">
-                <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                        ${label}
+        <div class="form-group edit-form-group">
+            <label>${label}</label>
+            <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
+                <div class="input-group-btn">
+                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add
+                            ${label}
+                    </button>
+                </div>
+            </div>
+            <div class="form-group control-group">
+                <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
                 </button>
-            </div>
-        </div>
-        <div class="form-group control-group">
-            <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
 
-            <div class="form-group edit-form-group">
-                <label>Identifier</label>
-                <input type="text" class="form-control" value="${identifier.identifier}"
-                       name="${path}.identifier"
-                       placeholder="Identifier">
-            </div>
+                <div class="form-group edit-form-group">
+                    <label>Identifier</label>
+                    <input type="text" class="form-control" value="${identifier.identifier}"
+                           name="${path}.identifier"
+                           placeholder="Identifier">
+                </div>
 
-            <div class="form-group edit-form-group">
-                <label>Identifier Source</label>
-                <input type="text" class="form-control" value="${identifier.identifierSource}"
-                       name="${path}.identifierSource" placeholder="Identifier Source">
+                <div class="form-group edit-form-group">
+                    <label>Identifier Source</label>
+                    <input type="text" class="form-control" value="${identifier.identifierSource}"
+                           name="${path}.identifierSource" placeholder="Identifier Source">
+                </div>
             </div>
         </div>
         <c:set var="identifierCount" scope="page" value="0"/>
@@ -155,7 +158,7 @@
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
-            <input type="text" class="form-control" 
+            <input type="text" class="form-control"
                    name="specifier-identifierSource"
                    placeholder="Identifier Source">
         </div>

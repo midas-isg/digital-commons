@@ -30,11 +30,13 @@
                         class="glyphicon glyphicon-remove"></i> Remove
                 </button>
 
+                <div class="form-group">
 
-                <myTags:editIdentifier label="Identifier" specifier="${specifier}-${status.count-1}"
-                                       path="${path}[${status.count-1}].identifier"
-                                       identifier="${distribution.identifier}"
-                                       unbounded="False"></myTags:editIdentifier>
+                    <myTags:editIdentifier label="Identifier" specifier="${specifier}-${status.count-1}"
+                                           path="${path}[${status.count-1}].identifier"
+                                           identifier="${distribution.identifier}"
+                                           unbounded="False"></myTags:editIdentifier>
+                </div>
 
                 <myTags:editDatesUnbounded dates="${distribution.dates}" path="${path}[${status.count-1}]"
                                            specifier="${specifier}"></myTags:editDatesUnbounded>
