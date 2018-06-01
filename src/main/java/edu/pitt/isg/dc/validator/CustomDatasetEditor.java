@@ -4,11 +4,12 @@ import java.beans.PropertyEditorSupport;
 
 public class CustomDatasetEditor extends PropertyEditorSupport{
     public void setAsText(String text) {
-        setValue(text.replaceAll("(,)*$", ""));
-//        if(text.equals(",")) {
-//            setValue(null);
-//        } else {
-//            setValue(text);
-//        }
+        text = text.replaceAll("(,)*$", "");
+
+        if("".equals(text)) {
+            this.setValue((Object)null);
+        } else {
+            this.setValue(text);
+        }
     }
 }
