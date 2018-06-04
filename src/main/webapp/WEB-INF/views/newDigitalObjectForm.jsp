@@ -23,8 +23,8 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}" categoryPaths="${categoryPaths}"></myTags:editCategory>
-                    <myTags:editTitle></myTags:editTitle>
-                    <myTags:editDescription path="description" description="${dataset.description}" specifier="description"></myTags:editDescription>
+                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title" string="${dataset.title}"></myTags:editRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString path="description" string="${dataset.description}" specifier="description" placeholder="Description" label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier" label="Identifier"></myTags:editIdentifier>
                     <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
                     <myTags:editType path="types" types="${dataset.types}"></myTags:editType>

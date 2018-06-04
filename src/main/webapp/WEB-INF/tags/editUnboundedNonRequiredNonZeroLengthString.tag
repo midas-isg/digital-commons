@@ -10,15 +10,19 @@
               type="java.lang.String" %>
 <%@ attribute name="formats" required="false"
               type="java.util.ArrayList" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="placeholder" required="true"
+              type="java.lang.String" %>
 
 <c:choose>
     <c:when test="${not empty formats}">
-        <div class="form-group edit-form-group ${specifier}-formats-add-more">
-            <label>Formats</label>
-            <div class="form-group">
+        <div class="form-group edit-form-group">
+            <label>${label}</label>
+            <div class="form-group ${specifier}-formats-add-more">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Formats
+                    ${placeholder}
                 </button>
             </div>
 
@@ -27,7 +31,7 @@
 
                     <div class="input-group control-group full-width">
                         <input type="text" value="${format}" class="form-control" name="${path}[${status.count-1}]"
-                               id="${specifier}-${status.count-1}" placeholder="Format"/>
+                               id="${specifier}-${status.count-1}" placeholder="${placeholder}"/>
                         <div class="input-group-btn">
                             <button class="btn btn-danger ${specifier}-remove"
                                     id="${specifier}-${status.count-1}-remove"
@@ -43,12 +47,12 @@
         </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group ${specifier}-formats-add-more">
-            <label>Formats</label>
-            <div class="form-group">
+        <div class="form-group edit-form-group">
+            <label>${label}</label>
+            <div class="form-group ${specifier}-formats-add-more">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Formats
+                    ${placeholder}
                 </button>
             </div>
         </div>
@@ -61,7 +65,7 @@
 <div class="${specifier}-copy-formats hide">
     <div class="form-group">
         <div class="input-group control-group full-width">
-            <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0" placeholder="Format"/>
+            <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0" placeholder="${placeholder}"/>
             <div class="input-group-btn">
                 <button class="btn btn-danger ${specifier}-remove" id="${specifier}-0-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
@@ -88,7 +92,7 @@
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
             html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount);
 
-            $(this).after(html);
+            $(".${specifier}-formats-add-more").after(html);
             formatsCount += 1;
             //$(this).hide();
             //e.stopImmediatePropagation()

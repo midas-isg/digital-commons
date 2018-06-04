@@ -51,8 +51,8 @@
 
 
                 <div class="form-group">
-                    <myTags:editDescription specifier="${specifier}" description="${dataStandard.description}"
-                                            path="${path}[${status.count-1}].description"></myTags:editDescription>
+                    <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}" string="${dataStandard.description}"
+                                                               path="${path}[${status.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
                 </div>
 
                 <div class="form-group edit-form-group">
@@ -119,7 +119,7 @@
             <input name="${path}[0].name" type="text" class="form-control" placeholder="Name">
         </div>
         <div class="form-group">
-            <myTags:editDescription specifier="${specifier}" path="${path}[0].description"></myTags:editDescription>
+            <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
         </div>
         <div class="form-group edit-form-group">
             <label>Type</label>

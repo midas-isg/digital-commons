@@ -59,8 +59,8 @@
                 <myTags:editUnit unit="${distribution.unit}" path="${path}[${status.count-1}].unit"
                                  specifier="${specifier}-${status.count-1}-unit"></myTags:editUnit>
 
-                <myTags:editFormats formats="${distribution.formats}" path="${path}[${status.count-1}].formats"
-                                    specifier="${specifier}-${status.count-1}-formats"></myTags:editFormats>
+                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}" path="${path}[${status.count-1}].formats"
+                                                                    specifier="${specifier}-${status.count-1}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
             </div>
             <c:set var="distributionCount" scope="page" value="${status.count}"/>
 
@@ -99,7 +99,7 @@
                                    specifier="${specifier}-storedIn"></myTags:editDataRepository>
         <myTags:editSize path="${path}[0].size" specifier="${specifier}-size"></myTags:editSize>
         <myTags:editUnit path="${path}[0].unit" specifier="${specifier}-unit"></myTags:editUnit>
-        <myTags:editFormats path="${path}[0].formats" specifier="${specifier}-formats"></myTags:editFormats>
+        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats" specifier="${specifier}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
 
     </div>
 </div>

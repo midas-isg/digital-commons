@@ -18,8 +18,10 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.CustomDatasetEditor;
 import edu.pitt.isg.dc.validator.DatasetValidator;
 import edu.pitt.isg.dc.validator.DatasetWithOrganizationValidator;
+import edu.pitt.isg.dc.validator.SoftwareValidator;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
+import edu.pitt.isg.mdc.v1_0.Software;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
@@ -77,21 +79,28 @@ public class DataEntryController {
     DatasetValidator datasetValidator;
     @Autowired
     DatasetWithOrganizationValidator datasetWithOrganizationValidator;
+    @Autowired
+    SoftwareValidator softwareValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
-//        binder.setValidator(datasetWithOrganizationValidator);
     }
 
     @InitBinder("datasetWithOrganization")
     protected void initBinderOrganization(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        //binder.setValidator(datasetValidator);
         binder.setValidator(datasetWithOrganizationValidator);
+    }
+
+    @InitBinder("software")
+    protected void initBinderSoftware(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(softwareValidator);
     }
 
     private Converter converter = new Converter();
@@ -226,9 +235,6 @@ public class DataEntryController {
         if (result.hasErrors()) {
             return "newDigitalObjectForm";
         }
-//        model.addAttribute("name", employee.getName());
-//        model.addAttribute("contactNumber", employee.getContactNumber());
-//        model.addAttribute("id", employee.getId());
         return "dataset";
     }
 
@@ -238,10 +244,49 @@ public class DataEntryController {
         if (result.hasErrors()) {
             return "newDigitalObjectFormOrganization";
         }
-//        model.addAttribute("name", employee.getName());
-//        model.addAttribute("contactNumber", employee.getContactNumber());
-//        model.addAttribute("id", employee.getId());
         return "datasetWithOrganization";
+    }
+
+
+    @RequestMapping(value = "/test-add-software", method = RequestMethod.GET)
+    public String testAddNewSoftware(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        Software software = new Software();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("software", software);
+
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "newSoftwareForm";
+    }
+
+    @RequestMapping(value = "/testAddSoftware", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("software") @Validated Software software,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            return "newSoftwareForm";
+        }
+        return "software";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
