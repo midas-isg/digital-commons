@@ -21,12 +21,3 @@
         <form:errors path="${path}" class="error-color"/>
     </div>
 </spring:bind>
-
-
-<%--<spring:bind path="${path}">--%>
-    <%--<div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">--%>
-        <%--<label>${label}</label>--%>
-        <%--<input path="${path}" type="text" class="form-control" value="${string}" placeholder="${placeholder}">--%>
-        <%--<form:errors path="${path}" class="error-color"/>--%>
-    <%--</div>--%>
-<%--</spring:bind>--%>
