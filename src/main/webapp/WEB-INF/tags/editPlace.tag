@@ -17,7 +17,7 @@
 
 <c:choose>
     <c:when test="${not empty place.name or not empty place.description or not empty place.postalAddress}">
-        <%--<spring:bind path="${path}">--%>
+        <spring:bind path="${path}">
             <div class=" ${status.error ? 'has-error' : ''}">
             <div class="form-group control-group edit-form-group">
                 <label>${label}</label>
@@ -107,17 +107,17 @@
                 </div>
             </div>
         </div>
-        <%--</spring:bind>--%>
+        </spring:bind>
     </c:when>
     <c:otherwise>
-        <%--<spring:bind path="${path}">--%>
+        <spring:bind path="${path}">
             <div class="form-group edit-form-group">
                 <label>${label}</label>
                 <button class="btn btn-success add-${specifier}" id="${specifier}-add" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add ${label}
                 </button>
             </div>
-        <%--</spring:bind>--%>
+        </spring:bind>
     </c:otherwise>
 </c:choose>
 

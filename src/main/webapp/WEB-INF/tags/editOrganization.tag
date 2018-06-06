@@ -59,10 +59,10 @@
                                     class="glyphicon glyphicon-plus"></i> Add Abbreviation
                             </button>
                             <div class="input-group control-group">
+                                <input type="text" class="form-control" value="${creator.abbreviation}"
+                                       name="creators[${status.count-1}].abbreviation"
+                                       placeholder="Abbreviation">
                                 <div class="input-group-btn">
-                                    <input type="text" class="form-control" value="${creator.abbreviation}"
-                                           name="creators[${status.count-1}].abbreviation"
-                                           placeholder="Abbreviation">
                                     <button class="btn btn-danger creators-abbreviation-remove" id="creators-${status.count-1}-abbreviation-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                         Remove
                                     </button>
@@ -79,7 +79,10 @@
                         </div>
                     </c:otherwise>
                 </c:choose>
-                <myTags:editPlace place="${creator.location}" path="creators[${status.count-1}].location" specifier="creators-${status.count-1}-location" label="Location"></myTags:editPlace>
+                <myTags:editPlace place="${creator.location}"
+                                  path="creators[${status.count-1}].location"
+                                  specifier="creators-${status.count-1}-location"
+                                  label="Location"></myTags:editPlace>
 
                 <c:if test="${status.first}">
 
@@ -113,7 +116,10 @@
                     </button>
                 </div>
 
-                <myTags:editPlace place="${creators[0].location}" path="creators[0].location" specifier="creators-0-location" label="Location"></myTags:editPlace>
+                <myTags:editPlace place="${creators[0].location}"
+                                  path="creators[0].location"
+                                  specifier="creators-0-location"
+                                  label="Location"></myTags:editPlace>
 
                 <form:errors path="creators[0]" class="error-color"/>
             </div>
@@ -142,7 +148,10 @@
             </button>
         </div>
 
-        <myTags:editPlace place="${creators[0].location}" path="creators[0].location" specifier="creators-0-location" label="Location"></myTags:editPlace>
+        <myTags:editPlace
+                          path="creators[0].location"
+                          specifier="creators-0-location"
+                          label="Location"></myTags:editPlace>
     </div>
 </div>
 
