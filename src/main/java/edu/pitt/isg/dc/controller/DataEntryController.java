@@ -18,10 +18,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
-import edu.pitt.isg.mdc.v1_0.DataFormatConverters;
-import edu.pitt.isg.mdc.v1_0.DataService;
-import edu.pitt.isg.mdc.v1_0.DataServiceAccessPointType;
-import edu.pitt.isg.mdc.v1_0.DataVisualizers;
+import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
@@ -85,6 +82,8 @@ public class DataEntryController {
     DataServiceValidator dataServiceValidator;
     @Autowired
     DataVisualizerValidator dataVisualizerValidator;
+    @Autowired
+    DiseaseForecasterValidator diseaseForecasterValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
@@ -119,6 +118,13 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(dataVisualizerValidator);
+    }
+
+    @InitBinder("diseaseForecaster")
+    protected void initBinderDiseaseForecaster(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseForecasterValidator);
     }
 
 
@@ -298,8 +304,6 @@ public class DataEntryController {
 
         return "dataFormatConvertersForm";
     }
-
-
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("dataFormatConverters") @Validated DataFormatConverters dataFormatConverters,
                          BindingResult result, ModelMap model) {
@@ -342,8 +346,6 @@ public class DataEntryController {
 
         return "dataServiceForm";
     }
-
-
     @RequestMapping(value = "/addDataService", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("dataService") @Validated DataService dataService,
                          BindingResult result, ModelMap model) {
@@ -385,8 +387,6 @@ public class DataEntryController {
 
         return "dataVisualizerForm";
     }
-
-
     @RequestMapping(value = "/addDataVisualizer", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("dataVisualizer") @Validated DataVisualizers dataVisualizer,
                          BindingResult result, ModelMap model) {
@@ -395,6 +395,46 @@ public class DataEntryController {
             return "dataVisualizerForm";
         }
         return "dataVisualizer";
+    }
+
+    @RequestMapping(value = "/add-disease-forecaster", method = RequestMethod.GET)
+    public String addNewDiseaseForecaster(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseForecasters diseaseForecaster = new DiseaseForecasters();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("diseaseForecaster", diseaseForecaster);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseForecasterForm";
+    }
+    @RequestMapping(value = "/addDiseaseForecaster", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("diseaseForecaster") @Validated DiseaseForecasters diseaseForecaster,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", diseaseForecaster);
+            return "diseaseForecasterForm";
+        }
+        return "diseaseForecaster";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)

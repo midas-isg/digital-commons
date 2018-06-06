@@ -120,7 +120,7 @@
 </c:choose>
 
 
-<div class="copy-identifier hide">
+<div class="${specifier}-copy-identifier hide">
     <div class="form-group control-group">
         <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
@@ -128,21 +128,21 @@
 
         <div class="form-group edit-form-group">
             <label>Identifier</label>
-            <input type="text" class="form-control" name="specifier-identifier"
+            <input type="text" class="form-control" name="${path}.identifier"
                    placeholder="Identifier">
         </div>
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
             <input type="text" class="form-control"
-                   name="specifier-identifierSource"
+                   name="${path}.identifierSource"
                    placeholder="Identifier Source">
         </div>
 
         <div class="form-group edit-form-group">
             <label>Identifier Description</label>
             <input type="text" class="form-control"
-                   name="specifier-identifierDescription"
+                   name="${path}.identifierDescription"
                    placeholder="Identifier Description">
         </div>
 
@@ -155,16 +155,16 @@
     $(document).ready(function () {
         var identifierCount = ${identifierCount};
         $("body").on("click", ".${specifier}-add-identifier", function (e) {
-            var html = $(".copy-identifier").html();
+            var html = $(".${specifier}-copy-identifier").html();
             //Add section
             <c:choose>
             <c:when test="${unbounded}">
-            html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierDescription"', 'name="${path}[' + identifierCount + '].identifierDescription"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+            html = html.replace("identifier-remove", "${specifier}-identifier-remove");
             $(".${specifier}-identifier-add-more").after(html);
             identifierCount += 1;
             </c:when>
             <c:otherwise>
-            html = html.replace('name="specifier-identifier"', 'name="${path}.identifier"').replace('name="specifier-identifierDescription"', 'name="${path}.identifierDescription"').replace('name="specifier-identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
+            html = html.replace("identifier-remove", "${specifier}-identifier-remove");
             $(".${specifier}-identifier-add-more").after(html);
             $(".${specifier}-identifier-add-more").hide();
             </c:otherwise>
