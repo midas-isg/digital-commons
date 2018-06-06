@@ -16,7 +16,7 @@
 
 <spring:bind path="${path}">
     <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-        <form:label path="${path}">Title</form:label>
+        <form:label path="${path}">${label}</form:label>
         <form:input path="${path}" type="text" class="form-control" placeholder="${placeholder}"></form:input>
         <form:errors path="${path}" class="error-color"/>
     </div>
