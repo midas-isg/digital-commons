@@ -12,8 +12,8 @@
 
 <c:choose>
     <c:when test="${not empty categoryValuePairs}">
-        <c:forEach items="${categoryValuePairs}" var="categoryValuePair" varStatus="status">
-            <c:if test="${status.first}">
+        <c:forEach items="${categoryValuePairs}" var="categoryValuePair" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                     <label>Extra Properties</label>
                     <div class="form-group">
@@ -27,7 +27,7 @@
             <div class="form-group control-group edit-form-group">
                 <label>Extra Properties</label>
                 <div class="form-group">
-                    <button class="btn btn-danger ${specifier}-${status.count}-remove" type="button"><i
+                    <button class="btn btn-danger ${specifier}-${varStatus.count}-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
                         Remove
                     </button>
@@ -36,7 +36,7 @@
                     <c:when test="${not empty categoryValuePair.category}">
                         <div>
                             <button class="btn btn-success ${specifier}-add-category " style="display: none"
-                                    id="${specifier}-${status.count-1}-add-category"
+                                    id="${specifier}-${varStatus.count-1}-add-category"
                                     type="button">
                                 <i
                                         class="glyphicon glyphicon-plus"></i> Add
@@ -46,12 +46,12 @@
                                 <div class="input-group control-group edit-form-group full-width">
                                     <label>Category</label>
                                     <div class="input-group">
-                                        <input name="${path}[${status.count-1}].Category"
+                                        <input name="${path}[${varStatus.count-1}].Category"
                                                value="${categoryValuePair.category}"
                                                type="text" class="form-control" placeholder="Category">
                                         <div class="input-group-btn">
                                             <button class="btn btn-danger ${specifier}-category-remove"
-                                                    id="${specifier}-${status.count-1}-category-remove"
+                                                    id="${specifier}-${varStatus.count-1}-category-remove"
                                                     type="button"><i
                                                     class="glyphicon glyphicon-remove"></i>
                                                 Remove
@@ -65,7 +65,7 @@
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-success ${specifier}-add-category "
-                                id="${specifier}-${status.count-1}-add-category"
+                                id="${specifier}-${varStatus.count-1}-add-category"
                                 type="button">
                             <i
                                     class="glyphicon glyphicon-plus"></i> Add
@@ -78,7 +78,7 @@
                     <c:when test="${not empty categoryValuePair.categoryIRI}">
                         <div>
                             <button class="btn btn-success ${specifier}-add-categoryIRI " style="display: none"
-                                    id="${specifier}-${status.count-1}-add-categoryIRI"
+                                    id="${specifier}-${varStatus.count-1}-add-categoryIRI"
                                     type="button">
                                 <i
                                         class="glyphicon glyphicon-plus"></i> Add
@@ -88,12 +88,12 @@
                                 <div class="input-group control-group edit-form-group full-width">
                                     <label>Category IRI</label>
                                     <div class="input-group">
-                                        <input name="${path}[${status.count-1}].categoryIRI"
+                                        <input name="${path}[${varStatus.count-1}].categoryIRI"
                                                value="${categoryValuePair.categoryIRI}"
                                                type="text" class="form-control" placeholder="Category IRI">
                                         <div class="input-group-btn">
                                             <button class="btn btn-danger ${specifier}-categoryIRI-remove"
-                                                    id="${specifier}-${status.count-1}-categoryIRI-remove"
+                                                    id="${specifier}-${varStatus.count-1}-categoryIRI-remove"
                                                     type="button"><i
                                                     class="glyphicon glyphicon-remove"></i>
                                                 Remove
@@ -107,7 +107,7 @@
                     </c:when>
                     <c:otherwise>
                         <button class="btn btn-success ${specifier}-add-categoryIRI "
-                                id="${specifier}-${status.count-1}-add-categoryIRI"
+                                id="${specifier}-${varStatus.count-1}-add-categoryIRI"
                                 type="button">
                             <i
                                     class="glyphicon glyphicon-plus"></i> Add
@@ -118,7 +118,7 @@
                 <br><br>
 
                 <div>
-                    <button class="btn btn-success ${specifier}-add-values" id="${specifier}-${status.count-1}-add-values"
+                    <button class="btn btn-success ${specifier}-add-values" id="${specifier}-${varStatus.count-1}-add-values"
                             type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Value
@@ -132,14 +132,14 @@
                                     <label>Value</label>
                                     <div class="input-group-btn">
                                         <button class="btn btn-danger ${specifier}-values-remove"
-                                                id="${specifier}-${status.count-1}-values-${valueStatus.count-1}-remove"
+                                                id="${specifier}-${varStatus.count-1}-values-${valueStatus.count-1}-remove"
                                                 type="button"><i
                                                 class="glyphicon glyphicon-remove"></i>
                                             Remove
                                         </button>
                                     </div>
                                     <myTags:editAnnotation annotation="${value}"
-                                                           path="${path}[${status.count-1}].values[${valueStatus.count-1}]."></myTags:editAnnotation>
+                                                           path="${path}[${varStatus.count-1}].values[${valueStatus.count-1}]."></myTags:editAnnotation>
                                 </div>
                             </div>
                         </div>
@@ -148,7 +148,7 @@
                     </c:forEach>
                 </c:if>
             </div>
-            <c:set var="extraPropertiesCount" scope="page" value="${status.count}"/>
+            <c:set var="extraPropertiesCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
     </c:when>
     <c:otherwise>

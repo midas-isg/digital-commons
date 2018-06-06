@@ -40,14 +40,14 @@
                                         </td>
                                         <td>
                                             <c:forEach items="${citation.dates}" var="date"
-                                                       varStatus="status">
+                                                       varStatus="varStatus">
                                                 <c:if test="${not empty date.date}">
                                                     <c:catch var="ex">
                                                         <fmt:parseDate value="${date.date}" var="parsedDate"
                                                                        pattern="yyyy-MM-dd"/>
 
                                                         <fmt:formatDate dateStyle="medium"
-                                                                        value="${parsedDate}"></fmt:formatDate>${!status.last ? ',' : ''}
+                                                                        value="${parsedDate}"></fmt:formatDate>${!varStatus.last ? ',' : ''}
                                                     </c:catch>
                                                     <c:if test="${not empty ex}">
                                                         ${date.date}
@@ -64,9 +64,9 @@
                                         </td>
                                         <td>
                                             <c:forEach items="${citation.authors}" var="author"
-                                                       varStatus="status">
+                                                       varStatus="varStatus">
                                                 <c:if test="${not empty author.fullName}">
-                                                    ${author.fullName}${!status.last ? ',' : ''}
+                                                    ${author.fullName}${!varStatus.last ? ',' : ''}
                                                 </c:if>
                                             </c:forEach>
                                         </td>

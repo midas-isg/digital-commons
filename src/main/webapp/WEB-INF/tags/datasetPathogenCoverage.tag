@@ -12,8 +12,8 @@
     </td>
     <td>
         <c:forEach items="${entryView.entry.pathogenCoverage}" var="coverage"
-                   varStatus="status">
-            <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                   varStatus="varStatus">
+            <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!varStatus.last ? ',' : ''}
         </c:forEach>
     </td>
 </c:if>

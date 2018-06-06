@@ -13,7 +13,7 @@
             <div>
                 <div class="tag-list" style="word-wrap: break-word;">
                     <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
-                               varStatus="status">
+                               varStatus="varStatus">
                         <c:choose>
                             <c:when test="${not empty isAbout.name && not empty isAbout.identifier.identifier && not empty isAbout.identifier.identifierSource}">
                                 <c:set var="identifier" value="${isAbout.identifier.identifier}" />
@@ -24,31 +24,31 @@
                                         <a href="${bioportalLink}" class="underline">
                                                 ${isAbout.name}
                                         </a>
-                                        ${!status.last ? ',' : ''}
+                                        ${!varStatus.last ? ',' : ''}
                                     </c:when>
                                     <c:when test="${fn:contains(identifier,'http://purl.bioontology.org/ontology/SNOMEDCT/')}">
                                         <c:set var="identifier" value="${fn:replace(identifier, 'http://purl.bioontology.org/ontology/SNOMEDCT/', 'http://bioportal.bioontology.org/ontologies/SNOMEDCT/')}" />
                                         <a href="${identifier}" class="underline">
                                                 ${isAbout.name}
                                         </a>
-                                        ${!status.last ? ',' : ''}
+                                        ${!varStatus.last ? ',' : ''}
                                     </c:when>
                                     <c:when test="${fn:contains(identifier,'http')}">
                                         <a href="${identifier}" class="underline">
                                                 ${isAbout.name}
                                         </a>
-                                        ${!status.last ? ',' : ''}
+                                        ${!varStatus.last ? ',' : ''}
                                     </c:when>
                                     <c:when test="${fn:contains(identifierSource,'http')}">
                                         <a href="${identifierSource}" class="underline">
                                                 ${isAbout.name}
                                         </a>
-                                        ${!status.last ? ',' : ''}
+                                        ${!varStatus.last ? ',' : ''}
                                     </c:when>
                                 </c:choose>
                             </c:when>
                             <c:when test="${not empty isAbout.name}">
-                                ${isAbout.name}${!status.last ? ',' : ''}
+                                ${isAbout.name}${!varStatus.last ? ',' : ''}
                             </c:when>
                             <c:when test="${not empty isAbout.value && not empty isAbout.valueIRI}">
                                 <c:set var="valueIRI" value="${isAbout.valueIRI}" />
@@ -60,15 +60,15 @@
                                         <a href="${valueIRI}" class="underline">
                                                 ${isAbout.value}
                                         </a>
-                                        ${!status.last ? ',' : ''}
+                                        ${!varStatus.last ? ',' : ''}
                                     </c:when>
                                     <c:otherwise>
-                                        ${isAbout.value}${!status.last ? ',' : ''}
+                                        ${isAbout.value}${!varStatus.last ? ',' : ''}
                                     </c:otherwise>
                                 </c:choose>
                             </c:when>
                             <c:when test="${not empty isAbout.value}">
-                                ${isAbout.value}${!status.last ? ',' : ''}
+                                ${isAbout.value}${!varStatus.last ? ',' : ''}
                             </c:when>
                         </c:choose>
                     </c:forEach>

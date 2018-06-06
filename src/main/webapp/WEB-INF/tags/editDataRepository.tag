@@ -57,13 +57,13 @@
                     </button>
                     <c:choose>
                         <c:when test="${not empty dataRepository.types}">
-                            <c:forEach items="${dataRepository.types}" var="type" varStatus="status">
+                            <c:forEach items="${dataRepository.types}" var="type" varStatus="varStatus">
                                 <div class="form-group edit-form-group">
                                     <label>Type</label>
                                     <myTags:editAnnotation annotation="${type}"
-                                                           path="${path}.types[${status.count-1}]."></myTags:editAnnotation>
+                                                           path="${path}.types[${varStatus.count-1}]."></myTags:editAnnotation>
                                 </div>
-                                <c:set var="dataRepositoryTypesCount" scope="page" value="${status.count}"/>
+                                <c:set var="dataRepositoryTypesCount" scope="page" value="${varStatus.count}"/>
                             </c:forEach>
                         </c:when>
                         <c:otherwise>

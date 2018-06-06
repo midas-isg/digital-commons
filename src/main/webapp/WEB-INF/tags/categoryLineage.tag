@@ -8,9 +8,9 @@
 
 <ol class="breadcrumb">
 
-    <c:forEach items="${lineage}" var="category" varStatus="status">
+    <c:forEach items="${lineage}" var="category" varStatus="varStatus">
         <c:choose>
-            <c:when test="${status.first}">
+            <c:when test="${varStatus.first}">
                 <li><i class="fa fa-home"></i></li>
             </c:when>
             <c:otherwise>

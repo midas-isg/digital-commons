@@ -12,8 +12,8 @@
 
 <c:choose>
     <c:when test="${not empty dates}">
-        <c:forEach items="${dates}" var="date" varStatus="status">
-            <c:if test="${status.first}">
+        <c:forEach items="${dates}" var="date" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                 <label>Dates</label>
                 <div class="form-group control-group ${specifier}-date-add-more">
@@ -32,9 +32,9 @@
                     Remove
                 </button>
                 <br><br>
-                <myTags:editDates path="${path}.dates[${status.count-1}]" date="${date}" specifier="${specifier}-date-"></myTags:editDates>
+                <myTags:editDates path="${path}.dates[${varStatus.count-1}]" date="${date}" specifier="${specifier}-date-"></myTags:editDates>
             </div>
-            <c:set var="unboundedDateCount" scope="page" value="${status.count}"/>
+            <c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
         </div>
     </c:when>

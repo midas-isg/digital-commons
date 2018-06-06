@@ -21,10 +21,10 @@
     <c:when test="${not empty identifiers}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="status">
+            <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="varStatus">
                 <div class="form-group control-group ${specifier}-identifier-add-more">
                     <c:choose>
-                        <c:when test="${status.first}">
+                        <c:when test="${varStatus.first}">
                             <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                     ${label}
@@ -41,23 +41,23 @@
                     <div class="form-group edit-form-group">
                         <label>Identifier</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                               name="${path}[${status.count-1}].identifier" placeholder="Identifier">
+                               name="${path}[${varStatus.count-1}].identifier" placeholder="Identifier">
                     </div>
 
                     <div class="form-group edit-form-group">
                         <label>Identifier Source</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                               name="${path}[${status.count-1}].identifierSource" placeholder="Identifier Source">
+                               name="${path}[${varStatus.count-1}].identifierSource" placeholder="Identifier Source">
                     </div>
 
                     <div class="form-group edit-form-group">
                         <label>Identifier Description</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifierDescription}"
-                               name="${path}[${status.count-1}].identifierDescription" placeholder="Identifier Description">
+                               name="${path}[${varStatus.count-1}].identifierDescription" placeholder="Identifier Description">
                     </div>
 
                 </div>
-                <c:set var="identifierCount" scope="page" value="${status.count}"/>
+                <c:set var="identifierCount" scope="page" value="${varStatus.count}"/>
 
             </c:forEach>
         </div>

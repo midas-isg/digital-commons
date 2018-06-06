@@ -29,17 +29,17 @@ public class DatasetWithOrganizationValidator implements Validator {
         if (dataset.getCreators().size() == 0) {
             errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
         } else {
-            boolean hasError = true;
             ListIterator<Organization> iterator = dataset.getCreators().listIterator();
             while (iterator.hasNext()) {
                 Organization organization = iterator.next();
                 if (isEmpty(organization.getName())) {
+                    errors.rejectValue("creators["+iterator.previousIndex()+"].name", "NotEmpty.dataset.creator.name");
+                }
+                if (isEmpty(organization.getName()) && isEmpty(organization.getAbbreviation()) && isEmpty(organization.getLocation().getName()) && isEmpty(organization.getLocation().getDescription()) && isEmpty(organization.getLocation().getPostalAddress())) {
                     iterator.remove();
-                } else {
-                    hasError = false;
                 }
             }
-            if (hasError) {
+            if (dataset.getCreators().size() == 0) {
                 errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
             }
         }

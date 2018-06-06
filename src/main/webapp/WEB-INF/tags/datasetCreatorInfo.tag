@@ -14,23 +14,23 @@
                 <td>Created by</td>
                 <td>
                     <c:forEach items="${entryView.entry.creators}" var="creator"
-                               varStatus="status">
+                               varStatus="varStatus">
                         <c:choose>
                             <c:when test="${not empty creator.name}">
                                 <c:choose>
                                     <c:when test="${creator.name.getClass().simpleName == 'String'}">
-                                        ${creator.name}${!status.last ? ',' : ''}
+                                        ${creator.name}${!varStatus.last ? ',' : ''}
                                     </c:when>
                                     <c:otherwise>
-                                        ${creator.name.description}${!status.last ? ',' : ''}
+                                        ${creator.name.description}${!varStatus.last ? ',' : ''}
                                     </c:otherwise>
                                 </c:choose>
                             </c:when>
                             <c:when test="${not empty creator.fullName}">
-                                ${creator.fullName}${!status.last ? ',' : ''}
+                                ${creator.fullName}${!varStatus.last ? ',' : ''}
                             </c:when>
                             <c:otherwise>
-                                ${creator.firstName} ${creator.lastName}${!status.last ? ',' : ''}
+                                ${creator.firstName} ${creator.lastName}${!varStatus.last ? ',' : ''}
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
@@ -41,10 +41,10 @@
                     <td>Creator emails</td>
                     <td>
                         <c:forEach items="${entryView.entry.creators}" var="creator"
-                                   varStatus="status">
+                                   varStatus="varStatus">
                             <c:if test="${not empty creator.email}">
                                 <a href="mailto:${creator.email}"
-                                   class="underline">${creator.email}</a>${!status.last ? ',' : ''}
+                                   class="underline">${creator.email}</a>${!varStatus.last ? ',' : ''}
                             </c:if>
                         </c:forEach>
                     </td>
@@ -56,8 +56,8 @@
                 <td>Developers</td>
                 <td>
                     <c:forEach items="${entryView.entry.developers}" var="developer"
-                               varStatus="status">
-                        ${developer}${!status.last ? ',' : ''}
+                               varStatus="varStatus">
+                        ${developer}${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </td>
             </tr>
