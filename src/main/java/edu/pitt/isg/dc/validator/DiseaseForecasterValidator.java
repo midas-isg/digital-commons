@@ -10,6 +10,8 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
+
 @Component
 public class DiseaseForecasterValidator implements Validator {
     @Override
@@ -36,31 +38,8 @@ public class DiseaseForecasterValidator implements Validator {
         clearStringList(diseaseForecaster.getGrants().listIterator());
         //////////////////////
 
-        ListIterator<NestedIdentifier> nestedIdentifierListIterator = diseaseForecaster.getDiseases().listIterator();
-        while(nestedIdentifierListIterator.hasNext()) {
-            NestedIdentifier nestedIdentifier = nestedIdentifierListIterator.next();
-            Identifier identifier = nestedIdentifier.getIdentifier();
-            if(identifier == null) {
-                nestedIdentifierListIterator.remove();
-                continue;
-            }
-            if(isEmpty(identifier.getIdentifier()) && isEmpty(identifier.getIdentifierDescription()) && isEmpty(identifier.getIdentifierSource())) {
-                nestedIdentifierListIterator.remove();
-            }
-        }
-
-        nestedIdentifierListIterator = diseaseForecaster.getLocationCoverage().listIterator();
-        while(nestedIdentifierListIterator.hasNext()) {
-            NestedIdentifier nestedIdentifier = nestedIdentifierListIterator.next();
-            Identifier identifier = nestedIdentifier.getIdentifier();
-            if(identifier == null) {
-                nestedIdentifierListIterator.remove();
-                continue;
-            }
-            if(isEmpty(identifier.getIdentifier()) && isEmpty(identifier.getIdentifierDescription()) && isEmpty(identifier.getIdentifierSource())) {
-                nestedIdentifierListIterator.remove();
-            }
-        }
+        clearNestedIdentifier(diseaseForecaster.getDiseases().listIterator());
+        clearNestedIdentifier(diseaseForecaster.getLocationCoverage().listIterator());
 
         clearStringList(diseaseForecaster.getNowcasts().listIterator());
         clearStringList(diseaseForecaster.getOutcomes().listIterator());
@@ -69,39 +48,5 @@ public class DiseaseForecasterValidator implements Validator {
             errors.rejectValue("forecasts[0]", "NotEmpty.software.diseaseForecaster");
         }
 
-
-    }
-
-    public static void clearStringList(ListIterator<String> listIterator) {
-        while (listIterator.hasNext()) {
-            String string = listIterator.next();
-            if (isEmpty(string)) {
-                listIterator.remove();
-            }
-        }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
     }
 }

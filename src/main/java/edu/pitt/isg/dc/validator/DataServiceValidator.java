@@ -10,6 +10,9 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
+
 @Component
 public class DataServiceValidator implements Validator {
     @Override
@@ -50,38 +53,5 @@ public class DataServiceValidator implements Validator {
         if(dataService.getDataServiceDescription().size() == 0) {
             errors.rejectValue("dataServiceDescription[0]", "NotEmpty.software.dataServiceDescription");
         }
-    }
-
-    public static void clearStringList(ListIterator<String> listIterator) {
-        while (listIterator.hasNext()) {
-            String string = listIterator.next();
-            if (isEmpty(string)) {
-                listIterator.remove();
-            }
-        }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
     }
 }

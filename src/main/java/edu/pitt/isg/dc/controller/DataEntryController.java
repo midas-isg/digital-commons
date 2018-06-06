@@ -77,13 +77,19 @@ public class DataEntryController {
     @Autowired
     DatasetWithOrganizationValidator datasetWithOrganizationValidator;
     @Autowired
-    SoftwareValidator softwareValidator;
+    DataFormatConverterValidator dataFormatConverterValidator;
     @Autowired
     DataServiceValidator dataServiceValidator;
     @Autowired
     DataVisualizerValidator dataVisualizerValidator;
     @Autowired
     DiseaseForecasterValidator diseaseForecasterValidator;
+    @Autowired
+    DiseaseTransmissionModelValidator diseaseTransmissionModelValidator;
+    @Autowired
+    DiseaseTransmissionTreeEstimatorValidator diseaseTransmissionTreeEstimatorValidator;
+    @Autowired
+    MetagenomicAnalysisValidator metagenomicAnalysisValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
@@ -103,7 +109,7 @@ public class DataEntryController {
     protected void initBinderDataFormatConverters(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        binder.setValidator(softwareValidator);
+        binder.setValidator(dataFormatConverterValidator);
     }
 
     @InitBinder("dataService")
@@ -125,6 +131,27 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(diseaseForecasterValidator);
+    }
+
+    @InitBinder("diseaseTransmissionModel")
+    protected void initBinderDiseaseTransmissionModel(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseTransmissionModelValidator);
+    }
+
+    @InitBinder("diseaseTransmissionTreeEstimator")
+    protected void initBinderDiseaseTransmissionTreeEstimator(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseTransmissionTreeEstimatorValidator);
+    }
+
+    @InitBinder("metagenomicAnalysis")
+    protected void initBinderMetagenomicAnalysis(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(metagenomicAnalysisValidator);
     }
 
 
@@ -435,6 +462,126 @@ public class DataEntryController {
             return "diseaseForecasterForm";
         }
         return "diseaseForecaster";
+    }
+
+    @RequestMapping(value = "/add-disease-transmission-model", method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseTransmissionModel diseaseTransmissionModel = new DiseaseTransmissionModel();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("diseaseTransmissionModel", diseaseTransmissionModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseTransmissionModelForm";
+    }
+    @RequestMapping(value = "/addDiseaseTransmissionModel", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("diseaseTransmissionModel") @Validated DiseaseTransmissionModel diseaseTransmissionModel,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", diseaseTransmissionModel);
+            return "diseaseTransmissionModelForm";
+        }
+        return "diseaseTransmissionModel";
+    }
+
+    @RequestMapping(value = "/add-disease-transmission-tree-estimator", method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionTreeEstimator(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator = new DiseaseTransmissionTreeEstimators();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("diseaseTransmissionTreeEstimator", diseaseTransmissionTreeEstimator);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseTransmissionTreeEstimatorForm";
+    }
+    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimator", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("diseaseTransmissionTreeEstimator") @Validated DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", diseaseTransmissionTreeEstimator);
+            return "diseaseTransmissionTreeEstimatorForm";
+        }
+        return "diseaseTransmissionTreeEstimator";
+    }
+
+    @RequestMapping(value = "/add-metagenomic-analysis", method = RequestMethod.GET)
+    public String addNewMetagenomicAnalysis(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        MetagenomicAnalysis metagenomicAnalysis = new MetagenomicAnalysis();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("metagenomicAnalysis", metagenomicAnalysis);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "metagenomicAnalysisForm";
+    }
+    @RequestMapping(value = "/addMetagenomicAnalysis", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("metagenomicAnalysis") @Validated MetagenomicAnalysis metagenomicAnalysis,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", metagenomicAnalysis);
+            return "metagenomicAnalysisForm";
+        }
+        return "metagenomicAnalysis";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)

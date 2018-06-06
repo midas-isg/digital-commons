@@ -9,6 +9,9 @@ import org.springframework.validation.Validator;
 import java.util.List;
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isValidIRI;
+
 @Component
 public class DatasetWithOrganizationValidator implements Validator {
     @Override
@@ -238,36 +241,5 @@ public class DatasetWithOrganizationValidator implements Validator {
                 iterator.remove();
             }
         }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean isValidIRI(String string) {
-        if(string.toLowerCase().contains("http:") || string.toLowerCase().contains("https:")) {
-            return true;
-        }
-        return false;
     }
 }
