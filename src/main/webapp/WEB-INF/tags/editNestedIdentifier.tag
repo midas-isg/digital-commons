@@ -15,10 +15,11 @@
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="false"
               type="java.lang.String" %>
-
+<%@ attribute name="required" required="false"
+              type="java.lang.Boolean" %>
 <c:choose>
     <c:when test="${not empty identifiers}">
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
             <button class="btn btn-success ${specifier}-add-nested-identifier" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add ${placeholder}

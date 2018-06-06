@@ -90,6 +90,16 @@ public class DataEntryController {
     DiseaseTransmissionTreeEstimatorValidator diseaseTransmissionTreeEstimatorValidator;
     @Autowired
     MetagenomicAnalysisValidator metagenomicAnalysisValidator;
+    @Autowired
+    ModelingPlatformValidator modelingPlatformValidator;
+    @Autowired
+    PathogenEvolutionModelValidator pathogenEvolutionModelValidator;
+    @Autowired
+    PhylogeneticTreeConstructorValidator phylogeneticTreeConstructorValidator;
+    @Autowired
+    PopulationDynamicsModelValidator populationDynamicsModelValidator;
+    @Autowired
+    SyntheticEcosystemConstructorValidator syntheticEcosystemConstructorValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
@@ -152,6 +162,41 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(metagenomicAnalysisValidator);
+    }
+
+    @InitBinder("modelingPlatform")
+    protected void initBinderModelingPlatform(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(modelingPlatformValidator);
+    }
+
+    @InitBinder("pathogenEvolutionModel")
+    protected void initBinderPathogenEvolutionModel(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(pathogenEvolutionModelValidator);
+    }
+
+    @InitBinder("phylogeneticTreeConstructor")
+    protected void initBinderPhylogeneticTreeConstructor(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(phylogeneticTreeConstructorValidator);
+    }
+
+    @InitBinder("populationDynamicsModel")
+    protected void initBinderPopulationDynamicsModel(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(populationDynamicsModelValidator);
+    }
+
+    @InitBinder("syntheticEcosystemConstructor")
+    protected void initBinderSyntheticEcosystemConstructor(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(syntheticEcosystemConstructorValidator);
     }
 
 
@@ -411,7 +456,6 @@ public class DataEntryController {
             return "accessDenied";
         }
 
-
         return "dataVisualizerForm";
     }
     @RequestMapping(value = "/addDataVisualizer", method = RequestMethod.POST)
@@ -429,6 +473,7 @@ public class DataEntryController {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseForecasters diseaseForecaster = new DiseaseForecasters();
         model.addAttribute("categoryID",0);
+
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -582,6 +627,205 @@ public class DataEntryController {
             return "metagenomicAnalysisForm";
         }
         return "metagenomicAnalysis";
+    }
+
+    @RequestMapping(value = "/add-modeling-platform", method = RequestMethod.GET)
+    public String addNewModelingPlatform(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        ModelingPlatforms modelingPlatform = new ModelingPlatforms();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("modelingPlatform", modelingPlatform);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "modelingPlatformForm";
+    }
+    @RequestMapping(value = "/addModelingPlatform", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("modelingPlatform") @Validated ModelingPlatforms modelingPlatform,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", modelingPlatform);
+            return "modelingPlatformForm";
+        }
+        return "modelingPlatform";
+    }
+
+    @RequestMapping(value = "/add-pathogen-evolution-model", method = RequestMethod.GET)
+    public String addNewPathogenEvolutionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PathogenEvolutionModels pathogenEvolutionModel = new PathogenEvolutionModels();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("pathogenEvolutionModel", pathogenEvolutionModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "pathogenEvolutionModelForm";
+    }
+    @RequestMapping(value = "/addPathogenEvolutionModel", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("pathogenEvolutionModel") @Validated PathogenEvolutionModels pathogenEvolutionModel,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", pathogenEvolutionModel);
+            return "pathogenEvolutionModelForm";
+        }
+        return "pathogenEvolutionModel";
+    }
+
+    @RequestMapping(value = "/add-phylogenetic-tree-constructor", method = RequestMethod.GET)
+    public String addNewPhylogenticTreeConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PhylogeneticTreeConstructors phylogeneticTreeConstructor = new PhylogeneticTreeConstructors();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("phylogeneticTreeConstructor", phylogeneticTreeConstructor);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        return "phylogeneticTreeConstructorForm";
+    }
+    @RequestMapping(value = "/addPhylogeneticTreeConstructor", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("phylogeneticTreeConstructor") @Validated PhylogeneticTreeConstructors phylogeneticTreeConstructor,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", phylogeneticTreeConstructor);
+            return "phylogeneticTreeConstructorForm";
+        }
+        return "phylogeneticTreeConstructor";
+    }
+
+    @RequestMapping(value = "/add-population-dynamics-model", method = RequestMethod.GET)
+    public String addNewPopulationDynamicsModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PopulationDynamicsModel populationDynamicsModel = new PopulationDynamicsModel();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("populationDynamicsModel", populationDynamicsModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "populationDynamicsModelForm";
+    }
+    @RequestMapping(value = "/addPopulationDynamicsModel", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("populationDynamicsModel") @Validated PopulationDynamicsModel populationDynamicsModel,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", populationDynamicsModel);
+            return "populationDynamicsModelForm";
+        }
+        return "populationDynamicsModel";
+    }
+
+    @RequestMapping(value = "/add-synthetic-ecosystem-constructor", method = RequestMethod.GET)
+    public String addNewSyntheticEcosystemConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        SyntheticEcosystemConstructors syntheticEcosystemConstructor = new SyntheticEcosystemConstructors();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("syntheticEcosystemConstructor", syntheticEcosystemConstructor);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "syntheticEcosystemConstructorForm";
+    }
+    @RequestMapping(value = "/addSyntheticEcosystemConstructor", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("syntheticEcosystemConstructor") @Validated SyntheticEcosystemConstructors syntheticEcosystemConstructor,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", syntheticEcosystemConstructor);
+            return "syntheticEcosystemConstructorForm";
+        }
+        return "syntheticEcosystemConstructor";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
