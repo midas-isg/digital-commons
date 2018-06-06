@@ -58,6 +58,8 @@
                 </c:if>
 
                 </div>
+                <c:set var="creatorCount" scope="page" value="${status.count}"/>
+
             </c:forEach>
             </div>
         </spring:bind>
@@ -90,6 +92,8 @@
                 </div>
                 <form:errors path="creators[0]" class="error-color"/>
             </div>
+            <c:set var="creatorCount" scope="page" value="1"/>
+
         </spring:bind>
     </c:otherwise>
 </c:choose>
@@ -121,7 +125,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var creatorCount = 1;
+        var creatorCount =${creatorCount};
         //Add section
         $(".add-creator").click(function () {
 //            $("div.copy-creator input").each(function () {

@@ -15,13 +15,13 @@ import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
-import edu.pitt.isg.dc.validator.CustomDatasetEditor;
-import edu.pitt.isg.dc.validator.DatasetValidator;
-import edu.pitt.isg.dc.validator.DatasetWithOrganizationValidator;
-import edu.pitt.isg.dc.validator.SoftwareValidator;
+import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
-import edu.pitt.isg.mdc.v1_0.Software;
+import edu.pitt.isg.mdc.v1_0.DataFormatConverters;
+import edu.pitt.isg.mdc.v1_0.DataService;
+import edu.pitt.isg.mdc.v1_0.DataServiceAccessPointType;
+import edu.pitt.isg.mdc.v1_0.DataVisualizers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
@@ -81,6 +81,10 @@ public class DataEntryController {
     DatasetWithOrganizationValidator datasetWithOrganizationValidator;
     @Autowired
     SoftwareValidator softwareValidator;
+    @Autowired
+    DataServiceValidator dataServiceValidator;
+    @Autowired
+    DataVisualizerValidator dataVisualizerValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
@@ -96,12 +100,27 @@ public class DataEntryController {
         binder.setValidator(datasetWithOrganizationValidator);
     }
 
-    @InitBinder("software")
-    protected void initBinderSoftware(WebDataBinder binder){
+    @InitBinder("dataFormatConverters")
+    protected void initBinderDataFormatConverters(WebDataBinder binder){
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(softwareValidator);
     }
+
+    @InitBinder("dataService")
+    protected void initBinderDataService(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(dataServiceValidator);
+    }
+
+    @InitBinder("dataVisualizer")
+    protected void initBinderDataVisualizer(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(dataVisualizerValidator);
+    }
+
 
     private Converter converter = new Converter();
 
@@ -248,10 +267,10 @@ public class DataEntryController {
     }
 
 
-    @RequestMapping(value = "/test-add-software", method = RequestMethod.GET)
-    public String testAddNewSoftware(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/add-data-format-converter", method = RequestMethod.GET)
+    public String addNewDataFormatConverter(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-        Software software = new Software();
+        DataFormatConverters dataFormatConverters = new DataFormatConverters();
         model.addAttribute("categoryID",0);
 
 //        if(entryId != null) {
@@ -261,7 +280,7 @@ public class DataEntryController {
 //            software =converter.c(entryView.getUnescapedEntryJsonString());
 //            model.addAttribute("categoryID", entry.getCategory().getId());
 //        }
-        model.addAttribute("software", software);
+        model.addAttribute("dataFormatConverters", dataFormatConverters);
 
         if (ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
@@ -277,16 +296,105 @@ public class DataEntryController {
         }
 
 
-        return "newSoftwareForm";
+        return "dataFormatConvertersForm";
     }
 
-    @RequestMapping(value = "/testAddSoftware", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("software") @Validated Software software,
+
+    @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("dataFormatConverters") @Validated DataFormatConverters dataFormatConverters,
                          BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "newSoftwareForm";
+            model.addAttribute("software", dataFormatConverters);
+            return "dataFormatConvertersForm";
+
         }
-        return "software";
+        return "dataFormatConverters";
+    }
+
+    @RequestMapping(value = "/add-data-service", method = RequestMethod.GET)
+    public String addNewDataService(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DataService dataService = new DataService();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("dataService", dataService);
+        model.addAttribute("accessPointTypes", DataServiceAccessPointType.values());
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "dataServiceForm";
+    }
+
+
+    @RequestMapping(value = "/addDataService", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("dataService") @Validated DataService dataService,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("accessPointTypes", DataServiceAccessPointType.values());
+            model.addAttribute("software", dataService);
+            return "dataServiceForm";
+        }
+        return "dataService";
+    }
+
+    @RequestMapping(value = "/add-data-visualizer", method = RequestMethod.GET)
+    public String addNewDataVisualizer(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DataVisualizers dataVisualizer = new DataVisualizers();
+        model.addAttribute("categoryID",0);
+
+//        if(entryId != null) {
+//            Entry entry = apiUtil.getEntryById(entryId);
+//            EntryView entryView = new EntryView(entry);
+//
+//            software =converter.c(entryView.getUnescapedEntryJsonString());
+//            model.addAttribute("categoryID", entry.getCategory().getId());
+//        }
+        model.addAttribute("dataVisualizer", dataVisualizer);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "dataVisualizerForm";
+    }
+
+
+    @RequestMapping(value = "/addDataVisualizer", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("dataVisualizer") @Validated DataVisualizers dataVisualizer,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", dataVisualizer);
+            return "dataVisualizerForm";
+        }
+        return "dataVisualizer";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)
