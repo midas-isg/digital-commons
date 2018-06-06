@@ -82,7 +82,7 @@
                 </spring:bind>
             </div>
         </div>
-        <c:set var="formatsCount" scope="page" value="0"/>
+        <c:set var="formatsCount" scope="page" value="1"/>
 
     </c:otherwise>
 </c:choose>

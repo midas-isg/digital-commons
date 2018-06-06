@@ -17,9 +17,9 @@
     <c:when test="${not empty types}">
         <spring:bind path="${path}[0]">
             <div class=" ${status.error ? 'has-error' : ''}">
-            <c:forEach items="${types}" varStatus="status" var="type">
+            <c:forEach items="${types}" varStatus="varStatus" var="type">
                 <c:choose>
-                    <c:when test="${status.first}">
+                    <c:when test="${varStatus.first}">
                         <div class="form-group control-group edit-form-group ${specifier}-type-add-more">
                         <label>Type</label>
                         <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
@@ -40,23 +40,23 @@
                     <c:choose>
                         <c:when test="${not empty type.information}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-information-${specifier}" type="button"><i
+                                    id="${varStatus.count-1}-add-information-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Information</label>
-                                <button class="btn btn-danger annotation-remove" id="${status.count-1}-information"
+                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-information"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.information}" supportError="${true}"
-                                                       path="${path}[${status.count-1}].information."></myTags:editAnnotation>
+                                                       path="${path}[${varStatus.count-1}].information."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-information-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-information-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
@@ -70,23 +70,23 @@
                     <c:choose>
                         <c:when test="${not empty type.method}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-method-${specifier}" type="button"><i
+                                    id="${varStatus.count-1}-add-method-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Method</label>
-                                <button class="btn btn-danger annotation-remove" id="${status.count-1}-method"
+                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-method"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.method}" supportError="${true}"
-                                                       path="${path}[${status.count-1}].method."></myTags:editAnnotation>
+                                                       path="${path}[${varStatus.count-1}].method."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-method-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-method-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
@@ -100,23 +100,23 @@
                     <c:choose>
                         <c:when test="${not empty type.platform}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${status.count-1}-add-platform-${specifier}" type="button"><i
+                                    id="${varStatus.count-1}-add-platform-${specifier}" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Platform</label>
-                                <button class="btn btn-danger annotation-remove" id="${status.count-1}-platform"
+                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-platform"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
                                 <myTags:editAnnotation annotation="${type.platform}" supportError="${true}"
-                                                       path="${path}[${status.count-1}].platform."></myTags:editAnnotation>
+                                                       path="${path}[${varStatus.count-1}].platform."></myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${status.count-1}-add-platform-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-platform-${specifier}"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
@@ -124,11 +124,11 @@
                         </c:otherwise>
                     </c:choose>
                 </div>
-                <c:if test="${status.first}">
+                <c:if test="${varStatus.first}">
                     <form:errors path="${path}[0]" class="error-color"/>
                 </c:if>
                 </div>
-                <c:set var="typeCount" scope="page" value="${status.count}"/>
+                <c:set var="typeCount" scope="page" value="${varStatus.count}"/>
 
             </c:forEach>
             </div>

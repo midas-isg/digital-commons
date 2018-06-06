@@ -29,7 +29,7 @@
                     <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${diseaseForecaster.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editUnboundedNonRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${diseaseForecaster.forecastFrequency}"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${diseaseForecaster.type}"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedRequiredNonZeroLengthStrig label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${diseaseForecaster.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthStrig>
+                    <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${diseaseForecaster.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>
                     <myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseForecaster.locationCoverage}"></myTags:editNestedIdentifier>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>

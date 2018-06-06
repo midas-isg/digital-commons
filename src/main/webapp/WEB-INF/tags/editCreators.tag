@@ -13,9 +13,9 @@
     <c:when test="${not empty creators}">
         <spring:bind path="creators[0]">
             <div class=" ${status.error ? 'has-error' : ''}">
-            <c:forEach items="${creators}" varStatus="status" var="creator">
+            <c:forEach items="${creators}" varStatus="varStatus" var="creator">
                 <c:choose>
-                    <c:when test="${status.first}">
+                    <c:when test="${varStatus.first}">
                         <div class="form-group edit-form-group creator-add-more">
                         <label>Creator</label>
                         <button class="btn btn-success add-creator" type="button"><i
@@ -35,30 +35,30 @@
                 <div class="form-group edit-form-group">
                     <label>First Name</label>
                     <input type="text" class="form-control" value="${creator.firstName}"
-                           name="creators[${status.count-1}].firstName"
+                           name="creators[${varStatus.count-1}].firstName"
                            placeholder=" First Name">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control" value="${creator.lastName}"
-                           name="creators[${status.count-1}].lastName"
+                           name="creators[${varStatus.count-1}].lastName"
                            placeholder="Last Name">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Email</label>
                     <input type="email" class="form-control" value="${creator.email}"
-                           name="creators[${status.count-1}].email"
+                           name="creators[${varStatus.count-1}].email"
                            placeholder="Email">
                 </div>
-                <c:if test="${status.first}">
+                <c:if test="${varStatus.first}">
 
                     <form:errors path="creators[0]" class="error-color"/>
                 </c:if>
 
                 </div>
-                <c:set var="creatorCount" scope="page" value="${status.count}"/>
+                <c:set var="creatorCount" scope="page" value="${varStatus.count}"/>
 
             </c:forEach>
             </div>

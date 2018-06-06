@@ -15,8 +15,8 @@
 
 <c:choose>
     <c:when test="${not empty dataStandards}">
-        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="status">
-            <c:if test="${status.first}">
+        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                     <form:label path="${path}">${name}</form:label>
                     <div class="form-group">
@@ -32,43 +32,43 @@
             <div class="form-group control-group edit-form-group">
                 <label>${name}</label>
                 <br>
-                <button class="btn btn-danger ${specifier}-${status.count-1}-dataStandard-remove" type="button"><i
+                <button class="btn btn-danger ${specifier}-${varStatus.count-1}-dataStandard-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
                 <br><br>
 
                 <div class="form-group">
-                    <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${status.count-1}].identifier"
+                    <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${varStatus.count-1}].identifier"
                                            unbounded="False"></myTags:editIdentifier>
                 </div>
 
 
                 <div class="form-group edit-form-group">
                     <label>Name</label>
-                    <input name="${path}[${status.count-1}].name" value="${dataStandard.name}" type="text" class="form-control" placeholder="Name">
+                    <input name="${path}[${varStatus.count-1}].name" value="${dataStandard.name}" type="text" class="form-control" placeholder="Name">
                 </div>
 
 
                 <div class="form-group">
                     <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}" string="${dataStandard.description}"
-                                                               path="${path}[${status.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
+                                                               path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Type</label>
-                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${status.count-1}].type."></myTags:editAnnotation>
+                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type."></myTags:editAnnotation>
                 </div>
 
                 <div class="form-group">
                     <myTags:editLicense licenses="${dataStandard.licenses}" specifier="${specifier}-licenses"
-                                        path="${path}[${status.count-1}].licenses"></myTags:editLicense>
+                                        path="${path}[${varStatus.count-1}].licenses"></myTags:editLicense>
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Version</label>
                     <div class="form-group">
-                        <button class="btn btn-success ${specifier}-${status.count-1}-add-version" type="button"><i
+                        <button class="btn btn-success ${specifier}-${varStatus.count-1}-add-version" type="button"><i
                                 class="glyphicon glyphicon-plus"></i> Add
                             Version
                         </button>
@@ -76,12 +76,12 @@
                 </div>
 
                 <div class="form-group">
-                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}" specifier="${specifier}-${status.count-1}-extraProperties"
-                                                path="${path}[${status.count-1}].extraProperties"></myTags:editExtraProperties>
+                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}" specifier="${specifier}-${varStatus.count-1}-extraProperties"
+                                                path="${path}[${varStatus.count-1}].extraProperties"></myTags:editExtraProperties>
                 </div>
             </div>
 
-            <c:set var="dataStandardCount" scope="page" value="${status.count}"/>
+            <c:set var="dataStandardCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
     </c:when>

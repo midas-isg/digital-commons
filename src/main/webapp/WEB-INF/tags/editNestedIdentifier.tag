@@ -26,17 +26,17 @@
             </button>
             <br><br>
             <div class=" ${specifier}-nested-identifier-add-more">
-                <c:forEach items="${identifiers}" var="identifier" varStatus="status">
+                <c:forEach items="${identifiers}" var="identifier" varStatus="varStatus">
                     <div class="form-group  control-group edit-form-group">
                         <label>${placeholder}</label>
                         <button class="btn btn-danger ${specifier}-nested-remove" type="button"><i
                                 class="glyphicon glyphicon-remove"></i> Remove
                         </button>
-                        <myTags:editSoftwareIdentifier label="Identifier" path="${path}[${status.count-1}].identifier"
+                        <myTags:editSoftwareIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
                                                        identifier="${identifier.identifier}"
-                                                       specifier="${specifier}-nested-identifier-${status.count-1}"></myTags:editSoftwareIdentifier>
+                                                       specifier="${specifier}-nested-identifier-${varStatus.count-1}"></myTags:editSoftwareIdentifier>
                     </div>
-                    <c:set var="nestedIdentifierCount" scope="page" value="${status.count}"/>
+                    <c:set var="nestedIdentifierCount" scope="page" value="${varStatus.count}"/>
                 </c:forEach>
             </div>
         </div>

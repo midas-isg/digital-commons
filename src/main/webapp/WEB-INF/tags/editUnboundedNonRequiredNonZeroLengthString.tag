@@ -26,15 +26,15 @@
                 </button>
             </div>
 
-            <c:forEach items="${formats}" varStatus="status" var="format">
+            <c:forEach items="${formats}" varStatus="varStatus" var="format">
                 <div class="form-group">
 
                     <div class="input-group control-group full-width">
-                        <input type="text" value="${format}" class="form-control" name="${path}[${status.count-1}]"
-                               id="${specifier}-${status.count-1}" placeholder="${placeholder}"/>
+                        <input type="text" value="${format}" class="form-control" name="${path}[${varStatus.count-1}]"
+                               id="${specifier}-${varStatus.count-1}" placeholder="${placeholder}"/>
                         <div class="input-group-btn">
                             <button class="btn btn-danger ${specifier}-remove"
-                                    id="${specifier}-${status.count-1}-remove"
+                                    id="${specifier}-${varStatus.count-1}-remove"
                                     type="button"><i
                                     class="glyphicon glyphicon-remove"></i>
                                 Remove
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <c:set var="formatsCount" scope="page" value="${status.count}"/>
+                <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
             </c:forEach>
         </div>
     </c:when>

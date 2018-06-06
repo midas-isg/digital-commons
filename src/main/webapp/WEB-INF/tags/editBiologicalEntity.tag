@@ -14,9 +14,9 @@
 
 <c:choose>
     <c:when test="${not empty entities and not empty entities[0].name}">
-        <c:forEach items="${entities}" var="entity" varStatus="status">
+        <c:forEach items="${entities}" var="entity" varStatus="varStatus">
                 <c:choose>
-                    <c:when test="${status.first}">
+                    <c:when test="${varStatus.first}">
                         <div class="form-group control-group edit-form-group ${specifier}-biological-entity-add-more">
                         <label>${name}</label>
                         <br>
@@ -38,32 +38,32 @@
                 <div class="form-group control-group edit-form-group">
                     <div class="form-group edit-form-group">
                         <label>Name</label>
-                        <input name="${specifier}[${status.count-1}].name" value="${entity.name}" type="text"
+                        <input name="${specifier}[${varStatus.count-1}].name" value="${entity.name}" type="text"
                                class="form-control" placeholder="Name">
                     </div>
                     <div class="form-group">
                         <myTags:editNonRequiredNonZeroLengthString string="${entity.description}"
-                                                                   path="${path}[${status.count-1}].description" label="Description" placeholder="Description"
-                                                                   specifier="${specifier}-${status.count-1}"></myTags:editNonRequiredNonZeroLengthString>
+                                                                   path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"
+                                                                   specifier="${specifier}-${varStatus.count-1}"></myTags:editNonRequiredNonZeroLengthString>
                     </div>
 
                     <div class="form-group">
                         <myTags:editIdentifier identifier="${entity.identifier}"
-                                               path="${path}[${status.count-1}].identifier"
-                                               specifier="${specifier}-${status.count-1}"
+                                               path="${path}[${varStatus.count-1}].identifier"
+                                               specifier="${specifier}-${varStatus.count-1}"
                                                label="Identifier"></myTags:editIdentifier>
                     </div>
 
                     <div class="form-group">
-                        <myTags:editIdentifier path="${path}[${status.count-1}].alternateIdentifiers"
+                        <myTags:editIdentifier path="${path}[${varStatus.count-1}].alternateIdentifiers"
                                                unbounded="${true}"
-                                               specifier="${specifier}-alternate-${status.count-1}"
+                                               specifier="${specifier}-alternate-${varStatus.count-1}"
                                                identifiers="${entity.alternateIdentifiers}"
                                                label="Alternate Identifier"></myTags:editIdentifier>
                     </div>
                 </div>
             </div>
-            <c:set var = "count" scope = "page" value = "${status.count}"/>
+            <c:set var = "count" scope = "page" value = "${varStatus.count}"/>
         </c:forEach>
     </c:when>
     <c:otherwise>

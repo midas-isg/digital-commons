@@ -14,8 +14,8 @@
 
 <c:choose>
     <c:when test="${not empty licenses}">
-        <c:forEach items="${licenses}" var="license" varStatus="status">
-            <c:if test="${status.first}">
+        <c:forEach items="${licenses}" var="license" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                 <label>License</label>
                 <div class="form-group">
@@ -28,17 +28,17 @@
             <div class="form-group control-group edit-form-group">
                 <label>License</label>
                 <br>
-                <button class="btn btn-danger ${specifier}-${status.count-1}-license-remove" type="button"><i
+                <button class="btn btn-danger ${specifier}-${varStatus.count-1}-license-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
 
 
                 <div class="form-group">
-                    <myTags:editIdentifier label="Identifier" path="${path}[${status.count-1}]"
+                    <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}]"
                                            identifierName="${license.identifier}"
                                            identifierSource="${license.identifierSource}"
-                                           specifier="${specifier}-${status.count-1}"></myTags:editIdentifier>
+                                           specifier="${specifier}-${varStatus.count-1}"></myTags:editIdentifier>
                 </div>
 
                 <c:choose>
@@ -46,17 +46,17 @@
                         <div class="form-group edit-form-group">
                             <label>Version</label>
                             <div class="input-group-btn">
-                                <button class="btn btn-success ${specifier}-${status.count-1}-add-version"
+                                <button class="btn btn-success ${specifier}-${varStatus.count-1}-add-version"
                                         style="display: none" type="button"><i
                                         class="glyphicon glyphicon-plus"></i> Add
                                     Version
                                 </button>
                                 <div class="input-group control-group edit-form-group full-width">
-                                    <input name="${path}[${status.count-1}].version" value="${license.version}"
+                                    <input name="${path}[${varStatus.count-1}].version" value="${license.version}"
                                            type="text"
                                            class="form-control" placeholder="Version">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-danger ${specifier}-${status.count-1}-version-remove"
+                                        <button class="btn btn-danger ${specifier}-${varStatus.count-1}-version-remove"
                                                 type="button"><i
                                                 class="glyphicon glyphicon-remove"></i>
                                             Remove
@@ -70,7 +70,7 @@
                         <div class="form-group edit-form-group">
                             <label>Version</label>
                             <div class="input-group-btn">
-                                <button class="btn btn-success ${specifier}-${status.count-1}-add-version"
+                                <button class="btn btn-success ${specifier}-${varStatus.count-1}-add-version"
                                         type="button"><i
                                         class="glyphicon glyphicon-plus"></i> Add
                                     Version
@@ -80,7 +80,7 @@
                     </c:otherwise>
                 </c:choose>
             </div>
-            <c:set var="licenseCount" scope="page" value="${status.count}"/>
+            <c:set var="licenseCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
         </div>
