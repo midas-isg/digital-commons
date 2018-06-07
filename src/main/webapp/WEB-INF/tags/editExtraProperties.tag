@@ -27,7 +27,7 @@
             <div class="form-group control-group edit-form-group">
                 <label>Extra Properties</label>
                 <div class="form-group">
-                    <button class="btn btn-danger ${specifier}-${varStatus.count}-remove" type="button"><i
+                    <button class="btn btn-danger ${specifier}-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
                         Remove
                     </button>

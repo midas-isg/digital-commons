@@ -16,6 +16,7 @@ import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
@@ -40,6 +41,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.xml.crypto.Data;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.BufferedWriter;
@@ -100,6 +102,8 @@ public class DataEntryController {
     PopulationDynamicsModelValidator populationDynamicsModelValidator;
     @Autowired
     SyntheticEcosystemConstructorValidator syntheticEcosystemConstructorValidator;
+    @Autowired
+    DataStandardValidator dataStandardValidator;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder){
@@ -199,6 +203,13 @@ public class DataEntryController {
         binder.setValidator(syntheticEcosystemConstructorValidator);
     }
 
+    @InitBinder("dataStandard")
+    protected void initBinderDataStandard(WebDataBinder binder){
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(dataStandardValidator);
+    }
+
 
     private Converter converter = new Converter();
 
@@ -262,8 +273,8 @@ public class DataEntryController {
         }
     }
 
-    @RequestMapping(value = "/test-add-entry", method = RequestMethod.GET)
-    public String testAddNewEntry(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/add-dataset", method = RequestMethod.GET)
+    public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
         model.addAttribute("categoryID",0);
@@ -291,11 +302,11 @@ public class DataEntryController {
         }
 
 
-        return "newDigitalObjectForm";
+        return "datasetForm";
     }
 
-    @RequestMapping(value = "/test-add-entry-org", method = RequestMethod.GET)
-    public String testAddNewEntryWithOrg(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/add-dataset-with-organization", method = RequestMethod.GET)
+    public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
         model.addAttribute("categoryID",0);
@@ -323,23 +334,23 @@ public class DataEntryController {
         }
 
 
-        return "newDigitalObjectFormOrganization";
+        return "datasetWithOrganizationForm";
     }
 
-    @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDataset", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("dataset") @Validated Dataset dataset,
                          BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "newDigitalObjectForm";
+            return "datasetForm";
         }
         return "dataset";
     }
 
-    @RequestMapping(value = "/testAddDatasetOrg", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.POST)
     public String submit(@Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
                          BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "newDigitalObjectFormOrganization";
+            return "datasetWithOrganizationForm";
         }
         return "datasetWithOrganization";
     }
@@ -826,6 +837,38 @@ public class DataEntryController {
             return "syntheticEcosystemConstructorForm";
         }
         return "syntheticEcosystemConstructor";
+    }
+
+    @RequestMapping(value = "/add-data-standard", method = RequestMethod.GET)
+    public String addNewDataStandard(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DataStandard dataStandard = new DataStandard();
+        model.addAttribute("categoryID",4);
+
+        model.addAttribute("dataStandard", dataStandard);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        return "dataStandardForm";
+    }
+    @RequestMapping(value = "/addDataStandard", method = RequestMethod.POST)
+    public String submit(@Valid @ModelAttribute("dataStandard") @Validated DataStandard dataStandard,
+                         BindingResult result, ModelMap model) {
+        if (result.hasErrors()) {
+            model.addAttribute("software", dataStandard);
+            return "dataStandardForm";
+        }
+        return "dataStandard";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)

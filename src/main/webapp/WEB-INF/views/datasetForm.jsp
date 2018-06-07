@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/testAddDataset" modelAttribute="dataset">
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataset" modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}" categoryPaths="${categoryPaths}"></myTags:editCategory>

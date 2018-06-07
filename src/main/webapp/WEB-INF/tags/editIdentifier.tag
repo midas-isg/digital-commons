@@ -60,7 +60,7 @@
         </div>
     </c:when>
     <c:when test="${not empty identifier}">
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
                 <div class="input-group-btn">
@@ -127,7 +127,7 @@
         <c:set var="identifierCount" scope="page" value="0"/>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more">
                 <div class="input-group-btn">
