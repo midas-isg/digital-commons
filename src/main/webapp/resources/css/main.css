@@ -405,6 +405,17 @@ a {
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
     }
+
+    .navbar-nav .open .dropdown-menu {
+        position: static;
+        float: none;
+        width: auto;
+        margin-top: 0;
+        background-color: transparent;
+        border: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
 }
 
 @media (min-width: 766px) and (max-width: 1010px) {

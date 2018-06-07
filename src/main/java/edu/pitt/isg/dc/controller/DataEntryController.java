@@ -349,7 +349,7 @@ public class DataEntryController {
     public String addNewDataFormatConverter(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataFormatConverters dataFormatConverters = new DataFormatConverters();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",6);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -391,7 +391,7 @@ public class DataEntryController {
     public String addNewDataService(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataService dataService = new DataService();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",7);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -433,7 +433,7 @@ public class DataEntryController {
     public String addNewDataVisualizer(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataVisualizers dataVisualizer = new DataVisualizers();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",8);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -472,7 +472,7 @@ public class DataEntryController {
     public String addNewDiseaseForecaster(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseForecasters diseaseForecaster = new DiseaseForecasters();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",9);
 
 
 //        if(entryId != null) {
@@ -513,7 +513,7 @@ public class DataEntryController {
     public String addNewDiseaseTransmissionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseTransmissionModel diseaseTransmissionModel = new DiseaseTransmissionModel();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",10);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -553,7 +553,7 @@ public class DataEntryController {
     public String addNewDiseaseTransmissionTreeEstimator(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator = new DiseaseTransmissionTreeEstimators();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",12);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -593,7 +593,7 @@ public class DataEntryController {
     public String addNewMetagenomicAnalysis(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         MetagenomicAnalysis metagenomicAnalysis = new MetagenomicAnalysis();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",448);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -633,7 +633,7 @@ public class DataEntryController {
     public String addNewModelingPlatform(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         ModelingPlatforms modelingPlatform = new ModelingPlatforms();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",13);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -673,7 +673,7 @@ public class DataEntryController {
     public String addNewPathogenEvolutionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         PathogenEvolutionModels pathogenEvolutionModel = new PathogenEvolutionModels();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",14);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -713,7 +713,7 @@ public class DataEntryController {
     public String addNewPhylogenticTreeConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         PhylogeneticTreeConstructors phylogeneticTreeConstructor = new PhylogeneticTreeConstructors();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",15);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -752,7 +752,7 @@ public class DataEntryController {
     public String addNewPopulationDynamicsModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         PopulationDynamicsModel populationDynamicsModel = new PopulationDynamicsModel();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",11);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);
@@ -792,7 +792,7 @@ public class DataEntryController {
     public String addNewSyntheticEcosystemConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         SyntheticEcosystemConstructors syntheticEcosystemConstructor = new SyntheticEcosystemConstructors();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID",16);
 
 //        if(entryId != null) {
 //            Entry entry = apiUtil.getEntryById(entryId);

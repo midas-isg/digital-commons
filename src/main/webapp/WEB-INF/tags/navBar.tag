@@ -46,7 +46,7 @@
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown">
             <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
-            <ul class="dropdown-menu pull-right">
+            <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
                         <li class="dropdown-header">Admin</li>
@@ -55,33 +55,33 @@
                         <li class="dropdown-header">Edit</li>
                     </c:when>
                 </c:choose>
-                <li><a href="${contextPath}/add/review">Review Submissions</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add/review">Review Submissions</a></li>
                 <li role="presentation" class="divider"></li>
                 <li class="dropdown-header">Harvest</li>
-                <li><a href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a></li>
                 <li role="presentation" class="divider"></li>
                 <li class="dropdown-header">Add</li>
-                <li><a href="${contextPath}/add/dataFormatConverters?categoryId=6">Data Format Converter</a></li>
-                <li><a href="${contextPath}/add/dataService?categoryId=7">Data Service</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-data-format-converter">Data Format Converter</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-data-service">Data Service</a></li>
                 <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
                 <li class="dropdown-submenu">
-                    <a tabindex="-1" href="" onclick="preventClick()">Dataset</a>
-                    <ul class="dropdown-menu">
-                        <li><a tabindex="-1" href="${contextPath}/add/dataset?categoryId=">Dataset with Person</a></li>
-                        <li><a tabindex="-1" href="${contextPath}/add/datasetWithOrganization?categoryId=">Dataset with Organization</a></li>
+                    <a class=" dropdown-toggle leaf nav-link dropdown-item " tabindex="-1" href="" onclick="preventClick()">Dataset</a>
+                    <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/test-add-entry">Dataset with Person</a></li>
+                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/test-add-entry-org">Dataset with Organization</a></li>
                     </ul>
                 </li>
-                <li><a href="${pageContext.request.contextPath}/add/dataStandard?categoryId=4">Data Format</a></li>
-                <li><a href="${contextPath}/add/dataVisualizers?categoryId=8">Data Visualizer</a></li>
-                <li><a href="${contextPath}/add/diseaseForecasters?categoryId=9">Disease Forecaster</a></li>
-                <li><a href="${contextPath}/add/diseaseTransmissionModel?categoryId=10">Disease Transmission Model</a></li>
-                <li><a href="${contextPath}/add/diseaseTransmissionTreeEstimators?categoryId=12">Disease Transmission Tree Estimator</a></li>
-                <li><a href="${contextPath}/add/metagenomicAnalysis?categoryId=448">Metagenomic Analysis</a></li>
-                <li><a href="${contextPath}/add/modelingPlatforms?categoryId=13">Modeling Platform</a></li>
-                <li><a href="${contextPath}/add/pathogenEvolutionModels?categoryId=14">Pathogen Evolution Model</a></li>
-                <li><a href="${contextPath}/add/phylogeneticTreeConstructors?categoryId=15">Phylogenetic Tree Constructor</a></li>
-                <li><a href="${contextPath}/add/populationDynamicsModel?categoryId=11">Population Dynamics Model</a></li>
-                <li><a href="${contextPath}/add/syntheticEcosystemConstructors?categoryId=16">Synthetic Ecosystem Constructor</a></li>
+                <li><a class="nav-link dropdown-item" href="${pageContext.request.contextPath}/add/dataStandard?categoryId=4">Data Format</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-data-visualizer">Data Visualizer</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-disease-forecaster">Disease Forecaster</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-disease-transmission-model">Disease Transmission Model</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-disease-transmission-tree-estimator">Disease Transmission Tree Estimator</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-metagenomic-analysis">Metagenomic Analysis</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-modeling-platform">Modeling Platform</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-pathogen-evolution-model">Pathogen Evolution Model</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-phylogenetic-tree-constructor">Phylogenetic Tree Constructor</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-population-dynamics-model">Population Dynamics Model</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/add-synthetic-ecosystem-constructor">Synthetic Ecosystem Constructor</a></li>
             </ul>
         </li>
     </c:if>
