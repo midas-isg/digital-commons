@@ -1,6 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
-import com.github.davidmoten.xsdforms.Generator;
+//import com.github.davidmoten.xsdforms.Generator;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
@@ -457,7 +457,8 @@ public class DataEntryController {
             rootElement = scala.Option.apply(rootElementName);
 
             schema = appContext.getResource(xsdFile).getInputStream();
-            htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+            htmlString = "";
+                    //Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
             writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }
