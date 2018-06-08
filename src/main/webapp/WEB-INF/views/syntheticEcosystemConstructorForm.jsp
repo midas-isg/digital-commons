@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addSyntheticEcosystemConstructor"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addSyntheticEcosystemConstructor/${categoryID}"
                        modelAttribute="syntheticEcosystemConstructor">
                 <div class="form-group edit-form-group">
                     <label>Synthetic Ecosystem Constructor</label>
@@ -32,7 +32,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#categoryValue").change(function() {
+            var action = $(this).val()
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addSyntheticEcosystemConstructor/" + action);
+        });
 
+    });
+</script>
 <myTags:analytics/>
 
 </body>

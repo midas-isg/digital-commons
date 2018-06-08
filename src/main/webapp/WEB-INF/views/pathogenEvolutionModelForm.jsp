@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPathogenEvolutionModel"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPathogenEvolutionModel/${categoryID}"
                        modelAttribute="pathogenEvolutionModel">
                 <div class="form-group edit-form-group">
                     <label>Pathogen Evolution Model</label>
@@ -35,7 +35,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#categoryValue").change(function() {
+            var action = $(this).val()
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPathogenEvolutionModel/" + action);
+        });
 
+    });
+</script>
 <myTags:analytics/>
 
 </body>

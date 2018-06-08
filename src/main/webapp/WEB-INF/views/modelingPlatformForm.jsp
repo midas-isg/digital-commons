@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addModelingPlatform"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addModelingPlatform/${categoryID}"
                        modelAttribute="modelingPlatform">
                 <div class="form-group edit-form-group">
                     <label>Modeling Platform</label>
@@ -32,7 +32,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#categoryValue").change(function() {
+            var action = $(this).val()
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addModelingPlatform/" + action);
+        });
 
+    });
+</script>
 <myTags:analytics/>
 
 </body>

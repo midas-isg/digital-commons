@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard/${categoryID}"
                        modelAttribute="dataStandard">
                 <div class="form-group edit-form-group">
                     <label>Data Format</label>
@@ -60,6 +60,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#categoryValue").change(function() {
+            var action = $(this).val()
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataStandard/" + action);
+        });
+
+    });
+</script>
 
 <myTags:analytics/>
 

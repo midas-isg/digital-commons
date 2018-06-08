@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataVisualizer"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataVisualizer/${categoryID}"
                        modelAttribute="dataVisualizer">
                 <div class="form-group edit-form-group">
                     <label>Data Visualizer</label>
@@ -33,7 +33,15 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#categoryValue").change(function() {
+            var action = $(this).val()
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataVisualizer/" + action);
+        });
 
+    });
+</script>
 <myTags:analytics/>
 
 </body>

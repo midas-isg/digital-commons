@@ -67,8 +67,8 @@
                 <li class="dropdown-submenu">
                     <a class=" dropdown-toggle leaf nav-link dropdown-item " tabindex="-1" href="" onclick="preventClick()">Dataset</a>
                     <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/add-dataset">Dataset with Person</a></li>
-                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/add-dataset-with-organization">Dataset with Organization</a></li>
+                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/addDataset">Dataset with Person</a></li>
+                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/addDatasetWithOrganization/">Dataset with Organization</a></li>
                     </ul>
                 </li>
                 <li><a class="nav-link dropdown-item" href="${pageContext.request.contextPath}/add-data-standard">Data Format</a></li>
