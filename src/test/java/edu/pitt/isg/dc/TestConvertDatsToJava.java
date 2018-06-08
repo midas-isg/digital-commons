@@ -4,6 +4,7 @@ import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import edu.pitt.isg.Converter;
@@ -42,26 +43,19 @@ public class TestConvertDatsToJava {
 
     Converter converter = new Converter();
 
-    Gson gson = new Gson();
+    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
 
 
-    @AfterClass
-    public static void last() {
-        Iterator<EntryId> it = idsNeedOlympus.keySet().iterator();
-        while (it.hasNext()) {
-            EntryId entryId = it.next();
-
-        System.out.println("UPDATE entry SET content = '"+idsNeedOlympus.get(entryId)+"' where entry_id = "+entryId.getEntryId() + " and revision_id = " + entryId.getRevisionId());
-        }
-    }
 
     private void test(Class clazz) {
         Set<String> types = new HashSet<>();
         types.add(clazz.getTypeName());
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
         for (Entry entry : entriesList) {
             String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
-            Object object = converter.convertFromJsonToClass(jsonFromDatabase, clazz);
+            Object object = gson.fromJson(jsonFromDatabase, clazz);
+            //Object object = converter.convertFromJsonToClass(jsonFromDatabase, clazz);
 
             JsonObject jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
             JsonObject jsonObjectFromClass = converter.toJsonObject(clazz, object);
@@ -97,27 +91,27 @@ public class TestConvertDatsToJava {
 
 
 
-    @Test
+   /* @Test
     public void testDataFormatConverters() {
         test(DataFormatConverters.class);
     }
-
+*/
     @Test
     public void testDataService() {
         test(DataService.class);
     }
-
+/*
     @Test
     public void testDataVisualizers() {
         test(DataVisualizers.class);
     }
 
-   /* @Test
+    @Test
     public void testDataset() {
         test(Dataset.class);
     }*/
 
-    @Test
+  /*  @Test
     public void testDatasetWithOrganization() {
         test(DatasetWithOrganization.class);
     }
@@ -165,5 +159,5 @@ public class TestConvertDatsToJava {
     @Test
     public void testSyntheticEcosystemConstructors() {
         test(SyntheticEcosystemConstructors.class);
-    }
+    }*/
 }
