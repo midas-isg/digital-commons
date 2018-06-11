@@ -25,6 +25,14 @@
                     <label>Disease Transmission Tree Estimator</label>
 
                     <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+                    <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
+                                                 placeholder="Host Species Included"
+                                                 label="Host Species Included" path="hostSpeciesIncluded"
+                                                 identifiers="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
+                    <myTags:editNestedIdentifier specifier="pathogenCoverage"
+                                                 placeholder="Pathogen Coverage"
+                                                 label="Pathogen Coverage" path="pathogenCoverage"
+                                                 identifiers="${diseaseTransmissionTreeEstimator.pathogenCoverage}"></myTags:editNestedIdentifier>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 

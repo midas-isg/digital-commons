@@ -7,6 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 
 @Component
@@ -33,6 +34,7 @@ public class MetagenomicAnalysisValidator implements Validator {
         clearStringList(metagenomicAnalysis.getVersion().listIterator());
         clearStringList(metagenomicAnalysis.getPublicationsAboutRelease().listIterator());
         clearStringList(metagenomicAnalysis.getGrants().listIterator());
+        clearNestedIdentifier(metagenomicAnalysis.getLocationCoverage().listIterator());
         //////////////////////
     }
 }

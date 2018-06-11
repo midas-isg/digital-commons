@@ -26,7 +26,7 @@
 
                     <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
                     <myTags:editNestedIdentifier specifier="pathogens" path="pathogens" identifiers="${pathogenEvolutionModel.pathogens}" placeholder="Pathogen" label="Pathogens"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="location-coverate" path="locationCoverage" identifiers="${pathogenEvolutionModel.locationCoverage}" placeholder="Location Coverage" label="Location Coverage"></myTags:editNestedIdentifier>
+                    <%--<myTags:editNestedIdentifier specifier="location-coverate" path="locationCoverage" identifiers="${pathogenEvolutionModel.locationCoverage}" placeholder="Location Coverage" label="Location Coverage"></myTags:editNestedIdentifier>--%>
 
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>

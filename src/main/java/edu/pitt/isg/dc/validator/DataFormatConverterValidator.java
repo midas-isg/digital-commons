@@ -7,6 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 
 @Component
@@ -33,6 +34,7 @@ public class DataFormatConverterValidator implements Validator {
         clearStringList(dataFormatConverters.getVersion().listIterator());
         clearStringList(dataFormatConverters.getPublicationsAboutRelease().listIterator());
         clearStringList(dataFormatConverters.getGrants().listIterator());
+        clearNestedIdentifier(dataFormatConverters.getLocationCoverage().listIterator());
         //////////////////////
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
@@ -37,6 +38,7 @@ public class DataServiceValidator implements Validator {
         clearStringList(dataService.getVersion().listIterator());
         clearStringList(dataService.getPublicationsAboutRelease().listIterator());
         clearStringList(dataService.getGrants().listIterator());
+        clearNestedIdentifier(dataService.getLocationCoverage().listIterator());
         //////////////////////
 
         ListIterator<DataServiceDescription> descriptionListIterator = dataService.getDataServiceDescription().listIterator();

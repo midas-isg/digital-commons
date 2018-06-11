@@ -7,6 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 
 @Component
@@ -33,6 +34,7 @@ public class SyntheticEcosystemConstructorValidator implements Validator {
         clearStringList(syntheticEcosystemConstructor.getVersion().listIterator());
         clearStringList(syntheticEcosystemConstructor.getPublicationsAboutRelease().listIterator());
         clearStringList(syntheticEcosystemConstructor.getGrants().listIterator());
+        clearNestedIdentifier(syntheticEcosystemConstructor.getLocationCoverage().listIterator());
         //////////////////////
     }
 }

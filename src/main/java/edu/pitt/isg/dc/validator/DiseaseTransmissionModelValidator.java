@@ -38,11 +38,11 @@ public class DiseaseTransmissionModelValidator implements Validator {
         clearStringList(diseaseTransmissionModel.getVersion().listIterator());
         clearStringList(diseaseTransmissionModel.getPublicationsAboutRelease().listIterator());
         clearStringList(diseaseTransmissionModel.getGrants().listIterator());
+        clearNestedIdentifier(diseaseTransmissionModel.getLocationCoverage().listIterator());
         //////////////////////
 
         clearNestedIdentifier(diseaseTransmissionModel.getControlMeasures().listIterator());
         clearNestedIdentifier(diseaseTransmissionModel.getHostSpeciesIncluded().listIterator());
-        clearNestedIdentifier(diseaseTransmissionModel.getLocationCoverage().listIterator());
         clearNestedIdentifier(diseaseTransmissionModel.getPathogenCoverage().listIterator());
 
     }

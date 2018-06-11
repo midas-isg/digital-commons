@@ -34,12 +34,12 @@ public class PopulationDynamicsModelValidator implements Validator {
         clearStringList(populationDynamicsModel.getVersion().listIterator());
         clearStringList(populationDynamicsModel.getPublicationsAboutRelease().listIterator());
         clearStringList(populationDynamicsModel.getGrants().listIterator());
+        clearNestedIdentifier(populationDynamicsModel.getLocationCoverage().listIterator());
         //////////////////////
 
         clearNestedIdentifier(populationDynamicsModel.getPopulationSpeciesIncluded().listIterator());
         if(populationDynamicsModel.getPopulationSpeciesIncluded().size() == 0) {
             errors.rejectValue("populationSpeciesIncluded[0]", "NotEmpty.software.populationSpeciesIncluded");
         }
-        clearStringList(populationDynamicsModel.getLocationCoverage().listIterator());
     }
 }

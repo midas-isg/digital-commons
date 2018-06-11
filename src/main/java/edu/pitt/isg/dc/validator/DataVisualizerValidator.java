@@ -8,6 +8,7 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 
 @Component
@@ -34,6 +35,7 @@ public class DataVisualizerValidator implements Validator {
         clearStringList(dataVisualizer.getVersion().listIterator());
         clearStringList(dataVisualizer.getPublicationsAboutRelease().listIterator());
         clearStringList(dataVisualizer.getGrants().listIterator());
+        clearNestedIdentifier(dataVisualizer.getLocationCoverage().listIterator());
         //////////////////////
 
         clearStringList(dataVisualizer.getVisualizationType().listIterator());

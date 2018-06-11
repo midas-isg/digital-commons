@@ -36,10 +36,10 @@ public class DiseaseForecasterValidator implements Validator {
         clearStringList(diseaseForecaster.getVersion().listIterator());
         clearStringList(diseaseForecaster.getPublicationsAboutRelease().listIterator());
         clearStringList(diseaseForecaster.getGrants().listIterator());
+        clearNestedIdentifier(diseaseForecaster.getLocationCoverage().listIterator());
         //////////////////////
 
         clearNestedIdentifier(diseaseForecaster.getDiseases().listIterator());
-        clearNestedIdentifier(diseaseForecaster.getLocationCoverage().listIterator());
 
         clearStringList(diseaseForecaster.getNowcasts().listIterator());
         clearStringList(diseaseForecaster.getOutcomes().listIterator());

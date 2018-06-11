@@ -27,7 +27,7 @@
 
                     <myTags:editNestedIdentifier specifier="control-measures" placeholder="Control Measure" label="Control Measures" path="controlMeasures" identifiers="${diseaseTransmissionModel.controlMeasures}"></myTags:editNestedIdentifier>
                     <myTags:editNestedIdentifier specifier="host-species-included" placeholder="Host Species Included" label="Host Species Included" path="hostSpeciesIncluded" identifiers="${diseaseTransmissionModel.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseTransmissionModel.locationCoverage}"></myTags:editNestedIdentifier>
+                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseTransmissionModel.locationCoverage}"></myTags:editNestedIdentifier>--%>
                     <myTags:editNestedIdentifier specifier="pathogen-coverage" placeholder="Pathogen Coverage" label="Pathogen Coverages" path="pathogenCoverage" identifiers="${diseaseTransmissionModel.pathogenCoverage}"></myTags:editNestedIdentifier>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>

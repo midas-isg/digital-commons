@@ -7,6 +7,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
 
 @Component
@@ -33,6 +34,11 @@ public class DiseaseTransmissionTreeEstimatorValidator implements Validator {
         clearStringList(diseaseTransmissionTreeEstimators.getVersion().listIterator());
         clearStringList(diseaseTransmissionTreeEstimators.getPublicationsAboutRelease().listIterator());
         clearStringList(diseaseTransmissionTreeEstimators.getGrants().listIterator());
+        clearNestedIdentifier(diseaseTransmissionTreeEstimators.getLocationCoverage().listIterator());
         //////////////////////
+
+        clearNestedIdentifier(diseaseTransmissionTreeEstimators.getHostSpeciesIncluded().listIterator());
+        clearNestedIdentifier(diseaseTransmissionTreeEstimators.getPathogenCoverage().listIterator());
+
     }
 }

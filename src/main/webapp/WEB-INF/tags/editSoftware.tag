@@ -79,6 +79,9 @@
 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Grant" placeholder="Grant"
                                                     path="grants" specifier="grants"
                                                     formats="${software.grants}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
+                             path="locationCoverage" specifier="location-coverage"
+                             identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>
 <myTags:editCheckbox label="Available on Olumpus" path="availableOnOlympus"></myTags:editCheckbox>
 <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"></myTags:editCheckbox>
 <myTags:editCheckbox label="Sign In Required" path="signInRequired"></myTags:editCheckbox>

@@ -35,11 +35,11 @@
                                                      specifier="population-species-included"></myTags:editNestedIdentifier>
                         <form:errors path="populationSpeciesIncluded[0]" class="error-color"/>
                     </spring:bind>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString label="Location Coverages"
-                                                                        placeholder="Location Coverage"
-                                                                        specifier="location-coverage"
-                                                                        path="locationCoverage"
-                                                                        formats="${populationDynamicsModel.locationCoverage}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <%--<myTags:editUnboundedNonRequiredNonZeroLengthString label="Location Coverages"--%>
+                                                                        <%--placeholder="Location Coverage"--%>
+                                                                        <%--specifier="location-coverage"--%>
+                                                                        <%--path="locationCoverage"--%>
+                                                                        <%--formats="${populationDynamicsModel.locationCoverage}"></myTags:editUnboundedNonRequiredNonZeroLengthString>--%>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 

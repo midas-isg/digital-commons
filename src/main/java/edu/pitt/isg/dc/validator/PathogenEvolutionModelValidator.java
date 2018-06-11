@@ -34,9 +34,9 @@ public class PathogenEvolutionModelValidator implements Validator {
         clearStringList(pathogenEvolutionModel.getVersion().listIterator());
         clearStringList(pathogenEvolutionModel.getPublicationsAboutRelease().listIterator());
         clearStringList(pathogenEvolutionModel.getGrants().listIterator());
+        clearNestedIdentifier(pathogenEvolutionModel.getLocationCoverage().listIterator());
         //////////////////////
 
         clearNestedIdentifier(pathogenEvolutionModel.getPathogens().listIterator());
-        clearNestedIdentifier(pathogenEvolutionModel.getLocationCoverage().listIterator());
     }
 }
