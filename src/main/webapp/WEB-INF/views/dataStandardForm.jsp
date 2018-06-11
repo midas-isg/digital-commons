@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard/${categoryID}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="dataStandard">
                 <div class="form-group edit-form-group">
                     <label>Data Format</label>
@@ -64,7 +64,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataStandard/" + action);
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataStandard/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

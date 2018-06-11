@@ -243,7 +243,7 @@ public class DataGov implements DataGovInterface {
     public JsonObject datasetToJSonObject(DatasetWithOrganization dataGovPackage) {
         JsonObject entry = null;
         Converter converter = new Converter();
-        entry = converter.datasetWithOrganizationToJSonObject(dataGovPackage);
+        entry = converter.objectToJSonObject(dataGovPackage);
         return entry;
     }
 
