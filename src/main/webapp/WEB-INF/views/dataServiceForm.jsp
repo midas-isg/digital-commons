@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataService/${categoryID}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataService/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="dataService">
                 <div class="form-group edit-form-group">
                     <label>Data Service</label>
@@ -37,7 +37,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataService/" + action);
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataService/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

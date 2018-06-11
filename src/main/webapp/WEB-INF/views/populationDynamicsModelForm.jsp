@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPopulationDynamicsModel/${categoryID}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPopulationDynamicsModel/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="populationDynamicsModel">
                 <div class="form-group edit-form-group">
                     <label>Population Dynamics Model</label>
@@ -51,7 +51,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPopulationDynamicsModel/" + action);
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPopulationDynamicsModel/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

@@ -19,12 +19,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimator/${categoryID}"
+            <form:form id="entry-form"
+                       action="${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimator/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="diseaseTransmissionTreeEstimator">
                 <div class="form-group edit-form-group">
                     <label>Disease Transmission Tree Estimator</label>
-
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+                    <myTags:editSoftware categoryPaths="${categoryPaths}"
+                                         selectedID="${selectedID}"></myTags:editSoftware>
                     <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
                                                  placeholder="Host Species Included"
                                                  label="Host Species Included" path="hostSpeciesIncluded"
@@ -42,9 +43,9 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("#categoryValue").change(function() {
+        $("#categoryValue").change(function () {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimator/" + action);
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimator/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

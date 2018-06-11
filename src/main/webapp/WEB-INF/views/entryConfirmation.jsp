@@ -35,11 +35,10 @@
 </head>
 <body>
 <div class="container-fluid">
-    <myTags:header pageTitle="Unsupported Request" loggedIn="${loggedIn}"></myTags:header>
+    <myTags:header pageTitle="Resource Not Found" loggedIn="${loggedIn}"></myTags:header>
 
     <div class="row">
         <div class="col-md-12">
-
             <br>
             <a href="${pageContext.request.contextPath}/main">
                 <button type="button" class="btn btn-default">
@@ -47,12 +46,21 @@
                     Home
                 </button>
             </a>
+            <a href="${pageContext.request.contextPath}/add/review">
+                <button type="button" class="btn btn-default">
+                    Review Submissions
+                    <icon class="glyphicon glyphicon-chevron-right"></icon>
+                </button>
+            </a>
             <br>
-
-            <h3 class="text-center">Status 400: The request is not currently supported by the Digital Commons.</h3>
+            <h3 class="text-center">Your entry has been successfully added. An email request has been sent to the
+                administrator. Approval is pending.</h3>
 
         </div>
     </div>
 </div>
+
 </body>
 </html>
+
+

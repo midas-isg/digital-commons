@@ -19,12 +19,14 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataFormatConverters/${categoryID}"
+            <form:form id="entry-form"
+                       action="${pageContext.request.contextPath}/addDataFormatConverters/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="dataFormatConverters">
                 <div class="form-group edit-form-group">
                     <label>Data Format Converter</label>
 
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+                    <myTags:editSoftware categoryPaths="${categoryPaths}"
+                                         selectedID="${selectedID}"></myTags:editSoftware>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
@@ -34,9 +36,9 @@
 </div>
 <script>
     $(document).ready(function () {
-        $("#categoryValue").change(function() {
+        $("#categoryValue").change(function () {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataFormatConverters/" + action);
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataFormatConverters/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });
