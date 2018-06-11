@@ -10,6 +10,7 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
@@ -96,6 +97,11 @@ public class TestConvertDatsToJava {
 
 
 
+
+    @Test
+    public void testDataStandard() {
+        test(DataStandard.class);
+    }
 
     @Test
     public void testDataFormatConverters() {
