@@ -45,7 +45,7 @@
     <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown">
-            <a href="_" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+            <a href="#" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
