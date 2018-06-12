@@ -283,11 +283,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
@@ -349,11 +348,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             datasetWithOrganization = converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
@@ -415,11 +413,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             dataFormatConverters = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataFormatConverters.class);
@@ -485,11 +482,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             dataService = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataService.class);
@@ -556,11 +552,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             dataVisualizer = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataVisualizers.class);
@@ -622,11 +617,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             diseaseForecaster = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseForecasters.class);
@@ -689,11 +683,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             diseaseTransmissionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionModel.class);
@@ -756,11 +749,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             diseaseTransmissionTreeEstimator = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionTreeEstimators.class);
@@ -823,11 +815,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             metagenomicAnalysis = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), MetagenomicAnalysis.class);
@@ -891,11 +882,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             modelingPlatform = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), ModelingPlatforms.class);
@@ -958,11 +948,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             pathogenEvolutionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PathogenEvolutionModels.class);
@@ -1026,11 +1015,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             phylogeneticTreeConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PhylogeneticTreeConstructors.class);
@@ -1093,11 +1081,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             populationDynamicsModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PopulationDynamicsModel.class);
@@ -1160,11 +1147,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             syntheticEcosystemConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), SyntheticEcosystemConstructors.class);
@@ -1227,11 +1213,10 @@ public class DataEntryController {
         model.addAttribute("entryId", entryId);
         model.addAttribute("revisionId", revisionId);
 
-        if (entryId != null && revisionId != null) {
-            EntryId id = new EntryId();
-            id.setEntryId(entryId);
-            id.setRevisionId(revisionId);
-            Entry entry = repo.findOne(id);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             dataStandard = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataStandard.class);
