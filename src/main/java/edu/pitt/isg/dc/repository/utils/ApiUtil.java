@@ -130,6 +130,10 @@ public class ApiUtil {
         return repo.getEntryByEntryIdAndMaxRevisionId(id);
     }
 
+    public Entry getEntryByIdIncludeNonPublic(Long id){
+        return repo.getEntryByEntryIdAndMaxRevisionIdIncludeNonPublic(id);
+    }
+
     public List<Category> getCategoryLineage(String identifier) {
         List<Category> categories = new ArrayList<>();
         Integer categoryId = repo.findCategoryIdByIdentifier(identifier);
