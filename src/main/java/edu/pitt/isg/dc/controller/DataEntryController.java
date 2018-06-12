@@ -423,6 +423,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             dataFormatConverters = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataFormatConverters.class);
+            model.addAttribute("software", dataFormatConverters);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -492,6 +493,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             dataService = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataService.class);
+            model.addAttribute("software", dataService);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -562,6 +564,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             dataVisualizer = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataVisualizers.class);
+            model.addAttribute("software", dataVisualizer);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -627,6 +630,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             diseaseForecaster = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseForecasters.class);
+            model.addAttribute("software", diseaseForecaster);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -693,6 +697,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             diseaseTransmissionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionModel.class);
+            model.addAttribute("software", diseaseTransmissionModel);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -759,6 +764,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             diseaseTransmissionTreeEstimator = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionTreeEstimators.class);
+            model.addAttribute("software", diseaseTransmissionTreeEstimator);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -825,6 +831,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             metagenomicAnalysis = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), MetagenomicAnalysis.class);
+            model.addAttribute("software", metagenomicAnalysis);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -892,6 +899,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             modelingPlatform = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), ModelingPlatforms.class);
+            model.addAttribute("software", modelingPlatform);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -958,6 +966,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             pathogenEvolutionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PathogenEvolutionModels.class);
+            model.addAttribute("software", pathogenEvolutionModel);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -1025,6 +1034,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             phylogeneticTreeConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PhylogeneticTreeConstructors.class);
+            model.addAttribute("software", phylogeneticTreeConstructor);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -1091,6 +1101,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             populationDynamicsModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PopulationDynamicsModel.class);
+            model.addAttribute("software", populationDynamicsModel);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
@@ -1157,6 +1168,7 @@ public class DataEntryController {
             EntryView entryView = new EntryView(entry);
 
             syntheticEcosystemConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), SyntheticEcosystemConstructors.class);
+            model.addAttribute("software", syntheticEcosystemConstructor);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
 
