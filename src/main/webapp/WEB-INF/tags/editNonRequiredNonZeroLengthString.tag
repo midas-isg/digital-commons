@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div class="input-group control-group full-width">
-                <input type="text" class="form-control" value="${string}" name="${path}" id="${specifier}-string" placeholder="${placeholder}"/>
+                <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}" id="${specifier}-string" placeholder="${placeholder}"/>
                 <div class="input-group-btn">
                     <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
