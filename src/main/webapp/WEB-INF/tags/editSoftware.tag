@@ -19,10 +19,10 @@
                                            label="Product Name"></myTags:editNonRequiredNonZeroLengthString>
 <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title"
                                         string="${software.title}"></myTags:editRequiredNonZeroLengthString>
-<myTags:editRequiredNonZeroLengthString label="Human Readable Synopsis"
+<myTags:editRequiredNonZeroLengthStringTextArea label="Human Readable Synopsis"
                                         placeholder="Human Readable Synopsis"
                                         path="humanReadableSynopsis"
-                                        string="${software.humanReadableSynopsis}"></myTags:editRequiredNonZeroLengthString>
+                                        string="${software.humanReadableSynopsis}"></myTags:editRequiredNonZeroLengthStringTextArea>
 <myTags:editSoftwareIdentifier identifier="${software.identifier}" specifier="identifier" path="identifier"
                                label="Identifier"></myTags:editSoftwareIdentifier>
 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Data Input Formats"
