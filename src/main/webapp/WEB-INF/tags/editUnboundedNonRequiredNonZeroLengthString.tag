@@ -30,7 +30,7 @@
                 <div class="form-group">
 
                     <div class="input-group control-group full-width">
-                        <input type="text" value="${format}" class="form-control" name="${path}[${varStatus.count-1}]"
+                        <input type="text" value="${fn:escapeXml(format)}" class="form-control" name="${path}[${varStatus.count-1}]"
                                id="${specifier}-${varStatus.count-1}" placeholder="${placeholder}"/>
                         <div class="input-group-btn">
                             <button class="btn btn-danger ${specifier}-remove"

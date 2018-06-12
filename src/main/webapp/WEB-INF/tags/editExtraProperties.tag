@@ -47,7 +47,7 @@
                                     <label>Category</label>
                                     <div class="input-group">
                                         <input name="${path}[${varStatus.count-1}].Category"
-                                               value="${categoryValuePair.category}"
+                                               value="${fn:escapeXml(categoryValuePair.category)}"
                                                type="text" class="form-control" placeholder="Category">
                                         <div class="input-group-btn">
                                             <button class="btn btn-danger ${specifier}-category-remove"
