@@ -56,10 +56,10 @@
                     </div>
                     <form:errors path="${path}[${varStatus.count-1}]" class="error-color"/>
                 </spring:bind>
+                    <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
+                </c:forEach>
             </div>
 
-            <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
-            </c:forEach>
         </div>
     </c:when>
     <c:otherwise>
