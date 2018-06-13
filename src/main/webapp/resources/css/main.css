@@ -806,6 +806,10 @@ label[disabled="disabled"] {
     text-align: center;
 }
 
+textarea {
+    resize: vertical;
+}
+
 .panel-primary {
     border-color: #0c2b65;
 }

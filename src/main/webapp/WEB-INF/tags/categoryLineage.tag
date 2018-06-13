@@ -11,7 +11,7 @@
     <c:forEach items="${lineage}" var="category" varStatus="varStatus">
         <c:choose>
             <c:when test="${varStatus.first}">
-                <li><i class="fa fa-home"></i></li>
+                <li><a href="${pageContext.request.contextPath}/main"><i class="fa fa-home"></i></a></li>
             </c:when>
             <c:otherwise>
                 <li>${category}</li>
