@@ -27,6 +27,10 @@ public class DiseaseForecasterValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
 
+        if(isIdentifierEmpty(diseaseForecaster.getIdentifier())) {
+            diseaseForecaster.setIdentifier(null);
+        }
+
         clearStringList(diseaseForecaster.getDataInputFormats().listIterator());
         clearStringList(diseaseForecaster.getDataOutputFormats().listIterator());
         clearStringList(diseaseForecaster.getWebApplication().listIterator());

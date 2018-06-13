@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.validator;
 import edu.pitt.isg.mdc.dats2_2.Annotation;
 import edu.pitt.isg.mdc.dats2_2.CategoryValuePair;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
+import edu.pitt.isg.mdc.dats2_2.License;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -35,6 +36,14 @@ public class DataStandardValidator implements Validator {
 
             if (!isValidIRI(dataStandard.getType().getValueIRI())) {
                 errors.rejectValue("type.valueIRI", "NotEmpty.dataset.valueIRI");
+            }
+        }
+
+        ListIterator<License> licenseListIterator = dataStandard.getLicenses().listIterator();
+        while(licenseListIterator.hasNext()) {
+            License license = licenseListIterator.next();
+            if(isEmpty(license.getIdentifier()) && isEmpty(license.getIdentifierSource()) && isEmpty(license.getVersion())) {
+                licenseListIterator.remove();
             }
         }
 

@@ -13,6 +13,7 @@ import java.util.ListIterator;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isIdentifierEmpty;
 
 @Component
 public class DiseaseTransmissionModelValidator implements Validator {
@@ -28,6 +29,10 @@ public class DiseaseTransmissionModelValidator implements Validator {
         //USED FOR SOFTWARE//
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
+
+        if(isIdentifierEmpty(diseaseTransmissionModel.getIdentifier())) {
+            diseaseTransmissionModel.setIdentifier(null);
+        }
 
         clearStringList(diseaseTransmissionModel.getDataInputFormats().listIterator());
         clearStringList(diseaseTransmissionModel.getDataOutputFormats().listIterator());
