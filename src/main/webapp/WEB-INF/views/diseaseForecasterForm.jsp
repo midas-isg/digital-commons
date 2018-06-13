@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDiseaseForecaster/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDiseaseForecasters/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="diseaseForecaster">
                 <div class="form-group edit-form-group">
                     <label>Disease Forecaster</label>
@@ -42,7 +42,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseForecaster/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseForecasters/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

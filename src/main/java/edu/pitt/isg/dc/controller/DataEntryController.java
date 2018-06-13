@@ -405,8 +405,8 @@ public class DataEntryController {
     }
 
 
-    @RequestMapping(value = "/addDataFormatConverter", method = RequestMethod.GET)
-    public String addNewDataFormatConverter(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)
+    public String addNewDataFormatConverters(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataFormatConverters dataFormatConverters = new DataFormatConverters();
         model.addAttribute("categoryID", 6);
@@ -544,7 +544,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addDataVisualizer", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDataVisualizers", method = RequestMethod.GET)
     public String addNewDataVisualizer(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataVisualizers dataVisualizer = new DataVisualizers();
@@ -580,7 +580,7 @@ public class DataEntryController {
         return "dataVisualizerForm";
     }
 
-    @RequestMapping(value = "/addDataVisualizer/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDataVisualizers/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataVisualizer") @Validated DataVisualizers dataVisualizer,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -609,7 +609,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addDiseaseForecaster", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDiseaseForecasters", method = RequestMethod.GET)
     public String addNewDiseaseForecaster(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseForecasters diseaseForecaster = new DiseaseForecasters();
@@ -646,7 +646,7 @@ public class DataEntryController {
         return "diseaseForecasterForm";
     }
 
-    @RequestMapping(value = "/addDiseaseForecaster/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDiseaseForecasters/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("diseaseForecaster") @Validated DiseaseForecasters diseaseForecaster,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -741,8 +741,8 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimator", method = RequestMethod.GET)
-    public String addNewDiseaseTransmissionTreeEstimator(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimators", method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionTreeEstimators(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator = new DiseaseTransmissionTreeEstimators();
         model.addAttribute("categoryID", 12);
@@ -778,7 +778,7 @@ public class DataEntryController {
         return "diseaseTransmissionTreeEstimatorForm";
     }
 
-    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimator/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimators/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("diseaseTransmissionTreeEstimator") @Validated DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -874,7 +874,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addModelingPlatform", method = RequestMethod.GET)
+    @RequestMapping(value = "/addModelingPlatforms", method = RequestMethod.GET)
     public String addNewModelingPlatform(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         ModelingPlatforms modelingPlatform = new ModelingPlatforms();
@@ -911,7 +911,7 @@ public class DataEntryController {
         return "modelingPlatformForm";
     }
 
-    @RequestMapping(value = "/addModelingPlatform/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addModelingPlatforms/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("modelingPlatform") @Validated ModelingPlatforms modelingPlatform,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -940,7 +940,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addPathogenEvolutionModel", method = RequestMethod.GET)
+    @RequestMapping(value = "/addPathogenEvolutionModels", method = RequestMethod.GET)
     public String addNewPathogenEvolutionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         PathogenEvolutionModels pathogenEvolutionModel = new PathogenEvolutionModels();
@@ -977,7 +977,7 @@ public class DataEntryController {
         return "pathogenEvolutionModelForm";
     }
 
-    @RequestMapping(value = "/addPathogenEvolutionModel/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addPathogenEvolutionModels/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("pathogenEvolutionModel") @Validated PathogenEvolutionModels pathogenEvolutionModel,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -1007,7 +1007,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addPhylogeneticTreeConstructor", method = RequestMethod.GET)
+    @RequestMapping(value = "/addPhylogeneticTreeConstructors", method = RequestMethod.GET)
     public String addNewPhylogenticTreeConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         PhylogeneticTreeConstructors phylogeneticTreeConstructor = new PhylogeneticTreeConstructors();
@@ -1043,7 +1043,7 @@ public class DataEntryController {
         return "phylogeneticTreeConstructorForm";
     }
 
-    @RequestMapping(value = "/addPhylogeneticTreeConstructor/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addPhylogeneticTreeConstructors/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId,  @Valid @ModelAttribute("phylogeneticTreeConstructor") @Validated PhylogeneticTreeConstructors phylogeneticTreeConstructor,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
@@ -1139,7 +1139,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addSyntheticEcosystemConstructor", method = RequestMethod.GET)
+    @RequestMapping(value = "/addSyntheticEcosystemConstructors", method = RequestMethod.GET)
     public String addNewSyntheticEcosystemConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         SyntheticEcosystemConstructors syntheticEcosystemConstructor = new SyntheticEcosystemConstructors();
@@ -1176,7 +1176,7 @@ public class DataEntryController {
         return "syntheticEcosystemConstructorForm";
     }
 
-    @RequestMapping(value = "/addSyntheticEcosystemConstructor/{categoryID}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addSyntheticEcosystemConstructors/{categoryID}", method = RequestMethod.POST)
     public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("syntheticEcosystemConstructor") @Validated SyntheticEcosystemConstructors syntheticEcosystemConstructor,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {

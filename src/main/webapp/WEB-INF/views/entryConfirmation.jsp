@@ -40,18 +40,20 @@
     <div class="row">
         <div class="col-md-12">
             <br>
-            <a href="${pageContext.request.contextPath}/main">
-                <button type="button" class="btn btn-default">
+            <button type="button" class="btn btn-default">
+                <a href="${pageContext.request.contextPath}/main">
                     <icon class="glyphicon glyphicon-chevron-left"></icon>
                     Home
-                </button>
-            </a>
-            <a href="${pageContext.request.contextPath}/add/review">
-                <button type="button" class="btn btn-default">
+                </a>
+            </button>
+
+            <button type="button" class="btn btn-default pull-right">
+                <a href="${pageContext.request.contextPath}/add/review">
                     Review Submissions
                     <icon class="glyphicon glyphicon-chevron-right"></icon>
-                </button>
-            </a>
+                </a>
+            </button>
+
             <br>
             <h3 class="text-center">Your entry has been successfully added. An email request has been sent to the
                 administrator. Approval is pending.</h3>

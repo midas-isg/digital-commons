@@ -61,7 +61,7 @@
                 <li><a class="nav-link dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a></li>
                 <li role="presentation" class="divider"></li>
                 <li class="dropdown-header">Add</li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataFormatConverter">Data Format Converter</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataFormatConverters">Data Format Converter</a></li>
                 <li><a class="nav-link dropdown-item" href="${contextPath}/addDataService">Data Service</a></li>
                 <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
                 <li class="dropdown-submenu">
@@ -72,16 +72,16 @@
                     </ul>
                 </li>
                 <li><a class="nav-link dropdown-item" href="${pageContext.request.contextPath}/addDataStandard">Data Format</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataVisualizer">Data Visualizer</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseForecaster">Disease Forecaster</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataVisualizers">Data Visualizer</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseForecasters">Disease Forecaster</a></li>
                 <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseTransmissionModel">Disease Transmission Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseTransmissionTreeEstimator">Disease Transmission Tree Estimator</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a></li>
                 <li><a class="nav-link dropdown-item" href="${contextPath}/addMetagenomicAnalysis">Metagenomic Analysis</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addModelingPlatform">Modeling Platform</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addPathogenEvolutionModel">Pathogen Evolution Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addPhylogeneticTreeConstructor">Phylogenetic Tree Constructor</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addModelingPlatforms">Modeling Platform</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addPathogenEvolutionModels">Pathogen Evolution Model</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addPhylogeneticTreeConstructors">Phylogenetic Tree Constructor</a></li>
                 <li><a class="nav-link dropdown-item" href="${contextPath}/addPopulationDynamicsModel">Population Dynamics Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructor">Synthetic Ecosystem Constructor</a></li>
+                <li><a class="nav-link dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a></li>
             </ul>
         </li>
     </c:if>
