@@ -3,23 +3,15 @@ package edu.pitt.isg.dc;
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import com.google.gson.*;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
-import edu.pitt.isg.mdc.v1_0.*;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -28,7 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.lang.reflect.Type;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -36,16 +28,56 @@ import static org.junit.Assert.assertEquals;
 @TestPropertySource("/application.properties")
 public class TestConvertDatsToJava {
 
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final Type mapType = new TypeToken<TreeMap<String, Object>>() {
+    }.getType();
     private static Map<EntryId, String> idsNeedOlympus = new HashMap<EntryId, String>();
-
+    Converter converter = new Converter();
+    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
     @Autowired
     private EntryRepository repo;
 
-    Converter converter = new Converter();
+    public static int indexOfDifference(CharSequence cs1, CharSequence cs2) {
+        if (cs1 == cs2) {
+            return INDEX_NOT_FOUND;
+        }
+        if (cs1 == null || cs2 == null) {
+            return 0;
+        }
+        int i;
+        for (i = 0; i < cs1.length() && i < cs2.length(); ++i) {
+            if (cs1.charAt(i) != cs2.charAt(i)) {
+                break;
+            }
+        }
+        if (i < cs2.length() || i < cs1.length()) {
+            return i;
+        }
+        return INDEX_NOT_FOUND;
+    }
 
-    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
+    private String sortJsonObject(JsonObject jsonObject) {
+        List<String> jsonElements = new ArrayList<>();
 
+        Set<Map.Entry<String, JsonElement>> entries = jsonObject.entrySet();
+        for (Map.Entry<String, JsonElement> entry : entries)
+            jsonElements.add(entry.getKey());
 
+        Collections.sort(jsonElements);
+
+        JsonArray jsonArray = new JsonArray();
+        for (String elementName : jsonElements) {
+            JsonObject newJsonObject = new JsonObject();
+            JsonElement jsonElement = jsonObject.get(elementName);
+            if (jsonElement.isJsonObject())
+                newJsonObject.add(elementName, new JsonPrimitive(sortJsonObject(jsonObject.get(elementName).getAsJsonObject())));
+            else
+                newJsonObject.add(elementName, jsonElement);
+            jsonArray.add(newJsonObject);
+        }
+        return jsonArray.toString();
+    }
 
     private void test(Class clazz) {
         Set<String> types = new HashSet<>();
@@ -55,61 +87,87 @@ public class TestConvertDatsToJava {
         for (Entry entry : entriesList) {
             String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
             Object object = gson.fromJson(jsonFromDatabase, clazz);
-            //Object object = converter.convertFromJsonToClass(jsonFromDatabase, clazz);
+
 
             JsonObject jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
             JsonObject jsonObjectFromClass = converter.toJsonObject(clazz, object);
-            jsonObjectFromClass.remove("class");
-            jsonObjectFromClass.remove("subtype");
 
-            Type mapType = new TypeToken<Map<String, Object>>() {
-            }.getType();
+            jsonObjectFromClass.remove("class");
+            if (!jsonObjectFromDatabase.has("subtype"))
+                jsonObjectFromClass.remove("subtype");
+
+
             Map<String, Object> databaseMap = gson.fromJson(jsonFromDatabase, mapType);
             Map<String, Object> convertedObjectMap = gson.fromJson(jsonObjectFromClass, mapType);
             MapDifference<String, Object> d = Maps.difference(databaseMap, convertedObjectMap);
             if (!d.toString().equalsIgnoreCase("equal")) {
-                System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + ") needs \n");
+                if (d.entriesOnlyOnLeft().size() > 0) {
+                    System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), database JSON contains");
+                    Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
+                    while (it.hasNext()) {
 
-                Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
-                while (it.hasNext()) {
-                    String field = it.next();
-                    if (field.contains("Olympus")) {
-                        jsonObjectFromDatabase.addProperty("availableOnOlympus", "false");
-                        idsNeedOlympus.put(entry.getId(), gson.toJson(jsonObjectFromDatabase));
+                        String field = it.next();
+                        System.out.print(" " + field + ",");
+
                     }
-                    jsonObjectFromDatabase.addProperty("availableOnOlympus", "false");
-                    System.out.println("\t" + field + ": ");
-
+                    System.out.print(" but unmarshalled object does not.\n");
                 }
-                System.out.println();
+
+                if (d.entriesOnlyOnRight().size() > 0) {
+                    System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), unmarshalled object contains");
+                    Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
+                    while (it.hasNext()) {
+                        String field = it.next();
+                        System.out.print(" " + field + ",");
+
+                    }
+                    System.out.print(" but database JSON does not.\n");
+                }
+
+                if (d.entriesDiffering().size() > 0) {
+                    Iterator<String> it = d.entriesDiffering().keySet().iterator();
+                    while (it.hasNext()) {
+                        String value = it.next();
+                        String left = jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject().toString();
+                        String right = jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject().toString();
+                        left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+
+
+                        int idxOfDifference = indexOfDifference(left, right);
+                        int end = Math.min(left.length(), right.length());
+
+                        System.out.println("In " + value + " section from Database: ...\n" + left.substring(0, idxOfDifference) + ANSI_CYAN + left.substring(idxOfDifference, end) + ANSI_RESET);
+                        System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + ANSI_CYAN + right.substring(idxOfDifference, end) + ANSI_RESET);
+
+                    }
+                }
+                System.out.println("\t Error message: " + d + "\n\n");
             }
             //assertEquals(d.toString(), "equal");
 
         }
     }
 
+    /* @Test
+     public void testDataFormatConverters() {
+         test(DataFormatConverters.class);
+     }
 
-
-
-   /* @Test
-    public void testDataFormatConverters() {
-        test(DataFormatConverters.class);
-    }
-*/
     @Test
     public void testDataService() {
         test(DataService.class);
     }
-/*
+
     @Test
     public void testDataVisualizers() {
         test(DataVisualizers.class);
     }
-
+*/
     @Test
     public void testDataset() {
         test(Dataset.class);
-    }*/
+    }
 
   /*  @Test
     public void testDatasetWithOrganization() {

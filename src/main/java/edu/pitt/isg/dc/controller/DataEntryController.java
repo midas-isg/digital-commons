@@ -420,7 +420,7 @@ public class DataEntryController {
 
 //        System.out.println(xmlString);
         try {
-            jsonString = xml2JSONConverter.xmlToJson(xmlString);
+            jsonString = xml2JSONConverter.xmlToJson(xmlString, false);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
