@@ -19,6 +19,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.lang.reflect.Type;
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
 
@@ -72,11 +73,63 @@ public class TestConvertDatsToJava {
             JsonElement jsonElement = jsonObject.get(elementName);
             if (jsonElement.isJsonObject())
                 newJsonObject.add(elementName, new JsonPrimitive(sortJsonObject(jsonObject.get(elementName).getAsJsonObject())));
-            else
+            else if (jsonElement.isJsonArray()) {
+                newJsonObject.add(elementName, sortJsonArray(jsonElement));
+            } else
                 newJsonObject.add(elementName, jsonElement);
             jsonArray.add(newJsonObject);
         }
+
         return jsonArray.toString();
+    }
+
+    private JsonArray sortJsonArray(JsonElement jsonElement) {
+        JsonArray sortedArray = new JsonArray();
+
+        JsonArray jsonElementAsArray = jsonElement.getAsJsonArray();
+        for (JsonElement arrayMember : jsonElementAsArray)
+            if (arrayMember.isJsonObject()) {
+                sortedArray.add(new JsonPrimitive(sortJsonObject(arrayMember.getAsJsonObject())));
+            } else if (arrayMember.isJsonArray()) {
+                sortedArray.add(sortJsonArray(arrayMember));
+            } else {
+                sortedArray.add(arrayMember.toString());
+            }
+        return sortedArray;
+    }
+
+    private int getOrFindCharactersGivenIndex(String string, int index, CharacterIndexBehavior characterIndexBehavior) {
+        IntStream stream = string.chars();
+        PrimitiveIterator.OfInt it = stream.iterator();
+        int nonWhitespaceCharacterCount = 0;
+        int characterCount = 0;
+        while (it.hasNext()) {
+            Integer cur = it.next();
+            if (!Character.isWhitespace(cur)) nonWhitespaceCharacterCount++;
+            characterCount++;
+
+            if (characterIndexBehavior.equals(CharacterIndexBehavior.GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE) && characterCount == index)
+                return nonWhitespaceCharacterCount;
+            else if (characterIndexBehavior.equals(CharacterIndexBehavior.SEEK_TO_CHARACTER_INDEX) && nonWhitespaceCharacterCount == index)
+                return characterCount;
+        }
+        return -1;
+
+    }
+
+    private void printHelpfulJsonError(String json, JsonSyntaxException exception) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String prettyJson = gson.toJson(new JsonParser().parse(json));
+
+        String errStr = exception.getMessage();
+        Integer begin = errStr.indexOf("1 column ") + 9;
+        Integer end = errStr.indexOf(" path $");
+        Integer errorPos = Integer.valueOf(errStr.substring(begin, end));
+
+        int characterIndexOfError = getOrFindCharactersGivenIndex(json, errorPos, CharacterIndexBehavior.GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE);
+        int indexOfErrorInPretty = getOrFindCharactersGivenIndex(prettyJson, characterIndexOfError, CharacterIndexBehavior.SEEK_TO_CHARACTER_INDEX);
+
+        System.out.println(prettyJson.substring(1, indexOfErrorInPretty) + ANSI_CYAN + "(!!!-- " + exception.getMessage() + "--!!!)\n" + prettyJson.substring(indexOfErrorInPretty, prettyJson.length()) + ANSI_RESET);
     }
 
     private void test(Class clazz) {
@@ -86,7 +139,13 @@ public class TestConvertDatsToJava {
 
         for (Entry entry : entriesList) {
             String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
-            Object object = gson.fromJson(jsonFromDatabase, clazz);
+            Object object;
+            try {
+                object = gson.fromJson(jsonFromDatabase, clazz);
+            } catch (JsonSyntaxException e) {
+                printHelpfulJsonError(jsonFromDatabase, e);
+                throw e;
+            }
 
 
             JsonObject jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
@@ -167,6 +226,12 @@ public class TestConvertDatsToJava {
     @Test
     public void testDataset() {
         test(Dataset.class);
+    }
+
+    private enum CharacterIndexBehavior {
+        GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE,
+        SEEK_TO_CHARACTER_INDEX
+
     }
 
   /*  @Test
