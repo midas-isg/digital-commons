@@ -4,11 +4,13 @@ import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
+import com.google.gson.stream.MalformedJsonException;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,12 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
+
+enum CharacterIndexBehavior {
+    GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE,
+    SEEK_TO_CHARACTER_INDEX
+
+}
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -117,11 +125,12 @@ public class TestConvertDatsToJava {
 
     }
 
-    private void printHelpfulJsonError(String json, JsonSyntaxException exception) {
+    private void printHelpfulJsonError(String json, JsonSyntaxException syntaxException, MalformedJsonException malformedException) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String prettyJson = gson.toJson(new JsonParser().parse(json));
 
-        String errStr = exception.getMessage();
+        Exception e = syntaxException != null ? syntaxException : malformedException;
+        String errStr = e.getMessage();
         Integer begin = errStr.indexOf("1 column ") + 9;
         Integer end = errStr.indexOf(" path $");
         Integer errorPos = Integer.valueOf(errStr.substring(begin, end));
@@ -129,7 +138,7 @@ public class TestConvertDatsToJava {
         int characterIndexOfError = getOrFindCharactersGivenIndex(json, errorPos, CharacterIndexBehavior.GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE);
         int indexOfErrorInPretty = getOrFindCharactersGivenIndex(prettyJson, characterIndexOfError, CharacterIndexBehavior.SEEK_TO_CHARACTER_INDEX);
 
-        System.out.println(prettyJson.substring(1, indexOfErrorInPretty) + ANSI_CYAN + "(!!!-- " + exception.getMessage() + "--!!!)\n" + prettyJson.substring(indexOfErrorInPretty, prettyJson.length()) + ANSI_RESET);
+        System.out.println(prettyJson.substring(1, indexOfErrorInPretty) + ANSI_CYAN + "(!!!-- " + e.getMessage() + "--!!!)\n" + prettyJson.substring(indexOfErrorInPretty, prettyJson.length()) + ANSI_RESET);
     }
 
     private void test(Class clazz) {
@@ -138,17 +147,37 @@ public class TestConvertDatsToJava {
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
 
         for (Entry entry : entriesList) {
+            int[] knownBad = {};//81, 63, 62, 82, 37, 73};
+            if (ArrayUtils.contains(knownBad, entry.getId().getEntryId().intValue()))
+                continue;
+
             String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
             Object object;
+
+            jsonFromDatabase = jsonFromDatabase.replaceAll("\"coordinates\":\\[ *\\[ *[ ,0-9\\-\\.]* *\\] *\\],", "");
+            jsonFromDatabase = jsonFromDatabase.replaceAll("\"size\":0", "\"size\":0.0");
+
+            JsonObject jsonObjectFromDatabase = null;
+            try {
+                jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
+            } catch (JsonSyntaxException e) {
+                printHelpfulJsonError(jsonFromDatabase, e, null);
+            }
+
+            jsonFromDatabase = jsonObjectFromDatabase.toString();
+
             try {
                 object = gson.fromJson(jsonFromDatabase, clazz);
             } catch (JsonSyntaxException e) {
-                printHelpfulJsonError(jsonFromDatabase, e);
+                printHelpfulJsonError(jsonFromDatabase, e, null);
                 throw e;
             }
 
+            /*//ignore empties
+            jsonFromDatabase = jsonFromDatabase.replaceAll("\"[A-Za-z]+\":\\[\\],*", "");
+            jsonFromDatabase = jsonFromDatabase.replaceAll(", *]", "]");
+            jsonFromDatabase = jsonFromDatabase.replaceAll(", *\\}", "}");*/
 
-            JsonObject jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
             JsonObject jsonObjectFromClass = converter.toJsonObject(clazz, object);
 
             jsonObjectFromClass.remove("class");
@@ -187,26 +216,35 @@ public class TestConvertDatsToJava {
                     Iterator<String> it = d.entriesDiffering().keySet().iterator();
                     while (it.hasNext()) {
                         String value = it.next();
-                        String left = jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject().toString();
-                        String right = jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject().toString();
-                        left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
-                        right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        String left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        String right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        if (!left.equals(right)) {
+                            int idxOfDifference = indexOfDifference(left, right);
 
 
-                        int idxOfDifference = indexOfDifference(left, right);
-                        int end = Math.min(left.length(), right.length());
+                            try {
+                                System.out.println("In " + value + " section from Database: ...\n" + left.substring(0, idxOfDifference) + ANSI_CYAN + left.substring(idxOfDifference, left.length()) + ANSI_RESET);
+                                System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + ANSI_CYAN + right.substring(idxOfDifference, right.length()) + ANSI_RESET);
+                            } catch (StringIndexOutOfBoundsException e) {
+                                System.out.println("idxOfDifference:" + idxOfDifference);
+                               // System.out.println("end:" + end);
 
-                        System.out.println("In " + value + " section from Database: ...\n" + left.substring(0, idxOfDifference) + ANSI_CYAN + left.substring(idxOfDifference, end) + ANSI_RESET);
-                        System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + ANSI_CYAN + right.substring(idxOfDifference, end) + ANSI_RESET);
+                                throw e;
+                            }
+                        } else {
+                            System.out.println(d);
+                        }
 
                     }
-                }
-                System.out.println("\t Error message: " + d + "\n\n");
-            }
-            //assertEquals(d.toString(), "equal");
 
+                }
+            }
+            System.out.println("\t Error message: " + d + "\n\n");
         }
+        //assertEquals(d.toString(), "equal");
+
     }
+
 
     /* @Test
      public void testDataFormatConverters() {
@@ -226,12 +264,6 @@ public class TestConvertDatsToJava {
     @Test
     public void testDataset() {
         test(Dataset.class);
-    }
-
-    private enum CharacterIndexBehavior {
-        GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE,
-        SEEK_TO_CHARACTER_INDEX
-
     }
 
   /*  @Test
