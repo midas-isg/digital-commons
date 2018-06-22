@@ -102,25 +102,14 @@
 </c:choose>
 
 <div class="${specifier}-0-copy-version hide">
-    <div class="form-group edit-form-group">
-        <myTags:editIdentifier label="Identifier" path="${path}[0]" specifier="${specifier}-0"></myTags:editIdentifier>
-    </div>
-    <div class="input-group-btn">
-        <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
-            Version
-        </button>
-    </div>
-    <div class="input-group control-group edit-form-group full-width">
-        <div class="input-group edit-form-group full-width">
-            <label>Version</label>
-            <input name="${path}[0].version" type="text" class="form-control" placeholder="Version">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </div>
+    <div class="input-group edit-form-group full-width">
+        <label>Version</label>
+        <input name="${path}[0].version" type="text" class="form-control" placeholder="Version">
+        <div class="input-group-btn">
+            <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i
+                    class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
         </div>
     </div>
 </div>
@@ -220,7 +209,7 @@
             var html = $(".${specifier}-copy-license").html();
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}[' + licenseCount + ']').replace(regexSpecifier, '${specifier}-' + licenseCount + '-');
+            html = html.replace(regexPath, '${path}[' + licenseCount + ']').replace(regexSpecifier, '${specifier}-' + licenseCount);
             licenseCount += 1;
 
 

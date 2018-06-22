@@ -10,9 +10,7 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
 
 @Component
 public class DataServiceValidator implements Validator {
@@ -28,6 +26,10 @@ public class DataServiceValidator implements Validator {
         //USED FOR SOFTWARE//
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
+
+        if(isIdentifierEmpty(dataService.getIdentifier())) {
+            dataService.setIdentifier(null);
+        }
 
         clearStringList(dataService.getDataInputFormats().listIterator());
         clearStringList(dataService.getDataOutputFormats().listIterator());

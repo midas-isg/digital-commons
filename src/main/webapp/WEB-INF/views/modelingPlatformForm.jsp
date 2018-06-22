@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addModelingPlatform/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addModelingPlatforms/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="modelingPlatform">
                 <div class="form-group edit-form-group">
                     <label>Modeling Platform</label>
@@ -36,7 +36,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addModelingPlatform/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addModelingPlatforms/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

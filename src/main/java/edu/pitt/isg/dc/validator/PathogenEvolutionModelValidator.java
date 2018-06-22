@@ -9,6 +9,7 @@ import org.springframework.validation.Validator;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isIdentifierEmpty;
 
 @Component
 public class PathogenEvolutionModelValidator implements Validator {
@@ -24,6 +25,10 @@ public class PathogenEvolutionModelValidator implements Validator {
         //USED FOR SOFTWARE//
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
+
+        if(isIdentifierEmpty(pathogenEvolutionModel.getIdentifier())) {
+            pathogenEvolutionModel.setIdentifier(null);
+        }
 
         clearStringList(pathogenEvolutionModel.getDataInputFormats().listIterator());
         clearStringList(pathogenEvolutionModel.getDataOutputFormats().listIterator());

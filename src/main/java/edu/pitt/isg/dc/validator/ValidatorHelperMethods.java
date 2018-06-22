@@ -34,6 +34,13 @@ public class ValidatorHelperMethods {
 
     }
 
+    public static boolean isIdentifierEmpty(Identifier identifier) {
+        if (isEmpty(identifier.getIdentifier()) && isEmpty(identifier.getIdentifierSource()) && isEmpty(identifier.getIdentifierDescription())) {
+            return true;
+        }
+        return false;
+    }
+
     public static boolean isEmpty(Object object) {
         if (object == null) {
             return true;

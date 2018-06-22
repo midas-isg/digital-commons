@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPhylogeneticTreeConstructor/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
+            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPhylogeneticTreeConstructors/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="phylogeneticTreeConstructor">
                 <div class="form-group edit-form-group">
                     <label>Phylogenetic Tree Constructor</label>
@@ -36,7 +36,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPhylogeneticTreeConstructor/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
+            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPhylogeneticTreeConstructors/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
         });
 
     });

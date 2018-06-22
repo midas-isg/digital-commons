@@ -8,8 +8,7 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
 
 @Component
 public class DataVisualizerValidator implements Validator {
@@ -25,6 +24,10 @@ public class DataVisualizerValidator implements Validator {
         //USED FOR SOFTWARE//
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
+
+        if(isIdentifierEmpty(dataVisualizer.getIdentifier())) {
+            dataVisualizer.setIdentifier(null);
+        }
 
         clearStringList(dataVisualizer.getDataInputFormats().listIterator());
         clearStringList(dataVisualizer.getDataOutputFormats().listIterator());
