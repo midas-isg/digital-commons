@@ -76,8 +76,10 @@
                 </div>
 
                 <div class="form-group">
-                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}" specifier="${specifier}-${varStatus.count-1}-extraProperties"
-                                                path="${path}[${varStatus.count-1}].extraProperties"></myTags:editExtraProperties>
+                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}"
+                                                specifier="${specifier}-${varStatus.count-1}-extraProperties"
+                                                path="${path}[${varStatus.count-1}].extraProperties"
+                                                label="Extra Properties"></myTags:editExtraProperties>
                 </div>
             </div>
 
@@ -138,7 +140,7 @@
             </div>
         </div>
         <div class="form-group">
-            <myTags:editExtraProperties specifier="${specifier}-0-extraProperties"
+            <myTags:editExtraProperties specifier="${specifier}-0-extraProperties" label="Extra Properties"
                                         path="${path}[0].extraProperties"></myTags:editExtraProperties>
         </div>
     </div>

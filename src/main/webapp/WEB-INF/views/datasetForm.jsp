@@ -32,7 +32,9 @@
                                                                label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
                                            label="Identifier"></myTags:editIdentifier>
-                    <myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>
+                    <myTags:editPerson people="${dataset.creators}" label="Creators"
+                                       path="creators" specifier="creators"
+                                       isFirstRequired="true"></myTags:editPerson>
                     <myTags:editType path="types" types="${dataset.types}"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"
                                                  name="Is About"></myTags:editBiologicalEntity>
@@ -40,11 +42,11 @@
                                                  specifier="spatialCoverage"
                                                  name="Spatial Coverage"></myTags:editBiologicalEntity>
                     <myTags:editStudy study="${dataset.producedBy}" specifier="producedBy"
-                                      path="producedBy"></myTags:editStudy>
+                                      path="producedBy" label="Produced By"></myTags:editStudy>
                     <myTags:editDistributions distributions="${dataset.distributions}" specifier="distributions"
                                               path="distributions"></myTags:editDistributions>
                     <myTags:editExtraProperties categoryValuePairs="${dataset.extraProperties}"
-                                                specifier="extraProperties"
+                                                specifier="extraProperties" label="Extra Properties"
                                                 path="extraProperties"></myTags:editExtraProperties>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>

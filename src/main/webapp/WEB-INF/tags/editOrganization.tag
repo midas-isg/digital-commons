@@ -5,220 +5,164 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ attribute name="creators" required="false"
+<%@ attribute name="organizations" required="true"
               type="java.util.ArrayList" %>
-
+<%@ attribute name="path" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="specifier" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="isFirstRequired" required="true"
+              type="java.lang.Boolean" %>
 
 <c:choose>
-    <c:when test="${not empty creators}">
-        <spring:bind path="creators[0]">
+    <c:when test="${not empty organizations}">
+        <spring:bind path="${path}[0]">
             <div class=" ${status.error ? 'has-error' : ''}">
-            <c:forEach items="${creators}" varStatus="varStatus" var="creator">
-                <spring:bind path="creators[${varStatus.count-1}].name">
+            <c:forEach items="${organizations}" varStatus="varStatus" var="organization">
+                <spring:bind path="${path}[${varStatus.count-1}].name">
                     <c:choose>
                         <c:when test="${varStatus.first}">
-                            <div class="form-group edit-form-group creator-add-more">
-                            <label>Creator</label>
-                            <button class="btn btn-success add-creator" id="creators-${varStatus.count-1}-add-creators"
+                            <div class="form-group edit-form-group ${specifier}-add-more">
+                            <label>${label}</label>
+                            <button class="btn btn-success add-${specifier}"
                                     type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add Creator
+                                    class="glyphicon glyphicon-plus"></i> Add ${label}
                             </button>
+                            <c:choose>
+                                <c:when test="${isFirstRequired}">
+                                    <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                                            path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
+                                </c:when>
+                                <c:otherwise>
+                                    <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                                               specifier="${specifier}-${varStatus.count-1}-name"
+                                                                               path="${path}[${varStatus.count-1}].name"
+                                                                               string="${organization.name}"></myTags:editNonRequiredNonZeroLengthString>
+                                </c:otherwise>
+                            </c:choose>
                         </c:when>
                         <c:otherwise>
-
                             <div class="form-group control-group edit-form-group">
-                            <label>Creator</label>
-                            <button class="btn btn-danger creator-remove" type="button"><i
+                            <label>${label}</label>
+                            <button class="btn btn-danger organization-remove" type="button"><i
                                     class="glyphicon glyphicon-remove"></i> Remove
                             </button>
+                            <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                                       specifier="${specifier}-${varStatus.count-1}-name"
+                                                                       path="${path}[${varStatus.count-1}].name"
+                                                                       string="${organization.name}"></myTags:editNonRequiredNonZeroLengthString>
                         </c:otherwise>
                     </c:choose>
 
-                    <c:choose>
-                        <c:when test="${not empty creator.name}">
-                            <div class="form-group edit-form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" value="${creator.name}"
-                                       name="creators[${varStatus.count-1}].name"
-                                       placeholder="Organization Name">
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                                <label>Name</label>
-                                <input type="text" class="form-control"
-                                       name="creators[${varStatus.count-1}].name"
-                                       placeholder="Organization Name">
-                            </div>
-                            <form:errors path="creators[${varStatus.count-1}].name" class="error-color"/>
-                        </c:otherwise>
-                    </c:choose>
 
-                    <c:choose>
-                        <c:when test="${not empty creator.abbreviation}">
-                            <div class="form-group control-group edit-form-group">
-                                <label>Abbreviation</label>
-                                <button class="btn btn-success add-creators-abbreviation" style="display: none"
-                                        id="creators-${varStatus.count-1}-add-abbreviation" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Abbreviation
-                                </button>
-                                <div class="input-group control-group">
-                                    <input type="text" class="form-control" value="${creator.abbreviation}"
-                                           name="creators[${varStatus.count-1}].abbreviation"
-                                           placeholder="Abbreviation">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-danger creators-abbreviation-remove"
-                                                id="creators-${varStatus.count-1}-abbreviation-remove" type="button"><i
-                                                class="glyphicon glyphicon-remove"></i>
-                                            Remove
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                                <label>Abbreviation</label>
-                                <button class="btn btn-success add-creators-abbreviation"
-                                        id="creators-${varStatus.count-1}-add-abbreviation" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Abbreviation
-                                </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                    <myTags:editPlace place="${creator.location}"
-                                      path="creators[${varStatus.count-1}].location"
-                                      specifier="creators-${varStatus.count-1}-location"
+                    <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+                                                               specifier="${specifier}-${varStatus.count-1}-abbreviation"
+                                                               path="${path}[${varStatus.count-1}].abbreviation"
+                                                               string="${organization.abbreviation}"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editPlace place="${organization.location}"
+                                      path="${path}[${varStatus.count-1}].location"
+                                      specifier="${specifier}-${varStatus.count-1}-location"
                                       label="Location"></myTags:editPlace>
 
                     <c:if test="${varStatus.first}">
 
-                        <form:errors path="creators[0]" class="error-color"/>
+                        <form:errors path="${path}[0]" class="error-color"/>
                     </c:if>
 
                     </div>
+
+                    <c:set var="unboundedOrganizationCount" scope="page" value="${varStatus.count}"/>
+                    <%--<spring:eval expression="${varStatus.count}" var="unbounded${specifier}Count" scope="session"/>--%>
+                    <%--<spring:eval expression="${varStatus.count}" var="unboundedCreatorCount" scope="session"/>--%>
                 </spring:bind>
             </c:forEach>
             </div>
         </spring:bind>
     </c:when>
     <c:otherwise>
-        <spring:bind path="creators[0]">
-            <div class="form-group edit-form-group creator-add-more ${status.error ? 'has-error' : ''}">
-                <label>Creator</label>
-                <button class="btn btn-success add-creator" id="creators-0-add-creators" type="button"><i
+        <spring:bind path="${path}[0]">
+            <div class="form-group edit-form-group ${specifier}-add-more ${status.error ? 'has-error' : ''}">
+                <label>${label}</label>
+                <button class="btn btn-success add-${specifier}" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Creator
+                    ${label}
                 </button>
 
-                <div class="form-group edit-form-group">
-                    <label>Name</label>
-                    <input type="text" class="form-control"
-                           name="creators[0].name"
-                           placeholder="Organization Name">
-                </div>
+                <c:choose>
+                    <c:when test="${isFirstRequired}">
+                        <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                                path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
+                    </c:when>
+                    <c:otherwise>
+                        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                                   specifier="${specifier}-0-name"
+                                                                   path="${path}[0].name"></myTags:editNonRequiredNonZeroLengthString>
+                    </c:otherwise>
+                </c:choose>
 
-                <div class="form-group edit-form-group">
-                    <label>Abbreviation</label>
-                    <button class="btn btn-success add-creators-abbreviation" id="creators-0-add-abbreviation"
-                            type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add Abbreviation
-                    </button>
-                </div>
+                <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+                                                           specifier="${specifier}-0-abbreviation"
+                                                           path="${path}[0].abbreviation"></myTags:editNonRequiredNonZeroLengthString>
 
-                <myTags:editPlace place="${creators[0].location}"
-                                  path="creators[0].location"
-                                  specifier="creators-0-location"
+                <myTags:editPlace path="${path}[0].location"
+                                  specifier="${specifier}-0-location"
                                   label="Location"></myTags:editPlace>
 
-                <form:errors path="creators[0]" class="error-color"/>
+                <form:errors path="${path}[0]" class="error-color"/>
             </div>
+            <c:set var="unboundedOrganizationCount" scope="page" value="1"/>
+            <%--<spring:eval expression="1" var="unbounded${specifier}Count" scope="session"/>--%>
+            <%--<spring:eval expression="1" var="unboundedCreatorCount" scope="session"/>--%>
         </spring:bind>
     </c:otherwise>
 </c:choose>
 
 
-<div class="copy-creator hide">
+<div class="${specifier}-copy hide">
     <div class="form-group  control-group edit-form-group">
-        <label>Creator</label>
-        <button class="btn btn-danger creator-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+        <label>${label}</label>
+        <button class="btn btn-danger organization-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <div class="form-group edit-form-group">
-            <label>Name</label>
-            <input type="text" class="form-control"
-                   name="creators[0].name"
-                   placeholder="Organization Name">
-        </div>
+        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                                   specifier="${specifier}-name"
+                                                   path="${path}[0].name"></myTags:editNonRequiredNonZeroLengthString>
 
-        <div class="form-group edit-form-group">
-            <label>Abbreviation</label>
-            <button class="btn btn-success add-creators-abbreviation" id="creators-0-add-abbreviation" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add Abbreviation
-            </button>
-        </div>
+        <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+                                                   specifier="${specifier}-abbreviation"
+                                                   path="${path}[0].abbreviation"></myTags:editNonRequiredNonZeroLengthString>
 
         <myTags:editPlace
-                path="creators[0].location"
-                specifier="creators-0-location"
+                path="${path}[0].location"
+                specifier="${specifier}-location"
                 label="Location"></myTags:editPlace>
     </div>
 </div>
 
-<div class="copy-creator-abbreviation hide">
-    <div class="input-group control-group">
-        <input type="text" class="form-control"
-               name="creators[0].abbreviation"
-               placeholder="Abbreviation">
-        <div class="input-group-btn">
-            <button class="btn btn-danger creators-abbreviation-remove" id="creators-0-abbreviation-remove"
-                    type="button"><i class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-    </div>
-</div>
-
-
 <script type="text/javascript">
     $(document).ready(function () {
 
-        //Remove section
-        $("body").on("click", ".creators-abbreviation-remove", function () {
-            $(this).closest(".control-group").remove();
-            var creatorsIndex = $(this.id).selector;
-            creatorsIndex = creatorsIndex.replace("creators-", "").replace("-abbreviation-remove", "");
-            $("#creators-" + creatorsIndex + "-add-abbreviation").show();
-        });
-
-
-        var newCreatorsCount = 1;
+        <%--var unbounded${specifier}Count = ${unbounded${specifier}Count};--%>
+        <%--var unbounded${specifier}Count = ${unboundedCreatorCount};--%>
+        var unboundedOrganizationCount = ${unboundedOrganizationCount};
+        <%--console.log("unbounded${specifier}Count = " + unbounded${specifier}Count);--%>
+        // console.log(unboundedOrganizationCount);
         //Add section
-        $("body").on("click", ".add-creator", function () {
-            var creatorsIndex = $(this.id).selector;
-            creatorsIndex = creatorsIndex.replace("creators-", "").replace("-add-creators", "");
-            var creatorsCount = newCreatorsCount + parseInt(creatorsIndex);
-            var html = $(".copy-creator").html();
-            var regexPath = new RegExp("creators" + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp("creators" + '\\-0', "g");
-            html = html.replace(regexPath, 'creators[' + creatorsCount + ']').replace(regexSpecifier, 'creators-' + creatorsCount);
-            newCreatorsCount += 1;
-            $(".creator-add-more").after(html);
-        });
-
-        $("body").on("click", ".add-creators-abbreviation", function () {
-            var creatorsIndex = $(this.id).selector;
-            creatorsIndex = creatorsIndex.replace("creators-", "").replace("-add-abbreviation", "");
-            var html = $(".copy-creator-abbreviation").html();
-            var regexPath = new RegExp("creators" + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp("creators" + '\\-0', "g");
-            html = html.replace(regexPath, 'creators[' + creatorsIndex + ']').replace(regexSpecifier, 'creators-' + creatorsIndex);
-            $(this).after(html);
-            $(this).hide();
+        $("body").on("click", ".add-${specifier}", function () {
+            var specifier = "${specifier}";
+            var path = "${path}";
+            var html = $(".${specifier}-copy").html();
+            var regexPath = new RegExp(path + '\\[0\\]', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            html = html.replace(regexPath, '${path}['+ unboundedOrganizationCount + ']').replace(regexSpecifier,'${specifier}-' + unboundedOrganizationCount +'-');
+            unboundedOrganizationCount += 1;
+            $(".${specifier}-add-more").after(html);
         });
 
         //Remove section
-        $("body").on("click", ".creator-remove", function () {
+        $("body").on("click", ".organization-remove", function () {
             $(this).parents(".control-group").remove();
         });
     });

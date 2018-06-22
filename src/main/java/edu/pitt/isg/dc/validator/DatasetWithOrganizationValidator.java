@@ -54,10 +54,13 @@ public class DatasetWithOrganizationValidator implements Validator {
         clearTypes(dataset.getTypes(), errors);
 
         // Remove empty extra properties
-        clearExtraProperties(dataset.getExtraProperties());
+        clearExtraProperties(dataset.getExtraProperties(), "", errors);
+
+        //Remove empty study
+        clearStudy(dataset.getProducedBy(), errors);
 
         //Remove empty distributions
-        clearDistributions(dataset.getDistributions());
+        clearDistributions(dataset.getDistributions(), errors);
 
         // Remove empty isAbout and spatial coverage
         clearBiologicalEntities(dataset.getIsAbout());

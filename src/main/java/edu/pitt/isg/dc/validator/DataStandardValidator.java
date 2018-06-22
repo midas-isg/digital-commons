@@ -43,7 +43,7 @@ public class DataStandardValidator implements Validator {
         }
 
         // Remove empty extra properties
-        clearExtraProperties(dataStandard.getExtraProperties());
+        clearExtraProperties(dataStandard.getExtraProperties(), "", errors);
     }
 
 }
