@@ -57,7 +57,7 @@
 
                 <div class="form-group edit-form-group">
                     <label>Type</label>
-                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type."></myTags:editAnnotation>
+                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>
                 </div>
 
                 <div class="form-group">
@@ -125,7 +125,7 @@
         </div>
         <div class="form-group edit-form-group">
             <label>Type</label>
-            <myTags:editAnnotation path="${path}[0].type."></myTags:editAnnotation>
+            <myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>
         </div>
         <div class="form-group">
             <myTags:editLicense specifier="${specifier}-licenses" path="${path}[0].licenses"></myTags:editLicense>

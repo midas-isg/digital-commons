@@ -60,7 +60,7 @@
                             <c:forEach items="${dataRepository.types}" var="type" varStatus="varStatus">
                                 <div class="form-group edit-form-group">
                                     <label>Type</label>
-                                    <myTags:editAnnotation annotation="${type}"
+                                    <myTags:editAnnotation annotation="${type}" supportError="${true}"
                                                            path="${path}.types[${varStatus.count-1}]."></myTags:editAnnotation>
                                 </div>
                                 <c:set var="dataRepositoryTypesCount" scope="page" value="${varStatus.count}"/>

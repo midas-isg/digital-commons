@@ -30,7 +30,7 @@
                     Remove
                 </button>
                 <br><br>
-                <myTags:editAnnotation annotation="${unit}" path="${path}."></myTags:editAnnotation>
+                <myTags:editAnnotation annotation="${unit}" path="${path}." supportError="${true}"></myTags:editAnnotation>
             </div>
         </div>
     </c:when>

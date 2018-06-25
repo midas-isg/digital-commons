@@ -35,7 +35,7 @@
                         Remove
                     </button>
                 </div>
-                <myTags:editAnnotation annotation="${annotation}"
+                <myTags:editAnnotation annotation="${annotation}" supportError="${true}"
                                        path="${path}[${varStatus.count-1}]."></myTags:editAnnotation>
 
             <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
