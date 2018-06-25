@@ -50,7 +50,7 @@
                                                                specifier="version"
                                                                string="${dataStandard.version}"></myTags:editNonRequiredNonZeroLengthString>
 
-                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}" specifier="extraProperties" path="extraProperties"></myTags:editExtraProperties>
+                    <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}" specifier="extraProperties" path="extraProperties"></myTags:editCategoryValuePair>
 
 
                 </div>

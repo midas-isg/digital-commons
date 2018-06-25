@@ -10,7 +10,8 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
-<%@attribute name="dataRepository" required="false" type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
+<%@attribute name="dataRepository" required="false"
+             type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
 
 <c:choose>
     <c:when test="${not empty dataRepository}">
@@ -46,92 +47,101 @@
 
                 <div class="form-group">
                     <myTags:editLicense path="${path}.licenses" licenses="${dataRepository.licenses}"
+                                        label="License"
                                         specifier="${specifier}-licenses"></myTags:editLicense>
                 </div>
 
-                <div class="form-group edit-form-group">
-                    <label>Types</label>
-                    <button class="btn btn-success ${specifier}-add-types" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                        Types
-                    </button>
-                    <c:choose>
-                        <c:when test="${not empty dataRepository.types}">
-                            <c:forEach items="${dataRepository.types}" var="type" varStatus="varStatus">
-                                <div class="form-group edit-form-group">
-                                    <label>Type</label>
-                                    <myTags:editAnnotation annotation="${type}" supportError="${true}"
-                                                           path="${path}.types[${varStatus.count-1}]."></myTags:editAnnotation>
-                                </div>
-                                <c:set var="dataRepositoryTypesCount" scope="page" value="${varStatus.count}"/>
-                            </c:forEach>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group control-group edit-form-group full-width">
-                                <label>Type</label>
-                                <div class="form-group">
-                                    <button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i>
-                                        Remove
-                                    </button>
-                                </div>
-                                <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
-                            </div>
-                            <script type="text/javascript">
-                                $(document).ready(function () {
-                                    //Hide Types
-                                    $("body").on("click", ".${specifier}-types-0-remove", function () {
-                                        $(this).closest(".control-group").remove();
-                                    });
+                <myTags:editAnnotationUnbounded path="${path}.types"
+                                                specifier="${specifier}-types"
+                                                annotations="${dataRepository.types}"
+                                                label="Types" ></myTags:editAnnotationUnbounded>
+                <%--<div class="form-group edit-form-group">--%>
+                    <%--<label>Types</label>--%>
+                    <%--<button class="btn btn-success ${specifier}-add-types" type="button"><i--%>
+                            <%--class="glyphicon glyphicon-plus"></i> Add--%>
+                        <%--Types--%>
+                    <%--</button>--%>
+                    <%--<c:choose>--%>
+                        <%--<c:when test="${not empty dataRepository.types}">--%>
+                            <%--<c:forEach items="${dataRepository.types}" var="type" varStatus="varStatus">--%>
+                                <%--<div class="form-group edit-form-group">--%>
+                                    <%--<label>Type</label>--%>
+                                    <%--<myTags:editAnnotation annotation="${type}" supportError="${true}"--%>
+                                                           <%--path="${path}.types[${varStatus.count-1}]."></myTags:editAnnotation>--%>
+                                <%--</div>--%>
+                                <%--<c:set var="dataRepositoryTypesCount" scope="page" value="${varStatus.count}"/>--%>
+                            <%--</c:forEach>--%>
+                        <%--</c:when>--%>
+                        <%--<c:otherwise>--%>
+                            <%--<div class="form-group control-group edit-form-group full-width">--%>
+                                <%--<label>Type</label>--%>
+                                <%--<div class="form-group">--%>
+                                    <%--<button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i--%>
+                                            <%--class="glyphicon glyphicon-remove"></i>--%>
+                                        <%--Remove--%>
+                                    <%--</button>--%>
+                                <%--</div>--%>
+                                <%--<myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>--%>
+                            <%--</div>--%>
+                            <%--<script type="text/javascript">--%>
+                                <%--$(document).ready(function () {--%>
+                                    <%--//Hide Types--%>
+                                    <%--$("body").on("click", ".${specifier}-types-0-remove", function () {--%>
+                                        <%--$(this).closest(".control-group").remove();--%>
+                                    <%--});--%>
 
-                                });
-                            </script>
+                                <%--});--%>
+                            <%--</script>--%>
 
-                            <c:set var="dataRepositoryTypesCount" scope="page" value="1"/>
+                            <%--<c:set var="dataRepositoryTypesCount" scope="page" value="1"/>--%>
 
-                        </c:otherwise>
-                    </c:choose>
+                        <%--</c:otherwise>--%>
+                    <%--</c:choose>--%>
 
 
-                </div>
+                <%--</div>--%>
 
-                <c:choose>
-                    <c:when test="${not empty dataRepository.version}">
-                        <div class="form-group">
-                            <label>Version</label>
-                            <div class="form-group">
-                                <button class="btn btn-success ${specifier}-add-version" style="display: none"
-                                        type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    Version
-                                </button>
-                            </div>
-                            <div class="input-group control-group edit-form-group full-width">
-                                    <%--<label>Version</label>--%>
-                                <input type="text" class="form-control" value="${dataRepository.version}"
-                                       name="${path}.version" id="${specifier}-version"
-                                       placeholder="Version"/>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-danger ${specifier}-version-remove" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i>
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="form-group">
-                            <label>Version</label>
-                            <div class="form-group">
-                                <button class="btn btn-success ${specifier}-add-version" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    Version
-                                </button>
-                            </div>
-                        </div>
-                    </c:otherwise>
-                </c:choose>
+                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                           specifier="${specifier}-${varStatus.count-1}-version"
+                                                           string="${dataRepository.version}"
+                                                           path="${path}[${varStatus.count-1}].version"></myTags:editNonRequiredNonZeroLengthString>
+                <%--<c:choose>--%>
+                    <%--<c:when test="${not empty dataRepository.version}">--%>
+                        <%--<div class="form-group">--%>
+                            <%--<label>Version</label>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<button class="btn btn-success ${specifier}-add-version" style="display: none"--%>
+                                        <%--type="button"><i--%>
+                                        <%--class="glyphicon glyphicon-plus"></i> Add--%>
+                                    <%--Version--%>
+                                <%--</button>--%>
+                            <%--</div>--%>
+                            <%--<div class="input-group control-group edit-form-group full-width">--%>
+                                    <%--&lt;%&ndash;<label>Version</label>&ndash;%&gt;--%>
+                                <%--<input type="text" class="form-control" value="${dataRepository.version}"--%>
+                                       <%--name="${path}.version" id="${specifier}-version"--%>
+                                       <%--placeholder="Version"/>--%>
+                                <%--<div class="input-group-btn">--%>
+                                    <%--<button class="btn btn-danger ${specifier}-version-remove" type="button"><i--%>
+                                            <%--class="glyphicon glyphicon-remove"></i>--%>
+                                        <%--Remove--%>
+                                    <%--</button>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</c:when>--%>
+                    <%--<c:otherwise>--%>
+                        <%--<div class="form-group">--%>
+                            <%--<label>Version</label>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<button class="btn btn-success ${specifier}-add-version" type="button"><i--%>
+                                        <%--class="glyphicon glyphicon-plus"></i> Add--%>
+                                    <%--Version--%>
+                                <%--</button>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                    <%--</c:otherwise>--%>
+                <%--</c:choose>--%>
 
             </div>
         </div>
@@ -171,88 +181,95 @@
         </div>
         <div class="form-group">
             <myTags:editLicense path="${path}.licenses"
+                                label="License"
                                 specifier="${specifier}-licenses"></myTags:editLicense>
         </div>
-        <div class="form-group edit-form-group">
-            <label>Types</label>
-            <button class="btn btn-success ${specifier}-add-types" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Types
-            </button>
-            <div class="form-group edit-form-group">
-                <label>Type</label>
-                <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Version</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-version" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Version
-                </button>
-            </div>
-        </div>
+        <myTags:editAnnotationUnbounded path="${path}.types"
+                                        specifier="${specifier}-types"
+                                        label="Types" ></myTags:editAnnotationUnbounded>
+        <%--<div class="form-group edit-form-group">--%>
+            <%--<label>Types</label>--%>
+            <%--<button class="btn btn-success ${specifier}-add-types" type="button"><i--%>
+                    <%--class="glyphicon glyphicon-plus"></i> Add--%>
+                <%--Types--%>
+            <%--</button>--%>
+            <%--<div class="form-group edit-form-group">--%>
+                <%--<label>Type</label>--%>
+                <%--<myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                   specifier="${specifier}-version"
+                                                   path="${path}.version"></myTags:editNonRequiredNonZeroLengthString>
+        <%--<div class="form-group">--%>
+            <%--<label>Version</label>--%>
+            <%--<div class="form-group">--%>
+                <%--<button class="btn btn-success ${specifier}-add-version" type="button"><i--%>
+                        <%--class="glyphicon glyphicon-plus"></i> Add--%>
+                    <%--Version--%>
+                <%--</button>--%>
+            <%--</div>--%>
+        <%--</div>--%>
     </div>
 </div>
 
-<div class="${specifier}-copy-types hide">
-    <div class="form-group control-group edit-form-group full-width">
-        <label>Type</label>
-        <div class="form-group">
-            <button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-        <myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //Hide Types
-            $("body").on("click", ".${specifier}-types-0-remove", function () {
-                $(this).closest(".control-group").remove();
-            });
+<%--<div class="${specifier}-copy-types hide">--%>
+    <%--<div class="form-group control-group edit-form-group full-width">--%>
+        <%--<label>Type</label>--%>
+        <%--<div class="form-group">--%>
+            <%--<button class="btn btn-danger ${specifier}-types-0-remove" type="button"><i--%>
+                    <%--class="glyphicon glyphicon-remove"></i>--%>
+                <%--Remove--%>
+            <%--</button>--%>
+        <%--</div>--%>
+        <%--<myTags:editAnnotation path="${path}.types[0]."></myTags:editAnnotation>--%>
+    <%--</div>--%>
+    <%--<script type="text/javascript">--%>
+        <%--$(document).ready(function () {--%>
+            <%--//Hide Types--%>
+            <%--$("body").on("click", ".${specifier}-types-0-remove", function () {--%>
+                <%--$(this).closest(".control-group").remove();--%>
+            <%--});--%>
 
-        });
-    </script>
-</div>
+        <%--});--%>
+    <%--</script>--%>
+<%--</div>--%>
 
 
-<div class="${specifier}-copy-version hide">
-    <div class="input-group control-group edit-form-group full-width">
-        <%--<label>Version</label>--%>
-        <input type="text" class="form-control" name="${path}.version" id="${specifier}-version" placeholder="Version"/>
-        <div class="input-group-btn">
-            <button class="btn btn-danger ${specifier}-version-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-    </div>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            //Hide Version
-            $("body").on("click", ".${specifier}-version-remove", function () {
-                $(this).closest(".control-group").remove();
-                $(".${specifier}-add-version").show();
-            });
+<%--<div class="${specifier}-copy-version hide">--%>
+    <%--<div class="input-group control-group edit-form-group full-width">--%>
+        <%--&lt;%&ndash;<label>Version</label>&ndash;%&gt;--%>
+        <%--<input type="text" class="form-control" name="${path}.version" id="${specifier}-version" placeholder="Version"/>--%>
+        <%--<div class="input-group-btn">--%>
+            <%--<button class="btn btn-danger ${specifier}-version-remove" type="button"><i--%>
+                    <%--class="glyphicon glyphicon-remove"></i>--%>
+                <%--Remove--%>
+            <%--</button>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+    <%--<script type="text/javascript">--%>
+        <%--$(document).ready(function () {--%>
+            <%--//Hide Version--%>
+            <%--$("body").on("click", ".${specifier}-version-remove", function () {--%>
+                <%--$(this).closest(".control-group").remove();--%>
+                <%--$(".${specifier}-add-version").show();--%>
+            <%--});--%>
 
-        });
-    </script>
-</div>
+        <%--});--%>
+    <%--</script>--%>
+<%--</div>--%>
 
 
 <script type="text/javascript">
     $(document).ready(function () {
         //Show/Hide Data Version
-        $("body").on("click", ".${specifier}-add-version", function () {
-            var html = $(".${specifier}-copy-version").html();
+        <%--$("body").on("click", ".${specifier}-add-version", function () {--%>
+            <%--var html = $(".${specifier}-copy-version").html();--%>
 
-            $(this).after(html);
-            $(this).hide();
-            //e.stopImmediatePropagation()
-        });
+            <%--$(this).after(html);--%>
+            <%--$(this).hide();--%>
+            <%--//e.stopImmediatePropagation()--%>
+        <%--});--%>
 
         //Show/Hide Data Repository
         $("body").on("click", ".${specifier}-add-data-repository", function () {
@@ -269,23 +286,23 @@
 
         var dataRepositoryTypesCount = ${dataRepositoryTypesCount};
         //ShowHide Types
-        $("body").on("click", ".${specifier}-add-types", function (e) {
-            console.log(dataRepositoryTypesCount);
-            var specifier = "${specifier}-types";
-            var path = "${path}.types";
-            var regexEscapeOpenBracket = new RegExp('\\[', "g");
-            var regexEscapeClosedBracket = new RegExp('\\]', "g");
-            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-            var html = $(".${specifier}-copy-types").html();
-            var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}.types[' + dataRepositoryTypesCount + ']').replace(regexSpecifier, '${specifier}-types-' + dataRepositoryTypesCount + '-');
-            dataRepositoryTypesCount += 1;
-            console.log(dataRepositoryTypesCount);
+        <%--$("body").on("click", ".${specifier}-add-types", function (e) {--%>
+            <%--console.log(dataRepositoryTypesCount);--%>
+            <%--var specifier = "${specifier}-types";--%>
+            <%--var path = "${path}.types";--%>
+            <%--var regexEscapeOpenBracket = new RegExp('\\[', "g");--%>
+            <%--var regexEscapeClosedBracket = new RegExp('\\]', "g");--%>
+            <%--path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');--%>
+            <%--var html = $(".${specifier}-copy-types").html();--%>
+            <%--var regexPath = new RegExp(path + '\\[0\\]', "g");--%>
+            <%--var regexSpecifier = new RegExp(specifier + '\\-0', "g");--%>
+            <%--html = html.replace(regexPath, '${path}.types[' + dataRepositoryTypesCount + ']').replace(regexSpecifier, '${specifier}-types-' + dataRepositoryTypesCount + '-');--%>
+            <%--dataRepositoryTypesCount += 1;--%>
+            <%--console.log(dataRepositoryTypesCount);--%>
 
-            $(this).after(html);
-            e.stopImmediatePropagation()
-        });
+            <%--$(this).after(html);--%>
+            <%--e.stopImmediatePropagation()--%>
+        <%--});--%>
 
     });
 </script>

@@ -6,9 +6,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="string" required="false"
               type="java.lang.String" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
@@ -53,11 +53,11 @@
 </c:choose>
 
 
-<div class="copy-string hide">
+<div class="${specifier}-copy-string hide">
     <div class="input-group control-group full-width">
-        <input type="text" class="form-control" name="" placeholder=""/>
+        <input type="text" class="form-control" name="${path}" placeholder="${placeholder}" id="${specifier}-string"/>
         <div class="input-group-btn">
-            <button class="btn btn-danger string-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+            <button class="btn btn-danger ${specifier}-string-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
             </button>
         </div>
@@ -69,8 +69,8 @@
         $("body").on("click", ".${specifier}-add-string", function (e) {
             e.stopImmediatePropagation();
 
-            var html = $(".copy-string").html();
-            html = html.replace('name=""', 'name="${path}" id=${specifier}-string').replace('string-remove', '${specifier}-string-remove').replace('placeholder=""', 'placeholder="${placeholder}"');
+            var html = $(".${specifier}-copy-string").html();
+            <%--html = html.replace('name=""', 'name="${path}" id=${specifier}-string').replace('string-remove', '${specifier}-string-remove').replace('placeholder=""', 'placeholder="${placeholder}"');--%>
             //Add section
             $(".${specifier}-string-add-more").after(html);
             $(".${specifier}-string-add-more").hide();
@@ -81,7 +81,8 @@
         $("body").on("click", ".${specifier}-string-remove", function (e) {
             e.stopImmediatePropagation();
 
-            $(this).parents(".control-group")[0].remove();
+            // $(this).parents(".control-group")[0].remove();
+            $(this).closest(".control-group").remove();
             $(".${specifier}-string-add-more").show();
         });
     });

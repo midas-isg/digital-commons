@@ -54,10 +54,14 @@
                                            specifier="${specifier}-${varStatus.count-1}-storedIn"></myTags:editDataRepository>
 
                 <myTags:editSize size="${distribution.size}" path="${path}[${varStatus.count-1}].size"
-                                 specifier="${specifier}-${varStatus.count-1}"></myTags:editSize>
+                                 specifier="${specifier}-${varStatus.count-1}-size"
+                                 placeholder=" Size"
+                                 label="Size" ></myTags:editSize>
 
-                <myTags:editUnit unit="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
-                                 specifier="${specifier}-${varStatus.count-1}-unit"></myTags:editUnit>
+                <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
+                                              specifier="${specifier}-${varStatus.count-1}-unit"
+                                              placeholder=" Unit"
+                                              label="Unit" ></myTags:editAnnotationBounded>
 
                 <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}" path="${path}[${varStatus.count-1}].formats"
                                                                     specifier="${specifier}-${varStatus.count-1}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
@@ -97,9 +101,18 @@
                                  specifier="${specifier}-conformsTo"></myTags:editDataStandard>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn"></myTags:editDataRepository>
-        <myTags:editSize path="${path}[0].size" specifier="${specifier}-size"></myTags:editSize>
-        <myTags:editUnit path="${path}[0].unit" specifier="${specifier}-unit"></myTags:editUnit>
-        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats" specifier="${specifier}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+        <myTags:editSize path="${path}[0].size"
+                         specifier="${specifier}-size"
+                         placeholder=" Size"
+                         label="Size" ></myTags:editSize>
+        <myTags:editAnnotationBounded path="${path}[0].unit"
+                                      specifier="${specifier}-unit"
+                                      placeholder=" Unit"
+                                      label="Unit" ></myTags:editAnnotationBounded>
+        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats"
+                                                            specifier="${specifier}-formats"
+                                                            placeholder="Format"
+                                                            label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
 
     </div>
 </div>

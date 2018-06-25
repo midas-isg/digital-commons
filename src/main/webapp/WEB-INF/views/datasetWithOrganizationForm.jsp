@@ -49,9 +49,9 @@
                                       path="producedBy" label="Produced By"></myTags:editStudy>
                     <myTags:editDistributions distributions="${datasetWithOrganization.distributions}"
                                               specifier="distributions" path="distributions"></myTags:editDistributions>
-                    <myTags:editExtraProperties categoryValuePairs="${datasetWithOrganization.extraProperties}"
-                                                specifier="extraProperties" label="Extra Properties"
-                                                path="extraProperties"></myTags:editExtraProperties>
+                    <myTags:editCategoryValuePair categoryValuePairs="${datasetWithOrganization.extraProperties}"
+                                                  specifier="extraProperties" label="Extra Properties"
+                                                  path="extraProperties"></myTags:editCategoryValuePair>
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
