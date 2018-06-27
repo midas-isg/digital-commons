@@ -74,14 +74,60 @@ public class ValidatorHelperMethods {
         return false;
     }
 
-    public static void clearBiologicalEntities(List<BiologicalEntity> biologicalEntities) {
+    public static void checkAnnotation(Annotation annotation, Errors errors, String errorMessageLocation){
+        if(!isEmpty(annotation.getValueIRI())) {
+            if (!isValidIRI(annotation.getValueIRI())) {
+                errors.rejectValue(errorMessageLocation, "NotEmpty.dataset.valueIRI");
+            } // end if
+        }
+    }
+
+    public static boolean isDataIdentifierEmpty(edu.pitt.isg.mdc.dats2_2.Identifier identifier){
+        try {
+            if(isEmpty(identifier.getIdentifier()) && isEmpty(identifier.getIdentifierSource())){
+                return true;
+            }
+
+        } catch (NullPointerException e){
+            return true;
+        }
+        return false;
+    }
+
+    public static void clearDateType(Date date, Errors errors, String errorMessageLocation){
+        try {
+            if (isEmpty(date.getType().getValueIRI()) && isEmpty(date.getType().getValue())) {
+                date.setType(null);
+            } else if(!isEmpty(date.getType())){
+                checkAnnotation(date.getType(), errors, errorMessageLocation);
+            }
+        } catch (NullPointerException e) {
+        }
+    }
+
+    public static void clearBiologicalEntities(List<BiologicalEntity> biologicalEntities, Errors errors, String errorMessageLocation) {
         ListIterator<BiologicalEntity> iterator = biologicalEntities.listIterator();
         while (iterator.hasNext()) {
             BiologicalEntity entity = iterator.next();
             if (isEmpty(entity)) {
                 iterator.remove();
-            } else if (isEmpty(entity.getDescription()) && isEmpty(entity.getName()) && entity.getAlternateIdentifiers().size() == 0 && isEmpty(entity.getIdentifier())) {
-                iterator.remove();
+            } else {
+                if(isDataIdentifierEmpty(entity.getIdentifier())){
+                    entity.setIdentifier(null);
+                }
+                ListIterator<edu.pitt.isg.mdc.dats2_2.Identifier> listIterator = entity.getAlternateIdentifiers().listIterator();
+                while (listIterator.hasNext()){
+                    edu.pitt.isg.mdc.dats2_2.Identifier identifier = listIterator.next();
+                    if(isDataIdentifierEmpty(identifier)) {
+                        listIterator.remove();
+                    }
+                }
+                if (isEmpty(entity.getDescription()) && isEmpty(entity.getName()) && entity.getAlternateIdentifiers().size() == 0 && isEmpty(entity.getIdentifier())) {
+                    iterator.remove();
+                }
+                if (isEmpty(entity.getName()) && (!isEmpty(entity.getDescription())) || entity.getAlternateIdentifiers().size() > 0 || !isEmpty(entity.getIdentifier())) {
+                    errors.rejectValue(errorMessageLocation + "[" + iterator.previousIndex() +"].name","NotEmpty.dataset.name");
+                }
             }
         }
     }
@@ -89,55 +135,26 @@ public class ValidatorHelperMethods {
     public static void clearStudy (Study study, Errors errors){
 //        boolean hasError = true;
         if(!isEmpty(study)){
+
+            //Clean up Location
             if(isEmpty(study.getLocation().getPostalAddress())){
                 study.setLocation(null);
             }
 
-            if(!isEmpty(study.getStartDate().getType().getValueIRI())) {
-                Annotation annotation;
-                try {
-                    annotation = study.getStartDate().getType();
-                    if (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue())) {
-                        study.getStartDate().setType(null);
-                    } else {
-                        if (!isEmpty(annotation.getValueIRI())) {
-                            if (!isValidIRI(annotation.getValueIRI())) {
-                                errors.rejectValue("producedBy.startDate.type.valueIRI","NotEmpty.dataset.valueIRI");
-                            }
-                        }
-//                        hasError = false;
-                    }
-                } catch (NullPointerException e) {
-                }
-            } // end if
-
-            if(!isEmpty(study.getEndDate().getType().getValueIRI())) {
-                Annotation annotation;
-                try {
-                    annotation = study.getEndDate().getType();
-                    if (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue())) {
-                        study.getEndDate().setType(null);
-                    } else {
-                        if (!isEmpty(annotation.getValueIRI())) {
-                            if (!isValidIRI(annotation.getValueIRI())) {
-                                errors.rejectValue("producedBy.endDate.type.valueIRI","NotEmpty.dataset.valueIRI");
-                            }
-                        }
-//                        hasError = false;
-                    }
-                } catch (NullPointerException e) {
-                }
-            } // end if
-
+            //Clean up Start Date
+            clearDateType(study.getStartDate(), errors, "producedBy.startDate.type.valueIRI");
             if(isEmpty(study.getStartDate().getDate()) && isEmpty(study.getStartDate().getType())){
                 study.setStartDate(null);
             }
 
+            //Clean up End Date
+            clearDateType(study.getEndDate(), errors, "producedBy.endDate.type.valueIRI");
             if(isEmpty(study.getEndDate().getDate()) && isEmpty(study.getEndDate().getType())){
                 study.setEndDate(null);
             }
 
-            if(isEmpty(study.getName())){
+            //Show error is Name not populated and other Study info is populated
+            if(isEmpty(study.getName()) && (!isEmpty(study.getLocation()) || !isEmpty(study.getStartDate()) || !isEmpty(study.getEndDate()))){
                 errors.rejectValue("producedBy.name","NotEmpty.dataset.name");
             }
 
@@ -195,6 +212,8 @@ public class ValidatorHelperMethods {
                 while (conformsToIterator.hasNext()) {
                     DataStandard conformsTo = conformsToIterator.next();
 
+                    checkAnnotation(conformsTo.getType(), errors, "distributions[" + distributionCounter + "].conformsTo[" + conformsToCounter + "].type.valueIRI" );
+
                     ListIterator<License> licenseListIterator = conformsTo.getLicenses().listIterator();
                     while (licenseListIterator.hasNext()) {
                         License license = licenseListIterator.next();
@@ -208,6 +227,9 @@ public class ValidatorHelperMethods {
                     if (isEmpty(conformsTo.getIdentifier()) && isEmpty(conformsTo.getName()) && isEmpty(conformsTo.getDescription()) && isEmpty(conformsTo.getVersion()) && conformsTo.getExtraProperties().size() == 0 && isEmpty(conformsTo.getType().getValueIRI()) && isEmpty(conformsTo.getType().getValue()) && conformsTo.getLicenses().size() == 0) {
                         conformsToIterator.remove();
                     } else {
+                        if(isEmpty(conformsTo.getName()) && (!isEmpty(conformsTo.getIdentifier()) || !isEmpty(conformsTo.getDescription()) || !isEmpty(conformsTo.getVersion()) || conformsTo.getExtraProperties().size() > 0 || !isEmpty(conformsTo.getType().getValueIRI()) || !isEmpty(conformsTo.getType().getValue()) || conformsTo.getLicenses().size() > 0)){
+                            errors.rejectValue("distributions["+ distributionCounter + "].conformsTo[" + conformsToCounter + "].name","NotEmpty.dataset.name");
+                        }
                         conformsToCounter++;
                     }
                 }
@@ -229,18 +251,15 @@ public class ValidatorHelperMethods {
                     if (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue())) {
                         typesIterator.remove();
                     } else {
-                        if(!isEmpty(annotation.getValueIRI())){
-                            if (!isValidIRI(annotation.getValueIRI())) {
-                                errors.rejectValue("distributions[" + distributionCounter + "].storedIn.types[" + typesCounter + "].valueIRI", "NotEmpty.dataset.valueIRI");
-                            }
-                        }
+                        checkAnnotation(annotation, errors, "distributions[" + distributionCounter + "].storedIn.types[" + typesCounter + "].valueIRI");
                         typesCounter++;
                     }
                 }
                 if (isEmpty(storedIn.getName()) && isEmpty(storedIn.getIdentifier()) && isEmpty(storedIn.getVersion()) && storedIn.getLicenses().size() == 0 && storedIn.getTypes().size() == 0) {
                     distribution.setStoredIn(null);
+                } else if (isEmpty(storedIn.getName()) && (!isEmpty(storedIn.getIdentifier()) || !isEmpty(storedIn.getVersion()) || storedIn.getLicenses().size() > 0 || storedIn.getTypes().size() > 0)){
+                    errors.rejectValue("distributions["+ distributionCounter + "].storedIn.name","NotEmpty.dataset.name");
                 }
-
 
                 // Clean up Formats
                 ListIterator<String> formatIterator = distribution.getFormats().listIterator();

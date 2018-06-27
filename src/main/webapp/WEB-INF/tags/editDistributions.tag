@@ -15,7 +15,7 @@
     <c:when test="${not empty distributions}">
         <c:forEach items="${distributions}" var="distribution" varStatus="varStatus">
             <c:if test="${varStatus.first}">
-                <div class="form-group edit-form-group distribution-add-more">
+                <div class="form-group edit-form-group distribution-add-more-button">
                     <label>Distribution</label>
                     <div class="form-group">
                         <button class="btn btn-success add-distribution" type="button"><i
@@ -69,9 +69,10 @@
             <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
+        <div class="distribution-add-more"></div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group distribution-add-more">
+        <div class="form-group edit-form-group distribution-add-more-button">
             <label>Distribution</label>
             <div class="form-group">
                 <button class="btn btn-success add-distribution" type="button"><i class="glyphicon glyphicon-plus"></i>
@@ -79,6 +80,7 @@
                 </button>
             </div>
         </div>
+        <div class="distribution-add-more"></div>
         <c:set var="distributionCount" scope="page" value="0"/>
 
     </c:otherwise>
@@ -131,7 +133,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + distributionCount + ']').replace(regexSpecifier, '${specifier}-' + distributionCount + '-');
 
-            $(".distribution-add-more").after(html);
+            //$(".distribution-add-more").after(html);
+            $(".distribution-add-more").before(html);
             distributionCount += 1;
         });
 

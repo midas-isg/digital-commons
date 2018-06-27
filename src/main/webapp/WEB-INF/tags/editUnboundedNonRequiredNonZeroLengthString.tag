@@ -19,7 +19,7 @@
     <c:when test="${not empty formats}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more">
+            <div class="form-group ${specifier}-formats-add-more-button">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
                     ${placeholder}
@@ -44,17 +44,19 @@
                 </div>
                 <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
             </c:forEach>
+            <div class="${specifier}-formats-add-more"></div>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more">
+            <div class="form-group ${specifier}-formats-add-more-button">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
                     ${placeholder}
                 </button>
             </div>
+            <div class="${specifier}-formats-add-more"></div>
         </div>
         <c:set var="formatsCount" scope="page" value="0"/>
 
@@ -92,7 +94,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
             html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount);
 
-            $(".${specifier}-formats-add-more").after(html);
+            <%--$(".${specifier}-formats-add-more").after(html);--%>
+            $(".${specifier}-formats-add-more").before(html);
             formatsCount += 1;
             //$(this).hide();
             //e.stopImmediatePropagation()

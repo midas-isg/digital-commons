@@ -51,6 +51,7 @@
             <c:set var="licenseCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
+        <div class="${specifier}-license-add-more"></div>
         </div>
     </c:when>
     <c:otherwise>
@@ -62,8 +63,8 @@
                     License
                 </button>
             </div>
+            <div class="${specifier}-license-add-more"></div>
         </div>
-
         <c:set var="licenseCount" scope="page" value="0"/>
 
     </c:otherwise>
@@ -94,6 +95,7 @@
         var licenseCount = ${licenseCount};
         //Show/Hide Location
         $("body").on("click", ".${specifier}-add-license", function (e) {
+            e.stopImmediatePropagation();
             var specifier = "${specifier}";
             var path = "${path}";
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
@@ -106,9 +108,9 @@
             licenseCount += 1;
 
 
-            $(this).after(html);
+            //$(this).after(html);
+            $(".${specifier}-license-add-more").before(html);
             //$(this).hide();
-            e.stopImmediatePropagation()
         });
 
         $("body").on("click", ".${specifier}-license-remove", function () {

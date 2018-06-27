@@ -20,7 +20,7 @@
             <c:forEach items="${types}" varStatus="varStatus" var="type">
                 <c:choose>
                     <c:when test="${varStatus.first}">
-                        <div class="form-group control-group edit-form-group ${specifier}-type-add-more">
+                        <div class="form-group control-group edit-form-group ${specifier}-type-add-more-button">
                         <label>Type</label>
                         <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
                             Add Type
@@ -132,11 +132,13 @@
 
             </c:forEach>
             </div>
+            <div class="${specifier}-type-add-more">
+            </div>
         </spring:bind>
     </c:when>
     <c:otherwise>
         <spring:bind path="${path}[0]">
-            <div class="form-group edit-form-group ${specifier}-type-add-more ${status.error ? 'has-error' : ''}">
+            <div class="form-group edit-form-group ${specifier}-type-add-more-button ${status.error ? 'has-error' : ''}">
                 <label>Type</label>
                 <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
                 </button>
@@ -161,6 +163,8 @@
                         Platform
                     </button>
                 </div>
+            </div>
+            <div class="${specifier}-type-add-more">
             </div>
             <form:errors path="${path}[0]" class="error-color"/>
 
@@ -244,7 +248,8 @@
             var html = $(".copy-type").html();
 
             html = html.replace(/id="add/g, 'id="' + typeCount + '-add');
-            $(".${specifier}-type-add-more").after(html);
+            <%--$(".${specifier}-type-add-more").after(html);--%>
+            $(".${specifier}-type-add-more").before(html);
             typeCount += 1;
 
         });

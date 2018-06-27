@@ -37,7 +37,9 @@
                 </div>
                 <myTags:editAnnotation annotation="${annotation}" supportError="${true}"
                                        path="${path}[${varStatus.count-1}]."></myTags:editAnnotation>
-
+            </div>
+            <div class="${specifier}-annotation-add-more">
+            </div>
             <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
     </c:when>
@@ -49,6 +51,8 @@
                         class="glyphicon glyphicon-plus"></i> Add
                     ${label}
                 </button>
+            </div>
+            <div class="${specifier}-annotation-add-more">
             </div>
         </div>
         <c:set var="annotationCount" scope="page" value="0"/>
@@ -91,7 +95,8 @@
                 .replace(regexSpecifier,'${specifier}-' + annotationCount + '-');
             annotationCount += 1;
 
-            $(this).after(html);
+            // $(this).after(html);
+            $(".${specifier}-annotation-add-more").before(html);
         });
         $("body").on("click", ".annotation-remove", function () {
             $(this).closest(".control-group").remove();

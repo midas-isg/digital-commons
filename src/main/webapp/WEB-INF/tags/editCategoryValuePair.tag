@@ -49,6 +49,8 @@
                                                 annotations="${categoryValuePair.values}"></myTags:editAnnotationUnbounded>
 
             </div>
+            <div class="${specifier}-categoryValuePair-add-more">
+            </div>
             <c:set var="categoryValuePairCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
     </c:when>
@@ -60,6 +62,8 @@
                         class="glyphicon glyphicon-plus"></i> Add
                     Extra Properties
                 </button>
+            </div>
+            <div class="${specifier}-categoryValuePair-add-more">
             </div>
         </div>
         <c:set var="categoryValuePairCount" scope="page" value="0"/>
@@ -104,7 +108,8 @@
             html = html.replace(regexPath, '${path}['+ categoryValuePairCount + ']')
                 .replace(regexSpecifier,'${specifier}-' + categoryValuePairCount);
 
-            $(this).after(html);
+            // $(this).after(html);
+            $(".${specifier}-categoryValuePair-add-more").before(html);
             //$(this).hide();
             categoryValuePairCount += 1;
         });

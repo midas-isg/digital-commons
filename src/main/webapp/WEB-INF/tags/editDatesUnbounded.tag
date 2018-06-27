@@ -16,7 +16,7 @@
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                 <label>Dates</label>
-                <div class="form-group control-group ${specifier}-date-add-more">
+                <div class="form-group control-group ${specifier}-date-add-more-button">
                     <div class="form-group">
                         <button class="btn btn-success ${specifier}-add-date" type="button"><i
                                 class="glyphicon glyphicon-plus"></i> Add
@@ -36,12 +36,13 @@
             </div>
             <c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
+        <div class="${specifier}-date-add-more"></div>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
             <label>Dates</label>
-            <div class="form-group control-group ${specifier}-date-add-more">
+            <div class="form-group control-group ${specifier}-date-add-more-button">
                 <div class="form-group">
                     <button class="btn btn-success ${specifier}-add-date" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
@@ -49,6 +50,7 @@
                     </button>
                 </div>
             </div>
+            <div class="${specifier}-date-add-more"></div>
         </div>
         <c:set var="unboundedDateCount" scope="page" value="0"/>
     </c:otherwise>
@@ -88,7 +90,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}.dates['+ unboundedDateCount + ']').replace(regexSpecifier,'${specifier}-date-' + unboundedDateCount);
 
-            $(this).after(html);
+            //$(this).after(html);
+            $(".${specifier}-date-add-more").before(html);
             e.stopImmediatePropagation();
 
             $(function() {
