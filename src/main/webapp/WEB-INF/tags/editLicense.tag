@@ -30,7 +30,7 @@
             <div class="form-group control-group edit-form-group">
                 <label>${label}</label>
                 <br>
-                <button class="btn btn-danger ${specifier}-${varStatus.count-1}-license-remove" type="button"><i
+                <button class="btn btn-danger license-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
@@ -74,7 +74,7 @@
     <div class="form-group control-group edit-form-group">
         <label>${label}</label>
         <br>
-        <button class="btn btn-danger ${specifier}-license-remove" type="button"><i
+        <button class="btn btn-danger license-remove" type="button"><i
                 class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
@@ -113,7 +113,7 @@
             //$(this).hide();
         });
 
-        $("body").on("click", ".${specifier}-license-remove", function () {
+        $("body").on("click", ".license-remove", function () {
             $(this).closest(".control-group").remove();
             $(".${specifier}-0-add-license").show();
         });

@@ -65,7 +65,7 @@
                 </button>
             </div>
         </div>
-        <c:set var="dataRepositoryTypesCount" scope="page" value="1"/>
+        <%--<c:set var="dataRepositoryTypesCount" scope="page" value="1"/>--%>
 
     </c:otherwise>
 </c:choose>
@@ -113,7 +113,7 @@
             $(".${specifier}-add-data-repository").show();
         });
 
-        var dataRepositoryTypesCount = ${dataRepositoryTypesCount};
+        <%--var dataRepositoryTypesCount = ${dataRepositoryTypesCount};--%>
 
     });
 </script>
