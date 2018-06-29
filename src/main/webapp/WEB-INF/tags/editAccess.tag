@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="path" required="false"
               type="java.lang.String" %>
@@ -16,11 +17,14 @@
         <div class="form-group edit-form-group">
             <label>Access</label>
 
-            <div class="form-group edit-form-group">
-                <label>Landing Page</label>
-                <input type="text" class="form-control" value="${access.landingPage}" name="${path}.landingPage"
-                       id="${specifier}-landingPage">
-            </div>
+            <spring:bind path="${path}.landingPage">
+                <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
+                    <label>Landing Page</label>
+                    <input type="text" class="form-control" value="${access.landingPage}" name="${path}.landingPage"
+                           id="${specifier}-landingPage">
+                    <form:errors path="${path}.landingPage" class="error-color"/>
+                </div>
+            </spring:bind>
 
             <c:choose>
                 <c:when test="${not empty access.accessURL}">
@@ -32,16 +36,19 @@
                     <div class="input-group control-group edit-form-group full-width">
                         <label>Access URL</label>
 
-                        <div class="input-group edit-form-group">
-                            <input name="${path}.accessURL" value="${access.accessURL}" type="text" class="form-control"
-                                   placeholder="Access URL">
-                            <div class="input-group-btn">
-                                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
-                                        class="glyphicon glyphicon-remove"></i>
-                                    Remove
-                                </button>
+                        <spring:bind path="${path}.accessURL">
+                            <div class="input-group edit-form-group ${status.error ? 'has-error' : ''}">
+                                <input name="${path}.accessURL" value="${access.accessURL}" type="text" class="form-control"
+                                       placeholder="Access URL">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
+                                            class="glyphicon glyphicon-remove"></i>
+                                        Remove
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                            <form:errors path="${path}.accessURL" class="error-color"/>
+                        </spring:bind>
                     </div>
                 </c:when>
                 <c:otherwise>
@@ -58,10 +65,13 @@
     <c:otherwise>
         <div class="form-group edit-form-group">
             <form:label path="${path}">Access</form:label>
-            <div class="form-group edit-form-group">
-                <label>Landing Page</label>
-                <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
-            </div>
+            <spring:bind path="${path}.landingPage">
+                <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
+                    <label>Landing Page</label>
+                    <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
+                </div>
+                <form:errors path="${path}.landingPage" class="error-color"/>
+            </spring:bind>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
