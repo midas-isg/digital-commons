@@ -44,10 +44,12 @@
                                                         path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
                 <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-description" string="${dataStandard.description}"
                                                            path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-                <div class="form-group edit-form-group">
-                    <label>Type</label>
-                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>
-                </div>
+                <myTags:editAnnotationRequired annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type"
+                                               label="Type" supportError="${true}"></myTags:editAnnotationRequired>
+                <%--<div class="form-group edit-form-group">--%>
+                    <%--<label>Type</label>--%>
+                    <%--<myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>--%>
+                <%--</div>--%>
                 <myTags:editLicense licenses="${dataStandard.licenses}" specifier="${specifier}-licenses"
                                     label="License"
                                     path="${path}[${varStatus.count-1}].licenses"></myTags:editLicense>
@@ -97,10 +99,11 @@
         <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
                                                 path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
         <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-        <div class="form-group edit-form-group">
-            <label>Type</label>
-            <myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>
-        </div>
+        <myTags:editAnnotationRequired path="${path}[0].type." label="Type"></myTags:editAnnotationRequired>
+        <%--<div class="form-group edit-form-group">--%>
+            <%--<label>Type</label>--%>
+            <%--<myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>--%>
+        <%--</div>--%>
         <myTags:editLicense specifier="${specifier}-0-licenses"
                             label="License"
                             path="${path}[0].licenses"></myTags:editLicense>

@@ -103,6 +103,11 @@ public class ValidatorHelperMethods {
                 errors.rejectValue(errorMessageLocation, "NotEmpty.dataset.valueIRI");
             } // end if
         }
+        //require valueIRI if value is populated
+        //  if yes, uncomment and then remove same code in distributions -> conformsTo -> type below
+//        if (!isEmpty(annotation.getValue()) && isEmpty(annotation.getValueIRI())) {
+//            errors.rejectValue(errorMessageLocation, "NotEmpty.dataset.valueIRI");
+//        }
     }
 
 
@@ -236,7 +241,17 @@ public class ValidatorHelperMethods {
                     }
 
                     //Clean up type
-                    checkAnnotation(conformsTo.getType(), errors, "distributions[" + distributionCounter + "].conformsTo[" + conformsToCounter + "].type.valueIRI" );
+                    if(isEmpty(conformsTo.getType().getValue()) && isEmpty(conformsTo.getType().getValueIRI())) {
+                        conformsTo.setType(null);
+                    } else {
+                        checkAnnotation(conformsTo.getType(), errors, "distributions[" + distributionCounter + "].conformsTo[" + conformsToCounter + "].type.valueIRI" );
+                        if (isEmpty(conformsTo.getType().getValue())) {
+                            errors.rejectValue("distributions["+ distributionCounter + "].conformsTo[" + conformsToCounter + "].type","NotEmpty.dataset.type");
+                        }
+                        if (isEmpty(conformsTo.getType().getValueIRI())) {
+                            errors.rejectValue("distributions["+ distributionCounter + "].conformsTo[" + conformsToCounter + "].type.valueIRI","NotEmpty.dataset.valueIRI");
+                        }
+                    }
 
                     //Clean up License
                     ListIterator<License> licenseListIterator = conformsTo.getLicenses().listIterator();
@@ -249,11 +264,16 @@ public class ValidatorHelperMethods {
 
                     clearExtraProperties(conformsTo.getExtraProperties(),"distributions[" + distributionCounter + "].conformsTo[" + conformsToCounter + "]." , errors);
 
-                    if (isEmpty(conformsTo.getIdentifier()) && isEmpty(conformsTo.getName()) && isEmpty(conformsTo.getDescription()) && isEmpty(conformsTo.getVersion()) && conformsTo.getExtraProperties().size() == 0 && isEmpty(conformsTo.getType().getValueIRI()) && isEmpty(conformsTo.getType().getValue()) && conformsTo.getLicenses().size() == 0) {
+                    if (isEmpty(conformsTo.getIdentifier()) && isEmpty(conformsTo.getName()) && isEmpty(conformsTo.getDescription()) && isEmpty(conformsTo.getVersion()) && conformsTo.getExtraProperties().size() == 0 && isEmpty(conformsTo.getType()) && conformsTo.getLicenses().size() == 0) {
                         conformsToIterator.remove();
                     } else {
+                        //Name empty but distribution populated
                         if(isEmpty(conformsTo.getName()) && (!isEmpty(conformsTo.getIdentifier()) || !isEmpty(conformsTo.getDescription()) || !isEmpty(conformsTo.getVersion()) || conformsTo.getExtraProperties().size() > 0 || !isEmpty(conformsTo.getType().getValueIRI()) || !isEmpty(conformsTo.getType().getValue()) || conformsTo.getLicenses().size() > 0)){
                             errors.rejectValue("distributions["+ distributionCounter + "].conformsTo[" + conformsToCounter + "].name","NotEmpty.dataset.name");
+                        }
+                        //Type empty but distribution populated
+                        if (isEmpty(conformsTo.getType()) && (!isEmpty(conformsTo.getName()) || !isEmpty(conformsTo.getIdentifier()) || !isEmpty(conformsTo.getDescription()) || !isEmpty(conformsTo.getVersion()) || conformsTo.getExtraProperties().size() > 0 || conformsTo.getLicenses().size() > 0)) {
+                            errors.rejectValue("distributions["+ distributionCounter + "].conformsTo[" + conformsToCounter + "].type","NotEmpty.dataset.type");
                         }
                         conformsToCounter++;
                     }
@@ -285,8 +305,10 @@ public class ValidatorHelperMethods {
                 }
                 if (isEmpty(storedIn.getName()) && isEmpty(storedIn.getIdentifier()) && isEmpty(storedIn.getVersion()) && storedIn.getLicenses().size() == 0 && storedIn.getTypes().size() == 0) {
                     distribution.setStoredIn(null);
-                } else if (isEmpty(storedIn.getName()) && (!isEmpty(storedIn.getIdentifier()) || !isEmpty(storedIn.getVersion()) || storedIn.getLicenses().size() > 0 || storedIn.getTypes().size() > 0)){
-                    errors.rejectValue("distributions["+ distributionCounter + "].storedIn.name","NotEmpty.dataset.name");
+                } else {
+                    if (isEmpty(storedIn.getName()) && (!isEmpty(storedIn.getIdentifier()) || !isEmpty(storedIn.getVersion()) || storedIn.getLicenses().size() > 0 || storedIn.getTypes().size() > 0)){
+                        errors.rejectValue("distributions["+ distributionCounter + "].storedIn.name","NotEmpty.dataset.name");
+                    }
                 }
 
                 // Clean up Formats
@@ -301,7 +323,7 @@ public class ValidatorHelperMethods {
                 if (isEmpty(distribution.getIdentifier()) && isEmpty(distribution.getSize()) && distribution.getDates().size() == 0 && distribution.getConformsTo().size() == 0 && isEmpty(distribution.getStoredIn()) && isEmpty(distribution.getUnit()) && distribution.getFormats().size() == 0) {
                     iterator.remove();
                 } else {
-                    if(isEmpty(distribution.getAccess().getLandingPage()) && !(isEmpty(distribution.getIdentifier()) && isEmpty(distribution.getSize()) && distribution.getDates().size() == 0 && distribution.getConformsTo().size() == 0 && isEmpty(distribution.getStoredIn()) && isEmpty(distribution.getUnit()) && distribution.getFormats().size() == 0)){
+                    if((isEmpty(distribution.getAccess()) || isEmpty(distribution.getAccess().getLandingPage())) && !(isEmpty(distribution.getIdentifier()) && isEmpty(distribution.getSize()) && distribution.getDates().size() == 0 && distribution.getConformsTo().size() == 0 && isEmpty(distribution.getStoredIn()) && isEmpty(distribution.getUnit()) && distribution.getFormats().size() == 0)){
                         errors.rejectValue("distributions["+ distributionCounter + "].access.landingPage","NotEmpty.dataset.access.landingPage.empty");
                     }
                     distributionCounter++;
