@@ -10,6 +10,8 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
+import edu.pitt.isg.mdc.v1_0.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +26,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
+import static org.junit.Assert.assertEquals;
 
 enum CharacterIndexBehavior {
     GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE,
@@ -145,8 +148,13 @@ public class TestConvertDatsToJava {
         Set<String> types = new HashSet<>();
         types.add(clazz.getTypeName());
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
-
+        if (clazz == DatasetWithOrganization.class) {
+            clazz = Dataset.class;
+        }
         for (Entry entry : entriesList) {
+            //if (entry.getId().getEntryId() != 315L) {
+            //    continue;
+            //}
             int[] knownBad = {};//81, 63, 62, 82, 37, 73};
             if (ArrayUtils.contains(knownBad, entry.getId().getEntryId().intValue()))
                 continue;
@@ -167,11 +175,14 @@ public class TestConvertDatsToJava {
             jsonFromDatabase = jsonObjectFromDatabase.toString();
 
             try {
-                object = gson.fromJson(jsonFromDatabase, clazz);
+                //here!!!
+                object = converter.fromJson(jsonFromDatabase, clazz);
+                //object = gson.fromJson(jsonFromDatabase, clazz);
             } catch (JsonSyntaxException e) {
                 printHelpfulJsonError(jsonFromDatabase, e, null);
                 throw e;
             }
+
 
             /*//ignore empties
             jsonFromDatabase = jsonFromDatabase.replaceAll("\"[A-Za-z]+\":\\[\\],*", "");
@@ -216,8 +227,21 @@ public class TestConvertDatsToJava {
                     Iterator<String> it = d.entriesDiffering().keySet().iterator();
                     while (it.hasNext()) {
                         String value = it.next();
-                        String left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
-                        String right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+
+                        String left;
+                        if (jsonObjectFromDatabase.get(value).isJsonArray()) {
+                            left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        } else {
+                            left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonObject());
+                        }
+
+                        String right;
+                        if (jsonObjectFromClass.get(value).isJsonArray()) {
+                            right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        } else {
+                            right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonObject());
+                        }
+
                         if (!left.equals(right)) {
                             int idxOfDifference = indexOfDifference(left, right);
 
@@ -239,14 +263,16 @@ public class TestConvertDatsToJava {
 
                 }
             }
-            System.out.println("\t Error message: " + d + "\n\n");
+            if (!d.toString().equals("equal"))
+                System.out.println("\t Error message: " + d + "\n\n");
+            assertEquals(d.toString(), "equal");
         }
-        //assertEquals(d.toString(), "equal");
+
 
     }
 
 
-    /* @Test
+     @Test
      public void testDataFormatConverters() {
          test(DataFormatConverters.class);
      }
@@ -260,13 +286,15 @@ public class TestConvertDatsToJava {
     public void testDataVisualizers() {
         test(DataVisualizers.class);
     }
-*/
+
     @Test
     public void testDataset() {
         test(Dataset.class);
     }
 
-  /*  @Test
+
+
+    @Test
     public void testDatasetWithOrganization() {
         test(DatasetWithOrganization.class);
     }
@@ -314,5 +342,5 @@ public class TestConvertDatsToJava {
     @Test
     public void testSyntheticEcosystemConstructors() {
         test(SyntheticEcosystemConstructors.class);
-    }*/
+    }
 }
