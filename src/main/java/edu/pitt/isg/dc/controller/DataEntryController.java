@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
+
 import com.github.davidmoten.xsdforms.Generator;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -1293,7 +1294,7 @@ public class DataEntryController {
 
 //        System.out.println(xmlString);
         try {
-            jsonString = xml2JSONConverter.xmlToJson(xmlString);
+            jsonString = xml2JSONConverter.xmlToJson(xmlString, false);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -1330,7 +1331,8 @@ public class DataEntryController {
             rootElement = scala.Option.apply(rootElementName);
 
             schema = appContext.getResource(xsdFile).getInputStream();
-            htmlString = Generator.generateHtmlAsString(schema, idPrefix, rootElement);
+            htmlString = "";
+                    //Generator.generateHtmlAsString(schema, idPrefix, rootElement);
             schema.close();
             writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
         }

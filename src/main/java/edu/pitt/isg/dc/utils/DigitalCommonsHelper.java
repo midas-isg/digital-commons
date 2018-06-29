@@ -18,7 +18,7 @@ public class DigitalCommonsHelper {
 
         String xml = null;
         try {
-            xml = converter.convertToXml(sw);
+            xml = converter.convertToXml(Software.class, sw);
             xml = xml.replaceAll("(?s)&lt;.*?&gt;", "");
         } catch(Exception e) {
             System.out.println("Error: " + e);
