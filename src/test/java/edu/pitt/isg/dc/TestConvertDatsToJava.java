@@ -9,6 +9,7 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
@@ -251,7 +252,7 @@ public class TestConvertDatsToJava {
                                 System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + ANSI_CYAN + right.substring(idxOfDifference, right.length()) + ANSI_RESET);
                             } catch (StringIndexOutOfBoundsException e) {
                                 System.out.println("idxOfDifference:" + idxOfDifference);
-                               // System.out.println("end:" + end);
+                                // System.out.println("end:" + end);
 
                                 throw e;
                             }
@@ -267,15 +268,18 @@ public class TestConvertDatsToJava {
                 System.out.println("\t Error message: " + d + "\n\n");
             assertEquals(d.toString(), "equal");
         }
-
-
     }
 
+    @Test
+    public void testDataStandard() {
+        test(DataStandard.class);
+    }
 
-     @Test
-     public void testDataFormatConverters() {
-         test(DataFormatConverters.class);
-     }
+  
+    @Test
+    public void testDataFormatConverters() {
+        test(DataFormatConverters.class);
+    }
 
     @Test
     public void testDataService() {
@@ -291,7 +295,6 @@ public class TestConvertDatsToJava {
     public void testDataset() {
         test(Dataset.class);
     }
-
 
 
     @Test
