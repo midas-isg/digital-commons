@@ -8,6 +8,8 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
+
 @Component
 public class DataVisualizerValidator implements Validator {
     @Override
@@ -23,6 +25,10 @@ public class DataVisualizerValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
 
+        if(isIdentifierEmpty(dataVisualizer.getIdentifier())) {
+            dataVisualizer.setIdentifier(null);
+        }
+
         clearStringList(dataVisualizer.getDataInputFormats().listIterator());
         clearStringList(dataVisualizer.getDataOutputFormats().listIterator());
         clearStringList(dataVisualizer.getWebApplication().listIterator());
@@ -32,42 +38,10 @@ public class DataVisualizerValidator implements Validator {
         clearStringList(dataVisualizer.getVersion().listIterator());
         clearStringList(dataVisualizer.getPublicationsAboutRelease().listIterator());
         clearStringList(dataVisualizer.getGrants().listIterator());
+        clearNestedIdentifier(dataVisualizer.getLocationCoverage().listIterator());
         //////////////////////
 
         clearStringList(dataVisualizer.getVisualizationType().listIterator());
 
-    }
-
-    public static void clearStringList(ListIterator<String> listIterator) {
-        while (listIterator.hasNext()) {
-            String string = listIterator.next();
-            if (isEmpty(string)) {
-                listIterator.remove();
-            }
-        }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
     }
 }

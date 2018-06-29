@@ -11,11 +11,11 @@
     <table class="table table-condensed table-borderless table-discrete">
 
         <tbody>
-        <c:forEach items="${entryView.entry.distributions}" var="distribution" varStatus="status">
+        <c:forEach items="${entryView.entry.distributions}" var="distribution" varStatus="varStatus">
             <tr>
                 <td>
                     <h4 class="sub-title-font">
-                        Distribution ${status.count}
+                        Distribution ${varStatus.count}
                     </h4>
                     <table class="table table-condensed table-borderless table-discrete table-striped">
                         <tbody>
@@ -35,8 +35,8 @@
                             <tr>
                                 <td>Format</td>
                                 <td>
-                                <c:forEach items="${distribution.formats}" var="format" varStatus="status">
-                                    ${format}${!status.last ? ',' : ''}
+                                <c:forEach items="${distribution.formats}" var="format" varStatus="varStatus">
+                                    ${format}${!varStatus.last ? ',' : ''}
                                 </c:forEach>
                                </td>
                             </tr>
@@ -65,21 +65,21 @@
                                 <td>Conforms to</td>
                                 <td>
                                     <c:forEach items="${distribution.conformsTo}" var="conforms"
-                                               varStatus="status">
+                                               varStatus="varStatus">
                                         <c:choose>
                                             <c:when test="${not empty conforms.alternateIdentifiers}">
                                                 <a href="${conforms.alternateIdentifiers[0].identifier}"
                                                    class="underline">
-                                                        ${conforms.name}${!status.last ? ',' : ''}
+                                                        ${conforms.name}${!varStatus.last ? ',' : ''}
                                                 </a>
                                             </c:when>
                                             <c:when test="${not empty conforms.type}">
                                                 <a href="${conforms.type.valueIRI}" class="underline">
-                                                        ${conforms.name}${!status.last ? ',' : ''}
+                                                        ${conforms.name}${!varStatus.last ? ',' : ''}
                                                 </a>
                                             </c:when>
                                             <c:otherwise>
-                                                ${conforms.name}${!status.last ? ',' : ''}
+                                                ${conforms.name}${!varStatus.last ? ',' : ''}
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>
@@ -112,14 +112,14 @@
                                     License
                                 </td>
                                 <td>
-                                    <c:forEach items="${distribution.licenses}" var="license" varStatus="status">
+                                    <c:forEach items="${distribution.licenses}" var="license" varStatus="varStatus">
                                         <c:choose>
                                             <c:when test="${not empty distribution.licenses[0].identifier}">
                                                 <a href="${distribution.licenses[0].identifier.identifier}"
                                                    class="underline">${license.name}</a>
                                             </c:when>
                                             <c:otherwise>
-                                                ${license.name}${!status.last ? ',' : ''}
+                                                ${license.name}${!varStatus.last ? ',' : ''}
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>

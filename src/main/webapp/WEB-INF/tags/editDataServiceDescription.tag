@@ -42,14 +42,14 @@
 
                 <div class="form-group edit-form-group">
                     <label>Access Point Description</label>
-                    <input type="text" class="form-control" value="${description.accessPointDescription}"
+                    <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointDescription)}"
                            name="dataServiceDescription[${varStatus.count-1}].accessPointDescription"
                            placeholder="Access Point Description">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Access Point Url</label>
-                    <input type="text" class="form-control" value="${description.accessPointUrl}"
+                    <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointUrl)}"
                            name="dataServiceDescription[${varStatus.count-1}].accessPointUrl"
                            placeholder="Access Point Url">
                 </div>

@@ -5,74 +5,82 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ attribute name="entities" required="false"
               type="java.util.ArrayList" %>
-<%@ attribute name="name" required="false"
+<%@ attribute name="name" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty entities and not empty entities[0].name}">
-        <c:forEach items="${entities}" var="entity" varStatus="status">
-                <c:choose>
-                    <c:when test="${status.first}">
-                        <div class="form-group control-group edit-form-group ${specifier}-biological-entity-add-more">
-                        <label>${name}</label>
-                        <br>
+    <%--<c:when test="${not empty entities and not empty entities[0].name}">--%>
+    <c:when test="${not empty entities}">
+        <div class="form-group edit-form-group">
+            <label>${name}</label>
+        <c:forEach items="${entities}" var="entity" varStatus="varStatus">
+            <c:choose>
+                <c:when test="${varStatus.first}">
+                    <div class="form-group control-group">
                         <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
                                 class="glyphicon glyphicon-plus"></i> Add ${name}
                         </button>
+                    </div>
+                </c:when>
+            </c:choose>
+            <div class="form-group control-group">
+                <button class="btn btn-danger  ${specifier}-biological-entity-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+            <div class="form-group control-group edit-form-group">
+                <c:choose>
+                    <c:when test="${not empty entity.name}">
+                        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                                string="${entity.name}"
+                                                                path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
                     </c:when>
                     <c:otherwise>
-                        <div class="form-group control-group edit-form-group">
-                        <label>${name}</label>
-                        <br>
-                        <button class="btn btn-danger  ${specifier}-biological-entity-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i>
-                            Remove
-                        </button>
+                        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                                path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
                     </c:otherwise>
                 </c:choose>
-
-                <div class="form-group control-group edit-form-group">
-                    <div class="form-group edit-form-group">
-                        <label>Name</label>
-                        <input name="${specifier}[${status.count-1}].name" value="${entity.name}" type="text"
-                               class="form-control" placeholder="Name">
-                    </div>
                     <div class="form-group">
                         <myTags:editNonRequiredNonZeroLengthString string="${entity.description}"
-                                                                   path="${path}[${status.count-1}].description" label="Description" placeholder="Description"
-                                                                   specifier="${specifier}-${status.count-1}"></myTags:editNonRequiredNonZeroLengthString>
+                                                                   path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"
+                                                                   specifier="${specifier}-${varStatus.count-1}"></myTags:editNonRequiredNonZeroLengthString>
                     </div>
 
                     <div class="form-group">
                         <myTags:editIdentifier identifier="${entity.identifier}"
-                                               path="${path}[${status.count-1}].identifier"
-                                               specifier="${specifier}-${status.count-1}"
+                                               path="${path}[${varStatus.count-1}].identifier"
+                                               specifier="${specifier}-${varStatus.count-1}"
                                                label="Identifier"></myTags:editIdentifier>
                     </div>
 
                     <div class="form-group">
-                        <myTags:editIdentifier path="${path}[${status.count-1}].alternateIdentifiers"
+                        <myTags:editIdentifier path="${path}[${varStatus.count-1}].alternateIdentifiers"
                                                unbounded="${true}"
-                                               specifier="${specifier}-alternate-${status.count-1}"
+                                               specifier="${specifier}-alternate-${varStatus.count-1}"
                                                identifiers="${entity.alternateIdentifiers}"
                                                label="Alternate Identifier"></myTags:editIdentifier>
                     </div>
                 </div>
             </div>
-            <c:set var = "count" scope = "page" value = "${status.count}"/>
+            <c:set var = "count" scope = "page" value = "${varStatus.count}"/>
         </c:forEach>
+            <div class="${specifier}-biological-entity-add-more">
+            </div>
+        </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group ${specifier}-biological-entity-add-more">
+        <div class="form-group edit-form-group">
             <label>${name}</label>
             <br>
             <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add ${name}
             </button>
+            <div class="${specifier}-biological-entity-add-more">
+            </div>
         </div>
         <c:set var = "count" scope = "page" value = "0"/>
     </c:otherwise>
@@ -87,24 +95,22 @@
             Remove
         </button>
         <br><br>
-        <div class="form-group edit-form-group">
-            <label>Name</label>
-            <input name="name" type="text" class="form-control" placeholder="Name">
-        </div>
+            <myTags:editRequiredNonZeroLengthString placeholder="Name" label="Name"
+                                                    path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
         <div class="form-group">
             <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description" label="Description" placeholder="Description"
-                                                       specifier="${specifier}-0"></myTags:editNonRequiredNonZeroLengthString>
+                                                       specifier="${specifier}-null"></myTags:editNonRequiredNonZeroLengthString>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].identifier"
-                                   specifier="${specifier}-0"
+                                   specifier="${specifier}-null"
                                    label="Identifier"></myTags:editIdentifier>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].alternateIdentifiers" unbounded="${true}"
-                                   specifier="${specifier}-0-alternate"
+                                   specifier="${specifier}-null-alternate"
                                    label="Alternate Identifier"></myTags:editIdentifier>
         </div>
     </div>
@@ -122,9 +128,10 @@
             html = html.replace('name="name"', 'name=${specifier}[' + count + '].name');
             var regex = new RegExp(specifier + '\\[0\\]', "g");
             html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>").replace(regex, specifier+'[' + count + ']');
-            regex = new RegExp(specifier + '-0', "g");
+            regex = new RegExp(specifier + '-null', "g");
             html = html.replace(regex, specifier + '-' + count);
-            $(".${specifier}-biological-entity-add-more").after(html);
+            <%--$(".${specifier}-biological-entity-add-more").after(html);--%>
+            $(".${specifier}-biological-entity-add-more").before(html);
             count += 1;
         });
 

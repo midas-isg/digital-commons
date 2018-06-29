@@ -4,43 +4,47 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="unit" required="false"
+<%@ attribute name="annotation" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Annotation" %>
+<%@ attribute name="placeholder" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
 
 
 <c:choose>
-    <c:when test="${not empty unit}">
+    <c:when test="${not empty annotation}">
         <div class="form-group edit-form-group">
-            <form:label path="${path}">Unit</form:label>
+            <form:label path="${path}">${label}</form:label>
             <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-unit" style="display:none;" type="button"><i
+                <button class="btn btn-success ${specifier}-add-annotation" style="display:none;" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Unit
+                        ${label}
                 </button>
             </div>
 
             <div class="form-group control-group edit-form-group">
-                <label>Unit</label>
+                <label>${label}</label>
                 <br>
                 <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
                 <br><br>
-                <myTags:editAnnotation annotation="${unit}" path="${path}."></myTags:editAnnotation>
+                <myTags:editAnnotation annotation="${annotation}" path="${path}." supportError="${true}"></myTags:editAnnotation>
             </div>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <form:label path="${path}">Unit</form:label>
+            <form:label path="${path}">${label}</form:label>
             <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-unit" type="button"><i
+                <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Unit
+                        ${label}
                 </button>
             </div>
         </div>
@@ -48,9 +52,9 @@
 </c:choose>
 
 
-<div class="${specifier}-copy-unit hide">
+<div class="${specifier}-copy-annotation hide">
     <div class="form-group control-group edit-form-group">
-        <label>Unit</label>
+        <label>${label}</label>
         <br>
         <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
@@ -64,9 +68,9 @@
 <script type="text/javascript">
     $(document).ready(function () {
         //Show/Hide Location
-        $("body").on("click", ".${specifier}-add-unit", function (e) {
+        $("body").on("click", ".${specifier}-add-annotation", function (e) {
             e.stopImmediatePropagation();
-            var html = $(".${specifier}-copy-unit").html();
+            var html = $(".${specifier}-copy-annotation").html();
 
             $(this).after(html);
             $(this).hide();
@@ -74,7 +78,7 @@
         });
         $("body").on("click", ".${specifier}-remove", function () {
             $(this).parent(".control-group").remove();
-            $(".${specifier}-add-unit").show();
+            $(".${specifier}-add-annotation").show();
         });
 
     });

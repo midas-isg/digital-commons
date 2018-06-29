@@ -8,10 +8,10 @@
 
 <ol class="breadcrumb">
 
-    <c:forEach items="${lineage}" var="category" varStatus="status">
+    <c:forEach items="${lineage}" var="category" varStatus="varStatus">
         <c:choose>
-            <c:when test="${status.first}">
-                <li><i class="fa fa-home"></i></li>
+            <c:when test="${varStatus.first}">
+                <li><a href="${pageContext.request.contextPath}/main"><i class="fa fa-home"></i></a></li>
             </c:when>
             <c:otherwise>
                 <li>${category}</li>

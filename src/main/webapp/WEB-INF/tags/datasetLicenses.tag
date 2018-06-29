@@ -14,8 +14,8 @@
                 License
             </td>
             <td>
-                <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="status">
-                    ${license.name}${!status.last ? ',' : ''}
+                <c:forEach items="${entryView.entry.licenses}" var="license" varStatus="varStatus">
+                    ${license.name}${!varStatus.last ? ',' : ''}
                 </c:forEach>
             </td>
         </tr>
@@ -24,9 +24,9 @@
                 <td>Source</td>
                 <td>
                     <c:forEach items="${entryView.entry.licenses}" var="license"
-                               varStatus="status">
+                               varStatus="varStatus">
                         <a href="${license.identifier.identifier}"
-                           class="underline">${license.identifier.identifier}</a>${!status.last ? ',' : ''}
+                           class="underline">${license.identifier.identifier}</a>${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </td>
             </tr>

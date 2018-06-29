@@ -1,27 +1,26 @@
 package edu.pitt.isg.dc.controller;
 
-//import com.github.davidmoten.xsdforms.Generator;
+
+import com.github.davidmoten.xsdforms.Generator;
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
-import edu.pitt.isg.dc.entry.DataGovInterface;
-import edu.pitt.isg.dc.entry.Entry;
-import edu.pitt.isg.dc.entry.Users;
+import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
-import edu.pitt.isg.mdc.v1_0.DataFormatConverters;
-import edu.pitt.isg.mdc.v1_0.DataService;
-import edu.pitt.isg.mdc.v1_0.DataServiceAccessPointType;
-import edu.pitt.isg.mdc.v1_0.DataVisualizers;
+import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.context.ApplicationContext;
@@ -33,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -76,49 +76,141 @@ public class DataEntryController {
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
+    private EntryRepository repo;
+    @Autowired
     DatasetValidator datasetValidator;
     @Autowired
     DatasetWithOrganizationValidator datasetWithOrganizationValidator;
     @Autowired
-    SoftwareValidator softwareValidator;
+    DataFormatConverterValidator dataFormatConverterValidator;
     @Autowired
     DataServiceValidator dataServiceValidator;
     @Autowired
     DataVisualizerValidator dataVisualizerValidator;
+    @Autowired
+    DiseaseForecasterValidator diseaseForecasterValidator;
+    @Autowired
+    DiseaseTransmissionModelValidator diseaseTransmissionModelValidator;
+    @Autowired
+    DiseaseTransmissionTreeEstimatorValidator diseaseTransmissionTreeEstimatorValidator;
+    @Autowired
+    MetagenomicAnalysisValidator metagenomicAnalysisValidator;
+    @Autowired
+    ModelingPlatformValidator modelingPlatformValidator;
+    @Autowired
+    PathogenEvolutionModelValidator pathogenEvolutionModelValidator;
+    @Autowired
+    PhylogeneticTreeConstructorValidator phylogeneticTreeConstructorValidator;
+    @Autowired
+    PopulationDynamicsModelValidator populationDynamicsModelValidator;
+    @Autowired
+    SyntheticEcosystemConstructorValidator syntheticEcosystemConstructorValidator;
+    @Autowired
+    DataStandardValidator dataStandardValidator;
 
     @InitBinder("dataset")
-    protected void initBinder(WebDataBinder binder){
+    protected void initBinder(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
     }
 
     @InitBinder("datasetWithOrganization")
-    protected void initBinderOrganization(WebDataBinder binder){
+    protected void initBinderOrganization(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetWithOrganizationValidator);
     }
 
     @InitBinder("dataFormatConverters")
-    protected void initBinderDataFormatConverters(WebDataBinder binder){
+    protected void initBinderDataFormatConverters(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        binder.setValidator(softwareValidator);
+        binder.setValidator(dataFormatConverterValidator);
     }
 
     @InitBinder("dataService")
-    protected void initBinderDataService(WebDataBinder binder){
+    protected void initBinderDataService(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(dataServiceValidator);
     }
 
     @InitBinder("dataVisualizer")
-    protected void initBinderDataVisualizer(WebDataBinder binder){
+    protected void initBinderDataVisualizer(WebDataBinder binder) {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(dataVisualizerValidator);
+    }
+
+    @InitBinder("diseaseForecaster")
+    protected void initBinderDiseaseForecaster(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseForecasterValidator);
+    }
+
+    @InitBinder("diseaseTransmissionModel")
+    protected void initBinderDiseaseTransmissionModel(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseTransmissionModelValidator);
+    }
+
+    @InitBinder("diseaseTransmissionTreeEstimator")
+    protected void initBinderDiseaseTransmissionTreeEstimator(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(diseaseTransmissionTreeEstimatorValidator);
+    }
+
+    @InitBinder("metagenomicAnalysis")
+    protected void initBinderMetagenomicAnalysis(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(metagenomicAnalysisValidator);
+    }
+
+    @InitBinder("modelingPlatform")
+    protected void initBinderModelingPlatform(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(modelingPlatformValidator);
+    }
+
+    @InitBinder("pathogenEvolutionModel")
+    protected void initBinderPathogenEvolutionModel(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(pathogenEvolutionModelValidator);
+    }
+
+    @InitBinder("phylogeneticTreeConstructor")
+    protected void initBinderPhylogeneticTreeConstructor(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(phylogeneticTreeConstructorValidator);
+    }
+
+    @InitBinder("populationDynamicsModel")
+    protected void initBinderPopulationDynamicsModel(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(populationDynamicsModelValidator);
+    }
+
+    @InitBinder("syntheticEcosystemConstructor")
+    protected void initBinderSyntheticEcosystemConstructor(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(syntheticEcosystemConstructorValidator);
+    }
+
+    @InitBinder("dataStandard")
+    protected void initBinderDataStandard(WebDataBinder binder) {
+        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
+        binder.setValidator(dataStandardValidator);
     }
 
 
@@ -184,17 +276,21 @@ public class DataEntryController {
         }
     }
 
-    @RequestMapping(value = "/test-add-entry", method = RequestMethod.GET)
-    public String testAddNewEntry(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
+    public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID", 0);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
 
-        if(entryId != null) {
-            Entry entry = apiUtil.getEntryById(entryId);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-            dataset =converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
@@ -213,17 +309,50 @@ public class DataEntryController {
         }
 
 
-        return "newDigitalObjectForm";
+        return "datasetForm";
     }
 
-    @RequestMapping(value = "/test-add-entry-org", method = RequestMethod.GET)
-    public String testAddNewEntryWithOrg(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/addDataset/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataset") @Validated Dataset dataset,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            return "datasetForm";
+        }
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(dataset);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataset.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
+    public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID", 0);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
 
-        if(entryId != null) {
-            Entry entry = apiUtil.getEntryById(entryId);
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
             datasetWithOrganization = converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
@@ -245,41 +374,57 @@ public class DataEntryController {
         }
 
 
-        return "newDigitalObjectFormOrganization";
+        return "datasetWithOrganizationForm";
     }
 
-    @RequestMapping(value = "/testAddDataset", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataset") @Validated Dataset dataset,
-                         BindingResult result, ModelMap model) {
-        if (result.hasErrors()) {
-            return "newDigitalObjectForm";
+    @RequestMapping(value = "/addDatasetWithOrganization/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
         }
-        return "dataset";
-    }
-
-    @RequestMapping(value = "/testAddDatasetOrg", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
-                         BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            return "newDigitalObjectFormOrganization";
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            return "datasetWithOrganizationForm";
         }
-        return "datasetWithOrganization";
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(datasetWithOrganization);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", datasetWithOrganization.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
     }
 
 
-    @RequestMapping(value = "/add-data-format-converter", method = RequestMethod.GET)
-    public String addNewDataFormatConverter(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+    @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)
+    public String addNewDataFormatConverters(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataFormatConverters dataFormatConverters = new DataFormatConverters();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID", 6);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
 
-//        if(entryId != null) {
-//            Entry entry = apiUtil.getEntryById(entryId);
-//            EntryView entryView = new EntryView(entry);
-//
-//            software =converter.c(entryView.getUnescapedEntryJsonString());
-//            model.addAttribute("categoryID", entry.getCategory().getId());
-//        }
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            dataFormatConverters = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataFormatConverters.class);
+            model.addAttribute("software", dataFormatConverters);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
         model.addAttribute("dataFormatConverters", dataFormatConverters);
 
         if (ifLoggedIn(session))
@@ -299,31 +444,56 @@ public class DataEntryController {
         return "dataFormatConvertersForm";
     }
 
-
-    @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataFormatConverters") @Validated DataFormatConverters dataFormatConverters,
-                         BindingResult result, ModelMap model) {
+    @RequestMapping(value = "/addDataFormatConverters/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataFormatConverters") @Validated DataFormatConverters dataFormatConverters,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
         if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
             model.addAttribute("software", dataFormatConverters);
             return "dataFormatConvertersForm";
 
         }
-        return "dataFormatConverters";
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(dataFormatConverters);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataFormatConverters.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/add-data-service", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDataService", method = RequestMethod.GET)
     public String addNewDataService(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataService dataService = new DataService();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID", 7);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
 
-//        if(entryId != null) {
-//            Entry entry = apiUtil.getEntryById(entryId);
-//            EntryView entryView = new EntryView(entry);
-//
-//            software =converter.c(entryView.getUnescapedEntryJsonString());
-//            model.addAttribute("categoryID", entry.getCategory().getId());
-//        }
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            dataService = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataService.class);
+            model.addAttribute("software", dataService);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
         model.addAttribute("dataService", dataService);
         model.addAttribute("accessPointTypes", DataServiceAccessPointType.values());
         if (ifLoggedIn(session))
@@ -343,31 +513,57 @@ public class DataEntryController {
         return "dataServiceForm";
     }
 
+    @RequestMapping(value = "/addDataService/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataService") @Validated DataService dataService,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
 
-    @RequestMapping(value = "/addDataService", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataService") @Validated DataService dataService,
-                         BindingResult result, ModelMap model) {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
         if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
             model.addAttribute("accessPointTypes", DataServiceAccessPointType.values());
             model.addAttribute("software", dataService);
             return "dataServiceForm";
         }
-        return "dataService";
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(dataService);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataService.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/add-data-visualizer", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDataVisualizers", method = RequestMethod.GET)
     public String addNewDataVisualizer(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DataVisualizers dataVisualizer = new DataVisualizers();
-        model.addAttribute("categoryID",0);
+        model.addAttribute("categoryID", 8);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
 
-//        if(entryId != null) {
-//            Entry entry = apiUtil.getEntryById(entryId);
-//            EntryView entryView = new EntryView(entry);
-//
-//            software =converter.c(entryView.getUnescapedEntryJsonString());
-//            model.addAttribute("categoryID", entry.getCategory().getId());
-//        }
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            dataVisualizer = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataVisualizers.class);
+            model.addAttribute("software", dataVisualizer);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
         model.addAttribute("dataVisualizer", dataVisualizer);
         if (ifLoggedIn(session))
             model.addAttribute("loggedIn", true);
@@ -382,19 +578,697 @@ public class DataEntryController {
             return "accessDenied";
         }
 
-
         return "dataVisualizerForm";
     }
 
-
-    @RequestMapping(value = "/addDataVisualizer", method = RequestMethod.POST)
-    public String submit(@Valid @ModelAttribute("dataVisualizer") @Validated DataVisualizers dataVisualizer,
-                         BindingResult result, ModelMap model) {
+    @RequestMapping(value = "/addDataVisualizers/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataVisualizer") @Validated DataVisualizers dataVisualizer,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
         if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
             model.addAttribute("software", dataVisualizer);
             return "dataVisualizerForm";
         }
-        return "dataVisualizer";
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(dataVisualizer);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataVisualizer.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addDiseaseForecasters", method = RequestMethod.GET)
+    public String addNewDiseaseForecaster(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseForecasters diseaseForecaster = new DiseaseForecasters();
+        model.addAttribute("categoryID", 9);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            diseaseForecaster = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseForecasters.class);
+            model.addAttribute("software", diseaseForecaster);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("diseaseForecaster", diseaseForecaster);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseForecasterForm";
+    }
+
+    @RequestMapping(value = "/addDiseaseForecasters/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("diseaseForecaster") @Validated DiseaseForecasters diseaseForecaster,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", diseaseForecaster);
+            return "diseaseForecasterForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(diseaseForecaster);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", diseaseForecaster.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addDiseaseTransmissionModel", method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseTransmissionModel diseaseTransmissionModel = new DiseaseTransmissionModel();
+        model.addAttribute("categoryID", 10);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            diseaseTransmissionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionModel.class);
+            model.addAttribute("software", diseaseTransmissionModel);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("diseaseTransmissionModel", diseaseTransmissionModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseTransmissionModelForm";
+    }
+
+    @RequestMapping(value = "/addDiseaseTransmissionModel/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("diseaseTransmissionModel") @Validated DiseaseTransmissionModel diseaseTransmissionModel,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", diseaseTransmissionModel);
+            return "diseaseTransmissionModelForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(diseaseTransmissionModel);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", diseaseTransmissionModel.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimators", method = RequestMethod.GET)
+    public String addNewDiseaseTransmissionTreeEstimators(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator = new DiseaseTransmissionTreeEstimators();
+        model.addAttribute("categoryID", 12);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            diseaseTransmissionTreeEstimator = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DiseaseTransmissionTreeEstimators.class);
+            model.addAttribute("software", diseaseTransmissionTreeEstimator);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("diseaseTransmissionTreeEstimator", diseaseTransmissionTreeEstimator);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "diseaseTransmissionTreeEstimatorForm";
+    }
+
+    @RequestMapping(value = "/addDiseaseTransmissionTreeEstimators/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("diseaseTransmissionTreeEstimator") @Validated DiseaseTransmissionTreeEstimators diseaseTransmissionTreeEstimator,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", diseaseTransmissionTreeEstimator);
+            return "diseaseTransmissionTreeEstimatorForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(diseaseTransmissionTreeEstimator);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", diseaseTransmissionTreeEstimator.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addMetagenomicAnalysis", method = RequestMethod.GET)
+    public String addNewMetagenomicAnalysis(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        MetagenomicAnalysis metagenomicAnalysis = new MetagenomicAnalysis();
+        model.addAttribute("categoryID", 448);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            metagenomicAnalysis = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), MetagenomicAnalysis.class);
+            model.addAttribute("software", metagenomicAnalysis);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("metagenomicAnalysis", metagenomicAnalysis);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "metagenomicAnalysisForm";
+    }
+
+    @RequestMapping(value = "/addMetagenomicAnalysis/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("metagenomicAnalysis") @Validated MetagenomicAnalysis metagenomicAnalysis,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", metagenomicAnalysis);
+            return "metagenomicAnalysisForm";
+        }
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(metagenomicAnalysis);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", metagenomicAnalysis.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addModelingPlatforms", method = RequestMethod.GET)
+    public String addNewModelingPlatform(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        ModelingPlatforms modelingPlatform = new ModelingPlatforms();
+        model.addAttribute("categoryID", 13);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            modelingPlatform = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), ModelingPlatforms.class);
+            model.addAttribute("software", modelingPlatform);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("modelingPlatform", modelingPlatform);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "modelingPlatformForm";
+    }
+
+    @RequestMapping(value = "/addModelingPlatforms/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("modelingPlatform") @Validated ModelingPlatforms modelingPlatform,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", modelingPlatform);
+            return "modelingPlatformForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(modelingPlatform);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", modelingPlatform.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addPathogenEvolutionModels", method = RequestMethod.GET)
+    public String addNewPathogenEvolutionModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PathogenEvolutionModels pathogenEvolutionModel = new PathogenEvolutionModels();
+        model.addAttribute("categoryID", 14);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            pathogenEvolutionModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PathogenEvolutionModels.class);
+            model.addAttribute("software", pathogenEvolutionModel);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("pathogenEvolutionModel", pathogenEvolutionModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "pathogenEvolutionModelForm";
+    }
+
+    @RequestMapping(value = "/addPathogenEvolutionModels/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("pathogenEvolutionModel") @Validated PathogenEvolutionModels pathogenEvolutionModel,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", pathogenEvolutionModel);
+            return "pathogenEvolutionModelForm";
+        }
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(pathogenEvolutionModel);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", pathogenEvolutionModel.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addPhylogeneticTreeConstructors", method = RequestMethod.GET)
+    public String addNewPhylogenticTreeConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PhylogeneticTreeConstructors phylogeneticTreeConstructor = new PhylogeneticTreeConstructors();
+        model.addAttribute("categoryID", 15);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            phylogeneticTreeConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PhylogeneticTreeConstructors.class);
+            model.addAttribute("software", phylogeneticTreeConstructor);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("phylogeneticTreeConstructor", phylogeneticTreeConstructor);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        return "phylogeneticTreeConstructorForm";
+    }
+
+    @RequestMapping(value = "/addPhylogeneticTreeConstructors/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId,  @Valid @ModelAttribute("phylogeneticTreeConstructor") @Validated PhylogeneticTreeConstructors phylogeneticTreeConstructor,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", phylogeneticTreeConstructor);
+            return "phylogeneticTreeConstructorForm";
+        }
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(phylogeneticTreeConstructor);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", phylogeneticTreeConstructor.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addPopulationDynamicsModel", method = RequestMethod.GET)
+    public String addNewPopulationDynamicsModel(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        PopulationDynamicsModel populationDynamicsModel = new PopulationDynamicsModel();
+        model.addAttribute("categoryID", 11);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            populationDynamicsModel = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), PopulationDynamicsModel.class);
+            model.addAttribute("software", populationDynamicsModel);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("populationDynamicsModel", populationDynamicsModel);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "populationDynamicsModelForm";
+    }
+
+    @RequestMapping(value = "/addPopulationDynamicsModel/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("populationDynamicsModel") @Validated PopulationDynamicsModel populationDynamicsModel,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", populationDynamicsModel);
+            return "populationDynamicsModelForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(populationDynamicsModel);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", populationDynamicsModel.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addSyntheticEcosystemConstructors", method = RequestMethod.GET)
+    public String addNewSyntheticEcosystemConstructor(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        SyntheticEcosystemConstructors syntheticEcosystemConstructor = new SyntheticEcosystemConstructors();
+        model.addAttribute("categoryID", 16);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            syntheticEcosystemConstructor = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), SyntheticEcosystemConstructors.class);
+            model.addAttribute("software", syntheticEcosystemConstructor);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("syntheticEcosystemConstructor", syntheticEcosystemConstructor);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+
+        return "syntheticEcosystemConstructorForm";
+    }
+
+    @RequestMapping(value = "/addSyntheticEcosystemConstructors/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("syntheticEcosystemConstructor") @Validated SyntheticEcosystemConstructors syntheticEcosystemConstructor,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", syntheticEcosystemConstructor);
+            return "syntheticEcosystemConstructorForm";
+        }
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(syntheticEcosystemConstructor);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", syntheticEcosystemConstructor.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
+    }
+
+    @RequestMapping(value = "/addDataStandard", method = RequestMethod.GET)
+    public String addNewDataStandard(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
+        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+        DataStandard dataStandard = new DataStandard();
+        model.addAttribute("categoryID", 4);
+        model.addAttribute("entryId", entryId);
+        model.addAttribute("revisionId", revisionId);
+
+        if (entryId != null) {
+            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+            EntryId id = entry.getId();
+            model.addAttribute("revisionId", id.getRevisionId());
+            EntryView entryView = new EntryView(entry);
+
+            dataStandard = new Gson().fromJson(entryView.getUnescapedEntryJsonString(), DataStandard.class);
+            model.addAttribute("categoryID", entry.getCategory().getId());
+        }
+
+        model.addAttribute("dataStandard", dataStandard);
+        if (ifLoggedIn(session))
+            model.addAttribute("loggedIn", true);
+
+        if (ifMDCEditor(session))
+            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
+
+        if (ifISGAdmin(session))
+            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
+
+        if (!model.containsAttribute("adminType")) {
+            return "accessDenied";
+        }
+
+        return "dataStandardForm";
+    }
+
+    @RequestMapping(value = "/addDataStandard/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("dataStandard") @Validated DataStandard dataStandard,
+                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
+        if (categoryID == 0) {
+            result.addError(new ObjectError("categoryIDError", ""));
+            model.addAttribute("categoryIDError", true);
+        }
+        if (result.hasErrors()) {
+            model.addAttribute("entryId", entryId);
+            model.addAttribute("revisionId", revisionId);
+            model.addAttribute("categoryID", categoryID);
+            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
+            model.addAttribute("software", dataStandard);
+            return "dataStandardForm";
+        }
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.objectToJSonObject(dataStandard);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataStandard.getClass().toString());
+
+        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+
+        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+
+        return "entryConfirmation";
     }
 
     @RequestMapping(value = "/add-entry", method = RequestMethod.POST)

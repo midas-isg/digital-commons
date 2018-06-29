@@ -24,45 +24,46 @@
     <c:when test="${not empty identifiers}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="status">
-                <div class="form-group control-group ${specifier}-identifier-add-more">
+            <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="varStatus">
+                <div class="form-group control-group ${specifier}-identifier-add-more-button">
                     <c:choose>
-                        <c:when test="${status.first}">
+                        <c:when test="${varStatus.first}">
                             <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                     ${label}
                             </button>
                         </c:when>
-                        <c:otherwise>
-                            <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                                    class="glyphicon glyphicon-remove"></i>
-                                Remove
-                            </button>
-                        </c:otherwise>
                     </c:choose>
-
+                </div>
+                <div class="form-group control-group">
+                    <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
                     <div class="form-group edit-form-group">
                         <label>Identifier</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                               name="${path}[${status.count-1}].identifier" placeholder="Identifier">
+                               name="${path}[${varStatus.count-1}].identifier" placeholder="Identifier">
                     </div>
 
                     <div class="form-group edit-form-group">
                         <label>Identifier Source</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                               name="${path}[${status.count-1}].identifierSource" placeholder="Identifier Source">
+                               name="${path}[${varStatus.count-1}].identifierSource" placeholder="Identifier Source">
                     </div>
 
                 </div>
-                <c:set var="identifierCount" scope="page" value="${status.count}"/>
+                <c:set var="identifierCount" scope="page" value="${varStatus.count}"/>
 
             </c:forEach>
+            <div class="${specifier}-identifier-add-more">
+            </div>
         </div>
     </c:when>
     <c:when test="${not empty identifier}">
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
+            <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
@@ -89,6 +90,8 @@
                            name="${path}.identifierSource" placeholder="Identifier Source">
                 </div>
             </div>
+            <div class="${specifier}-identifier-add-more">
+            </div>
         </div>
         <c:set var="identifierCount" scope="page" value="0"/>
 
@@ -96,7 +99,7 @@
     <c:when test="${not empty identifierName or not empty identifierSource}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more" style="display: none;">
+            <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
@@ -123,19 +126,24 @@
                            name="${path}.identifierSource" placeholder="Identifier Source">
                 </div>
             </div>
+            <div class="${specifier}-identifier-add-more">
+            </div>
         </div>
         <c:set var="identifierCount" scope="page" value="0"/>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more">
+            <div class="input-group control-group ${specifier}-identifier-add-more-button">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                             ${label}
                     </button>
                 </div>
+            </div>
+            <br>
+            <div class="${specifier}-identifier-add-more">
             </div>
         </div>
         <c:set var="identifierCount" scope="page" value="0"/>
@@ -146,6 +154,7 @@
 
 <div class="copy-identifier hide">
     <div class="form-group control-group">
+        <%--<br>--%>
         <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
@@ -177,13 +186,15 @@
             <c:choose>
             <c:when test="${unbounded}">
             html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
-            $(".${specifier}-identifier-add-more").after(html);
+            <%--$(".${specifier}-identifier-add-more").after(html);--%>
+            $(".${specifier}-identifier-add-more").before(html);
             identifierCount += 1;
             </c:when>
             <c:otherwise>
             html = html.replace('name="specifier-identifier"', 'name="${path}.identifier"').replace('name="specifier-identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
-            $(".${specifier}-identifier-add-more").after(html);
-            $(".${specifier}-identifier-add-more").hide();
+            <%--$(".${specifier}-identifier-add-more").after(html);--%>
+            $(".${specifier}-identifier-add-more").before(html);
+            $(".${specifier}-identifier-add-more-button").hide();
             </c:otherwise>
             </c:choose>
             e.stopImmediatePropagation();
@@ -191,7 +202,7 @@
         //Remove section
         $("body").on("click", ".${specifier}-identifier-remove", function () {
             $(this).parents(".control-group")[0].remove();
-            $(".${specifier}-identifier-add-more").show();
+            $(".${specifier}-identifier-add-more-button").show();
         });
     });
 

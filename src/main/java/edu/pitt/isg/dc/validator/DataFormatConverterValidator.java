@@ -6,10 +6,13 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import java.util.ListIterator;
+
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearNestedIdentifier;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearStringList;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isIdentifierEmpty;
 
 @Component
-public class SoftwareValidator implements Validator {
+public class DataFormatConverterValidator implements Validator {
     @Override
     public boolean supports(Class<?> aClass) {
         return DataFormatConverters.class.equals(aClass);
@@ -23,6 +26,10 @@ public class SoftwareValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
 
+        if(isIdentifierEmpty(dataFormatConverters.getIdentifier())) {
+            dataFormatConverters.setIdentifier(null);
+        }
+
         clearStringList(dataFormatConverters.getDataInputFormats().listIterator());
         clearStringList(dataFormatConverters.getDataOutputFormats().listIterator());
         clearStringList(dataFormatConverters.getWebApplication().listIterator());
@@ -32,39 +39,7 @@ public class SoftwareValidator implements Validator {
         clearStringList(dataFormatConverters.getVersion().listIterator());
         clearStringList(dataFormatConverters.getPublicationsAboutRelease().listIterator());
         clearStringList(dataFormatConverters.getGrants().listIterator());
+        clearNestedIdentifier(dataFormatConverters.getLocationCoverage().listIterator());
         //////////////////////
-    }
-
-    public static void clearStringList(ListIterator<String> listIterator) {
-        while (listIterator.hasNext()) {
-            String string = listIterator.next();
-            if (isEmpty(string)) {
-                listIterator.remove();
-            }
-        }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
     }
 }

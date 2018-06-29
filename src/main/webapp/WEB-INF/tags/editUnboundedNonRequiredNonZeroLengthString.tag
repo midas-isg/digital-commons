@@ -4,9 +4,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="formats" required="false"
               type="java.util.ArrayList" %>
@@ -19,22 +19,22 @@
     <c:when test="${not empty formats}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more">
+            <div class="form-group ${specifier}-formats-add-more-button">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
                     ${placeholder}
                 </button>
             </div>
 
-            <c:forEach items="${formats}" varStatus="status" var="format">
+            <c:forEach items="${formats}" varStatus="varStatus" var="format">
                 <div class="form-group">
 
                     <div class="input-group control-group full-width">
-                        <input type="text" value="${format}" class="form-control" name="${path}[${status.count-1}]"
-                               id="${specifier}-${status.count-1}" placeholder="${placeholder}"/>
+                        <input type="text" value="${fn:escapeXml(format)}" class="form-control" name="${path}[${varStatus.count-1}]"
+                               id="${specifier}-${varStatus.count-1}" placeholder="${placeholder}"/>
                         <div class="input-group-btn">
                             <button class="btn btn-danger ${specifier}-remove"
-                                    id="${specifier}-${status.count-1}-remove"
+                                    id="${specifier}-${varStatus.count-1}-remove"
                                     type="button"><i
                                     class="glyphicon glyphicon-remove"></i>
                                 Remove
@@ -42,19 +42,21 @@
                         </div>
                     </div>
                 </div>
-                <c:set var="formatsCount" scope="page" value="${status.count}"/>
+                <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
             </c:forEach>
+            <div class="${specifier}-formats-add-more"></div>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
             <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more">
+            <div class="form-group ${specifier}-formats-add-more-button">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
                     ${placeholder}
                 </button>
             </div>
+            <div class="${specifier}-formats-add-more"></div>
         </div>
         <c:set var="formatsCount" scope="page" value="0"/>
 
@@ -92,7 +94,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
             html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount);
 
-            $(".${specifier}-formats-add-more").after(html);
+            <%--$(".${specifier}-formats-add-more").after(html);--%>
+            $(".${specifier}-formats-add-more").before(html);
             formatsCount += 1;
             //$(this).hide();
             //e.stopImmediatePropagation()

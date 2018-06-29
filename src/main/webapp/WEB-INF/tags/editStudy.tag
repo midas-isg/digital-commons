@@ -10,16 +10,19 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty study and not empty study.name}">
+    <c:when test="${not empty study.name or not empty study.location or not empty study.startDate or not empty study.endDate}">
+    <%--<c:when test="${not empty study}">--%>
         <div class="form-group edit-form-group">
-            <label>Produced By</label>
+            <label>${label}</label>
             <div class="input-group control-group ${specifier}-study-add-more" style="display: none">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-study" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
-                        Produced By
+                            ${label}
                     </button>
                 </div>
             </div>
@@ -28,12 +31,17 @@
                     <button class="btn btn-danger ${specifier}-study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
                     </button>
 
-                    <div class="form-group edit-form-group">
-                        <label>Name</label>
-                        <input type="text" class="form-control" name="${path}.name" value="${study.name}"
-                               placeholder="Name">
-                    </div>
-
+                    <c:choose>
+                        <c:when test="${not empty study.name}">
+                            <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                                    string="${study.name}"
+                                                                    path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                        </c:when>
+                        <c:otherwise>
+                            <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                                    path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                        </c:otherwise>
+                    </c:choose>
                     <c:choose>
                         <c:when test="${not empty study.location}">
                             <div>
@@ -49,11 +57,10 @@
                                         class="glyphicon glyphicon-remove"></i>
                                     Remove
                                 </button>
-                                <div class="form-group edit-form-group">
-                                    <label id="location-label">Postal Address</label>
-                                    <input type="text" class="form-control" name="postalAddress" value="${study.location.postalAddress}"
-                                           placeholder="Postal Address">
-                                </div>
+                                <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
+                                                                           label="Postal Address"
+                                                                           string="${study.location.postalAddress}"
+                                                                           path="${path}.location.postalAddress"></myTags:editRequiredNonZeroLengthString>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -66,73 +73,27 @@
                         </c:otherwise>
                     </c:choose>
                     <br>
-
-                    <c:choose>
-                        <c:when test="${not empty study.startDate}">
-                            <div>
-                                <button class="btn btn-success add-start-date" id="startDate" type="button" style="display:none;"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    Start Date
-                                </button>
-                            </div>
-                            <div class="form-group control-group edit-form-group">
-                                <label>Start Date</label>
-                                <br>
-                                <button class="btn btn-danger start-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                                    Remove
-                                </button>
-                                <myTags:editDates date="${study.startDate}" path="${path}.startDate" specifier="${specifier}-startDate"></myTags:editDates>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div>
-                                <button class="btn btn-success add-start-date" id="startDate" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    Start Date
-                                </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
+                    <myTags:editDatesBounded label="Start Date"
+                                             path="${path}.startDate"
+                                             specifier="${specifier}-startDate"
+                                             date="${study.startDate}"></myTags:editDatesBounded>
                     <br>
-
-                    <c:choose>
-                        <c:when test="${not empty study.endDate}">
-                            <div>
-                                <button class="btn btn-success add-end-date" id="endDate" type="button" style="display: none"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    End Date
-                                </button>
-                            </div>
-                            <div class="form-group control-group edit-form-group">
-                                <label>End Date</label>
-                                <br>
-                                <button class="btn btn-danger end-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                                    Remove
-                                </button>
-                                <myTags:editDates date="${study.endDate}" path="${path}.endDate" specifier="${specifier}-endDate"></myTags:editDates>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div>
-                                <button class="btn btn-success add-end-date" id="endDate" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
-                                    End Date
-                                </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
+                    <myTags:editDatesBounded label="End Date"
+                                             path="${path}.endDate"
+                                             specifier="${specifier}-endDate"
+                                             date="${study.endDate}"></myTags:editDatesBounded>
                 </div>
             </div>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <label>Produced By</label>
+            <label>${label}</label>
             <div class="input-group control-group ${specifier}-study-add-more">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-study" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
-                        Produced By
+                            ${label}
                     </button>
                 </div>
             </div>
@@ -148,44 +109,19 @@
         <button class="btn btn-danger location-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
-        <div class="form-group edit-form-group">
-            <label id="location-label">Postal Address</label>
-            <input type="text" class="form-control" name="postalAddress" placeholder="Postal Address">
-        </div>
+        <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
+                                                label="Postal Address"
+                                                path="${path}.location.postalAddress"></myTags:editRequiredNonZeroLengthString>
     </div>
 </div>
 
-<div class="copy-start-date hide">
-    <div class="form-group control-group edit-form-group">
-        <label>Start Date</label>
-        <br>
-        <button class="btn btn-danger start-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <myTags:editDates path="${path}.startDate" specifier="study-startDate"></myTags:editDates>
-    </div>
-</div>
-
-<div class="copy-end-date hide">
-    <div class="form-group control-group edit-form-group">
-        <label>End Date</label>
-        <br>
-        <button class="btn btn-danger end-date-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <myTags:editDates path="${path}.endDate" specifier="study-endDate"></myTags:editDates>
-    </div>
-</div>
 
 <div class="copy-study hide">
     <div class="form-group control-group">
         <button class="btn btn-danger study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
-        <div class="form-group edit-form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" name="${path}.name" placeholder="Name">
-        </div>
-
+        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                path="${path}.name"></myTags:editRequiredNonZeroLengthString>
         <div>
             <button class="btn btn-success add-location" id="location" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
@@ -193,22 +129,13 @@
             </button>
         </div>
         <br>
-
-        <div>
-            <button class="btn btn-success add-start-date" id="startDate" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Start Date
-            </button>
-        </div>
+        <myTags:editDatesBounded label="Start Date"
+                                 path="${path}.startDate"
+                                 specifier="${specifier}-startDate"></myTags:editDatesBounded>
         <br>
-
-        <div>
-            <button class="btn btn-success add-end-date" id="endDate" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                End Date
-            </button>
-        </div>
-
+        <myTags:editDatesBounded label="End Date"
+                                 path="${path}.endDate"
+                                 specifier="${specifier}-endDate"></myTags:editDatesBounded>
     </div>
 </div>
 
@@ -244,34 +171,6 @@
         $("body").on("click", ".location-remove", function () {
             $(this).parent(".control-group").remove();
             $(".add-location").show();
-        });
-
-        //Show/Hide Start Date
-        $("body").on("click", ".add-start-date", function () {
-            var html = $(".copy-start-date").html();
-            //html = html.replace('name="postalAddress"', 'name="${path}.location.postalAddress"');
-
-            $(this).after(html);
-            $(this).hide();
-
-        });
-        $("body").on("click", ".start-date-remove", function () {
-            $(this).parent(".control-group").remove();
-            $(".add-start-date").show();
-        });
-
-        //Show/Hide End Date
-        $("body").on("click", ".add-end-date", function () {
-            var html = $(".copy-end-date").html();
-            //html = html.replace('name="postalAddress"', 'name="${path}.location.postalAddress"');
-
-            $(this).after(html);
-            $(this).hide();
-
-        });
-        $("body").on("click", ".end-date-remove", function () {
-            $(this).parent(".control-group").remove();
-            $(".add-end-date").show();
         });
 
     });

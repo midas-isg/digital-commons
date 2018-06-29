@@ -15,15 +15,15 @@
             <c:choose>
                 <c:when test="${not empty entryView.entry.spatialCoverage}">
                     <c:forEach items="${entryView.entry.spatialCoverage}" var="coverage"
-                               varStatus="status">
+                               varStatus="varStatus">
                         <%--${fn:toUpperCase(fn:substring(coverage.name, 0, 1))}${fn:toLowerCase(fn:substring(coverage.name, 1,fn:length(coverage.name)))}${!status.last ? ',' : ''}--%>
-                        ${coverage.name}${!status.last ? ',' : ''}
+                        ${coverage.name}${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </c:when>
                 <c:when test="${not empty entryView.entry.locationCoverage}">
                     <c:forEach items="${entryView.entry.locationCoverage}" var="coverage"
-                               varStatus="status">
-                        <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!status.last ? ',' : ''}
+                               varStatus="varStatus">
+                        <span class="capitalize">${coverage.identifier.identifierDescription}</span>${!varStatus.last ? ',' : ''}
                     </c:forEach>
                 </c:when>
                 <c:otherwise>

@@ -13,9 +13,9 @@
 
 <c:choose>
     <c:when test="${not empty distributions}">
-        <c:forEach items="${distributions}" var="distribution" varStatus="status">
-            <c:if test="${status.first}">
-                <div class="form-group edit-form-group distribution-add-more">
+        <c:forEach items="${distributions}" var="distribution" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
+                <div class="form-group edit-form-group distribution-add-more-button">
                     <label>Distribution</label>
                     <div class="form-group">
                         <button class="btn btn-success add-distribution" type="button"><i
@@ -32,42 +32,47 @@
 
                 <div class="form-group">
 
-                    <myTags:editIdentifier label="Identifier" specifier="${specifier}-${status.count-1}"
-                                           path="${path}[${status.count-1}].identifier"
+                    <myTags:editIdentifier label="Identifier" specifier="${specifier}-${varStatus.count-1}"
+                                           path="${path}[${varStatus.count-1}].identifier"
                                            identifier="${distribution.identifier}"
                                            unbounded="False"></myTags:editIdentifier>
                 </div>
 
-                <myTags:editDatesUnbounded dates="${distribution.dates}" path="${path}[${status.count-1}]"
+                <myTags:editDatesUnbounded dates="${distribution.dates}" path="${path}[${varStatus.count-1}]"
                                            specifier="${specifier}"></myTags:editDatesUnbounded>
 
-                <myTags:editAccess path="${path}[${status.count-1}].access"
-                                   specifier="${specifier}-${status.count-1}-access"
+                <myTags:editAccess path="${path}[${varStatus.count-1}].access"
+                                   specifier="${specifier}-${varStatus.count-1}-access"
                                    access="${distribution.access}"></myTags:editAccess>
 
-                <myTags:editDataStandard name="Conforms To" path="${path}[${status.count-1}].conformsTo"
+                <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
                                          dataStandards="${distribution.conformsTo}"
-                                         specifier="${specifier}-${status.count-1}-conformsTo"></myTags:editDataStandard>
+                                         specifier="${specifier}-${varStatus.count-1}-conformsTo"></myTags:editDataStandard>
 
-                <myTags:editDataRepository name="Stored In" path="${path}[${status.count-1}].storedIn"
+                <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
                                            dataRepository="${distribution.storedIn}"
-                                           specifier="${specifier}-${status.count-1}-storedIn"></myTags:editDataRepository>
+                                           specifier="${specifier}-${varStatus.count-1}-storedIn"></myTags:editDataRepository>
 
-                <myTags:editSize size="${distribution.size}" path="${path}[${status.count-1}].size"
-                                 specifier="${specifier}-${status.count-1}"></myTags:editSize>
+                <myTags:editSize size="${distribution.size}" path="${path}[${varStatus.count-1}].size"
+                                 specifier="${specifier}-${varStatus.count-1}-size"
+                                 placeholder=" Size"
+                                 label="Size" ></myTags:editSize>
 
-                <myTags:editUnit unit="${distribution.unit}" path="${path}[${status.count-1}].unit"
-                                 specifier="${specifier}-${status.count-1}-unit"></myTags:editUnit>
+                <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
+                                              specifier="${specifier}-${varStatus.count-1}-unit"
+                                              placeholder=" Unit"
+                                              label="Unit" ></myTags:editAnnotationBounded>
 
-                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}" path="${path}[${status.count-1}].formats"
-                                                                    specifier="${specifier}-${status.count-1}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}" path="${path}[${varStatus.count-1}].formats"
+                                                                    specifier="${specifier}-${varStatus.count-1}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
             </div>
-            <c:set var="distributionCount" scope="page" value="${status.count}"/>
+            <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
+        <div class="distribution-add-more"></div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group distribution-add-more">
+        <div class="form-group edit-form-group distribution-add-more-button">
             <label>Distribution</label>
             <div class="form-group">
                 <button class="btn btn-success add-distribution" type="button"><i class="glyphicon glyphicon-plus"></i>
@@ -75,6 +80,7 @@
                 </button>
             </div>
         </div>
+        <div class="distribution-add-more"></div>
         <c:set var="distributionCount" scope="page" value="0"/>
 
     </c:otherwise>
@@ -97,9 +103,18 @@
                                  specifier="${specifier}-conformsTo"></myTags:editDataStandard>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn"></myTags:editDataRepository>
-        <myTags:editSize path="${path}[0].size" specifier="${specifier}-size"></myTags:editSize>
-        <myTags:editUnit path="${path}[0].unit" specifier="${specifier}-unit"></myTags:editUnit>
-        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats" specifier="${specifier}-formats" placeholder="Format" label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+        <myTags:editSize path="${path}[0].size"
+                         specifier="${specifier}-size"
+                         placeholder=" Size"
+                         label="Size" ></myTags:editSize>
+        <myTags:editAnnotationBounded path="${path}[0].unit"
+                                      specifier="${specifier}-unit"
+                                      placeholder=" Unit"
+                                      label="Unit" ></myTags:editAnnotationBounded>
+        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats"
+                                                            specifier="${specifier}-formats"
+                                                            placeholder="Format"
+                                                            label="Formats"></myTags:editUnboundedNonRequiredNonZeroLengthString>
 
     </div>
 </div>
@@ -118,7 +133,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + distributionCount + ']').replace(regexSpecifier, '${specifier}-' + distributionCount + '-');
 
-            $(".distribution-add-more").after(html);
+            //$(".distribution-add-more").after(html);
+            $(".distribution-add-more").before(html);
             distributionCount += 1;
         });
 

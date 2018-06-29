@@ -10,6 +10,8 @@ import org.springframework.validation.Validator;
 
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
+
 @Component
 public class DataServiceValidator implements Validator {
     @Override
@@ -25,6 +27,10 @@ public class DataServiceValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.software.title");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "humanReadableSynopsis", "NotEmpty.software.humanReadableSynopsis");
 
+        if(isIdentifierEmpty(dataService.getIdentifier())) {
+            dataService.setIdentifier(null);
+        }
+
         clearStringList(dataService.getDataInputFormats().listIterator());
         clearStringList(dataService.getDataOutputFormats().listIterator());
         clearStringList(dataService.getWebApplication().listIterator());
@@ -34,6 +40,7 @@ public class DataServiceValidator implements Validator {
         clearStringList(dataService.getVersion().listIterator());
         clearStringList(dataService.getPublicationsAboutRelease().listIterator());
         clearStringList(dataService.getGrants().listIterator());
+        clearNestedIdentifier(dataService.getLocationCoverage().listIterator());
         //////////////////////
 
         ListIterator<DataServiceDescription> descriptionListIterator = dataService.getDataServiceDescription().listIterator();
@@ -50,38 +57,5 @@ public class DataServiceValidator implements Validator {
         if(dataService.getDataServiceDescription().size() == 0) {
             errors.rejectValue("dataServiceDescription[0]", "NotEmpty.software.dataServiceDescription");
         }
-    }
-
-    public static void clearStringList(ListIterator<String> listIterator) {
-        while (listIterator.hasNext()) {
-            String string = listIterator.next();
-            if (isEmpty(string)) {
-                listIterator.remove();
-            }
-        }
-    }
-
-
-    public static boolean isEmpty(Object object) {
-        if (object == null) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(Object[] array) {
-        if (array == null || array.length == 0) {
-            return true;
-        }
-        return false;
-    }
-
-
-    public static boolean isEmpty(String string) {
-        if (string == null || string.trim().length() == 0) {
-            return true;
-        }
-        return false;
     }
 }

@@ -15,8 +15,8 @@
 
 <c:choose>
     <c:when test="${not empty dataStandards}">
-        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="status">
-            <c:if test="${status.first}">
+        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="varStatus">
+            <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                     <form:label path="${path}">${name}</form:label>
                     <div class="form-group">
@@ -32,58 +32,41 @@
             <div class="form-group control-group edit-form-group">
                 <label>${name}</label>
                 <br>
-                <button class="btn btn-danger ${specifier}-${status.count-1}-dataStandard-remove" type="button"><i
+                <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
                     Remove
                 </button>
                 <br><br>
-
-                <div class="form-group">
-                    <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${status.count-1}].identifier"
-                                           unbounded="False"></myTags:editIdentifier>
-                </div>
-
-
-                <div class="form-group edit-form-group">
-                    <label>Name</label>
-                    <input name="${path}[${status.count-1}].name" value="${dataStandard.name}" type="text" class="form-control" placeholder="Name">
-                </div>
-
-
-                <div class="form-group">
-                    <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}" string="${dataStandard.description}"
-                                                               path="${path}[${status.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-                </div>
-
-                <div class="form-group edit-form-group">
-                    <label>Type</label>
-                    <myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${status.count-1}].type."></myTags:editAnnotation>
-                </div>
-
-                <div class="form-group">
-                    <myTags:editLicense licenses="${dataStandard.licenses}" specifier="${specifier}-licenses"
-                                        path="${path}[${status.count-1}].licenses"></myTags:editLicense>
-                </div>
-
-                <div class="form-group edit-form-group">
-                    <label>Version</label>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-${status.count-1}-add-version" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Version
-                        </button>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <myTags:editExtraProperties categoryValuePairs="${dataStandard.extraProperties}" specifier="${specifier}-${status.count-1}-extraProperties"
-                                                path="${path}[${status.count-1}].extraProperties"></myTags:editExtraProperties>
-                </div>
+                <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${varStatus.count-1}].identifier"
+                                       unbounded="False"></myTags:editIdentifier>
+                <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                        string="${dataStandard.name}"
+                                                        path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
+                <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-description" string="${dataStandard.description}"
+                                                           path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editAnnotationRequired annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type"
+                                               label="Type" supportError="${true}"></myTags:editAnnotationRequired>
+                <%--<div class="form-group edit-form-group">--%>
+                    <%--<label>Type</label>--%>
+                    <%--<myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>--%>
+                <%--</div>--%>
+                <myTags:editLicense licenses="${dataStandard.licenses}" specifier="${specifier}-licenses"
+                                    label="License"
+                                    path="${path}[${varStatus.count-1}].licenses"></myTags:editLicense>
+                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                           specifier="${specifier}-${varStatus.count-1}-version"
+                                                           string="${dataStandard.version}"
+                                                           path="${path}[${varStatus.count-1}].version"></myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
+                                              specifier="${specifier}-${varStatus.count-1}-extraProperties"
+                                              path="${path}[${varStatus.count-1}].extraProperties"
+                                              label="Extra Properties"></myTags:editCategoryValuePair>
             </div>
 
-            <c:set var="dataStandardCount" scope="page" value="${status.count}"/>
+            <c:set var="dataStandardCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
+        <div class="${specifier}-dataStandard-add-more"></div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
@@ -95,6 +78,7 @@
                 </button>
             </div>
         </div>
+        <div class="${specifier}-dataStandard-add-more"></div>
         <c:set var="dataStandardCount" scope="page" value="0"/>
 
     </c:otherwise>
@@ -105,85 +89,31 @@
     <div class="form-group control-group edit-form-group">
         <label>${name}</label>
         <br>
-        <button class="btn btn-danger ${specifier}-0-dataStandard-remove" type="button"><i
+        <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
                 class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
         <br><br>
-        <div class="form-group">
-            <myTags:editIdentifier label="Identifier" specifier="${specifier}-" path="${path}[0].identifier"
-                                   unbounded="False"></myTags:editIdentifier>
-        </div>
-        <div class="form-group edit-form-group">
-            <label>Name</label>
-            <input name="${path}[0].name" type="text" class="form-control" placeholder="Name">
-        </div>
-        <div class="form-group">
-            <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-        </div>
-        <div class="form-group edit-form-group">
-            <label>Type</label>
-            <myTags:editAnnotation path="${path}[0].type."></myTags:editAnnotation>
-        </div>
-        <div class="form-group">
-            <myTags:editLicense specifier="${specifier}-licenses" path="${path}[0].licenses"></myTags:editLicense>
-        </div>
-        <div class="form-group edit-form-group">
-            <label>Version</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-0-add-version" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Version
-                </button>
-            </div>
-        </div>
-        <div class="form-group">
-            <myTags:editExtraProperties specifier="${specifier}-0-extraProperties"
-                                        path="${path}[0].extraProperties"></myTags:editExtraProperties>
-        </div>
+        <myTags:editIdentifier label="Identifier" specifier="${specifier}-" path="${path}[0].identifier"
+                               unbounded="False"></myTags:editIdentifier>
+        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                                                path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
+        <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editAnnotationRequired path="${path}[0].type." label="Type"></myTags:editAnnotationRequired>
+        <%--<div class="form-group edit-form-group">--%>
+            <%--<label>Type</label>--%>
+            <%--<myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>--%>
+        <%--</div>--%>
+        <myTags:editLicense specifier="${specifier}-0-licenses"
+                            label="License"
+                            path="${path}[0].licenses"></myTags:editLicense>
+        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                   specifier="${specifier}-0-version"
+                                                   path="${path}[0].version"></myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties" label="Extra Properties"
+                                      path="${path}[0].extraProperties"></myTags:editCategoryValuePair>
     </div>
 
-    <div class="${specifier}-0-copy-version hide">
-        <div class="input-group control-group edit-form-group full-width">
-            <input type="text" class="form-control" name="${path}[0].version" id="${specifier}-0-version"
-                   placeholder="Version"/>
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-0-version-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </div>
-        </div>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                //Hide Version
-                $("body").on("click", ".${specifier}-0-version-remove", function () {
-                    $(this).closest(".control-group").remove();
-                    $(".${specifier}-0-add-version").show();
-                });
-
-            });
-        </script>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-0-dataStandard-remove", function () {
-                $(this).parent(".control-group").remove();
-                $(".${specifier}-add-dataStandard").show();
-            });
-
-            //Show/Hide Version
-            $("body").on("click", ".${specifier}-0-add-version", function (e) {
-                var html = $(".${specifier}-0-copy-version").html();
-
-                $(this).after(html);
-                $(this).hide();
-                e.stopImmediatePropagation()
-            });
-
-        });
-    </script>
 </div>
 
 <script type="text/javascript">
@@ -198,13 +128,20 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
             html = html.replace(regexPath, '${path}[' + dataStandardCount + ']').replace(regexSpecifier, '${specifier}-' + dataStandardCount);
 
-            $(this).after(html);
+            //$(this).after(html);
+            $(".${specifier}-dataStandard-add-more").before(html);
             dataStandardCount += 1;
             //$(this).hide();
             //e.stopImmediatePropagation()
         });
+
+        $("body").on("click", ".${specifier}-dataStandard-remove", function () {
+            $(this).closest(".control-group").remove();
+            $(".${specifier}-add-dataStandard").show();
+        });
+
     });
 </script>

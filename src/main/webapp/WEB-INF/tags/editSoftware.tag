@@ -19,10 +19,10 @@
                                            label="Product Name"></myTags:editNonRequiredNonZeroLengthString>
 <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title"
                                         string="${software.title}"></myTags:editRequiredNonZeroLengthString>
-<myTags:editRequiredNonZeroLengthString label="Human Readable Synopsis"
+<myTags:editRequiredNonZeroLengthStringTextArea label="Human Readable Synopsis"
                                         placeholder="Human Readable Synopsis"
                                         path="humanReadableSynopsis"
-                                        string="${software.humanReadableSynopsis}"></myTags:editRequiredNonZeroLengthString>
+                                        string="${software.humanReadableSynopsis}"></myTags:editRequiredNonZeroLengthStringTextArea>
 <myTags:editSoftwareIdentifier identifier="${software.identifier}" specifier="identifier" path="identifier"
                                label="Identifier"></myTags:editSoftwareIdentifier>
 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Data Input Formats"
@@ -79,6 +79,9 @@
 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Grant" placeholder="Grant"
                                                     path="grants" specifier="grants"
                                                     formats="${software.grants}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
+                             path="locationCoverage" specifier="location-coverage"
+                             identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>
 <myTags:editCheckbox label="Available on Olumpus" path="availableOnOlympus"></myTags:editCheckbox>
 <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"></myTags:editCheckbox>
 <myTags:editCheckbox label="Sign In Required" path="signInRequired"></myTags:editCheckbox>
