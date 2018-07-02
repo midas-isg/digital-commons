@@ -19,7 +19,7 @@ public interface DataGovInterface {
 
     CkanDataset getDatasetFromClient(String catalogURL, String dataGovIdentifier);
 
-    String getIdentifierFromPackage(DatasetWithOrganization dataGovPackage);
+    String getIdentifierFromPackage(Dataset dataGovPackage);
 
     Boolean identifierExistsInMDC (String identifier);
 
@@ -33,17 +33,17 @@ public interface DataGovInterface {
 
     Long getCategoryId(Entry entry);
 
-    Date getlastModifiedDataGov(DatasetWithOrganization dataGovPackage) throws DataGovGeneralException;
+    Date getlastModifiedDataGov(Dataset dataGovPackage) throws DataGovGeneralException;
 
     Date getlastModifiedEntry(Entry entry) throws DataGovGeneralException;
 
-    String getRevisionIdFromDataGovPackage(DatasetWithOrganization dataGovPackage);
+    String getRevisionIdFromDataGovPackage(Dataset dataGovPackage);
 
     String getRevisionIdFromEntry(Entry entry);
 
-    Boolean modifiedDataGovPackage(Entry entry, DatasetWithOrganization dataGovPackage) throws DataGovGeneralException;
+    Boolean modifiedDataGovPackage(Entry entry, Dataset dataGovPackage) throws DataGovGeneralException;
 
-    JsonObject datasetToJSonObject(DatasetWithOrganization dataGovPackage);
+    JsonObject datasetToJSonObject(Dataset dataGovPackage);
 
     String submitDataGovEntry(Users user, String catalogURL, Long categoryId, String dataGovIdentifier, String title) throws DataGovGeneralException;
 

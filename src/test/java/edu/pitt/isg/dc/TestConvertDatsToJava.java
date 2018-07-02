@@ -11,7 +11,6 @@ import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;
@@ -29,11 +28,7 @@ import java.util.stream.IntStream;
 import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
 import static org.junit.Assert.assertEquals;
 
-enum CharacterIndexBehavior {
-    GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE,
-    SEEK_TO_CHARACTER_INDEX
 
-}
 
 @RunWith(SpringRunner.class)
 @WebAppConfiguration
@@ -41,8 +36,7 @@ enum CharacterIndexBehavior {
 @TestPropertySource("/application.properties")
 public class TestConvertDatsToJava {
 
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_RESET = "\u001B[0m";
+
     public static final Type mapType = new TypeToken<TreeMap<String, Object>>() {
     }.getType();
     private static Map<EntryId, String> idsNeedOlympus = new HashMap<EntryId, String>();
@@ -110,163 +104,120 @@ public class TestConvertDatsToJava {
         return sortedArray;
     }
 
-    private int getOrFindCharactersGivenIndex(String string, int index, CharacterIndexBehavior characterIndexBehavior) {
-        IntStream stream = string.chars();
-        PrimitiveIterator.OfInt it = stream.iterator();
-        int nonWhitespaceCharacterCount = 0;
-        int characterCount = 0;
-        while (it.hasNext()) {
-            Integer cur = it.next();
-            if (!Character.isWhitespace(cur)) nonWhitespaceCharacterCount++;
-            characterCount++;
 
-            if (characterIndexBehavior.equals(CharacterIndexBehavior.GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE) && characterCount == index)
-                return nonWhitespaceCharacterCount;
-            else if (characterIndexBehavior.equals(CharacterIndexBehavior.SEEK_TO_CHARACTER_INDEX) && nonWhitespaceCharacterCount == index)
-                return characterCount;
+
+
+    public MapDifference<String, Object> verifySerialization(EntryId entryId, Class clazz) {
+        Entry entry = repo.findOne(entryId);
+        String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
+        Object object;
+
+        jsonFromDatabase = jsonFromDatabase.replaceAll("\"coordinates\":\\[ *\\[ *[ ,0-9\\-\\.]* *\\] *\\],", "");
+        jsonFromDatabase = jsonFromDatabase.replaceAll("\"size\":0", "\"size\":0.0");
+
+        JsonObject jsonObjectFromDatabase = null;
+        try {
+            jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
+        } catch (JsonSyntaxException e) {
+            Converter.printHelpfulJsonError(jsonFromDatabase, e, null);
         }
-        return -1;
 
-    }
+        jsonFromDatabase = jsonObjectFromDatabase.toString();
 
-    private void printHelpfulJsonError(String json, JsonSyntaxException syntaxException, MalformedJsonException malformedException) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String prettyJson = gson.toJson(new JsonParser().parse(json));
-
-        Exception e = syntaxException != null ? syntaxException : malformedException;
-        String errStr = e.getMessage();
-        Integer begin = errStr.indexOf("1 column ") + 9;
-        Integer end = errStr.indexOf(" path $");
-        Integer errorPos = Integer.valueOf(errStr.substring(begin, end));
-
-        int characterIndexOfError = getOrFindCharactersGivenIndex(json, errorPos, CharacterIndexBehavior.GET_CHARACTER_INDEX_FROM_INDEX_COUNTING_WHITESPACE);
-        int indexOfErrorInPretty = getOrFindCharactersGivenIndex(prettyJson, characterIndexOfError, CharacterIndexBehavior.SEEK_TO_CHARACTER_INDEX);
-
-        System.out.println(prettyJson.substring(1, indexOfErrorInPretty) + ANSI_CYAN + "(!!!-- " + e.getMessage() + "--!!!)\n" + prettyJson.substring(indexOfErrorInPretty, prettyJson.length()) + ANSI_RESET);
-    }
-
-    private void test(Class clazz) {
-        Set<String> types = new HashSet<>();
-        types.add(clazz.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
-        if (clazz == DatasetWithOrganization.class) {
-            clazz = Dataset.class;
-        }
-        for (Entry entry : entriesList) {
-            //if (entry.getId().getEntryId() != 315L) {
-            //    continue;
-            //}
-            int[] knownBad = {};//81, 63, 62, 82, 37, 73};
-            if (ArrayUtils.contains(knownBad, entry.getId().getEntryId().intValue()))
-                continue;
-
-            String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
-            Object object;
-
-            jsonFromDatabase = jsonFromDatabase.replaceAll("\"coordinates\":\\[ *\\[ *[ ,0-9\\-\\.]* *\\] *\\],", "");
-            jsonFromDatabase = jsonFromDatabase.replaceAll("\"size\":0", "\"size\":0.0");
-
-            JsonObject jsonObjectFromDatabase = null;
-            try {
-                jsonObjectFromDatabase = new JsonParser().parse(jsonFromDatabase).getAsJsonObject();
-            } catch (JsonSyntaxException e) {
-                printHelpfulJsonError(jsonFromDatabase, e, null);
-            }
-
-            jsonFromDatabase = jsonObjectFromDatabase.toString();
-
-            try {
-                //here!!!
-                object = converter.fromJson(jsonFromDatabase, clazz);
-                //object = gson.fromJson(jsonFromDatabase, clazz);
-            } catch (JsonSyntaxException e) {
-                printHelpfulJsonError(jsonFromDatabase, e, null);
-                throw e;
-            }
-
+        object = converter.fromJson(jsonFromDatabase, clazz);
 
             /*//ignore empties
             jsonFromDatabase = jsonFromDatabase.replaceAll("\"[A-Za-z]+\":\\[\\],*", "");
             jsonFromDatabase = jsonFromDatabase.replaceAll(", *]", "]");
             jsonFromDatabase = jsonFromDatabase.replaceAll(", *\\}", "}");*/
 
-            JsonObject jsonObjectFromClass = converter.toJsonObject(clazz, object);
+        JsonObject jsonObjectFromClass = converter.toJsonObject(clazz, object);
 
-            jsonObjectFromClass.remove("class");
-            if (!jsonObjectFromDatabase.has("subtype"))
-                jsonObjectFromClass.remove("subtype");
+        jsonObjectFromClass.remove("class");
+        if (!jsonObjectFromDatabase.has("subtype"))
+            jsonObjectFromClass.remove("subtype");
 
 
-            Map<String, Object> databaseMap = gson.fromJson(jsonFromDatabase, mapType);
-            Map<String, Object> convertedObjectMap = gson.fromJson(jsonObjectFromClass, mapType);
-            MapDifference<String, Object> d = Maps.difference(databaseMap, convertedObjectMap);
-            if (!d.toString().equalsIgnoreCase("equal")) {
-                if (d.entriesOnlyOnLeft().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), database JSON contains");
-                    Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
-                    while (it.hasNext()) {
+        Map<String, Object> databaseMap = gson.fromJson(jsonFromDatabase, mapType);
+        Map<String, Object> convertedObjectMap = gson.fromJson(jsonObjectFromClass, mapType);
+        MapDifference<String, Object> d = Maps.difference(databaseMap, convertedObjectMap);
+        if (!d.toString().equalsIgnoreCase("equal")) {
+            if (d.entriesOnlyOnLeft().size() > 0) {
+                System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), database JSON contains");
+                Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
+                while (it.hasNext()) {
 
-                        String field = it.next();
-                        System.out.print(" " + field + ",");
+                    String field = it.next();
+                    System.out.print(" " + field + ",");
 
-                    }
-                    System.out.print(" but unmarshalled object does not.\n");
                 }
+                System.out.print(" but unmarshalled object does not.\n");
+            }
 
-                if (d.entriesOnlyOnRight().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), unmarshalled object contains");
-                    Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
-                    while (it.hasNext()) {
-                        String field = it.next();
-                        System.out.print(" " + field + ",");
+            if (d.entriesOnlyOnRight().size() > 0) {
+                System.out.print("Entry " + jsonObjectFromClass.get("title") + " (" + entry.getId().getEntryId() + "), unmarshalled object contains");
+                Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
+                while (it.hasNext()) {
+                    String field = it.next();
+                    System.out.print(" " + field + ",");
 
-                    }
-                    System.out.print(" but database JSON does not.\n");
                 }
+                System.out.print(" but database JSON does not.\n");
+            }
 
-                if (d.entriesDiffering().size() > 0) {
-                    Iterator<String> it = d.entriesDiffering().keySet().iterator();
-                    while (it.hasNext()) {
-                        String value = it.next();
+            if (d.entriesDiffering().size() > 0) {
+                Iterator<String> it = d.entriesDiffering().keySet().iterator();
+                while (it.hasNext()) {
+                    String value = it.next();
 
-                        String left;
-                        if (jsonObjectFromDatabase.get(value).isJsonArray()) {
-                            left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
-                        } else {
-                            left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonObject());
+                    String left;
+                    if (jsonObjectFromDatabase.get(value).isJsonArray()) {
+                        left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                    } else {
+                        left = sortJsonObject(jsonObjectFromDatabase.get(value).getAsJsonObject());
+                    }
+
+                    String right;
+                    if (jsonObjectFromClass.get(value).isJsonArray()) {
+                        right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                    } else {
+                        right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonObject());
+                    }
+
+                    if (!left.equals(right)) {
+                        int idxOfDifference = indexOfDifference(left, right);
+
+
+                        try {
+                            System.out.println("In " + value + " section from Database: ...\n" + left.substring(0, idxOfDifference) + Converter.ANSI_CYAN + left.substring(idxOfDifference, left.length()) + Converter.ANSI_RESET);
+                            System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + Converter.ANSI_CYAN + right.substring(idxOfDifference, right.length()) + Converter.ANSI_RESET);
+                        } catch (StringIndexOutOfBoundsException e) {
+                            System.out.println("idxOfDifference:" + idxOfDifference);
+                            // System.out.println("end:" + end);
+
+                            throw e;
                         }
-
-                        String right;
-                        if (jsonObjectFromClass.get(value).isJsonArray()) {
-                            right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonArray().get(0).getAsJsonObject());
-                        } else {
-                            right = sortJsonObject(jsonObjectFromClass.get(value).getAsJsonObject());
-                        }
-
-                        if (!left.equals(right)) {
-                            int idxOfDifference = indexOfDifference(left, right);
-
-
-                            try {
-                                System.out.println("In " + value + " section from Database: ...\n" + left.substring(0, idxOfDifference) + ANSI_CYAN + left.substring(idxOfDifference, left.length()) + ANSI_RESET);
-                                System.out.println("In " + value + " section in Java: ...\n" + right.substring(0, idxOfDifference) + ANSI_CYAN + right.substring(idxOfDifference, right.length()) + ANSI_RESET);
-                            } catch (StringIndexOutOfBoundsException e) {
-                                System.out.println("idxOfDifference:" + idxOfDifference);
-                                // System.out.println("end:" + end);
-
-                                throw e;
-                            }
-                        } else {
-                            System.out.println(d);
-                        }
-
+                    } else {
+                        System.out.println(d);
                     }
 
                 }
             }
-            if (!d.toString().equals("equal"))
-                System.out.println("\t Error message: " + d + "\n\n");
-            assertEquals(d.toString(), "equal");
+        }
+        return d;
+    }
+
+    private void test(Class clazz) {
+        Set<String> types = new HashSet<>();
+        types.add(clazz.getTypeName());
+
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        for (Entry entry : entriesList) {
+            MapDifference<String, Object> difference = verifySerialization(entry.getId(), clazz);
+
+            if (!difference.toString().equals("equal"))
+                System.out.println("\t Error message: " + difference + "\n\n");
+            assertEquals(difference.toString(), "equal");
         }
     }
 
@@ -275,7 +226,6 @@ public class TestConvertDatsToJava {
         test(DataStandard.class);
     }
 
-  
     @Test
     public void testDataFormatConverters() {
         test(DataFormatConverters.class);
@@ -294,12 +244,6 @@ public class TestConvertDatsToJava {
     @Test
     public void testDataset() {
         test(Dataset.class);
-    }
-
-
-    @Test
-    public void testDatasetWithOrganization() {
-        test(DatasetWithOrganization.class);
     }
 
     @Test

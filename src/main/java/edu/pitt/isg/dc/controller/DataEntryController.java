@@ -19,7 +19,6 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -329,7 +328,7 @@ public class DataEntryController {
         return "entryConfirmation";
     }
 
-    @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
     public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
@@ -363,10 +362,10 @@ public class DataEntryController {
 
 
         return "datasetWithOrganizationForm";
-    }
+    }*/
 
-    @RequestMapping(value = "/addDatasetWithOrganization/{categoryID}", method = RequestMethod.POST)
-    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
+  /*  @RequestMapping(value = "/addDatasetWithOrganization/{categoryID}", method = RequestMethod.POST)
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("datasetWithOrganization") @Validated Dataset datasetWithOrganization,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
             result.addError(new ObjectError("categoryIDError", ""));
@@ -381,7 +380,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.toJsonObject(DatasetWithOrganization.class, datasetWithOrganization);
+        JsonObject json = converter.toJsonObject(Dataset.class, datasetWithOrganization);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", datasetWithOrganization.getClass().toString());
@@ -391,7 +390,7 @@ public class DataEntryController {
         entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
 
         return "entryConfirmation";
-    }
+    }*/
 
 
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)

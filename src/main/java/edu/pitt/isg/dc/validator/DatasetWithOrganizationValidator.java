@@ -15,6 +15,17 @@ import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
 public class DatasetWithOrganizationValidator implements Validator {
     @Override
     public boolean supports(Class<?> aClass) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object o, Errors errors) {
+
+    }
+
+  /*
+   @Override
+  public boolean supports(Class<?> aClass) {
         return DatasetWithOrganization.class.equals(aClass);
     }
 
@@ -66,5 +77,5 @@ public class DatasetWithOrganizationValidator implements Validator {
 
         clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
         clearBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
-    }
+    }*/
 }
