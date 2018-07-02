@@ -63,6 +63,8 @@ public class DatasetWithOrganizationValidator implements Validator {
         clearDistributions(dataset.getDistributions(), errors);
 
         // Remove empty isAbout and spatial coverage
+
+        //THE FOLLOWING NEEDS TO HANDLE ISABOUTs not BiologicalEntities -- JDL
         clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
         clearBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
     }

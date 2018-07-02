@@ -1,7 +1,7 @@
 package edu.pitt.isg.dc.controller;
 
 
-import com.github.davidmoten.xsdforms.Generator;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -38,6 +38,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
+import scala.util.regexp.Base;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -330,7 +331,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataset);
+        JsonObject json = converter.toJsonObject(Dataset.class, dataset);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataset.getClass().toString());
@@ -393,7 +394,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(datasetWithOrganization);
+        JsonObject json = converter.toJsonObject(DatasetWithOrganization.class, datasetWithOrganization);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", datasetWithOrganization.getClass().toString());
@@ -463,7 +464,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataFormatConverters);
+        JsonObject json = converter.toJsonObject(DataFormatConverters.class, dataFormatConverters);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataFormatConverters.getClass().toString());
@@ -533,7 +534,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataService);
+        JsonObject json = converter.toJsonObject(DataService.class, dataService);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataService.getClass().toString());
@@ -598,7 +599,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataVisualizer);
+        JsonObject json = converter.toJsonObject(DataVisualizers.class, dataVisualizer);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataVisualizer.getClass().toString());
@@ -664,7 +665,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseForecaster);
+        JsonObject json = converter.toJsonObject(DiseaseForecasters.class, diseaseForecaster);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseForecaster.getClass().toString());
@@ -730,7 +731,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseTransmissionModel);
+        JsonObject json = converter.toJsonObject(DiseaseTransmissionModel.class, diseaseTransmissionModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseTransmissionModel.getClass().toString());
@@ -796,7 +797,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseTransmissionTreeEstimator);
+        JsonObject json = converter.toJsonObject(DiseaseTransmissionTreeEstimators.class, diseaseTransmissionTreeEstimator);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseTransmissionTreeEstimator.getClass().toString());
@@ -863,7 +864,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(metagenomicAnalysis);
+        JsonObject json = converter.toJsonObject(MetagenomicAnalysis.class, metagenomicAnalysis);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", metagenomicAnalysis.getClass().toString());
@@ -929,7 +930,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(modelingPlatform);
+        JsonObject json = converter.toJsonObject(ModelingPlatforms.class, modelingPlatform);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", modelingPlatform.getClass().toString());
@@ -996,7 +997,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(pathogenEvolutionModel);
+        JsonObject json = converter.toJsonObject(PathogenEvolutionModels.class, pathogenEvolutionModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", pathogenEvolutionModel.getClass().toString());
@@ -1062,7 +1063,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(phylogeneticTreeConstructor);
+        JsonObject json = converter.toJsonObject(PhylogeneticTreeConstructors.class, phylogeneticTreeConstructor);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", phylogeneticTreeConstructor.getClass().toString());
@@ -1128,7 +1129,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(populationDynamicsModel);
+        JsonObject json = converter.toJsonObject(PopulationDynamicsModel.class, populationDynamicsModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", populationDynamicsModel.getClass().toString());
@@ -1194,7 +1195,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(syntheticEcosystemConstructor);
+        JsonObject json = converter.toJsonObject(SyntheticEcosystemConstructors.class, syntheticEcosystemConstructor);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", syntheticEcosystemConstructor.getClass().toString());
@@ -1259,7 +1260,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataStandard);
+        JsonObject json = converter.toJsonObject(DataStandard.class, dataStandard);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataStandard.getClass().toString());
