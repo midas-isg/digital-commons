@@ -32,11 +32,11 @@
                             </button>
                             <c:choose>
                                 <c:when test="${isFirstRequired}">
-                                    <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                    <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                                             path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
                                 </c:when>
                                 <c:otherwise>
-                                    <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                                    <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                                                specifier="${specifier}-${varStatus.count-1}-name"
                                                                                path="${path}[${varStatus.count-1}].name"
                                                                                string="${organization.name}"></myTags:editNonRequiredNonZeroLengthString>
@@ -49,7 +49,7 @@
                             <button class="btn btn-danger organization-remove" type="button"><i
                                     class="glyphicon glyphicon-remove"></i> Remove
                             </button>
-                            <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                            <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                                        specifier="${specifier}-${varStatus.count-1}-name"
                                                                        path="${path}[${varStatus.count-1}].name"
                                                                        string="${organization.name}"></myTags:editNonRequiredNonZeroLengthString>
@@ -57,7 +57,7 @@
                     </c:choose>
 
 
-                    <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+                    <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" The shortname, abbreviation associated to the organization."
                                                                specifier="${specifier}-${varStatus.count-1}-abbreviation"
                                                                path="${path}[${varStatus.count-1}].abbreviation"
                                                                string="${organization.abbreviation}"></myTags:editNonRequiredNonZeroLengthString>
@@ -92,17 +92,17 @@
 
                 <c:choose>
                     <c:when test="${isFirstRequired}">
-                        <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                        <myTags:editRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                                 path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
                     </c:when>
                     <c:otherwise>
-                        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+                        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                                    specifier="${specifier}-0-name"
                                                                    path="${path}[0].name"></myTags:editNonRequiredNonZeroLengthString>
                     </c:otherwise>
                 </c:choose>
 
-                <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+                <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" The shortname, abbreviation associated to the organization."
                                                            specifier="${specifier}-0-abbreviation"
                                                            path="${path}[0].abbreviation"></myTags:editNonRequiredNonZeroLengthString>
 
@@ -126,11 +126,11 @@
         <button class="btn btn-danger organization-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" Organization Name"
+        <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                    specifier="${specifier}-name"
                                                    path="${path}[0].name"></myTags:editNonRequiredNonZeroLengthString>
 
-        <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" Abbreviation"
+        <myTags:editNonRequiredNonZeroLengthString label="Abbreviation" placeholder=" The shortname, abbreviation associated to the organization."
                                                    specifier="${specifier}-abbreviation"
                                                    path="${path}[0].abbreviation"></myTags:editNonRequiredNonZeroLengthString>
 

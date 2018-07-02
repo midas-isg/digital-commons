@@ -43,13 +43,13 @@
                     <div class="form-group edit-form-group">
                         <label>Identifier</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                               name="${path}[${varStatus.count-1}].identifier" placeholder="Identifier">
+                               name="${path}[${varStatus.count-1}].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
                     </div>
 
                     <div class="form-group edit-form-group">
                         <label>Identifier Source</label>
                         <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                               name="${path}[${varStatus.count-1}].identifierSource" placeholder="Identifier Source">
+                               name="${path}[${varStatus.count-1}].identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
                     </div>
 
                 </div>
@@ -81,13 +81,13 @@
                     <label>Identifier</label>
                     <input type="text" class="form-control" value="${identifier.identifier}"
                            name="${path}.identifier"
-                           placeholder="Identifier">
+                           placeholder=" A code uniquely identifying an entity locally to a system or globally.">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Identifier Source</label>
                     <input type="text" class="form-control" value="${identifier.identifierSource}"
-                           name="${path}.identifierSource" placeholder="Identifier Source">
+                           name="${path}.identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
                 </div>
             </div>
             <div class="${specifier}-identifier-add-more">
@@ -117,13 +117,13 @@
                     <label>Identifier</label>
                     <input type="text" class="form-control" value="${identifierName}"
                            name="${path}.identifier"
-                           placeholder="Identifier">
+                           placeholder=" A code uniquely identifying an entity locally to a system or globally.">
                 </div>
 
                 <div class="form-group edit-form-group">
                     <label>Identifier Source</label>
                     <input type="text" class="form-control" value="${identifierSource}"
-                           name="${path}.identifierSource" placeholder="Identifier Source">
+                           name="${path}.identifierSource" placeholder="  The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
                 </div>
             </div>
             <div class="${specifier}-identifier-add-more">
@@ -162,14 +162,14 @@
         <div class="form-group edit-form-group">
             <label>Identifier</label>
             <input type="text" class="form-control" name="specifier-identifier"
-                   placeholder="Identifier">
+                   placeholder=" A code uniquely identifying an entity locally to a system or globally.">
         </div>
 
         <div class="form-group edit-form-group">
             <label>Identifier Source</label>
             <input type="text" class="form-control"
                    name="specifier-identifierSource"
-                   placeholder="Identifier Source">
+                   placeholder="  The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
         </div>
 
     </div>
