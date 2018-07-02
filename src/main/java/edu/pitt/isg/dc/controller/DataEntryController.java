@@ -38,7 +38,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import scala.util.regexp.Base;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -265,19 +264,7 @@ public class DataEntryController {
     @Autowired
     private DataGovInterface dataGovInterface;
 
-    @Component
-    public class StartupHousekeeper implements ApplicationListener<ContextRefreshedEvent> {
-        @Override
-        public void onApplicationEvent(final ContextRefreshedEvent event) {
-            try {
-                readXSDFiles(context);
-            } catch (Exception e) {
-
-            }
-        }
-    }
-
-    @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
+       @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
     public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
@@ -1322,70 +1309,7 @@ public class DataEntryController {
         return jsonString;
     }
 
-    private static void generateForm(String xsdFile, String rootElementName, ApplicationContext appContext, ServletContext context) throws IOException {
-        InputStream schema;
-        String idPrefix = "";
-        String htmlString;
-        scala.Option<String> rootElement;
 
-        if (rootElementName != null) {
-            rootElement = scala.Option.apply(rootElementName);
-
-            schema = appContext.getResource(xsdFile).getInputStream();
-            htmlString = "";
-                    //Generator.generateHtmlAsString(schema, idPrefix, rootElement);
-            schema.close();
-            writeFormToPath(context.getRealPath("/WEB-INF/views/"), rootElementName, htmlString);
-        }
-    }
-
-    private static void writeFormToPath(String realPath, String className, String htmlString) {
-        Path path = FileSystems.getDefault().getPath(realPath, className + ".jsp");
-        Charset charset = Charset.forName("US-ASCII");
-        try (BufferedWriter writer = Files.newBufferedWriter(path, charset)) {
-            writer.write(htmlString, 0, htmlString.length());
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
-        }
-    }
-
-    public static String readXSDFiles(ServletContext context) throws Exception {
-        ApplicationContext appContext = new ClassPathXmlApplicationContext(new String[]{});
-        InputStream schema;
-        DocumentBuilderFactory dbFactory;
-        DocumentBuilder dBuilder;
-        Document document;
-        String rootElementName;
-        String typeList = "";
-
-        for (int i = 0; i < XSD_FILES.length; i++) {
-            typeList += (XSD_FILES[i] + ":");
-            schema = appContext.getResource(XSD_FILES[i]).getInputStream();
-            dbFactory = DocumentBuilderFactory.newInstance();
-            dBuilder = dbFactory.newDocumentBuilder();
-            document = dBuilder.parse(schema);
-            schema.close();
-
-            NodeList nodes = document.getElementsByTagName("schema").item(0).getChildNodes();
-            int nodesLength = nodes.getLength();
-
-            for (int j = 0; j < nodesLength; j++) {
-                if (nodes.item(j).getNodeName().equals("element")) {
-                    rootElementName = nodes.item(j).getAttributes().getNamedItem("name").getNodeValue();
-                    typeList += (rootElementName + ";");
-
-                    if (GENERATE_XSD_FORMS) {
-                        generateForm(XSD_FILES[i], rootElementName, appContext, context);
-                    }
-                }
-            }
-            typeList += "-";
-        }
-
-        GENERATE_XSD_FORMS = false;
-
-        return typeList;
-    }
 
     @RequestMapping(value = "/addDataGovRecordById", method = RequestMethod.GET)
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
