@@ -30,22 +30,23 @@ public class DatasetValidator implements Validator {
         if (dataset.getCreators().size() == 0) {
             errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
         } else {
-            boolean hasError = true;
-            ListIterator<PersonComprisedEntity> iterator = dataset.getCreators().listIterator();
-            while (iterator.hasNext()) {
-                PersonComprisedEntity personComprisedEntity = iterator.next();
-                if (personComprisedEntity instanceof Person) {
-                    Person person = (Person) personComprisedEntity;
-                    if (isEmpty(person.getFirstName()) && isEmpty(person.getLastName()) && isEmpty(person.getEmail())) {
-                        iterator.remove();
-                    } else {
-                        hasError = false;
-                    }
-                } else if (personComprisedEntity instanceof Organization) {
-                    //ADD CODE HERE
-                }
-            }
-            if (hasError) {
+            clearPersonComprisedEntity(dataset.getCreators(), errors, "creators");
+//            boolean hasError = true;
+//            ListIterator<PersonComprisedEntity> iterator = dataset.getCreators().listIterator();
+//            while (iterator.hasNext()) {
+//                PersonComprisedEntity personComprisedEntity = iterator.next();
+//                if (personComprisedEntity instanceof Person) {
+//                    Person person = (Person) personComprisedEntity;
+//                    if (isEmpty(person.getFirstName()) && isEmpty(person.getLastName()) && isEmpty(person.getEmail())) {
+//                        iterator.remove();
+//                    } else {
+//                        hasError = false;
+//                    }
+//                } else if (personComprisedEntity instanceof Organization) {
+//                    //ADD CODE HERE
+//                }
+//            }
+            if (dataset.getCreators().size() == 0) {
                 errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
             }
         }

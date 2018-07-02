@@ -110,6 +110,48 @@ public class ValidatorHelperMethods {
     }
 
 
+    public static void clearPersonComprisedEntity(List<? extends PersonComprisedEntity> personComprisedEntities, Errors errors, String errorMessageLocation) {
+
+        // Validate and remove empty creators
+        ListIterator<? extends PersonComprisedEntity> iterator = personComprisedEntities.listIterator();
+        while (iterator.hasNext()) {
+            PersonComprisedEntity personComprisedEntity = iterator.next();
+            if (personComprisedEntity instanceof Person) {
+                Person person = (Person) personComprisedEntity;
+                if (isEmpty(person.getFirstName()) && isEmpty(person.getLastName()) && isEmpty(person.getEmail())) {
+                    iterator.remove();
+                }
+            }
+            if (personComprisedEntity instanceof Organization) {
+                Organization organization = (Organization) personComprisedEntity;
+                if (isEmpty(organization.getName()) && isEmpty(organization.getAbbreviation()) && isEmpty(organization.getLocation().getName()) && isEmpty(organization.getLocation().getDescription()) && isEmpty(organization.getLocation().getPostalAddress())) {
+                    iterator.remove();
+                } else if (isEmpty(organization.getName())) {
+                    errors.rejectValue(errorMessageLocation + "[" + iterator.previousIndex() + "].name", "NotEmpty.dataset.creator.name");
+                }
+            }
+        }
+
+//        // Validate and remove empty creators
+//        if (dataset.getCreators().size() == 0) {
+//            errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
+//        } else {
+//            ListIterator<Organization> iterator = dataset.getCreators().listIterator();
+//            while (iterator.hasNext()) {
+//                Organization organization = iterator.next();
+//                if (isEmpty(organization.getName())) {
+//                    errors.rejectValue("creators[" + iterator.previousIndex() + "].name", "NotEmpty.dataset.creator.name");
+//                }
+//                if (isEmpty(organization.getName()) && isEmpty(organization.getAbbreviation()) && isEmpty(organization.getLocation().getName()) && isEmpty(organization.getLocation().getDescription()) && isEmpty(organization.getLocation().getPostalAddress())) {
+//                    iterator.remove();
+//                }
+//            }
+//            if (dataset.getCreators().size() == 0) {
+//                errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
+//            }
+//        }
+    }
+
     public static void clearDateType(Date date, Errors errors, String errorMessageLocation) {
         try {
             if (isEmpty(date.getType().getValueIRI()) && isEmpty(date.getType().getValue())) {
