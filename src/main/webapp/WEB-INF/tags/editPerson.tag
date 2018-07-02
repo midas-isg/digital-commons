@@ -31,23 +31,23 @@
                         </button>
                         <c:choose>
                             <c:when test="${isFirstRequired}">
-                                <myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+                                <myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                                         path="${path}[0].firstName"></myTags:editRequiredNonZeroLengthString>
-                                <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+                                <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                                         path="${path}[0].lastName"></myTags:editRequiredNonZeroLengthString>
-                                <myTags:editRequiredNonZeroLengthString label="Email" placeholder=" Email"
+                                <myTags:editRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                                         path="${path}[0].email"></myTags:editRequiredNonZeroLengthString>
                             </c:when>
                             <c:otherwise>
-                                <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+                                <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                                            specifier="${specifier}-${varStatus.count-1}-firstName"
                                                                            path="${path}[${varStatus.count-1}].firstName"
                                                                            string="${path}[${varStatus.count-1}].firstName"></myTags:editNonRequiredNonZeroLengthString>
-                                <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+                                <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                                            specifier="${specifier}-${varStatus.count-1}-lastName"
                                                                            path="${path}[${varStatus.count-1}].lastName"
                                                                            string="${path}[${varStatus.count-1}].lastName"></myTags:editNonRequiredNonZeroLengthString>
-                                <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" Email"
+                                <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                                            specifier="${specifier}-${varStatus.count-1}-email"
                                                                            path="${path}[${varStatus.count-1}].email"
                                                                            string="${path}[${varStatus.count-1}].email"></myTags:editNonRequiredNonZeroLengthString>
@@ -61,15 +61,15 @@
                         <button class="btn btn-danger person-remove" type="button"><i
                                 class="glyphicon glyphicon-remove"></i> Remove
                         </button>
-                        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+                        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                                    specifier="${specifier}-${varStatus.count-1}-firstName"
                                                                    path="${path}[${varStatus.count-1}].firstName"
                                                                    string="${path}[${varStatus.count-1}].firstName"></myTags:editNonRequiredNonZeroLengthString>
-                        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+                        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                                    specifier="${specifier}-${varStatus.count-1}-lastName"
                                                                    path="${path}[${varStatus.count-1}].lastName"
                                                                    string="${path}[${varStatus.count-1}].lastName"></myTags:editNonRequiredNonZeroLengthString>
-                        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" Email"
+                        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                                    specifier="${specifier}-${varStatus.count-1}-email"
                                                                    path="${path}[${varStatus.count-1}].email"
                                                                    string="${path}[${varStatus.count-1}].email"></myTags:editNonRequiredNonZeroLengthString>
@@ -97,21 +97,21 @@
                 </button>
                 <c:choose>
                     <c:when test="${isFirstRequired}">
-                        <myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+                        <myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                                 path="${path}[0].firstName"></myTags:editRequiredNonZeroLengthString>
-                        <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+                        <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                                 path="${path}[0].lastName"></myTags:editRequiredNonZeroLengthString>
-                        <myTags:editRequiredNonZeroLengthString label="Email" placeholder=" Email"
+                        <myTags:editRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                                 path="${path}[0].email"></myTags:editRequiredNonZeroLengthString>
                     </c:when>
                     <c:otherwise>
-                        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+                        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                                    specifier="${specifier}-firstName"
                                                                    path="${path}[0].firstName"></myTags:editNonRequiredNonZeroLengthString>
-                        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+                        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                                    specifier="${specifier}-lastName"
                                                                    path="${path}[0].lastName"></myTags:editNonRequiredNonZeroLengthString>
-                        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" Email"
+                        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                                    specifier="${specifier}-email"
                                                                    path="${path}[0].email"></myTags:editNonRequiredNonZeroLengthString>
                     </c:otherwise>
@@ -131,13 +131,13 @@
         <button class="btn btn-danger person-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" First Name"
+        <myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."
                                                    specifier="${specifier}-firstName"
                                                    path="${path}[0].firstName"></myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" Last Name"
+        <myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
                                                    specifier="${specifier}-lastName"
                                                    path="${path}[0].lastName"></myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" Email"
+        <myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."
                                                    specifier="${specifier}-email"
                                                    path="${path}[0].email"></myTags:editNonRequiredNonZeroLengthString>
     </div>

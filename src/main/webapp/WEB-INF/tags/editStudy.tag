@@ -33,12 +33,14 @@
 
                     <c:choose>
                         <c:when test="${not empty study.name}">
-                            <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
+                                                                    label="Name"
                                                                     string="${study.name}"
                                                                     path="${path}.name"></myTags:editRequiredNonZeroLengthString>
                         </c:when>
                         <c:otherwise>
-                            <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
+                                                                    label="Name"
                                                                     path="${path}.name"></myTags:editRequiredNonZeroLengthString>
                         </c:otherwise>
                     </c:choose>
@@ -120,7 +122,8 @@
     <div class="form-group control-group">
         <button class="btn btn-danger study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
         </button>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+        <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
+                                                label="Name"
                                                 path="${path}.name"></myTags:editRequiredNonZeroLengthString>
         <div>
             <button class="btn btn-success add-location" id="location" type="button"><i
