@@ -38,7 +38,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
-import scala.util.regexp.Base;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
