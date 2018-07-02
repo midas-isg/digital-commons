@@ -95,22 +95,22 @@
             Remove
         </button>
         <br><br>
-            <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+            <myTags:editRequiredNonZeroLengthString placeholder="Name" label="Name"
                                                     path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
         <div class="form-group">
             <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description" label="Description" placeholder="Description"
-                                                       specifier="${specifier}-0"></myTags:editNonRequiredNonZeroLengthString>
+                                                       specifier="${specifier}-null"></myTags:editNonRequiredNonZeroLengthString>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].identifier"
-                                   specifier="${specifier}-0"
+                                   specifier="${specifier}-null"
                                    label="Identifier"></myTags:editIdentifier>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].alternateIdentifiers" unbounded="${true}"
-                                   specifier="${specifier}-0-alternate"
+                                   specifier="${specifier}-null-alternate"
                                    label="Alternate Identifier"></myTags:editIdentifier>
         </div>
     </div>
@@ -128,7 +128,7 @@
             html = html.replace('name="name"', 'name=${specifier}[' + count + '].name');
             var regex = new RegExp(specifier + '\\[0\\]', "g");
             html = html.replace('biological-entity-remove', '${specifier}-biological-entity-remove').replace("<label></label>", "<label>${name}</label>").replace(regex, specifier+'[' + count + ']');
-            regex = new RegExp(specifier + '-0', "g");
+            regex = new RegExp(specifier + '-null', "g");
             html = html.replace(regex, specifier + '-' + count);
             <%--$(".${specifier}-biological-entity-add-more").after(html);--%>
             $(".${specifier}-biological-entity-add-more").before(html);

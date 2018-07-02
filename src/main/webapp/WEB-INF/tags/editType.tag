@@ -46,7 +46,7 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Information</label>
-                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-information"
+                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-information"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
@@ -76,7 +76,7 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Method</label>
-                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-method"
+                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-method"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
@@ -106,7 +106,7 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <label id="annotation-label">Platform</label>
-                                <button class="btn btn-danger annotation-remove" id="${varStatus.count-1}-platform"
+                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-platform"
                                         type="button"><i
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
@@ -177,7 +177,7 @@
 <div class="copy-annotation-information hide">
     <div class="form-group control-group edit-form-group">
         <label id="annotation-label">Information</label>
-        <button class="btn btn-danger annotation-remove" id="information" type="button"><i
+        <button class="btn btn-danger annotation-type-remove" id="information" type="button"><i
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
@@ -188,7 +188,7 @@
 <div class="copy-annotation-method hide">
     <div class="form-group control-group edit-form-group">
         <label id="annotation-label">Method</label>
-        <button class="btn btn-danger annotation-remove" id="method" type="button"><i
+        <button class="btn btn-danger annotation-type-remove" id="method" type="button"><i
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
@@ -199,7 +199,7 @@
 <div class="copy-annotation-platform hide">
     <div class="form-group control-group edit-form-group">
         <label id="annotation-label">Platform</label>
-        <button class="btn btn-danger annotation-remove" id="platform" type="button"><i
+        <button class="btn btn-danger annotation-type-remove" id="platform" type="button"><i
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
@@ -277,17 +277,18 @@
                 $(this).hide();
             }
         });
-        $("body").on("click", ".annotation-remove", function () {
+        $("body").on("click", ".annotation-type-remove", function () {
             var id = event.target.id;
-            var count = id.split('-')[0];
-            var attributeName = id.split('-')[1];
-            if (count != undefined && attributeName != undefined) {
-
-                $(this).parents(".control-group")[0].remove();
-                console.log("#" + count + "-add-" + attributeName);
-                $("#" + count + "-add-" + attributeName + "-${specifier}").show();
-            } else {
-                console.log(event.target);
+            if (id != "") {
+                var count = id.split('-')[0];
+                var attributeName = id.split('-')[1];
+                if ((count != undefined && count != "") && (attributeName != undefined && attributeName != "")) {
+                    $(this).parents(".control-group")[0].remove();
+                    console.log("#" + count + "-add-" + attributeName);
+                    $("#" + count + "-add-" + attributeName + "-${specifier}").show();
+                } else {
+                    console.log(event.target);
+                }
             }
         });
     });
