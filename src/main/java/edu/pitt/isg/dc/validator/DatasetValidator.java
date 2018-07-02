@@ -70,7 +70,6 @@ public class DatasetValidator implements Validator {
         clearDistributions(dataset.getDistributions(), errors);
 
         // Remove empty isAbout and spatial coverage
-        //JDL JDL JDL
         clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
         clearBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
     }
