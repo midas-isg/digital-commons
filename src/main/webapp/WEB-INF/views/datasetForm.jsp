@@ -25,22 +25,25 @@
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}"></myTags:editCategory>
-                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path=" The name of the dataset, usually one sentece or short description of the dataset."
+                    <myTags:editRequiredNonZeroLengthString label="Title" path="title" placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                                             string="${dataset.title}"></myTags:editRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString path="description" string="${dataset.description}"
                                                                specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                                label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
                                            label="Identifier"></myTags:editIdentifier>
-                    <myTags:editPerson people="${dataset.creators}" label="Creators"
-                                       path="creators" specifier="creators"
-                                       isFirstRequired="true"></myTags:editPerson>
+                    <%--<myTags:editPerson people="${dataset.creators}" label="Creators"--%>
+                                       <%--path="creators" specifier="creators"--%>
+                                       <%--isFirstRequired="true"></myTags:editPerson>--%>
+                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}" label="Creator"
+                                       path="creators" specifier="creators" showAddPersonButton="true" showAddOrganizationButton="true"
+                                       isFirstRequired="true"></myTags:editPersonComprisedEntity>
                     <myTags:editType path="types" types="${dataset.types}"></myTags:editType>
-                    <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"
-                                                 name="Is About"></myTags:editBiologicalEntity>
-                    <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"
-                                                 specifier="spatialCoverage"
-                                                 name="Spatial Coverage"></myTags:editBiologicalEntity>
+                    <%--<myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"--%>
+                                                 <%--name="Is About"></myTags:editBiologicalEntity>--%>
+                    <%--<myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"--%>
+                                                 <%--specifier="spatialCoverage"--%>
+                                                 <%--name="Spatial Coverage"></myTags:editBiologicalEntity>--%>
                     <myTags:editStudy study="${dataset.producedBy}" specifier="producedBy"
                                       path="producedBy" label="Produced By"></myTags:editStudy>
                     <myTags:editDistributions distributions="${dataset.distributions}" specifier="distributions"

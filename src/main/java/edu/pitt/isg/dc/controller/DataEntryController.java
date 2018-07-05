@@ -17,9 +17,7 @@ import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
-import edu.pitt.isg.mdc.dats2_2.DataStandard;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
+import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -110,6 +108,7 @@ public class DataEntryController {
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder) {
+        binder.registerCustomEditor(PersonComprisedEntity.class, new PersonComprisedEntityEditor());
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
@@ -278,7 +277,9 @@ public class DataEntryController {
             model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+//            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+//            object = converter.fromJson(jsonFromDatabase, clazz);
+            dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
