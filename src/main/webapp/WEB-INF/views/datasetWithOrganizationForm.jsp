@@ -26,11 +26,12 @@
                     <label>Dataset with Organization</label>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}"></myTags:editCategory>
-                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title"
+                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                            path="title"
                                                             string="${datasetWithOrganization.title}"></myTags:editRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString path="description"
                                                                string="${datasetWithOrganization.description}"
-                                                               specifier="description" placeholder="Description"
+                                                               specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                                label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${datasetWithOrganization.identifier}" specifier="identifier"
                                            path="identifier" label="Identifier"></myTags:editIdentifier>

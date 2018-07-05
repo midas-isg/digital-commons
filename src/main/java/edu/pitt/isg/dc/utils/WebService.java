@@ -295,7 +295,7 @@ public class WebService {
         if (records != null) {
             String body = null;
             try {
-                body = converter.convertToXml(records);
+                body = converter.convertToXml(OAIPMHtype.class, records);
                 body = body.replaceAll("(?s)&lt;.*?&gt;", "");
                 //return ResponseEntity.status(HttpStatus.OK).body(records);
                 return ResponseEntity.status(HttpStatus.OK).body(body);

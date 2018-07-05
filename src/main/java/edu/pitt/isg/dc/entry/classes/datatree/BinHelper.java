@@ -3,7 +3,6 @@ package edu.pitt.isg.dc.entry.classes.datatree;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
-import scala.util.parsing.json.JSON;
 
 import java.util.HashMap;
 import java.util.Map;

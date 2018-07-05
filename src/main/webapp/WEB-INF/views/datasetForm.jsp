@@ -25,10 +25,10 @@
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}"></myTags:editCategory>
-                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title"
+                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path=" The name of the dataset, usually one sentece or short description of the dataset."
                                                             string="${dataset.title}"></myTags:editRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString path="description" string="${dataset.description}"
-                                                               specifier="description" placeholder="Description"
+                                                               specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                                label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
                                            label="Identifier"></myTags:editIdentifier>

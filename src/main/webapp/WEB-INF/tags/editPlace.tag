@@ -7,12 +7,14 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ attribute name="place" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Place" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="label" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
+<%--<%@ attribute name="placeholder" required="true"--%>
+              <%--type="java.lang.String" %>--%>
 
 
 <c:choose>
@@ -36,7 +38,7 @@
                                 <label>Name</label>
                                 <input type="text" class="form-control" value="${place.name}"
                                        name="${path}.name"
-                                       placeholder="The name of the place.">
+                                       placeholder=" The name of the place.">
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -44,7 +46,7 @@
                                 <label>Name</label>
                                 <input type="text" class="form-control"
                                        name="${path}.name"
-                                       placeholder="The name of the place.">
+                                       placeholder=" The name of the place.">
                             </div>
                         </c:otherwise>
                     </c:choose>
@@ -58,7 +60,7 @@
                                 <div class="input-group control-group">
                                     <input type="text" class="form-control" value="${place.description}"
                                            name="${path}.description"
-                                           placeholder="A textual narrative comprised of one or more statements describing the place.">
+                                           placeholder=" A textual narrative comprised of one or more statements describing the place.">
                                     <div class="input-group-btn">
                                         <button class="btn btn-danger ${specifier}-description-remove" id="${specifier}-description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                             Remove
@@ -86,7 +88,7 @@
                                 <div class="input-group control-group">
                                     <input type="text" class="form-control" value="${place.postalAddress}"
                                            name="${path}.postalAddress"
-                                           placeholder="A physical street address.">
+                                           placeholder=" A physical street address.">
                                     <div class="input-group-btn">
                                         <button class="btn btn-danger ${specifier}-postalAddress-remove" id="${specifier}-postalAddress-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                             Remove
@@ -134,7 +136,7 @@
             <label>Name</label>
             <input type="text" class="form-control"
                    name="${path}.name"
-                   placeholder="The name of the place.">
+                   placeholder=" The name of the place.">
         </div>
         <div class="form-group edit-form-group">
             <label>Description</label>
@@ -155,7 +157,7 @@
     <div class="input-group control-group">
         <input type="text" class="form-control"
                name="${path}.description"
-               placeholder="A textual narrative comprised of one or more statements describing the place.">
+               placeholder=" A textual narrative comprised of one or more statements describing the place.">
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-description-remove" id="${specifier}-description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
@@ -168,7 +170,7 @@
     <div class="input-group control-group">
         <input type="text" class="form-control"
                name="${path}.postalAddress"
-               placeholder="A physical street address.">
+               placeholder=" A physical street address.">
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-postalAddress-remove" id="${specifier}-postalAddress-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
