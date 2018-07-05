@@ -6,7 +6,8 @@ import edu.pitt.isg.dc.entry.exceptions.DataGovGeneralException;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
+import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.Dataset;
 import eu.trentorise.opendata.jackan.CkanClient;
 import eu.trentorise.opendata.jackan.model.CkanDataset;
 import edu.pitt.isg.CkanToDatsConverter;
@@ -61,9 +62,9 @@ public class DataGovTest {
         CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
         //System.out.println(dataset.getNotes());
-        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //Dataset dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
-        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
+        Dataset dataGovPackage = (Dataset) result.getDataset();
 
         DataGov dg = new DataGov();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
@@ -96,9 +97,9 @@ public class DataGovTest {
         String catalogURL = "http://catalog.data.gov/";
         CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
-        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //Dataset dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
-        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
+        Dataset dataGovPackage = (Dataset)result.getDataset();
 
         assertEquals("e60ad9ce-4333-43bd-bcbf-3b58d5767d77",dg.getRevisionIdFromDataGovPackage(dataGovPackage));
     }
@@ -120,9 +121,9 @@ public class DataGovTest {
         //CkanDataset dataset = ckanClient.getDataset("dfedaac8-8ede-4c1a-a988-17c230fe63ac");
         //CkanDataset dataset = ckanClient.getDataset("75b2f0dc-ed03-454a-b02d-951da90c91c1");
         System.out.println(dataset.getNotes());
-        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //Dataset dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
-        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
+        Dataset dataGovPackage = (Dataset)result.getDataset();
 
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
 
@@ -150,9 +151,9 @@ public class DataGovTest {
         CkanClient ckanClient = new CkanClient(catalogURL);
         CkanDataset dataset = ckanClient.getDataset("02b5e413-d746-43ee-bd52-eac4e33ecb41");
         System.out.println(dataset.getNotes());
-        //DatasetWithOrganization dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
+        //Dataset dataGovPackage = CkanToDatsConverter.convertCkanToDats(dataset, "http://catalog.data.gov/");
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
-        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
+        Dataset dataGovPackage = (Dataset)result.getDataset();
 
         String identifier = "https://data.cdc.gov/api/views/pb4z-432k";
         Entry entryFromMDC = dg.getEntryFromMDC(identifier);

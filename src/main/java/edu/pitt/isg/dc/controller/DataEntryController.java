@@ -17,7 +17,8 @@ import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
-import edu.pitt.isg.mdc.dats2_2.*;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
+import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -78,8 +79,6 @@ public class DataEntryController {
     @Autowired
     DatasetValidator datasetValidator;
     @Autowired
-    DatasetWithOrganizationValidator datasetWithOrganizationValidator;
-    @Autowired
     DataFormatConverterValidator dataFormatConverterValidator;
     @Autowired
     DataServiceValidator dataServiceValidator;
@@ -112,13 +111,6 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
-    }
-
-    @InitBinder("datasetWithOrganization")
-    protected void initBinderOrganization(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        binder.setValidator(datasetWithOrganizationValidator);
     }
 
     @InitBinder("dataFormatConverters")
@@ -277,9 +269,7 @@ public class DataEntryController {
             model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-//            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
-//            object = converter.fromJson(jsonFromDatabase, clazz);
-            dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);

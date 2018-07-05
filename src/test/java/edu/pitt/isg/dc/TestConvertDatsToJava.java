@@ -11,7 +11,6 @@ import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;
@@ -149,7 +148,7 @@ public class TestConvertDatsToJava {
         Set<String> types = new HashSet<>();
         types.add(clazz.getTypeName());
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
-        if (clazz == DatasetWithOrganization.class) {
+        if (clazz == Dataset.class) {
             clazz = Dataset.class;
         }
         for (Entry entry : entriesList) {
@@ -294,12 +293,6 @@ public class TestConvertDatsToJava {
     @Test
     public void testDataset() {
         test(Dataset.class);
-    }
-
-
-    @Test
-    public void testDatasetWithOrganization() {
-        test(DatasetWithOrganization.class);
     }
 
     @Test

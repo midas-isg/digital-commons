@@ -39,7 +39,7 @@
                     <myTags:editOrganization organizations="${datasetWithOrganization.creators}"
                                              label="Creators" path="creators"
                                              specifier="creators" isFirstRequired="true"></myTags:editOrganization>
-                    <myTags:editType path="types" types="${datasetWithOrganization.types}"></myTags:editType>
+                    <myTags:editType path="types" types="${datasetWithOrganization.types}" specifier="type"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${datasetWithOrganization.isAbout}"
                                                  specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity path="spatialCoverage"
