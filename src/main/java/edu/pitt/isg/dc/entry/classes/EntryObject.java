@@ -8,6 +8,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsHelper;
 import edu.pitt.isg.mdc.v1_0.Software;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.StringUtils;
+import org.openarchives.oai._2.OAIPMHtype;
 
 import java.util.*;
 
@@ -233,7 +234,7 @@ public class EntryObject {
 
     public String getXmlString() {
         if(this.getEntryType().contains("edu.pitt.isg.mdc.v1_0")) {
-            return DigitalCommonsHelper.jsonToXml((Software) getEntryAsTypeClass());
+            return DigitalCommonsHelper.jsonToXml((OAIPMHtype) getEntryAsTypeClass());
         } else {
             return null;
         }

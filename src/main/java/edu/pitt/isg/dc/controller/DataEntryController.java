@@ -18,7 +18,6 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -79,8 +78,6 @@ public class DataEntryController {
     @Autowired
     DatasetValidator datasetValidator;
     @Autowired
-    DatasetWithOrganizationValidator datasetWithOrganizationValidator;
-    @Autowired
     DataFormatConverterValidator dataFormatConverterValidator;
     @Autowired
     DataServiceValidator dataServiceValidator;
@@ -112,13 +109,6 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
-    }
-
-    @InitBinder("datasetWithOrganization")
-    protected void initBinderOrganization(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        binder.setValidator(datasetWithOrganizationValidator);
     }
 
     @InitBinder("dataFormatConverters")
@@ -289,7 +279,8 @@ public class DataEntryController {
             model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+//            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+            dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
@@ -329,7 +320,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataset);
+        JsonObject json = converter.toJsonObject(Dataset.class, dataset);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataset.getClass().toString());
@@ -339,71 +330,6 @@ public class DataEntryController {
         entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
         return "entryConfirmation";
     }
-
-    @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
-    public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
-        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-        DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
-        model.addAttribute("categoryID", 0);
-        model.addAttribute("entryId", entryId);
-        model.addAttribute("revisionId", revisionId);
-
-        if (entryId != null) {
-            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
-            EntryId id = entry.getId();
-            model.addAttribute("revisionId", id.getRevisionId());
-            EntryView entryView = new EntryView(entry);
-
-            datasetWithOrganization = converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
-            model.addAttribute("categoryID", entry.getCategory().getId());
-        }
-        model.addAttribute("datasetWithOrganization", datasetWithOrganization);
-
-        if (ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
-
-        if (ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if (ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
-
-        if (!model.containsAttribute("adminType")) {
-            return "accessDenied";
-        }
-
-
-        return "datasetWithOrganizationForm";
-    }
-
-    @RequestMapping(value = "/addDatasetWithOrganization/{categoryID}", method = RequestMethod.POST)
-    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
-                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
-        if (categoryID == 0) {
-            result.addError(new ObjectError("categoryIDError", ""));
-            model.addAttribute("categoryIDError", true);
-        }
-        if (result.hasErrors()) {
-            model.addAttribute("entryId", entryId);
-            model.addAttribute("revisionId", revisionId);
-            model.addAttribute("categoryID", categoryID);
-            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-            return "datasetWithOrganizationForm";
-        }
-        EntryView entryObject = new EntryView();
-
-        JsonObject json = converter.objectToJSonObject(datasetWithOrganization);
-        json.remove("class");
-        entryObject.setEntry(json);
-        entryObject.setProperty("type", datasetWithOrganization.getClass().toString());
-
-        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
-
-        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
-
-        return "entryConfirmation";
-    }
-
 
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)
     public String addNewDataFormatConverters(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
@@ -462,7 +388,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataFormatConverters);
+        JsonObject json = converter.toJsonObject(DataFormatConverters.class, dataFormatConverters);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataFormatConverters.getClass().toString());
@@ -532,7 +458,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataService);
+        JsonObject json = converter.toJsonObject(DataService.class, dataService);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataService.getClass().toString());
@@ -597,7 +523,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataVisualizer);
+        JsonObject json = converter.toJsonObject(DataVisualizers.class, dataVisualizer);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataVisualizer.getClass().toString());
@@ -663,7 +589,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseForecaster);
+        JsonObject json = converter.toJsonObject(DiseaseForecasters.class, diseaseForecaster);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseForecaster.getClass().toString());
@@ -729,7 +655,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseTransmissionModel);
+        JsonObject json = converter.toJsonObject(DiseaseTransmissionModel.class, diseaseTransmissionModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseTransmissionModel.getClass().toString());
@@ -795,7 +721,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(diseaseTransmissionTreeEstimator);
+        JsonObject json = converter.toJsonObject(DiseaseTransmissionTreeEstimators.class, diseaseTransmissionTreeEstimator);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", diseaseTransmissionTreeEstimator.getClass().toString());
@@ -862,7 +788,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(metagenomicAnalysis);
+        JsonObject json = converter.toJsonObject(MetagenomicAnalysis.class, metagenomicAnalysis);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", metagenomicAnalysis.getClass().toString());
@@ -928,7 +854,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(modelingPlatform);
+        JsonObject json = converter.toJsonObject(ModelingPlatforms.class, modelingPlatform);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", modelingPlatform.getClass().toString());
@@ -995,7 +921,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(pathogenEvolutionModel);
+        JsonObject json = converter.toJsonObject(PathogenEvolutionModels.class, pathogenEvolutionModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", pathogenEvolutionModel.getClass().toString());
@@ -1061,7 +987,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(phylogeneticTreeConstructor);
+        JsonObject json = converter.toJsonObject(PhylogeneticTreeConstructors.class, phylogeneticTreeConstructor);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", phylogeneticTreeConstructor.getClass().toString());
@@ -1127,7 +1053,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(populationDynamicsModel);
+        JsonObject json = converter.toJsonObject(PopulationDynamicsModel.class, populationDynamicsModel);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", populationDynamicsModel.getClass().toString());
@@ -1193,7 +1119,7 @@ public class DataEntryController {
         }
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(syntheticEcosystemConstructor);
+        JsonObject json = converter.toJsonObject(SyntheticEcosystemConstructors.class, syntheticEcosystemConstructor);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", syntheticEcosystemConstructor.getClass().toString());
@@ -1258,7 +1184,7 @@ public class DataEntryController {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.objectToJSonObject(dataStandard);
+        JsonObject json = converter.toJsonObject(DataStandard.class, dataStandard);
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataStandard.getClass().toString());
@@ -1293,7 +1219,8 @@ public class DataEntryController {
 
 //        System.out.println(xmlString);
         try {
-            jsonString = xml2JSONConverter.xmlToJson(xmlString);
+//            jsonString = xml2JSONConverter.xmlToJson(xmlString);
+            jsonString = xml2JSONConverter.xmlToJson(xmlString, false);
         } catch (Exception exception) {
             exception.printStackTrace();
         }

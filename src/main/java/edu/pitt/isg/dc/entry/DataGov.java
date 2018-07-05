@@ -60,7 +60,7 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public String getIdentifierFromPackage(DatasetWithOrganization dataGovPackage) {
+    public String getIdentifierFromPackage(Dataset dataGovPackage) {
         return dataGovPackage.getIdentifier().getIdentifier();
     }
 
@@ -105,7 +105,7 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public Date getlastModifiedDataGov(DatasetWithOrganization dataGovPackage) throws DataGovGeneralException {
+    public Date getlastModifiedDataGov(Dataset dataGovPackage) throws DataGovGeneralException {
         SimpleDateFormat sdf = new SimpleDateFormat(SDF_PATTERN);
         Date dateCreated = new Date();
         Date dateModified = new Date();
@@ -186,7 +186,7 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public String getRevisionIdFromDataGovPackage(DatasetWithOrganization dataGovPackage){
+    public String getRevisionIdFromDataGovPackage(Dataset dataGovPackage){
         String revisionId = "";
 
         for (CategoryValuePair categoryValuePair : dataGovPackage.getExtraProperties()) {
@@ -227,7 +227,7 @@ public class DataGov implements DataGovInterface {
 
 
     @Override
-    public Boolean modifiedDataGovPackage(Entry entry, DatasetWithOrganization dataGovPackage) throws DataGovGeneralException{
+    public Boolean modifiedDataGovPackage(Entry entry, Dataset dataGovPackage) throws DataGovGeneralException{
         Boolean hasBeenModified = false;
         if (!getRevisionIdFromDataGovPackage(dataGovPackage).equalsIgnoreCase(getRevisionIdFromEntry(entry))) {
             hasBeenModified = true;
@@ -240,10 +240,10 @@ public class DataGov implements DataGovInterface {
     }
 
     @Override
-    public JsonObject datasetToJSonObject(DatasetWithOrganization dataGovPackage) {
+    public JsonObject datasetToJSonObject(Dataset dataGovPackage) {
         JsonObject entry = null;
         Converter converter = new Converter();
-        entry = converter.objectToJSonObject(dataGovPackage);
+        entry = converter.toJsonObject(Dataset.class, dataGovPackage);
         return entry;
     }
 
@@ -260,7 +260,7 @@ public class DataGov implements DataGovInterface {
 
         CkanDataset dataset = getDatasetFromClient(catalogURL, dataGovIdentifier);
         CkanToDatsConverter.ConverterResult result = new CkanToDatsConverter().convertCkanToDats(dataset, catalogURL);
-        DatasetWithOrganization dataGovPackage = (DatasetWithOrganization)result.getDataset();
+        Dataset dataGovPackage = (Dataset)result.getDataset();
 
         if(!title.isEmpty()){
             dataGovPackage.setTitle(title);
@@ -302,7 +302,7 @@ public class DataGov implements DataGovInterface {
             //Serialize or Marshall Java to JSON
             entry = datasetToJSonObject(dataGovPackage);
 
-            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization");
+            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.Dataset");
 
             entry.remove("class");
             entryObject.setEntry(entry);

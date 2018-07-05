@@ -4,6 +4,7 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.mdc.v1_0.Software;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.openarchives.oai._2.OAIPMHtype;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +14,12 @@ import java.util.List;
  */
 public class DigitalCommonsHelper {
 
-    public static String jsonToXml(Software sw) {
+    public static String jsonToXml(OAIPMHtype oaipmHtype) {
         Converter converter = new Converter();
 
         String xml = null;
         try {
-            xml = converter.convertToXml(sw);
+            xml = converter.convertToXml(oaipmHtype);
             xml = xml.replaceAll("(?s)&lt;.*?&gt;", "");
         } catch(Exception e) {
             System.out.println("Error: " + e);

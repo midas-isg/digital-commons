@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataset/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
+            <form id="entry-form" action="${pageContext.request.contextPath}/addDataset/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
@@ -35,7 +35,7 @@
                     <myTags:editPerson people="${dataset.creators}" label="Creators"
                                        path="creators" specifier="creators"
                                        isFirstRequired="true"></myTags:editPerson>
-                    <myTags:editType path="types" types="${dataset.types}"></myTags:editType>
+                    <myTags:editType path="types" types="${dataset.types}" specifier="type"></myTags:editType>
                     <myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"
                                                  name="Is About"></myTags:editBiologicalEntity>
                     <myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"
@@ -51,7 +51,7 @@
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>

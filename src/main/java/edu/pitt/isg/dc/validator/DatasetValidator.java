@@ -24,23 +24,23 @@ public class DatasetValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title", "NotEmpty.dataset.title");
 
         // Validate and remove empty creators
-        if (dataset.getCreators().size() == 0) {
-            errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
-        } else {
-            boolean hasError = true;
-            ListIterator<Person> iterator = dataset.getCreators().listIterator();
-            while (iterator.hasNext()) {
-                Person person = iterator.next();
-                if (isEmpty(person.getFirstName()) && isEmpty(person.getLastName()) && isEmpty(person.getEmail())) {
-                    iterator.remove();
-                } else {
-                    hasError = false;
-                }
-            }
-            if (hasError) {
-                errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
-            }
-        }
+//        if (dataset.getCreators().size() == 0) {
+//            errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
+//        } else {
+//            boolean hasError = true;
+//            ListIterator<Person> iterator = dataset.getCreators().listIterator();
+//            while (iterator.hasNext()) {
+//                Person person = iterator.next();
+//                if (isEmpty(person.getFirstName()) && isEmpty(person.getLastName()) && isEmpty(person.getEmail())) {
+//                    iterator.remove();
+//                } else {
+//                    hasError = false;
+//                }
+//            }
+//            if (hasError) {
+//                errors.rejectValue("creators[0]", "NotEmpty.dataset.creator");
+//            }
+//        }
 
         //Remove empty identifier
         if (!isEmpty(dataset.getIdentifier())) {
@@ -62,7 +62,7 @@ public class DatasetValidator implements Validator {
         clearDistributions(dataset.getDistributions(), errors);
 
         // Remove empty isAbout and spatial coverage
-        clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
+//        clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
         clearBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
     }
 }
