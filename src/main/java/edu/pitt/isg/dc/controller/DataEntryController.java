@@ -107,7 +107,6 @@ public class DataEntryController {
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder) {
-        binder.registerCustomEditor(PersonComprisedEntity.class, new PersonComprisedEntityEditor());
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
@@ -255,7 +254,7 @@ public class DataEntryController {
     @Autowired
     private DataGovInterface dataGovInterface;
 
-       @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
     public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
@@ -269,7 +268,7 @@ public class DataEntryController {
             model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+            dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
@@ -319,71 +318,6 @@ public class DataEntryController {
         entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
         return "entryConfirmation";
     }
-
-    @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
-    public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
-        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-        DatasetWithOrganization datasetWithOrganization = new DatasetWithOrganization();
-        model.addAttribute("categoryID", 0);
-        model.addAttribute("entryId", entryId);
-        model.addAttribute("revisionId", revisionId);
-
-        if (entryId != null) {
-            Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
-            EntryId id = entry.getId();
-            model.addAttribute("revisionId", id.getRevisionId());
-            EntryView entryView = new EntryView(entry);
-
-            datasetWithOrganization = converter.convertToJavaDatasetWithOrganization(entryView.getUnescapedEntryJsonString());
-            model.addAttribute("categoryID", entry.getCategory().getId());
-        }
-        model.addAttribute("datasetWithOrganization", datasetWithOrganization);
-
-        if (ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
-
-        if (ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if (ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
-
-        if (!model.containsAttribute("adminType")) {
-            return "accessDenied";
-        }
-
-
-        return "datasetWithOrganizationForm";
-    }
-
-    @RequestMapping(value = "/addDatasetWithOrganization/{categoryID}", method = RequestMethod.POST)
-    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("datasetWithOrganization") @Validated DatasetWithOrganization datasetWithOrganization,
-                         BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
-        if (categoryID == 0) {
-            result.addError(new ObjectError("categoryIDError", ""));
-            model.addAttribute("categoryIDError", true);
-        }
-        if (result.hasErrors()) {
-            model.addAttribute("entryId", entryId);
-            model.addAttribute("revisionId", revisionId);
-            model.addAttribute("categoryID", categoryID);
-            model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-            return "datasetWithOrganizationForm";
-        }
-        EntryView entryObject = new EntryView();
-
-        JsonObject json = converter.toJsonObject(DatasetWithOrganization.class, datasetWithOrganization);
-        json.remove("class");
-        entryObject.setEntry(json);
-        entryObject.setProperty("type", datasetWithOrganization.getClass().toString());
-
-        Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
-
-        entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
-
-        return "entryConfirmation";
-    }
-
 
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)
     public String addNewDataFormatConverters(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
