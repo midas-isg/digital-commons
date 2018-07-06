@@ -35,18 +35,26 @@
                     Remove
                 </button>
 
-
-                <div class="form-group">
-                    <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}]"
-                                           identifierName="${license.identifier}"
-                                           identifierSource="${license.identifierSource}"
-                                           specifier="${specifier}-${varStatus.count-1}"></myTags:editIdentifier>
-                </div>
-
+                <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}]"
+                                       identifier="${license.identifier}"
+                                       specifier="${specifier}-${varStatus.count-1}"></myTags:editIdentifier>
+                <myTags:editRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].name"
+                                                        placeholder=" Name of License"
+                                                        string="${license.name}"
+                                                        label="Name">
+                </myTags:editRequiredNonZeroLengthString>
                 <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
                                                            specifier="${specifier}-${varStatus.count-1}-version"
                                                            string="${license.version}"
                                                            path="${path}[${varStatus.count-1}].version"></myTags:editNonRequiredNonZeroLengthString>
+                <%--<myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].creators"--%>
+                                                  <%--specifier="${specifier}-${varStatus.count-1}-creators"--%>
+                                                  <%--label="Creator"--%>
+                                                  <%--personComprisedEntities="${license.creators}"--%>
+                                                  <%--isFirstRequired="false"--%>
+                                                  <%--showAddPersonButton="true"--%>
+                                                  <%--showAddOrganizationButton="true">--%>
+                <%--</myTags:editPersonComprisedEntity>--%>
             </div>
             <c:set var="licenseCount" scope="page" value="${varStatus.count}"/>
 
@@ -83,9 +91,20 @@
             <myTags:editIdentifier label="Identifier" path="${path}[0]"
                                    specifier="${specifier}-0"></myTags:editIdentifier>
         </div>
+        <myTags:editRequiredNonZeroLengthString path="${path}[0].name"
+                                                placeholder=" Name of License"
+                                                label="Name">
+        </myTags:editRequiredNonZeroLengthString>
         <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
                                                    specifier="${specifier}-0-version"
                                                    path="${path}[0].version"></myTags:editNonRequiredNonZeroLengthString>
+        <%--<myTags:editPersonComprisedEntity path="${path}[0].creators"--%>
+                                          <%--specifier="${specifier}-0-creators"--%>
+                                          <%--label="Creator"--%>
+                                          <%--isFirstRequired="false"--%>
+                                          <%--showAddPersonButton="true"--%>
+                                          <%--showAddOrganizationButton="true">--%>
+        <%--</myTags:editPersonComprisedEntity>--%>
     </div>
 </div>
 

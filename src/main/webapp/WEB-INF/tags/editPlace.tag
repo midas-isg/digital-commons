@@ -32,80 +32,57 @@
                             Remove
                         </button>
                     </div>
-                    <c:choose>
-                        <c:when test="${not empty place.name}">
-                            <div class="form-group edit-form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" value="${place.name}"
-                                       name="${path}.name"
-                                       placeholder=" The name of the place.">
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control"
-                                       name="${path}.name"
-                                       placeholder=" The name of the place.">
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty place.description}">
-                            <div class="form-group control-group edit-form-group">
-                                <label>Description</label>
-                                <button class="btn btn-success add-${specifier}-description" style="display: none" id="${specifier}-add-description" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Description
-                                </button>
-                                <div class="input-group control-group">
-                                    <input type="text" class="form-control" value="${place.description}"
-                                           name="${path}.description"
-                                           placeholder=" A textual narrative comprised of one or more statements describing the place.">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-danger ${specifier}-description-remove" id="${specifier}-description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                                            Remove
-                                        </button>
-                                    </div>
+                    <myTags:editIdentifier specifier="${specifier}-identifier"
+                                           label="Identifier"
+                                           path="${path}.identifier"
+                                           identifier="${place.identifier}"
+                                           unbounded="${false}">
+                    </myTags:editIdentifier>
+                    <myTags:editRequiredNonZeroLengthString path="${path}.name"
+                                                            placeholder=" The name of the place."
+                                                            string="${place.name}"
+                                                            label=" Name">
+                    </myTags:editRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString path="${path}.description"
+                                                               specifier="${specifier}-description"
+                                                               string="${place.description}"
+                                                               placeholder=" A textual narrative comprised of one or more statements describing the place."
+                                                               label="Description">
+                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
+                                                               specifier="${specifier}-postalAddress"
+                                                               string="${place.postalAddress}"
+                                                               placeholder=" A physical street address."
+                                                               label="Postal Address">
+                    </myTags:editNonRequiredNonZeroLengthString>
+                    <div class="form-group edit-form-group">
+                        <label>Geometry</label>
+                        <c:choose>
+                            <c:when test="${not empty place.geometry}">
+                                <div class="form-group control-group edit-form-group ${specifier}-geometry-add">
+                                    <label>Geometry</label>
+                                    <form:select path="${path}.geometry" id="${specifier}-geometry">
+                                        <form:options itemValue="${place.geometry}" itemLabel="Geometry"></form:options>
+                                        <form:option value="POINT" />
+                                        <form:option value="MULTIPOINT" />
+                                        <form:option value="LINESTRING" />
+                                        <form:option value="MULTILINESTRING" />
+                                        <form:option value="POLYGON" />
+                                        <form:option value="MULTIPOLYGON" />
+                                        <form:option value="GEOMETRYCOLLECTION" />
+                                    </form:select>
+                                    <button class="btn btn-danger ${specifier}-geometry-remove" id="${specifier}-geometry-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                                        Remove
+                                    </button>
                                 </div>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                                <label>Description</label>
-                                <button class="btn btn-success add-${specifier}-description" id="${specifier}-add-description" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Description
+                            </c:when>
+                            <c:otherwise>
+                                <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button"><i
+                                        class="glyphicon glyphicon-plus"></i> Add Geometry
                                 </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty place.postalAddress}">
-                            <div class="form-group control-group edit-form-group">
-                                <label>Postal Address</label>
-                                <button class="btn btn-success add-${specifier}-postalAddress" style="display: none" id="${specifier}-add-postalAddress" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Postal Address
-                                </button>
-                                <div class="input-group control-group">
-                                    <input type="text" class="form-control" value="${place.postalAddress}"
-                                           name="${path}.postalAddress"
-                                           placeholder=" A physical street address.">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-danger ${specifier}-postalAddress-remove" id="${specifier}-postalAddress-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                                            Remove
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                                <label>Postal Address</label>
-                                <button class="btn btn-success add-${specifier}-postalAddress" id="${specifier}-add-postalAddress" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Postal Address
-                                </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
             </div>
         </div>
@@ -132,52 +109,52 @@
                 Remove
             </button>
         </div>
+        <myTags:editIdentifier specifier="${specifier}-identifier"
+                               label="Identifier"
+                               path="${path}.identifier"
+                               unbounded="${false}">
+        </myTags:editIdentifier>
+        <myTags:editRequiredNonZeroLengthString path="${path}.name"
+                                                placeholder=" The name of the place."
+                                                label=" Name">
+        </myTags:editRequiredNonZeroLengthString>
+        <myTags:editNonRequiredNonZeroLengthString path="${path}.description"
+                                                   specifier="${specifier}-description"
+                                                   placeholder=" A textual narrative comprised of one or more statements describing the place."
+                                                   label="Description">
+        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
+                                                   specifier="${specifier}-postalAddress"
+                                                   placeholder=" A physical street address."
+                                                   label="Postal Address">
+        </myTags:editNonRequiredNonZeroLengthString>
         <div class="form-group edit-form-group">
-            <label>Name</label>
-            <input type="text" class="form-control"
-                   name="${path}.name"
-                   placeholder=" The name of the place.">
-        </div>
-        <div class="form-group edit-form-group">
-            <label>Description</label>
-            <button class="btn btn-success add-${specifier}-description" id="${specifier}-add-description" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add Description
-            </button>
-        </div>
-        <div class="form-group edit-form-group">
-            <label>Postal Address</label>
-            <button class="btn btn-success add-${specifier}-postalAddress" id="${specifier}-add-postalAddress" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add Postal Address
+            <label>Geometry</label>
+            <button class="btn btn-success add-${specifier}-geometry" id="${specifier}-geometry-add" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add Geometry
             </button>
         </div>
     </div>
 </div>
 
-<div class="copy-${specifier}-description hide">
-    <div class="input-group control-group">
-        <input type="text" class="form-control"
-               name="${path}.description"
-               placeholder=" A textual narrative comprised of one or more statements describing the place.">
-        <div class="input-group-btn">
-            <button class="btn btn-danger ${specifier}-description-remove" id="${specifier}-description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
+<div class="copy-${specifier}-geometry hide">
+    <div class="form-group control-group edit-form-group">
+        <label>Geometry</label>
+        <form:select path="${path}.geometry" id="${specifier}-geometry">
+            <form:option value="POINT" />
+            <form:option value="MULTIPOINT" />
+            <form:option value="LINESTRING" />
+            <form:option value="MULTILINESTRING" />
+            <form:option value="POLYGON" />
+            <form:option value="MULTIPOLYGON" />
+            <form:option value="GEOMETRYCOLLECTION" />
+        </form:select>
+        <button class="btn btn-danger ${specifier}-geometry-remove" id="${specifier}-geometry-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+            Remove
+        </button>
     </div>
 </div>
 
-<div class="copy-${specifier}-postalAddress hide">
-    <div class="input-group control-group">
-        <input type="text" class="form-control"
-               name="${path}.postalAddress"
-               placeholder=" A physical street address.">
-        <div class="input-group-btn">
-            <button class="btn btn-danger ${specifier}-postalAddress-remove" id="${specifier}-postalAddress-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-    </div>
-</div>
 
 
 <script type="text/javascript">
@@ -188,13 +165,9 @@
             $(this).closest(".control-group").remove();
             $("#${specifier}-add").show();
         });
-        $("body").on("click", ".${specifier}-description-remove", function () {
+        $("body").on("click", ".${specifier}-geometry-remove", function () {
             $(this).closest(".control-group").remove();
-            $("#${specifier}-add-description").show();
-        });
-        $("body").on("click", ".${specifier}-postalAddress-remove", function () {
-            $(this).closest(".control-group").remove();
-            $("#${specifier}-add-postalAddress").show();
+            $("#${specifier}-geometry-add").show();
         });
 
 
@@ -206,19 +179,13 @@
             $(this).hide();
         });
 
-        $("body").on("click",".add-${specifier}-description", function (e) {
-            var html = $(".copy-${specifier}-description").html();
+        $("body").on("click",".${specifier}-geometry-add", function (e) {
+            var html = $(".copy-${specifier}-geometry").html();
             $(this).after(html);
             e.stopImmediatePropagation();
             $(this).hide();
         });
 
-        $("body").on("click",".add-${specifier}-postalAddress", function (e) {
-            var html = $(".copy-${specifier}-postalAddress").html();
-            $(this).after(html);
-            e.stopImmediatePropagation();
-            $(this).hide();
-        });
 
     });
 </script>

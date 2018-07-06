@@ -56,45 +56,8 @@
                                                          isFirstRequired="${isFirstRequired}"></myTags:editOrganization>
                             </c:when>
                         </c:choose>
-
-
-
-
-
-                        <%--<c:choose>--%>
-                            <%--<c:when test="${isFirstRequired}">--%>
-                                <%--<myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                                                                        <%--path="${path}[0].firstName"></myTags:editRequiredNonZeroLengthString>--%>
-                                <%--<myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                                                                        <%--path="${path}[0].lastName"></myTags:editRequiredNonZeroLengthString>--%>
-                                <%--<myTags:editRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                                                                        <%--path="${path}[0].email"></myTags:editRequiredNonZeroLengthString>--%>
-                            <%--</c:when>--%>
-                            <%--<c:otherwise>--%>
-                                <%--<myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                                                                           <%--specifier="${specifier}-${varStatus.count-1}-firstName"--%>
-                                                                           <%--path="${path}[${varStatus.count-1}].firstName"--%>
-                                                                           <%--string="${path}[${varStatus.count-1}].firstName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                                <%--<myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                                                                           <%--specifier="${specifier}-${varStatus.count-1}-lastName"--%>
-                                                                           <%--path="${path}[${varStatus.count-1}].lastName"--%>
-                                                                           <%--string="${path}[${varStatus.count-1}].lastName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                                <%--<myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                                                                           <%--specifier="${specifier}-${varStatus.count-1}-email"--%>
-                                                                           <%--path="${path}[${varStatus.count-1}].email"--%>
-                                                                           <%--string="${path}[${varStatus.count-1}].email"></myTags:editNonRequiredNonZeroLengthString>--%>
-                            <%--</c:otherwise>--%>
-                        <%--</c:choose>--%>
                     </c:when>
                     <c:otherwise>
-
-                        <%--<div class="form-group control-group edit-form-group">--%>
-                        <%--<label>${label}</label>--%>
-                        <%--<button class="btn btn-danger person-remove" type="button"><i--%>
-                                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-                        <%--</button>--%>
-
-
                         <c:choose>
                             <c:when test="${personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Person'}">
                                 <myTags:editPerson person="${personComprisedEntity}"
@@ -111,22 +74,6 @@
                                                          isFirstRequired="false"></myTags:editOrganization>
                             </c:when>
                         </c:choose>
-
-
-
-
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                                                                   <%--specifier="${specifier}-${varStatus.count-1}-firstName"--%>
-                                                                   <%--path="${path}[${varStatus.count-1}].firstName"--%>
-                                                                   <%--string="${path}[${varStatus.count-1}].firstName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                                                                   <%--specifier="${specifier}-${varStatus.count-1}-lastName"--%>
-                                                                   <%--path="${path}[${varStatus.count-1}].lastName"--%>
-                                                                   <%--string="${path}[${varStatus.count-1}].lastName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                                                                   <%--specifier="${specifier}-${varStatus.count-1}-email"--%>
-                                                                   <%--path="${path}[${varStatus.count-1}].email"--%>
-                                                                   <%--string="${path}[${varStatus.count-1}].email"></myTags:editNonRequiredNonZeroLengthString>--%>
                     </c:otherwise>
                 </c:choose>
 
@@ -158,30 +105,7 @@
                     </button>
                 </c:if>
                 <div class="${specifier}-add-more"></div>
-                <%--\<button class="btn btn-success add-${specifier}" type="button"><i class="glyphicon glyphicon-plus"></i> Add--%>
-                        <%--${label}--%>
-                <%--</button>--%>
-                <%--<c:choose>--%>
-                    <%--<c:when test="${isFirstRequired}">--%>
-                        <%--<myTags:editRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                                                                <%--path="${path}[0].firstName"></myTags:editRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                                                                <%--path="${path}[0].lastName"></myTags:editRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                                                                <%--path="${path}[0].email"></myTags:editRequiredNonZeroLengthString>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                                                                   <%--specifier="${specifier}-firstName"--%>
-                                                                   <%--path="${path}[0].firstName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                                                                   <%--specifier="${specifier}-lastName"--%>
-                                                                   <%--path="${path}[0].lastName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                        <%--<myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                                                                   <%--specifier="${specifier}-email"--%>
-                                                                   <%--path="${path}[0].email"></myTags:editNonRequiredNonZeroLengthString>--%>
-                    <%--</c:otherwise>--%>
-                <%--</c:choose>--%>
+
                 <form:errors path="${path}[0]" class="error-color"/>
             </div>
             <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
@@ -197,22 +121,6 @@
                                specifier="${specifier}-0"
                                label="${label} (Person)"
                                isFirstRequired="true"></myTags:editPerson>
-
-
-                <%--<div class="form-group  control-group edit-form-group">--%>
-                <%--<label>${label}</label>--%>
-                <%--<button class="btn btn-danger person-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove--%>
-                <%--</button>--%>
-                <%--<myTags:editNonRequiredNonZeroLengthString label="First Name" placeholder=" The given name of the person."--%>
-                <%--specifier="${specifier}-firstName"--%>
-                <%--path="${path}[0].firstName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                <%--<myTags:editNonRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."--%>
-                <%--specifier="${specifier}-lastName"--%>
-                <%--path="${path}[0].lastName"></myTags:editNonRequiredNonZeroLengthString>--%>
-                <%--<myTags:editNonRequiredNonZeroLengthString label="Email" placeholder=" An electronic mail address for the person."--%>
-                <%--specifier="${specifier}-email"--%>
-                <%--path="${path}[0].email"></myTags:editNonRequiredNonZeroLengthString>--%>
-                <%--</div>--%>
         </div>
 
         <div class="${specifier}-person-copy hide">

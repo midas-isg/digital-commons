@@ -27,9 +27,9 @@
                                          categoryPaths="${categoryPaths}"></myTags:editCategory>
                     <myTags:editRequiredNonZeroLengthString label="Title" path="title" placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                                             string="${dataset.title}"></myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="description" string="${dataset.description}"
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="description" string="${dataset.description}"
                                                                specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                               label="Description"></myTags:editNonRequiredNonZeroLengthString>
+                                                               label="Description"></myTags:editNonRequiredNonZeroLengthStringTextArea>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
                                            label="Identifier"></myTags:editIdentifier>
                     <%--<myTags:editPerson people="${dataset.creators}" label="Creators"--%>

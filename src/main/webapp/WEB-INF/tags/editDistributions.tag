@@ -42,7 +42,7 @@
                                            specifier="${specifier}"></myTags:editDatesUnbounded>
 
                 <myTags:editAccess path="${path}[${varStatus.count-1}].access"
-                                   specifier="${specifier}-${varStatus.count-1}-access"
+                                   specifier="${specifier}-${varStatus.count-1}-access" isAccessRequired="true"
                                    access="${distribution.access}"></myTags:editAccess>
 
                 <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
@@ -98,7 +98,7 @@
                                    unbounded="False"></myTags:editIdentifier>
         </div>
         <myTags:editDatesUnbounded path="${path}[0]" specifier="${specifier}"></myTags:editDatesUnbounded>
-        <myTags:editAccess path="${path}[0].access" specifier="${specifier}-access"></myTags:editAccess>
+        <myTags:editAccess path="${path}[0].access" specifier="${specifier}-access" isAccessRequired="true"></myTags:editAccess>
         <myTags:editDataStandard name="Conforms To" path="${path}[0].conformsTo"
                                  specifier="${specifier}-conformsTo"></myTags:editDataStandard>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"

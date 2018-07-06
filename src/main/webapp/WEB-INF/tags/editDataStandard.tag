@@ -39,6 +39,12 @@
                 <br><br>
                 <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${varStatus.count-1}].identifier"
                                        unbounded="False"></myTags:editIdentifier>
+                <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                       label="Alternate Identifiers"
+                                       path="${path}.alternateIdentifiers"
+                                       identifiers="${dataStandard.alternateIdentifiers}"
+                                       unbounded="${true}">
+                </myTags:editIdentifier>
                 <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
                                                         string="${dataStandard.name}"
                                                         path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
@@ -96,6 +102,11 @@
         <br><br>
         <myTags:editIdentifier label="Identifier" specifier="${specifier}-" path="${path}[0].identifier"
                                unbounded="False"></myTags:editIdentifier>
+        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                               label="Alternate Identifiers"
+                               path="${path}.alternateIdentifiers"
+                               unbounded="${true}">
+        </myTags:editIdentifier>
         <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
                                                 path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
         <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
