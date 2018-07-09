@@ -44,16 +44,19 @@
             <myTags:editRequiredNonZeroLengthString label="Name"
                                                     placeholder=" The name of the organization."
                                                     string="${organization.name}"
-                                                    path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                                                    path="${path}.name">
+            </myTags:editRequiredNonZeroLengthString>
             <myTags:editNonRequiredNonZeroLengthString label="Abbreviation"
                                                        placeholder=" The shortname, abbreviation associated to the organization."
                                                        specifier="${specifier}-abbreviation"
                                                        path="${path}.abbreviation"
-                                                       string="${organization.abbreviation}"></myTags:editNonRequiredNonZeroLengthString>
+                                                       string="${organization.abbreviation}">
+            </myTags:editNonRequiredNonZeroLengthString>
             <myTags:editPlace place="${organization.location}"
                               path="${path}.location"
                               specifier="${specifier}-location"
-                              label="Location"></myTags:editPlace>
+                              label="Location">
+            </myTags:editPlace>
         </c:when>
         <c:otherwise>
             <c:choose>
@@ -75,12 +78,13 @@
             </myTags:editIdentifier>
             <myTags:editNonRequiredNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                                        specifier="${specifier}-name"
-                                                    path="${path}.name"></myTags:editNonRequiredNonZeroLengthString>
+                                                    path="${path}.name">
+            </myTags:editNonRequiredNonZeroLengthString>
             <myTags:editNonRequiredNonZeroLengthString label="Abbreviation"
                                                        placeholder=" The shortname, abbreviation associated to the organization."
                                                        specifier="${specifier}-abbreviation"
-                                                       path="${path}.abbreviation"></myTags:editNonRequiredNonZeroLengthString>
-
+                                                       path="${path}.abbreviation">
+            </myTags:editNonRequiredNonZeroLengthString>
             <%--<myTags:editPlace path="${path}.location"--%>
                               <%--specifier="${specifier}-location"--%>
                               <%--label="Location"></myTags:editPlace>--%>

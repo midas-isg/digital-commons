@@ -32,7 +32,10 @@
                     Remove
                 </button>
                 <br><br>
-                <myTags:editDates path="${path}.dates[${varStatus.count-1}]" date="${date}" specifier="${specifier}-date-"></myTags:editDates>
+                <myTags:editDates path="${path}[${varStatus.count-1}]"
+                                  date="${date}"
+                                  specifier="${specifier}-">
+                </myTags:editDates>
             </div>
             <c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
@@ -64,7 +67,9 @@
             Remove
         </button>
         <br><br>
-        <myTags:editDates path="${path}.dates[0]" specifier="${specifier}-date-"></myTags:editDates>
+        <myTags:editDates path="${path}[0]"
+                          specifier="${specifier}-">
+        </myTags:editDates>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {

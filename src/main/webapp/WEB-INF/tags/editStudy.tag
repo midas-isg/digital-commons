@@ -36,12 +36,14 @@
                             <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
                                                                     label="Name"
                                                                     string="${study.name}"
-                                                                    path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                                                                    path="${path}.name">
+                            </myTags:editRequiredNonZeroLengthString>
                         </c:when>
                         <c:otherwise>
                             <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
                                                                     label="Name"
-                                                                    path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                                                                    path="${path}.name">
+                            </myTags:editRequiredNonZeroLengthString>
                         </c:otherwise>
                     </c:choose>
                     <c:choose>
@@ -62,7 +64,8 @@
                                 <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
                                                                            label="Postal Address"
                                                                            string="${study.location.postalAddress}"
-                                                                           path="${path}.location.postalAddress"></myTags:editRequiredNonZeroLengthString>
+                                                                           path="${path}.location.postalAddress">
+                                </myTags:editRequiredNonZeroLengthString>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -78,12 +81,14 @@
                     <myTags:editDatesBounded label="Start Date"
                                              path="${path}.startDate"
                                              specifier="${specifier}-startDate"
-                                             date="${study.startDate}"></myTags:editDatesBounded>
+                                             date="${study.startDate}">
+                    </myTags:editDatesBounded>
                     <br>
                     <myTags:editDatesBounded label="End Date"
                                              path="${path}.endDate"
                                              specifier="${specifier}-endDate"
-                                             date="${study.endDate}"></myTags:editDatesBounded>
+                                             date="${study.endDate}">
+                    </myTags:editDatesBounded>
                 </div>
             </div>
         </div>
@@ -113,7 +118,8 @@
         </button>
         <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
                                                 label="Postal Address"
-                                                path="${path}.location.postalAddress"></myTags:editRequiredNonZeroLengthString>
+                                                path="${path}.location.postalAddress">
+        </myTags:editRequiredNonZeroLengthString>
     </div>
 </div>
 
@@ -124,7 +130,8 @@
         </button>
         <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
                                                 label="Name"
-                                                path="${path}.name"></myTags:editRequiredNonZeroLengthString>
+                                                path="${path}.name">
+        </myTags:editRequiredNonZeroLengthString>
         <div>
             <button class="btn btn-success add-location" id="location" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
@@ -134,11 +141,13 @@
         <br>
         <myTags:editDatesBounded label="Start Date"
                                  path="${path}.startDate"
-                                 specifier="${specifier}-startDate"></myTags:editDatesBounded>
+                                 specifier="${specifier}-startDate">
+        </myTags:editDatesBounded>
         <br>
         <myTags:editDatesBounded label="End Date"
                                  path="${path}.endDate"
-                                 specifier="${specifier}-endDate"></myTags:editDatesBounded>
+                                 specifier="${specifier}-endDate">
+        </myTags:editDatesBounded>
     </div>
 </div>
 

@@ -51,8 +51,10 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.information}" supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].information."></myTags:editAnnotation>
+                                <myTags:editAnnotation annotation="${type.information}"
+                                                       supportError="${true}"
+                                                       path="${path}[${varStatus.count-1}].information.">
+                                </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -81,8 +83,10 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.method}" supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].method."></myTags:editAnnotation>
+                                <myTags:editAnnotation annotation="${type.method}"
+                                                       supportError="${true}"
+                                                       path="${path}[${varStatus.count-1}].method.">
+                                </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -111,8 +115,10 @@
                                         class="glyphicon glyphicon-remove"></i> Remove
                                 </button>
 
-                                <myTags:editAnnotation annotation="${type.platform}" supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].platform."></myTags:editAnnotation>
+                                <myTags:editAnnotation annotation="${type.platform}"
+                                                       supportError="${true}"
+                                                       path="${path}[${varStatus.count-1}].platform.">
+                                </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -181,7 +187,8 @@
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation path="path"></myTags:editAnnotation>
+        <myTags:editAnnotation path="path">
+        </myTags:editAnnotation>
     </div>
 </div>
 
@@ -192,7 +199,8 @@
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation path="path"></myTags:editAnnotation>
+        <myTags:editAnnotation path="path">
+        </myTags:editAnnotation>
     </div>
 </div>
 
@@ -203,7 +211,8 @@
                 class="glyphicon glyphicon-remove"></i> Remove
         </button>
 
-        <myTags:editAnnotation path="path"></myTags:editAnnotation>
+        <myTags:editAnnotation path="path">
+        </myTags:editAnnotation>
     </div>
 </div>
 

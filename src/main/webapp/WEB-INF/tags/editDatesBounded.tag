@@ -27,7 +27,10 @@
             <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
             </button>
-            <myTags:editDates date="${date}" path="${path}" specifier="${specifier}"></myTags:editDates>
+            <myTags:editDates date="${date}"
+                              path="${path}"
+                              specifier="${specifier}">
+            </myTags:editDates>
         </div>
     </c:when>
     <c:otherwise>
@@ -48,7 +51,9 @@
         <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
-        <myTags:editDates path="${path}" specifier="${specifier}"></myTags:editDates>
+        <myTags:editDates path="${path}"
+                          specifier="${specifier}">
+        </myTags:editDates>
     </div>
 </div>
 

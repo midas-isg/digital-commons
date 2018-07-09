@@ -37,36 +37,54 @@
                     Remove
                 </button>
                 <br><br>
-                <myTags:editIdentifier identifier="${dataStandard.identifier}" label="Identifier" specifier="${specifier}-" path="${path}[${varStatus.count-1}].identifier"
-                                       unbounded="False"></myTags:editIdentifier>
+                <myTags:editIdentifier identifier="${dataStandard.identifier}"
+                                       label="Identifier"
+                                       specifier="${specifier}-"
+                                       path="${path}[${varStatus.count-1}].identifier"
+                                       unbounded="False">
+                </myTags:editIdentifier>
                 <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
                                        label="Alternate Identifiers"
                                        path="${path}.alternateIdentifiers"
                                        identifiers="${dataStandard.alternateIdentifiers}"
                                        unbounded="${true}">
                 </myTags:editIdentifier>
-                <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                        label="Name"
                                                         string="${dataStandard.name}"
-                                                        path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-description" string="${dataStandard.description}"
-                                                           path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editAnnotationRequired annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type"
-                                               label="Type" supportError="${true}"></myTags:editAnnotationRequired>
+                                                        path="${path}[${varStatus.count-1}].name">
+                </myTags:editRequiredNonZeroLengthString>
+                <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-description"
+                                                           string="${dataStandard.description}"
+                                                           path="${path}[${varStatus.count-1}].description"
+                                                           label="Description"
+                                                           placeholder="Description">
+\                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editAnnotationRequired annotation="${dataStandard.type}"
+                                               path="${path}[${varStatus.count-1}].type"
+                                               label="Type"
+                                               supportError="${true}">
+                </myTags:editAnnotationRequired>
                 <%--<div class="form-group edit-form-group">--%>
                     <%--<label>Type</label>--%>
                     <%--<myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>--%>
                 <%--</div>--%>
-                <myTags:editLicense licenses="${dataStandard.licenses}" specifier="${specifier}-licenses"
+                <myTags:editLicense licenses="${dataStandard.licenses}"
+                                    specifier="${specifier}-licenses"
                                     label="License"
-                                    path="${path}[${varStatus.count-1}].licenses"></myTags:editLicense>
-                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                    path="${path}[${varStatus.count-1}].licenses">
+                </myTags:editLicense>
+                <myTags:editNonRequiredNonZeroLengthString label="Version"
+                                                           placeholder=" Version"
                                                            specifier="${specifier}-${varStatus.count-1}-version"
                                                            string="${dataStandard.version}"
-                                                           path="${path}[${varStatus.count-1}].version"></myTags:editNonRequiredNonZeroLengthString>
+                                                           path="${path}[${varStatus.count-1}].version">
+                </myTags:editNonRequiredNonZeroLengthString>
                 <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
                                               specifier="${specifier}-${varStatus.count-1}-extraProperties"
                                               path="${path}[${varStatus.count-1}].extraProperties"
-                                              label="Extra Properties"></myTags:editCategoryValuePair>
+                                              label="Extra Properties">
+                </myTags:editCategoryValuePair>
             </div>
 
             <c:set var="dataStandardCount" scope="page" value="${varStatus.count}"/>
@@ -100,29 +118,45 @@
             Remove
         </button>
         <br><br>
-        <myTags:editIdentifier label="Identifier" specifier="${specifier}-" path="${path}[0].identifier"
-                               unbounded="False"></myTags:editIdentifier>
+        <myTags:editIdentifier label="Identifier"
+                               specifier="${specifier}-"
+                               path="${path}[0].identifier"
+                               unbounded="False">
+        </myTags:editIdentifier>
         <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
                                label="Alternate Identifiers"
                                path="${path}.alternateIdentifiers"
                                unbounded="${true}">
         </myTags:editIdentifier>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
-                                                path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description" path="${path}[0].description" label="Description" placeholder="Description"></myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editAnnotationRequired path="${path}[0].type." label="Type"></myTags:editAnnotationRequired>
+        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                label="Name"
+                                                path="${path}[0].name">
+        </myTags:editRequiredNonZeroLengthString>
+        <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description"
+                                                   path="${path}[0].description"
+                                                   label="Description"
+                                                   placeholder="Description">
+        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editAnnotationRequired path="${path}[0].type."
+                                       label="Type">
+        </myTags:editAnnotationRequired>
         <%--<div class="form-group edit-form-group">--%>
             <%--<label>Type</label>--%>
             <%--<myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>--%>
         <%--</div>--%>
         <myTags:editLicense specifier="${specifier}-0-licenses"
                             label="License"
-                            path="${path}[0].licenses"></myTags:editLicense>
-        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                            path="${path}[0].licenses">
+        </myTags:editLicense>
+        <myTags:editNonRequiredNonZeroLengthString label="Version"
+                                                   placeholder=" Version"
                                                    specifier="${specifier}-0-version"
-                                                   path="${path}[0].version"></myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties" label="Extra Properties"
-                                      path="${path}[0].extraProperties"></myTags:editCategoryValuePair>
+                                                   path="${path}[0].version">
+        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties"
+                                      label="Extra Properties"
+                                      path="${path}[0].extraProperties">
+        </myTags:editCategoryValuePair>
     </div>
 
 </div>

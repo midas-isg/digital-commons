@@ -17,21 +17,23 @@
         <label>Value</label>
         <input type="text" class="form-control" value="${annotation.value}" name="${path}value" placeholder="Value">
     </div>
-<c:choose>
-    <c:when test="${supportError}">
-        <spring:bind path="${path}valueIRI">
-            <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
+    <c:choose>
+        <c:when test="${supportError}">
+            <spring:bind path="${path}valueIRI">
+                <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
+                    <label>Value IRI</label>
+                    <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}valueIRI"
+                           placeholder="Value IRI">
+                </div>
+                <form:errors path="${path}valueIRI" class="error-color"/>
+            </spring:bind>
+        </c:when>
+        <c:otherwise>
+            <div class="form-group edit-form-group">
                 <label>Value IRI</label>
-                <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}valueIRI" placeholder="Value IRI">
+                <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}valueIRI"
+                       placeholder="Value IRI">
             </div>
-            <form:errors path="${path}valueIRI" class="error-color"/>
-        </spring:bind>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>Value IRI</label>
-            <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}valueIRI" placeholder="Value IRI">
-        </div>
-    </c:otherwise>
-</c:choose>
+        </c:otherwise>
+    </c:choose>
 </div>

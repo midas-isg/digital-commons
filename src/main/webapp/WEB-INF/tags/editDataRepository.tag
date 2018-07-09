@@ -33,24 +33,60 @@
                 </button>
                 <br><br>
 
-                <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
-                                                        string="${dataRepository.name}"
-                                                        path="${path}.name"></myTags:editRequiredNonZeroLengthString>
-                <myTags:editIdentifier path="${path}.identifier" identifier="${dataRepository.identifier}"
+                <myTags:editIdentifier path="${path}.identifier"
+                                       identifier="${dataRepository.identifier}"
                                        specifier="${specifier}-identifier"
-                                       label="Identifier"></myTags:editIdentifier>
-                <myTags:editLicense path="${path}.licenses" licenses="${dataRepository.licenses}"
-                                    label="License"
-                                    specifier="${specifier}-licenses"></myTags:editLicense>
+                                       label="Identifier">
+                </myTags:editIdentifier>
+                <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                       label="Alternate Identifiers"
+                                       path="${path}.alternateIdentifiers"
+                                       identifiers="${dataRepository.alternateIdentifiers}"
+                                       unbounded="${true}">
+                </myTags:editIdentifier>
+                <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                        label="Name"
+                                                        string="${dataRepository.name}"
+                                                        path="${path}.name">
+                </myTags:editRequiredNonZeroLengthString>
+                <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
+                                                                   string="${dataRepository.description}"
+                                                                   specifier="${specifier}-description"
+                                                                   placeholder=" A textual narrative comprised of one or more statements describing the data repository."
+                                                                   label="Description">
+                </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                <myTags:editAnnotationUnbounded path="${path}.scopes"
+                                                specifier="${specifier}-scopes"
+                                                annotations="${dataRepository.scopes}"
+                                                label="Scopes">
+                </myTags:editAnnotationUnbounded>
                 <myTags:editAnnotationUnbounded path="${path}.types"
                                                 specifier="${specifier}-types"
                                                 annotations="${dataRepository.types}"
-                                                label="Types" ></myTags:editAnnotationUnbounded>
-                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                label="Types" >
+                </myTags:editAnnotationUnbounded>
+                <myTags:editLicense path="${path}.licenses"
+                                    licenses="${dataRepository.licenses}"
+                                    label="License"
+                                    specifier="${specifier}-licenses">
+                </myTags:editLicense>
+                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
                                                            specifier="${specifier}-version"
                                                            string="${dataRepository.version}"
-                                                           path="${path}.version"></myTags:editNonRequiredNonZeroLengthString>
-
+                                                           path="${path}.version">
+                </myTags:editNonRequiredNonZeroLengthString>
+                <%--<myTags:editPersonComprisedEntity path="${path}.publishers"--%>
+                                                  <%--specifier="${specifier}-publishers"--%>
+                                                  <%--label="Publisher"--%>
+                                                  <%--personComprisedEntities="${dataRepository.publishers}"--%>
+                                                  <%--isFirstRequired="false"--%>
+                                                  <%--showAddPersonButton="true"--%>
+                                                  <%--showAddOrganizationButton="true"></myTags:editPersonComprisedEntity>--%>
+                <myTags:editAccessUnbounded path="${path}.access"
+                                            specifier="${specifier}-access"
+                                            accessList="${dataRepository.access}"
+                                            label="Access">
+                </myTags:editAccessUnbounded>
             </div>
         </div>
 
@@ -78,20 +114,51 @@
             Remove
         </button>
         <br><br>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
-                                                path="${path}.name"></myTags:editRequiredNonZeroLengthString>
         <myTags:editIdentifier path="${path}.identifier"
                                specifier="${specifier}-identifier"
-                               label="Identifier"></myTags:editIdentifier>
-        <myTags:editLicense path="${path}.licenses"
-                            label="License"
-                            specifier="${specifier}-licenses"></myTags:editLicense>
+                               label="Identifier">
+        </myTags:editIdentifier>
+        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                               label="Alternate Identifiers"
+                               path="${path}.alternateIdentifiers"
+                               unbounded="${true}">
+        </myTags:editIdentifier>
+        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                label="Name"
+                                                path="${path}.name">
+        </myTags:editRequiredNonZeroLengthString>
+        <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
+                                                           specifier="${specifier}-description"
+                                                           placeholder=" A textual narrative comprised of one or more statements describing the data repository."
+                                                           label="Description">
+        </myTags:editNonRequiredNonZeroLengthStringTextArea>
+        <myTags:editAnnotationUnbounded path="${path}.scopes"
+                                        specifier="${specifier}-scopes"
+                                        annotations="${dataRepository.scopes}"
+                                        label="Scopes">
+        </myTags:editAnnotationUnbounded>
         <myTags:editAnnotationUnbounded path="${path}.types"
                                         specifier="${specifier}-types"
-                                        label="Types" ></myTags:editAnnotationUnbounded>
+                                        label="Types" >
+        </myTags:editAnnotationUnbounded>
+        <myTags:editLicense path="${path}.licenses"
+                            label="License"
+                            specifier="${specifier}-licenses">
+        </myTags:editLicense>
         <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
                                                    specifier="${specifier}-version"
-                                                   path="${path}.version"></myTags:editNonRequiredNonZeroLengthString>
+                                                   path="${path}.version">
+        </myTags:editNonRequiredNonZeroLengthString>
+        <%--<myTags:editPersonComprisedEntity path="${path}.publishers"--%>
+                                          <%--specifier="${specifier}-publishers"--%>
+                                          <%--label="Publisher"--%>
+                                          <%--isFirstRequired="false"--%>
+                                          <%--showAddPersonButton="true"--%>
+                                          <%--showAddOrganizationButton="true"></myTags:editPersonComprisedEntity>--%>
+        <myTags:editAccessUnbounded path="${path}.access"
+                                    specifier="${specifier}-access"
+                                    label="Access">
+        </myTags:editAccessUnbounded>
     </div>
 </div>
 

@@ -34,7 +34,10 @@
                     Remove
                 </button>
                 <br><br>
-                <myTags:editAnnotation annotation="${annotation}" path="${path}." supportError="${true}"></myTags:editAnnotation>
+                <myTags:editAnnotation annotation="${annotation}"
+                                       path="${path}."
+                                       supportError="${true}">
+                </myTags:editAnnotation>
             </div>
         </div>
     </c:when>
@@ -60,7 +63,8 @@
             Remove
         </button>
         <br><br>
-        <myTags:editAnnotation path="${path}."></myTags:editAnnotation>
+        <myTags:editAnnotation path="${path}.">
+        </myTags:editAnnotation>
     </div>
 </div>
 
