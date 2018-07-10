@@ -44,7 +44,7 @@
                                        identifiers="${dataRepository.alternateIdentifiers}"
                                        unbounded="${true}">
                 </myTags:editIdentifier>
-                <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                <myTags:editRequiredNonZeroLengthString placeholder=" The name of the data repository."
                                                         label="Name"
                                                         string="${dataRepository.name}"
                                                         path="${path}.name">
@@ -81,7 +81,8 @@
                                                   <%--personComprisedEntities="${dataRepository.publishers}"--%>
                                                   <%--isFirstRequired="false"--%>
                                                   <%--showAddPersonButton="true"--%>
-                                                  <%--showAddOrganizationButton="true"></myTags:editPersonComprisedEntity>--%>
+                                                  <%--showAddOrganizationButton="true">--%>
+                <%--</myTags:editPersonComprisedEntity>--%>
                 <myTags:editAccessUnbounded path="${path}.access"
                                             specifier="${specifier}-access"
                                             accessList="${dataRepository.access}"

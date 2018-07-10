@@ -52,6 +52,10 @@
                                                                    placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
                                                                    label="Description">
                 </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
+                                           dataRepository="${distribution.storedIn}"
+                                           specifier="${specifier}-${varStatus.count-1}-storedIn">
+                </myTags:editDataRepository>
                 <myTags:editDatesUnbounded dates="${distribution.dates}"
                                            path="${path}[${varStatus.count-1}].dates"
                                            specifier="${specifier}-dates">
@@ -79,10 +83,12 @@
                                                 annotations="${distribution.qualifiers}"
                                                 label="Qualifiers">
                 </myTags:editAnnotationUnbounded>
-                <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
-                                           dataRepository="${distribution.storedIn}"
-                                           specifier="${specifier}-${varStatus.count-1}-storedIn">
-                </myTags:editDataRepository>
+                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
+                                                                    path="${path}[${varStatus.count-1}].formats"
+                                                                    specifier="${specifier}-${varStatus.count-1}-formats"
+                                                                    placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                                                                    label="Formats">
+                </myTags:editUnboundedNonRequiredNonZeroLengthString>
                 <myTags:editFloat path="${path}[${varStatus.count-1}].size"
                                   specifier="${specifier}-${varStatus.count-1}-size"
                                   number="${distribution.size}"
@@ -94,12 +100,6 @@
                                               placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
                                               label="Unit" >
                 </myTags:editAnnotationBounded>
-                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
-                                                                    path="${path}[${varStatus.count-1}].formats"
-                                                                    specifier="${specifier}-${varStatus.count-1}-formats"
-                                                                    placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
-                                                                    label="Formats">
-                </myTags:editUnboundedNonRequiredNonZeroLengthString>
             </div>
             <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
 
@@ -146,6 +146,9 @@
                                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
                                                            label="Description">
         </myTags:editNonRequiredNonZeroLengthStringTextArea>
+        <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
+                                   specifier="${specifier}-storedIn">
+        </myTags:editDataRepository>
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-dates">
         </myTags:editDatesUnbounded>
@@ -169,9 +172,11 @@
                                         specifier="${specifier}-qualifiers"
                                         label="Qualifiers">
         </myTags:editAnnotationUnbounded>
-        <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
-                                   specifier="${specifier}-storedIn">
-        </myTags:editDataRepository>
+        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats"
+                                                            specifier="${specifier}-formats"
+                                                            placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                                                            label="Formats">
+        </myTags:editUnboundedNonRequiredNonZeroLengthString>
         <myTags:editFloat path="${path}[0].size"
                           specifier="${specifier}-size"
                           placeholder=" The size of the dataset."
@@ -182,11 +187,6 @@
                                       placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
                                       label="Unit" >
         </myTags:editAnnotationBounded>
-        <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats"
-                                                            specifier="${specifier}-formats"
-                                                            placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
-                                                            label="Formats">
-        </myTags:editUnboundedNonRequiredNonZeroLengthString>
 
     </div>
 </div>

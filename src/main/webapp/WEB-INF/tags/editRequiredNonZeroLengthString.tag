@@ -17,7 +17,9 @@
 <%--<spring:bind path="${path}">--%>
     <%--<div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">--%>
         <%--<form:label path="${path}">${label}</form:label>--%>
-        <form:input path="${path}" value="" type="text" class="form-control" placeholder="${placeholder}"></form:input>
+
+        <%--<form:input path="${path}" value="" type="text" class="form-control" placeholder="${placeholder}"></form:input>--%>
+
         <%--<c:choose>--%>
             <%--<c:when test="${not empty string}">--%>
                 <%--<form:input path="${path}" type="text" class="form-control" placeholder="${placeholder}"></form:input>--%>

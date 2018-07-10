@@ -65,10 +65,6 @@
                                                label="Type"
                                                supportError="${true}">
                 </myTags:editAnnotationRequired>
-                <%--<div class="form-group edit-form-group">--%>
-                    <%--<label>Type</label>--%>
-                    <%--<myTags:editAnnotation annotation="${dataStandard.type}" path="${path}[${varStatus.count-1}].type." supportError="${true}"></myTags:editAnnotation>--%>
-                <%--</div>--%>
                 <myTags:editLicense licenses="${dataStandard.licenses}"
                                     specifier="${specifier}-licenses"
                                     label="License"
@@ -140,10 +136,6 @@
         <myTags:editAnnotationRequired path="${path}[0].type."
                                        label="Type">
         </myTags:editAnnotationRequired>
-        <%--<div class="form-group edit-form-group">--%>
-            <%--<label>Type</label>--%>
-            <%--<myTags:editAnnotation path="${path}[0].type." ></myTags:editAnnotation>--%>
-        <%--</div>--%>
         <myTags:editLicense specifier="${specifier}-0-licenses"
                             label="License"
                             path="${path}[0].licenses">

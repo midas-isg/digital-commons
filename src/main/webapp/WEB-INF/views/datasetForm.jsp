@@ -24,14 +24,14 @@
                        modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
+                    <myTags:editCategory selectedID="${categoryID}"
+                                         categoryPaths="${categoryPaths}">
+                    </myTags:editCategory>
                     <myTags:editIdentifier identifier="${dataset.identifier}"
                                            specifier="identifier"
                                            path="identifier"
                                            label="Identifier">
                     </myTags:editIdentifier>
-                    <myTags:editCategory selectedID="${categoryID}"
-                                         categoryPaths="${categoryPaths}">
-                    </myTags:editCategory>
                     <myTags:editRequiredNonZeroLengthString label="Title"
                                                             path="title"
                                                             placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
@@ -52,14 +52,16 @@
                                                dataRepository="${dataset.storedIn}"
                                                specifier="storedIn">
                     </myTags:editDataRepository>
-                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
-                                                      label="Creator"
-                                                      path="creators"
-                                                      specifier="creators"
-                                                      showAddPersonButton="true"
-                                                      showAddOrganizationButton="true"
-                                                      isFirstRequired="true">
-                    </myTags:editPersonComprisedEntity>
+                        <%--<myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"--%>
+                        <%--specifier="spatialCoverage"--%>
+                        <%--name="Spatial Coverage"></myTags:editBiologicalEntity>--%>
+                    <myTags:editIsAbout path="spatialCoverage"
+                                        specifier="spatialCoverage"
+                                        isAboutList="${dataset.spatialCoverage}"
+                                        label="Spatial Coverage"
+                                        showAddAnnotationButton="false"
+                                        showAddBiologicalEntityButton="true">
+                    </myTags:editIsAbout>
                     <myTags:editType path="types"
                                      specifier="types"
                                      types="${dataset.types}">
@@ -82,16 +84,6 @@
                                                                placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
                                                                label="Aggregation">
                     </myTags:editNonRequiredNonZeroLengthString>
-                    <%--<myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"--%>
-                                                 <%--name="Is About"></myTags:editBiologicalEntity>--%>
-                    <%--<myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"--%>
-                                                 <%--specifier="spatialCoverage"--%>
-                                                 <%--name="Spatial Coverage"></myTags:editBiologicalEntity>--%>
-                    <myTags:editStudy study="${dataset.producedBy}"
-                                      specifier="producedBy"
-                                      path="producedBy"
-                                      label="Produced By">
-                    </myTags:editStudy>
                     <myTags:editDistributions distributions="${dataset.distributions}"
                                               specifier="distributions"
                                               path="distributions">
@@ -112,6 +104,19 @@
                                       label="Citation Count"
                                       placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
                     </myTags:editFloat>
+                    <myTags:editStudy study="${dataset.producedBy}"
+                                      specifier="producedBy"
+                                      path="producedBy"
+                                      label="Produced By">
+                    </myTags:editStudy>
+                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
+                                                      label="Creator"
+                                                      path="creators"
+                                                      specifier="creators"
+                                                      showAddPersonButton="true"
+                                                      showAddOrganizationButton="true"
+                                                      isFirstRequired="true">
+                    </myTags:editPersonComprisedEntity>
                     <myTags:editLicense path="licenses"
                                         licenses="${dataset.licenses}"
                                         label="License"

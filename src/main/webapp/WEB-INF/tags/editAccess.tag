@@ -52,6 +52,11 @@
                                                        string="${access.accessURL}"
                                                        label="Access URL">
             </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editAnnotationUnbounded path="${path}.types"
+                                            specifier="${specifier}-types"
+                                            annotations="${access.types}"
+                                            label="Types">
+            </myTags:editAnnotationUnbounded>
             <myTags:editAnnotationUnbounded path="${path}.authorizations"
                                             specifier="${specifier}-authorizations"
                                             annotations="${access.authorizations}"
@@ -61,11 +66,6 @@
                                             specifier="${specifier}-authentications"
                                             annotations="${access.authentications}"
                                             label="Authentications">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            annotations="${access.types}"
-                                            label="Types">
             </myTags:editAnnotationUnbounded>
         </div>
     </c:when>
@@ -101,6 +101,10 @@
                                                        placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
                                                        label="Access URL">
             </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editAnnotationUnbounded path="${path}.types"
+                                            specifier="${specifier}-types"
+                                            label="Types">
+            </myTags:editAnnotationUnbounded>
             <myTags:editAnnotationUnbounded path="${path}.authorizations"
                                             specifier="${specifier}-authorizations"
                                             label="Authorizations">
@@ -108,10 +112,6 @@
             <myTags:editAnnotationUnbounded path="${path}.authentications"
                                             specifier="${specifier}-authentications"
                                             label="Authentications">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            label="Types">
             </myTags:editAnnotationUnbounded>
         </div>
     </c:otherwise>

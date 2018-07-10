@@ -45,12 +45,6 @@
                                 Information
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <%--<label id="annotation-label">Information</label>--%>
-                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-information"--%>
-                                        <%--type="button"><i--%>
-                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-                                <%--</button>--%>
-
                                 <myTags:editAnnotation annotation="${type.information}"
                                                        supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-information"
@@ -80,12 +74,6 @@
                                 Method
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <%--<label id="annotation-label">Method</label>--%>
-                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-method"--%>
-                                        <%--type="button"><i--%>
-                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-                                <%--</button>--%>
-
                                 <myTags:editAnnotation annotation="${type.method}"
                                                        supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-method"
@@ -115,12 +103,6 @@
                                 Platform
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <%--<label id="annotation-label">Platform</label>--%>
-                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-platform"--%>
-                                        <%--type="button"><i--%>
-                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-                                <%--</button>--%>
-
                                 <myTags:editAnnotation annotation="${type.platform}"
                                                        supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-platform"
@@ -191,11 +173,6 @@
 
 <div class="copy-annotation-information hide">
     <div class="form-group control-group edit-form-group">
-        <%--<label id="annotation-label">Information</label>--%>
-        <%--<button class="btn btn-danger annotation-type-remove" id="information" type="button"><i--%>
-                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-        <%--</button>--%>
-
         <myTags:editAnnotation supportError="${true}"
                                specifier="${specifier}-information"
                                label="Information"
@@ -207,11 +184,6 @@
 
 <div class="copy-annotation-method hide">
     <div class="form-group control-group edit-form-group">
-        <%--<label id="annotation-label">Method</label>--%>
-        <%--<button class="btn btn-danger annotation-type-remove" id="method" type="button"><i--%>
-                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-        <%--</button>--%>
-
         <myTags:editAnnotation supportError="${true}"
                                specifier="${specifier}-method"
                                label="Method"
@@ -223,11 +195,6 @@
 
 <div class="copy-annotation-platform hide">
     <div class="form-group control-group edit-form-group">
-        <%--<label id="annotation-label">Platform</label>--%>
-        <%--<button class="btn btn-danger annotation-type-remove" id="platform" type="button"><i--%>
-                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
-        <%--</button>--%>
-
         <myTags:editAnnotation supportError="${true}"
                                specifier="${specifier}-platform"
                                label="Platform"
@@ -317,19 +284,5 @@
                 $(this).hide();
             }
         });
-        <%--$("body").on("click", ".annotation-type-remove", function () {--%>
-            <%--var id = event.target.id;--%>
-            <%--if (id != "") {--%>
-                <%--var count = id.split('-')[0];--%>
-                <%--var attributeName = id.split('-')[1];--%>
-                <%--if ((count != undefined && count != "") && (attributeName != undefined && attributeName != "")) {--%>
-                    <%--$(this).parents(".control-group")[0].remove();--%>
-                    <%--console.log("#" + count + "-add-" + attributeName);--%>
-                    <%--$("#" + count + "-add-" + attributeName + "-${specifier}").show();--%>
-                <%--} else {--%>
-                    <%--console.log(event.target);--%>
-                <%--}--%>
-            <%--}--%>
-        <%--});--%>
     });
 </script>

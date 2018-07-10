@@ -46,6 +46,18 @@
                             </myTags:editRequiredNonZeroLengthString>
                         </c:otherwise>
                     </c:choose>
+                    <br>
+                    <myTags:editDatesBounded label="Start Date"
+                                             path="${path}.startDate"
+                                             specifier="${specifier}-startDate"
+                                             date="${study.startDate}">
+                    </myTags:editDatesBounded>
+                    <br>
+                    <myTags:editDatesBounded label="End Date"
+                                             path="${path}.endDate"
+                                             specifier="${specifier}-endDate"
+                                             date="${study.endDate}">
+                    </myTags:editDatesBounded>
                     <c:choose>
                         <c:when test="${not empty study.location}">
                             <div>
@@ -77,18 +89,6 @@
                             </div>
                         </c:otherwise>
                     </c:choose>
-                    <br>
-                    <myTags:editDatesBounded label="Start Date"
-                                             path="${path}.startDate"
-                                             specifier="${specifier}-startDate"
-                                             date="${study.startDate}">
-                    </myTags:editDatesBounded>
-                    <br>
-                    <myTags:editDatesBounded label="End Date"
-                                             path="${path}.endDate"
-                                             specifier="${specifier}-endDate"
-                                             date="${study.endDate}">
-                    </myTags:editDatesBounded>
                 </div>
             </div>
         </div>
@@ -132,12 +132,6 @@
                                                 label="Name"
                                                 path="${path}.name">
         </myTags:editRequiredNonZeroLengthString>
-        <div>
-            <button class="btn btn-success add-location" id="location" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Location
-            </button>
-        </div>
         <br>
         <myTags:editDatesBounded label="Start Date"
                                  path="${path}.startDate"
@@ -148,6 +142,12 @@
                                  path="${path}.endDate"
                                  specifier="${specifier}-endDate">
         </myTags:editDatesBounded>
+        <div>
+            <button class="btn btn-success add-location" id="location" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add
+                Location
+            </button>
+        </div>
     </div>
 </div>
 
