@@ -24,6 +24,11 @@
                        modelAttribute="dataset">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
+                    <myTags:editIdentifier identifier="${dataset.identifier}"
+                                           specifier="identifier"
+                                           path="identifier"
+                                           label="Identifier">
+                    </myTags:editIdentifier>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}">
                     </myTags:editCategory>
@@ -47,11 +52,6 @@
                                                dataRepository="${dataset.storedIn}"
                                                specifier="storedIn">
                     </myTags:editDataRepository>
-                    <myTags:editIdentifier identifier="${dataset.identifier}"
-                                           specifier="identifier"
-                                           path="identifier"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
                     <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
                                                       label="Creator"
                                                       path="creators"
@@ -61,6 +61,7 @@
                                                       isFirstRequired="true">
                     </myTags:editPersonComprisedEntity>
                     <myTags:editType path="types"
+                                     specifier="types"
                                      types="${dataset.types}">
                     </myTags:editType>
                     <myTags:editNonRequiredNonZeroLengthString path="availability"
@@ -116,6 +117,13 @@
                                         label="License"
                                         specifier="licenses">
                     </myTags:editLicense>
+                    <myTags:editIsAbout path="isAbout"
+                                        specifier="isAbout"
+                                        isAboutList="${dataset.isAbout}"
+                                        label="Is About"
+                                        showAddAnnotationButton="true"
+                                        showAddBiologicalEntityButton="true">
+                    </myTags:editIsAbout>
                     <myTags:editGrant path="acknowledges"
                                       specifier="acknowledges"
                                       grants="${dataset.acknowledges}"

@@ -7,9 +7,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="types" required="false"
               type="java.util.ArrayList" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 
 
@@ -40,25 +40,28 @@
                     <c:choose>
                         <c:when test="${not empty type.information}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${varStatus.count-1}-add-information-${specifier}" type="button"><i
+                                    id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <label id="annotation-label">Information</label>
-                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-information"
-                                        type="button"><i
-                                        class="glyphicon glyphicon-remove"></i> Remove
-                                </button>
+                                <%--<label id="annotation-label">Information</label>--%>
+                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-information"--%>
+                                        <%--type="button"><i--%>
+                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+                                <%--</button>--%>
 
                                 <myTags:editAnnotation annotation="${type.information}"
                                                        supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].information.">
+                                                       specifier="${specifier}-${varStatus.count-1}-information"
+                                                       label="Information"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].information">
                                 </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-information-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-information-add-annotation"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Information
@@ -72,25 +75,28 @@
                     <c:choose>
                         <c:when test="${not empty type.method}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${varStatus.count-1}-add-method-${specifier}" type="button"><i
+                                    id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <label id="annotation-label">Method</label>
-                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-method"
-                                        type="button"><i
-                                        class="glyphicon glyphicon-remove"></i> Remove
-                                </button>
+                                <%--<label id="annotation-label">Method</label>--%>
+                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-method"--%>
+                                        <%--type="button"><i--%>
+                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+                                <%--</button>--%>
 
                                 <myTags:editAnnotation annotation="${type.method}"
                                                        supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].method.">
+                                                       specifier="${specifier}-${varStatus.count-1}-method"
+                                                       label="Method"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].method">
                                 </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-method-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-method-add-annotation"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Method
@@ -104,25 +110,28 @@
                     <c:choose>
                         <c:when test="${not empty type.platform}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${varStatus.count-1}-add-platform-${specifier}" type="button"><i
+                                    id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
                             </button>
                             <div class="form-group control-group edit-form-group">
-                                <label id="annotation-label">Platform</label>
-                                <button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-platform"
-                                        type="button"><i
-                                        class="glyphicon glyphicon-remove"></i> Remove
-                                </button>
+                                <%--<label id="annotation-label">Platform</label>--%>
+                                <%--<button class="btn btn-danger annotation-type-remove" id="${varStatus.count-1}-platform"--%>
+                                        <%--type="button"><i--%>
+                                        <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+                                <%--</button>--%>
 
                                 <myTags:editAnnotation annotation="${type.platform}"
                                                        supportError="${true}"
-                                                       path="${path}[${varStatus.count-1}].platform.">
+                                                       specifier="${specifier}-${varStatus.count-1}-platform"
+                                                       label="Platform"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].platform">
                                 </myTags:editAnnotation>
                             </div>
                         </c:when>
                         <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${varStatus.count-1}-add-platform-${specifier}"
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-platform-add-annotation"
                                     type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
                                 Platform
@@ -150,21 +159,21 @@
                 </button>
                 <br><br>
                 <div>
-                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-information-${specifier}" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-information-add-annotation" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Information
                     </button>
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-method-${specifier}" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-method-add-annotation" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Method
                     </button>
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-success ${specifier}-add-annotation" id="0-add-platform-${specifier}" type="button"><i
+                    <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-platform-add-annotation" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                         Platform
                     </button>
@@ -182,36 +191,48 @@
 
 <div class="copy-annotation-information hide">
     <div class="form-group control-group edit-form-group">
-        <label id="annotation-label">Information</label>
-        <button class="btn btn-danger annotation-type-remove" id="information" type="button"><i
-                class="glyphicon glyphicon-remove"></i> Remove
-        </button>
+        <%--<label id="annotation-label">Information</label>--%>
+        <%--<button class="btn btn-danger annotation-type-remove" id="information" type="button"><i--%>
+                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+        <%--</button>--%>
 
-        <myTags:editAnnotation path="path">
+        <myTags:editAnnotation supportError="${true}"
+                               specifier="${specifier}-information"
+                               label="Information"
+                               showRemoveButton="true"
+                               path="${path}[0].information">
         </myTags:editAnnotation>
     </div>
 </div>
 
 <div class="copy-annotation-method hide">
     <div class="form-group control-group edit-form-group">
-        <label id="annotation-label">Method</label>
-        <button class="btn btn-danger annotation-type-remove" id="method" type="button"><i
-                class="glyphicon glyphicon-remove"></i> Remove
-        </button>
+        <%--<label id="annotation-label">Method</label>--%>
+        <%--<button class="btn btn-danger annotation-type-remove" id="method" type="button"><i--%>
+                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+        <%--</button>--%>
 
-        <myTags:editAnnotation path="path">
+        <myTags:editAnnotation supportError="${true}"
+                               specifier="${specifier}-method"
+                               label="Method"
+                               showRemoveButton="true"
+                               path="${path}[0].method">
         </myTags:editAnnotation>
     </div>
 </div>
 
 <div class="copy-annotation-platform hide">
     <div class="form-group control-group edit-form-group">
-        <label id="annotation-label">Platform</label>
-        <button class="btn btn-danger annotation-type-remove" id="platform" type="button"><i
-                class="glyphicon glyphicon-remove"></i> Remove
-        </button>
+        <%--<label id="annotation-label">Platform</label>--%>
+        <%--<button class="btn btn-danger annotation-type-remove" id="platform" type="button"><i--%>
+                <%--class="glyphicon glyphicon-remove"></i> Remove--%>
+        <%--</button>--%>
 
-        <myTags:editAnnotation path="path">
+        <myTags:editAnnotation supportError="${true}"
+                               specifier="${specifier}-platform"
+                               label="Platform"
+                               showRemoveButton="true"
+                               path="${path}[0].platform">
         </myTags:editAnnotation>
     </div>
 </div>
@@ -274,31 +295,41 @@
             e.stopImmediatePropagation();
 
             var id = event.target.id;
-            var count = id.split('-')[0];
+            var count = id.split('-')[1];
             var attributeName = id.split('-')[2];
             if (count != undefined && attributeName != undefined) {
 
                 var html = $(".copy-annotation-" + attributeName).html();
                 //use '//g' regex for global capture, otherwise only first instance is repalced
-                html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.').replace(/path="path/g, 'path="${path}[' + count + '].' + attributeName + '.');
+                <%--html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.').replace(/path="path/g, 'path="${path}[' + count + '].' + attributeName + '.');--%>
+
+                var specifier = "${specifier}";
+                var path = "${path}";
+                var html = $(".copy-annotation-" + attributeName).html();
+                path = path.replace('[','\\[').replace(']','\\]');
+                var regexPath = new RegExp(path + '\\[0\\]', "g");
+                var regexSpecifier = new RegExp(specifier + '\\-', "g");
+                html = html.replace(regexPath, '${path}['+ count + ']')
+                    .replace(regexSpecifier,'${specifier}-' + count + '-');
 
                 $(this).after(html);
+                console.log($(this));
                 $(this).hide();
             }
         });
-        $("body").on("click", ".annotation-type-remove", function () {
-            var id = event.target.id;
-            if (id != "") {
-                var count = id.split('-')[0];
-                var attributeName = id.split('-')[1];
-                if ((count != undefined && count != "") && (attributeName != undefined && attributeName != "")) {
-                    $(this).parents(".control-group")[0].remove();
-                    console.log("#" + count + "-add-" + attributeName);
-                    $("#" + count + "-add-" + attributeName + "-${specifier}").show();
-                } else {
-                    console.log(event.target);
-                }
-            }
-        });
+        <%--$("body").on("click", ".annotation-type-remove", function () {--%>
+            <%--var id = event.target.id;--%>
+            <%--if (id != "") {--%>
+                <%--var count = id.split('-')[0];--%>
+                <%--var attributeName = id.split('-')[1];--%>
+                <%--if ((count != undefined && count != "") && (attributeName != undefined && attributeName != "")) {--%>
+                    <%--$(this).parents(".control-group")[0].remove();--%>
+                    <%--console.log("#" + count + "-add-" + attributeName);--%>
+                    <%--$("#" + count + "-add-" + attributeName + "-${specifier}").show();--%>
+                <%--} else {--%>
+                    <%--console.log(event.target);--%>
+                <%--}--%>
+            <%--}--%>
+        <%--});--%>
     });
 </script>

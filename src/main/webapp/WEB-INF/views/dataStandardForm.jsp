@@ -40,17 +40,21 @@
                     <spring:bind path="type">
                     <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
                         <label>Type</label>
-                        <myTags:editAnnotation path="type." annotation="${dataStandard.type}" supportError="${true}"></myTags:editAnnotation>
+                        <myTags:editAnnotation path="type" annotation="${dataStandard.type}" supportError="${true}" specifier="type" label="Type" showRemoveButton="false"></myTags:editAnnotation>
                         <form:errors path="type" class="error-color"/>
                     </div>
                     </spring:bind>
-                    <myTags:editLicense specifier="licenses" path="licenses"
-                                        licenses="${dataStandard.licenses}"></myTags:editLicense>
+                    <myTags:editLicense specifier="licenses" path="licenses" label="License"
+                                        licenses="${dataStandard.licenses}">
+                    </myTags:editLicense>
                     <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder="Version" path="version"
                                                                specifier="version"
                                                                string="${dataStandard.version}"></myTags:editNonRequiredNonZeroLengthString>
 
-                    <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}" specifier="extraProperties" path="extraProperties"></myTags:editCategoryValuePair>
+                    <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
+                                                  specifier="extraProperties" label="Extra Properties"
+                                                  path="extraProperties">
+                    </myTags:editCategoryValuePair>
 
 
                 </div>

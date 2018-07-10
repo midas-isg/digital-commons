@@ -40,12 +40,12 @@
                                              label="Creators" path="creators"
                                              specifier="creators" isFirstRequired="true"></myTags:editOrganization>
                     <myTags:editType path="types" types="${datasetWithOrganization.types}" specifier="type"></myTags:editType>
-                    <myTags:editBiologicalEntity path="isAbout" entities="${datasetWithOrganization.isAbout}"
-                                                 specifier="isAbout" name="Is About"></myTags:editBiologicalEntity>
-                    <myTags:editBiologicalEntity path="spatialCoverage"
-                                                 entities="${datasetWithOrganization.spatialCoverage}"
-                                                 specifier="spatialCoverage"
-                                                 name="Spatial Coverage"></myTags:editBiologicalEntity>
+                    <myTags:editBiologicalEntities path="isAbout" entities="${datasetWithOrganization.isAbout}"
+                                                   specifier="isAbout" name="Is About"></myTags:editBiologicalEntities>
+                    <myTags:editBiologicalEntities path="spatialCoverage"
+                                                   entities="${datasetWithOrganization.spatialCoverage}"
+                                                   specifier="spatialCoverage"
+                                                   name="Spatial Coverage"></myTags:editBiologicalEntities>
                     <myTags:editStudy study="${datasetWithOrganization.producedBy}" specifier="producedBy"
                                       path="producedBy" label="Produced By"></myTags:editStudy>
                     <myTags:editDistributions distributions="${datasetWithOrganization.distributions}"

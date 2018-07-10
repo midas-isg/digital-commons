@@ -28,16 +28,19 @@
                 </div>
             </c:if>
             <div class="form-group control-group edit-form-group">
-                <label>${label}</label>
-                <div class="form-group">
-                    <button class="btn btn-danger annotation-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                </div>
+                <%--<label>${label}</label>--%>
+                <%--<div class="form-group">--%>
+                    <%--<button class="btn btn-danger annotation-remove" type="button"><i--%>
+                            <%--class="glyphicon glyphicon-remove"></i>--%>
+                        <%--Remove--%>
+                    <%--</button>--%>
+                <%--</div>--%>
                 <myTags:editAnnotation annotation="${annotation}"
                                        supportError="${true}"
-                                       path="${path}[${varStatus.count-1}].">
+                                       specifier="${specifier}-${varStatus.count-1}"
+                                       label="${label}"
+                                       showRemoveButton="true"
+                                       path="${path}[${varStatus.count-1}]">
                 </myTags:editAnnotation>
             </div>
             <div class="${specifier}-annotation-add-more">
@@ -65,14 +68,17 @@
 
 <div class="${specifier}-copy hide">
     <div class="form-group control-group edit-form-group">
-        <label>${label}</label>
-        <div class="form-group">
-            <button class="btn btn-danger annotation-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-        <myTags:editAnnotation path="${path}[0].">
+        <%--<label>${label}</label>--%>
+        <%--<div class="form-group">--%>
+            <%--<button class="btn btn-danger annotation-remove" type="button"><i--%>
+                    <%--class="glyphicon glyphicon-remove"></i>--%>
+                <%--Remove--%>
+            <%--</button>--%>
+        <%--</div>--%>
+        <myTags:editAnnotation path="${path}[0]"
+                               specifier="${specifier}-0"
+                               label="${label}"
+                               showRemoveButton="true">
         </myTags:editAnnotation>
     </div>
 </div>
@@ -100,9 +106,9 @@
             // $(this).after(html);
             $(".${specifier}-annotation-add-more").before(html);
         });
-        $("body").on("click", ".annotation-remove", function () {
-            $(this).closest(".control-group").remove();
-        });
+        // $("body").on("click", ".annotation-remove", function () {
+        //     $(this).closest(".control-group").remove();
+        // });
 
 
     });
