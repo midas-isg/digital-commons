@@ -13,90 +13,86 @@
 <c:choose>
     <c:when test="${not empty descriptions}">
         <c:forEach items="${descriptions}" varStatus="varStatus" var="description">
-            <spring:bind path="dataServiceDescription[${varStatus.count-1}]">
-                <div class=" ${status.error ? 'has-error' : ''}">
-                <c:choose>
-                    <c:when test="${varStatus.first}">
-                        <div class="form-group edit-form-group description-add-more">
-                        <label>Data Service Descriptions</label>
-                        <button class="btn btn-success add-description" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add Data Service Description
-                        </button>
-                    </c:when>
-                    <c:otherwise>
+            <div class=" ${status.error ? 'has-error' : ''}">
+            <c:choose>
+                <c:when test="${varStatus.first}">
+                    <div class="form-group edit-form-group description-add-more">
+                    <label>Data Service Descriptions</label>
+                    <button class="btn btn-success add-description" type="button"><i
+                            class="glyphicon glyphicon-plus"></i> Add Data Service Description
+                    </button>
+                </c:when>
+                <c:otherwise>
 
-                        <div class="form-group control-group edit-form-group">
-                        <label>Data Service Description</label>
-                        <button class="btn btn-danger description-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i> Remove
-                        </button>
-                    </c:otherwise>
-                </c:choose>
+                    <div class="form-group control-group edit-form-group">
+                    <label>Data Service Description</label>
+                    <button class="btn btn-danger description-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i> Remove
+                    </button>
+                </c:otherwise>
+            </c:choose>
 
-                <div class="form-group edit-form-group">
-                    <label>Access Point Type</label>
-                    <br>
-                    <form:select path="dataServiceDescription[${varStatus.count-1}].accessPointType"
-                                 items="${accessPointTypes}"></form:select>
-                </div>
+            <div class="form-group edit-form-group">
+                <label>Access Point Type</label>
+                <br>
+                <form:select path="dataServiceDescription[${varStatus.count-1}].accessPointType"
+                             items="${accessPointTypes}"></form:select>
+            </div>
 
-                <div class="form-group edit-form-group">
-                    <label>Access Point Description</label>
-                    <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointDescription)}"
-                           name="dataServiceDescription[${varStatus.count-1}].accessPointDescription"
-                           placeholder="Access Point Description">
-                </div>
+            <div class="form-group edit-form-group">
+                <label>Access Point Description</label>
+                <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointDescription)}"
+                       name="dataServiceDescription[${varStatus.count-1}].accessPointDescription"
+                       placeholder="Access Point Description">
+            </div>
 
-                <div class="form-group edit-form-group">
-                    <label>Access Point Url</label>
-                    <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointUrl)}"
-                           name="dataServiceDescription[${varStatus.count-1}].accessPointUrl"
-                           placeholder="Access Point Url">
-                </div>
+            <div class="form-group edit-form-group">
+                <label>Access Point Url</label>
+                <input type="text" class="form-control" value="${fn:escapeXml(description.accessPointUrl)}"
+                       name="dataServiceDescription[${varStatus.count-1}].accessPointUrl"
+                       placeholder="Access Point Url">
+            </div>
 
-                <form:errors path="dataServiceDescription[${varStatus.count-1}]" class="error-color"/>
+            <form:errors path="dataServiceDescription[${varStatus.count-1}]" class="error-color"/>
 
-                </div>
-                <c:set var="descriptionCount" scope="page" value="${varStatus.count}"/>
-                </div>
-            </spring:bind>
+            </div>
+            <c:set var="descriptionCount" scope="page" value="${varStatus.count}"/>
+            </div>
         </c:forEach>
 
     </c:when>
     <c:otherwise>
-        <spring:bind path="dataServiceDescription[0]">
-            <div class="form-group edit-form-group description-add-more ${status.error ? 'has-error' : ''}">
-                <label>Data Service Descriptions</label>
-                <button class="btn btn-success add-description" type="button"><i class="glyphicon glyphicon-plus"></i>
-                    Add
-                    Data Service Description
-                </button>
+        <div class="form-group edit-form-group description-add-more ${status.error ? 'has-error' : ''}">
+            <label>Data Service Descriptions</label>
+            <button class="btn btn-success add-description" type="button"><i class="glyphicon glyphicon-plus"></i>
+                Add
+                Data Service Description
+            </button>
 
-                <div class="form-group edit-form-group">
-                    <label>Access Point Type</label>
-                    <br>
-                    <form:select path="dataServiceDescription[0].accessPointType"
-                                 items="${accessPointTypes}"></form:select>
-                </div>
-
-                <div class="form-group edit-form-group">
-                    <label>Access Point Description</label>
-                    <input type="text" class="form-control" value="${descriptions[0].accessPointDescription}"
-                           name="dataServiceDescription[0].accessPointDescription"
-                           placeholder="Access Point Description">
-                </div>
-
-                <div class="form-group edit-form-group">
-                    <label>Access Point Url</label>
-                    <input type="text" class="form-control" value="${descriptions[0].accessPointUrl}"
-                           name="dataServiceDescription[0].accessPointUrl"
-                           placeholder="Access Point Url">
-                </div>
-                <form:errors path="dataServiceDescription[0]" class="error-color"/>
+            <div class="form-group edit-form-group">
+                <label>Access Point Type</label>
+                <br>
+                <form:select path="dataServiceDescription[0].accessPointType"
+                             items="${accessPointTypes}"></form:select>
             </div>
-            <c:set var="descriptionCount" scope="page" value="1"/>
 
-        </spring:bind>
+            <div class="form-group edit-form-group">
+                <label>Access Point Description</label>
+                <input type="text" class="form-control" value="${descriptions[0].accessPointDescription}"
+                       name="dataServiceDescription[0].accessPointDescription"
+                       placeholder="Access Point Description">
+            </div>
+
+            <div class="form-group edit-form-group">
+                <label>Access Point Url</label>
+                <input type="text" class="form-control" value="${descriptions[0].accessPointUrl}"
+                       name="dataServiceDescription[0].accessPointUrl"
+                       placeholder="Access Point Url">
+            </div>
+            <form:errors path="dataServiceDescription[0]" class="error-color"/>
+        </div>
+        <c:set var="descriptionCount" scope="page" value="1"/>
+
     </c:otherwise>
 </c:choose>
 

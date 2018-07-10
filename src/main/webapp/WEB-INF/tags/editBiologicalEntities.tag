@@ -35,26 +35,34 @@
             <div class="form-group control-group edit-form-group">
                 <c:choose>
                     <c:when test="${not empty entity.name}">
-                        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
+                        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                                label="Name"
                                                                 string="${entity.name}"
-                                                                path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
+                                                                path="${path}[${varStatus.count-1}].name">
+                        </myTags:editRequiredNonZeroLengthString>
                     </c:when>
                     <c:otherwise>
-                        <myTags:editRequiredNonZeroLengthString placeholder=" Name" label="Name"
-                                                                path="${path}[${varStatus.count-1}].name"></myTags:editRequiredNonZeroLengthString>
+                        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
+                                                                label="Name"
+                                                                path="${path}[${varStatus.count-1}].name">
+                        </myTags:editRequiredNonZeroLengthString>
                     </c:otherwise>
                 </c:choose>
                     <div class="form-group">
                         <myTags:editNonRequiredNonZeroLengthString string="${entity.description}"
-                                                                   path="${path}[${varStatus.count-1}].description" label="Description" placeholder="Description"
-                                                                   specifier="${specifier}-${varStatus.count-1}"></myTags:editNonRequiredNonZeroLengthString>
+                                                                   path="${path}[${varStatus.count-1}].description"
+                                                                   label="Description"
+                                                                   placeholder="Description"
+                                                                   specifier="${specifier}-${varStatus.count-1}">
+                        </myTags:editNonRequiredNonZeroLengthString>
                     </div>
 
                     <div class="form-group">
                         <myTags:editIdentifier identifier="${entity.identifier}"
                                                path="${path}[${varStatus.count-1}].identifier"
                                                specifier="${specifier}-${varStatus.count-1}"
-                                               label="Identifier"></myTags:editIdentifier>
+                                               label="Identifier">
+                        </myTags:editIdentifier>
                     </div>
 
                     <div class="form-group">
@@ -62,7 +70,8 @@
                                                unbounded="${true}"
                                                specifier="${specifier}-alternate-${varStatus.count-1}"
                                                identifiers="${entity.alternateIdentifiers}"
-                                               label="Alternate Identifier"></myTags:editIdentifier>
+                                               label="Alternate Identifier">
+                        </myTags:editIdentifier>
                     </div>
                 </div>
             </div>
@@ -95,23 +104,31 @@
             Remove
         </button>
         <br><br>
-            <myTags:editRequiredNonZeroLengthString placeholder="Name" label="Name"
-                                                    path="${path}[0].name"></myTags:editRequiredNonZeroLengthString>
+            <myTags:editRequiredNonZeroLengthString placeholder="Name"
+                                                    label="Name"
+                                                    path="${path}[0].name">
+            </myTags:editRequiredNonZeroLengthString>
         <div class="form-group">
-            <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description" label="Description" placeholder="Description"
-                                                       specifier="${specifier}-null"></myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description"
+                                                       label="Description"
+                                                       placeholder="Description"
+                                                       specifier="${specifier}-null">
+            </myTags:editNonRequiredNonZeroLengthString>
         </div>
 
         <div class="form-group">
             <myTags:editIdentifier path="${path}[0].identifier"
                                    specifier="${specifier}-null"
-                                   label="Identifier"></myTags:editIdentifier>
+                                   label="Identifier">
+            </myTags:editIdentifier>
         </div>
 
         <div class="form-group">
-            <myTags:editIdentifier path="${path}[0].alternateIdentifiers" unbounded="${true}"
+            <myTags:editIdentifier path="${path}[0].alternateIdentifiers"
+                                   unbounded="${true}"
                                    specifier="${specifier}-null-alternate"
-                                   label="Alternate Identifier"></myTags:editIdentifier>
+                                   label="Alternate Identifier">
+            </myTags:editIdentifier>
         </div>
     </div>
 </div>

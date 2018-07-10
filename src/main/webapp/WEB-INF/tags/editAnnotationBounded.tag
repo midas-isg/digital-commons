@@ -28,12 +28,6 @@
             </div>
 
             <div class="form-group control-group edit-form-group">
-                <%--<label>${label}</label>--%>
-                <%--<br>--%>
-                <%--<button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>--%>
-                    <%--Remove--%>
-                <%--</button>--%>
-                <%--<br><br>--%>
                 <myTags:editAnnotation annotation="${annotation}"
                                        path="${path}"
                                        specifier="${specifier}"
@@ -60,12 +54,6 @@
 
 <div class="${specifier}-copy-annotation hide">
     <div class="form-group control-group edit-form-group">
-        <%--<label>${label}</label>--%>
-        <%--<br>--%>
-        <%--<button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>--%>
-            <%--Remove--%>
-        <%--</button>--%>
-        <%--<br><br>--%>
         <myTags:editAnnotation path="${path}"
                                specifier="${specifier}"
                                label="${label}"
@@ -86,10 +74,6 @@
             $(this).hide();
             //e.stopImmediatePropagation()
         });
-        <%--$("body").on("click", ".${specifier}-remove", function () {--%>
-            <%--$(this).parent(".control-group").remove();--%>
-            <%--$(".${specifier}-add-annotation").show();--%>
-        <%--});--%>
 
     });
 </script>

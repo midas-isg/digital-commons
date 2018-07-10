@@ -20,6 +20,7 @@
               type="java.lang.String" %>
 <%@ attribute name="identifierSource" required="false"
               type="java.lang.String" %>
+
 <c:choose>
     <c:when test="${not empty identifiers}">
         <div class="form-group edit-form-group">

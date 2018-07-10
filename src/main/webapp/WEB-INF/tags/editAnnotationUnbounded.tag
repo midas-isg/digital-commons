@@ -28,13 +28,6 @@
                 </div>
             </c:if>
             <div class="form-group control-group edit-form-group">
-                <%--<label>${label}</label>--%>
-                <%--<div class="form-group">--%>
-                    <%--<button class="btn btn-danger annotation-remove" type="button"><i--%>
-                            <%--class="glyphicon glyphicon-remove"></i>--%>
-                        <%--Remove--%>
-                    <%--</button>--%>
-                <%--</div>--%>
                 <myTags:editAnnotation annotation="${annotation}"
                                        supportError="${true}"
                                        specifier="${specifier}-${varStatus.count-1}"
@@ -68,13 +61,6 @@
 
 <div class="${specifier}-copy hide">
     <div class="form-group control-group edit-form-group">
-        <%--<label>${label}</label>--%>
-        <%--<div class="form-group">--%>
-            <%--<button class="btn btn-danger annotation-remove" type="button"><i--%>
-                    <%--class="glyphicon glyphicon-remove"></i>--%>
-                <%--Remove--%>
-            <%--</button>--%>
-        <%--</div>--%>
         <myTags:editAnnotation path="${path}[0]"
                                specifier="${specifier}-0"
                                label="${label}"
@@ -106,10 +92,6 @@
             // $(this).after(html);
             $(".${specifier}-annotation-add-more").before(html);
         });
-        // $("body").on("click", ".annotation-remove", function () {
-        //     $(this).closest(".control-group").remove();
-        // });
-
 
     });
 </script>

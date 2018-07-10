@@ -17,23 +17,19 @@
 
 <c:choose>
     <c:when test="${supportError}">
-        <spring:bind path="${path}">
             <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
                 <label>${label}</label>
                     <div class="form-group edit-form-group">
                         <label>Value</label>
                         <input type="text" class="form-control" value="${annotation.value}" name="${path}.value" placeholder=" Value">
                     </div>
-                    <spring:bind path="${path}.valueIRI">
                         <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
                             <label>Value IRI</label>
                             <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}.valueIRI" placeholder="Value IRI">
                             <form:errors path="${path}.valueIRI" class="error-color"/>
                         </div>
-                    </spring:bind>
                     <form:errors path="${path}" class="error-color"/>
             </div>
-        </spring:bind>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">

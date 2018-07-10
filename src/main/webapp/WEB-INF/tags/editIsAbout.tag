@@ -21,80 +21,76 @@
 
 <c:choose>
     <c:when test="${not empty isAboutList}">
-        <spring:bind path="${path}[0]">
-            <div class=" ${status.error ? 'has-error' : ''}">
-                <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
-                    <c:choose>
-                        <c:when test="${varStatus.first}">
-                            <div class="form-group edit-form-group ${specifier}-add-more-button">
-                                <label>${label}</label>
-                                <c:if test="${showAddAnnotationButton}">
-                                    <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                                            class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
-                                    </button>
-                                </c:if>
-                                <c:if test="${showAddBiologicalEntityButton}">
-                                    <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                                            class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
-                                    </button>
-                                </c:if>
-                            </div>
-                        </c:when>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">
-                            <div class="form-group edit-form-group control-group">
-                                <myTags:editAnnotation annotation="${isAbout}"
-                                                       path="${path}[${varStatus.count-1}]"
-                                                       specifier="${specifier}-${varStatus.count-1}"
-                                                       label="Is About (Annotation)"
-                                                       showRemoveButton="true"
-                                                       supportError="true">
-                                </myTags:editAnnotation>
-                            </div>
-                        </c:when>
-                        <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">
-                            <myTags:editBiologicalEntity entity="${isAbout}"
-                                                         path="${path}[${varStatus.count-1}]"
-                                                         specifier="${specifier}-${varStatus.count-1}"
-                                                         label="${label} (BiologicalEntity)">
-                            </myTags:editBiologicalEntity>
-                        </c:when>
-                    </c:choose>
+        <div class=" ${status.error ? 'has-error' : ''}">
+            <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
+                <c:choose>
+                    <c:when test="${varStatus.first}">
+                        <div class="form-group edit-form-group ${specifier}-add-more-button">
+                            <label>${label}</label>
+                            <c:if test="${showAddAnnotationButton}">
+                                <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
+                                        class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
+                                </button>
+                            </c:if>
+                            <c:if test="${showAddBiologicalEntityButton}">
+                                <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
+                                        class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
+                                </button>
+                            </c:if>
+                        </div>
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">
+                        <div class="form-group edit-form-group control-group">
+                            <myTags:editAnnotation annotation="${isAbout}"
+                                                   path="${path}[${varStatus.count-1}]"
+                                                   specifier="${specifier}-${varStatus.count-1}"
+                                                   label="Is About (Annotation)"
+                                                   showRemoveButton="true"
+                                                   supportError="true">
+                            </myTags:editAnnotation>
+                        </div>
+                    </c:when>
+                    <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">
+                        <myTags:editBiologicalEntity entity="${isAbout}"
+                                                     path="${path}[${varStatus.count-1}]"
+                                                     specifier="${specifier}-${varStatus.count-1}"
+                                                     label="${label} (BiologicalEntity)">
+                        </myTags:editBiologicalEntity>
+                    </c:when>
+                </c:choose>
 
-                    <c:if test="${varStatus.first}">
+                <c:if test="${varStatus.first}">
 
-                        <form:errors path="${path}[0]" class="error-color"/>
-                    </c:if>
+                    <form:errors path="${path}[0]" class="error-color"/>
+                </c:if>
 
-                    <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
+                <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
 
-                </c:forEach>
-                <div class="${specifier}-add-more"></div>
-            </div>
-        </spring:bind>
+            </c:forEach>
+            <div class="${specifier}-add-more"></div>
+        </div>
     </c:when>
     <c:otherwise>
-        <spring:bind path="${path}[0]">
-            <div class="form-group edit-form-group ${specifier}-add-more-button ${status.error ? 'has-error' : ''}">
-                <label>${label}</label>
-                <c:if test="${showAddAnnotationButton}">
-                    <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
-                    </button>
-                </c:if>
-                <c:if test="${showAddBiologicalEntityButton}">
-                    <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
-                    </button>
-                </c:if>
-                <div class="${specifier}-add-more"></div>
+        <div class="form-group edit-form-group ${specifier}-add-more-button ${status.error ? 'has-error' : ''}">
+            <label>${label}</label>
+            <c:if test="${showAddAnnotationButton}">
+                <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
+                </button>
+            </c:if>
+            <c:if test="${showAddBiologicalEntityButton}">
+                <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
+                </button>
+            </c:if>
+            <div class="${specifier}-add-more"></div>
 
-                <form:errors path="${path}[0]" class="error-color"/>
-            </div>
-            <c:set var="unboundedIsAboutCount" scope="page" value="0"/>
+            <form:errors path="${path}[0]" class="error-color"/>
+        </div>
+        <c:set var="unboundedIsAboutCount" scope="page" value="0"/>
 
-        </spring:bind>
     </c:otherwise>
 </c:choose>
 

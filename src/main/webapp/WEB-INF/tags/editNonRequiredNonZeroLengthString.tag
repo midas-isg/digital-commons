@@ -14,6 +14,7 @@
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="true"
               type="java.lang.String" %>
+
 <c:choose>
     <c:when test="${not empty string}">
         <div class="form-group edit-form-group">
