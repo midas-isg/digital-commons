@@ -23,15 +23,9 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 
-                    <myTags:editNonRequiredNonZeroLengthString path="title" string="${dataset.title}"
-                    specifier="title" placeholder="Title"
-                    label="Title"></myTags:editNonRequiredNonZeroLengthString>
-                    <%--<myTags:editType path="types" types="${dataset.types}" specifier="type"></myTags:editType>--%>
-                    <%--<myTags:editBiologicalEntity path="isAbout" entities="${dataset.isAbout}" specifier="isAbout"--%>
-                                                 <%--name="Is About"></myTags:editBiologicalEntity>--%>
-                    <%--<myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"--%>
-                                                 <%--specifier="spatialCoverage"--%>
-                                                 <%--name="Spatial Coverage"></myTags:editBiologicalEntity>--%>
+                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}" label="Creator"
+                                                      path="creators" specifier="creators" showAddPersonButton="true" showAddOrganizationButton="true"
+                                                      isFirstRequired="true"></myTags:editPersonComprisedEntity>
                 </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

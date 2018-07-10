@@ -31,12 +31,7 @@
                                                                label="Description"></myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
                                            label="Identifier"></myTags:editIdentifier>
-                    <myTags:editPerson people="${dataset.creators}" label="Creators"
-                                       path="creators" specifier="creators"
-                                       isFirstRequired="true"></myTags:editPerson>
-                    <%--<input type="text" class="form-control" name="producedBy.name" placeholder=" First Name">--%>
-                    <%--<myTags:editStudy study="${dataset.producedBy}" specifier="producedBy"--%>
-                                      <%--path="producedBy" label="Produced By"></myTags:editStudy>--%>
+
                 </div>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
             </form>

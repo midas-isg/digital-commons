@@ -23,8 +23,9 @@
 
 <c:choose>
     <c:when test="${not empty personComprisedEntities}">
-        <spring:bind path="${path}[0]">
+        <%--<spring:bind path="${path}[0]">--%>
             <div class=" ${status.error ? 'has-error' : ''}">
+                <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
                 <c:forEach items="${personComprisedEntities}" varStatus="varStatus" var="personComprisedEntity">
                     <c:choose>
                         <c:when test="${varStatus.first}">
@@ -69,6 +70,8 @@
                                                        label="${label} (Person)"
                                                        isFirstRequired="false">
                                     </myTags:editPerson>
+                                    <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>
+
                                 </c:when>
                                 <c:when test="${personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Organization'}">
                                     <myTags:editOrganization organization="${personComprisedEntity}"
@@ -77,6 +80,8 @@
                                                              label="${label} (Organization)"
                                                              isFirstRequired="false">
                                     </myTags:editOrganization>
+                                    <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>
+
                                 </c:when>
                             </c:choose>
                         </c:otherwise>
@@ -87,15 +92,15 @@
                         <form:errors path="${path}[0]" class="error-color"/>
                     </c:if>
 
-                    <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>
+                    <%--<c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>--%>
 
                 </c:forEach>
                 <div class="${specifier}-add-more"></div>
             </div>
-        </spring:bind>
+        <%--</spring:bind>--%>
     </c:when>
     <c:otherwise>
-        <spring:bind path="${path}[0]">
+        <%--<spring:bind path="${path}[0]">--%>
             <div class="form-group edit-form-group ${specifier}-add-more-button ${status.error ? 'has-error' : ''}">
                 <label>${label}s</label>
                 <c:if test="${showAddPersonButton}">
@@ -114,7 +119,7 @@
             </div>
             <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
 
-        </spring:bind>
+        <%--</spring:bind>--%>
     </c:otherwise>
 </c:choose>
 

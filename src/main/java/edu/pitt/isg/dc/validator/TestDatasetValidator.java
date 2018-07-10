@@ -1,11 +1,15 @@
 package edu.pitt.isg.dc.validator;
 
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 
 import edu.pitt.isg.mdc.dats2_2.*;
 import org.springframework.webflow.execution.RequestContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class TestDatasetValidator
@@ -14,8 +18,20 @@ public class TestDatasetValidator
         Dataset dataset = new Dataset();
 //        dataset.setTitle("test");
         dataset.setIdentifier(new Identifier());
-        for(int i=50; i>0; i--) {
-            dataset.getCreators().add(new Person());
+        for(int i=5; i>0; i--) {
+            PersonComprisedEntity personComprisedEntity = new PersonOrganization();
+            personComprisedEntity.setIdentifier(new Identifier());
+
+            List<Identifier> alternateIdentifiers = new ArrayList<>();
+            for(int j=5; j>0; j--) {
+                alternateIdentifiers.add(new Identifier());
+            }
+            ((PersonOrganization) personComprisedEntity).setAlternateIdentifiers(alternateIdentifiers);
+
+
+            ((PersonOrganization) personComprisedEntity).getAffiliations().add(new Organization());
+            ((PersonOrganization) personComprisedEntity).getRoles().add(new Annotation());
+            dataset.getCreators().add(personComprisedEntity);
         }
 //        dataset.getCreators().add(new Person());
 //        dataset.setProducedBy(new Study());
@@ -25,6 +41,12 @@ public class TestDatasetValidator
     public String validateDataset(Dataset dataset, MessageContext messageContext)
     {
         String title = dataset.getTitle();
+//        Person person  = new Person();
+//        PersonOrganization personOrganization = (PersonOrganization) dataset.getCreators().get(0);
+//        person.setFirstName(personOrganization.getFirstName());
+//        person.setLastName(personOrganization.getLastName());
+//        person.setIdentifier(personOrganization.getIdentifier());
+//        dataset.getCreators().add(person);
         if(title != "")
         {
             return "true";

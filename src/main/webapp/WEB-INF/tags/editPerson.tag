@@ -165,7 +165,7 @@
                     </myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString label="Middle Initial"
                                                                placeholder=" The first letter of the person's middle name."
-                                                               specifier="${specifier}-firstName"
+                                                               specifier="${specifier}-middleInitial"
                                                                path="${path}.middleInitial">
                     </myTags:editNonRequiredNonZeroLengthString>
                     <myTags:editNonRequiredNonZeroLengthString label="Last Name"
