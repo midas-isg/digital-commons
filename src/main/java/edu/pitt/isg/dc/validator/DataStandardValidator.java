@@ -42,7 +42,7 @@ public class DataStandardValidator implements Validator {
         ListIterator<License> licenseListIterator = dataStandard.getLicenses().listIterator();
         while(licenseListIterator.hasNext()) {
             License license = licenseListIterator.next();
-            if(isEmpty(license.getIdentifier()) && isEmpty(license.getIdentifierSource()) && isEmpty(license.getVersion())) {
+            if(isEmpty(license.getIdentifier()) /*&& isEmpty(license.getIdentifierSource())*/ && isEmpty(license.getVersion())) {
                 licenseListIterator.remove();
             }
         }

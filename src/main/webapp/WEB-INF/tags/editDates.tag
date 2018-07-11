@@ -16,7 +16,13 @@
         <label>Date</label>
         <input type="text" class="form-control date" value="${date.date}" name="${path}.date" id="${specifier}-date-picker">
     </div>
-    <myTags:editAnnotation path="${path}.type." annotation="${date.type}" supportError="${true}"></myTags:editAnnotation>
+    <myTags:editAnnotation path="${path}.type"
+                           annotation="${date.type}"
+                           label="Date"
+                           specifier="${specifier}-date"
+                           showRemoveButton="false"
+                           supportError="${true}">
+    </myTags:editAnnotation>
 </div>
 
 <script>

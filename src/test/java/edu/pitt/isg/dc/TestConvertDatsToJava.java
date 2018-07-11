@@ -4,7 +4,6 @@ import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.*;
-import com.google.gson.stream.MalformedJsonException;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
@@ -12,7 +11,6 @@ import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.*;
-import org.apache.commons.lang.ArrayUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.stream.IntStream;
 
 import static org.apache.commons.lang.ArrayUtils.INDEX_NOT_FOUND;
 import static org.junit.Assert.assertEquals;
@@ -109,11 +106,13 @@ public class TestConvertDatsToJava {
 
     public MapDifference<String, Object> verifySerialization(EntryId entryId, Class clazz) {
         Entry entry = repo.findOne(entryId);
+
         String jsonFromDatabase = gson.toJson(entry.getContent().get("entry"));
         Object object;
 
         jsonFromDatabase = jsonFromDatabase.replaceAll("\"coordinates\":\\[ *\\[ *[ ,0-9\\-\\.]* *\\] *\\],", "");
         jsonFromDatabase = jsonFromDatabase.replaceAll("\"size\":0", "\"size\":0.0");
+
 
         JsonObject jsonObjectFromDatabase = null;
         try {
@@ -210,7 +209,6 @@ public class TestConvertDatsToJava {
     private void test(Class clazz) {
         Set<String> types = new HashSet<>();
         types.add(clazz.getTypeName());
-
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
         for (Entry entry : entriesList) {
             MapDifference<String, Object> difference = verifySerialization(entry.getId(), clazz);

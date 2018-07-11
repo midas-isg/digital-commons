@@ -79,8 +79,6 @@ public class DataEntryController {
     @Autowired
     DatasetValidator datasetValidator;
     @Autowired
-    DatasetWithOrganizationValidator datasetWithOrganizationValidator;
-    @Autowired
     DataFormatConverterValidator dataFormatConverterValidator;
     @Autowired
     DataServiceValidator dataServiceValidator;
@@ -112,13 +110,6 @@ public class DataEntryController {
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
         binder.registerCustomEditor(String.class, new CustomDatasetEditor());
         binder.setValidator(datasetValidator);
-    }
-
-    @InitBinder("datasetWithOrganization")
-    protected void initBinderOrganization(WebDataBinder binder) {
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-        binder.registerCustomEditor(String.class, new CustomDatasetEditor());
-        binder.setValidator(datasetWithOrganizationValidator);
     }
 
     @InitBinder("dataFormatConverters")
@@ -263,7 +254,7 @@ public class DataEntryController {
     @Autowired
     private DataGovInterface dataGovInterface;
 
-       @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
+    @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
     public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         Dataset dataset = new Dataset();
@@ -277,7 +268,7 @@ public class DataEntryController {
             model.addAttribute("revisionId", id.getRevisionId());
             EntryView entryView = new EntryView(entry);
 
-            dataset = converter.convertToJavaDataset(entryView.getUnescapedEntryJsonString());
+            dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
         }
         model.addAttribute("dataset", dataset);
@@ -327,6 +318,7 @@ public class DataEntryController {
         entrySubmissionInterface.submitEntry(entryObject, entryId, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
         return "entryConfirmation";
     }
+
 
    /* @RequestMapping(value = "/addDatasetWithOrganization", method = RequestMethod.GET)
     public String addNewDatasetWithOrganization(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {
@@ -391,6 +383,7 @@ public class DataEntryController {
 
         return "entryConfirmation";
     }*/
+
 
 
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)

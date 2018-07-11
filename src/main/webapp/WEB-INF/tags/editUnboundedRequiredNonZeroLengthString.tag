@@ -27,7 +27,6 @@
                 </button>
 
                 <c:forEach items="${strings}" varStatus="varStatus" var="format">
-                <spring:bind path="${path}[${varStatus.count-1}]">
 
                     <div class="form-group  ${status.error ? 'has-error' : ''}">
                         <div class="input-group control-group full-width">
@@ -55,7 +54,6 @@
                         </div>
                     </div>
                     <form:errors path="${path}[${varStatus.count-1}]" class="error-color"/>
-                </spring:bind>
                     <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
                 </c:forEach>
             </div>
@@ -71,15 +69,11 @@
                         ${placeholder}
                 </button>
                 <br><br>
-                <spring:bind path="${path}[0]">
-
-                    <div class="form-group  ${status.error ? 'has-error' : ''}">
-                        <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0"
-                               placeholder="${placeholder}"/>
-                    </div>
-                    <form:errors path="${path}[0]" class="error-color"/>
-
-                </spring:bind>
+                <div class="form-group  ${status.error ? 'has-error' : ''}">
+                    <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0"
+                           placeholder="${placeholder}"/>
+                </div>
+                <form:errors path="${path}[0]" class="error-color"/>
             </div>
         </div>
         <c:set var="formatsCount" scope="page" value="1"/>

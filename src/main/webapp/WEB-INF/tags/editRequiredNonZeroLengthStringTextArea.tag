@@ -14,10 +14,8 @@
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 
-<spring:bind path="${path}">
-    <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-        <form:label path="${path}">${label}</form:label>
-        <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
-        <form:errors path="${path}" class="error-color"/>
-    </div>
-</spring:bind>
+<div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
+    <form:label path="${path}">${label}</form:label>
+    <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
+    <form:errors path="${path}" class="error-color"/>
+</div>

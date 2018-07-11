@@ -21,20 +21,20 @@
         <div class="form-group edit-form-group">
             <form:label path="${path}">${label}</form:label>
             <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-annotation" style="display:none;" type="button"><i
+                <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-annotation" style="display:none;" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
                         ${label}
                 </button>
             </div>
 
             <div class="form-group control-group edit-form-group">
-                <label>${label}</label>
-                <br>
-                <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-                <br><br>
-                <myTags:editAnnotation annotation="${annotation}" path="${path}." supportError="${true}"></myTags:editAnnotation>
+                <myTags:editAnnotation annotation="${annotation}"
+                                       path="${path}"
+                                       specifier="${specifier}"
+                                       label="${label}"
+                                       showRemoveButton="true"
+                                       supportError="${true}">
+                </myTags:editAnnotation>
             </div>
         </div>
     </c:when>
@@ -54,13 +54,11 @@
 
 <div class="${specifier}-copy-annotation hide">
     <div class="form-group control-group edit-form-group">
-        <label>${label}</label>
-        <br>
-        <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
-        <myTags:editAnnotation path="${path}."></myTags:editAnnotation>
+        <myTags:editAnnotation path="${path}"
+                               specifier="${specifier}"
+                               label="${label}"
+                               showRemoveButton="true">
+        </myTags:editAnnotation>
     </div>
 </div>
 
@@ -75,10 +73,6 @@
             $(this).after(html);
             $(this).hide();
             //e.stopImmediatePropagation()
-        });
-        $("body").on("click", ".${specifier}-remove", function () {
-            $(this).parent(".control-group").remove();
-            $(".${specifier}-add-annotation").show();
         });
 
     });

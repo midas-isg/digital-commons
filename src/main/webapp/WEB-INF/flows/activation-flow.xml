@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+    <on-start>
+        <evaluate expression="testDatasetValidator.initFlow()" result="flowScope.dataset"/>
+    </on-start>
+
+    <view-state id="datasetForm1" model="flowScope.dataset">
+        <transition on="next" to="validateForm1"/>
+    </view-state>
+
+    <action-state id="validateForm1">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm2"/>
+        <transition on="false" to="datasetForm1"/>
+
+    </action-state>
+
+
+    <view-state id="datasetForm2" model="flowScope.dataset">
+        <transition on="previous"  to="datasetForm1"/>
+        <transition on="next" to="validateForm2"/>
+
+    </view-state>
+
+
+    <action-state id="validateForm2">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm3"/>
+        <transition on="false" to="datasetForm2"/>
+
+    </action-state>
+
+    <view-state id="datasetForm3" model="flowScope.dataset">
+        <transition on="next" to="createDataset"/>
+        <transition on="previous" to="datasetForm2"/>
+    </view-state>
+    <end-state id="createDataset"></end-state>
+
+    <on-end>
+        <evaluate expression="testDatasetValidator.createDataset(flowRequestContext)" />
+    </on-end>
+
+
+
+</flow>

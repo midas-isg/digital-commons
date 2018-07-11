@@ -302,7 +302,7 @@ public class DataGov implements DataGovInterface {
             //Serialize or Marshall Java to JSON
             entry = datasetToJSonObject(dataGovPackage);
 
-            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.DatasetWithOrganization");
+            entryObject.setProperty("type", "edu.pitt.isg.mdc.dats2_2.Dataset");
 
             entry.remove("class");
             entryObject.setEntry(entry);

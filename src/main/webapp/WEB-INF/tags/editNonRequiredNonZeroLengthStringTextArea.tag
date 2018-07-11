@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="input-group control-group full-width">
-                <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}" id="${specifier}-string" placeholder="${placeholder}"/>
+                <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
                 <div class="input-group-btn">
                     <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
@@ -56,7 +56,7 @@
 
 <div class="${specifier}-copy-string hide">
     <div class="input-group control-group full-width">
-        <input type="text" class="form-control" name="${path}" placeholder="${placeholder}" id="${specifier}-string"/>
+        <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-string-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove

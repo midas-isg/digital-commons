@@ -17,6 +17,7 @@
               type="java.lang.String" %>
 <%@ attribute name="required" required="false"
               type="java.lang.Boolean" %>
+
 <c:choose>
     <c:when test="${not empty identifiers}">
         <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">

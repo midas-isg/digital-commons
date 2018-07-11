@@ -10,12 +10,12 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="annotations" required="false"
+<%@ attribute name="accessList" required="false"
               type="java.util.ArrayList" %>
 
 <c:choose>
-    <c:when test="${not empty annotations}">
-        <c:forEach items="${annotations}" var="annotation" varStatus="varStatus">
+    <c:when test="${not empty accessList}">
+        <c:forEach items="${accessList}" var="access" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
                     <label>${label}</label>
@@ -28,17 +28,22 @@
                 </div>
             </c:if>
             <div class="form-group control-group edit-form-group">
-                <myTags:editAnnotation annotation="${annotation}"
-                                       supportError="${true}"
-                                       specifier="${specifier}-${varStatus.count-1}"
-                                       label="${label}"
-                                       showRemoveButton="true"
-                                       path="${path}[${varStatus.count-1}]">
-                </myTags:editAnnotation>
+                <label>${label}</label>
+                <div class="form-group">
+                    <button class="btn btn-danger access-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </div>
+                <myTags:editAccess path="${path}[${varStatus.count-1}]"
+                                   specifier="${specifier}-${varStatus.count-1}"
+                                   access="${access}"
+                                   isAccessRequired="false">
+                </myTags:editAccess>
             </div>
-            <div class="${specifier}-annotation-add-more">
+            <div class="${specifier}-access-add-more">
             </div>
-            <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
+            <c:set var="accessCount" scope="page" value="${varStatus.count}"/>
         </c:forEach>
     </c:when>
     <c:otherwise>
@@ -50,10 +55,10 @@
                     ${label}
                 </button>
             </div>
-            <div class="${specifier}-annotation-add-more">
+            <div class="${specifier}-access-add-more">
             </div>
         </div>
-        <c:set var="annotationCount" scope="page" value="0"/>
+        <c:set var="accessCount" scope="page" value="0"/>
 
     </c:otherwise>
 </c:choose>
@@ -61,11 +66,17 @@
 
 <div class="${specifier}-copy hide">
     <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation path="${path}[0]"
-                               specifier="${specifier}-0"
-                               label="${label}"
-                               showRemoveButton="true">
-        </myTags:editAnnotation>
+        <label>${label}</label>
+        <div class="form-group">
+            <button class="btn btn-danger access-remove" type="button"><i
+                    class="glyphicon glyphicon-remove"></i>
+                Remove
+            </button>
+        </div>
+        <myTags:editAccess path="${path}[0]"
+                           specifier="${specifier}-"
+                           isAccessRequired="false">
+        </myTags:editAccess>
     </div>
 </div>
 
@@ -74,7 +85,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        var annotationCount = ${annotationCount};
+        var accessCount = ${accessCount};
         //Show/Hide Values
         $("body").on("click", ".${specifier}-add", function (e) {
             e.stopImmediatePropagation();
@@ -85,13 +96,17 @@
             path = path.replace('[','\\[').replace(']','\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}['+ annotationCount + ']')
-                .replace(regexSpecifier,'${specifier}-' + annotationCount + '-');
-            annotationCount += 1;
+            html = html.replace(regexPath, '${path}['+ accessCount + ']')
+                .replace(regexSpecifier,'${specifier}-' + accessCount + '-');
+            accessCount += 1;
 
             // $(this).after(html);
-            $(".${specifier}-annotation-add-more").before(html);
+            $(".${specifier}-access-add-more").before(html);
         });
+        $("body").on("click", ".access-remove", function () {
+            $(this).closest(".control-group").remove();
+        });
+
 
     });
 </script>

@@ -1,16 +1,44 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: mas400
-  Date: 6/28/18
-  Time: 2:50 PM
-  To change this template use File | Settings | File Templates.
---%>
+<!doctype html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="en">
 <head>
-    <title>$Title$</title>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
+    <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+    <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+
+    <myTags:head title="MIDAS Digital Commons"/>
+
+    <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-$END$
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <form method="post" action="${flowExecutionUrl}">
+                <div class="form-group edit-form-group">
+                    <label>Dataset</label>
+
+                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}" label="Creator"
+                                                      path="creators" specifier="creators" showAddPersonButton="true" showAddOrganizationButton="true"
+                                                      isFirstRequired="true"></myTags:editPersonComprisedEntity>
+                </div>
+
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+
+            </form>
+        </div>
+    </div>
+</div>
+<myTags:analytics/>
+
 </body>
+
+<myTags:footer/>
+
 </html>

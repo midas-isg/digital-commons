@@ -5,113 +5,115 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="access" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Access" %>
+<%@ attribute name="isAccessRequired" required="true"
+              type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${not empty access}">
         <div class="form-group edit-form-group">
             <label>Access</label>
-
-            <spring:bind path="${path}.landingPage">
-                <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                    <label>Landing Page</label>
-                    <input type="text" class="form-control" value="${access.landingPage}" name="${path}.landingPage"
-                           id="${specifier}-landingPage">
-                    <form:errors path="${path}.landingPage" class="error-color"/>
-                </div>
-            </spring:bind>
-
-            <c:choose>
-                <c:when test="${not empty access.accessURL}">
-                    <button class="btn btn-success ${specifier}-add-accessURL" style="display: none" type="button">
-                        <i
-                                class="glyphicon glyphicon-plus"></i> Add
-                        Access URL
-                    </button>
-                    <div class="input-group control-group edit-form-group full-width">
-                        <label>Access URL</label>
-
-                        <spring:bind path="${path}.accessURL">
-                            <div class="input-group edit-form-group ${status.error ? 'has-error' : ''}">
-                                <input name="${path}.accessURL" value="${access.accessURL}" type="text" class="form-control"
-                                       placeholder="Access URL">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i>
-                                        Remove
-                                    </button>
-                                </div>
-                            </div>
-                            <form:errors path="${path}.accessURL" class="error-color"/>
-                        </spring:bind>
-                    </div>
-                </c:when>
-                <c:otherwise>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Access URL
-                        </button>
-                    </div>
-                </c:otherwise>
-            </c:choose>
+            <c:if test="${not isAccessRequired}">
+                <button class="btn btn-danger access-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+            </c:if>
+            <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
+                                   path="${path}.identifier"
+                                   identifier="${access.identifier}"
+                                   unbounded="False">
+            </myTags:editIdentifier>
+            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                   label="Alternate Identifiers"
+                                   path="${path}.alternateIdentifiers"
+                                   identifiers="${access.alternateIdentifiers}"
+                                   unbounded="${true}">
+            </myTags:editIdentifier>
+            <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
+                                                               string="${access.description}"
+                                                               specifier="${specifier}-description"
+                                                               placeholder=" A textual narrative comprised of one or more statements describing access."
+                                                               label="Description">
+            </myTags:editNonRequiredNonZeroLengthStringTextArea>
+            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
+                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
+                                                    string="${access.landingPage}"
+                                                    label="Landing Page">
+            </myTags:editRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="${path}.accessURL"
+                                                       specifier="${specifier}-accessURL"
+                                                       placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                                       string="${access.accessURL}"
+                                                       label="Access URL">
+            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editAnnotationUnbounded path="${path}.types"
+                                            specifier="${specifier}-types"
+                                            annotations="${access.types}"
+                                            label="Types">
+            </myTags:editAnnotationUnbounded>
+            <myTags:editAnnotationUnbounded path="${path}.authorizations"
+                                            specifier="${specifier}-authorizations"
+                                            annotations="${access.authorizations}"
+                                            label="Authorizations">
+            </myTags:editAnnotationUnbounded>
+            <myTags:editAnnotationUnbounded path="${path}.authentications"
+                                            specifier="${specifier}-authentications"
+                                            annotations="${access.authentications}"
+                                            label="Authentications">
+            </myTags:editAnnotationUnbounded>
         </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <form:label path="${path}">Access</form:label>
-            <spring:bind path="${path}.landingPage">
-                <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                    <label>Landing Page</label>
-                    <input type="text" class="form-control" name="${path}.landingPage" id="${specifier}-landingPage">
-                </div>
-                <form:errors path="${path}.landingPage" class="error-color"/>
-            </spring:bind>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-accessURL" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    Access URL
+            <label>Access</label>
+            <c:if test="${not isAccessRequired}">
+                <button class="btn btn-danger access-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
                 </button>
-            </div>
+            </c:if>
+            <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
+                                   path="${path}.identifier"
+                                   unbounded="False">
+            </myTags:editIdentifier>
+            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                   label="Alternate Identifiers"
+                                   path="${path}.alternateIdentifiers"
+                                   unbounded="${true}">
+            </myTags:editIdentifier>
+            <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
+                                                               specifier="${specifier}-description"
+                                                               placeholder=" A textual narrative comprised of one or more statements describing access."
+                                                               label="Description">
+            </myTags:editNonRequiredNonZeroLengthStringTextArea>
+            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
+                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
+                                                    label="Landing Page">
+            </myTags:editRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="${path}.accessURL"
+                                                       specifier="${specifier}-accessURL"
+                                                       placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                                       label="Access URL">
+            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editAnnotationUnbounded path="${path}.types"
+                                            specifier="${specifier}-types"
+                                            label="Types">
+            </myTags:editAnnotationUnbounded>
+            <myTags:editAnnotationUnbounded path="${path}.authorizations"
+                                            specifier="${specifier}-authorizations"
+                                            label="Authorizations">
+            </myTags:editAnnotationUnbounded>
+            <myTags:editAnnotationUnbounded path="${path}.authentications"
+                                            specifier="${specifier}-authentications"
+                                            label="Authentications">
+            </myTags:editAnnotationUnbounded>
         </div>
     </c:otherwise>
 </c:choose>
 
-<div class="${specifier}-copy-accessURL hide">
-    <div class="input-group control-group edit-form-group full-width">
-        <label>Access URL</label>
-        <div class="input-group edit-form-group">
-            <input name="${path}.accessURL" type="text" class="form-control" placeholder="Access URL">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-accessURL-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        //Show/Hide Location
-        $("body").on("click", ".${specifier}-add-accessURL", function () {
-            var html = $(".${specifier}-copy-accessURL").html();
-
-            $(this).after(html);
-            $(this).hide();
-            //e.stopImmediatePropagation()
-        });
-        $("body").on("click", ".${specifier}-accessURL-remove", function () {
-            $(this).closest(".control-group").remove();
-            $(".${specifier}-add-accessURL").show();
-        });
-
-    });
-</script>
