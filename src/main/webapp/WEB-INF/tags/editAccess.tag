@@ -35,12 +35,6 @@
                                    identifiers="${access.alternateIdentifiers}"
                                    unbounded="${true}">
             </myTags:editIdentifier>
-            <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
-                                                               string="${access.description}"
-                                                               specifier="${specifier}-description"
-                                                               placeholder=" A textual narrative comprised of one or more statements describing access."
-                                                               label="Description">
-            </myTags:editNonRequiredNonZeroLengthStringTextArea>
             <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
                                                     placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                                     string="${access.landingPage}"
@@ -87,11 +81,6 @@
                                    path="${path}.alternateIdentifiers"
                                    unbounded="${true}">
             </myTags:editIdentifier>
-            <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
-                                                               specifier="${specifier}-description"
-                                                               placeholder=" A textual narrative comprised of one or more statements describing access."
-                                                               label="Description">
-            </myTags:editNonRequiredNonZeroLengthStringTextArea>
             <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
                                                     placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                                     label="Landing Page">

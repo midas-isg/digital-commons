@@ -138,13 +138,13 @@
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-0-dates">
         </myTags:editDatesUnbounded>
-        <myTags:editPersonComprisedEntity path="${path}[0].authors"
-                                          specifier="${specifier}-0-authors"
-                                          label="Authors"
-                                          isFirstRequired="true"
-                                          showAddPersonButton="true"
-                                          showAddOrganizationButton="false">
-        </myTags:editPersonComprisedEntity>
+        <%--<myTags:editPersonComprisedEntity path="${path}[0].authors"--%>
+                                          <%--specifier="${specifier}-0-authors"--%>
+                                          <%--label="Authors"--%>
+                                          <%--isFirstRequired="true"--%>
+                                          <%--showAddPersonButton="true"--%>
+                                          <%--showAddOrganizationButton="false">--%>
+        <%--</myTags:editPersonComprisedEntity>--%>
         <myTags:editGrant path="${path}[0].acknowledges"
                           specifier="${specifier}-0-acknowledges"
                           label="Acknowledges">

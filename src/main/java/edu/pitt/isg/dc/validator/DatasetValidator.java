@@ -74,6 +74,6 @@ public class DatasetValidator implements Validator {
         clearBiologicalEntities(dataset.getIsAbout(), errors, "isAbout");
 
         //JDL JDL JDL
-        //learBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
+        //clearBiologicalEntities(dataset.getSpatialCoverage(), errors, "spatialCoverage");
     }
 }

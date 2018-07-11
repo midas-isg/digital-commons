@@ -180,13 +180,13 @@
                     </myTags:editNonRequiredNonZeroLengthString>
                 </c:otherwise>
             </c:choose>
-            <%--<myTags:editPersonComprisedEntity path="${path}.affiliations"--%>
-                                              <%--specifier="${specifier}-affiliations"--%>
-                                              <%--label="Affiliation"--%>
-                                              <%--isFirstRequired="false"--%>
-                                              <%--showAddPersonButton="false"--%>
-                                              <%--showAddOrganizationButton="true">--%>
-            <%--</myTags:editPersonComprisedEntity>--%>
+            <myTags:editPersonComprisedEntity path="${path}.affiliations"
+                                              specifier="${specifier}-affiliations"
+                                              label="Affiliation"
+                                              isFirstRequired="false"
+                                              showAddPersonButton="false"
+                                              showAddOrganizationButton="true">
+            </myTags:editPersonComprisedEntity>
             <%--<myTags:editAnnotationUnbounded path="${path}.roles"--%>
                                             <%--specifier="${specifier}-roles"--%>
                                             <%--label="Roles">--%>

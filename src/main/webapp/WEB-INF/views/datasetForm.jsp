@@ -52,16 +52,20 @@
                                                dataRepository="${dataset.storedIn}"
                                                specifier="storedIn">
                     </myTags:editDataRepository>
-                        <%--<myTags:editBiologicalEntity path="spatialCoverage" entities="${dataset.spatialCoverage}"--%>
-                        <%--specifier="spatialCoverage"--%>
-                        <%--name="Spatial Coverage"></myTags:editBiologicalEntity>--%>
-                    <myTags:editIsAbout path="spatialCoverage"
-                                        specifier="spatialCoverage"
-                                        isAboutList="${dataset.spatialCoverage}"
-                                        label="Spatial Coverage"
-                                        showAddAnnotationButton="false"
-                                        showAddBiologicalEntityButton="true">
-                    </myTags:editIsAbout>
+                    <%--<myTags:editIsAbout path="spatialCoverage"--%>
+                                        <%--specifier="spatialCoverage"--%>
+                                        <%--isAboutList="${dataset.spatialCoverage}"--%>
+                                        <%--label="Spatial Coverage"--%>
+                                        <%--showAddAnnotationButton="false"--%>
+                                        <%--showAddBiologicalEntityButton="true">--%>
+                    <%--</myTags:editIsAbout>--%>
+                    <%--<myTags:editPlace path="spatialCoverage"--%>
+                                        <%--specifier="spatialCoverage"--%>
+                                        <%--isAboutList="${dataset.spatialCoverage}"--%>
+                                        <%--label="Spatial Coverage"--%>
+                                        <%--showAddAnnotationButton="false"--%>
+                                        <%--showAddBiologicalEntityButton="true">--%>
+                    <%--</myTags:editPlace>--%>
                     <myTags:editType path="types"
                                      specifier="types"
                                      types="${dataset.types}">
