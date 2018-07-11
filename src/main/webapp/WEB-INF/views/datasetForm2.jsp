@@ -22,10 +22,12 @@
             <form method="post" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
+                    <myTags:editDataRepository name="Stored In"
+                                               path="storedIn"
+                                               dataRepository="${dataset.storedIn}"
+                                               specifier="storedIn">
+                    </myTags:editDataRepository>
 
-                    <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}" label="Creator"
-                                                      path="creators" specifier="creators" showAddPersonButton="true" showAddOrganizationButton="true"
-                                                      isFirstRequired="true"></myTags:editPersonComprisedEntity>
                 </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

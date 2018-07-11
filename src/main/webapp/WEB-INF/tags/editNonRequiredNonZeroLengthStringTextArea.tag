@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="input-group control-group full-width">
-                <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
+                <textarea name="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}">${string}</textarea>
                 <div class="input-group-btn">
                     <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
@@ -56,7 +56,7 @@
 
 <div class="${specifier}-copy-string hide">
     <div class="input-group control-group full-width">
-        <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
+        <textarea name="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></textarea>
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-string-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
