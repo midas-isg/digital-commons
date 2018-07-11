@@ -16,7 +16,7 @@
 <c:choose>
     <c:when test="${not empty dataRepository}">
         <div class="form-group edit-form-group">
-            <form:label path="${path}">${name}</form:label>
+            <label>${name}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-data-repository" style="display: none" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add

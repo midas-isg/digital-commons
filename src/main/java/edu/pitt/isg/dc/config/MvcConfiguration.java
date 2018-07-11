@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.config;
 
+import edu.pitt.isg.dc.validator.DatasetFilter;
+import javax.servlet.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.support.ErrorPageFilter;
@@ -10,12 +12,12 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.webflow.mvc.servlet.FlowHandlerAdapter;
 import org.springframework.webflow.mvc.servlet.FlowHandlerMapping;
 
+@EnableWebMvc
 @Configuration
 @ComponentScan(basePackages = {"edu.pitt.isg.dc", "edu.pitt.isg.dc.validator"})
 @EnableSpringDataWebSupport
@@ -75,5 +77,10 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
         handlerAdapter.setFlowExecutor(this.webFlowConfig.flowExecutor());
         handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);
         return handlerAdapter;
+    }
+
+    @Bean
+    public Filter datasetFilter() {
+        return new DatasetFilter();
     }
 }

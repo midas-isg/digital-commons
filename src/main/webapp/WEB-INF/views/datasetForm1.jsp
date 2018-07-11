@@ -23,14 +23,28 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
-                                         categoryPaths="${categoryPaths}"></myTags:editCategory>
-                    <myTags:editRequiredNonZeroLengthString label="Title" placeholder="Title" path="title"
-                                                            string="${dataset.title}"></myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="description" string="${dataset.description}"
-                                                               specifier="description" placeholder="Description"
-                                                               label="Description"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editIdentifier identifier="${dataset.identifier}" specifier="identifier" path="identifier"
-                                           label="Identifier"></myTags:editIdentifier>
+                                         categoryPaths="${categoryPaths}">
+                    </myTags:editCategory>
+                    <myTags:editIdentifier identifier="${dataset.identifier}"
+                                           specifier="identifier"
+                                           path="identifier"
+                                           label="Identifier">
+                    </myTags:editIdentifier>
+                    <myTags:editRequiredNonZeroLengthString label="Title"
+                                                            path="title"
+                                                            placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                            string="${dataset.title}">
+                    </myTags:editRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="description"
+                                                                       string="${dataset.description}"
+                                                                       specifier="description"
+                                                                       placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                                                       label="Description">
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                    <%--<myTags:editDatesUnbounded dates="${dataset.dates}"--%>
+                                               <%--path="dates"--%>
+                                               <%--specifier="dates">--%>
+                    <%--</myTags:editDatesUnbounded>--%>
 
                 </div>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
