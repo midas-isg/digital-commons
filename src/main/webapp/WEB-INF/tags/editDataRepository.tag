@@ -42,7 +42,7 @@
                                        label="Alternate Identifiers"
                                        path="${path}.alternateIdentifiers"
                                        identifiers="${dataRepository.alternateIdentifiers}"
-                                       unbounded="${true}">
+                                       unbounded="true">
                 </myTags:editIdentifier>
                 <myTags:editRequiredNonZeroLengthString placeholder=" The name of the data repository."
                                                         label="Name"

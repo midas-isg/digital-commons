@@ -36,7 +36,8 @@
                         </c:when>
                     </c:choose>
                 </div>
-                <div class="form-group control-group">
+                <div class="form-group control-group edit-form-group">
+                    <label>${label}</label>
                     <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
                             class="glyphicon glyphicon-remove"></i>
                         Remove
@@ -153,8 +154,16 @@
 </c:choose>
 
 
-<div class="copy-identifier hide">
-    <div class="form-group control-group">
+<div class="copy-${specifer}-${unbounded}-identifier hide">
+    <c:choose>
+        <c:when test="${unbounded}">
+            <div class="form-group control-group edit-form-group">
+                <label>${label}</label>
+        </c:when>
+        <c:otherwise>
+            <div class="form-group control-group">
+        </c:otherwise>
+    </c:choose>
         <%--<br>--%>
         <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
@@ -182,10 +191,11 @@
     $(document).ready(function () {
         var identifierCount = ${identifierCount};
         $("body").on("click", ".${specifier}-add-identifier", function (e) {
-            var html = $(".copy-identifier").html();
+            var html = $(".copy-${specifer}-${unbounded}-identifier").html();
             //Add section
             <c:choose>
             <c:when test="${unbounded}">
+            console.log(html);
             html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
             <%--$(".${specifier}-identifier-add-more").after(html);--%>
             $(".${specifier}-identifier-add-more").before(html);
