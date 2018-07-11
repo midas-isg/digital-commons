@@ -61,7 +61,7 @@
                     <c:choose>
                         <c:when test="${not empty study.location}">
                             <div>
-                                <button class="btn btn-success add-location" id="location" type="button" style="display: none"><i
+                                <button class="btn btn-success add-location" id="${specifier}-location" type="button" style="display: none"><i
                                         class="glyphicon glyphicon-plus"></i> Add
                                     Location
                                 </button>
@@ -82,7 +82,7 @@
                         </c:when>
                         <c:otherwise>
                             <div>
-                                <button class="btn btn-success add-location" id="location" type="button"><i
+                                <button class="btn btn-success add-location" id="${specifier}-location" type="button"><i
                                         class="glyphicon glyphicon-plus"></i> Add
                                     Location
                                 </button>
@@ -143,7 +143,7 @@
                                  specifier="${specifier}-endDate">
         </myTags:editDatesBounded>
         <div>
-            <button class="btn btn-success add-location" id="location" type="button"><i
+            <button class="btn btn-success add-location" id="${specifier}-location" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Location
             </button>
