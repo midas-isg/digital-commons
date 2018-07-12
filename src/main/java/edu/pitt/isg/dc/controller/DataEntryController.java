@@ -15,8 +15,10 @@ import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
+import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
+import edu.pitt.isg.mdc.dats2_2.Annotation;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.*;
@@ -270,7 +272,7 @@ public class DataEntryController {
 
             dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
-        }
+        } else dataset = DatasetFactory.createDatasetForWebFlow();
         model.addAttribute("dataset", dataset);
 
         if (ifLoggedIn(session))
@@ -285,7 +287,6 @@ public class DataEntryController {
         if (!model.containsAttribute("adminType")) {
             return "accessDenied";
         }
-
 
         return "datasetForm";
     }
