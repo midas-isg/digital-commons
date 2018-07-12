@@ -32,8 +32,8 @@
     <%--</div>--%>
 <%--</spring:bind>--%>
 
-<div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
+<div class="form-group edit-form-group">
     <label>${label}</label>
     <input name="${path}" value="${string}" type="text" class="form-control" placeholder="${placeholder}">
-    <form:errors path="${path}" class="error-color"/>
+    <%--<form:errors path="${path}" class="error-color"/>--%>
 </div>
