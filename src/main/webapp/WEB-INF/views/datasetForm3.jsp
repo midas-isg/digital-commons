@@ -19,6 +19,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
+            <myTags:datasetIndex></myTags:datasetIndex>
+
             <form method="post" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
