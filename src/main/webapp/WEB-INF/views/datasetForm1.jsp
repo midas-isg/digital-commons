@@ -19,7 +19,10 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
+            <myTags:datasetIndex></myTags:datasetIndex>
+
             <form method="post" action="${flowExecutionUrl}">
+
                 <div class="form-group edit-form-group">
                     <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
