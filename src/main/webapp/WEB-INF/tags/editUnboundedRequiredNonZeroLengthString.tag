@@ -10,7 +10,7 @@
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
 <%@ attribute name="strings" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="true"

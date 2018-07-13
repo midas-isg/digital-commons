@@ -6,7 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ attribute name="descriptions" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 <%@ attribute name="accessPointTypes" required="false"
               type="edu.pitt.isg.mdc.v1_0.DataServiceAccessPointType[]" %>
 

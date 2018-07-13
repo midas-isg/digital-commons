@@ -2,12 +2,14 @@ package edu.pitt.isg.dc.entry.classes;
 
 import edu.pitt.isg.mdc.dats2_2.Identifier;
 import edu.pitt.isg.mdc.dats2_2.IsAbout;
+import lombok.Data;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class IsAboutItems extends IsAbout implements Serializable {
 
     protected String value;

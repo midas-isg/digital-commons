@@ -7,7 +7,7 @@
 <%@ attribute name="identifier" required="false"
               type="edu.pitt.isg.mdc.v1_0.Identifier" %>
 <%@ attribute name="identifiers" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 <%@ attribute name="path" required="false"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"

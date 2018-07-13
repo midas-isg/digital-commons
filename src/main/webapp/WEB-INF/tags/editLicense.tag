@@ -9,7 +9,7 @@
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="licenses" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 

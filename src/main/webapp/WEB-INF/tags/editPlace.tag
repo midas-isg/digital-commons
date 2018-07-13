@@ -60,16 +60,16 @@
                             <c:when test="${not empty place.geometry}">
                                 <div class="form-group control-group edit-form-group ${specifier}-geometry-add">
                                     <label>Geometry</label>
-                                    <form:select path="${path}.geometry" id="${specifier}-geometry">
-                                        <form:options itemValue="${place.geometry}" itemLabel="Geometry"></form:options>
-                                        <form:option value="POINT" />
-                                        <form:option value="MULTIPOINT" />
-                                        <form:option value="LINESTRING" />
-                                        <form:option value="MULTILINESTRING" />
-                                        <form:option value="POLYGON" />
-                                        <form:option value="MULTIPOLYGON" />
-                                        <form:option value="GEOMETRYCOLLECTION" />
-                                    </form:select>
+                                    <select path="${path}.geometry" id="${specifier}-geometry">
+                                        <options itemValue="${place.geometry}" itemLabel="Geometry"></options>
+                                        <option value="POINT" />
+                                        <option value="MULTIPOINT" />
+                                        <option value="LINESTRING" />
+                                        <option value="MULTILINESTRING" />
+                                        <option value="POLYGON" />
+                                        <option value="MULTIPOLYGON" />
+                                        <option value="GEOMETRYCOLLECTION" />
+                                    </select>
                                     <button class="btn btn-danger ${specifier}-geometry-remove" id="${specifier}-geometry-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                                         Remove
                                     </button>
@@ -136,15 +136,15 @@
 <div class="copy-${specifier}-geometry hide">
     <div class="form-group control-group edit-form-group">
         <label>Geometry</label>
-        <form:select path="${path}.geometry" id="${specifier}-geometry">
-            <form:option value="POINT" />
-            <form:option value="MULTIPOINT" />
-            <form:option value="LINESTRING" />
-            <form:option value="MULTILINESTRING" />
-            <form:option value="POLYGON" />
-            <form:option value="MULTIPOLYGON" />
-            <form:option value="GEOMETRYCOLLECTION" />
-        </form:select>
+        <select path="${path}.geometry" id="${specifier}-geometry">
+            <option value="POINT" />
+            <option value="MULTIPOINT" />
+            <option value="LINESTRING" />
+            <option value="MULTILINESTRING" />
+            <option value="POLYGON" />
+            <option value="MULTIPOLYGON" />
+            <option value="GEOMETRYCOLLECTION" />
+        </select>
         <button class="btn btn-danger ${specifier}-geometry-remove" id="${specifier}-geometry-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>

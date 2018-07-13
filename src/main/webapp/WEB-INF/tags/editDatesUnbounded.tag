@@ -8,7 +8,7 @@
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
 <%@ attribute name="dates" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 
 <c:choose>
     <c:when test="${not empty dates}">

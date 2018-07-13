@@ -11,7 +11,7 @@
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="annotations" required="false"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 
 <c:choose>
     <c:when test="${not empty annotations}">

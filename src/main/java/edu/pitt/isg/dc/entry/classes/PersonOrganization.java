@@ -1,11 +1,13 @@
 package edu.pitt.isg.dc.entry.classes;
 
 import edu.pitt.isg.mdc.dats2_2.*;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
 public class PersonOrganization extends PersonComprisedEntity implements Serializable {
     protected String firstName;
     protected String lastName;

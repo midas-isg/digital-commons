@@ -14,8 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TestDatasetValidator
-{
+public class TestDatasetValidator {
     public Dataset initFlow() {
         Dataset dataset = DatasetFactory.createDatasetForWebFlow();
         return dataset;
@@ -45,8 +44,7 @@ public class TestDatasetValidator
 */
     }
 
-    public String validateDataset(Dataset dataset, MessageContext messageContext)
-    {
+    public String validateDataset(Dataset dataset, MessageContext messageContext) {
         String title = dataset.getTitle();
 
 //        Person person  = new Person();
@@ -55,18 +53,16 @@ public class TestDatasetValidator
 //        person.setLastName(personOrganization.getLastName());
 //        person.setIdentifier(personOrganization.getIdentifier());
 //        dataset.getCreators().add(person);
-        if(title != "")
-        {
+        if (title != "") {
             return "true";
-        }
-        else
-        {
+        } else {
             return "true";
 //            messageContext.addMessage(new MessageBuilder().error().source(
 //                    "title").defaultText("Title cannot be empty").build());
 //            return "false";
         }
     }
+
 
     public String createDataset(RequestContext context) {
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
