@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form action="${flowExecutionUrl}">
+            <form method="post" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 

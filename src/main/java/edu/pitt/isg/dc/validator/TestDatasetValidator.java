@@ -1,7 +1,13 @@
 package edu.pitt.isg.dc.validator;
 
+import edu.pitt.isg.Converter;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
@@ -14,37 +20,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TestDatasetValidator {
-    public Dataset initFlow() {
-        Dataset dataset = DatasetFactory.createDatasetForWebFlow();
+public class TestDatasetValidator
+{
+    @Autowired
+    private ApiUtil apiUtil;
+
+    private Converter converter = new Converter();
+
+    public Dataset editDataset(Long entryId) {
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryId id = entry.getId();
+//        model.addAttribute("revisionId", id.getRevisionId());
+        EntryView entryView = new EntryView(entry);
+
+        Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+//        model.addAttribute("categoryID", entry.getCategory().getId());
         return dataset;
-/*
-        Dataset dataset = new Dataset();
-//        dataset.getAcknowledges().add(new Grant());
-//        dataset.setTitle("test");
-        dataset.setIdentifier(new Identifier());
-//        for(int i=5; i>0; i--) {
-//            PersonComprisedEntity personComprisedEntity = new PersonOrganization();
-//            personComprisedEntity.setIdentifier(new Identifier());
-//
-//            List<Identifier> alternateIdentifiers = new ArrayList<>();
-//            for(int j=5; j>0; j--) {
-//                alternateIdentifiers.add(new Identifier());
-//            }
-//            ((PersonOrganization) personComprisedEntity).setAlternateIdentifiers(alternateIdentifiers);
-//
-//
-//            ((PersonOrganization) personComprisedEntity).getAffiliations().add(new Organization());
-//            ((PersonOrganization) personComprisedEntity).getRoles().add(new Annotation());
-//            dataset.getCreators().add(personComprisedEntity);
-//        }
-//        dataset.getCreators().add(new Person());
-//        dataset.setProducedBy(new Study());
-        return dataset;
-*/
     }
 
-    public String validateDataset(Dataset dataset, MessageContext messageContext) {
+    public String validateDataset(Dataset dataset, MessageContext messageContext)
+    {
         String title = dataset.getTitle();
 
 //        Person person  = new Person();
@@ -53,16 +48,18 @@ public class TestDatasetValidator {
 //        person.setLastName(personOrganization.getLastName());
 //        person.setIdentifier(personOrganization.getIdentifier());
 //        dataset.getCreators().add(person);
-        if (title != "") {
+        if(title != "")
+        {
             return "true";
-        } else {
+        }
+        else
+        {
             return "true";
 //            messageContext.addMessage(new MessageBuilder().error().source(
 //                    "title").defaultText("Title cannot be empty").build());
 //            return "false";
         }
     }
-
 
     public String createDataset(RequestContext context) {
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");

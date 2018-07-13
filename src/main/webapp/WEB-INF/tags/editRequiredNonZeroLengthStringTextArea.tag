@@ -15,7 +15,7 @@
               type="java.lang.String" %>
 
 <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-    <form:label path="${path}">${label}</form:label>
+    <label path="${path}">${label}</label>
     <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
     <form:errors path="${path}" class="error-color"/>
 </div>

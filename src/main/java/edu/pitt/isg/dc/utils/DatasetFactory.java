@@ -20,7 +20,7 @@ public class DatasetFactory {
 //        dataset.getDates().add(createDate());
         dataset.setStoredIn(createDataRepository());
         dataset.setSpatialCoverage(wrapListWithAutoPopulatingList(createPlaceList(), Place.class));
-        dataset.setTypes(wrapListWithAutoPopulatingList(new ArrayList<Type>(), Type.class));
+        dataset.setTypes(wrapListWithAutoPopulatingList(createTypeList(), Type.class));
         dataset.setDistributions(wrapListWithAutoPopulatingList(createDistributionList(), Distribution.class));
         dataset.setPrimaryPublications(wrapListWithAutoPopulatingList(createPublicationList(), Publication.class));
         dataset.setCitations(wrapListWithAutoPopulatingList(createPublicationList(), Publication.class));
@@ -34,7 +34,7 @@ public class DatasetFactory {
         dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(), License.class));
         dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutItemsList(), IsAbout.class));
         dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(), Grant.class));
-        dataset.setExtraProperties(wrapListWithAutoPopulatingList(new ArrayList<CategoryValuePair>(), CategoryValuePair.class));
+        dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(), CategoryValuePair.class));
 //        dataset.getCreators().add(createPersonComprisedEntity());
 //        dataset.getLicenses().add(createLicense());
 //        dataset.getIsAbout().add(createIsAbout());
@@ -60,7 +60,7 @@ public class DatasetFactory {
     public static Distribution createDistribution(){
         Distribution distribution = new Distribution();
         distribution.setIdentifier(new Identifier());
-        distribution.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        distribution.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        distribution.getAlternateIdentifiers().add(new Identifier());
         distribution.setStoredIn(createDataRepository());
         distribution.setDates(wrapListWithAutoPopulatingList(createDateList(), Date.class));
@@ -69,12 +69,33 @@ public class DatasetFactory {
 //        distribution.getLicenses().add(createLicense());
         distribution.setAccess(createAccess());
         distribution.setConformsTo(wrapListWithAutoPopulatingList(createDataStandardList(), DataStandard.class));
-        distribution.setQualifiers(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        distribution.setQualifiers(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
 //        distribution.getConformsTo().add(createDataStandard());
 //        distribution.getQualifiers().add(new Annotation());
         distribution.setUnit(new Annotation());
 
         return distribution;
+    }
+
+    public static List<Identifier> createIdentifierList(){
+        List<Identifier> identifierList = new ArrayList<Identifier>();
+        identifierList.add(new Identifier());
+
+        return identifierList;
+    }
+
+    public static List<Annotation> createAnnotationList(){
+        List<Annotation> annotationList = new ArrayList<Annotation>();
+        annotationList.add(new Annotation());
+
+        return annotationList;
+    }
+
+    public static List<Type> createTypeList(){
+        List<Type> typeList = new ArrayList<Type>();
+        typeList.add(new Type());
+
+        return typeList;
     }
 
     public static List<DataStandard> createDataStandardList(){
@@ -84,14 +105,21 @@ public class DatasetFactory {
         return dataStandardList;
     }
 
+    public static List<CategoryValuePair> createCategoryValuePairList(){
+        List<CategoryValuePair> categoryValuePairList = new ArrayList<CategoryValuePair>();
+        categoryValuePairList.add(new CategoryValuePair());
+
+        return categoryValuePairList;
+    }
+
     public static DataStandard createDataStandard(){
         DataStandard dataStandard = new DataStandard();
         dataStandard.setIdentifier(new Identifier());
-        dataStandard.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        dataStandard.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        dataStandard.getAlternateIdentifiers().add(new Identifier());
         dataStandard.setType(new Annotation());
         dataStandard.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(), License.class));
-        dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(new ArrayList<CategoryValuePair>(), CategoryValuePair.class));
+        dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(), CategoryValuePair.class));
 //        dataStandard.getLicenses().add(createLicense());
 //        dataStandard.getExtraProperties().add(createCategoryValuePair());
 
@@ -101,9 +129,9 @@ public class DatasetFactory {
     public static DataRepository createDataRepository(){
         DataRepository dataRepository = new DataRepository();
         dataRepository.setIdentifier(new Identifier());
-        dataRepository.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
-        dataRepository.setScopes(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
-        dataRepository.setTypes(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        dataRepository.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
+        dataRepository.setScopes(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
+        dataRepository.setTypes(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
         dataRepository.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(), License.class));
         dataRepository.setPublishers(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(), PersonComprisedEntity.class));
         dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(), Access.class));
@@ -127,7 +155,7 @@ public class DatasetFactory {
     public static IsAboutItems createIsAboutItems(){
         IsAboutItems isAboutItems = new IsAboutItems();
         isAboutItems.setIdentifier(new Identifier());
-        isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        isAboutItems.getAlternateIdentifiers().add(new Identifier());
 
         return isAboutItems;
@@ -142,7 +170,7 @@ public class DatasetFactory {
     public static BiologicalEntity createBiologicalEntity(){
         BiologicalEntity biologicalEntity = new BiologicalEntity();
         biologicalEntity.setIdentifier(new Identifier());
-        biologicalEntity.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        biologicalEntity.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        biologicalEntity.getAlternateIdentifiers().add(new Identifier());
 
         return biologicalEntity;
@@ -183,7 +211,7 @@ public class DatasetFactory {
     public static Publication createPublication(){
         Publication publication = new Publication();
         publication.setIdentifier(new Identifier());
-        publication.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        publication.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        publication.getAlternateIdentifiers().add(new Identifier());
         publication.setType(new Annotation());
         publication.setDates(wrapListWithAutoPopulatingList(createDateList(), Date.class));
@@ -206,7 +234,7 @@ public class DatasetFactory {
     public static Grant createGrant(){
         Grant grant = new Grant();
         grant.setIdentifier(new Identifier());
-        grant.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        grant.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
         grant.setFunders(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(), PersonComprisedEntity.class));
         grant.setAwardees(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(), PersonComprisedEntity.class));
 //        grant.getAlternateIdentifiers().add(new Identifier());
@@ -226,10 +254,10 @@ public class DatasetFactory {
     public static Access createAccess(){
         Access access = new Access();
         access.setIdentifier(new Identifier());
-        access.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
-        access.setTypes(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
-        access.setAuthorizations(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
-        access.setAuthentications(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        access.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
+        access.setTypes(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
+        access.setAuthorizations(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
+        access.setAuthentications(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
 //        access.getAlternateIdentifiers().add(new Identifier());
 //        access.getTypes().add(new Annotation());
 //        access.getAuthorizations().add(new Annotation());
@@ -245,9 +273,9 @@ public class DatasetFactory {
 //            alternateIdentifiers.add(new Identifier());
 //        }
 //        personOrganization.getAlternateIdentifiers().add(new Identifier());
-        personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
         personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(), Organization.class));
-        personOrganization.setRoles(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
 //        personOrganization.setAlternateIdentifiers(alternateIdentifiers);
 //        personOrganization.getAffiliations().add(createOrganization());
 //        personOrganization.getRoles().add(new Annotation());
@@ -274,9 +302,9 @@ public class DatasetFactory {
     public static Person createPerson(){
         Person person = new Person();
         person.setIdentifier(new Identifier());
-        person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
         person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(), Organization.class));
-        person.setRoles(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        person.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
 //        person.getAlternateIdentifiers().add(new Identifier());
 //        person.getAffiliations().add(createOrganization());
 //        person.getRoles().add(new Annotation());
@@ -294,7 +322,7 @@ public class DatasetFactory {
     public static Organization createOrganization(){
         Organization organization = new Organization();
         organization.setIdentifier(new Identifier());
-        organization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        organization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        organization.getAlternateIdentifiers().add(new Identifier());
         organization.setLocation(createPlace());
 
@@ -315,7 +343,7 @@ public class DatasetFactory {
     public static Place createPlace(){
         Place place = new Place();
         place.setIdentifier(new Identifier());
-        place.setAlternateIdentifiers(wrapListWithAutoPopulatingList(new ArrayList<Identifier>(), Identifier.class));
+        place.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 //        place.getAlternateIdentifiers().add(new Identifier());
 
         return place;
@@ -346,7 +374,7 @@ public class DatasetFactory {
 
     public static CategoryValuePair createCategoryValuePair(){
         CategoryValuePair categoryValuePair = new CategoryValuePair();
-        categoryValuePair.setValues(wrapListWithAutoPopulatingList(new ArrayList<Annotation>(), Annotation.class));
+        categoryValuePair.setValues(wrapListWithAutoPopulatingList(createAnnotationList(), Annotation.class));
 //        categoryValuePair.getValues().add(new Annotation());
 
         return categoryValuePair;

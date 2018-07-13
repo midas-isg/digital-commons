@@ -94,7 +94,7 @@
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <form:label path="${path}">${name}</form:label>
+            <label path="${path}">${name}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-data-repository" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
