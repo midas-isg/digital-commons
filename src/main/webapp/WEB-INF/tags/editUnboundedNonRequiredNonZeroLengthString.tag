@@ -53,7 +53,7 @@
             <div class="form-group ${specifier}-formats-add-more-button">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    ${placeholder}
+                    ${label}
                 </button>
             </div>
             <div class="${specifier}-formats-add-more"></div>

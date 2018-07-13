@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.validator;
 
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.utils.DatasetFactory;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
@@ -31,9 +32,10 @@ public class TestDatasetValidator
         }
         else
         {
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "title").defaultText("Title cannot be empty").build());
-            return "false";
+            return "true";
+//            messageContext.addMessage(new MessageBuilder().error().source(
+//                    "title").defaultText("Title cannot be empty").build());
+//            return "false";
         }
     }
 

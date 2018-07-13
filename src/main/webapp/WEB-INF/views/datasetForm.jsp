@@ -59,13 +59,11 @@
                                         <%--showAddAnnotationButton="false"--%>
                                         <%--showAddBiologicalEntityButton="true">--%>
                     <%--</myTags:editIsAbout>--%>
-                    <%--<myTags:editPlace path="spatialCoverage"--%>
-                                        <%--specifier="spatialCoverage"--%>
-                                        <%--isAboutList="${dataset.spatialCoverage}"--%>
-                                        <%--label="Spatial Coverage"--%>
-                                        <%--showAddAnnotationButton="false"--%>
-                                        <%--showAddBiologicalEntityButton="true">--%>
-                    <%--</myTags:editPlace>--%>
+                    <myTags:editPlaceUnbounded path="spatialCoverage"
+                                        specifier="spatialCoverage"
+                                        placeList="${dataset.spatialCoverage}"
+                                        label="Spatial Coverage">
+                    </myTags:editPlaceUnbounded>
                     <myTags:editType path="types"
                                      specifier="types"
                                      types="${dataset.types}">

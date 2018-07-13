@@ -23,15 +23,19 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 
-                    <myTags:editPlaceUnbounded path="spatialCoverage"
-                                               specifier="spatialCoverage"
-                                               placeList="${dataset.spatialCoverage}"
-                                               label="Spatial Coverage">
-                    </myTags:editPlaceUnbounded>
+                    <myTags:editNonRequiredNonZeroLengthString path="version"
+                                                               string="${dataset.version}"
+                                                               specifier="version"
+                                                               placeholder=" A release point for the dataset when applicable."
+                                                               label="Version">
+                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
+                                                  specifier="extraProperties"
+                                                  label="Extra Properties"
+                                                  path="extraProperties">
+                    </myTags:editCategoryValuePair>
                 </div>
-
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+                <button type="submit" class="btn btn-default pull-right">Submit</button>
 
             </form>
         </div>

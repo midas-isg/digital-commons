@@ -23,11 +23,10 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 
-                    <myTags:editPlaceUnbounded path="spatialCoverage"
-                                               specifier="spatialCoverage"
-                                               placeList="${dataset.spatialCoverage}"
-                                               label="Spatial Coverage">
-                    </myTags:editPlaceUnbounded>
+                    <myTags:editDistributions distributions="${dataset.distributions}"
+                                              specifier="distributions"
+                                              path="distributions">
+                    </myTags:editDistributions>
                 </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

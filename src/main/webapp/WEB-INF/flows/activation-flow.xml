@@ -39,9 +39,148 @@
     </action-state>
 
     <view-state id="datasetForm3" model="flowScope.dataset">
-        <transition on="next" to="createDataset"/>
         <transition on="previous" to="datasetForm2"/>
+        <transition on="next" to="validateForm3"/>
     </view-state>
+
+    <action-state id="validateForm3">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm4"/>
+        <transition on="false" to="datasetForm3"/>
+
+    </action-state>
+
+    <view-state id="datasetForm4" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm3"/>
+        <transition on="next" to="validateForm4"/>
+    </view-state>
+
+    <action-state id="validateForm4">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm5"/>
+        <transition on="false" to="datasetForm4"/>
+
+    </action-state>
+
+    <view-state id="datasetForm5" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm4"/>
+        <transition on="next" to="validateForm5"/>
+    </view-state>
+
+    <action-state id="validateForm5">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm6"/>
+        <transition on="false" to="datasetForm5"/>
+
+    </action-state>
+
+    <view-state id="datasetForm6" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm5"/>
+        <transition on="next" to="validateForm6"/>
+    </view-state>
+
+    <action-state id="validateForm6">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm7"/>
+        <transition on="false" to="datasetForm6"/>
+
+    </action-state>
+
+    <view-state id="datasetForm7" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm8"/>
+        <transition on="next" to="validateForm7"/>
+    </view-state>
+
+    <action-state id="validateForm7">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm8"/>
+        <transition on="false" to="datasetForm7"/>
+
+    </action-state>
+
+    <view-state id="datasetForm8" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm7"/>
+        <transition on="next" to="validateForm8"/>
+    </view-state>
+
+    <action-state id="validateForm8">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm9"/>
+        <transition on="false" to="datasetForm8"/>
+
+    </action-state>
+
+    <view-state id="datasetForm9" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm8"/>
+        <transition on="next" to="validateForm9"/>
+    </view-state>
+
+    <action-state id="validateForm9">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm10"/>
+        <transition on="false" to="datasetForm9"/>
+
+    </action-state>
+
+    <view-state id="datasetForm10" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm9"/>
+        <transition on="next" to="validateForm10"/>
+    </view-state>
+
+    <action-state id="validateForm10">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm11"/>
+        <transition on="false" to="datasetForm10"/>
+
+    </action-state>
+
+    <view-state id="datasetForm11" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm10"/>
+        <transition on="next" to="validateForm11"/>
+    </view-state>
+
+    <action-state id="validateForm11">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm12"/>
+        <transition on="false" to="datasetForm11"/>
+
+    </action-state>
+
+    <view-state id="datasetForm12" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm11"/>
+        <transition on="next" to="validateForm12"/>
+    </view-state>
+
+    <action-state id="validateForm12">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="datasetForm13"/>
+        <transition on="false" to="datasetForm12"/>
+
+    </action-state>
+
+    <view-state id="datasetForm13" model="flowScope.dataset">
+        <transition on="previous" to="datasetForm12"/>
+        <transition on="next" to="validateForm13"/>
+    </view-state>
+
+    <action-state id="validateForm13">
+        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+
+        <transition on="true" to="createDataset"/>
+        <transition on="false" to="datasetForm13"/>
+
+    </action-state>
+
     <end-state id="createDataset"></end-state>
 
     <on-end>
