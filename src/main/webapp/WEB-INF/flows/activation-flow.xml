@@ -6,7 +6,8 @@
 
 
     <on-start>
-        <evaluate expression="testDatasetValidator.initFlow()" result="flowScope.dataset"/>
+        <evaluate expression="dataset" result="flowScope.dataset" />
+        <!--<evaluate expression="testDatasetValidator.initFlow()" result="flowScope.dataset"/>-->
     </on-start>
 
     <view-state id="datasetForm1" model="flowScope.dataset">

@@ -19,7 +19,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form method="post" action="${flowExecutionUrl}">
+            <form:form action="${flowExecutionUrl}"
+                       modelAttribute="dataset">
+            <%--<form method="post" action="${flowExecutionUrl}">--%>
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
@@ -46,9 +48,16 @@
                                                <%--specifier="dates">--%>
                     <%--</myTags:editDatesUnbounded>--%>
 
+                    <myTags:editGrant path="acknowledges"
+                                      specifier="acknowledges"
+                                      grants="${dataset.acknowledges}"
+                                      label="Acknowledges">
+                    </myTags:editGrant>
+
                 </div>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-            </form>
+            <%--</form>--%>
+            </form:form>
         </div>
     </div>
 </div>
