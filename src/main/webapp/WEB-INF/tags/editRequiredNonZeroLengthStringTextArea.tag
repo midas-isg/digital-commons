@@ -16,6 +16,6 @@
 
 <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
     <label path="${path}">${label}</label>
-    <form:textarea path="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}"></form:textarea>
+    <textarea name="${path}" type="text" class="form-control" rows="5" placeholder="${placeholder}">${string}</textarea>
     <form:errors path="${path}" class="error-color"/>
 </div>
