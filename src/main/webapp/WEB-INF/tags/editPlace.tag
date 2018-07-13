@@ -126,7 +126,7 @@
         </myTags:editNonRequiredNonZeroLengthString>
         <div class="form-group edit-form-group">
             <label>Geometry</label>
-            <button class="btn btn-success add-${specifier}-geometry" id="${specifier}-geometry-add" type="button"><i
+            <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add Geometry
             </button>
         </div>

@@ -23,11 +23,17 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 
-                    <myTags:editPlaceUnbounded path="spatialCoverage"
-                                               specifier="spatialCoverage"
-                                               placeList="${dataset.spatialCoverage}"
-                                               label="Spatial Coverage">
-                    </myTags:editPlaceUnbounded>
+                    <myTags:editPublication path="citations"
+                                            specifier="citations"
+                                            publications="${dataset.citations}"
+                                            label="Citations">
+                    </myTags:editPublication>
+                    <myTags:editFloat path="citationCount"
+                                      specifier="citationCount"
+                                      number="${dataset.citationCount}"
+                                      label="Citation Count"
+                                      placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
+                    </myTags:editFloat>
                 </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

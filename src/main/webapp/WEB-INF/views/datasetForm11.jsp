@@ -23,11 +23,13 @@
                 <div class="form-group edit-form-group">
                     <label>Dataset</label>
 
-                    <myTags:editPlaceUnbounded path="spatialCoverage"
-                                               specifier="spatialCoverage"
-                                               placeList="${dataset.spatialCoverage}"
-                                               label="Spatial Coverage">
-                    </myTags:editPlaceUnbounded>
+                    <myTags:editIsAbout path="isAbout"
+                                        specifier="isAbout"
+                                        isAboutList="${dataset.isAbout}"
+                                        label="Is About"
+                                        showAddAnnotationButton="true"
+                                        showAddBiologicalEntityButton="true">
+                    </myTags:editIsAbout>
                 </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
