@@ -1,7 +1,13 @@
 package edu.pitt.isg.dc.validator;
 
+import edu.pitt.isg.Converter;
+import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
@@ -16,6 +22,22 @@ import java.util.List;
 @Component
 public class TestDatasetValidator
 {
+    @Autowired
+    private ApiUtil apiUtil;
+
+    private Converter converter = new Converter();
+
+    public Dataset editDataset(Long entryId) {
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryId id = entry.getId();
+//        model.addAttribute("revisionId", id.getRevisionId());
+        EntryView entryView = new EntryView(entry);
+
+        Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+//        model.addAttribute("categoryID", entry.getCategory().getId());
+        return dataset;
+    }
+
     public String validateDataset(Dataset dataset, MessageContext messageContext)
     {
         String title = dataset.getTitle();

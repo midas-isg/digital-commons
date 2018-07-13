@@ -25,7 +25,7 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/activation-flow.xml", "activationFlow").build();
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/dataset-flow.xml", "activationFlow").build();
     }
 
     @Bean
@@ -50,6 +50,6 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     @Scope("prototype")
     public Dataset dataset() {
         Dataset dataset = DatasetFactory.createDatasetForWebFlow();
-        return new Dataset();
+        return dataset;
     }
 }

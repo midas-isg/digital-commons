@@ -19,7 +19,7 @@
 <c:choose>
     <c:when test="${not empty annotation}">
         <div class="form-group edit-form-group">
-            <form:label path="${path}">${label}</form:label>
+            <label path="${path}">${label}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-annotation" style="display:none;" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
@@ -40,7 +40,7 @@
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <form:label path="${path}">${label}</form:label>
+            <label path="${path}">${label}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add

@@ -18,7 +18,7 @@
         <c:forEach items="${dataStandards}" var="dataStandard" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
-                    <form:label path="${path}">${name}</form:label>
+                    <label path="${path}">${name}</label>
                     <div class="form-group">
                         <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
                                 class="glyphicon glyphicon-plus"></i> Add
@@ -90,7 +90,7 @@
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
-            <form:label path="${path}">${name}</form:label>
+            <label path="${path}">${name}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
