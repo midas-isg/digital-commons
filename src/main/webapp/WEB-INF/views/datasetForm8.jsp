@@ -19,18 +19,14 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <myTags:datasetIndex></myTags:datasetIndex>
+            <myTags:datasetIndex active="producedBy"></myTags:datasetIndex>
 
             <form method="post" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Dataset</label>
-
-                    <myTags:editStudy study="${dataset.producedBy}"
-                                      specifier="producedBy"
-                                      path="producedBy"
-                                      label="Produced By">
-                    </myTags:editStudy>
-                </div>
+                <myTags:editStudy study="${dataset.producedBy}"
+                                  specifier="producedBy"
+                                  path="producedBy"
+                                  label="Produced By">
+                </myTags:editStudy>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

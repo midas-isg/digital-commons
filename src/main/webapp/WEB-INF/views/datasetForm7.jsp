@@ -19,12 +19,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <myTags:datasetIndex></myTags:datasetIndex>
+            <myTags:datasetIndex active="citation"></myTags:datasetIndex>
 
             <form method="post" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Dataset</label>
-
                     <myTags:editPublication path="citations"
                                             specifier="citations"
                                             publications="${dataset.citations}"
@@ -36,7 +33,6 @@
                                       label="Citation Count"
                                       placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
                     </myTags:editFloat>
-                </div>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

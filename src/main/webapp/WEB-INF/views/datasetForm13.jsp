@@ -19,12 +19,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <myTags:datasetIndex></myTags:datasetIndex>
+            <myTags:datasetIndex active="extra"></myTags:datasetIndex>
 
             <form method="post" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Dataset</label>
-
                     <myTags:editNonRequiredNonZeroLengthString path="version"
                                                                string="${dataset.version}"
                                                                specifier="version"
@@ -36,7 +33,6 @@
                                                   label="Extra Properties"
                                                   path="extraProperties">
                     </myTags:editCategoryValuePair>
-                </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
             </form>
