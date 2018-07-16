@@ -1092,7 +1092,7 @@ div.container.metadata-container .metadata-column.fancy {
     top: 0;
     left: 0;
     height: 100vh;
-    /*z-index: 999;*/
+    z-index: 3;
     background: #568aea;
     color: #fff;
     transition: all 0.3s;
@@ -1129,8 +1129,8 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-    color: #fff;
-    background: #6d7fcc;
+    color: #fff !important;
+    background: #0d2c64;
 }
 
 
@@ -1158,9 +1158,9 @@ div.container.metadata-container .metadata-column.fancy {
 
 
 #sidebar ul ul a {
-    font-size: 0.9em !important;
+    font-size: 1em !important;
     padding-left: 30px !important;
-    background: #6d7fcc;
+    background: #0d2c64;
 }
 
 ul.CTAs {

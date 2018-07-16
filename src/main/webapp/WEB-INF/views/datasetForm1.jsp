@@ -19,12 +19,9 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <myTags:datasetIndex></myTags:datasetIndex>
+            <myTags:datasetIndex active="basic"></myTags:datasetIndex>
 
             <form method="post" action="${flowExecutionUrl}">
-
-                <div class="form-group edit-form-group">
-                    <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}">
                     </myTags:editCategory>
@@ -44,18 +41,11 @@
                                                                        placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                                        label="Description">
                     </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                    <%--<myTags:editDatesUnbounded dates="${dataset.dates}"--%>
-                                               <%--path="dates"--%>
-                                               <%--specifier="dates">--%>
-                    <%--</myTags:editDatesUnbounded>--%>
+                    <myTags:editDatesUnbounded dates="${dataset.dates}"
+                                               path="dates"
+                                               specifier="dates">
+                    </myTags:editDatesUnbounded>
 
-                    <%--<myTags:editGrant path="acknowledges"--%>
-                                      <%--specifier="acknowledges"--%>
-                                      <%--grants="${dataset.acknowledges}"--%>
-                                      <%--label="Acknowledges">--%>
-                    <%--</myTags:editGrant>--%>
-
-                </div>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
             </form>
         </div>
