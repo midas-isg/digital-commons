@@ -97,12 +97,12 @@
 <c:if test="${showAddAnnotationButton}">
     <div class="${specifier}-annotation-copy hide">
         <div class="form-group edit-form-group control-group">
-            <%--<myTags:editAnnotation path="${path}[0]"--%>
-                                   <%--specifier="${specifier}-"--%>
-                                   <%--label="Is About (Annotation)"--%>
-                                   <%--showRemoveButton="true"--%>
-                                   <%--supportError="true">--%>
-            <%--</myTags:editAnnotation>--%>
+            <myTags:editAnnotation path="${path}[0]"
+                                   specifier="${specifier}-"
+                                   label="Is About (Annotation)"
+                                   showRemoveButton="true"
+                                   supportError="true">
+            </myTags:editAnnotation>
         </div>
     </div>
 </c:if>

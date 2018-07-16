@@ -34,9 +34,9 @@
                             class="glyphicon glyphicon-remove"></i>
                         Remove
                     </button>
-                    <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}]"
+                    <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
                                            identifier="${license.identifier}"
-                                           specifier="${specifier}-${varStatus.count-1}">
+                                           specifier="${specifier}-${varStatus.count-1}-identifier">
                     </myTags:editIdentifier>
                     <myTags:editRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].name"
                                                             placeholder=" Name of License"

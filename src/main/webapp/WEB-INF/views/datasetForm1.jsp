@@ -24,10 +24,6 @@
             <form method="post" action="${flowExecutionUrl}">
 
                 <div class="form-group edit-form-group">
-                    <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-
-                </div>
-                <div class="form-group edit-form-group">
                     <label>Dataset</label>
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}">

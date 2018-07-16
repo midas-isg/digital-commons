@@ -49,22 +49,22 @@
                                                             string="${grant.name}"
                                                             path="${path}[${varStatus.count-1}].name">
                     </myTags:editRequiredNonZeroLengthString>
-                    <%--<myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].funders"--%>
-                                                      <%--specifier="${specifier}-${varStatus.count-1}-funders"--%>
-                                                      <%--label="Funders"--%>
-                                                      <%--personComprisedEntities="${grant.funders}"--%>
-                                                      <%--isFirstRequired="true"--%>
-                                                      <%--showAddPersonButton="true"--%>
-                                                      <%--showAddOrganizationButton="true">--%>
-                    <%--</myTags:editPersonComprisedEntity>--%>
-                    <%--<myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].awardees"--%>
-                                                      <%--specifier="${specifier}-${varStatus.count-1}-awardees"--%>
-                                                      <%--label="Awardees"--%>
-                                                      <%--personComprisedEntities="${grant.awardees}"--%>
-                                                      <%--isFirstRequired="false"--%>
-                                                      <%--showAddPersonButton="true"--%>
-                                                      <%--showAddOrganizationButton="true">--%>
-                    <%--</myTags:editPersonComprisedEntity>--%>
+                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].funders"
+                                                      specifier="${specifier}-${varStatus.count-1}-funders"
+                                                      label="Funders"
+                                                      personComprisedEntities="${grant.funders}"
+                                                      isFirstRequired="true"
+                                                      showAddPersonButton="true"
+                                                      showAddOrganizationButton="true">
+                    </myTags:editPersonComprisedEntity>
+                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].awardees"
+                                                      specifier="${specifier}-${varStatus.count-1}-awardees"
+                                                      label="Awardees"
+                                                      personComprisedEntities="${grant.awardees}"
+                                                      isFirstRequired="false"
+                                                      showAddPersonButton="true"
+                                                      showAddOrganizationButton="true">
+                    </myTags:editPersonComprisedEntity>
                 </div>
                 <c:set var="grantCount" scope="page" value="${varStatus.count}"/>
             </c:forEach>

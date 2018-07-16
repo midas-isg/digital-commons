@@ -187,10 +187,10 @@
                                               showAddPersonButton="false"
                                               showAddOrganizationButton="true">
             </myTags:editPersonComprisedEntity>
-            <%--<myTags:editAnnotationUnbounded path="${path}.roles"--%>
-                                            <%--specifier="${specifier}-roles"--%>
-                                            <%--label="Roles">--%>
-            <%--</myTags:editAnnotationUnbounded>--%>
+            <myTags:editAnnotationUnbounded path="${path}.roles"
+                                            specifier="${specifier}-roles"
+                                            label="Roles">
+            </myTags:editAnnotationUnbounded>
         </c:otherwise>
     </c:choose>
 </div>
