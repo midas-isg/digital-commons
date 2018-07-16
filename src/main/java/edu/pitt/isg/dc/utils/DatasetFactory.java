@@ -77,14 +77,18 @@ public class DatasetFactory {
 
     public static List<Type> createTypeList(){
         List<Type> typeList = new ArrayList<Type>();
-        Type type = new Type();
+        typeList.add(createType());
+
+        return typeList;
+    }
+
+    public static edu.pitt.isg.mdc.dats2_2.Type createType(){
+        edu.pitt.isg.mdc.dats2_2.Type type = new edu.pitt.isg.mdc.dats2_2.Type();
         type.setInformation(new Annotation());
         type.setMethod(new Annotation());
         type.setPlatform(new Annotation());
 
-        typeList.add(type);
-
-        return typeList;
+        return type;
     }
 
     public static List<DataStandard> createDataStandardList(){
@@ -293,15 +297,6 @@ public class DatasetFactory {
         place.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(), Identifier.class));
 
         return place;
-    }
-
-    public static edu.pitt.isg.mdc.dats2_2.Type createType(){
-        edu.pitt.isg.mdc.dats2_2.Type type = new edu.pitt.isg.mdc.dats2_2.Type();
-        type.setInformation(new Annotation());
-        type.setMethod(new Annotation());
-        type.setPlatform(new Annotation());
-
-        return type;
     }
 
     public static List<edu.pitt.isg.mdc.dats2_2.Date> createDateList(){
