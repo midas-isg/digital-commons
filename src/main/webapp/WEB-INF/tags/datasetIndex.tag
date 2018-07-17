@@ -6,7 +6,7 @@
 <%@attribute name="active" type="java.lang.String" required="true" %>
 
 
-<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn hidden-xs">
     <i class="glyphicon glyphicon-align-left"></i>
     <span>Toggle Sidebar</span>
 </button>
