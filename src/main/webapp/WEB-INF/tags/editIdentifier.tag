@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="identifier" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Identifier" %>
 <%@ attribute name="identifiers" required="false"
@@ -62,7 +64,7 @@
             </div>
         </div>
     </c:when>
-    <c:when test="${not empty identifier}">
+    <c:when test="${not function:isObjectEmpty(identifier)}">
         <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">

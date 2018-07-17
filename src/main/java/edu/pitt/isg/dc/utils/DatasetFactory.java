@@ -56,8 +56,8 @@ public class DatasetFactory {
             dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), License.class));
         } else dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataset.getLicenses()), License.class));
         if(dataset.getIsAbout().isEmpty()){
-            dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutItemsList(null), IsAbout.class));
-        } dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutItemsList(dataset.getIsAbout()), IsAbout.class));
+            dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(null), IsAbout.class));
+        } dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(dataset.getIsAbout()), IsAbout.class));
         if(dataset.getAcknowledges().isEmpty()){
             dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), Grant.class));
         } else dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(dataset.getAcknowledges()), Grant.class));
@@ -251,18 +251,18 @@ public class DatasetFactory {
         return dataRepository;
     }
 
-    public static List<IsAbout> createIsAboutItemsList(List<IsAbout> isAboutItemsList){
+    public static List<IsAbout> createIsAboutList(List<IsAbout> isAboutList){
 //        List<IsAbout> isAboutItemsList = new ArrayList<IsAbout>();
-        if(isAboutItemsList == null || isAboutItemsList.isEmpty()){
-            isAboutItemsList = new ArrayList<IsAbout>();
+        if(isAboutList == null || isAboutList.isEmpty()){
+            isAboutList = new ArrayList<IsAbout>();
         }
         for(int i = 0; i < TOTAL_ITERATIONS; i++){
-            if(i > (isAboutItemsList.size() - 1)){
-                isAboutItemsList.add(createIsAboutItems(null));
-            } else isAboutItemsList.set(i, createIsAboutItems((IsAboutItems) isAboutItemsList.get(i)));
+            if(i > (isAboutList.size() - 1)){
+                isAboutList.add(createIsAbout(null));
+            } else isAboutList.set(i, createIsAbout(isAboutList.get(i)));
         } //end for loop
 
-        return isAboutItemsList;
+        return isAboutList;
     }
 
     public static IsAboutItems createIsAboutItems(IsAboutItems isAboutItems){
@@ -284,7 +284,22 @@ public class DatasetFactory {
 //        IsAbout isAbout = createIsAboutItems();
         if(isAbout == null){
             isAbout = createIsAboutItems(null);
-        } else isAbout = createIsAboutItems((IsAboutItems) isAbout);
+        } else {
+            IsAboutItems isAboutItems = new IsAboutItems();
+            if(isAbout.getClass().isAssignableFrom(Annotation.class)){
+                Annotation annotation = (Annotation) isAbout;
+                isAboutItems.setValue(annotation.getValue());
+                isAboutItems.setValueIRI(annotation.getValueIRI());
+            }
+            if(isAbout.getClass().isAssignableFrom(BiologicalEntity.class)){
+                BiologicalEntity biologicalEntity = (BiologicalEntity) isAbout;
+                isAboutItems.setIdentifier(biologicalEntity.getIdentifier());
+                isAboutItems.setAlternateIdentifiers(biologicalEntity.getAlternateIdentifiers());
+                isAboutItems.setName(biologicalEntity.getName());
+                isAboutItems.setDescription(biologicalEntity.getDescription());
+            }
+            isAbout = createIsAboutItems(isAboutItems);
+        }
 
         return isAbout;
     }
@@ -510,7 +525,33 @@ public class DatasetFactory {
 //        PersonComprisedEntity personComprisedEntity = createPersonOrganization(null);
         if(personComprisedEntity == null){
             personComprisedEntity = createPersonOrganization(null);
-        } else personComprisedEntity = createPersonOrganization((PersonOrganization) personComprisedEntity);
+        } else {
+            PersonOrganization personOrganization = new PersonOrganization();
+            if(personComprisedEntity.getClass().isAssignableFrom(Organization.class)){
+//                personComprisedEntity = createPersonOrganization((PersonOrganization) personComprisedEntity);
+                Organization organization = (Organization) personComprisedEntity;
+                personOrganization.setIdentifier(organization.getIdentifier());
+                personOrganization.setAlternateIdentifiers(organization.getAlternateIdentifiers());
+                personOrganization.setLocation(organization.getLocation());
+                personOrganization.setName(organization.getName());
+                personOrganization.setAbbreviation(organization.getAbbreviation());
+            }
+            if(personComprisedEntity.getClass().isAssignableFrom(Person.class)){
+                Person person = (Person) personComprisedEntity;
+                personOrganization.setIdentifier(person.getIdentifier());
+                personOrganization.setAlternateIdentifiers(person.getAlternateIdentifiers());
+                personOrganization.setRoles(person.getRoles());
+                personOrganization.setAffiliations(person.getAffiliations());
+                personOrganization.setFullName(person.getFullName());
+                personOrganization.setFirstName(person.getFirstName());
+                personOrganization.setMiddleInitial(person.getMiddleInitial());
+                personOrganization.setLastName(person.getLastName());
+                personOrganization.setEmail(person.getEmail());
+            }
+            personComprisedEntity = createPersonOrganization(personOrganization);
+        }
+
+            personComprisedEntity = createPersonOrganization((PersonOrganization) personComprisedEntity);
 
         return personComprisedEntity;
     }

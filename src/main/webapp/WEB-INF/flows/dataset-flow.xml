@@ -17,18 +17,22 @@
     </action-state>
 
     <action-state id="edit">
-        <evaluate expression="testDatasetValidator.editDataset(id)" result="flowScope.dataset"/>
-        <transition to="datasetForm1"/>
+        <evaluate expression="datasetWebflowValidator.editDataset(id)" result="flowScope.dataset"/>
+
+        <transition to="datasetForm1">
+            <evaluate expression="datasetWebflowValidator.getCategoryId(id)" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getRevisionId(id)" result="flowScope.revisionID"/>
+        </transition>
     </action-state>
 
-    <!--<on-start>-->
-
-    <!--<evaluate expression="dataset" result="flowScope.dataset" />-->
-    <!--&lt;!&ndash;<evaluate expression="testDatasetValidator.initFlow()" result="flowScope.dataset"/>&ndash;&gt;-->
-    <!--</on-start>-->
-
     <view-state id="datasetForm1" model="flowScope.dataset">
-        <transition on="next" to="validateForm1"/>
+        <on-render>
+            <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories()"/>
+        </on-render>
+        <transition on="next" to="validateForm1">
+            <set name="flowScope.categoryID" value="requestParameters.categoryID"/>
+        </transition>
 
         <transition on="identifier" to="datasetForm1"/>
         <transition on="title" to="datasetForm1"/>
@@ -67,7 +71,7 @@
     </view-state>
 
     <action-state id="validateForm1">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDatasetForm1(flowScope.dataset, messageContext, flowScope.categoryID, flowScope.revisionID)"/>
 
         <transition on="true" to="datasetForm2"/>
         <transition on="false" to="datasetForm1"/>
@@ -117,7 +121,7 @@
 
 
     <action-state id="validateForm2">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm3"/>
         <transition on="false" to="datasetForm2"/>
@@ -165,7 +169,7 @@
     </view-state>
 
     <action-state id="validateForm3">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm4"/>
         <transition on="false" to="datasetForm3"/>
@@ -213,7 +217,7 @@
     </view-state>
 
     <action-state id="validateForm4">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDatasetForm4(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm5"/>
         <transition on="false" to="datasetForm4"/>
@@ -261,7 +265,7 @@
     </view-state>
 
     <action-state id="validateForm5">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm6"/>
         <transition on="false" to="datasetForm5"/>
@@ -309,7 +313,7 @@
     </view-state>
 
     <action-state id="validateForm6">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm7"/>
         <transition on="false" to="datasetForm6"/>
@@ -357,7 +361,7 @@
     </view-state>
 
     <action-state id="validateForm7">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm8"/>
         <transition on="false" to="datasetForm7"/>
@@ -405,7 +409,7 @@
     </view-state>
 
     <action-state id="validateForm8">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm9"/>
         <transition on="false" to="datasetForm8"/>
@@ -453,7 +457,7 @@
     </view-state>
 
     <action-state id="validateForm9">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm10"/>
         <transition on="false" to="datasetForm9"/>
@@ -501,7 +505,7 @@
     </view-state>
 
     <action-state id="validateForm10">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm11"/>
         <transition on="false" to="datasetForm10"/>
@@ -549,7 +553,7 @@
     </view-state>
 
     <action-state id="validateForm11">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm12"/>
         <transition on="false" to="datasetForm11"/>
@@ -597,7 +601,7 @@
     </view-state>
 
     <action-state id="validateForm12">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="datasetForm13"/>
         <transition on="false" to="datasetForm12"/>
@@ -610,7 +614,7 @@
     </view-state>
 
     <action-state id="validateForm13">
-        <evaluate expression="testDatasetValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
 
         <transition on="true" to="createDataset"/>
         <transition on="false" to="datasetForm13"/>
@@ -655,7 +659,7 @@
     <end-state id="createDataset"></end-state>
 
     <on-end>
-        <evaluate expression="testDatasetValidator.createDataset(flowRequestContext)" />
+        <evaluate expression="datasetWebflowValidator.createDataset(flowRequestContext)" />
     </on-end>
 
 
