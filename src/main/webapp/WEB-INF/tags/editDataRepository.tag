@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="name" required="false"
               type="java.lang.String" %>
 <%@ attribute name="path" required="false"
@@ -14,7 +16,7 @@
              type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
 
 <c:choose>
-    <c:when test="${not empty dataRepository}">
+    <c:when test="${not function:isObjectEmpty(dataRepository)}">
         <div class="form-group edit-form-group">
             <label>${name}</label>
             <div class="form-group">

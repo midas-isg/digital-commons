@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="study" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Study" %>
 <%@ attribute name="path" required="false"
@@ -14,7 +16,7 @@
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty study.name or not empty study.location or not empty study.startDate or not empty study.endDate}">
+    <c:when test="${not function:isObjectEmpty(study)}">
     <%--<c:when test="${not empty study}">--%>
         <div class="form-group edit-form-group">
             <label>${label}</label>

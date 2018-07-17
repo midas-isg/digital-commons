@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="types" required="false"
               type="java.util.List" %>
 <%@ attribute name="path" required="true"
@@ -14,7 +16,7 @@
 
 
 <c:choose>
-    <c:when test="${not empty types}">
+    <c:when test="${not function:isObjectEmpty(types)}">
         <c:choose>
             <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
                 <div class="has-error">
@@ -132,7 +134,7 @@
                 <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
                     <span class="error-color">${message.text}</span>
                 </c:forEach>
-                <form:errors path="${path}[0]" class="error-color"/>
+                <%--<form:errors path="${path}[0]" class="error-color"/>--%>
             </c:if>
             </div>
             <c:set var="typeCount" scope="page" value="${varStatus.count}"/>
@@ -143,7 +145,15 @@
         </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group ${specifier}-type-add-more-button ${status.error ? 'has-error' : ''}">
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+                <div class="form-group edit-form-group ${specifier}-type-add-more-button has-error">
+
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group ${specifier}-type-add-more-button">
+            </c:otherwise>
+        </c:choose>
             <label>Type</label>
             <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
             </button>
@@ -168,10 +178,14 @@
                     Platform
                 </button>
             </div>
+        <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
         </div>
         <div class="${specifier}-type-add-more">
         </div>
-        <form:errors path="${path}[0]" class="error-color"/>
+
+        <%--<form:errors path="${path}[0]" class="error-color"/>--%>
 
         <c:set var="typeCount" scope="page" value="1"/>
     </c:otherwise>
