@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="distributions" required="false"
               type="java.util.List" %>
 <%@ attribute name="path" required="false"
@@ -12,7 +14,7 @@
 
 
 <c:choose>
-    <c:when test="${not empty distributions}">
+    <c:when test="${not function:isObjectEmpty(distributions)}">
         <c:forEach items="${distributions}" var="distribution" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group distribution-add-more-button">

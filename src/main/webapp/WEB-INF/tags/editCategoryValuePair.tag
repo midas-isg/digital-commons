@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -14,7 +16,7 @@
               type="java.util.List" %>
 
 <c:choose>
-    <c:when test="${not empty categoryValuePairs}">
+    <c:when test="${not function:isObjectEmpty(categoryValuePairs)}">
         <c:forEach items="${categoryValuePairs}" var="categoryValuePair" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
