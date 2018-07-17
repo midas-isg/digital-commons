@@ -26,6 +26,7 @@
                                      specifier="types"
                                      types="${dataset.types}">
                     </myTags:editType>
+
                     <myTags:editNonRequiredNonZeroLengthString path="availability"
                                                                string="${dataset.availability}"
                                                                specifier="availability"

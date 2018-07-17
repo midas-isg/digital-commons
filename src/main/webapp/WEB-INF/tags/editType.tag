@@ -15,7 +15,15 @@
 
 <c:choose>
     <c:when test="${not empty types}">
-        <div class=" ${status.error ? 'has-error' : ''}">
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+                <div class="has-error">
+
+            </c:when>
+            <c:otherwise>
+                <div>
+            </c:otherwise>
+        </c:choose>
         <c:forEach items="${types}" varStatus="varStatus" var="type">
             <c:choose>
                 <c:when test="${varStatus.first}">
@@ -121,6 +129,9 @@
                 </c:choose>
             </div>
             <c:if test="${varStatus.first}">
+                <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+                    <span class="error-color">${message.text}</span>
+                </c:forEach>
                 <form:errors path="${path}[0]" class="error-color"/>
             </c:if>
             </div>

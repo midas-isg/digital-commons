@@ -19,12 +19,8 @@ import java.util.Map;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
-////////////////////////////////////////////////////////////////////////////////
-// I AM DELETING THIS CLASS AND MIGRATING THE CODE TO DatasetWebflowValidator //
-////////////////////////////////////////////////////////////////////////////////
-
 @Component
-public class TestDatasetValidator {
+public class DatasetWebflowValidator {
     @Autowired
     private ApiUtil apiUtil;
     @Autowired

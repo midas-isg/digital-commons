@@ -32,8 +32,17 @@
     <%--</div>--%>
 <%--</spring:bind>--%>
 
-<div class="form-group edit-form-group">
+<c:choose>
+    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+        <div class="form-group edit-form-group has-error">
+    </c:when>
+    <c:otherwise>
+        <div class="form-group edit-form-group">
+    </c:otherwise>
+</c:choose>
     <label>${label}</label>
     <input name="${path}" value="${string}" type="text" class="form-control" placeholder="${placeholder}">
-    <%--<form:errors path="${path}" class="error-color"/>--%>
+    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+        <span class="error-color">${message.text}</span>
+    </c:forEach>
 </div>

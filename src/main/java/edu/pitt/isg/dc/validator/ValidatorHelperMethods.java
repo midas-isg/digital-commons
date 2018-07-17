@@ -3,9 +3,10 @@ package edu.pitt.isg.dc.validator;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.Identifier;
 import edu.pitt.isg.mdc.v1_0.NestedIdentifier;
+import org.springframework.binding.message.MessageBuilder;
+import org.springframework.binding.message.MessageContext;
 import org.springframework.validation.Errors;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -471,5 +472,64 @@ public class ValidatorHelperMethods {
                 errors.rejectValue("types[0]", "NotEmpty.dataset.type");
             }
         }
+    }
+
+    public static boolean clearTypes(List<Type> types, MessageContext messageContext) {
+        if (types.size() == 0) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "types").defaultText("Types cannot be empty").build());
+            return false;
+        } else {
+            boolean hasError = true;
+            ListIterator<Type> iterator = types.listIterator();
+            int counter = 0;
+            while (iterator.hasNext()) {
+                Type type = iterator.next();
+                Annotation annotation;
+                try {
+                    annotation = type.getInformation();
+                    if (! (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue()))) {
+                        hasError = false;
+                    }
+                } catch (NullPointerException e) {
+                }
+
+                try {
+                    annotation = type.getMethod();
+                    if (!(isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue()))) {
+                        hasError = false;
+                    }
+                } catch (NullPointerException e) {
+                }
+
+                try {
+                    annotation = type.getPlatform();
+                    if (!(isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue()))) {
+                        if (!isEmpty(annotation.getValueIRI())) {
+                            if (!isValidIRI(annotation.getValueIRI())) {
+                                messageContext.addMessage(new MessageBuilder().error().source(
+                                        "types[" + Integer.toString(counter) + "].platform.valueIRI").defaultText("Not a valid IRI!").build());
+
+                            }
+                        }
+                        hasError = false;
+                    }
+                } catch (NullPointerException e) {
+                }
+
+//                if (isEmpty(type.getInformation()) && isEmpty(type.getMethod()) && isEmpty(type.getPlatform())) {
+//                    iterator.remove();
+//                    counter--;
+//                }
+                counter++;
+            }
+
+            if (hasError) {
+                messageContext.addMessage(new MessageBuilder().error().source(
+                        "types[0]").defaultText("Type is required!").build());
+                return false;
+            }
+        }
+        return true;
     }
 }

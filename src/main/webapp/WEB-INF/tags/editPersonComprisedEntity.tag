@@ -23,8 +23,15 @@
 
 <c:choose>
     <c:when test="${not empty personComprisedEntities}">
-        <div class=" ${status.error ? 'has-error' : ''}">
-            <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+                <div class="has-error">
+
+            </c:when>
+            <c:otherwise>
+                <div>
+            </c:otherwise>
+        </c:choose>            <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
             <c:forEach items="${personComprisedEntities}" varStatus="varStatus" var="personComprisedEntity">
                 <c:choose>
                     <c:when test="${varStatus.first}">
