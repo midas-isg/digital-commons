@@ -65,11 +65,11 @@
                                                 annotations="${dataRepository.types}"
                                                 label="Types" >
                 </myTags:editAnnotationUnbounded>
-                <%--<myTags:editLicense path="${path}.licenses"--%>
-                                    <%--licenses="${dataRepository.licenses}"--%>
-                                    <%--label="License"--%>
-                                    <%--specifier="${specifier}-licenses">--%>
-                <%--</myTags:editLicense>--%>
+                <myTags:editLicense path="${path}.licenses"
+                                    licenses="${dataRepository.licenses}"
+                                    label="License"
+                                    specifier="${specifier}-licenses">
+                </myTags:editLicense>
                 <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
                                                            specifier="${specifier}-version"
                                                            string="${dataRepository.version}"

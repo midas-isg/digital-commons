@@ -49,8 +49,9 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     @Bean
     @Scope("prototype")
     public Dataset dataset() {
-//        DatasetListTest dataset = new DatasetListTest();
-        Dataset dataset = DatasetFactory.createDatasetForWebFlow();
+        Dataset dataset = new Dataset();
+        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+//        Dataset dataset = DatasetFactory.createDatasetForWebFlow();
         return dataset;
     }
 }

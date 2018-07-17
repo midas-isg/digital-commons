@@ -34,6 +34,7 @@ public class TestDatasetValidator
         EntryView entryView = new EntryView(entry);
 
         Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
 //        model.addAttribute("categoryID", entry.getCategory().getId());
         return dataset;
     }

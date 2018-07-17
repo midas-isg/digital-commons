@@ -272,7 +272,7 @@ public class DataEntryController {
 
             dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
-        } else dataset = DatasetFactory.createDatasetForWebFlow();
+        } else dataset = DatasetFactory.createDatasetForWebFlow(dataset);
         model.addAttribute("dataset", dataset);
 
         if (ifLoggedIn(session))
