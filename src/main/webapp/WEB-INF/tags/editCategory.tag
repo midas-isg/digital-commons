@@ -10,8 +10,8 @@
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
 
-<c:if test="${categoryIDError}">
-    <div class="has-error">
+<c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
+<div class="has-error">
 </c:if>
 <div class="form-group edit-form-group">
     <label class="item-label">Category</label>
@@ -34,8 +34,10 @@
         </select>
     </div>
     <div class="item-error" style="display: none;">Invalid</div>
-<c:if test="${categoryIDError}">
-    <span class="error-color">Category is required!</span>
-    </div>
-</c:if>
+    <c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('category')}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
+        </div>
+    </c:if>
 </div>
