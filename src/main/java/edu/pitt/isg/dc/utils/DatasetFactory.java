@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DatasetFactory {
 
-    private static final Integer TOTAL_ITERATIONS = 3;
+    private static final Integer TOTAL_ITERATIONS = 10;
 
     public static Dataset createDatasetForWebFlow(Dataset dataset) {
         //create an instance of every member of Dataset
@@ -493,6 +493,7 @@ public class DatasetFactory {
             personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(personOrganization.getAlternateIdentifiers()), Identifier.class));
         personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(personOrganization.getAffiliations()), Organization.class));
+//        personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(personOrganization.getAffiliations()), PersonComprisedEntity.class));
         if(personOrganization.getRoles().isEmpty()){
             personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(personOrganization.getRoles()), Annotation.class));
@@ -568,7 +569,7 @@ public class DatasetFactory {
             person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(person.getAlternateIdentifiers()), Identifier.class));
         if(person.getAffiliations().isEmpty()){
-            person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(null), Organization.class));
+            person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(null), PersonComprisedEntity.class));
         } else person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(person.getAffiliations()), Organization.class));
         if(person.getRoles().isEmpty()){
             person.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
@@ -576,6 +577,31 @@ public class DatasetFactory {
 
         return person;
     }
+/*
+
+    public static List<PersonComprisedEntity> createOrganizationList(List<Organization> organizationList){
+//        List<Organization> organizationList = new ArrayList<Organization>();
+        List<PersonComprisedEntity> personComprisedEntityList = new ArrayList<PersonComprisedEntity>();
+        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+            personComprisedEntityList.set(i, organizationList.get(i));
+            if(i > (organizationList.size() - 1)){
+                personComprisedEntityList.add(createPersonComprisedEntity(null));
+            } else {
+                if(organizationList.get(i).getIdentifier() == null){
+                    organizationList.get(i).setIdentifier(new Identifier());
+                }
+                if(organizationList.get(i).getAlternateIdentifiers().isEmpty()){
+                    organizationList.get(i).setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
+                } else organizationList.get(i).setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(organizationList.get(i).getAlternateIdentifiers()), Identifier.class));
+                if(organizationList.get(i).getLocation() == null){
+                    organizationList.get(i).setLocation(createPlace(null));
+                } else organizationList.get(i).setLocation(organizationList.get(i).getLocation());
+            }
+        } //end for loop
+
+        return personComprisedEntityList;
+    }
+*/
 
     public static List<Organization> createOrganizationList(List<Organization> organizationList){
 //        List<Organization> organizationList = new ArrayList<Organization>();

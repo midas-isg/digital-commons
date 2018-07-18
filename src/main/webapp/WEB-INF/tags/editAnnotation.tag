@@ -6,7 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ attribute name="annotation" required="false"
-              type="edu.pitt.isg.mdc.dats2_2.Annotation" %>
+              type="edu.pitt.isg.mdc.dats2_2.IsAbout" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
