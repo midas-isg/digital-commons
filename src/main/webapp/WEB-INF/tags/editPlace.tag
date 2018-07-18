@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="place" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Place" %>
 <%@ attribute name="path" required="true"
@@ -18,7 +20,8 @@
 
 
 <c:choose>
-    <c:when test="${not empty place.name or not empty place.description or not empty place.postalAddress}">
+    <%--<c:when test="${not empty place.name or not empty place.description or not empty place.postalAddress}">--%>
+    <c:when test="${not function:isObjectEmpty(place)}">
         <div class=" ${status.error ? 'has-error' : ''}">
             <div class="form-group control-group edit-form-group">
                 <label>${label}</label>

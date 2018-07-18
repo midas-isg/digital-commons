@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -15,7 +17,7 @@
               type="java.lang.Boolean" %>
 
 <c:choose>
-    <c:when test="${not empty access}">
+    <c:when test="${not function:isObjectEmpty(access)}">
         <div class="form-group edit-form-group">
             <label>Access</label>
             <c:if test="${not isAccessRequired}">

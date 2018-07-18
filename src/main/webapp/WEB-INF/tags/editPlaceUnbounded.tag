@@ -29,24 +29,17 @@
                     </div>
                 </div>
             </c:if>
-            <div class="form-group control-group edit-form-group">
-                <label>${label}</label>
-                <div class="form-group">
-                    <button class="btn btn-danger place-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                </div>
+            <c:if test="${not function:isObjectEmpty(place)}">
                 <myTags:editPlace path="${path}[${varStatus.count-1}]"
-                                   specifier="${specifier}-${varStatus.count-1}"
-                                   place="${place}"
-                                   label="${label}">
+                                  specifier="${specifier}-${varStatus.count-1}"
+                                  place="${place}"
+                                  label="${label}">
                 </myTags:editPlace>
-            </div>
-            <div class="${specifier}-place-add-more">
-            </div>
-            <c:set var="placeCount" scope="page" value="${varStatus.count}"/>
+                <c:set var="placeCount" scope="page" value="${varStatus.count}"/>
+            </c:if>
         </c:forEach>
+        <div class="${specifier}-place-add-more">
+        </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">

@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="personComprisedEntities" required="false"
               type="java.util.List" %>
 <%@ attribute name="path" required="true"
@@ -22,7 +24,7 @@
 
 
 <c:choose>
-    <c:when test="${not empty personComprisedEntities}">
+    <c:when test="${not function:isObjectEmpty(personComprisedEntities)}">
         <c:choose>
             <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
                 <div class="has-error">
@@ -31,7 +33,8 @@
             <c:otherwise>
                 <div>
             </c:otherwise>
-        </c:choose>            <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
+        </c:choose>
+        <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
             <c:forEach items="${personComprisedEntities}" varStatus="varStatus" var="personComprisedEntity">
                 <c:choose>
                     <c:when test="${varStatus.first}">

@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -14,7 +16,7 @@
               type="java.util.List" %>
 
 <c:choose>
-    <c:when test="${not empty annotations}">
+    <c:when test="${not function:isObjectEmpty(annotations)}">
         <c:forEach items="${annotations}" var="annotation" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
@@ -27,19 +29,21 @@
                     </div>
                 </div>
             </c:if>
-            <div class="form-group control-group edit-form-group">
-                <myTags:editAnnotation annotation="${annotation}"
-                                       supportError="${true}"
-                                       specifier="${specifier}-${varStatus.count-1}"
-                                       label="${label}"
-                                       showRemoveButton="true"
-                                       path="${path}[${varStatus.count-1}]">
-                </myTags:editAnnotation>
-            </div>
-            <div class="${specifier}-annotation-add-more">
-            </div>
-            <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
+            <c:if test="${not function:isObjectEmpty(annotation)}">
+                <div class="form-group control-group edit-form-group">
+                    <myTags:editAnnotation annotation="${annotation}"
+                                           supportError="${true}"
+                                           specifier="${specifier}-${varStatus.count-1}"
+                                           label="${label}"
+                                           showRemoveButton="true"
+                                           path="${path}[${varStatus.count-1}]">
+                    </myTags:editAnnotation>
+                </div>
+                <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
+            </c:if>
         </c:forEach>
+        <div class="${specifier}-annotation-add-more">
+        </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">

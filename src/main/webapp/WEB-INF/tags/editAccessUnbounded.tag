@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -14,7 +16,7 @@
               type="java.util.List" %>
 
 <c:choose>
-    <c:when test="${not empty accessList}">
+    <c:when test="${not function:isObjectEmpty(accessList)}">
         <c:forEach items="${accessList}" var="access" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">
@@ -27,24 +29,26 @@
                     </div>
                 </div>
             </c:if>
-            <div class="form-group control-group edit-form-group">
-                <label>${label}</label>
-                <div class="form-group">
-                    <button class="btn btn-danger access-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
+            <c:if test="${not function:isObjectEmpty(access)}">
+                <div class="form-group control-group edit-form-group">
+                    <label>${label}</label>
+                    <div class="form-group">
+                        <button class="btn btn-danger access-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                    </div>
+                    <myTags:editAccess path="${path}[${varStatus.count-1}]"
+                                       specifier="${specifier}-${varStatus.count-1}"
+                                       access="${access}"
+                                       isAccessRequired="false">
+                    </myTags:editAccess>
                 </div>
-                <myTags:editAccess path="${path}[${varStatus.count-1}]"
-                                   specifier="${specifier}-${varStatus.count-1}"
-                                   access="${access}"
-                                   isAccessRequired="false">
-                </myTags:editAccess>
-            </div>
-            <div class="${specifier}-access-add-more">
-            </div>
-            <c:set var="accessCount" scope="page" value="${varStatus.count}"/>
+                <c:set var="accessCount" scope="page" value="${varStatus.count}"/>
+            </c:if>
         </c:forEach>
+        <div class="${specifier}-access-add-more">
+        </div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">

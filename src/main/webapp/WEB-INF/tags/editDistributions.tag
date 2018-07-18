@@ -26,84 +26,86 @@
                     </div>
                 </div>
             </c:if>
-            <div class="form-group control-group edit-form-group">
-                <label>Distribution</label>
-                <button class="btn btn-danger distribution-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i> Remove
-                </button>
-                <myTags:editIdentifier label="Identifier" specifier="${specifier}-${varStatus.count-1}"
-                                       path="${path}[${varStatus.count-1}].identifier"
-                                       identifier="${distribution.identifier}"
-                                       unbounded="False">
-                </myTags:editIdentifier>
-                <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
-                                       label="Alternate Identifiers"
-                                       path="${path}[${varStatus.count-1}].alternateIdentifiers"
-                                       identifiers="${distribution.alternateIdentifiers}"
-                                       unbounded="${true}">
-                </myTags:editIdentifier>
-                <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].title"
-                                                           specifier="${specifier}-${varStatus.count-1}-title"
-                                                           placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                           string="${distribution.title}"
-                                                           label="Title">
-                </myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[${varStatus.count-1}].description"
-                                                                   string="${distribution.description}"
-                                                                   specifier="${specifier}-${varStatus.count-1}-description"
-                                                                   placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                                                   label="Description">
-                </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
-                                           dataRepository="${distribution.storedIn}"
-                                           specifier="${specifier}-${varStatus.count-1}-storedIn">
-                </myTags:editDataRepository>
-                <myTags:editDatesUnbounded dates="${distribution.dates}"
-                                           path="${path}[${varStatus.count-1}].dates"
-                                           specifier="${specifier}-dates">
-                </myTags:editDatesUnbounded>
-                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
-                                                           specifier="${specifier}-${varStatus.count-1}-version"
-                                                           string="${distribution.version}"
-                                                           path="${path}[${varStatus.count-1}].version">
-                </myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editLicense path="${path}[${varStatus.count-1}].licenses"
-                                    licenses="${distribution.licenses}"
-                                    label="License"
-                                    specifier="${specifier}-${varStatus.count-1}-licenses">
-                </myTags:editLicense>
-                <myTags:editAccess path="${path}[${varStatus.count-1}].access"
-                                   specifier="${specifier}-${varStatus.count-1}-access" isAccessRequired="true"
-                                   access="${distribution.access}">
-                </myTags:editAccess>
-                <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
-                                         dataStandards="${distribution.conformsTo}"
-                                         specifier="${specifier}-${varStatus.count-1}-conformsTo">
-                </myTags:editDataStandard>
-                <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].qualifiers"
-                                                specifier="${specifier}-${varStatus.count-1}-qualifiers"
-                                                annotations="${distribution.qualifiers}"
-                                                label="Qualifiers">
-                </myTags:editAnnotationUnbounded>
-                <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
-                                                                    path="${path}[${varStatus.count-1}].formats"
-                                                                    specifier="${specifier}-${varStatus.count-1}-formats"
-                                                                    placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
-                                                                    label="Formats">
-                </myTags:editUnboundedNonRequiredNonZeroLengthString>
-                <myTags:editFloat path="${path}[${varStatus.count-1}].size"
-                                  specifier="${specifier}-${varStatus.count-1}-size"
-                                  number="${distribution.size}"
-                                  placeholder=" The size of the dataset."
-                                  label="Size" >
-                </myTags:editFloat>
-                <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
-                                              specifier="${specifier}-${varStatus.count-1}-unit"
-                                              placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
-                                              label="Unit" >
-                </myTags:editAnnotationBounded>
-            </div>
-            <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
+            <c:if test="${not function:isObjectEmpty(distribution)}">
+                <div class="form-group control-group edit-form-group">
+                    <label>Distribution</label>
+                    <button class="btn btn-danger distribution-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i> Remove
+                    </button>
+                    <myTags:editIdentifier label="Identifier" specifier="${specifier}-${varStatus.count-1}"
+                                           path="${path}[${varStatus.count-1}].identifier"
+                                           identifier="${distribution.identifier}"
+                                           unbounded="False">
+                    </myTags:editIdentifier>
+                    <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                                           label="Alternate Identifiers"
+                                           path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                                           identifiers="${distribution.alternateIdentifiers}"
+                                           unbounded="${true}">
+                    </myTags:editIdentifier>
+                    <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].title"
+                                                               specifier="${specifier}-${varStatus.count-1}-title"
+                                                               placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                               string="${distribution.title}"
+                                                               label="Title">
+                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[${varStatus.count-1}].description"
+                                                                       string="${distribution.description}"
+                                                                       specifier="${specifier}-${varStatus.count-1}-description"
+                                                                       placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                                                       label="Description">
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                    <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
+                                               dataRepository="${distribution.storedIn}"
+                                               specifier="${specifier}-${varStatus.count-1}-storedIn">
+                    </myTags:editDataRepository>
+                    <myTags:editDatesUnbounded dates="${distribution.dates}"
+                                               path="${path}[${varStatus.count-1}].dates"
+                                               specifier="${specifier}-dates">
+                    </myTags:editDatesUnbounded>
+                    <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
+                                                               specifier="${specifier}-${varStatus.count-1}-version"
+                                                               string="${distribution.version}"
+                                                               path="${path}[${varStatus.count-1}].version">
+                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editLicense path="${path}[${varStatus.count-1}].licenses"
+                                        licenses="${distribution.licenses}"
+                                        label="License"
+                                        specifier="${specifier}-${varStatus.count-1}-licenses">
+                    </myTags:editLicense>
+                    <myTags:editAccess path="${path}[${varStatus.count-1}].access"
+                                       specifier="${specifier}-${varStatus.count-1}-access" isAccessRequired="true"
+                                       access="${distribution.access}">
+                    </myTags:editAccess>
+                    <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
+                                             dataStandards="${distribution.conformsTo}"
+                                             specifier="${specifier}-${varStatus.count-1}-conformsTo">
+                    </myTags:editDataStandard>
+                    <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].qualifiers"
+                                                    specifier="${specifier}-${varStatus.count-1}-qualifiers"
+                                                    annotations="${distribution.qualifiers}"
+                                                    label="Qualifiers">
+                    </myTags:editAnnotationUnbounded>
+                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
+                                                                        path="${path}[${varStatus.count-1}].formats"
+                                                                        specifier="${specifier}-${varStatus.count-1}-formats"
+                                                                        placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                                                                        label="Formats">
+                    </myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <myTags:editFloat path="${path}[${varStatus.count-1}].size"
+                                      specifier="${specifier}-${varStatus.count-1}-size"
+                                      number="${distribution.size}"
+                                      placeholder=" The size of the dataset."
+                                      label="Size" >
+                    </myTags:editFloat>
+                    <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
+                                                  specifier="${specifier}-${varStatus.count-1}-unit"
+                                                  placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                                                  label="Unit" >
+                    </myTags:editAnnotationBounded>
+                </div>
+                <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
+            </c:if>
 
         </c:forEach>
         <div class="distribution-add-more"></div>

@@ -22,7 +22,7 @@
 
 
 <c:choose>
-    <c:when test="${not empty isAboutList}">
+    <c:when test="${not function:isObjectEmpty(isAboutList)}">
         <div class=" ${status.error ? 'has-error' : ''}">
             <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
                 <c:choose>
@@ -42,35 +42,37 @@
                         </div>
                     </c:when>
                 </c:choose>
-                <c:choose>
-                    <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">--%>
-                    <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
-                        <div class="form-group edit-form-group control-group">
-                            <myTags:editAnnotation annotation="${isAbout}"
-                                                   path="${path}[${varStatus.count-1}]"
-                                                   specifier="${specifier}-${varStatus.count-1}"
-                                                   label="Is About (Annotation)"
-                                                   showRemoveButton="true"
-                                                   supportError="true">
-                            </myTags:editAnnotation>
-                        </div>
-                    </c:when>
-                    <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">--%>
-                    <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
-                        <myTags:editBiologicalEntity entity="${isAbout}"
-                                                     path="${path}[${varStatus.count-1}]"
-                                                     specifier="${specifier}-${varStatus.count-1}"
-                                                     label="${label} (BiologicalEntity)">
-                        </myTags:editBiologicalEntity>
-                    </c:when>
-                </c:choose>
+                <c:if test="${not function:isObjectEmpty(isAbout)}">
+                    <c:choose>
+                        <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">--%>
+                        <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
+                            <div class="form-group edit-form-group control-group">
+                                <myTags:editAnnotation annotation="${isAbout}"
+                                                       path="${path}[${varStatus.count-1}]"
+                                                       specifier="${specifier}-${varStatus.count-1}"
+                                                       label="Is About (Annotation)"
+                                                       showRemoveButton="true"
+                                                       supportError="true">
+                                </myTags:editAnnotation>
+                            </div>
+                        </c:when>
+                        <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">--%>
+                        <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
+                            <myTags:editBiologicalEntity entity="${isAbout}"
+                                                         path="${path}[${varStatus.count-1}]"
+                                                         specifier="${specifier}-${varStatus.count-1}"
+                                                         label="${label} (BiologicalEntity)">
+                            </myTags:editBiologicalEntity>
+                        </c:when>
+                    </c:choose>
 
-                <c:if test="${varStatus.first}">
+                    <c:if test="${varStatus.first}">
 
-                    <form:errors path="${path}[0]" class="error-color"/>
+                        <form:errors path="${path}[0]" class="error-color"/>
+                    </c:if>
+
+                    <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
                 </c:if>
-
-                <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
 
             </c:forEach>
             <div class="${specifier}-add-more"></div>

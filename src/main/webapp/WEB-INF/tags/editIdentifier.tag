@@ -24,7 +24,7 @@
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty identifiers}">
+    <c:when test="${not function:isObjectEmpty(identifiers)}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
             <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="varStatus">
@@ -38,26 +38,28 @@
                         </c:when>
                     </c:choose>
                 </div>
-                <div class="form-group control-group edit-form-group">
-                    <label>${label}</label>
-                    <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <div class="form-group edit-form-group">
-                        <label>Identifier</label>
-                        <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                               name="${path}[${varStatus.count-1}].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
-                    </div>
+                <c:if test="${not function:isObjectEmpty(singleIdentifier)}">
+                    <div class="form-group control-group edit-form-group">
+                        <label>${label}</label>
+                        <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                        <div class="form-group edit-form-group">
+                            <label>Identifier</label>
+                            <input type="text" class="form-control" value="${singleIdentifier.identifier}"
+                                   name="${path}[${varStatus.count-1}].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
+                        </div>
 
-                    <div class="form-group edit-form-group">
-                        <label>Identifier Source</label>
-                        <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                               name="${path}[${varStatus.count-1}].identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
-                    </div>
+                        <div class="form-group edit-form-group">
+                            <label>Identifier Source</label>
+                            <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
+                                   name="${path}[${varStatus.count-1}].identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+                        </div>
 
-                </div>
-                <c:set var="identifierCount" scope="page" value="${varStatus.count}"/>
+                    </div>
+                    <c:set var="identifierCount" scope="page" value="${varStatus.count}"/>
+                </c:if>
 
             </c:forEach>
             <div class="${specifier}-identifier-add-more">

@@ -29,37 +29,39 @@
                         </button>
                     </div>
                 </c:if>
-                <div class="form-group control-group edit-form-group">
-                    <label>${label}</label>
-                    <br>
-                    <button class="btn btn-danger license-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
-                                           identifier="${license.identifier}"
-                                           specifier="${specifier}-${varStatus.count-1}-identifier">
-                    </myTags:editIdentifier>
-                    <myTags:editRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].name"
-                                                            placeholder=" Name of License"
-                                                            string="${license.name}"
-                                                            label="Name">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
-                                                               specifier="${specifier}-${varStatus.count-1}-version"
-                                                               string="${license.version}"
-                                                               path="${path}[${varStatus.count-1}].version">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].creators"
-                                                      specifier="${specifier}-${varStatus.count-1}-creators"
-                                                      label="Creator"
-                                                      personComprisedEntities="${license.creators}"
-                                                      isFirstRequired="false"
-                                                      showAddPersonButton="true"
-                                                      showAddOrganizationButton="true">
-                    </myTags:editPersonComprisedEntity>
-                </div>
-                <c:set var="licenseCount" scope="page" value="${varStatus.count}"/>
+                <c:if test="${not function:isObjectEmpty(license)}">
+                    <div class="form-group control-group edit-form-group">
+                        <label>${label}</label>
+                        <br>
+                        <button class="btn btn-danger license-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                        <myTags:editIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
+                                               identifier="${license.identifier}"
+                                               specifier="${specifier}-${varStatus.count-1}-identifier">
+                        </myTags:editIdentifier>
+                        <myTags:editRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].name"
+                                                                placeholder=" Name of License"
+                                                                string="${license.name}"
+                                                                label="Name">
+                        </myTags:editRequiredNonZeroLengthString>
+                        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
+                                                                   specifier="${specifier}-${varStatus.count-1}-version"
+                                                                   string="${license.version}"
+                                                                   path="${path}[${varStatus.count-1}].version">
+                        </myTags:editNonRequiredNonZeroLengthString>
+                        <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].creators"
+                                                          specifier="${specifier}-${varStatus.count-1}-creators"
+                                                          label="Creator"
+                                                          personComprisedEntities="${license.creators}"
+                                                          isFirstRequired="false"
+                                                          showAddPersonButton="true"
+                                                          showAddOrganizationButton="true">
+                        </myTags:editPersonComprisedEntity>
+                    </div>
+                    <c:set var="licenseCount" scope="page" value="${varStatus.count}"/>
+                </c:if>
 
             </c:forEach>
             <div class="${specifier}-license-add-more"></div>

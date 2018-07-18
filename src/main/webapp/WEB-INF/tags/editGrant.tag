@@ -29,46 +29,48 @@
                         </button>
                     </div>
                 </c:if>
-                <div class="form-group control-group edit-form-group">
-                    <label>${label}</label>
-                    <br>
-                    <button class="btn btn-danger grant-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <myTags:editIdentifier path="${path}[${varStatus.count-1}].identifier" identifier="${grant.identifier}"
-                                           specifier="${specifier}-${varStatus.count-1}-identifier"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
-                    <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
-                                           label="Alternate Identifiers"
-                                           path="${path}[${varStatus.count-1}].alternateIdentifiers"
-                                           identifiers="${grant.alternateIdentifiers}"
-                                           unbounded="${true}">
-                    </myTags:editIdentifier>
-                    <myTags:editRequiredNonZeroLengthString placeholder=" The name of the grant and its funding program."
-                                                            label="Name"
-                                                            string="${grant.name}"
-                                                            path="${path}[${varStatus.count-1}].name">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].funders"
-                                                      specifier="${specifier}-${varStatus.count-1}-funders"
-                                                      label="Funders"
-                                                      personComprisedEntities="${grant.funders}"
-                                                      isFirstRequired="true"
-                                                      showAddPersonButton="true"
-                                                      showAddOrganizationButton="true">
-                    </myTags:editPersonComprisedEntity>
-                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].awardees"
-                                                      specifier="${specifier}-${varStatus.count-1}-awardees"
-                                                      label="Awardees"
-                                                      personComprisedEntities="${grant.awardees}"
-                                                      isFirstRequired="false"
-                                                      showAddPersonButton="true"
-                                                      showAddOrganizationButton="true">
-                    </myTags:editPersonComprisedEntity>
-                </div>
-                <c:set var="grantCount" scope="page" value="${varStatus.count}"/>
+                <c:if test="${not function:isObjectEmpty(grant)}">
+                    <div class="form-group control-group edit-form-group">
+                        <label>${label}</label>
+                        <br>
+                        <button class="btn btn-danger grant-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                        <myTags:editIdentifier path="${path}[${varStatus.count-1}].identifier" identifier="${grant.identifier}"
+                                               specifier="${specifier}-${varStatus.count-1}-identifier"
+                                               label="Identifier">
+                        </myTags:editIdentifier>
+                        <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                                               label="Alternate Identifiers"
+                                               path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                                               identifiers="${grant.alternateIdentifiers}"
+                                               unbounded="${true}">
+                        </myTags:editIdentifier>
+                        <myTags:editRequiredNonZeroLengthString placeholder=" The name of the grant and its funding program."
+                                                                label="Name"
+                                                                string="${grant.name}"
+                                                                path="${path}[${varStatus.count-1}].name">
+                        </myTags:editRequiredNonZeroLengthString>
+                        <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].funders"
+                                                          specifier="${specifier}-${varStatus.count-1}-funders"
+                                                          label="Funders"
+                                                          personComprisedEntities="${grant.funders}"
+                                                          isFirstRequired="true"
+                                                          showAddPersonButton="true"
+                                                          showAddOrganizationButton="true">
+                        </myTags:editPersonComprisedEntity>
+                        <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].awardees"
+                                                          specifier="${specifier}-${varStatus.count-1}-awardees"
+                                                          label="Awardees"
+                                                          personComprisedEntities="${grant.awardees}"
+                                                          isFirstRequired="false"
+                                                          showAddPersonButton="true"
+                                                          showAddOrganizationButton="true">
+                        </myTags:editPersonComprisedEntity>
+                    </div>
+                    <c:set var="grantCount" scope="page" value="${varStatus.count}"/>
+                </c:if>
             </c:forEach>
             <div class="${specifier}-grant-add-more"></div>
         </div>

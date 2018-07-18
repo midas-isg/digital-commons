@@ -29,61 +29,63 @@
                         </button>
                     </div>
                 </c:if>
-                <div class="form-group control-group edit-form-group">
-                    <label>${label}</label>
-                    <br>
-                    <button class="btn btn-danger publication-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <myTags:editIdentifier path="${path}[${varStatus.count-1}].identifier"
-                                           identifier="${publication.identifier}"
-                                           specifier="${specifier}-${varStatus.count-1}-identifier"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
-                    <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
-                                           label="Alternate Identifiers"
-                                           path="${path}[${varStatus.count-1}].alternateIdentifiers"
-                                           identifiers="${publication.alternateIdentifiers}"
-                                           unbounded="${true}">
-                    </myTags:editIdentifier>
-                    <myTags:editRequiredNonZeroLengthString
-                            placeholder=" The name of the publication and its funding program."
-                            label="Title"
-                            string="${publication.title}"
-                            path="${path}[${varStatus.count-1}].title">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editAnnotationBounded path="${path}[${varStatus.count-1}].type"
-                                                  specifier="${specifier}-${varStatus.count-1}-type"
-                                                  annotation="${publication.type}"
-                                                  placeholder=" Publication type, ideally delegated to an external vocabulary/resource."
-                                                  label="Type">
-                    </myTags:editAnnotationBounded>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}.publicationVenue"
-                                                               string="${publication.publicationVenue}"
-                                                               specifier="${specifier}-publicationVenue"
-                                                               placeholder=" The name of the publication venue where the document is published if applicable."
-                                                               label="Publication Venue">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editDatesUnbounded dates="${publication.dates}"
-                                               path="${path}[${varStatus.count-1}].dates"
-                                               specifier="${specifier}-dates">
-                    </myTags:editDatesUnbounded>
-                    <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].authors"
-                                                      specifier="${specifier}-${varStatus.count-1}-authors"
-                                                      label="Author"
-                                                      personComprisedEntities="${publication.authors}"
-                                                      isFirstRequired="true"
-                                                      showAddPersonButton="true"
-                                                      showAddOrganizationButton="false">
-                    </myTags:editPersonComprisedEntity>
-                    <myTags:editGrant path="${path}[${varStatus.count-1}].acknowledges"
-                                      specifier="${specifier}-${varStatus.count-1}-acknowledges"
-                                      grants="${publication.acknowledges}"
-                                      label="Acknowledges">
-                    </myTags:editGrant>
-                </div>
-                <c:set var="publicationCount" scope="page" value="${varStatus.count}"/>
+                <c:if test="${not function:isObjectEmpty(publication)}">
+                    <div class="form-group control-group edit-form-group">
+                        <label>${label}</label>
+                        <br>
+                        <button class="btn btn-danger publication-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i>
+                            Remove
+                        </button>
+                        <myTags:editIdentifier path="${path}[${varStatus.count-1}].identifier"
+                                               identifier="${publication.identifier}"
+                                               specifier="${specifier}-${varStatus.count-1}-identifier"
+                                               label="Identifier">
+                        </myTags:editIdentifier>
+                        <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                                               label="Alternate Identifiers"
+                                               path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                                               identifiers="${publication.alternateIdentifiers}"
+                                               unbounded="${true}">
+                        </myTags:editIdentifier>
+                        <myTags:editRequiredNonZeroLengthString
+                                placeholder=" The name of the publication and its funding program."
+                                label="Title"
+                                string="${publication.title}"
+                                path="${path}[${varStatus.count-1}].title">
+                        </myTags:editRequiredNonZeroLengthString>
+                        <myTags:editAnnotationBounded path="${path}[${varStatus.count-1}].type"
+                                                      specifier="${specifier}-${varStatus.count-1}-type"
+                                                      annotation="${publication.type}"
+                                                      placeholder=" Publication type, ideally delegated to an external vocabulary/resource."
+                                                      label="Type">
+                        </myTags:editAnnotationBounded>
+                        <myTags:editNonRequiredNonZeroLengthString path="${path}.publicationVenue"
+                                                                   string="${publication.publicationVenue}"
+                                                                   specifier="${specifier}-publicationVenue"
+                                                                   placeholder=" The name of the publication venue where the document is published if applicable."
+                                                                   label="Publication Venue">
+                        </myTags:editNonRequiredNonZeroLengthString>
+                        <myTags:editDatesUnbounded dates="${publication.dates}"
+                                                   path="${path}[${varStatus.count-1}].dates"
+                                                   specifier="${specifier}-dates">
+                        </myTags:editDatesUnbounded>
+                        <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].authors"
+                                                          specifier="${specifier}-${varStatus.count-1}-authors"
+                                                          label="Author"
+                                                          personComprisedEntities="${publication.authors}"
+                                                          isFirstRequired="true"
+                                                          showAddPersonButton="true"
+                                                          showAddOrganizationButton="false">
+                        </myTags:editPersonComprisedEntity>
+                        <myTags:editGrant path="${path}[${varStatus.count-1}].acknowledges"
+                                          specifier="${specifier}-${varStatus.count-1}-acknowledges"
+                                          grants="${publication.acknowledges}"
+                                          label="Acknowledges">
+                        </myTags:editGrant>
+                    </div>
+                    <c:set var="publicationCount" scope="page" value="${varStatus.count}"/>
+                </c:if>
 
             </c:forEach>
             <div class="${specifier}-publication-add-more"></div>

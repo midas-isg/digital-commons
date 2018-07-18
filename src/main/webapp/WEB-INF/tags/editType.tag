@@ -27,117 +27,119 @@
             </c:otherwise>
         </c:choose>
         <c:forEach items="${types}" varStatus="varStatus" var="type">
-            <c:choose>
-                <c:when test="${varStatus.first}">
-                    <div class="form-group control-group edit-form-group ${specifier}-type-add-more-button">
-                    <label>Type</label>
-                    <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
-                        Add Type
-                    </button>
-                </c:when>
-                <c:otherwise>
-                    <div class="form-group control-group edit-form-group">
-                    <label>Type</label>
-                    <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i> Remove
-                    </button>
-                </c:otherwise>
-            </c:choose>
-
-            <br><br>
-            <div>
+            <c:if test="${not function:isObjectEmpty(type)}">
                 <c:choose>
-                    <c:when test="${not empty type.information}">
-                        <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Information
+                    <c:when test="${varStatus.first}">
+                        <div class="form-group control-group edit-form-group ${specifier}-type-add-more-button">
+                        <label>Type</label>
+                        <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
+                            Add Type
                         </button>
-                        <div class="form-group control-group edit-form-group">
-                            <myTags:editAnnotation annotation="${type.information}"
-                                                   supportError="${true}"
-                                                   specifier="${specifier}-${varStatus.count-1}-information"
-                                                   label="Information"
-                                                   showRemoveButton="true"
-                                                   path="${path}[${varStatus.count-1}].information">
-                            </myTags:editAnnotation>
-                        </div>
                     </c:when>
                     <c:otherwise>
-                        <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-information-add-annotation"
-                                type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Information
+                        <div class="form-group control-group edit-form-group">
+                        <label>Type</label>
+                        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
+                                class="glyphicon glyphicon-remove"></i> Remove
                         </button>
                     </c:otherwise>
                 </c:choose>
-            </div>
-            <br>
 
-            <div>
-                <c:choose>
-                    <c:when test="${not empty type.method}">
-                        <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Method
-                        </button>
-                        <div class="form-group control-group edit-form-group">
-                            <myTags:editAnnotation annotation="${type.method}"
-                                                   supportError="${true}"
-                                                   specifier="${specifier}-${varStatus.count-1}-method"
-                                                   label="Method"
-                                                   showRemoveButton="true"
-                                                   path="${path}[${varStatus.count-1}].method">
-                            </myTags:editAnnotation>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-method-add-annotation"
-                                type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Method
-                        </button>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-            <br>
+                <br><br>
+                <div>
+                    <c:choose>
+                        <c:when test="${not empty type.information}">
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Information
+                            </button>
+                            <div class="form-group control-group edit-form-group">
+                                <myTags:editAnnotation annotation="${type.information}"
+                                                       supportError="${true}"
+                                                       specifier="${specifier}-${varStatus.count-1}-information"
+                                                       label="Information"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].information">
+                                </myTags:editAnnotation>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-information-add-annotation"
+                                    type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Information
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <br>
 
-            <div>
-                <c:choose>
-                    <c:when test="${not empty type.platform}">
-                        <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Platform
-                        </button>
-                        <div class="form-group control-group edit-form-group">
-                            <myTags:editAnnotation annotation="${type.platform}"
-                                                   supportError="${true}"
-                                                   specifier="${specifier}-${varStatus.count-1}-platform"
-                                                   label="Platform"
-                                                   showRemoveButton="true"
-                                                   path="${path}[${varStatus.count-1}].platform">
-                            </myTags:editAnnotation>
-                        </div>
-                    </c:when>
-                    <c:otherwise>
-                        <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-platform-add-annotation"
-                                type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            Platform
-                        </button>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-            <c:if test="${varStatus.first}">
-                <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
-                    <span class="error-color">${message.text}</span>
-                </c:forEach>
-                <%--<form:errors path="${path}[0]" class="error-color"/>--%>
+                <div>
+                    <c:choose>
+                        <c:when test="${not empty type.method}">
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Method
+                            </button>
+                            <div class="form-group control-group edit-form-group">
+                                <myTags:editAnnotation annotation="${type.method}"
+                                                       supportError="${true}"
+                                                       specifier="${specifier}-${varStatus.count-1}-method"
+                                                       label="Method"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].method">
+                                </myTags:editAnnotation>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-method-add-annotation"
+                                    type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Method
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <br>
+
+                <div>
+                    <c:choose>
+                        <c:when test="${not empty type.platform}">
+                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
+                                    id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Platform
+                            </button>
+                            <div class="form-group control-group edit-form-group">
+                                <myTags:editAnnotation annotation="${type.platform}"
+                                                       supportError="${true}"
+                                                       specifier="${specifier}-${varStatus.count-1}-platform"
+                                                       label="Platform"
+                                                       showRemoveButton="true"
+                                                       path="${path}[${varStatus.count-1}].platform">
+                                </myTags:editAnnotation>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-platform-add-annotation"
+                                    type="button"><i
+                                    class="glyphicon glyphicon-plus"></i> Add
+                                Platform
+                            </button>
+                        </c:otherwise>
+                    </c:choose>
+                </div>
+                <c:if test="${varStatus.first}">
+                    <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+                        <span class="error-color">${message.text}</span>
+                    </c:forEach>
+                    <%--<form:errors path="${path}[0]" class="error-color"/>--%>
+                </c:if>
+                </div>
+                <c:set var="typeCount" scope="page" value="${varStatus.count}"/>
             </c:if>
-            </div>
-            <c:set var="typeCount" scope="page" value="${varStatus.count}"/>
 
         </c:forEach>
         </div>
