@@ -1,11 +1,16 @@
 package edu.pitt.isg.dc.validator;
 
+import com.google.gson.JsonObject;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
+import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
+import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
@@ -13,18 +18,31 @@ import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
+import java.util.Properties;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
 @Component
 public class DatasetWebflowValidator {
+
+    @Autowired
+    EntrySubmissionInterface entrySubmissionInterface;
+    @Autowired
+    UsersSubmissionInterface usersSubmissionInterface;
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
     private CategoryHelper categoryHelper;
+    private static String ENTRIES_AUTHENTICATION = "";
+
+    static {
+        Properties configurationProperties = DigitalCommonsProperties.getProperties();
+        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
+    }
 
     private Converter converter = new Converter();
 
@@ -59,17 +77,20 @@ public class DatasetWebflowValidator {
         return id.getRevisionId();
     }
 
-    public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID, Long revisionID) {
+    public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
+        String isValid = "true";
         String title = dataset.getTitle();
+        if(categoryID == null || categoryID == 0) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "category").defaultText("Please select a category").build());
+            isValid = "false";
+        }
         if (isEmpty(title)) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "title").defaultText("Title cannot be empty").build());
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "test").defaultText("Test").build());
-            return "false";
-        } else {
-            return "true";
+            isValid = "false";
         }
+        return isValid;
     }
 
     public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
@@ -98,8 +119,30 @@ public class DatasetWebflowValidator {
     }
 
     public String createDataset(RequestContext context) {
-        Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
+        HttpSession session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
 
+        Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
+        Long entryID = (Long) context.getFlowScope().get("entryID");
+        Long categoryID;
+        try {
+            categoryID = (Long) context.getFlowScope().get("categoryID");
+        } catch (Exception e) {
+            context.getMessageContext().addMessage(new MessageBuilder().error().source(
+                    "category").defaultText("Please select a category").build());
+            return "title";
+        }
+
+        Long revisionId = (Long) context.getFlowScope().get("revisionID");
+
+        if(validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
+            //redirect to page 1
+            return "title";
+        }
+
+        if(validateDatasetForm4(dataset, context.getMessageContext()).equals("false")) {
+            //redirect to page 4
+            return "types";
+        }
 
         //Remove empty identifier
         if (!isEmpty(dataset.getIdentifier())) {
@@ -109,7 +152,22 @@ public class DatasetWebflowValidator {
         }
 
 
-        return "success";
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.toJsonObject(Dataset.class, dataset);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", dataset.getClass().toString());
+
+        try {
+            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+            entrySubmissionInterface.submitEntry(entryObject, entryID, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "false";
+        }
+
+        return "true";
     }
 
 }

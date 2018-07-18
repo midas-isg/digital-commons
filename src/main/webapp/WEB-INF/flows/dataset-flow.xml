@@ -5,23 +5,25 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 
-    <input name="id"/>
+    <input name="entryID"/>
 
     <decision-state id="createOrEdit">
-        <if test="id == null" then="create" else="edit" />
+        <if test="entryID == null" then="create" else="edit" />
     </decision-state>
 
     <action-state id="create">
         <evaluate expression="dataset" result="flowScope.dataset" />
-        <transition to="datasetForm1"/>
+        <transition to="datasetForm1">
+            <evaluate expression="0" result="flowScope.categoryID"/>
+        </transition>
     </action-state>
 
     <action-state id="edit">
-        <evaluate expression="datasetWebflowValidator.editDataset(id)" result="flowScope.dataset"/>
+        <evaluate expression="datasetWebflowValidator.editDataset(entryID)" result="flowScope.dataset"/>
 
         <transition to="datasetForm1">
-            <evaluate expression="datasetWebflowValidator.getCategoryId(id)" result="flowScope.categoryID"/>
-            <evaluate expression="datasetWebflowValidator.getRevisionId(id)" result="flowScope.revisionID"/>
+            <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
         </transition>
     </action-state>
 
@@ -31,7 +33,7 @@
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories()"/>
         </on-render>
         <transition on="next" to="validateForm1">
-            <set name="flowScope.categoryID" value="requestParameters.categoryID"/>
+            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
         </transition>
 
         <transition on="identifier" to="datasetForm1"/>
@@ -71,7 +73,7 @@
     </view-state>
 
     <action-state id="validateForm1">
-        <evaluate expression="datasetWebflowValidator.validateDatasetForm1(flowScope.dataset, messageContext, flowScope.categoryID, flowScope.revisionID)"/>
+        <evaluate expression="datasetWebflowValidator.validateDatasetForm1(flowScope.dataset, messageContext, flowScope.categoryID)"/>
 
         <transition on="true" to="datasetForm2"/>
         <transition on="false" to="datasetForm1"/>
@@ -610,13 +612,13 @@
 
     <view-state id="datasetForm13" model="flowScope.dataset">
         <transition on="previous" to="datasetForm12"/>
-        <transition on="next" to="validateForm13"/>
+        <transition on="submit" to="validateForm13"/>
     </view-state>
 
     <action-state id="validateForm13">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.createDataset(flowRequestContext)" />
 
-        <transition on="true" to="createDataset"/>
+        <transition on="true" to="entryConfirmation"/>
         <transition on="false" to="datasetForm13"/>
 
         <transition on="identifier" to="datasetForm1"/>
@@ -656,12 +658,7 @@
 
     </action-state>
 
-    <end-state id="createDataset"></end-state>
-
-    <on-end>
-        <evaluate expression="datasetWebflowValidator.createDataset(flowRequestContext)" />
-    </on-end>
-
+   <end-state id="entryConfirmation"/>
 
 
 </flow>

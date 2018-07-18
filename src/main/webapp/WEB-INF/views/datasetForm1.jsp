@@ -46,7 +46,7 @@
                                            path="dates"
                                            specifier="dates">
                 </myTags:editDatesUnbounded>
-                <input hidden name="categoryID_${categoryID}" type="number">
+                <input hidden name="categoryID" value="${categoryID}" type="number">
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
             </form>
         </div>
@@ -57,7 +57,7 @@
     $(document).ready(function () {
         $("#categoryValue").change(function() {
             var action = $(this).val();
-            $("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=next&category=" + action);
+            $("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=next&categoryID=" + action);
         });
 
     });

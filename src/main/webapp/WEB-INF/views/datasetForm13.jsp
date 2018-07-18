@@ -33,8 +33,8 @@
                                                   label="Extra Properties"
                                                   path="extraProperties">
                     </myTags:editCategoryValuePair>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
-
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
             </form>
         </div>
     </div>
