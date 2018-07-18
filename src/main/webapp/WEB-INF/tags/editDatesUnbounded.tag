@@ -28,19 +28,22 @@
                 </div>
             </c:if>
 
-            <div class="form-group control-group edit-form-group">
-                <label>Date</label>
-                <button class="btn btn-danger ${specifier}-date--remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-                <br><br>
-                <myTags:editDates path="${path}[${varStatus.count-1}]"
-                                  date="${date}"
-                                  specifier="${specifier}-">
-                </myTags:editDates>
-            </div>
-            <c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>
+            <c:if test="${not function:isObjectEmpty(dates[varStatus.count-1])}">
+                <div class="form-group control-group edit-form-group">
+                    <label>Date</label>
+                    <button class="btn btn-danger ${specifier}-date--remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                    <br><br>
+                    <myTags:editDates path="${path}[${varStatus.count-1}]"
+                                      date="${date}"
+                                      specifier="${specifier}-${varStatus.count-1}">
+                    </myTags:editDates>
+                </div>
+                <c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>
+            </c:if>
         </c:forEach>
+        <%--<c:set var="unboundedDateCount" scope="page" value="${varStatus.count}"/>--%>
         <div class="${specifier}-date-add-more"></div>
         </div>
     </c:when>
@@ -86,29 +89,29 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var unboundedDateCount = ${unboundedDateCount};
+        var unbounded${specifier}DateCount = ${unboundedDateCount};
         //Show/Hide Date
         $("body").on("click", ".${specifier}-add-date", function (e) {
-            var specifier = "${specifier}-date";
-            var path = "${path}.dates";
+            var specifier = "${specifier}";
+            var path = "${path}";
             var html = $(".${specifier}-copy-date").html();
             path = path.replace('[','\\[').replace(']','\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}.dates['+ unboundedDateCount + ']').replace(regexSpecifier,'${specifier}-date-' + unboundedDateCount);
+            html = html.replace(regexPath, '${path}['+ unbounded${specifier}DateCount + ']').replace(regexSpecifier,'${specifier}-' + unbounded${specifier}DateCount);
 
             //$(this).after(html);
             $(".${specifier}-date-add-more").before(html);
             e.stopImmediatePropagation();
 
-            $(function() {
-                $("#${specifier}-date-" + unboundedDateCount + "-date-picker").datepicker({
-                    changeMonth:true,
-                    changeYear:true
-                });
-            });
+            <%--$(function() {--%>
+                <%--$("#${specifier}-date-" + unboundedDateCount + "-date-picker").datepicker({--%>
+                    <%--changeMonth:true,--%>
+                    <%--changeYear:true--%>
+                <%--});--%>
+            <%--});--%>
 
-            unboundedDateCount += 1;
+            unbounded${specifier}DateCount += 1;
         });
     });
 </script>

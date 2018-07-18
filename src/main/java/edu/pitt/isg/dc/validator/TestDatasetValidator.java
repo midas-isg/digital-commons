@@ -4,85 +4,43 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.util.CategoryHelper;
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.dc.utils.DatasetFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
+
+import edu.pitt.isg.mdc.dats2_2.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.webflow.execution.RequestContext;
 
 import java.util.ArrayList;
-import java.util.Map;
-
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
-
-////////////////////////////////////////////////////////////////////////////////
-// I AM DELETING THIS CLASS AND MIGRATING THE CODE TO DatasetWebflowValidator //
-////////////////////////////////////////////////////////////////////////////////
+import java.util.List;
 
 @Component
-public class TestDatasetValidator {
+public class TestDatasetValidator
+{
     @Autowired
     private ApiUtil apiUtil;
-    @Autowired
-    private CategoryHelper categoryHelper;
 
     private Converter converter = new Converter();
 
-    public Map<Long, String> getCategories() {
-        try {
-            return categoryHelper.getTreePaths();
-        } catch (Exception e) {
-            return null;
-        }
-    }
-
-    public void test(String test) {
-        System.out.println(test);
-    }
-
     public Dataset editDataset(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryId id = entry.getId();
+//        model.addAttribute("revisionId", id.getRevisionId());
         EntryView entryView = new EntryView(entry);
 
         Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+//        model.addAttribute("categoryID", entry.getCategory().getId());
         return dataset;
     }
 
-    public Long getCategoryId(Long entryId) {
-        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
-        return entry.getCategory().getId();
-    }
-
-    public Long getRevisionId(Long entryId) {
-        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
-        EntryId id = entry.getId();
-        return id.getRevisionId();
-    }
-
-    public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID, Long revisionID) {
-        String title = dataset.getTitle();
-        if (isEmpty(title)) {
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "title").defaultText("Title cannot be empty").build());
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "test").defaultText("Test").build());
-            return "false";
-        } else {
-            return "true";
-        }
-    }
-
-    public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
-        // Validate and remove empty types
-        boolean valid = clearTypes(dataset.getTypes(), messageContext);
-        return  Boolean.toString(valid);
-    }
-
-    public String validateDataset(Dataset dataset, MessageContext messageContext) {
+    public String validateDataset(Dataset dataset, MessageContext messageContext)
+    {
         String title = dataset.getTitle();
 
 //        Person person  = new Person();
@@ -91,9 +49,12 @@ public class TestDatasetValidator {
 //        person.setLastName(personOrganization.getLastName());
 //        person.setIdentifier(personOrganization.getIdentifier());
 //        dataset.getCreators().add(person);
-        if (title != "") {
+        if(title != "")
+        {
             return "true";
-        } else {
+        }
+        else
+        {
             return "true";
 //            messageContext.addMessage(new MessageBuilder().error().source(
 //                    "title").defaultText("Title cannot be empty").build());
@@ -103,16 +64,6 @@ public class TestDatasetValidator {
 
     public String createDataset(RequestContext context) {
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
-
-
-        //Remove empty identifier
-        if (!isEmpty(dataset.getIdentifier())) {
-            if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
-                dataset.setIdentifier(null);
-            }
-        }
-
-
         return "success";
     }
 

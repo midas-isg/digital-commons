@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ attribute name="entity" required="false"
-              type="edu.pitt.isg.mdc.dats2_2.BiologicalEntity" %>
+              type="edu.pitt.isg.mdc.dats2_2.IsAbout" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"

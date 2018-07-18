@@ -8,7 +8,7 @@
 <%--<%@ attribute name="people" required="false"--%>
               <%--type="java.util.ArrayList" %>--%>
 <%@ attribute name="person" required="false"
-              type="edu.pitt.isg.mdc.dats2_2.Person" %>
+              type="edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"

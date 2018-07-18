@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="isAboutList" required="false"
               type="java.util.List" %>
 <%@ attribute name="path" required="true"
@@ -41,7 +43,8 @@
                     </c:when>
                 </c:choose>
                 <c:choose>
-                    <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">
+                    <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">--%>
+                    <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
                         <div class="form-group edit-form-group control-group">
                             <myTags:editAnnotation annotation="${isAbout}"
                                                    path="${path}[${varStatus.count-1}]"
@@ -52,7 +55,8 @@
                             </myTags:editAnnotation>
                         </div>
                     </c:when>
-                    <c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">
+                    <%--<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">--%>
+                    <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
                         <myTags:editBiologicalEntity entity="${isAbout}"
                                                      path="${path}[${varStatus.count-1}]"
                                                      specifier="${specifier}-${varStatus.count-1}"

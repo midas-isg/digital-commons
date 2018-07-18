@@ -90,8 +90,8 @@
             Remove
         </button>
         <br><br>
-        <myTags:editIdentifier label="Identifier" path="${path}[0]"
-                               specifier="${specifier}-0">
+        <myTags:editIdentifier label="Identifier" path="${path}[0].identifier"
+                               specifier="${specifier}-0-identifier">
         </myTags:editIdentifier>
         <myTags:editRequiredNonZeroLengthString path="${path}[0].name"
                                                 placeholder=" Name of License"
