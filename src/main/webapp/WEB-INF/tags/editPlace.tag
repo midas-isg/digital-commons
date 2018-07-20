@@ -64,10 +64,10 @@
                                 <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button" style="display: none;"><i
                                         class="glyphicon glyphicon-plus"></i> Add Geometry
                                 </button>
-                                <div class="form-group control-group edit-form-group ${specifier}-geometry-add">
+                                <div class="form-group control-group edit-form-group ${specifier}-geometry">
                                     <label>Geometry</label>
-                                    <select name="${path}.geometry" id="${specifier}-geometry" title="${specifier}-geometry">
-                                        <%--<option value="">Please Select...</option>--%>
+                                    <select name="${path}.geometry" id="${specifier}-geometry-select" title="${specifier}-geometry">
+                                        <option value="null">Please Select...</option>
                                         <option <c:if test="${place.geometry == 'POINT'}">selected="selected"</c:if> value="POINT">POINT</option>
                                         <option <c:if test="${place.geometry == 'MULTIPOINT'}">selected="selected"</c:if> value="MULTIPOINT">MULTIPOINT</option>
                                         <option <c:if test="${place.geometry == 'LINESTRING'}">selected="selected"</c:if> value="LINESTRING">LINESTRING</option>
@@ -142,7 +142,7 @@
 <div class="copy-${specifier}-geometry hide">
     <div class="form-group control-group edit-form-group">
         <label>Geometry</label>
-        <select id="${specifier}-geometry">
+        <select name="${path}.geometry" id="${specifier}-geometry-select">
             <option value="">Please Select...</option>
             <option value="POINT">POINT</option>
             <option value="MULTIPOINT">MULTIPOINT</option>
@@ -169,7 +169,9 @@
             $("#${specifier}-add").show();
         });
         $("body").on("click", ".${specifier}-geometry-remove", function () {
-            clearAndHideEditControlGroup(this);
+            // clearAndHideEditControlGroup(this);
+            document.getElementById("${specifier}-geometry-select").value = "";
+            $(this).closest(".control-group").hide();
             $("#${specifier}-geometry-add").show();
         });
 
@@ -183,10 +185,10 @@
         });
 
         $("body").on("click",".${specifier}-geometry-add", function (e) {
-            var path = "${path}.geometry";
-            path = 'name="' + path + '" id=';
+            <%--var path = "${path}.geometry";--%>
+            <%--path = 'name="' + path + '" id=';--%>
             var html = $(".copy-${specifier}-geometry").html();
-            html = html.replace("id=", path);
+            // html = html.replace("id=", path);
             $(this).after(html);
             e.stopImmediatePropagation();
             $(this).hide();

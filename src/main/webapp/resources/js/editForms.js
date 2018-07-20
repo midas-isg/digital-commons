@@ -14,12 +14,6 @@ function clearAndHideEditControlGroup(controlGroup) {
             textareaElements[tae].value = null;
         }
     }
-    var selectElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
-    for (var se=0; se < selectElements.length; se++) {
-        if (selectElements[se].type === "select-one") {
-            selectElements[se].value = null;
-        }
-    }
 
     $(controlGroup).closest(".control-group").hide();
 }
