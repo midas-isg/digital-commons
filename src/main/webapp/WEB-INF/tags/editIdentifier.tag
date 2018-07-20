@@ -22,6 +22,7 @@
               type="java.lang.String" %>
 <%@ attribute name="identifierSource" required="false"
               type="java.lang.String" %>
+<%--<s:eval expression="T(edu.pitt.isg.dc.validator.DatasetWebflowValidator).incrementList()" />--%>
 
 <c:choose>
     <c:when test="${not function:isObjectEmpty(identifiers)}">
@@ -35,6 +36,7 @@
                                     class="glyphicon glyphicon-plus"></i> Add
                                     ${label}
                             </button>
+
                         </c:when>
                     </c:choose>
                 </div>
@@ -145,7 +147,8 @@
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                             ${label}
-                    </button>
+                    </button>                            <input type="submit" name="_eventId_add-${specifier}" class="btn btn-default pull-right" value="Add ${label}"/>
+
                 </div>
             </div>
             <br>

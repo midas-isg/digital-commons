@@ -21,7 +21,7 @@ public class DatasetRequestWrapper extends HttpServletRequestWrapper {
         Dataset dataset = new Dataset();
         Field[] attributes = dataset.getClass().getDeclaredFields();
         for(Field field : attributes) {
-            if (name.contains(field.getName())) {
+            if (!name.contains("add-") && name.contains(field.getName())) {
                 String[] values = super.getParameterValues(name);
                 String[] newValues = values.clone();
                 ArrayList<String> valuesList = new ArrayList<String>(Arrays.asList(newValues));

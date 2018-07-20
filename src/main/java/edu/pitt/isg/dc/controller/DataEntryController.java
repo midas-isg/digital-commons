@@ -10,6 +10,7 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
@@ -37,6 +38,8 @@ import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 
@@ -255,6 +258,13 @@ public class DataEntryController {
 
     @Autowired
     private DataGovInterface dataGovInterface;
+
+    @RequestMapping(value = "/incrementList", method = RequestMethod.GET)
+    public void incrementList(HttpSession session) {
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        requestContext.getFlowScope();
+//        dataset.getCreators().add(new PersonOrganization());
+    }
 
     @RequestMapping(value = "/addDataset", method = RequestMethod.GET)
     public String addNewDataset(HttpSession session, Model model, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @RequestParam(value = "categoryId", required = false) Long categoryId) throws Exception {

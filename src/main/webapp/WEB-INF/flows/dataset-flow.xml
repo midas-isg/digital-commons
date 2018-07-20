@@ -36,6 +36,10 @@
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
         </transition>
 
+        <transition on="add-identifier" to="datasetForm1">
+            <evaluate expression="datasetWebflowValidator.incrementList()"></evaluate>
+        </transition>
+
         <transition on="identifier" to="datasetForm1"/>
         <transition on="title" to="datasetForm1"/>
         <transition on="description" to="datasetForm1"/>
