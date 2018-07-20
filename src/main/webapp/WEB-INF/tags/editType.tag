@@ -48,7 +48,7 @@
                 <br><br>
                 <div>
                     <c:choose>
-                        <c:when test="${not empty type.information}">
+                        <c:when test="${not function:isObjectEmpty(type.information)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
@@ -77,7 +77,7 @@
 
                 <div>
                     <c:choose>
-                        <c:when test="${not empty type.method}">
+                        <c:when test="${not function:isObjectEmpty(type.method)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
@@ -106,7 +106,7 @@
 
                 <div>
                     <c:choose>
-                        <c:when test="${not empty type.platform}">
+                        <c:when test="${not function:isObjectEmpty(type.platform)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
                                     class="glyphicon glyphicon-plus"></i> Add
@@ -276,7 +276,7 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-type-remove", function () {
-            $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
 

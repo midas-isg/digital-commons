@@ -48,6 +48,7 @@
             <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/compute-platform.js'><\/script>");</script>
             <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/workflows.js'><\/script>");</script>
             <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js'><\/script>");</script>
+            <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/editForms.js'><\/script>");</script>
 
             <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
             <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>

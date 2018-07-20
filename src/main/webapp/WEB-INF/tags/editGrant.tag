@@ -155,7 +155,7 @@
         });
 
         $("body").on("click", ".grant-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-0-add-grant").show();
         });
 

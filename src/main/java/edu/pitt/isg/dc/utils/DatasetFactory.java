@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DatasetFactory {
 
-    private static final Integer TOTAL_ITERATIONS = 10;
+    private static final Integer MAX_ITERATIONS = 1;
 
     public static Dataset createDatasetForWebFlow(Dataset dataset) {
         //create an instance of every member of Dataset
@@ -74,12 +74,18 @@ public class DatasetFactory {
         return apl;
     }
 
+    public static int maxIterations (Integer listSize){
+        if(listSize > MAX_ITERATIONS){
+           return listSize;
+        } else return MAX_ITERATIONS;
+    }
+
     public static List<Distribution> createDistributionList(List<Distribution> distributionList){
 //        List<Distribution> distributionList = new ArrayList<Distribution>();
         if(distributionList == null || distributionList.isEmpty()){
             distributionList = new ArrayList<Distribution>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(distributionList.size()); i++){
             if(i > (distributionList.size() - 1)){
                 distributionList.add(createDistribution(null));
             } else distributionList.set(i, createDistribution(distributionList.get(i)));
@@ -129,7 +135,7 @@ public class DatasetFactory {
         if(identifierList == null || identifierList.isEmpty()){
             identifierList = new ArrayList<Identifier>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(identifierList.size()); i++){
             if(i > (identifierList.size() - 1)){
                 identifierList.add(new Identifier());
             }
@@ -143,7 +149,7 @@ public class DatasetFactory {
         if(annotationList == null || annotationList.isEmpty()){
             annotationList = new ArrayList<Annotation>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(annotationList.size()); i++){
             if(i > (annotationList.size() - 1)){
                 annotationList.add(new Annotation());
             }
@@ -156,7 +162,7 @@ public class DatasetFactory {
         if(typeList == null || typeList.isEmpty()){
             typeList = new ArrayList<Type>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(typeList.size()); i++){
             if(i > (typeList.size() - 1)){
                 typeList.add(createType(null));
             } else typeList.set(i, createType(typeList.get(i)));
@@ -188,7 +194,7 @@ public class DatasetFactory {
         if(dataStandardList == null || dataStandardList.isEmpty()){
             dataStandardList = new ArrayList<DataStandard>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(dataStandardList.size()); i++){
             if(i > (dataStandardList.size() - 1)){
                 dataStandardList.add(createDataStandard(null));
             } else dataStandardList.set(i, createDataStandard(dataStandardList.get(i)));
@@ -256,7 +262,7 @@ public class DatasetFactory {
         if(isAboutList == null || isAboutList.isEmpty()){
             isAboutList = new ArrayList<IsAbout>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(isAboutList.size()); i++){
             if(i > (isAboutList.size() - 1)){
                 isAboutList.add(createIsAbout(null));
             } else isAboutList.set(i, createIsAbout(isAboutList.get(i)));
@@ -342,7 +348,7 @@ public class DatasetFactory {
         if(licenseList == null || licenseList.isEmpty()){
             licenseList = new ArrayList<License>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(licenseList.size()); i++){
             if(i > (licenseList.size() - 1)){
                 licenseList.add(createLicense(null));
             } else licenseList.set(i, createLicense(licenseList.get(i)));
@@ -371,7 +377,7 @@ public class DatasetFactory {
         if(publicationList == null || publicationList.isEmpty()){
             publicationList = new ArrayList<Publication>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(publicationList.size()); i++){
             if(i > (publicationList.size() - 1)){
                 publicationList.add(createPublication(null));
             } else publicationList.set(i, createPublication(publicationList.get(i)));
@@ -412,7 +418,7 @@ public class DatasetFactory {
         if(grantList == null || grantList.isEmpty()){
             grantList = new ArrayList<Grant>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(grantList.size()); i++){
             if(i > (grantList.size() - 1)){
                 grantList.add(createGrant(null));
             } else grantList.set(i, createGrant(grantList.get(i)));
@@ -448,7 +454,7 @@ public class DatasetFactory {
         if(accessList == null || accessList.isEmpty()){
             accessList = new ArrayList<Access>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(accessList.size()); i++){
             if(i > (accessList.size() - 1)){
                 accessList.add(createAccess(null));
             } else accessList.set(i, createAccess(accessList.get(i)));
@@ -510,7 +516,7 @@ public class DatasetFactory {
         if(personComprisedEntityList == null || personComprisedEntityList.isEmpty()){
             personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),PersonComprisedEntity.class);
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(personComprisedEntityList.size()); i++){
             if(i > (personComprisedEntityList.size() - 1)){
                 personComprisedEntityList.add(createPersonComprisedEntity(null));
             } else {
@@ -577,38 +583,13 @@ public class DatasetFactory {
 
         return person;
     }
-/*
-
-    public static List<PersonComprisedEntity> createOrganizationList(List<Organization> organizationList){
-//        List<Organization> organizationList = new ArrayList<Organization>();
-        List<PersonComprisedEntity> personComprisedEntityList = new ArrayList<PersonComprisedEntity>();
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
-            personComprisedEntityList.set(i, organizationList.get(i));
-            if(i > (organizationList.size() - 1)){
-                personComprisedEntityList.add(createPersonComprisedEntity(null));
-            } else {
-                if(organizationList.get(i).getIdentifier() == null){
-                    organizationList.get(i).setIdentifier(new Identifier());
-                }
-                if(organizationList.get(i).getAlternateIdentifiers().isEmpty()){
-                    organizationList.get(i).setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
-                } else organizationList.get(i).setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(organizationList.get(i).getAlternateIdentifiers()), Identifier.class));
-                if(organizationList.get(i).getLocation() == null){
-                    organizationList.get(i).setLocation(createPlace(null));
-                } else organizationList.get(i).setLocation(organizationList.get(i).getLocation());
-            }
-        } //end for loop
-
-        return personComprisedEntityList;
-    }
-*/
 
     public static List<Organization> createOrganizationList(List<Organization> organizationList){
 //        List<Organization> organizationList = new ArrayList<Organization>();
         if(organizationList == null || organizationList.isEmpty()){
             organizationList = new ArrayList<Organization>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(organizationList.size()); i++){
             if(i > (organizationList.size() - 1)){
                 organizationList.add(createOrganization(null));
             } else {
@@ -654,7 +635,7 @@ public class DatasetFactory {
         if(placeList == null || placeList.isEmpty()){
             placeList = new ArrayList<Place>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(placeList.size()); i++){
             if(i > (placeList.size() - 1)){
                 placeList.add(createPlace(null));
             } else placeList.set(i, createPlace(placeList.get(i)));
@@ -683,7 +664,7 @@ public class DatasetFactory {
         if(dateList == null || dateList.isEmpty()){
             dateList = new ArrayList<edu.pitt.isg.mdc.dats2_2.Date>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(dateList.size()); i++){
             if(i > (dateList.size() - 1)){
                 dateList.add(createDate());
             } else {
@@ -708,7 +689,7 @@ public class DatasetFactory {
         if(categoryValuePairList == null || categoryValuePairList.isEmpty()){
             categoryValuePairList = new ArrayList<CategoryValuePair>();
         }
-        for(int i = 0; i < TOTAL_ITERATIONS; i++){
+        for(int i = 0; i < maxIterations(categoryValuePairList.size()); i++){
             if(i > (categoryValuePairList.size() - 1)){
                 categoryValuePairList.add(createCategoryValuePair());
             } else {

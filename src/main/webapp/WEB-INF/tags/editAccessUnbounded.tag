@@ -108,7 +108,7 @@
             $(".${specifier}-access-add-more").before(html);
         });
         $("body").on("click", ".access-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
 

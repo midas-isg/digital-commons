@@ -104,7 +104,7 @@
 
         //Hide Formats
         $("body").on("click", ".${specifier}-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             //$(".${specifier}-add-formats").show();
         });
     });

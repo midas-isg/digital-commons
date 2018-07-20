@@ -216,7 +216,8 @@
         });
         //Remove section
         $("body").on("click", ".${specifier}-identifier-remove", function () {
-            $(this).parents(".control-group")[0].remove();
+            // $(this).parents(".control-group")[0].remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-identifier-add-more-button").show();
         });
     });

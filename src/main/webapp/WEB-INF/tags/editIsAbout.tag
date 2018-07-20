@@ -157,12 +157,12 @@
 
         //Remove section
         $("body").on("click", ".annotation-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
         //Remove section
         $("body").on("click", ".biologicalEntity-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
     });

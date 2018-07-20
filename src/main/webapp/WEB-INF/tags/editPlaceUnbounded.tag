@@ -99,7 +99,7 @@
             $(".${specifier}-place-add-more").before(html);
         });
         $("body").on("click", ".place-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
 

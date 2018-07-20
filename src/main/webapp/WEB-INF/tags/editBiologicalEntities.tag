@@ -154,7 +154,8 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-biological-entity-remove", function () {
-            $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
+            // $(this).parents(".control-group").remove();
         });
 
     });

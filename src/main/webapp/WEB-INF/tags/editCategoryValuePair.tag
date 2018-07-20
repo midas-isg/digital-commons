@@ -122,7 +122,7 @@
             categoryValuePairCount += 1;
         });
         $("body").on("click", ".categoryValuePair-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             //$(".${specifier}-0-add").show();
         });
 

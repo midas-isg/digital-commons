@@ -179,7 +179,7 @@
         });
 
         $("body").on("click", ".${specifier}-dataStandard-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-add-dataStandard").show();
         });
 

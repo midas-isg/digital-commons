@@ -179,7 +179,8 @@
             //e.stopImmediatePropagation()
         });
         $("body").on("click", ".${specifier}-remove", function () {
-            $(this).parent(".control-group").remove();
+            clearAndHideEditControlGroup(this);
+            // $(this).parent(".control-group").remove();
             $(".${specifier}-add-data-repository").show();
         });
 

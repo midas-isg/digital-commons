@@ -138,7 +138,7 @@
         });
 
         $("body").on("click", ".license-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-0-add-license").show();
         });
 

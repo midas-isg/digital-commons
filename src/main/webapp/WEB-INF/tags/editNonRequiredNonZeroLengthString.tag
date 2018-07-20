@@ -82,8 +82,7 @@
         $("body").on("click", ".${specifier}-string-remove", function (e) {
             e.stopImmediatePropagation();
 
-            // $(this).parents(".control-group")[0].remove();
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-string-add-more").show();
         });
     });

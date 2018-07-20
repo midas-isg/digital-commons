@@ -138,7 +138,8 @@
 
         //Remove section
         $("body").on("click", ".description-remove", function () {
-            $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
+            // $(this).parents(".control-group").remove();
         });
     });
 </script>

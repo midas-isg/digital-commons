@@ -170,7 +170,8 @@
         $("body").on("click", ".${specifier}-study-remove", function (e) {
             e.stopImmediatePropagation();
 
-            $(this).parents(".control-group").remove();
+            // $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-study-add-more").show();
         });
 
@@ -183,7 +184,8 @@
             $(this).hide();
         });
         $("body").on("click", ".location-remove", function () {
-            $(this).parent(".control-group").remove();
+            // $(this).parent(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".add-location").show();
         });
 

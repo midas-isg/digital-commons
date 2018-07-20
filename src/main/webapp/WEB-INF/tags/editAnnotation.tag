@@ -51,7 +51,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("body").on("click", ".${specifier}-remove", function () {
-                $(this).parent(".control-group").remove();
+                clearAndHideEditControlGroup(this);
+                // $(this).parent(".control-group").remove();
                 <%--$(".${specifier}-add-annotation").show();--%>
                 $("#${specifier}-add-annotation").show();
             });

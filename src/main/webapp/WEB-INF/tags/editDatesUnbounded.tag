@@ -79,7 +79,8 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("body").on("click", ".${specifier}-date--remove", function () {
-                $(this).parent(".control-group").remove();
+                // $(this).parent(".control-group").remove();
+                clearAndHideEditControlGroup(this);
                 //$(".${specifier}-add-date").show();
             });
         });

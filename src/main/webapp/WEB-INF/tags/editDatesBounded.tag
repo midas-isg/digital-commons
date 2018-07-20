@@ -70,7 +70,7 @@
 
         });
         $("body").on("click", ".${specifier}-remove", function () {
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-add").show();
         });
 

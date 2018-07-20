@@ -84,7 +84,8 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-nested-remove", function () {
-            $(this).parents(".control-group").remove();
+            // $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
         });
 
     })

@@ -81,8 +81,7 @@
         $("body").on("click", ".${specifier}-number-remove", function (e) {
             e.stopImmediatePropagation();
 
-            // $(this).parents(".control-group")[0].remove();
-            $(this).closest(".control-group").remove();
+            clearAndHideEditControlGroup(this);
             $(".${specifier}-number-add-more").show();
         });
     });

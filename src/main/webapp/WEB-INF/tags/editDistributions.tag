@@ -216,7 +216,8 @@
 
         //Remove section
         $("body").on("click", ".distribution-remove", function () {
-            $(this).parents(".control-group").remove();
+            clearAndHideEditControlGroup(this);
+            // $(this).parents(".control-group").remove();
         });
 
 
