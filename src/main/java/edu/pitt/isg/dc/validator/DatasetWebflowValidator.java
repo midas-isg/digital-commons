@@ -6,6 +6,7 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
@@ -18,12 +19,14 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Properties;
 
+import static edu.pitt.isg.dc.utils.DatasetFactory.createPersonComprisedEntity;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
@@ -53,6 +56,14 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static void incrementList() {
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        requestContext.getFlowScope();
+//        ((Dataset) requestContext.getFlowScope().get("dataset")).getCreators().add(new PersonOrganization())
+//        dataset.getCreators().add(createPersonComprisedEntity(null));
+
     }
 
     public void test(String test) {
@@ -124,6 +135,7 @@ public class DatasetWebflowValidator {
         HttpSession session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
 
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
+        Long revisionId = (Long) context.getFlowScope().get("revisionID");
         Long entryID = (Long) context.getFlowScope().get("entryID");
         Long categoryID;
         try {
@@ -134,8 +146,7 @@ public class DatasetWebflowValidator {
             return "title";
         }
 
-        Long revisionId = (Long) context.getFlowScope().get("revisionID");
-
+        //Second check for required fields
         if(validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
             //redirect to page 1
             return "title";
@@ -146,7 +157,8 @@ public class DatasetWebflowValidator {
             return "types";
         }
 
-        //Remove empty identifier
+
+        //Clear up dataset before submitting
         if (!isEmpty(dataset.getIdentifier())) {
             if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
                 dataset.setIdentifier(null);

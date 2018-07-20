@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DatasetFactory {
 
-    private static final Integer TOTAL_ITERATIONS = 10;
+    private static final Integer TOTAL_ITERATIONS = 1;
 
     public static Dataset createDatasetForWebFlow(Dataset dataset) {
         //create an instance of every member of Dataset
