@@ -82,7 +82,6 @@ public class DatasetFactory {
     }
 
     public static List<Distribution> createDistributionList(List<Distribution> distributionList){
-//        List<Distribution> distributionList = new ArrayList<Distribution>();
         if(distributionList == null || distributionList.isEmpty()){
             distributionList = new ArrayList<Distribution>();
         }
@@ -96,7 +95,6 @@ public class DatasetFactory {
     }
 
     public static Distribution createDistribution(Distribution distribution){
-//        Distribution distribution = new Distribution();
         if(distribution == null){
             distribution = new Distribution();
         }
@@ -132,7 +130,6 @@ public class DatasetFactory {
     }
 
     public static List<Identifier> createIdentifierList(List<Identifier> identifierList){
-//        List<Identifier> identifierList = new ArrayList<Identifier>();
         if(identifierList == null || identifierList.isEmpty()){
             identifierList = new ArrayList<Identifier>();
         }
@@ -146,7 +143,6 @@ public class DatasetFactory {
     }
 
     public static List<Annotation> createAnnotationList(List<Annotation> annotationList){
-//        List<Annotation> annotationList = new ArrayList<Annotation>();
         if(annotationList == null || annotationList.isEmpty()){
             annotationList = new ArrayList<Annotation>();
         }
@@ -173,7 +169,6 @@ public class DatasetFactory {
     }
 
     public static edu.pitt.isg.mdc.dats2_2.Type createType(Type type){
-//        edu.pitt.isg.mdc.dats2_2.Type type = new edu.pitt.isg.mdc.dats2_2.Type();
         if(type == null){
             type = new edu.pitt.isg.mdc.dats2_2.Type();
         }
@@ -191,7 +186,6 @@ public class DatasetFactory {
     }
 
     public static List<DataStandard> createDataStandardList(List<DataStandard> dataStandardList){
-//        List<DataStandard> dataStandardList = new ArrayList<DataStandard>();
         if(dataStandardList == null || dataStandardList.isEmpty()){
             dataStandardList = new ArrayList<DataStandard>();
         }
@@ -205,7 +199,6 @@ public class DatasetFactory {
     }
 
     public static DataStandard createDataStandard(DataStandard dataStandard){
-//        DataStandard dataStandard = new DataStandard();
         if(dataStandard == null){
             dataStandard = new DataStandard();
         }
@@ -229,7 +222,6 @@ public class DatasetFactory {
     }
 
     public static DataRepository createDataRepository(DataRepository dataRepository){
-//        DataRepository dataRepository = new DataRepository();
         if(dataRepository == null){
             dataRepository = new DataRepository();
         }
@@ -259,7 +251,6 @@ public class DatasetFactory {
     }
 
     public static List<IsAbout> createIsAboutList(List<IsAbout> isAboutList){
-//        List<IsAbout> isAboutItemsList = new ArrayList<IsAbout>();
         if(isAboutList == null || isAboutList.isEmpty()){
             isAboutList = new ArrayList<IsAbout>();
         }
@@ -273,7 +264,6 @@ public class DatasetFactory {
     }
 
     public static IsAboutItems createIsAboutItems(IsAboutItems isAboutItems){
-//        IsAboutItems isAboutItems = new IsAboutItems();
         if(isAboutItems == null){
             isAboutItems = new IsAboutItems();
         }
@@ -288,7 +278,6 @@ public class DatasetFactory {
     }
 
     public static IsAbout createIsAbout(IsAbout isAbout){
-//        IsAbout isAbout = createIsAboutItems();
         if(isAbout == null){
             isAbout = createIsAboutItems(null);
         } else {
@@ -312,7 +301,6 @@ public class DatasetFactory {
     }
 
     public static BiologicalEntity createBiologicalEntity(BiologicalEntity biologicalEntity){
-//        BiologicalEntity biologicalEntity = new BiologicalEntity();
         if(biologicalEntity == null){
             biologicalEntity = new BiologicalEntity();
         }
@@ -327,7 +315,6 @@ public class DatasetFactory {
     }
 
     public static Study createStudy(Study study){
-//        Study study = new Study();
         if(study == null){
             study = new Study();
         }
@@ -345,7 +332,6 @@ public class DatasetFactory {
     }
 
     public static List<License> createLicenseList(List<License> licenseList){
-//        List<License> licenseList = new ArrayList<License>();
         if(licenseList == null || licenseList.isEmpty()){
             licenseList = new ArrayList<License>();
         }
@@ -359,7 +345,6 @@ public class DatasetFactory {
     }
 
     public static License createLicense(License license){
-//        License license = new License();
         if(license == null){
             license = new License();
         }
@@ -374,7 +359,6 @@ public class DatasetFactory {
     }
 
     public static List<Publication> createPublicationList(List<Publication> publicationList){
-//        List<Publication> publicationList = new ArrayList<Publication>();
         if(publicationList == null || publicationList.isEmpty()){
             publicationList = new ArrayList<Publication>();
         }
@@ -388,7 +372,6 @@ public class DatasetFactory {
     }
 
     public static Publication createPublication(Publication publication){
-//        Publication publication = new Publication();
         if(publication == null){
             publication = new Publication();
         }
@@ -415,7 +398,6 @@ public class DatasetFactory {
     }
 
     public static List<Grant> createGrantList(List<Grant> grantList){
-//        List<Grant> grantList = new ArrayList<Grant>();
         if(grantList == null || grantList.isEmpty()){
             grantList = new ArrayList<Grant>();
         }
@@ -429,7 +411,6 @@ public class DatasetFactory {
     }
 
     public static Grant createGrant(Grant grant){
-//        Grant grant = new Grant();
         if(grant == null){
             grant = new Grant();
         }
@@ -451,7 +432,6 @@ public class DatasetFactory {
     }
 
     public static List<Access> createAccessList(List<Access> accessList){
-//        List<Access> accessList = new ArrayList<Access>();
         if(accessList == null || accessList.isEmpty()){
             accessList = new ArrayList<Access>();
         }
@@ -465,7 +445,6 @@ public class DatasetFactory {
     }
 
     public static Access createAccess(Access access){
-//        Access access = new Access();
         if(access == null){
             access = new Access();
         }
@@ -489,7 +468,6 @@ public class DatasetFactory {
     }
 
     public static PersonOrganization createPersonOrganization(PersonOrganization personOrganization){
-//        PersonOrganization personOrganization = new PersonOrganization();
         if(personOrganization == null){
             personOrganization = new PersonOrganization();
         }
@@ -500,7 +478,6 @@ public class DatasetFactory {
             personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(personOrganization.getAlternateIdentifiers()), Identifier.class));
         personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(personOrganization.getAffiliations()), AutoPopulatedOrganizationWrapper.class));
-//        personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(personOrganization.getAffiliations()), PersonComprisedEntity.class));
         if(personOrganization.getRoles().isEmpty()){
             personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(personOrganization.getRoles()), Annotation.class));
@@ -513,7 +490,6 @@ public class DatasetFactory {
     }
 
     public static List<PersonComprisedEntity> createPersonComprisedEntityList(List<PersonComprisedEntity> personComprisedEntityList){
-//        List<PersonComprisedEntity> personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),PersonComprisedEntity.class);
         if(personComprisedEntityList == null || personComprisedEntityList.isEmpty()){
             personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),AutoPopulatedPersonComprisedEntityWrapper.class);
         }
@@ -530,7 +506,6 @@ public class DatasetFactory {
 
 
     public static PersonComprisedEntity createPersonComprisedEntity(PersonComprisedEntity personComprisedEntity){
-//        PersonComprisedEntity personComprisedEntity = createPersonOrganization(null);
         if(personComprisedEntity == null){
             personComprisedEntity = createPersonOrganization(null);
         } else {
@@ -565,7 +540,6 @@ public class DatasetFactory {
     }
 
     public static Person createPerson(Person person){
-//        Person person = new Person();
         if(person == null){
             person = new Person();
         }
@@ -586,7 +560,6 @@ public class DatasetFactory {
     }
 
     public static List<Organization> createOrganizationList(List<Organization> organizationList){
-//        List<Organization> organizationList = new ArrayList<Organization>();
         if(organizationList == null || organizationList.isEmpty()){
             organizationList = new ArrayList<Organization>();
         }
@@ -610,7 +583,6 @@ public class DatasetFactory {
     }
 
     public static Organization createOrganization(Organization organization){
-//        Organization organization = new Organization();
         if(organization == null){
             organization = new Organization();
         }
@@ -632,7 +604,6 @@ public class DatasetFactory {
     }
 
     public static List<Place> createPlaceList(List<Place> placeList){
-//        List<Place> placeList = new ArrayList<Place>();
         if(placeList == null || placeList.isEmpty()){
             placeList = new ArrayList<Place>();
         }
@@ -646,7 +617,6 @@ public class DatasetFactory {
     }
 
     public static Place createPlace(Place place){
-//        Place place = new Place();
         if(place == null){
             place = new Place();
         }
@@ -661,7 +631,6 @@ public class DatasetFactory {
     }
 
     public static List<edu.pitt.isg.mdc.dats2_2.Date> createDateList(List<edu.pitt.isg.mdc.dats2_2.Date> dateList){
-//        List<edu.pitt.isg.mdc.dats2_2.Date> dateList = new ArrayList<edu.pitt.isg.mdc.dats2_2.Date>();
         if(dateList == null || dateList.isEmpty()){
             dateList = new ArrayList<edu.pitt.isg.mdc.dats2_2.Date>();
         }
@@ -686,7 +655,6 @@ public class DatasetFactory {
     }
 
     public static List<CategoryValuePair> createCategoryValuePairList(List<CategoryValuePair> categoryValuePairList){
-//        List<CategoryValuePair> categoryValuePairList = new ArrayList<CategoryValuePair>();
         if(categoryValuePairList == null || categoryValuePairList.isEmpty()){
             categoryValuePairList = new ArrayList<CategoryValuePair>();
         }
@@ -707,7 +675,6 @@ public class DatasetFactory {
         if(categoryValuePair == null){
             categoryValuePair = new CategoryValuePair();
         }
-//        CategoryValuePair categoryValuePair = new CategoryValuePair();
         categoryValuePair.setValues(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
 
         return categoryValuePair;

@@ -54,7 +54,7 @@
                         </myTags:editRequiredNonZeroLengthString>
                         <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].funders"
                                                           specifier="${specifier}-${varStatus.count-1}-funders"
-                                                          label="Funders"
+                                                          label="Funder"
                                                           personComprisedEntities="${grant.funders}"
                                                           isFirstRequired="true"
                                                           showAddPersonButton="true"
@@ -62,7 +62,7 @@
                         </myTags:editPersonComprisedEntity>
                         <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].awardees"
                                                           specifier="${specifier}-${varStatus.count-1}-awardees"
-                                                          label="Awardees"
+                                                          label="Awardee"
                                                           personComprisedEntities="${grant.awardees}"
                                                           isFirstRequired="false"
                                                           showAddPersonButton="true"
@@ -113,20 +113,20 @@
                                                 label="Name"
                                                 path="${path}[0].name">
         </myTags:editRequiredNonZeroLengthString>
-        <%--<myTags:editPersonComprisedEntity path="${path}[0].funders"--%>
-                                          <%--specifier="${specifier}-0-funders"--%>
-                                          <%--label="Funders"--%>
-                                          <%--isFirstRequired="true"--%>
-                                          <%--showAddPersonButton="true"--%>
-                                          <%--showAddOrganizationButton="true">--%>
-        <%--</myTags:editPersonComprisedEntity>--%>
-        <%--<myTags:editPersonComprisedEntity path="${path}[0].awardees"--%>
-                                          <%--specifier="${specifier}-0-awardees"--%>
-                                          <%--label="Awardees"--%>
-                                          <%--isFirstRequired="false"--%>
-                                          <%--showAddPersonButton="true"--%>
-                                          <%--showAddOrganizationButton="true">--%>
-        <%--</myTags:editPersonComprisedEntity>--%>
+        <myTags:editPersonComprisedEntity path="${path}[0].funders"
+                                          specifier="${specifier}-0-funders"
+                                          label="Funder"
+                                          isFirstRequired="true"
+                                          showAddPersonButton="true"
+                                          showAddOrganizationButton="true">
+        </myTags:editPersonComprisedEntity>
+        <myTags:editPersonComprisedEntity path="${path}[0].awardees"
+                                          specifier="${specifier}-0-awardees"
+                                          label="Awardee"
+                                          isFirstRequired="false"
+                                          showAddPersonButton="true"
+                                          showAddOrganizationButton="true">
+        </myTags:editPersonComprisedEntity>
     </div>
 </div>
 
