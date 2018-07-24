@@ -54,8 +54,7 @@
                     </div>
                 </c:if>
                 <c:choose>
-                    <c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Organization' or personComprisedEntity['class'] == 'class edu.pitt.isg.dc.entry.classes.PersonOrganization')
-                                                and not empty personComprisedEntity.name}">
+                    <c:when test="${not function:isPerson(personComprisedEntity)}">
                         <myTags:editOrganization organization="${personComprisedEntity}"
                                                  path="${path}[${varStatus.count-1}]"
                                                  specifier="${specifier}-${varStatus.count-1}"
@@ -65,8 +64,7 @@
                         <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>
 
                     </c:when>
-                    <c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Person' or personComprisedEntity['class'] == 'class edu.pitt.isg.dc.entry.classes.PersonOrganization')
-                                                and (not empty personComprisedEntity.fullName or not empty personComprisedEntity.firstName or not empty personComprisedEntity.lastName)}">
+                    <c:when test="${function:isPerson(personComprisedEntity)}">
                         <myTags:editPerson person="${personComprisedEntity}"
                                            path="${path}[${varStatus.count-1}]"
                                            specifier="${specifier}-${varStatus.count-1}"
