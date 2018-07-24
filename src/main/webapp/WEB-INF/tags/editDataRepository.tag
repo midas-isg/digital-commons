@@ -152,12 +152,13 @@
                                                    specifier="${specifier}-version"
                                                    path="${path}.version">
         </myTags:editNonRequiredNonZeroLengthString>
-        <%--<myTags:editPersonComprisedEntity path="${path}.publishers"--%>
-                                          <%--specifier="${specifier}-publishers"--%>
-                                          <%--label="Publisher"--%>
-                                          <%--isFirstRequired="false"--%>
-                                          <%--showAddPersonButton="true"--%>
-                                          <%--showAddOrganizationButton="true"></myTags:editPersonComprisedEntity>--%>
+        <myTags:editPersonComprisedEntity path="${path}.publishers"
+                                          specifier="${specifier}-publishers"
+                                          label="Publisher"
+                                          isFirstRequired="false"
+                                          showAddPersonButton="true"
+                                          showAddOrganizationButton="true">
+        </myTags:editPersonComprisedEntity>
         <myTags:editAccessUnbounded path="${path}.access"
                                     specifier="${specifier}-access"
                                     label="Access">

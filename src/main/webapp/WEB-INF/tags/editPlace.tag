@@ -49,6 +49,12 @@
                                            identifier="${place.identifier}"
                                            unbounded="${false}">
                     </myTags:editIdentifier>
+                    <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                           label="Alternate Identifiers"
+                                           path="${path}.alternateIdentifiers"
+                                           identifiers="${place.alternateIdentifiers}"
+                                           unbounded="${true}">
+                    </myTags:editIdentifier>
                     <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                             placeholder=" The name of the place."
                                                             string="${place.name}"
@@ -124,6 +130,11 @@
                                label="Identifier"
                                path="${path}.identifier"
                                unbounded="${false}">
+        </myTags:editIdentifier>
+        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                               label="Alternate Identifiers"
+                               path="${path}.alternateIdentifiers"
+                               unbounded="${true}">
         </myTags:editIdentifier>
         <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                 placeholder=" The name of the place."

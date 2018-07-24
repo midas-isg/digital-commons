@@ -85,9 +85,10 @@
                                                        specifier="${specifier}-abbreviation"
                                                        path="${path}.abbreviation">
             </myTags:editNonRequiredNonZeroLengthString>
-            <%--<myTags:editPlace path="${path}.location"--%>
-                              <%--specifier="${specifier}-location"--%>
-                              <%--label="Location"></myTags:editPlace>--%>
+            <myTags:editPlace path="${path}.location"
+                              specifier="${specifier}-location"
+                              label="Location">
+            </myTags:editPlace>
         </c:otherwise>
     </c:choose>
 </div>
