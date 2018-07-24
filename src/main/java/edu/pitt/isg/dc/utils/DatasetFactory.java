@@ -63,8 +63,8 @@ public class DatasetFactory {
             dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), AutoPopulatedGrantWrapper.class));
         } else dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(dataset.getAcknowledges()), AutoPopulatedGrantWrapper.class));
         if(dataset.getExtraProperties().isEmpty()){
-            dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), CategoryValuePair.class));
-        } else dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataset.getExtraProperties()), CategoryValuePair.class));
+            dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), AutoPopulatedCategoryValuePairWrapper.class));
+        } else dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataset.getExtraProperties()), AutoPopulatedCategoryValuePairWrapper.class));
 
         return dataset;
     }
