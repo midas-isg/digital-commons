@@ -81,7 +81,7 @@
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-grant" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add
-                    Grant
+                    ${label}
                 </button>
             </div>
             <div class="${specifier}-grant-add-more"></div>

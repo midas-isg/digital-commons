@@ -6,27 +6,24 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.Users;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
-import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.utils.DatasetFactory;
+import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
-import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Map;
 import java.util.Properties;
 
-import static edu.pitt.isg.dc.utils.DatasetFactory.createPersonComprisedEntity;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
@@ -50,24 +47,16 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
+    public String goToIndex(String indexValue) {
+        return indexValue;
+    }
+
     public Map<Long, String> getCategories() {
         try {
             return categoryHelper.getTreePaths();
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public static void incrementList() {
-        RequestContext requestContext = RequestContextHolder.getRequestContext();
-        requestContext.getFlowScope();
-//        ((Dataset) requestContext.getFlowScope().get("dataset")).getCreators().add(new PersonOrganization())
-//        dataset.getCreators().add(createPersonComprisedEntity(null));
-
-    }
-
-    public void test(String test) {
-        System.out.println(test);
     }
 
     public Dataset editDataset(Long entryId) {
@@ -93,7 +82,7 @@ public class DatasetWebflowValidator {
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
         String isValid = "true";
         String title = dataset.getTitle();
-        if(categoryID == null || categoryID == 0) {
+        if (categoryID == null || categoryID == 0) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "category").defaultText("Please select a category").build());
             isValid = "false";
@@ -109,7 +98,7 @@ public class DatasetWebflowValidator {
     public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
         // Validate and remove empty types
         boolean valid = clearTypes(dataset.getTypes(), messageContext);
-        return  Boolean.toString(valid);
+        return Boolean.toString(valid);
     }
 
     public String validateDataset(Dataset dataset, MessageContext messageContext) {
@@ -132,7 +121,7 @@ public class DatasetWebflowValidator {
     }
 
     public String createDataset(RequestContext context) {
-        HttpSession session = ((HttpServletRequest)context.getExternalContext().getNativeRequest()).getSession();
+        HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
 
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
         Long revisionId = (Long) context.getFlowScope().get("revisionID");
@@ -147,12 +136,12 @@ public class DatasetWebflowValidator {
         }
 
         //Second check for required fields
-        if(validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
+        if (validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
             //redirect to page 1
             return "title";
         }
 
-        if(validateDatasetForm4(dataset, context.getMessageContext()).equals("false")) {
+        if (validateDatasetForm4(dataset, context.getMessageContext()).equals("false")) {
             //redirect to page 4
             return "types";
         }

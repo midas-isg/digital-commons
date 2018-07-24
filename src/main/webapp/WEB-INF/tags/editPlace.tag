@@ -15,30 +15,45 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
+<%@ attribute name="expanded" required="false" type="java.lang.Boolean" %>
 <%--<%@ attribute name="placeholder" required="true"--%>
               <%--type="java.lang.String" %>--%>
 
 
 <c:choose>
     <%--<c:when test="${not empty place.name or not empty place.description or not empty place.postalAddress}">--%>
-    <c:when test="${not function:isObjectEmpty(place)}">
+    <c:when test="${not function:isObjectEmpty(place) or expanded}">
         <div class=" ${status.error ? 'has-error' : ''}">
             <div class="form-group control-group edit-form-group">
                 <label>${label}</label>
+                <c:if test="${expanded}">
+                    <button class="btn btn-danger place-remove" type="button"><i
+                            class="glyphicon glyphicon-remove"></i>
+                        Remove
+                    </button>
+                </c:if>
                 <button class="btn btn-success add-${specifier}" style="display: none" id="${specifier}-add" type="button"><i
                         class="glyphicon glyphicon-plus"></i> Add ${label}
                 </button>
                 <div class="form group control-group">
                     <div class="input-group-btn">
+                        <c:if test="${expanded == null}">
                         <button class="btn btn-danger ${specifier}-remove" id="${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                             Remove
                         </button>
+                        </c:if>
                     </div>
                     <myTags:editIdentifier specifier="${specifier}-identifier"
                                            label="Identifier"
                                            path="${path}.identifier"
                                            identifier="${place.identifier}"
                                            unbounded="${false}">
+                    </myTags:editIdentifier>
+                    <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                                           label="Alternate Identifiers"
+                                           path="${path}.alternateIdentifiers"
+                                           identifiers="${place.alternateIdentifiers}"
+                                           unbounded="${true}">
                     </myTags:editIdentifier>
                     <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                             placeholder=" The name of the place."
@@ -93,7 +108,7 @@
         </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group">
+        <div class="form-group control-group edit-form-group">
             <label>${label}</label>
             <button class="btn btn-success add-${specifier}" id="${specifier}-add" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add ${label}
@@ -106,15 +121,20 @@
 <div class="copy-${specifier} hide">
     <div class="form-group control-group edit-form-group">
         <label>${label}</label>
-        <div class="input-group-btn">
+        <%--<div class="input-group-btn">--%>
             <button class="btn btn-danger ${specifier}-remove" id="${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
             </button>
-        </div>
+        <%--</div>--%>
         <myTags:editIdentifier specifier="${specifier}-identifier"
                                label="Identifier"
                                path="${path}.identifier"
                                unbounded="${false}">
+        </myTags:editIdentifier>
+        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
+                               label="Alternate Identifiers"
+                               path="${path}.alternateIdentifiers"
+                               unbounded="${true}">
         </myTags:editIdentifier>
         <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                 placeholder=" The name of the place."

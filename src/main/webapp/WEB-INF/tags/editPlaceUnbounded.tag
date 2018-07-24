@@ -38,8 +38,7 @@
                 <c:set var="placeCount" scope="page" value="${varStatus.count}"/>
             </c:if>
         </c:forEach>
-        <div class="${specifier}-place-add-more">
-        </div>
+        <div class="${specifier}-place-add-more"></div>
     </c:when>
     <c:otherwise>
         <div class="form-group edit-form-group">
@@ -50,9 +49,8 @@
                     ${label}
                 </button>
             </div>
-            <div class="${specifier}-place-add-more">
-            </div>
         </div>
+        <div class="${specifier}-place-add-more"></div>
         <c:set var="placeCount" scope="page" value="0"/>
 
     </c:otherwise>
@@ -60,19 +58,21 @@
 
 
 <div class="${specifier}-copy hide">
-    <div class="form-group control-group edit-form-group">
-        <label>${label}</label>
-        <div class="form-group">
-            <button class="btn btn-danger place-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
+    <%--<div class="form-group control-group edit-form-group">--%>
+        <%--<label>${label}</label>--%>
+        <%--<div class="form-group">--%>
+            <%--<button class="btn btn-danger place-remove" type="button"><i--%>
+                    <%--class="glyphicon glyphicon-remove"></i>--%>
+                <%--Remove--%>
+            <%--</button>--%>
+        <%--</div>--%>
         <myTags:editPlace path="${path}[0]"
                            specifier="${specifier}-"
-                          label="${label}">
+                          label="${label}"
+                          expanded="${true}"
+        >
         </myTags:editPlace>
-    </div>
+    <%--</div>--%>
 </div>
 
 

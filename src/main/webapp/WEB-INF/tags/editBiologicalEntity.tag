@@ -49,12 +49,12 @@
                             </myTags:editRequiredNonZeroLengthString>
                         </c:otherwise>
                     </c:choose>
-                    <myTags:editNonRequiredNonZeroLengthString string="${entity.description}"
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea string="${entity.description}"
                                                                path="${path}.description"
                                                                label="Description"
                                                                placeholder="Description"
                                                                specifier="${specifier}">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
                 </div>
             </div>
         </c:when>
@@ -78,11 +78,11 @@
                                                             label="Name"
                                                             path="${path}.name">
                     </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}.description"
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
                                                                label="Description"
                                                                placeholder="Description"
                                                                specifier="${specifier}">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
                 </div>
             </div>
         </c:otherwise>

@@ -3,10 +3,7 @@ package edu.pitt.isg.dc.config;
 import java.util.Collections;
 
 import edu.pitt.isg.dc.utils.DatasetFactory;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.Grant;
-import edu.pitt.isg.mdc.dats2_2.Identifier;
-import edu.pitt.isg.mdc.dats2_2.License;
+import edu.pitt.isg.mdc.dats2_2.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +13,10 @@ import org.springframework.webflow.definition.registry.FlowDefinitionRegistry;
 import org.springframework.webflow.engine.builder.support.FlowBuilderServices;
 import org.springframework.webflow.executor.FlowExecutor;
 import org.springframework.webflow.mvc.builder.MvcViewFactoryCreator;
+
+import static edu.pitt.isg.dc.utils.DatasetFactory.createDateList;
+import static edu.pitt.isg.dc.utils.DatasetFactory.createTypeList;
+import static edu.pitt.isg.dc.utils.DatasetFactory.wrapListWithAutoPopulatingList;
 
 @Configuration
 public class WebFlowConfig extends AbstractFlowConfiguration {
@@ -51,7 +52,6 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     public Dataset dataset() {
         Dataset dataset = new Dataset();
         dataset = DatasetFactory.createDatasetForWebFlow(dataset);
-//        Dataset dataset = DatasetFactory.createDatasetForWebFlow();
         return dataset;
     }
 }

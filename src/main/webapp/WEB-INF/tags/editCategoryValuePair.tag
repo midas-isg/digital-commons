@@ -17,6 +17,17 @@
 
 <c:choose>
     <c:when test="${not function:isObjectEmpty(categoryValuePairs)}">
+
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+                <div class="has-error">
+                <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+                    <span class="error-color">${message.text}</span>
+                </c:forEach>
+                </div>
+            </c:when>
+        </c:choose>
+
         <c:forEach items="${categoryValuePairs}" var="categoryValuePair" varStatus="varStatus">
             <c:if test="${varStatus.first}">
                 <div class="form-group edit-form-group">

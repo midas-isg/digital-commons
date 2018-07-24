@@ -235,21 +235,21 @@
         </button>
         <br><br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-information" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-information-add-annotation" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Information
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-method" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-method-add-annotation" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Method
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-platform" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-platform-add-annotation" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Platform
             </button>
@@ -261,13 +261,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var typeCount = ${typeCount};
+        var specificer = "${specifier}";
         //Add section
         $("body").on("click", ".${specifier}-add-type", function (e) {
             e.stopImmediatePropagation();
 
             var html = $(".copy-type").html();
+            var regex = new RegExp('id="'+ specificer, "g");
 
-            html = html.replace(/id="}add/g, 'id="' + typeCount + '-add');
+            html = html.replace(regex, 'id="' + specificer + '-' + typeCount);
             <%--$(".${specifier}-type-add-more").after(html);--%>
             $(".${specifier}-type-add-more").before(html);
             typeCount += 1;
@@ -285,8 +287,9 @@
             e.stopImmediatePropagation();
 
             var id = event.target.id;
-            var count = id.split('-')[0];
-            var attributeName = id.split('-')[2];
+            var attributes = id.split('-');
+            var count = attributes[1];
+            var attributeName = attributes[2];
             if (count != undefined && attributeName != undefined) {
 
                 var html = $(".copy-annotation-" + attributeName).html();

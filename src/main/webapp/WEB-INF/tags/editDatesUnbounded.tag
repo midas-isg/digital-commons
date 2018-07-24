@@ -90,7 +90,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var unbounded${specifier}DateCount = ${unboundedDateCount};
+        var unboundedDateCount = ${unboundedDateCount};
         //Show/Hide Date
         $("body").on("click", ".${specifier}-add-date", function (e) {
             var specifier = "${specifier}";
@@ -99,7 +99,7 @@
             path = path.replace('[','\\[').replace(']','\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}['+ unbounded${specifier}DateCount + ']').replace(regexSpecifier,'${specifier}-' + unbounded${specifier}DateCount);
+            html = html.replace(regexPath, '${path}['+ unboundedDateCount + ']').replace(regexSpecifier,'${specifier}-' + unboundedDateCount);
 
             //$(this).after(html);
             $(".${specifier}-date-add-more").before(html);
@@ -112,7 +112,7 @@
                 <%--});--%>
             <%--});--%>
 
-            unbounded${specifier}DateCount += 1;
+            unboundedDateCount += 1;
         });
     });
 </script>

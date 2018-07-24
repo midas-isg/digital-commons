@@ -126,7 +126,7 @@
     $(document).ready(function () {
         var unboundedIsAboutCount = ${unboundedIsAboutCount};
         //Add section
-        $(".add-${specifier}-annotation").click(function (e) {
+        $(".${specifier}-add-annotation").click(function (e) {
             var specifier = "${specifier}";
             var path = "${path}";
             var html = $(".${specifier}-annotation-copy").html();
@@ -141,7 +141,7 @@
         });
 
 
-        $(".add-${specifier}-biologicalEntity").click(function (e) {
+        $(".${specifier}-add-biologicalEntity").click(function (e) {
             var specifier = "${specifier}";
             var path = "${path}";
             var html = $(".${specifier}-biologicalEntity-copy").html();
