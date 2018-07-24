@@ -119,8 +119,8 @@
 
 
 <div class="copy-${specifier} hide">
-    <%--<div class="form-group control-group edit-form-group">--%>
-        <%--<label>${label}</label>--%>
+    <div class="form-group control-group edit-form-group">
+        <label>${label}</label>
         <%--<div class="input-group-btn">--%>
             <button class="btn btn-danger ${specifier}-remove" id="${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
                 Remove
@@ -156,7 +156,7 @@
                     class="glyphicon glyphicon-plus"></i> Add Geometry
             </button>
         </div>
-    <%--</div>--%>
+    </div>
 </div>
 
 <div class="copy-${specifier}-geometry hide">
