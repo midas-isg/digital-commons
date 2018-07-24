@@ -28,7 +28,9 @@
         <c:choose>
             <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
                 <div class="has-error">
-
+                <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+                    <span class="error-color">${message.text}</span>
+                </c:forEach>
             </c:when>
             <c:otherwise>
                 <div>

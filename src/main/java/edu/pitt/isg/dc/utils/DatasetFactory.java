@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.utils;
 
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.utils.AutoPopulatedWrapper.*;
 import edu.pitt.isg.mdc.dats2_2.*;
 import org.springframework.util.AutoPopulatingList;
 
@@ -25,42 +26,42 @@ public class DatasetFactory {
             dataset.setIdentifier(new Identifier());
         }
         if(dataset.getDates().isEmpty()){
-            dataset.setDates(wrapListWithAutoPopulatingList(createDateList(null), Date.class));
-        } else dataset.setDates(wrapListWithAutoPopulatingList(createDateList(dataset.getDates()), Date.class));
+            dataset.setDates(wrapListWithAutoPopulatingList(createDateList(null), AutoPopulatedDateWrapper.class));
+        } else dataset.setDates(wrapListWithAutoPopulatingList(createDateList(dataset.getDates()), AutoPopulatedDateWrapper.class));
         if(dataset.getStoredIn() == null){
             dataset.setStoredIn(createDataRepository(null));
         } else  dataset.setStoredIn(createDataRepository(dataset.getStoredIn()));
         if(dataset.getSpatialCoverage().isEmpty()){
-            dataset.setSpatialCoverage(wrapListWithAutoPopulatingList(createPlaceList(null), Place.class));
-        } else dataset.setSpatialCoverage(wrapListWithAutoPopulatingList(createPlaceList(dataset.getSpatialCoverage()), Place.class));
-        dataset.setTypes(wrapListWithAutoPopulatingList(createTypeList(dataset.getTypes()), Type.class));
+            dataset.setSpatialCoverage(wrapListWithAutoPopulatingList(createPlaceList(null), AutoPopulatedPlaceWrapper.class));
+        } else dataset.setSpatialCoverage(wrapListWithAutoPopulatingList(createPlaceList(dataset.getSpatialCoverage()), AutoPopulatedPlaceWrapper.class));
+        dataset.setTypes(wrapListWithAutoPopulatingList(createTypeList(dataset.getTypes()), AutoPopulatedTypeWrapper.class));
 //        if(dataset.getTypes() == null || dataset.getTypes().size() == 0){
 //            dataset.setTypes(wrapListWithAutoPopulatingList(createTypeList(dataset.getTypes()), Type.class));
 //        }
         if(dataset.getDistributions().isEmpty()){
-            dataset.setDistributions(wrapListWithAutoPopulatingList(createDistributionList(null), Distribution.class));
-        } else dataset.setDistributions(wrapListWithAutoPopulatingList(createDistributionList(dataset.getDistributions()), Distribution.class));
+            dataset.setDistributions(wrapListWithAutoPopulatingList(createDistributionList(null), AutoPopulatedDistributionWrapper.class));
+        } else dataset.setDistributions(wrapListWithAutoPopulatingList(createDistributionList(dataset.getDistributions()), AutoPopulatedDistributionWrapper.class));
         if(dataset.getPrimaryPublications().isEmpty()){
-            dataset.setPrimaryPublications(wrapListWithAutoPopulatingList(createPublicationList(null), Publication.class));
-        } else dataset.setPrimaryPublications(wrapListWithAutoPopulatingList(createPublicationList(dataset.getPrimaryPublications()), Publication.class));
+            dataset.setPrimaryPublications(wrapListWithAutoPopulatingList(createPublicationList(null), AutoPopulatedPublicationWrapper.class));
+        } else dataset.setPrimaryPublications(wrapListWithAutoPopulatingList(createPublicationList(dataset.getPrimaryPublications()), AutoPopulatedPublicationWrapper.class));
         if(dataset.getCitations().isEmpty()){
-            dataset.setCitations(wrapListWithAutoPopulatingList(createPublicationList(null), Publication.class));
-        } else dataset.setCitations(wrapListWithAutoPopulatingList(createPublicationList(dataset.getCitations()), Publication.class));
+            dataset.setCitations(wrapListWithAutoPopulatingList(createPublicationList(null), AutoPopulatedPublicationWrapper.class));
+        } else dataset.setCitations(wrapListWithAutoPopulatingList(createPublicationList(dataset.getCitations()), AutoPopulatedPublicationWrapper.class));
         if(dataset.getProducedBy() == null){
             dataset.setProducedBy(createStudy(null));
         } else dataset.setProducedBy(createStudy(dataset.getProducedBy()));
         if(dataset.getCreators().isEmpty()){
-            dataset.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else dataset.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(dataset.getCreators()), PersonComprisedEntity.class));
+            dataset.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else dataset.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(dataset.getCreators()), AutoPopulatedPersonComprisedEntityWrapper.class));
         if(dataset.getLicenses().isEmpty()){
-            dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), License.class));
-        } else dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataset.getLicenses()), License.class));
+            dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), AutoPopulatedLicenseWrapper.class));
+        } else dataset.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataset.getLicenses()), AutoPopulatedLicenseWrapper.class));
         if(dataset.getIsAbout().isEmpty()){
-            dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(null), IsAbout.class));
-        } dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(dataset.getIsAbout()), IsAbout.class));
+            dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(null), AutoPopulatedIsAboutWrapper.class));
+        } dataset.setIsAbout(wrapListWithAutoPopulatingList(createIsAboutList(dataset.getIsAbout()), AutoPopulatedIsAboutWrapper.class));
         if(dataset.getAcknowledges().isEmpty()){
-            dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), Grant.class));
-        } else dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(dataset.getAcknowledges()), Grant.class));
+            dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), AutoPopulatedGrantWrapper.class));
+        } else dataset.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(dataset.getAcknowledges()), AutoPopulatedGrantWrapper.class));
         if(dataset.getExtraProperties().isEmpty()){
             dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), CategoryValuePair.class));
         } else dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataset.getExtraProperties()), CategoryValuePair.class));
@@ -109,17 +110,17 @@ public class DatasetFactory {
             distribution.setStoredIn(createDataRepository(null));
         } else distribution.setStoredIn(createDataRepository(distribution.getStoredIn()));
         if(distribution.getDates().isEmpty()){
-            distribution.setDates(wrapListWithAutoPopulatingList(createDateList(null), Date.class));
-        } else distribution.setDates(wrapListWithAutoPopulatingList(createDateList(distribution.getDates()), Date.class));
+            distribution.setDates(wrapListWithAutoPopulatingList(createDateList(null), AutoPopulatedDateWrapper.class));
+        } else distribution.setDates(wrapListWithAutoPopulatingList(createDateList(distribution.getDates()), AutoPopulatedDateWrapper.class));
         if(distribution.getLicenses().isEmpty()){
-            distribution.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), License.class));
-        } else distribution.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(distribution.getLicenses()), License.class));
+            distribution.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), AutoPopulatedLicenseWrapper.class));
+        } else distribution.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(distribution.getLicenses()), AutoPopulatedLicenseWrapper.class));
         if(distribution.getAccess() == null){
             distribution.setAccess(createAccess(null));
         } else distribution.setAccess(createAccess(distribution.getAccess()));
         if(distribution.getConformsTo().isEmpty()){
-            distribution.setConformsTo(wrapListWithAutoPopulatingList(createDataStandardList(null), DataStandard.class));
-        } else distribution.setConformsTo(wrapListWithAutoPopulatingList(createDataStandardList(distribution.getConformsTo()), DataStandard.class));
+            distribution.setConformsTo(wrapListWithAutoPopulatingList(createDataStandardList(null), AutoPopulatedDataStandardWrapper.class));
+        } else distribution.setConformsTo(wrapListWithAutoPopulatingList(createDataStandardList(distribution.getConformsTo()), AutoPopulatedDataStandardWrapper.class));
         if(distribution.getQualifiers().isEmpty()){
             distribution.setQualifiers(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else distribution.setQualifiers(wrapListWithAutoPopulatingList(createAnnotationList(distribution.getQualifiers()), Annotation.class));
@@ -218,8 +219,8 @@ public class DatasetFactory {
             dataStandard.setType(new Annotation());
         }
         if(dataStandard.getLicenses().isEmpty()){
-            dataStandard.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), License.class));
-        } else dataStandard.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataStandard.getLicenses()), License.class));
+            dataStandard.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), AutoPopulatedLicenseWrapper.class));
+        } else dataStandard.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataStandard.getLicenses()), AutoPopulatedLicenseWrapper.class));
         if(dataStandard.getExtraProperties().isEmpty()){
             dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), CategoryValuePair.class));
         } else dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataStandard.getExtraProperties()), CategoryValuePair.class));
@@ -245,14 +246,14 @@ public class DatasetFactory {
             dataRepository.setTypes(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else dataRepository.setTypes(wrapListWithAutoPopulatingList(createAnnotationList(dataRepository.getTypes()), Annotation.class));
         if(dataRepository.getLicenses().isEmpty()){
-            dataRepository.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), License.class));
-        } else dataRepository.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataRepository.getLicenses()), License.class));
+            dataRepository.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(null), AutoPopulatedLicenseWrapper.class));
+        } else dataRepository.setLicenses(wrapListWithAutoPopulatingList(createLicenseList(dataRepository.getLicenses()), AutoPopulatedLicenseWrapper.class));
         if(dataRepository.getPublishers().isEmpty()){
-            dataRepository.setPublishers(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else dataRepository.setPublishers(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(dataRepository.getPublishers()), PersonComprisedEntity.class));
+            dataRepository.setPublishers(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else dataRepository.setPublishers(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(dataRepository.getPublishers()), AutoPopulatedPersonComprisedEntityWrapper.class));
         if(dataRepository.getAccess().isEmpty()){
-            dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(null), Access.class));
-        } else dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(dataRepository.getAccess()), Access.class));
+            dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(null), AutoPopulatedAccessWrapper.class));
+        } else dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(dataRepository.getAccess()), AutoPopulatedAccessWrapper.class));
 
         return dataRepository;
     }
@@ -366,8 +367,8 @@ public class DatasetFactory {
             license.setIdentifier(new Identifier());
         }
         if(license.getCreators().isEmpty()){
-            license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(license.getCreators()), PersonComprisedEntity.class));
+            license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(license.getCreators()), AutoPopulatedPersonComprisedEntityWrapper.class));
 
         return license;
     }
@@ -401,14 +402,14 @@ public class DatasetFactory {
             publication.setType(new Annotation());
         }
         if(publication.getDates().isEmpty()){
-            publication.setDates(wrapListWithAutoPopulatingList(createDateList(null), Date.class));
-        } else publication.setDates(wrapListWithAutoPopulatingList(createDateList(publication.getDates()), Date.class));
+            publication.setDates(wrapListWithAutoPopulatingList(createDateList(null), AutoPopulatedDateWrapper.class));
+        } else publication.setDates(wrapListWithAutoPopulatingList(createDateList(publication.getDates()), AutoPopulatedDateWrapper.class));
         if(publication.getAuthors().isEmpty()){
-            publication.setAuthors(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else publication.setAuthors(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(publication.getAuthors()), PersonComprisedEntity.class));
+            publication.setAuthors(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else publication.setAuthors(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(publication.getAuthors()), AutoPopulatedPersonComprisedEntityWrapper.class));
         if(publication.getAcknowledges().isEmpty()){
-            publication.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), Grant.class));
-        } else publication.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(publication.getAcknowledges()), Grant.class));
+            publication.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(null), AutoPopulatedGrantWrapper.class));
+        } else publication.setAcknowledges(wrapListWithAutoPopulatingList(createGrantList(publication.getAcknowledges()), AutoPopulatedGrantWrapper.class));
 
         return publication;
     }
@@ -439,11 +440,11 @@ public class DatasetFactory {
             grant.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else grant.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(grant.getAlternateIdentifiers()), Identifier.class));
         if(grant.getFunders().isEmpty()){
-            grant.setFunders(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else grant.setFunders(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(grant.getFunders()), PersonComprisedEntity.class));
+            grant.setFunders(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else grant.setFunders(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(grant.getFunders()), AutoPopulatedPersonComprisedEntityWrapper.class));
         if(grant.getAwardees().isEmpty()){
-            grant.setAwardees(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), PersonComprisedEntity.class));
-        } else grant.setAwardees(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(grant.getAwardees()), PersonComprisedEntity.class));
+            grant.setAwardees(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
+        } else grant.setAwardees(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(grant.getAwardees()), AutoPopulatedPersonComprisedEntityWrapper.class));
 
 
         return grant;
@@ -498,7 +499,7 @@ public class DatasetFactory {
         if(personOrganization.getAlternateIdentifiers() == null || personOrganization.getAlternateIdentifiers().isEmpty()){
             personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else personOrganization.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(personOrganization.getAlternateIdentifiers()), Identifier.class));
-        personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(personOrganization.getAffiliations()), Organization.class));
+        personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(personOrganization.getAffiliations()), AutoPopulatedOrganizationWrapper.class));
 //        personOrganization.setAffiliations(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(personOrganization.getAffiliations()), PersonComprisedEntity.class));
         if(personOrganization.getRoles().isEmpty()){
             personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
@@ -514,7 +515,7 @@ public class DatasetFactory {
     public static List<PersonComprisedEntity> createPersonComprisedEntityList(List<PersonComprisedEntity> personComprisedEntityList){
 //        List<PersonComprisedEntity> personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),PersonComprisedEntity.class);
         if(personComprisedEntityList == null || personComprisedEntityList.isEmpty()){
-            personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),PersonComprisedEntity.class);
+            personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),AutoPopulatedPersonComprisedEntityWrapper.class);
         }
         for(int i = 0; i < maxIterations(personComprisedEntityList.size()); i++){
             if(i > (personComprisedEntityList.size() - 1)){
@@ -575,8 +576,8 @@ public class DatasetFactory {
             person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else person.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(person.getAlternateIdentifiers()), Identifier.class));
         if(person.getAffiliations().isEmpty()){
-            person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(null), PersonComprisedEntity.class));
-        } else person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(person.getAffiliations()), Organization.class));
+            person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(null), AutoPopulatedOrganizationWrapper.class));
+        } else person.setAffiliations(wrapListWithAutoPopulatingList(createOrganizationList(person.getAffiliations()), AutoPopulatedOrganizationWrapper.class));
         if(person.getRoles().isEmpty()){
             person.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else person.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(person.getRoles()), Annotation.class));
@@ -691,7 +692,7 @@ public class DatasetFactory {
         }
         for(int i = 0; i < maxIterations(categoryValuePairList.size()); i++){
             if(i > (categoryValuePairList.size() - 1)){
-                categoryValuePairList.add(createCategoryValuePair());
+                categoryValuePairList.add(createCategoryValuePair(null));
             } else {
                 if(categoryValuePairList.get(i).getValues() == null){
                     categoryValuePairList.get(i).setValues(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
@@ -702,8 +703,11 @@ public class DatasetFactory {
         return categoryValuePairList;
     }
 
-    public static CategoryValuePair createCategoryValuePair(){
-        CategoryValuePair categoryValuePair = new CategoryValuePair();
+    public static CategoryValuePair createCategoryValuePair(CategoryValuePair categoryValuePair){
+        if(categoryValuePair == null){
+            categoryValuePair = new CategoryValuePair();
+        }
+//        CategoryValuePair categoryValuePair = new CategoryValuePair();
         categoryValuePair.setValues(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
 
         return categoryValuePair;
