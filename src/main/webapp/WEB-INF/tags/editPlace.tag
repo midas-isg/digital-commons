@@ -45,12 +45,12 @@
                                                             string="${place.name}"
                                                             label=" Name">
                     </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}.description"
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
                                                                specifier="${specifier}-description"
                                                                string="${place.description}"
                                                                placeholder=" A textual narrative comprised of one or more statements describing the place."
                                                                label="Description">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
                     <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
                                                                specifier="${specifier}-postalAddress"
                                                                string="${place.postalAddress}"
@@ -120,11 +120,11 @@
                                                 placeholder=" The name of the place."
                                                 label=" Name">
         </myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString path="${path}.description"
+        <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
                                                    specifier="${specifier}-description"
                                                    placeholder=" A textual narrative comprised of one or more statements describing the place."
                                                    label="Description">
-        </myTags:editNonRequiredNonZeroLengthString>
+        </myTags:editNonRequiredNonZeroLengthStringTextArea>
         <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
                                                    specifier="${specifier}-postalAddress"
                                                    placeholder=" A physical street address."

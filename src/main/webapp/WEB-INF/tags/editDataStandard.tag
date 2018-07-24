@@ -131,11 +131,11 @@
                                                 label="Name"
                                                 path="${path}[0].name">
         </myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString specifier="${specifier}-0-description"
+        <myTags:editNonRequiredNonZeroLengthStringTextArea specifier="${specifier}-0-description"
                                                    path="${path}[0].description"
                                                    label="Description"
                                                    placeholder="Description">
-        </myTags:editNonRequiredNonZeroLengthString>
+        </myTags:editNonRequiredNonZeroLengthStringTextArea>
         <myTags:editAnnotationRequired path="${path}[0].type."
                                        label="Type">
         </myTags:editAnnotationRequired>

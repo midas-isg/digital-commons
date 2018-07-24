@@ -235,21 +235,21 @@
         </button>
         <br><br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="add-information-${specifier}" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-information" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Information
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="add-method-${specifier}" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-method" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Method
             </button>
         </div>
         <br>
         <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="add-platform-${specifier}" type="button"><i
+            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-platform" type="button"><i
                     class="glyphicon glyphicon-plus"></i> Add
                 Platform
             </button>
@@ -267,7 +267,7 @@
 
             var html = $(".copy-type").html();
 
-            html = html.replace(/id="add/g, 'id="' + typeCount + '-add');
+            html = html.replace(/id="}add/g, 'id="' + typeCount + '-add');
             <%--$(".${specifier}-type-add-more").after(html);--%>
             $(".${specifier}-type-add-more").before(html);
             typeCount += 1;
@@ -285,7 +285,7 @@
             e.stopImmediatePropagation();
 
             var id = event.target.id;
-            var count = id.split('-')[1];
+            var count = id.split('-')[0];
             var attributeName = id.split('-')[2];
             if (count != undefined && attributeName != undefined) {
 

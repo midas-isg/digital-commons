@@ -28,6 +28,17 @@
                                                specifier="storedIn">
                     </myTags:editDataRepository>
 
+                        <%--<input type="text" class="form-control" name="spatialCoverage[0].alternateIdentifiers[0].identifier" value="1" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+                        <%--<input type="text" class="form-control" name="spatialCoverage[1].alternateIdentifiers[0].identifier" value="2" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+
+                        <%--<input type="text" class="form-control" value="alt id 0" name="storedIn.alternateIdentifiers[0].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+                        <%--<input type="text" class="form-control" value="alt id source 0" name="storedIn.alternateIdentifiers[0].identifierSource" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+
+                        <%--<input type="text" class="form-control" value="11111" name="storedIn.alternateIdentifiers[1].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+                        <%--<input type="text" class="form-control" value="11111" name="storedIn.alternateIdentifiers[1].identifierSource" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+
+                        <%--<input type="text" class="form-control" value="22222" name="storedIn.alternateIdentifiers[2].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
+                        <%--<input type="text" class="form-control" value="22222" name="storedIn.alternateIdentifiers[2].identifierSource" placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
