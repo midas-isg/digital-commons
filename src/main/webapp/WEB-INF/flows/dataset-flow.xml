@@ -27,6 +27,46 @@
         </transition>
     </action-state>
 
+    <action-state id="index">
+        <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
+
+        <transition on="identifier" to="datasetForm1"/>
+        <transition on="title" to="datasetForm1"/>
+        <transition on="description" to="datasetForm1"/>
+        <transition on="dates" to="datasetForm1"/>
+
+        <transition on="storedIn" to="datasetForm2"/>
+
+        <transition on="spatialCoverage" to="datasetForm3"/>
+
+        <transition on="types" to="datasetForm4"/>
+        <transition on="availability" to="datasetForm4"/>
+        <transition on="refinement" to="datasetForm4"/>
+        <transition on="aggregation" to="datasetForm4"/>
+
+        <transition on="distributions" to="datasetForm5"/>
+
+        <transition on="primaryPublications" to="datasetForm6"/>
+
+        <transition on="citations" to="datasetForm7"/>
+        <transition on="citationCount" to="datasetForm7"/>
+
+        <transition on="producedBy" to="datasetForm8"/>
+
+        <transition on="creators" to="datasetForm9"/>
+
+        <transition on="licenses" to="datasetForm10"/>
+
+        <transition on="isAbout" to="datasetForm11"/>
+
+        <transition on="acknowledges" to="datasetForm12"/>
+
+        <transition on="version" to="datasetForm13"/>
+        <transition on="extraProperties" to="datasetForm13"/>
+    </action-state>
+
+    <!--           -->
+    <!--Form page 1-->
     <view-state id="datasetForm1" model="flowScope.dataset">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
@@ -36,44 +76,10 @@
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
         </transition>
 
-        <transition on="add-identifier" to="datasetForm1">
-            <evaluate expression="datasetWebflowValidator.incrementList()"></evaluate>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
     </view-state>
 
     <action-state id="validateForm1">
@@ -83,48 +89,19 @@
         <transition on="false" to="datasetForm1"/>
 
     </action-state>
+    <!--End form page 1-->
+    <!--               -->
 
-
+    <!-- STORED IN -->
+    <!--Form page 2-->
     <view-state id="datasetForm2" model="flowScope.dataset">
         <transition on="previous"  to="datasetForm1"/>
         <transition on="next" to="validateForm2"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
-
 
     <action-state id="validateForm2">
         <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
@@ -133,45 +110,18 @@
         <transition on="false" to="datasetForm2"/>
 
     </action-state>
+    <!--End form page 2-->
+    <!--               -->
 
+    <!-- SPATIAL COVERAGE -->
+    <!--Form page 3-->
     <view-state id="datasetForm3" model="flowScope.dataset">
         <transition on="previous" to="datasetForm2"/>
         <transition on="next" to="validateForm3"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm3">
@@ -179,47 +129,19 @@
 
         <transition on="true" to="datasetForm4"/>
         <transition on="false" to="datasetForm3"/>
-
     </action-state>
+    <!--End form page 3-->
+    <!--               -->
 
+    <!-- Types -->
+    <!--Form page 4-->
     <view-state id="datasetForm4" model="flowScope.dataset">
         <transition on="previous" to="datasetForm3"/>
         <transition on="next" to="validateForm4"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm4">
@@ -229,45 +151,18 @@
         <transition on="false" to="datasetForm4"/>
 
     </action-state>
+    <!--End form page 4-->
+    <!--               -->
 
+    <!-- Distributions -->
+    <!--Form page 5-->
     <view-state id="datasetForm5" model="flowScope.dataset">
         <transition on="previous" to="datasetForm4"/>
         <transition on="next" to="validateForm5"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm5">
@@ -275,47 +170,19 @@
 
         <transition on="true" to="datasetForm6"/>
         <transition on="false" to="datasetForm5"/>
-
     </action-state>
+    <!--End form page 5-->
+    <!--               -->
 
+    <!-- Primary Publications -->
+    <!--Form page 6-->
     <view-state id="datasetForm6" model="flowScope.dataset">
         <transition on="previous" to="datasetForm5"/>
         <transition on="next" to="validateForm6"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm6">
@@ -323,47 +190,19 @@
 
         <transition on="true" to="datasetForm7"/>
         <transition on="false" to="datasetForm6"/>
-
     </action-state>
+    <!--End form page 6-->
+    <!--               -->
 
+    <!-- Citations -->
+    <!--Form page 7-->
     <view-state id="datasetForm7" model="flowScope.dataset">
-        <transition on="previous" to="datasetForm8"/>
+        <transition on="previous" to="datasetForm6"/>
         <transition on="next" to="validateForm7"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm7">
@@ -371,47 +210,19 @@
 
         <transition on="true" to="datasetForm8"/>
         <transition on="false" to="datasetForm7"/>
-
     </action-state>
+    <!--End form page 7-->
+    <!--               -->
 
+    <!-- Produced By -->
+    <!--Form page 8-->
     <view-state id="datasetForm8" model="flowScope.dataset">
         <transition on="previous" to="datasetForm7"/>
         <transition on="next" to="validateForm8"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm8">
@@ -421,45 +232,18 @@
         <transition on="false" to="datasetForm8"/>
 
     </action-state>
+    <!--End form page 8-->
+    <!--               -->
 
+    <!-- Creators -->
+    <!--Form page 9-->
     <view-state id="datasetForm9" model="flowScope.dataset">
         <transition on="previous" to="datasetForm8"/>
         <transition on="next" to="validateForm9"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm9">
@@ -474,40 +258,9 @@
         <transition on="previous" to="datasetForm9"/>
         <transition on="next" to="validateForm10"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm10">
@@ -522,40 +275,9 @@
         <transition on="previous" to="datasetForm10"/>
         <transition on="next" to="validateForm11"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm11">
@@ -570,40 +292,9 @@
         <transition on="previous" to="datasetForm11"/>
         <transition on="next" to="validateForm12"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm12">
@@ -625,41 +316,9 @@
         <transition on="true" to="entryConfirmation"/>
         <transition on="false" to="datasetForm13"/>
 
-        <transition on="identifier" to="datasetForm1"/>
-        <transition on="title" to="datasetForm1"/>
-        <transition on="description" to="datasetForm1"/>
-        <transition on="dates" to="datasetForm1"/>
-
-        <transition on="storedIn" to="datasetForm2"/>
-
-
-        <transition on="spatialCoverage" to="datasetForm3"/>
-
-        <transition on="types" to="datasetForm4"/>
-        <transition on="availability" to="datasetForm4"/>
-        <transition on="refinement" to="datasetForm4"/>
-        <transition on="aggregation" to="datasetForm4"/>
-
-        <transition on="distributions" to="datasetForm5"/>
-
-        <transition on="primaryPublications" to="datasetForm6"/>
-
-        <transition on="citations" to="datasetForm7"/>
-        <transition on="citationCount" to="datasetForm7"/>
-
-        <transition on="producedBy" to="datasetForm8"/>
-
-        <transition on="creators" to="datasetForm9"/>
-
-        <transition on="licenses" to="datasetForm10"/>
-
-        <transition on="isAbout" to="datasetForm11"/>
-
-        <transition on="acknowledges" to="datasetForm12"/>
-
-        <transition on="version" to="datasetForm13"/>
-        <transition on="extraProperties" to="datasetForm13"/>
-
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </action-state>
 
    <end-state id="entryConfirmation"/>

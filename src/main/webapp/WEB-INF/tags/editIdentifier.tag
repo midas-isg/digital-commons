@@ -147,7 +147,7 @@
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
                             ${label}
-                    </button>                            <input type="submit" name="_eventId_add-${specifier}" class="btn btn-default pull-right" value="Add ${label}"/>
+                    </button>
 
                 </div>
             </div>
