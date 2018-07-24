@@ -202,7 +202,7 @@
             //Add section
             <c:choose>
             <c:when test="${unbounded}">
-            console.log(html);
+            // console.log(html);
             html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
             <%--$(".${specifier}-identifier-add-more").after(html);--%>
             $(".${specifier}-identifier-add-more").before(html);
