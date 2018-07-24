@@ -1,5 +1,8 @@
 package edu.pitt.isg.dc.utils;
 
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
@@ -55,5 +58,17 @@ public class TagUtil {
             return true;
         }
         return false;
+    }
+
+    public static boolean isPerson(PersonComprisedEntity personComprisedEntity) {
+        try {
+            if(isObjectEmpty(((PersonOrganization) personComprisedEntity).getName()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getAbbreviation()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getLocation())) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return true;
+        }
     }
 }
