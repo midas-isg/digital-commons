@@ -54,8 +54,7 @@
                     </div>
                 </c:if>
                 <c:choose>
-                    <c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Organization' or personComprisedEntity['class'] == 'class edu.pitt.isg.dc.entry.classes.PersonOrganization')
-                                                and not empty personComprisedEntity.name}">
+                    <c:when test="${not function:isPerson(personComprisedEntity)}">
                         <myTags:editOrganization organization="${personComprisedEntity}"
                                                  path="${path}[${varStatus.count-1}]"
                                                  specifier="${specifier}-${varStatus.count-1}"
@@ -65,8 +64,7 @@
                         <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>
 
                     </c:when>
-                    <c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Person' or personComprisedEntity['class'] == 'class edu.pitt.isg.dc.entry.classes.PersonOrganization')
-                                                and (not empty personComprisedEntity.fullName or not empty personComprisedEntity.firstName or not empty personComprisedEntity.lastName)}">
+                    <c:when test="${function:isPerson(personComprisedEntity)}">
                         <myTags:editPerson person="${personComprisedEntity}"
                                            path="${path}[${varStatus.count-1}]"
                                            specifier="${specifier}-${varStatus.count-1}"
@@ -86,81 +84,6 @@
 
             </c:forEach>
         <div class="${specifier}-add-more"></div>
-
-
-                <%--<c:choose>--%>
-                    <%--<c:when test="${varStatus.first}">--%>
-                        <%--<div class="form-group edit-form-group ${specifier}-add-more-button">--%>
-                            <%--<label>${label}s</label>--%>
-                            <%--<c:if test="${showAddPersonButton}">--%>
-                                <%--<button class="btn btn-success add-${specifier}-person" type="button"><i--%>
-                                        <%--class="glyphicon glyphicon-plus"></i> Add ${label} (Person)--%>
-                                <%--</button>--%>
-                            <%--</c:if>--%>
-                            <%--<c:if test="${showAddOrganizationButton}">--%>
-                                <%--<button class="btn btn-success add-${specifier}-organization" type="button"><i--%>
-                                        <%--class="glyphicon glyphicon-plus"></i> Add ${label} (Organization)--%>
-                                <%--</button>--%>
-                            <%--</c:if>--%>
-                        <%--</div>--%>
-                        <%--<c:choose>--%>
-                            <%--<c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Organization' or personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.PersonOrganization')--%>
-                                                <%--and not empty personComprisedEntity.name}">--%>
-                                <%--<myTags:editOrganization organization="${personComprisedEntity}"--%>
-                                                         <%--path="${path}[0]"--%>
-                                                         <%--specifier="${specifier}-0"--%>
-                                                         <%--label="${label} (Organization)"--%>
-                                                         <%--isFirstRequired="${isFirstRequired}">--%>
-                                <%--</myTags:editOrganization>--%>
-                            <%--</c:when>--%>
-                            <%--<c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Person' or personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.PersonOrganization')--%>
-                                                <%--and (not empty personComprisedEntity.fullName or not empty personComprisedEntity.firstName or not empty personComprisedEntity.lastName)}">--%>
-                                <%--<myTags:editPerson person="${personComprisedEntity}"--%>
-                                                   <%--path="${path}[0]"--%>
-                                                   <%--specifier="${specifier}-0"--%>
-                                                   <%--label="${label} (Person)"--%>
-                                                   <%--isFirstRequired="${isFirstRequired}">--%>
-                                <%--</myTags:editPerson>--%>
-                            <%--</c:when>--%>
-                        <%--</c:choose>--%>
-                    <%--</c:when>--%>
-                    <%--<c:otherwise>--%>
-                        <%--<c:choose>--%>
-                            <%--<c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Organization' or personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.PersonOrganization')--%>
-                                                <%--and not empty personComprisedEntity.name}">--%>
-                                <%--<myTags:editOrganization organization="${personComprisedEntity}"--%>
-                                                         <%--path="${path}[${varStatus.count-1}]"--%>
-                                                         <%--specifier="${specifier}-${varStatus.count-1}"--%>
-                                                         <%--label="${label} (Organization)"--%>
-                                                         <%--isFirstRequired="false">--%>
-                                <%--</myTags:editOrganization>--%>
-                                <%--<c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>--%>
-
-                            <%--</c:when>--%>
-                            <%--<c:when test="${(personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.Person' or personComprisedEntity['class'] == 'class edu.pitt.isg.mdc.dats2_2.PersonOrganization')--%>
-                                                <%--and (not empty personComprisedEntity.fullName or not empty personComprisedEntity.firstName or not empty personComprisedEntity.lastName)}">--%>
-                                <%--<myTags:editPerson person="${personComprisedEntity}"--%>
-                                                   <%--path="${path}[${varStatus.count-1}]"--%>
-                                                   <%--specifier="${specifier}-${varStatus.count-1}"--%>
-                                                   <%--label="${label} (Person)"--%>
-                                                   <%--isFirstRequired="false">--%>
-                                <%--</myTags:editPerson>--%>
-                                <%--<c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${unboundedPersonComprisedEntityCount + 1}"/>--%>
-
-                            <%--</c:when>--%>
-                        <%--</c:choose>--%>
-                    <%--</c:otherwise>--%>
-                <%--</c:choose>--%>
-
-                <%--<c:if test="${varStatus.first}">--%>
-
-                    <%--<form:errors path="${path}[0]" class="error-color"/>--%>
-                <%--</c:if>--%>
-
-                <%--&lt;%&ndash;<c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>&ndash;%&gt;--%>
-
-            <%--</c:forEach>--%>
-            <%--<div class="${specifier}-add-more"></div>--%>
         </div>
     </c:when>
     <c:otherwise>
@@ -232,7 +155,11 @@
             if (unboundedPersonComprisedEntityCount === 0) {
                 html = $(".${specifier}-person-required-copy").html();
             } else html = $(".${specifier}-person-copy").html();
-            path = path.replace('[', '\\[').replace(']', '\\]');
+            // path = path.replace('[', '\\[').replace(']', '\\]');
+            // path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']').replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');
@@ -252,7 +179,11 @@
             } else {
                 html = $(".${specifier}-organization-copy").html();
             }
-            path = path.replace('[', '\\[').replace(']', '\\]');
+            // path = path.replace('[', '\\[').replace(']', '\\]');
+            // path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']').replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');

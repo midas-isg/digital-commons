@@ -10,5 +10,10 @@
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isObjectEmpty(java.lang.Object)</function-signature>
     </function>
+    <function>
+        <name>isPerson</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>boolean isPerson(edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity)</function-signature>
+    </function>
 
 </taglib>

@@ -144,7 +144,7 @@
         </myTags:editDatesUnbounded>
         <myTags:editPersonComprisedEntity path="${path}[0].authors"
                                           specifier="${specifier}-0-authors"
-                                          label="Authors"
+                                          label="Author"
                                           isFirstRequired="true"
                                           showAddPersonButton="true"
                                           showAddOrganizationButton="false">
