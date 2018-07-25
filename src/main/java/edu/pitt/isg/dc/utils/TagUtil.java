@@ -14,42 +14,46 @@ public class TagUtil {
             return true;
         }
 
-        boolean isObjectEmpty = false;
+        boolean objectEmpty = false;
 
         if(bean instanceof List) {
             List myList = (List) bean;
             if(myList.size() == 0)
                 return true;
-
-            bean =  myList.get(0);
-        }
-        Method[] methods = bean.getClass().getDeclaredMethods();
-        for(Method method : methods){
-            if(isGetter(method)){
-                try {
-                    Object obj = method.invoke(bean);
-                    if(obj == null || obj.equals("")) {
-                        isObjectEmpty = true;
-                    } else {
-                        if(obj.getClass().isPrimitive()) {
-                            return false;
+            else {
+                for (int i = 0; i < myList.size(); i++) {
+                    objectEmpty = isObjectEmpty(myList.get(i));
+                }
+            }
+        } else {
+            Method[] methods = bean.getClass().getDeclaredMethods();
+            for (Method method : methods) {
+                if (isGetter(method)) {
+                    try {
+                        Object obj = method.invoke(bean);
+                        if (obj == null || obj.equals("")) {
+                            objectEmpty = true;
                         } else {
-                            if(isObjectEmpty(obj)) {
-                                isObjectEmpty = true;
-                            } else
+                            if (obj.getClass().isPrimitive()) {
                                 return false;
+                            } else {
+                                if (isObjectEmpty(obj)) {
+                                    objectEmpty = true;
+                                } else
+                                    return false;
+                            }
                         }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
                     }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
                 }
             }
         }
-        return  isObjectEmpty;
+        return  objectEmpty;
     }
 
     private static boolean isGetter(Method method){

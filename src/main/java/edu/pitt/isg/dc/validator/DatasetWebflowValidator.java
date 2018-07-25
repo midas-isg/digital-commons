@@ -13,6 +13,8 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.Person;
+import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
@@ -24,12 +26,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
-import java.util.Properties;
+import java.util.*;
 
 import static ch.qos.logback.core.joran.util.beans.BeanUtil.isGetter;
 import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
 @Component
@@ -119,12 +121,6 @@ public class DatasetWebflowValidator {
     public String validateDataset(Dataset dataset, MessageContext messageContext) {
         String title = dataset.getTitle();
 
-//        Person person  = new Person();
-//        PersonOrganization personOrganization = (PersonOrganization) dataset.getCreators().get(0);
-//        person.setFirstName(personOrganization.getFirstName());
-//        person.setLastName(personOrganization.getLastName());
-//        person.setIdentifier(personOrganization.getIdentifier());
-//        dataset.getCreators().add(person);
         if (title != "") {
             return "true";
         } else {
@@ -196,6 +192,14 @@ public class DatasetWebflowValidator {
         if(isObjectEmpty(dataset.getExtraProperties())) {
             dataset.setExtraProperties(null);
         }
+
+        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = dataset.getCreators().listIterator();
+        List<PersonComprisedEntity> newCreatorsList = new ArrayList<>();
+        while (personComprisedEntityListIterator.hasNext()) {
+            PersonComprisedEntity personComprisedEntity = personComprisedEntityListIterator.next();
+            newCreatorsList.add(convertPersonOrganization(personComprisedEntity));
+        }
+        dataset.setCreators(newCreatorsList);
 
 
         EntryView entryObject = new EntryView();
