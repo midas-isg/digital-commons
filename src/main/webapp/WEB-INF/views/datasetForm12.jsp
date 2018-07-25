@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="acknowledges"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <myTags:editGrant path="acknowledges"
                                   specifier="acknowledges"
                                   grants="${dataset.acknowledges}"

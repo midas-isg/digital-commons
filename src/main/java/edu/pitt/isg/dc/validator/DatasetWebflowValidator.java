@@ -18,6 +18,7 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -96,12 +97,22 @@ public class DatasetWebflowValidator {
                     "title").defaultText("Title cannot be empty").build());
             isValid = "false";
         }
+
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+
+        if(requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
+            return  "index";
+        }
         return isValid;
     }
 
     public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
         // Validate and remove empty types
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
         boolean valid = clearTypes(dataset.getTypes(), messageContext);
+        if(requestContext.getFlowScope().get("indexValue") != null && valid) {
+            return "index";
+        }
         return Boolean.toString(valid);
     }
 

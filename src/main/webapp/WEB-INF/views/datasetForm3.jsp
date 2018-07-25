@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="spatialCoverage"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                     <myTags:editPlaceUnbounded path="spatialCoverage"
                                                specifier="spatialCoverage"
                                                placeList="${dataset.spatialCoverage}"

@@ -29,32 +29,27 @@
                 </c:otherwise>
             </c:choose>
             <ul class="collapse list-unstyled" id="basicSubmenu">
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=identifier">Identifier</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=title">Title</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=description">Description</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=dates">Dates</a></li>
+                <li><a href="#" onclick="submitForm('identifier')">Identifier</a></li>
+                <li><a href="#" onclick="submitForm('title')">Title</a></li>
+                <li><a href="#" onclick="submitForm('description')">Description</a></li>
+                <li><a href="#" onclick="submitForm('dates')">Dates</a></li>
             </ul>
-
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=identifier">Identifier</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=title">Title</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=description">Description</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=dates">Dates</a></li>--%>
 
             <c:choose>
                 <c:when test="${active == 'storedIn'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=storedIn">Stored In</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('storedIn')">Stored In</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=storedIn">Stored In</a></li>
+                    <li><a href="#" onclick="submitForm('storedIn')">Stored In</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'spatialCoverage'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=spatialCoverage">Spatial Coverage</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('spatialCoverage')">Spatial Coverage</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=spatialCoverage">Spatial Coverage</a></li>
+                    <li><a href="#" onclick="submitForm('spatialCoverage')">Spatial Coverage</a></li>
                 </c:otherwise>
             </c:choose>
 
@@ -67,31 +62,27 @@
                 </c:otherwise>
             </c:choose>
             <ul class="collapse list-unstyled" id="typesSubmenu">
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=types">Types</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=availability">Availability</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=refinement">Refinement</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=aggregation">Aggregation</a></li>
+                <li><a href="#" onclick="submitForm('types')">Types</a></li>
+                <li><a href="#" onclick="submitForm('availability')">Availability</a></li>
+                <li><a href="#" onclick="submitForm('refinement')">Refinement</a></li>
+                <li><a href="#" onclick="submitForm('aggregation')">Aggregation</a></li>
             </ul>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=types">Types</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=availability">Availability</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=refinement">Refinement</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=aggregation">Aggregation</a></li>--%>
 
             <c:choose>
                 <c:when test="${active == 'distributions'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=distributions">Distributions</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('distributions')">Distributions</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=distributions">Distributions</a></li>
+                    <li><a href="#" onclick="submitForm('distributions')">Distributions</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'primaryPublications'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=primaryPublications">Primary Publications</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('primaryPublications')">Primary Publications</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=primaryPublications">Primary Publications</a></li>
+                    <li><a href="#" onclick="submitForm('primaryPublications')">Primary Publications</a></li>
                 </c:otherwise>
             </c:choose>
 
@@ -105,54 +96,52 @@
                 </c:otherwise>
             </c:choose>
             <ul class="collapse list-unstyled" id="citationSubmenu">
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=citations">Citations</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=citationCount">Citation Count</a></li>
+                <li><a href="#" onclick="submitForm('citations')">Citations</a></li>
+                <li><a href="#" onclick="submitForm('citationCount')">Citation Count</a></li>
             </ul>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=citations">Citations</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=citationCount">Citation Count</a></li>--%>
 
             <c:choose>
                 <c:when test="${active == 'producedBy'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=producedBy">Produced By</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('producedBy')">Produced By</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=producedBy">Produced By</a></li>
+                    <li><a href="#" onclick="submitForm('producedBy')">Produced By</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'creators'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=creators">Creators</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('creators')">Creators</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=creators">Creators</a></li>
+                    <li><a href="#" onclick="submitForm('creators')">Creators</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'licenses'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=licenses">Licenses</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('licenses')">Licenses</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=licenses">Licenses</a></li>
+                    <li><a href="#" onclick="submitForm('licenses')">Licenses</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'isAbout'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=isAbout">Is About</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('isAbout')">Is About</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=isAbout">Is About</a></li>
+                    <li><a href="#" onclick="submitForm('isAbout')">Is About</a></li>
                 </c:otherwise>
             </c:choose>
 
             <c:choose>
                 <c:when test="${active == 'acknowledges'}">
-                    <li class="active"><a href="${flowExecutionUrl}&_eventId=index&indexValue=acknowledges">Acknowledges</a></li>
+                    <li class="active"><a href="#" onclick="submitForm('acknowledges')">Acknowledges</a></li>
                 </c:when>
                 <c:otherwise>
-                    <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=acknowledges">Acknowledges</a></li>
+                    <li><a href="#" onclick="submitForm('acknowledges')">Acknowledges</a></li>
                 </c:otherwise>
             </c:choose>
 
@@ -165,11 +154,9 @@
                 </c:otherwise>
             </c:choose>
             <ul class="collapse list-unstyled" id="extraSubmenu">
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=version">Version</a></li>
-                <li><a href="${flowExecutionUrl}&_eventId=index&indexValue=extraProperties">Extra Properties</a></li>
+                <li><a href="#" onclick="submitForm('version')">Version</a></li>
+                <li><a href="#" onclick="submitForm('extraProperties')">Extra Properties</a></li>
             </ul>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=version">Version</a></li>--%>
-            <%--<li><a href="${flowExecutionUrl}&_eventId=index&indexValue=extraProperties">Extra Properties</a></li>--%>
         </ul>
     </nav>
 </div>
@@ -186,4 +173,9 @@
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
+    
+    function submitForm(indexValue) {
+        $("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=index&indexValue=" + indexValue);
+        document.getElementById("entry-form").submit();
+    }
 </script>

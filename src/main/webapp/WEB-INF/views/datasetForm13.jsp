@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="extra"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                     <myTags:editNonRequiredNonZeroLengthString path="version"
                                                                string="${dataset.version}"
                                                                specifier="version"

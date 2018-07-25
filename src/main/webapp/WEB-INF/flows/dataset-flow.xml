@@ -76,7 +76,8 @@
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
         </transition>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm1">
+            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
 
@@ -84,7 +85,7 @@
 
     <action-state id="validateForm1">
         <evaluate expression="datasetWebflowValidator.validateDatasetForm1(flowScope.dataset, messageContext, flowScope.categoryID)"/>
-
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm2"/>
         <transition on="false" to="datasetForm1"/>
 
@@ -139,14 +140,14 @@
         <transition on="previous" to="datasetForm3"/>
         <transition on="next" to="validateForm4"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm4">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm4">
         <evaluate expression="datasetWebflowValidator.validateDatasetForm4(flowScope.dataset, messageContext)"/>
-
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm5"/>
         <transition on="false" to="datasetForm4"/>
 
@@ -242,18 +243,23 @@
         <transition on="next" to="validateForm9"/>
 
         <transition on="index" to="index">
-            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        <!--<transition on="index" to="validateForm9">-->
+        <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm9">
         <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <!--<transition on="index" to="index"/>-->
         <transition on="true" to="datasetForm10"/>
         <transition on="false" to="datasetForm9"/>
 
     </action-state>
+    <!--End form page 9-->
+    <!--               -->
 
+    <!-- Licenses -->
+    <!--Form page 10-->
     <view-state id="datasetForm10" model="flowScope.dataset">
         <transition on="previous" to="datasetForm9"/>
         <transition on="next" to="validateForm10"/>
@@ -270,7 +276,11 @@
         <transition on="false" to="datasetForm10"/>
 
     </action-state>
+    <!--End form page 10-->
+    <!--               -->
 
+    <!-- Is About -->
+    <!--Form page 11-->
     <view-state id="datasetForm11" model="flowScope.dataset">
         <transition on="previous" to="datasetForm10"/>
         <transition on="next" to="validateForm11"/>
@@ -287,7 +297,11 @@
         <transition on="false" to="datasetForm11"/>
 
     </action-state>
+    <!--End form page 11-->
+    <!--               -->
 
+    <!-- Acknowledges -->
+    <!--Form page 12-->
     <view-state id="datasetForm12" model="flowScope.dataset">
         <transition on="previous" to="datasetForm11"/>
         <transition on="next" to="validateForm12"/>
@@ -304,10 +318,18 @@
         <transition on="false" to="datasetForm12"/>
 
     </action-state>
+    <!--End form page 12-->
+    <!--               -->
 
+    <!-- Extra Properties -->
+    <!--Form page 13-->
     <view-state id="datasetForm13" model="flowScope.dataset">
         <transition on="previous" to="datasetForm12"/>
         <transition on="submit" to="validateForm13"/>
+
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
     </view-state>
 
     <action-state id="validateForm13">
@@ -320,6 +342,8 @@
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </action-state>
+    <!--End form page 13-->
+    <!--               -->
 
    <end-state id="entryConfirmation"/>
 
