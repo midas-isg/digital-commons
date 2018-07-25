@@ -69,17 +69,12 @@
                                 </button>
                             </div>
                             <div class="form-group control-group edit-form-group">
-                                <label>Location</label>
-                                <br>
-                                <button class="btn btn-danger location-remove" type="button"><i
-                                        class="glyphicon glyphicon-remove"></i>
-                                    Remove
-                                </button>
-                                <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
-                                                                           label="Postal Address"
-                                                                           string="${study.location.postalAddress}"
-                                                                           path="${path}.location.postalAddress">
-                                </myTags:editRequiredNonZeroLengthString>
+                                <myTags:editPlace path="${path}.location"
+                                                  specifier="${specifier}-location"
+                                                  place="${study.location}"
+                                                  expanded="false"
+                                                  label="Location">
+                                </myTags:editPlace>
                             </div>
                         </c:when>
                         <c:otherwise>
@@ -111,21 +106,6 @@
 </c:choose>
 
 
-<div class="copy-location hide">
-    <div class="form-group control-group edit-form-group">
-        <label>Location</label>
-        <br>
-        <button class="btn btn-danger location-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Postal Address"
-                                                label="Postal Address"
-                                                path="${path}.location.postalAddress">
-        </myTags:editRequiredNonZeroLengthString>
-    </div>
-</div>
-
-
 <div class="copy-study hide">
     <div class="form-group control-group">
         <button class="btn btn-danger study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
@@ -134,22 +114,19 @@
                                                 label="Name"
                                                 path="${path}.name">
         </myTags:editRequiredNonZeroLengthString>
-        <br>
         <myTags:editDatesBounded label="Start Date"
                                  path="${path}.startDate"
                                  specifier="${specifier}-startDate">
         </myTags:editDatesBounded>
-        <br>
         <myTags:editDatesBounded label="End Date"
                                  path="${path}.endDate"
                                  specifier="${specifier}-endDate">
         </myTags:editDatesBounded>
-        <div>
-            <button class="btn btn-success add-location" id="${specifier}-location" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                Location
-            </button>
-        </div>
+        <myTags:editPlace path="${path}.location"
+                          specifier="${specifier}-location"
+                          expanded="false"
+                          label="Location">
+        </myTags:editPlace>
     </div>
 </div>
 
@@ -173,20 +150,6 @@
             // $(this).parents(".control-group").remove();
             clearAndHideEditControlGroup(this);
             $(".${specifier}-study-add-more").show();
-        });
-
-        //Show/Hide Location
-        $("body").on("click", ".add-location", function () {
-            var html = $(".copy-location").html();
-            html = html.replace('name="postalAddress"', 'name="${path}.location.postalAddress"');
-
-            $(this).after(html);
-            $(this).hide();
-        });
-        $("body").on("click", ".location-remove", function () {
-            // $(this).parent(".control-group").remove();
-            clearAndHideEditControlGroup(this);
-            $(".add-location").show();
         });
 
     });
