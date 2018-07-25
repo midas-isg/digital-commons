@@ -9,9 +9,6 @@ import java.util.*;
 public class ReflectionFactory {
 
     private static String getGenericTypeOfDeclaredField(String field, Class clazz) {
-        if (field.equals("alternateIdentifiers") && clazz.getName().contains("About")) {
-            System.out.println("hmm");
-        }
         try {
             return clazz.getDeclaredField(field).getGenericType().getTypeName();
         } catch (NoSuchFieldException e) {
@@ -56,10 +53,7 @@ public class ReflectionFactory {
                     String possibleSetter = "s" + m.getName().substring(1, m.getName().length());
                     try {
                         Method setter = instance.getClass().getMethod(possibleSetter, m.getReturnType());
-                        System.out.println("Setting " + possibleSetter);
-
                         if (m.getReturnType().equals(List.class)) {
-                            System.out.println(m.getTypeParameters());
                             String field = m.getName().substring(3, m.getName().length());
                             field = field.substring(0, 1).toLowerCase() + field.substring(1, m.getName().length() - 3);
                             String name = ReflectionFactory.getGenericTypeOfDeclaredField(field, clazz);
