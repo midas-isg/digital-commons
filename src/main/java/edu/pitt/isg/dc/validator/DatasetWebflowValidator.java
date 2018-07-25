@@ -163,25 +163,38 @@ public class DatasetWebflowValidator {
 
 
         //Clear up dataset before submitting
-        Method[] methods = dataset.getClass().getDeclaredMethods();
-        for(Method method : methods) {
-            if (isGetter(method)) {
-                try {
-                    Object obj = method.invoke(dataset);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
         if(isObjectEmpty(dataset.getIdentifier())) {
             dataset.setIdentifier(null);
         }
-        if (!isEmpty(dataset.getIdentifier())) {
-            if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
-                dataset.setIdentifier(null);
-            }
+        if(isObjectEmpty(dataset.getDates())) {
+            dataset.setDates(null);
+        }
+        if(isObjectEmpty(dataset.getStoredIn())) {
+            dataset.setStoredIn(null);
+        }
+        if(isObjectEmpty(dataset.getSpatialCoverage())) {
+            dataset.setSpatialCoverage(null);
+        }
+        if(isObjectEmpty(dataset.getDistributions())) {
+            dataset.setDistributions(null);
+        }
+        if(isObjectEmpty(dataset.getPrimaryPublications())) {
+            dataset.setPrimaryPublications(null);
+        }
+        if(isObjectEmpty(dataset.getCitations())) {
+            dataset.setCitations(null);
+        }
+        if(isObjectEmpty(dataset.getLicenses())) {
+            dataset.setLicenses(null);
+        }
+        if(isObjectEmpty(dataset.getIsAbout())) {
+            dataset.setIsAbout(null);
+        }
+        if(isObjectEmpty(dataset.getAcknowledges())) {
+            dataset.setAcknowledges(null);
+        }
+        if(isObjectEmpty(dataset.getExtraProperties())) {
+            dataset.setExtraProperties(null);
         }
 
 
