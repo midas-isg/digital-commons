@@ -3,7 +3,9 @@ package edu.pitt.isg.dc.utils;
 import edu.pitt.isg.mdc.dats2_2.Person;
 import org.springframework.util.AutoPopulatingList;
 
-public class ReflectionFactoryElementFactory<E> implements AutoPopulatingList.ElementFactory<E> {
+import java.io.Serializable;
+
+public class ReflectionFactoryElementFactory<E> implements AutoPopulatingList.ElementFactory<E>, Serializable {
     private final Class<? extends E> elementClass;
 
     public ReflectionFactoryElementFactory(Class<? extends E> elementClass) {

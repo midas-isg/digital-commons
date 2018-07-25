@@ -21,9 +21,13 @@ import org.springframework.webflow.execution.RequestContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Properties;
 
+import static ch.qos.logback.core.joran.util.beans.BeanUtil.isGetter;
+import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
@@ -148,6 +152,21 @@ public class DatasetWebflowValidator {
 
 
         //Clear up dataset before submitting
+        Method[] methods = dataset.getClass().getDeclaredMethods();
+        for(Method method : methods) {
+            if (isGetter(method)) {
+                try {
+                    Object obj = method.invoke(dataset);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if(isObjectEmpty(dataset.getIdentifier())) {
+            dataset.setIdentifier(null);
+        }
         if (!isEmpty(dataset.getIdentifier())) {
             if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
                 dataset.setIdentifier(null);
