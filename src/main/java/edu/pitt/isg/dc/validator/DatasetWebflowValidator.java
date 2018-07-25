@@ -18,12 +18,17 @@ import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Properties;
 
+import static ch.qos.logback.core.joran.util.beans.BeanUtil.isGetter;
+import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
@@ -92,12 +97,22 @@ public class DatasetWebflowValidator {
                     "title").defaultText("Title cannot be empty").build());
             isValid = "false";
         }
+
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+
+        if(requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
+            return  "index";
+        }
         return isValid;
     }
 
     public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
         // Validate and remove empty types
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
         boolean valid = clearTypes(dataset.getTypes(), messageContext);
+        if(requestContext.getFlowScope().get("indexValue") != null && valid) {
+            return "index";
+        }
         return Boolean.toString(valid);
     }
 
@@ -148,6 +163,21 @@ public class DatasetWebflowValidator {
 
 
         //Clear up dataset before submitting
+        Method[] methods = dataset.getClass().getDeclaredMethods();
+        for(Method method : methods) {
+            if (isGetter(method)) {
+                try {
+                    Object obj = method.invoke(dataset);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        if(isObjectEmpty(dataset.getIdentifier())) {
+            dataset.setIdentifier(null);
+        }
         if (!isEmpty(dataset.getIdentifier())) {
             if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
                 dataset.setIdentifier(null);

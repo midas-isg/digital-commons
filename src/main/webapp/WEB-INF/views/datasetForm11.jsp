@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="isAbout"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <myTags:editIsAbout path="isAbout"
                                     specifier="isAbout"
                                     isAboutList="${dataset.isAbout}"

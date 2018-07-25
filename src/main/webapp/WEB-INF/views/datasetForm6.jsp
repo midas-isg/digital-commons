@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="primaryPublications"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                     <myTags:editPublication path="primaryPublications"
                                             specifier="primaryPublications"
                                             publications="${dataset.primaryPublications}"

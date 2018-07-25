@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.config;
 import java.util.Collections;
 
 import edu.pitt.isg.dc.utils.DatasetFactory;
+import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -50,8 +51,16 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     @Bean
     @Scope("prototype")
     public Dataset dataset() {
-        Dataset dataset = new Dataset();
-        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+        Dataset dataset = null;
+        try {
+            dataset = (Dataset) ReflectionFactory.create(Dataset.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+//        Dataset dataset = new Dataset();
+//        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
         return dataset;
     }
 }
