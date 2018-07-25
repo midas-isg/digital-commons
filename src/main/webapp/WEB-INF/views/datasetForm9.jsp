@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="creators"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
                                                   label="Creator"
                                                   path="creators"

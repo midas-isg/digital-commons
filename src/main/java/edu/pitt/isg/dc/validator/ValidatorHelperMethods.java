@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.validator;
 
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.Identifier;
 import edu.pitt.isg.mdc.v1_0.NestedIdentifier;
@@ -9,6 +10,8 @@ import org.springframework.validation.Errors;
 
 import java.util.List;
 import java.util.ListIterator;
+
+import static edu.pitt.isg.dc.utils.TagUtil.isPerson;
 
 public class ValidatorHelperMethods {
     public static void clearStringList(ListIterator<String> listIterator) {
@@ -52,6 +55,34 @@ public class ValidatorHelperMethods {
             return true;
         }
         return false;
+    }
+
+    public static PersonComprisedEntity convertPersonOrganization(PersonComprisedEntity personComprisedEntity) {
+        if(personComprisedEntity instanceof PersonOrganization) {
+            if(isPerson(personComprisedEntity)) {
+                Person person = new Person();
+                person.setFullName(((PersonOrganization) personComprisedEntity).getFullName());
+                person.setFirstName(((PersonOrganization) personComprisedEntity).getFirstName());
+                person.setMiddleInitial(((PersonOrganization) personComprisedEntity).getMiddleInitial());
+                person.setLastName(((PersonOrganization) personComprisedEntity).getLastName());
+                person.setEmail(((PersonOrganization) personComprisedEntity).getEmail());
+                person.setAffiliations(((PersonOrganization) personComprisedEntity).getAffiliations());
+                person.setRoles(((PersonOrganization) personComprisedEntity).getRoles());
+                person.setIdentifier(personComprisedEntity.getIdentifier());
+                person.setAlternateIdentifiers(personComprisedEntity.getAlternateIdentifiers());
+
+                return person;
+            } else {
+                Organization organization = new Organization();
+                organization.setIdentifier(personComprisedEntity.getIdentifier());
+                organization.setAlternateIdentifiers(personComprisedEntity.getAlternateIdentifiers());
+                organization.setName(((PersonOrganization) personComprisedEntity).getName());
+                organization.setAbbreviation(((PersonOrganization) personComprisedEntity).getAbbreviation());
+                organization.setLocation(((PersonOrganization) personComprisedEntity).getLocation());
+
+            }
+        }
+        return null;
     }
 
     public static boolean isEmpty(Object object) {

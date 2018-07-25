@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.utils;
 
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+import edu.pitt.isg.mdc.dats2_2.Organization;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,42 +14,46 @@ public class TagUtil {
             return true;
         }
 
-        boolean isObjectEmpty = false;
+        boolean objectEmpty = false;
 
         if(bean instanceof List) {
             List myList = (List) bean;
             if(myList.size() == 0)
                 return true;
-
-            bean =  myList.get(0);
-        }
-        Method[] methods = bean.getClass().getDeclaredMethods();
-        for(Method method : methods){
-            if(isGetter(method)){
-                try {
-                    Object obj = method.invoke(bean);
-                    if(obj == null || obj.equals("")) {
-                        isObjectEmpty = true;
-                    } else {
-                        if(obj.getClass().isPrimitive()) {
-                            return false;
+            else {
+                for (int i = 0; i < myList.size(); i++) {
+                    objectEmpty = isObjectEmpty(myList.get(i));
+                }
+            }
+        } else {
+            Method[] methods = bean.getClass().getDeclaredMethods();
+            for (Method method : methods) {
+                if (isGetter(method)) {
+                    try {
+                        Object obj = method.invoke(bean);
+                        if (obj == null || obj.equals("")) {
+                            objectEmpty = true;
                         } else {
-                            if(isObjectEmpty(obj)) {
-                                isObjectEmpty = true;
-                            } else
+                            if (obj.getClass().isPrimitive()) {
                                 return false;
+                            } else {
+                                if (isObjectEmpty(obj)) {
+                                    objectEmpty = true;
+                                } else
+                                    return false;
+                            }
                         }
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (InvocationTargetException e) {
+                        e.printStackTrace();
                     }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (IllegalArgumentException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
                 }
             }
         }
-        return  isObjectEmpty;
+        return  objectEmpty;
     }
 
     private static boolean isGetter(Method method){
@@ -62,7 +67,10 @@ public class TagUtil {
 
     public static boolean isPerson(PersonComprisedEntity personComprisedEntity) {
         try {
-            if(isObjectEmpty(((PersonOrganization) personComprisedEntity).getName()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getAbbreviation()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getLocation())) {
+            if(personComprisedEntity instanceof Organization) {
+                return false;
+            }
+            else if(isObjectEmpty(((PersonOrganization) personComprisedEntity).getName()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getAbbreviation()) && isObjectEmpty(((PersonOrganization) personComprisedEntity).getLocation())) {
                 return true;
             } else {
                 return false;

@@ -13,36 +13,37 @@
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
 
 
-<c:choose>
-    <c:when test="${not empty date}">
-        <div>
-            <button class="btn btn-success ${specifier}-add" type="button" style="display:none;"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                ${label}
-            </button>
-        </div>
-        <div class="form-group control-group edit-form-group">
-            <label>${label}</label>
-            <br>
-            <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-            <myTags:editDates date="${date}"
-                              path="${path}"
-                              specifier="${specifier}">
-            </myTags:editDates>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div>
-            <button class="btn btn-success ${specifier}-add" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                ${label}
-            </button>
-        </div>
-    </c:otherwise>
-</c:choose>
-
+<div class="form-group">
+    <c:choose>
+        <c:when test="${not empty date}">
+            <div>
+                <button class="btn btn-success ${specifier}-add" type="button" style="display:none;"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    ${label}
+                </button>
+            </div>
+            <div class="form-group control-group edit-form-group">
+                <label>${label}</label>
+                <br>
+                <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+                <myTags:editDates date="${date}"
+                                  path="${path}"
+                                  specifier="${specifier}">
+                </myTags:editDates>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div>
+                <button class="btn btn-success ${specifier}-add" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                    ${label}
+                </button>
+            </div>
+        </c:otherwise>
+    </c:choose>
+</div>
 
 <div class="${specifier}-copy hide">
     <div class="form-group control-group edit-form-group">

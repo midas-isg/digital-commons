@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="licenses"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <myTags:editLicense path="licenses"
                                     licenses="${dataset.licenses}"
                                     label="License"

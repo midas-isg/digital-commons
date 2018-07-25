@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="storedIn"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                     <myTags:editDataRepository name="Stored In"
                                                path="storedIn"
                                                dataRepository="${dataset.storedIn}"

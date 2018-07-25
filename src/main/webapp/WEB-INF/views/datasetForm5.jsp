@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="distributions"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                     <myTags:editDistributions distributions="${dataset.distributions}"
                                               specifier="distributions"
                                               path="distributions">

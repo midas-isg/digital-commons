@@ -13,18 +13,25 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.Person;
+import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
 import org.springframework.webflow.execution.RequestContext;
+import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
-import java.util.Properties;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.*;
 
+import static ch.qos.logback.core.joran.util.beans.BeanUtil.isGetter;
+import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.clearTypes;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
 @Component
@@ -92,24 +99,28 @@ public class DatasetWebflowValidator {
                     "title").defaultText("Title cannot be empty").build());
             isValid = "false";
         }
+
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+
+        if(requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
+            return  "index";
+        }
         return isValid;
     }
 
     public String validateDatasetForm4(Dataset dataset, MessageContext messageContext) {
         // Validate and remove empty types
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
         boolean valid = clearTypes(dataset.getTypes(), messageContext);
+        if(requestContext.getFlowScope().get("indexValue") != null && valid) {
+            return "index";
+        }
         return Boolean.toString(valid);
     }
 
     public String validateDataset(Dataset dataset, MessageContext messageContext) {
         String title = dataset.getTitle();
 
-//        Person person  = new Person();
-//        PersonOrganization personOrganization = (PersonOrganization) dataset.getCreators().get(0);
-//        person.setFirstName(personOrganization.getFirstName());
-//        person.setLastName(personOrganization.getLastName());
-//        person.setIdentifier(personOrganization.getIdentifier());
-//        dataset.getCreators().add(person);
         if (title != "") {
             return "true";
         } else {
@@ -148,11 +159,47 @@ public class DatasetWebflowValidator {
 
 
         //Clear up dataset before submitting
-        if (!isEmpty(dataset.getIdentifier())) {
-            if (isEmpty(dataset.getIdentifier().getIdentifier()) && isEmpty(dataset.getIdentifier().getIdentifierSource())) {
-                dataset.setIdentifier(null);
-            }
+        if(isObjectEmpty(dataset.getIdentifier())) {
+            dataset.setIdentifier(null);
         }
+        if(isObjectEmpty(dataset.getDates())) {
+            dataset.setDates(null);
+        }
+        if(isObjectEmpty(dataset.getStoredIn())) {
+            dataset.setStoredIn(null);
+        }
+        if(isObjectEmpty(dataset.getSpatialCoverage())) {
+            dataset.setSpatialCoverage(null);
+        }
+        if(isObjectEmpty(dataset.getDistributions())) {
+            dataset.setDistributions(null);
+        }
+        if(isObjectEmpty(dataset.getPrimaryPublications())) {
+            dataset.setPrimaryPublications(null);
+        }
+        if(isObjectEmpty(dataset.getCitations())) {
+            dataset.setCitations(null);
+        }
+        if(isObjectEmpty(dataset.getLicenses())) {
+            dataset.setLicenses(null);
+        }
+        if(isObjectEmpty(dataset.getIsAbout())) {
+            dataset.setIsAbout(null);
+        }
+        if(isObjectEmpty(dataset.getAcknowledges())) {
+            dataset.setAcknowledges(null);
+        }
+        if(isObjectEmpty(dataset.getExtraProperties())) {
+            dataset.setExtraProperties(null);
+        }
+
+        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = dataset.getCreators().listIterator();
+        List<PersonComprisedEntity> newCreatorsList = new ArrayList<>();
+        while (personComprisedEntityListIterator.hasNext()) {
+            PersonComprisedEntity personComprisedEntity = personComprisedEntityListIterator.next();
+            newCreatorsList.add(convertPersonOrganization(personComprisedEntity));
+        }
+        dataset.setCreators(newCreatorsList);
 
 
         EntryView entryObject = new EntryView();

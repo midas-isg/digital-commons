@@ -21,7 +21,7 @@
         <div class="col-xs-12">
             <myTags:datasetIndex active="producedBy"></myTags:datasetIndex>
 
-            <form method="post" action="${flowExecutionUrl}">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <myTags:editStudy study="${dataset.producedBy}"
                                   specifier="producedBy"
                                   path="producedBy"
