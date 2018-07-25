@@ -121,6 +121,9 @@
 
             var specifier = "${specifier}";
             var path = "${path}";
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var html = $(".${specifier}-copy").html();
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");

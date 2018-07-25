@@ -156,7 +156,10 @@
                 html = $(".${specifier}-person-required-copy").html();
             } else html = $(".${specifier}-person-copy").html();
             // path = path.replace('[', '\\[').replace(']', '\\]');
-            path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            // path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']').replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');
@@ -177,7 +180,10 @@
                 html = $(".${specifier}-organization-copy").html();
             }
             // path = path.replace('[', '\\[').replace(']', '\\]');
-            path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            // path = path.replace(/\[/g, "\\[").replace(/\]/g, "\\]");
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']').replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');
