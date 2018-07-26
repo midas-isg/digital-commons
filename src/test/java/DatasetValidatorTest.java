@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
+import edu.pitt.isg.dc.validator.ValidatorError;
 import edu.pitt.isg.mdc.dats2_2.Access;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.Converter;
@@ -56,10 +57,10 @@ public class DatasetValidatorTest {
         return dataset;
     }
 
-    private List<String> test(Dataset dataset) {
+    private List<ValidatorError> test(Dataset dataset) {
         //don't have to do this yet
         String breadcrumb = "";
-        List<String> errors = new ArrayList<>();
+        List<ValidatorError> errors = new ArrayList<>();
         try {
             ReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
             //somehow "expect" error messages....
@@ -75,7 +76,7 @@ public class DatasetValidatorTest {
 
         dataset.setTitle(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->title\" of type (java.lang.String) is required but value is null.");
         } else fail("No error messages produced for missing Title");
@@ -89,7 +90,7 @@ public class DatasetValidatorTest {
         ((PersonOrganization) dataset.getCreators().get(0)).setFirstName(null);
         ((PersonOrganization) dataset.getCreators().get(0)).setFullName(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->creators\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity> was empty.");
         } else fail("No error messages produced for missing Creator name.");
@@ -112,7 +113,7 @@ public class DatasetValidatorTest {
         ((PersonOrganization) dataset.getCreators().get(0)).getLocation().setName("location name");
 
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->creators\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity> was empty.");
         } else fail("No error messages produced for missing Creator Organization name.");
@@ -128,7 +129,7 @@ public class DatasetValidatorTest {
             iterator.remove();
         }
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->creators\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity> was empty.");
         } else fail("No error messages produced for missing Creators");
@@ -144,7 +145,7 @@ public class DatasetValidatorTest {
             iterator.remove();
         }
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
         } else fail("No error messages produced for missing Types");
@@ -156,7 +157,7 @@ public class DatasetValidatorTest {
 
         dataset.getStoredIn().setName(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
         } else fail("No error messages produced for missing StoredIn (Data Repository) name.");
@@ -169,7 +170,7 @@ public class DatasetValidatorTest {
 //        dataset.getDistributions().get(0).setAccess(DatasetFactory.createAccess(null));
         dataset.getDistributions().get(0).setAccess(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
         } else fail("No error messages produced for empty Distribution Access.");
@@ -181,7 +182,7 @@ public class DatasetValidatorTest {
 
         dataset.getDistributions().get(0).getAccess().setLandingPage(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
         } else fail("No error messages produced for empty Distribution Access LandingPage.");
@@ -193,7 +194,7 @@ public class DatasetValidatorTest {
 
         dataset.getLicenses().get(0).setName(null);
 
-        List<String> errors = test(dataset);
+        List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
         } else fail("No error messages produced for empty License name.");
