@@ -5,9 +5,11 @@ import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
+import edu.pitt.isg.dc.utils.DatasetFactoryPerfectTest;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
 import edu.pitt.isg.dc.validator.ValidatorError;
+import edu.pitt.isg.dc.validator.ValidatorErrorType;
 import edu.pitt.isg.mdc.dats2_2.Access;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.Converter;
@@ -57,6 +59,10 @@ public class DatasetValidatorTest {
         return dataset;
     }
 
+    private Dataset createPerfectDataset(){
+        return DatasetFactoryPerfectTest.createDatasetForWebFlow(null);
+    }
+
     private List<ValidatorError> test(Dataset dataset) {
         //don't have to do this yet
         String breadcrumb = "";
@@ -65,20 +71,35 @@ public class DatasetValidatorTest {
             ReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
             //somehow "expect" error messages....
         } catch (Exception e) {
+            e.printStackTrace();
             fail();
+        }
+        return validatorErrors(errors);
+    }
+
+    private List<ValidatorError> validatorErrors(List<ValidatorError> errors){
+        ListIterator<? extends ValidatorError> iterator = errors.listIterator();
+        while (iterator.hasNext()) {
+            ValidatorError validatorError = iterator.next();
+            if(validatorError.getPath().contains("coordinates")){
+                iterator.remove();
+            }
         }
         return errors;
     }
 
     @Test
     public void testDatasetWithoutTitleOnly() throws Exception {
-        Dataset dataset = createTestDataset(566L);
+//        Dataset dataset = createTestDataset(566L);
+        Dataset dataset = createPerfectDataset();
 
         dataset.setTitle(null);
 
         List<ValidatorError> errors = test(dataset);
+
         if(!errors.isEmpty()) {
-            assertEquals(errors.get(0), "Field \"(root)->title\" of type (java.lang.String) is required but value is null.");
+            assertEquals(errors.get(0).getPath(), "(root)->title");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for missing Title");
     }
 

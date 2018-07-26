@@ -16,7 +16,6 @@ public class IsAboutItems extends IsAbout implements Serializable {
     protected String valueIRI;
     protected Identifier identifier;
     protected List<Identifier> alternateIdentifiers;
-    @XmlElement(required = true)
     protected String name;
     protected String description;
 

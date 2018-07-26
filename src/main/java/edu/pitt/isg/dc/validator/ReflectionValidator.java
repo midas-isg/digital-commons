@@ -224,10 +224,25 @@ public class ReflectionValidator {
             } else if (value.getClass().getName().startsWith("java.lang")) {
                 //seems okay, there is a value
             } else if ((List.class.isAssignableFrom(value.getClass()))) {
-                String name = object.getClass().getDeclaredField(field.getName()).getGenericType().getTypeName();
-                name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
+/*              //Check for alternate ID's
+                if(field.getName().contains("alternateIdentifiers")){
+                    System.out.println(breadcrumb + "->" + field.getName());
+                }
+*/
+                List<Field> publicDeclaredFields = getAllPublicDeclaredFields(object.getClass(), null);
+                Boolean foundField = false;
+                for(int i = 0; i < publicDeclaredFields.size(); i++){
+                    if(publicDeclaredFields.get(i).getName().equals(field.getName())){
+                        String name = publicDeclaredFields.get(i).getGenericType().getTypeName();
+                        name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
+                        validateRequiredList(Class.forName(name), (List) value, breadcrumb, field, errors);
+                        foundField = true;
+                    }
+                }
+                if(!foundField){
+                    throw new Exception("We didn't find the field!!!");
+                }
 
-                validateRequiredList(Class.forName(name), (List) value, breadcrumb, field, errors);
                 //so this is a list of <name>, we need to make sure there is at least one value in the list
             } else {
                 validate(value.getClass(), value, true, breadcrumb, field, errors);
@@ -237,6 +252,7 @@ public class ReflectionValidator {
         }
     }
 
+/*
     public static void main(String[] args) throws Exception {
         Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
         d.setTitle("John's Test");
@@ -263,4 +279,5 @@ public class ReflectionValidator {
             }
         }
     }
+*/
 }

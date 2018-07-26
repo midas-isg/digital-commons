@@ -83,6 +83,14 @@ public class DatasetFactoryPerfectTest {
             dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), AutoPopulatedCategoryValuePairWrapper.class));
         } else dataset.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataset.getExtraProperties()), AutoPopulatedCategoryValuePairWrapper.class));
 
+        dataset.setTitle("Dataset Title");
+        dataset.setDescription("Description of the Dataset");
+        dataset.setAggregation("aggregation");
+        dataset.setAvailability("it's availability");
+        dataset.setCitationCount(1234.56F);
+        dataset.setRefinement("Refinement");
+        dataset.setVersion("Version of the Dataset");
+
         return dataset;
     }
 
@@ -142,6 +150,10 @@ public class DatasetFactoryPerfectTest {
         if(distribution.getUnit() == null){
             distribution.setUnit(createAnnotation());
         }
+        distribution.setDescription("Description of the Distribution");
+        distribution.setSize(123.34F);
+        distribution.setTitle("Title of the Distribution");
+        distribution.setVersion("Version of the Distribution");
 
         return distribution;
     }
@@ -234,6 +246,9 @@ public class DatasetFactoryPerfectTest {
         if(dataStandard.getExtraProperties().isEmpty()){
             dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(null), CategoryValuePair.class));
         } else dataStandard.setExtraProperties(wrapListWithAutoPopulatingList(createCategoryValuePairList(dataStandard.getExtraProperties()), CategoryValuePair.class));
+        dataStandard.setName("Name of the Data Standard");
+        dataStandard.setDescription("Description of the Data Standard");
+        dataStandard.setVersion("version of the data standard");
 
         return dataStandard;
     }
@@ -263,6 +278,9 @@ public class DatasetFactoryPerfectTest {
         if(dataRepository.getAccess().isEmpty()){
             dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(null), AutoPopulatedAccessWrapper.class));
         } else dataRepository.setAccess(wrapListWithAutoPopulatingList(createAccessList(dataRepository.getAccess()), AutoPopulatedAccessWrapper.class));
+        dataRepository.setName("name of the Data Repository");
+        dataRepository.setDescription("description of the Data Repository");
+        dataRepository.setVersion("version");
 
         return dataRepository;
     }
@@ -327,6 +345,8 @@ public class DatasetFactoryPerfectTest {
         if(biologicalEntity.getAlternateIdentifiers().isEmpty()){
             biologicalEntity.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
         } else biologicalEntity.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(biologicalEntity.getAlternateIdentifiers()), Identifier.class));
+        biologicalEntity.setName("biological entity name");
+        biologicalEntity.setDescription("a description of the biological entity");
 
         return biologicalEntity;
     }
@@ -344,6 +364,7 @@ public class DatasetFactoryPerfectTest {
         if(study.getLocation() == null){
             study.setLocation(createPlace(null));
         } else study.setLocation(createPlace(study.getLocation()));
+        study.setName("Study name");
 
         return study;
     }
@@ -371,10 +392,11 @@ public class DatasetFactoryPerfectTest {
         if(license.getCreators().isEmpty()){
             license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(null), AutoPopulatedPersonComprisedEntityWrapper.class));
         } else license.setCreators(wrapListWithAutoPopulatingList(createPersonComprisedEntityList(license.getCreators()), AutoPopulatedPersonComprisedEntityWrapper.class));
+        license.setName("license name");
+        license.setVersion("version of the license");
 
         return license;
     }
-    // I AM HERE!
 
     public static List<Publication> createPublicationList(List<Publication> publicationList){
         if(publicationList == null || publicationList.isEmpty()){
@@ -506,6 +528,11 @@ public class DatasetFactoryPerfectTest {
         if(personOrganization.getLocation() == null){
             personOrganization.setLocation(createPlace(null));
         } else personOrganization.setLocation(createPlace(personOrganization.getLocation()));
+        personOrganization.setLastName("Last name");
+        personOrganization.setFirstName("First name");
+        personOrganization.setFullName("Full name");
+        personOrganization.setEmail("person@emailAddress.com");
+        personOrganization.setMiddleInitial("mi");
 
 
         return personOrganization;
