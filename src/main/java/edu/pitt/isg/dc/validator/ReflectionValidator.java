@@ -1,10 +1,7 @@
 package edu.pitt.isg.dc.validator;
 
 import edu.pitt.isg.dc.utils.ReflectionFactory;
-import edu.pitt.isg.mdc.dats2_2.Annotation;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.Organization;
-import edu.pitt.isg.mdc.dats2_2.Type;
+import edu.pitt.isg.mdc.dats2_2.*;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.lang.reflect.Field;
@@ -14,6 +11,10 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
+
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertIsAboutItems;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 
 public class ReflectionValidator {
 
@@ -24,6 +25,24 @@ public class ReflectionValidator {
     private static Object getValue(Field field, Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = object.getClass().getMethod("get" + capFirst(field.getName()));
         return method.invoke(object);
+    }
+
+    private static List<PersonComprisedEntity> convertPersonComprisedEntityList(List<PersonComprisedEntity> personComprisedEntities) {
+        List<PersonComprisedEntity> newPersonComprisedEntityList = new ArrayList<>();
+        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = personComprisedEntities.listIterator();
+        while (personComprisedEntityListIterator.hasNext()) {
+            newPersonComprisedEntityList.add(convertPersonOrganization(personComprisedEntityListIterator.next()));
+        }
+        return newPersonComprisedEntityList;
+    }
+
+    private static List<IsAbout> convertIsAboutList(List<IsAbout> isAboutList) {
+        List<IsAbout> newIsAboutList =  new ArrayList<>();
+        ListIterator<IsAbout> isAboutListIterator = isAboutList.listIterator();
+        while(isAboutListIterator.hasNext()) {
+            newIsAboutList.add(convertIsAboutItems(isAboutListIterator.next()));
+        }
+        return newIsAboutList;
     }
 
     private static List<Method> getPublicMethods(Object object, List<Method> publicMethods) throws Exception {
@@ -43,6 +62,10 @@ public class ReflectionValidator {
             return getPublicMethods(object.getClass().getSuperclass().newInstance(), publicMethods);
     }
 
+    private static boolean isList(Object object) {
+        return (List.class.isAssignableFrom(object.getClass()));
+    }
+
     private static List<Field> getRequiredFields(Class clazz) throws Exception {
         List<Field> declaredFields = ReflectionValidator.getAllPublicDeclaredFields(clazz, null);
         List<Field> requiredFields = new ArrayList<>();
@@ -59,7 +82,40 @@ public class ReflectionValidator {
         return requiredFields;
     }
 
-    private static List<Field> getAllPublicDeclaredFields(Class clazz, List<Field> declaredFields) throws Exception {
+    private static List<Field> getNonEmptyNonRequiredFields(Class clazz, Object object) throws Exception {
+        List<Field> declaredFields = ReflectionValidator.getAllPublicDeclaredFields(clazz, null);
+        List<Field> nonEmptyNonRequiredFields = new ArrayList<>();
+
+        for (Field field : declaredFields) {
+            boolean nonEmptyNonRequiredField = true;
+            if (field.isAnnotationPresent(XmlElement.class)) {
+                XmlElement annotation = (XmlElement) field.getAnnotation(XmlElement.class);
+                if (annotation.required()) {
+                    nonEmptyNonRequiredField = false;
+                }
+            }
+            if (nonEmptyNonRequiredField) {
+                Object value = getValue(field, object);
+                if (value != null) {
+                    if (isList(value)) {
+                        if (!isListEmtpy((List) value))
+                            nonEmptyNonRequiredFields.add(field);
+                    } else {
+                        if (!isObjectEmpty(value)) {
+                            nonEmptyNonRequiredFields.add(field);
+                        }
+                    }
+                }
+            }
+
+
+        }
+        return nonEmptyNonRequiredFields;
+
+    }
+
+    private static List<Field> getAllPublicDeclaredFields(Class clazz, List<Field> declaredFields) throws
+            Exception {
         if (declaredFields == null)
             declaredFields = new ArrayList<>();
 
@@ -124,7 +180,7 @@ public class ReflectionValidator {
 
     //
     private static <T> void validateRequiredList(Class<T> clazz, List<T> list, String
-            breadcrumb, Field field, List<String> errors) throws Exception {
+            breadcrumb, Field field, List<ValidatorError> errors) throws Exception {
         breadcrumb += "->" + field.getName();
         boolean foundNonEmpty = false;
         for (T item : list) {
@@ -138,29 +194,33 @@ public class ReflectionValidator {
         if (foundNonEmpty) {
             //ok!
         } else
-            errors.add("Field \"" + breadcrumb + "\" of type " + field.getType().getName() + "<" + clazz.getName() + "> was empty.");
+            errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, Class.forName(field.getType().getName())));
 
     }
 
     public static void validate(Class<?> clazz, Object object, boolean rootIsRequired, String
-            breadcrumb, Field rootField, List<String> errors) throws Exception {
-        if (rootField != null)
-            breadcrumb += rootField.getName();
-        else
+            breadcrumb, Field rootField, List<ValidatorError> errors) throws Exception {
+        if (rootField == null) {
             breadcrumb += "(root)";
+        }
 
         if (rootIsRequired)
             if (isObjectEmpty(object)) {
-                errors.add("Object of required member \"" + breadcrumb + "\" is empty.");
+                errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, object.getClass()));
                 return;
             }
 
         List<Field> requiredFields = getRequiredFields(clazz);
+        List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);
 
-        for (Field field : requiredFields) {
+        List<Field> fieldsToValidate = new ArrayList<>();
+        fieldsToValidate.addAll(requiredFields);
+        fieldsToValidate.addAll(nonEmptyNonRequiredFields);
+
+        for (Field field : fieldsToValidate) {
             Object value = getValue(field, object);
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
-                errors.add("Field \"" + breadcrumb + "->" + field.getName() + "\" of type (" + field.getType().getName() + ") is required but value is null.");
+                errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb + "->" + field.getName(), Class.forName(field.getType().getName())));
             } else if (value.getClass().getName().startsWith("java.lang")) {
                 //seems okay, there is a value
             } else if ((List.class.isAssignableFrom(value.getClass()))) {
@@ -177,27 +237,30 @@ public class ReflectionValidator {
         }
     }
 
-//    public static void main(String[] args) throws Exception {
-//        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
-//        d.setTitle("John's Test");
-//        Type t = new Type();
-//        Annotation a = new Annotation();
-//        a.setValue("hello");
-//        t.setInformation(a);
-//        d.getTypes().add(t);
-//        Organization organization = new Organization();
-//       // organization.setName("John");
-//        d.getCreators().add(organization);
-//        isObjectEmpty(d.getTypes());
-//        List<String> errors = new ArrayList<>();
-//        String breadcrumb = "";
-//        ReflectionValidator.validate(Dataset.class, d, true, breadcrumb, null, errors);
-//        if (errors.size() > 0) {
-//
-//            System.out.println("Validation failed with the following errors:");
-//            for (String error : errors) {
-//                System.out.println("\t" + error);
-//            }
-//        }
-//    }
+    public static void main(String[] args) throws Exception {
+        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
+        d.setTitle("John's Test");
+        Type t = new Type();
+        Annotation a = new Annotation();
+        a.setValue("hello");
+        t.setInformation(a);
+        d.getTypes().add(t);
+        License license = new License();
+        license.setVersion("1.0");
+        d.getLicenses().add(license);
+        Organization organization = new Organization();
+        // organization.setName("John");
+        d.getCreators().add(organization);
+        isObjectEmpty(d.getTypes());
+        List<ValidatorError> errors = new ArrayList<>();
+        String breadcrumb = "";
+        ReflectionValidator.validate(Dataset.class, d, true, breadcrumb, null, errors);
+        if (errors.size() > 0) {
+
+            System.out.println("Validation failed with the following errors:");
+            for (ValidatorError error : errors) {
+                System.out.println("\t" + error);
+            }
+        }
+    }
 }

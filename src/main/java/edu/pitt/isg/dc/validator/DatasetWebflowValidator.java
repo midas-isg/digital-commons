@@ -143,18 +143,21 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             context.getMessageContext().addMessage(new MessageBuilder().error().source(
                     "category").defaultText("Please select a category").build());
-            return "title";
+            context.getFlowScope().put("indexValue", "title");
+            return "index";
         }
 
         //Second check for required fields
         if (validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
             //redirect to page 1
-            return "title";
+            context.getFlowScope().put("indexValue", "title");
+            return "index";
         }
 
         if (validateDatasetForm4(dataset, context.getMessageContext()).equals("false")) {
             //redirect to page 4
-            return "types";
+            context.getFlowScope().put("indexValue", "types");
+            return "index";
         }
 
 
