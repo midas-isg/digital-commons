@@ -1,10 +1,7 @@
 package edu.pitt.isg.dc.validator;
 
 import edu.pitt.isg.dc.utils.ReflectionFactory;
-import edu.pitt.isg.mdc.dats2_2.Annotation;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.mdc.dats2_2.Organization;
-import edu.pitt.isg.mdc.dats2_2.Type;
+import edu.pitt.isg.mdc.dats2_2.*;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.lang.reflect.Field;
@@ -14,6 +11,9 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
+
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 
 public class ReflectionValidator {
 
@@ -24,6 +24,15 @@ public class ReflectionValidator {
     private static Object getValue(Field field, Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = object.getClass().getMethod("get" + capFirst(field.getName()));
         return method.invoke(object);
+    }
+
+    private static List<PersonComprisedEntity> convertPersonComprisedEntityList(List<PersonComprisedEntity> personComprisedEntities) {
+        List<PersonComprisedEntity> newPersonComprisedEntityList =  new ArrayList<>();
+        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = personComprisedEntities.listIterator();
+        while(personComprisedEntityListIterator.hasNext()) {
+            newPersonComprisedEntityList.add(convertPersonOrganization(personComprisedEntityListIterator.next()));
+        }
+        return newPersonComprisedEntityList;
     }
 
     private static List<Method> getPublicMethods(Object object, List<Method> publicMethods) throws Exception {
