@@ -235,7 +235,17 @@ public class ReflectionValidator {
                     if(publicDeclaredFields.get(i).getName().equals(field.getName())){
                         String name = publicDeclaredFields.get(i).getGenericType().getTypeName();
                         name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
-                        validateRequiredList(Class.forName(name), (List) value, breadcrumb, field, errors);
+
+                        if(name.contains("PersonComprisedEntity")) {
+                            List<PersonComprisedEntity> entityList = convertPersonComprisedEntityList((List) value);
+                            validateRequiredList(Class.forName(name), (List) entityList, breadcrumb, field, errors);
+                        } else if(name.contains("IsAbout")) {
+                            List<IsAbout> isAboutList = convertIsAboutList((List) value);
+                            validateRequiredList(Class.forName(name), (List)isAboutList, breadcrumb, field, errors);
+                        } else {
+                            validateRequiredList(Class.forName(name), (List) value, breadcrumb, field, errors);
+                        }
+
                         foundField = true;
                     }
                 }
