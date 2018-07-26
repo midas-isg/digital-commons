@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertIsAboutItems;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 
 public class ReflectionValidator {
@@ -33,6 +34,15 @@ public class ReflectionValidator {
             newPersonComprisedEntityList.add(convertPersonOrganization(personComprisedEntityListIterator.next()));
         }
         return newPersonComprisedEntityList;
+    }
+
+    private static List<IsAbout> convertIsAboutList(List<IsAbout> isAboutList) {
+        List<IsAbout> newIsAboutList =  new ArrayList<>();
+        ListIterator<IsAbout> isAboutListIterator = isAboutList.listIterator();
+        while(isAboutListIterator.hasNext()) {
+            newIsAboutList.add(convertIsAboutItems(isAboutListIterator.next()));
+        }
+        return newIsAboutList;
     }
 
     private static List<Method> getPublicMethods(Object object, List<Method> publicMethods) throws Exception {

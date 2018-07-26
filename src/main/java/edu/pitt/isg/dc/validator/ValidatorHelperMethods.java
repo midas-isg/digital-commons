@@ -1,16 +1,19 @@
 package edu.pitt.isg.dc.validator;
 
+import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.Identifier;
 import edu.pitt.isg.mdc.v1_0.NestedIdentifier;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
+import org.springframework.security.access.method.P;
 import org.springframework.validation.Errors;
 
 import java.util.List;
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.utils.TagUtil.isBiologicalEntity;
 import static edu.pitt.isg.dc.utils.TagUtil.isPerson;
 
 public class ValidatorHelperMethods {
@@ -80,6 +83,28 @@ public class ValidatorHelperMethods {
                 organization.setAbbreviation(((PersonOrganization) personComprisedEntity).getAbbreviation());
                 organization.setLocation(((PersonOrganization) personComprisedEntity).getLocation());
 
+                return organization;
+            }
+        }
+        return null;
+    }
+
+    public static IsAbout convertIsAboutItems(IsAbout isAbout) {
+        if(isAbout instanceof IsAboutItems) {
+            if(isBiologicalEntity(isAbout)) {
+                BiologicalEntity biologicalEntity = new BiologicalEntity();
+                biologicalEntity.setAlternateIdentifiers(((IsAboutItems) isAbout).getAlternateIdentifiers());
+                biologicalEntity.setDescription(((IsAboutItems) isAbout).getDescription());
+                biologicalEntity.setIdentifier(((IsAboutItems) isAbout).getIdentifier());
+                biologicalEntity.setName(((IsAboutItems) isAbout).getName());
+
+                return biologicalEntity;
+            } else {
+                Annotation annotation = new Annotation();
+                annotation.setValue(((IsAboutItems) isAbout).getValue());
+                annotation.setValueIRI(((IsAboutItems) isAbout).getValueIRI());
+
+                return annotation;
             }
         }
         return null;
