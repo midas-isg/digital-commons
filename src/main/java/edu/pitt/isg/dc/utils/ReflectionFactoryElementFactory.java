@@ -30,9 +30,9 @@ public class ReflectionFactoryElementFactory<E> implements AutoPopulatingList.El
         }
     }
 
-    public static void main(String[] args) {
-        ReflectionFactoryElementFactory<Person> factory = new ReflectionFactoryElementFactory<>(Person.class);
-        factory.createElement(3);
-
-    }
+//    public static void main(String[] args) {
+//        ReflectionFactoryElementFactory<Person> factory = new ReflectionFactoryElementFactory<>(Person.class);
+//        factory.createElement(3);
+//
+//    }
 }

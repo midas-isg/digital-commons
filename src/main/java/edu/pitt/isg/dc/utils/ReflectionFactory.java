@@ -75,10 +75,10 @@ public class ReflectionFactory {
         return instance;
     }
 
-    public static void main(String[] args) throws Exception {
-        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
-        d.getLicenses().get(2);
-        System.out.println(d);
-    }
+//    public static void main(String[] args) throws Exception {
+//        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
+//        d.getLicenses().get(2);
+//        System.out.println(d);
+//    }
 
 }

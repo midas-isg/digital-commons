@@ -177,27 +177,27 @@ public class ReflectionValidator {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
-        d.setTitle("John's Test");
-        Type t = new Type();
-        Annotation a = new Annotation();
-        a.setValue("hello");
-        t.setInformation(a);
-        d.getTypes().add(t);
-        Organization organization = new Organization();
-       // organization.setName("John");
-        d.getCreators().add(organization);
-        isObjectEmpty(d.getTypes());
-        List<String> errors = new ArrayList<>();
-        String breadcrumb = "";
-        ReflectionValidator.validate(Dataset.class, d, true, breadcrumb, null, errors);
-        if (errors.size() > 0) {
-
-            System.out.println("Validation failed with the following errors:");
-            for (String error : errors) {
-                System.out.println("\t" + error);
-            }
-        }
-    }
+//    public static void main(String[] args) throws Exception {
+//        Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
+//        d.setTitle("John's Test");
+//        Type t = new Type();
+//        Annotation a = new Annotation();
+//        a.setValue("hello");
+//        t.setInformation(a);
+//        d.getTypes().add(t);
+//        Organization organization = new Organization();
+//       // organization.setName("John");
+//        d.getCreators().add(organization);
+//        isObjectEmpty(d.getTypes());
+//        List<String> errors = new ArrayList<>();
+//        String breadcrumb = "";
+//        ReflectionValidator.validate(Dataset.class, d, true, breadcrumb, null, errors);
+//        if (errors.size() > 0) {
+//
+//            System.out.println("Validation failed with the following errors:");
+//            for (String error : errors) {
+//                System.out.println("\t" + error);
+//            }
+//        }
+//    }
 }
