@@ -7,11 +7,8 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
-import edu.pitt.isg.mdc.dats2_2.Access;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.Converter;
-import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
-import edu.pitt.isg.mdc.dats2_2.Type;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,6 +53,45 @@ public class DatasetValidatorTest {
         return dataset;
     }
 
+    private Dataset CreatePerfectDataset(){
+        Dataset dataset = DatasetFactory.createDatasetForWebFlow(null);
+
+        dataset.setTitle("The perfect dataset.");
+
+        //Identifier
+        Identifier identifier = new Identifier();
+        identifier.setIdentifier("identifier");
+        identifier.setIdentifierSource("identifer source");
+        dataset.setIdentifier(identifier);
+
+        //Type
+        dataset.getTypes().get(0).getInformation().setValue("Type -> Information value");
+        dataset.getTypes().get(0).getInformation().setValueIRI("Type -> Information value IRI");
+        dataset.getTypes().get(0).getMethod().setValue("Type -> Method value");
+        dataset.getTypes().get(0).getMethod().setValueIRI("Type -> Method value IRI");
+        dataset.getTypes().get(0).getPlatform().setValue("Type -> Platform value");
+        dataset.getTypes().get(0).getPlatform().setValueIRI("Type -> Platform value IRI");
+
+        //StoredIn (DataRepository)
+//        dataset.getStoredIn().
+
+        //Creators
+        dataset.getCreators().get(0).getIdentifier().setIdentifier("identifier");
+        dataset.getCreators().get(0).getIdentifier().setIdentifierSource("identifier source");
+        ((PersonOrganization) dataset.getCreators().get(0)).setLastName("Last name");
+        ((PersonOrganization) dataset.getCreators().get(0)).setFirstName("First name");
+        ((PersonOrganization) dataset.getCreators().get(0)).setFullName("Full name");
+        ((PersonOrganization) dataset.getCreators().get(0)).setEmail("person@emailAddress.com");
+        ((PersonOrganization) dataset.getCreators().get(0)).setMiddleInitial("mi");
+//        ((PersonOrganization) dataset.getCreators().get(0)).setLocation("");
+//        ((PersonOrganization) dataset.getCreators().get(0)).setAffiliations("");
+//        ((PersonOrganization) dataset.getCreators().get(0)).setRoles("");
+
+
+
+        return dataset;
+    }
+
     private List<String> test(Dataset dataset) {
         //don't have to do this yet
         String breadcrumb = "";
@@ -71,7 +107,7 @@ public class DatasetValidatorTest {
 
     @Test
     public void testDatasetWithoutTitleOnly() throws Exception {
-        Dataset dataset = createTestDataset(566L);
+        Dataset dataset = createTestDataset(1155L);
 
         dataset.setTitle(null);
 
@@ -97,8 +133,13 @@ public class DatasetValidatorTest {
 
     @Test
     public void testDatasetCreatorOrganizationNameMissing() {
-        Dataset dataset = createTestDataset(566L);
+        Dataset dataset = createTestDataset(1155L);
 
+        dataset.getCreators().get(0).getIdentifier().setIdentifier("id");
+        dataset.getCreators().get(0).getIdentifier().setIdentifier("id source");
+        ((PersonOrganization) dataset.getCreators().get(0)).setName(null);
+
+/*
         ListIterator<? extends PersonComprisedEntity> iterator = dataset.getCreators().listIterator();
         while (iterator.hasNext()) {
             PersonComprisedEntity personComprisedEntity = iterator.next();
@@ -110,6 +151,7 @@ public class DatasetValidatorTest {
         dataset.getCreators().get(0).getIdentifier().setIdentifier("id source");
         ((PersonOrganization) dataset.getCreators().get(0)).setAbbreviation("abbrev");
         ((PersonOrganization) dataset.getCreators().get(0)).getLocation().setName("location name");
+*/
 
 
         List<String> errors = test(dataset);
@@ -158,7 +200,7 @@ public class DatasetValidatorTest {
 
         List<String> errors = test(dataset);
         if(!errors.isEmpty()) {
-            assertEquals(errors.get(0), "Field \"(root)->types\" of type java.util.List<edu.pitt.isg.mdc.dats2_2.Type> was empty.");
+            assertEquals(errors.get(0), "Field \"(root)->StoredIn->Name\" of type java.util.String was empty.");
         } else fail("No error messages produced for missing StoredIn (Data Repository) name.");
     }
 
@@ -166,8 +208,8 @@ public class DatasetValidatorTest {
     public void testDatasetWithoutDistributionAccess() {
         Dataset dataset = createTestDataset(566L);
 
-//        dataset.getDistributions().get(0).setAccess(DatasetFactory.createAccess(null));
-        dataset.getDistributions().get(0).setAccess(null);
+        dataset.getDistributions().get(0).setAccess(DatasetFactory.createAccess(null));
+//        dataset.getDistributions().get(0).setAccess(null);
 
         List<String> errors = test(dataset);
         if(!errors.isEmpty()) {
