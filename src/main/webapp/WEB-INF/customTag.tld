@@ -15,5 +15,9 @@
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isPerson(edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity)</function-signature>
     </function>
-
+    <function>
+        <name>isBiologicalEntity</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>boolean isBiologicalEntity(edu.pitt.isg.mdc.dats2_2.IsAbout)</function-signature>
+    </function>
 </taglib>
