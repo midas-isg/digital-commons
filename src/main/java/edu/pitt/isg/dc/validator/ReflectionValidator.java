@@ -159,7 +159,7 @@ public class ReflectionValidator {
         return true;
     }
 
-    private <T> void validateList(List<T> list, boolean listIsAllowedToBeEmpty, String
+    public <T> void validateList(List<T> list, boolean listIsAllowedToBeEmpty, String
             breadcrumb, Field field, List<ValidatorError> errors) throws Exception {
         breadcrumb += "->" + field.getName();
         boolean listIsEmpty = true;
