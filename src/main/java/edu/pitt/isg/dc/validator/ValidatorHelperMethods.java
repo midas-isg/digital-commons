@@ -7,7 +7,6 @@ import edu.pitt.isg.mdc.v1_0.Identifier;
 import edu.pitt.isg.mdc.v1_0.NestedIdentifier;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
-import org.springframework.security.access.method.P;
 import org.springframework.validation.Errors;
 
 import java.util.List;
@@ -60,54 +59,48 @@ public class ValidatorHelperMethods {
         return false;
     }
 
-    public static PersonComprisedEntity convertPersonOrganization(PersonComprisedEntity personComprisedEntity) {
-        if(personComprisedEntity instanceof PersonOrganization) {
-            if(isPerson(personComprisedEntity)) {
-                Person person = new Person();
-                person.setFullName(((PersonOrganization) personComprisedEntity).getFullName());
-                person.setFirstName(((PersonOrganization) personComprisedEntity).getFirstName());
-                person.setMiddleInitial(((PersonOrganization) personComprisedEntity).getMiddleInitial());
-                person.setLastName(((PersonOrganization) personComprisedEntity).getLastName());
-                person.setEmail(((PersonOrganization) personComprisedEntity).getEmail());
-                person.setAffiliations(((PersonOrganization) personComprisedEntity).getAffiliations());
-                person.setRoles(((PersonOrganization) personComprisedEntity).getRoles());
-                person.setIdentifier(personComprisedEntity.getIdentifier());
-                person.setAlternateIdentifiers(personComprisedEntity.getAlternateIdentifiers());
+    public static PersonComprisedEntity convertPersonOrganization(PersonOrganization personOrganization) {
+        if (isPerson(personOrganization)) {
+            Person person = new Person();
+            person.setFullName(personOrganization.getFullName());
+            person.setFirstName(personOrganization.getFirstName());
+            person.setMiddleInitial(personOrganization.getMiddleInitial());
+            person.setLastName(personOrganization.getLastName());
+            person.setEmail(personOrganization.getEmail());
+            person.setAffiliations(personOrganization.getAffiliations());
+            person.setRoles(personOrganization.getRoles());
+            person.setIdentifier(personOrganization.getIdentifier());
+            person.setAlternateIdentifiers(personOrganization.getAlternateIdentifiers());
 
-                return person;
-            } else {
-                Organization organization = new Organization();
-                organization.setIdentifier(personComprisedEntity.getIdentifier());
-                organization.setAlternateIdentifiers(personComprisedEntity.getAlternateIdentifiers());
-                organization.setName(((PersonOrganization) personComprisedEntity).getName());
-                organization.setAbbreviation(((PersonOrganization) personComprisedEntity).getAbbreviation());
-                organization.setLocation(((PersonOrganization) personComprisedEntity).getLocation());
+            return person;
+        } else {
+            Organization organization = new Organization();
+            organization.setIdentifier(personOrganization.getIdentifier());
+            organization.setAlternateIdentifiers(personOrganization.getAlternateIdentifiers());
+            organization.setName(personOrganization.getName());
+            organization.setAbbreviation(personOrganization.getAbbreviation());
+            organization.setLocation(personOrganization.getLocation());
 
-                return organization;
-            }
+            return organization;
         }
-        return null;
     }
 
-    public static IsAbout convertIsAboutItems(IsAbout isAbout) {
-        if(isAbout instanceof IsAboutItems) {
-            if(isBiologicalEntity(isAbout)) {
-                BiologicalEntity biologicalEntity = new BiologicalEntity();
-                biologicalEntity.setAlternateIdentifiers(((IsAboutItems) isAbout).getAlternateIdentifiers());
-                biologicalEntity.setDescription(((IsAboutItems) isAbout).getDescription());
-                biologicalEntity.setIdentifier(((IsAboutItems) isAbout).getIdentifier());
-                biologicalEntity.setName(((IsAboutItems) isAbout).getName());
 
+    public static IsAbout convertIsAboutItems(IsAboutItems isAbout) {
+            if (isBiologicalEntity(isAbout)) {
+                BiologicalEntity biologicalEntity = new BiologicalEntity();
+                biologicalEntity.setAlternateIdentifiers(isAbout.getAlternateIdentifiers());
+                biologicalEntity.setDescription(isAbout.getDescription());
+                biologicalEntity.setIdentifier(isAbout.getIdentifier());
+                biologicalEntity.setName(isAbout.getName());
                 return biologicalEntity;
             } else {
                 Annotation annotation = new Annotation();
-                annotation.setValue(((IsAboutItems) isAbout).getValue());
-                annotation.setValueIRI(((IsAboutItems) isAbout).getValueIRI());
-
+                annotation.setValue(isAbout.getValue());
+                annotation.setValueIRI(isAbout.getValueIRI());
                 return annotation;
             }
-        }
-        return null;
+
     }
 
     public static boolean isEmpty(Object object) {
@@ -544,7 +537,7 @@ public class ValidatorHelperMethods {
                 Annotation annotation;
                 try {
                     annotation = type.getInformation();
-                    if (! (isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue()))) {
+                    if (!(isEmpty(annotation.getValueIRI()) && isEmpty(annotation.getValue()))) {
                         hasError = false;
                     }
                 } catch (NullPointerException e) {

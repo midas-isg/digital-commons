@@ -25,7 +25,9 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -71,7 +73,8 @@ public class DatasetValidatorTest {
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            ReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+            ReflectionValidator reflectionValidator = new ReflectionValidator();
+            reflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
             //somehow "expect" error messages....
         } catch (Exception e) {
             e.printStackTrace();

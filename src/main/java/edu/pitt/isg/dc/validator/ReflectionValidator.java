@@ -1,7 +1,9 @@
 package edu.pitt.isg.dc.validator;
 
-import edu.pitt.isg.dc.utils.ReflectionFactory;
-import edu.pitt.isg.mdc.dats2_2.*;
+import edu.pitt.isg.dc.entry.classes.IsAboutItems;
+import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.mdc.dats2_2.IsAbout;
+import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 
 import javax.xml.bind.annotation.XmlElement;
 import java.lang.reflect.Field;
@@ -11,68 +13,54 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ListIterator;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertIsAboutItems;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
 
 public class ReflectionValidator {
 
-    private static String capFirst(String string) {
-        return string.substring(0, 1).toUpperCase() + string.substring(1);
-    }
-
-    private static Object getValue(Field field, Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = object.getClass().getMethod("get" + capFirst(field.getName()));
-        return method.invoke(object);
-    }
-
-    private static List<PersonComprisedEntity> convertPersonComprisedEntityList(List<PersonComprisedEntity> personComprisedEntities) {
-        List<PersonComprisedEntity> newPersonComprisedEntityList = new ArrayList<>();
-        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = personComprisedEntities.listIterator();
-        while (personComprisedEntityListIterator.hasNext()) {
-            newPersonComprisedEntityList.add(convertPersonOrganization(personComprisedEntityListIterator.next()));
-        }
-        return newPersonComprisedEntityList;
-    }
-
-    private static List<IsAbout> convertIsAboutList(List<IsAbout> isAboutList) {
-        List<IsAbout> newIsAboutList =  new ArrayList<>();
-        ListIterator<IsAbout> isAboutListIterator = isAboutList.listIterator();
-        while(isAboutListIterator.hasNext()) {
-            newIsAboutList.add(convertIsAboutItems(isAboutListIterator.next()));
-        }
-        return newIsAboutList;
-    }
-
-    private static List<Method> getPublicMethods(Object object, List<Method> publicMethods) throws Exception {
-        if (publicMethods == null) {
-            publicMethods = new ArrayList<>();
-        }
-        List<Method> allMethods = Arrays.asList(object.getClass().getMethods());
-        for (Method method : allMethods) {
-            if (Modifier.isPublic(method.getModifiers())) {
-                publicMethods.add(method);
-            }
-        }
-
-        if (object.getClass().getSuperclass().getName().equals("java.lang.Object"))
-            return publicMethods;
-        else
-            return getPublicMethods(object.getClass().getSuperclass().newInstance(), publicMethods);
-    }
-
-    private static boolean isList(Object object) {
+    private boolean isList(Object object) {
         return (List.class.isAssignableFrom(object.getClass()));
     }
 
-    private static List<Field> getRequiredFields(Class clazz) throws Exception {
-        List<Field> declaredFields = ReflectionValidator.getAllPublicDeclaredFields(clazz, null);
+    private String capFirstLetter(String string) {
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
+    }
+
+    private String getGetterNameFromFieldName(Field field) {
+        return "get" + capFirstLetter(field.getName());
+    }
+
+    private Object getValue(Field field, Object object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = object.getClass().getMethod(getGetterNameFromFieldName(field));
+        return method.invoke(object);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> List<? extends T> convertItemsToSubclass(List<? extends T> list) throws Exception {
+        List<T> newList = new ArrayList<>(list);
+
+        for (int i = 0; i < newList.size(); i++) {
+            T item = newList.get(i);
+            Class clazz = item.getClass();
+            //IsAboutItems and PersonOrganization are illegal types because the DATS converter doesn't know how to handle these classes
+            if (IsAboutItems.class.isAssignableFrom(clazz))
+                newList.set(i, (T) convertIsAboutItems((IsAboutItems) item));
+            else if (PersonOrganization.class.isAssignableFrom(clazz))
+                newList.set(i, (T) convertPersonOrganization((PersonOrganization) item));
+            else
+                throw new Exception("Unsupported class");
+        }
+        return newList;
+    }
+
+    private List<Field> getRequiredFields(Class clazz) {
+        List<Field> declaredFields = getAllPublicDeclaredFields(clazz);
         List<Field> requiredFields = new ArrayList<>();
 
         for (Field field : declaredFields) {
             if (field.isAnnotationPresent(XmlElement.class)) {
-                XmlElement annotation = (XmlElement) field.getAnnotation(XmlElement.class);
+                XmlElement annotation = field.getAnnotation(XmlElement.class);
                 if (annotation.required()) {
                     requiredFields.add(field);
                 }
@@ -82,14 +70,14 @@ public class ReflectionValidator {
         return requiredFields;
     }
 
-    private static List<Field> getNonEmptyNonRequiredFields(Class clazz, Object object) throws Exception {
-        List<Field> declaredFields = ReflectionValidator.getAllPublicDeclaredFields(clazz, null);
+    private List<Field> getNonEmptyNonRequiredFields(Class clazz, Object object) throws Exception {
+        List<Field> declaredFields = getAllPublicDeclaredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = new ArrayList<>();
 
         for (Field field : declaredFields) {
             boolean nonEmptyNonRequiredField = true;
             if (field.isAnnotationPresent(XmlElement.class)) {
-                XmlElement annotation = (XmlElement) field.getAnnotation(XmlElement.class);
+                XmlElement annotation = field.getAnnotation(XmlElement.class);
                 if (annotation.required()) {
                     nonEmptyNonRequiredField = false;
                 }
@@ -114,8 +102,11 @@ public class ReflectionValidator {
 
     }
 
-    private static List<Field> getAllPublicDeclaredFields(Class clazz, List<Field> declaredFields) throws
-            Exception {
+    private List<Field> getAllPublicDeclaredFields(Class clazz) {
+        return getAllPublicDeclaredFields(clazz, null);
+    }
+
+    private List<Field> getAllPublicDeclaredFields(Class clazz, List<Field> declaredFields) {
         if (declaredFields == null)
             declaredFields = new ArrayList<>();
 
@@ -132,36 +123,26 @@ public class ReflectionValidator {
         }
     }
 
-    /*private static boolean isGetter(Method method){
-        // identify get methods
-        if((method.getName().startsWith("get") || method.getName().startsWith("is"))
-                && method.getParameterCount() == 0 && !method.getReturnType().equals(void.class)){
-            return true;
-        }
-        return false;
-    }
-*/
-
-    private static boolean isListEmtpy(List list) throws Exception {
+    private boolean isListEmtpy(List list) throws Exception {
         for (Object item : list) {
             if (!isObjectEmpty(item)) return false;
         }
         return true;
     }
 
-    private static boolean isObjectEmpty(Object object) throws Exception {
-        if (List.class.isAssignableFrom(object.getClass())) {
-            if (!isListEmtpy((List) object)) return false;
+    private boolean isObjectEmpty(Object objectOrList) throws Exception {
+        if (isList(objectOrList)) {
+            return isListEmtpy((List) objectOrList);
         } else {
-            List<Field> allFields = getAllPublicDeclaredFields(object.getClass(), null);
+            List<Field> allFields = getAllPublicDeclaredFields(objectOrList.getClass());
             for (Field field : allFields) {
-                Object value = getValue(field, object);
+                Object value = getValue(field, objectOrList);
                 if (value == null)
                     continue;
-                if (List.class.isAssignableFrom(value.getClass())) {
+                if (isList(value)) {
                     if (!isListEmtpy((List) value)) return false;
                 } else {
-                    if (value != null && !value.equals("")) {
+                    if (!value.equals("")) {
                         //at least one field has a value
                         if (value.getClass().getName().startsWith("java.lang"))
                             return false;
@@ -178,27 +159,24 @@ public class ReflectionValidator {
         return true;
     }
 
-    //
-    private static <T> void validateRequiredList(Class<T> clazz, List<T> list, String
+    public <T> void validateList(List<T> list, boolean listIsAllowedToBeEmpty, String
             breadcrumb, Field field, List<ValidatorError> errors) throws Exception {
-        breadcrumb += "->" + field.getName();
-        boolean foundNonEmpty = false;
-        for (T item : list) {
-            //if its totally empty, hmmm
+        if (field != null) {
+            breadcrumb += "->" + field.getName();
+        }
+        boolean listIsEmpty = true;
+        for (T item : list)
             if (!isObjectEmpty(item)) {
-                foundNonEmpty = true;
+                listIsEmpty = false;
                 //root is false as we don't need every item to exist...just one
                 validate(item.getClass(), item, false, breadcrumb, field, errors);
             }
-        }
-        if (foundNonEmpty) {
-            //ok!
-        } else
-            errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, Class.forName(field.getType().getName())));
 
+        if (!listIsAllowedToBeEmpty && listIsEmpty)
+            errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, Class.forName(field.getType().getName())));
     }
 
-    public static void validate(Class<?> clazz, Object object, boolean rootIsRequired, String
+    public void validate(Class<?> clazz, Object object, boolean rootIsRequired, String
             breadcrumb, Field rootField, List<ValidatorError> errors) throws Exception {
         if (rootField == null) {
             breadcrumb += "(root)";
@@ -223,47 +201,37 @@ public class ReflectionValidator {
                 errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb + "->" + field.getName(), Class.forName(field.getType().getName())));
             } else if (value.getClass().getName().startsWith("java.lang")) {
                 //seems okay, there is a value
-            } else if ((List.class.isAssignableFrom(value.getClass()))) {
-/*              //Check for alternate ID's
-                if(field.getName().contains("alternateIdentifiers")){
-                    System.out.println(breadcrumb + "->" + field.getName());
-                }
-*/
-                List<Field> publicDeclaredFields = getAllPublicDeclaredFields(object.getClass(), null);
+            } else if (isList(value)) {
+                List<Field> publicDeclaredFields = getAllPublicDeclaredFields(object.getClass());
                 Boolean foundField = false;
-                for(int i = 0; i < publicDeclaredFields.size(); i++){
-                    if(publicDeclaredFields.get(i).getName().equals(field.getName())){
-                        String name = publicDeclaredFields.get(i).getGenericType().getTypeName();
+                for (Field publicDeclaredField : publicDeclaredFields) {
+                    if (publicDeclaredField.getName().equals(field.getName())) {
+                        String name = publicDeclaredField.getGenericType().getTypeName();
                         name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
-
-                        if(name.contains("PersonComprisedEntity")) {
-                            List<PersonComprisedEntity> entityList = convertPersonComprisedEntityList((List) value);
-                            validateRequiredList(Class.forName(name), (List) entityList, breadcrumb, field, errors);
-                        } else if(name.contains("IsAbout")) {
-                            List<IsAbout> isAboutList = convertIsAboutList((List) value);
-                            validateRequiredList(Class.forName(name), (List)isAboutList, breadcrumb, field, errors);
+                        if (name.contains("PersonComprisedEntity")) {
+                            List<PersonComprisedEntity> entityList = convertItemsToSubclass((List) value);
+                            validateList(entityList, false, breadcrumb, field, errors);
+                        } else if (name.contains("IsAbout")) {
+                            List<IsAbout> isAboutList = convertItemsToSubclass((List) value);
+                            validateList(isAboutList, false,  breadcrumb, field, errors);
                         } else {
-                            validateRequiredList(Class.forName(name), (List) value, breadcrumb, field, errors);
+                            validateList((List) value, false, breadcrumb, field, errors);
                         }
-
                         foundField = true;
                     }
                 }
-                if(!foundField){
+                if (!foundField) {
                     throw new Exception("We didn't find the field!!!");
                 }
-
                 //so this is a list of <name>, we need to make sure there is at least one value in the list
             } else {
                 validate(value.getClass(), value, true, breadcrumb + "->" + field.getName(), field, errors);
-                //System.out.println(value);
             }
-            //System.out.println(value);
         }
     }
 
 /*
-    public static void main(String[] args) throws Exception {
+    public  void main(String[] args) throws Exception {
         Dataset d = (Dataset) ReflectionFactory.create(Dataset.class);
         d.setTitle("John's Test");
         Type t = new Type();

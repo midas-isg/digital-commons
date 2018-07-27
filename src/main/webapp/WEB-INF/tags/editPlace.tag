@@ -103,6 +103,11 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                    <myTags:editRequiredNonZeroLengthString path="${path}.coordinates"
+                                                            placeholder=" The coordinates of the place."
+                                                            string="${place.coordinates}"
+                                                            label=" Coordinates">
+                    </myTags:editRequiredNonZeroLengthString>
                 </div>
             </div>
         </div>
@@ -156,6 +161,10 @@
                     class="glyphicon glyphicon-plus"></i> Add Geometry
             </button>
         </div>
+        <myTags:editRequiredNonZeroLengthString path="${path}.coordinates"
+                                                placeholder=" The coordinates of the place."
+                                                label=" Coordinates">
+        </myTags:editRequiredNonZeroLengthString>
     </div>
 </div>
 
