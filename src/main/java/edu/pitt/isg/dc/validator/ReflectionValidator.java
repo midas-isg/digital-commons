@@ -193,11 +193,16 @@ public class ReflectionValidator {
             breadcrumb += "(root)";
         }
 
-        if (rootIsRequired)
+        if (rootIsRequired) {
             if (isObjectEmpty(object)) {
                 errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, object.getClass()));
                 return;
             }
+        } else {
+            if(isObjectEmpty(object)) {
+                return;
+            }
+        }
 
         List<Field> requiredFields = getRequiredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);
