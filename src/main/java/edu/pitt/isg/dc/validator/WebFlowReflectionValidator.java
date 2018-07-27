@@ -6,7 +6,7 @@ import java.util.List;
 public class WebFlowReflectionValidator extends  ReflectionValidator {
 
     @Override
-    public void validate(Class<?> clazz, Object object, boolean rootIsRequired, String breadcrumb, Field rootField, List<ValidatorError> errors) throws Exception {
+    public void validate(Class<?> clazz, Object object, boolean rootIsRequired, String breadcrumb, Field rootField, List<ValidatorError> errors) throws FatalReflectionValidatorException {
         super.validate(clazz, object, rootIsRequired, breadcrumb, rootField, errors);
 
 
