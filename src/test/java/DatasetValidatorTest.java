@@ -2,6 +2,7 @@ import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.EntryId;
+import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
@@ -28,6 +29,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
@@ -68,7 +70,8 @@ public class DatasetValidatorTest {
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            ReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+            ReflectionValidator reflectionValidator = new ReflectionValidator();
+            reflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
             //somehow "expect" error messages....
         } catch (Exception e) {
             e.printStackTrace();
@@ -89,6 +92,101 @@ public class DatasetValidatorTest {
     }
 
     @Test
+    public void testPerfectDatasetWithAllPossibleFields() {
+        Dataset dataset = createPerfectDataset();
+
+        List<ValidatorError> errors = test(dataset);
+        assertTrue(errors.isEmpty());
+    }
+
+    @Test
+    public void testPerfectDatasetForceErrors() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.setTitle(null);
+
+        ListIterator<? extends Type> iterator = dataset.getTypes().listIterator();
+        while (iterator.hasNext()) {
+            Type type = iterator.next();
+            iterator.remove();
+        }
+
+        dataset.getStoredIn().setName(null);
+
+        ((PersonOrganization) dataset.getCreators().get(1)).setName(null);
+
+        dataset.getDistributions().get(0).getAccess().setLandingPage(null);
+
+        dataset.getDistributions().get(0).getDates().get(0).getType().setValue(null);
+        dataset.getDistributions().get(0).getDates().get(0).getType().setValueIRI(null);
+
+        dataset.getDistributions().get(0).getConformsTo().get(0).getType().setValue(null);
+        dataset.getDistributions().get(0).getConformsTo().get(0).getType().setValueIRI(null);
+
+        dataset.getLicenses().get(0).setName(null);
+
+        ((PersonOrganization) dataset.getCreators().get(0)).getAffiliations().get(0).getLocation().getIdentifier().setIdentifierSource(null);
+
+        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setName(null);
+
+        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setFunders(DatasetFactory.createPersonComprisedEntityList(null));
+
+        ((IsAboutItems) dataset.getIsAbout().get(0)).setName(null);
+
+        dataset.getProducedBy().setName(null);
+
+        dataset.getProducedBy().getEndDate().setDate(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->title");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(1).getPath(), "(root)->types");
+            assertEquals(errors.get(1).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(2).getPath(), "(root)->creators->affiliations->location->identifier->identifierSource");
+            assertEquals(errors.get(2).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(3).getPath(), "(root)->creators->name");
+            assertEquals(errors.get(3).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(4).getPath(), "(root)->storedIn->name");
+            assertEquals(errors.get(4).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(5).getPath(), "(root)->distributions->access->landingPage");
+            assertEquals(errors.get(5).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(6).getPath(), "(root)->distributions->dates->type");
+            assertEquals(errors.get(6).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(7).getPath(), "(root)->distributions->conformsTo->type");
+            assertEquals(errors.get(7).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(8).getPath(), "(root)->primaryPublications->acknowledges->name");
+            assertEquals(errors.get(8).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(9).getPath(), "(root)->primaryPublications->acknowledges->funders");
+            assertEquals(errors.get(9).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(10).getPath(), "(root)->producedBy->name");
+            assertEquals(errors.get(10).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(11).getPath(), "(root)->producedBy->endDate->date");
+            assertEquals(errors.get(11).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(12).getPath(), "(root)->licenses->name");
+            assertEquals(errors.get(12).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+
+            assertEquals(errors.get(13).getPath(), "(root)->isAbout->name");
+            assertEquals(errors.get(13).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced.");
+    }
+
+
+
+/*
+    @Test
     public void testDatasetWithoutTitleOnly() throws Exception {
 //        Dataset dataset = createTestDataset(566L);
         Dataset dataset = createPerfectDataset();
@@ -103,39 +201,11 @@ public class DatasetValidatorTest {
         } else fail("No error messages produced for missing Title");
     }
 
-/*
-    @Test
-    public void testDatasetCreatorNameMissing() {
-//        Dataset dataset = createTestDataset(566L);
-        Dataset dataset = createPerfectDataset();
-
-        ((PersonOrganization) dataset.getCreators().get(0)).setLastName(null);
-        ((PersonOrganization) dataset.getCreators().get(0)).setFirstName(null);
-        ((PersonOrganization) dataset.getCreators().get(0)).setFullName(null);
-
-        List<ValidatorError> errors = test(dataset);
-        if(!errors.isEmpty()) {
-            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
-        } else fail("No error messages produced for missing Creator name.");
-    }
-*/
-
     @Test
     public void testDatasetCreatorOrganizationNameMissing() {
         Dataset dataset = createPerfectDataset();
 
-        ListIterator<? extends PersonComprisedEntity> iterator = dataset.getCreators().listIterator();
-        while (iterator.hasNext()) {
-            PersonComprisedEntity personComprisedEntity = iterator.next();
-            iterator.remove();
-        }
-
-        dataset.setCreators(DatasetFactory.createPersonComprisedEntityList(null));
-        dataset.getCreators().get(0).getIdentifier().setIdentifier("id");
-        dataset.getCreators().get(0).getIdentifier().setIdentifierSource("id source");
-        ((PersonOrganization) dataset.getCreators().get(0)).setAbbreviation("abbrev");
-        ((PersonOrganization) dataset.getCreators().get(0)).getLocation().setName("location name");
-
+        ((PersonOrganization) dataset.getCreators().get(1)).setName(null);
 
         List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
@@ -143,6 +213,7 @@ public class DatasetValidatorTest {
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for missing Creator Organization name.");
     }
+*/
 
     @Test
     public void testDatasetWithoutCreatorsOnly() {
@@ -161,6 +232,7 @@ public class DatasetValidatorTest {
         } else fail("No error messages produced for missing Creators");
     }
 
+/*
     @Test
     public void testDatasetWithoutTyesOnly() {
         Dataset dataset = createPerfectDataset();
@@ -190,6 +262,7 @@ public class DatasetValidatorTest {
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for missing StoredIn (Data Repository) name.");
     }
+*/
 
     @Test
     public void testDatasetWithoutDistributionAccess() {
@@ -203,6 +276,7 @@ public class DatasetValidatorTest {
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for empty Distribution Access.");
     }
+/*
 
     @Test
     public void testDatasetWithoutDistributionAccessLandingPage() {
@@ -241,13 +315,113 @@ public class DatasetValidatorTest {
         if(!errors.isEmpty()) {
             assertEquals(errors.get(0).getPath(), "(root)->creators->affiliations->location->identifier->identifierSource");
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing IdenfifierSource");
+    }
+
+    @Test
+    public void testDatasetWithoutDatesAnnotation() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getDistributions().get(0).getDates().get(0).getType().setValue(null);
+        dataset.getDistributions().get(0).getDates().get(0).getType().setValueIRI(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->distributions->dates->type");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for missing Types");
     }
 
 
     @Test
-    public void testPerfectDatasetWithAllPossibleFields() {
-///???
+    public void testDatasetWithoutPrimaryPublicationsAcknowledgesName() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setName(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->primaryPublications->acknowledges->name");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing name");
+    }
+
+    @Test
+    public void testDatasetWithoutPrimaryPublicationsAcknowledgesFunders() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setFunders(DatasetFactory.createPersonComprisedEntityList(null));
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->primaryPublications->acknowledges->funders");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing Funders");
+    }
+
+    @Test
+    public void testDatasetWithoutIsAboutBiologicalEntityName() {
+        Dataset dataset = createPerfectDataset();
+
+        ((IsAboutItems) dataset.getIsAbout().get(0)).setName(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->isAbout->name");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing IsAbout (Biological Entity) name");
+    }
+
+    @Test
+    public void testDatasetWithoutStudyName() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getProducedBy().setName(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->producedBy->name");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing name of Produced By");
+    }
+
+    @Test
+    public void testDatasetWithoutDate() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getProducedBy().getEndDate().setDate(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->producedBy->endDate->date");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing End Date for Produced By");
+    }
+
+    @Test
+    public void testDatasetWithoutDistributionConformsToTypes() {
+        Dataset dataset = createPerfectDataset();
+
+        dataset.getDistributions().get(0).getConformsTo().get(0).getType().setValue(null);
+        dataset.getDistributions().get(0).getConformsTo().get(0).getType().setValueIRI(null);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+            assertEquals(errors.get(0).getPath(), "(root)->distributions->conformsTo->type");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+        } else fail("No error messages produced for missing Types");
+    }
+*/
+
+    @Test
+    public void testRealDataset() {
+        Dataset dataset = createTestDataset(86L);
+
+        List<ValidatorError> errors = test(dataset);
+        if(!errors.isEmpty()) {
+          /*  assertEquals(errors.get(0).getPath(), "(root)->isAbout->name");
+            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);*/
+        } else assertTrue(true);
     }
 
 

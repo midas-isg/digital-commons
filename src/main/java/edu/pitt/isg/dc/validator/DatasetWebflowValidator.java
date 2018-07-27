@@ -187,10 +187,11 @@ public class DatasetWebflowValidator {
 
         ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = dataset.getCreators().listIterator();
         List<PersonComprisedEntity> newCreatorsList = new ArrayList<>();
-        while (personComprisedEntityListIterator.hasNext()) {
+        //TODO: look at this
+        /*while (personComprisedEntityListIterator.hasNext()) {
             PersonComprisedEntity personComprisedEntity = personComprisedEntityListIterator.next();
             newCreatorsList.add(convertPersonOrganization(personComprisedEntity));
-        }
+        }*/
         dataset.setCreators(newCreatorsList);
 
 
