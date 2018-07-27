@@ -99,14 +99,14 @@
         <transition on="previous"  to="datasetForm1"/>
         <transition on="next" to="validateForm2"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm2">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm2">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext, 'edu.pitt.isg.mdc.dats2_2.DataRepository', 'getStoredIn', false )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm3"/>
         <transition on="false" to="datasetForm2"/>
 
@@ -120,14 +120,14 @@
         <transition on="previous" to="datasetForm2"/>
         <transition on="next" to="validateForm3"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm3">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm3">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Place', 'getSpatialCoverage', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm4"/>
         <transition on="false" to="datasetForm3"/>
     </action-state>
@@ -146,7 +146,7 @@
     </view-state>
 
     <action-state id="validateForm4">
-        <evaluate expression="datasetWebflowValidator.validateDatasetForm4(flowScope.dataset, messageContext)"/>
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Type', 'getTypes', false )"/>
         <transition on="index" to="index"/>
         <transition on="true" to="datasetForm5"/>
         <transition on="false" to="datasetForm4"/>
@@ -161,14 +161,14 @@
         <transition on="previous" to="datasetForm4"/>
         <transition on="next" to="validateForm5"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm5">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm5">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Distribution', 'getDistributions', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm6"/>
         <transition on="false" to="datasetForm5"/>
     </action-state>
@@ -181,14 +181,14 @@
         <transition on="previous" to="datasetForm5"/>
         <transition on="next" to="validateForm6"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm6">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm6">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Publication', 'getPrimaryPublications', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm7"/>
         <transition on="false" to="datasetForm6"/>
     </action-state>
@@ -201,14 +201,14 @@
         <transition on="previous" to="datasetForm6"/>
         <transition on="next" to="validateForm7"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm7">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm7">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Publication', 'getCitations', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm8"/>
         <transition on="false" to="datasetForm7"/>
     </action-state>
@@ -221,14 +221,14 @@
         <transition on="previous" to="datasetForm7"/>
         <transition on="next" to="validateForm8"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm8">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm8">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Study', 'getProducedBy', false )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm9"/>
         <transition on="false" to="datasetForm8"/>
 
@@ -242,15 +242,15 @@
         <transition on="previous" to="datasetForm8"/>
         <transition on="next" to="validateForm9"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm9">
         <!--<transition on="index" to="validateForm9">-->
         <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm9">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-        <!--<transition on="index" to="index"/>-->
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity', 'getCreators', false )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm10"/>
         <transition on="false" to="datasetForm9"/>
 
@@ -264,14 +264,14 @@
         <transition on="previous" to="datasetForm9"/>
         <transition on="next" to="validateForm10"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm10">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm10">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.License', 'getLicenses', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm11"/>
         <transition on="false" to="datasetForm10"/>
 
@@ -285,14 +285,14 @@
         <transition on="previous" to="datasetForm10"/>
         <transition on="next" to="validateForm11"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm11">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm11">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.IsAbout', 'getIsAbout', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm12"/>
         <transition on="false" to="datasetForm11"/>
 
@@ -306,14 +306,14 @@
         <transition on="previous" to="datasetForm11"/>
         <transition on="next" to="validateForm12"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm12">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
 
     <action-state id="validateForm12">
-        <evaluate expression="datasetWebflowValidator.validateDataset(flowScope.dataset, messageContext)"/>
-
+        <evaluate expression="datasetWebflowValidator.validatePartOfDataset(flowScope.dataset, messageContext,'edu.pitt.isg.mdc.dats2_2.Grant', 'getAcknowledges', true )"/>
+        <transition on="index" to="index"/>
         <transition on="true" to="datasetForm13"/>
         <transition on="false" to="datasetForm12"/>
 

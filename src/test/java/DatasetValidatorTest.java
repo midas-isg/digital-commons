@@ -1,5 +1,6 @@
 import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
+import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
@@ -28,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -40,8 +42,10 @@ import static org.junit.Assert.fail;
 public class DatasetValidatorTest {
     @Autowired
     private ApiUtil apiUtil;
+    @Autowired
+    private EntryRepository repo;
 
-    private Converter converter = new Converter();
+    private final Converter converter = new Converter();
 
     @Test
     public void testEmptyDataset() {
@@ -80,17 +84,6 @@ public class DatasetValidatorTest {
         return validatorErrors(errors);
     }
 
-    private List<ValidatorError> validatorErrors(List<ValidatorError> errors){
-        ListIterator<? extends ValidatorError> iterator = errors.listIterator();
-        while (iterator.hasNext()) {
-            ValidatorError validatorError = iterator.next();
-            if(validatorError.getPath().contains("coordinates")){
-                iterator.remove();
-            }
-        }
-        return errors;
-    }
-
     @Test
     public void testPerfectDatasetWithAllPossibleFields() {
         Dataset dataset = createPerfectDataset();
@@ -107,7 +100,7 @@ public class DatasetValidatorTest {
 
         ListIterator<? extends Type> iterator = dataset.getTypes().listIterator();
         while (iterator.hasNext()) {
-            Type type = iterator.next();
+            iterator.next();
             iterator.remove();
         }
 
@@ -221,7 +214,7 @@ public class DatasetValidatorTest {
 
         ListIterator<? extends PersonComprisedEntity> iterator = dataset.getCreators().listIterator();
         while (iterator.hasNext()) {
-            PersonComprisedEntity personComprisedEntity = iterator.next();
+            iterator.next();
             iterator.remove();
         }
 
@@ -419,10 +412,35 @@ public class DatasetValidatorTest {
 
         List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
-          /*  assertEquals(errors.get(0).getPath(), "(root)->isAbout->name");
-            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);*/
+//            assertEquals(errors.get(0).getPath(), "(root)->isAbout->name");
+//            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
+            assertTrue(true);
         } else assertTrue(true);
     }
+
+/*
+    @Test
+    public void testAllDatasets() {
+        Set<String> types = new HashSet<>();
+        types.add(Dataset.class.getTypeName());
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
+        Map<Dataset, List<ValidatorError>> datasetErrorListMap = new HashMap<Dataset, List<ValidatorError>>();
+
+        for (Entry entry : entriesList) {
+            Dataset dataset = createTestDataset(entry.getId().getEntryId());
+            List<ValidatorError> errors = test(dataset);
+
+            if(!errors.isEmpty()){
+                datasetErrorListMap.put(dataset,errors);
+            }
+        }
+
+        if(datasetErrorListMap.isEmpty()) {
+            assertTrue(true);
+        } else fail("Errors were found!");
+    }
+*/
 
 
 }
