@@ -289,11 +289,14 @@ public class DatasetFactoryPerfectTest {
         if(isAboutList == null || isAboutList.isEmpty()){
             isAboutList = new ArrayList<IsAbout>();
         }
-        for(int i = 0; i < maxIterations(isAboutList.size()); i++){
-            if(i > (isAboutList.size() - 1)){
-                isAboutList.add(createIsAbout(null));
-            } else isAboutList.set(i, createIsAbout(isAboutList.get(i)));
-        } //end for loop
+//        for(int i = 0; i < maxIterations(isAboutList.size()); i++){
+//            if(i > (isAboutList.size() - 1)){
+//                  isAboutList.add(createIsAbout(null));
+//            } else isAboutList.set(i, createIsAbout(isAboutList.get(i)));
+//        } //end for loop
+
+        isAboutList.add(createIsAbout(createBiologicalEntity(null)));
+        isAboutList.add(createIsAbout(createAnnotation()));
 
         return isAboutList;
     }
@@ -528,11 +531,11 @@ public class DatasetFactoryPerfectTest {
 //        if(personOrganization.getLocation() == null){
 //            personOrganization.setLocation(createPlace(null));
 //        } else personOrganization.setLocation(createPlace(personOrganization.getLocation()));
-        personOrganization.setLastName("Last name");
-        personOrganization.setFirstName("First name");
-        personOrganization.setFullName("Full name");
-        personOrganization.setEmail("person@emailAddress.com");
-        personOrganization.setMiddleInitial("mi");
+//        personOrganization.setLastName("Last name");
+//        personOrganization.setFirstName("First name");
+//        personOrganization.setFullName("Full name");
+//        personOrganization.setEmail("person@emailAddress.com");
+//        personOrganization.setMiddleInitial("mi");
 
 
         return personOrganization;
@@ -542,6 +545,7 @@ public class DatasetFactoryPerfectTest {
         if(personComprisedEntityList == null || personComprisedEntityList.isEmpty()){
             personComprisedEntityList = wrapListWithAutoPopulatingList(new ArrayList<PersonComprisedEntity>(),AutoPopulatedPersonComprisedEntityWrapper.class);
         }
+/*
         for(int i = 0; i < maxIterations(personComprisedEntityList.size()); i++){
             if(i > (personComprisedEntityList.size() - 1)){
                 personComprisedEntityList.add(createPersonComprisedEntity(null));
@@ -549,6 +553,10 @@ public class DatasetFactoryPerfectTest {
                 personComprisedEntityList.set(i,createPersonComprisedEntity(personComprisedEntityList.get(i)));
             }
         } //end for loop
+*/
+
+        personComprisedEntityList.add(createPersonComprisedEntity(createPerson(null)));
+        personComprisedEntityList.add(createPersonComprisedEntity(createOrganization(null)));
 
         return personComprisedEntityList;
     }
