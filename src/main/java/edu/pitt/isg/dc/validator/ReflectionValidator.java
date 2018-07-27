@@ -255,7 +255,7 @@ public class ReflectionValidator {
 
                 //so this is a list of <name>, we need to make sure there is at least one value in the list
             } else {
-                validate(value.getClass(), value, true, breadcrumb, field, errors);
+                validate(value.getClass(), value, true, breadcrumb + "->" + field.getName(), field, errors);
                 //System.out.println(value);
             }
             //System.out.println(value);

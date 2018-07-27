@@ -302,12 +302,12 @@ public class DatasetFactoryPerfectTest {
         if(isAboutItems == null){
             isAboutItems = new IsAboutItems();
         }
-        if(isAboutItems.getIdentifier() == null){
-            isAboutItems.setIdentifier(createIdentifier());
-        }
-        if(isAboutItems.getAlternateIdentifiers().isEmpty()){
-            isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
-        } else isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(isAboutItems.getAlternateIdentifiers()), Identifier.class));
+//        if(isAboutItems.getIdentifier() == null){
+//            isAboutItems.setIdentifier(createIdentifier());
+//        }
+//        if(isAboutItems.getAlternateIdentifiers().isEmpty()){
+//            isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(null), Identifier.class));
+//        } else isAboutItems.setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(isAboutItems.getAlternateIdentifiers()), Identifier.class));
 
         return isAboutItems;
     }
@@ -525,9 +525,9 @@ public class DatasetFactoryPerfectTest {
         if(personOrganization.getRoles().isEmpty()){
             personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else personOrganization.setRoles(wrapListWithAutoPopulatingList(createAnnotationList(personOrganization.getRoles()), Annotation.class));
-        if(personOrganization.getLocation() == null){
-            personOrganization.setLocation(createPlace(null));
-        } else personOrganization.setLocation(createPlace(personOrganization.getLocation()));
+//        if(personOrganization.getLocation() == null){
+//            personOrganization.setLocation(createPlace(null));
+//        } else personOrganization.setLocation(createPlace(personOrganization.getLocation()));
         personOrganization.setLastName("Last name");
         personOrganization.setFirstName("First name");
         personOrganization.setFullName("Full name");
