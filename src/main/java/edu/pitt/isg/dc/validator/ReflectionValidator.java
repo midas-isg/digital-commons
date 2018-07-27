@@ -161,7 +161,9 @@ public class ReflectionValidator {
 
     public <T> void validateList(List<T> list, boolean listIsAllowedToBeEmpty, String
             breadcrumb, Field field, List<ValidatorError> errors) throws Exception {
-        breadcrumb += "->" + field.getName();
+        if (field != null) {
+            breadcrumb += "->" + field.getName();
+        }
         boolean listIsEmpty = true;
         for (T item : list)
             if (!isObjectEmpty(item)) {
