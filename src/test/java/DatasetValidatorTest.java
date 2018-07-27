@@ -68,7 +68,8 @@ public class DatasetValidatorTest {
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            ReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+            ReflectionValidator reflectionValidator = new ReflectionValidator();
+            reflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
             //somehow "expect" error messages....
         } catch (Exception e) {
             e.printStackTrace();
