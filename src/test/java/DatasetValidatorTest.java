@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -81,17 +82,6 @@ public class DatasetValidatorTest {
             fail();
         }
         return validatorErrors(errors);
-    }
-
-    private List<ValidatorError> validatorErrors(List<ValidatorError> errors){
-        ListIterator<? extends ValidatorError> iterator = errors.listIterator();
-        while (iterator.hasNext()) {
-            ValidatorError validatorError = iterator.next();
-            if(validatorError.getPath().contains("coordinates")){
-                iterator.remove();
-            }
-        }
-        return errors;
     }
 
     @Test

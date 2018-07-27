@@ -1,7 +1,6 @@
 package edu.pitt.isg.dc.validator;
 
 import com.google.gson.JsonObject;
-import com.sun.xml.bind.v2.TODO;
 import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
@@ -24,7 +23,6 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
@@ -86,8 +84,12 @@ public class DatasetWebflowValidator {
     }
 
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
-        String isValid = "true";
+        String isValid;
         String title = dataset.getTitle();
+
+        //validate dates
+        isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Date", "getDates", true);
+
         if (categoryID == null || categoryID == 0) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "category").defaultText("Please select a category").build());
@@ -100,15 +102,15 @@ public class DatasetWebflowValidator {
         }
 
         RequestContext requestContext = RequestContextHolder.getRequestContext();
-
         if (requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
             return "index";
         }
         return isValid;
     }
 
-    public String validateDataset(Dataset dataset, MessageContext messageContext, String className, String envokeMethod, boolean rootIsRequired) {
+    public String validatePartOfDataset(Dataset dataset, MessageContext messageContext, String className, String envokeMethod, boolean rootIsRequired) {
 //        TODO: Utilize messageContext and properly display errors in jsp
+        // rootIsRequired: For Lists, if  it is not required this value should True. For Objects if it is not required this should be False.
         List<ValidatorError> errors = new ArrayList<>();
         try {
             ReflectionValidator reflectionValidator = new ReflectionValidator();
@@ -123,9 +125,10 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             e.printStackTrace();
             messageContext.addMessage(new MessageBuilder().error().source(
-                    "exception").defaultText(e.getMessage()).build());
+                    "exception").defaultText("Possible error with validating an empty list that is required").build());
             return "false";
         }
+        errors = validatorErrors(errors);
         if(errors.size() > 0){
             return "false";
         }

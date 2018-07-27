@@ -16,6 +16,17 @@ import static edu.pitt.isg.dc.utils.TagUtil.isBiologicalEntity;
 import static edu.pitt.isg.dc.utils.TagUtil.isPerson;
 
 public class ValidatorHelperMethods {
+    public static List<ValidatorError> validatorErrors(List<ValidatorError> errors){
+        ListIterator<? extends ValidatorError> iterator = errors.listIterator();
+        while (iterator.hasNext()) {
+            ValidatorError validatorError = iterator.next();
+            if(validatorError.getPath().contains("coordinates")){
+                iterator.remove();
+            }
+        }
+        return errors;
+    }
+
     public static void clearStringList(ListIterator<String> listIterator) {
         while (listIterator.hasNext()) {
             String string = listIterator.next();
