@@ -12,16 +12,26 @@
               type="java.lang.String" %>
 
 <div class="form-group control-group edit-form-group">
-    <div class="form-group edit-form-group">
-        <label>Date</label>
+    <c:set var="datePath" value="${path}.date"/>
+    <c:choose>
+        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(datePath)}">
+            <div class="form-group edit-form-group has-error">
+        </c:when>
+        <c:otherwise>
+            <div class="form-group edit-form-group">
+        </c:otherwise>
+    </c:choose>
+            <label>Date</label>
         <input type="text" class="form-control date" value="${date.date}" name="${path}.date" id="${specifier}-date-picker">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
     </div>
     <myTags:editAnnotation path="${path}.type"
                            annotation="${date.type}"
                            label="Date"
                            specifier="${specifier}-date"
-                           showRemoveButton="false"
-                           supportError="${true}">
+                           showRemoveButton="false">
     </myTags:editAnnotation>
 </div>
 

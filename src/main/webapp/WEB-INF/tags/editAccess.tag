@@ -18,8 +18,15 @@
 
 <c:choose>
     <c:when test="${not function:isObjectEmpty(access)}">
-        <div class="form-group edit-form-group">
-            <label>Access</label>
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+                <div class="form-group edit-form-group has-error">
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group">
+            </c:otherwise>
+        </c:choose>
+        <label>Access</label>
             <c:if test="${not isAccessRequired}">
                 <button class="btn btn-danger access-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
@@ -63,11 +70,22 @@
                                             annotations="${access.authentications}"
                                             label="Authentications">
             </myTags:editAnnotationUnbounded>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
         </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>Access</label>
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+                <div class="form-group edit-form-group has-error">
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group">
+                ${path}
+            </c:otherwise>
+        </c:choose>
+        <label>Access</label>
             <c:if test="${not isAccessRequired}">
                 <button class="btn btn-danger access-remove" type="button"><i
                         class="glyphicon glyphicon-remove"></i>
@@ -104,6 +122,9 @@
                                             specifier="${specifier}-authentications"
                                             label="Authentications">
             </myTags:editAnnotationUnbounded>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
         </div>
     </c:otherwise>
 </c:choose>

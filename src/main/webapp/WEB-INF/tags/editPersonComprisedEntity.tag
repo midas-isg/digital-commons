@@ -26,11 +26,8 @@
 <c:choose>
     <c:when test="${not function:isObjectEmpty(personComprisedEntities)}">
         <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
                 <div class="has-error">
-                <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
-                    <span class="error-color">${message.text}</span>
-                </c:forEach>
             </c:when>
             <c:otherwise>
                 <div>
@@ -83,11 +80,21 @@
                 <%--<c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>--%>
 
             </c:forEach>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
         <div class="${specifier}-add-more"></div>
         </div>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group ${specifier}-add-more-button ${status.error ? 'has-error' : ''}">
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+                <div class="form-group edit-form-group ${specifier}-add-more-button has-error">
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group ${specifier}-add-more-button">
+            </c:otherwise>
+        </c:choose>
             <label>${label}s</label>
             <c:if test="${showAddPersonButton}">
                 <button class="btn btn-success add-${specifier}-person" type="button"><i
@@ -101,7 +108,9 @@
             </c:if>
             <div class="${specifier}-add-more"></div>
 
-            <form:errors path="${path}[0]" class="error-color"/>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
         </div>
         <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
 

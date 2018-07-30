@@ -70,6 +70,15 @@ public class ValidatorHelperMethods {
         return false;
     }
 
+    public static void addValidationErrorToMessageContext(List<ValidatorError> errors, MessageContext messageContext) {
+        for(ValidatorError error : errors) {
+            //Replaces String like '->distributions->0->access->alternateIdentifiers->1->identifier' with 'distributions[0].access.alternateIdentifiers[1].identifier'
+            String path = error.getPath().replace("->", ".").replaceAll("^\\.", "").replaceAll("(\\d+)", "\\[$0\\]").replaceAll(".\\[", "\\[");
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    path).defaultText(error.getExpectedClass().getSimpleName() + " is required").build());
+        }
+    }
+
     public static PersonComprisedEntity convertPersonOrganization(PersonOrganization personOrganization) {
         if (isPerson(personOrganization)) {
             Person person = new Person();

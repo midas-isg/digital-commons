@@ -194,7 +194,9 @@ public class ReflectionValidator {
         if (rootField == null) {
             breadcrumb += "(root)";
         }
-
+        if(breadcrumb.equals("")) {
+            breadcrumb += rootField.getName();
+        }
         if (rootIsRequired) {
             if (isObjectEmpty(object)) {
                 errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb, object.getClass()));

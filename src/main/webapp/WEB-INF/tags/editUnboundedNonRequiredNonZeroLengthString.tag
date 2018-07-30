@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -16,7 +18,7 @@
               type="java.lang.String" %>
 
 <c:choose>
-    <c:when test="${not empty formats}">
+    <c:when test="${not function:isObjectEmpty(formats)}">
         <div class="form-group edit-form-group">
             <label>${label}</label>
             <div class="form-group ${specifier}-formats-add-more-button">

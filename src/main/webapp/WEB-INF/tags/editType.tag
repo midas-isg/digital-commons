@@ -18,7 +18,7 @@
 <c:choose>
     <c:when test="${not function:isObjectEmpty(types)}">
         <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
                 <div class="has-error">
 
             </c:when>
@@ -56,7 +56,6 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <myTags:editAnnotation annotation="${type.information}"
-                                                       supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-information"
                                                        label="Information"
                                                        showRemoveButton="true"
@@ -85,7 +84,6 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <myTags:editAnnotation annotation="${type.method}"
-                                                       supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-method"
                                                        label="Method"
                                                        showRemoveButton="true"
@@ -114,7 +112,6 @@
                             </button>
                             <div class="form-group control-group edit-form-group">
                                 <myTags:editAnnotation annotation="${type.platform}"
-                                                       supportError="${true}"
                                                        specifier="${specifier}-${varStatus.count-1}-platform"
                                                        label="Platform"
                                                        showRemoveButton="true"
@@ -132,7 +129,7 @@
                     </c:choose>
                 </div>
                 <c:if test="${varStatus.first}">
-                    <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                         <span class="error-color">${message.text}</span>
                     </c:forEach>
                     <%--<form:errors path="${path}[0]" class="error-color"/>--%>
@@ -148,7 +145,7 @@
     </c:when>
     <c:otherwise>
         <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.allMessages}">
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
                 <div class="form-group edit-form-group ${specifier}-type-add-more-button has-error">
 
             </c:when>
@@ -180,7 +177,7 @@
                     Platform
                 </button>
             </div>
-        <c:forEach items="${flowRequestContext.messageContext.allMessages}" var="message">
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
             <span class="error-color">${message.text}</span>
         </c:forEach>
         </div>
@@ -196,7 +193,7 @@
 
 <div class="copy-annotation-information hide">
     <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation supportError="${true}"
+        <myTags:editAnnotation
                                specifier="${specifier}-information"
                                label="Information"
                                showRemoveButton="true"
@@ -207,7 +204,7 @@
 
 <div class="copy-annotation-method hide">
     <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation supportError="${true}"
+        <myTags:editAnnotation
                                specifier="${specifier}-method"
                                label="Method"
                                showRemoveButton="true"
@@ -218,7 +215,7 @@
 
 <div class="copy-annotation-platform hide">
     <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation supportError="${true}"
+        <myTags:editAnnotation
                                specifier="${specifier}-platform"
                                label="Platform"
                                showRemoveButton="true"

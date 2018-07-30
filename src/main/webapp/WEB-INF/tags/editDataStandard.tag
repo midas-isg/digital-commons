@@ -64,8 +64,7 @@
                     </myTags:editNonRequiredNonZeroLengthStringTextArea>
                     <myTags:editAnnotationRequired annotation="${dataStandard.type}"
                                                    path="${path}[${varStatus.count-1}].type"
-                                                   label="Type"
-                                                   supportError="${true}">
+                                                   label="Type">
                     </myTags:editAnnotationRequired>
                     <myTags:editLicense licenses="${dataStandard.licenses}"
                                         specifier="${specifier}-licenses"

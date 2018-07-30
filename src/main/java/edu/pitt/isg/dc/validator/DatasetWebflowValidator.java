@@ -23,6 +23,7 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
@@ -117,10 +118,19 @@ public class DatasetWebflowValidator {
             String breadcrumb = "";
             Method method = dataset.getClass().getMethod(envokeMethod);
             Object obj = method.invoke(dataset);
+            Field field = null;
+
+            for(Field newField : dataset.getClass().getDeclaredFields()) {
+                if(newField.getName().toLowerCase().contains(envokeMethod.replace("get", "").toLowerCase())) {
+                    field = newField;
+                    break;
+                }
+            }
+
             if(obj instanceof List) {
-                reflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, null, errors);
+                reflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
             } else {
-                reflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, null, errors);
+                reflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -129,6 +139,7 @@ public class DatasetWebflowValidator {
             return "false";
         }
         errors = validatorErrors(errors);
+        addValidationErrorToMessageContext(errors, messageContext);
         if(errors.size() > 0){
             return "false";
         }
@@ -149,13 +160,17 @@ public class DatasetWebflowValidator {
         Long categoryID = (Long) context.getFlowScope().get("categoryID");
 
         //Second check for required fields
-        if (validateDatasetForm1(dataset, context.getMessageContext(), categoryID).equals("false")) {
-            //redirect to page 1
-            context.getFlowScope().put("indexValue", "title");
-            return "index";
+        String breadcrumb = "";
+        List<ValidatorError> errors = new ArrayList<>();
+        try {
+            ReflectionValidator reflectionValidator = new ReflectionValidator();
+            reflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-
+        if(errors.size() > 0)
+            return "false";
 
 
         //Clear up dataset before submitting

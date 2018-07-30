@@ -32,7 +32,6 @@
             <c:if test="${not function:isObjectEmpty(annotation)}">
                 <div class="form-group control-group edit-form-group">
                     <myTags:editAnnotation annotation="${annotation}"
-                                           supportError="${true}"
                                            specifier="${specifier}-${varStatus.count-1}"
                                            label="${label}"
                                            showRemoveButton="true"

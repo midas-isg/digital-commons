@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -17,7 +19,7 @@
 
 
 <c:choose>
-    <c:when test="${not empty annotation}">
+    <c:when test="${not function:isObjectEmpty(annotation)}">
         <div class="form-group edit-form-group">
             <label path="${path}">${label}</label>
             <div class="form-group">
@@ -32,8 +34,7 @@
                                        path="${path}"
                                        specifier="${specifier}"
                                        label="${label}"
-                                       showRemoveButton="true"
-                                       supportError="${true}">
+                                       showRemoveButton="true">
                 </myTags:editAnnotation>
             </div>
         </div>

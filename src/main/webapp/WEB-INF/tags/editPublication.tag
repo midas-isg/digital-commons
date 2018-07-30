@@ -48,12 +48,13 @@
                                                identifiers="${publication.alternateIdentifiers}"
                                                unbounded="${true}">
                         </myTags:editIdentifier>
-                        <myTags:editRequiredNonZeroLengthString
+                        <myTags:editNonRequiredNonZeroLengthString
                                 placeholder=" The name of the publication and its funding program."
                                 label="Title"
                                 string="${publication.title}"
-                                path="${path}[${varStatus.count-1}].title">
-                        </myTags:editRequiredNonZeroLengthString>
+                                path="${path}[${varStatus.count-1}].title"
+                                specifier="${specifier}-title">
+                        </myTags:editNonRequiredNonZeroLengthString>
                         <myTags:editAnnotationBounded path="${path}[${varStatus.count-1}].type"
                                                       specifier="${specifier}-${varStatus.count-1}-type"
                                                       annotation="${publication.type}"
@@ -125,10 +126,11 @@
                                path="${path}[0].alternateIdentifiers"
                                unbounded="${true}">
         </myTags:editIdentifier>
-        <myTags:editRequiredNonZeroLengthString placeholder=" The name of the publication and its funding program."
+        <myTags:editNonRequiredNonZeroLengthString placeholder=" The name of the publication and its funding program."
                                                 label="Title"
-                                                path="${path}[0].title">
-        </myTags:editRequiredNonZeroLengthString>
+                                                path="${path}[0].title"
+                                                specifier="${specifier}-0-title">
+        </myTags:editNonRequiredNonZeroLengthString>
         <myTags:editAnnotationBounded path="${path}[0].type"
                                       specifier="${specifier}-0-type"
                                       placeholder=" Publication type, ideally delegated to an external vocabulary/resource."

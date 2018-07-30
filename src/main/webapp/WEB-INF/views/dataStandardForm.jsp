@@ -40,7 +40,7 @@
                     <spring:bind path="type">
                     <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
                         <label>Type</label>
-                        <myTags:editAnnotation path="type" annotation="${dataStandard.type}" supportError="${true}" specifier="type" label="Type" showRemoveButton="false"></myTags:editAnnotation>
+                        <myTags:editAnnotation path="type" annotation="${dataStandard.type}" specifier="type" label="Type" showRemoveButton="false"></myTags:editAnnotation>
                         <form:errors path="type" class="error-color"/>
                     </div>
                     </spring:bind>

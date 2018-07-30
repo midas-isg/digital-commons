@@ -51,8 +51,7 @@
                                                        path="${path}[${varStatus.count-1}]"
                                                        specifier="${specifier}-${varStatus.count-1}"
                                                        label="Is About (Annotation)"
-                                                       showRemoveButton="true"
-                                                       supportError="true">
+                                                       showRemoveButton="true">
                                 </myTags:editAnnotation>
                             </div>
                         </c:when>
@@ -106,8 +105,7 @@
             <myTags:editAnnotation path="${path}[0]"
                                    specifier="${specifier}-"
                                    label="Is About (Annotation)"
-                                   showRemoveButton="true"
-                                   supportError="true">
+                                   showRemoveButton="true">
             </myTags:editAnnotation>
         </div>
     </div>

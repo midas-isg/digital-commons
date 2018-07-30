@@ -22,7 +22,6 @@
               type="java.lang.String" %>
 <%@ attribute name="identifierSource" required="false"
               type="java.lang.String" %>
-<%--<s:eval expression="T(edu.pitt.isg.dc.validator.DatasetWebflowValidator).incrementList()" />--%>
 
 <c:choose>
     <c:when test="${not function:isObjectEmpty(identifiers)}">
@@ -41,22 +40,47 @@
                     </c:choose>
                 </div>
                 <c:if test="${not function:isObjectEmpty(singleIdentifier)}">
+                    <c:set var = "identifierPath" value = "${path}[${varStatus.count-1}].identifier"/>
+                    <c:set var = "identifierSourcePath" value = "${path}[${varStatus.count-1}].identifierSource"/>
+
                     <div class="form-group control-group edit-form-group">
                         <label>${label}</label>
                         <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
                                 class="glyphicon glyphicon-remove"></i>
                             Remove
                         </button>
-                        <div class="form-group edit-form-group">
-                            <label>Identifier</label>
+                    <c:choose>
+                        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}">
+                            <div class="form-group edit-form-group has-error">
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group edit-form-group">
+                        </c:otherwise>
+                    </c:choose>
+                    <label>Identifier</label>
                             <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                                   name="${path}[${varStatus.count-1}].identifier" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
+                                   name="${identifierPath}" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
+                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}" var="message">
+                        <span class="error-color">${message.text}</span>
+                    </c:forEach>
                         </div>
 
-                        <div class="form-group edit-form-group">
-                            <label>Identifier Source</label>
+
+
+                    <c:choose>
+                        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}">
+                            <div class="form-group edit-form-group has-error">
+                        </c:when>
+                        <c:otherwise>
+                            <div class="form-group edit-form-group">
+                        </c:otherwise>
+                    </c:choose>
+                    <label>Identifier Source</label>
                             <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                                   name="${path}[${varStatus.count-1}].identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+                                   name="${identifierSourcePath}" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}" var="message">
+                        <span class="error-color">${message.text}</span>
+                    </c:forEach>
                         </div>
 
                     </div>
@@ -69,7 +93,10 @@
         </div>
     </c:when>
     <c:when test="${not function:isObjectEmpty(identifier)}">
-        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
+        <c:set var = "identifierPath" value = "${path}.identifier"/>
+        <c:set var = "identifierSourcePath" value = "${path}.identifierSource"/>
+
+        <div class="form-group edit-form-group">
             <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
                 <div class="input-group-btn">
@@ -85,17 +112,37 @@
                     Remove
                 </button>
 
-                <div class="form-group edit-form-group">
+                <c:choose>
+                    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}">
+                        <div class="form-group edit-form-group has-error">
+                    </c:when>
+                    <c:otherwise>
+                        <div class="form-group edit-form-group">
+                    </c:otherwise>
+                </c:choose>
                     <label>Identifier</label>
                     <input type="text" class="form-control" value="${identifier.identifier}"
-                           name="${path}.identifier"
+                           name="${identifierPath}"
                            placeholder=" A code uniquely identifying an entity locally to a system or globally.">
+                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}" var="message">
+                        <span class="error-color">${message.text}</span>
+                    </c:forEach>
                 </div>
 
-                <div class="form-group edit-form-group">
+                <c:choose>
+                    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}">
+                        <div class="form-group edit-form-group has-error">
+                    </c:when>
+                    <c:otherwise>
+                        <div class="form-group edit-form-group">
+                    </c:otherwise>
+                </c:choose>
                     <label>Identifier Source</label>
                     <input type="text" class="form-control" value="${identifier.identifierSource}"
-                           name="${path}.identifierSource" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+                           name="${identifierSourcePath}" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}" var="message">
+                        <span class="error-color">${message.text}</span>
+                    </c:forEach>
                 </div>
             </div>
             <div class="${specifier}-identifier-add-more">
@@ -140,8 +187,15 @@
         <c:set var="identifierCount" scope="page" value="0"/>
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
-            <label>${label}</label>
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+                <div class="form-group edit-form-group has-error">
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group">
+            </c:otherwise>
+        </c:choose>
+        <label>${label}</label>
             <div class="input-group control-group ${specifier}-identifier-add-more-button">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
@@ -151,6 +205,9 @@
 
                 </div>
             </div>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
             <br>
             <div class="${specifier}-identifier-add-more">
             </div>

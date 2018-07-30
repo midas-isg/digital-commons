@@ -11,38 +11,44 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@attribute name="supportError" required="false" type="java.lang.Boolean" %>
-
-<div class="form-group control-group edit-form-group">
 
 <c:choose>
-    <c:when test="${supportError}">
-            <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                <label>${label}</label>
-                    <div class="form-group edit-form-group">
-                        <label>Value</label>
-                        <input type="text" class="form-control" value="${annotation.value}" name="${path}.value" placeholder=" Value">
-                    </div>
-                        <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                            <label>Value IRI</label>
-                            <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}.valueIRI" placeholder="Value IRI">
-                            <form:errors path="${path}.valueIRI" class="error-color"/>
-                        </div>
-                    <form:errors path="${path}" class="error-color"/>
-            </div>
+    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+        <div class="form-group control-group edit-form-group has-error">
     </c:when>
     <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="form-group edit-form-group">
-                <label>Value</label>
-                <input type="text" class="form-control" value="${annotation.value}" name="${path}.value" placeholder="Value">
-            </div>
-            <div class="form-group edit-form-group">
-                <label>Value IRI</label>
-                <input type="text" class="form-control" value="${annotation.valueIRI}" name="${path}.valueIRI" placeholder="Value IRI">
-            </div>
-        </div>
+        <div class="form-group control-group edit-form-group">
     </c:otherwise>
 </c:choose>
+
+    <div class="form-group edit-form-group">
+        <label>${label}</label>
+        <div class="form-group edit-form-group">
+            <label>Value</label>
+            <input type="text" class="form-control" value="${annotation.value}" name="${path}.value"
+                   placeholder=" Value">
+        </div>
+
+        <c:set var="valueIRIPath" value="${path}.valueIRI"/>
+        <c:choose>
+            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}">
+                <div class="form-group edit-form-group has-error">
+            </c:when>
+            <c:otherwise>
+                <div class="form-group edit-form-group">
+            </c:otherwise>
+        </c:choose>
+                <label>Value IRI</label>
+                <input type="text" class="form-control" value="${annotation.valueIRI}" name="${valueIRIPath}"
+                       placeholder="Value IRI">
+
+                <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}" var="message">
+                    <span class="error-color">${message.text}</span>
+                </c:forEach>
+        </div>
+    </div>
+
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
 </div>

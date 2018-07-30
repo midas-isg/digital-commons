@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="path" required="true"
@@ -15,7 +17,7 @@
 
 <div class="form-group">
     <c:choose>
-        <c:when test="${not empty date}">
+        <c:when test="${not function:isObjectEmpty(date)}">
             <div>
                 <button class="btn btn-success ${specifier}-add" type="button" style="display:none;"><i
                         class="glyphicon glyphicon-plus"></i> Add
