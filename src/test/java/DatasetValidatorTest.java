@@ -28,6 +28,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Set;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.HashMap;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 import static org.junit.Assert.assertEquals;
@@ -138,28 +142,28 @@ public class DatasetValidatorTest {
             assertEquals(errors.get(1).getPath(), "(root)->types");
             assertEquals(errors.get(1).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(2).getPath(), "(root)->creators->affiliations->location->identifier->identifierSource");
+            assertEquals(errors.get(2).getPath(), "(root)->creators->0->affiliations->0->location->identifier->identifierSource");
             assertEquals(errors.get(2).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(3).getPath(), "(root)->creators->name");
+            assertEquals(errors.get(3).getPath(), "(root)->creators->1->name");
             assertEquals(errors.get(3).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
             assertEquals(errors.get(4).getPath(), "(root)->storedIn->name");
             assertEquals(errors.get(4).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(5).getPath(), "(root)->distributions->access->landingPage");
+            assertEquals(errors.get(5).getPath(), "(root)->distributions->0->access->landingPage");
             assertEquals(errors.get(5).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(6).getPath(), "(root)->distributions->dates->type");
+            assertEquals(errors.get(6).getPath(), "(root)->distributions->0->dates->0->type");
             assertEquals(errors.get(6).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(7).getPath(), "(root)->distributions->conformsTo->type");
+            assertEquals(errors.get(7).getPath(), "(root)->distributions->0->conformsTo->0->type");
             assertEquals(errors.get(7).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(8).getPath(), "(root)->primaryPublications->acknowledges->name");
+            assertEquals(errors.get(8).getPath(), "(root)->primaryPublications->0->acknowledges->0->name");
             assertEquals(errors.get(8).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(9).getPath(), "(root)->primaryPublications->acknowledges->funders");
+            assertEquals(errors.get(9).getPath(), "(root)->primaryPublications->0->acknowledges->0->funders");
             assertEquals(errors.get(9).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
             assertEquals(errors.get(10).getPath(), "(root)->producedBy->name");
@@ -168,10 +172,10 @@ public class DatasetValidatorTest {
             assertEquals(errors.get(11).getPath(), "(root)->producedBy->endDate->date");
             assertEquals(errors.get(11).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(12).getPath(), "(root)->licenses->name");
+            assertEquals(errors.get(12).getPath(), "(root)->licenses->0->name");
             assertEquals(errors.get(12).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
-            assertEquals(errors.get(13).getPath(), "(root)->isAbout->name");
+            assertEquals(errors.get(13).getPath(), "(root)->isAbout->0->name");
             assertEquals(errors.get(13).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced.");
     }
@@ -265,7 +269,7 @@ public class DatasetValidatorTest {
 
         List<ValidatorError> errors = test(dataset);
         if(!errors.isEmpty()) {
-            assertEquals(errors.get(0).getPath(), "(root)->distributions->access");
+            assertEquals(errors.get(0).getPath(), "(root)->distributions->0->access");
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for empty Distribution Access.");
     }
@@ -418,9 +422,10 @@ public class DatasetValidatorTest {
         } else assertTrue(true);
     }
 
+
 /*
     @Test
-    public void testAllDatasets() {
+    public void testValidationErrorsByDataset() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
         List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
@@ -442,5 +447,57 @@ public class DatasetValidatorTest {
     }
 */
 
+    @Test
+    public void testValidationErrorCountByBreadcrumbForAllDatasets() {
+        Set<String> types = new HashSet<>();
+        types.add(Dataset.class.getTypeName());
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
+        Map<String, Integer> errorPathCount = new HashMap<String, Integer>();
+
+        for (Entry entry : entriesList) {
+            Dataset dataset = createTestDataset(entry.getId().getEntryId());
+            List<ValidatorError> errors = test(dataset);
+
+            if(!errors.isEmpty()){
+                for (ValidatorError error : errors) {
+                    if(errorPathCount.containsKey(error.getPath())){
+                        errorPathCount.put(error.getPath(), errorPathCount.get(error.getPath()) + 1);
+                    } else errorPathCount.put(error.getPath(), 1);
+                }
+            }
+        }
+
+        assertTrue(true);
+    }
+
+
+    @Test
+    public void testGetEntryIdByErrorBreadcrumbForAllDatasets() {
+        Set<String> types = new HashSet<>();
+        types.add(Dataset.class.getTypeName());
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
+        Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
+
+        for (Entry entry : entriesList) {
+            Dataset dataset = createTestDataset(entry.getId().getEntryId());
+            List<ValidatorError> errors = test(dataset);
+
+            if(!errors.isEmpty()){
+                for (ValidatorError error : errors) {
+                    if(errorPathForEntryIds.containsKey(error.getPath())){
+                        errorPathForEntryIds.get(error.getPath()).add(entry.getId().getEntryId());
+                    } else {
+                        ArrayList<Long> longList = new ArrayList<Long>();
+                        longList.add(entry.getId().getEntryId());
+                        errorPathForEntryIds.put(error.getPath(), longList);
+                    }
+                }
+            }
+        }
+
+        assertTrue(true);
+    }
 
 }

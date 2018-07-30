@@ -165,11 +165,13 @@ public class ReflectionValidator {
             breadcrumb += "->" + field.getName();
         }
         boolean listIsEmpty = true;
+        int index = 0;
         for (T item : list)
             if (!isObjectEmpty(item)) {
                 listIsEmpty = false;
                 //root is false as we don't need every item to exist...just one
-                validate(item.getClass(), item, false, breadcrumb, field, errors);
+                validate(item.getClass(), item, false, breadcrumb + "->" + index, field, errors);
+                index++;
             }
 
         if (!listIsAllowedToBeEmpty && listIsEmpty)
