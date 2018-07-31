@@ -82,7 +82,6 @@
             </c:when>
             <c:otherwise>
                 <div class="form-group edit-form-group">
-                ${path}
             </c:otherwise>
         </c:choose>
         <label>Access</label>

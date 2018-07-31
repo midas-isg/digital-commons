@@ -114,7 +114,7 @@ public class DatasetWebflowValidator {
         // rootIsRequired: For Lists, if  it is not required this value should True. For Objects if it is not required this should be False.
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            ReflectionValidator reflectionValidator = new ReflectionValidator();
+            WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
             String breadcrumb = "";
             Method method = dataset.getClass().getMethod(envokeMethod);
             Object obj = method.invoke(dataset);
@@ -128,18 +128,20 @@ public class DatasetWebflowValidator {
             }
 
             if(obj instanceof List) {
-                reflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
+                webFlowReflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
             } else {
-                reflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
+                webFlowReflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
             }
+
+            errors = validatorErrors(errors);
+            WebFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
         } catch (Exception e) {
             e.printStackTrace();
             messageContext.addMessage(new MessageBuilder().error().source(
                     "exception").defaultText("Possible error with validating an empty list that is required").build());
             return "false";
         }
-        errors = validatorErrors(errors);
-        addValidationErrorToMessageContext(errors, messageContext);
+
         if(errors.size() > 0){
             return "false";
         }

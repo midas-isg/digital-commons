@@ -1,5 +1,6 @@
 package edu.pitt.isg.dc.validator;
 
+import com.sun.xml.bind.v2.TODO;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.mdc.dats2_2.*;
@@ -68,15 +69,6 @@ public class ValidatorHelperMethods {
             return true;
         }
         return false;
-    }
-
-    public static void addValidationErrorToMessageContext(List<ValidatorError> errors, MessageContext messageContext) {
-        for(ValidatorError error : errors) {
-            //Replaces String like '->distributions->0->access->alternateIdentifiers->1->identifier' with 'distributions[0].access.alternateIdentifiers[1].identifier'
-            String path = error.getPath().replace("->", ".").replaceAll("^\\.", "").replaceAll("(\\d+)", "\\[$0\\]").replaceAll(".\\[", "\\[");
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    path).defaultText(error.getExpectedClass().getSimpleName() + " is required").build());
-        }
     }
 
     public static PersonComprisedEntity convertPersonOrganization(PersonOrganization personOrganization) {
