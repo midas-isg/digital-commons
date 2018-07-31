@@ -333,14 +333,12 @@
     </view-state>
 
     <action-state id="validateForm13">
-        <evaluate expression="datasetWebflowValidator.createDataset(flowRequestContext)" />
+        <evaluate expression="datasetWebflowValidator.createDataset(flowRequestContext, messageContext)" />
 
         <transition on="true" to="entryConfirmation"/>
         <transition on="false" to="datasetForm13"/>
 
-        <transition on="index" to="index">
-            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
-        </transition>
+        <transition on="index" to="index"/>
     </action-state>
     <!--End form page 13-->
     <!--               -->

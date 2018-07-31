@@ -15,6 +15,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.binding.message.Message;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
@@ -39,6 +40,7 @@ public class DatasetWebflowValidator {
     UsersSubmissionInterface usersSubmissionInterface;
     @Autowired
     private ApiUtil apiUtil;
+    private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
     @Autowired
     private CategoryHelper categoryHelper;
     private static String ENTRIES_AUTHENTICATION = "";
@@ -110,11 +112,10 @@ public class DatasetWebflowValidator {
     }
 
     public String validatePartOfDataset(Dataset dataset, MessageContext messageContext, String className, String envokeMethod, boolean rootIsRequired) {
-//        TODO: Utilize messageContext and properly display errors in jsp
+//        TODO: For some reason validating types doesn't work the first time, null pointer exception
         // rootIsRequired: For Lists, if  it is not required this value should True. For Objects if it is not required this should be False.
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
             String breadcrumb = "";
             Method method = dataset.getClass().getMethod(envokeMethod);
             Object obj = method.invoke(dataset);
@@ -153,7 +154,7 @@ public class DatasetWebflowValidator {
         return "true";
     }
 
-    public String createDataset(RequestContext context) {
+    public String createDataset(RequestContext context, MessageContext messageContext) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
 
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
@@ -165,59 +166,27 @@ public class DatasetWebflowValidator {
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            ReflectionValidator reflectionValidator = new ReflectionValidator();
-            reflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+            webFlowReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
+            webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        if(errors.size() > 0)
+        if(errors.size() > 0) {
+            //Redirect to page with the error
+            for(Message message : messageContext.getAllMessages()) {
+                String messageSource = message.getSource().toString();
+                context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
+                return "index";
+            }
             return "false";
-
-
-        //Clear up dataset before submitting
-        if (isObjectEmpty(dataset.getIdentifier())) {
-            dataset.setIdentifier(null);
-        }
-        if (isObjectEmpty(dataset.getDates())) {
-            dataset.setDates(null);
-        }
-        if (isObjectEmpty(dataset.getStoredIn())) {
-            dataset.setStoredIn(null);
-        }
-        if (isObjectEmpty(dataset.getSpatialCoverage())) {
-            dataset.setSpatialCoverage(null);
-        }
-        if (isObjectEmpty(dataset.getDistributions())) {
-            dataset.setDistributions(null);
-        }
-        if (isObjectEmpty(dataset.getPrimaryPublications())) {
-            dataset.setPrimaryPublications(null);
-        }
-        if (isObjectEmpty(dataset.getCitations())) {
-            dataset.setCitations(null);
-        }
-        if (isObjectEmpty(dataset.getLicenses())) {
-            dataset.setLicenses(null);
-        }
-        if (isObjectEmpty(dataset.getIsAbout())) {
-            dataset.setIsAbout(null);
-        }
-        if (isObjectEmpty(dataset.getAcknowledges())) {
-            dataset.setAcknowledges(null);
-        }
-        if (isObjectEmpty(dataset.getExtraProperties())) {
-            dataset.setExtraProperties(null);
         }
 
-        ListIterator<PersonComprisedEntity> personComprisedEntityListIterator = dataset.getCreators().listIterator();
-        List<PersonComprisedEntity> newCreatorsList = new ArrayList<>();
-        //TODO: look at this
-        /*while (personComprisedEntityListIterator.hasNext()) {
-            PersonComprisedEntity personComprisedEntity = personComprisedEntityListIterator.next();
-            newCreatorsList.add(convertPersonOrganization(personComprisedEntity));
-        }*/
-        dataset.setCreators(newCreatorsList);
+        try {
+            dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
+        } catch (FatalReflectionValidatorException e) {
+            e.printStackTrace();
+        }
 
 
         EntryView entryObject = new EntryView();

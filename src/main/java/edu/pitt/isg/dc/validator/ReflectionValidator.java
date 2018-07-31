@@ -2,10 +2,15 @@ package edu.pitt.isg.dc.validator;
 
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.utils.TagUtil;
 import edu.pitt.isg.mdc.dats2_2.IsAbout;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.security.access.method.P;
+import org.springframework.util.AutoPopulatingList;
 
 import javax.xml.bind.annotation.XmlElement;
+import java.io.ObjectOutput;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,6 +18,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertIsAboutItems;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.convertPersonOrganization;
@@ -35,6 +41,14 @@ public class ReflectionValidator {
         try {
             Method method = object.getClass().getMethod(getGetterNameFromFieldName(field));
             return method.invoke(object);
+        } catch (Exception e) {
+            throw new FatalReflectionValidatorException(e.getMessage());
+        }
+    }
+
+    private void setValue(Field field, Object object, Object value) throws FatalReflectionValidatorException {
+        try {
+            BeanUtils.setProperty(object, field.getName(), value);
         } catch (Exception e) {
             throw new FatalReflectionValidatorException(e.getMessage());
         }
@@ -254,5 +268,69 @@ public class ReflectionValidator {
         }
     }
 
+    public <T> List cleanseList(List<T> list) throws FatalReflectionValidatorException {
+        ListIterator iterator = list.listIterator();
+        while(iterator.hasNext()) {
+            Object listObject = iterator.next();
+            if(isObjectEmpty(listObject)) {
+                iterator.remove();
+            } else {
+                cleanse(listObject.getClass(), listObject);
+            }
+        }
+        if(list.size() == 0) {
+            return null;
+        }
+        return list;
+    }
+
+    public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
+        if(TagUtil.isObjectEmpty(object)) {
+            return null;
+        }
+
+        List<Field> fields = getAllPublicDeclaredFields(object.getClass());
+
+        for(Field field : fields) {
+            Object value = getValue(field, object);
+            if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
+                setValue(field, object, null);
+            } else if(isList(value)) {
+                List<Field> publicDeclaredFields = getAllPublicDeclaredFields(object.getClass());
+                Boolean foundField = false;
+                for (Field publicDeclaredField : publicDeclaredFields) {
+                    if (publicDeclaredField.getName().equals(field.getName())) {
+                        String name = publicDeclaredField.getGenericType().getTypeName();
+                        name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
+                        if (name.contains("PersonComprisedEntity")) {
+                            List<PersonComprisedEntity> entityList = cleanseList(convertItemsToSubclass((List) value));
+                            setValue(field, object, entityList);
+                        } else if (name.contains("IsAbout")) {
+                            List<IsAbout> isAboutList = cleanseList(convertItemsToSubclass((List) value));
+                            setValue(field, object, isAboutList);
+                        } else {
+                            List newList = new ArrayList();
+                            List<?> cleanedList = cleanseList((List) value);
+                            if(cleanedList instanceof AutoPopulatingList) {
+                                for(Object listItem : cleanedList) {
+                                    newList.add(listItem);
+                                }
+                                setValue(field, object, newList);
+                            } else
+                                setValue(field, object, cleanedList);
+                        }
+                        foundField = true;
+                    }
+                }
+                if (!foundField) {
+                    throw new FatalReflectionValidatorException("Unable to find getter for the list: " + field.getName());
+                }
+            } else {
+                Object cleanedObject = cleanse(value.getClass(), value);
+                setValue(field, object, cleanedObject);
+            }
+        }
+        return object;
+    }
 
 }

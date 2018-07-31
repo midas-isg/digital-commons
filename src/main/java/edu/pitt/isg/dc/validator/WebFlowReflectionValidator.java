@@ -20,10 +20,16 @@ public class WebFlowReflectionValidator extends  ReflectionValidator {
         super.validateList(list, listIsAllowedToBeEmpty, breadcrumb, field, errors);
     }
 
+    @Override
+    public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
+        return super.cleanse(clazz, object);
+    }
+
     public static void addValidationErrorToMessageContext(List<ValidatorError> errors, MessageContext messageContext) {
         for(ValidatorError error : errors) {
             //Replaces String like '->distributions->0->access->alternateIdentifiers->1->identifier' with 'distributions[0].access.alternateIdentifiers[1].identifier'
             String path = error.getPath().replace("->", ".").replaceAll("^\\.", "").replaceAll("(\\d+)", "\\[$0\\]").replaceAll(".\\[", "\\[");
+            path = path.replace("(root).", "");
             String message;
             if(error.getExpectedClass().getSimpleName().contains("List") || error.getExpectedClass().getSimpleName().contains("String")) {
                 String[] pathArray = path.substring(path.lastIndexOf(".")+1).split("(?=[A-Z])");
