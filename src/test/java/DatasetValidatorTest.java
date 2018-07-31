@@ -1,3 +1,8 @@
+import com.google.common.collect.MapDifference;
+import com.google.common.collect.Maps;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.JsonObject;
+import edu.pitt.isg.dc.TestConvertDatsToJava;
 import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryRepository;
@@ -24,14 +29,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import com.google.gson.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Set;
-import java.util.Map;
-import java.util.HashSet;
-import java.util.HashMap;
+import java.util.*;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 import static org.junit.Assert.assertEquals;
@@ -50,6 +50,11 @@ public class DatasetValidatorTest {
     private EntryRepository repo;
 
     private final Converter converter = new Converter();
+
+    public static final java.lang.reflect.Type mapType = new TypeToken<TreeMap<String, Object>>() {
+    }.getType();
+    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
+
 
     @Test
     public void testEmptyDataset() {
@@ -419,7 +424,7 @@ public class DatasetValidatorTest {
 //            assertEquals(errors.get(0).getPath(), "(root)->isAbout->name");
 //            assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
             assertTrue(true);
-        } else assertTrue(true);
+        } else assertTrue(false);
     }
 
 
@@ -456,6 +461,7 @@ public class DatasetValidatorTest {
         Map<String, Integer> errorPathCount = new HashMap<String, Integer>();
 
         for (Entry entry : entriesList) {
+//            System.out.println(entry.getId().getEntryId());
             Dataset dataset = createTestDataset(entry.getId().getEntryId());
             List<ValidatorError> errors = test(dataset);
 
@@ -468,9 +474,8 @@ public class DatasetValidatorTest {
             }
         }
 
-        assertTrue(true);
+        assertEquals(errorPathCount.size(), 0);
     }
-
 
     @Test
     public void testGetEntryIdByErrorBreadcrumbForAllDatasets() {
@@ -497,7 +502,150 @@ public class DatasetValidatorTest {
             }
         }
 
-        assertTrue(true);
+        assertEquals(errorPathForEntryIds.size(), 0);
     }
+
+
+    private String sortJsonObject(JsonObject jsonObject) {
+        List<String> jsonElements = new ArrayList<>();
+
+        Set<Map.Entry<String, JsonElement>> entries = jsonObject.entrySet();
+        for (Map.Entry<String, JsonElement> entry : entries)
+            jsonElements.add(entry.getKey());
+
+        Collections.sort(jsonElements);
+
+        JsonArray jsonArray = new JsonArray();
+        for (String elementName : jsonElements) {
+            JsonObject newJsonObject = new JsonObject();
+            JsonElement jsonElement = jsonObject.get(elementName);
+            if (jsonElement.isJsonObject())
+                newJsonObject.add(elementName, new JsonPrimitive(sortJsonObject(jsonObject.get(elementName).getAsJsonObject())));
+            else if (jsonElement.isJsonArray()) {
+                newJsonObject.add(elementName, sortJsonArray(jsonElement));
+            } else
+                newJsonObject.add(elementName, jsonElement);
+            jsonArray.add(newJsonObject);
+        }
+
+        return jsonArray.toString();
+    }
+
+    private JsonArray sortJsonArray(JsonElement jsonElement) {
+        JsonArray sortedArray = new JsonArray();
+
+        JsonArray jsonElementAsArray = jsonElement.getAsJsonArray();
+        for (JsonElement arrayMember : jsonElementAsArray)
+            if (arrayMember.isJsonObject()) {
+                sortedArray.add(new JsonPrimitive(sortJsonObject(arrayMember.getAsJsonObject())));
+            } else if (arrayMember.isJsonArray()) {
+                sortedArray.add(sortJsonArray(arrayMember));
+            } else {
+                sortedArray.add(arrayMember.toString());
+            }
+        return sortedArray;
+    }
+
+
+    @Test
+    public void testDatasetCreationComparision() {
+        Long entryId = 86L;
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryView entryView = new EntryView(entry);
+
+        Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+
+        Dataset datasetJohn = null;
+        Dataset datasetJeff = null;
+        try {
+            datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class);
+            datasetJeff = createTestDataset(entryId);
+//            datasetJeff = DatasetFactory.createDatasetForWebFlow(null);
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
+
+        Class clazz = Dataset.class;
+        JsonObject jsonObjectFromDatabaseJohn = converter.toJsonObject(clazz, datasetJohn);
+        JsonObject jsonObjectFromDatabaseJeff = converter.toJsonObject(clazz, datasetJeff);
+
+        Map<String, Object> databaseMapJohn = gson.fromJson(jsonObjectFromDatabaseJohn, mapType);
+        Map<String, Object> databaseMapJeff = gson.fromJson(jsonObjectFromDatabaseJeff, mapType);
+
+        MapDifference<String, Object> d = Maps.difference(databaseMapJohn, databaseMapJeff);
+
+        if(datasetJohn.equals(datasetJeff) && d.areEqual()){
+            assertTrue(true);
+        } else {
+            if (!d.toString().equalsIgnoreCase("equal")) {
+                if (d.entriesOnlyOnLeft().size() > 0) {
+                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Johns converter contains");
+                    Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
+                    while (it.hasNext()) {
+
+                        String field = it.next();
+                        System.out.print(" " + field + ",");
+
+                    }
+                    System.out.print(" but Jeffs converter does not.\n");
+                }
+
+                if (d.entriesOnlyOnRight().size() > 0) {
+                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Jeffs converter contains");
+                    Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
+                    while (it.hasNext()) {
+                        String field = it.next();
+                        System.out.print(" " + field + ",");
+
+                    }
+                    System.out.print(" but Johns converter does not.\n");
+                }
+
+                if (d.entriesDiffering().size() > 0) {
+                    Iterator<String> it = d.entriesDiffering().keySet().iterator();
+                    while (it.hasNext()) {
+                        String value = it.next();
+
+                        String left;
+                        if (jsonObjectFromDatabaseJohn.get(value).isJsonArray()) {
+                            left = sortJsonObject(jsonObjectFromDatabaseJohn.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        } else {
+                            left = sortJsonObject(jsonObjectFromDatabaseJohn.get(value).getAsJsonObject());
+                        }
+
+                        String right;
+                        if (jsonObjectFromDatabaseJeff.get(value).isJsonArray()) {
+                            right = sortJsonObject(jsonObjectFromDatabaseJeff.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        } else {
+                            right = sortJsonObject(jsonObjectFromDatabaseJeff.get(value).getAsJsonObject());
+                        }
+
+                        if (!left.equals(right)) {
+                            int idxOfDifference = TestConvertDatsToJava.indexOfDifference(left, right);
+
+
+                            try {
+                                System.out.println("In " + value + " section from Johns: ...\n" + left.substring(0, idxOfDifference) + Converter.ANSI_CYAN + left.substring(idxOfDifference, left.length()) + Converter.ANSI_RESET);
+                                System.out.println("In " + value + " section from Jeffs: ...\n" + right.substring(0, idxOfDifference) + Converter.ANSI_CYAN + right.substring(idxOfDifference, right.length()) + Converter.ANSI_RESET);
+                            } catch (StringIndexOutOfBoundsException e) {
+                                System.out.println("idxOfDifference:" + idxOfDifference);
+                                // System.out.println("end:" + end);
+
+                                throw e;
+                            }
+                        } else {
+                            System.out.println(d);
+                        }
+
+                    }
+                }
+            }
+
+            assertTrue(false);
+        }
+
+    }
+
 
 }

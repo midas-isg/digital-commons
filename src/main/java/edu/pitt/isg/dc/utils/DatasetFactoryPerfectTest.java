@@ -147,6 +147,9 @@ public class DatasetFactoryPerfectTest {
         if(distribution.getQualifiers().isEmpty()){
             distribution.setQualifiers(wrapListWithAutoPopulatingList(createAnnotationList(null), Annotation.class));
         } else distribution.setQualifiers(wrapListWithAutoPopulatingList(createAnnotationList(distribution.getQualifiers()), Annotation.class));
+        if(distribution.getFormats().isEmpty()){
+            distribution.setFormats(wrapListWithAutoPopulatingList(createFormatList(null), String.class));
+        } else distribution.setFormats(wrapListWithAutoPopulatingList(distribution.getFormats(), String.class));
         if(distribution.getUnit() == null){
             distribution.setUnit(createAnnotation());
         }
@@ -156,6 +159,19 @@ public class DatasetFactoryPerfectTest {
         distribution.setVersion("Version of the Distribution");
 
         return distribution;
+    }
+
+    public static List<String> createFormatList(List<String> formatList){
+        if(formatList == null || formatList.isEmpty()) {
+            formatList = new ArrayList<String>();
+        }
+        for(int i = 0; i < maxIterations(formatList.size()); i++){
+            if(i > (formatList.size() - 1)){
+                formatList.add("format");
+            }
+        } //end for loop
+
+        return formatList;
     }
 
     public static List<Identifier> createIdentifierList(List<Identifier> identifierList){
