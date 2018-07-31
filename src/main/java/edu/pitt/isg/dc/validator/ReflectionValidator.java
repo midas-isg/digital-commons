@@ -149,6 +149,10 @@ public class ReflectionValidator {
     }
 
     private boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
+        if (objectOrList == null || objectOrList.equals("")) {
+            return true;
+        }
+
         if (isList(objectOrList)) {
             return isListEmtpy((List) objectOrList);
         } else {
@@ -285,7 +289,7 @@ public class ReflectionValidator {
     }
 
     public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        if(TagUtil.isObjectEmpty(object)) {
+        if(isObjectEmpty(object)) {
             return null;
         }
 
