@@ -1,10 +1,12 @@
 package edu.pitt.isg.dc.utils;
 
-import edu.pitt.isg.mdc.dats2_2.Dataset;
 import org.springframework.util.AutoPopulatingList;
 
 import java.lang.reflect.Method;
-import java.util.*;
+import java.sql.Ref;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class ReflectionFactory {
 
@@ -19,11 +21,17 @@ public class ReflectionFactory {
         }
     }
 
+    private static <Type> List<Type> getGenericList(List<Type> list, Class<Type> type, Class clazz) throws Exception {
+        if (list == null) {
+            list = new ArrayList<Type>();
+            Object newInstance = ReflectionFactory.create(clazz);
+            list.add((Type) newInstance);
+        }
+        return new AutoPopulatingList(list, new ReflectionFactoryElementFactory<Type>(clazz));
+    }
+
     private static <Type> List<Type> getGenericList(Class<Type> type, Class clazz) throws Exception {
-        List<Type> l = new ArrayList<Type>();
-        Object newInstance = ReflectionFactory.create(clazz);
-        l.add((Type) newInstance);
-        return new AutoPopulatingList(l, new ReflectionFactoryElementFactory<Type>(clazz));
+        return getGenericList(null, type, clazz);
     }
 
     private static List<Method> gatherMethods(Object object, List<Method> methods) throws Exception {
@@ -37,15 +45,21 @@ public class ReflectionFactory {
             return gatherMethods(object.getClass().getSuperclass().newInstance(), methods);
     }
 
-
     public static Object create(Class<?> clazz) throws Exception {
+        //convert all lists to autopopulating lists
+        //iterate over everything and initalize all required fields...
+        return create(clazz, null);
+    }
+
+    public static Object create(Class<?> clazz, Object instance) throws Exception {
         if (clazz.getName().endsWith("PersonComprisedEntity")) {
             clazz = Class.forName("edu.pitt.isg.dc.entry.classes.PersonOrganization");
         }
         if (clazz.getName().endsWith("IsAbout")) {
             clazz = Class.forName("edu.pitt.isg.dc.entry.classes.IsAboutItems");
         }
-        Object instance = clazz.newInstance();
+        if (instance == null)
+            instance = clazz.newInstance();
         for (Method m : ReflectionFactory.gatherMethods(instance, null)) {
             if (m.getName().startsWith("get") && m.getParameterTypes().length == 0) {
                 final Object r = m.invoke(instance);
@@ -60,11 +74,23 @@ public class ReflectionFactory {
 
                             name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
                             Class listClazz = Class.forName(name);
-
-                            setter.invoke(instance, getGenericList(listClazz.getClass(), listClazz));
+                            //invoke getter
+                            List list = (List) m.invoke(instance);
+                            if (list == null) {
+                                setter.invoke(instance, getGenericList(listClazz.getClass(), listClazz));
+                            } else {
+                                setter.invoke(instance, getGenericList(list, listClazz.getClass(), listClazz));
+                            }
                         } else {
-                            if (!setter.getName().endsWith("Geometry"))
-                                setter.invoke(instance, ReflectionFactory.create(m.getReturnType()));
+                            if (!setter.getName().endsWith("Geometry")) {
+                                Object object = m.invoke(instance);
+                                if (object == null) {
+                                    setter.invoke(instance, ReflectionFactory.create(m.getReturnType()));
+                                } else {
+                                    setter.invoke(instance, ReflectionFactory.create(m.getReturnType(), object));
+                                }
+
+                            }
                         }
                     } catch (NoSuchMethodException e) {
                         //this is fine I think...
