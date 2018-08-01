@@ -576,11 +576,11 @@ public class DatasetValidatorTest {
 
     public void datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
         Class clazz = Dataset.class;
-        JsonObject jsonObjectFromDatabaseJohn = converter.toJsonObject(clazz, datasetLeft);
-        JsonObject jsonObjectFromDatabaseJeff = converter.toJsonObject(clazz, datasetRight);
+        JsonObject jsonObjectFromDatabaseLeft = converter.toJsonObject(clazz, datasetLeft);
+        JsonObject jsonObjectFromDatabaseRight = converter.toJsonObject(clazz, datasetRight);
 
-        Map<String, Object> databaseMapJohn = gson.fromJson(jsonObjectFromDatabaseJohn, mapType);
-        Map<String, Object> databaseMapJeff = gson.fromJson(jsonObjectFromDatabaseJeff, mapType);
+        Map<String, Object> databaseMapJohn = gson.fromJson(jsonObjectFromDatabaseLeft, mapType);
+        Map<String, Object> databaseMapJeff = gson.fromJson(jsonObjectFromDatabaseRight, mapType);
 
         MapDifference<String, Object> d = Maps.difference(databaseMapJohn, databaseMapJeff);
 
@@ -589,7 +589,7 @@ public class DatasetValidatorTest {
         } else {
             if (!d.toString().equalsIgnoreCase("equal")) {
                 if (d.entriesOnlyOnLeft().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Left contains");
+                    System.out.print("Entry " + jsonObjectFromDatabaseRight.get("title") + " (" + entry.getId().getEntryId() + "), Left contains");
                     Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
                     while (it.hasNext()) {
 
@@ -601,7 +601,7 @@ public class DatasetValidatorTest {
                 }
 
                 if (d.entriesOnlyOnRight().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Right contains");
+                    System.out.print("Entry " + jsonObjectFromDatabaseRight.get("title") + " (" + entry.getId().getEntryId() + "), Right contains");
                     Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
                     while (it.hasNext()) {
                         String field = it.next();
@@ -617,17 +617,17 @@ public class DatasetValidatorTest {
                         String value = it.next();
 
                         String left;
-                        if (jsonObjectFromDatabaseJohn.get(value).isJsonArray()) {
-                            left = sortJsonObject(jsonObjectFromDatabaseJohn.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        if (jsonObjectFromDatabaseLeft.get(value).isJsonArray()) {
+                            left = sortJsonObject(jsonObjectFromDatabaseLeft.get(value).getAsJsonArray().get(0).getAsJsonObject());
                         } else {
-                            left = sortJsonObject(jsonObjectFromDatabaseJohn.get(value).getAsJsonObject());
+                            left = sortJsonObject(jsonObjectFromDatabaseLeft.get(value).getAsJsonObject());
                         }
 
                         String right;
-                        if (jsonObjectFromDatabaseJeff.get(value).isJsonArray()) {
-                            right = sortJsonObject(jsonObjectFromDatabaseJeff.get(value).getAsJsonArray().get(0).getAsJsonObject());
+                        if (jsonObjectFromDatabaseRight.get(value).isJsonArray()) {
+                            right = sortJsonObject(jsonObjectFromDatabaseRight.get(value).getAsJsonArray().get(0).getAsJsonObject());
                         } else {
-                            right = sortJsonObject(jsonObjectFromDatabaseJeff.get(value).getAsJsonObject());
+                            right = sortJsonObject(jsonObjectFromDatabaseRight.get(value).getAsJsonObject());
                         }
 
                         if (!left.equals(right)) {
