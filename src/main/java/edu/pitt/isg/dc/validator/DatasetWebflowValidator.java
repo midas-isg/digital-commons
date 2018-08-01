@@ -28,6 +28,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
 
+import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
+import static edu.pitt.isg.dc.controller.HomeController.ifLoggedIn;
+import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
 import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
 
@@ -51,6 +54,14 @@ public class DatasetWebflowValidator {
     }
 
     private Converter converter = new Converter();
+
+    public String isLoggedIn(RequestContext context) {
+        HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
+        if(ifMDCEditor(session) || ifISGAdmin(session)) {
+            return "true";
+        }
+        return "true";
+    }
 
     public String goToIndex(String indexValue) {
         RequestContext requestContext = RequestContextHolder.getRequestContext();

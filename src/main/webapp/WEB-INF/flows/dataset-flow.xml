@@ -12,20 +12,29 @@
     </decision-state>
 
     <action-state id="create">
-        <evaluate expression="dataset" result="flowScope.dataset" />
+        <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
+        <transition on="false" to="accessDenied"/>
+
         <transition to="datasetForm1">
+            <evaluate expression="dataset" result="flowScope.dataset" />
             <evaluate expression="0" result="flowScope.categoryID"/>
         </transition>
     </action-state>
 
     <action-state id="edit">
-        <evaluate expression="datasetWebflowValidator.editDataset(entryID)" result="flowScope.dataset"/>
+        <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
+        <transition on="false" to="accessDenied"/>
 
         <transition to="datasetForm1">
+            <evaluate expression="datasetWebflowValidator.editDataset(entryID)" result="flowScope.dataset"/>
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
         </transition>
     </action-state>
+
+    <view-state id="accessDenied">
+
+    </view-state>
 
     <action-state id="index">
         <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
