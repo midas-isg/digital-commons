@@ -551,7 +551,7 @@ public class DatasetValidatorTest {
 
     @Test
     public void testDatasetCreationComparision() {
-        Long entryId = 86L;
+        Long entryId = 566L;
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
@@ -560,7 +560,8 @@ public class DatasetValidatorTest {
         Dataset datasetJohn = null;
         Dataset datasetJeff = null;
         try {
-            datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, createTestDataset(entryId));
+            datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
+//            datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, createTestDataset(entryId));
             datasetJeff = createTestDataset(entryId);
 //            datasetJeff = DatasetFactory.createDatasetForWebFlow(null);
         } catch (Exception e) {

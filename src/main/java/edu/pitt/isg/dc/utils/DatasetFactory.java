@@ -591,7 +591,7 @@ public class DatasetFactory {
                 } else organizationList.get(i).setAlternateIdentifiers(wrapListWithAutoPopulatingList(createIdentifierList(organizationList.get(i).getAlternateIdentifiers()), Identifier.class));
                 if(organizationList.get(i).getLocation() == null){
                     organizationList.get(i).setLocation(createPlace(null));
-                } else organizationList.get(i).setLocation(organizationList.get(i).getLocation());
+                } else organizationList.get(i).setLocation(createPlace(organizationList.get(i).getLocation()));
             }
         } //end for loop
 
