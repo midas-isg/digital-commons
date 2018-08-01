@@ -170,7 +170,8 @@ public class DatasetWebflowValidator {
 
         Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
         Long revisionId = (Long) context.getFlowScope().get("revisionID");
-        Long entryID = (Long) context.getFlowScope().get("entryID");
+        Long entryID = Long.parseLong(context.getFlowScope().get("entryID").toString());
+//        Long entryID = (Long) context.getFlowScope().get("entryID");
         Long categoryID = (Long) context.getFlowScope().get("categoryID");
 
         //Second check for required fields

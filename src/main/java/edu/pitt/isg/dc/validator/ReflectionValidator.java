@@ -237,7 +237,9 @@ public class ReflectionValidator {
             Object value = getValue(field, object);
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
                 try {
-                    errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb + "->" + field.getName(), Class.forName(field.getType().getName())));
+                    if(!field.getName().endsWith("coordinates")){
+                        errors.add(new ValidatorError(ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD, breadcrumb + "->" + field.getName(), Class.forName(field.getType().getName())));
+                    }
                 } catch (ClassNotFoundException e) {
                     throw new FatalReflectionValidatorException(e.getMessage());
                 }
@@ -289,7 +291,7 @@ public class ReflectionValidator {
     }
 
     public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        if(isObjectEmpty(object)) {
+        if(TagUtil.isObjectEmpty(object)) {
             return null;
         }
 

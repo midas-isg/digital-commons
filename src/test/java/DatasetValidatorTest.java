@@ -14,9 +14,7 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DatasetFactoryPerfectTest;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
-import edu.pitt.isg.dc.validator.ReflectionValidator;
-import edu.pitt.isg.dc.validator.ValidatorError;
-import edu.pitt.isg.dc.validator.ValidatorErrorType;
+import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.Access;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.Converter;
@@ -50,6 +48,7 @@ public class DatasetValidatorTest {
     private EntryRepository repo;
 
     private final Converter converter = new Converter();
+    private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
 
     public static final java.lang.reflect.Type mapType = new TypeToken<TreeMap<String, Object>>() {
     }.getType();
@@ -569,21 +568,28 @@ public class DatasetValidatorTest {
             fail();
         }
 
+        datasetComparision(datasetJohn, datasetJeff, entry);
+
+        assertTrue(false);
+    }
+
+
+    public void datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
         Class clazz = Dataset.class;
-        JsonObject jsonObjectFromDatabaseJohn = converter.toJsonObject(clazz, datasetJohn);
-        JsonObject jsonObjectFromDatabaseJeff = converter.toJsonObject(clazz, datasetJeff);
+        JsonObject jsonObjectFromDatabaseJohn = converter.toJsonObject(clazz, datasetLeft);
+        JsonObject jsonObjectFromDatabaseJeff = converter.toJsonObject(clazz, datasetRight);
 
         Map<String, Object> databaseMapJohn = gson.fromJson(jsonObjectFromDatabaseJohn, mapType);
         Map<String, Object> databaseMapJeff = gson.fromJson(jsonObjectFromDatabaseJeff, mapType);
 
         MapDifference<String, Object> d = Maps.difference(databaseMapJohn, databaseMapJeff);
 
-        if(datasetJohn.equals(datasetJeff) && d.areEqual()){
+        if(datasetLeft.equals(datasetRight) && d.areEqual()){
             assertTrue(true);
         } else {
             if (!d.toString().equalsIgnoreCase("equal")) {
                 if (d.entriesOnlyOnLeft().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Johns converter contains");
+                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Left contains");
                     Iterator<String> it = d.entriesOnlyOnLeft().keySet().iterator();
                     while (it.hasNext()) {
 
@@ -591,18 +597,18 @@ public class DatasetValidatorTest {
                         System.out.print(" " + field + ",");
 
                     }
-                    System.out.print(" but Jeffs converter does not.\n");
+                    System.out.print(" but Right does not.\n");
                 }
 
                 if (d.entriesOnlyOnRight().size() > 0) {
-                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Jeffs converter contains");
+                    System.out.print("Entry " + jsonObjectFromDatabaseJeff.get("title") + " (" + entry.getId().getEntryId() + "), Right contains");
                     Iterator<String> it = d.entriesOnlyOnRight().keySet().iterator();
                     while (it.hasNext()) {
                         String field = it.next();
                         System.out.print(" " + field + ",");
 
                     }
-                    System.out.print(" but Johns converter does not.\n");
+                    System.out.print(" but Left does not.\n");
                 }
 
                 if (d.entriesDiffering().size() > 0) {
@@ -629,8 +635,8 @@ public class DatasetValidatorTest {
 
 
                             try {
-                                System.out.println("In " + value + " section from Johns: ...\n" + left.substring(0, idxOfDifference) + Converter.ANSI_CYAN + left.substring(idxOfDifference, left.length()) + Converter.ANSI_RESET);
-                                System.out.println("In " + value + " section from Jeffs: ...\n" + right.substring(0, idxOfDifference) + Converter.ANSI_CYAN + right.substring(idxOfDifference, right.length()) + Converter.ANSI_RESET);
+                                System.out.println("In " + value + " section from Left: ...\n" + left.substring(0, idxOfDifference) + Converter.ANSI_CYAN + left.substring(idxOfDifference, left.length()) + Converter.ANSI_RESET);
+                                System.out.println("In " + value + " section from Right: ...\n" + right.substring(0, idxOfDifference) + Converter.ANSI_CYAN + right.substring(idxOfDifference, right.length()) + Converter.ANSI_RESET);
                             } catch (StringIndexOutOfBoundsException e) {
                                 System.out.println("idxOfDifference:" + idxOfDifference);
                                 // System.out.println("end:" + end);
@@ -644,10 +650,28 @@ public class DatasetValidatorTest {
                     }
                 }
             }
-
-            assertTrue(false);
         }
 
+    }
+
+
+    @Test
+    public void testDatasetCleanse(){
+        Long entryId = 566L;
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryView entryView = new EntryView(entry);
+
+        Dataset datasetPerfect = createPerfectDataset();
+        Dataset dataset = createPerfectDataset();
+        try {
+            dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
+        } catch (FatalReflectionValidatorException e) {
+            e.printStackTrace();
+        }
+
+        datasetComparision(datasetPerfect, dataset, entry);
+
+        assertTrue(false);
     }
 
 
