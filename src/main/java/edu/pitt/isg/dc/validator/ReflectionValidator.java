@@ -3,8 +3,7 @@ package edu.pitt.isg.dc.validator;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.utils.TagUtil;
-import edu.pitt.isg.mdc.dats2_2.IsAbout;
-import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+import edu.pitt.isg.mdc.dats2_2.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.security.access.method.P;
 import org.springframework.util.AutoPopulatingList;
@@ -66,6 +65,14 @@ public class ReflectionValidator {
                 newList.set(i, (T) convertIsAboutItems((IsAboutItems) item));
             else if (PersonOrganization.class.isAssignableFrom(clazz))
                 newList.set(i, (T) convertPersonOrganization((PersonOrganization) item));
+            else if (Organization.class.isAssignableFrom(clazz))
+                newList.set(i, item);
+            else if (Person.class.isAssignableFrom(clazz))
+                newList.set(i, item);
+            else if (BiologicalEntity.class.isAssignableFrom(clazz))
+                newList.set(i, item);
+            else if (Annotation.class.isAssignableFrom(clazz))
+                newList.set(i, item);
             else
                 throw new FatalReflectionValidatorException("Unsupported class:" + clazz.getName());
         }
