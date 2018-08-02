@@ -656,6 +656,7 @@ public class DatasetValidatorTest {
 
     }
 
+/*
 
     @Test
     public void testCleanseSingleDataset(){
@@ -663,9 +664,16 @@ public class DatasetValidatorTest {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
+        //create and clean datasetOriginal -- remove Emtpy Strings
         Dataset datasetOriginal = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
-        Dataset dataset = new Dataset();
+        try {
+            datasetOriginal = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, datasetOriginal);
+        } catch (FatalReflectionValidatorException e) {
+            e.printStackTrace();
+        }
 
+        //create and run dataset through Factory
+        Dataset dataset = new Dataset();
         try {
 //                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
             dataset = createTestDataset(entry.getId().getEntryId());
@@ -673,14 +681,17 @@ public class DatasetValidatorTest {
             e.printStackTrace();
             fail();
         }
+        //clean dataset
         try {
             dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
         } catch (FatalReflectionValidatorException e) {
             e.printStackTrace();
         }
 
+        //compare original (cleaned) with dataset ran through Factory and cleaned
         assertTrue(datasetComparision(datasetOriginal, dataset, entry));
     }
+*/
 
 
 
@@ -695,7 +706,16 @@ public class DatasetValidatorTest {
 
         for (Entry entry : entriesList) {
             EntryView entryView = new EntryView(entry);
+
+            //create and clean datasetOriginal -- remove Emtpy Strings
             Dataset datasetOriginal = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+            try {
+                datasetOriginal = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, datasetOriginal);
+            } catch (FatalReflectionValidatorException e) {
+                e.printStackTrace();
+            }
+
+            //create and run dataset through Factory
             Dataset dataset = new Dataset();
             try {
 //                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
@@ -704,15 +724,15 @@ public class DatasetValidatorTest {
                 e.printStackTrace();
                 fail();
             }
-
+            //clean dataset
             try {
                 dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
             } catch (FatalReflectionValidatorException e) {
                 e.printStackTrace();
             }
 
+            //compare original (cleaned) with dataset ran through Factory and cleaned
             assertTrue(datasetComparision(datasetOriginal, dataset, entry));
-
         }
     }
 
