@@ -568,24 +568,25 @@ public class DatasetValidatorTest {
             fail();
         }
 
-        datasetComparision(datasetJohn, datasetJeff, entry);
-
-        assertTrue(false);
+        assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
     }
 
 
-    public void datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
+    public Boolean datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
         Class clazz = Dataset.class;
+
+        //issues with converter.toJsonObject -- with regards to isAbout and PersonComprisedEntity
+        //for example PeronComprisedEntity is only returning identifier and alternateIdentifier;  isAbout isn't returning anything
         JsonObject jsonObjectFromDatabaseLeft = converter.toJsonObject(clazz, datasetLeft);
         JsonObject jsonObjectFromDatabaseRight = converter.toJsonObject(clazz, datasetRight);
 
-        Map<String, Object> databaseMapJohn = gson.fromJson(jsonObjectFromDatabaseLeft, mapType);
-        Map<String, Object> databaseMapJeff = gson.fromJson(jsonObjectFromDatabaseRight, mapType);
+        Map<String, Object> databaseMapLeft = gson.fromJson(jsonObjectFromDatabaseLeft, mapType);
+        Map<String, Object> databaseMapRight = gson.fromJson(jsonObjectFromDatabaseRight, mapType);
 
-        MapDifference<String, Object> d = Maps.difference(databaseMapJohn, databaseMapJeff);
+        MapDifference<String, Object> d = Maps.difference(databaseMapLeft, databaseMapRight);
 
         if(datasetLeft.equals(datasetRight) && d.areEqual()){
-            assertTrue(true);
+            return true;
         } else {
             if (!d.toString().equalsIgnoreCase("equal")) {
                 if (d.entriesOnlyOnLeft().size() > 0) {
@@ -650,29 +651,69 @@ public class DatasetValidatorTest {
                     }
                 }
             }
+            return false;
         }
 
     }
 
 
     @Test
-    public void testDatasetCleanse(){
-        Long entryId = 566L;
+    public void testCleanseSingleDataset(){
+        Long entryId = 526L;
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
-        Dataset datasetPerfect = createPerfectDataset();
-        Dataset dataset = createPerfectDataset();
+        Dataset datasetOriginal = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+        Dataset dataset = new Dataset();
+
+        try {
+//                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
+            dataset = createTestDataset(entry.getId().getEntryId());
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        }
         try {
             dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
         } catch (FatalReflectionValidatorException e) {
             e.printStackTrace();
         }
 
-        datasetComparision(datasetPerfect, dataset, entry);
-
-        assertTrue(false);
+        assertTrue(datasetComparision(datasetOriginal, dataset, entry));
     }
 
+
+
+
+    @Test
+    public void testCleanseForAllDatasets() {
+        Set<String> types = new HashSet<>();
+        types.add(Dataset.class.getTypeName());
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
+        Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
+
+        for (Entry entry : entriesList) {
+            EntryView entryView = new EntryView(entry);
+            Dataset datasetOriginal = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+            Dataset dataset = new Dataset();
+            try {
+//                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
+                dataset = createTestDataset(entry.getId().getEntryId());
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            }
+
+            try {
+                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
+            } catch (FatalReflectionValidatorException e) {
+                e.printStackTrace();
+            }
+
+            assertTrue(datasetComparision(datasetOriginal, dataset, entry));
+
+        }
+    }
 
 }

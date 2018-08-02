@@ -178,6 +178,11 @@ public class ReflectionValidator {
                 }
             }
         }
+        if (objectOrList.getClass().getName().endsWith("String")) {
+            if (((String) objectOrList).isEmpty()) {
+                return true;
+            } else return false;
+        }
         return true;
     }
 
