@@ -2,6 +2,8 @@ import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonObject;
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import edu.pitt.isg.dc.TestConvertDatsToJava;
 import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
@@ -569,6 +571,12 @@ public class DatasetValidatorTest {
         }
 
         assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
+
+
+        XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
+        String xmlJohn = xstream.toXML(datasetJohn).replaceAll("edu.pitt.isg.dc.utils.ReflectionFactoryElementFactory", "org.springframework.util.AutoPopulatingList\\$ReflectiveElementFactory" );
+        String xmlJeff = xstream.toXML(datasetJeff);
+        assertEquals(xmlJeff, xmlJohn);
     }
 
 
