@@ -547,7 +547,8 @@ public class DatasetFactory {
                 personOrganization.setLastName(person.getLastName());
                 personOrganization.setEmail(person.getEmail());
             }
-            personComprisedEntity = createPersonOrganization(personOrganization);
+//            personComprisedEntity = createPersonOrganization(personOrganization);
+            personComprisedEntity = personOrganization;
         }
 
             personComprisedEntity = createPersonOrganization((PersonOrganization) personComprisedEntity);
