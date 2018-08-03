@@ -560,7 +560,9 @@ public class DatasetValidatorTest {
         Dataset datasetJeff = null;
         try {
             datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
+            //Reflection Factory
 //            datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, createTestDataset(entryId));
+            //Dataset Factory
             datasetJeff = createTestDataset(entryId);
 //            datasetJeff = DatasetFactory.createDatasetForWebFlow(null);
         } catch (Exception e) {
@@ -570,6 +572,36 @@ public class DatasetValidatorTest {
 
         assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
     }
+
+/*
+    @Test
+    public void testDatasetCreationComparisionForAllDatasets() {
+        Set<String> types = new HashSet<>();
+        types.add(Dataset.class.getTypeName());
+        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+
+        Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
+
+        for (Entry entry : entriesList) {
+            EntryView entryView = new EntryView(entry);
+
+            Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+            Dataset datasetJohn = null;
+            Dataset datasetJeff = null;
+            try {
+                //Reflection Factory
+                datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
+                //Dataset Factory
+                datasetJeff = createTestDataset(entry.getId().getEntryId());
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            }
+
+            assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
+        }
+    }
+*/
 
 
     public Boolean datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
