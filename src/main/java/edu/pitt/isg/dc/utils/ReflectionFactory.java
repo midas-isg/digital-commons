@@ -1,9 +1,10 @@
 package edu.pitt.isg.dc.utils;
 
+import edu.pitt.isg.mdc.dats2_2.IsAbout;
+import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import org.springframework.util.AutoPopulatingList;
 
 import java.lang.reflect.Method;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,12 +23,36 @@ public class ReflectionFactory {
     }
 
     private static <Type> List<Type> getGenericList(List<Type> list, Class<Type> type, Class clazz) throws Exception {
+        //System.out.println(clazz.getName());
+
         if (list == null) {
             list = new ArrayList<Type>();
             Object newInstance = ReflectionFactory.create(clazz);
             list.add((Type) newInstance);
         }
-        return new AutoPopulatingList(list, new ReflectionFactoryElementFactory<Type>(clazz));
+
+        if (list.size() == 0) {
+            //add one
+
+            list.add((Type) create(clazz));
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i) != null)
+                list.set(i, (Type) ReflectionFactory.create(clazz, list.get(i)));
+            if (clazz.getName().endsWith("IsAbout"))
+                list.set(i, (Type) DatasetFactory.createIsAbout((IsAbout) list.get(i)));
+            if (clazz.getName().endsWith("PersonComprisedEntity"))
+                list.set(i, (Type) DatasetFactory.createPersonComprisedEntity((PersonComprisedEntity) list.get(i)));
+        }
+        //need to go through and call create on every element!!!
+        if (list instanceof  AutoPopulatingList) {
+            //System.out.println(((AutoPopulatingList) list).getClass().g);
+            return list;
+        } else {
+
+            return new AutoPopulatingList(list, new ReflectionFactoryElementFactory<Type>(clazz));
+        }
     }
 
     private static <Type> List<Type> getGenericList(Class<Type> type, Class clazz) throws Exception {
@@ -71,11 +96,15 @@ public class ReflectionFactory {
                             String field = m.getName().substring(3, m.getName().length());
                             field = field.substring(0, 1).toLowerCase() + field.substring(1, m.getName().length() - 3);
                             String name = ReflectionFactory.getGenericTypeOfDeclaredField(field, clazz);
-
                             name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
                             Class listClazz = Class.forName(name);
                             //invoke getter
                             List list = (List) m.invoke(instance);
+                            if (list != null) {
+                                if (list.getClass().getName().endsWith("AutoPopulatingList")) {
+                                    System.out.println("This may be nothing, but we passed an AutoPopulatingList to the method that is supposed to wrap lists in an AutoPopulatedList!!");
+                                }
+                            }
                             if (list == null) {
                                 setter.invoke(instance, getGenericList(listClazz.getClass(), listClazz));
                             } else {
