@@ -1,15 +1,15 @@
 import com.google.common.collect.MapDifference;
 import com.google.common.collect.Maps;
 import com.google.common.reflect.TypeToken;
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.TestConvertDatsToJava;
 import edu.pitt.isg.dc.WebApplication;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryRepository;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
@@ -17,9 +17,7 @@ import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DatasetFactoryPerfectTest;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.dc.validator.*;
-import edu.pitt.isg.mdc.dats2_2.Access;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
-import edu.pitt.isg.Converter;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import edu.pitt.isg.mdc.dats2_2.Type;
 import org.junit.Test;
@@ -29,14 +27,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import com.google.gson.*;
 
 import java.util.*;
 
 import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 
 @RunWith(SpringRunner.class)
@@ -44,25 +39,22 @@ import static org.junit.Assert.fail;
 @ContextConfiguration(classes = {WebApplication.class})
 @TestPropertySource("/application.properties")
 public class DatasetValidatorTest {
+    public static final java.lang.reflect.Type mapType = new TypeToken<TreeMap<String, Object>>() {
+    }.getType();
+    private final Converter converter = new Converter();
+    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
     @Autowired
     private ApiUtil apiUtil;
     @Autowired
     private EntryRepository repo;
-
-    private final Converter converter = new Converter();
     private WebFlowReflectionValidator webFlowReflectionValidator = new WebFlowReflectionValidator();
-
-    public static final java.lang.reflect.Type mapType = new TypeToken<TreeMap<String, Object>>() {
-    }.getType();
-    Gson gson = new GsonBuilder().serializeNulls().enableComplexMapKeySerialization().create();
-
 
     @Test
     public void testEmptyDataset() {
         Dataset dataset = new Dataset();
     }
 
-    private Dataset createTestDataset(Long entryId){
+    private Dataset createTestDataset(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
@@ -77,7 +69,7 @@ public class DatasetValidatorTest {
         return dataset;
     }
 
-    private Dataset createPerfectDataset(){
+    private Dataset createPerfectDataset() {
         return DatasetFactoryPerfectTest.createDatasetForWebFlow(null);
     }
 
@@ -146,7 +138,7 @@ public class DatasetValidatorTest {
         dataset.getProducedBy().getEndDate().setDate(null);
 
         List<ValidatorError> errors = test(dataset);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             assertEquals(errors.get(0).getPath(), "(root)->title");
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
 
@@ -234,7 +226,7 @@ public class DatasetValidatorTest {
         }
 
         List<ValidatorError> errors = test(dataset);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             assertEquals(errors.get(0).getPath(), "(root)->creators");
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for missing Creators");
@@ -279,7 +271,7 @@ public class DatasetValidatorTest {
         dataset.getDistributions().get(0).setAccess(null);
 
         List<ValidatorError> errors = test(dataset);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             assertEquals(errors.get(0).getPath(), "(root)->distributions->0->access");
             assertEquals(errors.get(0).getErrorType(), ValidatorErrorType.NULL_VALUE_IN_REQUIRED_FIELD);
         } else fail("No error messages produced for empty Distribution Access.");
@@ -473,9 +465,9 @@ public class DatasetValidatorTest {
             Dataset dataset = createTestDataset(entry.getId().getEntryId());
             List<ValidatorError> errors = test(dataset);
 
-            if(!errors.isEmpty()){
+            if (!errors.isEmpty()) {
                 for (ValidatorError error : errors) {
-                    if(errorPathCount.containsKey(error.getPath())){
+                    if (errorPathCount.containsKey(error.getPath())) {
                         errorPathCount.put(error.getPath(), errorPathCount.get(error.getPath()) + 1);
                     } else errorPathCount.put(error.getPath(), 1);
                 }
@@ -497,9 +489,9 @@ public class DatasetValidatorTest {
             Dataset dataset = createTestDataset(entry.getId().getEntryId());
             List<ValidatorError> errors = test(dataset);
 
-            if(!errors.isEmpty()){
+            if (!errors.isEmpty()) {
                 for (ValidatorError error : errors) {
-                    if(errorPathForEntryIds.containsKey(error.getPath())){
+                    if (errorPathForEntryIds.containsKey(error.getPath())) {
                         errorPathForEntryIds.get(error.getPath()).add(entry.getId().getEntryId());
                     } else {
                         ArrayList<Long> longList = new ArrayList<Long>();
@@ -582,8 +574,29 @@ public class DatasetValidatorTest {
         datasetJohn.getDistributions().get(0).getDates().get(4);
 
         XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
-        String xmlJohn = xstream.toXML(datasetJohn).replaceAll("edu.pitt.isg.dc.utils.ReflectionFactoryElementFactory", "org.springframework.util.AutoPopulatingList\\$ReflectiveElementFactory" );
-        String xmlJeff = xstream.toXML(datasetJeff);
+        String xmlJohn = xstream.toXML(datasetJohn).
+                replaceAll("edu.pitt.isg.dc.utils.ReflectionFactoryElementFactory", "org.springframework.util.AutoPopulatingList\\$ReflectiveElementFactory").
+                replaceAll("dats2_2", "dats2__2");
+
+
+        String xmlJeff = xstream.toXML(datasetJeff).
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDateWrapper", "edu.pitt.isg.mdc.dats2_2.Date").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedOrganizationWrapper", "edu.pitt.isg.mdc.dats2_2.Organization").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPersonComprisedEntityWrapper", "edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedLicenseWrapper", "edu.pitt.isg.mdc.dats2_2.License").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedAccessWrapper", "edu.pitt.isg.mdc.dats2_2.Access").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPlaceWrapper", "edu.pitt.isg.mdc.dats2_2.Place").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedTypeWrapper", "edu.pitt.isg.mdc.dats2_2.Type").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDistributionWrapper", "edu.pitt.isg.mdc.dats2_2.Distribution").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedGrantWrapper", "edu.pitt.isg.mdc.dats2_2.Grant").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPublicationWrapper", "edu.pitt.isg.mdc.dats2_2.Publication").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedIsAboutWrapper", "edu.pitt.isg.mdc.dats2_2.IsAbout").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedCategoryValuePairWrapper", "edu.pitt.isg.mdc.dats2_2.CategoryValuePair").
+                replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDataStandardWrapper", "edu.pitt.isg.mdc.dats2_2.DataStandard").
+                replaceAll("dats2_2", "dats2__2");
+
+
+
         assertEquals(xmlJeff, xmlJohn);
     }
 
@@ -631,7 +644,7 @@ public class DatasetValidatorTest {
 
         MapDifference<String, Object> d = Maps.difference(databaseMapLeft, databaseMapRight);
 
-        if(datasetLeft.equals(datasetRight) && d.areEqual()){
+        if (datasetLeft.equals(datasetRight) && d.areEqual()) {
             return true;
         } else {
             if (!d.toString().equalsIgnoreCase("equal")) {
@@ -741,8 +754,6 @@ public class DatasetValidatorTest {
         String xmlOriginal = xstream.toXML(datasetOriginal);
         assertEquals(xmlOriginal, xmlCleansed);
     }
-
-
 
 
     @Test
