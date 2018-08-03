@@ -464,7 +464,7 @@ public class DatasetValidatorTest {
     public void testValidationErrorCountByBreadcrumbForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, Integer> errorPathCount = new HashMap<String, Integer>();
 
@@ -489,7 +489,7 @@ public class DatasetValidatorTest {
     public void testGetEntryIdByErrorBreadcrumbForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
 
@@ -592,7 +592,7 @@ public class DatasetValidatorTest {
     public void testDatasetCreationComparisionForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
 
@@ -702,11 +702,10 @@ public class DatasetValidatorTest {
 
     }
 
-/*
 
     @Test
     public void testCleanseSingleDataset(){
-        Long entryId = 526L;
+        Long entryId = 1174L;
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
@@ -736,8 +735,12 @@ public class DatasetValidatorTest {
 
         //compare original (cleaned) with dataset ran through Factory and cleaned
         assertTrue(datasetComparision(datasetOriginal, dataset, entry));
+
+        XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
+        String xmlCleansed = xstream.toXML(dataset);
+        String xmlOriginal = xstream.toXML(datasetOriginal);
+        assertEquals(xmlOriginal, xmlCleansed);
     }
-*/
 
 
 
@@ -746,7 +749,7 @@ public class DatasetValidatorTest {
     public void testCleanseForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
 
@@ -779,6 +782,11 @@ public class DatasetValidatorTest {
 
             //compare original (cleaned) with dataset ran through Factory and cleaned
             assertTrue(datasetComparision(datasetOriginal, dataset, entry));
+
+            XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
+            String xmlCleansed = xstream.toXML(dataset);
+            String xmlOriginal = xstream.toXML(datasetOriginal);
+            assertEquals(xmlOriginal, xmlCleansed);
         }
     }
 
