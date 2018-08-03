@@ -15,10 +15,6 @@ import org.springframework.webflow.engine.builder.support.FlowBuilderServices;
 import org.springframework.webflow.executor.FlowExecutor;
 import org.springframework.webflow.mvc.builder.MvcViewFactoryCreator;
 
-import static edu.pitt.isg.dc.utils.DatasetFactory.createDateList;
-import static edu.pitt.isg.dc.utils.DatasetFactory.createTypeList;
-import static edu.pitt.isg.dc.utils.DatasetFactory.wrapListWithAutoPopulatingList;
-
 @Configuration
 public class WebFlowConfig extends AbstractFlowConfiguration {
 

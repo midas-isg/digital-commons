@@ -705,7 +705,7 @@ public class DatasetValidatorTest {
 
     @Test
     public void testCleanseSingleDataset(){
-        Long entryId = 1174L;
+        Long entryId = 566L;
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
@@ -720,8 +720,8 @@ public class DatasetValidatorTest {
         //create and run dataset through Factory
         Dataset dataset = new Dataset();
         try {
-//                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
-            dataset = createTestDataset(entry.getId().getEntryId());
+            dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
+//            dataset = createTestDataset(entry.getId().getEntryId());
         } catch (Exception e) {
             e.printStackTrace();
             fail();
@@ -767,8 +767,8 @@ public class DatasetValidatorTest {
             //create and run dataset through Factory
             Dataset dataset = new Dataset();
             try {
-//                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
-                dataset = createTestDataset(entry.getId().getEntryId());
+                dataset = (Dataset) ReflectionFactory.create(Dataset.class, datasetOriginal);
+//                dataset = createTestDataset(entry.getId().getEntryId());
             } catch (Exception e) {
                 e.printStackTrace();
                 fail();
