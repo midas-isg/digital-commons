@@ -459,7 +459,7 @@ public class DatasetValidatorTest {
     public void testValidationErrorCountByBreadcrumbForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, Integer> errorPathCount = new HashMap<String, Integer>();
 
@@ -484,7 +484,7 @@ public class DatasetValidatorTest {
     public void testGetEntryIdByErrorBreadcrumbForAllDatasets() {
         Set<String> types = new HashSet<>();
         types.add(Dataset.class.getTypeName());
-        List<Entry> entriesList = repo.filterEntryIdsByTypes(types);
+        List<Entry> entriesList = repo.filterEntryIdsByTypesMaxRevisionID(types);
 
         Map<String, List<Long>> errorPathForEntryIds = new HashMap<String, List<Long>>();
 
