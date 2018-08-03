@@ -90,7 +90,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
             "WHERE (entry_id, revision_id) IN\n" +
             "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
-            "GROUP BY entry_id) AND content #>> '{properties,type}' IN ?1 ")
+            "GROUP BY entry_id) AND is_public = TRUE AND content #>> '{properties,type}' IN ?1 ")
     List<Entry> filterEntryIdsByTypesMaxRevisionID(Set<String> onlyTypes);
 
     @Query(nativeQuery = true, value = "SELECT DISTINCT content #>> '{properties,type}' " +
