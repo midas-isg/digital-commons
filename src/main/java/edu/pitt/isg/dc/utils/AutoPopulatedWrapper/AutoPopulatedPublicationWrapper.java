@@ -7,6 +7,7 @@ public class AutoPopulatedPublicationWrapper extends Publication {
     public AutoPopulatedPublicationWrapper() {
 
         super();
-        DatasetFactory.createPublication(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createPublication(this);
     }
 }

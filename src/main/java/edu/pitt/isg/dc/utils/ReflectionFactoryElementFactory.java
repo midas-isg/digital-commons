@@ -1,5 +1,7 @@
 package edu.pitt.isg.dc.utils;
 
+import edu.pitt.isg.mdc.dats2_2.Annotation;
+import edu.pitt.isg.mdc.dats2_2.Date;
 import edu.pitt.isg.mdc.dats2_2.Person;
 import org.springframework.util.AutoPopulatingList;
 
@@ -15,6 +17,11 @@ public class ReflectionFactoryElementFactory<E> implements AutoPopulatingList.El
     @Override
     public E createElement(int index) throws AutoPopulatingList.ElementInstantiationException {
         try {
+            if (elementClass.isAssignableFrom(Date.class)) {
+                Date date = (Date) ReflectionFactory.create(this.elementClass);
+                date.setType(new Annotation());
+                return (E) date;
+            }
             return (E) ReflectionFactory.create(this.elementClass);
         }
         catch (InstantiationException ex) {

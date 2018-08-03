@@ -82,7 +82,8 @@ public class DatasetWebflowValidator {
         EntryView entryView = new EntryView(entry);
 
         Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
-        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        dataset = datasetFactory.createDatasetForWebFlow(dataset);
         return dataset;
     }
 

@@ -8,6 +8,7 @@ public class AutoPopulatedIsAboutWrapper extends IsAboutItems {
     public AutoPopulatedIsAboutWrapper() {
 
         super();
-        DatasetFactory.createIsAboutItems(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createIsAboutItems(this);
     }
 }

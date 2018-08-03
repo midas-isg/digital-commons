@@ -7,6 +7,7 @@ public class AutoPopulatedDataStandardWrapper extends DataStandard {
     public AutoPopulatedDataStandardWrapper() {
 
         super();
-        DatasetFactory.createDataStandard(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createDataStandard(this);
     }
 }

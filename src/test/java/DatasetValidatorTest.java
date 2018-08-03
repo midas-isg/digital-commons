@@ -67,7 +67,9 @@ public class DatasetValidatorTest {
         EntryView entryView = new EntryView(entry);
 
         Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
-        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        dataset = datasetFactory.createDatasetForWebFlow(dataset);
+
 
 //        Dataset dataset = (Dataset) ReflectionFactory.create(Dataset.class);
         //make your dataset here
@@ -132,7 +134,10 @@ public class DatasetValidatorTest {
 
         dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setName(null);
 
-        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setFunders(DatasetFactory.createPersonComprisedEntityList(null));
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+
+
+        dataset.getPrimaryPublications().get(0).getAcknowledges().get(0).setFunders(datasetFactory.createPersonComprisedEntityList(null));
 
         ((IsAboutItems) dataset.getIsAbout().get(0)).setName(null);
 
@@ -573,7 +578,8 @@ public class DatasetValidatorTest {
         }
 
         assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
-
+        datasetJeff.getDistributions().get(0).getDates().get(4);
+        datasetJohn.getDistributions().get(0).getDates().get(4);
 
         XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
         String xmlJohn = xstream.toXML(datasetJohn).replaceAll("edu.pitt.isg.dc.utils.ReflectionFactoryElementFactory", "org.springframework.util.AutoPopulatingList\\$ReflectiveElementFactory" );

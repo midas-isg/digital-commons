@@ -7,7 +7,8 @@ public class AutoPopulatedDistributionWrapper extends Distribution {
     public AutoPopulatedDistributionWrapper() {
 
         super();
-        DatasetFactory.createDistribution(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createDistribution(this);
     }
 
 }

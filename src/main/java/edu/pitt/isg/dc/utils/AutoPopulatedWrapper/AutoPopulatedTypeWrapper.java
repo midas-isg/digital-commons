@@ -7,6 +7,7 @@ public class AutoPopulatedTypeWrapper extends Type {
     public AutoPopulatedTypeWrapper() {
 
         super();
-        DatasetFactory.createType(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createType(this);
     }
 }

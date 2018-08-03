@@ -1,7 +1,6 @@
 package edu.pitt.isg.dc.controller;
 
 
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -10,7 +9,6 @@ import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.component.DCEmailService;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
-import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.entry.exceptions.MdcEntryDatastoreException;
 import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
@@ -19,17 +17,11 @@ import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
-import edu.pitt.isg.mdc.dats2_2.Annotation;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationListener;
-import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -40,22 +32,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.webflow.execution.RequestContext;
 import org.springframework.webflow.execution.RequestContextHolder;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.Charset;
-import java.nio.file.FileSystems;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Date;
 import java.util.Properties;
 
@@ -71,16 +52,42 @@ import static edu.pitt.isg.dc.controller.HomeController.*;
 @Controller
 public class DataEntryController {
 
-    private static boolean GENERATE_XSD_FORMS = true;
     private static final String[] XSD_FILES = {
             "software.xsd",
             "dats.xsd"
     };
+    private static final String XSD_FORMS_PATH;
+    private static final String OUTPUT_DIRECTORY;
+    private static final String DC_ENTRY_REQUESTS_LOG;
+    private static boolean GENERATE_XSD_FORMS = true;
+    private static String ENTRIES_AUTHENTICATION = "";
 
-    @Autowired
-    private ApiUtil apiUtil;
-    @Autowired
-    private EntryRepository repo;
+    static {
+        Properties configurationProperties = DigitalCommonsProperties.getProperties();
+        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
+    }
+
+    static {
+        String outputDirectory = "";
+        String xsdFormsPath = "";
+        String dcEntryRequestsLog = "";
+        Properties dataEntryConfig = new Properties();
+
+        try {
+            dataEntryConfig.load(DCEmailService.class.getClassLoader()
+                    .getResourceAsStream("config.properties"));
+            outputDirectory = dataEntryConfig.getProperty("outputDirectory");
+            xsdFormsPath = dataEntryConfig.getProperty("xsdFormsPath");
+            dcEntryRequestsLog = dataEntryConfig.getProperty("dcEntryRequestsLog");
+        } catch (Exception exception) {
+            System.err.print(exception);
+        }
+
+        OUTPUT_DIRECTORY = outputDirectory;
+        XSD_FORMS_PATH = xsdFormsPath;
+        DC_ENTRY_REQUESTS_LOG = dcEntryRequestsLog;
+    }
+
     @Autowired
     DatasetValidator datasetValidator;
     @Autowired
@@ -109,6 +116,21 @@ public class DataEntryController {
     SyntheticEcosystemConstructorValidator syntheticEcosystemConstructorValidator;
     @Autowired
     DataStandardValidator dataStandardValidator;
+    @Autowired
+    EntrySubmissionInterface entrySubmissionInterface;
+    @Autowired
+    UsersSubmissionInterface usersSubmissionInterface;
+    @Autowired
+    private ApiUtil apiUtil;
+    @Autowired
+    private EntryRepository repo;
+    private Converter converter = new Converter();
+    @Autowired
+    private ServletContext context;
+    @Autowired
+    private CategoryHelper categoryHelper;
+    @Autowired
+    private DataGovInterface dataGovInterface;
 
     @InitBinder("dataset")
     protected void initBinder(WebDataBinder binder) {
@@ -208,57 +230,6 @@ public class DataEntryController {
         binder.setValidator(dataStandardValidator);
     }
 
-
-    private Converter converter = new Converter();
-
-    private static final String XSD_FORMS_PATH;
-    private static final String OUTPUT_DIRECTORY;
-    private static final String DC_ENTRY_REQUESTS_LOG;
-
-    private static String ENTRIES_AUTHENTICATION = "";
-
-    static {
-        Properties configurationProperties = DigitalCommonsProperties.getProperties();
-        ENTRIES_AUTHENTICATION = configurationProperties.getProperty(DigitalCommonsProperties.ENTRIES_AUTHENTICATION);
-    }
-
-    static {
-        String outputDirectory = "";
-        String xsdFormsPath = "";
-        String dcEntryRequestsLog = "";
-        Properties dataEntryConfig = new Properties();
-
-        try {
-            dataEntryConfig.load(DCEmailService.class.getClassLoader()
-                    .getResourceAsStream("config.properties"));
-            outputDirectory = dataEntryConfig.getProperty("outputDirectory");
-            xsdFormsPath = dataEntryConfig.getProperty("xsdFormsPath");
-            dcEntryRequestsLog = dataEntryConfig.getProperty("dcEntryRequestsLog");
-        } catch (Exception exception) {
-            System.err.print(exception);
-        }
-
-        OUTPUT_DIRECTORY = outputDirectory;
-        XSD_FORMS_PATH = xsdFormsPath;
-        DC_ENTRY_REQUESTS_LOG = dcEntryRequestsLog;
-    }
-
-
-    @Autowired
-    EntrySubmissionInterface entrySubmissionInterface;
-
-    @Autowired
-    UsersSubmissionInterface usersSubmissionInterface;
-
-    @Autowired
-    private ServletContext context;
-
-    @Autowired
-    private CategoryHelper categoryHelper;
-
-    @Autowired
-    private DataGovInterface dataGovInterface;
-
     @RequestMapping(value = "/incrementList", method = RequestMethod.GET)
     public void incrementList(HttpSession session) {
         RequestContext requestContext = RequestContextHolder.getRequestContext();
@@ -282,7 +253,10 @@ public class DataEntryController {
 
             dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             model.addAttribute("categoryID", entry.getCategory().getId());
-        } else dataset = DatasetFactory.createDatasetForWebFlow(dataset);
+        } else {
+            DatasetFactory datasetFactory = new DatasetFactory(true);
+            dataset = datasetFactory.createDatasetForWebFlow(dataset);
+        }
         model.addAttribute("dataset", dataset);
 
         if (ifLoggedIn(session))
@@ -394,7 +368,6 @@ public class DataEntryController {
 
         return "entryConfirmation";
     }*/
-
 
 
     @RequestMapping(value = "/addDataFormatConverters", method = RequestMethod.GET)
@@ -1036,7 +1009,7 @@ public class DataEntryController {
     }
 
     @RequestMapping(value = "/addPhylogeneticTreeConstructors/{categoryID}", method = RequestMethod.POST)
-    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId,  @Valid @ModelAttribute("phylogeneticTreeConstructor") @Validated PhylogeneticTreeConstructors phylogeneticTreeConstructor,
+    public String submit(HttpSession session, @PathVariable(value = "categoryID") Long categoryID, @RequestParam(value = "entryId", required = false) Long entryId, @RequestParam(value = "revisionId", required = false) Long revisionId, @Valid @ModelAttribute("phylogeneticTreeConstructor") @Validated PhylogeneticTreeConstructors phylogeneticTreeConstructor,
                          BindingResult result, ModelMap model) throws MdcEntryDatastoreException {
         if (categoryID == 0) {
             result.addError(new ObjectError("categoryIDError", ""));
@@ -1311,7 +1284,6 @@ public class DataEntryController {
 
         return jsonString;
     }
-
 
 
     @RequestMapping(value = "/addDataGovRecordById", method = RequestMethod.GET)

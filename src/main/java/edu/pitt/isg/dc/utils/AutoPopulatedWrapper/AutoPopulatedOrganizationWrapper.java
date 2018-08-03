@@ -7,6 +7,7 @@ public class AutoPopulatedOrganizationWrapper extends Organization {
     public AutoPopulatedOrganizationWrapper() {
 
         super();
-        DatasetFactory.createOrganization(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createOrganization(this);
     }
 }

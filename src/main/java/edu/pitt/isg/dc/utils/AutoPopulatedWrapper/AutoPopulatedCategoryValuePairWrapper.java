@@ -7,6 +7,7 @@ public class AutoPopulatedCategoryValuePairWrapper extends CategoryValuePair {
     public AutoPopulatedCategoryValuePairWrapper() {
 
         super();
-        DatasetFactory.createCategoryValuePair(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createCategoryValuePair(this);
     }
 }

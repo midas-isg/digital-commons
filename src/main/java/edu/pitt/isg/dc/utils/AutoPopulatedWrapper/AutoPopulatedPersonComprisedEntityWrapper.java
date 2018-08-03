@@ -8,6 +8,7 @@ public class AutoPopulatedPersonComprisedEntityWrapper extends PersonOrganizatio
     public AutoPopulatedPersonComprisedEntityWrapper() {
 
         super();
-        DatasetFactory.createPersonOrganization(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createPersonOrganization(this);
     }
 }

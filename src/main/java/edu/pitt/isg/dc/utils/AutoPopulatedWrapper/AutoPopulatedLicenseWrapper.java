@@ -7,6 +7,7 @@ public class AutoPopulatedLicenseWrapper extends License {
     public AutoPopulatedLicenseWrapper() {
 
         super();
-        DatasetFactory.createLicense(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createLicense(this);
     }
 }

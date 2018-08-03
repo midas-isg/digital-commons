@@ -7,6 +7,7 @@ public class AutoPopulatedAccessWrapper extends Access {
     public AutoPopulatedAccessWrapper() {
 
         super();
-        DatasetFactory.createAccess(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createAccess(this);
     }
 }

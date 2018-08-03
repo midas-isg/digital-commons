@@ -7,6 +7,7 @@ public class AutoPopulatedGrantWrapper extends Grant {
     public AutoPopulatedGrantWrapper () {
 
         super();
-        DatasetFactory.createGrant(this);
+        DatasetFactory datasetFactory = new DatasetFactory(true);
+        datasetFactory.createGrant(this);
     }
 }
