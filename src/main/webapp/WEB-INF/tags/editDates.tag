@@ -39,6 +39,7 @@
     $( document ).on( "focus", "input.date:not(.hasDatepicker)", function() {
         <%--$("#${specifier}-date-picker").live("click", function () {--%>
             $(this).datepicker({
+                constrainInput: false,
                 changeMonth: true,
                 changeYear: true
             });
