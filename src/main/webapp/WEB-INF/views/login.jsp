@@ -35,9 +35,8 @@
 <script type="text/javascript">
     $(document).ready(function () {
         // debugger
-        var state = '${state}';
-        var auth0Options = toAuth0Options();
-        new auth0.Authentication(auth0Options).getSSOData(function (err, data) {
+        var auth0options = toAuth0Options();
+        new auth0.Authentication(auth0options).getSSOData(function (err, data) {
             var loggedInUserId = '${userId}';
             if (data && data.sso === true) {
                 console.log('SSO: an Auth0 SSO session already exists');
@@ -60,24 +59,22 @@
         });
 
         function toAuth0Options() {
-            var auth0ClientId = '${clientId}';
-            var auth0Domain = '${domain}';
-            var callbackUrl = '${callbackUrl}';
+            var domain = '${domain}';
             return {
-                clientID: auth0ClientId,
-                audience: 'https://' + auth0Domain + '/userinfo',
+                state: '${state}',
+                responseType: 'code',
+                clientID: '${clientId}',
+                audience: 'https://' + domain + '/userinfo',
                 scope: 'openid profile email',
-                redirectUri: callbackUrl,
-                domain: auth0Domain
+                redirectUri: '${callbackUrl}',
+                domain: domain
             };
         }
 
         function authorize () {
             console.log('Authorizing ...');
-            new auth0.WebAuth(auth0Options).authorize({
-                prompt: 'none',
-                responseType: 'code',
-                state: state
+            new auth0.WebAuth(auth0options).authorize({
+                prompt: 'none'
             });
         }
 
