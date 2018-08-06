@@ -547,6 +547,7 @@ public class DatasetValidatorTest {
     }
 
 
+/*
     @Test
     public void testDatasetCreationComparision() {
         Long entryId = 566L;
@@ -599,8 +600,9 @@ public class DatasetValidatorTest {
 
         assertEquals(xmlJeff, xmlJohn);
     }
+*/
 
-/*
+
     @Test
     public void testDatasetCreationComparisionForAllDatasets() {
         Set<String> types = new HashSet<>();
@@ -619,16 +621,40 @@ public class DatasetValidatorTest {
                 //Reflection Factory
                 datasetJohn = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
                 //Dataset Factory
-                datasetJeff = createTestDataset(entry.getId().getEntryId());
+                datasetJeff = createTestDataset(entryView.getId().getEntryId());
             } catch (Exception e) {
                 e.printStackTrace();
                 fail();
             }
 
             assertTrue(datasetComparision(datasetJohn, datasetJeff, entry));
-        }
+//            datasetJeff.getDistributions().get(0).getDates().get(4);
+//            datasetJohn.getDistributions().get(0).getDates().get(4);
+
+            XStream xstream = new XStream(new DomDriver()); // does not require XPP3 library
+            String xmlJohn = xstream.toXML(datasetJohn).
+                    replaceAll("edu.pitt.isg.dc.utils.ReflectionFactoryElementFactory", "org.springframework.util.AutoPopulatingList\\$ReflectiveElementFactory").
+                    replaceAll("dats2_2", "dats2__2");
+
+
+            String xmlJeff = xstream.toXML(datasetJeff).
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDateWrapper", "edu.pitt.isg.mdc.dats2_2.Date").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedOrganizationWrapper", "edu.pitt.isg.mdc.dats2_2.Organization").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPersonComprisedEntityWrapper", "edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedLicenseWrapper", "edu.pitt.isg.mdc.dats2_2.License").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedAccessWrapper", "edu.pitt.isg.mdc.dats2_2.Access").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPlaceWrapper", "edu.pitt.isg.mdc.dats2_2.Place").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedTypeWrapper", "edu.pitt.isg.mdc.dats2_2.Type").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDistributionWrapper", "edu.pitt.isg.mdc.dats2_2.Distribution").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedGrantWrapper", "edu.pitt.isg.mdc.dats2_2.Grant").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedPublicationWrapper", "edu.pitt.isg.mdc.dats2_2.Publication").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedIsAboutWrapper", "edu.pitt.isg.mdc.dats2_2.IsAbout").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedCategoryValuePairWrapper", "edu.pitt.isg.mdc.dats2_2.CategoryValuePair").
+                    replaceAll("edu.pitt.isg.dc.utils.AutoPopulatedWrapper.AutoPopulatedDataStandardWrapper", "edu.pitt.isg.mdc.dats2_2.DataStandard").
+                    replaceAll("dats2_2", "dats2__2");
+
+            assertEquals(xmlJeff, xmlJohn);        }
     }
-*/
 
 
     public Boolean datasetComparision(Dataset datasetLeft, Dataset datasetRight, Entry entry) {
@@ -716,6 +742,7 @@ public class DatasetValidatorTest {
     }
 
 
+/*
     @Test
     public void testCleanseSingleDataset(){
         Long entryId = 566L;
@@ -754,6 +781,7 @@ public class DatasetValidatorTest {
         String xmlOriginal = xstream.toXML(datasetOriginal);
         assertEquals(xmlOriginal, xmlCleansed);
     }
+*/
 
 
     @Test
