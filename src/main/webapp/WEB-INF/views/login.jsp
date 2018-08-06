@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<%--<script src="http://cdn.auth0.com/w2/auth0-6.8.js"></script>--%>
-<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.js"></script>
-<%--<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.min.js"></script>--%>
+<%--<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.js"></script>--%>
+<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.min.js"></script>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -36,6 +35,13 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
+        debugger
+        var hash = window.location.hash.substr(1);
+        if (hash.match('^logout')) {
+            console.log("Logging out ...");
+            logout();
+        }
+
         var auth0ClientId = '${clientId}';
         var auth0Domain = '${domain}';
         var callbackUrl = '${callbackUrl}';
@@ -43,34 +49,17 @@
         //var icon = /*[[@{/public/img/logo.png}]]*/ '';
         var loggedInUserId = '${userId}';
 
-        const webAuth = new auth0.WebAuth({
+        var auth0Options = {
             clientID: auth0ClientId,
             audience: 'https://' + auth0Domain + '/userinfo',
             scope: 'openid profile email',
-            responseMode: 'form_post',
-            responseType: 'token',
+            // responseMode: 'form_post',
+            // responseType: 'token',
             redirectUri: callbackUrl,
             domain: auth0Domain
-        });
-
-        var a1 = new auth0.Authentication({
-            // prompt: 'none',
-            clientID: auth0ClientId,
-            audience: 'https://' + auth0Domain + '/userinfo',
-            scope: 'openid profile email',
-            responseMode: 'form_post',
-            responseType: 'token',
-            redirectUri: callbackUrl,
-            domain: auth0Domain
-        });
-
-        var hash = window.location.hash.substr(1);
-        if (hash.match('^logout')) {
-            console.log("Logging out ...");
-            logout();
-        }
-
-        var nonce = toNonce(state);
+        };
+        var webAuth = new auth0.WebAuth(auth0Options);
+        var a1 = new auth0.Authentication(auth0Options);
 
         function isSso(result) {
             return result.appState;
@@ -85,13 +74,6 @@
                     console.log(data.lastUsedUserID);
                     if (loggedInUserId !== data.lastUsedUserID) {
                         console.log("SSO Session but NOT locally authenticated ");
-                        /*a1.login({
-                            scope: 'openid name email picture offline_access',
-                            state: '${state}'
-                        }, function (err) {
-                            console.error('Error logging in: ' + err);
-                        });*/
-                        // renew();
                         authorize();
                     } else {
                         console.log("SSO Session and locally authenticated ");
@@ -117,25 +99,16 @@
             });
         }
 
-        webAuth.checkSession({nonce: nonce},
+        webAuth.checkSession({responseType: 'token'},
             function(err, result) {
                 if (err) {
                     console.log(err, "Renewing ...");
-                    // renew();
                     signOnViaMidasAccounts();
                 } else {
                     console.log('checkSession', result);
                     if (isSso(result)) {
                         sso();
-                        /*if (loggedInUserId){
-                            let location = '${pageContext.request.contextPath}/main';
-                            console.log("user = ("+ loggedInUserId+ "); Going to ", location);
-                            window.location = location;
-                        } else {
-                            renew();
-                        }*/
                     } else { // No SSO
-                        // renew();
                         signOnViaMidasAccounts();
                     }
                 }
@@ -146,26 +119,11 @@
             console.log('Authorizing ...');
             webAuth.authorize({
                 prompt: 'none',
-                // scope: 'openid name email picture offline_access',
-
                 responseType: 'code',
-                redirectUri: callbackUrl,
-                responseMode: 'form_post',
+                // redirectUri: callbackUrl,
+                // responseMode: 'form_post',
                 state: state,
-                usePostMessage: true
-            });
-        }
-
-        function renew () {
-            console.log('Renewing ...');
-            webAuth.renewAuth({
-                responseType: 'code',
-                redirectUri: callbackUrl,
-                responseMode: 'form_post',
-                state: state,
-                usePostMessage: true
-            }, function (a,b,c) {
-                console.log(a,b,c);
+                // usePostMessage: true
             });
         }
 
@@ -184,17 +142,6 @@
             message = message || "Please sign on to use the services";
             return '${ssoLoginUrl}' + '?returnToUrl='
                 + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message;
-        }
-
-        function toNonce(state) {
-            return null;
-            if (! state)
-                return null;
-
-            var tokens = state.split("nonce=");
-            if (tokens.length == 2)
-                return tokens[1];
-            return null;
         }
     });
 
