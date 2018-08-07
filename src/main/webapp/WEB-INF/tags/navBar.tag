@@ -30,7 +30,7 @@
 </script>
 
 <ul class="nav nav-tabs navbar-nav mr-auto" role="tablist">
-    <li><a id="content-tab" class="nav-link active font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
+    <li><a id="content-tab" class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle font-size-18" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
@@ -44,7 +44,7 @@
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown ">
             <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
@@ -88,6 +88,7 @@
                 <a class="dropdown-item" href="${contextPath}/addPopulationDynamicsModel">Population Dynamics Model</a>
                 <a class="dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>
             </div>
+        </li>
 
     </c:if>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
