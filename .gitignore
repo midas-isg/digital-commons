@@ -19,3 +19,4 @@ out/
 /src/main/webapp/WEB-INF/views/PhylogeneticTreeConstructors.jsp
 /src/main/webapp/WEB-INF/views/PopulationDynamicsModel.jsp
 /src/main/webapp/WEB-INF/views/SyntheticEcosystemConstructors.jsp
+lib/

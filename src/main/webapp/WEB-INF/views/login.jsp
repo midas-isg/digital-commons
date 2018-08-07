@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<script src="http://cdn.auth0.com/w2/auth0-6.8.js"></script>
+<%--<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.js"></script>--%>
+<script src="https://cdn.auth0.com/js/auth0/9.7.3/auth0.min.js"></script>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -33,26 +34,17 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var auth0 = new Auth0({
-            clientID: '${clientId}',
-            domain: '${domain}',
-            callbackURL: '${callbackUrl}'
-        });
-
-        auth0.getSSOData(function (err, data) {
+        // debugger
+        var auth0options = toAuth0Options();
+        new auth0.Authentication(auth0options).getSSOData(function (err, data) {
             var loggedInUserId = '${userId}';
             if (data && data.sso === true) {
                 console.log('SSO: an Auth0 SSO session already exists');
-                console.log(loggedInUserId);
-                console.log(data.lastUsedUserID);
+                console.log('local:', loggedInUserId);
+                console.log('SSO:', data.lastUsedUserID);
                 if (loggedInUserId !== data.lastUsedUserID) {
                     console.log("SSO Session but NOT locally authenticated ");
-                    auth0.login({
-                        scope: 'openid name email picture offline_access',
-                        state: '${state}'
-                    }, function (err) {
-                        console.error('Error logging in: ' + err);
-                    });
+                    authorize();
                 } else {
                     console.log("SSO Session and locally authenticated ");
                     window.location = '${pageContext.request.contextPath}';
@@ -62,18 +54,49 @@
                 window.location = '${logoutUrl}';
             } else {
                 console.log("NO SSO Session and NOT locally authenticated ");
-                var title = "Digital Commons";
-                var message = "Please login to use the services";
+                window.location = toMidasAccountsUrl();
+            }
+        });
+
+        function toAuth0Options() {
+            var domain = '${domain}';
+            return {
+                state: '${state}',
+                responseType: 'code',
+                clientID: '${clientId}',
+                audience: 'https://' + domain + '/userinfo',
+                scope: 'openid profile email',
+                redirectUri: '${callbackUrl}',
+                domain: domain
+            };
+        }
+
+        function authorize () {
+            console.log('Authorizing ...');
+            new auth0.WebAuth(auth0options).authorize({
+                prompt: 'none'
+            });
+        }
+
+        function toMidasAccountsUrl() {
+            var appName = "Digital Commons";
+            var title = appName;
+            var message = "Please login to use the services";
 //                var hash = window.location.hash.substr(1);
 //                if (hash.match('^logout')){
 //                    message = "Logged out successfully.";
 //                }
-                var returnUrl = ("${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${pageContext.request.contextPath}/");
-                var returnTitle = "Back to Digital Commons"
-                window.location = '${ssoLoginUrl}?returnToUrl='
-                    + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message + '&returnUrl=' + encodeURIComponent(returnUrl) + '&returnTitle=' + returnTitle;
-            }
-        });
+            var returnUrl = toReturnUrl();
+            var returnTitle = "Back to " + appName;
+            return '${ssoLoginUrl}?returnToUrl='
+                + encodeURIComponent(window.location) + '&title=' + title + '&message=' + message
+                + '&returnUrl=' + encodeURIComponent(returnUrl) + '&returnTitle=' + returnTitle;
+
+        }
+
+        function toReturnUrl() {
+            return "${fn:replace(pageContext.request.requestURL, pageContext.request.requestURI, '')}${pageContext.request.contextPath}/";
+        }
     });
 
 
