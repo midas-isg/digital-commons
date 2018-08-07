@@ -40,7 +40,7 @@
 	<div class="row">
 		<div class="col-md-12">
 			<br>
-			<a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
+			<a href="${pageContext.request.contextPath}/main"><button type="button" class="btn btn-default"><icon class="fa fa-chevron-left"></icon> Home</button></a>
 			<br>
 			<h3 class="text-center">Status 404: The requested resource could not be found.</h3>
 

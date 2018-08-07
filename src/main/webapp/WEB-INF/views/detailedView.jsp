@@ -22,11 +22,11 @@
         <myTags:categoryLineage lineage="${lineage}"/>
     </div>
     <div class="section-content">
-        <div class="col-xs-12 background-white">
-            <h3>${entryView.entry.title}</h3>
+        <div class="col-12 background-white">
+            <h3 class="margin-top-10">${entryView.entry.title}</h3>
             <hr>
             <c:if test="${not empty entryView.entry.identifier}">
-                <h4 class="sub-title-font">Identifier</h4>
+                <h5 class="sub-title-font">Identifier</h5>
                 <c:choose>
                     <c:when test="${fn:contains(entryView.entry.identifier.identifier, 'http') or fn:contains(entryView.entry.identifier.identifier, 'www')}">
                         <a class="underline"
@@ -38,7 +38,7 @@
                 </c:choose>
             </c:if>
 
-            <h4 class="sub-title-font">Description</h4>
+            <h5 class="sub-title-font">Description</h5>
             <div class="description-section">
                 <c:choose>
                     <c:when test="${ not empty description}">

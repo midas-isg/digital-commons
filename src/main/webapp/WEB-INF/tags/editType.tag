@@ -32,7 +32,7 @@
                     <c:when test="${varStatus.first}">
                         <div class="form-group control-group edit-form-group ${specifier}-type-add-more-button">
                         <label>Type</label>
-                        <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i>
+                        <button class="btn btn-success ${specifier}-add-type" type="button"><i class="fa fa-plus-circle"></i>
                             Add Type
                         </button>
                     </c:when>
@@ -51,7 +51,7 @@
                         <c:when test="${not function:isObjectEmpty(type.information)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Information
                             </button>
                             <div class="form-group control-group edit-form-group">
@@ -66,7 +66,7 @@
                         <c:otherwise>
                             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-information-add-annotation"
                                     type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Information
                             </button>
                         </c:otherwise>
@@ -79,7 +79,7 @@
                         <c:when test="${not function:isObjectEmpty(type.method)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Method
                             </button>
                             <div class="form-group control-group edit-form-group">
@@ -94,7 +94,7 @@
                         <c:otherwise>
                             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-method-add-annotation"
                                     type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Method
                             </button>
                         </c:otherwise>
@@ -107,7 +107,7 @@
                         <c:when test="${not function:isObjectEmpty(type.platform)}">
                             <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
                                     id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Platform
                             </button>
                             <div class="form-group control-group edit-form-group">
@@ -122,7 +122,7 @@
                         <c:otherwise>
                             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-platform-add-annotation"
                                     type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                 Platform
                             </button>
                         </c:otherwise>
@@ -154,26 +154,26 @@
             </c:otherwise>
         </c:choose>
             <label>Type</label>
-            <button class="btn btn-success ${specifier}-add-type" type="button"><i class="glyphicon glyphicon-plus"></i> Add Type
+            <button class="btn btn-success ${specifier}-add-type" type="button"><i class="fa fa-plus-circle"></i> Add Type
             </button>
             <br><br>
             <div>
                 <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-information-add-annotation" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     Information
                 </button>
             </div>
             <br>
             <div>
                 <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-method-add-annotation" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     Method
                 </button>
             </div>
             <br>
             <div>
                 <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-platform-add-annotation" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     Platform
                 </button>
             </div>
@@ -233,21 +233,21 @@
         <br><br>
         <div>
             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-information-add-annotation" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
+                    class="fa fa-plus-circle"></i> Add
                 Information
             </button>
         </div>
         <br>
         <div>
             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-method-add-annotation" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
+                    class="fa fa-plus-circle"></i> Add
                 Method
             </button>
         </div>
         <br>
         <div>
             <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-platform-add-annotation" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
+                    class="fa fa-plus-circle"></i> Add
                 Platform
             </button>
         </div>

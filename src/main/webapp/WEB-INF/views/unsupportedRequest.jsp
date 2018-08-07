@@ -43,7 +43,7 @@
             <br>
             <a href="${pageContext.request.contextPath}/main">
                 <button type="button" class="btn btn-default">
-                    <icon class="glyphicon glyphicon-chevron-left"></icon>
+                    <icon class="fa fa-chevron-left"></icon>
                     Home
                 </button>
             </a>

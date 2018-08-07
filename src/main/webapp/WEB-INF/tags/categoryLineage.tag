@@ -3,19 +3,23 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ attribute name="lineage" required="true"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 
 
-<ol class="breadcrumb">
-
-    <c:forEach items="${lineage}" var="category" varStatus="varStatus">
-        <c:choose>
-            <c:when test="${varStatus.first}">
-                <li><a href="${pageContext.request.contextPath}/main"><i class="fa fa-home"></i></a></li>
-            </c:when>
-            <c:otherwise>
-                <li>${category}</li>
-            </c:otherwise>
-        </c:choose>
-    </c:forEach>
-</ol>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <c:forEach items="${lineage}" var="category" varStatus="varStatus">
+            <c:choose>
+                <c:when test="${varStatus.first}">
+                    <li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/main"><i class="fa fa-home"></i></a></li>
+                </c:when>
+                <c:when test="${varStatus.last}">
+                    <li class="breadcrumb-item active">${category}</li>
+                </c:when>
+                <c:otherwise>
+                    <li class="breadcrumb-item">${category}</li>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+    </ol>
+</nav>

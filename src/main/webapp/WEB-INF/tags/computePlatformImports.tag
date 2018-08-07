@@ -12,8 +12,8 @@
                 data: getDiseaseTransmissionModelTreeview(),
                 showBorder: false,
 
-                expandIcon: "glyphicon glyphicon-chevron-right",
-                collapseIcon: "glyphicon glyphicon-chevron-down",
+                expandIcon: "fa fa-chevron-right",
+                collapseIcon: "fa fa-chevron-down",
                 highlightSelected: false
             });
 

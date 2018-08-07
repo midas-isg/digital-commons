@@ -1,9 +1,9 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="myTags"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<footer class="footer-lg hidden-xs">
+<footer class="footer-lg d-none d-sm-block">
     <div class="leaf">
         <div class="footer-container-lg">
             <div class="pull-left">
@@ -26,10 +26,10 @@
     </div>
 </footer>
 
-<footer class="footer-xs hidden-sm hidden-md hidden-lg">
+<footer class="footer-xs d-block d-sm-none">
     <div class="leaf">
         <div class="footer-container-xs">
-            <div class="col-xs-12">
+            <div class="col-12">
                 &#0169; 2018 University of Pittsburgh
             </div>
 
@@ -37,7 +37,7 @@
                 <span class="leaf">v1.0</span>
             </div>-->
 
-            <div id="dev-team-footer" class="col-xs-12">
+            <div id="dev-team-footer" class="col-12">
                 <!--Please direct comments and questions to our <a class="leaf underline" href="mailto:isg-feedback@list.pitt.edu">development team</a>.-->
                 <span class="leaf italic">MIDAS Digital Commons v1.0</span>
             </div>

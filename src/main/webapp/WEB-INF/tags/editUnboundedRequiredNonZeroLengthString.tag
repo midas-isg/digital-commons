@@ -22,7 +22,7 @@
             <label>${label}</label>
             <div class="form-group ${specifier}-formats-add-more">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${placeholder}
                 </button>
 
@@ -65,7 +65,7 @@
             <label>${label}</label>
             <div class="form-group ${specifier}-formats-add-more">
                 <button class="btn btn-success ${specifier}-add-formats" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${placeholder}
                 </button>
                 <br><br>

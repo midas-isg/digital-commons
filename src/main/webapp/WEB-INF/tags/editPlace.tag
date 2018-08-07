@@ -33,7 +33,7 @@
                     </button>
                 </c:if>
                 <button class="btn btn-success add-${specifier}" style="display: none" id="${specifier}-add" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add ${label}
+                        class="fa fa-plus-circle"></i> Add ${label}
                 </button>
                 <div class="form group control-group">
                     <div class="input-group-btn">
@@ -77,7 +77,7 @@
                         <c:choose>
                             <c:when test="${not empty place.geometry}">
                                 <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button" style="display: none;"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Geometry
+                                        class="fa fa-plus-circle"></i> Add Geometry
                                 </button>
                                 <div class="form-group control-group edit-form-group ${specifier}-geometry">
                                     <label>Geometry</label>
@@ -98,7 +98,7 @@
                             </c:when>
                             <c:otherwise>
                                 <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add Geometry
+                                        class="fa fa-plus-circle"></i> Add Geometry
                                 </button>
                             </c:otherwise>
                         </c:choose>
@@ -111,7 +111,7 @@
         <div class="form-group control-group edit-form-group">
             <label>${label}</label>
             <button class="btn btn-success add-${specifier}" id="${specifier}-add" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add ${label}
+                    class="fa fa-plus-circle"></i> Add ${label}
             </button>
         </div>
     </c:otherwise>
@@ -153,7 +153,7 @@
         <div class="form-group edit-form-group">
             <label>Geometry</label>
             <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add Geometry
+                    class="fa fa-plus-circle"></i> Add Geometry
             </button>
         </div>
     </div>

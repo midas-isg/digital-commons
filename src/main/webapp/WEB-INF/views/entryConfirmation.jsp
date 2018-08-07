@@ -42,7 +42,7 @@
             <br>
             <button type="button" class="btn btn-default">
                 <a href="${pageContext.request.contextPath}/main">
-                    <icon class="glyphicon glyphicon-chevron-left"></icon>
+                    <icon class="fa fa-chevron-left"></icon>
                     Home
                 </a>
             </button>
@@ -50,7 +50,7 @@
             <button type="button" class="btn btn-default pull-right">
                 <a href="${pageContext.request.contextPath}/add/review">
                     Review Submissions
-                    <icon class="glyphicon glyphicon-chevron-right"></icon>
+                    <icon class="fa fa-chevron-right"></icon>
                 </a>
             </button>
 

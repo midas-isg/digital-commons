@@ -23,7 +23,7 @@
             <div class="input-group control-group ${specifier}-study-add-more" style="display: none">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-study" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -64,7 +64,7 @@
                         <c:when test="${not empty study.location}">
                             <div>
                                 <button class="btn btn-success add-location" id="${specifier}-location" type="button" style="display: none"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
+                                        class="fa fa-plus-circle"></i> Add
                                     Location
                                 </button>
                             </div>
@@ -80,7 +80,7 @@
                         <c:otherwise>
                             <div>
                                 <button class="btn btn-success add-location" id="${specifier}-location" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add
+                                        class="fa fa-plus-circle"></i> Add
                                     Location
                                 </button>
                             </div>
@@ -96,7 +96,7 @@
             <div class="input-group control-group ${specifier}-study-add-more">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-study" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>

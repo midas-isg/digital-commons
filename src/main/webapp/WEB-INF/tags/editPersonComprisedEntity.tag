@@ -40,12 +40,12 @@
                         <label>${label}s</label>
                         <c:if test="${showAddPersonButton}">
                             <button class="btn btn-success add-${specifier}-person" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add ${label} (Person)
+                                    class="fa fa-plus-circle"></i> Add ${label} (Person)
                             </button>
                         </c:if>
                         <c:if test="${showAddOrganizationButton}">
                             <button class="btn btn-success add-${specifier}-organization" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add ${label} (Organization)
+                                    class="fa fa-plus-circle"></i> Add ${label} (Organization)
                             </button>
                         </c:if>
                     </div>
@@ -98,12 +98,12 @@
             <label>${label}s</label>
             <c:if test="${showAddPersonButton}">
                 <button class="btn btn-success add-${specifier}-person" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add ${label} (Person)
+                        class="fa fa-plus-circle"></i> Add ${label} (Person)
                 </button>
             </c:if>
             <c:if test="${showAddOrganizationButton}">
                 <button class="btn btn-success add-${specifier}-organization" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add ${label} (Organization)
+                        class="fa fa-plus-circle"></i> Add ${label} (Organization)
                 </button>
             </c:if>
             <div class="${specifier}-add-more"></div>

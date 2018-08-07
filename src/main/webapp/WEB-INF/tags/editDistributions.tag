@@ -21,7 +21,7 @@
                     <label>Distribution</label>
                     <div class="form-group">
                         <button class="btn btn-success add-distribution" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add Distribution
+                                class="fa fa-plus-circle"></i> Add Distribution
                         </button>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
         <div class="form-group edit-form-group distribution-add-more-button">
             <label>Distribution</label>
             <div class="form-group">
-                <button class="btn btn-success add-distribution" type="button"><i class="glyphicon glyphicon-plus"></i>
+                <button class="btn btn-success add-distribution" type="button"><i class="fa fa-plus-circle"></i>
                     Add Distribution
                 </button>
             </div>

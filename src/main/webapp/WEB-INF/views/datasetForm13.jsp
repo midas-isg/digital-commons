@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <myTags:datasetIndex active="extra"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">

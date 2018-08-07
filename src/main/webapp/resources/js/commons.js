@@ -166,8 +166,8 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         showBorder: false,
         collapseAll: true,
 
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
+        expandIcon: "fa fa-chevron-right",
+        collapseIcon: "fa fa-chevron-down",
 
         onNodeSelected: function(event, data) {
             if(typeof data['nodes'] !== undefined) {

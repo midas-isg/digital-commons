@@ -22,7 +22,7 @@
                 <c:when test="${varStatus.first}">
                     <div class="form-group control-group">
                         <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add ${name}
+                                class="fa fa-plus-circle"></i> Add ${name}
                         </button>
                     </div>
                 </c:when>
@@ -86,7 +86,7 @@
             <label>${name}</label>
             <br>
             <button class="btn btn-success ${specifier}-add-biological-entity" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add ${name}
+                    class="fa fa-plus-circle"></i> Add ${name}
             </button>
             <div class="${specifier}-biological-entity-add-more">
             </div>

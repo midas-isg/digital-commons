@@ -21,7 +21,7 @@
             <label>${name}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-data-repository" style="display: none" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${name}
                 </button>
             </div>
@@ -99,7 +99,7 @@
             <label path="${path}">${name}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-data-repository" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${name}
                 </button>
             </div>
