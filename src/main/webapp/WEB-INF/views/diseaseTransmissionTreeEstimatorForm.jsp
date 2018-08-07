@@ -19,13 +19,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form"
-                       action="${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimators/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="diseaseTransmissionTreeEstimator">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Disease Transmission Tree Estimator</label>
+<%--
                     <myTags:editSoftware categoryPaths="${categoryPaths}"
                                          selectedID="${selectedID}"></myTags:editSoftware>
+--%>
                     <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
                                                  placeholder="Host Species Included"
                                                  label="Host Species Included" path="hostSpeciesIncluded"
@@ -35,12 +35,14 @@
                                                  label="Pathogen Coverage" path="pathogenCoverage"
                                                  identifiers="${diseaseTransmissionTreeEstimator.pathogenCoverage}"></myTags:editNestedIdentifier>
                 </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
+<%--
 <script>
     $(document).ready(function () {
         $("#categoryValue").change(function () {
@@ -50,6 +52,7 @@
 
     });
 </script>
+--%>
 <myTags:analytics/>
 
 </body>

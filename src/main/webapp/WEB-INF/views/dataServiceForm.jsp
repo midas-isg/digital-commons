@@ -19,20 +19,23 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataService/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="dataService">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Data Service</label>
+<%--
                     <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+--%>
                     <myTags:editDataServiceDescription accessPointTypes="${accessPointTypes}" descriptions="${dataService.dataServiceDescription}"></myTags:editDataServiceDescription>
 
                 </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
+<%--
 <script>
     $(document).ready(function () {
         $("#categoryValue").change(function() {
@@ -42,6 +45,7 @@
 
     });
 </script>
+--%>
 <myTags:analytics/>
 
 </body>

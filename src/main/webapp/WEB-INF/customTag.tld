@@ -20,4 +20,9 @@
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isBiologicalEntity(edu.pitt.isg.mdc.dats2_2.IsAbout)</function-signature>
     </function>
+    <function>
+        <name>onlyContainsSoftwareElements</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>boolean onlyContainsSoftwareElements(java.lang.Object)</function-signature>
+    </function>
 </taglib>

@@ -95,4 +95,28 @@ public class TagUtil {
             return true;
         }
     }
+
+    public static boolean onlyContainsSoftwareElements(Object software) {
+        String softwareCategory = software.getClass().getTypeName().substring(software.getClass().getTypeName().lastIndexOf(".") + 1);
+
+        if(softwareCategory.equals("DataFormatConverters") || softwareCategory.equals("MetagenomicAnalysis") || softwareCategory.equals("ModelingPlatforms") || softwareCategory.equals("PhylogeneticTreeConstructors") || softwareCategory.equals("SyntheticEcosystemConstructors")){
+            return true;
+        } else return false;
+/*
+        switch (softwareCategory) {
+            case "DataFormatConverters":
+                return true;
+            case "MetagenomicAnalysis":
+                return true;
+            case "ModelingPlatforms":
+                return true;
+            case "PhylogeneticTreeConstructors":
+                return true;
+            case "SyntheticEcosystemConstructors":
+                return true;
+            default: return false;
+        }
+*/
+    }
+
 }

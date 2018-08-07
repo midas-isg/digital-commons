@@ -19,8 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="dataStandard">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Data Format</label>
                     <myTags:editCategory selectedID="${categoryID}"
@@ -60,7 +59,7 @@
                 </div>
                 <button type="submit" class="btn btn-default pull-right">Submit</button>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>

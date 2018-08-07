@@ -19,22 +19,25 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPathogenEvolutionModels/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="pathogenEvolutionModel">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Pathogen Evolution Model</label>
 
+<%--
                     <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+--%>
                     <myTags:editNestedIdentifier specifier="pathogens" path="pathogens" identifiers="${pathogenEvolutionModel.pathogens}" placeholder="Pathogen" label="Pathogens"></myTags:editNestedIdentifier>
                     <%--<myTags:editNestedIdentifier specifier="location-coverate" path="locationCoverage" identifiers="${pathogenEvolutionModel.locationCoverage}" placeholder="Location Coverage" label="Location Coverage"></myTags:editNestedIdentifier>--%>
 
                 </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
+<%--
 <script>
     $(document).ready(function () {
         $("#categoryValue").change(function() {
@@ -44,6 +47,7 @@
 
     });
 </script>
+--%>
 <myTags:analytics/>
 
 </body>

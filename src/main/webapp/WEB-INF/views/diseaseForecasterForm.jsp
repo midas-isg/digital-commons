@@ -19,25 +19,27 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDiseaseForecasters/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="diseaseForecaster">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Disease Forecaster</label>
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
-                    <myTags:editNestedIdentifier specifier="diseases" placeholder="Disease" label="Diseases" path="diseases" identifiers="${diseaseForecaster.diseases}"></myTags:editNestedIdentifier>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${diseaseForecaster.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${diseaseForecaster.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${diseaseForecaster.forecastFrequency}"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${diseaseForecaster.type}"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${diseaseForecaster.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseForecaster.locationCoverage}"></myTags:editNestedIdentifier>--%>
+                    <%--<myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>--%>
+                    <myTags:editNestedIdentifier specifier="diseases" placeholder="Disease" label="Diseases" path="diseases" identifiers="${software.diseases}"></myTags:editNestedIdentifier>
+                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${software.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${software.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${software.forecastFrequency}"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${software.type}"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${software.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>
+                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>--%>
                 </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
+<%--
+
 <script>
     $(document).ready(function () {
         $("#categoryValue").change(function() {
@@ -47,6 +49,8 @@
 
     });
 </script>
+--%>
+
 <myTags:analytics/>
 
 </body>

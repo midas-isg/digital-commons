@@ -12,8 +12,12 @@ import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
+import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+import edu.pitt.isg.mdc.v1_0.*;
+import edu.pitt.isg.mdc.v1_0.Software;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.Message;
 import org.springframework.binding.message.MessageBuilder;
@@ -57,7 +61,7 @@ public class DatasetWebflowValidator {
 
     public String isLoggedIn(RequestContext context) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
-        if(ifMDCEditor(session) || ifISGAdmin(session)) {
+        if (ifMDCEditor(session) || ifISGAdmin(session)) {
             return "true";
         }
         return "true";
@@ -82,9 +86,87 @@ public class DatasetWebflowValidator {
         EntryView entryView = new EntryView(entry);
 
         Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
+        try {
+            dataset = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+/*
         DatasetFactory datasetFactory = new DatasetFactory(true);
         dataset = datasetFactory.createDatasetForWebFlow(dataset);
+*/
         return dataset;
+    }
+
+
+    public Object createSoftware(String softwareCategory) {
+        if (softwareCategory == null || softwareCategory.isEmpty()) {
+            return null;  //TODO: return some kind or error checking
+        }
+
+        try {
+            switch (softwareCategory) {
+                case "dataFormatConverters":
+                    return (DataFormatConverters) ReflectionFactory.create(DataFormatConverters.class);
+                case "dataService":
+                    return (DataService) ReflectionFactory.create(DataService.class);
+                case "dataStandard":
+                    return (DataStandard) ReflectionFactory.create(DataStandard.class);
+                case "dataVisualizers":
+                    return (DataVisualizers) ReflectionFactory.create(DataVisualizers.class);
+                case "diseaseForecasters":
+                    return (DiseaseForecasters) ReflectionFactory.create(DiseaseForecasters.class);
+                case "diseaseTransmissionModel":
+                    return (DiseaseTransmissionModel) ReflectionFactory.create(DiseaseTransmissionModel.class);
+                case "diseaseTransmissionTreeEstimators":
+                    return (DiseaseTransmissionTreeEstimators) ReflectionFactory.create(DiseaseTransmissionTreeEstimators.class);
+                case "metagenomicAnalysis":
+                    return (MetagenomicAnalysis) ReflectionFactory.create(MetagenomicAnalysis.class);
+                case "modelingPlatforms":
+                    return (ModelingPlatforms) ReflectionFactory.create(ModelingPlatforms.class);
+                case "pathogenEvolutionModels":
+                    return (PathogenEvolutionModels) ReflectionFactory.create(PathogenEvolutionModels.class);
+                case "phylogeneticTreeConstructors":
+                    return (PhylogeneticTreeConstructors) ReflectionFactory.create(PhylogeneticTreeConstructors.class);
+                case "populationDynamicsModel":
+                    return (PopulationDynamicsModel) ReflectionFactory.create(PopulationDynamicsModel.class);
+                case "syntheticEcosystemConstructors":
+                    return (SyntheticEcosystemConstructors) ReflectionFactory.create(SyntheticEcosystemConstructors.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;  //TODO: return some kind or error checking
+    }
+
+
+    public Object editSoftware(Long entryId) {
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
+        EntryView entryView = new EntryView(entry);
+
+        String softwareClassName = entryView.getProperties().get("type");
+        Class clazz = null;
+        Object software = null;
+        try {
+            clazz = Class.forName(softwareClassName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        try {
+            software = clazz.newInstance();
+            software = converter.fromJson(entryView.getUnescapedEntryJsonString(), clazz);
+            software = ReflectionFactory.create(clazz, software);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return software;
+    }
+
+
+    public String getSoftwareClassName(Object software, MessageContext messageContext, Long categoryID) {
+        return software.getClass().getTypeName().substring(software.getClass().getTypeName().lastIndexOf(".") + 1);
     }
 
     public Long getCategoryId(Long entryId) {
@@ -113,6 +195,36 @@ public class DatasetWebflowValidator {
         if (isEmpty(title)) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "title").defaultText("Title cannot be empty").build());
+            isValid = "false";
+        }
+
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        if (requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
+            return "index";
+        }
+        return isValid;
+    }
+
+    public String validateSoftwareForm1(Object software, MessageContext messageContext, Long categoryID) {
+        String isValid;
+        String title = ((Software) software).getTitle();
+        String humanReadableSynopsis = ((Software) software).getHumanReadableSynopsis();
+
+        isValid = "true";
+
+        if (categoryID == null || categoryID == 0) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "category").defaultText("Please select a category").build());
+            isValid = "false";
+        }
+        if (isEmpty(title)) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "title").defaultText("Title cannot be empty").build());
+            isValid = "false";
+        }
+        if (isEmpty(humanReadableSynopsis)) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "humanReadableSynopsis").defaultText("Human Readable Synopsis cannot be empty").build());
             isValid = "false";
         }
 
@@ -208,6 +320,73 @@ public class DatasetWebflowValidator {
         json.remove("class");
         entryObject.setEntry(json);
         entryObject.setProperty("type", dataset.getClass().toString());
+
+        try {
+            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
+            entrySubmissionInterface.submitEntry(entryObject, entryID, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "false";
+        }
+
+        return "true";
+    }
+
+
+    //TODO: See if we can combine the previous method and this one -- or atleast split out the similarities
+    public String submitSoftware(RequestContext context, MessageContext messageContext) {
+        HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
+
+        Class clazz = context.getFlowScope().get("software").getClass();
+        Object software = null;
+        software = clazz.cast(context.getFlowScope().get("software"));
+/*
+        try {
+            software = clazz.newInstance();
+            software = clazz.cast(context.getFlowScope().get("software"));
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+*/
+        Long revisionId = (Long) context.getFlowScope().get("revisionID");
+        Long entryID = Long.parseLong(context.getFlowScope().get("entryID").toString());
+//        Long entryID = (Long) context.getFlowScope().get("entryID");
+        Long categoryID = (Long) context.getFlowScope().get("categoryID");
+
+        //Second check for required fields
+        String breadcrumb = "";
+        List<ValidatorError> errors = new ArrayList<>();
+        try {
+            //TODO: validate doesn't like checkboxes -- fails when validating onlyOnOlympus -- need to investigate
+            webFlowReflectionValidator.validate(clazz, software, true, breadcrumb, null, errors);
+            webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(errors.size() > 0) {
+            //Redirect to page with the error
+            for(Message message : messageContext.getAllMessages()) {
+                String messageSource = message.getSource().toString();
+                context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
+                return "index";
+            }
+            return "false";
+        }
+
+        try {
+            software = webFlowReflectionValidator.cleanse(clazz, software);
+        } catch (FatalReflectionValidatorException e) {
+            e.printStackTrace();
+        }
+
+
+        EntryView entryObject = new EntryView();
+
+        JsonObject json = converter.toJsonObject(clazz, software);
+        json.remove("class");
+        entryObject.setEntry(json);
+        entryObject.setProperty("type", clazz.getClass().toString());
 
         try {
             Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());

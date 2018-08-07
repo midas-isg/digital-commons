@@ -20,11 +20,16 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addPopulationDynamicsModel/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="populationDynamicsModel">
+            <form method="post" id="entry-form" action="${flowExecutionUrl}">
                 <div class="form-group edit-form-group">
                     <label>Population Dynamics Model</label>
 
+                    <myTags:editNestedIdentifier label="Population Species Included"
+                                                 placeholder="Population Species Included"
+                                                 identifiers="${populationDynamicsModel.populationSpeciesIncluded}"
+                                                 path="populationSpeciesIncluded"
+                                                 specifier="population-species-included"></myTags:editNestedIdentifier>
+<%--
                     <myTags:editSoftware categoryPaths="${categoryPaths}"
                                          selectedID="${selectedID}"></myTags:editSoftware>
                     <spring:bind path="populationSpeciesIncluded[0]">
@@ -35,18 +40,21 @@
                                                      specifier="population-species-included"></myTags:editNestedIdentifier>
                         <form:errors path="populationSpeciesIncluded[0]" class="error-color"/>
                     </spring:bind>
+--%>
                     <%--<myTags:editUnboundedNonRequiredNonZeroLengthString label="Location Coverages"--%>
                                                                         <%--placeholder="Location Coverage"--%>
                                                                         <%--specifier="location-coverage"--%>
                                                                         <%--path="locationCoverage"--%>
                                                                         <%--formats="${populationDynamicsModel.locationCoverage}"></myTags:editUnboundedNonRequiredNonZeroLengthString>--%>
                 </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form:form>
+            </form>
         </div>
     </div>
 </div>
+<%--
 <script>
     $(document).ready(function () {
         $("#categoryValue").change(function() {
@@ -56,6 +64,7 @@
 
     });
 </script>
+--%>
 <myTags:analytics/>
 
 </body>
