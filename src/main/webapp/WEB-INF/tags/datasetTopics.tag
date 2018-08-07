@@ -6,7 +6,7 @@
 <%@ attribute name="entryView" required="true"
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 <%@ attribute name="lineage" required="true"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 
 <div class="metadata-table"><h4 class="sub-title-font">Topics</h4>
     <table class="table table-condensed table-borderless table-discrete table-striped">

@@ -5,6 +5,7 @@ import java.util.Collections;
 import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.*;
+import edu.pitt.isg.mdc.v1_0.DiseaseForecasters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,7 +28,10 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
-        return getFlowDefinitionRegistryBuilder(flowBuilderServices()).addFlowLocation("/WEB-INF/flows/dataset-flow.xml", "activationFlow").build();
+        return getFlowDefinitionRegistryBuilder(flowBuilderServices())
+                .addFlowLocation("/WEB-INF/flows/software-flow.xml", "softwareFlow")
+                .addFlowLocation("/WEB-INF/flows/dataset-flow.xml", "activationFlow")
+                .build();
     }
 
     @Bean
@@ -62,5 +66,19 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
 //        Dataset dataset = new Dataset();
 //        dataset = DatasetFactory.createDatasetForWebFlow(dataset);
         return dataset;
+    }
+
+    @Bean
+    @Scope("prototype")
+    public DiseaseForecasters diseaseForecaster() {
+        DiseaseForecasters diseaseForecaster = null;
+        try {
+            diseaseForecaster = (DiseaseForecasters) ReflectionFactory.create(DiseaseForecasters.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return diseaseForecaster;
     }
 }

@@ -32,7 +32,7 @@
                     <c:choose>
                         <c:when test="${varStatus.first}">
                             <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
+                                    class="fa fa-plus-circle"></i> Add
                                     ${label}
                             </button>
 
@@ -101,7 +101,7 @@
             <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -157,7 +157,7 @@
             <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -199,7 +199,7 @@
             <div class="input-group control-group ${specifier}-identifier-add-more-button">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
 

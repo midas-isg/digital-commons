@@ -20,7 +20,6 @@
 
     <c:choose>
         <c:when test="${systemProperties['EXPAND_JS'] != null}">
-            <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
             <link href="${pageContext.request.contextPath}/resources/css/header.css" rel="stylesheet">
@@ -32,12 +31,14 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
             <!-- Bootstrap CSS -->
-            <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+            <link href="${pageContext.request.contextPath}/resources/css/bootstrap/4.1.2/bootstrap.min.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" rel="stylesheet">
 
             <!-- Bootstrap JS -->
             <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
-            <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js" defer></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+            <script src="${pageContext.request.contextPath}/resources/js/bootstrap/4.1.2/bootstrap.min.js" defer></script>
             <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
 
             <%--<script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>--%>
@@ -61,7 +62,7 @@
         <c:otherwise>
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
-            <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.7/bootstrap.min.css">
+            <link defer rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/bootstrap/4.1.2/bootstrap.min.css">
 
             <link href="${pageContext.request.contextPath}/resources/css/combined.css" rel="stylesheet">
 

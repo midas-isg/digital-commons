@@ -71,12 +71,12 @@
                         <button class="btn btn-xs btn-default"
                                 style="top: 27px;right: 30px; position:absolute;"
                                 onclick="copyToClipboard('#lsdtm-script')">
-                            <icon class="glyphicon glyphicon glyphicon-copy"></icon>
+                            <icon class="fa fa-clipboard"></icon>
                         </button>
                         <button class="btn btn-xs btn-default"
                                 style="top: 27px;right: 4px; position:absolute;"
                                 onclick="download('lsdtm.sh', '#lsdtm-script')">
-                            <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                            <icon class="fa fa-download"></icon>
                         </button>
                     </div>
                 </div>

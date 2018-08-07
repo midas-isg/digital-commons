@@ -20,7 +20,7 @@
         <c:when test="${not function:isObjectEmpty(date)}">
             <div>
                 <button class="btn btn-success ${specifier}-add" type="button" style="display:none;"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     ${label}
                 </button>
             </div>
@@ -39,7 +39,7 @@
         <c:otherwise>
             <div>
                 <button class="btn btn-success ${specifier}-add" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     ${label}
                 </button>
             </div>

@@ -17,7 +17,7 @@
                 </ul>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade in active" id="modal-html">
+                    <div class="tab-pane active" id="modal-html">
                         <myTags:softwareModalItems></myTags:softwareModalItems>
                     </div>
 
@@ -55,19 +55,19 @@
                             <pre style="border:none; margin:0; overflow:visible; display:inline-block"><code style="white-space:pre; display:inline-block" id="display-json"></code></pre>
                             <div id="modal-download-btns" style="display:none">
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 48px;right: 70px; position:absolute;"
+                                        style="top: 60px;right: 70px; position:absolute;"
                                         onclick="copyToClipboard('#display-json')">
-                                    <icon class="glyphicon glyphicon glyphicon-copy"></icon>
+                                    <icon class="fa fa-clipboard"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 48px;right: 44px; position:absolute;"
+                                        style="top: 60px;right: 44px; position:absolute;"
                                         onclick="download($('#software-name').text() + '.json', '#display-json')">
-                                    <icon class="glyphicon glyphicon glyphicon-download"></icon>
+                                    <icon class="fa fa-download"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default" id="detailed-metadata-view-button"
-                                        style="top: 48px;right: 18px; position:absolute;"
+                                        style="top: 60px;right: 18px; position:absolute;"
                                         >
-                                    <icon class="glyphicon glyphicon-new-window"></icon>
+                                    <icon class="fa fa-external-link"></icon>
                                 </button>
                             </div>
                         </div>

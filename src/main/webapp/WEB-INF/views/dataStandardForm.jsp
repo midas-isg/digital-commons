@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataStandard/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="dataStandard">
                 <div class="form-group edit-form-group">

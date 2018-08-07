@@ -24,7 +24,7 @@
             <label path="${path}">${label}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-add-annotation" style="display:none;" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>
@@ -44,7 +44,7 @@
             <label path="${path}">${label}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>

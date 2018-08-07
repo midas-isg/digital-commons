@@ -105,7 +105,7 @@
 
         <br>
 
-        <a href="#" onclick="activeTab('browse')"><button type="button" class="btn btn-default"><icon class="glyphicon glyphicon-chevron-left"></icon> Home</button></a>
+        <a href="#" onclick="activeTab('browse')"><button type="button" class="btn btn-default"><icon class="fa fa-chevron-left"></icon> Home</button></a>
     </div>
 </div>
 </div>

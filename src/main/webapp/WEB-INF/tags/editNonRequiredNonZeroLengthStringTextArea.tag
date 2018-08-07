@@ -22,7 +22,7 @@
             <div class="input-group control-group ${specifier}-string-add-more" style="display: none">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-string" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                         ${label}
                     </button>
                 </div>
@@ -44,7 +44,7 @@
             <div class="input-group control-group ${specifier}-string-add-more">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-string" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                         ${label}
                     </button>
                 </div>

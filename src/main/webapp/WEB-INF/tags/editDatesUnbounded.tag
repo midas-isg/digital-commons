@@ -21,7 +21,7 @@
                 <div class="form-group control-group ${specifier}-date-add-more-button">
                     <div class="form-group">
                         <button class="btn btn-success ${specifier}-add-date" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
+                                class="fa fa-plus-circle"></i> Add
                             Date
                         </button>
                     </div>
@@ -53,7 +53,7 @@
             <div class="form-group control-group ${specifier}-date-add-more-button">
                 <div class="form-group">
                     <button class="btn btn-success ${specifier}-add-date" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                         Date
                     </button>
                 </div>

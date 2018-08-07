@@ -18,7 +18,7 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-12">
             <form:form id="entry-form" action="${pageContext.request.contextPath}/addPhylogeneticTreeConstructors/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
                        modelAttribute="phylogeneticTreeConstructor">
                 <div class="form-group edit-form-group">
