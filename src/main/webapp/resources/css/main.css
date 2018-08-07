@@ -205,8 +205,8 @@
     position: relative;
     box-sizing: content-box;
     width: 100%;
-    min-height: 100px;
-    height: 100px;
+    min-height: 80px;
+    height: 80px;
 }
 
 .spacer-small {
@@ -683,10 +683,6 @@ tfoot {
     font-size: 13px;
 }
 
-.dropdown-menu {
-    margin-top: 10px !important;
-}
-
 .sort-by-dropdown {
     font-size: 13px;
     padding: 0px;
@@ -713,7 +709,6 @@ tfoot {
 }
 
 nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    /*height: 80px;*/
     background-color: rgba(0, 0, 0, 0.25) !important;
     border-color: transparent;
 }
@@ -764,6 +759,12 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     margin-top: 10px;
 }
 
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    border-color: transparent;
+}
+
 /*//////////////////////////*/
 /*//////////////////////////*/
 
@@ -789,6 +790,29 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     .navbar-collapse {
         padding-left: 0px;
         /*border-top: white solid 1px;*/
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        max-height: 500px;
+        overflow-y: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .nav-link {
+        margin-top: 0; !important;
+        color: white !important;
+        font-family: "TransportNewMedium", Helvetica, Arial, sans-serif;
+        font-weight: normal;
+        height: 80px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        -ms-flex-align: center;
+        align-items: center;
     }
 }
 
@@ -973,6 +997,24 @@ div.container.metadata-container .metadata-column.fancy {
 
 
 /*//////////////////////////*/
+/*DataTables CSS*/
+/*//////////////////////////*/
+table.dataTable thead .sorting_desc {
+     background-image: none !important;
+}
+
+table.dataTable thead .sorting_asc {
+     background-image: none !important;
+}
+
+table.dataTable thead .sorting {
+    background-image: none !important;
+}
+/*//////////////////////////*/
+/*//////////////////////////*/
+
+
+/*//////////////////////////*/
 /*Edit dataset and software css*/
 /*//////////////////////////*/
 .edit-form-group {
@@ -1045,18 +1087,6 @@ div.container.metadata-container .metadata-column.fancy {
 
 #sidebar a[data-toggle="collapse"] {
     position: relative;
-}
-
-#sidebar a[aria-expanded="false"]::before, #sidebar a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-}
-#sidebar a[aria-expanded="true"]::before {
-    content: '\e260';
 }
 
 #sidebar a, a:hover, a:focus {

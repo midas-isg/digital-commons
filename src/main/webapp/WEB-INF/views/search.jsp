@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <myTags:head/>
+    <myTags:head title="MIDAS Digital Commons"/>
     <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
         <%--pageTitle="Search"--%>
@@ -28,7 +28,7 @@
 
 <myTags:softwareModal/>
 
-<div class="margin-top-22">
+<div class="container-fluid">
     <div id="retrievalTermsContainer">
         <div class=" panel panel-primary">
             <div class="panel-body" ng-hide="searchHidden">
