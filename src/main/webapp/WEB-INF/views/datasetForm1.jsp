@@ -16,46 +16,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <myTags:datasetIndex active="basic"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="basic"></myTags:datasetIndex>
 
-            <form id="entry-form" method="post" action="${flowExecutionUrl}">
-                <myTags:editCategory selectedID="${categoryID}"
-                                     categoryPaths="${categoryPaths}">
-                </myTags:editCategory>
-                <myTags:editIdentifier identifier="${dataset.identifier}"
-                                       specifier="identifier"
-                                       path="identifier"
-                                       label="Identifier">
-                </myTags:editIdentifier>
-                <myTags:editRequiredNonZeroLengthString label="Title"
-                                                        path="title"
-                                                        placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                        string="${dataset.title}">
-                </myTags:editRequiredNonZeroLengthString>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:editCategory selectedID="${categoryID}"
+                                 categoryPaths="${categoryPaths}">
+            </myTags:editCategory>
+            <myTags:editIdentifier identifier="${dataset.identifier}"
+                                   specifier="identifier"
+                                   path="identifier"
+                                   label="Identifier">
+            </myTags:editIdentifier>
+            <myTags:editRequiredNonZeroLengthString label="Title"
+                                                    path="title"
+                                                    placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                    string="${dataset.title}">
+            </myTags:editRequiredNonZeroLengthString>
 
-                <myTags:editNonRequiredNonZeroLengthStringTextArea path="description"
-                                                                   string="${dataset.description}"
-                                                                   specifier="description"
-                                                                   placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                                   label="Description">
-                </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                <myTags:editDatesUnbounded dates="${dataset.dates}"
-                                           path="dates"
-                                           specifier="dates">
-                </myTags:editDatesUnbounded>
-                <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-            </form>
-        </div>
+            <myTags:editNonRequiredNonZeroLengthStringTextArea path="description"
+                                                               string="${dataset.description}"
+                                                               specifier="description"
+                                                               placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                                               label="Description">
+            </myTags:editNonRequiredNonZeroLengthStringTextArea>
+            <myTags:editDatesUnbounded dates="${dataset.dates}"
+                                       path="dates"
+                                       specifier="dates">
+            </myTags:editDatesUnbounded>
+            <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+        </form>
+
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
-        $("#categoryValue").change(function() {
+        $("#categoryValue").change(function () {
             var categoryValue = $(this).val();
             $("#categoryID").val(categoryValue)
             <%--$("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=next&categoryID=" + action);--%>

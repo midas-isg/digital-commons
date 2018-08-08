@@ -16,22 +16,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <myTags:datasetIndex active="distributions"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="distributions"></myTags:datasetIndex>
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editDistributions distributions="${dataset.distributions}"
-                                              specifier="distributions"
-                                              path="distributions">
-                    </myTags:editDistributions>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:editDistributions distributions="${dataset.distributions}"
+                                      specifier="distributions"
+                                      path="distributions">
+            </myTags:editDistributions>
 
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 <myTags:analytics/>

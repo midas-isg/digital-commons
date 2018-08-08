@@ -31,10 +31,9 @@
 
 <ul class="nav nav-tabs navbar-nav mr-auto" role="tablist">
     <li><a id="content-tab" class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle font-size-18" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle font-size-18 navbar-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
-            <span class="caret"></span>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="${contextPath}/search">Conventional DB search</a>
@@ -43,9 +42,9 @@
     </li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-    <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
-        <li class="nav-item dropdown ">
-            <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+    <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
+        <li class="dropdown ">
+            <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
@@ -64,7 +63,7 @@
                 <a class="dropdown-item" href="${contextPath}/addDataFormatConverters">Data Format Converter</a>
                 <a class="dropdown-item" href="${contextPath}/addDataService">Data Service</a>
                 <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
-                <div class="dropdown-submenu">
+                <div class="dropdown-submenu nav-submenu">
                     <a class=" dropdown-toggle dropdown-item " tabindex="-1" href=""
                        onclick="preventClick()">Dataset</a>
                     <ul class="dropdown-menu">
@@ -90,6 +89,6 @@
             </div>
         </li>
 
-    </c:if>
+    <%--</c:if>--%>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 </ul>

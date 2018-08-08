@@ -16,41 +16,44 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <myTags:datasetIndex active="types"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="types"></myTags:datasetIndex>
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editType path="types"
-                                     specifier="types"
-                                     types="${dataset.types}">
-                    </myTags:editType>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:editType path="types"
+                             specifier="types"
+                             types="${dataset.types}">
+            </myTags:editType>
 
-                    <myTags:editNonRequiredNonZeroLengthString path="availability"
-                                                               string="${dataset.availability}"
-                                                               specifier="availability"
-                                                               placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
-                                                               label="Availability">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="refinement"
-                                                               string="${dataset.refinement}"
-                                                               specifier="refinement"
-                                                               placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
-                                                               label="Refinement">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="aggregation"
-                                                               string="${dataset.aggregation}"
-                                                               specifier="aggregation"
-                                                               placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
-                                                               label="Aggregation">
-                    </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="availability"
+                                                       string="${dataset.availability}"
+                                                       specifier="availability"
+                                                       placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
+                                                       label="Availability">
+            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="refinement"
+                                                       string="${dataset.refinement}"
+                                                       specifier="refinement"
+                                                       placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
+                                                       label="Refinement">
+            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonRequiredNonZeroLengthString path="aggregation"
+                                                       string="${dataset.aggregation}"
+                                                       specifier="aggregation"
+                                                       placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
+                                                       label="Aggregation">
+            </myTags:editNonRequiredNonZeroLengthString>
 
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 <myTags:analytics/>
