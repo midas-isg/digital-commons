@@ -24,7 +24,7 @@
                     <div class="tab-pane fade" id="modal-json">
                         <style>
                             #modal-code-block {
-                                max-height:500px;
+                                max-height:600px;
                                 max-width:560px;
                                 overflow:scroll;
                                 margin-bottom:10px;
