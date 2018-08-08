@@ -84,7 +84,8 @@
 }
 
 .list-group-item {
-    padding: 1px 3px !important;
+    border: none !important;
+    padding: 0px 3px !important;
 }
 
 .margin-top-22 {
@@ -689,6 +690,11 @@ tfoot {
     border: 0;
 }
 
+.sort-by-dropdown:after{
+    top: 4px !important;
+    padding: 0px !important;
+}
+
 .ajax-loader {
     padding: 10px;
     text-align: center;
@@ -704,6 +710,23 @@ tfoot {
 /*//////////////////////////*/
 /*Navbar CSS*/
 /*//////////////////////////*/
+.dropdown:hover>.dropdown-menu {
+    transform: none !important;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    transform: none !important;
+}
+
+.navbar-dropdown:after {
+    top: -7px !important;
+    padding: 2px !important;
+}
+
+.dropdown-menu .dropdown-submenu > a:after, .dropdown-menu .dropdown-submenu > button:after {
+    right: 25px !important;
+    top: -10px !important
+}
+
 .nav-tabs {
     border-bottom: 0px!important;
 }
@@ -720,7 +743,6 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 
 .bg-navbar {
     background-color: #0c2b65;
-    /*height: 80px;*/
 }
 
 .navbar-brand-mod {
@@ -748,7 +770,6 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 
 .navbar-collapse {
     padding-left: 30px;
-    /*border-top: white solid 1px;*/
 }
 
 #page-title {
@@ -764,6 +785,25 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     background-color: rgba(0, 0, 0, 0.25) !important;
     border-color: transparent;
 }
+
+@media (max-width: 991px) {
+    .navbar-dropdown:after {
+        top: 6px !important;
+        padding: 0px !important;
+    }
+
+    .dropdown .dropdown-menu {
+        /*display: table-column-group;*/
+        /* border: 1px solid #E6E6E6; */
+        /* border-radius: 0 0 0.25rem 0.25rem; */
+        /* transform-origin: top; */
+        /* animation-fill-mode: forwards; */
+        /* transform: scale(1, 0); */
+        /* transition: all 0.2s linear; */
+        /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); */
+    }
+}
+
 
 /*//////////////////////////*/
 /*//////////////////////////*/
@@ -985,9 +1025,6 @@ div.container.metadata-container .metadata-column.fancy {
     #sidebar.active {
         margin-left: 0;
     }
-    #content {
-        width: 100%;
-    }
 
     #sidebarCollapse span {
         display: none;
@@ -1038,6 +1075,26 @@ table.dataTable thead .sorting {
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+#entryFormContent {
+    width: calc(100% - 250px);
+    padding-top: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 40px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    position: absolute;
+    right: 0;
+}
+
+#entryFormContent.active {
+    width: 100%;
+}
+
 #sidebar {
     width: 250px;
     position: fixed;
@@ -1101,6 +1158,15 @@ table.dataTable thead .sorting {
     font-size: 1em !important;
     padding-left: 30px !important;
     background: #0d2c64;
+}
+
+@media (max-width: 768px) {
+    #entryFormContent {
+        width: 100%;
+    }
+    #entryFormContent.active {
+        width: calc(100% - 250px);
+    }
 }
 
 ul.CTAs {

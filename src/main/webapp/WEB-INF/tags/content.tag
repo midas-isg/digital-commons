@@ -47,15 +47,11 @@
                             </c:forEach>
 
                             <h3 class="content-title-font">${treeInfo.category}
-
-                                <div class="dropdown inline">
-                                    <button class="btn btn-default dropdown-toggle sort-by-dropdown" type="button"
-                                            id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="true">
+                                <div class="btn-group mr-1 mb-1">
+                                    <button type="button" class="btn btn-default sort-by-dropdown btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by Category
-                                        <span class="caret"></span>
                                     </button>
-                                    <div class="dropdown-menu">
+                                    <div class="dropdown-menu open-left" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
                                         <a href="#" class="dropdown-item" id="drop-down-category" value="${treeLoop.index}">Category</a>
                                         <a href="#" class="dropdown-item" id="drop-down-location" value="${treeLoop.index}">Location</a>
                                     </div>
