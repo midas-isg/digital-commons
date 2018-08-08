@@ -9,7 +9,7 @@
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
 
 <div class="spacer">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-navbar">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-navbar py-0">
         <a href="${pageContext.request.contextPath}">
             <img alt="MIDAS"
                  class="navbar-brand-mod navbar-brand"
@@ -41,7 +41,7 @@
             <c:choose>
                 <c:when test="${loggedIn == true}">
                     <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                    <form class="form-inline">
+                    <form class="form-inline" action="${urlLevel}" method="GET">
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
                                 onclick="sessionStorage.clear();">Logout
                         </button>
@@ -49,7 +49,7 @@
                 </c:when>
                 <c:otherwise>
                     <c:set var="urlLevel" value="${pageContext.request.contextPath}/login"/>
-                    <form class="form-inline">
+                    <form class="form-inline" action="${urlLevel}" method="GET">
                         <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
                                 onclick="sessionStorage.clear();">Log in
                         </button>
@@ -62,6 +62,11 @@
 </div>
 
 <script>
+    $('.nav-link').on('click',function() {
+        if(!$(this).prop('className').split(' ').includes("dropdown-toggle")) {
+            $('.navbar-collapse').collapse('hide');
+        }
+    });
     $(window).on("resize", function () {
         var maxWidthLarge;
         var maxWidthMedium;
@@ -71,7 +76,7 @@
         <c:when test="${loggedIn == true}">
         maxWidthLarge = 1350;
         maxWidthMedium = 1230;
-        maxWidthSmall = 1010;
+        maxWidthSmall = 992;
         </c:when>
         <c:otherwise>
         maxWidthLarge = 1110;

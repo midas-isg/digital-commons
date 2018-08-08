@@ -828,7 +828,7 @@ function download(filename, elementId) {
 
 function toggleModalView() {
     if($('#modal-html').hasClass('active')) {
-        $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
+        // $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
         $('#modal-json-link').click();
         $('#modal-switch-btn').text('Switch to HTML View');
     } else {
