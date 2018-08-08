@@ -62,9 +62,11 @@
 </div>
 
 <script>
-    // $('.nav-link').on('click',function() {
-    //     $('.navbar-collapse').collapse('hide');
-    // });
+    $('.nav-link').on('click',function() {
+        if(!$(this).prop('className').split(' ').includes("dropdown-toggle")) {
+            $('.navbar-collapse').collapse('hide');
+        }
+    });
     $(window).on("resize", function () {
         var maxWidthLarge;
         var maxWidthMedium;
