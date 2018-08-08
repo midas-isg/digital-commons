@@ -1020,11 +1020,11 @@ table.dataTable thead .sorting {
 /*//////////////////////////*/
 .edit-form-group {
     margin: 1px;
-    border: 1px solid #ccc;
+    /*border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
     margin-bottom: 15px;
-    margin-top: 5px;
+    margin-top: 5px;*/
 }
 
 .has-error {
@@ -1113,4 +1113,8 @@ ul.CTAs a {
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
+}
+
+.wizard-nav-link {
+    background: blue;
 }
