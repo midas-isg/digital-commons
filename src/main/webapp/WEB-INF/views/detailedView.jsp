@@ -23,7 +23,14 @@
     </div>
     <div class="section-content">
         <div class="col-12 background-white">
-            <h3 class="margin-top-10">${entryView.entry.title}</h3>
+            <c:choose>
+                <c:when test="${not empty entryView.entry.title}">
+                    <h3 class="margin-top-10">${entryView.entry.title}</h3>
+                </c:when>
+                <c:otherwise>
+                    <h3 class="margin-top-10">${entryView.entry.name}</h3>
+                </c:otherwise>
+            </c:choose>
             <hr>
             <c:if test="${not empty entryView.entry.identifier}">
                 <h5 class="sub-title-font">Identifier</h5>
@@ -65,7 +72,6 @@
                         <div class="metadata-section">
                             <myTags:datasetDates entryView="${entryView}"></myTags:datasetDates>
                         </div>
-                        <hr aria-hidden="true">
                     </div>
 
                     <div class="metadata-section">

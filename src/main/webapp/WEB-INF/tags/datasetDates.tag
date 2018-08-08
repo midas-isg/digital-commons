@@ -6,12 +6,7 @@
 <%@ attribute name="entryView" required="true"
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 
-<%--<div class="metadata-row">--%>
-<%--<div class="metadata-pair">--%>
-<%--<dt class="metadata-pair-title">Updated</dt>--%>
-<%--<dd class="metadata-pair-value">August 27, 2015</dd>--%>
-<%--</div>--%>
-<%--</div>--%>
+<c:set var="hasDates" value="${false}"/>
 
 <%--Dates for Tycho datasets--%>
 <c:if test="${not empty entryView.entry.dates}">
@@ -20,6 +15,8 @@
             <div class="metadata-pair">
                 <c:choose>
                     <c:when test="${fn:contains(date.type.value,'interval')}">
+                        <c:set var="hasDates" value="${true}"/>
+
                         <dt class="metadata-pair-title">
                                 Interval
                         </dt>
@@ -33,6 +30,8 @@
                     </dt>
                     <dd class="metadata-pair-value">
                         <c:catch var="ex">
+                            <c:set var="hasDates" value="${true}"/>
+
                             <fmt:parseDate value="${date.date}" var="parsedDate"
                                            pattern="yyyy-MM-dd"/>
 
@@ -61,6 +60,8 @@
                         </dt>
                         <dd class="metadata-pair-value">
                             <c:catch var="ex">
+                                <c:set var="hasDates" value="${true}"/>
+
                                 <fmt:parseDate value="${entryView.entry.producedBy.startDate.date}" var="parsedDate"
                                                pattern="yyyy-MM-dd"/>
 
@@ -83,6 +84,8 @@
                         </dt>
                         <dd class="metadata-detail-group-value">
                             <c:catch var="ex">
+                                <c:set var="hasDates" value="${true}"/>
+
                                 <fmt:parseDate value="${entryView.entry.producedBy.startDate.date}" var="parsedDate"
                                                pattern="yyyy-MM-dd"/>
 
@@ -109,6 +112,8 @@
                 </dt>
                 <dd class="metadata-detail-group-value">
                     <c:catch var="ex">
+                        <c:set var="hasDates" value="${true}"/>
+
                         <fmt:parseDate value="${entryView.entry.producedBy.endDate.date}" var="parsedDate"
                                        pattern="yyyy-MM-dd"/>
 
@@ -138,6 +143,8 @@
                     </dt>
                     <dd class="metadata-detail-group-value">
                         <c:catch var="ex">
+                            <c:set var="hasDates" value="${true}"/>
+
                             <fmt:parseDate value="${extraProperty.values[0].value}" var="parsedDate"
                                            pattern="yyyy-MM-dd"/>
 
@@ -163,6 +170,8 @@
             </dt>
             <dd class="metadata-detail-group-value">
                 <c:catch var="ex">
+                    <c:set var="hasDates" value="${true}"/>
+
                     <fmt:parseDate value="${entryView.dateAdded}" var="parsedDate"
                                    pattern="yyyy-MM-dd"/>
 
@@ -175,4 +184,8 @@
             </dd>
         </div>
     </div>
+</c:if>
+
+<c:if test="${hasDates}">
+    <hr aria-hidden="true">
 </c:if>
