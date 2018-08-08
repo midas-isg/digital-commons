@@ -6,8 +6,9 @@
 <%@attribute name="active" type="java.lang.String" required="true" %>
 
 
-<button type="button" id="sidebarCollapse" class="btn btn-info d-none d-sm-block">
-    <i class="fa fa-align-left"></i>
+
+<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn d-none d-sm-block">
+    <i class="glyphicon glyphicon-align-left"></i>
     <span>Toggle Sidebar</span>
 </button>
 
@@ -163,8 +164,14 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#sidebarCollapse').click(function () {
-            $('#sidebar').toggleClass('active');
+        $("#sidebar").mCustomScrollbar({
+            theme: "minimal"
+        });
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
     });
     
