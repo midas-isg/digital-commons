@@ -988,6 +988,8 @@ div.container.metadata-container .metadata-column.fancy {
     border-radius: 4px;
     margin-bottom: 0px;
     font-size: 17px;
+    font: inherit;
+    text-transform: none;
 }
 
 .collapsible {
