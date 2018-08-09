@@ -707,6 +707,11 @@ tfoot {
 .btn-publish {
     float: right;
 }
+
+.table-sm td, .table-sm th {
+    font-size: 13px;
+    padding: .3rem !important;
+}
 /*//////////////////////////*/
 /*Navbar CSS*/
 /*//////////////////////////*/
