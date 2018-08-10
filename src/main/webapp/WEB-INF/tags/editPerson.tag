@@ -68,36 +68,36 @@
                     </myTags:editRequiredNonZeroLengthString>
                 </c:when>
                 <c:otherwise>
-                    <myTags:editNonRequiredNonZeroLengthString label="Full Name"
-                                                               placeholder=" The first name, any middle names, and surname of a person."
-                                                               specifier="${specifier}-fullName"
-                                                               string="${person.fullName}"
-                                                               path="${path}.fullName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="First Name"
-                                                               placeholder=" The given name of the person."
-                                                               specifier="${specifier}-firstName"
-                                                               string="${person.firstName}"
-                                                               path="${path}.firstName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Middle Initial"
-                                                               placeholder=" The first letter of the person's middle name."
-                                                               specifier="${specifier}-middleInitial"
-                                                               string="${person.middleInitial}"
-                                                               path="${path}.middleInitial">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Last Name"
-                                                               placeholder=" The person's family name."
-                                                               specifier="${specifier}-lastName"
-                                                               string="${person.lastName}"
-                                                               path="${path}.lastName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Email"
-                                                               placeholder=" An electronic mail address for the person."
-                                                               specifier="${specifier}-email"
-                                                               string="${person.email}"
-                                                               path="${path}.email">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Full Name"
+                                                    placeholder=" The first name, any middle names, and surname of a person."
+                                                    specifier="${specifier}-fullName"
+                                                    string="${person.fullName}"
+                                                    path="${path}.fullName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="First Name"
+                                                    placeholder=" The given name of the person."
+                                                    specifier="${specifier}-firstName"
+                                                    string="${person.firstName}"
+                                                    path="${path}.firstName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Middle Initial"
+                                                    placeholder=" The first letter of the person's middle name."
+                                                    specifier="${specifier}-middleInitial"
+                                                    string="${person.middleInitial}"
+                                                    path="${path}.middleInitial">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Last Name"
+                                                    placeholder=" The person's family name."
+                                                    specifier="${specifier}-lastName"
+                                                    string="${person.lastName}"
+                                                    path="${path}.lastName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Email"
+                                                    placeholder=" An electronic mail address for the person."
+                                                    specifier="${specifier}-email"
+                                                    string="${person.email}"
+                                                    path="${path}.email">
+                    </myTags:editNonZeroLengthString>
                 </c:otherwise>
             </c:choose>
             <myTags:editPersonComprisedEntity path="${path}.affiliations"
@@ -153,31 +153,31 @@
                     </myTags:editRequiredNonZeroLengthString>
                 </c:when>
                 <c:otherwise>
-                    <myTags:editNonRequiredNonZeroLengthString label="Full Name"
-                                                               placeholder=" The first name, any middle names, and surname of a person."
-                                                               specifier="${specifier}-fullName"
-                                                               path="${path}.fullName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="First Name"
-                                                               placeholder=" The given name of the person."
-                                                               specifier="${specifier}-firstName"
-                                                               path="${path}.firstName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Middle Initial"
-                                                               placeholder=" The first letter of the person's middle name."
-                                                               specifier="${specifier}-middleInitial"
-                                                               path="${path}.middleInitial">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Last Name"
-                                                               placeholder=" The person's family name."
-                                                               specifier="${specifier}-lastName"
-                                                               path="${path}.lastName">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Email"
-                                                               placeholder=" An electronic mail address for the person."
-                                                               specifier="${specifier}-email"
-                                                               path="${path}.email">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Full Name"
+                                                    placeholder=" The first name, any middle names, and surname of a person."
+                                                    specifier="${specifier}-fullName"
+                                                    path="${path}.fullName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="First Name"
+                                                    placeholder=" The given name of the person."
+                                                    specifier="${specifier}-firstName"
+                                                    path="${path}.firstName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Middle Initial"
+                                                    placeholder=" The first letter of the person's middle name."
+                                                    specifier="${specifier}-middleInitial"
+                                                    path="${path}.middleInitial">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Last Name"
+                                                    placeholder=" The person's family name."
+                                                    specifier="${specifier}-lastName"
+                                                    path="${path}.lastName">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Email"
+                                                    placeholder=" An electronic mail address for the person."
+                                                    specifier="${specifier}-email"
+                                                    path="${path}.email">
+                    </myTags:editNonZeroLengthString>
                 </c:otherwise>
             </c:choose>
             <myTags:editPersonComprisedEntity path="${path}.affiliations"

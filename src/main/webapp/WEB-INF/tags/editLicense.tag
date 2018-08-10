@@ -46,11 +46,11 @@
                                                                 string="${license.name}"
                                                                 label="Name">
                         </myTags:editRequiredNonZeroLengthString>
-                        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
-                                                                   specifier="${specifier}-${varStatus.count-1}-version"
-                                                                   string="${license.version}"
-                                                                   path="${path}[${varStatus.count-1}].version">
-                        </myTags:editNonRequiredNonZeroLengthString>
+                        <myTags:editNonZeroLengthString label="Version" placeholder=" Version"
+                                                        specifier="${specifier}-${varStatus.count-1}-version"
+                                                        string="${license.version}"
+                                                        path="${path}[${varStatus.count-1}].version">
+                        </myTags:editNonZeroLengthString>
                         <myTags:editPersonComprisedEntity path="${path}[${varStatus.count-1}].creators"
                                                           specifier="${specifier}-${varStatus.count-1}-creators"
                                                           label="Creator"
@@ -99,10 +99,10 @@
                                                 placeholder=" Name of License"
                                                 label="Name">
         </myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
-                                                   specifier="${specifier}-0-version"
-                                                   path="${path}[0].version">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Version" placeholder=" Version"
+                                        specifier="${specifier}-0-version"
+                                        path="${path}[0].version">
+        </myTags:editNonZeroLengthString>
         <myTags:editPersonComprisedEntity path="${path}[0].creators"
                                           specifier="${specifier}-0-creators"
                                           label="Creator"

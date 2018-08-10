@@ -66,12 +66,12 @@
                                                                placeholder=" A textual narrative comprised of one or more statements describing the place."
                                                                label="Description">
                     </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
-                                                               specifier="${specifier}-postalAddress"
-                                                               string="${place.postalAddress}"
-                                                               placeholder=" A physical street address."
-                                                               label="Postal Address">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString path="${path}.postalAddress"
+                                                    specifier="${specifier}-postalAddress"
+                                                    string="${place.postalAddress}"
+                                                    placeholder=" A physical street address."
+                                                    label="Postal Address">
+                    </myTags:editNonZeroLengthString>
                     <div class="form-group edit-form-group">
                         <label>Geometry</label>
                         <c:choose>
@@ -145,11 +145,11 @@
                                                    placeholder=" A textual narrative comprised of one or more statements describing the place."
                                                    label="Description">
         </myTags:editNonRequiredNonZeroLengthStringTextArea>
-        <myTags:editNonRequiredNonZeroLengthString path="${path}.postalAddress"
-                                                   specifier="${specifier}-postalAddress"
-                                                   placeholder=" A physical street address."
-                                                   label="Postal Address">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}.postalAddress"
+                                        specifier="${specifier}-postalAddress"
+                                        placeholder=" A physical street address."
+                                        label="Postal Address">
+        </myTags:editNonZeroLengthString>
         <div class="form-group edit-form-group">
             <label>Geometry</label>
             <button class="btn btn-success ${specifier}-geometry-add" id="${specifier}-geometry-add" type="button"><i

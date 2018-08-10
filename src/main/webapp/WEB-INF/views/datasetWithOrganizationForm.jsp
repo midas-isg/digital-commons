@@ -29,10 +29,10 @@
                     <myTags:editRequiredNonZeroLengthString label="Title" placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                                             path="title"
                                                             string="${datasetWithOrganization.title}"></myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="description"
-                                                               string="${datasetWithOrganization.description}"
-                                                               specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                               label="Description"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString path="description"
+                                                    string="${datasetWithOrganization.description}"
+                                                    specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                                    label="Description"></myTags:editNonZeroLengthString>
                     <myTags:editIdentifier identifier="${datasetWithOrganization.identifier}" specifier="identifier"
                                            path="identifier" label="Identifier"></myTags:editIdentifier>
                         <%--<myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>--%>

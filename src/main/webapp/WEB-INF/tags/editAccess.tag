@@ -49,12 +49,12 @@
                                                     string="${access.landingPage}"
                                                     label="Landing Page">
             </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonRequiredNonZeroLengthString path="${path}.accessURL"
-                                                       specifier="${specifier}-accessURL"
-                                                       placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                                       string="${access.accessURL}"
-                                                       label="Access URL">
-            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="${path}.accessURL"
+                                            specifier="${specifier}-accessURL"
+                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                            string="${access.accessURL}"
+                                            label="Access URL">
+            </myTags:editNonZeroLengthString>
             <myTags:editAnnotationUnbounded path="${path}.types"
                                             specifier="${specifier}-types"
                                             annotations="${access.types}"
@@ -104,11 +104,11 @@
                                                     placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                                     label="Landing Page">
             </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonRequiredNonZeroLengthString path="${path}.accessURL"
-                                                       specifier="${specifier}-accessURL"
-                                                       placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                                       label="Access URL">
-            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="${path}.accessURL"
+                                            specifier="${specifier}-accessURL"
+                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                            label="Access URL">
+            </myTags:editNonZeroLengthString>
             <myTags:editAnnotationUnbounded path="${path}.types"
                                             specifier="${specifier}-types"
                                             label="Types">

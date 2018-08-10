@@ -30,18 +30,20 @@
                                        path="identifier"
                                        label="Identifier">
                 </myTags:editIdentifier>
-                <myTags:editRequiredNonZeroLengthString label="Title"
-                                                        path="title"
-                                                        placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                        string="${dataset.title}">
-                </myTags:editRequiredNonZeroLengthString>
-
-                <myTags:editNonRequiredNonZeroLengthStringTextArea path="description"
-                                                                   string="${dataset.description}"
-                                                                   specifier="description"
-                                                                   placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                                   label="Description">
-                </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                <myTags:editNonZeroLengthString label="Title"
+                                                path="title"
+                                                specifier="title"
+                                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                isRequired="true"
+                                                string="${dataset.title}">
+                </myTags:editNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="description"
+                                                string="${dataset.description}"
+                                                specifier="description"
+                                                isTextArea="true"
+                                                placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                                label="Description">
+                </myTags:editNonZeroLengthString>
                 <myTags:editDatesUnbounded dates="${dataset.dates}"
                                            path="dates"
                                            specifier="dates">

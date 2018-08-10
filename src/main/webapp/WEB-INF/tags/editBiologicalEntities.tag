@@ -49,12 +49,12 @@
                     </c:otherwise>
                 </c:choose>
                     <div class="form-group">
-                        <myTags:editNonRequiredNonZeroLengthString string="${entity.description}"
-                                                                   path="${path}[${varStatus.count-1}].description"
-                                                                   label="Description"
-                                                                   placeholder="Description"
-                                                                   specifier="${specifier}-${varStatus.count-1}">
-                        </myTags:editNonRequiredNonZeroLengthString>
+                        <myTags:editNonZeroLengthString string="${entity.description}"
+                                                        path="${path}[${varStatus.count-1}].description"
+                                                        label="Description"
+                                                        placeholder="Description"
+                                                        specifier="${specifier}-${varStatus.count-1}">
+                        </myTags:editNonZeroLengthString>
                     </div>
 
                     <div class="form-group">
@@ -109,11 +109,11 @@
                                                     path="${path}[0].name">
             </myTags:editRequiredNonZeroLengthString>
         <div class="form-group">
-            <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description"
-                                                       label="Description"
-                                                       placeholder="Description"
-                                                       specifier="${specifier}-null">
-            </myTags:editNonRequiredNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="${path}[0].description"
+                                            label="Description"
+                                            placeholder="Description"
+                                            specifier="${specifier}-null">
+            </myTags:editNonZeroLengthString>
         </div>
 
         <div class="form-group">

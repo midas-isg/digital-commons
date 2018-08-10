@@ -71,12 +71,12 @@
                                         label="License"
                                         path="${path}[${varStatus.count-1}].licenses">
                     </myTags:editLicense>
-                    <myTags:editNonRequiredNonZeroLengthString label="Version"
-                                                               placeholder=" Version"
-                                                               specifier="${specifier}-${varStatus.count-1}-version"
-                                                               string="${dataStandard.version}"
-                                                               path="${path}[${varStatus.count-1}].version">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Version"
+                                                    placeholder=" Version"
+                                                    specifier="${specifier}-${varStatus.count-1}-version"
+                                                    string="${dataStandard.version}"
+                                                    path="${path}[${varStatus.count-1}].version">
+                    </myTags:editNonZeroLengthString>
                     <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
                                                   specifier="${specifier}-${varStatus.count-1}-extraProperties"
                                                   path="${path}[${varStatus.count-1}].extraProperties"
@@ -142,11 +142,11 @@
                             label="License"
                             path="${path}[0].licenses">
         </myTags:editLicense>
-        <myTags:editNonRequiredNonZeroLengthString label="Version"
-                                                   placeholder=" Version"
-                                                   specifier="${specifier}-0-version"
-                                                   path="${path}[0].version">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Version"
+                                        placeholder=" Version"
+                                        specifier="${specifier}-0-version"
+                                        path="${path}[0].version">
+        </myTags:editNonZeroLengthString>
         <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties"
                                       label="Extra Properties"
                                       path="${path}[0].extraProperties">

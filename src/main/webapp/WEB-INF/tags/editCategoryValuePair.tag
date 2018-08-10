@@ -48,16 +48,16 @@
                         Remove
                     </button>
                 </div>
-                <myTags:editNonRequiredNonZeroLengthString label="Category" placeholder=" A characteristic or property about the entity this object is associated with."
-                                                           specifier="${specifier}-${varStatus.count-1}-category"
-                                                           path="${path}[${varStatus.count-1}].category"
-                                                           string="${categoryValuePair.category}">
-                </myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString label="CategoryIRI" placeholder=" The IRI corresponding to the category, if associated with an ontology term."
-                                                           specifier="${specifier}-${varStatus.count-1}-categoryIRI"
-                                                           path="${path}[${varStatus.count-1}].categoryIRI"
-                                                           string="${categoryValuePair.categoryIRI}">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString label="Category" placeholder=" A characteristic or property about the entity this object is associated with."
+                                                specifier="${specifier}-${varStatus.count-1}-category"
+                                                path="${path}[${varStatus.count-1}].category"
+                                                string="${categoryValuePair.category}">
+                </myTags:editNonZeroLengthString>
+                <myTags:editNonZeroLengthString label="CategoryIRI" placeholder=" The IRI corresponding to the category, if associated with an ontology term."
+                                                specifier="${specifier}-${varStatus.count-1}-categoryIRI"
+                                                path="${path}[${varStatus.count-1}].categoryIRI"
+                                                string="${categoryValuePair.categoryIRI}">
+                </myTags:editNonZeroLengthString>
                 <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].values"
                                                 specifier="${specifier}-${varStatus.count-1}-values"
                                                 label="Value"
@@ -95,14 +95,14 @@
                 Remove
             </button>
         </div>
-        <myTags:editNonRequiredNonZeroLengthString label="Category" placeholder=" A characteristic or property about the entity this object is associated with."
-                                                   specifier="${specifier}-0-category"
-                                                   path="${path}[0].category">
-        </myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString label="CategoryIRI" placeholder=" The IRI corresponding to the category, if associated with an ontology term."
-                                                   specifier="${specifier}-0-categoryIRI"
-                                                   path="${path}[0].categoryIRI">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Category" placeholder=" A characteristic or property about the entity this object is associated with."
+                                        specifier="${specifier}-0-category"
+                                        path="${path}[0].category">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="CategoryIRI" placeholder=" The IRI corresponding to the category, if associated with an ontology term."
+                                        specifier="${specifier}-0-categoryIRI"
+                                        path="${path}[0].categoryIRI">
+        </myTags:editNonZeroLengthString>
         <myTags:editAnnotationUnbounded path="${path}[0].values"
                                         specifier="${specifier}-0-values"
                                         label="Value">

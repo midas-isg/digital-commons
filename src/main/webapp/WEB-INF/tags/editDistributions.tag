@@ -43,19 +43,19 @@
                                            identifiers="${distribution.alternateIdentifiers}"
                                            unbounded="${true}">
                     </myTags:editIdentifier>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].title"
-                                                               specifier="${specifier}-${varStatus.count-1}-title"
-                                                               placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                               string="${distribution.title}"
-                                                               label="Title">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].description"
-                                                               string="${distribution.description}"
-                                                               specifier="${specifier}-${varStatus.count-1}-description"
-                                                               placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                                               label="Description"
-                                                               isTextArea="True" >
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}].title"
+                                                    specifier="${specifier}-${varStatus.count-1}-title"
+                                                    placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                    string="${distribution.title}"
+                                                    label="Title">
+                    </myTags:editNonZeroLengthString>
+                    <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}].description"
+                                                    string="${distribution.description}"
+                                                    specifier="${specifier}-${varStatus.count-1}-description"
+                                                    placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                                    label="Description"
+                                                    isTextArea="True" >
+                    </myTags:editNonZeroLengthString>
 <%--
                     <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[${varStatus.count-1}].description"
                                                                        string="${distribution.description}"
@@ -72,11 +72,11 @@
                                                path="${path}[${varStatus.count-1}].dates"
                                                specifier="${specifier}-dates">
                     </myTags:editDatesUnbounded>
-                    <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
-                                                               specifier="${specifier}-${varStatus.count-1}-version"
-                                                               string="${distribution.version}"
-                                                               path="${path}[${varStatus.count-1}].version">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
+                                                    specifier="${specifier}-${varStatus.count-1}-version"
+                                                    string="${distribution.version}"
+                                                    path="${path}[${varStatus.count-1}].version">
+                    </myTags:editNonZeroLengthString>
                     <myTags:editLicense path="${path}[${varStatus.count-1}].licenses"
                                         licenses="${distribution.licenses}"
                                         label="License"
@@ -149,27 +149,27 @@
                                path="${path}[0].alternateIdentifiers"
                                unbounded="${true}">
         </myTags:editIdentifier>
-        <myTags:editNonRequiredNonZeroLengthString path="${path}[0].title"
-                                                   specifier="${specifier}-title"
-                                                   placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                   label="Title">
-        </myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description"
-                                                           specifier="${specifier}-description"
-                                                           placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                                           label="Description"
-                                                            isTextArea="True">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}[0].title"
+                                        specifier="${specifier}-title"
+                                        placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                        label="Title">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}[0].description"
+                                        specifier="${specifier}-description"
+                                        placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                        label="Description"
+                                        isTextArea="True">
+        </myTags:editNonZeroLengthString>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn">
         </myTags:editDataRepository>
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-dates">
         </myTags:editDatesUnbounded>
-        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
-                                                   specifier="${specifier}-version"
-                                                   path="${path}[0].version">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
+                                        specifier="${specifier}-version"
+                                        path="${path}[0].version">
+        </myTags:editNonZeroLengthString>
         <myTags:editLicense path="${path}[0].licenses"
                             label="License"
                             specifier="${specifier}-licenses">

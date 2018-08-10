@@ -32,9 +32,9 @@
 
                     <myTags:editRequiredNonZeroLengthString placeholder="Name" label="Name" path="name"
                                                             string="${dataStandard.name}"></myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Description" placeholder="Description"
-                                                               string="${dataStandard.description}" path="description"
-                                                               specifier="description"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Description" placeholder="Description"
+                                                    string="${dataStandard.description}" path="description"
+                                                    specifier="description"></myTags:editNonZeroLengthString>
 
                     <spring:bind path="type">
                     <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
@@ -46,9 +46,9 @@
                     <myTags:editLicense specifier="licenses" path="licenses" label="License"
                                         licenses="${dataStandard.licenses}">
                     </myTags:editLicense>
-                    <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder="Version" path="version"
-                                                               specifier="version"
-                                                               string="${dataStandard.version}"></myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString label="Version" placeholder="Version" path="version"
+                                                    specifier="version"
+                                                    string="${dataStandard.version}"></myTags:editNonZeroLengthString>
 
                     <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
                                                   specifier="extraProperties" label="Extra Properties"

@@ -31,13 +31,13 @@
     <c:forEach items="${formats}" varStatus="varStatus" var="format">
         <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
             <c:if test="${not function:isObjectEmpty(format)}">
-                <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}]"
-                                                           specifier="${specifier}-${varStatus.count-1}"
-                                                           placeholder="${placeholder}"
-                                                           string="${format}"
-                                                           isUnboundedList="true"
-                                                           label="${label}">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"
+                                                specifier="${specifier}-${varStatus.count-1}"
+                                                placeholder="${placeholder}"
+                                                string="${format}"
+                                                isUnboundedList="true"
+                                                label="${label}">
+                </myTags:editNonZeroLengthString>
             </c:if>
             <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
         </div>
@@ -45,13 +45,13 @@
     <div class="${specifier}-formats-add-more"></div>
 </div>
 
-<myTags:editNonRequiredNonZeroLengthString path="${path}[0]"
-                                           specifier="${specifier}-0"
-                                           placeholder="${placeholder}"
-                                           isUnboundedList="true"
-                                           id="${specifier}-copy-tag"
-                                           label="${label}">
-</myTags:editNonRequiredNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}[0]"
+                                specifier="${specifier}-0"
+                                placeholder="${placeholder}"
+                                isUnboundedList="true"
+                                id="${specifier}-copy-tag"
+                                label="${label}">
+</myTags:editNonZeroLengthString>
 
 <script type="text/javascript">
     $(document).ready(function () {

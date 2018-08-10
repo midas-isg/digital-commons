@@ -48,25 +48,25 @@
                                                identifiers="${publication.alternateIdentifiers}"
                                                unbounded="${true}">
                         </myTags:editIdentifier>
-                        <myTags:editNonRequiredNonZeroLengthString
+                        <myTags:editNonZeroLengthString
                                 placeholder=" The name of the publication and its funding program."
                                 label="Title"
                                 string="${publication.title}"
                                 path="${path}[${varStatus.count-1}].title"
                                 specifier="${specifier}-title">
-                        </myTags:editNonRequiredNonZeroLengthString>
+                        </myTags:editNonZeroLengthString>
                         <myTags:editAnnotationBounded path="${path}[${varStatus.count-1}].type"
                                                       specifier="${specifier}-${varStatus.count-1}-type"
                                                       annotation="${publication.type}"
                                                       placeholder=" Publication type, ideally delegated to an external vocabulary/resource."
                                                       label="Type">
                         </myTags:editAnnotationBounded>
-                        <myTags:editNonRequiredNonZeroLengthString path="${path}.publicationVenue"
-                                                                   string="${publication.publicationVenue}"
-                                                                   specifier="${specifier}-publicationVenue"
-                                                                   placeholder=" The name of the publication venue where the document is published if applicable."
-                                                                   label="Publication Venue">
-                        </myTags:editNonRequiredNonZeroLengthString>
+                        <myTags:editNonZeroLengthString path="${path}.publicationVenue"
+                                                        string="${publication.publicationVenue}"
+                                                        specifier="${specifier}-publicationVenue"
+                                                        placeholder=" The name of the publication venue where the document is published if applicable."
+                                                        label="Publication Venue">
+                        </myTags:editNonZeroLengthString>
                         <myTags:editDatesUnbounded dates="${publication.dates}"
                                                    path="${path}[${varStatus.count-1}].dates"
                                                    specifier="${specifier}-dates">
@@ -126,21 +126,21 @@
                                path="${path}[0].alternateIdentifiers"
                                unbounded="${true}">
         </myTags:editIdentifier>
-        <myTags:editNonRequiredNonZeroLengthString placeholder=" The name of the publication and its funding program."
-                                                label="Title"
-                                                path="${path}[0].title"
-                                                specifier="${specifier}-0-title">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString placeholder=" The name of the publication and its funding program."
+                                        label="Title"
+                                        path="${path}[0].title"
+                                        specifier="${specifier}-0-title">
+        </myTags:editNonZeroLengthString>
         <myTags:editAnnotationBounded path="${path}[0].type"
                                       specifier="${specifier}-0-type"
                                       placeholder=" Publication type, ideally delegated to an external vocabulary/resource."
                                       label="Type">
         </myTags:editAnnotationBounded>
-        <myTags:editNonRequiredNonZeroLengthString path="${path}[0].publicationVenue"
-                                                   specifier="${specifier}-0-publicationVenue"
-                                                   placeholder=" The name of the publication venue where the document is published if applicable."
-                                                   label="Publication Venue">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}[0].publicationVenue"
+                                        specifier="${specifier}-0-publicationVenue"
+                                        placeholder=" The name of the publication venue where the document is published if applicable."
+                                        label="Publication Venue">
+        </myTags:editNonZeroLengthString>
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-0-dates">
         </myTags:editDatesUnbounded>

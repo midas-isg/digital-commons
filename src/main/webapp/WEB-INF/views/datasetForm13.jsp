@@ -22,12 +22,12 @@
             <myTags:datasetIndex active="extra"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editNonRequiredNonZeroLengthString path="version"
-                                                               string="${dataset.version}"
-                                                               specifier="version"
-                                                               placeholder=" A release point for the dataset when applicable."
-                                                               label="Version">
-                    </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthString path="version"
+                                                    string="${dataset.version}"
+                                                    specifier="version"
+                                                    placeholder=" A release point for the dataset when applicable."
+                                                    label="Version">
+                    </myTags:editNonZeroLengthString>
                     <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
                                                   specifier="extraProperties"
                                                   label="Extra Properties"

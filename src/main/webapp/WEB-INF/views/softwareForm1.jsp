@@ -27,12 +27,12 @@
                 <myTags:editCategory selectedID="${categoryID}"
                                      categoryPaths="${categoryPaths}">
                 </myTags:editCategory>
-                <myTags:editNonRequiredNonZeroLengthString path="product"
-                                                           string="${software.product}"
-                                                           specifier="product"
-                                                           placeholder="Product Name"
-                                                           label="Product Name">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="product"
+                                                string="${software.product}"
+                                                specifier="product"
+                                                placeholder="Product Name"
+                                                label="Product Name">
+                </myTags:editNonZeroLengthString>
                 <myTags:editRequiredNonZeroLengthString label="Title"
                                                         placeholder="Title"
                                                         path="title"
@@ -60,48 +60,48 @@
                                                                     specifier="data-output-format"
                                                                     formats="${software.dataOutputFormats}">
                 </myTags:editUnboundedNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString path="sourceCodeRelease"
-                                                           string="${software.sourceCodeRelease}"
-                                                           specifier="soure-code-release"
-                                                           placeholder="Source Code Release"
-                                                           label="Source Code Release">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="sourceCodeRelease"
+                                                string="${software.sourceCodeRelease}"
+                                                specifier="soure-code-release"
+                                                placeholder="Source Code Release"
+                                                label="Source Code Release">
+                </myTags:editNonZeroLengthString>
                 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Web Applications"
                                                                     placeholder="Web Application"
                                                                     path="webApplication"
                                                                     specifier="web-application"
                                                                     formats="${software.webApplication}">
                 </myTags:editUnboundedNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString path="license"
-                                                           string="${software.license}"
-                                                           specifier="license"
-                                                           placeholder="License"
-                                                           label="License">
-                </myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString path="source"
-                                                           string="${software.source}"
-                                                           specifier="source"
-                                                           placeholder="Source"
-                                                           label="Source">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="license"
+                                                string="${software.license}"
+                                                specifier="license"
+                                                placeholder="License"
+                                                label="License">
+                </myTags:editNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="source"
+                                                string="${software.source}"
+                                                specifier="source"
+                                                placeholder="Source"
+                                                label="Source">
+                </myTags:editNonZeroLengthString>
                 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Developers"
                                                                     placeholder="Developer"
                                                                     path="developers"
                                                                     specifier="developers"
                                                                     formats="${software.developers}">
                 </myTags:editUnboundedNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString path="website"
-                                                           string="${software.website}"
-                                                           specifier="website"
-                                                           placeholder="Website"
-                                                           label="Website">
-                </myTags:editNonRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthString path="documentation"
-                                                           string="${software.documentation}"
-                                                           specifier="documentation"
-                                                           placeholder="Documentation"
-                                                           label="Documentation">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="website"
+                                                string="${software.website}"
+                                                specifier="website"
+                                                placeholder="Website"
+                                                label="Website">
+                </myTags:editNonZeroLengthString>
+                <myTags:editNonZeroLengthString path="documentation"
+                                                string="${software.documentation}"
+                                                specifier="documentation"
+                                                placeholder="Documentation"
+                                                label="Documentation">
+                </myTags:editNonZeroLengthString>
                 <myTags:editUnboundedNonRequiredNonZeroLengthString label="Publications That Used Release"
                                                                     placeholder="Publication That Used Release"
                                                                     path="publicationsThatUsedRelease"

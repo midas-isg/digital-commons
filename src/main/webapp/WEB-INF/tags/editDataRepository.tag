@@ -72,11 +72,11 @@
                                     label="License"
                                     specifier="${specifier}-licenses">
                 </myTags:editLicense>
-                <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
-                                                           specifier="${specifier}-version"
-                                                           string="${dataRepository.version}"
-                                                           path="${path}.version">
-                </myTags:editNonRequiredNonZeroLengthString>
+                <myTags:editNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
+                                                specifier="${specifier}-version"
+                                                string="${dataRepository.version}"
+                                                path="${path}.version">
+                </myTags:editNonZeroLengthString>
                 <myTags:editPersonComprisedEntity path="${path}.publishers"
                                                   specifier="${specifier}-publishers"
                                                   label="Publisher"
@@ -148,10 +148,10 @@
                             label="License"
                             specifier="${specifier}-licenses">
         </myTags:editLicense>
-        <myTags:editNonRequiredNonZeroLengthString label="Version" placeholder=" Version"
-                                                   specifier="${specifier}-version"
-                                                   path="${path}.version">
-        </myTags:editNonRequiredNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Version" placeholder=" Version"
+                                        specifier="${specifier}-version"
+                                        path="${path}.version">
+        </myTags:editNonZeroLengthString>
         <myTags:editPersonComprisedEntity path="${path}.publishers"
                                           specifier="${specifier}-publishers"
                                           label="Publisher"
