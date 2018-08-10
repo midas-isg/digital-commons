@@ -33,17 +33,17 @@
                     Remove
                 </button>
             </c:if>
-            <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
-                                   path="${path}.identifier"
-                                   identifier="${access.identifier}"
-                                   unbounded="False">
-            </myTags:editIdentifier>
-            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                                   label="Alternate Identifiers"
-                                   path="${path}.alternateIdentifiers"
-                                   identifiers="${access.alternateIdentifiers}"
-                                   unbounded="${true}">
-            </myTags:editIdentifier>
+            <myTags:editUnboundedIdentifier label="Identifier" specifier="${specifier}-identifier"
+                                            path="${path}.identifier"
+                                            identifier="${access.identifier}"
+                                            unbounded="False">
+            </myTags:editUnboundedIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                                            label="Alternate Identifiers"
+                                            path="${path}.alternateIdentifiers"
+                                            identifiers="${access.alternateIdentifiers}"
+                                            unbounded="${true}">
+            </myTags:editUnboundedIdentifier>
             <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
                                                     placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                                     string="${access.landingPage}"
@@ -91,15 +91,15 @@
                     Remove
                 </button>
             </c:if>
-            <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
-                                   path="${path}.identifier"
-                                   unbounded="False">
-            </myTags:editIdentifier>
-            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                                   label="Alternate Identifiers"
-                                   path="${path}.alternateIdentifiers"
-                                   unbounded="${true}">
-            </myTags:editIdentifier>
+            <myTags:editUnboundedIdentifier label="Identifier" specifier="${specifier}-identifier"
+                                            path="${path}.identifier"
+                                            unbounded="False">
+            </myTags:editUnboundedIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                                            label="Alternate Identifiers"
+                                            path="${path}.alternateIdentifiers"
+                                            unbounded="${true}">
+            </myTags:editUnboundedIdentifier>
             <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
                                                     placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                                     label="Landing Page">

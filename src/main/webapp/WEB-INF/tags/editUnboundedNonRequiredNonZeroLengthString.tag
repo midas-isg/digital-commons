@@ -35,8 +35,7 @@
                                                 specifier="${specifier}-${varStatus.count-1}"
                                                 placeholder="${placeholder}"
                                                 string="${format}"
-                                                isUnboundedList="true"
-                                                label="${label}">
+                                                isUnboundedList="true">
                 </myTags:editNonZeroLengthString>
             </c:if>
             <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
@@ -58,7 +57,6 @@
         var formatsCount = ${formatsCount};
         //Show/Hide Formats
         $("body").on("click", ".${specifier}-add-formats", function () {
-            console.log("${specifier}");
             var specifier = "${specifier}";
             var path = "${path}";
             var html = $("#" + specifier + "-copy-tag").html();
@@ -68,12 +66,10 @@
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            console.log(html);
             html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount).replace("hide", "");
 
             $(".${specifier}-formats-add-more").before(html);
             formatsCount += 1;
-            console.log(html);
         });
 
 

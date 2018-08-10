@@ -6,280 +6,83 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
-<%@ attribute name="identifier" required="false"
+<%@ attribute name="singleIdentifier" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Identifier" %>
-<%@ attribute name="identifiers" required="false"
-              type="java.util.List" %>
 <%@ attribute name="path" required="false"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
 <%@ attribute name="label" required="false"
               type="java.lang.String" %>
-<%@ attribute name="unbounded" required="false"
+<%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="identifierName" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="identifierSource" required="false"
+<%@ attribute name="id" required="false"
               type="java.lang.String" %>
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(identifiers)}">
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <c:forEach items="${identifiers}" var="singleIdentifier" varStatus="varStatus">
-                <div class="form-group control-group ${specifier}-identifier-add-more-button">
-                    <c:choose>
-                        <c:when test="${varStatus.first}">
-                            <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                                    class="glyphicon glyphicon-plus"></i> Add
-                                    ${label}
-                            </button>
 
-                        </c:when>
-                    </c:choose>
-                </div>
-                <c:if test="${not function:isObjectEmpty(singleIdentifier)}">
-                    <c:set var = "identifierPath" value = "${path}[${varStatus.count-1}].identifier"/>
-                    <c:set var = "identifierSourcePath" value = "${path}[${varStatus.count-1}].identifierSource"/>
-
-                    <div class="form-group control-group edit-form-group">
-                        <label>${label}</label>
-                        <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i>
-                            Remove
-                        </button>
-                    <c:choose>
-                        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}">
-                            <div class="form-group edit-form-group has-error">
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                        </c:otherwise>
-                    </c:choose>
-                    <label>Identifier</label>
-                            <input type="text" class="form-control" value="${singleIdentifier.identifier}"
-                                   name="${identifierPath}" placeholder=" A code uniquely identifying an entity locally to a system or globally.">
-                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}" var="message">
-                        <span class="error-color">${message.text}</span>
-                    </c:forEach>
-                        </div>
-
-
-
-                    <c:choose>
-                        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}">
-                            <div class="form-group edit-form-group has-error">
-                        </c:when>
-                        <c:otherwise>
-                            <div class="form-group edit-form-group">
-                        </c:otherwise>
-                    </c:choose>
-                    <label>Identifier Source</label>
-                            <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
-                                   name="${identifierSourcePath}" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
-                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}" var="message">
-                        <span class="error-color">${message.text}</span>
-                    </c:forEach>
-                        </div>
-
-                    </div>
-                    <c:set var="identifierCount" scope="page" value="${varStatus.count}"/>
-                </c:if>
-
-            </c:forEach>
-            <div class="${specifier}-identifier-add-more">
-            </div>
-        </div>
-    </c:when>
-    <c:when test="${not function:isObjectEmpty(identifier)}">
-        <c:set var = "identifierPath" value = "${path}.identifier"/>
-        <c:set var = "identifierSourcePath" value = "${path}.identifierSource"/>
-
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-            <div class="form-group control-group">
-                <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-
-                <c:choose>
-                    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}">
-                        <div class="form-group edit-form-group has-error">
-                    </c:when>
-                    <c:otherwise>
-                        <div class="form-group edit-form-group">
-                    </c:otherwise>
-                </c:choose>
-                    <label>Identifier</label>
-                    <input type="text" class="form-control" value="${identifier.identifier}"
-                           name="${identifierPath}"
-                           placeholder=" A code uniquely identifying an entity locally to a system or globally.">
-                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}" var="message">
-                        <span class="error-color">${message.text}</span>
-                    </c:forEach>
-                </div>
-
-                <c:choose>
-                    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}">
-                        <div class="form-group edit-form-group has-error">
-                    </c:when>
-                    <c:otherwise>
-                        <div class="form-group edit-form-group">
-                    </c:otherwise>
-                </c:choose>
-                    <label>Identifier Source</label>
-                    <input type="text" class="form-control" value="${identifier.identifierSource}"
-                           name="${identifierSourcePath}" placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
-                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}" var="message">
-                        <span class="error-color">${message.text}</span>
-                    </c:forEach>
-                </div>
-            </div>
-            <div class="${specifier}-identifier-add-more">
-            </div>
-        </div>
-        <c:set var="identifierCount" scope="page" value="0"/>
-
-    </c:when>
-    <c:when test="${not empty identifierName or not empty identifierSource}">
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more-button" style="display: none;">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-            <div class="form-group control-group">
-                <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-
-                <div class="form-group edit-form-group">
-                    <label>Identifier</label>
-                    <input type="text" class="form-control" value="${identifierName}"
-                           name="${path}.identifier"
-                           placeholder=" A code uniquely identifying an entity locally to a system or globally.">
-                </div>
-
-                <div class="form-group edit-form-group">
-                    <label>Identifier Source</label>
-                    <input type="text" class="form-control" value="${identifierSource}"
-                           name="${path}.identifierSource" placeholder="  The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
-                </div>
-            </div>
-            <div class="${specifier}-identifier-add-more">
-            </div>
-        </div>
-        <c:set var="identifierCount" scope="page" value="0"/>
-    </c:when>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group has-error">
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group">
-            </c:otherwise>
-        </c:choose>
+<div id="${id}" class="form-group edit-form-group <c:if test="${isUnboundedList and empty singleIdentifier}">hide</c:if>">
+    <c:if test="${not isUnboundedList}">
         <label>${label}</label>
-            <div class="input-group control-group ${specifier}-identifier-add-more-button">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                    </button>
-
-                </div>
-            </div>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-            <br>
-            <div class="${specifier}-identifier-add-more">
+        <div id="${specifier}-add-input-button" class="input-group control-group">
+            <div class="input-group-btn">
+                <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                        ${label}
+                </button>
             </div>
         </div>
-        <c:set var="identifierCount" scope="page" value="0"/>
-
-    </c:otherwise>
-</c:choose>
-
-
-<div class="copy-${specifer}-${unbounded}-identifier hide">
-    <c:choose>
-        <c:when test="${unbounded}">
-            <div class="form-group control-group edit-form-group">
-                <label>${label}</label>
-        </c:when>
-        <c:otherwise>
-            <div class="form-group control-group">
-        </c:otherwise>
-    </c:choose>
-        <%--<br>--%>
-        <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+    </c:if>
+    <div id="${specifier}-input-block"
+         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(singleIdentifier) and not isUnboundedList}">hide</c:if>">
+        <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
+                class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
-
-        <div class="form-group edit-form-group">
+        <c:set var="identifierPath" value="${path}.identifier"/>
+        <c:set var="identifierSourcePath" value="${path}.identifierSource"/>
+        <div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}"> has-error</c:if>">
             <label>Identifier</label>
-            <input type="text" class="form-control" name="specifier-identifier"
+            <input type="text" class="form-control" value="${singleIdentifier.identifier}"
+                   name="${path}.identifier"
                    placeholder=" A code uniquely identifying an entity locally to a system or globally.">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}"
+                       var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
         </div>
 
-        <div class="form-group edit-form-group">
+        <div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}"> has-error</c:if>">
             <label>Identifier Source</label>
-            <input type="text" class="form-control"
-                   name="specifier-identifierSource"
-                   placeholder="  The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+            <input type="text" class="form-control" value="${singleIdentifier.identifierSource}"
+                   name="${path}.identifierSource"
+                   placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}"
+                       var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
         </div>
-
     </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("body").on("click", ".${specifier}-add-identifier", function (e) {
+                e.stopImmediatePropagation();
+
+                $("#${specifier}-input-block").removeClass("hide");
+                $("#${specifier}-add-input-button").addClass("hide");
+
+                //Add section
+                $("#${specifier}-string").val("");
+            });
+
+            //Remove section
+            $("body").on("click", ".${specifier}-identifier-remove", function () {
+                clearAndHideEditControlGroup(this);
+                $("#${specifier}-input-block").addClass("hide");
+                $("#${specifier}-add-input-button").removeClass("hide");
+            });
+        });
+
+    </script>
 </div>
-
-
-<script type="text/javascript">
-
-    $(document).ready(function () {
-        var identifierCount = ${identifierCount};
-        $("body").on("click", ".${specifier}-add-identifier", function (e) {
-            var html = $(".copy-${specifer}-${unbounded}-identifier").html();
-            //Add section
-            <c:choose>
-            <c:when test="${unbounded}">
-            // console.log(html);
-            html = html.replace('name="specifier-identifier"', 'name="${path}[' + identifierCount + '].identifier"').replace('name="specifier-identifierSource"', 'name="${path}[' + identifierCount + '].identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
-            <%--$(".${specifier}-identifier-add-more").after(html);--%>
-            $(".${specifier}-identifier-add-more").before(html);
-            identifierCount += 1;
-            </c:when>
-            <c:otherwise>
-            html = html.replace('name="specifier-identifier"', 'name="${path}.identifier"').replace('name="specifier-identifierSource"', 'name="${path}.identifierSource"').replace("identifier-remove", "${specifier}-identifier-remove");
-            <%--$(".${specifier}-identifier-add-more").after(html);--%>
-            $(".${specifier}-identifier-add-more").before(html);
-            $(".${specifier}-identifier-add-more-button").hide();
-            </c:otherwise>
-            </c:choose>
-            e.stopImmediatePropagation();
-        });
-        //Remove section
-        $("body").on("click", ".${specifier}-identifier-remove", function () {
-            // $(this).parents(".control-group")[0].remove();
-            clearAndHideEditControlGroup(this);
-            $(".${specifier}-identifier-add-more-button").show();
-        });
-    });
-
-</script>

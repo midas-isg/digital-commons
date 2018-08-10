@@ -33,16 +33,15 @@
                             class="glyphicon glyphicon-remove"></i> Remove
                     </button>
                     <myTags:editIdentifier label="Identifier" specifier="${specifier}-${varStatus.count-1}"
-                                           path="${path}[${varStatus.count-1}].identifier"
-                                           identifier="${distribution.identifier}"
-                                           unbounded="False">
+                                                    path="${path}[${varStatus.count-1}].identifier"
+                                                    singleIdentifier="${distribution.identifier}">
                     </myTags:editIdentifier>
-                    <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
-                                           label="Alternate Identifiers"
-                                           path="${path}[${varStatus.count-1}].alternateIdentifiers"
-                                           identifiers="${distribution.alternateIdentifiers}"
-                                           unbounded="${true}">
-                    </myTags:editIdentifier>
+                    <myTags:editUnboundedIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                                                    label="Alternate Identifiers"
+                                                    path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                                                    identifiers="${distribution.alternateIdentifiers}">
+                    </myTags:editUnboundedIdentifier>
+<%--
                     <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}].title"
                                                     specifier="${specifier}-${varStatus.count-1}-title"
                                                     placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
@@ -56,14 +55,6 @@
                                                     label="Description"
                                                     isTextArea="True" >
                     </myTags:editNonZeroLengthString>
-<%--
-                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[${varStatus.count-1}].description"
-                                                                       string="${distribution.description}"
-                                                                       specifier="${specifier}-${varStatus.count-1}-description"
-                                                                       placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                                                       label="Description">
-                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
---%>
                     <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
                                                dataRepository="${distribution.storedIn}"
                                                specifier="${specifier}-${varStatus.count-1}-storedIn">
@@ -112,6 +103,7 @@
                                                   placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
                                                   label="Unit" >
                     </myTags:editAnnotationBounded>
+--%>
                 </div>
                 <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
             </c:if>
@@ -141,14 +133,15 @@
         <button class="btn btn-danger distribution-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
             Remove
         </button>
-        <myTags:editIdentifier label="Identifier" specifier="${specifier}-0" path="${path}[0].identifier"
-                               unbounded="False">
+        <myTags:editIdentifier label="Identifier"
+                               specifier="${specifier}-0"
+                               path="${path}[0].identifier">
         </myTags:editIdentifier>
-        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                               label="Alternate Identifiers"
-                               path="${path}[0].alternateIdentifiers"
-                               unbounded="${true}">
-        </myTags:editIdentifier>
+        <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        path="${path}[0].alternateIdentifiers">
+        </myTags:editUnboundedIdentifier>
+<%--
         <myTags:editNonZeroLengthString path="${path}[0].title"
                                         specifier="${specifier}-title"
                                         placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
@@ -201,6 +194,7 @@
                                       placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
                                       label="Unit" >
         </myTags:editAnnotationBounded>
+--%>
 
     </div>
 </div>

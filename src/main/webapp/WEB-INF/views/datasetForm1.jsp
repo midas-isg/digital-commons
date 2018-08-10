@@ -25,10 +25,10 @@
                 <myTags:editCategory selectedID="${categoryID}"
                                      categoryPaths="${categoryPaths}">
                 </myTags:editCategory>
-                <myTags:editIdentifier identifier="${dataset.identifier}"
-                                       specifier="identifier"
-                                       path="identifier"
-                                       label="Identifier">
+                <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
+                                                specifier="identifier"
+                                                path="identifier"
+                                                label="Identifier">
                 </myTags:editIdentifier>
                 <myTags:editNonZeroLengthString label="Title"
                                                 path="title"

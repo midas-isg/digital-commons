@@ -27,11 +27,11 @@
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}">
                     </myTags:editCategory>
-                    <myTags:editIdentifier identifier="${dataset.identifier}"
-                                           specifier="identifier"
-                                           path="identifier"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
+                    <myTags:editUnboundedIdentifier identifier="${dataset.identifier}"
+                                                    specifier="identifier"
+                                                    path="identifier"
+                                                    label="Identifier">
+                    </myTags:editUnboundedIdentifier>
                     <myTags:editRequiredNonZeroLengthString label="Title"
                                                             path="title"
                                                             placeholder=" The name of the dataset, usually one sentece or short description of the dataset."

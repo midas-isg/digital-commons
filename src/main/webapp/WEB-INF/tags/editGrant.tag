@@ -37,16 +37,16 @@
                                 class="glyphicon glyphicon-remove"></i>
                             Remove
                         </button>
-                        <myTags:editIdentifier path="${path}[${varStatus.count-1}].identifier" identifier="${grant.identifier}"
-                                               specifier="${specifier}-${varStatus.count-1}-identifier"
-                                               label="Identifier">
-                        </myTags:editIdentifier>
-                        <myTags:editIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
-                                               label="Alternate Identifiers"
-                                               path="${path}[${varStatus.count-1}].alternateIdentifiers"
-                                               identifiers="${grant.alternateIdentifiers}"
-                                               unbounded="${true}">
-                        </myTags:editIdentifier>
+                        <myTags:editUnboundedIdentifier path="${path}[${varStatus.count-1}].identifier" identifier="${grant.identifier}"
+                                                        specifier="${specifier}-${varStatus.count-1}-identifier"
+                                                        label="Identifier">
+                        </myTags:editUnboundedIdentifier>
+                        <myTags:editUnboundedIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                                                        label="Alternate Identifiers"
+                                                        path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                                                        identifiers="${grant.alternateIdentifiers}"
+                                                        unbounded="${true}">
+                        </myTags:editUnboundedIdentifier>
                         <myTags:editRequiredNonZeroLengthString placeholder=" The name of the grant and its funding program."
                                                                 label="Name"
                                                                 string="${grant.name}"
@@ -100,15 +100,15 @@
             Remove
         </button>
         <br><br>
-        <myTags:editIdentifier path="${path}[0].identifier"
-                               specifier="${specifier}-0-identifier"
-                               label="Identifier">
-        </myTags:editIdentifier>
-        <myTags:editIdentifier specifier="${specifier}-0-alternateIdentifiers"
-                               label="Alternate Identifiers"
-                               path="${path}[0].alternateIdentifiers"
-                               unbounded="${true}">
-        </myTags:editIdentifier>
+        <myTags:editUnboundedIdentifier path="${path}[0].identifier"
+                                        specifier="${specifier}-0-identifier"
+                                        label="Identifier">
+        </myTags:editUnboundedIdentifier>
+        <myTags:editUnboundedIdentifier specifier="${specifier}-0-alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        path="${path}[0].alternateIdentifiers"
+                                        unbounded="${true}">
+        </myTags:editUnboundedIdentifier>
         <myTags:editRequiredNonZeroLengthString placeholder=" The name of the grant and its funding program."
                                                 label="Name"
                                                 path="${path}[0].name">

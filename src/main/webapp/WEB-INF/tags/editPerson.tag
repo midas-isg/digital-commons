@@ -28,18 +28,18 @@
                         class="glyphicon glyphicon-remove"></i> Remove
                 </button>
             </c:if>
-            <myTags:editIdentifier specifier="${specifier}-identifier"
-                                   label="Identifier"
-                                   path="${path}.identifier"
-                                   identifier="${person.identifier}"
-                                   unbounded="${false}">
-            </myTags:editIdentifier>
-            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                                   label="Alternate Identifiers"
-                                   path="${path}.alternateIdentifiers"
-                                   identifiers="${person.alternateIdentifiers}"
-                                   unbounded="${true}">
-            </myTags:editIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+                                            label="Identifier"
+                                            path="${path}.identifier"
+                                            identifier="${person.identifier}"
+                                            unbounded="${false}">
+            </myTags:editUnboundedIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                                            label="Alternate Identifiers"
+                                            path="${path}.alternateIdentifiers"
+                                            identifiers="${person.alternateIdentifiers}"
+                                            unbounded="${true}">
+            </myTags:editUnboundedIdentifier>
             <c:choose>
                 <c:when test="${isFirstRequired}">
                     <myTags:editRequiredNonZeroLengthString label="Full Name"
@@ -120,16 +120,16 @@
                         class="glyphicon glyphicon-remove"></i> Remove
                 </button>
             </c:if>
-            <myTags:editIdentifier specifier="${specifier}-identifier"
-                                   label="Identifier"
-                                   path="${path}.identifier"
-                                   unbounded="${false}">
-            </myTags:editIdentifier>
-            <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                                   label="Alternate Identifiers"
-                                   path="${path}.alternateIdentifiers"
-                                   unbounded="${true}">
-            </myTags:editIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+                                            label="Identifier"
+                                            path="${path}.identifier"
+                                            unbounded="${false}">
+            </myTags:editUnboundedIdentifier>
+            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                                            label="Alternate Identifiers"
+                                            path="${path}.alternateIdentifiers"
+                                            unbounded="${true}">
+            </myTags:editUnboundedIdentifier>
             <c:choose>
                 <c:when test="${isFirstRequired}">
                     <myTags:editRequiredNonZeroLengthString label="Full Name"

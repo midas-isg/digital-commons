@@ -33,8 +33,8 @@
                                                     string="${datasetWithOrganization.description}"
                                                     specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                     label="Description"></myTags:editNonZeroLengthString>
-                    <myTags:editIdentifier identifier="${datasetWithOrganization.identifier}" specifier="identifier"
-                                           path="identifier" label="Identifier"></myTags:editIdentifier>
+                    <myTags:editUnboundedIdentifier identifier="${datasetWithOrganization.identifier}" specifier="identifier"
+                                                    path="identifier" label="Identifier"></myTags:editUnboundedIdentifier>
                         <%--<myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>--%>
                     <myTags:editOrganization organizations="${datasetWithOrganization.creators}"
                                              label="Creators" path="creators"

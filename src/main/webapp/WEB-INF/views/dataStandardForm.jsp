@@ -25,8 +25,8 @@
                     <myTags:editCategory selectedID="${categoryID}"
                                          categoryPaths="${categoryPaths}"></myTags:editCategory>
                     <spring:bind path="identifier">
-                        <myTags:editIdentifier identifier="${dataStandard.identifier}" specifier="identifier"
-                                               path="identifier" label="Identifier"></myTags:editIdentifier>
+                        <myTags:editUnboundedIdentifier identifier="${dataStandard.identifier}" specifier="identifier"
+                                                        path="identifier" label="Identifier"></myTags:editUnboundedIdentifier>
                         <form:errors path="identifier" class="error-color"/>
                     </spring:bind>
 

@@ -23,17 +23,17 @@
                     Remove
                 </button>
                 <div class="form-group control-group edit-form-group">
-                    <myTags:editIdentifier identifier="${entity.identifier}"
-                                           path="${path}.identifier"
-                                           specifier="${specifier}"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
-                    <myTags:editIdentifier path="${path}.alternateIdentifiers"
-                                           unbounded="${true}"
-                                           specifier="${specifier}-alternateIdentifiers"
-                                           identifiers="${entity.alternateIdentifiers}"
-                                           label="Alternate Identifier">
-                    </myTags:editIdentifier>
+                    <myTags:editUnboundedIdentifier identifier="${entity.identifier}"
+                                                    path="${path}.identifier"
+                                                    specifier="${specifier}"
+                                                    label="Identifier">
+                    </myTags:editUnboundedIdentifier>
+                    <myTags:editUnboundedIdentifier path="${path}.alternateIdentifiers"
+                                                    unbounded="${true}"
+                                                    specifier="${specifier}-alternateIdentifiers"
+                                                    identifiers="${entity.alternateIdentifiers}"
+                                                    label="Alternate Identifier">
+                    </myTags:editUnboundedIdentifier>
                     <c:choose>
                         <c:when test="${not empty entity.name}">
                             <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
@@ -65,15 +65,15 @@
                     Remove
                 </button>
                 <div class="form-group control-group edit-form-group">
-                    <myTags:editIdentifier path="${path}.identifier"
-                                           specifier="${specifier}"
-                                           label="Identifier">
-                    </myTags:editIdentifier>
-                    <myTags:editIdentifier path="${path}.alternateIdentifiers"
-                                           unbounded="${true}"
-                                           specifier="${specifier}-alternateIdentifiers"
-                                           label="Alternate Identifier">
-                    </myTags:editIdentifier>
+                    <myTags:editUnboundedIdentifier path="${path}.identifier"
+                                                    specifier="${specifier}"
+                                                    label="Identifier">
+                    </myTags:editUnboundedIdentifier>
+                    <myTags:editUnboundedIdentifier path="${path}.alternateIdentifiers"
+                                                    unbounded="${true}"
+                                                    specifier="${specifier}-alternateIdentifiers"
+                                                    label="Alternate Identifier">
+                    </myTags:editUnboundedIdentifier>
                     <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
                                                             label="Name"
                                                             path="${path}.name">
