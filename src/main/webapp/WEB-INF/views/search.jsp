@@ -21,7 +21,7 @@
     <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
     <%--<script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <myTags:analytics/>
 <body id="commons-body">
