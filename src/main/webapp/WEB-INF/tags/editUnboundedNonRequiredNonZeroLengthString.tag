@@ -17,97 +17,65 @@
 <%@ attribute name="placeholder" required="true"
               type="java.lang.String" %>
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(formats)}">
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more-button">
-                <button class="btn btn-success ${specifier}-add-formats" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    ${label}
-                </button>
-            </div>
-
-            <c:forEach items="${formats}" varStatus="varStatus" var="format">
-                <div class="form-group">
-
-                    <div class="input-group control-group full-width">
-                        <input type="text" value="${fn:escapeXml(format)}" class="form-control" name="${path}[${varStatus.count-1}]"
-                               id="${specifier}-${varStatus.count-1}" placeholder="${placeholder}"/>
-                        <div class="input-group-btn">
-                            <button class="btn btn-danger ${specifier}-remove"
-                                    id="${specifier}-${varStatus.count-1}-remove"
-                                    type="button"><i
-                                    class="glyphicon glyphicon-remove"></i>
-                                Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
-            </c:forEach>
-            <div class="${specifier}-formats-add-more"></div>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="form-group ${specifier}-formats-add-more-button">
-                <button class="btn btn-success ${specifier}-add-formats" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    ${label}
-                </button>
-            </div>
-            <div class="${specifier}-formats-add-more"></div>
-        </div>
-        <c:set var="formatsCount" scope="page" value="0"/>
-
-    </c:otherwise>
-</c:choose>
-
-
-<div class="${specifier}-copy-formats hide">
-    <div class="form-group">
-        <div class="input-group control-group full-width">
-            <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0" placeholder="${placeholder}"/>
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-remove" id="${specifier}-0-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </div>
-        </div>
+<div class="form-group edit-form-group">
+    <label>${label}</label>
+    <div id="${specifier}-add-input-button" class="form-group ${specifier}-formats-add-more-button">
+        <button class="btn btn-success ${specifier}-add-formats" type="button"><i
+                class="glyphicon glyphicon-plus"></i> Add
+            ${label}
+        </button>
     </div>
+    <c:set var="formatsCount" scope="page" value="0"/>
+
+
+    <c:forEach items="${formats}" varStatus="varStatus" var="format">
+        <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
+            <c:if test="${not function:isObjectEmpty(format)}">
+                <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}]"
+                                                           specifier="${specifier}-${varStatus.count-1}"
+                                                           placeholder="${placeholder}"
+                                                           string="${format}"
+                                                           isUnboundedList="true"
+                                                           label="${label}">
+                </myTags:editNonRequiredNonZeroLengthString>
+            </c:if>
+            <c:set var="formatsCount" scope="page" value="${varStatus.count}"/>
+        </div>
+    </c:forEach>
+    <div class="${specifier}-formats-add-more"></div>
 </div>
 
+<myTags:editNonRequiredNonZeroLengthString path="${path}[0]"
+                                           specifier="${specifier}-0"
+                                           placeholder="${placeholder}"
+                                           isUnboundedList="true"
+                                           id="${specifier}-copy-tag"
+                                           label="${label}">
+</myTags:editNonRequiredNonZeroLengthString>
 
 <script type="text/javascript">
     $(document).ready(function () {
         var formatsCount = ${formatsCount};
         //Show/Hide Formats
         $("body").on("click", ".${specifier}-add-formats", function () {
+            console.log("${specifier}");
             var specifier = "${specifier}";
             var path = "${path}";
-            var html = $(".${specifier}-copy-formats").html();
+            var html = $("#" + specifier + "-copy-tag").html();
+            <%--var html = $("#${specifier}-0-tag").html();--%>
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount);
+            console.log(html);
+            html = html.replace(regexPath, '${path}[' + formatsCount + ']').replace(regexSpecifier, '${specifier}-' + formatsCount).replace("hide", "");
 
-            <%--$(".${specifier}-formats-add-more").after(html);--%>
             $(".${specifier}-formats-add-more").before(html);
             formatsCount += 1;
-            //$(this).hide();
-            //e.stopImmediatePropagation()
+            console.log(html);
         });
 
 
-        //Hide Formats
-        $("body").on("click", ".${specifier}-remove", function () {
-            clearAndHideEditControlGroup(this);
-            //$(".${specifier}-add-formats").show();
-        });
     });
 </script>

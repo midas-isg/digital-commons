@@ -37,8 +37,17 @@ public class ReflectionValidator {
     }
 
     private Object getValue(Field field, Object object) throws FatalReflectionValidatorException {
+        Method method;
         try {
-            Method method = object.getClass().getMethod(getGetterNameFromFieldName(field));
+            if(field.getType().getName().equals("boolean")) {
+                String getterNameFromField = field.getName();
+                if(!getterNameFromField.startsWith("is")) {
+                    getterNameFromField = "is" + getterNameFromField.substring(0,1).toUpperCase() + getterNameFromField.substring(1);
+                }
+                method = object.getClass().getMethod(getterNameFromField);
+            } else {
+                method = object.getClass().getMethod(getGetterNameFromFieldName(field));
+            }
             return method.invoke(object);
         } catch (Exception e) {
             throw new FatalReflectionValidatorException(e.getMessage());
@@ -46,6 +55,7 @@ public class ReflectionValidator {
     }
 
     private void setValue(Field field, Object object, Object value) throws FatalReflectionValidatorException {
+        //TODO: double check setters are working for boolean fields -- getters were updated : https://projectlombok.org/features/GetterSetter.html
         try {
             BeanUtils.setProperty(object, field.getName(), value);
         } catch (Exception e) {
@@ -120,8 +130,6 @@ public class ReflectionValidator {
                     }
                 }
             }
-
-
         }
         return nonEmptyNonRequiredFields;
 

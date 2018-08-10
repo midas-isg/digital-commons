@@ -49,12 +49,21 @@
                                                                string="${distribution.title}"
                                                                label="Title">
                     </myTags:editNonRequiredNonZeroLengthString>
+                    <myTags:editNonRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].description"
+                                                               string="${distribution.description}"
+                                                               specifier="${specifier}-${varStatus.count-1}-description"
+                                                               placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                                               label="Description"
+                                                               isTextArea="True" >
+                    </myTags:editNonRequiredNonZeroLengthString>
+<%--
                     <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[${varStatus.count-1}].description"
                                                                        string="${distribution.description}"
                                                                        specifier="${specifier}-${varStatus.count-1}-description"
                                                                        placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
                                                                        label="Description">
                     </myTags:editNonRequiredNonZeroLengthStringTextArea>
+--%>
                     <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
                                                dataRepository="${distribution.storedIn}"
                                                specifier="${specifier}-${varStatus.count-1}-storedIn">
@@ -145,11 +154,12 @@
                                                    placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                                    label="Title">
         </myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}[0].description"
+        <myTags:editNonRequiredNonZeroLengthString path="${path}[0].description"
                                                            specifier="${specifier}-description"
                                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                                           label="Description">
-        </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                                                           label="Description"
+                                                            isTextArea="True">
+        </myTags:editNonRequiredNonZeroLengthString>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn">
         </myTags:editDataRepository>

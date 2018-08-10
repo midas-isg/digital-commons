@@ -357,7 +357,6 @@ public class DatasetWebflowValidator {
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            //TODO: validate doesn't like checkboxes -- fails when validating onlyOnOlympus -- need to investigate
             webFlowReflectionValidator.validate(clazz, software, true, breadcrumb, null, errors);
             webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
         } catch (Exception e) {
