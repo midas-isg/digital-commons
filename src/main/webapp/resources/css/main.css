@@ -1040,25 +1040,6 @@ div.container.metadata-container .metadata-column.fancy {
 /*//////////////////////////*/
 /*//////////////////////////*/
 
-
-/*//////////////////////////*/
-/*DataTables CSS*/
-/*//////////////////////////*/
-table.dataTable thead .sorting_desc {
-     background-image: none !important;
-}
-
-table.dataTable thead .sorting_asc {
-     background-image: none !important;
-}
-
-table.dataTable thead .sorting {
-    background-image: none !important;
-}
-/*//////////////////////////*/
-/*//////////////////////////*/
-
-
 /*//////////////////////////*/
 /*Edit dataset and software css*/
 /*//////////////////////////*/
