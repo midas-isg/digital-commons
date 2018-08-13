@@ -15,89 +15,62 @@
 <%@ attribute name="annotations" required="false"
               type="java.util.List" %>
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(annotations)}">
-        <c:forEach items="${annotations}" var="annotation" varStatus="varStatus">
-            <c:if test="${varStatus.first}">
-                <div class="form-group edit-form-group">
-                    <label>${label}</label>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-add" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                        </button>
-                    </div>
-                </div>
-            </c:if>
-            <c:if test="${not function:isObjectEmpty(annotation)}">
-                <div class="form-group control-group edit-form-group">
-                    <myTags:editAnnotation annotation="${annotation}"
-                                           specifier="${specifier}-${varStatus.count-1}"
-                                           label="${label}"
-                                           showRemoveButton="true"
-                                           path="${path}[${varStatus.count-1}]">
-                    </myTags:editAnnotation>
-                </div>
-                <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
-            </c:if>
-        </c:forEach>
-        <div class="${specifier}-annotation-add-more">
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    ${label}
-                </button>
-            </div>
-            <div class="${specifier}-annotation-add-more">
-            </div>
-        </div>
-        <c:set var="annotationCount" scope="page" value="0"/>
 
-    </c:otherwise>
-</c:choose>
-
-
-<div class="${specifier}-copy hide">
-    <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation path="${path}[0]"
-                               specifier="${specifier}-0"
-                               label="${label}"
-                               showRemoveButton="true">
-        </myTags:editAnnotation>
+<div class="form-group edit-form-group">
+    <label>${label}</label>
+    <div id="${specifier}-add-input-button" class="form-group ${specifier}-annotation-add-more-button">
+        <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
+                class="glyphicon glyphicon-plus"></i> Add
+            ${label}
+        </button>
     </div>
+    <c:set var="annotationCount" scope="page" value="0"/>
+
+
+    <c:forEach items="${annotations}" varStatus="varStatus" var="annotation">
+        <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
+            <c:if test="${not function:isObjectEmpty(annotation)}">
+                <myTags:editAnnotation annotation="${annotation}"
+                                       specifier="${specifier}-${varStatus.count-1}"
+                                       label="${label}"
+                                       isUnboundedList="true"
+                                       id="${specifier}-${varStatus.count-1}"
+                                       path="${path}[${varStatus.count-1}]">
+                </myTags:editAnnotation>
+            </c:if>
+            <c:set var="annotationCount" scope="page" value="${varStatus.count}"/>
+        </div>
+    </c:forEach>
+    <div class="${specifier}-annotation-add-more"></div>
 </div>
 
-
+<myTags:editAnnotation specifier="${specifier}-0"
+                       label="${label}"
+                       isUnboundedList="true"
+                       id="${specifier}-copy-tag"
+                       path="${path}[0]">
+</myTags:editAnnotation>
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         var annotationCount = ${annotationCount};
-        //Show/Hide Values
-        $("body").on("click", ".${specifier}-add", function (e) {
-            e.stopImmediatePropagation();
-
+        //Show/Hide Formats
+        $("body").on("click", ".${specifier}-add-annotation", function () {
             var specifier = "${specifier}";
             var path = "${path}";
-            var html = $(".${specifier}-copy").html();
-            // path = path.replace('[','\\[').replace(']','\\]');
+            var html = $("#" + specifier + "-copy-tag").html();
+            <%--var html = $("#${specifier}-0-tag").html();--%>
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}['+ annotationCount + ']')
-                .replace(regexSpecifier,'${specifier}-' + annotationCount + '-');
-            annotationCount += 1;
+            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
+            html = html.replace(regexPath, '${path}[' + annotationCount + ']').replace(regexSpecifier, '${specifier}-' + annotationCount).replace("hide", "");
 
-            // $(this).after(html);
             $(".${specifier}-annotation-add-more").before(html);
+            annotationCount += 1;
         });
+
 
     });
 </script>

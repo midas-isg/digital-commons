@@ -58,20 +58,20 @@
                     </div>
 
                     <div class="form-group">
-                        <myTags:editUnboundedIdentifier identifier="${entity.identifier}"
+                        <myTags:editIdentifierUnbounded identifier="${entity.identifier}"
                                                         path="${path}[${varStatus.count-1}].identifier"
                                                         specifier="${specifier}-${varStatus.count-1}"
                                                         label="Identifier">
-                        </myTags:editUnboundedIdentifier>
+                        </myTags:editIdentifierUnbounded>
                     </div>
 
                     <div class="form-group">
-                        <myTags:editUnboundedIdentifier path="${path}[${varStatus.count-1}].alternateIdentifiers"
+                        <myTags:editIdentifierUnbounded path="${path}[${varStatus.count-1}].alternateIdentifiers"
                                                         unbounded="${true}"
                                                         specifier="${specifier}-alternate-${varStatus.count-1}"
                                                         identifiers="${entity.alternateIdentifiers}"
                                                         label="Alternate Identifier">
-                        </myTags:editUnboundedIdentifier>
+                        </myTags:editIdentifierUnbounded>
                     </div>
                 </div>
             </div>
@@ -117,18 +117,18 @@
         </div>
 
         <div class="form-group">
-            <myTags:editUnboundedIdentifier path="${path}[0].identifier"
+            <myTags:editIdentifierUnbounded path="${path}[0].identifier"
                                             specifier="${specifier}-null"
                                             label="Identifier">
-            </myTags:editUnboundedIdentifier>
+            </myTags:editIdentifierUnbounded>
         </div>
 
         <div class="form-group">
-            <myTags:editUnboundedIdentifier path="${path}[0].alternateIdentifiers"
+            <myTags:editIdentifierUnbounded path="${path}[0].alternateIdentifiers"
                                             unbounded="${true}"
                                             specifier="${specifier}-null-alternate"
                                             label="Alternate Identifier">
-            </myTags:editUnboundedIdentifier>
+            </myTags:editIdentifierUnbounded>
         </div>
     </div>
 </div>

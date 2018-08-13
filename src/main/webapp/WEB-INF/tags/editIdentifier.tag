@@ -72,8 +72,6 @@
                 $("#${specifier}-input-block").removeClass("hide");
                 $("#${specifier}-add-input-button").addClass("hide");
 
-                //Add section
-                $("#${specifier}-string").val("");
             });
 
             //Remove section

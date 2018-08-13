@@ -35,17 +35,17 @@
                 </button>
                 <br><br>
 
-                <myTags:editUnboundedIdentifier path="${path}.identifier"
+                <myTags:editIdentifierUnbounded path="${path}.identifier"
                                                 identifier="${dataRepository.identifier}"
                                                 specifier="${specifier}-identifier"
                                                 label="Identifier">
-                </myTags:editUnboundedIdentifier>
-                <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                </myTags:editIdentifierUnbounded>
+                <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                                 label="Alternate Identifiers"
                                                 path="${path}.alternateIdentifiers"
                                                 identifiers="${dataRepository.alternateIdentifiers}"
                                                 unbounded="true">
-                </myTags:editUnboundedIdentifier>
+                </myTags:editIdentifierUnbounded>
                 <myTags:editRequiredNonZeroLengthString placeholder=" The name of the data repository."
                                                         label="Name"
                                                         string="${dataRepository.name}"
@@ -117,15 +117,15 @@
             Remove
         </button>
         <br><br>
-        <myTags:editUnboundedIdentifier path="${path}.identifier"
+        <myTags:editIdentifierUnbounded path="${path}.identifier"
                                         specifier="${specifier}-identifier"
                                         label="Identifier">
-        </myTags:editUnboundedIdentifier>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+        </myTags:editIdentifierUnbounded>
+        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         path="${path}.alternateIdentifiers"
                                         unbounded="${true}">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
         <myTags:editRequiredNonZeroLengthString placeholder=" Name"
                                                 label="Name"
                                                 path="${path}.name">

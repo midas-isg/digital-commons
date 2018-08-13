@@ -46,6 +46,7 @@
                 </myTags:editNonZeroLengthString>
                 <myTags:editDatesUnbounded dates="${dataset.dates}"
                                            path="dates"
+                                           label="Dates"
                                            specifier="dates">
                 </myTags:editDatesUnbounded>
                 <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">

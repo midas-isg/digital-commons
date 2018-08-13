@@ -14,14 +14,7 @@
 
 <div class="form-group edit-form-group">
     <label>${label}</label>
-    <c:choose>
-        <c:when test="${checked == true}">
-            <input type="checkbox" name="${path}" checked>
-        </c:when>
-        <c:otherwise>
-            <input type="checkbox" name="${path}">
-        </c:otherwise>
-    </c:choose>
+    <input type="checkbox" name="${path}" <c:if test="${checked == true}">checked</c:if>>
 </div>
 
 

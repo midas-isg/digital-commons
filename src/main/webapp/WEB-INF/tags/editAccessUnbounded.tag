@@ -15,6 +15,41 @@
 <%@ attribute name="accessList" required="false"
               type="java.util.List" %>
 
+
+
+<div class="form-group edit-form-group">
+    <label>${label}</label>
+    <button class="btn btn-success ${specifier}-add-access" type="button"><i
+            class="glyphicon glyphicon-plus"></i> Add
+        ${label}
+    </button>
+    <c:set var="accessCount" value="0"/>
+
+    <c:forEach items="${accessList}" var="access" varStatus="varStatus">
+        <c:if test="${not function:isObjectEmpty(access)}">
+
+            <myTags:editAccess path="${path}[${varStatus.count-1}]"
+                               specifier="${specifier}-${varStatus.count-1}"
+                               access="${access}"
+                               isAccessRequired="false">
+            </myTags:editAccess>
+
+            <c:set var="accessCount" scope="page" value="${varStatus.count}"/>
+        </c:if>
+
+    </c:forEach>
+    <div class="${specifier}-access-add-more">
+    </div>
+</div>
+
+<myTags:editAccess path="${path}[0]"
+                   specifier="${specifier}-0"
+                   id="${specifier}-copy-tag"
+                   isAccessRequired="false">
+</myTags:editAccess>
+
+<%--
+
 <c:choose>
     <c:when test="${not function:isObjectEmpty(accessList)}">
         <c:forEach items="${accessList}" var="access" varStatus="varStatus">
@@ -83,6 +118,7 @@
         </myTags:editAccess>
     </div>
 </div>
+--%>
 
 
 
@@ -96,8 +132,7 @@
 
             var specifier = "${specifier}";
             var path = "${path}";
-            var html = $(".${specifier}-copy").html();
-            // path = path.replace('[','\\[').replace(']','\\]');
+            var html = $(".${specifier}-copy-tag").html();
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');

@@ -29,18 +29,18 @@
                     </button>
                 </c:when>
             </c:choose>
-            <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
                                             label="Identifier"
                                             path="${path}.identifier"
                                             identifier="${organization.identifier}"
                                             unbounded="${false}">
-            </myTags:editUnboundedIdentifier>
-            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+            </myTags:editIdentifierUnbounded>
+            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                             label="Alternate Identifiers"
                                             path="${path}.alternateIdentifiers"
                                             identifiers="${organization.alternateIdentifiers}"
                                             unbounded="${true}">
-            </myTags:editUnboundedIdentifier>
+            </myTags:editIdentifierUnbounded>
             <myTags:editRequiredNonZeroLengthString label="Name"
                                                     placeholder=" The name of the organization."
                                                     string="${organization.name}"
@@ -66,16 +66,16 @@
                     </button>
                 </c:when>
             </c:choose>
-            <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
                                             label="Identifier"
                                             path="${path}.identifier"
                                             unbounded="${false}">
-            </myTags:editUnboundedIdentifier>
-            <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+            </myTags:editIdentifierUnbounded>
+            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                             label="Alternate Identifiers"
                                             path="${path}.alternateIdentifiers"
                                             unbounded="${true}">
-            </myTags:editUnboundedIdentifier>
+            </myTags:editIdentifierUnbounded>
             <myTags:editNonZeroLengthString label="Name" placeholder=" The name of the organization."
                                             specifier="${specifier}-name"
                                             path="${path}.name">

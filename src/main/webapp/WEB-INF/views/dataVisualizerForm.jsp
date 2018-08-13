@@ -25,7 +25,7 @@
 <%--
                     <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
 --%>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${dataVisualizer.visualizationType}" label="Visualization Types" placeholder="Visualization Type" specifier="visualization-type" path="visualizationType"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthStringUnbounded formats="${dataVisualizer.visualizationType}" label="Visualization Types" placeholder="Visualization Type" specifier="visualization-type" path="visualizationType"></myTags:editNonZeroLengthStringUnbounded>
 
                 </div>
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

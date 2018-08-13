@@ -25,60 +25,60 @@
                                         string="${software.humanReadableSynopsis}"></myTags:editRequiredNonZeroLengthStringTextArea>
 <myTags:editSoftwareIdentifier identifier="${software.identifier}" specifier="identifier" path="identifier"
                                label="Identifier"></myTags:editSoftwareIdentifier>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Data Input Formats"
-                                                    placeholder="Data Input Format"
-                                                    path="dataInputFormats"
-                                                    specifier="data-input-format"
-                                                    formats="${software.dataInputFormats}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Data Output Formats"
-                                                    placeholder="Data Output Format"
-                                                    path="dataOutputFormats"
-                                                    specifier="data-output-format"
-                                                    formats="${software.dataOutputFormats}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNonZeroLengthStringUnbounded label="Data Input Formats"
+                                         placeholder="Data Input Format"
+                                         path="dataInputFormats"
+                                         specifier="data-input-format"
+                                         formats="${software.dataInputFormats}"></myTags:editNonZeroLengthStringUnbounded>
+<myTags:editNonZeroLengthStringUnbounded label="Data Output Formats"
+                                         placeholder="Data Output Format"
+                                         path="dataOutputFormats"
+                                         specifier="data-output-format"
+                                         formats="${software.dataOutputFormats}"></myTags:editNonZeroLengthStringUnbounded>
 <myTags:editNonZeroLengthString path="sourceCodeRelease"
                                 string="${software.sourceCodeRelease}"
                                 specifier="soure-code-release"
                                 placeholder="Source Code Release"
                                 label="Source Code Release"></myTags:editNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Web Applications"
-                                                    placeholder="Web Application"
-                                                    path="webApplication"
-                                                    specifier="web-application"
-                                                    formats="${software.webApplication}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNonZeroLengthStringUnbounded label="Web Applications"
+                                         placeholder="Web Application"
+                                         path="webApplication"
+                                         specifier="web-application"
+                                         formats="${software.webApplication}"></myTags:editNonZeroLengthStringUnbounded>
 <myTags:editNonZeroLengthString path="license" string="${software.license}"
                                 specifier="license" placeholder="License"
                                 label="License"></myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="source" string="${software.source}"
                                 specifier="source" placeholder="Source"
                                 label="Source"></myTags:editNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Developers" placeholder="Developer"
-                                                    path="developers" specifier="developers"
-                                                    formats="${software.developers}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNonZeroLengthStringUnbounded label="Developers" placeholder="Developer"
+                                         path="developers" specifier="developers"
+                                         formats="${software.developers}"></myTags:editNonZeroLengthStringUnbounded>
 <myTags:editNonZeroLengthString path="website" string="${software.website}"
                                 specifier="website" placeholder="Website"
                                 label="Website"></myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="documentation" string="${software.documentation}"
                                 specifier="documentation" placeholder="Documentation"
                                 label="Documentation"></myTags:editNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Publications That Used Release"
-                                                    placeholder="Publication That Used Release"
-                                                    path="publicationsThatUsedRelease"
-                                                    specifier="publications-that-used-release"
-                                                    formats="${software.publicationsThatUsedRelease}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Executables" placeholder="Executable"
-                                                    path="executables" specifier="executables"
-                                                    formats="${software.executables}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Version" placeholder="Version"
-                                                    path="version" specifier="version"
-                                                    formats="${software.version}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Publications About Release"
-                                                    placeholder="Publication About Release"
-                                                    path="publicationsAboutRelease"
-                                                    specifier="publications-about-release"
-                                                    formats="${software.publicationsAboutRelease}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-<myTags:editUnboundedNonRequiredNonZeroLengthString label="Grant" placeholder="Grant"
-                                                    path="grants" specifier="grants"
-                                                    formats="${software.grants}"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<myTags:editNonZeroLengthStringUnbounded label="Publications That Used Release"
+                                         placeholder="Publication That Used Release"
+                                         path="publicationsThatUsedRelease"
+                                         specifier="publications-that-used-release"
+                                         formats="${software.publicationsThatUsedRelease}"></myTags:editNonZeroLengthStringUnbounded>
+<myTags:editNonZeroLengthStringUnbounded label="Executables" placeholder="Executable"
+                                         path="executables" specifier="executables"
+                                         formats="${software.executables}"></myTags:editNonZeroLengthStringUnbounded>
+<myTags:editNonZeroLengthStringUnbounded label="Version" placeholder="Version"
+                                         path="version" specifier="version"
+                                         formats="${software.version}"></myTags:editNonZeroLengthStringUnbounded>
+<myTags:editNonZeroLengthStringUnbounded label="Publications About Release"
+                                         placeholder="Publication About Release"
+                                         path="publicationsAboutRelease"
+                                         specifier="publications-about-release"
+                                         formats="${software.publicationsAboutRelease}"></myTags:editNonZeroLengthStringUnbounded>
+<myTags:editNonZeroLengthStringUnbounded label="Grant" placeholder="Grant"
+                                         path="grants" specifier="grants"
+                                         formats="${software.grants}"></myTags:editNonZeroLengthStringUnbounded>
 <myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
                              path="locationCoverage" specifier="location-coverage"
                              identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>

@@ -33,19 +33,19 @@
                                                     string="${datasetWithOrganization.description}"
                                                     specifier="description" placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                     label="Description"></myTags:editNonZeroLengthString>
-                    <myTags:editUnboundedIdentifier identifier="${datasetWithOrganization.identifier}" specifier="identifier"
-                                                    path="identifier" label="Identifier"></myTags:editUnboundedIdentifier>
+                    <myTags:editIdentifierUnbounded identifier="${datasetWithOrganization.identifier}" specifier="identifier"
+                                                    path="identifier" label="Identifier"></myTags:editIdentifierUnbounded>
                         <%--<myTags:editCreators creators="${dataset.creators}"></myTags:editCreators>--%>
                     <myTags:editOrganization organizations="${datasetWithOrganization.creators}"
                                              label="Creators" path="creators"
                                              specifier="creators" isFirstRequired="true"></myTags:editOrganization>
                     <myTags:editType path="types" types="${datasetWithOrganization.types}" specifier="type"></myTags:editType>
-                    <myTags:editBiologicalEntities path="isAbout" entities="${datasetWithOrganization.isAbout}"
-                                                   specifier="isAbout" name="Is About"></myTags:editBiologicalEntities>
-                    <myTags:editBiologicalEntities path="spatialCoverage"
-                                                   entities="${datasetWithOrganization.spatialCoverage}"
-                                                   specifier="spatialCoverage"
-                                                   name="Spatial Coverage"></myTags:editBiologicalEntities>
+                    <myTags:editBiologicalEntityUnbounded path="isAbout" entities="${datasetWithOrganization.isAbout}"
+                                                          specifier="isAbout" name="Is About"></myTags:editBiologicalEntityUnbounded>
+                    <myTags:editBiologicalEntityUnbounded path="spatialCoverage"
+                                                          entities="${datasetWithOrganization.spatialCoverage}"
+                                                          specifier="spatialCoverage"
+                                                          name="Spatial Coverage"></myTags:editBiologicalEntityUnbounded>
                     <myTags:editStudy study="${datasetWithOrganization.producedBy}" specifier="producedBy"
                                       path="producedBy" label="Produced By"></myTags:editStudy>
                     <myTags:editDistributions distributions="${datasetWithOrganization.distributions}"

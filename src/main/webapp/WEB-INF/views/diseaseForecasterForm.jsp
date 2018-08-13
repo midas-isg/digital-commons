@@ -24,8 +24,8 @@
                     <label>Disease Forecaster</label>
                     <%--<myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>--%>
                     <myTags:editNestedIdentifier specifier="diseases" placeholder="Disease" label="Diseases" path="diseases" identifiers="${software.diseases}"></myTags:editNestedIdentifier>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${software.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${software.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+                    <myTags:editNonZeroLengthStringUnbounded formats="${software.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editNonZeroLengthStringUnbounded>
+                    <myTags:editNonZeroLengthStringUnbounded formats="${software.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editNonZeroLengthStringUnbounded>
                     <myTags:editNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${software.forecastFrequency}"></myTags:editNonZeroLengthString>
                     <myTags:editNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${software.type}"></myTags:editNonZeroLengthString>
                     <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${software.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>

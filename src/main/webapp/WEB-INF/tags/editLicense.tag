@@ -37,10 +37,10 @@
                                 class="glyphicon glyphicon-remove"></i>
                             Remove
                         </button>
-                        <myTags:editUnboundedIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
+                        <myTags:editIdentifierUnbounded label="Identifier" path="${path}[${varStatus.count-1}].identifier"
                                                         identifier="${license.identifier}"
                                                         specifier="${specifier}-${varStatus.count-1}-identifier">
-                        </myTags:editUnboundedIdentifier>
+                        </myTags:editIdentifierUnbounded>
                         <myTags:editRequiredNonZeroLengthString path="${path}[${varStatus.count-1}].name"
                                                                 placeholder=" Name of License"
                                                                 string="${license.name}"
@@ -92,9 +92,9 @@
             Remove
         </button>
         <br><br>
-        <myTags:editUnboundedIdentifier label="Identifier" path="${path}[0].identifier"
+        <myTags:editIdentifierUnbounded label="Identifier" path="${path}[0].identifier"
                                         specifier="${specifier}-0-identifier">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
         <myTags:editRequiredNonZeroLengthString path="${path}[0].name"
                                                 placeholder=" Name of License"
                                                 label="Name">

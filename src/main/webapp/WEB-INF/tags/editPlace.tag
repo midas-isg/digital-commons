@@ -43,18 +43,18 @@
                         </button>
                         </c:if>
                     </div>
-                    <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+                    <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
                                                     label="Identifier"
                                                     path="${path}.identifier"
                                                     identifier="${place.identifier}"
                                                     unbounded="${false}">
-                    </myTags:editUnboundedIdentifier>
-                    <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                    </myTags:editIdentifierUnbounded>
+                    <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                                     label="Alternate Identifiers"
                                                     path="${path}.alternateIdentifiers"
                                                     identifiers="${place.alternateIdentifiers}"
                                                     unbounded="${true}">
-                    </myTags:editUnboundedIdentifier>
+                    </myTags:editIdentifierUnbounded>
                     <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                             placeholder=" The name of the place."
                                                             string="${place.name}"
@@ -126,16 +126,16 @@
                 Remove
             </button>
         <%--</div>--%>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-identifier"
+        <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
                                         label="Identifier"
                                         path="${path}.identifier"
                                         unbounded="${false}">
-        </myTags:editUnboundedIdentifier>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+        </myTags:editIdentifierUnbounded>
+        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         path="${path}.alternateIdentifiers"
                                         unbounded="${true}">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
         <myTags:editRequiredNonZeroLengthString path="${path}.name"
                                                 placeholder=" The name of the place."
                                                 label=" Name">

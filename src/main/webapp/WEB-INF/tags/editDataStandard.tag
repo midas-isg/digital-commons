@@ -39,18 +39,18 @@
                         Remove
                     </button>
                     <br><br>
-                    <myTags:editUnboundedIdentifier identifier="${dataStandard.identifier}"
+                    <myTags:editIdentifierUnbounded identifier="${dataStandard.identifier}"
                                                     label="Identifier"
                                                     specifier="${specifier}-"
                                                     path="${path}[${varStatus.count-1}].identifier"
                                                     unbounded="False">
-                    </myTags:editUnboundedIdentifier>
-                    <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+                    </myTags:editIdentifierUnbounded>
+                    <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                                     label="Alternate Identifiers"
                                                     path="${path}.alternateIdentifiers"
                                                     identifiers="${dataStandard.alternateIdentifiers}"
                                                     unbounded="${true}">
-                    </myTags:editUnboundedIdentifier>
+                    </myTags:editIdentifierUnbounded>
                     <myTags:editRequiredNonZeroLengthString placeholder=" Name"
                                                             label="Name"
                                                             string="${dataStandard.name}"
@@ -116,16 +116,16 @@
             Remove
         </button>
         <br><br>
-        <myTags:editUnboundedIdentifier label="Identifier"
+        <myTags:editIdentifierUnbounded label="Identifier"
                                         specifier="${specifier}-"
                                         path="${path}[0].identifier"
                                         unbounded="False">
-        </myTags:editUnboundedIdentifier>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+        </myTags:editIdentifierUnbounded>
+        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         path="${path}.alternateIdentifiers"
                                         unbounded="${true}">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
         <myTags:editRequiredNonZeroLengthString placeholder=" Name"
                                                 label="Name"
                                                 path="${path}[0].name">

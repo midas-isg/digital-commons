@@ -23,17 +23,17 @@
                     Remove
                 </button>
                 <div class="form-group control-group edit-form-group">
-                    <myTags:editUnboundedIdentifier identifier="${entity.identifier}"
+                    <myTags:editIdentifierUnbounded identifier="${entity.identifier}"
                                                     path="${path}.identifier"
                                                     specifier="${specifier}"
                                                     label="Identifier">
-                    </myTags:editUnboundedIdentifier>
-                    <myTags:editUnboundedIdentifier path="${path}.alternateIdentifiers"
+                    </myTags:editIdentifierUnbounded>
+                    <myTags:editIdentifierUnbounded path="${path}.alternateIdentifiers"
                                                     unbounded="${true}"
                                                     specifier="${specifier}-alternateIdentifiers"
                                                     identifiers="${entity.alternateIdentifiers}"
                                                     label="Alternate Identifier">
-                    </myTags:editUnboundedIdentifier>
+                    </myTags:editIdentifierUnbounded>
                     <c:choose>
                         <c:when test="${not empty entity.name}">
                             <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
@@ -65,15 +65,15 @@
                     Remove
                 </button>
                 <div class="form-group control-group edit-form-group">
-                    <myTags:editUnboundedIdentifier path="${path}.identifier"
+                    <myTags:editIdentifierUnbounded path="${path}.identifier"
                                                     specifier="${specifier}"
                                                     label="Identifier">
-                    </myTags:editUnboundedIdentifier>
-                    <myTags:editUnboundedIdentifier path="${path}.alternateIdentifiers"
+                    </myTags:editIdentifierUnbounded>
+                    <myTags:editIdentifierUnbounded path="${path}.alternateIdentifiers"
                                                     unbounded="${true}"
                                                     specifier="${specifier}-alternateIdentifiers"
                                                     label="Alternate Identifier">
-                    </myTags:editUnboundedIdentifier>
+                    </myTags:editIdentifierUnbounded>
                     <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
                                                             label="Name"
                                                             path="${path}.name">

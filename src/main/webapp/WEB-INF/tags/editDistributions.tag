@@ -36,11 +36,11 @@
                                                     path="${path}[${varStatus.count-1}].identifier"
                                                     singleIdentifier="${distribution.identifier}">
                     </myTags:editIdentifier>
-                    <myTags:editUnboundedIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                    <myTags:editIdentifierUnbounded specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
                                                     label="Alternate Identifiers"
                                                     path="${path}[${varStatus.count-1}].alternateIdentifiers"
                                                     identifiers="${distribution.alternateIdentifiers}">
-                    </myTags:editUnboundedIdentifier>
+                    </myTags:editIdentifierUnbounded>
 <%--
                     <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}].title"
                                                     specifier="${specifier}-${varStatus.count-1}-title"
@@ -73,37 +73,39 @@
                                         label="License"
                                         specifier="${specifier}-${varStatus.count-1}-licenses">
                     </myTags:editLicense>
+--%>
                     <myTags:editAccess path="${path}[${varStatus.count-1}].access"
                                        specifier="${specifier}-${varStatus.count-1}-access" isAccessRequired="true"
                                        access="${distribution.access}">
                     </myTags:editAccess>
-                    <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
-                                             dataStandards="${distribution.conformsTo}"
-                                             specifier="${specifier}-${varStatus.count-1}-conformsTo">
-                    </myTags:editDataStandard>
-                    <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].qualifiers"
-                                                    specifier="${specifier}-${varStatus.count-1}-qualifiers"
-                                                    annotations="${distribution.qualifiers}"
-                                                    label="Qualifiers">
-                    </myTags:editAnnotationUnbounded>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
-                                                                        path="${path}[${varStatus.count-1}].formats"
-                                                                        specifier="${specifier}-${varStatus.count-1}-formats"
-                                                                        placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
-                                                                        label="Formats">
-                    </myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editFloat path="${path}[${varStatus.count-1}].size"
-                                      specifier="${specifier}-${varStatus.count-1}-size"
-                                      number="${distribution.size}"
-                                      placeholder=" The size of the dataset."
-                                      label="Size" >
-                    </myTags:editFloat>
-                    <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
-                                                  specifier="${specifier}-${varStatus.count-1}-unit"
-                                                  placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
-                                                  label="Unit" >
-                    </myTags:editAnnotationBounded>
---%>
+                        <%--
+                                            <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
+                                                                     dataStandards="${distribution.conformsTo}"
+                                                                     specifier="${specifier}-${varStatus.count-1}-conformsTo">
+                                            </myTags:editDataStandard>
+                                            <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].qualifiers"
+                                                                            specifier="${specifier}-${varStatus.count-1}-qualifiers"
+                                                                            annotations="${distribution.qualifiers}"
+                                                                            label="Qualifiers">
+                                            </myTags:editAnnotationUnbounded>
+                                            <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
+                                                                                                path="${path}[${varStatus.count-1}].formats"
+                                                                                                specifier="${specifier}-${varStatus.count-1}-formats"
+                                                                                                placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                                                                                                label="Formats">
+                                            </myTags:editUnboundedNonRequiredNonZeroLengthString>
+                                            <myTags:editFloat path="${path}[${varStatus.count-1}].size"
+                                                              specifier="${specifier}-${varStatus.count-1}-size"
+                                                              number="${distribution.size}"
+                                                              placeholder=" The size of the dataset."
+                                                              label="Size" >
+                                            </myTags:editFloat>
+                                            <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
+                                                                          specifier="${specifier}-${varStatus.count-1}-unit"
+                                                                          placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                                                                          label="Unit" >
+                                            </myTags:editAnnotationBounded>
+                        --%>
                 </div>
                 <c:set var="distributionCount" scope="page" value="${varStatus.count}"/>
             </c:if>
@@ -137,10 +139,10 @@
                                specifier="${specifier}-0"
                                path="${path}[0].identifier">
         </myTags:editIdentifier>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-alternateIdentifiers"
+        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         path="${path}[0].alternateIdentifiers">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
 <%--
         <myTags:editNonZeroLengthString path="${path}[0].title"
                                         specifier="${specifier}-title"
@@ -167,18 +169,22 @@
                             label="License"
                             specifier="${specifier}-licenses">
         </myTags:editLicense>
+--%>
         <myTags:editAccess path="${path}[0].access"
                            specifier="${specifier}-access"
                            isAccessRequired="true">
         </myTags:editAccess>
+<%--
         <myTags:editDataStandard name="Conforms To"
                                  path="${path}[0].conformsTo"
                                  specifier="${specifier}-conformsTo">
         </myTags:editDataStandard>
+--%>
         <myTags:editAnnotationUnbounded path="${path}[0].qualifiers"
                                         specifier="${specifier}-qualifiers"
                                         label="Qualifiers">
         </myTags:editAnnotationUnbounded>
+<%--
         <myTags:editUnboundedNonRequiredNonZeroLengthString path="${path}[0].formats"
                                                             specifier="${specifier}-formats"
                                                             placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
@@ -189,10 +195,17 @@
                           placeholder=" The size of the dataset."
                           label="Size" >
         </myTags:editFloat>
-        <myTags:editAnnotationBounded path="${path}[0].unit"
+--%>
+        <myTags:editAnnotation path="${path}[0].unit"
                                       specifier="${specifier}-unit"
-                                      placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
                                       label="Unit" >
+        </myTags:editAnnotation>
+
+<%--
+        <myTags:editAnnotationBounded path="${path}[0].unit"
+                               specifier="${specifier}-unit"
+                               placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                               label="Unit" >
         </myTags:editAnnotationBounded>
 --%>
 

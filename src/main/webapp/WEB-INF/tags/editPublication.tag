@@ -37,17 +37,17 @@
                                 class="glyphicon glyphicon-remove"></i>
                             Remove
                         </button>
-                        <myTags:editUnboundedIdentifier path="${path}[${varStatus.count-1}].identifier"
+                        <myTags:editIdentifierUnbounded path="${path}[${varStatus.count-1}].identifier"
                                                         identifier="${publication.identifier}"
                                                         specifier="${specifier}-${varStatus.count-1}-identifier"
                                                         label="Identifier">
-                        </myTags:editUnboundedIdentifier>
-                        <myTags:editUnboundedIdentifier specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
+                        </myTags:editIdentifierUnbounded>
+                        <myTags:editIdentifierUnbounded specifier="${specifier}-${varStatus.count-1}-alternateIdentifiers"
                                                         label="Alternate Identifiers"
                                                         path="${path}[${varStatus.count-1}].alternateIdentifiers"
                                                         identifiers="${publication.alternateIdentifiers}"
                                                         unbounded="${true}">
-                        </myTags:editUnboundedIdentifier>
+                        </myTags:editIdentifierUnbounded>
                         <myTags:editNonZeroLengthString
                                 placeholder=" The name of the publication and its funding program."
                                 label="Title"
@@ -117,15 +117,15 @@
             Remove
         </button>
         <br><br>
-        <myTags:editUnboundedIdentifier path="${path}[0].identifier"
+        <myTags:editIdentifierUnbounded path="${path}[0].identifier"
                                         specifier="${specifier}-0-identifier"
                                         label="Identifier">
-        </myTags:editUnboundedIdentifier>
-        <myTags:editUnboundedIdentifier specifier="${specifier}-0-alternateIdentifiers"
+        </myTags:editIdentifierUnbounded>
+        <myTags:editIdentifierUnbounded specifier="${specifier}-0-alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         path="${path}[0].alternateIdentifiers"
                                         unbounded="${true}">
-        </myTags:editUnboundedIdentifier>
+        </myTags:editIdentifierUnbounded>
         <myTags:editNonZeroLengthString placeholder=" The name of the publication and its funding program."
                                         label="Title"
                                         path="${path}[0].title"
