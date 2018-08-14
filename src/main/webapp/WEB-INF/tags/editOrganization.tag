@@ -24,7 +24,7 @@
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(organization)}">hide</c:if>">
+     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(organization)}">hide</c:if>">
     <div id="${specifier}-input-block"
          class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if> <c:if test="${function:isObjectEmpty(organization) and not isUnboundedList}">hide</c:if>">
         <label>${label}</label>

@@ -45,6 +45,7 @@
                                          path="${path}[${varStatus.count-1}]"
                                          specifier="${specifier}-${varStatus.count-1}"
                                          label="${label} (Organization)"
+                                         isUnboundedList="${true}"
                                          isFirstRequired="false">
                 </myTags:editOrganization>
 
@@ -54,6 +55,7 @@
                                    path="${path}[${varStatus.count-1}]"
                                    specifier="${specifier}-${varStatus.count-1}"
                                    label="${label} (Person)"
+                                   isUnboundedList="${true}"
                                    isFirstRequired="false">
                 </myTags:editPerson>
 
