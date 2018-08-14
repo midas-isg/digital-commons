@@ -10,7 +10,7 @@
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
 
-<div class="form-group control-group edit-form-group <c:if
+<div class="form-group control-group edit-form-group col-md-9 col-sm-12 no-padding full-width<c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>
         <select class="custom-select custom-select-sm" name="category" id="categoryValue">
