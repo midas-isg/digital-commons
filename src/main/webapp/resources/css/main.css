@@ -1052,6 +1052,10 @@ div.container.metadata-container .metadata-column.fancy {
     margin-top: 5px;*/
 }
 
+.hide {
+    display: none!important;
+}
+
 .has-error {
     border-color: #a94442;
 }
