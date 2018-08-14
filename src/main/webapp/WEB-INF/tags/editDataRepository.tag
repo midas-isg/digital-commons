@@ -47,38 +47,42 @@
                                                 identifiers="${dataRepository.alternateIdentifiers}"
                                                 unbounded="true">
                 </myTags:editIdentifierUnbounded>
-                <myTags:editRequiredNonZeroLengthString placeholder=" The name of the data repository."
-                                                        label="Name"
-                                                        string="${dataRepository.name}"
-                                                        path="${path}.name">
-                </myTags:editRequiredNonZeroLengthString>
-                <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
-                                                                   string="${dataRepository.description}"
-                                                                   specifier="${specifier}-description"
-                                                                   placeholder=" A textual narrative comprised of one or more statements describing the data repository."
-                                                                   label="Description">
-                </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                <myTags:editAnnotationUnbounded path="${path}.scopes"
-                                                specifier="${specifier}-scopes"
-                                                annotations="${dataRepository.scopes}"
-                                                label="Scopes">
-                </myTags:editAnnotationUnbounded>
-                <myTags:editAnnotationUnbounded path="${path}.types"
-                                                specifier="${specifier}-types"
-                                                annotations="${dataRepository.types}"
-                                                label="Types" >
-                </myTags:editAnnotationUnbounded>
-                <myTags:editLicense path="${path}.licenses"
-                                    licenses="${dataRepository.licenses}"
-                                    label="License"
-                                    specifier="${specifier}-licenses">
-                </myTags:editLicense>
-                <myTags:editNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
-                                                specifier="${specifier}-version"
-                                                string="${dataRepository.version}"
-                                                path="${path}.version">
+                --%>
+                <myTags:editNonZeroLengthString placeholder=" The name of the data repository."
+                                                specifier="${specifier}-name"
+                                                label="Name"
+                                                string="${dataRepository.name}"
+                                                path="${path}.name"
+                                                isRequired="${true}">
                 </myTags:editNonZeroLengthString>
---%>
+                    <%--
+                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
+                                                                       string="${dataRepository.description}"
+                                                                       specifier="${specifier}-description"
+                                                                       placeholder=" A textual narrative comprised of one or more statements describing the data repository."
+                                                                       label="Description">
+                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
+                    <myTags:editAnnotationUnbounded path="${path}.scopes"
+                                                    specifier="${specifier}-scopes"
+                                                    annotations="${dataRepository.scopes}"
+                                                    label="Scopes">
+                    </myTags:editAnnotationUnbounded>
+                    <myTags:editAnnotationUnbounded path="${path}.types"
+                                                    specifier="${specifier}-types"
+                                                    annotations="${dataRepository.types}"
+                                                    label="Types" >
+                    </myTags:editAnnotationUnbounded>
+                    <myTags:editLicense path="${path}.licenses"
+                                        licenses="${dataRepository.licenses}"
+                                        label="License"
+                                        specifier="${specifier}-licenses">
+                    </myTags:editLicense>
+                    <myTags:editNonZeroLengthString label="Version" placeholder=" A release point for the dataset when applicable."
+                                                    specifier="${specifier}-version"
+                                                    string="${dataRepository.version}"
+                                                    path="${path}.version">
+                    </myTags:editNonZeroLengthString>
+    --%>
                 <myTags:editPersonComprisedEntity path="${path}.publishers"
                                                   specifier="${specifier}-publishers"
                                                   label="Publisher"
@@ -129,10 +133,14 @@
                                         path="${path}.alternateIdentifiers"
                                         unbounded="${true}">
         </myTags:editIdentifierUnbounded>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
-                                                label="Name"
-                                                path="${path}.name">
-        </myTags:editRequiredNonZeroLengthString>
+        --%>
+        <myTags:editNonZeroLengthString placeholder=" The name of the data repository."
+                                        specifier="${specifier}-name"
+                                        label="Name"
+                                        path="${path}.name"
+                                        isRequired="${true}">
+        </myTags:editNonZeroLengthString>
+        <%--
         <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
                                                            specifier="${specifier}-description"
                                                            placeholder=" A textual narrative comprised of one or more statements describing the data repository."

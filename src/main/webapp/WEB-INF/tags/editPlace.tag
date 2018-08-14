@@ -80,7 +80,7 @@
             <div id="${specifier}-geometry-input-group" class="form-group control-group edit-form-group ${specifier}-geometry <c:if test="${empty place.geometry}">hide</c:if>">
                 <label>Geometry</label>
                 <select name="${path}.geometry" id="${specifier}-geometry-select" title="${specifier}-geometry">
-                    <option value="null">Please Select...</option>
+                    <option value="">Please Select...</option>
                     <c:forEach items="${geometryEnums}" var="geometryEnum" varStatus="status">
                         <option <c:if test="${place.geometry == geometryEnum}">selected="selected"</c:if> value="${geometryEnum}">
                                 ${geometryEnum}</option>
