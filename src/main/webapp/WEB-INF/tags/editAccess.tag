@@ -27,24 +27,25 @@
         <label>Access</label>
     </c:if>
     <div id="${specifier}-input-block"
-         class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if>" <c:if test="${function:isObjectEmpty(access) and not isAccessRequired and not isUnboundedList}">hide</c:if>">
+         class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if> <c:if test="${function:isObjectEmpty(access) and not isAccessRequired and not isUnboundedList}">hide</c:if>">
         <c:if test="${not isAccessRequired}">
+            <label>Access</label>
             <button class="btn btn-danger ${specifier}-access-remove" type="button"><i
                     class="glyphicon glyphicon-remove"></i>
                 Remove
             </button>
         </c:if>
-        <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
+        <myTags:editIdentifier label="Identifier"
+                               specifier="${specifier}-identifier"
                                path="${path}.identifier"
-                               singleIdentifier="${access.identifier}"
-                               isUnboundedList="false"
-                               id="${specifier}-identifier">
+                               singleIdentifier="${access.identifier}">
         </myTags:editIdentifier>
-        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="${path}.alternateIdentifiers"
-                                        identifiers="${access.alternateIdentifiers}">
-        </myTags:editIdentifierUnbounded>
+        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                                    label="Alternate Identifiers"
+                                    path="${path}.alternateIdentifiers"
+                                    tagName="identifier"
+                                    listItems="${access.alternateIdentifiers}">
+        </myTags:editMasterUnbounded>
         <myTags:editNonZeroLengthString path="${path}.landingPage"
                                         placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
                                         string="${access.landingPage}"
@@ -62,28 +63,23 @@
                                         label="Access URL">
         </myTags:editNonZeroLengthString>
         <myTags:editMasterUnbounded path="${path}.types"
-                                        specifier="${specifier}-types"
-                                        listItems="${access.types}"
-                                        tagName="annotation"
-                                        label="Types">
+                                    specifier="${specifier}-types"
+                                    listItems="${access.types}"
+                                    tagName="annotation"
+                                    label="Types">
         </myTags:editMasterUnbounded>
-<%--
-        <myTags:editAnnotationUnbounded path="${path}.types"
-                                        specifier="${specifier}-types"
-                                        annotations="${access.types}"
-                                        label="Types">
-        </myTags:editAnnotationUnbounded>
---%>
-        <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                        specifier="${specifier}-authorizations"
-                                        annotations="${access.authorizations}"
-                                        label="Authorizations">
-        </myTags:editAnnotationUnbounded>
-        <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                        specifier="${specifier}-authentications"
-                                        annotations="${access.authentications}"
-                                        label="Authentications">
-        </myTags:editAnnotationUnbounded>
+        <myTags:editMasterUnbounded path="${path}.authorizations"
+                                    specifier="${specifier}-authorizations"
+                                    tagName="annotation"
+                                    listItems="${access.authorizations}"
+                                    label="Authorizations">
+        </myTags:editMasterUnbounded>
+        <myTags:editMasterUnbounded path="${path}.authentications"
+                                    specifier="${specifier}-authentications"
+                                    tagName="annotation"
+                                    listItems="${access.authentications}"
+                                    label="Authentications">
+        </myTags:editMasterUnbounded>
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
             <span class="error-color">${message.text}</span>
         </c:forEach>
@@ -91,14 +87,17 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
-/*
+            /*
 
-            $("body").on("click", ".${specifier}-add-access", function (e) {
+                        $("body").on("click", ".
+            ${specifier}-add-access", function (e) {
                 e.stopImmediatePropagation();
 
-                $("#${specifier}-input-block").removeClass("hide");
+                $("#
+            ${specifier}-input-block").removeClass("hide");
                 //add button not necessary -- in distributions its required and in Data Repository is a list
-                <%--$("#${specifier}-add-input-button").addClass("hide");--%>
+
+            <%--$("#${specifier}-add-input-button").addClass("hide");--%>
 
             });
 */

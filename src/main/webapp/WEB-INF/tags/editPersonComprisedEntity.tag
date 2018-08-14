@@ -119,7 +119,7 @@
             var specifier = "${specifier}";
             var path = "${path}";
             var html;
-            if (unboundedPersonComprisedEntityCount === 0) {
+            if (unboundedPersonComprisedEntityCount === 0 && ${isFirstRequired}) {
                 html = $("#${specifier}-person-required-copy-tag").html();
             } else html = $("#${specifier}-person-copy-tag").html();
             // path = path.replace('[', '\\[').replace(']', '\\]');
@@ -142,7 +142,7 @@
             var specifier = "${specifier}";
             var path = "${path}";
             var html;
-            if (unboundedPersonComprisedEntityCount === 0) {
+            if (unboundedPersonComprisedEntityCount === 0 && ${isFirstRequired}) {
                 html = $("#${specifier}-organization-required-copy-tag").html();
             } else {
                 html = $("#${specifier}-organization-copy-tag").html();
