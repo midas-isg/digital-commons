@@ -15,7 +15,6 @@
               type="java.lang.String" %>
 
 
-
 <div class="form-group edit-form-group">
     <label>${label}</label>
     <div id="${specifier}-add-input-button" class="form-group ${specifier}-date-add-more-button">
@@ -30,13 +29,12 @@
     <c:forEach items="${dates}" varStatus="varStatus" var="date">
         <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
             <c:if test="${not function:isObjectEmpty(date)}">
-                <myTags:editAnnotation annotation="${date}"
-                                       specifier="${specifier}-${varStatus.count-1}"
-                                       label="${label}"
-                                       isUnboundedList="true"
-                                       id="${specifier}-${varStatus.count-1}"
-                                       path="${path}[${varStatus.count-1}]">
-                </myTags:editAnnotation>
+                <myTags:editDates date="${date}"
+                                  specifier="${specifier}-${varStatus.count-1}"
+                                  isUnboundedList="true"
+                                  id="${specifier}-${varStatus.count-1}"
+                                  path="${path}[${varStatus.count-1}]">
+                </myTags:editDates>
             </c:if>
             <c:set var="dateCount" scope="page" value="${varStatus.count}"/>
         </div>
@@ -47,7 +45,7 @@
 <myTags:editDates path="${path}[0]"
                   specifier="${specifier}-0"
                   isUnboundedList="true"
-                  id="${specifier}-copy-tag" >
+                  id="${specifier}-copy-tag">
 </myTags:editDates>
 
 
@@ -64,7 +62,7 @@
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
-            html = html.replace(regexPath, '${path}['+ unboundedDateCount + ']').replace(regexSpecifier,'${specifier}-' + unboundedDateCount);
+            html = html.replace(regexPath, '${path}[' + unboundedDateCount + ']').replace(regexSpecifier, '${specifier}-' + unboundedDateCount);
 
             $(".${specifier}-date-add-more").before(html);
             e.stopImmediatePropagation();
