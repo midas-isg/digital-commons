@@ -37,7 +37,7 @@
         <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
                                path="${path}.identifier"
                                singleIdentifier="${access.identifier}"
-                               isUnboundedList="False"
+                               isUnboundedList="false"
                                id="${specifier}-identifier">
         </myTags:editIdentifier>
         <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
@@ -61,11 +61,19 @@
                                         id="${specifier}-accessURL"
                                         label="Access URL">
         </myTags:editNonZeroLengthString>
+        <myTags:editMasterUnbounded path="${path}.types"
+                                        specifier="${specifier}-types"
+                                        listItems="${access.types}"
+                                        tagName="annotation"
+                                        label="Types">
+        </myTags:editMasterUnbounded>
+<%--
         <myTags:editAnnotationUnbounded path="${path}.types"
                                         specifier="${specifier}-types"
                                         annotations="${access.types}"
                                         label="Types">
         </myTags:editAnnotationUnbounded>
+--%>
         <myTags:editAnnotationUnbounded path="${path}.authorizations"
                                         specifier="${specifier}-authorizations"
                                         annotations="${access.authorizations}"

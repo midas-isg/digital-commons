@@ -21,6 +21,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="showAddOrganizationButton" required="true"
               type="java.lang.Boolean" %>
+<%@ attribute name="createPersonOrganizationTags" required="true"
+              type="java.lang.Boolean" %>
 
 
 <div class="<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
@@ -70,37 +72,41 @@
     <div class="${specifier}-add-more"></div>
 </div>
 
-<myTags:editOrganization path="${path}[0]"
-                         specifier="${specifier}-0"
-                         label="${label} (Organization)"
-                         id="${specifier}-organization-required-copy-tag"
-                         isFirstRequired="true"
-                         isUnboundedList="true">
-</myTags:editOrganization>
+<c:if test="${showAddOrganizationButton}">
+    <myTags:editOrganization path="${path}[0]"
+                             specifier="${specifier}-0"
+                             label="${label} (Organization)"
+                             id="${specifier}-organization-required-copy-tag"
+                             isFirstRequired="true"
+                             isUnboundedList="true">
+    </myTags:editOrganization>
 
-<myTags:editOrganization path="${path}[0]"
-                         specifier="${specifier}-0"
-                         label="${label} (Organization)"
-                         id="${specifier}-organization-copy-tag"
-                         isUnboundedList="true"
-                         isFirstRequired="false">
-</myTags:editOrganization>
+    <myTags:editOrganization path="${path}[0]"
+                             specifier="${specifier}-0"
+                             label="${label} (Organization)"
+                             id="${specifier}-organization-copy-tag"
+                             isUnboundedList="true"
+                             isFirstRequired="false">
+    </myTags:editOrganization>
+</c:if>
 
-<myTags:editPerson path="${path}[0]"
-                   specifier="${specifier}-0"
-                   label="${label} (Person)"
-                   id="${specifier}-person-required-copy-tag"
-                   isUnboundedList="true"
-                   isFirstRequired="true">
-</myTags:editPerson>
+<c:if test="${showAddPersonButton and createPersonOrganizationTags}">
+    <myTags:editPerson path="${path}[0]"
+                       specifier="${specifier}-0"
+                       label="${label} (Person)"
+                       id="${specifier}-person-required-copy-tag"
+                       isUnboundedList="true"
+                       isFirstRequired="true">
+    </myTags:editPerson>
 
-<myTags:editPerson path="${path}[0]"
-                   specifier="${specifier}-0"
-                   label="${label} (Person)"
-                   id="${specifier}-person-copy-tag"
-                   isUnboundedList="true"
-                   isFirstRequired="false">
-</myTags:editPerson>
+    <myTags:editPerson path="${path}[0]"
+                       specifier="${specifier}-0"
+                       label="${label} (Person)"
+                       id="${specifier}-person-copy-tag"
+                       isUnboundedList="true"
+                       isFirstRequired="false">
+    </myTags:editPerson>
+</c:if>
 
 
 <script type="text/javascript">

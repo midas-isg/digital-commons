@@ -15,6 +15,55 @@
 <%@ attribute name="categoryValuePairs" required="false"
               type="java.util.List" %>
 
+<div class="<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
+    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+        <span class="error-color">${message.text}</span>
+    </c:forEach>
+    <div class="form-group edit-form-group">
+        <label>${label}</label>
+        <div class="form-group">
+            <button class="btn btn-success ${specifier}-add" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add
+                ${label}
+            </button>
+        </div>
+    </div>
+    <c:set var="categoryValuePairCount" scope="page" value="0"/>
+    <c:forEach items="${categoryValuePairs}" var="categoryValuePair" varStatus="varStatus">
+        <div class="form-group control-group edit-form-group">
+            <label>${label}</label>
+            <div class="form-group">
+                <button class="btn btn-danger categoryValuePair-remove" type="button"><i
+                        class="glyphicon glyphicon-remove"></i>
+                    Remove
+                </button>
+            </div>
+            <myTags:editNonZeroLengthString label="Category"
+                                            placeholder=" A characteristic or property about the entity this object is associated with."
+                                            specifier="${specifier}-${varStatus.count-1}-category"
+                                            path="${path}[${varStatus.count-1}].category"
+                                            string="${categoryValuePair.category}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="CategoryIRI"
+                                            placeholder=" The IRI corresponding to the category, if associated with an ontology term."
+                                            specifier="${specifier}-${varStatus.count-1}-categoryIRI"
+                                            path="${path}[${varStatus.count-1}].categoryIRI"
+                                            string="${categoryValuePair.categoryIRI}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].values"
+                                            specifier="${specifier}-${varStatus.count-1}-values"
+                                            label="Value"
+                                            annotations="${categoryValuePair.values}">
+            </myTags:editAnnotationUnbounded>
+
+        </div>
+        <div class="${specifier}-categoryValuePair-add-more">
+        </div>
+        <c:set var="categoryValuePairCount" scope="page" value="${varStatus.count}"/>
+    </c:forEach>
+</div>
+
+
 <c:choose>
     <c:when test="${not function:isObjectEmpty(categoryValuePairs)}">
 

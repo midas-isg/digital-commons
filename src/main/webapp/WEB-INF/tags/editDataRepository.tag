@@ -84,6 +84,7 @@
                                                   label="Publisher"
                                                   personComprisedEntities="${dataRepository.publishers}"
                                                   isFirstRequired="false"
+                                                  createPersonOrganizationTags="true"
                                                   showAddPersonButton="true"
                                                   showAddOrganizationButton="true">
                 </myTags:editPersonComprisedEntity>
@@ -160,13 +161,15 @@
                                           specifier="${specifier}-publishers"
                                           label="Publisher"
                                           isFirstRequired="false"
+                                          createPersonOrganizationTags="true"
                                           showAddPersonButton="true"
                                           showAddOrganizationButton="true">
         </myTags:editPersonComprisedEntity>
-        <myTags:editAccessUnbounded path="${path}.access"
+        <myTags:editMasterUnbounded path="${path}.access"
                                     specifier="${specifier}-access"
+                                    tagName="accessRequired"
                                     label="Access">
-        </myTags:editAccessUnbounded>
+        </myTags:editMasterUnbounded>
     </div>
 </div>
 

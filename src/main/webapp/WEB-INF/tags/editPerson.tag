@@ -79,16 +79,15 @@
                                         isRequired="true"
                                         path="${path}.email">
         </myTags:editNonZeroLengthString>
-<%--
         <myTags:editPersonComprisedEntity path="${path}.affiliations"
                                           specifier="${specifier}-affiliations"
                                           label="Affiliation"
                                           personComprisedEntities="${person.affiliations}"
                                           isFirstRequired="false"
+                                          createPersonOrganizationTags="false"
                                           showAddPersonButton="false"
                                           showAddOrganizationButton="true">
         </myTags:editPersonComprisedEntity>
---%>
         <myTags:editAnnotationUnbounded path="${path}.roles"
                                         specifier="${specifier}-roles"
                                         annotations="${person.roles}"
