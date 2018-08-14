@@ -20,7 +20,7 @@
 
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
             <i class="glyphicon glyphicon-align-left"></i>
             <span>Toggle Sidebar</span>
         </button>
