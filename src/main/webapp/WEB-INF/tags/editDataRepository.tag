@@ -35,6 +35,7 @@
                 </button>
                 <br><br>
 
+<%--
                 <myTags:editIdentifierUnbounded path="${path}.identifier"
                                                 identifier="${dataRepository.identifier}"
                                                 specifier="${specifier}-identifier"
@@ -77,6 +78,7 @@
                                                 string="${dataRepository.version}"
                                                 path="${path}.version">
                 </myTags:editNonZeroLengthString>
+--%>
                 <myTags:editPersonComprisedEntity path="${path}.publishers"
                                                   specifier="${specifier}-publishers"
                                                   label="Publisher"
@@ -117,6 +119,7 @@
             Remove
         </button>
         <br><br>
+<%--
         <myTags:editIdentifierUnbounded path="${path}.identifier"
                                         specifier="${specifier}-identifier"
                                         label="Identifier">
@@ -152,6 +155,7 @@
                                         specifier="${specifier}-version"
                                         path="${path}.version">
         </myTags:editNonZeroLengthString>
+--%>
         <myTags:editPersonComprisedEntity path="${path}.publishers"
                                           specifier="${specifier}-publishers"
                                           label="Publisher"

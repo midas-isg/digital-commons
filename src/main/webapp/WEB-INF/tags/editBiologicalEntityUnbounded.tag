@@ -3,17 +3,89 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ attribute name="entities" required="false"
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
+<%@ attribute name="entityList" required="false"
               type="java.util.List" %>
-<%@ attribute name="name" required="true"
+<%--
+    changed name to label
+--%>
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 
+
+
+<div class="form-group edit-form-group">
+    <label>${label}</label>
+    <button class="btn btn-success ${specifier}-add-entity" type="button"><i
+            class="glyphicon glyphicon-plus"></i> Add
+        ${label}
+    </button>
+    <c:set var="entityCount" value="0"/>
+
+    <c:forEach items="${entityList}" var="entity" varStatus="varStatus">
+        <c:if test="${not function:isObjectEmpty(entity)}">
+
+            <myTags:editBiologicalEntity label="${label}"
+                                         specifier="${specifier}-${varStatus.count-1}"
+                                         path="${path}[${varStatus.count-1}]"
+                                         entity="${entity}"
+                                         isUnboundedList="true">
+            </myTags:editBiologicalEntity>
+
+            <c:set var="entityCount" scope="page" value="${varStatus.count}"/>
+        </c:if>
+
+    </c:forEach>
+    <div class="${specifier}-entity-add-more">
+    </div>
+</div>
+
+<myTags:editBiologicalEntity label="${label}"
+                             specifier="${specifier}-0"
+                             path="${path}[0]"
+                             id="${specifier}-copy-tag"
+                             isUnboundedList="true">
+</myTags:editBiologicalEntity>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var entityCount = ${entityCount};
+        //Show/Hide Values
+        $("body").on("click", ".${specifier}-add-entity", function (e) {
+            e.stopImmediatePropagation();
+
+            var specifier = "${specifier}";
+            var path = "${path}";
+            var html = $("#${specifier}-copy-tag").html();
+            var regexEscapeOpenBracket = new RegExp('\\[', "g");
+            var regexEscapeClosedBracket = new RegExp('\\]', "g");
+            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+            var regexPath = new RegExp(path + '\\[0\\]', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            html = html.replace(regexPath, '${path}['+ entityCount + ']')
+                .replace(regexSpecifier,'${specifier}-' + entityCount + '-')
+                .replace("hide", "");
+            entityCount += 1;
+
+            $(".${specifier}-entity-add-more").before(html);
+        });
+        $("body").on("click", ".entity-remove", function () {
+            clearAndHideEditControlGroup(this);
+        });
+
+
+    });
+</script>
+<%--
 <c:choose>
-    <%--<c:when test="${not empty entities and not empty entities[0].name}">--%>
+    &lt;%&ndash;<c:when test="${not empty entities and not empty entities[0].name}">&ndash;%&gt;
     <c:when test="${not empty entities}">
         <div class="form-group edit-form-group">
             <label>${name}</label>
@@ -136,7 +208,7 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        var count = ${count};
+        var count = ${entityCount};
         var specifier = "${specifier}";
 
         //Add section
@@ -160,3 +232,4 @@
 
     });
 </script>
+--%>

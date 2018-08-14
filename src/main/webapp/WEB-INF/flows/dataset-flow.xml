@@ -18,6 +18,7 @@
         <transition to="datasetForm1">
             <evaluate expression="dataset" result="flowScope.dataset" />
             <evaluate expression="0" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
         </transition>
     </action-state>
 
@@ -167,6 +168,9 @@
     <!-- Distributions -->
     <!--Form page 5-->
     <view-state id="datasetForm5" model="flowScope.dataset">
+        <on-render>
+            <set type="java.util.List" name="requestScope.geometryEnums" value="flowScope.geometryEnums"/>
+        </on-render>
         <transition on="previous" to="datasetForm4"/>
         <transition on="next" to="validateForm5"/>
 

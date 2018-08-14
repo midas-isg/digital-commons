@@ -45,81 +45,9 @@
 <myTags:editAccess path="${path}[0]"
                    specifier="${specifier}-0"
                    id="${specifier}-copy-tag"
+                   isUnboundedList="true"
                    isAccessRequired="false">
 </myTags:editAccess>
-
-<%--
-
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(accessList)}">
-        <c:forEach items="${accessList}" var="access" varStatus="varStatus">
-            <c:if test="${varStatus.first}">
-                <div class="form-group edit-form-group">
-                    <label>${label}</label>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-add" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                        </button>
-                    </div>
-                </div>
-            </c:if>
-            <c:if test="${not function:isObjectEmpty(access)}">
-                <div class="form-group control-group edit-form-group">
-                    <label>${label}</label>
-                    <div class="form-group">
-                        <button class="btn btn-danger access-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i>
-                            Remove
-                        </button>
-                    </div>
-                    <myTags:editAccess path="${path}[${varStatus.count-1}]"
-                                       specifier="${specifier}-${varStatus.count-1}"
-                                       access="${access}"
-                                       isAccessRequired="false">
-                    </myTags:editAccess>
-                </div>
-                <c:set var="accessCount" scope="page" value="${varStatus.count}"/>
-            </c:if>
-        </c:forEach>
-        <div class="${specifier}-access-add-more">
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                    ${label}
-                </button>
-            </div>
-            <div class="${specifier}-access-add-more">
-            </div>
-        </div>
-        <c:set var="accessCount" scope="page" value="0"/>
-
-    </c:otherwise>
-</c:choose>
-
-
-<div class="${specifier}-copy hide">
-    <div class="form-group control-group edit-form-group">
-        <label>${label}</label>
-        <div class="form-group">
-            <button class="btn btn-danger access-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-        <myTags:editAccess path="${path}[0]"
-                           specifier="${specifier}-"
-                           isAccessRequired="false">
-        </myTags:editAccess>
-    </div>
-</div>
---%>
-
 
 
 <script type="text/javascript">
@@ -127,22 +55,22 @@
 
         var accessCount = ${accessCount};
         //Show/Hide Values
-        $("body").on("click", ".${specifier}-add", function (e) {
+        $("body").on("click", ".${specifier}-add-access", function (e) {
             e.stopImmediatePropagation();
 
             var specifier = "${specifier}";
             var path = "${path}";
-            var html = $(".${specifier}-copy-tag").html();
+            var html = $("#${specifier}-copy-tag").html();
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
             var regexSpecifier = new RegExp(specifier + '\\-', "g");
             html = html.replace(regexPath, '${path}['+ accessCount + ']')
-                .replace(regexSpecifier,'${specifier}-' + accessCount + '-');
+                .replace(regexSpecifier,'${specifier}-' + accessCount + '-')
+                .replace("hide", "");
             accessCount += 1;
 
-            // $(this).after(html);
             $(".${specifier}-access-add-more").before(html);
         });
         $("body").on("click", ".access-remove", function () {

@@ -41,6 +41,9 @@
     </c:if>
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(annotation) and not isUnboundedList and not isRequired}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
+            <label>${label}</label>
+        </c:if>
         <button class="btn btn-danger ${specifier}-annotation-remove" type="button"><i
                 class="glyphicon glyphicon-remove"></i>
             Remove

@@ -55,10 +55,12 @@
                                                     label="Description"
                                                     isTextArea="True" >
                     </myTags:editNonZeroLengthString>
+--%>
                     <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
                                                dataRepository="${distribution.storedIn}"
                                                specifier="${specifier}-${varStatus.count-1}-storedIn">
                     </myTags:editDataRepository>
+                        <%--
                     <myTags:editDatesUnbounded dates="${distribution.dates}"
                                                path="${path}[${varStatus.count-1}].dates"
                                                specifier="${specifier}-dates">
@@ -155,9 +157,11 @@
                                         label="Description"
                                         isTextArea="True">
         </myTags:editNonZeroLengthString>
+--%>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn">
         </myTags:editDataRepository>
+<%--
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-dates">
         </myTags:editDatesUnbounded>

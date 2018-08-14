@@ -27,9 +27,9 @@
         <label>Access</label>
     </c:if>
     <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(access) and not isUnboundedList}">hide</c:if>">
+         class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if>" <c:if test="${function:isObjectEmpty(access) and not isAccessRequired and not isUnboundedList}">hide</c:if>">
         <c:if test="${not isAccessRequired}">
-            <button class="btn btn-danger access-remove" type="button"><i
+            <button class="btn btn-danger ${specifier}-access-remove" type="button"><i
                     class="glyphicon glyphicon-remove"></i>
                 Remove
             </button>
@@ -83,6 +83,8 @@
     <script type="text/javascript">
 
         $(document).ready(function () {
+/*
+
             $("body").on("click", ".${specifier}-add-access", function (e) {
                 e.stopImmediatePropagation();
 
@@ -91,6 +93,7 @@
                 <%--$("#${specifier}-add-input-button").addClass("hide");--%>
 
             });
+*/
 
             //Remove section
             $("body").on("click", ".${specifier}-access-remove", function () {
@@ -104,119 +107,3 @@
 
 </div>
 
-
-<%--
-
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(access)}">
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group has-error">
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group">
-            </c:otherwise>
-        </c:choose>
-        <label>Access</label>
-            <c:if test="${not isAccessRequired}">
-                <button class="btn btn-danger access-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded label="Identifier" specifier="${specifier}-identifier"
-                                            path="${path}.identifier"
-                                            identifier="${access.identifier}"
-                                            unbounded="False">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            identifiers="${access.alternateIdentifiers}"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
-                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                                    string="${access.landingPage}"
-                                                    label="Landing Page">
-            </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="${path}.accessURL"
-                                            specifier="${specifier}-accessURL"
-                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                            string="${access.accessURL}"
-                                            label="Access URL">
-            </myTags:editNonZeroLengthString>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            annotations="${access.types}"
-                                            label="Types">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                            specifier="${specifier}-authorizations"
-                                            annotations="${access.authorizations}"
-                                            label="Authorizations">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                            specifier="${specifier}-authentications"
-                                            annotations="${access.authentications}"
-                                            label="Authentications">
-            </myTags:editAnnotationUnbounded>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group has-error">
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group">
-            </c:otherwise>
-        </c:choose>
-        <label>Access</label>
-            <c:if test="${not isAccessRequired}">
-                <button class="btn btn-danger access-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded label="Identifier" specifier="${specifier}-identifier"
-                                            path="${path}.identifier"
-                                            unbounded="False">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
-                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                                    label="Landing Page">
-            </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="${path}.accessURL"
-                                            specifier="${specifier}-accessURL"
-                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                            label="Access URL">
-            </myTags:editNonZeroLengthString>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            label="Types">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                            specifier="${specifier}-authorizations"
-                                            label="Authorizations">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                            specifier="${specifier}-authentications"
-                                            label="Authentications">
-            </myTags:editAnnotationUnbounded>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-        </div>
-    </c:otherwise>
-</c:choose>
-
---%>
