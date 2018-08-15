@@ -22,11 +22,12 @@
             <myTags:datasetIndex active="primaryPublications"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editPublication path="primaryPublications"
+                <myTags:editMasterUnbounded path="primaryPublications"
                                             specifier="primaryPublications"
-                                            publications="${dataset.primaryPublications}"
+                                            listItems="${dataset.primaryPublications}"
+                                            tagName="publication"
                                             label="Primary Publications">
-                    </myTags:editPublication>
+                </myTags:editMasterUnbounded>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

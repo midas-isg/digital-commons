@@ -22,11 +22,12 @@
             <myTags:datasetIndex active="spatialCoverage"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editPlaceUnbounded path="spatialCoverage"
-                                               specifier="spatialCoverage"
-                                               placeList="${dataset.spatialCoverage}"
-                                               label="Spatial Coverage">
-                    </myTags:editPlaceUnbounded>
+                <myTags:editMasterUnbounded path="spatialCoverage"
+                                            specifier="spatialCoverage"
+                                            listItems="${dataset.spatialCoverage}"
+                                            tagName="place"
+                                            label="Spatial Coverage">
+                </myTags:editMasterUnbounded>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

@@ -42,11 +42,12 @@
                                specifier="${specifier}-identifier"
                                label="Identifier">
         </myTags:editIdentifier>
-        <myTags:editIdentifierUnbounded path="${path}.alternateIdentifiers"
+        <myTags:editMasterUnbounded path="${path}.alternateIdentifiers"
                                         specifier="${specifier}-alternateIdentifiers"
-                                        identifiers="${entity.alternateIdentifiers}"
+                                        listItems="${entity.alternateIdentifiers}"
+                                        tagName="identifier"
                                         label="Alternate Identifier">
-        </myTags:editIdentifierUnbounded>
+        </myTags:editMasterUnbounded>
         <myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
                                         label="Name"
                                         isRequired="true"
@@ -85,82 +86,4 @@
 
     </script>
 </div>
-<%--
-
-<div class="form-group edit-form-group control-group">
-    <label>${label}</label>
-    <c:choose>
-        <c:when test="${not empty entity}">
-            <div class="form-group control-group">
-                <button class="btn btn-danger  ${specifier}-biological-entity-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-                <div class="form-group control-group edit-form-group">
-                    <myTags:editIdentifierUnbounded identifier="${entity.identifier}"
-                                                    path="${path}.identifier"
-                                                    specifier="${specifier}"
-                                                    label="Identifier">
-                    </myTags:editIdentifierUnbounded>
-                    <myTags:editIdentifierUnbounded path="${path}.alternateIdentifiers"
-                                                    unbounded="${true}"
-                                                    specifier="${specifier}-alternateIdentifiers"
-                                                    identifiers="${entity.alternateIdentifiers}"
-                                                    label="Alternate Identifier">
-                    </myTags:editIdentifierUnbounded>
-                    <c:choose>
-                        <c:when test="${not empty entity.name}">
-                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
-                                                                    label="Name"
-                                                                    string="${entity.name}"
-                                                                    path="${path}.name">
-                            </myTags:editRequiredNonZeroLengthString>
-                        </c:when>
-                        <c:otherwise>
-                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
-                                                                    label="Name"
-                                                                    path="${path}.name">
-                            </myTags:editRequiredNonZeroLengthString>
-                        </c:otherwise>
-                    </c:choose>
-                    <myTags:editNonRequiredNonZeroLengthStringTextArea string="${entity.description}"
-                                                                       path="${path}.description"
-                                                                       label="Description"
-                                                                       placeholder="Description"
-                                                                       specifier="${specifier}">
-                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                </div>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div class="form-group control-group">
-                <button class="btn btn-danger  ${specifier}-biological-entity-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-                <div class="form-group control-group edit-form-group">
-                    <myTags:editIdentifierUnbounded path="${path}.identifier"
-                                                    specifier="${specifier}"
-                                                    label="Identifier">
-                    </myTags:editIdentifierUnbounded>
-                    <myTags:editIdentifierUnbounded path="${path}.alternateIdentifiers"
-                                                    unbounded="${true}"
-                                                    specifier="${specifier}-alternateIdentifiers"
-                                                    label="Alternate Identifier">
-                    </myTags:editIdentifierUnbounded>
-                    <myTags:editRequiredNonZeroLengthString placeholder=" The name of the biological entity."
-                                                            label="Name"
-                                                            path="${path}.name">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthStringTextArea path="${path}.description"
-                                                                       label="Description"
-                                                                       placeholder="Description"
-                                                                       specifier="${specifier}">
-                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                </div>
-            </div>
-        </c:otherwise>
-    </c:choose>
-</div>
---%>
 

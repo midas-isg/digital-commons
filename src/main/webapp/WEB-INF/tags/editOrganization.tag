@@ -39,11 +39,12 @@
                                singleIdentifier="${organization.identifier}"
                                isUnboundedList="${false}">
         </myTags:editIdentifier>
-        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="${path}.alternateIdentifiers"
-                                        identifiers="${organization.alternateIdentifiers}">
-        </myTags:editIdentifierUnbounded>
+        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                                    label="Alternate Identifiers"
+                                    path="${path}.alternateIdentifiers"
+                                    tagName="identifier"
+                                    listItems="${organization.alternateIdentifiers}">
+        </myTags:editMasterUnbounded>
         <myTags:editNonZeroLengthString label="Name"
                                         placeholder=" The name of the organization."
                                         string="${organization.name}"

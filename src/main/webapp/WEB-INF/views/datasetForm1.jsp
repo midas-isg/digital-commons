@@ -26,9 +26,9 @@
                                      categoryPaths="${categoryPaths}">
                 </myTags:editCategory>
                 <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
-                                                specifier="identifier"
-                                                path="identifier"
-                                                label="Identifier">
+                                       specifier="identifier"
+                                       path="identifier"
+                                       label="Identifier">
                 </myTags:editIdentifier>
                 <myTags:editNonZeroLengthString label="Title"
                                                 path="title"
@@ -44,11 +44,12 @@
                                                 placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                 label="Description">
                 </myTags:editNonZeroLengthString>
-                <myTags:editDatesUnbounded dates="${dataset.dates}"
-                                           path="dates"
-                                           label="Dates"
-                                           specifier="dates">
-                </myTags:editDatesUnbounded>
+                <myTags:editMasterUnbounded listItems="${dataset.dates}"
+                                            path="dates"
+                                            label="Dates"
+                                            tagName="dates"
+                                            specifier="dates">
+                </myTags:editMasterUnbounded>
                 <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
             </form>
@@ -58,7 +59,7 @@
 
 <script>
     $(document).ready(function () {
-        $("#categoryValue").change(function() {
+        $("#categoryValue").change(function () {
             var categoryValue = $(this).val();
             $("#categoryID").val(categoryValue)
             <%--$("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=next&categoryID=" + action);--%>

@@ -22,11 +22,13 @@
             <myTags:datasetIndex active="licenses"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <myTags:editLicense path="licenses"
-                                    licenses="${dataset.licenses}"
+                <myTags:editMasterUnbounded path="licenses"
+                                    listItems="${dataset.licenses}"
+                                    tagName="license"
                                     label="License"
                                     specifier="licenses">
-                </myTags:editLicense>
+                </myTags:editMasterUnbounded>
+
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 

@@ -95,6 +95,7 @@
                                     specifier="${specifier}-access"
                                     listItems="${dataRepository.access}"
                                     tagName="access"
+                                    isRequired="${false}"
                                     label="Access">
         </myTags:editMasterUnbounded>
 

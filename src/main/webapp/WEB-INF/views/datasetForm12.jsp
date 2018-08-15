@@ -22,11 +22,12 @@
             <myTags:datasetIndex active="acknowledges"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <myTags:editGrant path="acknowledges"
+                <myTags:editMasterUnbounded path="acknowledges"
                                   specifier="acknowledges"
-                                  grants="${dataset.acknowledges}"
+                                  listItems="${dataset.acknowledges}"
+                                  tagName="grant"
                                   label="Acknowledges">
-                </myTags:editGrant>
+                </myTags:editMasterUnbounded>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

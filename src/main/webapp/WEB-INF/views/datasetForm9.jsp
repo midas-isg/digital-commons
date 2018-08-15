@@ -26,9 +26,10 @@
                                                   label="Creator"
                                                   path="creators"
                                                   specifier="creators"
-                                                  showAddPersonButton="true"
-                                                  showAddOrganizationButton="true"
-                                                  isFirstRequired="true">
+                                                  showAddPersonButton="${true}"
+                                                  showAddOrganizationButton="${true}"
+                                                  createPersonOrganizationTags="${true}"
+                                                  isFirstRequired="${true}">
                 </myTags:editPersonComprisedEntity>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

@@ -22,6 +22,12 @@
             <myTags:datasetIndex active="distributions"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
+                <myTags:editMasterUnbounded listItems="${dataset.distributions}"
+                                            tagName="distribution"
+                                            label="Distributions"
+                                          specifier="distributions"
+                                          path="distributions">
+                </myTags:editMasterUnbounded>
                     <myTags:editDistributions distributions="${dataset.distributions}"
                                               specifier="distributions"
                                               path="distributions">

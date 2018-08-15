@@ -22,17 +22,18 @@
             <myTags:datasetIndex active="citation"></myTags:datasetIndex>
 
             <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editPublication path="citations"
+                <myTags:editMasterUnbounded path="citations"
                                             specifier="citations"
-                                            publications="${dataset.citations}"
+                                            listItems="${dataset.citations}"
+                                            tagName="publication"
                                             label="Citations">
-                    </myTags:editPublication>
-                    <myTags:editFloat path="citationCount"
-                                      specifier="citationCount"
-                                      number="${dataset.citationCount}"
-                                      label="Citation Count"
-                                      placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
-                    </myTags:editFloat>
+                </myTags:editMasterUnbounded>
+                <myTags:editFloat path="citationCount"
+                                  specifier="citationCount"
+                                  number="${dataset.citationCount}"
+                                  label="Citation Count"
+                                  placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
+                </myTags:editFloat>
 
                 <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
                 <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

@@ -39,11 +39,12 @@
                                singleIdentifier="${person.identifier}"
                                isUnboundedList="${false}">
         </myTags:editIdentifier>
-        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="${path}.alternateIdentifiers"
-                                        identifiers="${person.alternateIdentifiers}">
-        </myTags:editIdentifierUnbounded>
+        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                                    label="Alternate Identifiers"
+                                    path="${path}.alternateIdentifiers"
+                                    tagName="identifier"
+                                    listItems="${person.alternateIdentifiers}">
+        </myTags:editMasterUnbounded>
         <myTags:editNonZeroLengthString label="Full Name"
                                         placeholder=" The first name, any middle names, and surname of a person."
                                         string="${person.fullName}"
@@ -88,11 +89,12 @@
                                           showAddPersonButton="false"
                                           showAddOrganizationButton="true">
         </myTags:editPersonComprisedEntity>
-        <myTags:editAnnotationUnbounded path="${path}.roles"
+        <myTags:editMasterUnbounded path="${path}.roles"
                                         specifier="${specifier}-roles"
-                                        annotations="${person.roles}"
+                                        listItems="${person.roles}"
+                                        tagName="annotation"
                                         label="Roles">
-        </myTags:editAnnotationUnbounded>
+        </myTags:editMasterUnbounded>
     </div>
 
     <script type="text/javascript">
