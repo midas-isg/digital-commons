@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="spatialCoverage"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -26,11 +25,12 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPlaceUnbounded path="spatialCoverage"
-                                       specifier="spatialCoverage"
-                                       placeList="${dataset.spatialCoverage}"
-                                       label="Spatial Coverage">
-            </myTags:editPlaceUnbounded>
+            <myTags:editMasterUnbounded path="spatialCoverage"
+                                        specifier="spatialCoverage"
+                                        listItems="${dataset.spatialCoverage}"
+                                        tagName="place"
+                                        label="Spatial Coverage">
+            </myTags:editMasterUnbounded>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

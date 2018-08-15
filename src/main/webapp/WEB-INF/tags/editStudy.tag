@@ -14,144 +14,101 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
+<%@ attribute name="id" required="false"
+              type="java.lang.String" %>
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(study)}">
-    <%--<c:when test="${not empty study}">--%>
-        <div class="form-group edit-form-group">
-            <label>${label}</label>
-            <div class="input-group control-group ${specifier}-study-add-more" style="display: none">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-study" type="button"><i
-                            class="fa fa-plus-circle"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-            <div class="form-group control-group">
-                <div class="form-group-btn">
-                    <button class="btn btn-danger ${specifier}-study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
-                    </button>
 
-                    <c:choose>
-                        <c:when test="${not empty study.name}">
-                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
-                                                                    label="Name"
-                                                                    string="${study.name}"
-                                                                    path="${path}.name">
-                            </myTags:editRequiredNonZeroLengthString>
-                        </c:when>
-                        <c:otherwise>
-                            <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
-                                                                    label="Name"
-                                                                    path="${path}.name">
-                            </myTags:editRequiredNonZeroLengthString>
-                        </c:otherwise>
-                    </c:choose>
-                    <br>
-                    <myTags:editDatesBounded label="Start Date"
-                                             path="${path}.startDate"
-                                             specifier="${specifier}-startDate"
-                                             date="${study.startDate}">
-                    </myTags:editDatesBounded>
-                    <br>
-                    <myTags:editDatesBounded label="End Date"
-                                             path="${path}.endDate"
-                                             specifier="${specifier}-endDate"
-                                             date="${study.endDate}">
-                    </myTags:editDatesBounded>
-                    <c:choose>
-                        <c:when test="${not empty study.location}">
-                            <div>
-                                <button class="btn btn-success add-location" id="${specifier}-location" type="button" style="display: none"><i
-                                        class="fa fa-plus-circle"></i> Add
-                                    Location
-                                </button>
-                            </div>
-                            <div class="form-group control-group edit-form-group">
-                                <myTags:editPlace path="${path}.location"
-                                                  specifier="${specifier}-location"
-                                                  place="${study.location}"
-                                                  expanded="false"
-                                                  label="Location">
-                                </myTags:editPlace>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <div>
-                                <button class="btn btn-success add-location" id="${specifier}-location" type="button"><i
-                                        class="fa fa-plus-circle"></i> Add
-                                    Location
-                                </button>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-            </div>
+<div id="${id}"
+     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
+    <label>${label}</label>
+    <div id="${specifier}-add-input-button"
+         class="input-group control-group ${specifier}-study-add-more <c:if test="${not function:isObjectEmpty(study)}">hide</c:if>">
+        <div class="input-group-btn">
+            <button class="btn btn-success ${specifier}-add-study" type="button"><i
+                    class="glyphicon glyphicon-plus"></i> Add
+                ${label}
+            </button>
         </div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
+    </div>
+    <div id="${specifier}-input-block"
+         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(study) and not isUnboundedList}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
             <label>${label}</label>
-            <div class="input-group control-group ${specifier}-study-add-more">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-study" type="button"><i
-                            class="fa fa-plus-circle"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </c:otherwise>
-</c:choose>
-
-
-<div class="copy-study hide">
-    <div class="form-group control-group">
-        <button class="btn btn-danger study-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+        </c:if>
+        <button class="btn btn-danger ${specifier}-study-remove" type="button"><i
+                class="glyphicon glyphicon-remove"></i>
+            Remove
         </button>
-        <myTags:editRequiredNonZeroLengthString placeholder=" The name of the activity, usually one sentece or short description of the study."
-                                                label="Name"
-                                                path="${path}.name">
-        </myTags:editRequiredNonZeroLengthString>
-        <myTags:editDatesBounded label="Start Date"
-                                 path="${path}.startDate"
-                                 specifier="${specifier}-startDate">
-        </myTags:editDatesBounded>
-        <myTags:editDatesBounded label="End Date"
-                                 path="${path}.endDate"
-                                 specifier="${specifier}-endDate">
-        </myTags:editDatesBounded>
+        <myTags:editNonZeroLengthString
+                placeholder=" The name of the activity, usually one sentece or short description of the study."
+                label="Name"
+                string="${study.name}"
+                specifier="${specifier}-name"
+                isUnboundedList="${false}"
+                id="${specifier}-name"
+                isRequired="${true}"
+                path="${path}.name">
+        </myTags:editNonZeroLengthString>
+        <myTags:editDates label="Start Date"
+                          path="${path}.startDate"
+                          specifier="${specifier}-startDate"
+                          id="${specifier}-startDate"
+                          isUnboundedList="${false}"
+                          isRequired="${false}"
+                          showEditFormGroup="${true}"
+                          date="${study.startDate}">
+        </myTags:editDates>
+        <myTags:editDates label="End Date"
+                          path="${path}.endDate"
+                          specifier="${specifier}-endDate"
+                          id="${specifier}-startDate"
+                          isUnboundedList="${false}"
+                          isRequired="${false}"
+                          showEditFormGroup="${true}"
+                          date="${study.endDate}">
+        </myTags:editDates>
         <myTags:editPlace path="${path}.location"
                           specifier="${specifier}-location"
-                          expanded="false"
+                          id="${specifier}-location"
+                          place="${study.location}"
+                          isUnboundedList="${false}"
                           label="Location">
         </myTags:editPlace>
+
+
+        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
+        </c:if>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", ".${specifier}-add-study", function (e) {
+                e.stopImmediatePropagation();
+
+                $("#${specifier}-input-block").removeClass("hide");
+                <c:if test="${isUnboundedList or not isRequired}">
+                $("#${specifier}-add-input-button").addClass("hide");
+                </c:if>
+
+                //Add section
+                $("#${specifier}-study").val("");
+            });
+
+            //Remove section
+            $("body").on("click", ".${specifier}-study-remove", function (e) {
+                e.stopImmediatePropagation();
+
+                clearAndHideEditControlGroup(this);
+                $("#${specifier}-add-input-button").removeClass("hide");
+                $("#${specifier}-input-block").addClass("hide");
+            });
+        });
+
+    </script>
+
 </div>
-
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("body").on("click", ".${specifier}-add-study", function (e) {
-            e.stopImmediatePropagation();
-
-            var html = $(".copy-study").html();
-            html = html.replace('name=""', 'name="${path}"').replace('study-remove', '${specifier}-study-remove');
-
-            //Add section
-            $(".${specifier}-study-add-more").after(html);
-            $(".${specifier}-study-add-more").hide();
-        });
-        //Remove section
-        $("body").on("click", ".${specifier}-study-remove", function (e) {
-            e.stopImmediatePropagation();
-
-            // $(this).parents(".control-group").remove();
-            clearAndHideEditControlGroup(this);
-            $(".${specifier}-study-add-more").show();
-        });
-
-    });
-
-</script>

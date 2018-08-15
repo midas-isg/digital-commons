@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="distributions"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -26,6 +25,12 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:editMasterUnbounded listItems="${dataset.distributions}"
+                                        tagName="distribution"
+                                        label="Distributions"
+                                        specifier="distributions"
+                                        path="distributions">
+            </myTags:editMasterUnbounded>
             <myTags:editDistributions distributions="${dataset.distributions}"
                                       specifier="distributions"
                                       path="distributions">

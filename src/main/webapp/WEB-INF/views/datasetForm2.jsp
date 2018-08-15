@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="storedIn"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -26,7 +25,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editDataRepository name="Stored In"
+            <myTags:editDataRepository label="Stored In"
                                        path="storedIn"
                                        dataRepository="${dataset.storedIn}"
                                        specifier="storedIn">

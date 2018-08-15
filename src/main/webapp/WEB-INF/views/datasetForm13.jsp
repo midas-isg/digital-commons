@@ -28,14 +28,19 @@
             <myTags:editNonZeroLengthString path="version"
                                             string="${dataset.version}"
                                             specifier="version"
+                                            id="version"
                                             placeholder=" A release point for the dataset when applicable."
+                                            isUnboundedList="${false}"
+                                            isRequired="${false}"
                                             label="Version">
             </myTags:editNonZeroLengthString>
-            <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
-                                          specifier="extraProperties"
-                                          label="Extra Properties"
-                                          path="extraProperties">
-            </myTags:editCategoryValuePair>
+            <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
+                                        tagName="categoryValuePair"
+                                        specifier="extraProperties"
+                                        label="Extra Properties"
+                                        path="extraProperties">
+            </myTags:editMasterUnbounded>
+
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
         </form>

@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="producedBy"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -28,7 +27,9 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editStudy study="${dataset.producedBy}"
                               specifier="producedBy"
+                              id="producedBy"
                               path="producedBy"
+                              isUnboundedList="${false}"
                               label="Produced By">
             </myTags:editStudy>
 

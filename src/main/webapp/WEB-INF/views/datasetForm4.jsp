@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="types"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -26,29 +25,31 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editType path="types"
-                             specifier="types"
-                             types="${dataset.types}">
-            </myTags:editType>
+            <myTags:editMasterUnbounded path="types"
+                                        specifier="types"
+                                        label="Types"
+                                        tagName="type"
+                                        listItems="${dataset.types}">
+            </myTags:editMasterUnbounded>
 
-                    <myTags:editNonZeroLengthString path="availability"
-                                                    string="${dataset.availability}"
-                                                    specifier="availability"
-                                                    placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
-                                                    label="Availability">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString path="refinement"
-                                                    string="${dataset.refinement}"
-                                                    specifier="refinement"
-                                                    placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
-                                                    label="Refinement">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString path="aggregation"
-                                                    string="${dataset.aggregation}"
-                                                    specifier="aggregation"
-                                                    placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
-                                                    label="Aggregation">
-                    </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="availability"
+                                            string="${dataset.availability}"
+                                            specifier="availability"
+                                            placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
+                                            label="Availability">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="refinement"
+                                            string="${dataset.refinement}"
+                                            specifier="refinement"
+                                            placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
+                                            label="Refinement">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="aggregation"
+                                            string="${dataset.aggregation}"
+                                            specifier="aggregation"
+                                            placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
+                                            label="Aggregation">
+            </myTags:editNonZeroLengthString>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>

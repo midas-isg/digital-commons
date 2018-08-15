@@ -5,12 +5,160 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
-<%@ attribute name="distributions" required="false"
-              type="java.util.List" %>
+<%@ attribute name="distribution" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.Distribution" %>
 <%@ attribute name="path" required="false"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="false"
               type="java.lang.String" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="id" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
+
+
+<div id="${id}"
+     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(distribution)}">hide</c:if>">
+    <c:if test="${not isUnboundedList}">
+        <label>${label}</label>
+        <div id="${specifier}-add-input-button"
+             class="input-group control-group ${specifier}-distribution-add-more <c:if test="${not function:isObjectEmpty(distribution)}">hide</c:if>">
+            <div class="input-group-btn">
+                <button class="btn btn-success ${specifier}-add-distribution" type="button"><i
+                        class="glyphicon glyphicon-plus"></i> Add
+                        ${label}
+                </button>
+            </div>
+        </div>
+    </c:if>
+    <div id="${specifier}-input-block"
+         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(distribution) and not isUnboundedList}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
+            <label>${label}</label>
+        </c:if>
+        <button class="btn btn-danger ${specifier}-distribution-remove" type="button"><i
+                class="glyphicon glyphicon-remove"></i>
+            Remove
+        </button>
+        <myTags:editIdentifier label="Identifier"
+                               specifier="${specifier}-identifier"
+                               path="${path}.identifier"
+                               isUnboundedList="${false}"
+                               singleIdentifier="${distribution.identifier}">
+        </myTags:editIdentifier>
+        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        path="${path}.alternateIdentifiers"
+                                    tagName="identifer"
+                                        listItems="${distribution.alternateIdentifiers}">
+        </myTags:editMasterUnbounded>
+                            <myTags:editNonZeroLengthString path="${path}.title"
+                                                            specifier="${specifier}-title"
+                                                            placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                                            string="${distribution.title}"
+                                                            isUnboundedList="${false}"
+                                                            isRequired="${false}"
+                                                            label="Title">
+                            </myTags:editNonZeroLengthString>
+                            <myTags:editNonZeroLengthString path="${path}.description"
+                                                            string="${distribution.description}"
+                                                            specifier="${specifier}-description"
+                                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                                            label="Description"
+                                                            isUnboundedList="${false}"
+                                                            isRequired="${false}"
+                                                            isTextArea="True" >
+                            </myTags:editNonZeroLengthString>
+        <myTags:editDataRepository label="Stored In"
+                                   path="${path}.storedIn"
+                                   dataRepository="${distribution.storedIn}"
+                                   specifier="${specifier}-storedIn">
+        </myTags:editDataRepository>
+    <myTags:editMasterUnbounded listItems="${distribution.dates}"
+                               path="${path}.dates"
+                                tagName="date"
+                                label="Dates"
+                               specifier="${specifier}-dates">
+    </myTags:editMasterUnbounded>
+    <myTags:editNonZeroLengthString label="Version"
+                                    placeholder=" A release point for the dataset when applicable."
+                                    specifier="${specifier}-version" 
+                                    string="${distribution.version}"
+                                    path="${path}.version">
+    </myTags:editNonZeroLengthString>
+    <myTags:editLicense path="${path}[${varStatus.count-1}].licenses"
+                        licenses="${distribution.licenses}"
+                        label="License"
+                        specifier="${specifier}-${varStatus.count-1}-licenses">
+    </myTags:editLicense>
+        <myTags:editAccess path="${path}[${varStatus.count-1}].access"
+                           specifier="${specifier}-${varStatus.count-1}-access" isAccessRequired="true"
+                           access="${distribution.access}">
+        </myTags:editAccess>
+        <%--
+                            <myTags:editDataStandard name="Conforms To" path="${path}[${varStatus.count-1}].conformsTo"
+                                                     dataStandards="${distribution.conformsTo}"
+                                                     specifier="${specifier}-${varStatus.count-1}-conformsTo">
+                            </myTags:editDataStandard>
+                            <myTags:editAnnotationUnbounded path="${path}[${varStatus.count-1}].qualifiers"
+                                                            specifier="${specifier}-${varStatus.count-1}-qualifiers"
+                                                            annotations="${distribution.qualifiers}"
+                                                            label="Qualifiers">
+                            </myTags:editAnnotationUnbounded>
+                            <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${distribution.formats}"
+                                                                                path="${path}[${varStatus.count-1}].formats"
+                                                                                specifier="${specifier}-${varStatus.count-1}-formats"
+                                                                                placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                                                                                label="Formats">
+                            </myTags:editUnboundedNonRequiredNonZeroLengthString>
+                            <myTags:editFloat path="${path}[${varStatus.count-1}].size"
+                                              specifier="${specifier}-${varStatus.count-1}-size"
+                                              number="${distribution.size}"
+                                              placeholder=" The size of the dataset."
+                                              label="Size" >
+                            </myTags:editFloat>
+                            <myTags:editAnnotationBounded annotation="${distribution.unit}" path="${path}[${varStatus.count-1}].unit"
+                                                          specifier="${specifier}-${varStatus.count-1}-unit"
+                                                          placeholder=" The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                                                          label="Unit" >
+                            </myTags:editAnnotationBounded>
+        --%>
+
+        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
+        </c:if>
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", ".${specifier}-add-distribution", function (e) {
+                e.stopImmediatePropagation();
+
+                $("#${specifier}-input-block").removeClass("hide");
+                $("#${specifier}-add-input-button").addClass("hide");
+
+                //Add section
+                $("#${specifier}-distribution").val("");
+            });
+
+            //Remove section
+            $("body").on("click", ".${specifier}-distribution-remove", function (e) {
+                e.stopImmediatePropagation();
+
+                clearAndHideEditControlGroup(this);
+                $("#${specifier}-add-input-button").removeClass("hide");
+                $("#${specifier}-input-block").addClass("hide");
+            });
+        });
+
+    </script>
+
+</div>
+
 
 
 <c:choose>
@@ -55,10 +203,12 @@
                                                     label="Description"
                                                     isTextArea="True" >
                     </myTags:editNonZeroLengthString>
+--%>
                     <myTags:editDataRepository name="Stored In" path="${path}[${varStatus.count-1}].storedIn"
                                                dataRepository="${distribution.storedIn}"
                                                specifier="${specifier}-${varStatus.count-1}-storedIn">
                     </myTags:editDataRepository>
+                        <%--
                     <myTags:editDatesUnbounded dates="${distribution.dates}"
                                                path="${path}[${varStatus.count-1}].dates"
                                                specifier="${specifier}-dates">
@@ -155,9 +305,11 @@
                                         label="Description"
                                         isTextArea="True">
         </myTags:editNonZeroLengthString>
+--%>
         <myTags:editDataRepository name="Stored In" path="${path}[0].storedIn"
                                    specifier="${specifier}-storedIn">
         </myTags:editDataRepository>
+<%--
         <myTags:editDatesUnbounded path="${path}[0].dates"
                                    specifier="${specifier}-dates">
         </myTags:editDatesUnbounded>

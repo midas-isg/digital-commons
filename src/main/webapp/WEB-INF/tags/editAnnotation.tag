@@ -21,10 +21,12 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="showEditFormGroup" required="false"
+              type="java.lang.Boolean" %>
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
+     class="form-group <c:if test="${showEditFormGroup}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <c:if test="${not isRequired}">
@@ -41,6 +43,9 @@
     </c:if>
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(annotation) and not isUnboundedList and not isRequired}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
+            <label>${label}</label>
+        </c:if>
         <button class="btn btn-danger ${specifier}-annotation-remove" type="button"><i
                 class="glyphicon glyphicon-remove"></i>
             Remove

@@ -17,28 +17,27 @@
 </head>
 <div class="wrapper">
     <myTags:datasetIndex active="creators"></myTags:datasetIndex>
+    <button type="button" id="sidebarCollapse"
+            class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+        <i class="glyphicon glyphicon-align-left"></i>
+        <span>Toggle Sidebar</span>
+    </button>
+    <form method="post" id="entry-form" action="${flowExecutionUrl}">
+        <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
+                                          label="Creator"
+                                          path="creators"
+                                          specifier="creators"
+                                          showAddPersonButton="${true}"
+                                          showAddOrganizationButton="${true}"
+                                          createPersonOrganizationTags="${true}"
+                                          isFirstRequired="${true}">
+        </myTags:editPersonComprisedEntity>
 
-    <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
-        <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
-                                              label="Creator"
-                                              path="creators"
-                                              specifier="creators"
-                                              showAddPersonButton="true"
-                                              showAddOrganizationButton="true"
-                                              isFirstRequired="true">
-            </myTags:editPersonComprisedEntity>
+        <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+        <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-
-        </form>
-    </div>
+    </form>
+</div>
 </div>
 <myTags:analytics/>
 

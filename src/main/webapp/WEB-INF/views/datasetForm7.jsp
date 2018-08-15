@@ -26,11 +26,12 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPublication path="citations"
-                                    specifier="citations"
-                                    publications="${dataset.citations}"
-                                    label="Citations">
-            </myTags:editPublication>
+            <myTags:editMasterUnbounded path="citations"
+                                        specifier="citations"
+                                        listItems="${dataset.citations}"
+                                        tagName="publication"
+                                        label="Citations">
+            </myTags:editMasterUnbounded>
             <myTags:editFloat path="citationCount"
                               specifier="citationCount"
                               number="${dataset.citationCount}"

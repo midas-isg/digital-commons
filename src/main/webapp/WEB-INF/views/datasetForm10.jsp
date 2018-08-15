@@ -18,7 +18,6 @@
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="licenses"></myTags:datasetIndex>
-
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -26,11 +25,13 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editLicense path="licenses"
-                                licenses="${dataset.licenses}"
-                                label="License"
-                                specifier="licenses">
-            </myTags:editLicense>
+            <myTags:editMasterUnbounded path="licenses"
+                                        listItems="${dataset.licenses}"
+                                        tagName="license"
+                                        label="License"
+                                        specifier="licenses">
+            </myTags:editMasterUnbounded>
+
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
 
