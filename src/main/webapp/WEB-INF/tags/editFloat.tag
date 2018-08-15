@@ -20,7 +20,7 @@
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not empty number}">hide</c:if>">
+     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <label>${label}</label>
     <div id="${specifier}-add-input-button"
          class="input-group control-group ${specifier}-number-add-more <c:if test="${not empty number}">hide</c:if>">

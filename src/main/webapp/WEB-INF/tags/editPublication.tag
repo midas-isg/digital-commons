@@ -67,6 +67,7 @@
                                specifier="${specifier}-type"
                                id="${specifier}-type"
                                annotation="${publication.type}"
+                               showEditFormGroup="${true}"
                                label="Type">
         </myTags:editAnnotation>
         <myTags:editNonZeroLengthString path="${path}.publicationVenue"
