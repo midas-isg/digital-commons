@@ -1045,11 +1045,11 @@ div.container.metadata-container .metadata-column.fancy {
 /*//////////////////////////*/
 .edit-form-group {
     margin: 1px;
-    /*border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
     margin-bottom: 15px;
-    margin-top: 5px;*/
+    margin-top: 5px;
 }
 
 .hide {
