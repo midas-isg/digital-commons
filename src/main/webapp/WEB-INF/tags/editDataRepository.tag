@@ -30,7 +30,7 @@
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(dataRepository)}">hide</c:if>">
         <button class="btn btn-danger ${specifier}-dataRepository-remove" type="button"><i
-                class="fa fa-ban"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editIdentifier path="${path}.identifier"

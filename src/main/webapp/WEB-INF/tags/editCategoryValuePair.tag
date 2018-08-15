@@ -27,7 +27,7 @@
              class="input-group control-group ${specifier}-categoryValuePair-add-more <c:if test="${not function:isObjectEmpty(categoryValuePair)}">hide</c:if>">
             <div class="input-group-btn">
                 <button class="btn btn-success ${specifier}-add-categoryValuePair" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>
@@ -39,7 +39,7 @@
             <label>${label}</label>
         </c:if>
         <button class="btn btn-danger ${specifier}-categoryValuePair-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editNonZeroLengthString label="Category"
@@ -107,7 +107,7 @@
         <label>${label}</label>
         <div class="form-group">
             <button class="btn btn-success ${specifier}-add" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
+                    class="fa fa-plus-circle"></i> Add
                 ${label}
             </button>
         </div>
@@ -118,7 +118,7 @@
             <label>${label}</label>
             <div class="form-group">
                 <button class="btn btn-danger categoryValuePair-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
+                        class="fa fa-minus-circle"></i>
                     Remove
                 </button>
             </div>
@@ -177,7 +177,7 @@
                 <label>${label}</label>
                 <div class="form-group">
                     <button class="btn btn-danger categoryValuePair-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
+                            class="fa fa-minus-circle"></i>
                         Remove
                     </button>
                 </div>
@@ -224,7 +224,7 @@
         <label>${label}</label>
         <div class="form-group">
             <button class="btn btn-danger categoryValuePair-remove" id="${specifier}-0-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
+                    class="fa fa-minus-circle"></i>
                 Remove
             </button>
         </div>

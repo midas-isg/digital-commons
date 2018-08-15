@@ -40,7 +40,7 @@
             <label>${label}</label>
         </c:if>
         <button class="btn btn-danger ${specifier}-grant-remove" type="button"><i
-                class="fa fa-ban"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editIdentifier path="${path}.identifier"

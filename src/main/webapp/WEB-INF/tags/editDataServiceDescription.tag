@@ -27,7 +27,7 @@
                     <div class="form-group control-group edit-form-group">
                     <label>Data Service Description</label>
                     <button class="btn btn-danger description-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i> Remove
+                            class="fa fa-minus-circle"></i> Remove
                     </button>
                 </c:otherwise>
             </c:choose>
@@ -100,7 +100,7 @@
 <div class="copy-description hide">
     <div class="form-group  control-group edit-form-group">
         <label>Data Service Description</label>
-        <button class="btn btn-danger description-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+        <button class="btn btn-danger description-remove" type="button"><i class="fa fa-minus-circle"></i>
             Remove
         </button>
 

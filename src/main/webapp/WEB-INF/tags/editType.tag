@@ -29,7 +29,7 @@
              class="input-group control-group ${specifier}-type-add-more <c:if test="${not function:isObjectEmpty(type)}">hide</c:if>">
             <div class="input-group-btn">
                 <button class="btn btn-success ${specifier}-add-type" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>
@@ -41,7 +41,7 @@
             <label>${label}</label>
         </c:if>
         <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editAnnotation annotation="${type.information}"

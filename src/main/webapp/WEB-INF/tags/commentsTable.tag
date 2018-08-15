@@ -26,7 +26,7 @@
             <td class="text-center">
                 <button id="delete-comment-btn" class="btn btn-xs btn-default"
                         onclick="deleteComment(${comment.id})">
-                    <icon class="glyphicon glyphicon-remove"></icon>
+                    <icon class="fa fa-minus-circle"></icon>
                 </button>
             </td>
         </tr>

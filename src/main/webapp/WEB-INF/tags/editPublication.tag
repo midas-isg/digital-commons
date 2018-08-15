@@ -28,7 +28,7 @@
              class="input-group control-group ${specifier}-publication-add-more <c:if test="${not function:isObjectEmpty(publication)}">hide</c:if>">
             <div class="input-group-btn">
                 <button class="btn btn-success ${specifier}-add-publication" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>
@@ -40,7 +40,7 @@
             <label>${label}</label>
         </c:if>
         <button class="btn btn-danger ${specifier}-publication-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editIdentifier path="${path}.identifier"

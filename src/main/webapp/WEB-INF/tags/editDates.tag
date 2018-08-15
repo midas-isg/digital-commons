@@ -33,7 +33,7 @@
                  class="input-group control-group ${specifier}-date-add-more <c:if test="${not function:isObjectEmpty(date)}">hide</c:if>">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-date" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -43,7 +43,7 @@
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(date) and not isUnboundedList and not isRequired}">hide</c:if>">
         <button class="btn btn-danger ${specifier}-date-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <div class="form-group edit-form-group">
@@ -98,5 +98,3 @@
     </c:if>
 
 </div>
-
-

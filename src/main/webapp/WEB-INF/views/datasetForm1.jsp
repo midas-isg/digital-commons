@@ -50,7 +50,7 @@
             <myTags:editMasterUnbounded listItems="${dataset.dates}"
                                         path="dates"
                                         label="Dates"
-                                        tagName="dates"
+                                        tagName="date"
                                         specifier="dates">
             </myTags:editMasterUnbounded>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
