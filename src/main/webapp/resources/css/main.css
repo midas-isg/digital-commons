@@ -1156,6 +1156,11 @@ div.container.metadata-container .metadata-column.fancy {
     background: #0d2c64;
 }
 
+#sidebar .dropdown-toggle::after {
+    top: 6px;
+    padding: 0px;
+}
+
 @media (max-width: 768px) {
     #entryFormContent {
         width: 100%;
