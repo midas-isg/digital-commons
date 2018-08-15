@@ -31,10 +31,6 @@
                                         specifier="distributions"
                                         path="distributions">
             </myTags:editMasterUnbounded>
-            <myTags:editDistributions distributions="${dataset.distributions}"
-                                      specifier="distributions"
-                                      path="distributions">
-            </myTags:editDistributions>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
