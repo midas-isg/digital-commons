@@ -26,7 +26,7 @@
     <label>${label}</label>
     <div id="${specifier}-add-input-button" class="form-group ${specifier}-${tagName}-add-more-button">
         <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
-                class="glyphicon glyphicon-plus"></i> Add
+                class="fa fa-plus-circle"></i> Add
             ${label}
         </button>
     </div>

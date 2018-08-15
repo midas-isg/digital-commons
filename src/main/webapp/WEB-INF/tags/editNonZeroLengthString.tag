@@ -33,7 +33,7 @@
                  class="input-group control-group ${specifier}-string-add-more <c:if test="${not empty string}">hide</c:if>">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-string" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -55,7 +55,7 @@
         <c:if test="${not isRequired}">
             <div class="input-group-btn">
                 <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
+                        class="fa fa-minus-circle"></i>
                     Remove
                 </button>
             </div>

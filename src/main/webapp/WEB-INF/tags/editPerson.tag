@@ -30,7 +30,7 @@
         <label>${label}</label>
         <c:if test="${not isFirstRequired}">
             <button class="btn btn-danger ${specifier}-person-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i> Remove
+                    class="fa fa-minus-circle"></i> Remove
             </button>
         </c:if>
         <myTags:editIdentifier specifier="${specifier}-identifier"

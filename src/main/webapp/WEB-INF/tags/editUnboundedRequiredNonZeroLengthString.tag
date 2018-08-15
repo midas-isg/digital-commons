@@ -45,7 +45,7 @@
                                         <button class="btn btn-danger ${specifier}-remove"
                                                 id="${specifier}-${varStatus.count-1}-remove"
                                                 type="button"><i
-                                                class="glyphicon glyphicon-remove"></i>
+                                                class="fa fa-minus-circle"></i>
                                             Remove
                                         </button>
                                     </div>
@@ -88,7 +88,7 @@
             <input type="text" class="form-control" name="${path}[0]" id="${specifier}-0" placeholder="${placeholder}"/>
             <div class="input-group-btn">
                 <button class="btn btn-danger ${specifier}-remove" id="${specifier}-0-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
+                        class="fa fa-minus-circle"></i>
                     Remove
                 </button>
             </div>

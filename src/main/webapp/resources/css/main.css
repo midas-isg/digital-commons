@@ -1087,6 +1087,10 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
+#entry-form {
+    margin-top: 40px;
+}
+
 #sidebar {
     width: 250px;
     position: fixed;
@@ -1158,6 +1162,10 @@ div.container.metadata-container .metadata-column.fancy {
     }
     #entryFormContent.active {
         width: calc(100% - 250px);
+    }
+
+    #entry-form {
+        margin-top: 0px;
     }
 }
 

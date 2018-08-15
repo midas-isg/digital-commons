@@ -28,7 +28,7 @@
         <div id="${specifier}-add-place-button" class="input-group control-group">
             <div class="input-group-btn">
                 <button class="btn btn-success ${specifier}-add-place" id="${specifier}-add-place" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                         ${label}
                 </button>
             </div>
@@ -37,7 +37,7 @@
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${not isUnboundedList and function:isObjectEmpty(place)}">hide</c:if>">
         <button class="btn btn-danger ${specifier}-remove" id="${specifier}-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <myTags:editIdentifier specifier="${specifier}-identifier"
@@ -76,7 +76,7 @@
             <label>Geometry</label>
             <button class="btn btn-success ${specifier}-geometry-add <c:if test="${not function:isObjectEmpty(place.geometry)}">hide</c:if>"
                     id="${specifier}-geometry-add" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add Geometry
+                    class="fa fa-plus-circle"></i> Add Geometry
             </button>
             <%--TODO: fix clear of select (geometry)--%>
             <div id="${specifier}-geometry-input-group"
@@ -104,7 +104,7 @@
                                 </select>
                 --%>
                 <button class="btn btn-danger ${specifier}-geometry-remove" id="${specifier}-geometry-remove"
-                        type="button"><i class="glyphicon glyphicon-remove"></i>
+                        type="button"><i class="fa fa-minus-circle"></i>
                     Remove
                 </button>
             </div>

@@ -33,7 +33,7 @@
                  class="input-group control-group ${specifier}-date-add-more <c:if test="${not function:isObjectEmpty(date)}">hide</c:if>">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-date" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -43,7 +43,7 @@
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(date) and not isUnboundedList and not isRequired}">hide</c:if>">
         <button class="btn btn-danger ${specifier}-date-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
         <div class="form-group edit-form-group">
@@ -98,44 +98,3 @@
     </c:if>
 
 </div>
-
-<%--
-<script>
-    $(document).on("focus", "input.date:not(.hasDatepicker)", function () {
-        &lt;%&ndash;$("#${specifier}-date-picker").live("click", function () {&ndash;%&gt;
-        $(this).datepicker({
-            constrainInput: false,
-            changeMonth: true,
-            changeYear: true
-        });
-    });
-</script>
-
-
-<div class="form-group control-group edit-form-group">
-    <c:set var="datePath" value="${path}.date"/>
-    <c:choose>
-    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(datePath)}">
-    <div class="form-group edit-form-group has-error">
-        </c:when>
-        <c:otherwise>
-        <div class="form-group edit-form-group">
-            </c:otherwise>
-            </c:choose>
-            <label>Date</label>
-            <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
-                   id="${specifier}-date-picker">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </div>
-        <myTags:editAnnotation path="${path}.type"
-                               date="${date.type}"
-                               label="Date"
-                               specifier="${specifier}-date"
-                               showRemoveButton="false">
-        </myTags:editAnnotation>
-    </div>
-
-
-    --%>

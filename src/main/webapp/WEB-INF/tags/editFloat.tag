@@ -26,7 +26,7 @@
          class="input-group control-group ${specifier}-number-add-more <c:if test="${not empty number}">hide</c:if>">
         <div class="input-group-btn">
             <button class="btn btn-success ${specifier}-add-number" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
+                    class="fa fa-plus-circle"></i> Add
                     ${label}
             </button>
         </div>
@@ -36,7 +36,7 @@
         <input type="number" step="any" class="form-control" value="${number}" name="${path}" id="${specifier}-number" placeholder="${placeholder}"/>
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-number-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
+                    class="fa fa-minus-circle"></i>
                 Remove
             </button>
         </div>

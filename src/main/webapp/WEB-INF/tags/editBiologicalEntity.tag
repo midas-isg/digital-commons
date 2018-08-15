@@ -33,7 +33,7 @@
                 <label>${label}</label>
             </c:if>
             <button class="btn btn-danger ${specifier}-biological-entity-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
+                    class="fa fa-minus-circle"></i>
                 Remove
             </button>
         </c:if>

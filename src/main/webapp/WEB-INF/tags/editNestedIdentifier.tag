@@ -31,7 +31,7 @@
                     <div class="form-group  control-group edit-form-group">
                         <label>${placeholder}</label>
                         <button class="btn btn-danger ${specifier}-nested-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i> Remove
+                                class="fa fa-minus-circle"></i> Remove
                         </button>
                         <myTags:editSoftwareIdentifier label="Identifier" path="${path}[${varStatus.count-1}].identifier"
                                                        identifier="${identifier.identifier}"
@@ -60,7 +60,7 @@
     <div class="form-group  control-group edit-form-group">
         <label>${placeholder}</label>
         <button class="btn btn-danger ${specifier}-nested-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i> Remove
+                class="fa fa-minus-circle"></i> Remove
         </button>
 
         <myTags:editSoftwareIdentifier label="Identifier" path="${path}"

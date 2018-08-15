@@ -32,7 +32,7 @@
                         </c:when>
                         <c:otherwise>
                             <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                                    class="glyphicon glyphicon-remove"></i>
+                                    class="fa fa-minus-circle"></i>
                                 Remove
                             </button>
                         </c:otherwise>
@@ -75,7 +75,7 @@
             </div>
             <div class="form-group control-group">
                 <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
+                        class="fa fa-minus-circle"></i>
                     Remove
                 </button>
 
@@ -122,7 +122,7 @@
 
 <div class="${specifier}-copy-identifier hide">
     <div class="form-group control-group">
-        <button class="btn btn-danger identifier-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
+        <button class="btn btn-danger identifier-remove" type="button"><i class="fa fa-minus-circle"></i>
             Remove
         </button>
 
