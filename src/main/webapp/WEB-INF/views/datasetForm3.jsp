@@ -26,6 +26,7 @@
                                             specifier="spatialCoverage"
                                             listItems="${dataset.spatialCoverage}"
                                             tagName="place"
+                                            isRequired="${false}"
                                             label="Spatial Coverage">
                 </myTags:editMasterUnbounded>
 

@@ -61,6 +61,14 @@
                                                       categoryValuePair="${listItem}">
                         </myTags:editCategoryValuePair>
                     </c:when>
+                    <c:when test="${tagName == 'dataStandard'}">
+                        <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
+                                                 specifier="${specifier}-${varStatus.count-1}"
+                                                 label="${label}"
+                                                 isUnboundedList="${true}"
+                                                 dataStandard="${listItem}">
+                        </myTags:editDataStandard>
+                    </c:when>
                     <c:when test="${tagName == 'date'}">
                         <myTags:editDates path="${path}[${varStatus.count-1}]"
                                           specifier="${specifier}-${varStatus.count-1}"
@@ -70,10 +78,10 @@
                     </c:when>
                     <c:when test="${tagName == 'distribution'}">
                         <myTags:editDistributions path="${path}[${varStatus.count-1}]"
-                                          specifier="${specifier}-${varStatus.count-1}"
-                                          distribution="${listItem}"
-                                          isUnboundedList="${true}"
-                                          label="${label}">
+                                                  specifier="${specifier}-${varStatus.count-1}"
+                                                  distribution="${listItem}"
+                                                  isUnboundedList="${true}"
+                                                  label="${label}">
                         </myTags:editDistributions>
                     </c:when>
                     <c:when test="${tagName == 'grant'}">
@@ -181,6 +189,14 @@
                                       isUnboundedList="${true}"
                                       label="${label}">
         </myTags:editCategoryValuePair>
+    </c:when>
+    <c:when test="${tagName == 'dataStandard'}">
+        <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
+                                 specifier="${specifier}-${varStatus.count-1}"
+                                 label="${label}"
+                                 isUnboundedList="${true}"
+                                 id="${specifier}-${tagName}-copy-tag">
+        </myTags:editDataStandard>
     </c:when>
     <c:when test="${tagName == 'date'}">
         <myTags:editDates path="${path}[0]"
