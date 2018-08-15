@@ -102,12 +102,12 @@
                             <label>${label}</label>
                             <c:if test="${showAddAnnotationButton}">
                                 <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
+                                        class="fa fa-plus-circle"></i> Add ${label} (Annotation)
                                 </button>
                             </c:if>
                             <c:if test="${showAddBiologicalEntityButton}">
                                 <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
+                                        class="fa fa-plus-circle"></i> Add ${label} (BiologicalEntity)
                                 </button>
                             </c:if>
                         </div>
@@ -153,12 +153,12 @@
             <label>${label}</label>
             <c:if test="${showAddAnnotationButton}">
                 <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add ${label} (Annotation)
+                        class="fa fa-plus-circle"></i> Add ${label} (Annotation)
                 </button>
             </c:if>
             <c:if test="${showAddBiologicalEntityButton}">
                 <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add ${label} (BiologicalEntity)
+                        class="fa fa-plus-circle"></i> Add ${label} (BiologicalEntity)
                 </button>
             </c:if>
             <div class="${specifier}-add-more"></div>

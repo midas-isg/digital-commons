@@ -23,7 +23,7 @@
         <div class="form-group edit-form-group  ${status.error ? 'has-error' : ''}">
             <label>${label}</label>
             <button class="btn btn-success ${specifier}-add-nested-identifier" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add ${placeholder}
+                    class="fa fa-plus-circle"></i> Add ${placeholder}
             </button>
             <br><br>
             <div class=" ${specifier}-nested-identifier-add-more">
@@ -47,7 +47,7 @@
         <div class="form-group edit-form-group">
             <label>${label}</label>
             <button class="btn btn-success ${specifier}-add-nested-identifier" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add ${placeholder}
+                    class="fa fa-plus-circle"></i> Add ${placeholder}
             </button>
             <div class="form-group ${specifier}-nested-identifier-add-more">
             </div>

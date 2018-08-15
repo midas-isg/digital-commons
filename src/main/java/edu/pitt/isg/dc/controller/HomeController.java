@@ -368,11 +368,11 @@ public class HomeController {
         }
     }
 
-    @RequestMapping(value = "/midas-sso/view", method = RequestMethod.GET, headers = "Accept=text/html")
-    public String loadIframe(Model model, @RequestParam(value = "url") String url) {
-        model.addAttribute("url", url);
-        return "iframeView";
-    }
+//    @RequestMapping(value = "/midas-sso/view", method = RequestMethod.GET, headers = "Accept=text/html")
+//    public String loadIframe(Model model, @RequestParam(value = "url") String url) {
+//        model.addAttribute("url", url);
+//        return "iframeView";
+//    }
 
     @RequestMapping(value = "/api/cache-spew", method = RequestMethod.GET)
     public String cacheSpew(Model model) {

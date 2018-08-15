@@ -8,13 +8,13 @@
               type="java.util.List" %>
 <%@ attribute name="softwareEntries" required="true"
               type="java.util.List" %>
-
+<div class="row">
 <c:forEach items="${treeInfoArr}" var="treeInfo" varStatus="treeLoop">
     <c:if test="${treeInfo.category != 'Country' }">
         <%--In the last column we want Data Formats, then Standard Identifiers, then Websites with data.--%>
         <c:choose>
             <c:when test="${treeInfo.category == 'Data Formats'}">
-                <div class="col-sm-4">
+                <div class="col-md-4">
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="content-title-font">${treeInfo.category}</h3>
@@ -37,7 +37,7 @@
                 </div>
             </c:when>
             <c:otherwise>
-                <div class="col-sm-4">
+                <div class="col-md-4">
                     <c:choose>
                         <c:when test="${treeInfo.category == 'Data'}">
                             <c:forEach items="${treeInfoArr}" var="checkTreeInfo" varStatus="loop">
@@ -47,20 +47,14 @@
                             </c:forEach>
 
                             <h3 class="content-title-font">${treeInfo.category}
-
-                                <div class="dropdown inline">
-                                    <button class="btn btn-default dropdown-toggle sort-by-dropdown" type="button"
-                                            id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-                                            aria-expanded="true">
+                                <div class="btn-group mr-1 mb-1">
+                                    <button type="button" class="btn btn-default sort-by-dropdown btn-block dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         Sort by Category
-                                        <span class="caret"></span>
                                     </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                                        <li><a href="#" id="drop-down-category" value="${treeLoop.index}">Category</a>
-                                        </li>
-                                        <li><a href="#" id="drop-down-location" value="${treeLoop.index}">Location</a>
-                                        </li>
-                                    </ul>
+                                    <div class="dropdown-menu open-left" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                        <a href="#" class="dropdown-item" id="drop-down-category" value="${treeLoop.index}">Category</a>
+                                        <a href="#" class="dropdown-item" id="drop-down-location" value="${treeLoop.index}">Location</a>
+                                    </div>
                                 </div>
                             </h3>
                             <div id="tree-${country_index}" class="treeview" style="display: none"></div>
@@ -144,10 +138,10 @@
         expandNodesInSessionVariable('#tree-${treeLoop.index}', 'tree${treeLoop.index}');
     </script>
 </c:forEach>
+</div>
 
-
-<div class="col-sm-4">
-    <div class="legend-large hidden-xs">
+<div class="col-md-4">
+    <div class="legend-large d-none d-sm-block">
         <button id="show-legend" class="btn btn-default btn-xs" onclick="toggleLegend('show')">Show Legend</button>
         <div id="main-legend" class="legend display-none">
             <button id="legend-button" class="btn btn-default btn-xs" onclick="toggleLegend('hide')">Hide</button>
@@ -156,8 +150,8 @@
     </div>
 </div>
 
-<div class="col-sm-4">
-    <div class="legend-small hidden-sm hidden-md hidden-lg">
+<div class="col-md-4">
+    <div class="legend-small d-block d-sm-none">
         <myTags:legendTable/>
     </div>
 </div>

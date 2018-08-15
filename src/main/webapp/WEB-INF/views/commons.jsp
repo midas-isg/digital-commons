@@ -17,26 +17,25 @@
         <div id="content-body">
 
             <myTags:softwareModal/>
-
-            <div id="commons-main-body" class="row">
+            <div id="commons-main-body">
                 <div class="tab-content">
-                    <div id="content" class="tab-pane fade in active">
+                    <div id="content" class="tab-pane fade show active" role="tabpanel">
                         <myTags:content
                                 softwareEntries="${softwareEntries}"
                                 datasetEntries="${datasetEntries}"
                                 dataStandardEntries="${dataStandardEntries}"
                         />
                     </div>
-                    <div id="compute-platform" class="tab-pane fade">
+                    <div id="compute-platform" class="tab-pane fade" role="tabpanel">
                         <myTags:computePlatform/>
                     </div>
-                    <div id="workflows" class="tab-pane fade">
+                    <div id="workflows" class="tab-pane fade" role="tabpanel">
                         <myTags:workflows workflowLocationsAndIds="${workflowLocationsAndIds}"/>
                     </div>
-                    <div id="search" class="tab-pane fade">
+                    <div id="search" class="tab-pane fade" role="tabpanel">
                         <myTags:search/>
                     </div>
-                    <div id="about" class="tab-pane fade">
+                    <div id="about" class="tab-pane fade" role="tabpanel">
                         <myTags:about/>
                     </div>
                 </div>

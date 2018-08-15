@@ -166,8 +166,8 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         showBorder: false,
         collapseAll: true,
 
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
+        expandIcon: "fa fa-chevron-right",
+        collapseIcon: "fa fa-chevron-down",
 
         onNodeSelected: function(event, data) {
             if(typeof data['nodes'] !== undefined) {
@@ -828,7 +828,7 @@ function download(filename, elementId) {
 
 function toggleModalView() {
     if($('#modal-html').hasClass('active')) {
-        $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
+        // $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
         $('#modal-json-link').click();
         $('#modal-switch-btn').text('Switch to HTML View');
     } else {

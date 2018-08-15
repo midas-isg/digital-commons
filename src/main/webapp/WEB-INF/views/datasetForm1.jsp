@@ -16,44 +16,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <myTags:datasetIndex active="basic"></myTags:datasetIndex>
-
-            <form id="entry-form" method="post" action="${flowExecutionUrl}">
-                <myTags:editCategory selectedID="${categoryID}"
-                                     categoryPaths="${categoryPaths}">
-                </myTags:editCategory>
-                <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
-                                       specifier="identifier"
-                                       path="identifier"
-                                       label="Identifier">
-                </myTags:editIdentifier>
-                <myTags:editNonZeroLengthString label="Title"
-                                                path="title"
-                                                specifier="title"
-                                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                isRequired="true"
-                                                string="${dataset.title}">
-                </myTags:editNonZeroLengthString>
-                <myTags:editNonZeroLengthString path="description"
-                                                string="${dataset.description}"
-                                                specifier="description"
-                                                isTextArea="true"
-                                                placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                label="Description">
-                </myTags:editNonZeroLengthString>
-                <myTags:editMasterUnbounded listItems="${dataset.dates}"
-                                            path="dates"
-                                            label="Dates"
-                                            tagName="dates"
-                                            specifier="dates">
-                </myTags:editMasterUnbounded>
-                <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-            </form>
-        </div>
+<div class="wrapper">
+    <myTags:datasetIndex active="basic"></myTags:datasetIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:editCategory selectedID="${categoryID}"
+                                 categoryPaths="${categoryPaths}">
+            </myTags:editCategory>
+            <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
+                                   specifier="identifier"
+                                   path="identifier"
+                                   label="Identifier">
+            </myTags:editIdentifier>
+            <myTags:editNonZeroLengthString label="Title"
+                                            path="title"
+                                            specifier="title"
+                                            placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                            isRequired="true"
+                                            string="${dataset.title}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="description"
+                                            string="${dataset.description}"
+                                            specifier="description"
+                                            isTextArea="true"
+                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                            label="Description">
+            </myTags:editNonZeroLengthString>
+            <myTags:editMasterUnbounded listItems="${dataset.dates}"
+                                        path="dates"
+                                        label="Dates"
+                                        tagName="dates"
+                                        specifier="dates">
+            </myTags:editMasterUnbounded>
+            <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+        </form>
     </div>
 </div>
 
