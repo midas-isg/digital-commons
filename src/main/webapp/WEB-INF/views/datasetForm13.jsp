@@ -16,32 +16,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <myTags:datasetIndex active="extra"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="extra"></myTags:datasetIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:editNonZeroLengthString path="version"
+                                            string="${dataset.version}"
+                                            specifier="version"
+                                            id="version"
+                                            placeholder=" A release point for the dataset when applicable."
+                                            isUnboundedList="${false}"
+                                            isRequired="${false}"
+                                            label="Version">
+            </myTags:editNonZeroLengthString>
+            <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
+                                        tagName="categoryValuePair"
+                                        specifier="extraProperties"
+                                        label="Extra Properties"
+                                        path="extraProperties">
+            </myTags:editMasterUnbounded>
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <myTags:editNonZeroLengthString path="version"
-                                                string="${dataset.version}"
-                                                specifier="version"
-                                                id="version"
-                                                placeholder=" A release point for the dataset when applicable."
-                                                isUnboundedList="${false}"
-                                                isRequired="${false}"
-                                                label="Version">
-                </myTags:editNonZeroLengthString>
-                <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
-                                            tagName="categoryValuePair"
-                                            specifier="extraProperties"
-                                            label="Extra Properties"
-                                            path="extraProperties">
-                </myTags:editMasterUnbounded>
-
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
-            </form>
-        </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+        </form>
     </div>
 </div>
 <myTags:analytics/>

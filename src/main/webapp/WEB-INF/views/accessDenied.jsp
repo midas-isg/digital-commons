@@ -7,47 +7,24 @@
 
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<myTags:head title="MIDAS Digital Commons"/>
+<myTags:header pageTitle="Resource Not Found" loggedIn="${loggedIn}" addEntry="${true}"></myTags:header>
 
-    <title>MIDAS Digital Commons</title>
-    <myTags:favicon></myTags:favicon>
-
-    <link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-
-    <!-- jQuery imports -->
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"
-            integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
-
-    <!-- Bootstrap CSS -->
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css"
-          rel="stylesheet">
-
-    <!-- Bootstrap JS -->
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap/3.3.6/bootstrap.min.js"></script>
-    <title>MIDAS Digital Commons</title>
-
-</head>
 <body>
 <div class="container-fluid">
-    <myTags:header pageTitle="Resource Not Found" loggedIn="${loggedIn}"></myTags:header>
 
     <div class="row">
         <div class="col-md-12">
             <br>
             <a href="${pageContext.request.contextPath}/main">
                 <button type="button" class="btn btn-default">
-                    <icon class="glyphicon glyphicon-chevron-left"></icon>
+                    <icon class="fa fa-chevron-left"></icon>
                     Home
                 </button>
             </a>
             <br>
-            <h3 class="text-center">Status 403: You do not have proper permission to access this page. To request authorization please email
+            <h3 class="text-center">Status 403: You do not have proper permission to access this page. To request
+                authorization please email
                 our <a class="underline" href="mailto:isg-feedback@list.pitt.edu">development
                     team</a>.</h3>
 
@@ -55,7 +32,10 @@
     </div>
 </div>
 
+<myTags:analytics/>
+
 </body>
+
+<myTags:footer/>
+
 </html>
-
-

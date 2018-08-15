@@ -29,61 +29,66 @@
     }
 </script>
 
-<ul class="nav navbar-nav navbar-padding">
-    <li><a id="content-tab" class="leaf font-size-18 padding-top-30" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle font-size-18 padding-top-30" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<ul class="nav nav-tabs navbar-nav mr-auto" role="tablist">
+    <li><a id="content-tab" class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle font-size-18 navbar-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
-            <span class="caret"></span>
         </a>
-        <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="nav-link dropdown-item" href="${contextPath}/search">Conventional DB search</a></li>
-            <li><a class="nav-link dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#search">Ontology-based search</a></li>
-        </ul>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="${contextPath}/search">Conventional DB search</a>
+            <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#search">Ontology-based search</a>
+        </div>
     </li>
-    <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
-    <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
+    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
-        <li class="dropdown">
-            <a href="#" id="add-digital-object" class="dropdown-toggle leaf font-size-18 padding-top-30" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
-            <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
+        <li class="dropdown ">
+            <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
-                        <li class="dropdown-header">Admin</li>
+                        <h6 class="dropdown-header">Admin</h6>
                     </c:when>
                     <c:when test="${adminType == 'MDC_EDITOR'}">
-                        <li class="dropdown-header">Edit</li>
+                        <h6 class="dropdown-header">Edit</h6>
                     </c:when>
                 </c:choose>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/add/review">Review Submissions</a></li>
-                <li role="presentation" class="divider"></li>
-                <li class="dropdown-header">Harvest</li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a></li>
-                <li role="presentation" class="divider"></li>
-                <li class="dropdown-header">Add</li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataFormatConverters">Data Format Converter</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataService">Data Service</a></li>
+                <a class="dropdown-item" href="${contextPath}/add/review">Review Submissions</a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Harvest</h6>
+                <a class="dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header">Add</h6>
+                <a class="dropdown-item" href="${contextPath}/addDataFormatConverters">Data Format Converter</a>
+                <a class="dropdown-item" href="${contextPath}/addDataService">Data Service</a>
                 <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
-                <li class="dropdown-submenu">
-                    <a class=" dropdown-toggle leaf nav-link dropdown-item " tabindex="-1" href="" onclick="preventClick()">Dataset</a>
-                    <ul class="nav-link dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/addDataset">Dataset with Person</a></li>
-                        <li><a class="nav-link dropdown-item" tabindex="-1" href="${contextPath}/addDatasetWithOrganization/">Dataset with Organization</a></li>
+                <div class="dropdown-submenu nav-submenu">
+                    <a class=" dropdown-toggle dropdown-item " tabindex="-1" href=""
+                       onclick="preventClick()">Dataset</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addDataset">Dataset with
+                            Person</a></li>
+                        <li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addDatasetWithOrganization/">Dataset
+                            with Organization</a></li>
+
                     </ul>
-                </li>
-                <li><a class="nav-link dropdown-item" href="${pageContext.request.contextPath}/addDataStandard">Data Format</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDataVisualizers">Data Visualizer</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseForecasters">Disease Forecaster</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseTransmissionModel">Disease Transmission Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addDiseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addMetagenomicAnalysis">Metagenomic Analysis</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addModelingPlatforms">Modeling Platform</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addPathogenEvolutionModels">Pathogen Evolution Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addPhylogeneticTreeConstructors">Phylogenetic Tree Constructor</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addPopulationDynamicsModel">Population Dynamics Model</a></li>
-                <li><a class="nav-link dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a></li>
-            </ul>
+                </div>
+
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/addDataStandard">Data Format</a>
+                <a class="dropdown-item" href="${contextPath}/addDataVisualizers">Data Visualizer</a>
+                <a class="dropdown-item" href="${contextPath}/addDiseaseForecasters">Disease Forecaster</a>
+                <a class="dropdown-item" href="${contextPath}/addDiseaseTransmissionModel">Disease Transmission Model</a>
+                <a class="dropdown-item" href="${contextPath}/addDiseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a>
+                <a class="dropdown-item" href="${contextPath}/addMetagenomicAnalysis">Metagenomic Analysis</a>
+                <a class="dropdown-item" href="${contextPath}/addModelingPlatforms">Modeling Platform</a>
+                <a class="dropdown-item" href="${contextPath}/addPathogenEvolutionModels">Pathogen Evolution Model</a>
+                <a class="dropdown-item" href="${contextPath}/addPhylogeneticTreeConstructors">Phylogenetic Tree Constructor</a>
+                <a class="dropdown-item" href="${contextPath}/addPopulationDynamicsModel">Population Dynamics Model</a>
+                <a class="dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>
+            </div>
         </li>
+
     </c:if>
-    <li><a class="leaf font-size-18 padding-top-30 " data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 </ul>

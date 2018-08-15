@@ -19,7 +19,7 @@
                     <div class="form-group edit-form-group description-add-more">
                     <label>Data Service Descriptions</label>
                     <button class="btn btn-success add-description" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add Data Service Description
+                            class="fa fa-plus-circle"></i> Add Data Service Description
                     </button>
                 </c:when>
                 <c:otherwise>
@@ -64,7 +64,7 @@
     <c:otherwise>
         <div class="form-group edit-form-group description-add-more ${status.error ? 'has-error' : ''}">
             <label>Data Service Descriptions</label>
-            <button class="btn btn-success add-description" type="button"><i class="glyphicon glyphicon-plus"></i>
+            <button class="btn btn-success add-description" type="button"><i class="fa fa-plus-circle"></i>
                 Add
                 Data Service Description
             </button>

@@ -33,8 +33,8 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
 }
 
 function getTreeviewInfo(entriesData, treeId, sessionVariable) {
-    var expandIcon = "glyphicon glyphicon-chevron-right";
-    var collapseIcon = "glyphicon glyphicon-chevron-down";
+    var expandIcon = "fa fa-chevron-right";
+    var collapseIcon = "fa fa-chevron-down";
 
     var jsonEntries = JSON.parse(entriesData);
     var entryType = jsonEntries[0]["type"];

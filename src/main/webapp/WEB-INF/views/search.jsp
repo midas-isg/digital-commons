@@ -8,7 +8,7 @@
 
 <html>
 <head>
-    <myTags:head/>
+    <myTags:head title="MIDAS Digital Commons"/>
     <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
         <%--pageTitle="Search"--%>
@@ -21,14 +21,14 @@
     <link href="${pageContext.request.contextPath}/resources/css/forest-widget.css" rel="stylesheet">
     <%--<script src="${pageContext.request.contextPath}/resources/js/forest-widget.js"></script>--%>
     <script src="${pageContext.request.contextPath}/resources/js/forest-widget.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
     <myTags:analytics/>
 <body id="commons-body">
 
 <myTags:softwareModal/>
 
-<div class="margin-top-22">
+<div class="container-fluid">
     <div id="retrievalTermsContainer">
         <div class=" panel panel-primary">
             <div class="panel-body" ng-hide="searchHidden">

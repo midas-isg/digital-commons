@@ -167,7 +167,7 @@
                     <label>${label}</label>
                     <div class="form-group">
                         <button class="btn btn-success ${specifier}-add" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
+                                class="fa fa-plus-circle"></i> Add
                             ${label}
                         </button>
                     </div>
@@ -208,7 +208,7 @@
             <label>${label}</label>
             <div class="form-group">
                 <button class="btn btn-success ${specifier}-add" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
+                        class="fa fa-plus-circle"></i> Add
                     Extra Properties
                 </button>
             </div>
