@@ -1094,13 +1094,15 @@ div.container.metadata-container .metadata-column.fancy {
 #sidebar {
     width: 250px;
     position: fixed;
-    top: 0;
     left: 0;
-    height: 100vh;
+    top: 0;
+    padding-top: 70px;
+    height: 100%;
     z-index: 3;
     background: #568aea;
     color: #fff;
     transition: all 0.3s;
+    overflow: scroll;
 }
 
 #sidebar.active {
