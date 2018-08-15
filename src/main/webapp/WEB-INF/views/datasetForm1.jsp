@@ -47,11 +47,12 @@
                                             placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                             label="Description">
             </myTags:editNonZeroLengthString>
-            <myTags:editDatesUnbounded dates="${dataset.dates}"
-                                       path="dates"
-                                       label="Dates"
-                                       specifier="dates">
-            </myTags:editDatesUnbounded>
+            <myTags:editMasterUnbounded listItems="${dataset.dates}"
+                                        path="dates"
+                                        label="Dates"
+                                        tagName="dates"
+                                        specifier="dates">
+            </myTags:editMasterUnbounded>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
         </form>
