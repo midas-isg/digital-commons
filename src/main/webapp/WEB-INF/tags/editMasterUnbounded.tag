@@ -210,6 +210,13 @@
                           id="${specifier}-${tagName}-copy-tag">
         </myTags:editDates>
     </c:when>
+    <c:when test="${tagName == 'distribution'}">
+        <myTags:editDistributions path="${path}[0]"
+                                  specifier="${specifier}-0"
+                                  id="${specifier}-${tagName}-copy-tag"
+                                  label="${label}"
+                                  isUnboundedList="${true}"/>
+    </c:when>
     <c:when test="${tagName == 'grant'}">
         <myTags:editGrant path="${path}[0]"
                           specifier="${specifier}-0"
