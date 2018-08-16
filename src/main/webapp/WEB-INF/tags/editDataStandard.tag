@@ -6,20 +6,23 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
-<%@ attribute name="label" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 <%@ attribute name="dataStandard" required="false"
               type="edu.pitt.isg.mdc.dats2_2.DataStandard" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(dataStandard)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -43,6 +46,17 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${dataStandard}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
                                label="Identifier"
                                specifier="${specifier}-identifier"
@@ -106,7 +120,17 @@
                                     path="${path}.extraProperties"
                                     label="Extra Properties">
         </myTags:editMasterUnbounded>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${dataStandard}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
+<%--
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
@@ -141,3 +165,4 @@
     </script>
 
 </div>
+--%>

@@ -40,6 +40,7 @@
                         <myTags:editAccess path="${path}[${varStatus.count-1}].access"
                                            specifier="${specifier}-${varStatus.count-1}-access"
                                            id="${specifier}-${varStatus.count-1}-access"
+                                           tagName="${tagName}"
                                            isAccessRequired="${isRequired}"
                                            isUnboundedList="${true}"
                                            access="${listItem}">
@@ -51,6 +52,7 @@
                                                label="${label}"
                                                isUnboundedList="${true}"
                                                id="${specifier}-${varStatus.count-1}"
+                                               tagName="${tagName}"
                                                path="${path}[${varStatus.count-1}]">
                         </myTags:editAnnotation>
                     </c:when>
@@ -68,6 +70,7 @@
                         <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
                                                  specifier="${specifier}-${varStatus.count-1}"
                                                  id="${specifier}-${varStatus.count-1}"
+                                                 tagName="${tagName}"
                                                  label="${label}"
                                                  isUnboundedList="${true}"
                                                  dataStandard="${listItem}">
@@ -86,6 +89,7 @@
                                                   specifier="${specifier}-${varStatus.count-1}"
                                                   id="${specifier}-${varStatus.count-1}"
                                                   distribution="${listItem}"
+                                                  tagName="${tagName}"
                                                   isUnboundedList="${true}"
                                                   label="${label}">
                         </myTags:editDistributions>
@@ -95,6 +99,7 @@
                                           specifier="${specifier}-${varStatus.count-1}"
                                           id="${specifier}-${varStatus.count-1}"
                                           grant="${listItem}"
+                                          tagName="${tagName}"
                                           isUnboundedList="${true}"
                                           label="${label}">
                         </myTags:editGrant>
@@ -111,6 +116,7 @@
                         <myTags:editLicense path="${path}[${varStatus.count-1}]"
                                             label="${label}"
                                             license="${listItem}"
+                                            tagName="${tagName}"
                                             id="${specifier}-${varStatus.count-1}"
                                             isUnboundedList="${true}"
                                             specifier="${specifier}-${varStatus.count-1}">
@@ -121,6 +127,7 @@
                                           specifier="${specifier}-${varStatus.count-1}"
                                           id="${specifier}-${varStatus.count-1}"
                                           place="${listItem}"
+                                          tagName="${tagName}"
                                           isUnboundedList="${true}"
                                           label="${label}">
                         </myTags:editPlace>
@@ -130,6 +137,7 @@
                                                 specifier="${specifier}-${varStatus.count-1}"
                                                 id="${specifier}-${varStatus.count-1}"
                                                 publication="${listItem}"
+                                                tagName="${tagName}"
                                                 isUnboundedList="${true}"
                                                 label="${label}">
                         </myTags:editPublication>
@@ -148,6 +156,7 @@
                         <myTags:editType path="${path}[${varStatus.count-1}]"
                                          specifier="${specifier}-${varStatus.count-1}"
                                          id="${specifier}-${varStatus.count-1}"
+                                         tagName="${tagName}"
                                          label="${label}"
                                          type="${listItem}"
                                          isUnboundedList="${true}">
@@ -165,17 +174,10 @@
     <c:when test="${tagName == 'access'}">
         <myTags:editAccess path="${path}[0].access"
                            specifier="${specifier}-0-access"
+                           tagName="${tagName}"
                            isUnboundedList="${true}"
                            id="${specifier}-${tagName}-copy-tag"
-                           isAccessRequired="${false}">
-        </myTags:editAccess>
-    </c:when>
-    <c:when test="${tagName == 'accessRequired'}">
-        <myTags:editAccess path="${path}[0].access"
-                           specifier="${specifier}-0-access"
-                           isUnboundedList="${true}"
-                           id="${specifier}-${tagName}-copy-tag"
-                           isAccessRequired="${true}">
+                           isAccessRequired="${isRequired}">
         </myTags:editAccess>
     </c:when>
     <c:when test="${tagName == 'annotation'}">
@@ -198,6 +200,7 @@
     <c:when test="${tagName == 'dataStandard'}">
         <myTags:editDataStandard path="${path}[0]"
                                  specifier="${specifier}-0"
+                                 tagName="${tagName}"
                                  label="${label}"
                                  isUnboundedList="${true}"
                                  id="${specifier}-${tagName}-copy-tag">
@@ -213,6 +216,7 @@
     <c:when test="${tagName == 'grant'}">
         <myTags:editGrant path="${path}[0]"
                           specifier="${specifier}-0"
+                          tagName="${tagName}"
                           id="${specifier}-${tagName}-copy-tag"
                           isUnboundedList="${true}"
                           label="${label}">
@@ -229,6 +233,7 @@
         <myTags:editLicense path="${path}[0]"
                             label="License"
                             id="${specifier}-${tagName}-copy-tag"
+                            tagName="${tagName}"
                             isUnboundedList="${true}"
                             specifier="${specifier}-0">
         </myTags:editLicense>
@@ -237,6 +242,7 @@
         <myTags:editPlace path="${path}[0]"
                           specifier="${specifier}-0"
                           id="${specifier}-${tagName}-copy-tag"
+                          tagName="${tagName}"
                           isUnboundedList="${true}"
                           label="${label}">
         </myTags:editPlace>
@@ -245,6 +251,7 @@
         <myTags:editPublication path="${path}[0]"
                                 specifier="${specifier}-0"
                                 id="${specifier}-${tagName}-copy-tag"
+                                tagName="${tagName}"
                                 isUnboundedList="${true}"
                                 label="${label}">
         </myTags:editPublication>
@@ -262,6 +269,7 @@
         <myTags:editType path="${path}[0]"
                          specifier="${specifier}-0"
                          label="${label}"
+                         tagName="${tagName}"
                          id="${specifier}-${tagName}-copy-tag"
                          isUnboundedList="${true}">
         </myTags:editType>
