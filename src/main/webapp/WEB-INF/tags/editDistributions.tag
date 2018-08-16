@@ -65,7 +65,7 @@
         <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                                     label="Alternate Identifiers"
                                     path="${path}.alternateIdentifiers"
-                                    tagName="identifer"
+                                    tagName="identifier"
                                     listItems="${distribution.alternateIdentifiers}">
         </myTags:editMasterUnbounded>
         <myTags:editNonZeroLengthString path="${path}.title"
