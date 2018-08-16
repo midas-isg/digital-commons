@@ -68,6 +68,7 @@
         </myTags:editAnnotation>
         <myTags:editAnnotation annotation="${type.method}"
                                specifier="${specifier}-method"
+                               id="${specifier}-method"
                                label="Method"
                                isUnboundedList="${false}"
                                isRequired="${false}"
@@ -75,6 +76,7 @@
         </myTags:editAnnotation>
         <myTags:editAnnotation annotation="${type.platform}"
                                specifier="${specifier}-platform"
+                               id="${specifier}-platform"
                                label="Platform"
                                isUnboundedList="${false}"
                                isRequired="${false}"

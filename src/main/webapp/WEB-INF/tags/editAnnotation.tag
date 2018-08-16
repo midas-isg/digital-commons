@@ -13,16 +13,17 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="label" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="isUnboundedList" required="false"
+<%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -48,10 +49,32 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
 
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${annotation}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="annotation"
+                                         isRequired="${isRequired}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editNonZeroLengthString path="${path}.value" specifier="${specifier}-value" placeholder="Value" isRequired="${true}" label="Value" string="${annotation.value}"></myTags:editNonZeroLengthString>
         <myTags:editNonZeroLengthString path="${path}.valueIRI" specifier="${specifier}-valueIRI" placeholder="Value IRI" isRequired="${true}" label="Value IRI" string="${annotation.valueIRI}"></myTags:editNonZeroLengthString>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${annotation}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="annotation"
+                                         isRequired="${isRequired}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
+<%--
     </div>
 
     <c:if test="${not isRequired}">
@@ -83,3 +106,4 @@
     </c:if>
 
 </div>
+--%>

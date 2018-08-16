@@ -55,6 +55,8 @@
                                    annotation="${date.type}"
                                    isRequired="false"
                                    label="Annotation"
+                                   id="${specifier}-date"
+                                   isUnboundedList="${false}"
                                    specifier="${specifier}-date">
             </myTags:editAnnotation>
         </div>

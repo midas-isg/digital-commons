@@ -42,8 +42,9 @@
                 <myTags:editAnnotation annotation="${isAbout}"
                                        path="${path}[${varStatus.count-1}]"
                                        specifier="${specifier}-${varStatus.count-1}"
+                                       id="${specifier}-${varStatus.count-1}"
                                        label="${label} (Annotation)"
-                                       isUnboundedList="true"
+                                       isUnboundedList="${true}"
                                        isRequired="false">
                 </myTags:editAnnotation>
             </c:when>
@@ -88,107 +89,6 @@
 </myTags:editBiologicalEntity>
 
 
-<%--
-
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(isAboutList)}">
-        <div class=" ${status.error ? 'has-error' : ''}">
-            <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
-                <c:choose>
-                    <c:when test="${varStatus.first}">
-                        <div class="form-group edit-form-group ${specifier}-add-more-button">
-                            <label>${label}</label>
-                            <c:if test="${showAddAnnotationButton}">
-                                <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                                        class="fa fa-plus-circle"></i> Add ${label} (Annotation)
-                                </button>
-                            </c:if>
-                            <c:if test="${showAddBiologicalEntityButton}">
-                                <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                                        class="fa fa-plus-circle"></i> Add ${label} (BiologicalEntity)
-                                </button>
-                            </c:if>
-                        </div>
-                    </c:when>
-                </c:choose>
-                <c:if test="${not function:isObjectEmpty(isAbout)}">
-                    <c:choose>
-                        &lt;%&ndash;<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.Annotation'}">&ndash;%&gt;
-                        <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
-                            <div class="form-group edit-form-group control-group">
-                                <myTags:editAnnotation annotation="${isAbout}"
-                                                       path="${path}[${varStatus.count-1}]"
-                                                       specifier="${specifier}-${varStatus.count-1}"
-                                                       label="Is About (Annotation)"
-                                                       showRemoveButton="true">
-                                </myTags:editAnnotation>
-                            </div>
-                        </c:when>
-                        &lt;%&ndash;<c:when test="${isAbout['class'] == 'class edu.pitt.isg.mdc.dats2_2.BiologicalEntity'}">&ndash;%&gt;
-                        <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
-                            <myTags:editBiologicalEntity entity="${isAbout}"
-                                                         path="${path}[${varStatus.count-1}]"
-                                                         specifier="${specifier}-${varStatus.count-1}"
-                                                         label="${label} (BiologicalEntity)">
-                            </myTags:editBiologicalEntity>
-                        </c:when>
-                    </c:choose>
-
-                    <c:if test="${varStatus.first}">
-
-                        <form:errors path="${path}[0]" class="error-color"/>
-                    </c:if>
-
-                    <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
-                </c:if>
-
-            </c:forEach>
-            <div class="${specifier}-add-more"></div>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group ${specifier}-add-more-button ${status.error ? 'has-error' : ''}">
-            <label>${label}</label>
-            <c:if test="${showAddAnnotationButton}">
-                <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                        class="fa fa-plus-circle"></i> Add ${label} (Annotation)
-                </button>
-            </c:if>
-            <c:if test="${showAddBiologicalEntityButton}">
-                <button class="btn btn-success ${specifier}-add-biologicalEntity" type="button"><i
-                        class="fa fa-plus-circle"></i> Add ${label} (BiologicalEntity)
-                </button>
-            </c:if>
-            <div class="${specifier}-add-more"></div>
-
-            <form:errors path="${path}[0]" class="error-color"/>
-        </div>
-        <c:set var="unboundedIsAboutCount" scope="page" value="0"/>
-
-    </c:otherwise>
-</c:choose>
-
-<c:if test="${showAddAnnotationButton}">
-    <div class="${specifier}-annotation-copy hide">
-        <div class="form-group edit-form-group control-group">
-            <myTags:editAnnotation path="${path}[0]"
-                                   specifier="${specifier}-"
-                                   label="Is About (Annotation)"
-                                   showRemoveButton="true">
-            </myTags:editAnnotation>
-        </div>
-    </div>
-</c:if>
-<c:if test="${showAddBiologicalEntityButton}">
-    <div class="${specifier}-biologicalEntity-copy hide">
-        <myTags:editBiologicalEntity path="${path}[0]"
-                                     specifier="${specifier}-"
-                                     label="${label} (BiologicalEntity)">
-        </myTags:editBiologicalEntity>
-    </div>
-</c:if>
-
---%>
 
 <script type="text/javascript">
     $(document).ready(function () {
