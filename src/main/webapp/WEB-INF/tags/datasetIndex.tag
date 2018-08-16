@@ -8,10 +8,6 @@
 <!-- Sidebar Holder -->
 
 <nav id="sidebar">
-    <div class="sidebar-header">
-        <h3></h3>
-    </div>
-
     <ul class="list-unstyled components">
         <c:choose>
             <c:when test="${active == 'basic'}">
