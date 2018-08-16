@@ -28,6 +28,7 @@
             <myTags:editDataRepository label="Stored In"
                                        path="storedIn"
                                        dataRepository="${dataset.storedIn}"
+                                       id="storedIn"
                                        specifier="storedIn">
             </myTags:editDataRepository>
 

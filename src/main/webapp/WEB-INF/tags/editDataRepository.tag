@@ -12,6 +12,8 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
 <%@attribute name="dataRepository" required="false"
              type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
 
@@ -39,7 +41,7 @@
                                          specifier="${specifier}"
                                          object="${dataRepository}"
                                          label="${label}"
-                                         id="${specifier}"
+                                         id="${id}"
                                          isUnboundedList="${false}"
                                          tagName="dataRepository"
                                          showTopOrBottom="top">
@@ -113,7 +115,7 @@
                                          specifier="${specifier}"
                                          object="${dataRepository}"
                                          label="${label}"
-                                         id="${specifier}"
+                                         id="${id}"
                                          isUnboundedList="${false}"
                                          tagName="dataRepository"
                                          showTopOrBottom="bottom">
