@@ -15,7 +15,7 @@
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="true"
               type="java.lang.String" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 
 

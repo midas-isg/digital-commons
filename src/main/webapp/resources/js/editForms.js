@@ -14,7 +14,8 @@ function clearAndHideEditControlGroup(controlGroup, id) {
             textareaElements[tae].value = null;
         }
     }
-/*
+    //TODO: clear geometry
+    /*
     var geometryElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
     for (var ge=0; tae < geometryElements.length; ge++) {
         if (geometryElements[ge].type === "select") {

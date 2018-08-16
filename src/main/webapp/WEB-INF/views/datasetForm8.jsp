@@ -27,6 +27,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editStudy study="${dataset.producedBy}"
                               specifier="producedBy"
+                              tagName="producedBy"
                               id="producedBy"
                               path="producedBy"
                               isUnboundedList="${false}"

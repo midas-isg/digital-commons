@@ -8,18 +8,21 @@
 
 <%@ attribute name="study" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Study" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}"
      class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <label>${label}</label>
@@ -41,6 +44,17 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${study}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editNonZeroLengthString
                 placeholder=" The name of the activity, usually one sentece or short description of the study."
                 label="Name"
@@ -70,12 +84,23 @@
         <myTags:editPlace path="${path}.location"
                           specifier="${specifier}-location"
                           id="${specifier}-location"
+                          tagName="place"
                           place="${study.location}"
                           isUnboundedList="${false}"
                           label="Location">
         </myTags:editPlace>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${study}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
 
+<%--
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
@@ -110,3 +135,4 @@
     </script>
 
 </div>
+--%>

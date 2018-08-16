@@ -17,10 +17,13 @@
               type="java.lang.String" %>
 <%@ attribute name="id" required="false"
               type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(type)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -44,6 +47,17 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${type}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editAnnotation annotation="${type.information}"
                                specifier="${specifier}-information"
                                id="${specifier}-information"
@@ -66,7 +80,17 @@
                                isRequired="${false}"
                                path="${path}.platform">
         </myTags:editAnnotation>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${type}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
+<%--
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
@@ -101,4 +125,5 @@
     </script>
 
 </div>
+--%>
 

@@ -14,12 +14,15 @@
               type="edu.pitt.isg.mdc.dats2_2.License" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(license)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -43,6 +46,17 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${license}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier label="Identifier"
                                path="${path}.identifier"
                                singleIdentifier="${license.identifier}"
@@ -75,7 +89,17 @@
                                           showAddPersonButton="true"
                                           showAddOrganizationButton="true">
         </myTags:editPersonComprisedEntity>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${license}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
+<%--
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
@@ -110,3 +134,4 @@
     </script>
 
 </div>
+--%>

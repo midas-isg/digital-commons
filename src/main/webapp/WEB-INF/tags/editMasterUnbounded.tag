@@ -216,9 +216,11 @@
     <c:when test="${tagName == 'distribution'}">
         <myTags:editDistributions path="${path}[0]"
                                   specifier="${specifier}-0"
+                                  tagName="${tagName}"
                                   id="${specifier}-${tagName}-copy-tag"
                                   label="${label}"
-                                  isUnboundedList="${true}"/>
+                                  isUnboundedList="${true}">
+        </myTags:editDistributions>
     </c:when>
     <c:when test="${tagName == 'grant'}">
         <myTags:editGrant path="${path}[0]"
