@@ -55,7 +55,8 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-geometry-remove", function () {
-            document.getElementById("${specifier}-geometry-select").value = "";
+            clearAndHideEditControlGroup(this);
+            <%--document.getElementById("${specifier}-geometry-select").value = "";--%>
 
             $("#${specifier}-geometry-input-group").addClass("hide");
             $("#${specifier}-geometry-add").removeClass("hide");
