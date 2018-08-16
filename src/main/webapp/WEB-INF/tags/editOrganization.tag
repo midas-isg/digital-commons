@@ -19,10 +19,13 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(organization)}">hide</c:if>">
     <div id="${specifier}-input-block"
@@ -33,6 +36,18 @@
                     class="fa fa-minus-circle"></i> Remove
             </button>
         </c:if>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${organization}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier specifier="${specifier}-identifier"
                                label="Identifier"
                                path="${path}.identifier"
@@ -62,8 +77,23 @@
         <myTags:editPlace place="${organization.location}"
                           path="${path}.location"
                           specifier="${specifier}-location"
+                          tagName="place"
+                          id="${specifier}-location"
+                          isUnboundedList="${false}"
                           label="Location">
         </myTags:editPlace>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${organization}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
     </div>
 
     <script type="text/javascript">
@@ -78,4 +108,5 @@
 
     </script>
 </div>
+--%>
 

@@ -52,7 +52,6 @@
                                                label="${label}"
                                                isUnboundedList="${true}"
                                                id="${specifier}-${varStatus.count-1}"
-                                               tagName="${tagName}"
                                                path="${path}[${varStatus.count-1}]">
                         </myTags:editAnnotation>
                     </c:when>

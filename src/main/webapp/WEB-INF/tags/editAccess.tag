@@ -19,6 +19,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
 
 
 <%--

@@ -24,6 +24,8 @@
               type="java.lang.String" %>
 <%@ attribute name="showTopOrBottom" required="true"
               type="java.lang.String" %>
+<%@ attribute name="isFirstRequired" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
@@ -49,10 +51,12 @@
         <c:if test="${isUnboundedList}">
             <label>${label}</label>
         </c:if>
-        <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
+        <c:if test="${not isFirstRequired}">
+            <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
+                    class="fa fa-minus-circle"></i>
+                Remove
+            </button>
+        </c:if>
     </c:when>
 
 

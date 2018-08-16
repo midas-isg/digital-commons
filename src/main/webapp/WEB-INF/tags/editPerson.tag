@@ -17,12 +17,15 @@
               type="java.lang.String" %>
 <%@ attribute name="isFirstRequired" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="isUnboundedList" required="false"
+<%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(person)}">hide</c:if>">
     <div id="${specifier}-input-block"
@@ -33,6 +36,18 @@
                     class="fa fa-minus-circle"></i> Remove
             </button>
         </c:if>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${person}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier specifier="${specifier}-identifier"
                                label="Identifier"
                                path="${path}.identifier"
@@ -95,6 +110,18 @@
                                         tagName="annotation"
                                         label="Roles">
         </myTags:editMasterUnbounded>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${person}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
     </div>
 
     <script type="text/javascript">
@@ -109,5 +136,6 @@
 
     </script>
 </div>
+--%>
 
 

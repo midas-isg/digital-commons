@@ -112,6 +112,8 @@
         </myTags:editMasterUnbounded>
         <myTags:editAccess path="${path}.access"
                            specifier="${specifier}-access"
+                           id="${specifier}-access"
+                           tagName="access"
                            isUnboundedList="${false}"
                            isAccessRequired="true"
                            access="${distribution.access}">

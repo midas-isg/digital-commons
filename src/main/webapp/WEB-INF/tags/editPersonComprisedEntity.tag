@@ -47,6 +47,8 @@
                                          path="${path}[${varStatus.count-1}]"
                                          specifier="${specifier}-${varStatus.count-1}"
                                          label="${label} (Organization)"
+                                         id="${specifier}-${varStatus.count-1}"
+                                         tagName="organization"
                                          isUnboundedList="${true}"
                                          isFirstRequired="false">
                 </myTags:editOrganization>
@@ -57,6 +59,8 @@
                                    path="${path}[${varStatus.count-1}]"
                                    specifier="${specifier}-${varStatus.count-1}"
                                    label="${label} (Person)"
+                                   id="${specifier}-${varStatus.count-1}"
+                                   tagName="person"
                                    isUnboundedList="${true}"
                                    isFirstRequired="false">
                 </myTags:editPerson>
@@ -79,6 +83,7 @@
                              specifier="${specifier}-0"
                              label="${label} (Organization)"
                              id="${specifier}-organization-required-copy-tag"
+                             tagName="organization"
                              isFirstRequired="true"
                              isUnboundedList="true">
     </myTags:editOrganization>
@@ -87,6 +92,7 @@
                              specifier="${specifier}-0"
                              label="${label} (Organization)"
                              id="${specifier}-organization-copy-tag"
+                             tagName="organization"
                              isUnboundedList="true"
                              isFirstRequired="false">
     </myTags:editOrganization>
@@ -97,6 +103,7 @@
                        specifier="${specifier}-0"
                        label="${label} (Person)"
                        id="${specifier}-person-required-copy-tag"
+                       tagName="person"
                        isUnboundedList="true"
                        isFirstRequired="true">
     </myTags:editPerson>
@@ -105,6 +112,7 @@
                        specifier="${specifier}-0"
                        label="${label} (Person)"
                        id="${specifier}-person-copy-tag"
+                       tagName="person"
                        isUnboundedList="true"
                        isFirstRequired="false">
     </myTags:editPerson>
