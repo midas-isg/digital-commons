@@ -154,8 +154,9 @@
                         </myTags:editType>
                     </c:when>
                 </c:choose>
+                <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
+
             </c:if>
-            <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
         </div>
     </c:forEach>
     <div class="${specifier}-${tagName}-add-more"></div>

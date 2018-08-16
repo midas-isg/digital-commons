@@ -48,28 +48,33 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
-        <div class="form-group edit-form-group">
-            <label>Value</label>
-            <input type="text" class="form-control" value="${annotation.value}" name="${path}.value"
-                   placeholder="Value">
-        </div>
 
-        <c:set var="valueIRIPath" value="${path}.valueIRI"/>
-        <div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}">has-error</c:if>">
-            <label>Value IRI</label>
-            <input type="text" class="form-control" value="${annotation.valueIRI}" name="${valueIRIPath}"
-                   placeholder="Value IRI">
+        <myTags:editNonZeroLengthString path="${path}.value" specifier="${specifier}-value" placeholder="Value" isRequired="${true}" label="Value" string="${annotation.value}"></myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}.valueIRI" specifier="${specifier}-valueIRI" placeholder="Value IRI" isRequired="${true}" label="Value IRI" string="${annotation.valueIRI}"></myTags:editNonZeroLengthString>
 
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </div>
 
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
+        <%--<div class="form-group edit-form-group">--%>
+            <%--<label>Value</label>--%>
+            <%--<input type="text" class="form-control" value="${annotation.value}" name="${path}.value"--%>
+                   <%--placeholder="Value">--%>
+        <%--</div>--%>
+
+        <%--<c:set var="valueIRIPath" value="${path}.valueIRI"/>--%>
+        <%--<div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}">has-error</c:if>">--%>
+            <%--<label>Value IRI</label>--%>
+            <%--<input type="text" class="form-control" value="${annotation.valueIRI}" name="${valueIRIPath}"--%>
+                   <%--placeholder="Value IRI">--%>
+
+            <%--<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}" var="message">--%>
+                <%--<span class="error-color">${message.text}</span>--%>
+            <%--</c:forEach>--%>
+        <%--</div>--%>
+
+        <%--<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">--%>
+            <%--<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">--%>
+                <%--<span class="error-color">${message.text}</span>--%>
+            <%--</c:forEach>--%>
+        <%--</c:if>--%>
     </div>
 
     <c:if test="${not isRequired}">
