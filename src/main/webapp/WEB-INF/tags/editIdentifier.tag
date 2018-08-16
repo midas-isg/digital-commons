@@ -47,30 +47,6 @@
                                         isRequired="${true}" label="Identifier Source"
                                         string="${singleIdentifier.identifierSource}"></myTags:editNonZeroLengthString>
 
-
-        <%--<c:set var="identifierPath" value="${path}.identifier"/>--%>
-        <%--<c:set var="identifierSourcePath" value="${path}.identifierSource"/>--%>
-        <%--<div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierPath)}"> has-error</c:if>">--%>
-        <%--<label>Identifier</label>--%>
-        <%--<input type="text" class="form-control" value="${singleIdentifier.identifier}"--%>
-        <%--name="${path}.identifier"--%>
-        <%--placeholder=" A code uniquely identifying an entity locally to a system or globally.">--%>
-        <%--<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierPath)}"--%>
-        <%--var="message">--%>
-        <%--<span class="error-color">${message.text}</span>--%>
-        <%--</c:forEach>--%>
-        <%--</div>--%>
-
-        <%--<div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}"> has-error</c:if>">--%>
-        <%--<label>Identifier Source</label>--%>
-        <%--<input type="text" class="form-control" value="${singleIdentifier.identifierSource}"--%>
-        <%--name="${path}.identifierSource"--%>
-        <%--placeholder=" The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided.">--%>
-        <%--<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(identifierSourcePath)}"--%>
-        <%--var="message">--%>
-        <%--<span class="error-color">${message.text}</span>--%>
-        <%--</c:forEach>--%>
-        <%--</div>--%>
     </div>
 
     <script type="text/javascript">
