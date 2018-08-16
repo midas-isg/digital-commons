@@ -38,6 +38,10 @@
                     class="fa fa-plus-circle"></i> Add ${label} (Organization)
             </button>
         </c:if>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <br>
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
     </div>
     <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
     <c:forEach items="${personComprisedEntities}" varStatus="varStatus" var="personComprisedEntity">
@@ -69,11 +73,7 @@
         </c:choose>
 
         <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>
-        <c:set var="errorMessagePath" scope="page" value="${path}[${varStatus.count-1}]"/>
 
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(errorMessagePath)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
     </c:forEach>
     <div class="${specifier}-add-more"></div>
 </div>

@@ -1060,7 +1060,7 @@ div.container.metadata-container .metadata-column.fancy {
     border-color: #a94442;
 }
 
-.has-error select, .has-error input {
+.has-error select, .has-error input, .has-error .edit-form-group {
     border-color: #a94442 !important;
 }
 

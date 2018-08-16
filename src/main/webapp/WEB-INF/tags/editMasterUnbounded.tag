@@ -22,7 +22,7 @@
               type="java.lang.Boolean" %>
 
 
-<div class="form-group edit-form-group">
+<div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <label>${label}</label>
     <div id="${specifier}-add-input-button" class="form-group ${specifier}-${tagName}-add-more-button">
         <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
@@ -166,6 +166,9 @@
 
             </c:if>
         </div>
+    </c:forEach>
+    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+        <span class="error-color">${message.text}</span>
     </c:forEach>
     <div class="${specifier}-${tagName}-add-more"></div>
 </div>
