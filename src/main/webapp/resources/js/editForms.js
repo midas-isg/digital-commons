@@ -14,13 +14,11 @@ function clearAndHideEditControlGroup(controlGroup, id) {
             textareaElements[tae].value = null;
         }
     }
-    //TODO: clear geometry
-    /*
-    var geometryElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
-    for (var ge=0; tae < geometryElements.length; ge++) {
-        if (geometryElements[ge].type === "select") {
-            geometryElements[geometryElements].selected(null);
+
+    var selectElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
+    for (var se=0; se < selectElements.length; se++) {
+        if (selectElements[se].type === "select-one") {
+            selectElements[se].selectedIndex = -1;
         }
     }
-*/
 }
