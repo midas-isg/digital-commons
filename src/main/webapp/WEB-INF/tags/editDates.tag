@@ -65,6 +65,16 @@
     <c:if test="${not isRequired}">
         <script type="text/javascript">
             $(document).ready(function () {
+                <c:if test="${not empty date.date}">
+                $("#${specifier}-date-picker").datepicker({
+                    constrainInput: false,
+                    showOptions: { direction: "up" },
+                    changeMonth: true,
+                    changeYear: true,
+                    uiLibrary: 'bootstrap4',
+                });
+                </c:if>
+
                 $("body").on("click", ".${specifier}-add-date", function (e) {
                     e.stopImmediatePropagation();
 
@@ -87,13 +97,6 @@
                 });
             });
 
-            $(document).on("focus", "input.date:not(.hasDatepicker)", function () {
-                $(this).datepicker({
-                    constrainInput: false,
-                    changeMonth: true,
-                    changeYear: true
-                });
-            });
         </script>
     </c:if>
 
