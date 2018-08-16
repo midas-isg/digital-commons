@@ -20,10 +20,10 @@
               type="java.lang.String" %>
 
 
-<div id="${id}" class="form-group edit-form-group <c:if test="${isUnboundedList and empty singleIdentifier}">hide</c:if>">
+<div id="${id}" class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(singleIdentifier)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
-        <div id="${specifier}-add-input-button" class="input-group control-group">
+        <div id="${specifier}-add-input-button" class="input-group control-group <c:if test="${not function:isObjectEmpty(singleIdentifier)}">hide</c:if>">
             <div class="input-group-btn">
                 <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
                         class="fa fa-plus-circle"></i> Add

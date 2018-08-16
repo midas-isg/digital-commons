@@ -57,7 +57,6 @@
                           id="${specifier}-startDate"
                           isUnboundedList="${false}"
                           isRequired="${false}"
-                          showEditFormGroup="${true}"
                           date="${study.startDate}">
         </myTags:editDates>
         <myTags:editDates label="End Date"
@@ -66,7 +65,6 @@
                           id="${specifier}-startDate"
                           isUnboundedList="${false}"
                           isRequired="${false}"
-                          showEditFormGroup="${true}"
                           date="${study.endDate}">
         </myTags:editDates>
         <myTags:editPlace path="${path}.location"

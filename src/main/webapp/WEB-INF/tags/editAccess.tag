@@ -21,8 +21,9 @@
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isAccessRequired and function:isObjectEmpty(access)}">hide</c:if>">
+     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isAccessRequired and function:isObjectEmpty(access)}">hide</c:if>">
     <c:if test="${isAccessRequired and not isUnboundedList}">
         <label>Access</label>
     </c:if>
@@ -35,6 +36,18 @@
                 Remove
             </button>
         </c:if>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${access}"
+                                         label="Access"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isRequired="${isAccessRequired}"
+                                         tagName="access"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier label="Identifier"
                                specifier="${specifier}-identifier"
                                path="${path}.identifier"
@@ -80,6 +93,18 @@
                                     listItems="${access.authentications}"
                                     label="Authentications">
         </myTags:editMasterUnbounded>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${access}"
+                                         label="Access"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isRequired="${isAccessRequired}"
+                                         tagName="access"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+<%--
+
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
             <span class="error-color">${message.text}</span>
         </c:forEach>
@@ -97,7 +122,7 @@
             ${specifier}-input-block").removeClass("hide");
                 //add button not necessary -- in distributions its required and in Data Repository is a list
 
-            <%--$("#${specifier}-add-input-button").addClass("hide");--%>
+            &lt;%&ndash;$("#${specifier}-add-input-button").addClass("hide");&ndash;%&gt;
 
             });
 */
@@ -113,4 +138,5 @@
     </script>
 
 </div>
+--%>
 

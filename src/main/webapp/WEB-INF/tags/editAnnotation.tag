@@ -21,12 +21,10 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="showEditFormGroup" required="false"
-              type="java.lang.Boolean" %>
 
 
 <div id="${id}"
-     class="form-group <c:if test="${showEditFormGroup}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
+     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <c:if test="${not isRequired}">

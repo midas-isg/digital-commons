@@ -22,7 +22,7 @@
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(type)}">hide</c:if>">
+     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(type)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <div id="${specifier}-add-input-button"
@@ -50,7 +50,6 @@
                                label="Information"
                                isUnboundedList="${false}"
                                isRequired="${false}"
-                               showEditFormGroup="${true}"
                                path="${path}.information">
         </myTags:editAnnotation>
         <myTags:editAnnotation annotation="${type.method}"
@@ -58,7 +57,6 @@
                                label="Method"
                                isUnboundedList="${false}"
                                isRequired="${false}"
-                               showEditFormGroup="${true}"
                                path="${path}.method">
         </myTags:editAnnotation>
         <myTags:editAnnotation annotation="${type.platform}"
@@ -66,7 +64,6 @@
                                label="Platform"
                                isUnboundedList="${false}"
                                isRequired="${false}"
-                               showEditFormGroup="${true}"
                                path="${path}.platform">
         </myTags:editAnnotation>
 

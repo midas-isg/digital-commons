@@ -20,8 +20,9 @@
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
+<%--
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and function:isObjectEmpty(entity)}">hide</c:if>">
+     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and function:isObjectEmpty(entity)}">hide</c:if>">
     <c:if test="${isRequired and not isUnboundedList}">
         <label>${label}</label>
     </c:if>
@@ -37,6 +38,17 @@
                 Remove
             </button>
         </c:if>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${entity}"
+                                         label="${label}"
+                                         id="${specifier}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="biological-entity"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier singleIdentifier="${entity.identifier}"
                                path="${path}.identifier"
                                specifier="${specifier}-identifier"
@@ -62,6 +74,17 @@
                                         isTextArea="true"
                                         specifier="${specifier}-description">
         </myTags:editNonZeroLengthString>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${entity}"
+                                         label="${label}"
+                                         id="${specifier}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="biological-entity"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
     </div>
 
 
@@ -86,4 +109,5 @@
 
     </script>
 </div>
+--%>
 

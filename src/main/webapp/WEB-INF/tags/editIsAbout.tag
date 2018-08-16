@@ -39,15 +39,13 @@
     <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
         <c:choose>
             <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
-                <div class="form-group edit-form-group control-group">
-                    <myTags:editAnnotation annotation="${isAbout}"
-                                           path="${path}[${varStatus.count-1}]"
-                                           specifier="${specifier}-${varStatus.count-1}"
-                                           label="${label} (Annotation)"
-                                           isUnboundedList="true"
-                                           isRequired="false">
-                    </myTags:editAnnotation>
-                </div>
+                <myTags:editAnnotation annotation="${isAbout}"
+                                       path="${path}[${varStatus.count-1}]"
+                                       specifier="${specifier}-${varStatus.count-1}"
+                                       label="${label} (Annotation)"
+                                       isUnboundedList="true"
+                                       isRequired="false">
+                </myTags:editAnnotation>
             </c:when>
             <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
                 <myTags:editBiologicalEntity entity="${isAbout}"

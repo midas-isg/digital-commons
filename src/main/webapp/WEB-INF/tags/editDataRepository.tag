@@ -16,6 +16,7 @@
              type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
 
 
+<%--
 <div id="${id}" class="form-group edit-form-group">
     <label>${label}</label>
     <div id="${specifier}-add-input-button"
@@ -33,6 +34,16 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
+--%>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${dataRepository}"
+                                         label="${label}"
+                                         id="${specifier}"
+                                         isUnboundedList="${false}"
+                                         tagName="dataRepository"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
         <myTags:editIdentifier path="${path}.identifier"
                                singleIdentifier="${dataRepository.identifier}"
                                specifier="${specifier}-identifier"
@@ -98,6 +109,16 @@
                                     isRequired="${false}"
                                     label="Access">
         </myTags:editMasterUnbounded>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${dataRepository}"
+                                         label="${label}"
+                                         id="${specifier}"
+                                         isUnboundedList="${false}"
+                                         tagName="dataRepository"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+<%--
 
     </div>
 
@@ -122,3 +143,4 @@
 
     </script>
 </div>
+--%>

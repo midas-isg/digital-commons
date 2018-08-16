@@ -22,7 +22,7 @@
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${isUnboundedList and function:isObjectEmpty(place)}">hide</c:if>">
+     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(place)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <div id="${specifier}-add-place-button" class="input-group control-group">
@@ -36,6 +36,7 @@
     </c:if>
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${not isUnboundedList and function:isObjectEmpty(place)}">hide</c:if>">
+        <label>${label}</label>
         <button class="btn btn-danger ${specifier}-remove" id="${specifier}-remove" type="button"><i
                 class="fa fa-minus-circle"></i>
             Remove

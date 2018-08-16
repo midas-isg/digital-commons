@@ -39,6 +39,7 @@
                     <c:when test="${tagName == 'access'}">
                         <myTags:editAccess path="${path}[${varStatus.count-1}].access"
                                            specifier="${specifier}-${varStatus.count-1}-access"
+                                           id="${specifier}-${varStatus.count-1}-access"
                                            isAccessRequired="${isRequired}"
                                            isUnboundedList="${true}"
                                            access="${listItem}">
@@ -56,14 +57,17 @@
                     <c:when test="${tagName == 'categoryValuePair'}">
                         <myTags:editCategoryValuePair path="${path}[${varStatus.count-1}]"
                                                       specifier="${specifier}-${varStatus.count-1}"
+                                                      id="${specifier}-${varStatus.count-1}"
                                                       label="${label}"
                                                       isUnboundedList="${true}"
+                                                      tagName="${tagName}"
                                                       categoryValuePair="${listItem}">
                         </myTags:editCategoryValuePair>
                     </c:when>
                     <c:when test="${tagName == 'dataStandard'}">
                         <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
                                                  specifier="${specifier}-${varStatus.count-1}"
+                                                 id="${specifier}-${varStatus.count-1}"
                                                  label="${label}"
                                                  isUnboundedList="${true}"
                                                  dataStandard="${listItem}">
@@ -72,6 +76,7 @@
                     <c:when test="${tagName == 'date'}">
                         <myTags:editDates path="${path}[${varStatus.count-1}]"
                                           specifier="${specifier}-${varStatus.count-1}"
+                                          id="${specifier}-${varStatus.count-1}"
                                           isUnboundedList="${true}"
                                           date="${listItem}">
                         </myTags:editDates>
@@ -79,6 +84,7 @@
                     <c:when test="${tagName == 'distribution'}">
                         <myTags:editDistributions path="${path}[${varStatus.count-1}]"
                                                   specifier="${specifier}-${varStatus.count-1}"
+                                                  id="${specifier}-${varStatus.count-1}"
                                                   distribution="${listItem}"
                                                   isUnboundedList="${true}"
                                                   label="${label}">
@@ -87,6 +93,7 @@
                     <c:when test="${tagName == 'grant'}">
                         <myTags:editGrant path="${path}[${varStatus.count-1}]"
                                           specifier="${specifier}-${varStatus.count-1}"
+                                          id="${specifier}-${varStatus.count-1}"
                                           grant="${listItem}"
                                           isUnboundedList="${true}"
                                           label="${label}">
@@ -95,6 +102,7 @@
                     <c:when test="${tagName == 'identifier'}">
                         <myTags:editIdentifier singleIdentifier="${listItem}"
                                                specifier="${specifier}-${varStatus.count-1}"
+                                               id="${specifier}-${varStatus.count-1}"
                                                isUnboundedList="${true}"
                                                path="${path}[${varStatus.count-1}]">
                         </myTags:editIdentifier>
@@ -103,6 +111,7 @@
                         <myTags:editLicense path="${path}[${varStatus.count-1}]"
                                             label="${label}"
                                             license="${listItem}"
+                                            id="${specifier}-${varStatus.count-1}"
                                             isUnboundedList="${true}"
                                             specifier="${specifier}-${varStatus.count-1}">
                         </myTags:editLicense>
@@ -110,6 +119,7 @@
                     <c:when test="${tagName == 'place'}">
                         <myTags:editPlace path="${path}[${varStatus.count-1}]"
                                           specifier="${specifier}-${varStatus.count-1}"
+                                          id="${specifier}-${varStatus.count-1}"
                                           place="${listItem}"
                                           isUnboundedList="${true}"
                                           label="${label}">
@@ -118,6 +128,7 @@
                     <c:when test="${tagName == 'publication'}">
                         <myTags:editPublication path="${path}[${varStatus.count-1}]"
                                                 specifier="${specifier}-${varStatus.count-1}"
+                                                id="${specifier}-${varStatus.count-1}"
                                                 publication="${listItem}"
                                                 isUnboundedList="${true}"
                                                 label="${label}">
@@ -126,6 +137,7 @@
                     <c:when test="${tagName == 'string'}">
                         <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"
                                                         specifier="${specifier}-${varStatus.count-1}"
+                                                        id="${specifier}-${varStatus.count-1}"
                                                         placeholder="${placeholder}"
                                                         string="${listItem}"
                                                         isRequired="${false}"
@@ -135,6 +147,7 @@
                     <c:when test="${tagName == 'type'}">
                         <myTags:editType path="${path}[${varStatus.count-1}]"
                                          specifier="${specifier}-${varStatus.count-1}"
+                                         id="${specifier}-${varStatus.count-1}"
                                          label="${label}"
                                          type="${listItem}"
                                          isUnboundedList="${true}">
@@ -177,6 +190,7 @@
         <myTags:editCategoryValuePair path="${path}[0]"
                                       specifier="${specifier}-0"
                                       id="${specifier}-${tagName}-copy-tag"
+                                      tagName="${tagName}"
                                       isUnboundedList="${true}"
                                       label="${label}">
         </myTags:editCategoryValuePair>
