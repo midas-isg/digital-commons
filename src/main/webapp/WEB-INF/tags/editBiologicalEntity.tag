@@ -52,6 +52,8 @@
         <myTags:editIdentifier singleIdentifier="${entity.identifier}"
                                path="${path}.identifier"
                                specifier="${specifier}-identifier"
+                               id="${specifier}-identifier"
+                               isUnboundedList="${false}"
                                label="Identifier">
         </myTags:editIdentifier>
         <myTags:editMasterUnbounded path="${path}.alternateIdentifiers"

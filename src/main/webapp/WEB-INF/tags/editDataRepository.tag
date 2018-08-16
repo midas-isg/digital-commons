@@ -48,7 +48,9 @@
         </myTags:editMasterElementWrapper>
         <myTags:editIdentifier path="${path}.identifier"
                                singleIdentifier="${dataRepository.identifier}"
+                               id="${specifier}-identifier"
                                specifier="${specifier}-identifier"
+                               isUnboundedList="${false}"
                                label="Identifier">
         </myTags:editIdentifier>
         <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"

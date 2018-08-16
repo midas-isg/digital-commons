@@ -51,6 +51,7 @@
         <myTags:editIdentifier specifier="${specifier}-identifier"
                                label="Identifier"
                                path="${path}.identifier"
+                               id="${specifier}-identifier"
                                singleIdentifier="${person.identifier}"
                                isUnboundedList="${false}">
         </myTags:editIdentifier>

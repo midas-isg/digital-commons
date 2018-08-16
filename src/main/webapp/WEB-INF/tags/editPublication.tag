@@ -60,6 +60,7 @@
         <myTags:editIdentifier path="${path}.identifier"
                                singleIdentifier="${publication.identifier}"
                                specifier="${specifier}-identifier"
+                               id="${specifier}-identifier"
                                isUnboundedList="${false}"
                                label="Identifier">
         </myTags:editIdentifier>

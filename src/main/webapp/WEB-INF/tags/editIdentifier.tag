@@ -8,18 +8,19 @@
 
 <%@ attribute name="singleIdentifier" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Identifier" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="label" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="isUnboundedList" required="false"
+<%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}" class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(singleIdentifier)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
@@ -38,15 +39,42 @@
                 class="fa fa-minus-circle"></i>
             Remove
         </button>
-        <myTags:editNonZeroLengthString path="${path}.identifier" specifier="${specifier}-identifier"
-                                        placeholder="A code uniquely identifying an entity locally to a system or globally."
-                                        isRequired="${true}" label="Identifier"
-                                        string="${singleIdentifier.identifier}"></myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString path="${path}.identifierSource" specifier="${specifier}-identifierSource"
-                                        placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
-                                        isRequired="${true}" label="Identifier Source"
-                                        string="${singleIdentifier.identifierSource}"></myTags:editNonZeroLengthString>
+--%>
 
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${singleIdentifier}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="identifier"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editNonZeroLengthString path="${path}.identifier"
+                                        specifier="${specifier}-identifier"
+                                        placeholder="A code uniquely identifying an entity locally to a system or globally."
+                                        isRequired="${true}"
+                                        label="Identifier"
+                                        string="${singleIdentifier.identifier}">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}.identifierSource"
+                                        specifier="${specifier}-identifierSource"
+                                        placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
+                                        isRequired="${true}"
+                                        label="Identifier Source"
+                                        string="${singleIdentifier.identifierSource}">
+        </myTags:editNonZeroLengthString>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${singleIdentifier}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="identifier"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
     </div>
 
     <script type="text/javascript">
@@ -70,3 +98,4 @@
 
     </script>
 </div>
+--%>

@@ -50,6 +50,7 @@
         </myTags:editMasterElementWrapper>
         <myTags:editIdentifier specifier="${specifier}-identifier"
                                label="Identifier"
+                               id="${specifier}-identifier"
                                path="${path}.identifier"
                                singleIdentifier="${organization.identifier}"
                                isUnboundedList="${false}">

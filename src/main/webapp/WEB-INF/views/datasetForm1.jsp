@@ -30,6 +30,8 @@
             </myTags:editCategory>
             <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
                                    specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
                                    path="identifier"
                                    label="Identifier">
             </myTags:editIdentifier>

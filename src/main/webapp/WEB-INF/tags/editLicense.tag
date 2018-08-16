@@ -59,6 +59,8 @@
         </myTags:editMasterElementWrapper>
         <myTags:editIdentifier label="Identifier"
                                path="${path}.identifier"
+                               isUnboundedList="${false}"
+                               id="${specifier}-identifier"
                                singleIdentifier="${license.identifier}"
                                specifier="${specifier}-identifier">
         </myTags:editIdentifier>

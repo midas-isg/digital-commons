@@ -105,6 +105,7 @@
                     </c:when>
                     <c:when test="${tagName == 'identifier'}">
                         <myTags:editIdentifier singleIdentifier="${listItem}"
+                                               label="Identifier"
                                                specifier="${specifier}-${varStatus.count-1}"
                                                id="${specifier}-${varStatus.count-1}"
                                                isUnboundedList="${true}"
@@ -236,6 +237,7 @@
     </c:when>
     <c:when test="${tagName == 'identifier'}">
         <myTags:editIdentifier specifier="${specifier}-0"
+                               label="Identifier"
                                isUnboundedList="${true}"
                                id="${specifier}-${tagName}-copy-tag"
                                path="${path}[0]">
