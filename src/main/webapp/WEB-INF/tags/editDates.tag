@@ -77,7 +77,13 @@
 
                 $("body").on("click", ".${specifier}-add-date", function (e) {
                     e.stopImmediatePropagation();
-
+                    $("#${specifier}-date-picker").datepicker({
+                        constrainInput: false,
+                        showOptions: { direction: "up" },
+                        changeMonth: true,
+                        changeYear: true,
+                        uiLibrary: 'bootstrap4',
+                    });
                     $("#${specifier}-input-block").removeClass("hide");
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");

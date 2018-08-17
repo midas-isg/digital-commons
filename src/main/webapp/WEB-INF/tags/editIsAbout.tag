@@ -45,14 +45,16 @@
                                        id="${specifier}-${varStatus.count-1}"
                                        label="${label} (Annotation)"
                                        isUnboundedList="${true}"
-                                       isRequired="false">
+                                       isRequired="${false}">
                 </myTags:editAnnotation>
             </c:when>
             <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
                 <myTags:editBiologicalEntity entity="${isAbout}"
                                              path="${path}[${varStatus.count-1}]"
+                                             id="${specifier}-${varStatus.count-1}"
                                              specifier="${specifier}-${varStatus.count-1}"
-                                             isUnboundedList="true"
+                                             isUnboundedList="${true}"
+                                             isRequired="${false}"
                                              label="${label} (BiologicalEntity)">
                 </myTags:editBiologicalEntity>
             </c:when>
@@ -77,14 +79,15 @@
                        specifier="${specifier}-0"
                        id="${specifier}-annotation-copy-tag"
                        label="${label} (Annotation)"
-                       isUnboundedList="true"
-                       isRequired="false">
+                       isUnboundedList="${true}"
+                       isRequired="${false}">
 </myTags:editAnnotation>
 
 <myTags:editBiologicalEntity path="${path}[0]"
                              specifier="${specifier}-0"
                              id="${specifier}-biologicalEntity-copy-tag"
-                             isUnboundedList="true"
+                             isUnboundedList="${true}"
+                             isRequired="${false}"
                              label="${label} (BiologicalEntity)">
 </myTags:editBiologicalEntity>
 

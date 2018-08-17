@@ -61,12 +61,12 @@
 
 
     <c:when test="${showTopOrBottom == 'bottom'}">
+        </div>
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
             </c:forEach>
         </c:if>
-        </div>
 
         <script type="text/javascript">
             $(document).ready(function () {

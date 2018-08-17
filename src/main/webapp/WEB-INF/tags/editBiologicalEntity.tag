@@ -44,7 +44,7 @@
                                          specifier="${specifier}"
                                          object="${entity}"
                                          label="${label}"
-                                         id="${specifier}"
+                                         id="${id}"
                                          isUnboundedList="${isUnboundedList}"
                                          tagName="biological-entity"
                                          showTopOrBottom="top">
