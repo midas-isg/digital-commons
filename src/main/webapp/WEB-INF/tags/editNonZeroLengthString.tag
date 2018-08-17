@@ -58,6 +58,7 @@
         </myTags:editMasterElementWrapper>
         <myTags:editInputBlock path="${path}"
                                specifier="${specifier}-string"
+                               string="${string}"
                                isTextArea="${isTextArea}"
                                placeholder="${placeholder}">
         </myTags:editInputBlock>

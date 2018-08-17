@@ -19,6 +19,7 @@
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}"
      class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <label>${label}</label>
@@ -33,7 +34,41 @@
     </div>
     <div id="${specifier}-input-block"
          class="input-group control-group full-width <c:if test="${empty number}">hide</c:if>">
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${number}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${false}"
+                                         isInputGroup="${true}"
+                                         isRequired="${false}"
+                                         tagName="float"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editInputBlock path="${path}"
+                               specifier="${specifier}-number"
+                               number="${number}"
+                               isFloat="${true}"
+                               placeholder="${placeholder}">
+        </myTags:editInputBlock>
+<%--
         <input type="number" step="any" class="form-control" value="${number}" name="${path}" id="${specifier}-number" placeholder="${placeholder}"/>
+--%>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${number}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${false}"
+                                         isInputGroup="${true}"
+                                         isRequired="${false}"
+                                         tagName="float"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
         <div class="input-group-btn">
             <button class="btn btn-danger ${specifier}-number-remove" type="button"><i
                     class="fa fa-minus-circle"></i>
@@ -69,3 +104,4 @@
     </c:if>
 
 </div>
+--%>

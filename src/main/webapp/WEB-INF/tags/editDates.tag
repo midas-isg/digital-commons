@@ -22,6 +22,7 @@
               type="java.lang.String" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(date)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -46,8 +47,30 @@
         </button>
         <div class="form-group edit-form-group">
             <label>Date</label>
+--%>
+
+            <myTags:editMasterElementWrapper path="${path}"
+                                             specifier="${specifier}"
+                                             object="${date}"
+                                             label="${label}"
+                                             id="${id}"
+                                             isUnboundedList="${isUnboundedList}"
+                                             isInputGroup="${false}"
+                                             isRequired="${isRequired}"
+                                             tagName="date"
+                                             showTopOrBottom="top">
+            </myTags:editMasterElementWrapper>
+            <myTags:editInputBlock path="${path}.date"
+                                   specifier="${specifier}-date-picker"
+                                   date="${date}"
+                                   isDate="${true}"
+                                   placeholder="">
+            </myTags:editInputBlock>
+
+<%--
             <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
                    id="${specifier}-date-picker">
+--%>
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
                 <span class="error-color">${message.text}</span>
             </c:forEach>
@@ -59,6 +82,33 @@
                                    isUnboundedList="${false}"
                                    specifier="${specifier}-date">
             </myTags:editAnnotation>
+            <myTags:editMasterElementWrapper path="${path}"
+                                             specifier="${specifier}"
+                                             object="${date}"
+                                             label="${label}"
+                                             id="${id}"
+                                             isUnboundedList="${isUnboundedList}"
+                                             isInputGroup="${false}"
+                                             isRequired="${isRequired}"
+                                             tagName="date"
+                                             showTopOrBottom="bottom">
+            </myTags:editMasterElementWrapper>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    <c:if test="${not empty date.date}">
+                    $("#${specifier}-date-picker").datepicker({
+                        constrainInput: false,
+                        showOptions: { direction: "up" },
+                        changeMonth: true,
+                        changeYear: true,
+                        uiLibrary: 'bootstrap4'
+                    });
+                    </c:if>
+                });
+
+            </script>
+
+<%--
         </div>
     </div>
 
@@ -101,3 +151,4 @@
     </c:if>
 
 </div>
+--%>

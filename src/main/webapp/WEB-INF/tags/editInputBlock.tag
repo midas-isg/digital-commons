@@ -44,8 +44,8 @@
                placeholder="${placeholder}"/>
     </c:when>
     <c:when test="${isDate}">
-        <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
-               id="${specifier}-date-picker">
+        <input type="text" class="form-control date" value="${date.date}" name="${path}"
+               id="${specifier}">
     </c:when>
     <c:when test="${isTextArea}">
         <textarea name="${path}" id="${specifier}" type="text" class="form-control" rows="5"
