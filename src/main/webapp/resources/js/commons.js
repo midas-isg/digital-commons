@@ -732,9 +732,11 @@ $(document).ready(function() {
     });
 
     $(document.body).on("click", "a", function(event) {
+
         var href = this.getAttribute("href");
 
-        if(href.includes('http')) {
+
+        if(href != undefined && href.includes('http')) {
             ga('send', {
                 hitType: 'event',
                 eventCategory: 'Clickthrough',
@@ -749,6 +751,14 @@ $(document).ready(function() {
         $('#modal-switch-btn').text('Switch to Metadata View');
         $('#modal-html-link').click();
         location.hash = '_';
+    });
+
+    // Collapsible Card
+    $('a[data-action="collapse"]').on('click',function(e){
+        e.preventDefault();
+        $(this).closest('.card').children('.card-content').collapse('toggle');
+        $(this).closest('.card').find('[data-action="collapse"] i').toggleClass('ft-minimize-2 ft-maximize');
+
     });
 });
 

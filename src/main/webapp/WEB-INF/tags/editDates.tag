@@ -21,12 +21,12 @@
 
 
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(date)}">hide</c:if>">
+     class="card form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(date)}">d-none</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <c:if test="${not isRequired}">
-            <div id="${specifier}-add-input-button"
-                 class="input-group control-group ${specifier}-date-add-more <c:if test="${not function:isObjectEmpty(date)}">hide</c:if>">
+            <div id="${specifier}-add-input-button
+                 class="input-group control-group ${specifier}-date-add-more <c:if test="${not function:isObjectEmpty(date)}">d-none</c:if>">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-date" type="button"><i
                             class="glyphicon glyphicon-plus"></i> Add
@@ -37,11 +37,11 @@
         </c:if>
     </c:if>
     <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(date) and not isUnboundedList and not isRequired}">hide</c:if>">
-        <button class="btn btn-danger ${specifier}-date-remove" type="button"><i
+         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(date) and not isUnboundedList and not isRequired}">d-none</c:if>">
+       <%-- <button class="btn btn-danger ${specifier}-date-remove" type="button"><i
                 class="glyphicon glyphicon-remove"></i>
             Remove
-        </button>
+        </button>--%>
         <div class="form-group edit-form-group">
             <label>Date</label>
             <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
@@ -64,9 +64,9 @@
                 $("body").on("click", ".${specifier}-add-date", function (e) {
                     e.stopImmediatePropagation();
 
-                    $("#${specifier}-input-block").removeClass("hide");
+                    $("#${specifier}-input-block").removeClass("d-none");
                     <c:if test="${isUnboundedList or not isRequired}">
-                    $("#${specifier}-add-input-button").addClass("hide");
+                    $("#${specifier}-add-input-button").addClass("d-none");
                     </c:if>
 
                     //Add section
@@ -78,8 +78,8 @@
                     e.stopImmediatePropagation();
 
                     clearAndHideEditControlGroup(this);
-                    $("#${specifier}-add-input-button").removeClass("hide");
-                    $("#${specifier}-input-block").addClass("hide");
+                    $("#${specifier}-add-input-button").removeClass("d-none");
+                    $("#${specifier}-input-block").addClass("d-none");
                 });
             });
 

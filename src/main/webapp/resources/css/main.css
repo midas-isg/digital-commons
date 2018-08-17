@@ -5,6 +5,11 @@
     text-overflow: ellipsis;
 }
 
+.nav-link.active {
+    background-color:#607195 !important;
+    color:white !important;
+}
+
 .node-break {
     word-wrap: break-word;
 }
@@ -736,8 +741,10 @@ tfoot {
     border-bottom: 0px!important;
 }
 
-nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
-    background-color: rgba(0, 0, 0, 0.25) !important;
+
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    /*background-color: rgba(0, 0, 0, 0.25) !important;*/
     border-color: transparent;
 }
 
@@ -787,7 +794,7 @@ nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #495057;
-    background-color: rgba(0, 0, 0, 0.25) !important;
+/*    background-color: rgba(0, 0, 0, 0.25) !important;*/
     border-color: transparent;
 }
 
@@ -1170,5 +1177,42 @@ ul.CTAs a {
 }
 
 .wizard-nav-link {
-    background: blue;
+    background: white;
+    color:#607195 !important;
+    border-color: #adadad !important;
+    height:30px !important;
+}
+
+.wizard-form-group {
+    margin-bottom: 2px !important;
+    margin-top: 2px !important;
+}
+
+
+
+
+
+.heading-elements {
+    top:6px !important;
+}
+
+.card-title {
+    font-size:1.0em !important;
+}
+
+::-webkit-input-placeholder {
+    color: peachpuff;
+    font-size: 10px;
+}
+::-moz-placeholder {
+    color: peachpuff;
+    font-size: 10px;
+}
+:-ms-input-placeholder {
+    color: peachpuff;
+    font-size: 10px;
+}
+::placeholder {
+    color: peachpuff;
+    font-size: 10px;
 }
