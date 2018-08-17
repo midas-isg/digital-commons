@@ -89,6 +89,7 @@
                     $("#${specifier}-add-input-button").addClass("hide");
                     </c:if>
                     $("#${specifier}-date-picker").datepicker({
+                        orientation: 'top auto',
                         todayHighlight: true,
                         format: 'yyyy-mm-dd',
                         uiLibrary: 'bootstrap4',

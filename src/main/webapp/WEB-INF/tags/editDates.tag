@@ -66,6 +66,7 @@
     $(document).ready(function () {
         <c:if test="${not empty date.date}">
         $("#${specifier}-date-picker").datepicker({
+            orientation: 'top auto',
             todayHighlight: true,
             format: 'yyyy-mm-dd',
             uiLibrary: 'bootstrap4'

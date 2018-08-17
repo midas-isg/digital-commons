@@ -61,8 +61,8 @@
             <%--Datepicker--%>
             <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
-            <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/js/gijgo.min.js" type="text/javascript"></script>
-            <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.10/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+            <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/datepicker/bootstrap-datepicker.min.js"></script>
+            <link href="${pageContext.request.contextPath}/resources/css/datepicker/bootstrap-datepicker3.min.css" rel="stylesheet">
 
             <%--<!-- LoDash JS -->--%>
             <%--<script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>--%>
