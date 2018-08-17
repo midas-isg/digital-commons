@@ -45,42 +45,43 @@
     </div>
     <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>
     <c:forEach items="${personComprisedEntities}" varStatus="varStatus" var="personComprisedEntity">
-        <c:choose>
-            <c:when test="${not function:isPerson(personComprisedEntity)}">
-                <myTags:editOrganization organization="${personComprisedEntity}"
-                                         path="${path}[${varStatus.count-1}]"
-                                         specifier="${specifier}-${varStatus.count-1}"
-                                         label="${label} (Organization)"
-                                         id="${specifier}-${varStatus.count-1}"
-                                         tagName="organization"
-                                         isUnboundedList="${true}"
-                                         isFirstRequired="false">
-                </myTags:editOrganization>
+        <c:if test="${not function:isObjectEmpty(personComprisedEntity)}">
+            <c:choose>
+                <c:when test="${not function:isPerson(personComprisedEntity)}">
+                    <myTags:editOrganization organization="${personComprisedEntity}"
+                                             path="${path}[${varStatus.count-1}]"
+                                             specifier="${specifier}-${varStatus.count-1}"
+                                             label="${label} (Organization)"
+                                             id="${specifier}-${varStatus.count-1}"
+                                             tagName="organization"
+                                             isUnboundedList="${true}"
+                                             isFirstRequired="false">
+                    </myTags:editOrganization>
 
-            </c:when>
-            <c:when test="${function:isPerson(personComprisedEntity)}">
-                <myTags:editPerson person="${personComprisedEntity}"
-                                   path="${path}[${varStatus.count-1}]"
-                                   specifier="${specifier}-${varStatus.count-1}"
-                                   label="${label} (Person)"
-                                   id="${specifier}-${varStatus.count-1}"
-                                   tagName="person"
-                                   isUnboundedList="${true}"
-                                   isFirstRequired="false">
-                </myTags:editPerson>
+                </c:when>
+                <c:when test="${function:isPerson(personComprisedEntity)}">
+                    <myTags:editPerson person="${personComprisedEntity}"
+                                       path="${path}[${varStatus.count-1}]"
+                                       specifier="${specifier}-${varStatus.count-1}"
+                                       label="${label} (Person)"
+                                       id="${specifier}-${varStatus.count-1}"
+                                       tagName="person"
+                                       isUnboundedList="${true}"
+                                       isFirstRequired="false">
+                    </myTags:editPerson>
 
-            </c:when>
-        </c:choose>
+                </c:when>
+            </c:choose>
 
-        <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>
-
+            <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="${varStatus.count}"/>
+        </c:if>
     </c:forEach>
     <div class="${specifier}-add-more"></div>
 </div>
 
 <c:if test="${showAddOrganizationButton}">
     <myTags:editOrganization path="${path}[0]"
-                             specifier="${specifier}-0"
+                             specifier="${specifier}-00"
                              label="${label} (Organization)"
                              id="${specifier}-organization-required-copy-tag"
                              tagName="organization"
@@ -89,7 +90,7 @@
     </myTags:editOrganization>
 
     <myTags:editOrganization path="${path}[0]"
-                             specifier="${specifier}-0"
+                             specifier="${specifier}-00"
                              label="${label} (Organization)"
                              id="${specifier}-organization-copy-tag"
                              tagName="organization"
@@ -100,7 +101,7 @@
 
 <c:if test="${showAddPersonButton and createPersonOrganizationTags}">
     <myTags:editPerson path="${path}[0]"
-                       specifier="${specifier}-0"
+                       specifier="${specifier}-00"
                        label="${label} (Person)"
                        id="${specifier}-person-required-copy-tag"
                        tagName="person"
@@ -109,7 +110,7 @@
     </myTags:editPerson>
 
     <myTags:editPerson path="${path}[0]"
-                       specifier="${specifier}-0"
+                       specifier="${specifier}-00"
                        label="${label} (Person)"
                        id="${specifier}-person-copy-tag"
                        tagName="person"
@@ -136,7 +137,7 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');
             unboundedPersonComprisedEntityCount += 1;
@@ -161,7 +162,7 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + unboundedPersonComprisedEntityCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + unboundedPersonComprisedEntityCount + '-');
             unboundedPersonComprisedEntityCount += 1;

@@ -37,46 +37,48 @@
     </div>
     <c:set var="unboundedIsAboutCount" scope="page" value="0"/>
     <c:forEach items="${isAboutList}" varStatus="varStatus" var="isAbout">
-        <c:choose>
-            <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
-                <myTags:editAnnotation annotation="${isAbout}"
-                                       path="${path}[${varStatus.count-1}]"
-                                       specifier="${specifier}-${varStatus.count-1}"
-                                       id="${specifier}-${varStatus.count-1}"
-                                       label="${label} (Annotation)"
-                                       isUnboundedList="${true}"
-                                       isRequired="${false}">
-                </myTags:editAnnotation>
-            </c:when>
-            <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
-                <myTags:editBiologicalEntity entity="${isAbout}"
-                                             path="${path}[${varStatus.count-1}]"
-                                             id="${specifier}-${varStatus.count-1}"
-                                             specifier="${specifier}-${varStatus.count-1}"
-                                             isUnboundedList="${true}"
-                                             isRequired="${false}"
-                                             label="${label} (BiologicalEntity)">
-                </myTags:editBiologicalEntity>
-            </c:when>
-        </c:choose>
+        <c:if test="${not function:isObjectEmpty(isAbout)}">
+            <c:choose>
+                <c:when test="${not empty isAbout.value or not empty isAbout.valueIRI}">
+                    <myTags:editAnnotation annotation="${isAbout}"
+                                           path="${path}[${varStatus.count-1}]"
+                                           specifier="${specifier}-${varStatus.count-1}"
+                                           id="${specifier}-${varStatus.count-1}"
+                                           label="${label} (Annotation)"
+                                           isUnboundedList="${true}"
+                                           isRequired="${false}">
+                    </myTags:editAnnotation>
+                </c:when>
+                <c:when test="${not empty isAbout.identifier or not empty isAbout.name or not empty isAbout.description}">
+                    <myTags:editBiologicalEntity entity="${isAbout}"
+                                                 path="${path}[${varStatus.count-1}]"
+                                                 id="${specifier}-${varStatus.count-1}"
+                                                 specifier="${specifier}-${varStatus.count-1}"
+                                                 isUnboundedList="${true}"
+                                                 isRequired="${false}"
+                                                 label="${label} (BiologicalEntity)">
+                    </myTags:editBiologicalEntity>
+                </c:when>
+            </c:choose>
 
-        <c:if test="${varStatus.first}">
+            <c:if test="${varStatus.first}">
 
-            <form:errors path="${path}[0]" class="error-color"/>
+                <form:errors path="${path}[0]" class="error-color"/>
+            </c:if>
+
+            <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
+            <c:set var="errorMessagePath" scope="page" value="${path}[${varStatus.count-1}]"/>
+
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(errorMessagePath)}" var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
         </c:if>
-
-        <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
-        <c:set var="errorMessagePath" scope="page" value="${path}[${varStatus.count-1}]"/>
-
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(errorMessagePath)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
     </c:forEach>
     <div class="${specifier}-add-more"></div>
 </div>
 
 <myTags:editAnnotation path="${path}[0]"
-                       specifier="${specifier}-0"
+                       specifier="${specifier}-00"
                        id="${specifier}-annotation-copy-tag"
                        label="${label} (Annotation)"
                        isUnboundedList="${true}"
@@ -84,13 +86,12 @@
 </myTags:editAnnotation>
 
 <myTags:editBiologicalEntity path="${path}[0]"
-                             specifier="${specifier}-0"
+                             specifier="${specifier}-00"
                              id="${specifier}-biologicalEntity-copy-tag"
                              isUnboundedList="${true}"
                              isRequired="${false}"
                              label="${label} (BiologicalEntity)">
 </myTags:editBiologicalEntity>
-
 
 
 <script type="text/javascript">
@@ -106,7 +107,7 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + unboundedIsAboutCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + unboundedIsAboutCount + '-');
             unboundedIsAboutCount += 1;
@@ -125,7 +126,7 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + unboundedIsAboutCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + unboundedIsAboutCount + '-');
             unboundedIsAboutCount += 1;

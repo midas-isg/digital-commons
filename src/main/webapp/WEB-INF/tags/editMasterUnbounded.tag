@@ -176,8 +176,8 @@
 
 <c:choose>
     <c:when test="${tagName == 'access'}">
-        <myTags:editAccess path="${path}[0].access"
-                           specifier="${specifier}-0-access"
+        <myTags:editAccess path="${path}[0]"
+                           specifier="${specifier}-00"
                            tagName="${tagName}"
                            isUnboundedList="${true}"
                            id="${specifier}-${tagName}-copy-tag"
@@ -185,7 +185,7 @@
         </myTags:editAccess>
     </c:when>
     <c:when test="${tagName == 'annotation'}">
-        <myTags:editAnnotation specifier="${specifier}-0"
+        <myTags:editAnnotation specifier="${specifier}-00"
                                label="${label}"
                                isUnboundedList="${true}"
                                id="${specifier}-${tagName}-copy-tag"
@@ -194,7 +194,7 @@
     </c:when>
     <c:when test="${tagName == 'categoryValuePair'}">
         <myTags:editCategoryValuePair path="${path}[0]"
-                                      specifier="${specifier}-0"
+                                      specifier="${specifier}-00"
                                       id="${specifier}-${tagName}-copy-tag"
                                       tagName="${tagName}"
                                       isUnboundedList="${true}"
@@ -203,7 +203,7 @@
     </c:when>
     <c:when test="${tagName == 'dataStandard'}">
         <myTags:editDataStandard path="${path}[0]"
-                                 specifier="${specifier}-0"
+                                 specifier="${specifier}-00"
                                  tagName="${tagName}"
                                  label="${label}"
                                  isUnboundedList="${true}"
@@ -212,14 +212,14 @@
     </c:when>
     <c:when test="${tagName == 'date'}">
         <myTags:editDates path="${path}[0]"
-                          specifier="${specifier}-0"
+                          specifier="${specifier}-00"
                           isUnboundedList="${true}"
                           id="${specifier}-${tagName}-copy-tag">
         </myTags:editDates>
     </c:when>
     <c:when test="${tagName == 'distribution'}">
         <myTags:editDistributions path="${path}[0]"
-                                  specifier="${specifier}-0"
+                                  specifier="${specifier}-00"
                                   tagName="${tagName}"
                                   id="${specifier}-${tagName}-copy-tag"
                                   label="${label}"
@@ -228,7 +228,7 @@
     </c:when>
     <c:when test="${tagName == 'grant'}">
         <myTags:editGrant path="${path}[0]"
-                          specifier="${specifier}-0"
+                          specifier="${specifier}-00"
                           tagName="${tagName}"
                           id="${specifier}-${tagName}-copy-tag"
                           isUnboundedList="${true}"
@@ -236,7 +236,7 @@
         </myTags:editGrant>
     </c:when>
     <c:when test="${tagName == 'identifier'}">
-        <myTags:editIdentifier specifier="${specifier}-0"
+        <myTags:editIdentifier specifier="${specifier}-00"
                                label="Identifier"
                                isUnboundedList="${true}"
                                id="${specifier}-${tagName}-copy-tag"
@@ -249,12 +249,12 @@
                             id="${specifier}-${tagName}-copy-tag"
                             tagName="${tagName}"
                             isUnboundedList="${true}"
-                            specifier="${specifier}-0">
+                            specifier="${specifier}-00">
         </myTags:editLicense>
     </c:when>
     <c:when test="${tagName == 'place'}">
         <myTags:editPlace path="${path}[0]"
-                          specifier="${specifier}-0"
+                          specifier="${specifier}-00"
                           id="${specifier}-${tagName}-copy-tag"
                           tagName="${tagName}"
                           isUnboundedList="${true}"
@@ -263,7 +263,7 @@
     </c:when>
     <c:when test="${tagName == 'publication'}">
         <myTags:editPublication path="${path}[0]"
-                                specifier="${specifier}-0"
+                                specifier="${specifier}-00"
                                 id="${specifier}-${tagName}-copy-tag"
                                 tagName="${tagName}"
                                 isUnboundedList="${true}"
@@ -272,7 +272,7 @@
     </c:when>
     <c:when test="${tagName == 'string'}">
         <myTags:editNonZeroLengthString path="${path}[0]"
-                                        specifier="${specifier}-0"
+                                        specifier="${specifier}-00"
                                         placeholder="${placeholder}"
                                         id="${specifier}-${tagName}-copy-tag"
                                         isRequired="${false}"
@@ -281,7 +281,7 @@
     </c:when>
     <c:when test="${tagName == 'type'}">
         <myTags:editType path="${path}[0]"
-                         specifier="${specifier}-0"
+                         specifier="${specifier}-00"
                          label="${label}"
                          tagName="${tagName}"
                          id="${specifier}-${tagName}-copy-tag"
@@ -304,7 +304,7 @@
             var regexEscapeClosedBracket = new RegExp('\\]', "g");
             path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
             var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
+            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + listItemCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + listItemCount);
             /*
