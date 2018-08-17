@@ -312,15 +312,13 @@
             */
 
             $(".${specifier}-${tagName}-add-more").before(html);
-
-            $("#${specifier}-" + listItemCount+ "-date-picker").datepicker({
+            $("#${specifier}-"+ listItemCount+ "-date-picker").datepicker({
                 constrainInput: false,
                 showOptions: { direction: "up" },
                 changeMonth: true,
                 changeYear: true,
                 uiLibrary: 'bootstrap4',
             });
-
             listItemCount += 1;
         });
 

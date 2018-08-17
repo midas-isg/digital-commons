@@ -63,6 +63,7 @@
         </c:if>
     </c:when>
 
+
     <c:when test="${showTopOrBottom == 'bottom'}">
         <c:if test="${not isRequired and isInputGroup}">
             <div class="input-group-btn">
@@ -72,18 +73,17 @@
                 </button>
             </div>
         </c:if>
+        </div>
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
             </c:forEach>
         </c:if>
-        </div>
 
         <script type="text/javascript">
             $(document).ready(function () {
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
                     e.stopImmediatePropagation();
-
                     $("#${specifier}-input-block").removeClass("hide");
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
