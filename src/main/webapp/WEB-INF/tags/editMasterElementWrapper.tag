@@ -26,6 +26,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isInputGroup" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
@@ -35,23 +37,25 @@
             test="${isUnboundedList and function:isObjectEmpty(object)}">hide</c:if>">
         <c:if test="${not isUnboundedList}">
             <label>${label}</label>
-            <div id="${specifier}-add-input-button"
-                 class="input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
-                            class="fa fa-plus-circle"></i> Add
-                            ${label}
-                    </button>
+            <c:if test="${not isRequired}">
+                <div id="${specifier}-add-input-button"
+                     class="input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">
+                    <div class="input-group-btn">
+                        <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
+                                class="fa fa-plus-circle"></i> Add
+                                ${label}
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </c:if>
         </c:if>
         <div id="${specifier}-input-block"
-        class="form-group control-group edit-form-group <c:if
-            test="${function:isObjectEmpty(object) and not isUnboundedList}">hide</c:if>">
+        class="<c:if test="${not isInputGroup}">form-group edit-form-group</c:if>  <c:if test="${isInputGroup}">input-group full-width</c:if> control-group  <c:if
+            test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
         <c:if test="${isUnboundedList}">
             <label>${label}</label>
         </c:if>
-        <c:if test="${not isFirstRequired}">
+        <c:if test="${not (isRequired or isFirstRequired or isInputGroup)}">
             <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
                     class="fa fa-minus-circle"></i>
                 Remove
@@ -59,8 +63,15 @@
         </c:if>
     </c:when>
 
-
     <c:when test="${showTopOrBottom == 'bottom'}">
+        <c:if test="${not isRequired and isInputGroup}">
+            <div class="input-group-btn">
+                <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
+                        class="fa fa-minus-circle"></i>
+                    Remove
+                </button>
+            </div>
+        </c:if>
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>

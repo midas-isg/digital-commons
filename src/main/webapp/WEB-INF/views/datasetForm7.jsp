@@ -33,6 +33,7 @@
                                         label="Citations">
             </myTags:editMasterUnbounded>
             <myTags:editFloat path="citationCount"
+                              id="citationCount"
                               specifier="citationCount"
                               number="${dataset.citationCount}"
                               label="Citation Count"

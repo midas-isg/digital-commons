@@ -24,6 +24,7 @@
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
      class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and empty string}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
@@ -42,6 +43,25 @@
     </c:if>
     <div id="${specifier}-input-block"
          class="input-group control-group full-width <c:if test="${empty string and not isUnboundedList and not isRequired}">hide</c:if>">
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${string}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isInputGroup="${true}"
+                                         isRequired="${isRequired}"
+                                         tagName="string"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editInputBlock path="${path}"
+                               specifier="${specifier}-string"
+                               isTextArea="${isTextArea}"
+                               placeholder="${placeholder}">
+        </myTags:editInputBlock>
+<%--
         <c:choose>
             <c:when test="${isTextArea}">
                 <textarea name="${path}" id="${specifier}-string" type="text" class="form-control" rows="5"
@@ -52,6 +72,20 @@
                        id="${specifier}-string" placeholder="${placeholder}"/>
             </c:otherwise>
         </c:choose>
+--%>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${string}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isInputGroup="${true}"
+                                         isRequired="${isRequired}"
+                                         tagName="string"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
         <c:if test="${not isRequired}">
             <div class="input-group-btn">
                 <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
@@ -94,3 +128,4 @@
     </c:if>
 
 </div>
+--%>
