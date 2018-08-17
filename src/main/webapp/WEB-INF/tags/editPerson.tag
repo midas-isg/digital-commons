@@ -85,7 +85,7 @@
         <myTags:editNonZeroLengthString label="Last Name"
                                         placeholder=" The person's family name."
                                         string="${person.lastName}"
-                                        specifier="${person}-lastName"
+                                        specifier="${specifier}-lastName"
                                         isRequired="true"
                                         path="${path}.lastName">
         </myTags:editNonZeroLengthString>
