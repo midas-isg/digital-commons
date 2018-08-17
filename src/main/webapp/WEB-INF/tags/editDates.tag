@@ -39,10 +39,7 @@
                        placeholder="">
 </myTags:editInputBlock>
 
-<%--
-            <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
-                   id="${specifier}-date-picker">
---%>
+<c:set var="datePath" value="${path}.date"/>
 <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
     <span class="error-color">${message.text}</span>
 </c:forEach>
@@ -69,10 +66,8 @@
     $(document).ready(function () {
         <c:if test="${not empty date.date}">
         $("#${specifier}-date-picker").datepicker({
-            constrainInput: false,
-            showOptions: {direction: "up"},
-            changeMonth: true,
-            changeYear: true,
+            todayHighlight: true,
+            format: 'yyyy-mm-dd',
             uiLibrary: 'bootstrap4'
         });
         </c:if>

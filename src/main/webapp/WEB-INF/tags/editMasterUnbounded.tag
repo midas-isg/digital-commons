@@ -313,10 +313,8 @@
 
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-"+ listItemCount+ "-date-picker").datepicker({
-                constrainInput: false,
-                showOptions: { direction: "up" },
-                changeMonth: true,
-                changeYear: true,
+                todayHighlight: true,
+                format: 'yyyy-mm-dd',
                 uiLibrary: 'bootstrap4',
             });
             listItemCount += 1;

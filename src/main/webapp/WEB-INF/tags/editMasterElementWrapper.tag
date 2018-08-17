@@ -89,10 +89,8 @@
                     $("#${specifier}-add-input-button").addClass("hide");
                     </c:if>
                     $("#${specifier}-date-picker").datepicker({
-                        constrainInput: false,
-                        showOptions: { direction: "up" },
-                        changeMonth: true,
-                        changeYear: true,
+                        todayHighlight: true,
+                        format: 'yyyy-mm-dd',
                         uiLibrary: 'bootstrap4',
                     });
 
