@@ -313,6 +313,7 @@
 
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-"+ listItemCount+ "-date-picker").datepicker({
+                forceParse: false,
                 orientation: 'top auto',
                 todayHighlight: true,
                 format: 'yyyy-mm-dd',
