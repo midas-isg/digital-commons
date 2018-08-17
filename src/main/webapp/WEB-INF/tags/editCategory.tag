@@ -13,8 +13,8 @@
 <div class="form-group control-group col-md-9 col-sm-12 no-padding full-width <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>
-        <select class="custom-select custom-select-sm" name="category" id="categoryValue">
-            <option value="0">None provided</option>
+        <select class="custom-select " name="category" id="categoryValue">
+            <option value="0">Please Select...</option>
             <c:forEach items="${categoryPaths}" var="categoryPath">
                 <c:choose>
                     <c:when test="${categoryPath.key==0}">
@@ -29,7 +29,6 @@
                 </c:choose>
             </c:forEach>
         </select>
-    <div class="item-error" style="display: none;">Invalid</div>
     <c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('category')}" var="message">
             <span class="error-color">${message.text}</span>
