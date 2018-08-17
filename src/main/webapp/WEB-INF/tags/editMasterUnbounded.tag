@@ -37,9 +37,9 @@
             <c:if test="${not function:isObjectEmpty(listItem)}">
                 <c:choose>
                     <c:when test="${tagName == 'access'}">
-                        <myTags:editAccess path="${path}[${varStatus.count-1}].access"
-                                           specifier="${specifier}-${varStatus.count-1}-access"
-                                           id="${specifier}-${varStatus.count-1}-access"
+                        <myTags:editAccess path="${path}[${varStatus.count-1}]"
+                                           specifier="${specifier}-${varStatus.count-1}"
+                                           id="${specifier}-${varStatus.count-1}"
                                            tagName="${tagName}"
                                            isAccessRequired="${isRequired}"
                                            isUnboundedList="${true}"
