@@ -88,6 +88,13 @@
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
                     </c:if>
+                    $("#${specifier}-date-picker").datepicker({
+                        constrainInput: false,
+                        showOptions: { direction: "up" },
+                        changeMonth: true,
+                        changeYear: true,
+                        uiLibrary: 'bootstrap4',
+                    });
 
                     //Add section
                     $("#${specifier}-${tagName}").val("");
