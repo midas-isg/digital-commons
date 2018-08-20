@@ -20,82 +20,36 @@
               type="java.lang.String" %>
 
 
-<%--
-<div id="${id}" class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(singleIdentifier)}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <div id="${specifier}-add-input-button" class="input-group control-group <c:if test="${not function:isObjectEmpty(singleIdentifier)}">hide</c:if>">
-            <div class="input-group-btn">
-                <button class="btn btn-success ${specifier}-add-identifier" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                        ${label}
-                </button>
-            </div>
-        </div>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(singleIdentifier) and not isUnboundedList}">hide</c:if>">
-        <button class="btn btn-danger ${specifier}-identifier-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${singleIdentifier}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="identifier"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.identifier"
+                                specifier="${specifier}-identifier"
+                                placeholder="A code uniquely identifying an entity locally to a system or globally."
+                                isRequired="${true}"
+                                label="Identifier"
+                                string="${singleIdentifier.identifier}">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.identifierSource"
+                                specifier="${specifier}-identifierSource"
+                                placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
+                                isRequired="${true}"
+                                label="Identifier Source"
+                                string="${singleIdentifier.identifierSource}">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${singleIdentifier}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="identifier"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${singleIdentifier}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="identifier"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editNonZeroLengthString path="${path}.identifier"
-                                        specifier="${specifier}-identifier"
-                                        placeholder="A code uniquely identifying an entity locally to a system or globally."
-                                        isRequired="${true}"
-                                        label="Identifier"
-                                        string="${singleIdentifier.identifier}">
-        </myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString path="${path}.identifierSource"
-                                        specifier="${specifier}-identifierSource"
-                                        placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
-                                        isRequired="${true}"
-                                        label="Identifier Source"
-                                        string="${singleIdentifier.identifierSource}">
-        </myTags:editNonZeroLengthString>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${singleIdentifier}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="identifier"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
-
-<%--
-    </div>
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-identifier", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                $("#${specifier}-add-input-button").addClass("hide");
-
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-identifier-remove", function () {
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-input-block").addClass("hide");
-                $("#${specifier}-add-input-button").removeClass("hide");
-            });
-        });
-
-    </script>
-</div>
---%>

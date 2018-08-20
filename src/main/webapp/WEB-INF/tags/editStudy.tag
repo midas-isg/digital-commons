@@ -22,117 +22,57 @@
               type="java.lang.String" %>
 
 
-<%--
-<div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
-    <label>${label}</label>
-    <div id="${specifier}-add-input-button"
-         class="input-group control-group ${specifier}-study-add-more <c:if test="${not function:isObjectEmpty(study)}">hide</c:if>">
-        <div class="input-group-btn">
-            <button class="btn btn-success ${specifier}-add-study" type="button"><i
-                    class="fa fa-plus-circle"></i> Add
-                ${label}
-            </button>
-        </div>
-    </div>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(study) and not isUnboundedList}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <button class="btn btn-danger ${specifier}-study-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
-
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${study}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editNonZeroLengthString
-                placeholder=" The name of the activity, usually one sentece or short description of the study."
-                label="Name"
-                string="${study.name}"
-                specifier="${specifier}-name"
-                isUnboundedList="${false}"
-                id="${specifier}-name"
-                isRequired="${true}"
-                path="${path}.name">
-        </myTags:editNonZeroLengthString>
-        <myTags:editDates label="Start Date"
-                          path="${path}.startDate"
-                          specifier="${specifier}-startDate"
-                          id="${specifier}-startDate"
-                          isUnboundedList="${false}"
-                          isRequired="${false}"
-                          date="${study.startDate}">
-        </myTags:editDates>
-        <myTags:editDates label="End Date"
-                          path="${path}.endDate"
-                          specifier="${specifier}-endDate"
-                          id="${specifier}-startDate"
-                          isUnboundedList="${false}"
-                          isRequired="${false}"
-                          date="${study.endDate}">
-        </myTags:editDates>
-        <myTags:editPlace path="${path}.location"
-                          specifier="${specifier}-location"
-                          id="${specifier}-location"
-                          tagName="place"
-                          place="${study.location}"
-                          isUnboundedList="${false}"
-                          label="Location">
-        </myTags:editPlace>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${study}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${study}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString
+        placeholder=" The name of the activity, usually one sentece or short description of the study."
+        label="Name"
+        string="${study.name}"
+        specifier="${specifier}-name"
+        isUnboundedList="${false}"
+        id="${specifier}-name"
+        isRequired="${true}"
+        path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editDates label="Start Date"
+                  path="${path}.startDate"
+                  specifier="${specifier}-startDate"
+                  id="${specifier}-startDate"
+                  isUnboundedList="${false}"
+                  isRequired="${false}"
+                  date="${study.startDate}">
+</myTags:editDates>
+<myTags:editDates label="End Date"
+                  path="${path}.endDate"
+                  specifier="${specifier}-endDate"
+                  id="${specifier}-startDate"
+                  isUnboundedList="${false}"
+                  isRequired="${false}"
+                  date="${study.endDate}">
+</myTags:editDates>
+<myTags:editPlace path="${path}.location"
+                  specifier="${specifier}-location"
+                  id="${specifier}-location"
+                  tagName="place"
+                  place="${study.location}"
+                  isUnboundedList="${false}"
+                  label="Location">
+</myTags:editPlace>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${study}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
 
-<%--
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-study", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                <c:if test="${isUnboundedList or not isRequired}">
-                $("#${specifier}-add-input-button").addClass("hide");
-                </c:if>
-
-                //Add section
-                $("#${specifier}-study").val("");
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-study-remove", function (e) {
-                e.stopImmediatePropagation();
-
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-add-input-button").removeClass("hide");
-                $("#${specifier}-input-block").addClass("hide");
-            });
-        });
-
-    </script>
-
-</div>
---%>

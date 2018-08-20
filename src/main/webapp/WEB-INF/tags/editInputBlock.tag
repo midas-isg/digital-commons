@@ -26,18 +26,6 @@
               type="java.lang.Boolean" %>
 
 
-<%--
-<%@ attribute name="label" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="isUnboundedList" required="false"
-              type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="isRequired" required="false"
-              type="java.lang.Boolean" %>
---%>
-
-
 <c:choose>
     <c:when test="${isFloat}">
         <input type="number" step="any" class="form-control" value="${number}" name="${path}" id="${specifier}"
