@@ -185,6 +185,10 @@ public class DatasetWebflowValidator {
         return Arrays.asList(Geometry.class.getEnumConstants());
     }
 
+    public List getAccessPointEnums() {
+        return Arrays.asList(DataServiceAccessPointType.class.getEnumConstants());
+    }
+
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
         String isValid;
         String title = dataset.getTitle();

@@ -15,36 +15,34 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Data Visualizer</label>
+<div class="wrapper">
+    <myTags:softwareIndex active="dataVisualizerForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
 <%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+            <label>Data Visualizer</label>
 --%>
-                    <myTags:editNonZeroLengthStringUnbounded formats="${dataVisualizer.visualizationType}" label="Visualization Types" placeholder="Visualization Type" specifier="visualization-type" path="visualizationType"></myTags:editNonZeroLengthStringUnbounded>
+            <myTags:editMasterUnbounded listItems="${dataVisualizer.visualizationType}"
+                                        label="Visualization Types"
+                                        placeholder="Visualization Type"
+                                        specifier="visualization-type"
+                                        tagName="string"
+                                        isRequired="${false}"
+                                        path="visualizationType">
+            </myTags:editMasterUnbounded>
 
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form>
-        </div>
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataVisualizers/" + action+ "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
 <myTags:analytics/>
 
 </body>

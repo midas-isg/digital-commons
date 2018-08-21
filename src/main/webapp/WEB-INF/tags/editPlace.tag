@@ -64,12 +64,14 @@
                                 placeholder=" A physical street address."
                                 label="Postal Address">
 </myTags:editNonZeroLengthString>
-<myTags:editGeometry path="${path}.geometry"
-                     specifier="${specifier}-geometry"
-                     label="Geometry"
-                     geometry="${place.geometry}"
-                     id="${specifier}-geometry">
-</myTags:editGeometry>
+<myTags:editSelect path="${path}.geometry"
+                   specifier="${specifier}-geometry"
+                   label="Geometry"
+                   enumData="${place.geometry}"
+                   enumList="${geometryEnums}"
+                   tagName="geometry"
+                   id="${specifier}-geometry">
+</myTags:editSelect>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"

@@ -15,38 +15,41 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Pathogen Evolution Model</label>
+<div class="wrapper">
+    <myTags:softwareIndex active="pathogenEvolutionModelForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <%--
+                                <label>Pathogen Evolution Model</label>
+            --%>
+            <myTags:editMasterUnbounded path="pathogens"
+                                        specifier="pathogens"
+                                        label="Pathogens"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Pathogens"
+                                        listItems="${pathogenEvolutionModel.pathogens}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
 
 <%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+                <myTags:editNestedIdentifier specifier="pathogens" path="pathogens"
+                                             identifiers="${pathogenEvolutionModel.pathogens}" placeholder="Pathogen"
+                                             label="Pathogens"></myTags:editNestedIdentifier>
 --%>
-                    <myTags:editNestedIdentifier specifier="pathogens" path="pathogens" identifiers="${pathogenEvolutionModel.pathogens}" placeholder="Pathogen" label="Pathogens"></myTags:editNestedIdentifier>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverate" path="locationCoverage" identifiers="${pathogenEvolutionModel.locationCoverage}" placeholder="Location Coverage" label="Location Coverage"></myTags:editNestedIdentifier>--%>
 
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
 
-            </form>
-        </div>
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addPathogenEvolutionModels/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
+
 <myTags:analytics/>
 
 </body>

@@ -15,43 +15,54 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Disease Transmission Tree Estimator</label>
-<%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}"
-                                         selectedID="${selectedID}"></myTags:editSoftware>
---%>
-                    <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
-                                                 placeholder="Host Species Included"
-                                                 label="Host Species Included" path="hostSpeciesIncluded"
-                                                 identifiers="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="pathogenCoverage"
-                                                 placeholder="Pathogen Coverage"
-                                                 label="Pathogen Coverage" path="pathogenCoverage"
-                                                 identifiers="${diseaseTransmissionTreeEstimator.pathogenCoverage}"></myTags:editNestedIdentifier>
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseTransmissionTreeEstimatorForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <%--
+                                <label>Disease Transmission Tree Estimator</label>
+            --%>
 
-            </form>
-        </div>
+                <myTags:editMasterUnbounded path="hostSpeciesIncluded"
+                                            specifier="host-species-included"
+                                            label="Host Species Included"
+                                            tagName="softwareIdentifier"
+                                            placeholder="Host Species Included"
+                                            listItems="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"
+                                            isRequired="${false}">
+                </myTags:editMasterUnbounded>
+                <myTags:editMasterUnbounded path="pathogenCoverage"
+                                            specifier="pathogen-coverage"
+                                            label="Pathogen Coverage"
+                                            tagName="softwareIdentifier"
+                                            placeholder="Pathogen Coverage"
+                                            listItems="${diseaseTransmissionTreeEstimator.pathogenCoverage}"
+                                            isRequired="${false}">
+                </myTags:editMasterUnbounded>
+
+                <%--
+                                <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
+                                                         placeholder="Host Species Included"
+                                                         label="Host Species Included" path="hostSpeciesIncluded"
+                                                         identifiers="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
+                            <myTags:editNestedIdentifier specifier="pathogenCoverage"
+                                                         placeholder="Pathogen Coverage"
+                                                         label="Pathogen Coverage" path="pathogenCoverage"
+                                                         identifiers="${diseaseTransmissionTreeEstimator.pathogenCoverage}"></myTags:editNestedIdentifier>
+                --%>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function () {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimators/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
+
 <myTags:analytics/>
 
 </body>

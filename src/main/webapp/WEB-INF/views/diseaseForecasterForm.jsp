@@ -15,40 +15,69 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Disease Forecaster</label>
-                    <%--<myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>--%>
-                    <myTags:editNestedIdentifier specifier="diseases" placeholder="Disease" label="Diseases" path="diseases" identifiers="${software.diseases}"></myTags:editNestedIdentifier>
-                    <myTags:editNonZeroLengthStringUnbounded formats="${software.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editNonZeroLengthStringUnbounded>
-                    <myTags:editNonZeroLengthStringUnbounded formats="${software.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editNonZeroLengthStringUnbounded>
-                    <myTags:editNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${software.forecastFrequency}"></myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${software.type}"></myTags:editNonZeroLengthString>
-                    <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${software.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>--%>
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseForecasterForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+<%--
+            <label>Disease Forecaster</label>
+--%>
+            <myTags:editMasterUnbounded specifier="diseases"
+                                        placeholder="Disease"
+                                        label="Diseases"
+                                        path="diseases"
+                                        tagName="softwareIdentifier"
+                                        listItems="${software.diseases}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded listItems="${software.nowcasts}"
+                                        label="Nowcasts"
+                                        placeholder="Nowcast"
+                                        specifier="nowcast"
+                                        tagName="string"
+                                        path="nowcasts">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded listItems="${software.outcomes}"
+                                        label="Outcomes"
+                                        placeholder="Outcome"
+                                        specifier="outcome"
+                                        tagName="string"
+                                        path="outcomes">
+            </myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString label="Forecast Frequency"
+                                            placeholder="Forecast Frequency"
+                                            specifier="forecast-frequency"
+                                            path="forecastFrequency"
+                                            string="${software.forecastFrequency}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="Type"
+                                            placeholder="Type"
+                                            specifier="type"
+                                            path="type"
+                                            string="${software.type}">
+            </myTags:editNonZeroLengthString>
+            <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
+            <myTags:editMasterUnbounded label="Forecasts"
+                                        placeholder="Forecast"
+                                        path="forecasts"
+                                        specifier="forecasts"
+                                        isRequired="${false}"
+                                        isFirstRequired="${true}"
+                                        tagName="string"
+                                        listItems="${software.forecasts}">
+            </myTags:editMasterUnbounded>
 
-            </form>
-        </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+
+        </form>
     </div>
 </div>
-<%--
 
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseForecasters/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
-
-    });
-</script>
---%>
 
 <myTags:analytics/>
 

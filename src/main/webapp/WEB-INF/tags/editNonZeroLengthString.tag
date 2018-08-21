@@ -22,6 +22,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isFirstRequired" required="false"
+              type="java.lang.Boolean" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -32,6 +34,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${true}"
                                  isRequired="${isRequired}"
+                                 isFirstRequired="${isFirstRequired}"
                                  tagName="string"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -49,6 +52,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${true}"
                                  isRequired="${isRequired}"
+                                 isFirstRequired="${isFirstRequired}"
                                  tagName="string"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

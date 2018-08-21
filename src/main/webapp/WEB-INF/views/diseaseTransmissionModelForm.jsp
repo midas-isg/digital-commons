@@ -15,39 +15,64 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Disease Transmission Model</label>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseTransmissionModelForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
+        <button type="button" id="sidebarCollapse"
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
+            <i class="glyphicon glyphicon-align-left"></i>
+            <span>Toggle Sidebar</span>
+        </button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
 <%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
+            <label>Disease Transmission Model</label>
 --%>
 
-                    <myTags:editNestedIdentifier specifier="control-measures" placeholder="Control Measure" label="Control Measures" path="controlMeasures" identifiers="${diseaseTransmissionModel.controlMeasures}"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="host-species-included" placeholder="Host Species Included" label="Host Species Included" path="hostSpeciesIncluded" identifiers="${diseaseTransmissionModel.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseTransmissionModel.locationCoverage}"></myTags:editNestedIdentifier>--%>
-                    <myTags:editNestedIdentifier specifier="pathogen-coverage" placeholder="Pathogen Coverage" label="Pathogen Coverages" path="pathogenCoverage" identifiers="${diseaseTransmissionModel.pathogenCoverage}"></myTags:editNestedIdentifier>
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <myTags:editMasterUnbounded path="controlMeasures"
+                                        specifier="control-measures"
+                                        label="Control Measures"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Control Measure"
+                                        listItems="${diseaseTransmissionModel.controlMeasures}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded path="hostSpeciesIncluded"
+                                        specifier="host-species-included"
+                                        label="Host Species Included"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Host Species Included"
+                                        listItems="${diseaseTransmissionModel.hostSpeciesIncluded}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded path="pathogenCoverage"
+                                        specifier="pathogen-coverage"
+                                        label="Pathogen Coverage"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Pathogen Coverage"
+                                        listItems="${diseaseTransmissionModel.pathogenCoverage}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
 
-            </form>
-        </div>
+            <%--
+                        <myTags:editNestedIdentifier specifier="control-measures" placeholder="Control Measure"
+                                                     label="Control Measures" path="controlMeasures"
+                                                     identifiers="${diseaseTransmissionModel.controlMeasures}"></myTags:editNestedIdentifier>
+                        <myTags:editNestedIdentifier specifier="host-species-included" placeholder="Host Species Included"
+                                                     label="Host Species Included" path="hostSpeciesIncluded"
+                                                     identifiers="${diseaseTransmissionModel.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
+                        &lt;%&ndash;<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseTransmissionModel.locationCoverage}"></myTags:editNestedIdentifier>&ndash;%&gt;
+                        <myTags:editNestedIdentifier specifier="pathogen-coverage" placeholder="Pathogen Coverage"
+                                                     label="Pathogen Coverages" path="pathogenCoverage"
+                                                     identifiers="${diseaseTransmissionModel.pathogenCoverage}"></myTags:editNestedIdentifier>
+            --%>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionModel/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
+
 <myTags:analytics/>
 
 </body>
