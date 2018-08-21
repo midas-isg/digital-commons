@@ -19,7 +19,8 @@
         <transition to="softwareForm1">
             <!--<evaluate expression="diseaseForecaster" result="flowScope.diseaseForecaster" />-->
             <evaluate expression="datasetWebflowValidator.createSoftware(softwareCategory)" result="flowScope.software" />
-            <evaluate expression="0" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getCategoryId(softwareCategory)" result="flowScope.categoryID"/>
+            <!--<evaluate expression="0" result="flowScope.categoryID"/>-->
             <evaluate expression="datasetWebflowValidator.getAccessPointEnums()" result="flowScope.accessPointTypes" />
         </transition>
     </action-state>

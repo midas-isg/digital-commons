@@ -175,6 +175,46 @@ public class DatasetWebflowValidator {
         return entry.getCategory().getId();
     }
 
+    public Long getCategoryId(String softwareCategory) {
+        if (softwareCategory == null || softwareCategory.isEmpty()) {
+            return 0L;
+        }
+        try {
+            switch (softwareCategory) {
+                case "dataFormatConverters":
+                    return 6L;
+                case "dataService":
+                    return 7L;
+                case "dataStandard":
+                    return 0L;
+                case "dataVisualizers":
+                    return 8L;
+                case "diseaseForecasters":
+                    return 9L;
+                case "diseaseTransmissionModel":
+                    return 10L;
+                case "diseaseTransmissionTreeEstimators":
+                    return 12L;
+                case "metagenomicAnalysis":
+                    return 448L;
+                case "modelingPlatforms":
+                    return 13L;
+                case "pathogenEvolutionModels":
+                    return 14L;
+                case "phylogeneticTreeConstructors":
+                    return 15L;
+                case "populationDynamicsModel":
+                    return 11L;
+                case "syntheticEcosystemConstructors":
+                    return 16L;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0L;
+    }
+
     public Long getRevisionId(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryId id = entry.getId();
