@@ -247,38 +247,6 @@ public class HomeController {
         return "commons";
     }
 
-//    @RequestMapping(value = "/add", method = RequestMethod.GET)
-//    public String addEntry(Model model) throws Exception {
-//        model.addAttribute("xsdForms", DataEntryController.readXSDFiles());
-//        return "addEntry";
-//    }
-
-    @RequestMapping(value = "/add/{category}", method = RequestMethod.GET)
-    public String addNewDataFormatConverters(HttpSession session, @PathVariable(value = "category") String category, @RequestParam(value = "datasetType", required = false) String datasetType,
-                                             @RequestParam(value = "customValue", required = false) String customValue, Model model) throws Exception {
-        model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
-        model.addAttribute("category", category);
-        if(ifLoggedIn(session))
-            model.addAttribute("loggedIn", true);
-
-        if(ifMDCEditor(session))
-            model.addAttribute("adminType", MDC_EDITOR_TOKEN);
-
-        if(ifISGAdmin(session))
-            model.addAttribute("adminType", ISG_ADMIN_TOKEN);
-
-        if(!model.containsAttribute("adminType")) {
-            return "accessDenied";
-        }
-        if(category.toLowerCase().equals("dataset")) {
-            model.addAttribute("datasetType", datasetType);
-            model.addAttribute("customValue", customValue);
-            return "Dataset";
-        } else {
-            return WordUtils.capitalize(category);
-        }
-    }
-
     @RequestMapping(value = "/getCollectionsJson", method = RequestMethod.GET, headers = "Accept=application/json; charset=utf-8")
     public
     @ResponseBody
@@ -323,24 +291,6 @@ public class HomeController {
             result.append(line);
         }
 
-//
-//        URL url = new URL(libraryUrl);
-//        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-//
-//        con.setRequestMethod("GET");
-//        con.setRequestProperty("Authorization", token);
-//        con.setRequestProperty("Accept-Charset", "UTF-8");
-//        con.setRequestProperty("Accept", "application/json");
-//
-//        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-//        String inputLine;
-//        StringBuffer response = new StringBuffer();
-//
-//        while ((inputLine = in.readLine()) != null) {
-//            response.append(inputLine);
-//        }
-//        in.close();
-
         libraryCollectionsJson = result.toString();
         writeFile(libraryCollectionsJson, LIBRARY_COLLECTIONS_CACHE_FILE);
     }
@@ -367,12 +317,6 @@ public class HomeController {
             return ex.getMessage();
         }
     }
-
-//    @RequestMapping(value = "/midas-sso/view", method = RequestMethod.GET, headers = "Accept=text/html")
-//    public String loadIframe(Model model, @RequestParam(value = "url") String url) {
-//        model.addAttribute("url", url);
-//        return "iframeView";
-//    }
 
     @RequestMapping(value = "/api/cache-spew", method = RequestMethod.GET)
     public String cacheSpew(Model model) {

@@ -72,18 +72,18 @@
         var maxWidthMedium;
         var maxWidthSmall;
 
-        <c:choose>
-        <c:when test="${loggedIn == true}">
+        <%--<c:choose>--%>
+        <%--<c:when test="${loggedIn == true}">--%>
         maxWidthLarge = 1350;
         maxWidthMedium = 1230;
         maxWidthSmall = 992;
-        </c:when>
-        <c:otherwise>
-        maxWidthLarge = 1110;
-        maxWidthMedium = 810;
-        maxWidthSmall = 810;
-        </c:otherwise>
-        </c:choose>
+        <%--</c:when>--%>
+        <%--<c:otherwise>--%>
+        <%--maxWidthLarge = 1110;--%>
+        <%--maxWidthMedium = 810;--%>
+        <%--maxWidthSmall = 810;--%>
+        <%--</c:otherwise>--%>
+        <%--</c:choose>--%>
 
         if ($(window).width() < maxWidthLarge) {
             hideTitle('page-title-big');

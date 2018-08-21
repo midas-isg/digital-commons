@@ -42,7 +42,7 @@
     </li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-    <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
+    <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
         <li class="dropdown ">
             <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -60,35 +60,35 @@
                 <a class="dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a>
                 <div class="dropdown-divider"></div>
                 <h6 class="dropdown-header">Add</h6>
-                <a class="dropdown-item" href="${contextPath}/addDataFormatConverters">Data Format Converter</a>
-                <a class="dropdown-item" href="${contextPath}/addDataService">Data Service</a>
-                <%--<li><a href="${contextPath}/add/dataset?categoryId=">Dataset</a></li>--%>
-                <div class="dropdown-submenu nav-submenu">
-                    <a class=" dropdown-toggle dropdown-item " tabindex="-1" href=""
-                       onclick="preventClick()">Dataset</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addDataset">Dataset with
-                            Person</a></li>
-                        <li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addDatasetWithOrganization/">Dataset
-                            with Organization</a></li>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataFormatConverters">Data Format Converter</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataService">Data Service</a>
+                <a class="dropdown-item" href="${contextPath}/addDataset">Dataset</a>
+                <%--<div class="dropdown-submenu nav-submenu">--%>
+                    <%--<a class=" dropdown-toggle dropdown-item " tabindex="-1" href=""--%>
+                       <%--onclick="preventClick()">Dataset</a>--%>
+                    <%--<ul class="dropdown-menu">--%>
+                        <%--<li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addDataset">Dataset with--%>
+                            <%--Person</a></li>--%>
+                        <%--<li><a class="dropdown-item" tabindex="-1" href="${contextPath}/addSoftware?softwareCategory=DatasetWithOrganization/">Dataset--%>
+                            <%--with Organization</a></li>--%>
 
-                    </ul>
-                </div>
+                    <%--</ul>--%>
+                <%--</div>--%>
 
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/addDataStandard">Data Format</a>
-                <a class="dropdown-item" href="${contextPath}/addDataVisualizers">Data Visualizer</a>
-                <a class="dropdown-item" href="${contextPath}/addDiseaseForecasters">Disease Forecaster</a>
-                <a class="dropdown-item" href="${contextPath}/addDiseaseTransmissionModel">Disease Transmission Model</a>
-                <a class="dropdown-item" href="${contextPath}/addDiseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a>
-                <a class="dropdown-item" href="${contextPath}/addMetagenomicAnalysis">Metagenomic Analysis</a>
-                <a class="dropdown-item" href="${contextPath}/addModelingPlatforms">Modeling Platform</a>
-                <a class="dropdown-item" href="${contextPath}/addPathogenEvolutionModels">Pathogen Evolution Model</a>
-                <a class="dropdown-item" href="${contextPath}/addPhylogeneticTreeConstructors">Phylogenetic Tree Constructor</a>
-                <a class="dropdown-item" href="${contextPath}/addPopulationDynamicsModel">Population Dynamics Model</a>
-                <a class="dropdown-item" href="${contextPath}/addSyntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>
+                <a class="dropdown-item" href="${pageContext.request.contextPath}/addSoftware?softwareCategory=dataStandard">Data Format</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataVisualizers">Data Visualizer</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseForecasters">Disease Forecaster</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionModel">Disease Transmission Model</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=metagenomicAnalysis">Metagenomic Analysis</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=modelingPlatforms">Modeling Platform</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=pathogenEvolutionModels">Pathogen Evolution Model</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=phylogeneticTreeConstructors">Phylogenetic Tree Constructor</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=populationDynamicsModel">Population Dynamics Model</a>
+                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=syntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>
             </div>
         </li>
 
-    </c:if>
+    <%--</c:if>--%>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 </ul>
