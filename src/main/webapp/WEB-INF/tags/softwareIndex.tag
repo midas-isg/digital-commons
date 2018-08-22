@@ -47,7 +47,7 @@
         </li>
 
         <c:choose>
-            <c:when test="${categoryID == 9}">
+            <c:when test="${softwareType == 'Disease forecasters'}">
                 <li <c:if test="${active == 'diseaseForecasterForm'}">class="active"</c:if>><a href="#diseaseForecasterForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                        aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -62,7 +62,7 @@
                     </ul>
                 </li>
             </c:when>
-            <c:when test="${categoryID == 7}">
+            <c:when test="${softwareType == 'Data services'}">
                 <li <c:if test="${active == 'dataServiceForm'}">class="active"</c:if>><a href="#dataServiceForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                                aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -75,7 +75,7 @@
                 </li>
             </c:when>
 <%--
-            <c:when test="${categoryID == 'dataStandard'}">
+            <c:when test="${softwareType == 'dataStandard'}">
                 <li <c:if test="${active == 'dataStandardForm'}">class="active"</c:if>><a href="#dataStandardForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                          aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -86,7 +86,7 @@
                 </li>
             </c:when>
 --%>
-            <c:when test="${categoryID == 8}">
+            <c:when test="${softwareType == 'Data visualizers'}">
                 <li <c:if test="${active == 'dataVisualizerForm'}">class="active"</c:if>><a href="#dataVisualizerForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                          aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -96,7 +96,7 @@
                     </ul>
                 </li>
             </c:when>
-            <c:when test="${categoryID == 10 || categoryID == 17 || categoryID == 18 || categoryID == 19}">
+            <c:when test="${softwareType == 'Disease transmission models'}">
                 <li <c:if test="${active == 'diseaseTransmissionModelForm'}">class="active"</c:if>><a href="#diseaseTransmissionModelForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                             aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -108,7 +108,7 @@
                     </ul>
                 </li>
             </c:when>
-            <c:when test="${categoryID == 12}">
+            <c:when test="${softwareType == 'Disease transmission tree estimators'}">
                 <li <c:if test="${active == 'diseaseTransmissionTreeEstimatorForm'}">class="active"</c:if>><a href="#diseaseTransmissionTreeEstimatorForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                                       aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -119,7 +119,7 @@
                     </ul>
                 </li>
             </c:when>
-            <c:when test="${categoryID == 14}">
+            <c:when test="${softwareType == 'Pathogen evolution models'}">
                 <li <c:if test="${active == 'pathogenEvolutionModelForm'}">class="active"</c:if>><a href="#pathogenEvolutionModelForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                                               aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>
@@ -129,7 +129,7 @@
                     </ul>
                 </li>
             </c:when>
-            <c:when test="${categoryID == 11}">
+            <c:when test="${softwareType == 'Population dynamics models'}">
                 <li <c:if test="${active == 'populationDynamicsModelForm'}">class="active"</c:if>><a href="#populationDynamicsModelForm" onclick="event.preventDefault();" data-toggle="collapse"
                                                                                                     aria-expanded="false" class="dropdown-toggle">Category
                     Info</a>

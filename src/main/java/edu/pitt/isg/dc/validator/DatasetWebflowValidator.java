@@ -131,10 +131,7 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             e.printStackTrace();
         }
-/*
-        DatasetFactory datasetFactory = new DatasetFactory(true);
-        dataset = datasetFactory.createDatasetForWebFlow(dataset);
-*/
+
         return dataset;
     }
 
@@ -143,34 +140,36 @@ public class DatasetWebflowValidator {
         if (categoryID == null) {
             return null;  //TODO: return some kind or error checking
         }
-
+        String softwareType = getSoftwareTypeFromCategoryID(categoryID);
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        requestContext.getFlowScope().put("softwareType", softwareType);
         try {
-            switch (categoryID.toString()) {
-                case "6": // Root: Software: (Data-format converters)
+            switch (softwareType) {
+                case "Data-format converters": // Root: Software: (Data-format converters)
                     return (DataFormatConverters) ReflectionFactory.create(DataFormatConverters.class);
-                case "7": // Root: Software: (Data services)
+                case "Data services": // Root: Software: (Data services)
                     return (DataService) ReflectionFactory.create(DataService.class);
-                case "4": // Root: (Data Formats)
+                case "Data Formats": // Root: (Data Formats)
                     return (DataStandard) ReflectionFactory.create(DataStandard.class);
-                case "8": // Root: Software: (Data visualizers)
+                case "Data visualizers": // Root: Software: (Data visualizers)
                     return (DataVisualizers) ReflectionFactory.create(DataVisualizers.class);
-                case "9": // Root: Software: (Disease forecasters)
+                case "Disease forecasters": // Root: Software: (Disease forecasters)
                     return (DiseaseForecasters) ReflectionFactory.create(DiseaseForecasters.class);
-                case "10": // Root: Software: (Disease transmission models)
+                case "Disease transmission models": // Root: Software: (Disease transmission models)
                     return (DiseaseTransmissionModel) ReflectionFactory.create(DiseaseTransmissionModel.class);
-                case "12": // Root: Software: (Disease transmission tree estimators)
+                case "Disease transmission tree estimators": // Root: Software: (Disease transmission tree estimators)
                     return (DiseaseTransmissionTreeEstimators) ReflectionFactory.create(DiseaseTransmissionTreeEstimators.class);
-                case "448": // Root: Software: (Metagenomic Analysis)
+                case "Metagenomic Analysis": // Root: Software: (Metagenomic Analysis)
                     return (MetagenomicAnalysis) ReflectionFactory.create(MetagenomicAnalysis.class);
-                case "13": // Root: Software: (Modeling platforms)
+                case "Modeling platforms": // Root: Software: (Modeling platforms)
                     return (ModelingPlatforms) ReflectionFactory.create(ModelingPlatforms.class);
-                case "14": // Root: Software: (Pathogen evolution models)
+                case "Pathogen evolution models": // Root: Software: (Pathogen evolution models)
                     return (PathogenEvolutionModels) ReflectionFactory.create(PathogenEvolutionModels.class);
-                case "15": // Root: Software: (Phylogenetic tree constructors)
+                case "Phylogenetic tree constructors": // Root: Software: (Phylogenetic tree constructors)
                     return (PhylogeneticTreeConstructors) ReflectionFactory.create(PhylogeneticTreeConstructors.class);
-                case "11": // Root: Software: (Population dynamics models)
+                case "Population dynamics models": // Root: Software: (Population dynamics models)
                     return (PopulationDynamicsModel) ReflectionFactory.create(PopulationDynamicsModel.class);
-                case "16": // Root: Software: (Synthetic ecosystem constructors)
+                case "Synthetic ecosystem constructors": // Root: Software: (Synthetic ecosystem constructors)
                     return (SyntheticEcosystemConstructors) ReflectionFactory.create(SyntheticEcosystemConstructors.class);
             }
         } catch (Exception e) {
@@ -180,6 +179,16 @@ public class DatasetWebflowValidator {
         return null;  //TODO: return some kind or error checking
     }
 
+    public String getSoftwareTypeFromCategoryID(Long categoryID) {
+        //Given the category ID, grab the string after the first '->'
+        try {
+            Map<Long, String> categoryMap = categoryHelper.getTreePaths();
+            String category = categoryMap.get(categoryID);
+            return category.split("->")[1].trim();
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public Object editSoftware(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
