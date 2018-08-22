@@ -20,6 +20,7 @@ import edu.pitt.isg.mdc.dats2_2.Geometry;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import edu.pitt.isg.mdc.v1_0.*;
 import edu.pitt.isg.mdc.v1_0.Software;
+import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.Message;
 import org.springframework.binding.message.MessageBuilder;
@@ -60,6 +61,22 @@ public class DatasetWebflowValidator {
     }
 
     private Converter converter = new Converter();
+
+    public String controlFlow(RequestContext context) {
+        try {
+            Map<Long, String> categoryMap = categoryHelper.getTreePaths();
+            String category = categoryMap.get(context.getFlowScope().getLong("categoryID"));
+            if(category.toLowerCase().contains("software")) {
+                String softwareCategory = WordUtils.capitalizeFully(category.split("->")[1]).replaceAll("\\s+","");
+                softwareCategory = Character.toLowerCase(softwareCategory.charAt(0)) + softwareCategory.substring(1);
+                context.getFlowScope().put("softwareCategory", softwareCategory);
+                return "software";
+            }
+            return "dataset";
+        }catch (Exception e) {
+            return "";
+        }
+    }
 
     public String isLoggedIn(RequestContext context) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
@@ -138,7 +155,7 @@ public class DatasetWebflowValidator {
                     return (DataVisualizers) ReflectionFactory.create(DataVisualizers.class);
                 case "diseaseForecasters":
                     return (DiseaseForecasters) ReflectionFactory.create(DiseaseForecasters.class);
-                case "diseaseTransmissionModel":
+                case "diseaseTransmissionModels":
                     return (DiseaseTransmissionModel) ReflectionFactory.create(DiseaseTransmissionModel.class);
                 case "diseaseTransmissionTreeEstimators":
                     return (DiseaseTransmissionTreeEstimators) ReflectionFactory.create(DiseaseTransmissionTreeEstimators.class);
@@ -150,7 +167,7 @@ public class DatasetWebflowValidator {
                     return (PathogenEvolutionModels) ReflectionFactory.create(PathogenEvolutionModels.class);
                 case "phylogeneticTreeConstructors":
                     return (PhylogeneticTreeConstructors) ReflectionFactory.create(PhylogeneticTreeConstructors.class);
-                case "populationDynamicsModel":
+                case "populationDynamicsModels":
                     return (PopulationDynamicsModel) ReflectionFactory.create(PopulationDynamicsModel.class);
                 case "syntheticEcosystemConstructors":
                     return (SyntheticEcosystemConstructors) ReflectionFactory.create(SyntheticEcosystemConstructors.class);
@@ -204,7 +221,7 @@ public class DatasetWebflowValidator {
             switch (category) {
                 case "dataFormatConverters":
                     return 6L; // Root: Software: (Data-format converters)
-                case "dataService":
+                case "dataServices":
                     return 7L; // Root: Software: (Data services)
                 case "dataStandard":
                     return 4L; // Root: (Data Formats)
@@ -212,7 +229,7 @@ public class DatasetWebflowValidator {
                     return 8L; // Root: Software: (Data visualizers)
                 case "diseaseForecasters":
                     return 9L; // Root: Software: (Disease forecasters)
-                case "diseaseTransmissionModel":
+                case "diseaseTransmissionModels":
                     return 10L; // Root: Software: (Disease transmission models)
                 case "diseaseTransmissionTreeEstimators":
                     return 12L; // Root: Software: (Disease transmission tree estimators)
@@ -224,7 +241,7 @@ public class DatasetWebflowValidator {
                     return 14L; // Root: Software: (Pathogen evolution models)
                 case "phylogeneticTreeConstructors":
                     return 15L; // Root: Software: (Phylogenetic tree constructors)
-                case "populationDynamicsModel":
+                case "populationDynamicsModels":
                     return 11L; // Root: Software: (Population dynamics models)
                 case "syntheticEcosystemConstructors":
                     return 16L; // Root: Software: (Synthetic ecosystem constructors)

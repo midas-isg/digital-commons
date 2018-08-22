@@ -25,6 +25,7 @@ public class WebFlowConfig extends AbstractFlowConfiguration {
     @Bean
     public FlowDefinitionRegistry flowRegistry() {
         return getFlowDefinitionRegistryBuilder(flowBuilderServices())
+                .addFlowLocation("/WEB-INF/flows/control-flow.xml", "addDigitalObject")
                 .addFlowLocation("/WEB-INF/flows/software-flow.xml", "addSoftware")
                 .addFlowLocation("/WEB-INF/flows/dataset-flow.xml", "addDataset")
                 .build();

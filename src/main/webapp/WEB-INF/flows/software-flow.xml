@@ -5,6 +5,7 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
     <input name="entryID"/>
+    <input name="categoryID"/>
     <input name="softwareCategory"/>
 
     <decision-state id="createOrEdit">
