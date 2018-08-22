@@ -87,7 +87,7 @@
     <view-state id="softwareForm1" model="flowScope.software">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
-            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories()"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories(requestScope.categoryID)"/>
         </on-render>
         <transition on="next" to="validateForm1">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>

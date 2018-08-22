@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.validator;
 
 import com.google.gson.JsonObject;
 import edu.pitt.isg.Converter;
+import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.Users;
@@ -74,9 +75,29 @@ public class DatasetWebflowValidator {
         return indexValue;
     }
 
-    public Map<Long, String> getCategories() {
+    public Map<Long, String> getCategories(Long categoryID) {
         try {
-            return categoryHelper.getTreePaths();
+            Map<Long, String> categoryMap = categoryHelper.getTreePaths();
+
+            if(categoryID != null){
+                String categoryName = categoryMap.get(categoryID);
+
+                if(categoryName.startsWith("Data") || categoryName.startsWith("Websites with data")) {
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data Formats"));
+                }
+                if(categoryName.startsWith("Software")) {
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data"));
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
+                }
+                if(categoryName.startsWith("Data Formats")) {
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data ->"));
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
+                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
+                }
+            }
+
+            return categoryMap;
         } catch (Exception e) {
             return null;
         }
@@ -175,38 +196,38 @@ public class DatasetWebflowValidator {
         return entry.getCategory().getId();
     }
 
-    public Long getCategoryId(String softwareCategory) {
-        if (softwareCategory == null || softwareCategory.isEmpty()) {
+    public Long getCategoryId(String category) {
+        if (category == null || category.isEmpty()) {
             return 0L;
         }
         try {
-            switch (softwareCategory) {
+            switch (category) {
                 case "dataFormatConverters":
-                    return 6L;
+                    return 6L; // Root: Software: (Data-format converters)
                 case "dataService":
-                    return 7L;
+                    return 7L; // Root: Software: (Data services)
                 case "dataStandard":
                     return 0L;
                 case "dataVisualizers":
-                    return 8L;
+                    return 8L; // Root: Software: (Data visualizers)
                 case "diseaseForecasters":
-                    return 9L;
+                    return 9L; // Root: Software: (Disease forecasters)
                 case "diseaseTransmissionModel":
-                    return 10L;
+                    return 10L; // Root: Software: (Disease transmission models)
                 case "diseaseTransmissionTreeEstimators":
-                    return 12L;
+                    return 12L; // Root: Software: (Disease transmission tree estimators)
                 case "metagenomicAnalysis":
-                    return 448L;
+                    return 448L; // Root: Software: (Metagenomic Analysis)
                 case "modelingPlatforms":
-                    return 13L;
+                    return 13L; // Root: Software: (Modeling platforms)
                 case "pathogenEvolutionModels":
-                    return 14L;
+                    return 14L; // Root: Software: (Pathogen evolution models)
                 case "phylogeneticTreeConstructors":
-                    return 15L;
+                    return 15L; // Root: Software: (Phylogenetic tree constructors)
                 case "populationDynamicsModel":
-                    return 11L;
+                    return 11L; // Root: Software: (Population dynamics models)
                 case "syntheticEcosystemConstructors":
-                    return 16L;
+                    return 16L; // Root: Software: (Synthetic ecosystem constructors)
             }
         } catch (Exception e) {
             e.printStackTrace();
