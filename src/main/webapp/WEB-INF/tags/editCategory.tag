@@ -11,7 +11,7 @@
               type="java.lang.Integer" %>
 <%@ attribute name="isDisabled" required="false"
               type="java.lang.Boolean" %>
-
+${isDisabled}
 <div class="form-group control-group col-md-9 col-sm-12 no-padding full-width <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>

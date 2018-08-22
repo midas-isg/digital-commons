@@ -89,11 +89,15 @@ public class DatasetWebflowValidator {
         return indexValue;
     }
 
-    public Map<Long, String> getCategories(Long categoryID) {
+    public Map<Long, String> getCategories(String digitalObjectType) {
         try {
             Map<Long, String> categoryMap = categoryHelper.getTreePaths();
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Software"));
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Data"));
+
+            if(digitalObjectType.equals("dataset")) {
+                categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
+            }
 
 /*
             if(categoryID != null){

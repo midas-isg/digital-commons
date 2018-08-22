@@ -25,7 +25,7 @@
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:editCategory selectedID="${categoryID}"
-                                 isDisabled="${false}"
+                                 isDisabled="${disableCategory}"
                                  categoryPaths="${categoryPaths}">
             </myTags:editCategory>
             <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
