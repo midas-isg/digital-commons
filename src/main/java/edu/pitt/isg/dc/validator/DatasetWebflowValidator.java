@@ -82,7 +82,7 @@ public class DatasetWebflowValidator {
             if(categoryID != null){
                 String categoryName = categoryMap.get(categoryID);
 
-                if(categoryName.startsWith("Data") || categoryName.startsWith("Websites with data")) {
+                if((categoryName.startsWith("Data") && !categoryName.startsWith("Data Formats")) || categoryName.startsWith("Websites with data")) {
                     categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
                     categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data Formats"));
                 }
@@ -207,7 +207,7 @@ public class DatasetWebflowValidator {
                 case "dataService":
                     return 7L; // Root: Software: (Data services)
                 case "dataStandard":
-                    return 0L;
+                    return 4L; // Root: (Data Formats)
                 case "dataVisualizers":
                     return 8L; // Root: Software: (Data visualizers)
                 case "diseaseForecasters":
