@@ -25,6 +25,7 @@
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:editCategory selectedID="${categoryID}"
+                                 isDisabled="${true}"
                                  categoryPaths="${categoryPaths}">
             </myTags:editCategory>
             <myTags:editNonZeroLengthString path="product"

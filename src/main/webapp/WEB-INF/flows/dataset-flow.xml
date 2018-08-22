@@ -18,7 +18,6 @@
 
         <transition to="datasetForm1">
             <evaluate expression="dataset" result="flowScope.dataset" />
-            <evaluate expression="3" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
         </transition>
     </action-state>
@@ -84,12 +83,9 @@
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories(requestScope.categoryID)"/>
         </on-render>
-        <transition on="next" to="validateForm1">
-            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
-        </transition>
+        <transition on="next" to="validateForm1"/>
 
         <transition on="index" to="validateForm1">
-            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
 

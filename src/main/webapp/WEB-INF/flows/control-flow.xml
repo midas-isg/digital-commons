@@ -28,7 +28,6 @@
 
     <subflow-state id="nextFlowSoftware" subflow="addSoftware">
         <input name="categoryID" value="flowScope.categoryID"/>
-        <input name="softwareCategory" value="flowScope.softwareCategory"/>
     </subflow-state>
 
 

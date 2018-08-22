@@ -9,11 +9,13 @@
               type="java.util.Map" %>
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
+<%@ attribute name="isDisabled" required="false"
+              type="java.lang.Boolean" %>
 
 <div class="form-group control-group col-md-9 col-sm-12 no-padding full-width <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>
-        <select class="custom-select " name="category" id="categoryValue">
+    <select <c:if test="${isDisabled}">disabled</c:if> class="custom-select " name="category" id="categoryValue">
             <option value="0">Please Select...</option>
             <c:forEach items="${categoryPaths}" var="categoryPath">
                 <c:choose>

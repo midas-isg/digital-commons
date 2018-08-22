@@ -6,22 +6,16 @@
 
     <input name="entryID"/>
     <input name="categoryID"/>
-    <input name="softwareCategory"/>
 
     <decision-state id="createOrEdit">
         <if test="entryID == null" then="create" else="edit" />
     </decision-state>
 
     <action-state id="create">
-        <!--TODO: check to see if softwareCategory is null-->
         <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
-        <!--<evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext) and not softwareCategory == null"/>-->
         <transition on="false" to="accessDenied"/>
         <transition to="softwareForm1">
-            <!--<evaluate expression="diseaseForecaster" result="flowScope.diseaseForecaster" />-->
-            <evaluate expression="datasetWebflowValidator.createSoftware(softwareCategory)" result="flowScope.software" />
-            <evaluate expression="datasetWebflowValidator.getCategoryId(softwareCategory)" result="flowScope.categoryID"/>
-            <!--<evaluate expression="0" result="flowScope.categoryID"/>-->
+            <evaluate expression="datasetWebflowValidator.createSoftware(categoryID)" result="flowScope.software" />
             <evaluate expression="datasetWebflowValidator.getAccessPointEnums()" result="flowScope.accessPointTypes" />
         </transition>
     </action-state>
@@ -30,7 +24,6 @@
         <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
         <transition on="false" to="accessDenied"/>
         <transition to="softwareForm1">
-            <!--<evaluate expression="datasetWebflowValidator.editDataset(entryID)" result="flowScope.dataset"/>-->
             <evaluate expression="datasetWebflowValidator.editSoftware(entryID)" result="flowScope.software"/>
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
@@ -90,11 +83,8 @@
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories(requestScope.categoryID)"/>
         </on-render>
-        <transition on="next" to="validateForm1">
-            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
-        </transition>
+        <transition on="next" to="validateForm1"/>
         <transition on="index" to="validateForm1">
-            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>

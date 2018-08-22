@@ -67,9 +67,6 @@ public class DatasetWebflowValidator {
             Map<Long, String> categoryMap = categoryHelper.getTreePaths();
             String category = categoryMap.get(context.getFlowScope().getLong("categoryID"));
             if(category.toLowerCase().contains("software")) {
-                String softwareCategory = WordUtils.capitalizeFully(category.split("->")[1]).replaceAll("\\s+","");
-                softwareCategory = Character.toLowerCase(softwareCategory.charAt(0)) + softwareCategory.substring(1);
-                context.getFlowScope().put("softwareCategory", softwareCategory);
                 return "software";
             }
             return "dataset";
@@ -95,7 +92,10 @@ public class DatasetWebflowValidator {
     public Map<Long, String> getCategories(Long categoryID) {
         try {
             Map<Long, String> categoryMap = categoryHelper.getTreePaths();
+            categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Software"));
+            categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Data"));
 
+/*
             if(categoryID != null){
                 String categoryName = categoryMap.get(categoryID);
 
@@ -113,6 +113,7 @@ public class DatasetWebflowValidator {
                     categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
                 }
             }
+*/
 
             return categoryMap;
         } catch (Exception e) {
@@ -138,38 +139,38 @@ public class DatasetWebflowValidator {
     }
 
 
-    public Object createSoftware(String softwareCategory) {
-        if (softwareCategory == null || softwareCategory.isEmpty()) {
+    public Object createSoftware(Long categoryID) {
+        if (categoryID == null) {
             return null;  //TODO: return some kind or error checking
         }
 
         try {
-            switch (softwareCategory) {
-                case "dataFormatConverters":
+            switch (categoryID.toString()) {
+                case "6": // Root: Software: (Data-format converters)
                     return (DataFormatConverters) ReflectionFactory.create(DataFormatConverters.class);
-                case "dataService":
+                case "7": // Root: Software: (Data services)
                     return (DataService) ReflectionFactory.create(DataService.class);
-                case "dataStandard":
+                case "4": // Root: (Data Formats)
                     return (DataStandard) ReflectionFactory.create(DataStandard.class);
-                case "dataVisualizers":
+                case "8": // Root: Software: (Data visualizers)
                     return (DataVisualizers) ReflectionFactory.create(DataVisualizers.class);
-                case "diseaseForecasters":
+                case "9": // Root: Software: (Disease forecasters)
                     return (DiseaseForecasters) ReflectionFactory.create(DiseaseForecasters.class);
-                case "diseaseTransmissionModels":
+                case "10": // Root: Software: (Disease transmission models)
                     return (DiseaseTransmissionModel) ReflectionFactory.create(DiseaseTransmissionModel.class);
-                case "diseaseTransmissionTreeEstimators":
+                case "12": // Root: Software: (Disease transmission tree estimators)
                     return (DiseaseTransmissionTreeEstimators) ReflectionFactory.create(DiseaseTransmissionTreeEstimators.class);
-                case "metagenomicAnalysis":
+                case "448": // Root: Software: (Metagenomic Analysis)
                     return (MetagenomicAnalysis) ReflectionFactory.create(MetagenomicAnalysis.class);
-                case "modelingPlatforms":
+                case "13": // Root: Software: (Modeling platforms)
                     return (ModelingPlatforms) ReflectionFactory.create(ModelingPlatforms.class);
-                case "pathogenEvolutionModels":
+                case "14": // Root: Software: (Pathogen evolution models)
                     return (PathogenEvolutionModels) ReflectionFactory.create(PathogenEvolutionModels.class);
-                case "phylogeneticTreeConstructors":
+                case "15": // Root: Software: (Phylogenetic tree constructors)
                     return (PhylogeneticTreeConstructors) ReflectionFactory.create(PhylogeneticTreeConstructors.class);
-                case "populationDynamicsModels":
+                case "11": // Root: Software: (Population dynamics models)
                     return (PopulationDynamicsModel) ReflectionFactory.create(PopulationDynamicsModel.class);
-                case "syntheticEcosystemConstructors":
+                case "16": // Root: Software: (Synthetic ecosystem constructors)
                     return (SyntheticEcosystemConstructors) ReflectionFactory.create(SyntheticEcosystemConstructors.class);
             }
         } catch (Exception e) {
@@ -213,6 +214,7 @@ public class DatasetWebflowValidator {
         return entry.getCategory().getId();
     }
 
+/*
     public Long getCategoryId(String category) {
         if (category == null || category.isEmpty()) {
             return 0L;
@@ -252,6 +254,7 @@ public class DatasetWebflowValidator {
 
         return 0L;
     }
+*/
 
     public Long getRevisionId(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
