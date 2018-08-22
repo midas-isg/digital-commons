@@ -59,10 +59,12 @@
                 <h6 class="dropdown-header">Harvest</h6>
                 <a class="dropdown-item" href="${contextPath}/addDataGovRecordById">Add Data.gov Dataset</a>
                 <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Add</h6>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataFormatConverters">Data Format Converter</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataService">Data Service</a>
-                <a class="dropdown-item" href="${contextPath}/addDataset">Dataset</a>
+                <%--<h6 class="dropdown-header">Add</h6>--%>
+                <a class="dropdown-item" href="${contextPath}/addDigitalObject">Add Digital Object</a>
+
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataFormatConverters">Data Format Converter</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataService">Data Service</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addDataset">Dataset</a>--%>
                 <%--<div class="dropdown-submenu nav-submenu">--%>
                     <%--<a class=" dropdown-toggle dropdown-item " tabindex="-1" href=""--%>
                        <%--onclick="preventClick()">Dataset</a>--%>
@@ -75,17 +77,17 @@
                     <%--</ul>--%>
                 <%--</div>--%>
 
-                <a class="dropdown-item" href="${pageContext.request.contextPath}/addSoftware?softwareCategory=dataStandard">Data Format</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataVisualizers">Data Visualizer</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseForecasters">Disease Forecaster</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionModel">Disease Transmission Model</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=metagenomicAnalysis">Metagenomic Analysis</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=modelingPlatforms">Modeling Platform</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=pathogenEvolutionModels">Pathogen Evolution Model</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=phylogeneticTreeConstructors">Phylogenetic Tree Constructor</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=populationDynamicsModel">Population Dynamics Model</a>
-                <a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=syntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>
+                <%--<a class="dropdown-item" href="${pageContext.request.contextPath}/addSoftware?softwareCategory=dataStandard">Data Format</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=dataVisualizers">Data Visualizer</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseForecasters">Disease Forecaster</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionModel">Disease Transmission Model</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=diseaseTransmissionTreeEstimators">Disease Transmission Tree Estimator</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=metagenomicAnalysis">Metagenomic Analysis</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=modelingPlatforms">Modeling Platform</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=pathogenEvolutionModels">Pathogen Evolution Model</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=phylogeneticTreeConstructors">Phylogenetic Tree Constructor</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=populationDynamicsModel">Population Dynamics Model</a>--%>
+                <%--<a class="dropdown-item" href="${contextPath}/addSoftware?softwareCategory=syntheticEcosystemConstructors">Synthetic Ecosystem Constructor</a>--%>
             </div>
         </li>
 

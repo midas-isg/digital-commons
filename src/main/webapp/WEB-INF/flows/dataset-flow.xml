@@ -6,6 +6,7 @@
 
 
     <input name="entryID"/>
+    <input name="categoryID"/>
 
     <decision-state id="createOrEdit">
         <if test="entryID == null" then="create" else="edit" />
