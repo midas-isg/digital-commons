@@ -28,7 +28,7 @@
                                  isDisabled="${false}"
                                  categoryPaths="${categoryPaths}">
             </myTags:editCategory>
-            <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
+            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
                                    specifier="identifier"
                                    id="identifier"
                                    isUnboundedList="${false}"
@@ -40,16 +40,16 @@
                                             specifier="title"
                                             placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                             isRequired="true"
-                                            string="${dataset.title}">
+                                            string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString path="description"
-                                            string="${dataset.description}"
+                                            string="${digitalObject.description}"
                                             specifier="description"
                                             isTextArea="true"
                                             placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                             label="Description">
             </myTags:editNonZeroLengthString>
-            <myTags:editMasterUnbounded listItems="${dataset.dates}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
                                         path="dates"
                                         label="Dates"
                                         tagName="date"

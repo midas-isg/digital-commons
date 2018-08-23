@@ -24,7 +24,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editMasterUnbounded listItems="${dataset.distributions}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.distributions}"
                                         tagName="distribution"
                                         label="Distributions"
                                         specifier="distributions"

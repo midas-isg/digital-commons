@@ -27,14 +27,14 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editMasterUnbounded path="citations"
                                         specifier="citations"
-                                        listItems="${dataset.citations}"
+                                        listItems="${digitalObject.citations}"
                                         tagName="publication"
                                         label="Citations">
             </myTags:editMasterUnbounded>
             <myTags:editFloat path="citationCount"
                               id="citationCount"
                               specifier="citationCount"
-                              number="${dataset.citationCount}"
+                              number="${digitalObject.citationCount}"
                               label="Citation Count"
                               placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
             </myTags:editFloat>

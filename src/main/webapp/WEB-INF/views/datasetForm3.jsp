@@ -26,7 +26,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editMasterUnbounded path="spatialCoverage"
                                         specifier="spatialCoverage"
-                                        listItems="${dataset.spatialCoverage}"
+                                        listItems="${digitalObject.spatialCoverage}"
                                         tagName="place"
                                         isRequired="${false}"
                                         label="Spatial Coverage">

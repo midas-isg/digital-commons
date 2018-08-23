@@ -24,7 +24,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editStudy study="${dataset.producedBy}"
+            <myTags:editStudy study="${digitalObject.producedBy}"
                               specifier="producedBy"
                               tagName="producedBy"
                               id="producedBy"

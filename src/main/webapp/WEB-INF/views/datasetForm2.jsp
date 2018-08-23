@@ -26,7 +26,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editDataRepository label="Stored In"
                                        path="storedIn"
-                                       dataRepository="${dataset.storedIn}"
+                                       dataRepository="${digitalObject.storedIn}"
                                        id="storedIn"
                                        specifier="storedIn">
             </myTags:editDataRepository>

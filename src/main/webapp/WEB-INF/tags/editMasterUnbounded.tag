@@ -305,7 +305,7 @@
     </c:when>
     <c:when test="${tagName == 'softwareIdentifier'}">
         <myTags:editSoftwareIdentifier label="${label}"
-                                       path="${path}[0]"
+                                       path="${path}[0].identifier"
                                        tagName="${tagName}"
                                        isUnboundedList="${true}"
                                        id="${specifier}-${tagName}-copy-tag"

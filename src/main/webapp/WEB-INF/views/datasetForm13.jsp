@@ -25,7 +25,7 @@
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editNonZeroLengthString path="version"
-                                            string="${dataset.version}"
+                                            string="${digitalObject.version}"
                                             specifier="version"
                                             id="version"
                                             placeholder=" A release point for the dataset when applicable."
@@ -33,7 +33,7 @@
                                             isRequired="${false}"
                                             label="Version">
             </myTags:editNonZeroLengthString>
-            <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                         tagName="categoryValuePair"
                                         specifier="extraProperties"
                                         label="Extra Properties"
