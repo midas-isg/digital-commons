@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <myTags:softwareIndex active="softwareForm1"></myTags:softwareIndex>
+    <myTags:softwareIndex active="softwareForm2"></myTags:softwareIndex>
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
