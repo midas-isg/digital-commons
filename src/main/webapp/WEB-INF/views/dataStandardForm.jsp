@@ -24,9 +24,11 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:editCategory selectedID="${categoryID}"
-                                 categoryPaths="${categoryPaths}">
-            </myTags:editCategory>
+            <myTags:wizardHeader showCategories="${true}"></myTags:wizardHeader>
+
+            <%--<myTags:editCategory selectedID="${categoryID}"--%>
+                                 <%--categoryPaths="${categoryPaths}">--%>
+            <%--</myTags:editCategory>--%>
             <myTags:editDataStandard label="Data Format"
                                      path="dataStandard"
                                      specifier="dataStandard"

@@ -24,6 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editStudy study="${digitalObject.producedBy}"
                               specifier="producedBy"
                               tagName="producedBy"

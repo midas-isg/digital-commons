@@ -25,9 +25,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <%--
-                                <label>Population Dynamics Model</label>
-            --%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
                 <myTags:editMasterUnbounded path="populationSpeciesIncluded"
                                             specifier="populationSpeciesIncluded"
                                             label="Population Species Included"

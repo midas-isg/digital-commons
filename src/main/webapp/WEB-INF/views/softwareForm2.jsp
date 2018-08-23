@@ -24,6 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
                                             specifier="license" placeholder="License"
                                             isRequired="${false}"

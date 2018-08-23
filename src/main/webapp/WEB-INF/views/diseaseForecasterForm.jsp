@@ -24,9 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Disease Forecaster</label>
---%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded specifier="diseases"
                                         placeholder="Disease"
                                         label="Diseases"

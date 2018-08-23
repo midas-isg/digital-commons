@@ -25,6 +25,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editIsAbout path="isAbout"
                                 specifier="isAbout"
                                 isAboutList="${digitalObject.isAbout}"

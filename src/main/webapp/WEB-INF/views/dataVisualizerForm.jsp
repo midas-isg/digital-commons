@@ -24,9 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Data Visualizer</label>
---%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded listItems="${dataVisualizer.visualizationType}"
                                         label="Visualization Types"
                                         placeholder="Visualization Type"

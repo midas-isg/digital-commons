@@ -18,7 +18,7 @@
         <transition on="false" to="accessDenied"/>
 
         <transition to="datasetForm1">
-            <set name="flowScope.disableCategory" value="true"/>
+            <set name="flowScope.showCategories" value="false"/>
             <evaluate expression="dataset" result="flowScope.digitalObject" />
             <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
         </transition>
@@ -29,7 +29,7 @@
         <transition on="false" to="accessDenied"/>
 
         <transition to="datasetForm1">
-            <set name="flowScope.disableCategory" value="false"/>
+            <set name="flowScope.showCategories" value="true"/>
             <evaluate expression="datasetWebflowValidator.editDigitalObject(entryID)" result="flowScope.digitalObject"/>
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
@@ -84,7 +84,7 @@
     <view-state id="datasetForm1" model="flowScope.digitalObject">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
-            <set name="requestScope.disableCategory" value="flowScope.disableCategory"/>
+            <set name="requestScope.showCategories" value="flowScope.showCategories"/>
             <set name="requestScope.categoryName" value="flowScope.categoryName"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('dataset')"/>
         </on-render>

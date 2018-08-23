@@ -24,9 +24,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Disease Transmission Model</label>
---%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
             <myTags:editMasterUnbounded path="controlMeasures"
                                         specifier="control-measures"

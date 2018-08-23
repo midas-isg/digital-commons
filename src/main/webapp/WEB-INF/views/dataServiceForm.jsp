@@ -24,9 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Data Service</label>
---%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded path="dataServiceDescription"
                                         specifier="dataServiceDescription"
                                         label="Data Service Description"
