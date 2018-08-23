@@ -67,7 +67,7 @@
         <transition on="ds-accessPointType" to="dataServiceForm"/>
         <transition on="ds-accessPointDescription" to="dataServiceForm"/>
         <transition on="ds-accessPointURL" to="dataServiceForm"/>
-        <transition on="dv-visualizationType" to="dataVisualizersForm"/>
+        <transition on="dv-visualizationType" to="dataVisualizerForm"/>
         <transition on="dtm-controlMeasure" to="diseaseTransmissionModelForm"/>
         <transition on="dtm-hostSpeciesIncluded" to="diseaseTransmissionModelForm"/>
         <transition on="dtm-pathogenCoverage" to="diseaseTransmissionModelForm"/>
@@ -145,7 +145,7 @@
         <transition on="DiseaseForecasters" to="diseaseForecasterForm"/>
         <transition on="DataService" to="dataServiceForm"/>
         <transition on="DataStandard" to="dataStandardForm"/>
-        <transition on="DataVisualizers" to="dataVisualizersForm"/>
+        <transition on="DataVisualizers" to="dataVisualizerForm"/>
         <transition on="DiseaseTransmissionModel" to="diseaseTransmissionModelForm"/>
         <transition on="DiseaseTransmissionTreeEstimators" to="diseaseTransmissionTreeEstimatorForm"/>
         <transition on="MetagenomicAnalysis" to="validateSoftwareFormEnd"/>
@@ -194,7 +194,7 @@
 
     <!--                        -->
     <!--Form Data Visualizer-->
-    <view-state id="dataVisualizersForm" model="flowScope.digitalObject">
+    <view-state id="dataVisualizerForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
