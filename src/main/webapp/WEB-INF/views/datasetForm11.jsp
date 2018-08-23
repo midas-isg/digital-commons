@@ -27,7 +27,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editIsAbout path="isAbout"
                                 specifier="isAbout"
-                                isAboutList="${dataset.isAbout}"
+                                isAboutList="${digitalObject.isAbout}"
                                 label="Is About"
                                 showAddAnnotationButton="true"
                                 showAddBiologicalEntityButton="true">

@@ -30,7 +30,7 @@
             <%--</myTags:editCategory>--%>
                 <h3>${categoryName}</h3>
             <myTags:editNonZeroLengthString path="product"
-                                            string="${software.product}"
+                                            string="${digitalObject.product}"
                                             isRequired="${false}"
                                             isUnboundedList="${false}"
                                             id="product"
@@ -45,7 +45,7 @@
                                             isUnboundedList="${false}"
                                             id="title"
                                             specifier="title"
-                                            string="${software.title}">
+                                            string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Human Readable Synopsis"
                                             placeholder="Human Readable Synopsis"
@@ -55,9 +55,9 @@
                                             specifier="humanReadableSynopsis"
                                             isUnboundedList="${false}"
                                             id="humanReadableSynopsis"
-                                            string="${software.humanReadableSynopsis}">
+                                            string="${digitalObject.humanReadableSynopsis}">
             </myTags:editNonZeroLengthString>
-            <myTags:editSoftwareIdentifier identifier="${software.identifier}"
+            <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
                                            specifier="identifier"
                                            path="identifier"
                                            isUnboundedList="${false}"
@@ -70,7 +70,7 @@
                                         path="dataInputFormats"
                                         specifier="dataInputFormats"
                                         isRequired="${false}"
-                                        listItems="${software.dataInputFormats}"
+                                        listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Data Output Formats"
@@ -79,10 +79,10 @@
                                         specifier="data-output-format"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.dataOutputFormats}">
+                                        listItems="${digitalObject.dataOutputFormats}">
             </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString path="sourceCodeRelease"
-                                            string="${software.sourceCodeRelease}"
+                                            string="${digitalObject.sourceCodeRelease}"
                                             specifier="soure-code-release"
                                             placeholder="Source Code Release"
                                             isRequired="${false}"
@@ -96,7 +96,7 @@
                                         specifier="web-application"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.webApplication}">
+                                        listItems="${digitalObject.webApplication}">
             </myTags:editMasterUnbounded>
 
             <%--
@@ -104,7 +104,7 @@
                                                  categoryPaths="${categoryPaths}">
                             </myTags:editCategory>
                             <myTags:editNonZeroLengthString path="product"
-                                                            string="${software.product}"
+                                                            string="${digitalObject.product}"
                                                             specifier="product"
                                                             placeholder="Product Name"
                                                             label="Product Name">
@@ -112,14 +112,14 @@
                             <myTags:editRequiredNonZeroLengthString label="Title"
                                                                     placeholder="Title"
                                                                     path="title"
-                                                                    string="${software.title}">
+                                                                    string="${digitalObject.title}">
                             </myTags:editRequiredNonZeroLengthString>
                             <myTags:editRequiredNonZeroLengthStringTextArea label="Human Readable Synopsis"
                                                                             placeholder="Human Readable Synopsis"
                                                                             path="humanReadableSynopsis"
-                                                                            string="${software.humanReadableSynopsis}">
+                                                                            string="${digitalObject.humanReadableSynopsis}">
                             </myTags:editRequiredNonZeroLengthStringTextArea>
-                            <myTags:editSoftwareIdentifier identifier="${software.identifier}"
+                            <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
                                                            specifier="identifier"
                                                            path="identifier"
                                                            label="Identifier">
@@ -128,16 +128,16 @@
                                                                      placeholder="Data Input Format"
                                                                      path="dataInputFormats"
                                                                      specifier="data-input-format"
-                                                                     formats="${software.dataInputFormats}">
+                                                                     formats="${digitalObject.dataInputFormats}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthStringUnbounded label="Data Output Formats"
                                                                      placeholder="Data Output Format"
                                                                      path="dataOutputFormats"
                                                                      specifier="data-output-format"
-                                                                     formats="${software.dataOutputFormats}">
+                                                                     formats="${digitalObject.dataOutputFormats}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthString path="sourceCodeRelease"
-                                                            string="${software.sourceCodeRelease}"
+                                                            string="${digitalObject.sourceCodeRelease}"
                                                             specifier="soure-code-release"
                                                             placeholder="Source Code Release"
                                                             label="Source Code Release">
@@ -146,16 +146,16 @@
                                                                      placeholder="Web Application"
                                                                      path="webApplication"
                                                                      specifier="web-application"
-                                                                     formats="${software.webApplication}">
+                                                                     formats="${digitalObject.webApplication}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthString path="license"
-                                                            string="${software.license}"
+                                                            string="${digitalObject.license}"
                                                             specifier="license"
                                                             placeholder="License"
                                                             label="License">
                             </myTags:editNonZeroLengthString>
                             <myTags:editNonZeroLengthString path="source"
-                                                            string="${software.source}"
+                                                            string="${digitalObject.source}"
                                                             specifier="source"
                                                             placeholder="Source"
                                                             label="Source">
@@ -164,16 +164,16 @@
                                                                      placeholder="Developer"
                                                                      path="developers"
                                                                      specifier="developers"
-                                                                     formats="${software.developers}">
+                                                                     formats="${digitalObject.developers}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthString path="website"
-                                                            string="${software.website}"
+                                                            string="${digitalObject.website}"
                                                             specifier="website"
                                                             placeholder="Website"
                                                             label="Website">
                             </myTags:editNonZeroLengthString>
                             <myTags:editNonZeroLengthString path="documentation"
-                                                            string="${software.documentation}"
+                                                            string="${digitalObject.documentation}"
                                                             specifier="documentation"
                                                             placeholder="Documentation"
                                                             label="Documentation">
@@ -182,49 +182,49 @@
                                                                      placeholder="Publication That Used Release"
                                                                      path="publicationsThatUsedRelease"
                                                                      specifier="publications-that-used-release"
-                                                                     formats="${software.publicationsThatUsedRelease}">
+                                                                     formats="${digitalObject.publicationsThatUsedRelease}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthStringUnbounded label="Executables"
                                                                      placeholder="Executable"
                                                                      path="executables"
                                                                      specifier="executables"
-                                                                     formats="${software.executables}">
+                                                                     formats="${digitalObject.executables}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthStringUnbounded label="Version"
                                                                      placeholder="Version"
                                                                      path="version"
                                                                      specifier="version"
-                                                                     formats="${software.version}">
+                                                                     formats="${digitalObject.version}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthStringUnbounded label="Publications About Release"
                                                                      placeholder="Publication About Release"
                                                                      path="publicationsAboutRelease"
                                                                      specifier="publications-about-release"
-                                                                     formats="${software.publicationsAboutRelease}">
+                                                                     formats="${digitalObject.publicationsAboutRelease}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNonZeroLengthStringUnbounded label="Grant"
                                                                      placeholder="Grant"
                                                                      path="grants"
                                                                      specifier="grants"
-                                                                     formats="${software.grants}">
+                                                                     formats="${digitalObject.grants}">
                             </myTags:editNonZeroLengthStringUnbounded>
                             <myTags:editNestedIdentifier label="Location Coverages"
                                                          placeholder="Location Coverage"
                                                          path="locationCoverage"
                                                          specifier="location-coverage"
-                                                         identifiers="${software.locationCoverage}">
+                                                         identifiers="${digitalObject.locationCoverage}">
                             </myTags:editNestedIdentifier>
                             <myTags:editCheckbox label="Available on Olumpus"
                                                  path="availableOnOlympus"
-                                                 checked="${software.availableOnOlympus}">
+                                                 checked="${digitalObject.availableOnOlympus}">
                             </myTags:editCheckbox>
                             <myTags:editCheckbox label="Available on UIDS"
                                                  path="availableOnUIDS"
-                                                 checked="${software.availableOnUIDS}">
+                                                 checked="${digitalObject.availableOnUIDS}">
                             </myTags:editCheckbox>
                             <myTags:editCheckbox label="Sign In Required"
                                                  path="signInRequired"
-                                                 checked="${software.signInRequired}">
+                                                 checked="${digitalObject.signInRequired}">
                             </myTags:editCheckbox>
             --%>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">

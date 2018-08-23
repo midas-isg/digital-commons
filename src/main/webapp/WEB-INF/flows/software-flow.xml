@@ -16,7 +16,7 @@
         <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
         <transition on="false" to="accessDenied"/>
         <transition to="softwareForm1">
-            <evaluate expression="datasetWebflowValidator.createSoftware(categoryID)" result="flowScope.software" />
+            <evaluate expression="datasetWebflowValidator.createSoftware(categoryID)" result="flowScope.digitalObject" />
             <evaluate expression="datasetWebflowValidator.getAccessPointEnums()" result="flowScope.accessPointTypes" />
         </transition>
     </action-state>
@@ -25,7 +25,7 @@
         <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
         <transition on="false" to="accessDenied"/>
         <transition to="softwareForm1">
-            <evaluate expression="datasetWebflowValidator.editSoftware(entryID)" result="flowScope.software"/>
+            <evaluate expression="datasetWebflowValidator.editDigitalObject(entryID)" result="flowScope.digitalObject"/>
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
             <evaluate expression="datasetWebflowValidator.getAccessPointEnums()" result="flowScope.accessPointTypes" />
@@ -79,7 +79,7 @@
 
     <!--           -->
     <!--Form page 1-->
-    <view-state id="softwareForm1" model="flowScope.software">
+    <view-state id="softwareForm1" model="flowScope.digitalObject">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
             <set name="requestScope.softwareType" value="flowScope.softwareType"/>
@@ -93,7 +93,7 @@
     </view-state>
 
     <action-state id="validateForm1">
-        <evaluate expression="datasetWebflowValidator.validateSoftwareForm1(flowScope.software, messageContext, flowScope.categoryID)"/>
+        <evaluate expression="datasetWebflowValidator.validateSoftwareForm1(flowScope.digitalObject, messageContext, flowScope.categoryID)"/>
         <transition on="index" to="index"/>
         <transition on="true" to="softwareForm2"/>
         <transition on="false" to="softwareForm1"/>
@@ -103,7 +103,7 @@
 
     <!--           -->
     <!--Form page 2-->
-    <view-state id="softwareForm2" model="flowScope.software">
+    <view-state id="softwareForm2" model="flowScope.digitalObject">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
         </on-render>
@@ -120,7 +120,7 @@
     </view-state>
 
     <action-state id="validateForm2">
-        <evaluate expression="datasetWebflowValidator.validateSoftwareForm1(flowScope.software, messageContext, flowScope.categoryID)"/>
+        <evaluate expression="datasetWebflowValidator.validateSoftwareForm1(flowScope.digitalObject, messageContext, flowScope.categoryID)"/>
         <transition on="index" to="index"/>
         <transition on="true" to="softwareSpecficForm"/>
         <transition on="false" to="softwareForm2"/>
@@ -141,7 +141,7 @@
 -->
 
     <action-state id="softwareSpecficForm">
-        <evaluate expression="datasetWebflowValidator.getSoftwareClassName(flowScope.software, messageContext, flowScope.categoryID)" />
+        <evaluate expression="datasetWebflowValidator.getSoftwareClassName(flowScope.digitalObject, messageContext, flowScope.categoryID)" />
         <transition on="DataFormatConverters" to="validateSoftwareFormEnd"/>
         <transition on="DiseaseForecasters" to="diseaseForecasterForm"/>
         <transition on="DataService" to="dataServiceForm"/>
@@ -159,7 +159,7 @@
 
     <!--                        -->
     <!--Form Disease Forecasters-->
-    <view-state id="diseaseForecasterForm" model="flowScope.software">
+    <view-state id="diseaseForecasterForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -171,7 +171,7 @@
 
     <!--                        -->
     <!--Form Data Service-->
-    <view-state id="dataServiceForm" model="flowScope.software">
+    <view-state id="dataServiceForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -183,7 +183,7 @@
 
     <!--                        -->
     <!--Form Data Standard-->
-    <view-state id="dataStandardForm" model="flowScope.software">
+    <view-state id="dataStandardForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -195,7 +195,7 @@
 
     <!--                        -->
     <!--Form Data Visualizer-->
-    <view-state id="dataVisualizersForm" model="flowScope.software">
+    <view-state id="dataVisualizersForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -207,7 +207,7 @@
 
     <!--                        -->
     <!--Form Disease Transmission Model-->
-    <view-state id="diseaseTransmissionModelForm" model="flowScope.software">
+    <view-state id="diseaseTransmissionModelForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -219,7 +219,7 @@
 
     <!--                        -->
     <!--Form Disease Transmission Tree Estimator-->
-    <view-state id="diseaseTransmissionTreeEstimatorForm" model="flowScope.software">
+    <view-state id="diseaseTransmissionTreeEstimatorForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -231,7 +231,7 @@
 
     <!--                        -->
     <!--Form Pathogen Evolution Model-->
-    <view-state id="pathogenEvolutionModelForm" model="flowScope.software">
+    <view-state id="pathogenEvolutionModelForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -243,7 +243,7 @@
 
     <!--                        -->
     <!--Form Population Dynamics Model-->
-    <view-state id="populationDynamicsModelForm" model="flowScope.software">
+    <view-state id="populationDynamicsModelForm" model="flowScope.digitalObject">
         <transition on="previous"  to="softwareForm1"/>
         <transition on="submit" to="validateSoftwareFormEnd">
             <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
@@ -256,7 +256,7 @@
 
 
     <action-state id="validateSoftwareFormEnd">
-        <evaluate expression="datasetWebflowValidator.submitSoftware(flowRequestContext, messageContext)" />
+        <evaluate expression="datasetWebflowValidator.submitDigitalObject(flowRequestContext, messageContext)" />
         <transition on="true" to="entryConfirmation"/>
         <transition on="false" to="softwareSpecficForm"/>
         <transition on="index" to="index"/>

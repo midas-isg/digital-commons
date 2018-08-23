@@ -24,7 +24,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
+            <myTags:editPersonComprisedEntity personComprisedEntities="${digitalObject.creators}"
                                               label="Creator"
                                               path="creators"
                                               specifier="creators"

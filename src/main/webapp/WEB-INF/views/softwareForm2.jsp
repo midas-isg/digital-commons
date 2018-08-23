@@ -24,13 +24,13 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:editNonZeroLengthString path="license" string="${software.license}"
+            <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
                                             specifier="license" placeholder="License"
                                             isRequired="${false}"
                                             isUnboundedList="${false}"
                                             id="license"
                                             label="License"></myTags:editNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="source" string="${software.source}"
+            <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
                                             specifier="source" placeholder="Source"
                                             isRequired="${false}"
                                             isUnboundedList="${false}"
@@ -40,14 +40,14 @@
                                         path="developers" specifier="developers"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.developers}"></myTags:editMasterUnbounded>
-            <myTags:editNonZeroLengthString path="website" string="${software.website}"
+                                        listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
                                             specifier="website" placeholder="Website"
                                             isRequired="${false}"
                                             isUnboundedList="${false}"
                                             id="website"
                                             label="Website"></myTags:editNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="documentation" string="${software.documentation}"
+            <myTags:editNonZeroLengthString path="documentation" string="${digitalObject.documentation}"
                                             specifier="documentation" placeholder="Documentation"
                                             isRequired="${false}"
                                             isUnboundedList="${false}"
@@ -59,41 +59,41 @@
                                         specifier="publications-that-used-release"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
+                                        listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Executables" placeholder="Executable"
                                         path="executables" specifier="executables"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.executables}"></myTags:editMasterUnbounded>
+                                        listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Version" placeholder="Version"
                                         path="version" specifier="version"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.version}"></myTags:editMasterUnbounded>
+                                        listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Publications About Release"
                                         placeholder="Publication About Release"
                                         path="publicationsAboutRelease"
                                         specifier="publications-about-release"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.publicationsAboutRelease}"></myTags:editMasterUnbounded>
+                                        listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Grant" placeholder="Grant"
                                         path="grants" specifier="grants"
                                         isRequired="${false}"
                                         tagName="string"
-                                        listItems="${software.grants}">
+                                        listItems="${digitalObject.grants}">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Location Coverages"
                                         placeholder="Location Coverage"
                                         path="locationCoverage"
                                         specifier="location-coverage"
                                         tagName="softwareIdentifier"
-                                        listItems="${software.locationCoverage}">
+                                        listItems="${digitalObject.locationCoverage}">
             </myTags:editMasterUnbounded>
             <%--
             <myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
                                          path="locationCoverage" specifier="location-coverage"
-                                         identifiers="${software.locationCoverage}"></myTags:editNestedIdentifier>
+                                         identifiers="${digitalObject.locationCoverage}"></myTags:editNestedIdentifier>
             --%>
             <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"></myTags:editCheckbox>
             <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"></myTags:editCheckbox>
@@ -102,7 +102,7 @@
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <c:choose>
-                <c:when test="${not function:onlyContainsSoftwareElements(software)}">
+                <c:when test="${not function:onlyContainsSoftwareElements(digitalObject)}">
                     <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
                 </c:when>
                 <c:otherwise>

@@ -25,7 +25,7 @@
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editMasterUnbounded path="licenses"
-                                        listItems="${dataset.licenses}"
+                                        listItems="${digitalObject.licenses}"
                                         tagName="license"
                                         label="License"
                                         specifier="licenses">

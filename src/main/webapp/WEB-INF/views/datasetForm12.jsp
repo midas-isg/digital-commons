@@ -26,7 +26,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editMasterUnbounded path="acknowledges"
                                         specifier="acknowledges"
-                                        listItems="${dataset.acknowledges}"
+                                        listItems="${digitalObject.acknowledges}"
                                         tagName="grant"
                                         label="Acknowledges">
             </myTags:editMasterUnbounded>

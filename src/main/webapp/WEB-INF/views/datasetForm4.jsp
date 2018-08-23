@@ -28,23 +28,23 @@
                                         specifier="types"
                                         label="Types"
                                         tagName="type"
-                                        listItems="${dataset.types}">
+                                        listItems="${digitalObject.types}">
             </myTags:editMasterUnbounded>
 
             <myTags:editNonZeroLengthString path="availability"
-                                            string="${dataset.availability}"
+                                            string="${digitalObject.availability}"
                                             specifier="availability"
                                             placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
                                             label="Availability">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString path="refinement"
-                                            string="${dataset.refinement}"
+                                            string="${digitalObject.refinement}"
                                             specifier="refinement"
                                             placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
                                             label="Refinement">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString path="aggregation"
-                                            string="${dataset.aggregation}"
+                                            string="${digitalObject.aggregation}"
                                             specifier="aggregation"
                                             placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
                                             label="Aggregation">

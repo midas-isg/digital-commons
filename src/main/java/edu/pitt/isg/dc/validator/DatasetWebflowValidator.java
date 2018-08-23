@@ -123,6 +123,7 @@ public class DatasetWebflowValidator {
         }
     }
 
+/*
     public Dataset editDataset(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
@@ -136,6 +137,7 @@ public class DatasetWebflowValidator {
 
         return dataset;
     }
+*/
 
 
     public Object createSoftware(Long categoryID) {
@@ -197,27 +199,27 @@ public class DatasetWebflowValidator {
         }
     }
 
-    public Object editSoftware(Long entryId) {
+    public Object editDigitalObject(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
-        String softwareClassName = entryView.getProperties().get("type");
+        String digitalObjectClassName = entryView.getProperties().get("type");
         Class clazz = null;
-        Object software = null;
+        Object digitalObject = null;
         try {
-            clazz = Class.forName(softwareClassName);
+            clazz = Class.forName(digitalObjectClassName);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         try {
-            software = clazz.newInstance();
-            software = converter.fromJson(entryView.getUnescapedEntryJsonString(), clazz);
-            software = ReflectionFactory.create(clazz, software);
+            digitalObject = clazz.newInstance();
+            digitalObject = converter.fromJson(entryView.getUnescapedEntryJsonString(), clazz);
+            digitalObject = ReflectionFactory.create(clazz, digitalObject);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return software;
+        return digitalObject;
     }
 
 
@@ -379,6 +381,7 @@ public class DatasetWebflowValidator {
         return "true";
     }
 
+/*
     public String createDataset(RequestContext context, MessageContext messageContext) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
 
@@ -432,33 +435,34 @@ public class DatasetWebflowValidator {
 
         return "true";
     }
+*/
 
 
     //TODO: See if we can combine the previous method and this one -- or atleast split out the similarities
-    public String submitSoftware(RequestContext context, MessageContext messageContext) {
+    public String submitDigitalObject(RequestContext context, MessageContext messageContext) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
 
-        Class clazz = context.getFlowScope().get("software").getClass();
-        Object software = null;
-        software = clazz.cast(context.getFlowScope().get("software"));
-/*
+        Class clazz = context.getFlowScope().get("digitalObject").getClass();
+        Object digitalObject = null;
+        digitalObject = clazz.cast(context.getFlowScope().get("digitalObject"));
+
+        Long categoryID = null;
+        Long revisionId = null;
+        Long entryIdentifier = null;
+
         try {
-            software = clazz.newInstance();
-            software = clazz.cast(context.getFlowScope().get("software"));
-        } catch (InstantiationException | IllegalAccessException e) {
+            categoryID = (Long) context.getFlowScope().get("categoryID");
+            revisionId = (Long) context.getFlowScope().get("revisionID");
+            entryIdentifier = (Long) context.getFlowScope().get("entryID");
+        } catch (Exception e) {
             e.printStackTrace();
         }
-*/
-        Long revisionId = (Long) context.getFlowScope().get("revisionID");
-        Long entryID = Long.parseLong(context.getFlowScope().get("entryID").toString());
-//        Long entryID = (Long) context.getFlowScope().get("entryID");
-        Long categoryID = (Long) context.getFlowScope().get("categoryID");
 
         //Second check for required fields
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
         try {
-            webFlowReflectionValidator.validate(clazz, software, true, breadcrumb, null, errors);
+            webFlowReflectionValidator.validate(clazz, digitalObject, true, breadcrumb, null, errors);
             webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
         } catch (Exception e) {
             e.printStackTrace();
@@ -475,7 +479,7 @@ public class DatasetWebflowValidator {
         }
 
         try {
-            software = webFlowReflectionValidator.cleanse(clazz, software);
+            digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject);
         } catch (FatalReflectionValidatorException e) {
             e.printStackTrace();
         }
@@ -483,14 +487,14 @@ public class DatasetWebflowValidator {
 
         EntryView entryObject = new EntryView();
 
-        JsonObject json = converter.toJsonObject(clazz, software);
+        JsonObject json = converter.toJsonObject(clazz, digitalObject);
         json.remove("class");
         entryObject.setEntry(json);
-        entryObject.setProperty("type", clazz.getClass().toString());
+        entryObject.setProperty("type", clazz.getName());
 
         try {
             Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
-            entrySubmissionInterface.submitEntry(entryObject, entryID, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
+            entrySubmissionInterface.submitEntry(entryObject, entryIdentifier, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
         } catch (Exception e) {
             e.printStackTrace();
             return "false";

@@ -26,7 +26,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:editMasterUnbounded path="primaryPublications"
                                         specifier="primaryPublications"
-                                        listItems="${dataset.primaryPublications}"
+                                        listItems="${digitalObject.primaryPublications}"
                                         tagName="publication"
                                         label="Primary Publications">
             </myTags:editMasterUnbounded>
