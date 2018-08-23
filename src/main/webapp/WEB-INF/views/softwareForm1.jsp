@@ -24,10 +24,11 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:editCategory selectedID="${categoryID}"
-                                 isDisabled="${true}"
-                                 categoryPaths="${categoryPaths}">
-            </myTags:editCategory>
+            <%--<myTags:editCategory selectedID="${categoryID}"--%>
+                                 <%--isDisabled="${true}"--%>
+                                 <%--categoryPaths="${categoryPaths}">--%>
+            <%--</myTags:editCategory>--%>
+                <h3>${categoryName}</h3>
             <myTags:editNonZeroLengthString path="product"
                                             string="${software.product}"
                                             isRequired="${false}"

@@ -2,7 +2,6 @@ package edu.pitt.isg.dc.validator;
 
 import com.google.gson.JsonObject;
 import edu.pitt.isg.Converter;
-import edu.pitt.isg.dc.entry.Category;
 import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.EntryId;
 import edu.pitt.isg.dc.entry.Users;
@@ -11,16 +10,12 @@ import edu.pitt.isg.dc.entry.interfaces.EntrySubmissionInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
-import edu.pitt.isg.dc.utils.DatasetFactory;
 import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
-import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
+import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Geometry;
-import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import edu.pitt.isg.mdc.v1_0.*;
-import edu.pitt.isg.mdc.v1_0.Software;
-import org.apache.commons.lang.WordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.binding.message.Message;
 import org.springframework.binding.message.MessageBuilder;
@@ -36,10 +31,9 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
-import static edu.pitt.isg.dc.controller.HomeController.ifLoggedIn;
 import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
-import static edu.pitt.isg.dc.utils.TagUtil.isObjectEmpty;
-import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.*;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.validatorErrors;
 
 @Component
 public class DatasetWebflowValidator {
@@ -62,17 +56,21 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
-    public String controlFlow(RequestContext context) {
-        try {
-            Map<Long, String> categoryMap = categoryHelper.getTreePaths();
-            String category = categoryMap.get(context.getFlowScope().getLong("categoryID"));
-            if(category.toLowerCase().contains("software")) {
-                return "software";
-            }
-            return "dataset";
-        }catch (Exception e) {
+    public String controlFlow(RequestContext context, MessageContext messageContext) {
+        Long categoryID = context.getFlowScope().getLong("categoryID");
+
+        if (categoryID == null || categoryID == 0) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "category").defaultText("Please select a category").build());
             return "";
         }
+        context.getFlowScope().put("categoryName", getCategoryNameFromID(categoryID));
+
+        String category = getCategoryNameFromID(categoryID);
+        if (category.toLowerCase().contains("software")) {
+            return "software";
+        }
+        return "dataset";
     }
 
     public String isLoggedIn(RequestContext context) {
@@ -95,7 +93,7 @@ public class DatasetWebflowValidator {
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Software"));
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Data"));
 
-            if(digitalObjectType.equals("dataset")) {
+            if (digitalObjectType.equals("dataset")) {
                 categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
             }
 
@@ -147,6 +145,7 @@ public class DatasetWebflowValidator {
         String softwareType = getSoftwareTypeFromCategoryID(categoryID);
         RequestContext requestContext = RequestContextHolder.getRequestContext();
         requestContext.getFlowScope().put("softwareType", softwareType);
+
         try {
             switch (softwareType) {
                 case "Data-format converters": // Root: Software: (Data-format converters)
@@ -185,10 +184,14 @@ public class DatasetWebflowValidator {
 
     public String getSoftwareTypeFromCategoryID(Long categoryID) {
         //Given the category ID, grab the string after the first '->'
+        String category = getCategoryNameFromID(categoryID);
+        return category.split("->")[1].trim();
+    }
+
+    public String getCategoryNameFromID(Long categoryID) {
         try {
             Map<Long, String> categoryMap = categoryHelper.getTreePaths();
-            String category = categoryMap.get(categoryID);
-            return category.split("->")[1].trim();
+            return categoryMap.get(categoryID);
         } catch (Exception e) {
             return null;
         }
@@ -290,11 +293,6 @@ public class DatasetWebflowValidator {
         //validate dates
         isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Date", "getDates", true);
 
-        if (categoryID == null || categoryID == 0) {
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "category").defaultText("Please select a category").build());
-            isValid = "false";
-        }
         if (isEmpty(title)) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "title").defaultText("Title cannot be empty").build());
@@ -348,14 +346,14 @@ public class DatasetWebflowValidator {
             Object obj = method.invoke(dataset);
             Field field = null;
 
-            for(Field newField : dataset.getClass().getDeclaredFields()) {
-                if(newField.getName().toLowerCase().contains(envokeMethod.replace("get", "").toLowerCase())) {
+            for (Field newField : dataset.getClass().getDeclaredFields()) {
+                if (newField.getName().toLowerCase().contains(envokeMethod.replace("get", "").toLowerCase())) {
                     field = newField;
                     break;
                 }
             }
 
-            if(obj instanceof List) {
+            if (obj instanceof List) {
                 webFlowReflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
             } else {
                 webFlowReflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
@@ -370,7 +368,7 @@ public class DatasetWebflowValidator {
             return "false";
         }
 
-        if(errors.size() > 0){
+        if (errors.size() > 0) {
             return "false";
         }
 
@@ -400,9 +398,9 @@ public class DatasetWebflowValidator {
             e.printStackTrace();
         }
 
-        if(errors.size() > 0) {
+        if (errors.size() > 0) {
             //Redirect to page with the error
-            for(Message message : messageContext.getAllMessages()) {
+            for (Message message : messageContext.getAllMessages()) {
                 String messageSource = message.getSource().toString();
                 context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
                 return "index";
@@ -466,9 +464,9 @@ public class DatasetWebflowValidator {
             e.printStackTrace();
         }
 
-        if(errors.size() > 0) {
+        if (errors.size() > 0) {
             //Redirect to page with the error
-            for(Message message : messageContext.getAllMessages()) {
+            for (Message message : messageContext.getAllMessages()) {
                 String messageSource = message.getSource().toString();
                 context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
                 return "index";

@@ -695,6 +695,10 @@ tfoot {
     padding: 0px !important;
 }
 
+.bootstrap-select .dropdown-toggle::after {
+    right: 10px;
+}
+
 .ajax-loader {
     padding: 10px;
     text-align: center;
