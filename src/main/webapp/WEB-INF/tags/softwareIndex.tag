@@ -53,12 +53,12 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="diseaseForecasterForm">
-                        <li><a href="#" onclick="submitForm('dff-diseases')">Diseases</a></li>
-                        <li><a href="#" onclick="submitForm('dff-nowcasts')">Nowcasts</a></li>
-                        <li><a href="#" onclick="submitForm('dff-outcomes')">Outcomes</a></li>
-                        <li><a href="#" onclick="submitForm('dff-forecastFrequency')">Forecast Frequency</a></li>
-                        <li><a href="#" onclick="submitForm('dff-type')">Type</a></li>
-                        <li><a href="#" onclick="submitForm('dff-forecast')">Forecast</a></li>
+                        <li><a href="#" onclick="submitForm('diseases')">Diseases</a></li>
+                        <li><a href="#" onclick="submitForm('nowcasts')">Nowcasts</a></li>
+                        <li><a href="#" onclick="submitForm('outcomes')">Outcomes</a></li>
+                        <li><a href="#" onclick="submitForm('forecastFrequency')">Forecast Frequency</a></li>
+                        <li><a href="#" onclick="submitForm('type')">Type</a></li>
+                        <li><a href="#" onclick="submitForm('forecast')">Forecast</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -68,9 +68,9 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="dataServiceForm">
-                        <li><a href="#" onclick="submitForm('ds-accessPointType')">Access Point Type</a></li>
-                        <li><a href="#" onclick="submitForm('ds-accessPointDescription')">Access Point Description</a></li>
-                        <li><a href="#" onclick="submitForm('ds-accessPointURL')">Access Point URL</a></li>
+                        <li><a href="#" onclick="submitForm('accessPointType')">Access Point Type</a></li>
+                        <li><a href="#" onclick="submitForm('accessPointDescription')">Access Point Description</a></li>
+                        <li><a href="#" onclick="submitForm('accessPointURL')">Access Point URL</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -92,7 +92,7 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="dataVisualizerForm">
-                        <li><a href="#" onclick="submitForm('dv-visualizationType')">Visualization Type</a></li>
+                        <li><a href="#" onclick="submitForm('visualizationType')">Visualization Type</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -102,9 +102,9 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="diseaseTransmissionModelForm">
-                        <li><a href="#" onclick="submitForm('dtm-controlMeasure')">Control Measure</a></li>
-                        <li><a href="#" onclick="submitForm('dtm-hostSpeciesIncluded')">Host Species Included</a></li>
-                        <li><a href="#" onclick="submitForm('dtm-pathogenCoverage')">Pathogen Coverage</a></li>
+                        <li><a href="#" onclick="submitForm('controlMeasure')">Control Measure</a></li>
+                        <li><a href="#" onclick="submitForm('hostSpeciesIncluded')">Host Species Included</a></li>
+                        <li><a href="#" onclick="submitForm('pathogenCoverage')">Pathogen Coverage</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -114,8 +114,8 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="diseaseTransmissionTreeEstimatorForm">
-                        <li><a href="#" onclick="submitForm('dtte-hostSpeciesIncluded')">Host Species Included</a></li>
-                        <li><a href="#" onclick="submitForm('dtte-pathogenCoverage')">Pathogen Coverage</a></li>
+                        <li><a href="#" onclick="submitForm('hostSpeciesIncluded')">Host Species Included</a></li>
+                        <li><a href="#" onclick="submitForm('pathogenCoverage')">Pathogen Coverage</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -125,7 +125,7 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="pathogenEvolutionModelForm">
-                        <li><a href="#" onclick="submitForm('pem-pathogens')">Pathogens</a></li>
+                        <li><a href="#" onclick="submitForm('pathogens')">Pathogens</a></li>
                     </ul>
                 </li>
             </c:when>
@@ -135,7 +135,7 @@
                     Info</a>
 
                     <ul class="collapse list-unstyled" id="populationDynamicsModelForm">
-                        <li><a href="#" onclick="submitForm('pdm-populationSpeciesIncluded')">Population Species Included</a></li>
+                        <li><a href="#" onclick="submitForm('populationSpeciesIncluded')">Population Species Included</a></li>
                     </ul>
                 </li>
             </c:when>

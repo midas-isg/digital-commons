@@ -58,26 +58,25 @@
         <transition on="availableOnOlympus" to="softwareForm2"/>
         <transition on="availableOnUIDS" to="softwareForm2"/>
         <transition on="signInRequired" to="softwareForm2"/>
-        <transition on="dff-diseases" to="diseaseForecasterForm"/>
-        <transition on="dff-nowcasts" to="diseaseForecasterForm"/>
-        <transition on="dff-outcomes" to="diseaseForecasterForm"/>
-        <transition on="dff-forecastFrequency" to="diseaseForecasterForm"/>
-        <transition on="dff-type" to="diseaseForecasterForm"/>
-        <transition on="dff-forecast" to="diseaseForecasterForm"/>
-        <transition on="ds-accessPointType" to="dataServiceForm"/>
-        <transition on="ds-accessPointDescription" to="dataServiceForm"/>
-        <transition on="ds-accessPointURL" to="dataServiceForm"/>
-        <transition on="dv-visualizationType" to="dataVisualizerForm"/>
-        <transition on="dtm-controlMeasure" to="diseaseTransmissionModelForm"/>
-        <transition on="dtm-hostSpeciesIncluded" to="diseaseTransmissionModelForm"/>
-        <transition on="dtm-pathogenCoverage" to="diseaseTransmissionModelForm"/>
-        <transition on="dtte-hostSpeciesIncluded" to="diseaseTransmissionTreeEstimatorForm"/>
-        <transition on="dtte-pathogenCoverage" to="diseaseTransmissionTreeEstimatorForm"/>
-        <transition on="pem-pathogens" to="pathogenEvolutionModelForm"/>
-        <transition on="pdm-populationSpeciesIncluded" to="populationDynamicsModelForm"/>
+        <transition on="diseases" to="diseaseForecasterForm"/>
+        <transition on="nowcasts" to="diseaseForecasterForm"/>
+        <transition on="outcomes" to="diseaseForecasterForm"/>
+        <transition on="forecastFrequency" to="diseaseForecasterForm"/>
+        <transition on="type" to="diseaseForecasterForm"/>
+        <transition on="forecast" to="diseaseForecasterForm"/>
+        <transition on="accessPointType" to="dataServiceForm"/>
+        <transition on="accessPointDescription" to="dataServiceForm"/>
+        <transition on="accessPointURL" to="dataServiceForm"/>
+        <transition on="visualizationType" to="dataVisualizerForm"/>
+        <transition on="controlMeasure" to="diseaseTransmissionModelForm"/>
+        <transition on="hostSpeciesIncluded" to="diseaseTransmissionModelForm"/>
+        <transition on="pathogenCoverage" to="diseaseTransmissionModelForm"/>
+        <transition on="hostSpeciesIncluded" to="diseaseTransmissionTreeEstimatorForm"/>
+        <transition on="pathogenCoverage" to="diseaseTransmissionTreeEstimatorForm"/>
+        <transition on="pathogens" to="pathogenEvolutionModelForm"/>
+        <transition on="populationSpeciesIncluded" to="populationDynamicsModelForm"/>
         <transition on="dataServiceDescription[0]" to="dataServiceForm"/>
-        <transition on="diseaseForecaster[0]" to="diseaseForecasterForm"/>
-        <transition on="populationDynamicsModel[0]" to="populationDynamicsModelForm"/>
+        <transition on="populationSpeciesIncluded[0]" to="populationDynamicsModelForm"/>
     </action-state>
 
     <!--           -->

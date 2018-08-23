@@ -92,7 +92,8 @@
                                           specifier="${specifier}-${varStatus.count-1}"
                                           id="${specifier}-${varStatus.count-1}"
                                           isUnboundedList="${true}"
-                                          date="${listItem}">
+                                          date="${listItem}"
+                                            label="Date">
                         </myTags:editDates>
                     </c:when>
                     <c:when test="${tagName == 'distribution'}">
@@ -247,7 +248,8 @@
         <myTags:editDates path="${path}[0]"
                           specifier="${specifier}-00"
                           isUnboundedList="${true}"
-                          id="${specifier}-${tagName}-copy-tag">
+                          id="${specifier}-${tagName}-copy-tag"
+                            label="Date">
         </myTags:editDates>
     </c:when>
     <c:when test="${tagName == 'distribution'}">
