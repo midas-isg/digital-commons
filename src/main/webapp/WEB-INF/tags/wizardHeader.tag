@@ -9,8 +9,15 @@
 
 <c:choose>
     <c:when test="${showCategories}">
+        <br>
         <myTags:editCategory selectedID="${categoryID}"
                              categoryPaths="${categoryPaths}">
         </myTags:editCategory>
     </c:when>
 </c:choose>
+
+<script>
+    window.onbeforeunload = function() {
+        return true;
+    };
+</script>
