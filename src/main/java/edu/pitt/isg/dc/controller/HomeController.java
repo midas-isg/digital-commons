@@ -432,7 +432,7 @@ public class HomeController {
         String jsonString = entryView.getUnescapedEntryJsonString();
         String type = entryView.getEntryTypeBaseName();
         model.addAttribute("entryView", entryView);
-
+        model.addAttribute("entryID", entryId.getEntryId());
         List<String> lineage = new ArrayList<>();
 
         try {

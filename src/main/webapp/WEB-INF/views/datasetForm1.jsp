@@ -24,17 +24,7 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <c:choose>
-                <c:when test="${not disableCategory}">
-                    <myTags:editCategory selectedID="${categoryID}"
-                                         isDisabled="${disableCategory}"
-                                         categoryPaths="${categoryPaths}">
-                    </myTags:editCategory>
-                </c:when>
-                <c:otherwise>
-                    <myTags:categoryLineage lineage="${categoryName}"/>
-                </c:otherwise>
-            </c:choose>
+            <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
 
             <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
                                    specifier="identifier"
@@ -64,7 +54,7 @@
                                         specifier="dates">
             </myTags:editMasterUnbounded>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>

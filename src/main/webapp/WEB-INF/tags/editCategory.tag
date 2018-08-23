@@ -9,15 +9,12 @@
               type="java.util.Map" %>
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
-<%@ attribute name="isDisabled" required="false"
-              type="java.lang.Boolean" %>
 
 <div class="form-group control-group full-width <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>
 
-    <select
-            <c:if test="${isDisabled}">disabled</c:if> class="selectpicker" data-live-search="true"
+    <select class="selectpicker" data-live-search="true"
             title="Please select a category ..." name="category" id="categoryValue">
         <c:forEach items="${categoryPaths}" var="categoryPath">
             <c:choose>

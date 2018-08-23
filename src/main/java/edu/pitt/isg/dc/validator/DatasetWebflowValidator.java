@@ -56,6 +56,19 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
+    public String isDigitalObjectDatasetOrSoftware(Long entryID) {
+        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryID);
+        EntryView entryView = new EntryView(entry);
+        RequestContext context = RequestContextHolder.getRequestContext();
+        context.getFlowScope().put("categoryName", createLineage(getCategoryNameFromID(entry.getCategory().getId())));
+
+        String digitalObjectClassName = entryView.getProperties().get("type");
+        if(digitalObjectClassName.contains("mdc.v1_0")) {
+            return "software";
+        }
+        return "dataset";
+    }
+
     public String controlFlow(RequestContext context, MessageContext messageContext) {
         Long categoryID = context.getFlowScope().getLong("categoryID");
 

@@ -25,6 +25,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded path="citations"
                                         specifier="citations"
                                         listItems="${digitalObject.citations}"
@@ -39,8 +41,8 @@
                               placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
             </myTags:editFloat>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

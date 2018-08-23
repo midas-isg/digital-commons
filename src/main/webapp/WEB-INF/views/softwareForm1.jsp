@@ -24,11 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <%--<myTags:editCategory selectedID="${categoryID}"--%>
-                                 <%--isDisabled="${true}"--%>
-                                 <%--categoryPaths="${categoryPaths}">--%>
-            <%--</myTags:editCategory>--%>
-                <myTags:categoryLineage lineage="${categoryName}"/>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editNonZeroLengthString path="product"
                                             string="${digitalObject.product}"
                                             isRequired="${false}"
@@ -228,7 +225,7 @@
                             </myTags:editCheckbox>
             --%>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>

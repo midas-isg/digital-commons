@@ -24,9 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Data Service</label>
---%>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded path="dataServiceDescription"
                                         specifier="dataServiceDescription"
                                         label="Data Service Description"
@@ -41,8 +40,8 @@
             </myTags:editDataServiceDescription>
 --%>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

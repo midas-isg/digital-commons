@@ -24,6 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
                                             specifier="license" placeholder="License"
                                             isRequired="${false}"
@@ -100,13 +102,13 @@
             <myTags:editCheckbox label="Sign In Required" path="signInRequired"></myTags:editCheckbox>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <c:choose>
                 <c:when test="${not function:onlyContainsSoftwareElements(digitalObject)}">
-                    <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+                    <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
                 </c:when>
                 <c:otherwise>
-                    <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+                    <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
                 </c:otherwise>
             </c:choose>
         </form>

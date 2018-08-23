@@ -24,10 +24,9 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-<%--
-            <label>Data Visualizer</label>
---%>
-            <myTags:editMasterUnbounded listItems="${digitalObject.visualizationType}"
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
                                         label="Visualization Types"
                                         placeholder="Visualization Type"
                                         specifier="visualization-type"
@@ -36,8 +35,8 @@
                                         path="visualizationType">
             </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

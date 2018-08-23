@@ -24,9 +24,11 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:editCategory selectedID="${categoryID}"
-                                 categoryPaths="${categoryPaths}">
-            </myTags:editCategory>
+            <myTags:wizardHeader showCategories="${true}"></myTags:wizardHeader>
+
+            <%--<myTags:editCategory selectedID="${categoryID}"--%>
+                                 <%--categoryPaths="${categoryPaths}">--%>
+            <%--</myTags:editCategory>--%>
             <myTags:editDataStandard label="Data Format"
                                      path="dataStandard"
                                      specifier="dataStandard"
@@ -79,7 +81,7 @@
 
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>

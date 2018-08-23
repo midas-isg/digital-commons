@@ -24,6 +24,8 @@
             <span>Toggle Sidebar</span>
         </button>
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editNonZeroLengthString path="version"
                                             string="${digitalObject.version}"
                                             specifier="version"
@@ -40,8 +42,8 @@
                                         path="extraProperties">
             </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>
