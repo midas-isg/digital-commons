@@ -6,6 +6,7 @@
 
     <input name="entryID"/>
     <input name="categoryID"/>
+    <input name="categoryName"/>
 
     <decision-state id="createOrEdit">
         <if test="entryID == null" then="create" else="edit" />
@@ -82,6 +83,7 @@
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
             <set name="requestScope.softwareType" value="flowScope.softwareType"/>
+            <set name="requestScope.categoryName" value="flowScope.categoryName"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('software')"/>
         </on-render>
         <transition on="next" to="validateForm1"/>

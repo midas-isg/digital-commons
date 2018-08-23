@@ -15,7 +15,7 @@
     </view-state>
 
     <action-state id="nextFlow">
-        <evaluate expression="datasetWebflowValidator.controlFlow(flowRequestContext)"/>
+        <evaluate expression="datasetWebflowValidator.controlFlow(flowRequestContext, messageContext)"/>
         <transition on="dataset" to="nextFlowDataset"/>
         <transition on="software" to="nextFlowSoftware"/>
         <transition on="" to="controlFlow"/>
@@ -24,10 +24,12 @@
     
     <subflow-state id="nextFlowDataset" subflow="addDataset">
         <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
     </subflow-state>
 
     <subflow-state id="nextFlowSoftware" subflow="addSoftware">
         <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
     </subflow-state>
 
 

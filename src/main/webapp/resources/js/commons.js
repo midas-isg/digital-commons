@@ -734,13 +734,16 @@ $(document).ready(function() {
 
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
+        try {
+            if (href.includes('http')) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: href
+                });
+            }
+        }catch (e) {
 
-        if(href.includes('http')) {
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'Clickthrough',
-                eventAction: href
-            });
         }
     });
 
