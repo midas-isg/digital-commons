@@ -440,7 +440,6 @@ public class DatasetWebflowValidator {
 */
 
 
-    //TODO: See if we can combine the previous method and this one -- or atleast split out the similarities
     public String submitDigitalObject(RequestContext context, MessageContext messageContext) {
         HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
 
