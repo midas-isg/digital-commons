@@ -33,7 +33,7 @@
                                             label="Host Species Included"
                                             tagName="softwareIdentifier"
                                             placeholder="Host Species Included"
-                                            listItems="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"
+                                            listItems="${digitalObject.hostSpeciesIncluded}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>
                 <myTags:editMasterUnbounded path="pathogenCoverage"
@@ -41,7 +41,7 @@
                                             label="Pathogen Coverage"
                                             tagName="softwareIdentifier"
                                             placeholder="Pathogen Coverage"
-                                            listItems="${diseaseTransmissionTreeEstimator.pathogenCoverage}"
+                                            listItems="${digitalObject.pathogenCoverage}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>
 

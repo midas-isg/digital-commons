@@ -157,7 +157,7 @@
                     <c:when test="${tagName == 'softwareIdentifier'}">
                         <myTags:editSoftwareIdentifier label="${label}"
                                                        path="${path}[${varStatus.count-1}].identifier"
-                                                       identifier="${listItem}"
+                                                       identifier="${listItem.identifier}"
                                                        isUnboundedList="${true}"
                                                        isRequired="${isRequired}"
                                                        id="${specifier}-${varStatus.count-1}"

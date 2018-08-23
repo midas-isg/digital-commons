@@ -32,7 +32,7 @@
                                         label="Pathogens"
                                         tagName="softwareIdentifier"
                                         placeholder="Pathogens"
-                                        listItems="${pathogenEvolutionModel.pathogens}"
+                                        listItems="${digitalObject.pathogens}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
 

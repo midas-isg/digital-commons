@@ -32,7 +32,7 @@
                                         label="Data Service Description"
                                         isRequired="${false}"
                                         isFirstRequired="${true}"
-                                        listItems="${dataService.dataServiceDescription}"
+                                        listItems="${digitalObject.dataServiceDescription}"
                                         tagName="dataServiceDescription">
             </myTags:editMasterUnbounded>
 <%--

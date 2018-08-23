@@ -33,7 +33,7 @@
                                             label="Population Species Included"
                                             tagName="softwareIdentifier"
                                             placeholder="Population Species Included"
-                                            listItems="${populationDynamicsModel.populationSpeciesIncluded}"
+                                            listItems="${digitalObject.populationSpeciesIncluded}"
                                             isRequired="${true}">
                 </myTags:editMasterUnbounded>
 

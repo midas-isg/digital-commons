@@ -32,16 +32,16 @@
                                         label="Diseases"
                                         path="diseases"
                                         tagName="softwareIdentifier"
-                                        listItems="${software.diseases}">
+                                        listItems="${digitalObject.diseases}">
             </myTags:editMasterUnbounded>
-            <myTags:editMasterUnbounded listItems="${software.nowcasts}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.nowcasts}"
                                         label="Nowcasts"
                                         placeholder="Nowcast"
                                         specifier="nowcast"
                                         tagName="string"
                                         path="nowcasts">
             </myTags:editMasterUnbounded>
-            <myTags:editMasterUnbounded listItems="${software.outcomes}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.outcomes}"
                                         label="Outcomes"
                                         placeholder="Outcome"
                                         specifier="outcome"
@@ -52,13 +52,13 @@
                                             placeholder="Forecast Frequency"
                                             specifier="forecast-frequency"
                                             path="forecastFrequency"
-                                            string="${software.forecastFrequency}">
+                                            string="${digitalObject.forecastFrequency}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Type"
                                             placeholder="Type"
                                             specifier="type"
                                             path="type"
-                                            string="${software.type}">
+                                            string="${digitalObject.type}">
             </myTags:editNonZeroLengthString>
             <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
             <myTags:editMasterUnbounded label="Forecasts"
@@ -68,7 +68,7 @@
                                         isRequired="${false}"
                                         isFirstRequired="${true}"
                                         tagName="string"
-                                        listItems="${software.forecasts}">
+                                        listItems="${digitalObject.forecasts}">
             </myTags:editMasterUnbounded>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>

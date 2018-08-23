@@ -27,7 +27,7 @@
 <%--
             <label>Data Visualizer</label>
 --%>
-            <myTags:editMasterUnbounded listItems="${dataVisualizer.visualizationType}"
+            <myTags:editMasterUnbounded listItems="${digitalObject.visualizationType}"
                                         label="Visualization Types"
                                         placeholder="Visualization Type"
                                         specifier="visualization-type"

@@ -208,6 +208,15 @@ public class DatasetWebflowValidator {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);
 
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        Long categoryID = getCategoryId(entryId);
+        requestContext.getFlowScope().put("categoryID", categoryID);
+        requestContext.getFlowScope().put("categoryName", createLineage(getCategoryNameFromID(categoryID)));
+
+        //TODO: put in an if for software
+        String softwareType = getSoftwareTypeFromCategoryID(categoryID);
+        requestContext.getFlowScope().put("softwareType", softwareType);
+
         String digitalObjectClassName = entryView.getProperties().get("type");
         Class clazz = null;
         Object digitalObject = null;
@@ -457,7 +466,7 @@ public class DatasetWebflowValidator {
         try {
             categoryID = (Long) context.getFlowScope().get("categoryID");
             revisionId = (Long) context.getFlowScope().get("revisionID");
-            entryIdentifier = (Long) context.getFlowScope().get("entryID");
+            entryIdentifier = (Long) Long.parseLong(context.getFlowScope().get("entryID").toString());
         } catch (Exception e) {
             e.printStackTrace();
         }

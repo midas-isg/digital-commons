@@ -55,7 +55,6 @@ public class ReflectionValidator {
     }
 
     private void setValue(Field field, Object object, Object value) throws FatalReflectionValidatorException {
-        //TODO: double check setters are working for boolean fields -- getters were updated : https://projectlombok.org/features/GetterSetter.html
         try {
             BeanUtils.setProperty(object, field.getName(), value);
         } catch (Exception e) {
@@ -195,6 +194,11 @@ public class ReflectionValidator {
         }
         if (objectOrList.getClass().getName().endsWith("String")) {
             if (((String) objectOrList).isEmpty()) {
+                return true;
+            } else return false;
+        }
+        if (objectOrList.getClass().isEnum()) {
+            if (objectOrList == null) {
                 return true;
             } else return false;
         }

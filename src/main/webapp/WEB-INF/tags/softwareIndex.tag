@@ -69,7 +69,7 @@
 
                     <ul class="collapse list-unstyled" id="dataServiceForm">
                         <li><a href="#" onclick="submitForm('ds-accessPointType')">Access Point Type</a></li>
-                        <li><a href="#" onclick="submitForm('ds-accessPointDescription')">Access Point Descriptoin</a></li>
+                        <li><a href="#" onclick="submitForm('ds-accessPointDescription')">Access Point Description</a></li>
                         <li><a href="#" onclick="submitForm('ds-accessPointURL')">Access Point URL</a></li>
                     </ul>
                 </li>

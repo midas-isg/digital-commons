@@ -33,7 +33,7 @@
                                         label="Control Measures"
                                         tagName="softwareIdentifier"
                                         placeholder="Control Measure"
-                                        listItems="${diseaseTransmissionModel.controlMeasures}"
+                                        listItems="${digitalObject.controlMeasures}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded path="hostSpeciesIncluded"
@@ -41,7 +41,7 @@
                                         label="Host Species Included"
                                         tagName="softwareIdentifier"
                                         placeholder="Host Species Included"
-                                        listItems="${diseaseTransmissionModel.hostSpeciesIncluded}"
+                                        listItems="${digitalObject.hostSpeciesIncluded}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded path="pathogenCoverage"
@@ -49,7 +49,7 @@
                                         label="Pathogen Coverage"
                                         tagName="softwareIdentifier"
                                         placeholder="Pathogen Coverage"
-                                        listItems="${diseaseTransmissionModel.pathogenCoverage}"
+                                        listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
 
