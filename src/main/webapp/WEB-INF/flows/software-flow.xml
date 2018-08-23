@@ -159,9 +159,7 @@
     <!--Form Disease Forecasters-->
     <view-state id="diseaseForecasterForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -171,9 +169,7 @@
     <!--Form Data Service-->
     <view-state id="dataServiceForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -183,9 +179,7 @@
     <!--Form Data Standard-->
     <view-state id="dataStandardForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -195,9 +189,7 @@
     <!--Form Data Visualizer-->
     <view-state id="dataVisualizerForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -207,9 +199,7 @@
     <!--Form Disease Transmission Model-->
     <view-state id="diseaseTransmissionModelForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -219,9 +209,7 @@
     <!--Form Disease Transmission Tree Estimator-->
     <view-state id="diseaseTransmissionTreeEstimatorForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -231,9 +219,7 @@
     <!--Form Pathogen Evolution Model-->
     <view-state id="pathogenEvolutionModelForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
@@ -243,9 +229,7 @@
     <!--Form Population Dynamics Model-->
     <view-state id="populationDynamicsModelForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
-        <transition on="submit" to="validateSoftwareFormEnd">
-            <!--<set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>-->
-        </transition>
+        <transition on="submit" to="validateSoftwareFormEnd"/>
         <transition on="index" to="index">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
