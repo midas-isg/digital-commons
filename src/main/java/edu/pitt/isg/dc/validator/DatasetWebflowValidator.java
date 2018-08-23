@@ -64,7 +64,7 @@ public class DatasetWebflowValidator {
                     "category").defaultText("Please select a category").build());
             return "";
         }
-        context.getFlowScope().put("categoryName", getCategoryNameFromID(categoryID));
+        context.getFlowScope().put("categoryName", createLineage(getCategoryNameFromID(categoryID)));
 
         String category = getCategoryNameFromID(categoryID);
         if (category.toLowerCase().contains("software")) {
@@ -197,6 +197,11 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public List<String> createLineage(String categoryName) {
+        String[] lineageArray = categoryName.split("->");
+        return Arrays.asList(lineageArray);
     }
 
     public Object editDigitalObject(Long entryId) {

@@ -32,7 +32,7 @@
                     </myTags:editCategory>
                 </c:when>
                 <c:otherwise>
-                    <h3>${categoryName}</h3>
+                    <myTags:categoryLineage lineage="${categoryName}"/>
                 </c:otherwise>
             </c:choose>
 

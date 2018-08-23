@@ -28,7 +28,7 @@
                                  <%--isDisabled="${true}"--%>
                                  <%--categoryPaths="${categoryPaths}">--%>
             <%--</myTags:editCategory>--%>
-                <h3>${categoryName}</h3>
+                <myTags:categoryLineage lineage="${categoryName}"/>
             <myTags:editNonZeroLengthString path="product"
                                             string="${digitalObject.product}"
                                             isRequired="${false}"
