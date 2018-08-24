@@ -88,11 +88,7 @@
                                         tagName="softwareIdentifier"
                                         listItems="${digitalObject.locationCoverage}">
             </myTags:editMasterUnbounded>
-            <%--
-            <myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
-                                         path="locationCoverage" specifier="location-coverage"
-                                         identifiers="${digitalObject.locationCoverage}"></myTags:editNestedIdentifier>
-            --%>
+
             <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"></myTags:editCheckbox>
             <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"></myTags:editCheckbox>
             <myTags:editCheckbox label="Sign In Required" path="signInRequired"></myTags:editCheckbox>

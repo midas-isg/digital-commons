@@ -31,11 +31,6 @@
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
 
-<%--
-                <myTags:editNestedIdentifier specifier="pathogens" path="pathogens"
-                                             identifiers="${pathogenEvolutionModel.pathogens}" placeholder="Pathogen"
-                                             label="Pathogens"></myTags:editNestedIdentifier>
---%>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>

@@ -121,48 +121,12 @@ public class DatasetWebflowValidator {
                 categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
                 categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
             }
-/*
-            if(categoryID != null){
-                String categoryName = categoryMap.get(categoryID);
-
-                if((categoryName.startsWith("Data") && !categoryName.startsWith("Data Formats")) || categoryName.startsWith("Websites with data")) {
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data Formats"));
-                }
-                if(categoryName.startsWith("Software")) {
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data"));
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
-                }
-                if(categoryName.startsWith("Data Formats")) {
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data ->"));
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
-                    categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
-                }
-            }
-*/
 
             return categoryMap;
         } catch (Exception e) {
             return null;
         }
     }
-
-/*
-    public Dataset editDataset(Long entryId) {
-        Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
-        EntryView entryView = new EntryView(entry);
-
-        Dataset dataset = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
-        try {
-            dataset = (Dataset) ReflectionFactory.create(Dataset.class, dataset);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return dataset;
-    }
-*/
-
 
     public Object createSoftware(Long categoryID) {
         if (categoryID == null) {
@@ -272,47 +236,6 @@ public class DatasetWebflowValidator {
         return entry.getCategory().getId();
     }
 
-/*
-    public Long getCategoryId(String category) {
-        if (category == null || category.isEmpty()) {
-            return 0L;
-        }
-        try {
-            switch (category) {
-                case "dataFormatConverters":
-                    return 6L; // Root: Software: (Data-format converters)
-                case "dataServices":
-                    return 7L; // Root: Software: (Data services)
-                case "dataStandard":
-                    return 4L; // Root: (Data Formats)
-                case "dataVisualizers":
-                    return 8L; // Root: Software: (Data visualizers)
-                case "diseaseForecasters":
-                    return 9L; // Root: Software: (Disease forecasters)
-                case "diseaseTransmissionModels":
-                    return 10L; // Root: Software: (Disease transmission models)
-                case "diseaseTransmissionTreeEstimators":
-                    return 12L; // Root: Software: (Disease transmission tree estimators)
-                case "metagenomicAnalysis":
-                    return 448L; // Root: Software: (Metagenomic Analysis)
-                case "modelingPlatforms":
-                    return 13L; // Root: Software: (Modeling platforms)
-                case "pathogenEvolutionModels":
-                    return 14L; // Root: Software: (Pathogen evolution models)
-                case "phylogeneticTreeConstructors":
-                    return 15L; // Root: Software: (Phylogenetic tree constructors)
-                case "populationDynamicsModels":
-                    return 11L; // Root: Software: (Population dynamics models)
-                case "syntheticEcosystemConstructors":
-                    return 16L; // Root: Software: (Synthetic ecosystem constructors)
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return 0L;
-    }
-*/
 
     public Long getRevisionId(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
@@ -420,62 +343,6 @@ public class DatasetWebflowValidator {
         }
         return "true";
     }
-
-/*
-    public String createDataset(RequestContext context, MessageContext messageContext) {
-        HttpSession session = ((HttpServletRequest) context.getExternalContext().getNativeRequest()).getSession();
-
-        Dataset dataset = (Dataset) context.getFlowScope().get("dataset");
-        Long revisionId = (Long) context.getFlowScope().get("revisionID");
-        Long entryID = Long.parseLong(context.getFlowScope().get("entryID").toString());
-//        Long entryID = (Long) context.getFlowScope().get("entryID");
-        Long categoryID = (Long) context.getFlowScope().get("categoryID");
-
-        //Second check for required fields
-        String breadcrumb = "";
-        List<ValidatorError> errors = new ArrayList<>();
-        try {
-            webFlowReflectionValidator.validate(Dataset.class, dataset, true, breadcrumb, null, errors);
-            webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        if (errors.size() > 0) {
-            //Redirect to page with the error
-            for (Message message : messageContext.getAllMessages()) {
-                String messageSource = message.getSource().toString();
-                context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
-                return "index";
-            }
-            return "false";
-        }
-
-        try {
-            dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
-        } catch (FatalReflectionValidatorException e) {
-            e.printStackTrace();
-        }
-
-
-        EntryView entryObject = new EntryView();
-
-        JsonObject json = converter.toJsonObject(Dataset.class, dataset);
-        json.remove("class");
-        entryObject.setEntry(json);
-        entryObject.setProperty("type", dataset.getClass().toString());
-
-        try {
-            Users user = usersSubmissionInterface.submitUser(session.getAttribute("userId").toString(), session.getAttribute("userEmail").toString(), session.getAttribute("userName").toString());
-            entrySubmissionInterface.submitEntry(entryObject, entryID, revisionId, categoryID, user, ENTRIES_AUTHENTICATION);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "false";
-        }
-
-        return "true";
-    }
-*/
 
 
     public String submitDigitalObject(RequestContext context, MessageContext messageContext) {
