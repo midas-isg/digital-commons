@@ -12,6 +12,7 @@
     <action-state id="controlNextFlow">
         <evaluate expression="datasetWebflowValidator.isDigitalObjectDatasetOrSoftware(entryID)"/>
         <transition on="dataset" to="nextFlowDataset"/>
+        <transition on="dataStandard" to="nextFlowDataStandard"/>
         <transition on="software" to="nextFlowSoftware"/>
     </action-state>
 
@@ -28,12 +29,19 @@
     <action-state id="nextFlow">
         <evaluate expression="datasetWebflowValidator.controlFlow(flowRequestContext, messageContext)"/>
         <transition on="dataset" to="nextFlowDataset"/>
+        <transition on="dataStandard" to="nextFlowDataStandard"/>
         <transition on="software" to="nextFlowSoftware"/>
         <transition on="" to="controlFlow"/>
     </action-state>
 
     
     <subflow-state id="nextFlowDataset" subflow="addDataset">
+        <input name="entryID" value="flowScope.entryID"/>
+        <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
+    </subflow-state>
+
+    <subflow-state id="nextFlowDataStandard" subflow="addDataStandard">
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>

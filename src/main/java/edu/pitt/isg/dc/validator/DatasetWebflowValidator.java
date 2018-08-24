@@ -66,6 +66,9 @@ public class DatasetWebflowValidator {
         if(digitalObjectClassName.contains("mdc.v1_0")) {
             return "software";
         }
+        if(digitalObjectClassName.endsWith("DataStandard")) {
+            return "dataStandard";
+        }
         return "dataset";
     }
 
@@ -82,6 +85,9 @@ public class DatasetWebflowValidator {
         String category = getCategoryNameFromID(categoryID);
         if (category.toLowerCase().contains("software")) {
             return "software";
+        }
+        if (category.toLowerCase().startsWith("data formats")) {
+            return "dataStandard";
         }
         return "dataset";
     }
@@ -110,6 +116,11 @@ public class DatasetWebflowValidator {
                 categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
             }
 
+            if (digitalObjectType.equals("dataStandard")) {
+                categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data ->"));
+                categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Websites with data"));
+                categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
+            }
 /*
             if(categoryID != null){
                 String categoryName = categoryMap.get(categoryID);
@@ -200,7 +211,9 @@ public class DatasetWebflowValidator {
     public String getSoftwareTypeFromCategoryID(Long categoryID) {
         //Given the category ID, grab the string after the first '->'
         String category = getCategoryNameFromID(categoryID);
-        return category.split("->")[1].trim();
+        if (category.contains("->")) {
+            return category.split("->")[1].trim();
+        } else return category;
     }
 
     public String getCategoryNameFromID(Long categoryID) {

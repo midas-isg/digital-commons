@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <myTags:datasetIndex active="basic"></myTags:datasetIndex>
+    <myTags:dataStandardIndex active="basic"></myTags:dataStandardIndex>
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
                 class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
@@ -24,64 +24,75 @@
             <span>Toggle Sidebar</span>
         </button>
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:wizardHeader showCategories="${true}"></myTags:wizardHeader>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            <%--<myTags:editCategory selectedID="${categoryID}"--%>
-                                 <%--categoryPaths="${categoryPaths}">--%>
-            <%--</myTags:editCategory>--%>
-            <myTags:editDataStandard label="Data Format"
-                                     path="dataStandard"
-                                     specifier="dataStandard"
-                                     tagName="dataStandard"
-                                     id="dataStandard"
-                                     dataStandard="${dataStandard}"
-                                     isUnboundedList="${false}">
-            </myTags:editDataStandard>
-
-            <%--
-            <div class="container">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                            <div class="form-group edit-form-group">
-                                <label>Data Format</label>
-                                <myTags:editCategory selectedID="${categoryID}"
-                                                     categoryPaths="${categoryPaths}"></myTags:editCategory>
-                                <spring:bind path="identifier">
-                                    <myTags:editIdentifierUnbounded identifier="${dataStandard.identifier}" specifier="identifier"
-                                                                    path="identifier" label="Identifier"></myTags:editIdentifierUnbounded>
-                                    <form:errors path="identifier" class="error-color"/>
-                                </spring:bind>
-
-                                <myTags:editRequiredNonZeroLengthString placeholder="Name" label="Name" path="name"
-                                                                        string="${dataStandard.name}"></myTags:editRequiredNonZeroLengthString>
-                                <myTags:editNonZeroLengthString label="Description" placeholder="Description"
-                                                                string="${dataStandard.description}" path="description"
-                                                                specifier="description"></myTags:editNonZeroLengthString>
-
-                                <spring:bind path="type">
-                                <div class="form-group edit-form-group ${status.error ? 'has-error' : ''}">
-                                    <label>Type</label>
-                                    <myTags:editAnnotation path="type" annotation="${dataStandard.type}" specifier="type" label="Type" showRemoveButton="false"></myTags:editAnnotation>
-                                    <form:errors path="type" class="error-color"/>
-                                </div>
-                                </spring:bind>
-                                <myTags:editLicense specifier="licenses" path="licenses" label="License"
-                                                    licenses="${dataStandard.licenses}">
-                                </myTags:editLicense>
-                                <myTags:editNonZeroLengthString label="Version" placeholder="Version" path="version"
-                                                                specifier="version"
-                                                                string="${dataStandard.version}"></myTags:editNonZeroLengthString>
-
-                                <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
-                                                              specifier="extraProperties" label="Extra Properties"
-                                                              path="extraProperties">
-                                </myTags:editCategoryValuePair>
-            --%>
+            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
+                                   label="Identifier"
+                                   specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
+                                   path="identifier">
+            </myTags:editIdentifier>
+            <myTags:editMasterUnbounded specifier="alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        path="alternateIdentifiers"
+                                        listItems="${digitalObject.alternateIdentifiers}"
+                                        isRequired="${false}"
+                                        tagName="identifier">
+            </myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString placeholder=" Name"
+                                            label="Name"
+                                            string="${digitalObject.name}"
+                                            specifier="name"
+                                            id="name"
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            path="name">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString specifier="description"
+                                            id="description"
+                                            string="${digitalObject.description}"
+                                            path="description"
+                                            label="Description"
+                                            isTextArea="${true}"
+                                            isRequired="${false}"
+                                            placeholder="Description">
+            </myTags:editNonZeroLengthString>
+            <myTags:editAnnotation annotation="${digitalObject.type}"
+                                   isRequired="${true}"
+                                   path="type"
+                                   specifier="type"
+                                   id="type"
+                                   isUnboundedList="${false}"
+                                   label="Type">
+            </myTags:editAnnotation>
+            <myTags:editMasterUnbounded listItems="${digitalObject.licenses}"
+                                        tagName="license"
+                                        specifier="licenses"
+                                        isRequired="${false}"
+                                        label="License"
+                                        path="licenses">
+            </myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString label="Version"
+                                            placeholder=" Version"
+                                            specifier="version"
+                                            id="version"
+                                            string="${digitalObject.version}"
+                                            isUnboundedList="${false}"
+                                            isRequired="${false}"
+                                            path="version">
+            </myTags:editNonZeroLengthString>
+            <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
+                                        tagName="categoryValuePair"
+                                        isRequired="${false}"
+                                        specifier="extraProperties"
+                                        path="extraProperties"
+                                        label="Extra Properties">
+            </myTags:editMasterUnbounded>
 
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>
