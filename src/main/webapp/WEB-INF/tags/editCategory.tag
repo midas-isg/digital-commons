@@ -41,5 +41,10 @@
         var mySelect = $('#categoryValue').selectpicker({
             width: '100%',
         });
+
+        // Enables mobile scrolling
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            mySelect.selectpicker('mobile');
+        }
     });
 </script>
