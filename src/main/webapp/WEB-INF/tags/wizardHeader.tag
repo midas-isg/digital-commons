@@ -5,7 +5,7 @@
 <%@ attribute name="showCategories" required="false"
               type="java.lang.Boolean" %>
 
-<myTags:categoryLineage lineage="${categoryName}"/>
+<myTags:categoryLineage lineage="${categoryName}" hasSidebar="${true}"/>
 
 <c:choose>
     <c:when test="${showCategories}">
