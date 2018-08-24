@@ -22,6 +22,7 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <div id="productName">
             <myTags:editNonZeroLengthString path="product"
                                             string="${digitalObject.product}"
                                             isRequired="${false}"
@@ -31,6 +32,8 @@
                                             placeholder="Product Name"
                                             label="Product Name">
             </myTags:editNonZeroLengthString>
+            </div>
+            <div id="title">
             <myTags:editNonZeroLengthString label="Title"
                                             placeholder="Title"
                                             path="title"
@@ -40,6 +43,8 @@
                                             specifier="title"
                                             string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
+            </div>
+            <div id="humanReadableSynopsis">
             <myTags:editNonZeroLengthString label="Human Readable Synopsis"
                                             placeholder="Human Readable Synopsis"
                                             path="humanReadableSynopsis"
@@ -50,6 +55,8 @@
                                             id="humanReadableSynopsis"
                                             string="${digitalObject.humanReadableSynopsis}">
             </myTags:editNonZeroLengthString>
+    </div>
+            <div id="identifier">
             <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
                                            specifier="identifier"
                                            path="identifier"
@@ -58,6 +65,8 @@
                                            id="identifier"
                                            label="Identifier">
             </myTags:editSoftwareIdentifier>
+            </div>
+            <div id="dataInputFormats">
             <myTags:editMasterUnbounded label="Data Input Formats"
                                         placeholder="Data Input Format"
                                         path="dataInputFormats"
@@ -66,6 +75,8 @@
                                         listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
             </myTags:editMasterUnbounded>
+            </div>
+            <div id="dataOutputFormats">
             <myTags:editMasterUnbounded label="Data Output Formats"
                                         placeholder="Data Output Format"
                                         path="dataOutputFormats"
@@ -74,6 +85,8 @@
                                         tagName="string"
                                         listItems="${digitalObject.dataOutputFormats}">
             </myTags:editMasterUnbounded>
+            </div>
+            <div id="sourceCodeRelease">
             <myTags:editNonZeroLengthString path="sourceCodeRelease"
                                             string="${digitalObject.sourceCodeRelease}"
                                             specifier="soure-code-release"
@@ -83,6 +96,8 @@
                                             id="source-code-release"
                                             label="Source Code Release">
             </myTags:editNonZeroLengthString>
+            </div>
+            <div id="webApplications">
             <myTags:editMasterUnbounded label="Web Applications"
                                         placeholder="Web Application"
                                         path="webApplication"
@@ -91,6 +106,7 @@
                                         tagName="string"
                                         listItems="${digitalObject.webApplication}">
             </myTags:editMasterUnbounded>
+            </div>
 
             <%--
                             <myTags:editCategory selectedID="${categoryID}"

@@ -1091,9 +1091,9 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
-#entry-form {
-    margin-top: 40px;
-}
+/*#entry-form {*/
+    /*margin-top: 40px;*/
+/*}*/
 
 #sidebar {
     width: 250px;

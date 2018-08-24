@@ -17,7 +17,14 @@
 </c:choose>
 
 <script>
-    window.onbeforeunload = function() {
+    $(document).ready(function () {
+        <c:if test="${not empty anchor}">
+        var element_to_scroll_to = document.getElementById("${anchor}");
+        element_to_scroll_to.scrollIntoView();
+        </c:if>
+    });
+
+    window.onbeforeunload = function () {
         return true;
     };
 </script>

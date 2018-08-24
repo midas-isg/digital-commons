@@ -36,7 +36,8 @@
     </view-state>
 
     <action-state id="index">
-        <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
+        <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)" result="flowScope.anchor"/>
+
         <transition on="productName" to="softwareForm1"/>
         <transition on="title" to="softwareForm1"/>
         <transition on="humanReadableSynopsis" to="softwareForm1"/>
@@ -51,6 +52,7 @@
         <transition on="website" to="softwareForm2"/>
         <transition on="documentation" to="softwareForm2"/>
         <transition on="publicationsThatUsedRelease" to="softwareForm2"/>
+        <transition on="publicationsAboutRelease" to="softwareForm2"/>
         <transition on="executables" to="softwareForm2"/>
         <transition on="version" to="softwareForm2"/>
         <transition on="grants" to="softwareForm2"/>
@@ -84,6 +86,7 @@
     <view-state id="softwareForm1" model="flowScope.digitalObject">
         <on-render>
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
+            <set name="requestScope.anchor" value="flowScope.anchor"/>
             <set name="requestScope.softwareType" value="flowScope.softwareType"/>
             <set name="requestScope.categoryName" value="flowScope.categoryName"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('software')"/>
