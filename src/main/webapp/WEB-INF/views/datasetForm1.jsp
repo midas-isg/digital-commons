@@ -22,7 +22,7 @@
             <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
 
             <div id="identifier">
-                <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
+                <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
                                        specifier="identifier"
                                        id="identifier"
                                        isUnboundedList="${false}"

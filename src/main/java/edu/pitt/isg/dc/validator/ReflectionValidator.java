@@ -8,6 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.security.access.method.P;
 import org.springframework.util.AutoPopulatingList;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.xml.bind.annotation.XmlElement;
 import java.io.ObjectOutput;
 import java.lang.reflect.Field;
@@ -323,6 +324,9 @@ public class ReflectionValidator {
 
         for(Field field : fields) {
             Object value = getValue(field, object);
+            if (value == null && (field.getType().isAssignableFrom(Float.class) || field.getType().isAssignableFrom(Integer.class))) {
+                continue; // setValue will change the null value to 0.0 or 0 as appropriate for numeric Types -- in doing so, the field will be populated in the json
+            }
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
                 setValue(field, object, null);
             } else if(isList(value)) {

@@ -109,11 +109,7 @@
                                             listItems="${digitalObject.locationCoverage}">
                 </myTags:editMasterUnbounded>
             </div>
-            <%--
-            <myTags:editNestedIdentifier label="Location Coverages" placeholder="Location Coverage"
-                                         path="locationCoverage" specifier="location-coverage"
-                                         identifiers="${digitalObject.locationCoverage}"></myTags:editNestedIdentifier>
-            --%>
+
             <div id="availableOnOlympus">
                 <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"></myTags:editCheckbox>
             </div>
