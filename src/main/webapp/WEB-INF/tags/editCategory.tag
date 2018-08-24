@@ -36,6 +36,7 @@
 
 <script>
     $(document).ready(function () {
+        //The select is initially hidden, we make it visible when it has the selectpicker components added to it
         $('#categoryValue').removeClass('d-none');
 
         var mySelect = $('#categoryValue').selectpicker({
