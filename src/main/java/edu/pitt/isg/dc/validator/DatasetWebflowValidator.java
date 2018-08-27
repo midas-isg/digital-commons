@@ -256,7 +256,12 @@ public class DatasetWebflowValidator {
         String title = dataset.getTitle();
 
         //validate dates
-        isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Date", "getDates", true);
+        isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Identifier", "getIdentifier", true);
+        if(isValid.equals("true") || isValid.equals("index")) {
+            isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Date", "getDates", true);
+        } else {
+            return "false";
+        }
 
         if (isEmpty(title)) {
             messageContext.addMessage(new MessageBuilder().error().source(
