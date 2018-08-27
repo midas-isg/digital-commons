@@ -22,6 +22,7 @@ public class DatasetRequestWrapper extends HttpServletRequestWrapper {
     public String[] getParameterValues(String name) {
         Dataset dataset = new Dataset();
         Field[] attributes = dataset.getClass().getDeclaredFields();
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new Software().getClass().getDeclaredFields());
         attributes = (Field[]) ArrayUtils.addAll(attributes, new DataFormatConverters().getClass().getDeclaredFields());
         attributes = (Field[]) ArrayUtils.addAll(attributes, new DataService().getClass().getDeclaredFields());
         attributes = (Field[]) ArrayUtils.addAll(attributes, new DataVisualizers().getClass().getDeclaredFields());
