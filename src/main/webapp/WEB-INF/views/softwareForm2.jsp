@@ -111,13 +111,13 @@
             </div>
 
             <div id="availableOnOlympus">
-                <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"></myTags:editCheckbox>
+                <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus" checked="${digitalObject.availableOnOlympus}"></myTags:editCheckbox>
             </div>
             <div id="availableOnUIDS">
-                <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"></myTags:editCheckbox>
+                <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS" checked="${digitalObject.availableOnUIDS}"></myTags:editCheckbox>
             </div>
             <div id="signInRequired">
-                <myTags:editCheckbox label="Sign In Required" path="signInRequired"></myTags:editCheckbox>
+                <myTags:editCheckbox label="Sign In Required" path="signInRequired" checked="${digitalObject.signInRequired}"></myTags:editCheckbox>
             </div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
