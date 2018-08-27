@@ -365,7 +365,7 @@ a {
 }
 
 .color-white {
-    color: white;
+    color: white !important;
 }
 
 #logo-img {
@@ -593,22 +593,22 @@ label[disabled="disabled"] {
     display: none;
 }
 
-.badge {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 2px;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1;
-    color: black;
-    /*#0c2b65*/
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background: none;
-    border-radius: 10px;
-}
+/*.badge {*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*display: inline-block;*/
+    /*min-width: 10px;*/
+    /*padding: 3px 2px;*/
+    /*font-size: 12px;*/
+    /*font-weight: normal;*/
+    /*line-height: 1;*/
+    /*color: black;*/
+    /*!*#0c2b65*!*/
+    /*text-align: center;*/
+    /*white-space: nowrap;*/
+    /*vertical-align: middle;*/
+    /*background: none;*/
+    /*border-radius: 10px;*/
+/*}*/
 
 .list-group-item > .badge {
     float: none;
