@@ -23,7 +23,7 @@
                 var element_to_scroll_to = document.getElementById("${anchor}");
                 element_to_scroll_to.scrollIntoView();
             } catch (e) {
-                
+
             }
         </c:if>
     });

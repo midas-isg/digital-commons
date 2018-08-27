@@ -163,7 +163,7 @@ public class ReflectionValidator {
         return true;
     }
 
-    private boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
+    public boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
         if (objectOrList == null || objectOrList.equals("")) {
             return true;
         }
@@ -316,7 +316,7 @@ public class ReflectionValidator {
     }
 
     public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        if(TagUtil.isObjectEmpty(object)) {
+        if(isObjectEmpty(object)) {
             return null;
         }
 
