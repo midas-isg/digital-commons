@@ -24,6 +24,16 @@
     <div class="section-content">
         <div class="col-12 background-white">
             <div class="margin-top-10">
+                <div class="btn-toolbar pull-right">
+                    <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
+                    <div class="btn-group">
+                        <button class="btn btn-light"><a
+                                href="${pageContext.request.contextPath}/addDigitalObject?entryID=${entryID}">Edit
+                            Digital Object</a></button>
+                    </div>
+                    <%--</c:if>--%>
+
+                </div>
                 <c:choose>
                     <c:when test="${not empty entryView.entry.title}">
                         <h3 class="inline">${entryView.entry.title}</h3>
@@ -32,11 +42,6 @@
                         <h3 class="inline">${entryView.entry.name}</h3>
                     </c:otherwise>
                 </c:choose>
-                <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
-                    <a class="btn btn-light inline float-right"
-                       href="${pageContext.request.contextPath}/addDigitalObject?entryID=${entryID}">Edit
-                        Digital Object</a>
-                <%--</c:if>--%>
             </div>
             <hr>
             <c:if test="${not empty entryView.entry.identifier}">
