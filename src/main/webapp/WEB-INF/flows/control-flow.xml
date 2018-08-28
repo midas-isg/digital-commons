@@ -18,7 +18,7 @@
 
     <view-state id="controlFlow">
         <on-render>
-            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('control')"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('control')"/>
         </on-render>
 
         <transition on="next" to="nextFlow">

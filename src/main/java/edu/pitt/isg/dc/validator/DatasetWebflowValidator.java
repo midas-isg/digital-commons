@@ -106,14 +106,16 @@ public class DatasetWebflowValidator {
         return indexValue;
     }
 
-    public Map<Long, String> getCategories(String digitalObjectType) {
+    public Map<Long, String> categoryListForDropdown(String digitalObjectType) {
         try {
             Map<Long, String> categoryMap = categoryHelper.getTreePaths();
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Software"));
             categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Data"));
+            categoryMap.entrySet().removeIf(entry -> entry.getValue().equals("Websites with data"));
 
             if (digitalObjectType.equals("dataset")) {
                 categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Software"));
+                categoryMap.entrySet().removeIf(entry -> entry.getValue().startsWith("Data Format"));
             }
 
             if (digitalObjectType.equals("dataStandard")) {
@@ -260,7 +262,7 @@ public class DatasetWebflowValidator {
         String title = dataset.getTitle();
 
         //validate dates
-        isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Identifier", "getIdentifier", true);
+        isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Identifier", "getIdentifier", false);
         if(isValid.equals("true") || isValid.equals("index")) {
             isValid = validatePartOfDataset(dataset, messageContext, "edu.pitt.isg.mdc.dats2_2.Date", "getDates", true);
         } else {

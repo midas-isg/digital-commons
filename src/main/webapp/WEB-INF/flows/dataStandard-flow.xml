@@ -52,6 +52,9 @@
         <transition on="license" to="dataStandardForm"/>
         <transition on="version" to="dataStandardForm"/>
         <transition on="extraProperties" to="dataStandardForm"/>
+        <transition on="alternateIdentifiers[0]" to="dataStandardForm"/>
+        <transition on="licenses[0]" to="dataStandardForm"/>
+        <transition on="extraProperties[0]" to="dataStandardForm"/>
 
     </action-state>
 
@@ -62,7 +65,7 @@
             <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
             <set name="requestScope.showCategories" value="flowScope.showCategories"/>
             <set name="requestScope.categoryName" value="flowScope.categoryName"/>
-            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('dataStandard')"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('dataStandard')"/>
         </on-render>
         <transition on="submit" to="validateDataStandardForm"/>
 

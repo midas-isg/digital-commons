@@ -89,7 +89,7 @@
             <set name="requestScope.anchor" value="flowScope.anchor"/>
             <set name="requestScope.softwareType" value="flowScope.softwareType"/>
             <set name="requestScope.categoryName" value="flowScope.categoryName"/>
-            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.getCategories('software')"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('software')"/>
         </on-render>
         <transition on="next" to="validateForm1"/>
         <transition on="index" to="validateForm1">
