@@ -194,6 +194,10 @@ public class DatasetWebflowValidator {
         return Arrays.asList(lineageArray);
     }
 
+    public List<String> createLineageFromCategoryID(Long categoryID) {
+        return createLineage(getCategoryNameFromID(categoryID));
+    }
+
     public Object editDigitalObject(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);

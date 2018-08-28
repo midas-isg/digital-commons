@@ -13,11 +13,18 @@
         <myTags:editCategory selectedID="${categoryID}"
                              categoryPaths="${categoryPaths}">
         </myTags:editCategory>
+        <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
     </c:when>
 </c:choose>
 
 <script>
     $(document).ready(function () {
+        $("#categoryValue").change(function () {
+            var categoryValue = $(this).val();
+            $("#categoryID").val(categoryValue)
+            <%--$("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=next&categoryID=" + action);--%>
+        });
+
         <c:if test="${not empty anchor}">
             try {
                 var element_to_scroll_to = document.getElementById("${anchor}");
