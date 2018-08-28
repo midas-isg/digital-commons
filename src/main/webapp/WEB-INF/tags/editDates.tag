@@ -46,7 +46,7 @@
 <myTags:editAnnotation path="${path}.type"
                        annotation="${date.type}"
                        isRequired="false"
-                       label="Annotation"
+                       label="Type"
                        id="${specifier}-date"
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
