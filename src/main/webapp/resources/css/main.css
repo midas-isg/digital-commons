@@ -948,7 +948,7 @@ div.container.metadata-container .metadata-column.fancy {
 
 .metadata-wrapper .metadata-table {
     padding: 0 15px;
-    /*overflow-x:auto;*/
+    overflow-x:auto;
 }
 
 .metadata-column.tables{
@@ -976,7 +976,7 @@ div.container.metadata-container .metadata-column.fancy {
 .table.table-condensed th, .table.table-condensed td {
     padding: 8px;
     font-size: 14px;
-    word-break: break-word;
+    /*word-break: break-word;*/
 }
 
 .lineage{

@@ -10,8 +10,7 @@
     <tr>
         <td>Tags</td>
         <td>
-            <div>
-                <div class="tag-list" style="word-wrap: break-word;">
+                <div class="tag-list">
                     <c:forEach items="${entryView.entry.isAbout}" var="isAbout"
                                varStatus="varStatus">
                         <c:choose>
@@ -58,7 +57,6 @@
                         </c:choose>
                     </c:forEach>
                 </div>
-            </div>
         </td>
     </tr>
 </c:if>
