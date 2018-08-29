@@ -7,305 +7,125 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
-<%@ attribute name="types" required="false"
-              type="java.util.List" %>
+<%@ attribute name="type" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.Type" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
+<%@ attribute name="label" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="id" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
 
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(types)}">
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="has-error">
-
-            </c:when>
-            <c:otherwise>
-                <div>
-            </c:otherwise>
-        </c:choose>
-        <c:forEach items="${types}" varStatus="varStatus" var="type">
-            <c:if test="${not function:isObjectEmpty(type)}">
-                <c:choose>
-                    <c:when test="${varStatus.first}">
-                        <div class="form-group control-group edit-form-group ${specifier}-type-add-more-button">
-                        <label>Type</label>
-                        <button class="btn btn-success ${specifier}-add-type" type="button"><i class="fa fa-plus-circle"></i>
-                            Add Type
-                        </button>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="form-group control-group edit-form-group">
-                        <label>Type</label>
-                        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
-                                class="glyphicon glyphicon-remove"></i> Remove
-                        </button>
-                    </c:otherwise>
-                </c:choose>
-
-                <br><br>
-                <div>
-                    <c:choose>
-                        <c:when test="${not function:isObjectEmpty(type.information)}">
-                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${specifier}-${varStatus.count-1}-information-add-annotation" type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Information
-                            </button>
-                            <div class="form-group control-group edit-form-group">
-                                <myTags:editAnnotation annotation="${type.information}"
-                                                       specifier="${specifier}-${varStatus.count-1}-information"
-                                                       label="Information"
-                                                       showRemoveButton="true"
-                                                       path="${path}[${varStatus.count-1}].information">
-                                </myTags:editAnnotation>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-information-add-annotation"
-                                    type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Information
-                            </button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                <br>
-
-                <div>
-                    <c:choose>
-                        <c:when test="${not function:isObjectEmpty(type.method)}">
-                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${specifier}-${varStatus.count-1}-method-add-annotation" type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Method
-                            </button>
-                            <div class="form-group control-group edit-form-group">
-                                <myTags:editAnnotation annotation="${type.method}"
-                                                       specifier="${specifier}-${varStatus.count-1}-method"
-                                                       label="Method"
-                                                       showRemoveButton="true"
-                                                       path="${path}[${varStatus.count-1}].method">
-                                </myTags:editAnnotation>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-method-add-annotation"
-                                    type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Method
-                            </button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                <br>
-
-                <div>
-                    <c:choose>
-                        <c:when test="${not function:isObjectEmpty(type.platform)}">
-                            <button class="btn btn-success ${specifier}-add-annotation" style="display: none;"
-                                    id="${specifier}-${varStatus.count-1}-platform-add-annotation" type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Platform
-                            </button>
-                            <div class="form-group control-group edit-form-group">
-                                <myTags:editAnnotation annotation="${type.platform}"
-                                                       specifier="${specifier}-${varStatus.count-1}-platform"
-                                                       label="Platform"
-                                                       showRemoveButton="true"
-                                                       path="${path}[${varStatus.count-1}].platform">
-                                </myTags:editAnnotation>
-                            </div>
-                        </c:when>
-                        <c:otherwise>
-                            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-${varStatus.count-1}-platform-add-annotation"
-                                    type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
-                                Platform
-                            </button>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                <c:if test="${varStatus.first}">
-                    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                        <span class="error-color">${message.text}</span>
-                    </c:forEach>
-                    <%--<form:errors path="${path}[0]" class="error-color"/>--%>
-                </c:if>
-                </div>
-                <c:set var="typeCount" scope="page" value="${varStatus.count}"/>
-            </c:if>
-
-        </c:forEach>
-        </div>
-        <div class="${specifier}-type-add-more">
-        </div>
-    </c:when>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group ${specifier}-type-add-more-button has-error">
-
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group ${specifier}-type-add-more-button">
-            </c:otherwise>
-        </c:choose>
-            <label>Type</label>
-            <button class="btn btn-success ${specifier}-add-type" type="button"><i class="fa fa-plus-circle"></i> Add Type
-            </button>
-            <br><br>
-            <div>
-                <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-information-add-annotation" type="button"><i
+<%--
+<div id="${id}"
+     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(type)}">hide</c:if>">
+    <c:if test="${not isUnboundedList}">
+        <label>${label}</label>
+        <div id="${specifier}-add-input-button"
+             class="input-group control-group ${specifier}-type-add-more <c:if test="${not function:isObjectEmpty(type)}">hide</c:if>">
+            <div class="input-group-btn">
+                <button class="btn btn-success ${specifier}-add-type" type="button"><i
                         class="fa fa-plus-circle"></i> Add
-                    Information
+                        ${label}
                 </button>
             </div>
-            <br>
-            <div>
-                <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-method-add-annotation" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                    Method
-                </button>
-            </div>
-            <br>
-            <div>
-                <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-0-platform-add-annotation" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                    Platform
-                </button>
-            </div>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
         </div>
-        <div class="${specifier}-type-add-more">
-        </div>
-
-        <%--<form:errors path="${path}[0]" class="error-color"/>--%>
-
-        <c:set var="typeCount" scope="page" value="1"/>
-    </c:otherwise>
-</c:choose>
-
-
-<div class="copy-annotation-information hide">
-    <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation
-                               specifier="${specifier}-information"
-                               label="Information"
-                               showRemoveButton="true"
-                               path="${path}[0].information">
-        </myTags:editAnnotation>
-    </div>
-</div>
-
-<div class="copy-annotation-method hide">
-    <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation
-                               specifier="${specifier}-method"
-                               label="Method"
-                               showRemoveButton="true"
-                               path="${path}[0].method">
-        </myTags:editAnnotation>
-    </div>
-</div>
-
-<div class="copy-annotation-platform hide">
-    <div class="form-group control-group edit-form-group">
-        <myTags:editAnnotation
-                               specifier="${specifier}-platform"
-                               label="Platform"
-                               showRemoveButton="true"
-                               path="${path}[0].platform">
-        </myTags:editAnnotation>
-    </div>
-</div>
-
-
-<div class="copy-type hide">
-    <div class="form-group control-group edit-form-group">
-        <label>Type</label>
-        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i class="glyphicon glyphicon-remove"></i> Remove
+    </c:if>
+    <div id="${specifier}-input-block"
+         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(type) and not isUnboundedList}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
+            <label>${label}</label>
+        </c:if>
+        <button class="btn btn-danger ${specifier}-type-remove" type="button"><i
+                class="fa fa-minus-circle"></i>
+            Remove
         </button>
-        <br><br>
-        <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-information-add-annotation" type="button"><i
-                    class="fa fa-plus-circle"></i> Add
-                Information
-            </button>
-        </div>
-        <br>
-        <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-method-add-annotation" type="button"><i
-                    class="fa fa-plus-circle"></i> Add
-                Method
-            </button>
-        </div>
-        <br>
-        <div>
-            <button class="btn btn-success ${specifier}-add-annotation" id="${specifier}-platform-add-annotation" type="button"><i
-                    class="fa fa-plus-circle"></i> Add
-                Platform
-            </button>
-        </div>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${type}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editAnnotation annotation="${type.information}"
+                               specifier="${specifier}-information"
+                               id="${specifier}-information"
+                               label="Information"
+                               isUnboundedList="${false}"
+                               isRequired="${false}"
+                               path="${path}.information">
+        </myTags:editAnnotation>
+        <myTags:editAnnotation annotation="${type.method}"
+                               specifier="${specifier}-method"
+                               id="${specifier}-method"
+                               label="Method"
+                               isUnboundedList="${false}"
+                               isRequired="${false}"
+                               path="${path}.method">
+        </myTags:editAnnotation>
+        <myTags:editAnnotation annotation="${type.platform}"
+                               specifier="${specifier}-platform"
+                               id="${specifier}-platform"
+                               label="Platform"
+                               isUnboundedList="${false}"
+                               isRequired="${false}"
+                               path="${path}.platform">
+        </myTags:editAnnotation>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${type}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
+        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
+            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+                <span class="error-color">${message.text}</span>
+            </c:forEach>
+        </c:if>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("body").on("click", ".${specifier}-add-type", function (e) {
+                e.stopImmediatePropagation();
+
+                $("#${specifier}-input-block").removeClass("hide");
+                <c:if test="${isUnboundedList or not isRequired}">
+                $("#${specifier}-add-input-button").addClass("hide");
+                </c:if>
+
+                //Add section
+                $("#${specifier}-type").val("");
+            });
+
+            //Remove section
+            $("body").on("click", ".${specifier}-type-remove", function (e) {
+                e.stopImmediatePropagation();
+
+                clearAndHideEditControlGroup(this);
+                $("#${specifier}-add-input-button").removeClass("hide");
+                $("#${specifier}-input-block").addClass("hide");
+            });
+        });
+
+    </script>
+
 </div>
+--%>
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        var typeCount = ${typeCount};
-        var specificer = "${specifier}";
-        //Add section
-        $("body").on("click", ".${specifier}-add-type", function (e) {
-            e.stopImmediatePropagation();
-
-            var html = $(".copy-type").html();
-            var regex = new RegExp('id="'+ specificer, "g");
-
-            html = html.replace(regex, 'id="' + specificer + '-' + typeCount);
-            <%--$(".${specifier}-type-add-more").after(html);--%>
-            $(".${specifier}-type-add-more").before(html);
-            typeCount += 1;
-
-        });
-
-        //Remove section
-        $("body").on("click", ".${specifier}-type-remove", function () {
-            clearAndHideEditControlGroup(this);
-        });
-
-
-        //Show/Hide Annotation
-        $("body").on("click", ".${specifier}-add-annotation", function (e) {
-            e.stopImmediatePropagation();
-
-            var id = event.target.id;
-            var attributes = id.split('-');
-            var count = attributes[1];
-            var attributeName = attributes[2];
-            if (count != undefined && attributeName != undefined) {
-
-                var html = $(".copy-annotation-" + attributeName).html();
-                //use '//g' regex for global capture, otherwise only first instance is repalced
-                <%--html = html.replace(attributeName, count + '-' + attributeName).replace(/name="path/g, 'name="${path}[' + count + '].' + attributeName + '.').replace(/path="path/g, 'path="${path}[' + count + '].' + attributeName + '.');--%>
-
-                var specifier = "${specifier}";
-                var path = "${path}";
-                var html = $(".copy-annotation-" + attributeName).html();
-                path = path.replace('[','\\[').replace(']','\\]');
-                var regexPath = new RegExp(path + '\\[0\\]', "g");
-                var regexSpecifier = new RegExp(specifier + '\\-', "g");
-                html = html.replace(regexPath, '${path}['+ count + ']')
-                    .replace(regexSpecifier,'${specifier}-' + count + '-');
-
-                $(this).after(html);
-                console.log($(this));
-                $(this).hide();
-            }
-        });
-    });
-</script>

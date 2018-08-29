@@ -10,14 +10,11 @@
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
 
-<c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
-<div class="has-error">
-</c:if>
-<div class="form-group edit-form-group">
+<div class="form-group control-group col-md-9 col-sm-12 no-padding full-width <c:if
+        test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
     <label class="item-label">Category</label>
-    <div class="item-input">
-        <select class="item-input-text" name="category" id="categoryValue">
-            <option value="0">None provided</option>
+        <select class="custom-select " name="category" id="categoryValue">
+            <option value="0">Please Select...</option>
             <c:forEach items="${categoryPaths}" var="categoryPath">
                 <c:choose>
                     <c:when test="${categoryPath.key==0}">
@@ -32,12 +29,9 @@
                 </c:choose>
             </c:forEach>
         </select>
-    </div>
-    <div class="item-error" style="display: none;">Invalid</div>
     <c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('category')}" var="message">
             <span class="error-color">${message.text}</span>
         </c:forEach>
-        </div>
     </c:if>
 </div>

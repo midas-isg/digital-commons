@@ -15,6 +15,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
+import edu.pitt.isg.mdc.dats2_2.Geometry;
 import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
 import edu.pitt.isg.mdc.v1_0.*;
 import edu.pitt.isg.mdc.v1_0.Software;
@@ -178,6 +179,10 @@ public class DatasetWebflowValidator {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryId id = entry.getId();
         return id.getRevisionId();
+    }
+
+    public List getGeometryEnums() {
+        return Arrays.asList(Geometry.class.getEnumConstants());
     }
 
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {

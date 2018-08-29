@@ -12,8 +12,7 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
@@ -21,7 +20,7 @@
 
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
             <i class="glyphicon glyphicon-align-left"></i>
             <span>Toggle Sidebar</span>
         </button>

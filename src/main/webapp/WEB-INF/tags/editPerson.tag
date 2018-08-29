@@ -5,8 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%--<%@ attribute name="people" required="false"--%>
-              <%--type="java.util.ArrayList" %>--%>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="person" required="false"
               type="edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity" %>
 <%@ attribute name="path" required="true"
@@ -17,182 +17,126 @@
               type="java.lang.String" %>
 <%@ attribute name="isFirstRequired" required="true"
               type="java.lang.Boolean" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
 
 
-<div class="form-group edit-form-group control-group">
-    <label>${label}</label>
-    <c:choose>
-        <c:when test="${not empty person}">
-            <c:if test="${not isFirstRequired}">
-                <button class="btn btn-danger person-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i> Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
-                                            label="Identifier"
-                                            path="${path}.identifier"
-                                            identifier="${person.identifier}"
-                                            unbounded="${false}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            identifiers="${person.alternateIdentifiers}"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <c:choose>
-                <c:when test="${isFirstRequired}">
-                    <myTags:editRequiredNonZeroLengthString label="Full Name"
-                                                            placeholder=" The first name, any middle names, and surname of a person."
-                                                            string="${person.fullName}"
-                                                            path="${path}.fullName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="First Name"
-                                                            placeholder=" The given name of the person."
-                                                            string="${person.firstName}"
-                                                            path="${path}.firstName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Middle Initial"
-                                                            placeholder=" The first letter of the person's middle name."
-                                                            string="${person.middleInitial}"
-                                                            path="${path}.middleInitial">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
-                                                            string="${person.lastName}"
-                                                            path="${path}.lastName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Email"
-                                                            placeholder=" An electronic mail address for the person."
-                                                            string="${person.email}"
-                                                            path="${path}.email">
-                    </myTags:editRequiredNonZeroLengthString>
-                </c:when>
-                <c:otherwise>
-                    <myTags:editNonZeroLengthString label="Full Name"
-                                                    placeholder=" The first name, any middle names, and surname of a person."
-                                                    specifier="${specifier}-fullName"
-                                                    string="${person.fullName}"
-                                                    path="${path}.fullName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="First Name"
-                                                    placeholder=" The given name of the person."
-                                                    specifier="${specifier}-firstName"
-                                                    string="${person.firstName}"
-                                                    path="${path}.firstName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Middle Initial"
-                                                    placeholder=" The first letter of the person's middle name."
-                                                    specifier="${specifier}-middleInitial"
-                                                    string="${person.middleInitial}"
-                                                    path="${path}.middleInitial">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Last Name"
-                                                    placeholder=" The person's family name."
-                                                    specifier="${specifier}-lastName"
-                                                    string="${person.lastName}"
-                                                    path="${path}.lastName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Email"
-                                                    placeholder=" An electronic mail address for the person."
-                                                    specifier="${specifier}-email"
-                                                    string="${person.email}"
-                                                    path="${path}.email">
-                    </myTags:editNonZeroLengthString>
-                </c:otherwise>
-            </c:choose>
-            <myTags:editPersonComprisedEntity path="${path}.affiliations"
-                                              specifier="${specifier}-affiliations"
-                                              label="Affiliation"
-                                              personComprisedEntities="${person.affiliations}"
-                                              isFirstRequired="false"
-                                              showAddPersonButton="false"
-                                              showAddOrganizationButton="true">
-            </myTags:editPersonComprisedEntity>
-            <myTags:editAnnotationUnbounded path="${path}.roles"
-                                            specifier="${specifier}-roles"
-                                            annotations="${person.roles}"
-                                            label="Roles">
-            </myTags:editAnnotationUnbounded>
-        </c:when>
-        <c:otherwise>
-            <c:if test="${not isFirstRequired}">
-                <button class="btn btn-danger person-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i> Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
-                                            label="Identifier"
-                                            path="${path}.identifier"
-                                            unbounded="${false}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <c:choose>
-                <c:when test="${isFirstRequired}">
-                    <myTags:editRequiredNonZeroLengthString label="Full Name"
-                                                            placeholder=" The first name, any middle names, and surname of a person."
-                                                            path="${path}.fullName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="First Name"
-                                                            placeholder=" The given name of the person."
-                                                            path="${path}.firstName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Middle Initial"
-                                                            placeholder=" The first letter of the person's middle name."
-                                                            path="${path}.middleInitial">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Last Name" placeholder=" The person's family name."
-                                                            path="${path}.lastName">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editRequiredNonZeroLengthString label="Email"
-                                                            placeholder=" An electronic mail address for the person."
-                                                            path="${path}.email">
-                    </myTags:editRequiredNonZeroLengthString>
-                </c:when>
-                <c:otherwise>
-                    <myTags:editNonZeroLengthString label="Full Name"
-                                                    placeholder=" The first name, any middle names, and surname of a person."
-                                                    specifier="${specifier}-fullName"
-                                                    path="${path}.fullName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="First Name"
-                                                    placeholder=" The given name of the person."
-                                                    specifier="${specifier}-firstName"
-                                                    path="${path}.firstName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Middle Initial"
-                                                    placeholder=" The first letter of the person's middle name."
-                                                    specifier="${specifier}-middleInitial"
-                                                    path="${path}.middleInitial">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Last Name"
-                                                    placeholder=" The person's family name."
-                                                    specifier="${specifier}-lastName"
-                                                    path="${path}.lastName">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Email"
-                                                    placeholder=" An electronic mail address for the person."
-                                                    specifier="${specifier}-email"
-                                                    path="${path}.email">
-                    </myTags:editNonZeroLengthString>
-                </c:otherwise>
-            </c:choose>
-            <myTags:editPersonComprisedEntity path="${path}.affiliations"
-                                              specifier="${specifier}-affiliations"
-                                              label="Affiliation"
-                                              isFirstRequired="false"
-                                              showAddPersonButton="false"
-                                              showAddOrganizationButton="true">
-            </myTags:editPersonComprisedEntity>
-            <myTags:editAnnotationUnbounded path="${path}.roles"
-                                            specifier="${specifier}-roles"
-                                            label="Roles">
-            </myTags:editAnnotationUnbounded>
-        </c:otherwise>
-    </c:choose>
+<%--
+<div id="${id}"
+     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(person)}">hide</c:if>">
+    <div id="${specifier}-input-block"
+         class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if> <c:if test="${function:isObjectEmpty(person) and not isUnboundedList}">hide</c:if>">
+        <label>${label}</label>
+        <c:if test="${not isFirstRequired}">
+            <button class="btn btn-danger ${specifier}-person-remove" type="button"><i
+                    class="fa fa-minus-circle"></i> Remove
+            </button>
+        </c:if>
+--%>
+
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${person}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editIdentifier specifier="${specifier}-identifier"
+                               label="Identifier"
+                               path="${path}.identifier"
+                               id="${specifier}-identifier"
+                               singleIdentifier="${person.identifier}"
+                               isUnboundedList="${false}">
+        </myTags:editIdentifier>
+        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                                    label="Alternate Identifiers"
+                                    path="${path}.alternateIdentifiers"
+                                    tagName="identifier"
+                                    listItems="${person.alternateIdentifiers}">
+        </myTags:editMasterUnbounded>
+        <myTags:editNonZeroLengthString label="Full Name"
+                                        placeholder=" The first name, any middle names, and surname of a person."
+                                        string="${person.fullName}"
+                                        isRequired="true"
+                                        specifier="${specifier}-fullname"
+                                        path="${path}.fullName">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="First Name"
+                                        placeholder=" The given name of the person."
+                                        string="${person.firstName}"
+                                        specifier="${specifier}-firstName"
+                                        isRequired="true"
+                                        path="${path}.firstName">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Middle Initial"
+                                        placeholder=" The first letter of the person's middle name."
+                                        string="${person.middleInitial}"
+                                        specifier="${specifier}-middleInitial"
+                                        isRequired="true"
+                                        path="${path}.middleInitial">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Last Name"
+                                        placeholder=" The person's family name."
+                                        string="${person.lastName}"
+                                        specifier="${specifier}-lastName"
+                                        isRequired="true"
+                                        path="${path}.lastName">
+        </myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString label="Email"
+                                        placeholder=" An electronic mail address for the person."
+                                        string="${person.email}"
+                                        specifier="${specifier}-email"
+                                        isRequired="true"
+                                        path="${path}.email">
+        </myTags:editNonZeroLengthString>
+        <myTags:editPersonComprisedEntity path="${path}.affiliations"
+                                          specifier="${specifier}-affiliations"
+                                          label="Affiliation"
+                                          personComprisedEntities="${person.affiliations}"
+                                          isFirstRequired="false"
+                                          createPersonOrganizationTags="false"
+                                          showAddPersonButton="false"
+                                          showAddOrganizationButton="true">
+        </myTags:editPersonComprisedEntity>
+        <myTags:editMasterUnbounded path="${path}.roles"
+                                        specifier="${specifier}-roles"
+                                        listItems="${person.roles}"
+                                        tagName="annotation"
+                                        label="Roles">
+        </myTags:editMasterUnbounded>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${person}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         isFirstRequired="${isFirstRequired}"
+                                         tagName="${tagName}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
+
+<%--
+    </div>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            //Remove section
+            $("body").on("click", ".${specifier}-person-remove", function () {
+                clearAndHideEditControlGroup(this);
+                $("#${specifier}-input-block").addClass("hide");
+            });
+        });
+
+    </script>
 </div>
+--%>
 
 

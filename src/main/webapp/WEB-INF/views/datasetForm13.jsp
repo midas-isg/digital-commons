@@ -12,15 +12,14 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="extra"></myTags:datasetIndex>
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
             <i class="glyphicon glyphicon-align-left"></i>
             <span>Toggle Sidebar</span>
         </button>
@@ -28,14 +27,19 @@
             <myTags:editNonZeroLengthString path="version"
                                             string="${dataset.version}"
                                             specifier="version"
+                                            id="version"
                                             placeholder=" A release point for the dataset when applicable."
+                                            isUnboundedList="${false}"
+                                            isRequired="${false}"
                                             label="Version">
             </myTags:editNonZeroLengthString>
-            <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
-                                          specifier="extraProperties"
-                                          label="Extra Properties"
-                                          path="extraProperties">
-            </myTags:editCategoryValuePair>
+            <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
+                                        tagName="categoryValuePair"
+                                        specifier="extraProperties"
+                                        label="Extra Properties"
+                                        path="extraProperties">
+            </myTags:editMasterUnbounded>
+
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
         </form>

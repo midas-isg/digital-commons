@@ -14,4 +14,11 @@ function clearAndHideEditControlGroup(controlGroup, id) {
             textareaElements[tae].value = null;
         }
     }
+
+    var selectElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
+    for (var se=0; se < selectElements.length; se++) {
+        if (selectElements[se].type === "select-one") {
+            selectElements[se].selectedIndex = -1;
+        }
+    }
 }

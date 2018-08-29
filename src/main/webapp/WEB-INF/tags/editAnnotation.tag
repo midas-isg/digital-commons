@@ -13,18 +13,19 @@
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="label" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="isUnboundedList" required="false"
+<%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
 
+<%--
 <div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
+     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
     <c:if test="${not isUnboundedList}">
         <label>${label}</label>
         <c:if test="${not isRequired}">
@@ -32,7 +33,7 @@
                  class="input-group control-group ${specifier}-annotation-add-more <c:if test="${not function:isObjectEmpty(annotation)}">hide</c:if>">
                 <div class="input-group-btn">
                     <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
+                            class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </div>
@@ -41,32 +42,38 @@
     </c:if>
     <div id="${specifier}-input-block"
          class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(annotation) and not isUnboundedList and not isRequired}">hide</c:if>">
+        <c:if test="${isUnboundedList}">
+            <label>${label}</label>
+        </c:if>
         <button class="btn btn-danger ${specifier}-annotation-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
+                class="fa fa-minus-circle"></i>
             Remove
         </button>
-        <div class="form-group edit-form-group">
-            <label>Value</label>
-            <input type="text" class="form-control" value="${annotation.value}" name="${path}.value"
-                   placeholder="Value">
-        </div>
+--%>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${annotation}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="annotation"
+                                         isRequired="${isRequired}"
+                                         showTopOrBottom="top">
+        </myTags:editMasterElementWrapper>
+        <myTags:editNonZeroLengthString path="${path}.value" specifier="${specifier}-value" placeholder="Value" isRequired="${true}" label="Value" string="${annotation.value}"></myTags:editNonZeroLengthString>
+        <myTags:editNonZeroLengthString path="${path}.valueIRI" specifier="${specifier}-valueIRI" placeholder="Value IRI" isRequired="${true}" label="Value IRI" string="${annotation.valueIRI}"></myTags:editNonZeroLengthString>
+        <myTags:editMasterElementWrapper path="${path}"
+                                         specifier="${specifier}"
+                                         object="${annotation}"
+                                         label="${label}"
+                                         id="${id}"
+                                         isUnboundedList="${isUnboundedList}"
+                                         tagName="annotation"
+                                         isRequired="${isRequired}"
+                                         showTopOrBottom="bottom">
+        </myTags:editMasterElementWrapper>
 
-        <c:set var="valueIRIPath" value="${path}.valueIRI"/>
-        <div class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}">has-error</c:if>">
-            <label>Value IRI</label>
-            <input type="text" class="form-control" value="${annotation.valueIRI}" name="${valueIRIPath}"
-                   placeholder="Value IRI">
-
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </div>
-
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
+<%--
     </div>
 
     <c:if test="${not isRequired}">
@@ -98,3 +105,4 @@
     </c:if>
 
 </div>
+--%>

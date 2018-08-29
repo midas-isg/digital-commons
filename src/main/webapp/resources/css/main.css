@@ -798,6 +798,10 @@ tfoot {
     border-color: transparent;
 }
 
+.card-header {
+    word-wrap:normal;
+}
+
 @media (max-width: 991px) {
     .navbar-dropdown:after {
         top: 6px !important;
@@ -1052,19 +1056,23 @@ div.container.metadata-container .metadata-column.fancy {
 /*//////////////////////////*/
 .edit-form-group {
     margin: 1px;
-    /*border: 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
     padding: 5px;
     margin-bottom: 15px;
-    margin-top: 5px;*/
+    margin-top: 5px;
+}
+
+.hide {
+    display: none!important;
 }
 
 .has-error {
     border-color: #a94442;
 }
 
-.has-error .edit-form-group {
-    border-color: #a94442;
+.has-error select, .has-error input, .has-error .edit-form-group {
+    border-color: #a94442 !important;
 }
 
 /* ---------------------------------------------------
@@ -1090,16 +1098,22 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
+#entry-form {
+    margin-top: 40px;
+}
+
 #sidebar {
     width: 250px;
     position: fixed;
-    top: 0;
     left: 0;
-    height: 100vh;
+    top: 0;
+    padding-top: 70px;
+    height: 100%;
     z-index: 3;
     background: #568aea;
     color: #fff;
     transition: all 0.3s;
+    overflow: scroll;
 }
 
 #sidebar.active {
@@ -1155,12 +1169,21 @@ div.container.metadata-container .metadata-column.fancy {
     background: #0d2c64;
 }
 
+#sidebar .dropdown-toggle::after {
+    top: 6px;
+    padding: 0px;
+}
+
 @media (max-width: 768px) {
     #entryFormContent {
         width: 100%;
     }
     #entryFormContent.active {
         width: calc(100% - 250px);
+    }
+
+    #entry-form {
+        margin-top: 0px;
     }
 }
 

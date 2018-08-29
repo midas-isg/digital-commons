@@ -18,6 +18,7 @@
         <transition to="datasetForm1">
             <evaluate expression="dataset" result="flowScope.dataset" />
             <evaluate expression="0" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
         </transition>
     </action-state>
 
@@ -29,6 +30,7 @@
             <evaluate expression="datasetWebflowValidator.editDataset(entryID)" result="flowScope.dataset"/>
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
             <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
+            <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
         </transition>
     </action-state>
 

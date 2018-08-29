@@ -138,7 +138,7 @@
             <td class="text-center"><button class="btn btn-xs btn-default" onclick="location.href='${pageContext.request.contextPath}/add/review/comments?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}'"><icon class="glyphicon glyphicon-comment"></icon> <c:if test="${not empty entry.comments}">(${fn:length(entry.comments)})</c:if></button></td>
             <c:if test="${adminType == 'ISG_ADMIN'}">
                 <td class="text-center"><button class="btn btn-xs btn-default" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, '${entry.getProperty('status')}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
-                <td class="text-center"><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-default" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, null);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
+                <td class="text-center"><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-default" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, null);"><icon class="fa fa-minus-circle"></icon></button></td>
             </c:if>
         </tr>
         <script>

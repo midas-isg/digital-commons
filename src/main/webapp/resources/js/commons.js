@@ -689,8 +689,9 @@ $(document).ready(function() {
 
     var hashElement = $("a[href='" + location.hash + "']");
     if (location.hash && hashElement.length > 0) {
-        hashElement.tab("show");
-
+        try {
+            hashElement.tab("show");
+        } catch (e) {}
         if(location.hash === "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
         } else if(location.hash === "#modal-json") {
@@ -764,7 +765,11 @@ $(document).ready(function() {
 
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
-    $("a[href='" + anchor + "']").tab("show");
+    try {
+        $("a[href='" + anchor + "']").tab("show");
+    } catch (e) {
+
+    }
 
     if(location.hash.includes('publication')) {
         $('#content-tab').addClass('highlighted-item');

@@ -12,15 +12,14 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="basic"></myTags:datasetIndex>
     <div id="entryFormContent">
         <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
+                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
             <i class="glyphicon glyphicon-align-left"></i>
             <span>Toggle Sidebar</span>
         </button>
@@ -30,6 +29,8 @@
             </myTags:editCategory>
             <myTags:editIdentifier singleIdentifier="${dataset.identifier}"
                                    specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
                                    path="identifier"
                                    label="Identifier">
             </myTags:editIdentifier>
@@ -47,11 +48,12 @@
                                             placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                             label="Description">
             </myTags:editNonZeroLengthString>
-            <myTags:editDatesUnbounded dates="${dataset.dates}"
-                                       path="dates"
-                                       label="Dates"
-                                       specifier="dates">
-            </myTags:editDatesUnbounded>
+            <myTags:editMasterUnbounded listItems="${dataset.dates}"
+                                        path="dates"
+                                        label="Dates"
+                                        tagName="date"
+                                        specifier="dates">
+            </myTags:editMasterUnbounded>
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
         </form>
