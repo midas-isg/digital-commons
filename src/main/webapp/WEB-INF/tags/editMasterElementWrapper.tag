@@ -68,7 +68,7 @@
         </c:if>
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
-        class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if> <c:if test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
+        class="<c:if test="${not isInputGroup and isUnboundedList}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if> <c:if test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
             test="${isInputGroup}">input-group full-width</c:if> control-group <c:if
             test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
 
