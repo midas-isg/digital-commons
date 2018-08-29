@@ -19,28 +19,31 @@
     <myTags:datasetIndex active="citation"></myTags:datasetIndex>
 
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
-        <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editMasterUnbounded path="citations"
-                                        specifier="citations"
-                                        listItems="${dataset.citations}"
-                                        tagName="publication"
-                                        label="Citations">
-            </myTags:editMasterUnbounded>
-            <myTags:editFloat path="citationCount"
-                              id="citationCount"
-                              specifier="citationCount"
-                              number="${dataset.citationCount}"
-                              label="Citation Count"
-                              placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
-            </myTags:editFloat>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <div id="citations">
+                <myTags:editMasterUnbounded path="citations"
+                                            specifier="citations"
+                                            listItems="${digitalObject.citations}"
+                                            tagName="publication"
+                                            label="Citations">
+                </myTags:editMasterUnbounded>
+            </div>
+            <div id="citationCount">
+                <myTags:editFloat path="citationCount"
+                                  id="citationCount"
+                                  specifier="citationCount"
+                                  number="${digitalObject.citationCount}"
+                                  label="Citation Count"
+                                  placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
+                </myTags:editFloat>
+            </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
+                   onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

@@ -370,7 +370,7 @@ a {
 }
 
 .color-white {
-    color: white;
+    color: white !important;
 }
 
 #logo-img {
@@ -598,22 +598,22 @@ label[disabled="disabled"] {
     display: none;
 }
 
-.badge {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 2px;
-    font-size: 12px;
-    font-weight: normal;
-    line-height: 1;
-    color: black;
-    /*#0c2b65*/
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background: none;
-    border-radius: 10px;
-}
+/*.badge {*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*display: inline-block;*/
+    /*min-width: 10px;*/
+    /*padding: 3px 2px;*/
+    /*font-size: 12px;*/
+    /*font-weight: normal;*/
+    /*line-height: 1;*/
+    /*color: black;*/
+    /*!*#0c2b65*!*/
+    /*text-align: center;*/
+    /*white-space: nowrap;*/
+    /*vertical-align: middle;*/
+    /*background: none;*/
+    /*border-radius: 10px;*/
+/*}*/
 
 .list-group-item > .badge {
     float: none;
@@ -698,6 +698,10 @@ tfoot {
 .sort-by-dropdown:after{
     top: 4px !important;
     padding: 0px !important;
+}
+
+.bootstrap-select .dropdown-toggle::after {
+    right: 10px;
 }
 
 .ajax-loader {
@@ -955,7 +959,7 @@ div.container.metadata-container .metadata-column.fancy {
 
 .metadata-wrapper .metadata-table {
     padding: 0 15px;
-    /*overflow-x:auto;*/
+    overflow-x:auto;
 }
 
 .metadata-column.tables{
@@ -983,7 +987,7 @@ div.container.metadata-container .metadata-column.fancy {
 .table.table-condensed th, .table.table-condensed td {
     padding: 8px;
     font-size: 14px;
-    word-break: break-word;
+    /*word-break: break-word;*/
 }
 
 .lineage{
@@ -1098,9 +1102,9 @@ div.container.metadata-container .metadata-column.fancy {
     width: 100%;
 }
 
-#entry-form {
-    margin-top: 40px;
-}
+/*#entry-form {*/
+    /*margin-top: 40px;*/
+/*}*/
 
 #sidebar {
     width: 250px;

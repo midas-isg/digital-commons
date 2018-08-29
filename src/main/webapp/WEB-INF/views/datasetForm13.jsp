@@ -18,30 +18,33 @@
 <div class="wrapper">
     <myTags:datasetIndex active="extra"></myTags:datasetIndex>
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
-        <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editNonZeroLengthString path="version"
-                                            string="${dataset.version}"
-                                            specifier="version"
-                                            id="version"
-                                            placeholder=" A release point for the dataset when applicable."
-                                            isUnboundedList="${false}"
-                                            isRequired="${false}"
-                                            label="Version">
-            </myTags:editNonZeroLengthString>
-            <myTags:editMasterUnbounded listItems="${dataset.extraProperties}"
-                                        tagName="categoryValuePair"
-                                        specifier="extraProperties"
-                                        label="Extra Properties"
-                                        path="extraProperties">
-            </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <div id="version">
+                <myTags:editNonZeroLengthString path="version"
+                                                string="${digitalObject.version}"
+                                                specifier="version"
+                                                id="version"
+                                                placeholder=" A release point for the dataset when applicable."
+                                                isUnboundedList="${false}"
+                                                isRequired="${false}"
+                                                label="Version">
+                </myTags:editNonZeroLengthString>
+            </div>
+            <div id="extraProperties">
+                <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
+                                            tagName="categoryValuePair"
+                                            specifier="extraProperties"
+                                            label="Extra Properties"
+                                            path="extraProperties">
+                </myTags:editMasterUnbounded>
+            </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"
+                   onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>

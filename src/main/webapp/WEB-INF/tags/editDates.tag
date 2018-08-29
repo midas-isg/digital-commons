@@ -46,7 +46,7 @@
 <myTags:editAnnotation path="${path}.type"
                        annotation="${date.type}"
                        isRequired="false"
-                       label="Annotation"
+                       label="Type"
                        id="${specifier}-date"
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
@@ -66,6 +66,8 @@
     $(document).ready(function () {
         <c:if test="${not empty date.date}">
         $("#${specifier}-date-picker").datepicker({
+            forceParse: false,
+            orientation: 'top auto',
             todayHighlight: true,
             format: 'yyyy-mm-dd',
             uiLibrary: 'bootstrap4'

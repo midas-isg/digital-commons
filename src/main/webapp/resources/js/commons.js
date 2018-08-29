@@ -733,11 +733,9 @@ $(document).ready(function() {
     });
 
     $(document.body).on("click", "a", function(event) {
-
         var href = this.getAttribute("href");
 
-
-        if(href != undefined && href.includes('http')) {
+        if(href.includes('http')) {
             ga('send', {
                 hitType: 'event',
                 eventCategory: 'Clickthrough',

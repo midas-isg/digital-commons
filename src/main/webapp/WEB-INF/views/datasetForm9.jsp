@@ -18,13 +18,11 @@
     <myTags:datasetIndex active="creators"></myTags:datasetIndex>
     <div id="entryFormContent">
 
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPersonComprisedEntity personComprisedEntities="${dataset.creators}"
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <myTags:editPersonComprisedEntity personComprisedEntities="${digitalObject.creators}"
                                               label="Creator"
                                               path="creators"
                                               specifier="creators"
@@ -34,8 +32,8 @@
                                               isFirstRequired="${true}">
             </myTags:editPersonComprisedEntity>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

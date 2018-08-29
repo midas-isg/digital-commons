@@ -20,96 +20,50 @@
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
-<%--
-<div id="${id}"
-     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and function:isObjectEmpty(entity)}">hide</c:if>">
-    <c:if test="${isRequired and not isUnboundedList}">
-        <label>${label}</label>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group <c:if test="${isUnboundedList}">edit-form-group</c:if>
-         <c:if test="${function:isObjectEmpty(entity) and not isRequired and not isUnboundedList}">hide</c:if>">
-        <c:if test="${not isRequired}">
-            <c:if test="${isUnboundedList}">
-                <label>${label}</label>
-            </c:if>
-            <button class="btn btn-danger ${specifier}-biological-entity-remove" type="button"><i
-                    class="fa fa-minus-circle"></i>
-                Remove
-            </button>
-        </c:if>
---%>
 
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${entity}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="biological-entity"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editIdentifier singleIdentifier="${entity.identifier}"
-                               path="${path}.identifier"
-                               specifier="${specifier}-identifier"
-                               id="${specifier}-identifier"
-                               isUnboundedList="${false}"
-                               label="Identifier">
-        </myTags:editIdentifier>
-        <myTags:editMasterUnbounded path="${path}.alternateIdentifiers"
-                                        specifier="${specifier}-alternateIdentifiers"
-                                        listItems="${entity.alternateIdentifiers}"
-                                        tagName="identifier"
-                                        label="Alternate Identifier">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
-                                        label="Name"
-                                        isRequired="true"
-                                        specifier="${specifier}-name"
-                                        string="${entity.name}"
-                                        path="${path}.name">
-        </myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString string="${entity.description}"
-                                        path="${path}.description"
-                                        label="Description"
-                                        placeholder="Description"
-                                        isTextArea="true"
-                                        specifier="${specifier}-description">
-        </myTags:editNonZeroLengthString>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${entity}"
-                                         label="${label}"
-                                         id="${specifier}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="biological-entity"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
-
-<%--
-    </div>
-
-
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-biological-entity", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                $("#${specifier}-add-input-button").addClass("hide");
-
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-biological-entity-remove", function () {
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-input-block").addClass("hide");
-                $("#${specifier}-add-input-button").removeClass("hide");
-            });
-        });
-
-    </script>
-</div>
---%>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${entity}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="biological-entity"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editIdentifier singleIdentifier="${entity.identifier}"
+                       path="${path}.identifier"
+                       specifier="${specifier}-identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       label="Identifier">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded path="${path}.alternateIdentifiers"
+                            specifier="${specifier}-alternateIdentifiers"
+                            listItems="${entity.alternateIdentifiers}"
+                            tagName="identifier"
+                            label="Alternate Identifier">
+</myTags:editMasterUnbounded>
+<myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
+                                label="Name"
+                                isRequired="true"
+                                specifier="${specifier}-name"
+                                string="${entity.name}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString string="${entity.description}"
+                                path="${path}.description"
+                                label="Description"
+                                placeholder="Description"
+                                isTextArea="true"
+                                specifier="${specifier}-description">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${entity}"
+                                 label="${label}"
+                                 id="${specifier}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="biological-entity"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 

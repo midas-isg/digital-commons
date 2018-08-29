@@ -22,147 +22,85 @@
               type="java.lang.Boolean" %>
 
 
-<%--
-<div id="${id}"
-     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(dataStandard)}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <div id="${specifier}-add-input-button"
-             class="input-group control-group ${specifier}-dataStandard-add-more <c:if test="${not function:isObjectEmpty(dataStandard)}">hide</c:if>">
-            <div class="input-group-btn">
-                <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                        ${label}
-                </button>
-            </div>
-        </div>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(dataStandard) and not isUnboundedList}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
+                       label="Identifier"
+                       specifier="${specifier}-identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       path="${path}.identifier">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            listItems="${dataStandard.alternateIdentifiers}"
+                            isRequired="${false}"
+                            tagName="identifier">
+</myTags:editMasterUnbounded>
+<myTags:editNonZeroLengthString placeholder=" Name"
+                                label="Name"
+                                string="${dataStandard.name}"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isRequired="${true}"
+                                isUnboundedList="${false}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                string="${dataStandard.description}"
+                                path="${path}.description"
+                                label="Description"
+                                isTextArea="${true}"
+                                isRequired="${false}"
+                                placeholder="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editAnnotation annotation="${dataStandard.type}"
+                       isRequired="${true}"
+                       path="${path}.type"
+                       specifier="${specifier}-type"
+                       id="${specifier}-type"
+                       isUnboundedList="${false}"
+                       label="Type">
+</myTags:editAnnotation>
+<myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
+                            tagName="license"
+                            specifier="${specifier}-licenses"
+                            isRequired="${false}"
+                            label="License"
+                            path="${path}.licenses">
+</myTags:editMasterUnbounded>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" Version"
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                string="${dataStandard.version}"
+                                isUnboundedList="${false}"
+                                isRequired="${false}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
+                            tagName="categoryValuePair"
+                            isRequired="${false}"
+                            specifier="${specifier}-extraProperties"
+                            path="${path}.extraProperties"
+                            label="Extra Properties">
+</myTags:editMasterUnbounded>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${dataStandard}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
-                               label="Identifier"
-                               specifier="${specifier}-identifier"
-                               id="${specifier}-identifier"
-                               isUnboundedList="${false}"
-                               path="${path}.identifier">
-        </myTags:editIdentifier>
-        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
-                                    label="Alternate Identifiers"
-                                    path="${path}.alternateIdentifiers"
-                                    listItems="${dataStandard.alternateIdentifiers}"
-                                    isRequired="${false}"
-                                    tagName="identifier">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString placeholder=" Name"
-                                        label="Name"
-                                        string="${dataStandard.name}"
-                                        specifier="${specifier}-name"
-                                        id="${specifier}-name"
-                                        isRequired="${true}"
-                                        isUnboundedList="${false}"
-                                        path="${path}.name">
-        </myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString specifier="${specifier}-description"
-                                         id="${specifier}-description"
-                                         string="${dataStandard.description}"
-                                         path="${path}.description"
-                                         label="Description"
-                                         isTextArea="${true}"
-                                         isRequired="${false}"
-                                         placeholder="Description">
-        </myTags:editNonZeroLengthString>
-        <myTags:editAnnotation annotation="${dataStandard.type}"
-                               isRequired="${true}"
-                               path="${path}.type"
-                               specifier="${specifier}-type"
-                               id="${specifier}-type"
-                               isUnboundedList="${false}"
-                               label="Type">
-        </myTags:editAnnotation>
-        <myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
-                                    tagName="license"
-                                    specifier="${specifier}-licenses"
-                                    isRequired="${false}"
-                                    label="License"
-                                    path="${path}.licenses">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString label="Version"
-                                        placeholder=" Version"
-                                        specifier="${specifier}-version"
-                                        id="${specifier}-version"
-                                        string="${dataStandard.version}"
-                                        isUnboundedList="${false}"
-                                        isRequired="${false}"
-                                        path="${path}.version">
-        </myTags:editNonZeroLengthString>
-        <myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
-                                    tagName="categoryValuePair"
-                                    isRequired="${false}"
-                                    specifier="${specifier}-extraProperties"
-                                    path="${path}.extraProperties"
-                                    label="Extra Properties">
-        </myTags:editMasterUnbounded>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${dataStandard}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
-
-<%--
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-dataStandard", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                <c:if test="${isUnboundedList or not isRequired}">
-                $("#${specifier}-add-input-button").addClass("hide");
-                </c:if>
-
-                //Add section
-                $("#${specifier}-dataStandard").val("");
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-dataStandard-remove", function (e) {
-                e.stopImmediatePropagation();
-
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-add-input-button").removeClass("hide");
-                $("#${specifier}-input-block").addClass("hide");
-            });
-        });
-
-    </script>
-
-</div>
---%>

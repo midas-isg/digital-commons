@@ -20,7 +20,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
-
+<%@ attribute name="isFirstRequired" required="false"
+              type="java.lang.Boolean" %>
 
 <div id=${specifier}-card class="form-group edit-form-group card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <div class="card-header">
@@ -98,12 +99,24 @@
                                                  dataStandard="${listItem}">
                         </myTags:editDataStandard>
                     </c:when>
+                    <c:when test="${tagName == 'dataServiceDescription'}">
+                        <myTags:editDataServiceDescription path="${path}[${varStatus.count-1}]"
+                                                           specifier="${specifier}-${varStatus.count-1}"
+                                                           id="${specifier}-${varStatus.count-1}"
+                                                           tagName="${tagName}"
+                                                           label="${label}"
+                                                           isRequired="${isRequired}"
+                                                           isUnboundedList="${true}"
+                                                           description="${listItem}">
+                        </myTags:editDataServiceDescription>
+                    </c:when>
                     <c:when test="${tagName == 'date'}">
                         <myTags:editDates path="${path}[${varStatus.count-1}]"
                                           specifier="${specifier}-${varStatus.count-1}"
                                           id="${specifier}-${varStatus.count-1}"
                                           isUnboundedList="${true}"
-                                          date="${listItem}">
+                                          date="${listItem}"
+                                            label="Date">
                         </myTags:editDates>
                     </c:when>
                     <c:when test="${tagName == 'distribution'}">
@@ -165,13 +178,24 @@
                                                 label="${label}">
                         </myTags:editPublication>
                     </c:when>
+                    <c:when test="${tagName == 'softwareIdentifier'}">
+                        <myTags:editSoftwareIdentifier label="${label}"
+                                                       path="${path}[${varStatus.count-1}].identifier"
+                                                       identifier="${listItem.identifier}"
+                                                       isUnboundedList="${true}"
+                                                       isRequired="${isRequired}"
+                                                       id="${specifier}-${varStatus.count-1}"
+                                                       specifier="${specifier}-nested-identifier-${varStatus.count-1}">
+                        </myTags:editSoftwareIdentifier>
+                    </c:when>
                     <c:when test="${tagName == 'string'}">
                         <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"
                                                         specifier="${specifier}-${varStatus.count-1}"
                                                         id="${specifier}-${varStatus.count-1}"
                                                         placeholder="${placeholder}"
                                                         string="${listItem}"
-                                                        isRequired="${false}"
+                                                        isRequired="${isRequired}"
+                                                        isFirstRequired="${isRequired}"
                                                         isUnboundedList="${true}">
                         </myTags:editNonZeroLengthString>
                     </c:when>
@@ -233,6 +257,16 @@
                                  id="${specifier}-${tagName}-copy-tag">
         </myTags:editDataStandard>
     </c:when>
+    <c:when test="${tagName == 'dataServiceDescription'}">
+        <myTags:editDataServiceDescription path="${path}[0]"
+                                           specifier="${specifier}-00"
+                                           id="${specifier}-${tagName}-copy-tag"
+                                           tagName="${tagName}"
+                                           label="${label}"
+                                           isRequired="${isRequired}"
+                                           isUnboundedList="${true}">
+        </myTags:editDataServiceDescription>
+    </c:when>
     <c:when test="${tagName == 'date'}">
         <myTags:editDates path="${path}[0]"
                           specifier="${specifier}-00"
@@ -293,6 +327,15 @@
                                 isUnboundedList="${true}"
                                 label="${label}">
         </myTags:editPublication>
+    </c:when>
+    <c:when test="${tagName == 'softwareIdentifier'}">
+        <myTags:editSoftwareIdentifier label="${label}"
+                                       path="${path}[0].identifier"
+                                       tagName="${tagName}"
+                                       isUnboundedList="${true}"
+                                       id="${specifier}-${tagName}-copy-tag"
+                                       specifier="${specifier}-00">
+        </myTags:editSoftwareIdentifier>
     </c:when>
     <c:when test="${tagName == 'string'}">
         <myTags:editNonZeroLengthString path="${path}[0]"
@@ -408,6 +451,8 @@
             var newDivId = html.match("${path}-\\d*[A-Za-z\-]*")[0].replace('0', listItemCount);
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-" + listItemCount + "-date-picker").datepicker({
+                forceParse: false,
+                orientation: 'top auto',
                 todayHighlight: true,
                 format: 'yyyy-mm-dd',
                 uiLibrary: 'bootstrap4',

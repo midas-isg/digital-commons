@@ -105,7 +105,7 @@ public class ReflectionFactory {
                                 setter.invoke(instance, getGenericList(list, listClazz.getClass(), listClazz));
                             }
                         } else {
-                            if (!setter.getName().endsWith("Geometry")) {
+                            if (!setter.getName().endsWith("Geometry") && !setter.getName().endsWith("AccessPointType")) {
                                 Object object = getter.invoke(instance);
                                 if (object == null) {
                                     setter.invoke(instance, ReflectionFactory.create(getter.getReturnType()));
