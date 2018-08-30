@@ -70,6 +70,12 @@ public class ApiUtil {
         return accessUrl;
     }
 
+    public Long getEntryIdFromIdentifier(String identifier){
+        EntryView entryView = this.getEntryView(identifier);
+        EntryId entryId = entryView.getId();
+        return entryId.getEntryId();
+    }
+
     public String getMetadata(String identifier, String header) {
         EntryView entryView = this.getEntryView(identifier);
         if (entryView != null) {
