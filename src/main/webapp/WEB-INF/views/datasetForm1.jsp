@@ -21,40 +21,35 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
 
-            <div id="title">
-                <myTags:editNonZeroLengthString label="Title"
-                                                path="title"
-                                                specifier="title"
-                                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                                isRequired="true"
-                                                string="${digitalObject.title}">
-                </myTags:editNonZeroLengthString>
-            </div>
-            <div id="description">
-                <myTags:editNonZeroLengthString path="description"
-                                                string="${digitalObject.description}"
-                                                specifier="description"
-                                                isTextArea="true"
-                                                isRequired="true"
-                                                placeholder=" A textual narrative comprised of one or more statements describing the dataset."
-                                                label="Description">
-                </myTags:editNonZeroLengthString>
-            </div>
-                <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
-                                       specifier="identifier"
-                                       id="identifier"
-                                       isUnboundedList="${false}"
-                                       path="identifier"
-                                       label="Identifier">
-                </myTags:editIdentifier>
-            <div id="dates">
-                <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
-                                            path="dates"
-                                            label="Dates"
-                                            tagName="date"
-                                            specifier="dates">
-                </myTags:editMasterUnbounded>
-            </div>
+            <myTags:editNonZeroLengthString label="Title"
+                                            path="title"
+                                            specifier="title"
+                                            placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                            isRequired="true"
+                                            string="${digitalObject.title}">
+            </myTags:editNonZeroLengthString>
+
+            <myTags:editNonZeroLengthString path="description"
+                                            string="${digitalObject.description}"
+                                            specifier="description"
+                                            isTextArea="true"
+                                            isRequired="true"
+                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                            label="Description">
+            </myTags:editNonZeroLengthString>
+            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
+                                   specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
+                                   path="identifier"
+                                   label="Identifier">
+            </myTags:editIdentifier>
+            <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
+                                        path="dates"
+                                        label="Dates"
+                                        tagName="date"
+                                        specifier="dates">
+            </myTags:editMasterUnbounded>
             <div class="row " id="entryFormContent-card-row"></div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">

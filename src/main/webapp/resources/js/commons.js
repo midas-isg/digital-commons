@@ -774,9 +774,15 @@ $(document).ready(function() {
 });
 
 function rearrangeCards(parentDiv) {
-    $('#'+parentDiv+' .card-button').each(function () {
-        $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
-    });
+    if($('#'+parentDiv).children('.card-button').length > 0 ) {
+        $('#'+parentDiv).children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    } else {
+        $('#' + parentDiv).children().children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    }
 }
 
 $(window).on("popstate", function() {

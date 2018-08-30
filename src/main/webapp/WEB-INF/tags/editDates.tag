@@ -32,6 +32,8 @@
                                  tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<%--TODO: make date look like other inputs with a label--%>
 <myTags:editInputBlock path="${path}.date"
                        specifier="${specifier}-date-picker"
                        date="${date}"

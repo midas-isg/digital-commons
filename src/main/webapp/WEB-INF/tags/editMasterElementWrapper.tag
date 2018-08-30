@@ -106,6 +106,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                rearrangeCards("${specifier}-input-block");
+
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
                     debugger;
                     e.stopImmediatePropagation();
