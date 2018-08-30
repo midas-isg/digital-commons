@@ -367,32 +367,27 @@
     function closeTab(e, div) {
 
         //find closest tab to the left tab to make it active (we don't just want to use the first tab)
-        var myDiv = div;
         var prevDiv = undefined;
         var takeNext = false;
-        var foundActiveDiv = false;
         $("#date-card-header").find("a").each(function () {
             if (takeNext) {
                 prevDiv = $(this.parentElement);
                 return false;
             }
-            if ($(myDiv.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+            if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
                 if ($(this).hasClass("active")) {
                     takeNext = true;
-                    foundActiveDiv = true;
                 }
             } else if ($(this).hasClass("active")) {
                 prevDiv = $(this.parentElement);
-                foundActiveDiv = true;
                 return false;
-            } else if (foundActiveDiv == false) {
-                prevDiv = $(this.parentElement);
-            }
+            } else prevDiv = $(this.parentElement);
+
 
             // console.log($(this.parentElement).attr("for"));
             //  console.log(myDiv.parentElement.parentElement);
         });
-        console.log($(prevDiv).attr("for"));
+        //console.log($(prevDiv).attr("for"));
         var divToClose = $(div.parentElement.parentElement).attr("for")
         $("#" + divToClose).remove();
         $(div.parentElement.parentElement).remove();
