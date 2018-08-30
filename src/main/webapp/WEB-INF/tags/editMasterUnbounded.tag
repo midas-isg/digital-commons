@@ -60,7 +60,7 @@
                                               class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
-        <ul id="date-card-header" class="nav nav-tabs card-header-tabs">
+        <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
             <%-- <li class="nav-item">
                  <a class="wizard-nav-link nav-link active" href="#">Active</a>
              </li>--%>
@@ -576,7 +576,7 @@
 
 <script type="text/javascript">
     function makeAllTabsInactive() {
-        $("#date-card-header").find("a").each(function () {
+        $("#${specifier}-card-header").find("a").each(function () {
             $(this).removeClass("active");
         });
     }
@@ -586,7 +586,7 @@
         //find closest tab to the left tab to make it active (we don't just want to use the first tab)
         var prevDiv = undefined;
         var takeNext = false;
-        $("#date-card-header").find("a").each(function () {
+        $("#${specifier}-card-header").find("a").each(function () {
             if (takeNext) {
                 prevDiv = $(this.parentElement);
                 return false;
@@ -681,7 +681,7 @@
 
             makeAllTabsInactive();
             $(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
-                " <a onclick=\"showTab(event, this)\" class=\"wizard-nav-link nav-link active\" >Date " + listItemCount + "" +
+                " <a onclick=\"showTab(event, this)\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
                 "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
 
             showTabNamed("${path}-" + listItemCount + "-tab", newDivId);
