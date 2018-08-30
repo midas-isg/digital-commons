@@ -692,6 +692,9 @@
                  }
              });*/
 
+
+            $("#${specifier}-"+listItemCount+"-input-block").addClass("collapse");
+            $("#${specifier}-"+listItemCount+"-input-block").addClass("show");
             //move card buttons to the bottom
             rearrangeCards('${specifier}-' + listItemCount + '-input-block');
 
