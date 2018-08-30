@@ -26,7 +26,7 @@
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
-                                 isRequired="${false}"
+                                 isRequired="${true}"
                                  tagName="float"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>

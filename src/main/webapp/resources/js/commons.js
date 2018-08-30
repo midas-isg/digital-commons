@@ -753,12 +753,24 @@ $(document).ready(function() {
     });
 
     // Collapsible Card
-    $('a[data-action="collapse"]').on('click',function(e){
+    $('a[data-action="collapse"]').on("click", function(e) {
         e.preventDefault();
-        $(this).closest('.card').children('.card-content').collapse('toggle');
-        $(this).closest('.card').find('[data-action="collapse"] i').toggleClass('ft-minimize-2 ft-maximize');
-
+        $(this).closest(".card").children(".card-content").collapse("toggle");
+        $(this).closest(".card").find('[data-action="collapse"] i').toggleClass("ft-minus ft-plus");
     });
+
+    // Toggle fullscreen
+    $('a[data-action="expand"]').on('click',function(e){
+        e.preventDefault();
+        $(this).closest('.card').find('[data-action="expand"] i').toggleClass('ft-maximize ft-minimize');
+        $(this).closest('.card').toggleClass('card-fullscreen');
+    });
+
+    // // Close Card
+    // $('a[data-action="close"]').on('click',function(){
+    //     $(this).closest('.card').removeClass().slideUp('fast');
+    // });
+
 });
 
 $(window).on("popstate", function() {

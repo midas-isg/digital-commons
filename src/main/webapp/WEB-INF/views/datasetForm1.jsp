@@ -21,15 +21,6 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
 
-            <div id="identifier">
-                <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
-                                       specifier="identifier"
-                                       id="identifier"
-                                       isUnboundedList="${false}"
-                                       path="identifier"
-                                       label="Identifier">
-                </myTags:editIdentifier>
-            </div>
             <div id="title">
                 <myTags:editNonZeroLengthString label="Title"
                                                 path="title"
@@ -44,10 +35,18 @@
                                                 string="${digitalObject.description}"
                                                 specifier="description"
                                                 isTextArea="true"
+                                                isRequired="true"
                                                 placeholder=" A textual narrative comprised of one or more statements describing the dataset."
                                                 label="Description">
                 </myTags:editNonZeroLengthString>
             </div>
+                <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
+                                       specifier="identifier"
+                                       id="identifier"
+                                       isUnboundedList="${false}"
+                                       path="identifier"
+                                       label="Identifier">
+                </myTags:editIdentifier>
             <div id="dates">
                 <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
                                             path="dates"

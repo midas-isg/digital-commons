@@ -31,37 +31,40 @@
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
+        <c:if test="${not isUnboundedList and not isRequired}">
+            <div class="col">
+                <div id="${specifier}-add-input-button"
+                     class="card input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"
+                     style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">${label}</h5>
+                        <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                            the card's content.</p>
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
+                                ${label}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
         <div id="${id}"
         class="form-group <c:if test="${not isInputGroup}">card</c:if> <c:if
             test="${not isUnboundedList}">edit-form-group row</c:if> <c:if
             test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if
-            test="${isUnboundedList and function:isObjectEmpty(object)}">hide</c:if>">
+            test="${(isUnboundedList and function:isObjectEmpty(object)) or (not isRequired and not isUnboundedList)}">hide</c:if>">
         <c:if test="${not isUnboundedList}">
             <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
-            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-3">${label}</h6>
+            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-2">${label}</h6>
 
 
             <c:if test="${not isRequired}">
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <c:if test="${not isUnboundedList}">
-                            <%--<li>
-                                <button class="${specifier}-add-identifier" id="${specifier}-add-input-button" type="button">
-                                    Add ${label}</button>
-                            </li>--%>
-                        </c:if>
-                        <li id="${specifier}-add-input-button"
-                            class="${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">
-                            <a class="${specifier}-add-${tagName}"><i
-                                    class="ft-plus"></i> Add
-                                    ${label}
-                            </a>
-                        </li>
-                        <c:if test="${not function:isObjectEmpty(object)}">
-                            <li><a data-action="collapse"><i class="ft-minimize-2"></i></a></li>
-                        </c:if>
-                            <%--<li><a data-action="expand"><i class="ft-maximize"></i></a></li>--%>
-                            <%--<li><a data-action="close"><i class="ft-x"></i></a></li>--%>
+                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                        <li><a data-action="close"><i for="${specifier}-input-block" class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
                     </ul>
                 </div>
                 <%--<div id="${specifier}-add-input-button"--%>
@@ -78,11 +81,10 @@
         </c:if>
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
-        class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if> <c:if
+        class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-10</c:if> <c:if
             test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
             test="${isInputGroup}">input-group full-width</c:if> control-group <c:if
             test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
-
         <c:if test="${isUnboundedList}">
             <label>${label}</label>
         </c:if>
@@ -96,14 +98,7 @@
 
 
     <c:when test="${showTopOrBottom == 'bottom'}">
-        <c:if test="${not isRequired and isInputGroup}">
-            <div class="input-group-btn">
-                <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
-                        class="fa fa-minus-circle"></i>
-                    Remove
-                </button>
-            </div>
-        </c:if>
+        <div class="row" id="${specifier}-card-row"></div>
         </div>
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
@@ -117,10 +112,15 @@
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
                     debugger;
                     e.stopImmediatePropagation();
+                    $("#${id}").removeClass("hide");
                     $(this).closest('.card').children('.card-content').removeClass('collapse');
                     $("#${specifier}-input-block").removeClass("hide");
+                    $("#${specifier}-input-block").addClass("collapse");
+                    $("#${specifier}-input-block").addClass("show");
+
                     $("#${specifier}-input-block").show();
 
+                    $("#${specifier}-hide-input-button").removeClass("hide");
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
                     </c:if>
@@ -139,9 +139,11 @@
                 //Remove section
                 $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
                     e.stopImmediatePropagation();
-
-                    clearAndHideEditControlGroup(this);
                     $("#${specifier}-add-input-button").removeClass("hide");
+
+                    clearAndHideEditControlGroup($(e.target).attr("for"));
+                    $(this).closest('.card').addClass("hide").slideUp('fast');
+
                     $("#${specifier}-input-block").addClass("hide");
                 });
             });

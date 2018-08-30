@@ -30,6 +30,40 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<myTags:editNonZeroLengthString path="${path}.title"
+                                specifier="${specifier}-title"
+                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                string="${distribution.title}"
+                                isUnboundedList="${false}"
+                                isRequired="${true}"
+                                label="Title">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.description"
+                                string="${distribution.description}"
+                                specifier="${specifier}-description"
+                                placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                label="Description"
+                                isUnboundedList="${false}"
+                                isRequired="${true}"
+                                isTextArea="True">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" A release point for the dataset when applicable."
+                                specifier="${specifier}-version"
+                                isUnboundedList="${false}"
+                                isRequired="${true}"
+                                string="${distribution.version}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
+<myTags:editFloat path="${path}.size"
+                  specifier="${specifier}-size"
+                  id="${specifier}-size"
+                  number="${distribution.size}"
+                  placeholder=" The size of the dataset."
+                  label="Size">
+</myTags:editFloat>
+
 <myTags:editIdentifier label="Identifier"
                        specifier="${specifier}-identifier"
                        path="${path}.identifier"
@@ -43,23 +77,6 @@
                             tagName="identifier"
                             listItems="${distribution.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.title"
-                                specifier="${specifier}-title"
-                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                string="${distribution.title}"
-                                isUnboundedList="${false}"
-                                isRequired="${false}"
-                                label="Title">
-</myTags:editNonZeroLengthString>
-<myTags:editNonZeroLengthString path="${path}.description"
-                                string="${distribution.description}"
-                                specifier="${specifier}-description"
-                                placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                label="Description"
-                                isUnboundedList="${false}"
-                                isRequired="${false}"
-                                isTextArea="True">
-</myTags:editNonZeroLengthString>
 <myTags:editDataRepository label="Stored In"
                            path="${path}.storedIn"
                            dataRepository="${distribution.storedIn}"
@@ -72,13 +89,7 @@
                             label="Dates"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString label="Version"
-                                placeholder=" A release point for the dataset when applicable."
-                                specifier="${specifier}-version"
-                                isUnboundedList="${false}"
-                                string="${distribution.version}"
-                                path="${path}.version">
-</myTags:editNonZeroLengthString>
+
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${distribution.licenses}"
                             tagName="license"
@@ -113,13 +124,7 @@
                             placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
                             label="Formats">
 </myTags:editMasterUnbounded>
-<myTags:editFloat path="${path}.size"
-                  specifier="${specifier}-size"
-                  id="${specifier}-size"
-                  number="${distribution.size}"
-                  placeholder=" The size of the dataset."
-                  label="Size">
-</myTags:editFloat>
+
 <myTags:editAnnotation annotation="${distribution.unit}"
                        path="${path}.unit"
                        specifier="${specifier}-unit"

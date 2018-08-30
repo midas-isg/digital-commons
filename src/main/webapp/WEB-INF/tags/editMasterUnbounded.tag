@@ -23,7 +23,7 @@
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
 
-<div id=${specifier}-card class="form-group edit-form-group card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
+<div id=${specifier}-card class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <div class="card-header">
         <h6 class="card-title">${label}</h6>
 
