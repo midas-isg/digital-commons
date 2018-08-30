@@ -773,6 +773,18 @@ $(document).ready(function() {
 
 });
 
+function rearrangeCards(parentDiv) {
+    if($('#'+parentDiv).children('.card-button').length > 0 ) {
+        $('#'+parentDiv).children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    } else {
+        $('#' + parentDiv).children().children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    }
+}
+
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
     try {

@@ -95,7 +95,7 @@
 
     <c:when test="${showTopOrBottom == 'bottom'}">
         </div>
-        <div class="row " id="${specifier}-card-row"></div>
+        <div class="row " id="${specifier}-input-block-card-row"></div>
 
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
@@ -106,6 +106,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                rearrangeCards("${specifier}-input-block");
+
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
                     debugger;
                     e.stopImmediatePropagation();
@@ -127,10 +129,6 @@
                         format: 'yyyy-mm-dd',
                         uiLibrary: 'bootstrap4',
                     });
-
-                    <%--//move card buttons to the bottom--%>
-                    <%--document.getElementById("${specifier}-card-row").appendChild(document.getElementsByClassName("card-button"));--%>
-
 
                     //Add section
                     $("#${specifier}-${tagName}").val("");
