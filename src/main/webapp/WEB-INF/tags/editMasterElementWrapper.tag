@@ -32,9 +32,8 @@
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
         <c:if test="${not isUnboundedList and not isRequired}">
-            <div class="col">
-                <div id="${specifier}-add-input-button"
-                     class="card input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"
+            <div class="col card-button <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"  id="${specifier}-add-input-button">
+                <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more "
                      style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-title">${label}</h5>
@@ -50,8 +49,9 @@
         </c:if>
 
         <div id="${id}"
-        class="form-group <c:if test="${not isInputGroup}">card</c:if> <c:if
-            test="${not isUnboundedList}">edit-form-group row</c:if> <c:if
+        class="form-group <c:if test="${not isInputGroup}">card</c:if>
+        <c:if test="${isInputGroup}">row</c:if>
+        <c:if test="${not isUnboundedList}">edit-form-group </c:if> <c:if
             test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if
             test="${(isUnboundedList and function:isObjectEmpty(object)) or (not isRequired and not isUnboundedList)}">hide</c:if>">
         <c:if test="${not isUnboundedList}">
@@ -64,7 +64,8 @@
                     <ul class="list-inline mb-0">
                         <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                         <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                        <li><a data-action="close"><i for="${specifier}-input-block" class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                        <li><a data-action="close"><i for="${specifier}-input-block"
+                                                      class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
                     </ul>
                 </div>
                 <%--<div id="${specifier}-add-input-button"--%>
@@ -85,21 +86,17 @@
             test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
             test="${isInputGroup}">input-group full-width</c:if> control-group <c:if
             test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <%--<c:if test="${not (isRequired or isFirstRequired or isInputGroup)}">
-            <button class="btn btn-danger ${specifier}-${tagName}-remove" type="button"><i
-                    class="fa fa-minus-circle"></i>
-                Remove
-            </button>
-        </c:if>--%>
+        <%--<c:if test="${isUnboundedList}">--%>
+            <%--<label>${label}</label>--%>
+        <%--</c:if>--%>
+
     </c:when>
 
 
     <c:when test="${showTopOrBottom == 'bottom'}">
-        <div class="row" id="${specifier}-card-row"></div>
         </div>
+        <div class="row " id="${specifier}-card-row"></div>
+
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                 <span class="error-color">${message.text}</span>
@@ -131,6 +128,10 @@
                         format: 'yyyy-mm-dd',
                         uiLibrary: 'bootstrap4',
                     });
+
+                    <%--//move card buttons to the bottom--%>
+                    <%--document.getElementById("${specifier}-card-row").appendChild(document.getElementsByClassName("card-button"));--%>
+
 
                     //Add section
                     $("#${specifier}-${tagName}").val("");

@@ -31,6 +31,15 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editPersonComprisedEntity path="${path}.authors"
+                                  specifier="${specifier}-authors"
+                                  label="Author"
+                                  personComprisedEntities="${publication.authors}"
+                                  createPersonOrganizationTags="${true}"
+                                  isFirstRequired="${true}"
+                                  showAddPersonButton="${true}"
+                                  showAddOrganizationButton="${false}">
+</myTags:editPersonComprisedEntity>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${publication.identifier}"
                        specifier="${specifier}-identifier"
@@ -70,15 +79,6 @@
                             tagName="date"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
-<myTags:editPersonComprisedEntity path="${path}.authors"
-                                  specifier="${specifier}-authors"
-                                  label="Author"
-                                  personComprisedEntities="${publication.authors}"
-                                  createPersonOrganizationTags="${true}"
-                                  isFirstRequired="${true}"
-                                  showAddPersonButton="${true}"
-                                  showAddOrganizationButton="${false}">
-</myTags:editPersonComprisedEntity>
 <myTags:editMasterUnbounded path="${path}.acknowledges"
                             specifier="${specifier}-acknowledges"
                             listItems="${publication.acknowledges}"

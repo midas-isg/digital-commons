@@ -35,7 +35,7 @@
                             Add ${label}</button>
                     </li>--%>
                 </c:if>
-                <li><a data-action="collapse"><i class="ft-minimize-2"></i></a></li>
+                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                 <li><a data-action="close"><i class="ft-x"></i></a></li>
             </ul>
@@ -367,7 +367,6 @@
     function closeTab(e, div) {
 
         //find closest tab to the left tab to make it active (we don't just want to use the first tab)
-        var myDiv = div;
         var prevDiv = undefined;
         var takeNext = false;
         $("#date-card-header").find("a").each(function () {
@@ -375,15 +374,20 @@
                 prevDiv = $(this.parentElement);
                 return false;
             }
-            if ($(myDiv.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-                takeNext = true;
-            }
+            if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+                if ($(this).hasClass("active")) {
+                    takeNext = true;
+                }
+            } else if ($(this).hasClass("active")) {
+                prevDiv = $(this.parentElement);
+                return false;
+            } else prevDiv = $(this.parentElement);
 
-            prevDiv = $(this.parentElement);
-            /* console.log($(this.parentElement).attr("for"));
-             console.log(myDiv.parentElement.parentElement);*/
+
+            // console.log($(this.parentElement).attr("for"));
+            //  console.log(myDiv.parentElement.parentElement);
         });
-        console.log($(prevDiv).attr("for"));
+        //console.log($(prevDiv).attr("for"));
         var divToClose = $(div.parentElement.parentElement).attr("for")
         $("#" + divToClose).remove();
         $(div.parentElement.parentElement).remove();
@@ -430,6 +434,11 @@
 
 
     $(document).ready(function () {
+        //move card buttons to the bottom
+        $('#${specifier}-' + listItemCount + '-input-block .card-button').each(function () {
+            $($(this)[0]).appendTo("#${specifier}-" + listItemCount + "-card-row");
+        });
+
         var listItemCount = ${listItemsCount};
         //Show/Hide Formats
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
@@ -470,6 +479,11 @@
                     $(this).hide();
                 }
             });*/
+
+            //move card buttons to the bottom
+            $('#${specifier}-' + listItemCount + '-input-block .card-button').each(function () {
+                $($(this)[0]).appendTo("#${specifier}-" + listItemCount + "-card-row");
+            });
 
             e.stopImmediatePropagation();
 

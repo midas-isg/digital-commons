@@ -1227,6 +1227,14 @@ ul.CTAs a {
     font-size:1.0em !important;
 }
 
+.card-header {
+    /*padding: 0.3rem;*/
+}
+
+.card-button {
+    padding-top: 15px;
+}
+
 ::-webkit-input-placeholder {
     color: peachpuff;
     font-size: 10px;

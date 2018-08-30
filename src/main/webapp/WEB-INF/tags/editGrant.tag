@@ -31,19 +31,6 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editIdentifier path="${path}.identifier"
-                       singleIdentifier="${grant.identifier}"
-                       id="${specifier}-identifier"
-                       isUnboundedList="${false}"
-                       specifier="${specifier}-identifier"
-                       label="Identifier">
-</myTags:editIdentifier>
-<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
-                            label="Alternate Identifiers"
-                            path="${path}.alternateIdentifiers"
-                            tagName="identifier"
-                            listItems="${grant.alternateIdentifiers}">
-</myTags:editMasterUnbounded>
 <myTags:editNonZeroLengthString placeholder=" The name of the grant and its funding program."
                                 label="Name"
                                 string="${grant.name}"
@@ -62,6 +49,19 @@
                                   showAddPersonButton="true"
                                   showAddOrganizationButton="true">
 </myTags:editPersonComprisedEntity>
+<myTags:editIdentifier path="${path}.identifier"
+                       singleIdentifier="${grant.identifier}"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       specifier="${specifier}-identifier"
+                       label="Identifier">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            tagName="identifier"
+                            listItems="${grant.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
 <myTags:editPersonComprisedEntity path="${path}.awardees"
                                   specifier="${specifier}-awardees"
                                   label="Awardee"

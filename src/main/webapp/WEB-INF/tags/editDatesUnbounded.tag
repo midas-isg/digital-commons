@@ -33,7 +33,7 @@
                         </button>
                     </li>
                 </c:if>
-                <li><a data-action="collapse"><i class="ft-minimize-2"></i></a></li>
+                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
 
                 <%--     <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                      <li><a data-action="close"><i class="ft-x"></i></a></li>--%>

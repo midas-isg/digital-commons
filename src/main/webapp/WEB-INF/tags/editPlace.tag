@@ -31,6 +31,37 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.name"
+                                specifier="${specifier}-name"
+                                placeholder=" The name of the place."
+                                string="${place.name}"
+                                isRequired="true"
+                                label=" Name">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.description"
+                                specifier="${specifier}-description"
+                                string="${place.description}"
+                                isTextArea="true"
+                                isRequired="true"
+                                placeholder=" A textual narrative comprised of one or more statements describing the place."
+                                label="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.postalAddress"
+                                specifier="${specifier}-postalAddress"
+                                string="${place.postalAddress}"
+                                isRequired="true"
+                                placeholder=" A physical street address."
+                                label="Postal Address">
+</myTags:editNonZeroLengthString>
+<myTags:editSelect path="${path}.geometry"
+                   specifier="${specifier}-geometry"
+                   label="Geometry"
+                   enumData="${place.geometry}"
+                   enumList="${geometryEnums}"
+                   isRequired="true"
+                   tagName="geometry"
+                   id="${specifier}-geometry">
+</myTags:editSelect>
 <myTags:editIdentifier specifier="${specifier}-identifier"
                        label="Identifier"
                        path="${path}.identifier"
@@ -44,34 +75,6 @@
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.name"
-                                specifier="${specifier}-name"
-                                placeholder=" The name of the place."
-                                string="${place.name}"
-                                isRequired="true"
-                                label=" Name">
-</myTags:editNonZeroLengthString>
-<myTags:editNonZeroLengthString path="${path}.description"
-                                specifier="${specifier}-description"
-                                string="${place.description}"
-                                isTextArea="true"
-                                placeholder=" A textual narrative comprised of one or more statements describing the place."
-                                label="Description">
-</myTags:editNonZeroLengthString>
-<myTags:editNonZeroLengthString path="${path}.postalAddress"
-                                specifier="${specifier}-postalAddress"
-                                string="${place.postalAddress}"
-                                placeholder=" A physical street address."
-                                label="Postal Address">
-</myTags:editNonZeroLengthString>
-<myTags:editSelect path="${path}.geometry"
-                   specifier="${specifier}-geometry"
-                   label="Geometry"
-                   enumData="${place.geometry}"
-                   enumList="${geometryEnums}"
-                   tagName="geometry"
-                   id="${specifier}-geometry">
-</myTags:editSelect>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"

@@ -33,6 +33,15 @@
                                  tagName="access"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.landingPage"
+                                placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
+                                string="${access.landingPage}"
+                                isRequired="true"
+                                isUnboundedList="false"
+                                specifier="${specifier}-landingPage"
+                                id="${specifier}-landingPage"
+                                label="Landing Page">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier label="Identifier"
                        specifier="${specifier}-identifier"
                        id="${specifier}-identifier"
@@ -46,15 +55,6 @@
                             tagName="identifier"
                             listItems="${access.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.landingPage"
-                                placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                string="${access.landingPage}"
-                                isRequired="true"
-                                isUnboundedList="false"
-                                specifier="${specifier}-landingPage"
-                                id="${specifier}-landingPage"
-                                label="Landing Page">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.accessURL"
                                 specifier="${specifier}-accessURL"
                                 placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
