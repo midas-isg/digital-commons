@@ -650,12 +650,8 @@
 
 
     $(document).ready(function () {
-        //move card buttons to the bottom
-        $('#${specifier}-' + listItemCount + '-input-block .card-button').each(function () {
-            $($(this)[0]).appendTo("#${specifier}-" + listItemCount + "-card-row");
-        });
-
         var listItemCount = ${listItemsCount};
+
         //Show/Hide Formats
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
             e.stopImmediatePropagation();
@@ -697,9 +693,7 @@
              });*/
 
             //move card buttons to the bottom
-            $('#${specifier}-' + listItemCount + '-input-block .card-button').each(function () {
-                $($(this)[0]).appendTo("#${specifier}-" + listItemCount + "-card-row");
-            });
+            rearrangeCards('${specifier}-' + listItemCount + '-input-block');
 
             e.stopImmediatePropagation();
 

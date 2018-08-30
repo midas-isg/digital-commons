@@ -773,6 +773,12 @@ $(document).ready(function() {
 
 });
 
+function rearrangeCards(parentDiv) {
+    $('#'+parentDiv+' .card-button').each(function () {
+        $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+    });
+}
+
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
     try {

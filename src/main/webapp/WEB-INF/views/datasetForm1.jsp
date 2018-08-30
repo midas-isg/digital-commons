@@ -55,6 +55,8 @@
                                             specifier="dates">
                 </myTags:editMasterUnbounded>
             </div>
+            <div class="row " id="entryFormContent-card-row"></div>
+
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
                    onclick="window.onbeforeunload = null;"/>
@@ -64,6 +66,8 @@
 
 <script>
     $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
 
         $("#categoryValue").change(function () {
             var categoryValue = $(this).val();
