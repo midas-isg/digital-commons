@@ -117,7 +117,6 @@
 
                     $("#${specifier}-input-block").show();
 
-                    $("#${specifier}-hide-input-button").removeClass("hide");
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
                     </c:if>

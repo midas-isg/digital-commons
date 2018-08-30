@@ -23,7 +23,25 @@
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
 
-<div id=${specifier}-card class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
+<div class="col card-button <c:if test="${not function:isObjectEmpty(listItem)}">hide</c:if>"
+     id="${specifier}-add-input-button">
+    <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
+         style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">${label}</h5>
+            <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                the card's content.</p>
+            <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
+                ${label}
+            </button>
+        </div>
+    </div>
+</div>
+<c:set var="listItemsCount" scope="page" value="0"/>
+
+<div id="${specifier}-card"
+     class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItem)}">hide</c:if>">
     <div class="card-header">
         <h6 class="card-title">${label}</h6>
 
@@ -35,9 +53,11 @@
                             Add ${label}</button>
                     </li>--%>
                 </c:if>
+                <li><a class="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                <li><a data-action="close"><i class="ft-x"></i></a></li>
+                <li><a data-action="close"><i for="${specifier}-card"
+                                              class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
         <ul id="date-card-header" class="nav nav-tabs card-header-tabs">
@@ -47,179 +67,376 @@
         </ul>
     </div>
 
+    <c:if test="${not function:isObjectEmpty(listItem)}">
 
-    <div id="${specifier}-add-input-button" class="form-group ${specifier}-${tagName}-add-more-button">
-        <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
-                class="fa fa-plus-circle"></i> Add
-            ${label}
-        </button>
-    </div>
-    <c:set var="listItemsCount" scope="page" value="0"/>
-
-    <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
-        <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
-            <c:if test="${not function:isObjectEmpty(listItem)}">
-                <c:choose>
-                    <c:when test="${tagName == 'access'}">
-                        <myTags:editAccess path="${path}[${varStatus.count-1}]"
-                                           specifier="${specifier}-${varStatus.count-1}"
-                                           id="${specifier}-${varStatus.count-1}"
-                                           tagName="${tagName}"
-                                           isAccessRequired="${isRequired}"
-                                           isUnboundedList="${true}"
-                                           access="${listItem}">
-                        </myTags:editAccess>
-                    </c:when>
-                    <c:when test="${tagName == 'annotation'}">
-                        <myTags:editAnnotation annotation="${listItem}"
+        <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
+            <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
+                <c:if test="${not function:isObjectEmpty(listItem)}">
+                    <c:choose>
+                        <c:when test="${tagName == 'access'}">
+                            <myTags:editAccess path="${path}[${varStatus.count-1}]"
                                                specifier="${specifier}-${varStatus.count-1}"
-                                               label="${label}"
-                                               isUnboundedList="${true}"
                                                id="${specifier}-${varStatus.count-1}"
-                                               path="${path}[${varStatus.count-1}]">
-                        </myTags:editAnnotation>
-                    </c:when>
-                    <c:when test="${tagName == 'categoryValuePair'}">
-                        <myTags:editCategoryValuePair path="${path}[${varStatus.count-1}]"
+                                               tagName="${tagName}"
+                                               isAccessRequired="${isRequired}"
+                                               isUnboundedList="${true}"
+                                               access="${listItem}">
+                            </myTags:editAccess>
+                        </c:when>
+                        <c:when test="${tagName == 'annotation'}">
+                            <myTags:editAnnotation annotation="${listItem}"
+                                                   specifier="${specifier}-${varStatus.count-1}"
+                                                   label="${label}"
+                                                   isUnboundedList="${true}"
+                                                   id="${specifier}-${varStatus.count-1}"
+                                                   path="${path}[${varStatus.count-1}]">
+                            </myTags:editAnnotation>
+                        </c:when>
+                        <c:when test="${tagName == 'categoryValuePair'}">
+                            <myTags:editCategoryValuePair path="${path}[${varStatus.count-1}]"
+                                                          specifier="${specifier}-${varStatus.count-1}"
+                                                          id="${specifier}-${varStatus.count-1}"
+                                                          label="${label}"
+                                                          isUnboundedList="${true}"
+                                                          tagName="${tagName}"
+                                                          categoryValuePair="${listItem}">
+                            </myTags:editCategoryValuePair>
+                        </c:when>
+                        <c:when test="${tagName == 'dataStandard'}">
+                            <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
+                                                     specifier="${specifier}-${varStatus.count-1}"
+                                                     id="${specifier}-${varStatus.count-1}"
+                                                     tagName="${tagName}"
+                                                     label="${label}"
+                                                     isUnboundedList="${true}"
+                                                     dataStandard="${listItem}">
+                            </myTags:editDataStandard>
+                        </c:when>
+                        <c:when test="${tagName == 'dataServiceDescription'}">
+                            <myTags:editDataServiceDescription path="${path}[${varStatus.count-1}]"
+                                                               specifier="${specifier}-${varStatus.count-1}"
+                                                               id="${specifier}-${varStatus.count-1}"
+                                                               tagName="${tagName}"
+                                                               label="${label}"
+                                                               isRequired="${isRequired}"
+                                                               isUnboundedList="${true}"
+                                                               description="${listItem}">
+                            </myTags:editDataServiceDescription>
+                        </c:when>
+                        <c:when test="${tagName == 'date'}">
+                            <myTags:editDates path="${path}[${varStatus.count-1}]"
+                                              specifier="${specifier}-${varStatus.count-1}"
+                                              id="${specifier}-${varStatus.count-1}"
+                                              isUnboundedList="${true}"
+                                              date="${listItem}"
+                                              label="Date">
+                            </myTags:editDates>
+                        </c:when>
+                        <c:when test="${tagName == 'distribution'}">
+                            <myTags:editDistributions path="${path}[${varStatus.count-1}]"
                                                       specifier="${specifier}-${varStatus.count-1}"
                                                       id="${specifier}-${varStatus.count-1}"
-                                                      label="${label}"
-                                                      isUnboundedList="${true}"
+                                                      distribution="${listItem}"
                                                       tagName="${tagName}"
-                                                      categoryValuePair="${listItem}">
-                        </myTags:editCategoryValuePair>
-                    </c:when>
-                    <c:when test="${tagName == 'dataStandard'}">
-                        <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
-                                                 specifier="${specifier}-${varStatus.count-1}"
-                                                 id="${specifier}-${varStatus.count-1}"
-                                                 tagName="${tagName}"
-                                                 label="${label}"
-                                                 isUnboundedList="${true}"
-                                                 dataStandard="${listItem}">
-                        </myTags:editDataStandard>
-                    </c:when>
-                    <c:when test="${tagName == 'dataServiceDescription'}">
-                        <myTags:editDataServiceDescription path="${path}[${varStatus.count-1}]"
-                                                           specifier="${specifier}-${varStatus.count-1}"
-                                                           id="${specifier}-${varStatus.count-1}"
-                                                           tagName="${tagName}"
-                                                           label="${label}"
-                                                           isRequired="${isRequired}"
-                                                           isUnboundedList="${true}"
-                                                           description="${listItem}">
-                        </myTags:editDataServiceDescription>
-                    </c:when>
-                    <c:when test="${tagName == 'date'}">
-                        <myTags:editDates path="${path}[${varStatus.count-1}]"
-                                          specifier="${specifier}-${varStatus.count-1}"
-                                          id="${specifier}-${varStatus.count-1}"
-                                          isUnboundedList="${true}"
-                                          date="${listItem}"
-                                            label="Date">
-                        </myTags:editDates>
-                    </c:when>
-                    <c:when test="${tagName == 'distribution'}">
-                        <myTags:editDistributions path="${path}[${varStatus.count-1}]"
-                                                  specifier="${specifier}-${varStatus.count-1}"
-                                                  id="${specifier}-${varStatus.count-1}"
-                                                  distribution="${listItem}"
-                                                  tagName="${tagName}"
-                                                  isUnboundedList="${true}"
-                                                  label="${label}">
-                        </myTags:editDistributions>
-                    </c:when>
-                    <c:when test="${tagName == 'grant'}">
-                        <myTags:editGrant path="${path}[${varStatus.count-1}]"
-                                          specifier="${specifier}-${varStatus.count-1}"
-                                          id="${specifier}-${varStatus.count-1}"
-                                          grant="${listItem}"
-                                          tagName="${tagName}"
-                                          isUnboundedList="${true}"
-                                          label="${label}">
-                        </myTags:editGrant>
-                    </c:when>
-                    <c:when test="${tagName == 'identifier'}">
-                        <myTags:editIdentifier singleIdentifier="${listItem}"
-                                               label="Identifier"
-                                               specifier="${specifier}-${varStatus.count-1}"
-                                               id="${specifier}-${varStatus.count-1}"
-                                               isUnboundedList="${true}"
-                                               path="${path}[${varStatus.count-1}]">
-                        </myTags:editIdentifier>
-                    </c:when>
-                    <c:when test="${tagName == 'license'}">
-                        <myTags:editLicense path="${path}[${varStatus.count-1}]"
-                                            label="${label}"
-                                            license="${listItem}"
-                                            tagName="${tagName}"
-                                            id="${specifier}-${varStatus.count-1}"
-                                            isUnboundedList="${true}"
-                                            specifier="${specifier}-${varStatus.count-1}">
-                        </myTags:editLicense>
-                    </c:when>
-                    <c:when test="${tagName == 'place'}">
-                        <myTags:editPlace path="${path}[${varStatus.count-1}]"
-                                          specifier="${specifier}-${varStatus.count-1}"
-                                          id="${specifier}-${varStatus.count-1}"
-                                          place="${listItem}"
-                                          tagName="${tagName}"
-                                          isUnboundedList="${true}"
-                                          label="${label}">
-                        </myTags:editPlace>
-                    </c:when>
-                    <c:when test="${tagName == 'publication'}">
-                        <myTags:editPublication path="${path}[${varStatus.count-1}]"
-                                                specifier="${specifier}-${varStatus.count-1}"
-                                                id="${specifier}-${varStatus.count-1}"
-                                                publication="${listItem}"
+                                                      isUnboundedList="${true}"
+                                                      label="${label}">
+                            </myTags:editDistributions>
+                        </c:when>
+                        <c:when test="${tagName == 'grant'}">
+                            <myTags:editGrant path="${path}[${varStatus.count-1}]"
+                                              specifier="${specifier}-${varStatus.count-1}"
+                                              id="${specifier}-${varStatus.count-1}"
+                                              grant="${listItem}"
+                                              tagName="${tagName}"
+                                              isUnboundedList="${true}"
+                                              label="${label}">
+                            </myTags:editGrant>
+                        </c:when>
+                        <c:when test="${tagName == 'identifier'}">
+                            <myTags:editIdentifier singleIdentifier="${listItem}"
+                                                   label="Identifier"
+                                                   specifier="${specifier}-${varStatus.count-1}"
+                                                   id="${specifier}-${varStatus.count-1}"
+                                                   isUnboundedList="${true}"
+                                                   path="${path}[${varStatus.count-1}]">
+                            </myTags:editIdentifier>
+                        </c:when>
+                        <c:when test="${tagName == 'license'}">
+                            <myTags:editLicense path="${path}[${varStatus.count-1}]"
+                                                label="${label}"
+                                                license="${listItem}"
                                                 tagName="${tagName}"
+                                                id="${specifier}-${varStatus.count-1}"
                                                 isUnboundedList="${true}"
-                                                label="${label}">
-                        </myTags:editPublication>
-                    </c:when>
-                    <c:when test="${tagName == 'softwareIdentifier'}">
-                        <myTags:editSoftwareIdentifier label="${label}"
-                                                       path="${path}[${varStatus.count-1}].identifier"
-                                                       identifier="${listItem.identifier}"
-                                                       isUnboundedList="${true}"
-                                                       isRequired="${isRequired}"
-                                                       id="${specifier}-${varStatus.count-1}"
-                                                       specifier="${specifier}-nested-identifier-${varStatus.count-1}">
-                        </myTags:editSoftwareIdentifier>
-                    </c:when>
-                    <c:when test="${tagName == 'string'}">
-                        <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"
-                                                        specifier="${specifier}-${varStatus.count-1}"
-                                                        id="${specifier}-${varStatus.count-1}"
-                                                        placeholder="${placeholder}"
-                                                        string="${listItem}"
-                                                        isRequired="${isRequired}"
-                                                        isFirstRequired="${isRequired}"
-                                                        isUnboundedList="${true}">
-                        </myTags:editNonZeroLengthString>
-                    </c:when>
-                    <c:when test="${tagName == 'type'}">
-                        <myTags:editType path="${path}[${varStatus.count-1}]"
-                                         specifier="${specifier}-${varStatus.count-1}"
-                                         id="${specifier}-${varStatus.count-1}"
-                                         tagName="${tagName}"
-                                         label="${label}"
-                                         type="${listItem}"
-                                         isUnboundedList="${true}">
-                        </myTags:editType>
-                    </c:when>
-                </c:choose>
-                <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
+                                                specifier="${specifier}-${varStatus.count-1}">
+                            </myTags:editLicense>
+                        </c:when>
+                        <c:when test="${tagName == 'place'}">
+                            <myTags:editPlace path="${path}[${varStatus.count-1}]"
+                                              specifier="${specifier}-${varStatus.count-1}"
+                                              id="${specifier}-${varStatus.count-1}"
+                                              place="${listItem}"
+                                              tagName="${tagName}"
+                                              isUnboundedList="${true}"
+                                              label="${label}">
+                            </myTags:editPlace>
+                        </c:when>
+                        <c:when test="${tagName == 'publication'}">
+                            <myTags:editPublication path="${path}[${varStatus.count-1}]"
+                                                    specifier="${specifier}-${varStatus.count-1}"
+                                                    id="${specifier}-${varStatus.count-1}"
+                                                    publication="${listItem}"
+                                                    tagName="${tagName}"
+                                                    isUnboundedList="${true}"
+                                                    label="${label}">
+                            </myTags:editPublication>
+                        </c:when>
+                        <c:when test="${tagName == 'softwareIdentifier'}">
+                            <myTags:editSoftwareIdentifier label="${label}"
+                                                           path="${path}[${varStatus.count-1}].identifier"
+                                                           identifier="${listItem.identifier}"
+                                                           isUnboundedList="${true}"
+                                                           isRequired="${isRequired}"
+                                                           id="${specifier}-${varStatus.count-1}"
+                                                           specifier="${specifier}-nested-identifier-${varStatus.count-1}">
+                            </myTags:editSoftwareIdentifier>
+                        </c:when>
+                        <c:when test="${tagName == 'string'}">
+                            <myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"
+                                                            specifier="${specifier}-${varStatus.count-1}"
+                                                            id="${specifier}-${varStatus.count-1}"
+                                                            placeholder="${placeholder}"
+                                                            string="${listItem}"
+                                                            isRequired="${isRequired}"
+                                                            isFirstRequired="${isRequired}"
+                                                            isUnboundedList="${true}">
+                            </myTags:editNonZeroLengthString>
+                        </c:when>
+                        <c:when test="${tagName == 'type'}">
+                            <myTags:editType path="${path}[${varStatus.count-1}]"
+                                             specifier="${specifier}-${varStatus.count-1}"
+                                             id="${specifier}-${varStatus.count-1}"
+                                             tagName="${tagName}"
+                                             label="${label}"
+                                             type="${listItem}"
+                                             isUnboundedList="${true}">
+                            </myTags:editType>
+                        </c:when>
+                    </c:choose>
+                    <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
 
-            </c:if>
-        </div>
-    </c:forEach>
-    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-        <span class="error-color">${message.text}</span>
-    </c:forEach>
+                </c:if>
+            </div>
+        </c:forEach>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color">${message.text}</span>
+        </c:forEach>
+
+    </c:if>
+
     <div class="${specifier}-${tagName}-add-more"></div>
+
 </div>
+
+
+<%--<div id=${specifier}-card class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">--%>
+<%--<div class="card-header">--%>
+<%--<h6 class="card-title">${label}</h6>--%>
+
+<%--<div class="heading-elements">--%>
+<%--<ul class="list-inline mb-0">--%>
+<%--<c:if test="${not isUnboundedList}">--%>
+<%--&lt;%&ndash;<li>--%>
+<%--<button class="${specifier}-add-identifier" id="${specifier}-add-input-button" type="button">--%>
+<%--Add ${label}</button>--%>
+<%--</li>&ndash;%&gt;--%>
+<%--</c:if>--%>
+<%--<li><a class="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>--%>
+<%--<li><a data-action="collapse"><i class="ft-minus"></i></a></li>--%>
+<%--<li><a data-action="expand"><i class="ft-maximize"></i></a></li>--%>
+<%--<li><a data-action="close"><i class="ft-x"></i></a></li>--%>
+<%--</ul>--%>
+<%--</div>--%>
+<%--<ul id="date-card-header" class="nav nav-tabs card-header-tabs">--%>
+<%--&lt;%&ndash; <li class="nav-item">--%>
+<%--<a class="wizard-nav-link nav-link active" href="#">Active</a>--%>
+<%--</li>&ndash;%&gt;--%>
+<%--</ul>--%>
+<%--</div>--%>
+
+
+<%--&lt;%&ndash;<div id="${specifier}-add-input-button" class="form-group ${specifier}-${tagName}-add-more-button">&ndash;%&gt;--%>
+<%--&lt;%&ndash;<button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i&ndash;%&gt;--%>
+<%--&lt;%&ndash;class="fa fa-plus-circle"></i> Add&ndash;%&gt;--%>
+<%--&lt;%&ndash;${label}&ndash;%&gt;--%>
+<%--&lt;%&ndash;</button>&ndash;%&gt;--%>
+<%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+<%--<c:set var="listItemsCount" scope="page" value="0"/>--%>
+
+<%--<c:forEach items="${listItems}" varStatus="varStatus" var="listItem">--%>
+<%--<div id="${specifier}-${varStatus.count-1}-tag" class="form-group">--%>
+<%--<c:if test="${not function:isObjectEmpty(listItem)}">--%>
+<%--<c:choose>--%>
+<%--<c:when test="${tagName == 'access'}">--%>
+<%--<myTags:editAccess path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--tagName="${tagName}"--%>
+<%--isAccessRequired="${isRequired}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--access="${listItem}">--%>
+<%--</myTags:editAccess>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'annotation'}">--%>
+<%--<myTags:editAnnotation annotation="${listItem}"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--label="${label}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--path="${path}[${varStatus.count-1}]">--%>
+<%--</myTags:editAnnotation>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'categoryValuePair'}">--%>
+<%--<myTags:editCategoryValuePair path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--label="${label}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--tagName="${tagName}"--%>
+<%--categoryValuePair="${listItem}">--%>
+<%--</myTags:editCategoryValuePair>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'dataStandard'}">--%>
+<%--<myTags:editDataStandard path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--tagName="${tagName}"--%>
+<%--label="${label}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--dataStandard="${listItem}">--%>
+<%--</myTags:editDataStandard>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'dataServiceDescription'}">--%>
+<%--<myTags:editDataServiceDescription path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--tagName="${tagName}"--%>
+<%--label="${label}"--%>
+<%--isRequired="${isRequired}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--description="${listItem}">--%>
+<%--</myTags:editDataServiceDescription>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'date'}">--%>
+<%--<myTags:editDates path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--date="${listItem}"--%>
+<%--label="Date">--%>
+<%--</myTags:editDates>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'distribution'}">--%>
+<%--<myTags:editDistributions path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--distribution="${listItem}"--%>
+<%--tagName="${tagName}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--label="${label}">--%>
+<%--</myTags:editDistributions>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'grant'}">--%>
+<%--<myTags:editGrant path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--grant="${listItem}"--%>
+<%--tagName="${tagName}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--label="${label}">--%>
+<%--</myTags:editGrant>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'identifier'}">--%>
+<%--<myTags:editIdentifier singleIdentifier="${listItem}"--%>
+<%--label="Identifier"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--path="${path}[${varStatus.count-1}]">--%>
+<%--</myTags:editIdentifier>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'license'}">--%>
+<%--<myTags:editLicense path="${path}[${varStatus.count-1}]"--%>
+<%--label="${label}"--%>
+<%--license="${listItem}"--%>
+<%--tagName="${tagName}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--specifier="${specifier}-${varStatus.count-1}">--%>
+<%--</myTags:editLicense>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'place'}">--%>
+<%--<myTags:editPlace path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--place="${listItem}"--%>
+<%--tagName="${tagName}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--label="${label}">--%>
+<%--</myTags:editPlace>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'publication'}">--%>
+<%--<myTags:editPublication path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--publication="${listItem}"--%>
+<%--tagName="${tagName}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--label="${label}">--%>
+<%--</myTags:editPublication>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'softwareIdentifier'}">--%>
+<%--<myTags:editSoftwareIdentifier label="${label}"--%>
+<%--path="${path}[${varStatus.count-1}].identifier"--%>
+<%--identifier="${listItem.identifier}"--%>
+<%--isUnboundedList="${true}"--%>
+<%--isRequired="${isRequired}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--specifier="${specifier}-nested-identifier-${varStatus.count-1}">--%>
+<%--</myTags:editSoftwareIdentifier>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'string'}">--%>
+<%--<myTags:editNonZeroLengthString path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--placeholder="${placeholder}"--%>
+<%--string="${listItem}"--%>
+<%--isRequired="${isRequired}"--%>
+<%--isFirstRequired="${isRequired}"--%>
+<%--isUnboundedList="${true}">--%>
+<%--</myTags:editNonZeroLengthString>--%>
+<%--</c:when>--%>
+<%--<c:when test="${tagName == 'type'}">--%>
+<%--<myTags:editType path="${path}[${varStatus.count-1}]"--%>
+<%--specifier="${specifier}-${varStatus.count-1}"--%>
+<%--id="${specifier}-${varStatus.count-1}"--%>
+<%--tagName="${tagName}"--%>
+<%--label="${label}"--%>
+<%--type="${listItem}"--%>
+<%--isUnboundedList="${true}">--%>
+<%--</myTags:editType>--%>
+<%--</c:when>--%>
+<%--</c:choose>--%>
+<%--<c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>--%>
+
+<%--</c:if>--%>
+<%--</div>--%>
+<%--</c:forEach>--%>
+<%--<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">--%>
+<%--<span class="error-color">${message.text}</span>--%>
+<%--</c:forEach>--%>
+<%--<div class="${specifier}-${tagName}-add-more"></div>--%>
+<%--</div>--%>
 
 <c:choose>
     <c:when test="${tagName == 'access'}">
@@ -418,11 +635,11 @@
     function showTabNamed(tabToActivate, divToShow) {
         makeAllTabsInactive();
         console.log("calling showTabNamed");
-       // var divToShow = $(div.parentElement).attr('for');
+        // var divToShow = $(div.parentElement).attr('for');
 
         $('#' + divToShow).show();
-     //   $(tabToActivate).addClass("active");
-        $($("[for='"+divToShow+"'] .nav-link" )[0]).addClass("active");
+        //   $(tabToActivate).addClass("active");
+        $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
         $('#${specifier}-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
@@ -430,7 +647,6 @@
             }
         });
     };
-
 
 
     $(document).ready(function () {
@@ -445,6 +661,8 @@
             e.stopImmediatePropagation();
             var specifier = "${specifier}";
             var path = "${path}";
+            $("#${specifier}-add-input-button").addClass("hide");
+            $("#${specifier}-card").removeClass("hide");
             var html = $("#" + specifier + "-${tagName}-copy-tag").html();
             <%--var html = $("#${specifier}-0-tag").html();--%>
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
@@ -454,10 +672,8 @@
             var regexSpecifier = new RegExp(specifier + '\\-00', "g");
             html = html.replace(regexPath, '${path}[' + listItemCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + listItemCount);
-            /*
-                            .replace("hide", "");
-            */
-            var newDivId = html.match("${path}-\\d*[A-Za-z\-]*")[0].replace('0', listItemCount);
+
+            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0].replace('0', listItemCount);
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-" + listItemCount + "-date-picker").datepicker({
                 forceParse: false,
@@ -468,17 +684,17 @@
             });
 
             makeAllTabsInactive();
-            $(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${path}-" + listItemCount + "-tab\" class=\"nav-item\">" +
+            $(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
                 " <a onclick=\"showTab(event, this)\" class=\"wizard-nav-link nav-link active\" >Date " + listItemCount + "" +
                 "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
 
             showTabNamed("${path}-" + listItemCount + "-tab", newDivId);
-           /* $('#card-content').children().each(function (index) {
-                console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
-                if ($(this).attr("id") != newDivId) {
-                    $(this).hide();
-                }
-            });*/
+            /* $('#card-content').children().each(function (index) {
+                 console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
+                 if ($(this).attr("id") != newDivId) {
+                     $(this).hide();
+                 }
+             });*/
 
             //move card buttons to the bottom
             $('#${specifier}-' + listItemCount + '-input-block .card-button').each(function () {
@@ -490,6 +706,16 @@
             listItemCount += 1;
         });
 
+        //Remove section
+        $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
+            e.stopImmediatePropagation();
+            $("#${specifier}-add-input-button").removeClass("hide");
+
+            clearAndHideEditControlGroup($(e.target).attr("for"));
+            $(this).closest('.card').addClass("hide").slideUp('fast');
+
+            $("#${specifier}-card").addClass("hide");
+        });
 
     });
 </script>
