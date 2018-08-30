@@ -712,6 +712,12 @@
             $("#${specifier}-add-input-button").removeClass("hide");
 
             clearAndHideEditControlGroup($(e.target).attr("for"));
+            $("#${specifier}-card").find(".card-header").find("a").each(function() {
+                var divToClose = $(this.parentElement).attr("for")
+                $("#" + divToClose).remove();
+                $(this.parentElement).remove();
+            });
+
             $(this).closest('.card').addClass("hide").slideUp('fast');
 
             $("#${specifier}-card").addClass("hide");
