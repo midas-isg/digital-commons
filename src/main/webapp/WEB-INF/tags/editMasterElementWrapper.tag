@@ -32,38 +32,48 @@
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
         <div id="${id}"
-        class="form-group <c:if test="${not isInputGroup}">card</c:if> <c:if test="${not isUnboundedList}">edit-form-group row</c:if> <c:if
+        class="form-group <c:if test="${not isInputGroup}">card</c:if> <c:if
+            test="${not isUnboundedList}">edit-form-group row</c:if> <c:if
             test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if
             test="${isUnboundedList and function:isObjectEmpty(object)}">hide</c:if>">
         <c:if test="${not isUnboundedList}">
-          <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
-                <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-3">${label}</h6>
+            <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
+            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-3">${label}</h6>
 
 
-                <c:if test="${not isRequired}">
-                    <div class="heading-elements">
-                        <ul class="list-inline mb-0">
-                            <c:if test="${not isUnboundedList}">
-                                <%--<li>
-                                    <button class="${specifier}-add-identifier" id="${specifier}-add-input-button" type="button">
-                                        Add ${label}</button>
-                                </li>--%>
-                            </c:if>
-                            <li><a data-action="collapse"><i class="ft-minimize-2"></i></a></li>
-                            <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                            <li><a data-action="close"><i class="ft-x"></i></a></li>
-                        </ul>
-                    </div>
-                    <div id="${specifier}-add-input-button"
-                         class="input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">
-                        <div class="input-group-btn">
-                            <button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i
-                                    class="fa fa-plus-circle"></i> Add
+            <c:if test="${not isRequired}">
+                <div class="heading-elements">
+                    <ul class="list-inline mb-0">
+                        <c:if test="${not isUnboundedList}">
+                            <%--<li>
+                                <button class="${specifier}-add-identifier" id="${specifier}-add-input-button" type="button">
+                                    Add ${label}</button>
+                            </li>--%>
+                        </c:if>
+                        <li id="${specifier}-add-input-button"
+                            class="${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">
+                            <a class="${specifier}-add-${tagName}"><i
+                                    class="ft-plus"></i> Add
                                     ${label}
-                            </button>
-                        </div>
-                    </div>
-                </c:if>
+                            </a>
+                        </li>
+                        <c:if test="${not function:isObjectEmpty(object)}">
+                            <li><a data-action="collapse"><i class="ft-minimize-2"></i></a></li>
+                        </c:if>
+                            <%--<li><a data-action="expand"><i class="ft-maximize"></i></a></li>--%>
+                            <%--<li><a data-action="close"><i class="ft-x"></i></a></li>--%>
+                    </ul>
+                </div>
+                <%--<div id="${specifier}-add-input-button"--%>
+                <%--class="input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">--%>
+                <%--<div class="input-group-btn">--%>
+                <%--<button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i--%>
+                <%--class="fa fa-plus-circle"></i> Add--%>
+                <%--${label}--%>
+                <%--</button>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+            </c:if>
             <c:if test="${not isInputGroup}"></div></c:if>
         </c:if>
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>

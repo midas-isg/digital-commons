@@ -370,18 +370,27 @@
         var myDiv = div;
         var prevDiv = undefined;
         var takeNext = false;
+        var foundActiveDiv = false;
         $("#date-card-header").find("a").each(function () {
             if (takeNext) {
                 prevDiv = $(this.parentElement);
                 return false;
             }
             if ($(myDiv.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-                takeNext = true;
+                if ($(this).hasClass("active")) {
+                    takeNext = true;
+                    foundActiveDiv = true;
+                }
+            } else if ($(this).hasClass("active")) {
+                prevDiv = $(this.parentElement);
+                foundActiveDiv = true;
+                return false;
+            } else if (foundActiveDiv == false) {
+                prevDiv = $(this.parentElement);
             }
 
-            prevDiv = $(this.parentElement);
-            /* console.log($(this.parentElement).attr("for"));
-             console.log(myDiv.parentElement.parentElement);*/
+            // console.log($(this.parentElement).attr("for"));
+            //  console.log(myDiv.parentElement.parentElement);
         });
         console.log($(prevDiv).attr("for"));
         var divToClose = $(div.parentElement.parentElement).attr("for")
