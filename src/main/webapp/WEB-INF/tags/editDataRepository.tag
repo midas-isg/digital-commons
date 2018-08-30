@@ -27,6 +27,13 @@
                                  tagName="dataRepository"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString placeholder=" The name of the data repository."
+                                specifier="${specifier}-name"
+                                label="Name"
+                                string="${dataRepository.name}"
+                                path="${path}.name"
+                                isRequired="${true}">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${dataRepository.identifier}"
                        id="${specifier}-identifier"
@@ -40,13 +47,6 @@
                             tagName="identifier"
                             listItems="${dataRepository.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString placeholder=" The name of the data repository."
-                                specifier="${specifier}-name"
-                                label="Name"
-                                string="${dataRepository.name}"
-                                path="${path}.name"
-                                isRequired="${true}">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.description"
                                 string="${dataRepository.description}"
                                 specifier="${specifier}-description"

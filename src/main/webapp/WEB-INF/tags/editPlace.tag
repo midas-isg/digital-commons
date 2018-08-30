@@ -31,6 +31,13 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.name"
+                                specifier="${specifier}-name"
+                                placeholder=" The name of the place."
+                                string="${place.name}"
+                                isRequired="true"
+                                label=" Name">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier specifier="${specifier}-identifier"
                        label="Identifier"
                        path="${path}.identifier"
@@ -44,13 +51,6 @@
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.name"
-                                specifier="${specifier}-name"
-                                placeholder=" The name of the place."
-                                string="${place.name}"
-                                isRequired="true"
-                                label=" Name">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.description"
                                 specifier="${specifier}-description"
                                 string="${place.description}"

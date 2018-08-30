@@ -30,6 +30,14 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editAccess path="${path}.access"
+                   specifier="${specifier}-access"
+                   id="${specifier}-access"
+                   tagName="access"
+                   isUnboundedList="${false}"
+                   isAccessRequired="true"
+                   access="${distribution.access}">
+</myTags:editAccess>
 <myTags:editIdentifier label="Identifier"
                        specifier="${specifier}-identifier"
                        path="${path}.identifier"
@@ -85,14 +93,6 @@
                             label="License"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
-<myTags:editAccess path="${path}.access"
-                   specifier="${specifier}-access"
-                   id="${specifier}-access"
-                   tagName="access"
-                   isUnboundedList="${false}"
-                   isAccessRequired="true"
-                   access="${distribution.access}">
-</myTags:editAccess>
 <myTags:editMasterUnbounded label="Conforms To"
                             path="${path}.conformsTo"
                             listItems="${distribution.conformsTo}"

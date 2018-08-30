@@ -31,6 +31,23 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString placeholder=" Name"
+                                label="Name"
+                                string="${dataStandard.name}"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isRequired="${true}"
+                                isUnboundedList="${false}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editAnnotation annotation="${dataStandard.type}"
+                       isRequired="${true}"
+                       path="${path}.type"
+                       specifier="${specifier}-type"
+                       id="${specifier}-type"
+                       isUnboundedList="${false}"
+                       label="Type">
+</myTags:editAnnotation>
 <myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
                        label="Identifier"
                        specifier="${specifier}-identifier"
@@ -45,15 +62,6 @@
                             isRequired="${false}"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString placeholder=" Name"
-                                label="Name"
-                                string="${dataStandard.name}"
-                                specifier="${specifier}-name"
-                                id="${specifier}-name"
-                                isRequired="${true}"
-                                isUnboundedList="${false}"
-                                path="${path}.name">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString specifier="${specifier}-description"
                                 id="${specifier}-description"
                                 string="${dataStandard.description}"
@@ -63,14 +71,6 @@
                                 isRequired="${false}"
                                 placeholder="Description">
 </myTags:editNonZeroLengthString>
-<myTags:editAnnotation annotation="${dataStandard.type}"
-                       isRequired="${true}"
-                       path="${path}.type"
-                       specifier="${specifier}-type"
-                       id="${specifier}-type"
-                       isUnboundedList="${false}"
-                       label="Type">
-</myTags:editAnnotation>
 <myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
                             tagName="license"
                             specifier="${specifier}-licenses"

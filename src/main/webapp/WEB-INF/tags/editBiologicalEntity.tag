@@ -30,6 +30,13 @@
                                  tagName="biological-entity"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
+                                label="Name"
+                                isRequired="true"
+                                specifier="${specifier}-name"
+                                string="${entity.name}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier singleIdentifier="${entity.identifier}"
                        path="${path}.identifier"
                        specifier="${specifier}-identifier"
@@ -43,13 +50,6 @@
                             tagName="identifier"
                             label="Alternate Identifier">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
-                                label="Name"
-                                isRequired="true"
-                                specifier="${specifier}-name"
-                                string="${entity.name}"
-                                path="${path}.name">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString string="${entity.description}"
                                 path="${path}.description"
                                 label="Description"

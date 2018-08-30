@@ -35,6 +35,14 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString label="Name"
+                                placeholder=" The name of the organization."
+                                string="${organization.name}"
+                                isRequired="true"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier specifier="${specifier}-identifier"
                        label="Identifier"
                        id="${specifier}-identifier"
@@ -48,14 +56,6 @@
                             tagName="identifier"
                             listItems="${organization.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString label="Name"
-                                placeholder=" The name of the organization."
-                                string="${organization.name}"
-                                isRequired="true"
-                                specifier="${specifier}-name"
-                                id="${specifier}-name"
-                                path="${path}.name">
-</myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="Abbreviation"
                                 placeholder=" The shortname, abbreviation associated to the organization."
                                 specifier="${specifier}-abbreviation"

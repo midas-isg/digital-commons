@@ -31,13 +31,6 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editIdentifier label="Identifier"
-                       path="${path}.identifier"
-                       isUnboundedList="${false}"
-                       id="${specifier}-identifier"
-                       singleIdentifier="${license.identifier}"
-                       specifier="${specifier}-identifier">
-</myTags:editIdentifier>
 <myTags:editNonZeroLengthString path="${path}.name"
                                 placeholder=" Name of License"
                                 string="${license.name}"
@@ -47,6 +40,13 @@
                                 isUnboundedList="${false}"
                                 label="Name">
 </myTags:editNonZeroLengthString>
+<myTags:editIdentifier label="Identifier"
+                       path="${path}.identifier"
+                       isUnboundedList="${false}"
+                       id="${specifier}-identifier"
+                       singleIdentifier="${license.identifier}"
+                       specifier="${specifier}-identifier">
+</myTags:editIdentifier>
 <myTags:editNonZeroLengthString label="Version"
                                 placeholder=" Version"
                                 specifier="${specifier}-version"
