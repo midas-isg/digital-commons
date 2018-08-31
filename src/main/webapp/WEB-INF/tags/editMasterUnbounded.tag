@@ -614,7 +614,21 @@
 
         e.preventDefault();
         e.stopPropagation();
-    }
+    };
+
+    //find each card header in the section and subsections and close all tabs
+    function closeAllTabs(e, div) {
+        //debugger;
+        $(div).find(".card-header").each(function() {
+            closeAllTabs(e, $(this));
+            $(this).find("a").each(function(){
+                debugger;
+                if ($(this).hasClass("nav-link")) {
+                    $(this.parentElement).remove();
+                }
+            });
+        });
+    };
 
     function showTab(e, div) {
         makeAllTabsInactive();
@@ -706,11 +720,8 @@
             $("#${specifier}-add-input-button").removeClass("hide");
 
             clearAndHideEditControlGroup($(e.target).attr("for"));
-            $("#${specifier}-card").find(".card-header").find("a").each(function() {
-                var divToClose = $(this.parentElement).attr("for")
-                $("#" + divToClose).remove();
-                $(this.parentElement).remove();
-            });
+
+            closeAllTabs(e, $("#${specifier}-card"));
 
             $(this).closest('.card').addClass("hide").slideUp('fast');
 
