@@ -28,6 +28,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -59,6 +60,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${grant.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -76,6 +78,7 @@
                                  object="${grant}"
                                  label="${label}"
                                  id="${id}"
+                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

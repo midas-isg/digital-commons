@@ -27,6 +27,7 @@
                                         label="Control Measures"
                                         tagName="softwareIdentifier"
                                         placeholder="Control Measure"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         listItems="${digitalObject.controlMeasures}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
@@ -35,6 +36,7 @@
                                         label="Host Species Included"
                                         tagName="softwareIdentifier"
                                         placeholder="Host Species Included"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         listItems="${digitalObject.hostSpeciesIncluded}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
@@ -43,6 +45,7 @@
                                         label="Pathogen Coverage"
                                         tagName="softwareIdentifier"
                                         placeholder="Pathogen Coverage"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>

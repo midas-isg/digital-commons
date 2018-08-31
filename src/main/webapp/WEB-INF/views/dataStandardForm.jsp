@@ -59,6 +59,7 @@
                                    path="type"
                                    specifier="type"
                                    id="type"
+                                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                    isUnboundedList="${false}"
                                    label="Type">
             </myTags:editAnnotation>
@@ -67,6 +68,7 @@
                                         specifier="licenses"
                                         isRequired="${false}"
                                         label="License"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         path="licenses">
             </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString label="Version"
@@ -82,6 +84,7 @@
                                         tagName="categoryValuePair"
                                         isRequired="${false}"
                                         specifier="extraProperties"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         path="extraProperties"
                                         label="Extra Properties">
             </myTags:editMasterUnbounded>

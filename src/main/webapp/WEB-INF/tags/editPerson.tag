@@ -23,6 +23,8 @@
               type="java.lang.String" %>
 <%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -32,6 +34,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -45,6 +48,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${person.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -95,6 +99,7 @@
 <myTags:editMasterUnbounded path="${path}.roles"
                             specifier="${specifier}-roles"
                             listItems="${person.roles}"
+                            cardText="The roles assumed by a person, ideally from a controlled vocabulary/ontology."
                             tagName="annotation"
                             label="Roles">
 </myTags:editMasterUnbounded>
@@ -105,6 +110,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

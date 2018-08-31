@@ -24,6 +24,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
+                                 cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
                                  tagName="dataRepository"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -44,6 +45,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${dataRepository.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -57,18 +59,21 @@
 <myTags:editMasterUnbounded path="${path}.scopes"
                             specifier="${specifier}-scopes"
                             listItems="${dataRepository.scopes}"
+                            cardText="Information about the nature of the datasets in the repository, ideally from a controlled vocabulary or ontology (e.g. transcription profile, sequence reads, molecular structure, image, DNA sequence, NMR spectra)."
                             tagName="annotation"
                             label="Scopes">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.types"
                             specifier="${specifier}-types"
                             listItems="${dataRepository.types}"
+                            cardText="A descriptor (ideally from a controlled vocabulary) providing information about the type of repository, such as primary resource or aggregator."
                             tagName="annotation"
                             label="Types">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${dataRepository.licenses}"
                             label="License"
+                            cardText="The terms of use of the data repository."
                             tagName="license"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
@@ -90,6 +95,7 @@
 <myTags:editMasterUnbounded path="${path}.access"
                             specifier="${specifier}-access"
                             listItems="${dataRepository.access}"
+                            cardText="The information about access modality for the data repository."
                             tagName="access"
                             isRequired="${false}"
                             label="Access">
@@ -100,6 +106,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
+                                 cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
                                  tagName="dataRepository"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

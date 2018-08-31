@@ -25,6 +25,7 @@
             <myTags:editMasterUnbounded path="licenses"
                                         listItems="${digitalObject.licenses}"
                                         tagName="license"
+                                        cardText="The terms of use of the dataset."
                                         label="License"
                                         specifier="licenses">
             </myTags:editMasterUnbounded>

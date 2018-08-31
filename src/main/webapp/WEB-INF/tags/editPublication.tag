@@ -28,6 +28,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A (digital) document made available by a publisher."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -50,6 +51,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             listItems="${publication.alternateIdentifiers}"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
@@ -64,6 +66,7 @@
                        isUnboundedList="${false}"
                        specifier="${specifier}-type"
                        id="${specifier}-type"
+                       cardText="Publication type, ideally delegated to an external vocabulary/resource."
                        annotation="${publication.type}"
                        label="Type">
 </myTags:editAnnotation>
@@ -76,12 +79,14 @@
 <myTags:editMasterUnbounded listItems="${publication.dates}"
                             label="Publication Date"
                             path="${path}.dates"
+                            cardText="Relevant dates, the date of the publication must be provided."
                             tagName="date"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.acknowledges"
                             specifier="${specifier}-acknowledges"
                             listItems="${publication.acknowledges}"
+                            cardText="The grant(s) which funded and supported the work reported by the publication."
                             tagName="grant"
                             label="Acknowledges">
 </myTags:editMasterUnbounded>
@@ -91,6 +96,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A (digital) document made available by a publisher."
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

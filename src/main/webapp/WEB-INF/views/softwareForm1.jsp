@@ -72,6 +72,7 @@
                                         path="dataInputFormats"
                                         specifier="dataInputFormats"
                                         isRequired="${false}"
+                                        cardText="The entities used as input."
                                         listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
             </myTags:editMasterUnbounded>
@@ -83,6 +84,7 @@
                                         specifier="data-output-format"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardText="The entities resulting from applying the activity."
                                         listItems="${digitalObject.dataOutputFormats}">
             </myTags:editMasterUnbounded>
             </div>
@@ -103,6 +105,7 @@
                                         path="webApplication"
                                         specifier="web-application"
                                         isRequired="${false}"
+                                        cardText="Web applications associated with the entity."
                                         tagName="string"
                                         listItems="${digitalObject.webApplication}">
             </myTags:editMasterUnbounded>

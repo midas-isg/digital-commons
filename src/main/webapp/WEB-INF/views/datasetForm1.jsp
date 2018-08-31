@@ -47,6 +47,7 @@
             <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
                                         path="dates"
                                         label="Dates"
+                                        cardText="Information about a calendar date or timestamp indicating day, month, year and time of an event."
                                         tagName="date"
                                         specifier="dates">
             </myTags:editMasterUnbounded>

@@ -38,6 +38,7 @@
                                             tagName="categoryValuePair"
                                             specifier="extraProperties"
                                             label="Extra Properties"
+                                            cardText="Extra properties that do not fit in the previous specified attributes."
                                             path="extraProperties">
                 </myTags:editMasterUnbounded>
             </div>

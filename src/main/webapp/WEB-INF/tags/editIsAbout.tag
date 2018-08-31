@@ -45,6 +45,7 @@
                                            specifier="${specifier}-${varStatus.count-1}"
                                            id="${specifier}-${varStatus.count-1}"
                                            label="${label} (Annotation)"
+                                           cardText="Different entities associated with this dataset."
                                            isUnboundedList="${true}"
                                            isRequired="${false}">
                     </myTags:editAnnotation>

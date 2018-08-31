@@ -31,6 +31,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isAccessRequired}"
                                  tagName="access"
+                                 cardText="Information about resources that provide the means to obtain an asset (a dataset or other research object)."
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.landingPage"
@@ -52,6 +53,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${access.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -65,17 +67,20 @@
 <myTags:editMasterUnbounded path="${path}.types"
                             specifier="${specifier}-types"
                             listItems="${access.types}"
+                            cardText="Method to obtain the resource, ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
                             label="Types">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.authorizations"
                             specifier="${specifier}-authorizations"
+                            cardText="Types of verification that accessing the resource is allowed. Authorization occurs before successful authentication and refers to the process of obtaining approval to use a data set. Ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
                             listItems="${access.authorizations}"
                             label="Authorizations">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.authentications"
                             specifier="${specifier}-authentications"
+                            cardText="Types of verification of the credentials for accessing the resource, it is the identification process at the time of access. ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
                             listItems="${access.authentications}"
                             label="Authentications">
@@ -87,6 +92,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isAccessRequired}"
+                                 cardText="Information about resources that provide the means to obtain an asset (a dataset or other research object)."
                                  tagName="access"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

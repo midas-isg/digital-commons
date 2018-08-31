@@ -28,6 +28,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isInputGroup" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
@@ -38,8 +40,7 @@
                     <div class="card-body">
                         <h5 class="card-title">${label}</h5>
                         <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <p class="card-text">${cardText}</p>
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
                                 ${label}
                         </button>

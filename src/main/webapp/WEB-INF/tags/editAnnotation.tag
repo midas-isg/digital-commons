@@ -21,6 +21,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -31,6 +33,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="annotation"
                                  isRequired="${isRequired}"
+                                 cardText="${cardText}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.value"
@@ -55,6 +58,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="annotation"
                                  isRequired="${isRequired}"
+                                 cardText="${cardText}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
 

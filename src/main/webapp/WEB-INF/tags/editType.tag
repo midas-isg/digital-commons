@@ -29,6 +29,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="The nature of the data, as determined for the information collected, the method used and the platform used."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -38,6 +39,7 @@
                        label="Information"
                        isUnboundedList="${false}"
                        isRequired="${false}"
+                       cardText="The measurements or facts that the data is about."
                        path="${path}.information">
 </myTags:editAnnotation>
 <myTags:editAnnotation annotation="${type.method}"
@@ -46,6 +48,7 @@
                        label="Method"
                        isUnboundedList="${false}"
                        isRequired="${false}"
+                       cardText="The procedure or technology used to generate the information."
                        path="${path}.method">
 </myTags:editAnnotation>
 <myTags:editAnnotation annotation="${type.platform}"
@@ -54,6 +57,7 @@
                        label="Platform"
                        isUnboundedList="${false}"
                        isRequired="${false}"
+                       cardText="The set of instruments, software and reagents that are needed to generated the data."
                        path="${path}.platform">
 </myTags:editAnnotation>
 <myTags:editMasterElementWrapper path="${path}"
@@ -62,6 +66,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="The nature of the data, as determined for the information collected, the method used and the platform used."
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

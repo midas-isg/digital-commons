@@ -23,6 +23,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="createPersonOrganizationTags" required="true"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="false"
+              type="java.lang.String" %>
 
 
 <div class="<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
@@ -53,6 +55,7 @@
                                              specifier="${specifier}-${varStatus.count-1}"
                                              label="${label} (Organization)"
                                              id="${specifier}-${varStatus.count-1}"
+                                             cardText="Organization ${cardText}"
                                              tagName="organization"
                                              isUnboundedList="${true}"
                                              isFirstRequired="false">
@@ -65,6 +68,7 @@
                                        specifier="${specifier}-${varStatus.count-1}"
                                        label="${label} (Person)"
                                        id="${specifier}-${varStatus.count-1}"
+                                       cardText="Person ${cardText}"
                                        tagName="person"
                                        isUnboundedList="${true}"
                                        isFirstRequired="false">
@@ -84,6 +88,7 @@
                              specifier="${specifier}-00"
                              label="${label} (Organization)"
                              id="${specifier}-organization-required-copy-tag"
+                             cardText="Organization ${cardText}"
                              tagName="organization"
                              isFirstRequired="true"
                              isUnboundedList="true">
@@ -93,6 +98,7 @@
                              specifier="${specifier}-00"
                              label="${label} (Organization)"
                              id="${specifier}-organization-copy-tag"
+                             cardText="Organization ${cardText}"
                              tagName="organization"
                              isUnboundedList="true"
                              isFirstRequired="false">
@@ -104,6 +110,7 @@
                        specifier="${specifier}-00"
                        label="${label} (Person)"
                        id="${specifier}-person-required-copy-tag"
+                       cardText="Person ${cardText}"
                        tagName="person"
                        isUnboundedList="true"
                        isFirstRequired="true">
@@ -113,6 +120,7 @@
                        specifier="${specifier}-00"
                        label="${label} (Person)"
                        id="${specifier}-person-copy-tag"
+                       cardText="Person ${cardText}"
                        tagName="person"
                        isUnboundedList="true"
                        isFirstRequired="false">

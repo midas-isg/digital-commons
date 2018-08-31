@@ -25,6 +25,7 @@
             <myTags:editMasterUnbounded path="acknowledges"
                                         specifier="acknowledges"
                                         listItems="${digitalObject.acknowledges}"
+                                        cardText="The grant(s) which funded and supported the work reported by the dataset."
                                         tagName="grant"
                                         label="Acknowledges">
             </myTags:editMasterUnbounded>

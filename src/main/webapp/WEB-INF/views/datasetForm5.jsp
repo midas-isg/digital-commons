@@ -25,6 +25,7 @@
             <myTags:editMasterUnbounded listItems="${digitalObject.distributions}"
                                         tagName="distribution"
                                         label="Distributions"
+                                        cardText="The distribution(s) by which datasets are made available (for example: mySQL dump)."
                                         specifier="distributions"
                                         path="distributions">
             </myTags:editMasterUnbounded>

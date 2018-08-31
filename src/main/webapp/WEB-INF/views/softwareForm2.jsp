@@ -40,6 +40,7 @@
             <div id="developers">
                 <myTags:editMasterUnbounded label="Developers" placeholder="Developer"
                                             path="developers" specifier="developers"
+                                            cardText="The person or organisation that developed the software."
                                             isRequired="${false}"
                                             tagName="string"
                                             listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
@@ -66,6 +67,7 @@
                                             path="publicationsThatUsedRelease"
                                             specifier="publications-that-used-release"
                                             isRequired="${false}"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             tagName="string"
                                             listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
             </div>
@@ -74,6 +76,7 @@
                                             path="executables" specifier="executables"
                                             isRequired="${false}"
                                             tagName="string"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
             </div>
             <div id="version">
@@ -81,6 +84,7 @@
                                             path="version" specifier="version"
                                             isRequired="${false}"
                                             tagName="string"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
             </div>
             <div id="publicationsAboutRelease">
@@ -90,6 +94,7 @@
                                             specifier="publications-about-release"
                                             isRequired="${false}"
                                             tagName="string"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
             </div>
             <div id="grants">
@@ -97,6 +102,7 @@
                                             path="grants" specifier="grants"
                                             isRequired="${false}"
                                             tagName="string"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.grants}">
                 </myTags:editMasterUnbounded>
             </div>
@@ -106,6 +112,7 @@
                                             path="locationCoverage"
                                             specifier="location-coverage"
                                             tagName="softwareIdentifier"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.locationCoverage}">
                 </myTags:editMasterUnbounded>
             </div>

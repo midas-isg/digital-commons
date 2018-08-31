@@ -20,6 +20,8 @@
               type="edu.pitt.isg.mdc.dats2_2.CategoryValuePair" %>
 <%@ attribute name="id" required="false"
               type="java.lang.String" %>
+<%@ attribute name="cardText" required="false"
+              type="java.lang.String" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -28,6 +30,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -46,6 +49,7 @@
 <myTags:editMasterUnbounded path="${path}.values"
                             specifier="${specifier}-values"
                             label="Value"
+                            cardText="A set of (annotated) values associated with the cateogory."
                             tagName="annotation"
                             listItems="${categoryValuePair.values}">
 </myTags:editMasterUnbounded>
@@ -55,6 +59,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

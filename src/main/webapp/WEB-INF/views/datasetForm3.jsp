@@ -25,6 +25,7 @@
             <myTags:editMasterUnbounded path="spatialCoverage"
                                         specifier="spatialCoverage"
                                         listItems="${digitalObject.spatialCoverage}"
+                                        cardText="The geographical extension and span covered by the dataset and its measured dimensions/variables."
                                         tagName="place"
                                         isRequired="${false}"
                                         label="Spatial Coverage">

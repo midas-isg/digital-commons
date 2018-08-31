@@ -27,6 +27,7 @@
                 <myTags:editMasterUnbounded path="citations"
                                             specifier="citations"
                                             listItems="${digitalObject.citations}"
+                                            cardText="The publication(s) that cite this dataset."
                                             tagName="publication"
                                             label="Citations">
                 </myTags:editMasterUnbounded>

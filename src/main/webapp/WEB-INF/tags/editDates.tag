@@ -20,6 +20,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="label" required="false"
               type="java.lang.String" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -29,6 +31,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
+                                 cardText="${cardText}"
                                  tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -50,6 +53,7 @@
                        isRequired="false"
                        label="Type"
                        id="${specifier}-date"
+                       cardText="The type of date, used to specify the process which is being timestamped by the date attribute value, ideally comes from a controlled terminology."
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
 </myTags:editAnnotation>
@@ -61,6 +65,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
+                                 cardText="${cardText}"
                                  tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

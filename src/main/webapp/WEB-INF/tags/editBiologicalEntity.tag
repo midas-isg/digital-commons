@@ -27,6 +27,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A biological entity is a recognized entity covering biological process, molecular functions or cellular components (from: http://geneontology.org/)."
                                  tagName="biological-entity"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -47,6 +48,7 @@
 <myTags:editMasterUnbounded path="${path}.alternateIdentifiers"
                             specifier="${specifier}-alternateIdentifiers"
                             listItems="${entity.alternateIdentifiers}"
+                            cardText="Alternate identifiers for the biological entity."
                             tagName="identifier"
                             label="Alternate Identifier">
 </myTags:editMasterUnbounded>
@@ -63,6 +65,7 @@
                                  label="${label}"
                                  id="${specifier}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A biological entity is a recognized entity covering biological process, molecular functions or cellular components (from: http://geneontology.org/)."
                                  tagName="biological-entity"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

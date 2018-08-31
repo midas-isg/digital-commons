@@ -26,6 +26,8 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -36,6 +38,7 @@
                                  isRequired="${isRequired}"
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -54,6 +57,7 @@
                                  isRequired="${isRequired}"
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
+                                 cardText="${cardText}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

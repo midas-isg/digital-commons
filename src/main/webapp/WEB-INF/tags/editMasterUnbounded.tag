@@ -22,6 +22,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
 <div class="col card-button <c:if test="${not function:isObjectEmpty(listItem)}">hide</c:if>"
      id="${specifier}-add-input-button">
@@ -30,8 +32,7 @@
         <div class="card-body">
             <h5 class="card-title">${label}</h5>
             <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                the card's content.</p>
+            <p class="card-text">${cardText}</p>
             <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
                 ${label}
             </button>
@@ -89,6 +90,7 @@
                                                    label="${label}"
                                                    isUnboundedList="${true}"
                                                    id="${specifier}-${varStatus.count-1}"
+                                                   cardText="${cardText}"
                                                    path="${path}[${varStatus.count-1}]">
                             </myTags:editAnnotation>
                         </c:when>
@@ -127,6 +129,7 @@
                             <myTags:editDates path="${path}[${varStatus.count-1}]"
                                               specifier="${specifier}-${varStatus.count-1}"
                                               id="${specifier}-${varStatus.count-1}"
+                                              cardText="${cardText}"
                                               isUnboundedList="${true}"
                                               date="${listItem}"
                                               label="Date">
@@ -452,6 +455,7 @@
         <myTags:editAnnotation specifier="${specifier}-00"
                                label="${label}"
                                isUnboundedList="${true}"
+                               cardText="${cardText}"
                                id="${specifier}-${tagName}-copy-tag"
                                path="${path}[0]">
         </myTags:editAnnotation>
@@ -488,6 +492,7 @@
         <myTags:editDates path="${path}[0]"
                           specifier="${specifier}-00"
                           isUnboundedList="${true}"
+                          cardText="${cardText}"
                           id="${specifier}-${tagName}-copy-tag"
                           label="Date">
         </myTags:editDates>

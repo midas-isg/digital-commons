@@ -26,6 +26,7 @@
                 <myTags:editMasterUnbounded path="types"
                                             specifier="types"
                                             label="Types"
+                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
                                             tagName="type"
                                             listItems="${digitalObject.types}">
                 </myTags:editMasterUnbounded>

@@ -28,6 +28,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="Process to acquire data on a sample and attempt to draw conclusions about the population the sample has been selected from, executing a plan and design."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -47,6 +48,7 @@
                   id="${specifier}-startDate"
                   isUnboundedList="${false}"
                   isRequired="${false}"
+                  cardText="A timestamp to record the starting point of the activity."
                   date="${study.startDate}">
 </myTags:editDates>
 <myTags:editDates label="End Date"
@@ -55,6 +57,7 @@
                   id="${specifier}-startDate"
                   isUnboundedList="${false}"
                   isRequired="${false}"
+                  cardText="A timestamp to record the end point of the activity."
                   date="${study.endDate}">
 </myTags:editDates>
 <myTags:editPlace path="${path}.location"
@@ -71,6 +74,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="Process to acquire data on a sample and attempt to draw conclusions about the population the sample has been selected from, executing a plan and design."
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

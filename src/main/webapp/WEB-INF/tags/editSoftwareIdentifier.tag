@@ -34,6 +34,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isRequired}"
+                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -64,6 +65,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                  isRequired="${isRequired}"
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="bottom">

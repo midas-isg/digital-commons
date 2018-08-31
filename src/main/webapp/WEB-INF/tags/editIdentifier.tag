@@ -26,6 +26,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="Information about the primary identifier."
                                  tagName="identifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -48,6 +49,7 @@
                                  object="${singleIdentifier}"
                                  label="${label}"
                                  id="${id}"
+                                 cardText="Information about the primary identifier."
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="identifier"
                                  showTopOrBottom="bottom">

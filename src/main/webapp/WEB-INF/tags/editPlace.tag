@@ -28,6 +28,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A spatially bounded entity."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -58,6 +59,7 @@
                    label="Geometry"
                    enumData="${place.geometry}"
                    enumList="${geometryEnums}"
+                   cardText="A region of a space."
                    isRequired="true"
                    tagName="geometry"
                    id="${specifier}-geometry">
@@ -72,6 +74,7 @@
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -81,6 +84,7 @@
                                  object="${place}"
                                  label="${label}"
                                  id="${id}"
+                                 cardText="A spatially bounded entity."
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

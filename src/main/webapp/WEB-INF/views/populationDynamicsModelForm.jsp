@@ -28,6 +28,7 @@
                                             label="Population Species Included"
                                             tagName="softwareIdentifier"
                                             placeholder="Population Species Included"
+                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.populationSpeciesIncluded}"
                                             isRequired="${true}">
                 </myTags:editMasterUnbounded>

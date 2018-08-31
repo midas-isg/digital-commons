@@ -40,6 +40,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
+                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="top">
@@ -49,6 +50,7 @@
                    label="Access Point Type"
                    enumData="${description.accessPointType}"
                    enumList="${accessPointTypes}"
+                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                    tagName="accessPointType"
                    isRequired="${true}"
                    id="${specifier}-accessPointType">
@@ -77,6 +79,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
+                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="bottom">

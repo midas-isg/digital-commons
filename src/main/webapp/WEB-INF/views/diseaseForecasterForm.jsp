@@ -26,6 +26,7 @@
                                         placeholder="Disease"
                                         label="Diseases"
                                         path="diseases"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         tagName="softwareIdentifier"
                                         listItems="${digitalObject.diseases}">
             </myTags:editMasterUnbounded>
@@ -33,6 +34,7 @@
                                         label="Nowcasts"
                                         placeholder="Nowcast"
                                         specifier="nowcast"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         tagName="string"
                                         path="nowcasts">
             </myTags:editMasterUnbounded>
@@ -40,6 +42,7 @@
                                         label="Outcomes"
                                         placeholder="Outcome"
                                         specifier="outcome"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         tagName="string"
                                         path="outcomes">
             </myTags:editMasterUnbounded>
@@ -61,6 +64,7 @@
                                         path="forecasts"
                                         specifier="forecasts"
                                         isRequired="${false}"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         isFirstRequired="${true}"
                                         tagName="string"
                                         listItems="${digitalObject.forecasts}">

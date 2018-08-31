@@ -35,6 +35,7 @@
                                  isInputGroup="${true}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
+                                 cardText=""
                                  tagName="string"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -53,6 +54,7 @@
                                  isInputGroup="${true}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
+                                 cardText=""
                                  tagName="string"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

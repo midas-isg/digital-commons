@@ -28,6 +28,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A format, reporting guideline, terminology. It is used to indicate whether the dataset conforms to a particular community norm or specification."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -45,6 +46,7 @@
                        path="${path}.type"
                        specifier="${specifier}-type"
                        id="${specifier}-type"
+                       cardText="The nature of the information resource, ideally specified with a controlled vocabulary or ontology (.e.g model or format, vocabulary, reporting guideline)."
                        isUnboundedList="${false}"
                        label="Type">
 </myTags:editAnnotation>
@@ -60,6 +62,7 @@
                             path="${path}.alternateIdentifiers"
                             listItems="${dataStandard.alternateIdentifiers}"
                             isRequired="${false}"
+                            cardText="Alternate identifiers for the standard."
                             tagName="identifier">
 </myTags:editMasterUnbounded>
 <myTags:editNonZeroLengthString specifier="${specifier}-description"
@@ -76,6 +79,7 @@
                             specifier="${specifier}-licenses"
                             isRequired="${false}"
                             label="License"
+                            cardText="The terms of use of the data standard."
                             path="${path}.licenses">
 </myTags:editMasterUnbounded>
 <myTags:editNonZeroLengthString label="Version"
@@ -91,6 +95,7 @@
                             tagName="categoryValuePair"
                             isRequired="${false}"
                             specifier="${specifier}-extraProperties"
+                            cardText="Extra properties that do not fit in the previous specified attributes."
                             path="${path}.extraProperties"
                             label="Extra Properties">
 </myTags:editMasterUnbounded>
@@ -100,6 +105,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A format, reporting guideline, terminology. It is used to indicate whether the dataset conforms to a particular community norm or specification."
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

@@ -27,6 +27,7 @@
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${true}"
+                                 cardText=""
                                  tagName="float"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -44,6 +45,7 @@
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${false}"
+                                 cardText=""
                                  tagName="float"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
