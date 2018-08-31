@@ -30,6 +30,7 @@
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString placeholder=" The name of the data repository."
                                 specifier="${specifier}-name"
+                                id="${specifier}-name"
                                 label="Name"
                                 string="${dataRepository.name}"
                                 path="${path}.name"
@@ -52,6 +53,7 @@
 <myTags:editNonZeroLengthString path="${path}.description"
                                 string="${dataRepository.description}"
                                 specifier="${specifier}-description"
+                                id="${specifier}-description"
                                 isTextArea="${true}"
                                 placeholder=" A textual narrative comprised of one or more statements describing the data repository."
                                 label="Description">
@@ -80,6 +82,7 @@
 <myTags:editNonZeroLengthString label="Version"
                                 placeholder=" A release point for the dataset when applicable."
                                 specifier="${specifier}-version"
+                                id="${specifier}-version"
                                 string="${dataRepository.version}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>

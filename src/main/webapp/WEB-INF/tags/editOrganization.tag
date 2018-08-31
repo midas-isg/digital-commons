@@ -63,6 +63,7 @@
 <myTags:editNonZeroLengthString label="Abbreviation"
                                 placeholder=" The shortname, abbreviation associated to the organization."
                                 specifier="${specifier}-abbreviation"
+                                id="${specifier}-abbreviation"
                                 path="${path}.abbreviation"
                                 string="${organization.abbreviation}">
 </myTags:editNonZeroLengthString>

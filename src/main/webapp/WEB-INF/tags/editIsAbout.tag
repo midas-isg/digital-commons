@@ -83,6 +83,7 @@
                        id="${specifier}-annotation-copy-tag"
                        label="${label} (Annotation)"
                        isUnboundedList="${true}"
+                       cardText="Different entities associated with this dataset."
                        isRequired="${false}">
 </myTags:editAnnotation>
 

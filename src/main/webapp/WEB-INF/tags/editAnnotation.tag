@@ -38,6 +38,7 @@
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.value"
                                 specifier="${specifier}-value"
+                                id="${specifier}-value"
                                 placeholder="Value"
                                 isRequired="${true}"
                                 label="Value"
@@ -45,6 +46,7 @@
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.valueIRI"
                                 specifier="${specifier}-valueIRI"
+                                id="${specifier}-valueIRI"
                                 placeholder="Value IRI"
                                 isRequired="${true}"
                                 label="Value IRI"

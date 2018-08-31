@@ -32,6 +32,7 @@
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.identifier"
                                 specifier="${specifier}-identifier"
+                                id="${specifier}-identifier"
                                 placeholder="A code uniquely identifying an entity locally to a system or globally."
                                 isRequired="${true}"
                                 label="Identifier"
@@ -39,6 +40,7 @@
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.identifierSource"
                                 specifier="${specifier}-identifierSource"
+                                id="${specifier}-identifierSource"
                                 placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
                                 isRequired="${true}"
                                 label="Identifier Source"

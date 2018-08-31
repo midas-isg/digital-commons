@@ -60,6 +60,7 @@
         label="Title"
         string="${publication.title}"
         path="${path}.title"
+        id="${specifier}-title"
         specifier="${specifier}-title">
 </myTags:editNonZeroLengthString>
 <myTags:editAnnotation path="${path}.type"
@@ -73,6 +74,7 @@
 <myTags:editNonZeroLengthString path="${path}.publicationVenue"
                                 string="${publication.publicationVenue}"
                                 specifier="${specifier}-publicationVenue"
+                                id="${specifier}-publicationVenue"
                                 placeholder=" The name of the publication venue where the document is published if applicable."
                                 label="Publication Venue">
 </myTags:editNonZeroLengthString>

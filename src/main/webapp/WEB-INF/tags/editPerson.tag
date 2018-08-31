@@ -57,12 +57,14 @@
                                 string="${person.fullName}"
                                 isRequired="true"
                                 specifier="${specifier}-fullname"
+                                id="${specifier}-fullname"
                                 path="${path}.fullName">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="First Name"
                                 placeholder=" The given name of the person."
                                 string="${person.firstName}"
                                 specifier="${specifier}-firstName"
+                                id="${specifier}-firstName"
                                 isRequired="true"
                                 path="${path}.firstName">
 </myTags:editNonZeroLengthString>
@@ -70,6 +72,7 @@
                                 placeholder=" The first letter of the person's middle name."
                                 string="${person.middleInitial}"
                                 specifier="${specifier}-middleInitial"
+                                id="${specifier}-middleInitial"
                                 isRequired="true"
                                 path="${path}.middleInitial">
 </myTags:editNonZeroLengthString>
@@ -77,6 +80,7 @@
                                 placeholder=" The person's family name."
                                 string="${person.lastName}"
                                 specifier="${specifier}-lastName"
+                                id="${specifier}-lastName"
                                 isRequired="true"
                                 path="${path}.lastName">
 </myTags:editNonZeroLengthString>
@@ -84,6 +88,7 @@
                                 placeholder=" An electronic mail address for the person."
                                 string="${person.email}"
                                 specifier="${specifier}-email"
+                                id="${specifier}-email"
                                 isRequired="true"
                                 path="${path}.email">
 </myTags:editNonZeroLengthString>

@@ -18,7 +18,7 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>

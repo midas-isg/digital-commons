@@ -24,6 +24,7 @@
             <myTags:editNonZeroLengthString label="Title"
                                             path="title"
                                             specifier="title"
+                                            id="title"
                                             placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                             isRequired="true"
                                             string="${digitalObject.title}">
@@ -32,6 +33,7 @@
             <myTags:editNonZeroLengthString path="description"
                                             string="${digitalObject.description}"
                                             specifier="description"
+                                            id="description"
                                             isTextArea="true"
                                             isRequired="true"
                                             placeholder=" A textual narrative comprised of one or more statements describing the dataset."

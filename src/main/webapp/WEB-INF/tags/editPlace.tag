@@ -34,6 +34,7 @@
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.name"
                                 specifier="${specifier}-name"
+                                id="${specifier}-name"
                                 placeholder=" The name of the place."
                                 string="${place.name}"
                                 isRequired="true"
@@ -41,6 +42,7 @@
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.description"
                                 specifier="${specifier}-description"
+                                id="${specifier}-description"
                                 string="${place.description}"
                                 isTextArea="true"
                                 isRequired="true"
@@ -49,6 +51,7 @@
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.postalAddress"
                                 specifier="${specifier}-postalAddress"
+                                id="${specifier}-postalAddress"
                                 string="${place.postalAddress}"
                                 isRequired="true"
                                 placeholder=" A physical street address."

@@ -49,12 +49,14 @@
             <myTags:editNonZeroLengthString label="Forecast Frequency"
                                             placeholder="Forecast Frequency"
                                             specifier="forecast-frequency"
+                                            id="forecast-frequency"
                                             path="forecastFrequency"
                                             string="${digitalObject.forecastFrequency}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Type"
                                             placeholder="Type"
                                             specifier="type"
+                                            id="type"
                                             path="type"
                                             string="${digitalObject.type}">
             </myTags:editNonZeroLengthString>

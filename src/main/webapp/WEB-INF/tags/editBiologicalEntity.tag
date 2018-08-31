@@ -35,6 +35,7 @@
                                 label="Name"
                                 isRequired="true"
                                 specifier="${specifier}-name"
+                                id="${specifier}-name"
                                 string="${entity.name}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
@@ -57,6 +58,7 @@
                                 label="Description"
                                 placeholder="Description"
                                 isTextArea="true"
+                                id="${specifier}-description"
                                 specifier="${specifier}-description">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterElementWrapper path="${path}"

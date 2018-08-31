@@ -33,6 +33,7 @@
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.title"
                                 specifier="${specifier}-title"
+                                id="${specifier}-title"
                                 placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                 string="${distribution.title}"
                                 isUnboundedList="${false}"
@@ -42,6 +43,7 @@
 <myTags:editNonZeroLengthString path="${path}.description"
                                 string="${distribution.description}"
                                 specifier="${specifier}-description"
+                                id="${specifier}-description"
                                 placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
                                 label="Description"
                                 isUnboundedList="${false}"
@@ -51,6 +53,7 @@
 <myTags:editNonZeroLengthString label="Version"
                                 placeholder=" A release point for the dataset when applicable."
                                 specifier="${specifier}-version"
+                                id="${specifier}-version"
                                 isUnboundedList="${false}"
                                 string="${distribution.version}"
                                 isRequired="${true}"
