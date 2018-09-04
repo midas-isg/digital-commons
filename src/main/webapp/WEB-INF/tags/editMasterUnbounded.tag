@@ -826,14 +826,19 @@
         console.log("calling showTab");
         var divToShow = $(div.parentElement).attr('for');
 
-        $('#' + divToShow).show();
         $(div).addClass("active");
 
         $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
-                $(this).hide();
+                $(this).addClass("hide");
             }
+        });
+
+        $('#' + divToShow).removeClass("hide");
+        $('#'+divToShow+' .card-content').each(function (index) {
+            console.log("HELLO"+$(this).attr("id") + " . " + $(this).parents('#card-content').length);
+            $(this).removeClass("hide");
         });
     };
 
@@ -842,13 +847,14 @@
         console.log("calling showTabNamed");
         // var divToShow = $(div.parentElement).attr('for');
 
-        $('#' + divToShow).show();
+        $('#' + divToShow).removeClass("hide");
         //   $(tabToActivate).addClass("active");
         $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
         $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
-                $(this).hide();
+                $(this).addClass("hide");
+                // $(this).hide();
             }
         });
     };
@@ -898,7 +904,7 @@
             html = html.replace(regexPath, '${path}[' + listItemCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + listItemCount);
 
-            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0].replace('0', listItemCount);
+            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0];
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-" + listItemCount + "-date-picker").datepicker({
                 forceParse: false,
@@ -910,7 +916,7 @@
 
             makeAllTabsInactive(specifier);
             //create a new tab
-            $("#${specifier}-card").find(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
+            $("#${specifier}-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
                 " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
                 "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
 

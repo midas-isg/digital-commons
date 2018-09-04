@@ -95,7 +95,7 @@
 
 
     <c:when test="${showTopOrBottom == 'bottom'}">
-        <div class="row " id="${specifier}-input-block-card-row"></div>
+        <div class="row no-margin" id="${specifier}-input-block-card-row"></div>
 
         </div>
 
