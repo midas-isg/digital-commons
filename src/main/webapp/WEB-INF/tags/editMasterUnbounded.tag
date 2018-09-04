@@ -815,7 +815,6 @@
         console.log("calling showTab");
         var divToShow = $(div.parentElement).attr('for');
 
-        $('#' + divToShow).show();
         $(div).addClass("active");
 
         $('#'+specifier+'-card .card-content').each(function (index) {
@@ -823,6 +822,12 @@
             if ($(this).attr("id") != divToShow) {
                 $(this).hide();
             }
+        });
+
+        $('#' + divToShow).show();
+        $('#'+divToShow+' .card-content').each(function (index) {
+            console.log("HELLO"+$(this).attr("id") + " . " + $(this).parents('#card-content').length);
+            $(this).show();
         });
     };
 
@@ -887,7 +892,7 @@
             html = html.replace(regexPath, '${path}[' + listItemCount + ']')
                 .replace(regexSpecifier, '${specifier}-' + listItemCount);
 
-            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0].replace('0', listItemCount);
+            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0];
             $(".${specifier}-${tagName}-add-more").before(html);
             $("#${specifier}-" + listItemCount + "-date-picker").datepicker({
                 forceParse: false,
