@@ -23,13 +23,15 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            <myTags:editIsAbout path="isAbout"
+            <myTags:editMasterUnbounded path="isAbout"
                                 specifier="isAbout"
-                                isAboutList="${digitalObject.isAbout}"
+                                listItems="${digitalObject.isAbout}"
+                                        tagName="isAbout"
+                                        cardText="Different entities associated with this dataset."
                                 label="Is About"
                                 showAddAnnotationButton="true"
                                 showAddBiologicalEntityButton="true">
-            </myTags:editIsAbout>
+            </myTags:editMasterUnbounded>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>

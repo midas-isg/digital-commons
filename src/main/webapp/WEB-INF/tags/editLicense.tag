@@ -57,15 +57,17 @@
                                 isUnboundedList="${false}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>
-<myTags:editPersonComprisedEntity path="${path}.creators"
+<myTags:editMasterUnbounded path="${path}.creators"
                                   specifier="${specifier}-creators"
                                   label="Creator"
                                   createPersonOrganizationTags="${true}"
-                                  personComprisedEntities="${license.creators}"
+                                  listItems="${license.creators}"
                                   isFirstRequired="false"
                                   showAddPersonButton="true"
+                            cardText="The person(s) or organization(s) responsible for writing the license."
+                            tagName="personComprisedEntity"
                                   showAddOrganizationButton="true">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${license}"

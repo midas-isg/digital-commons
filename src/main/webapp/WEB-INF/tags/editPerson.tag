@@ -92,15 +92,17 @@
                                 isRequired="true"
                                 path="${path}.email">
 </myTags:editNonZeroLengthString>
-<myTags:editPersonComprisedEntity path="${path}.affiliations"
+<myTags:editMasterUnbounded path="${path}.affiliations"
                                   specifier="${specifier}-affiliations"
                                   label="Affiliation"
-                                  personComprisedEntities="${person.affiliations}"
+                                  listItems="${person.affiliations}"
                                   isFirstRequired="false"
                                   createPersonOrganizationTags="false"
+                            tagName="personComprisedEntity"
+                            cardText="The organizations to which the person is associated with."
                                   showAddPersonButton="false"
                                   showAddOrganizationButton="true">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.roles"
                             specifier="${specifier}-roles"
                             listItems="${person.roles}"

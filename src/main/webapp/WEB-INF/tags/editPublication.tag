@@ -32,15 +32,17 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editPersonComprisedEntity path="${path}.authors"
+<myTags:editMasterUnbounded path="${path}.authors"
                                   specifier="${specifier}-authors"
                                   label="Author"
-                                  personComprisedEntities="${publication.authors}"
+                                  listItems="${publication.authors}"
                                   createPersonOrganizationTags="${true}"
+                            tagName="personComprisedEntity"
+                            cardText="The person(s) and/or organisation(s) responsible for the publication."
                                   isFirstRequired="${true}"
                                   showAddPersonButton="${true}"
                                   showAddOrganizationButton="${false}">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${publication.identifier}"
                        specifier="${specifier}-identifier"

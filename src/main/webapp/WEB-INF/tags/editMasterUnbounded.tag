@@ -24,6 +24,17 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="showAddPersonButton" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="showAddOrganizationButton" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="createPersonOrganizationTags" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="showAddAnnotationButton" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="showAddBiologicalEntityButton" required="false"
+              type="java.lang.Boolean" %>
+
 
 <div class="col card-button <c:if test="${not function:isObjectEmpty(listItem)}">hide</c:if>"
      id="${specifier}-add-input-button">
@@ -33,9 +44,37 @@
             <h5 class="card-title">${label}</h5>
             <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
             <p class="card-text">${cardText}</p>
-            <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
-                ${label}
-            </button>
+            <c:choose>
+                <c:when test="${tagName == 'personComprisedEntity'}">
+                    <c:if test="${showAddPersonButton}">
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
+                                ${label} (Person)
+                        </button>
+                    </c:if>
+                    <c:if test="${showAddOrganizationButton}">
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
+                                ${label} (Organization)
+                        </button>
+                    </c:if>
+                </c:when>
+                <c:when test="${tagName == 'isAbout'}">
+                    <c:if test="${showAddAnnotationButton}">
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
+                                ${label} (Annotation)
+                        </button>
+                    </c:if>
+                    <c:if test="${showAddBiologicalEntityButton}">
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
+                                ${label} (Biological Entity)
+                        </button>
+                    </c:if>
+                </c:when>
+                <c:otherwise>
+                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
+                            ${label}
+                    </button>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>
@@ -54,7 +93,27 @@
                             Add ${label}</button>
                     </li>--%>
                 </c:if>
-                <li><a class="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                <c:choose>
+                    <c:when test="${tagName == 'personComprisedEntity'}">
+                        <c:if test="${showAddPersonButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${label} (Person)</a></li>
+                        </c:if>
+                        <c:if test="${showAddOrganizationButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${label} (Organization)</a></li>
+                        </c:if>
+                    </c:when>
+                    <c:when test="${tagName == 'isAbout'}">
+                        <c:if test="${showAddAnnotationButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${label} (Annotation)</a></li>
+                        </c:if>
+                        <c:if test="${showAddBiologicalEntityButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${label} (Biological Entity)</a></li>
+                        </c:if>
+                    </c:when>
+                    <c:otherwise>
+                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                    </c:otherwise>
+                </c:choose>
                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                 <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                 <li><a data-action="close"><i for="${specifier}-card"
@@ -164,6 +223,31 @@
                                                    path="${path}[${varStatus.count-1}]">
                             </myTags:editIdentifier>
                         </c:when>
+                        <c:when test="${tagName == 'isAbout'}">
+                            <c:choose>
+                                <c:when test="${not empty listItem.value or not empty listItem.valueIRI}">
+                                    <myTags:editAnnotation annotation="${listItem}"
+                                                           path="${path}[${varStatus.count-1}]"
+                                                           specifier="${specifier}-${varStatus.count-1}"
+                                                           id="${specifier}-${varStatus.count-1}"
+                                                           label="${label} (Annotation)"
+                                                           cardText="Different entities associated with this dataset."
+                                                           isUnboundedList="${true}"
+                                                           isRequired="${false}">
+                                    </myTags:editAnnotation>
+                                </c:when>
+                                <c:when test="${not empty listItem.identifier or not empty listItem.name or not empty listItem.description}">
+                                    <myTags:editBiologicalEntity entity="${listItem}"
+                                                                 path="${path}[${varStatus.count-1}]"
+                                                                 id="${specifier}-${varStatus.count-1}"
+                                                                 specifier="${specifier}-${varStatus.count-1}"
+                                                                 isUnboundedList="${true}"
+                                                                 isRequired="${false}"
+                                                                 label="${label} (BiologicalEntity)">
+                                    </myTags:editBiologicalEntity>
+                                </c:when>
+                            </c:choose>
+                        </c:when>
                         <c:when test="${tagName == 'license'}">
                             <myTags:editLicense path="${path}[${varStatus.count-1}]"
                                                 label="${label}"
@@ -173,6 +257,36 @@
                                                 isUnboundedList="${true}"
                                                 specifier="${specifier}-${varStatus.count-1}">
                             </myTags:editLicense>
+                        </c:when>
+                        <c:when test="${tagName == 'personComprisedEntity'}">
+                            <c:choose>
+                                <c:when test="${not function:isPerson(listItem)}">
+                                    <myTags:editOrganization organization="${listItem}"
+                                                             path="${path}[${varStatus.count-1}]"
+                                                             specifier="${specifier}-${varStatus.count-1}"
+                                                             label="${label} (Organization)"
+                                                             id="${specifier}-${varStatus.count-1}"
+                                                             cardText="Organization ${cardText}"
+                                                             tagName="organization"
+                                                             isUnboundedList="${true}"
+                                                             isFirstRequired="false">
+                                    </myTags:editOrganization>
+
+                                </c:when>
+                                <c:when test="${function:isPerson(listItem)}">
+                                    <myTags:editPerson person="${listItem}"
+                                                       path="${path}[${varStatus.count-1}]"
+                                                       specifier="${specifier}-${varStatus.count-1}"
+                                                       label="${label} (Person)"
+                                                       id="${specifier}-${varStatus.count-1}"
+                                                       cardText="Person ${cardText}"
+                                                       tagName="person"
+                                                       isUnboundedList="${true}"
+                                                       isFirstRequired="false">
+                                    </myTags:editPerson>
+
+                                </c:when>
+                            </c:choose>
                         </c:when>
                         <c:when test="${tagName == 'place'}">
                             <myTags:editPlace path="${path}[${varStatus.count-1}]"
@@ -523,6 +637,24 @@
                                path="${path}[0]">
         </myTags:editIdentifier>
     </c:when>
+    <c:when test="${tagName == 'isAbout'}">
+        <myTags:editAnnotation path="${path}[0]"
+                               specifier="${specifier}-00"
+                               id="${specifier}-annotation-copy-tag"
+                               label="${label} (Annotation)"
+                               isUnboundedList="${true}"
+                               cardText="Different entities associated with this dataset."
+                               isRequired="${false}">
+        </myTags:editAnnotation>
+
+        <myTags:editBiologicalEntity path="${path}[0]"
+                                     specifier="${specifier}-00"
+                                     id="${specifier}-biologicalEntity-copy-tag"
+                                     isUnboundedList="${true}"
+                                     isRequired="${false}"
+                                     label="${label} (BiologicalEntity)">
+        </myTags:editBiologicalEntity>
+    </c:when>
     <c:when test="${tagName == 'license'}">
         <myTags:editLicense path="${path}[0]"
                             label="License"
@@ -540,6 +672,51 @@
                           isUnboundedList="${true}"
                           label="${label}">
         </myTags:editPlace>
+    </c:when>
+    <c:when test="${tagName == 'personComprisedEntity'}">
+        <c:if test="${showAddOrganizationButton}">
+            <myTags:editOrganization path="${path}[0]"
+                                     specifier="${specifier}-00"
+                                     label="${label} (Organization)"
+                                     id="${specifier}-organization-required-copy-tag"
+                                     cardText="Organization ${cardText}"
+                                     tagName="organization"
+                                     isFirstRequired="true"
+                                     isUnboundedList="true">
+            </myTags:editOrganization>
+
+            <myTags:editOrganization path="${path}[0]"
+                                     specifier="${specifier}-00"
+                                     label="${label} (Organization)"
+                                     id="${specifier}-organization-copy-tag"
+                                     cardText="Organization ${cardText}"
+                                     tagName="organization"
+                                     isUnboundedList="true"
+                                     isFirstRequired="false">
+            </myTags:editOrganization>
+        </c:if>
+
+        <c:if test="${showAddPersonButton and createPersonOrganizationTags}">
+            <myTags:editPerson path="${path}[0]"
+                               specifier="${specifier}-00"
+                               label="${label} (Person)"
+                               id="${specifier}-person-required-copy-tag"
+                               cardText="Person ${cardText}"
+                               tagName="person"
+                               isUnboundedList="true"
+                               isFirstRequired="true">
+            </myTags:editPerson>
+
+            <myTags:editPerson path="${path}[0]"
+                               specifier="${specifier}-00"
+                               label="${label} (Person)"
+                               id="${specifier}-person-copy-tag"
+                               cardText="Person ${cardText}"
+                               tagName="person"
+                               isUnboundedList="true"
+                               isFirstRequired="false">
+            </myTags:editPerson>
+        </c:if>
     </c:when>
     <c:when test="${tagName == 'publication'}">
         <myTags:editPublication path="${path}[0]"
@@ -676,7 +853,30 @@
             var path = "${path}";
             $("#${specifier}-add-input-button").addClass("hide");
             $("#${specifier}-card").removeClass("hide");
-            var html = $("#" + specifier + "-${tagName}-copy-tag").html();
+            debugger;
+            <c:choose>
+                <c:when test="${tagName == 'personComprisedEntity'}">
+                    if (this.id == "${specifier}-add-${tagName}-person") {
+                        if (listItemCount === 0 && ${isFirstRequired}) {
+                            var html = $("#" + "${specifier}-person-required-copy-tag").html();
+                        } else var html = $("#" + "${specifier}-person-copy-tag").html();
+                    } else if (this.id == "${specifier}-add-${tagName}-organization") {
+                        if (listItemCount === 0 && ${isFirstRequired}) {
+                            var html = $("#" + "${specifier}-organization-required-copy-tag").html();
+                        } else var html = $("#" + "${specifier}-organization-copy-tag").html();
+                    }
+                </c:when>
+                <c:when test="${tagName == 'isAbout'}">
+                    if (this.id == "${specifier}-add-${tagName}-annotation") {
+                        var html = $("#" + "${specifier}-annotation-copy-tag").html();
+                    } else if (this.id == "${specifier}-add-${tagName}-biologicalEntity") {
+                        var html = $("#" + "${specifier}-biologicalEntity-copy-tag").html();
+                    }
+                </c:when>
+                <c:otherwise>
+                    var html = $("#" + specifier + "-${tagName}-copy-tag").html();
+                </c:otherwise>
+            </c:choose>
             <%--var html = $("#${specifier}-0-tag").html();--%>
             var regexEscapeOpenBracket = new RegExp('\\[', "g");
             var regexEscapeClosedBracket = new RegExp('\\]', "g");

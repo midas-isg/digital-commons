@@ -86,15 +86,17 @@
                                 string="${dataRepository.version}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>
-<myTags:editPersonComprisedEntity path="${path}.publishers"
+<myTags:editMasterUnbounded path="${path}.publishers"
                                   specifier="${specifier}-publishers"
                                   label="Publisher"
-                                  personComprisedEntities="${dataRepository.publishers}"
+                                  listItems="${dataRepository.publishers}"
                                   isFirstRequired="false"
                                   createPersonOrganizationTags="true"
+                            cardText="he person(s) or organization(s) responsible for the repository and its availability."
+                            tagName="personComprisedEntity"
                                   showAddPersonButton="true"
                                   showAddOrganizationButton="true">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.access"
                             specifier="${specifier}-access"
                             listItems="${dataRepository.access}"

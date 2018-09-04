@@ -41,15 +41,17 @@
                                 isRequired="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
-<myTags:editPersonComprisedEntity path="${path}.funders"
+<myTags:editMasterUnbounded path="${path}.funders"
                                   specifier="${specifier}-funders"
                                   label="Funder"
-                                  personComprisedEntities="${grant.funders}"
+                                  listItems="${grant.funders}"
                                   createPersonOrganizationTags="${true}"
+                            tagName="personComprisedEntity"
+                            cardText="The person(s) or organization(s) which has awarded the funds supporting the project."
                                   isFirstRequired="true"
                                   showAddPersonButton="true"
                                   showAddOrganizationButton="true">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${grant.identifier}"
                        id="${specifier}-identifier"
@@ -64,15 +66,17 @@
                             tagName="identifier"
                             listItems="${grant.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editPersonComprisedEntity path="${path}.awardees"
+<myTags:editMasterUnbounded path="${path}.awardees"
                                   specifier="${specifier}-awardees"
                                   label="Awardee"
-                                  personComprisedEntities="${grant.awardees}"
+                                  listItems="${grant.awardees}"
                                   createPersonOrganizationTags="${true}"
+                            cardText="The person(s) or organization(s) which received the funds supporting the project."
+                            tagName="personComprisedEntity"
                                   isFirstRequired="false"
                                   showAddPersonButton="true"
                                   showAddOrganizationButton="true">
-</myTags:editPersonComprisedEntity>
+</myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${grant}"
