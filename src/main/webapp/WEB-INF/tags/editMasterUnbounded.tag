@@ -899,7 +899,7 @@
 
             makeAllTabsInactive(specifier);
             //create a new tab
-            $("#${specifier}-card").find(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
+            $("#${specifier}-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
                 " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
                 "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
 
