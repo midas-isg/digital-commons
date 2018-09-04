@@ -820,14 +820,14 @@
         $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
-                $(this).hide();
+                $(this).addClass("hide");
             }
         });
 
-        $('#' + divToShow).show();
+        $('#' + divToShow).removeClass("hide");
         $('#'+divToShow+' .card-content').each(function (index) {
             console.log("HELLO"+$(this).attr("id") + " . " + $(this).parents('#card-content').length);
-            $(this).show();
+            $(this).removeClass("hide");
         });
     };
 
@@ -836,13 +836,14 @@
         console.log("calling showTabNamed");
         // var divToShow = $(div.parentElement).attr('for');
 
-        $('#' + divToShow).show();
+        $('#' + divToShow).removeClass("hide");
         //   $(tabToActivate).addClass("active");
         $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
         $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
-                $(this).hide();
+                $(this).addClass("hide");
+                // $(this).hide();
             }
         });
     };
