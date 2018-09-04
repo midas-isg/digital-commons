@@ -825,17 +825,18 @@
         });
 
         $('#' + divToShow).removeClass("hide");
-        $('#'+divToShow+' .card-content').each(function (index) {
+        $('#' + divToShow + ' .card-content').each(function (index) {
             //if card is unbounded list we find the 'active' tab and unhide that input block
-            if($('#'+divToShow+' .card-content').length > 1){
-                var inputBlockID = $(this).attr("id");
-                var tabID = inputBlockID.replace("input-block", "tab");
-                if($("#"+tabID).children().hasClass("active")) {
-                    $(this).removeClass("hide");
-                }
-            }
+            var inputBlockID = $(this).attr("id");
+            var tabID = inputBlockID.replace("input-block", "tab");
+
             //the card is not an unbounded list so display the input block
-            else {
+
+            if ($("#" + tabID).length == 0) {
+                $(this).removeClass("hide");
+            }
+
+            if ($("#" + tabID).children().hasClass("active")) {
                 $(this).removeClass("hide");
             }
         });
