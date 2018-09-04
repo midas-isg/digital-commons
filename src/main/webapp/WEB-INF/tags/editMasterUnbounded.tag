@@ -36,7 +36,7 @@
               type="java.lang.Boolean" %>
 
 
-<div class="col card-button <c:if test="${not function:isObjectEmpty(listItem)}">hide</c:if>"
+<div class="col card-button <c:if test="${not function:isObjectEmpty(listItems)}">hide</c:if>"
      id="${specifier}-add-input-button">
     <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
          style="width: 18rem;">
@@ -81,7 +81,7 @@
 <c:set var="listItemsCount" scope="page" value="0"/>
 
 <div id="${specifier}-card"
-     class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItem)}">hide</c:if>">
+     class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItems)}">hide</c:if>">
     <div class="card-header">
         <h6 class="card-title">${label}</h6>
 
@@ -120,15 +120,26 @@
                                               class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
+<%--
         <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
-            <%-- <li class="nav-item">
+            &lt;%&ndash; <li class="nav-item">
                  <a class="wizard-nav-link nav-link active" href="#">Active</a>
-             </li>--%>
+             </li>&ndash;%&gt;
         </ul>
+--%>
     </div>
 
-    <c:if test="${not function:isObjectEmpty(listItem)}">
+    <c:if test="${not function:isObjectEmpty(listItems)}">
 
+        <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
+            <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
+                <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
+                    <a onclick="showTab(event, this, '${specifier}')" class="wizard-nav-link nav-link">${specifier} ${varStatus.count-1}
+                        <i onclick="closeTab(event, this)" class="ft-x"></i>
+                    </a>
+                </li>
+            </c:forEach>
+        </ul>
         <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
             <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
                 <c:if test="${not function:isObjectEmpty(listItem)}">

@@ -32,6 +32,15 @@
                                 showAddAnnotationButton="true"
                                 showAddBiologicalEntityButton="true">
             </myTags:editMasterUnbounded>
+<%--
+            <myTags:editIsAbout path="isAbout"
+                                        specifier="isAbout"
+                                        isAboutList="${digitalObject.isAbout}"
+                                        label="Is About"
+                                        showAddAnnotationButton="true"
+                                        showAddBiologicalEntityButton="true">
+            </myTags:editIsAbout>
+--%>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
