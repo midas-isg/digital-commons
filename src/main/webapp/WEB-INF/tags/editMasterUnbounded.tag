@@ -826,8 +826,15 @@
 
         $('#' + divToShow).removeClass("hide");
         $('#'+divToShow+' .card-content').each(function (index) {
-            console.log("HELLO"+$(this).attr("id") + " . " + $(this).parents('#card-content').length);
-            $(this).removeClass("hide");
+            if($('#'+divToShow+' .card-content').length > 1){
+                var inputBlockID = $(this).attr("id");
+                var tabID = inputBlockID.replace("input-block", "tab");
+                if($("#"+tabID).children().hasClass("active")) {
+                    $(this).removeClass("hide");
+                }
+            } else {
+                $(this).removeClass("hide");
+            }
         });
     };
 
