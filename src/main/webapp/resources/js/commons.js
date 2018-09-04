@@ -752,25 +752,20 @@ $(document).ready(function() {
         location.hash = '_';
     });
 
-    // Collapsible Card
-    $('a[data-action="collapse"]').on("click", function(e) {
-        e.preventDefault();
-        $(this).closest(".card").children(".card-content").collapse("toggle");
-        $(this).closest(".card").find('[data-action="collapse"] i').toggleClass("ft-minus ft-plus");
-    });
+});
 
-    // Toggle fullscreen
-    $('a[data-action="expand"]').on('click',function(e){
-        e.preventDefault();
-        $(this).closest('.card').find('[data-action="expand"] i').toggleClass('ft-maximize ft-minimize');
-        $(this).closest('.card').toggleClass('card-fullscreen');
-    });
+// Collapsible Card
+$(document).on('click', 'a[data-action="collapse"]', function (e) {
+    e.preventDefault();
+    $(this).closest(".card").children(".card-content").collapse("toggle");
+    $(this).closest(".card").find('[data-action="collapse"] i').toggleClass("ft-minus ft-plus");
+});
 
-    // // Close Card
-    // $('a[data-action="close"]').on('click',function(){
-    //     $(this).closest('.card').removeClass().slideUp('fast');
-    // });
-
+// Toggle fullscreen
+$(document).on('click', 'a[data-action="expand"]', function (e) {
+    e.preventDefault();
+    $(this).closest('.card').find('[data-action="expand"] i').toggleClass('ft-maximize ft-minimize');
+    $(this).closest('.card').toggleClass('card-fullscreen');
 });
 
 function rearrangeCards(parentDiv) {

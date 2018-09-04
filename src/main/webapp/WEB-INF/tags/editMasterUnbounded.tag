@@ -757,8 +757,8 @@
 </c:choose>
 
 <script type="text/javascript">
-    function makeAllTabsInactive() {
-        $("#${specifier}-card-header").find("a").each(function () {
+    function makeAllTabsInactive(specifier) {
+        $("#"+ specifier+"-card-header").find("a").each(function () {
             $(this).removeClass("active");
         });
     }
@@ -810,15 +810,15 @@
         });
     };
 
-    function showTab(e, div) {
-        makeAllTabsInactive();
+    function showTab(e, div, specifier) {
+        makeAllTabsInactive(specifier);
         console.log("calling showTab");
         var divToShow = $(div.parentElement).attr('for');
 
         $('#' + divToShow).show();
         $(div).addClass("active");
 
-        $('#${specifier}-card .card-content').each(function (index) {
+        $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
                 $(this).hide();
@@ -826,15 +826,15 @@
         });
     };
 
-    function showTabNamed(tabToActivate, divToShow) {
-        makeAllTabsInactive();
+    function showTabNamed(tabToActivate, divToShow, specifier) {
+        makeAllTabsInactive(specifier);
         console.log("calling showTabNamed");
         // var divToShow = $(div.parentElement).attr('for');
 
         $('#' + divToShow).show();
         //   $(tabToActivate).addClass("active");
         $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
-        $('#${specifier}-card .card-content').each(function (index) {
+        $('#'+specifier+'-card .card-content').each(function (index) {
             console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
             if ($(this).attr("id") != divToShow) {
                 $(this).hide();
@@ -848,6 +848,7 @@
 
         //Show/Hide Formats
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
+            debugger;
             e.stopImmediatePropagation();
             var specifier = "${specifier}";
             var path = "${path}";
@@ -896,12 +897,14 @@
                 uiLibrary: 'bootstrap4',
             });
 
-            makeAllTabsInactive();
-            $(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
-                " <a onclick=\"showTab(event, this)\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
+            makeAllTabsInactive(specifier);
+            //create a new tab
+            $("#${specifier}-card").find(".card-header-tabs").append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
+                " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
                 "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
 
-            showTabNamed("${path}-" + listItemCount + "-tab", newDivId);
+            //switch to newly created tab
+            showTabNamed("${specifier}-" + listItemCount + "-tab", newDivId, specifier);
             /* $('#card-content').children().each(function (index) {
                  console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
                  if ($(this).attr("id") != newDivId) {
