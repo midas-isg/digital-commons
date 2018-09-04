@@ -95,8 +95,9 @@
 
 
     <c:when test="${showTopOrBottom == 'bottom'}">
-        </div>
         <div class="row " id="${specifier}-input-block-card-row"></div>
+
+        </div>
 
         <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
