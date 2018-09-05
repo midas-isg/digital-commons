@@ -32,6 +32,24 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<myTags:editNonZeroLengthString
+        placeholder=" The name of the publication and its funding program."
+        label="Title"
+        string="${publication.title}"
+        path="${path}.title"
+        isRequired="${true}"
+        id="${specifier}-title"
+        specifier="${specifier}-title">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.publicationVenue"
+                                string="${publication.publicationVenue}"
+                                specifier="${specifier}-publicationVenue"
+                                id="${specifier}-publicationVenue"
+                                isRequired="${true}"
+                                placeholder=" The name of the publication venue where the document is published if applicable."
+                                label="Publication Venue">
+</myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.authors"
                                   specifier="${specifier}-authors"
                                   label="Author"
@@ -57,14 +75,6 @@
                             listItems="${publication.alternateIdentifiers}"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString
-        placeholder=" The name of the publication and its funding program."
-        label="Title"
-        string="${publication.title}"
-        path="${path}.title"
-        id="${specifier}-title"
-        specifier="${specifier}-title">
-</myTags:editNonZeroLengthString>
 <myTags:editAnnotation path="${path}.type"
                        isUnboundedList="${false}"
                        specifier="${specifier}-type"
@@ -73,13 +83,7 @@
                        annotation="${publication.type}"
                        label="Type">
 </myTags:editAnnotation>
-<myTags:editNonZeroLengthString path="${path}.publicationVenue"
-                                string="${publication.publicationVenue}"
-                                specifier="${specifier}-publicationVenue"
-                                id="${specifier}-publicationVenue"
-                                placeholder=" The name of the publication venue where the document is published if applicable."
-                                label="Publication Venue">
-</myTags:editNonZeroLengthString>
+
 <myTags:editMasterUnbounded listItems="${publication.dates}"
                             label="Publication Date"
                             path="${path}.dates"

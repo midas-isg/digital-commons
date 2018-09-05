@@ -5,8 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<%@ attribute name="number" required="false"
-              type="java.lang.Float" %>
+<%@ attribute name="date" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.Date" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -21,32 +21,52 @@
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
-                                 object="${number}"
+                                 object="${date}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${true}"
                                  cardText=""
-                                 tagName="float"
+                                 tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
 <myTags:editInputBlock path="${path}"
-                       specifier="${specifier}-number"
-                       number="${number}"
-                       isFloat="${true}"
-                       placeholder="${placeholder}">
+                       specifier="${specifier}"
+                       date="${date}"
+                       isDate="${true}"
+                       placeholder="">
 </myTags:editInputBlock>
+<c:set var="datePath" value="${path}.date"/>
+<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
+    <span class="error-color">${message.text}</span>
+</c:forEach>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
-                                 object="${number}"
+                                 object="${date}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${true}"
                                  cardText=""
-                                 tagName="float"
+                                 tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        <c:if test="${not empty date.date}">
+        $("#${specifier}-date-picker").datepicker({
+            forceParse: false,
+            orientation: 'top auto',
+            todayHighlight: true,
+            format: 'yyyy-mm-dd',
+            uiLibrary: 'bootstrap4'
+        });
+        </c:if>
+    });
+
+</script>
 

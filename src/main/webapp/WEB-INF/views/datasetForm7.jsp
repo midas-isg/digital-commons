@@ -22,16 +22,6 @@
 
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
-
-            <div id="citations">
-                <myTags:editMasterUnbounded path="citations"
-                                            specifier="citations"
-                                            listItems="${digitalObject.citations}"
-                                            cardText="The publication(s) that cite this dataset."
-                                            tagName="publication"
-                                            label="Citations">
-                </myTags:editMasterUnbounded>
-            </div>
             <div id="citationCount">
                 <myTags:editFloat path="citationCount"
                                   id="citationCount"
@@ -41,6 +31,16 @@
                                   placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
                 </myTags:editFloat>
             </div>
+            <div id="citations">
+                <myTags:editMasterUnbounded path="citations"
+                                            specifier="citations"
+                                            listItems="${digitalObject.citations}"
+                                            cardText="The publication(s) that cite this dataset."
+                                            tagName="publication"
+                                            label="Citations">
+                </myTags:editMasterUnbounded>
+            </div>
+
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
                    onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"

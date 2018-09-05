@@ -46,6 +46,14 @@
                                 id="${specifier}-name"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString label="Abbreviation"
+                                placeholder=" The shortname, abbreviation associated to the organization."
+                                specifier="${specifier}-abbreviation"
+                                id="${specifier}-abbreviation"
+                                isRequired="${true}"
+                                path="${path}.abbreviation"
+                                string="${organization.abbreviation}">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier specifier="${specifier}-identifier"
                        label="Identifier"
                        id="${specifier}-identifier"
@@ -60,13 +68,6 @@
                             tagName="identifier"
                             listItems="${organization.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString label="Abbreviation"
-                                placeholder=" The shortname, abbreviation associated to the organization."
-                                specifier="${specifier}-abbreviation"
-                                id="${specifier}-abbreviation"
-                                path="${path}.abbreviation"
-                                string="${organization.abbreviation}">
-</myTags:editNonZeroLengthString>
 <myTags:editPlace place="${organization.location}"
                   path="${path}.location"
                   specifier="${specifier}-location"

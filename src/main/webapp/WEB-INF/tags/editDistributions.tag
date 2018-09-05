@@ -72,7 +72,7 @@
                    id="${specifier}-access"
                    tagName="access"
                    isUnboundedList="${false}"
-                   isAccessRequired="true"
+                   isAccessRequired="${true}"
                    access="${distribution.access}">
 </myTags:editAccess>
 <myTags:editIdentifier label="Identifier"
