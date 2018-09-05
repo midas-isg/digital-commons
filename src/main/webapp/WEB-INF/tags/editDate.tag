@@ -40,7 +40,7 @@
 </myTags:editInputBlock>
 <c:set var="datePath" value="${path}.date"/>
 <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
-    <span class="error-color">${message.text}</span>
+    <span class="error-color error offset-2">${message.text}</span>
 </c:forEach>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"

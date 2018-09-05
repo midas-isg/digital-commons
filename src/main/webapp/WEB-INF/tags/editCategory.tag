@@ -29,7 +29,7 @@
     </select>
     <c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('category')}" var="message">
-            <span class="error-color">${message.text}</span>
+            <span class="error-color error offset-2">${message.text}</span>
         </c:forEach>
     </c:if>
 </div>
