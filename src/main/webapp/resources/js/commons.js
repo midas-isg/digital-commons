@@ -893,25 +893,25 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
     });
 };
 
-function createNewTab(specifier, path, tagName, label, isFirstRequired, listItemCount) {
+function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
     $("#"+specifier+"-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
-        if (this.id == ""+specifier+"-add-"+tagName+"-person") {
+        if (thisObject.id == ""+specifier+"-add-"+tagName+"-person") {
             if (listItemCount === 0 && isFirstRequired) {
                 html = $("#" + specifier+"-person-required-copy-tag").html();
             } else html = $("#" + specifier+"-person-copy-tag").html();
-        } else if (this.id == specifier+"-add-"+tagName+"-organization") {
+        } else if (thisObject.id == specifier+"-add-"+tagName+"-organization") {
             if (listItemCount === 0 && isFirstRequired) {
                 html = $("#" + specifier+"-organization-required-copy-tag").html();
             } else html = $("#" + specifier+"-organization-copy-tag").html();
         }
     } else if (tagName == 'isAbout') {
-        if (this.id == specifier+"-add-"+tagName+"-annotation") {
+        if (thisObject.id == specifier+"-add-"+tagName+"-annotation") {
             html = $("#" + specifier+"-annotation-copy-tag").html();
-        } else if (this.id == specifier+"-add-"+tagName+"-biologicalEntity") {
+        } else if (thisObject.id == specifier+"-add-"+tagName+"-biologicalEntity") {
             html = $("#" + specifier+"-biologicalEntity-copy-tag").html();
         }
     } else {

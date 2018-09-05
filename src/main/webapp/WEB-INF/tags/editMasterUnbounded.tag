@@ -770,7 +770,7 @@
                 isFirstRequired = false;
             }
 
-            createNewTab('${specifier}', '${path}', '${tagName}', '${label}', isFirstRequired, listItemCount);
+            createNewTab(this, '${specifier}', '${path}', '${tagName}', '${label}', isFirstRequired, listItemCount);
             listItemCount += 1;
 
         });
