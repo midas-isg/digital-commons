@@ -24,6 +24,10 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardTabTitleFieldLevel1" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="cardTabTitleFieldLevel2" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="showAddPersonButton" required="false"
               type="java.lang.Boolean" %>
 <%@ attribute name="showAddOrganizationButton" required="false"
@@ -127,21 +131,41 @@
              </li>&ndash;%&gt;
         </ul>
 --%>
+        <c:if test="${not function:isObjectEmpty(listItems)}">
+            <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
+                <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
+                    <c:set var="cardTabTitle" value="${function:getCardTabTitle(listItem)}"></c:set>
+<%--
+                    <c:choose>
+                        <c:when test="${not function:isObjectEmpty(cardTabTitleFieldLevel2)}">
+                            <c:set var="cardTabTitle" value="${listItem[cardTabTitleFieldLevel1][cardTabTitleFieldLevel2]}"></c:set>
+                        </c:when>
+                        <c:when test="${not function:isObjectEmpty(cardTabTitleFieldLevel1)}">
+                            <c:set var="cardTabTitle" value="${listItem[cardTabTitleFieldLevel1]}"></c:set>
+                        </c:when>
+                        <c:otherwise>
+                            <c:set var="cardTabTitle" value="${label} ${varStatus.count-1}"></c:set>
+                        </c:otherwise>
+                    </c:choose>
+--%>
+                    <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
+                        <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link ">
+                                ${cardTabTitle}
+                            <i onclick="closeTab(event, this)" class="ft-x"></i>
+                        </a>
+                    </li>
+                </c:forEach>
+            </ul>
+        </c:if>
+
     </div>
 
     <c:if test="${not function:isObjectEmpty(listItems)}">
 
-        <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
-            <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
-                <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
-                    <a onclick="showTab(event, this, '${specifier}')" class="wizard-nav-link nav-link">${specifier} ${varStatus.count-1}
-                        <i onclick="closeTab(event, this)" class="ft-x"></i>
-                    </a>
-                </li>
-            </c:forEach>
-        </ul>
         <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
+<%--
             <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
+--%>
                 <c:if test="${not function:isObjectEmpty(listItem)}">
                     <c:choose>
                         <c:when test="${tagName == 'access'}">
@@ -354,7 +378,9 @@
                     <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
 
                 </c:if>
+<%--
             </div>
+--%>
         </c:forEach>
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
             <span class="error-color">${message.text}</span>
@@ -861,6 +887,11 @@
 
 
     $(document).ready(function () {
+
+        <c:if test="${not function:isObjectEmpty(listItems)}">
+        $("#" + "${specifier}-0-listItem").addClass("active");
+        </c:if>
+
         var listItemCount = ${listItemsCount};
 
         //Show/Hide Formats

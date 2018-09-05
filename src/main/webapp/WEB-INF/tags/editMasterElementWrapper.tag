@@ -54,7 +54,7 @@
         <c:if test="${isInputGroup}">row</c:if>
         <c:if test="${not isUnboundedList}">edit-form-group </c:if> <c:if
             test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if
-            test="${(isUnboundedList and function:isObjectEmpty(object)) or (not isRequired and not isUnboundedList)}">hide</c:if>">
+            test="${(isUnboundedList and function:isObjectEmpty(object)) or (function:isObjectEmpty(object) and not isRequired and not isUnboundedList)}">hide</c:if>">
         <c:if test="${not isUnboundedList}">
             <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
             <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-2">${label}</h6>

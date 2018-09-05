@@ -3,10 +3,7 @@ package edu.pitt.isg.dc.utils;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
-import edu.pitt.isg.mdc.dats2_2.Annotation;
-import edu.pitt.isg.mdc.dats2_2.IsAbout;
-import edu.pitt.isg.mdc.dats2_2.Organization;
-import edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity;
+import edu.pitt.isg.mdc.dats2_2.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -127,4 +124,86 @@ public class TagUtil {
 */
     }
 
+    public static String getCardTabTitle(Object listItem){
+        String cardTabTitle = null;
+
+        switch (listItem.getClass().getSimpleName()) {
+            case "Annotation":
+                cardTabTitle = ((Annotation) listItem).getValue();
+                break;
+            case "BiologicalEntity":
+                cardTabTitle = ((BiologicalEntity) listItem).getName();
+                break;
+            case "IsAbout":
+                if(isBiologicalEntity((IsAbout) listItem)){
+                    cardTabTitle = getCardTabTitle((BiologicalEntity) listItem);
+                } else cardTabTitle = getCardTabTitle((Annotation) listItem);
+                break;
+            case "DataStandard":
+                cardTabTitle = ((DataStandard) listItem).getName();
+                break;
+            case "DataRepository":
+                cardTabTitle = ((DataRepository) listItem).getName();
+                break;
+            case "Date":
+                cardTabTitle = ((Date) listItem).getType().getValue();
+                break;
+            case "Person":
+                if (isObjectEmpty(((Person) listItem).getFullName())) {
+                    cardTabTitle = ((Person) listItem).getFirstName() + " " + ((Person) listItem).getLastName();
+                } else cardTabTitle = ((Person) listItem).getFullName();
+                break;
+            case "Organization":
+                cardTabTitle = ((Organization) listItem).getName();
+                break;
+            case "PersonOrganization":
+                if (isPerson((PersonOrganization) listItem)) {
+                    cardTabTitle = ((PersonOrganization) listItem).getFirstName() + " " + ((PersonOrganization) listItem).getLastName();
+                } else cardTabTitle = ((PersonOrganization) listItem).getName();
+                break;
+            case "Study":
+                cardTabTitle = ((Study) listItem).getName();
+                break;
+            case "License":
+                cardTabTitle = ((License) listItem).getName();
+                break;
+            case "Publication":
+                if (isObjectEmpty(((Publication) listItem).getTitle())) {
+                    cardTabTitle = "Publication";
+                } else cardTabTitle = ((Publication) listItem).getTitle();
+                break;
+            case "Grant":
+                cardTabTitle = ((Grant) listItem).getName();
+                break;
+            case "Access":
+                if (isObjectEmpty(((Access) listItem).getLandingPage())) {
+                    cardTabTitle = "Access";
+                } else cardTabTitle = ((Access) listItem).getLandingPage();
+                break;
+            case "Distribution":
+                if (isObjectEmpty(((Distribution) listItem).getTitle())) {
+                    cardTabTitle = "Distribution";
+                } else cardTabTitle = ((Distribution) listItem).getTitle();
+                break;
+            case "Place":
+                cardTabTitle = ((Place) listItem).getName();
+                break;
+            case "Type":
+                if (!isObjectEmpty(((Type) listItem).getInformation().getValue())) {
+                    cardTabTitle = ((Type) listItem).getInformation().getValue();
+                } else if (!isObjectEmpty(((Type) listItem).getMethod().getValue())) {
+                    cardTabTitle = ((Type) listItem).getMethod().getValue();
+                } else if (!isObjectEmpty(((Type) listItem).getPlatform().getValue())) {
+                    cardTabTitle = ((Type) listItem).getPlatform().getValue();
+                } else cardTabTitle = "Type";
+                break;
+            case "CategoryValuePair":
+                if (isObjectEmpty(((CategoryValuePair) listItem).getCategory())) {
+                    cardTabTitle = "Category";
+                } else cardTabTitle = ((CategoryValuePair) listItem).getCategory();
+                break;
+        }
+
+        return cardTabTitle;
+    }
 }

@@ -24,7 +24,6 @@
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
 
-
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${annotation}"

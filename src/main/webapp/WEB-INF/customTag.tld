@@ -25,4 +25,9 @@
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean onlyContainsSoftwareElements(java.lang.Object)</function-signature>
     </function>
+    <function>
+        <name>getCardTabTitle</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getCardTabTitle(java.lang.Object)</function-signature>
+    </function>
 </taglib>
