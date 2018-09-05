@@ -757,124 +757,6 @@
 </c:choose>
 
 <script type="text/javascript">
-    function makeAllTabsInactive(specifier) {
-        $("#"+ specifier+"-card-header").find("a").each(function () {
-            $(this).removeClass("active");
-        });
-    }
-
-    function closeTab(e, div) {
-
-        //find closest tab to the left tab to make it active (we don't just want to use the first tab)
-        var prevDiv = undefined;
-        var takeNext = false;
-        $("#${specifier}-card-header").find("a").each(function () {
-            if (takeNext) {
-                prevDiv = $(this.parentElement);
-                return false;
-            }
-            if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-                if ($(this).hasClass("active")) {
-                    takeNext = true;
-                }
-            } else if ($(this).hasClass("active")) {
-                prevDiv = $(this.parentElement);
-                return false;
-            } else prevDiv = $(this.parentElement);
-
-
-            // console.log($(this.parentElement).attr("for"));
-            //  console.log(myDiv.parentElement.parentElement);
-        });
-        //console.log($(prevDiv).attr("for"));
-        var divToClose = $(div.parentElement.parentElement).attr("for")
-        $("#" + divToClose).remove();
-        $(div.parentElement.parentElement).remove();
-
-        $("#" + $(prevDiv).attr("for")).show();
-        $($(prevDiv).find("a")[0]).addClass("active")
-
-        e.preventDefault();
-        e.stopPropagation();
-    };
-
-    //find each card header in the section and subsections and close all tabs
-    function closeAllTabs(e, div) {
-        $(div).find(".card-header").each(function() {
-            closeAllTabs(e, $(this));
-            $(this).find("a").each(function(){
-                if ($(this).hasClass("nav-link")) {
-                    $(this.parentElement).remove();
-                }
-            });
-        });
-    };
-
-    function showTab(e, div, specifier) {
-        makeAllTabsInactive(specifier);
-        console.log("calling showTab");
-        var divToShow = $(div.parentElement).attr('for');
-
-        $(div).addClass("active");
-
-        $('#'+specifier+'-card .card-content').each(function (index) {
-            console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
-            if ($(this).attr("id") != divToShow) {
-                $(this).addClass("hide");
-            }
-        });
-
-        $('#' + divToShow).removeClass("hide");
-        $('#' + divToShow + ' .card-content').each(function (index) {
-            //if card is unbounded list we find the 'active' tab and unhide that input block
-            var inputBlockID = $(this).attr("id");
-            var tabID = inputBlockID.replace("input-block", "tab");
-
-            //the card is not an unbounded list so display the input block
-
-            if ($("#" + tabID).length == 0) {
-                $(this).removeClass("hide");
-            }
-
-            if ($("#" + tabID).children().hasClass("active")) {
-                $(this).removeClass("hide");
-            }
-        });
-    };
-
-    function showTabNamed(tabToActivate, divToShow, specifier) {
-        makeAllTabsInactive(specifier);
-        console.log("calling showTabNamed");
-        // var divToShow = $(div.parentElement).attr('for');
-
-        $('#' + divToShow).removeClass("hide");
-        //   $(tabToActivate).addClass("active");
-        $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
-        $('#'+specifier+'-card .card-content').each(function (index) {
-            console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
-            if ($(this).attr("id") != divToShow) {
-                $(this).addClass("hide");
-                // $(this).hide();
-            }
-        });
-
-        $('#' + divToShow + ' .card-content').each(function (index) {
-            //if card is unbounded list we find the 'active' tab and unhide that input block
-            var inputBlockID = $(this).attr("id");
-            var tabID = inputBlockID.replace("input-block", "tab");
-
-            //the card is not an unbounded list so display the input block
-
-            if ($("#" + tabID).length == 0) {
-                $(this).removeClass("hide");
-            }
-
-            if ($("#" + tabID).children().hasClass("active")) {
-                $(this).removeClass("hide");
-            }
-        });
-    };
-
 
     $(document).ready(function () {
         var listItemCount = ${listItemsCount};
@@ -883,77 +765,14 @@
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
             debugger;
             e.stopImmediatePropagation();
-            var specifier = "${specifier}";
-            var path = "${path}";
-            $("#${specifier}-add-input-button").addClass("hide");
-            $("#${specifier}-card").removeClass("hide");
-            debugger;
-            <c:choose>
-                <c:when test="${tagName == 'personComprisedEntity'}">
-                    if (this.id == "${specifier}-add-${tagName}-person") {
-                        if (listItemCount === 0 && ${isFirstRequired}) {
-                            var html = $("#" + "${specifier}-person-required-copy-tag").html();
-                        } else var html = $("#" + "${specifier}-person-copy-tag").html();
-                    } else if (this.id == "${specifier}-add-${tagName}-organization") {
-                        if (listItemCount === 0 && ${isFirstRequired}) {
-                            var html = $("#" + "${specifier}-organization-required-copy-tag").html();
-                        } else var html = $("#" + "${specifier}-organization-copy-tag").html();
-                    }
-                </c:when>
-                <c:when test="${tagName == 'isAbout'}">
-                    if (this.id == "${specifier}-add-${tagName}-annotation") {
-                        var html = $("#" + "${specifier}-annotation-copy-tag").html();
-                    } else if (this.id == "${specifier}-add-${tagName}-biologicalEntity") {
-                        var html = $("#" + "${specifier}-biologicalEntity-copy-tag").html();
-                    }
-                </c:when>
-                <c:otherwise>
-                    var html = $("#" + specifier + "-${tagName}-copy-tag").html();
-                </c:otherwise>
-            </c:choose>
-            <%--var html = $("#${specifier}-0-tag").html();--%>
-            var regexEscapeOpenBracket = new RegExp('\\[', "g");
-            var regexEscapeClosedBracket = new RegExp('\\]', "g");
-            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-            var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-00', "g");
-            html = html.replace(regexPath, '${path}[' + listItemCount + ']')
-                .replace(regexSpecifier, '${specifier}-' + listItemCount);
+            var isFirstRequired = "${isFirstRequired}";
+            if(isFirstRequired == "") {
+                isFirstRequired = false;
+            }
 
-            var newDivId = html.match("${specifier}-\\d*[A-Za-z\-]*")[0];
-            $(".${specifier}-${tagName}-add-more").before(html);
-            $("#${specifier}-" + listItemCount + "-date-picker").datepicker({
-                forceParse: false,
-                orientation: 'top auto',
-                todayHighlight: true,
-                format: 'yyyy-mm-dd',
-                uiLibrary: 'bootstrap4',
-            });
-
-            makeAllTabsInactive(specifier);
-            //create a new tab
-            $("#${specifier}-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
-                " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
-                "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
-
-            //switch to newly created tab
-            showTabNamed("${specifier}-" + listItemCount + "-tab", newDivId, specifier);
-            /* $('#card-content').children().each(function (index) {
-                 console.log($(this).attr("id") + " . " + $(this).parents('#card-content').length);
-                 if ($(this).attr("id") != newDivId) {
-                     $(this).hide();
-                 }
-             });*/
-
-
-            $("#${specifier}-"+listItemCount+"-input-block").addClass("collapse");
-            $("#${specifier}-"+listItemCount+"-input-block").addClass("show");
-            //move card buttons to the bottom
-            rearrangeCards('${specifier}-' + listItemCount + '-input-block');
-
-            e.stopImmediatePropagation();
-
+            createNewTab('${specifier}', '${path}', '${tagName}', '${label}', isFirstRequired, listItemCount);
             listItemCount += 1;
+
         });
 
         //Remove section

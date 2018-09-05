@@ -780,6 +780,183 @@ function rearrangeCards(parentDiv) {
     }
 }
 
+function makeAllTabsInactive(specifier) {
+    $("#"+ specifier+"-card-header").find("a").each(function () {
+        $(this).removeClass("active");
+    });
+}
+
+function closeTab(e, div, specifier) {
+
+    //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+    var prevDiv = undefined;
+    var takeNext = false;
+    $("#"+specifier+"-card-header").find("a").each(function () {
+        if (takeNext) {
+            prevDiv = $(this.parentElement);
+            return false;
+        }
+        if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+            if ($(this).hasClass("active")) {
+                takeNext = true;
+            }
+        } else if ($(this).hasClass("active")) {
+            prevDiv = $(this.parentElement);
+            return false;
+        } else prevDiv = $(this.parentElement);
+
+
+    });
+    var divToClose = $(div.parentElement.parentElement).attr("for")
+    $("#" + divToClose).remove();
+    $(div.parentElement.parentElement).remove();
+
+    $("#" + $(prevDiv).attr("for")).show();
+    $($(prevDiv).find("a")[0]).addClass("active")
+
+    e.preventDefault();
+    e.stopPropagation();
+};
+
+//find each card header in the section and subsections and close all tabs
+function closeAllTabs(e, div) {
+    $(div).find(".card-header").each(function() {
+        closeAllTabs(e, $(this));
+        $(this).find("a").each(function(){
+            if ($(this).hasClass("nav-link")) {
+                $(this.parentElement).remove();
+            }
+        });
+    });
+};
+
+function showTab(e, div, specifier) {
+    makeAllTabsInactive(specifier);
+    console.log("calling showTab");
+    var divToShow = $(div.parentElement).attr('for');
+
+    $(div).addClass("active");
+
+    $('#'+specifier+'-card .card-content').each(function (index) {
+        if ($(this).attr("id") != divToShow) {
+            $(this).addClass("hide");
+        }
+    });
+
+    $('#' + divToShow).removeClass("hide");
+    $('#' + divToShow + ' .card-content').each(function (index) {
+        //if card is unbounded list we find the 'active' tab and unhide that input block
+        var inputBlockID = $(this).attr("id");
+        var tabID = inputBlockID.replace("input-block", "tab");
+
+        //the card is not an unbounded list so display the input block
+
+        if ($("#" + tabID).length == 0) {
+            $(this).removeClass("hide");
+        }
+
+        if ($("#" + tabID).children().hasClass("active")) {
+            $(this).removeClass("hide");
+        }
+    });
+};
+
+function showTabNamed(tabToActivate, divToShow, specifier) {
+    makeAllTabsInactive(specifier);
+    console.log("calling showTabNamed");
+    // var divToShow = $(div.parentElement).attr('for');
+
+    $('#' + divToShow).removeClass("hide");
+    //   $(tabToActivate).addClass("active");
+    $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
+    $('#'+specifier+'-card .card-content').each(function (index) {
+        if ($(this).attr("id") != divToShow) {
+            $(this).addClass("hide");
+            // $(this).hide();
+        }
+    });
+
+    $('#' + divToShow + ' .card-content').each(function (index) {
+        //if card is unbounded list we find the 'active' tab and unhide that input block
+        var inputBlockID = $(this).attr("id");
+        var tabID = inputBlockID.replace("input-block", "tab");
+
+        //the card is not an unbounded list so display the input block
+
+        if ($("#" + tabID).length == 0) {
+            $(this).removeClass("hide");
+        }
+
+        if ($("#" + tabID).children().hasClass("active")) {
+            $(this).removeClass("hide");
+        }
+    });
+};
+
+function createNewTab(specifier, path, tagName, label, isFirstRequired, listItemCount) {
+    var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
+
+    $("#"+specifier+"-add-input-button").addClass("hide");
+    $("#"+specifier+"-card").removeClass("hide");
+    if (tagName == 'personComprisedEntity') {
+        if (this.id == ""+specifier+"-add-"+tagName+"-person") {
+            if (listItemCount === 0 && isFirstRequired) {
+                html = $("#" + specifier+"-person-required-copy-tag").html();
+            } else html = $("#" + specifier+"-person-copy-tag").html();
+        } else if (this.id == specifier+"-add-"+tagName+"-organization") {
+            if (listItemCount === 0 && isFirstRequired) {
+                html = $("#" + specifier+"-organization-required-copy-tag").html();
+            } else html = $("#" + specifier+"-organization-copy-tag").html();
+        }
+    } else if (tagName == 'isAbout') {
+        if (this.id == specifier+"-add-"+tagName+"-annotation") {
+            html = $("#" + specifier+"-annotation-copy-tag").html();
+        } else if (this.id == specifier+"-add-"+tagName+"-biologicalEntity") {
+            html = $("#" + specifier+"-biologicalEntity-copy-tag").html();
+        }
+    } else {
+        html = $("#" + specifier + "-"+tagName+"-copy-tag").html();
+    }
+
+
+    regexEscapeOpenBracket = new RegExp('\\[', "g");
+    regexEscapeClosedBracket = new RegExp('\\]', "g");
+    path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+    regexPath = new RegExp(path + '\\[0\\]', "g");
+    regexSpecifier = new RegExp(specifier + '\\-00', "g");
+    html = html.replace(regexPath, path+'[' + listItemCount + ']')
+        .replace(regexSpecifier, specifier+'-' + listItemCount);
+
+    newDivId = html.match(specifier+"-\\d*[A-Za-z\-]*")[0];
+    $("."+specifier+"-"+tagName+"-add-more").before(html);
+    $("#"+specifier+"-" + listItemCount + "-date-picker").datepicker({
+        forceParse: false,
+        orientation: 'top auto',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4',
+    });
+
+    makeAllTabsInactive(specifier);
+    //create a new tabs
+    // $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
+    //     " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
+    //     "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
+
+    $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+ " " + listItemCount +
+        "<i onclick=\"closeTab(event, this, '"+specifier+"')\" class=\"ft-x\"></i></a></li>");
+
+
+    //switch to newly created tab
+    showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
+
+    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
+    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
+    //move card buttons to the bottom
+    rearrangeCards(specifier+'-' + listItemCount + '-input-block');
+}
+
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
     try {
