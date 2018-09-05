@@ -60,30 +60,26 @@
             <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-2">${label}</h6>
 
 
-            <c:if test="${not isRequired}">
+            <c:if test="${not isInputGroup}">
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
                         <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                         <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                        <li><a data-action="close"><i for="${specifier}-input-block"
-                                                      class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                        <c:if test="${not isRequired}">
+
+                            <li><a data-action="close"><i for="${specifier}-input-block"
+                                                          class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                        </c:if>
+
                     </ul>
                 </div>
-                <%--<div id="${specifier}-add-input-button"--%>
-                <%--class="input-group control-group ${specifier}-${tagName}-add-more <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>">--%>
-                <%--<div class="input-group-btn">--%>
-                <%--<button class="btn btn-success ${specifier}-add-${tagName}" type="button"><i--%>
-                <%--class="fa fa-plus-circle"></i> Add--%>
-                <%--${label}--%>
-                <%--</button>--%>
-                <%--</div>--%>
-                <%--</div>--%>
             </c:if>
+
             <c:if test="${not isInputGroup}"></div></c:if>
         </c:if>
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
-        class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-10</c:if> <c:if
+        class="<c:if test="${not isInputGroup}">card-content collapse show</c:if> <c:if test="${isInputGroup}">col-10</c:if> <c:if
             test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
             test="${isInputGroup}">input-group full-width</c:if> control-group <c:if
             test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
