@@ -872,7 +872,6 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
     $('#'+specifier+'-card .card-content').each(function (index) {
         if ($(this).attr("id") != divToShow) {
             $(this).addClass("hide");
-            // $(this).hide();
         }
     });
 
@@ -882,7 +881,6 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
         var tabID = inputBlockID.replace("input-block", "tab");
 
         //the card is not an unbounded list so display the input block
-
         if ($("#" + tabID).length == 0) {
             $(this).removeClass("hide");
         }
@@ -938,11 +936,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     });
 
     makeAllTabsInactive(specifier);
-    //create a new tabs
-    // $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\"${specifier}-" + listItemCount + "-tab\" class=\"nav-item\">" +
-    //     " <a onclick=\"showTab(event, this, '${specifier}')\" class=\"wizard-nav-link nav-link active\" >${label} " + listItemCount + "" +
-    //     "<i onclick=\"closeTab(event, this)\" class=\"ft-x\"></i></a></li>");
-
+    //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
         " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+ " " + listItemCount +
         "<i onclick=\"closeTab(event, this, '"+specifier+"')\" class=\"ft-x\"></i></a></li>");
