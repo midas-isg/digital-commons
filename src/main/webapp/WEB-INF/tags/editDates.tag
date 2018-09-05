@@ -36,18 +36,14 @@
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 
-<%--TODO: make date look like other inputs with a label, might need to create new tag like editFloat--%>
-<myTags:editInputBlock path="${path}.date"
-                       specifier="${specifier}-date-picker"
-                       date="${date}"
-                       isDate="${true}"
-                       placeholder="">
-</myTags:editInputBlock>
+<myTags:editDate path="${path}.date"
+                  specifier="${specifier}-date-picker"
+                  id="${specifier}-size"
+                  date="${date}"
+                  placeholder=""
+                  label="Date">
+</myTags:editDate>
 
-<c:set var="datePath" value="${path}.date"/>
-<c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
-    <span class="error-color">${message.text}</span>
-</c:forEach>
 <myTags:editAnnotation path="${path}.type"
                        annotation="${date.type}"
                        isRequired="false"
@@ -69,17 +65,3 @@
                                  tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
-<script type="text/javascript">
-    $(document).ready(function () {
-        <c:if test="${not empty date.date}">
-        $("#${specifier}-date-picker").datepicker({
-            forceParse: false,
-            orientation: 'top auto',
-            todayHighlight: true,
-            format: 'yyyy-mm-dd',
-            uiLibrary: 'bootstrap4'
-        });
-        </c:if>
-    });
-
-</script>
