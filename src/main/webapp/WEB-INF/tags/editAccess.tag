@@ -43,6 +43,14 @@
                                 id="${specifier}-landingPage"
                                 label="Landing Page">
 </myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.accessURL"
+                                specifier="${specifier}-accessURL"
+                                placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                string="${access.accessURL}"
+                                isRequired="${true}"
+                                id="${specifier}-accessURL"
+                                label="Access URL">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier label="Identifier"
                        specifier="${specifier}-identifier"
                        id="${specifier}-identifier"
@@ -57,13 +65,7 @@
                             tagName="identifier"
                             listItems="${access.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.accessURL"
-                                specifier="${specifier}-accessURL"
-                                placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                string="${access.accessURL}"
-                                id="${specifier}-accessURL"
-                                label="Access URL">
-</myTags:editNonZeroLengthString>
+
 <myTags:editMasterUnbounded path="${path}.types"
                             specifier="${specifier}-types"
                             listItems="${access.types}"

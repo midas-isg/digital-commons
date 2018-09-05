@@ -29,7 +29,7 @@
                                                 id="version"
                                                 placeholder=" A release point for the dataset when applicable."
                                                 isUnboundedList="${false}"
-                                                isRequired="${false}"
+                                                isRequired="${true}"
                                                 label="Version">
                 </myTags:editNonZeroLengthString>
             </div>

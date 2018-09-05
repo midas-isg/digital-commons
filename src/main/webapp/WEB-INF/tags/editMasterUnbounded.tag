@@ -857,6 +857,22 @@
                 // $(this).hide();
             }
         });
+
+        $('#' + divToShow + ' .card-content').each(function (index) {
+            //if card is unbounded list we find the 'active' tab and unhide that input block
+            var inputBlockID = $(this).attr("id");
+            var tabID = inputBlockID.replace("input-block", "tab");
+
+            //the card is not an unbounded list so display the input block
+
+            if ($("#" + tabID).length == 0) {
+                $(this).removeClass("hide");
+            }
+
+            if ($("#" + tabID).children().hasClass("active")) {
+                $(this).removeClass("hide");
+            }
+        });
     };
 
 

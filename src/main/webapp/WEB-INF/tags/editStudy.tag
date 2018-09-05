@@ -54,7 +54,7 @@
 <myTags:editDates label="End Date"
                   path="${path}.endDate"
                   specifier="${specifier}-endDate"
-                  id="${specifier}-startDate"
+                  id="${specifier}-endDate"
                   isUnboundedList="${false}"
                   isRequired="${false}"
                   cardText="A timestamp to record the end point of the activity."

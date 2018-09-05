@@ -36,6 +36,23 @@
                                 path="${path}.name"
                                 isRequired="${true}">
 </myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.description"
+                                string="${dataRepository.description}"
+                                specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                isTextArea="${true}"
+                                isRequired="${true}"
+                                placeholder=" A textual narrative comprised of one or more statements describing the data repository."
+                                label="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" A release point for the dataset when applicable."
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                isRequired="${true}"
+                                string="${dataRepository.version}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${dataRepository.identifier}"
                        id="${specifier}-identifier"
@@ -50,14 +67,6 @@
                             tagName="identifier"
                             listItems="${dataRepository.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.description"
-                                string="${dataRepository.description}"
-                                specifier="${specifier}-description"
-                                id="${specifier}-description"
-                                isTextArea="${true}"
-                                placeholder=" A textual narrative comprised of one or more statements describing the data repository."
-                                label="Description">
-</myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.scopes"
                             specifier="${specifier}-scopes"
                             listItems="${dataRepository.scopes}"
@@ -79,13 +88,6 @@
                             tagName="license"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString label="Version"
-                                placeholder=" A release point for the dataset when applicable."
-                                specifier="${specifier}-version"
-                                id="${specifier}-version"
-                                string="${dataRepository.version}"
-                                path="${path}.version">
-</myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.publishers"
                                   specifier="${specifier}-publishers"
                                   label="Publisher"

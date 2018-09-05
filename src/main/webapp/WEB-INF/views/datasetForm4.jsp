@@ -22,20 +22,12 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            <div id="types">
-                <myTags:editMasterUnbounded path="types"
-                                            specifier="types"
-                                            label="Types"
-                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
-                                            tagName="type"
-                                            listItems="${digitalObject.types}">
-                </myTags:editMasterUnbounded>
-            </div>
             <div id="availability">
                 <myTags:editNonZeroLengthString path="availability"
                                                 string="${digitalObject.availability}"
                                                 specifier="availability"
                                                 id="availability"
+                                                isRequired="${true}"
                                                 placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
                                                 label="Availability">
                 </myTags:editNonZeroLengthString>
@@ -45,6 +37,7 @@
                                                 string="${digitalObject.refinement}"
                                                 specifier="refinement"
                                                 id="refinement"
+                                                isRequired="${true}"
                                                 placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
                                                 label="Refinement">
                 </myTags:editNonZeroLengthString>
@@ -54,9 +47,19 @@
                                                 string="${digitalObject.aggregation}"
                                                 specifier="aggregation"
                                                 id="aggregation"
+                                                isRequired="${true}"
                                                 placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
                                                 label="Aggregation">
                 </myTags:editNonZeroLengthString>
+            </div>
+            <div id="types">
+                <myTags:editMasterUnbounded path="types"
+                                            specifier="types"
+                                            label="Types"
+                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
+                                            tagName="type"
+                                            listItems="${digitalObject.types}">
+                </myTags:editMasterUnbounded>
             </div>
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
                    onclick="window.onbeforeunload = null;"/>

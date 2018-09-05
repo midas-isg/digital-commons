@@ -39,6 +39,15 @@
                                 string="${entity.name}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString string="${entity.description}"
+                                path="${path}.description"
+                                label="Description"
+                                placeholder="Description"
+                                isTextArea="true"
+                                isRequired="${true}"
+                                id="${specifier}-description"
+                                specifier="${specifier}-description">
+</myTags:editNonZeroLengthString>
 <myTags:editIdentifier singleIdentifier="${entity.identifier}"
                        path="${path}.identifier"
                        specifier="${specifier}-identifier"
@@ -53,14 +62,6 @@
                             tagName="identifier"
                             label="Alternate Identifier">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString string="${entity.description}"
-                                path="${path}.description"
-                                label="Description"
-                                placeholder="Description"
-                                isTextArea="true"
-                                id="${specifier}-description"
-                                specifier="${specifier}-description">
-</myTags:editNonZeroLengthString>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${entity}"

@@ -38,6 +38,7 @@
                                 placeholder=" A characteristic or property about the entity this object is associated with."
                                 specifier="${specifier}-category"
                                 id="${specifier}-category"
+                                isRequired="${true}"
                                 path="${path}.category"
                                 string="${categoryValuePair.category}">
 </myTags:editNonZeroLengthString>
@@ -45,6 +46,7 @@
                                 placeholder=" The IRI corresponding to the category, if associated with an ontology term."
                                 specifier="${specifier}-categoryIRI"
                                 id="${specifier}-categoryIRI"
+                                isRequired="${true}"
                                 path="${path}.categoryIRI"
                                 string="${categoryValuePair.categoryIRI}">
 </myTags:editNonZeroLengthString>
