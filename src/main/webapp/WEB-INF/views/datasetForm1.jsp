@@ -50,8 +50,6 @@
                                         path="dates"
                                         label="Dates"
                                         cardText="Information about a calendar date or timestamp indicating day, month, year and time of an event."
-                                        cardTabTitleFieldLevel1="type"
-                                        cardTabTitleFieldLevel2="value"
                                         tagName="date"
                                         specifier="dates">
             </myTags:editMasterUnbounded>

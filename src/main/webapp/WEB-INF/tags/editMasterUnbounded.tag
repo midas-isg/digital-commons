@@ -24,10 +24,6 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
-<%@ attribute name="cardTabTitleFieldLevel1" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="cardTabTitleFieldLevel2" required="false"
-              type="java.lang.String" %>
 <%@ attribute name="showAddPersonButton" required="false"
               type="java.lang.Boolean" %>
 <%@ attribute name="showAddOrganizationButton" required="false"
@@ -124,30 +120,17 @@
                                               class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
-<%--
-        <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
-            &lt;%&ndash; <li class="nav-item">
-                 <a class="wizard-nav-link nav-link active" href="#">Active</a>
-             </li>&ndash;%&gt;
-        </ul>
---%>
+        <c:if test="${function:isObjectEmpty(listItems)}">
+            <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
+                    <%-- <li class="nav-item">
+                         <a class="wizard-nav-link nav-link active" href="#">Active</a>
+                     </li>--%>
+            </ul>
+        </c:if>
         <c:if test="${not function:isObjectEmpty(listItems)}">
             <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
                 <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
                     <c:set var="cardTabTitle" value="${function:getCardTabTitle(listItem)}"></c:set>
-<%--
-                    <c:choose>
-                        <c:when test="${not function:isObjectEmpty(cardTabTitleFieldLevel2)}">
-                            <c:set var="cardTabTitle" value="${listItem[cardTabTitleFieldLevel1][cardTabTitleFieldLevel2]}"></c:set>
-                        </c:when>
-                        <c:when test="${not function:isObjectEmpty(cardTabTitleFieldLevel1)}">
-                            <c:set var="cardTabTitle" value="${listItem[cardTabTitleFieldLevel1]}"></c:set>
-                        </c:when>
-                        <c:otherwise>
-                            <c:set var="cardTabTitle" value="${label} ${varStatus.count-1}"></c:set>
-                        </c:otherwise>
-                    </c:choose>
---%>
                     <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
                         <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link ">
                                 ${cardTabTitle}
