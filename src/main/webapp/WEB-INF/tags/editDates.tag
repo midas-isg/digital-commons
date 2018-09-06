@@ -46,7 +46,7 @@
 
 <myTags:editAnnotation path="${path}.type"
                        annotation="${date.type}"
-                       isRequired="false"
+                       isRequired="${true}"
                        label="Type"
                        id="${specifier}-date"
                        cardText="The type of date, used to specify the process which is being timestamped by the date attribute value, ideally comes from a controlled terminology."

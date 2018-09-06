@@ -42,7 +42,7 @@
         </c:if>
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
             <br>
-            <span class="error-color">${message.text}</span>
+            <span class="error-color error offset-2">${message.text}</span>
         </c:forEach>
     </div>
     <c:set var="unboundedPersonComprisedEntityCount" scope="page" value="0"/>

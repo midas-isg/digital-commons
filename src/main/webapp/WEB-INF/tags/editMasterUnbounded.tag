@@ -366,7 +366,7 @@
 --%>
         </c:forEach>
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
+            <span class="error-color error offset-2">${message.text}</span>
         </c:forEach>
 
     </c:if>
