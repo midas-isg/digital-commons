@@ -50,11 +50,12 @@
         </c:if>
 
         <div id="${id}"
-        class="form-group <c:if test="${not isInputGroup}">card</c:if>
-        <c:if test="${isInputGroup}">row</c:if>
-        <c:if test="${not isUnboundedList}">edit-form-group </c:if> <c:if
-            test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if
-            test="${(isUnboundedList and function:isObjectEmpty(object)) or (function:isObjectEmpty(object) and not isRequired and not isUnboundedList)}">hide</c:if>">
+        class="<c:if test="${not isUnboundedList}">form-group </c:if> <c:if test="${not isInputGroup and not isUnboundedList}">card</c:if>
+            <c:if test="${isInputGroup}">row</c:if>
+            <c:if test="${not isUnboundedList}">edit-form-group </c:if>
+            <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>
+            <c:if test="${(isUnboundedList and function:isObjectEmpty(object)) or (function:isObjectEmpty(object) and not isRequired and not isUnboundedList)}">hide</c:if>">
+
         <c:if test="${not isUnboundedList}">
             <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
             <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-2">${label}</h6>
@@ -77,12 +78,18 @@
 
             <c:if test="${not isInputGroup}"></div></c:if>
         </c:if>
+
+
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
-        class="<c:if test="${not isInputGroup}">card-content collapse show</c:if> <c:if test="${isInputGroup}">col-10</c:if> <c:if
-            test="${not isInputGroup}">form-group edit-form-group</c:if> <c:if
-            test="${isInputGroup}">input-group full-width</c:if> control-group <c:if
-            test="${function:isObjectEmpty(object) and not isUnboundedList and not isRequired}">hide</c:if>">
+        class="<c:if test="${not isInputGroup}">card-content collapse show form-group edit-form-group</c:if>
+            <c:if test="${isInputGroup}">col-10 input-group full-width</c:if>
+            control-group
+            <c:if test="${(function:isObjectEmpty(object) and not isUnboundedList and not isRequired) or (isUnboundedList and not function:isFirstInstance(specifier))}">hide</c:if>">
+<%--
+            <c:if test="${not isInputGroup}">form-group edit-form-group</c:if>
+            <c:if test="${isInputGroup}">input-group full-width</c:if>
+--%>
         <%--<c:if test="${isUnboundedList}">--%>
             <%--<label>${label}</label>--%>
         <%--</c:if>--%>
@@ -107,7 +114,7 @@
                 rearrangeCards("${specifier}-input-block");
 
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
-                    debugger;
+                    //debugger;
                     e.stopImmediatePropagation();
                     $("#${id}").removeClass("hide");
                     $(this).closest('.card').children('.card-content').removeClass('collapse');
@@ -145,8 +152,8 @@
             });
 
         </script>
-
         </div>
+
     </c:when>
 </c:choose>
 

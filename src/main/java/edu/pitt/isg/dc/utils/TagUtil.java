@@ -128,16 +128,19 @@ public class TagUtil {
         String cardTabTitle = null;
 
         switch (listItem.getClass().getSimpleName()) {
+            case "String":
+                cardTabTitle = listItem.toString();
+                break;
             case "Annotation":
                 cardTabTitle = ((Annotation) listItem).getValue();
                 break;
             case "BiologicalEntity":
                 cardTabTitle = ((BiologicalEntity) listItem).getName();
                 break;
-            case "IsAbout":
-                if(isBiologicalEntity((IsAbout) listItem)){
-                    cardTabTitle = getCardTabTitle((BiologicalEntity) listItem);
-                } else cardTabTitle = getCardTabTitle((Annotation) listItem);
+            case "IsAboutItems":
+                if(isBiologicalEntity((IsAboutItems) listItem)){
+                    cardTabTitle = ((IsAboutItems) listItem).getName();
+                } else cardTabTitle = ((IsAboutItems) listItem).getValue();
                 break;
             case "DataStandard":
                 cardTabTitle = ((DataStandard) listItem).getName();
@@ -147,6 +150,9 @@ public class TagUtil {
                 break;
             case "Date":
                 cardTabTitle = ((Date) listItem).getType().getValue();
+                break;
+            case "Identifier":
+                cardTabTitle = ((Identifier) listItem).getIdentifier();
                 break;
             case "Person":
                 if (isObjectEmpty(((Person) listItem).getFullName())) {
@@ -205,5 +211,11 @@ public class TagUtil {
         }
 
         return cardTabTitle;
+    }
+
+    public static boolean isFirstInstance(String specifier) {
+        if(specifier.endsWith("-0")){
+            return true;
+        } else return false;
     }
 }

@@ -831,6 +831,7 @@ function closeAllTabs(e, div) {
 };
 
 function showTab(e, div, specifier) {
+    //debugger;
     makeAllTabsInactive(specifier);
     console.log("calling showTab");
     var divToShow = $(div.parentElement).attr('for');
@@ -851,7 +852,7 @@ function showTab(e, div, specifier) {
 
         //the card is not an unbounded list so display the input block
 
-        if ($("#" + tabID).length == 0) {
+        if ($("#" + tabID).length == 0 && !(tabID.endsWith("00-tab"))) {
             $(this).removeClass("hide");
         }
 
@@ -863,7 +864,7 @@ function showTab(e, div, specifier) {
 
 function showTabNamed(tabToActivate, divToShow, specifier) {
     makeAllTabsInactive(specifier);
-    console.log("calling showTabNamed");
+    //console.log("calling showTabNamed");
     // var divToShow = $(div.parentElement).attr('for');
 
     $('#' + divToShow).removeClass("hide");
