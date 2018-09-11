@@ -12,6 +12,8 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
+<%@ attribute name="addButtonLabel" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="placeholder" required="false"
               type="java.lang.String" %>
 <%@ attribute name="listItems" required="false"
@@ -46,18 +48,17 @@
             <p class="card-text">${cardText}</p>
             <c:choose>
                 <c:when test="${tagName == 'personComprisedEntity'}">
-
-                    <c:if test="${showAddPersonButton} and ${not showAddOrganizationButton}">
+                    <c:if test="${showAddPersonButton and not showAddOrganizationButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
-                    <c:if test="${showAddOrganizationButton} and ${not showAddPersonButton}">
+                    <c:if test="${showAddOrganizationButton and not showAddPersonButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
-                    <c:if test="${showAddPersonButton} and ${showAddOrganizationButton}">
+                    <c:if test="${showAddPersonButton and showAddOrganizationButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
                                 Person
                         </button>
@@ -67,17 +68,17 @@
                     </c:if>
                 </c:when>
                 <c:when test="${tagName == 'isAbout'}">
-                    <c:if test="${showAddAnnotationButton} and ${not showAddBiologicalEntityButton}">
+                    <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
-                    <c:if test="${showAddBiologicalEntityButton} and ${not showAddAnnotationButton}">
+                    <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
-                    <c:if test="${showAddBiologicalEntityButton} and ${showAddAnnotationButton}">
+                    <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
                                 Annotation
                         </button>

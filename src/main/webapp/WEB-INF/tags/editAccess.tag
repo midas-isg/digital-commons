@@ -59,6 +59,7 @@
                        singleIdentifier="${access.identifier}">
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            addButtonLabel="Alternate Identifier"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
@@ -71,6 +72,7 @@
                             listItems="${access.types}"
                             cardText="Method to obtain the resource, ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
+                            addButtonLabel="Type"
                             label="Types">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.authorizations"
@@ -78,6 +80,7 @@
                             cardText="Types of verification that accessing the resource is allowed. Authorization occurs before successful authentication and refers to the process of obtaining approval to use a data set. Ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
                             listItems="${access.authorizations}"
+                            addButtonLabel="Authorization"
                             label="Authorizations">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.authentications"
@@ -85,6 +88,7 @@
                             cardText="Types of verification of the credentials for accessing the resource, it is the identification process at the time of access. ideally specified from a controlled vocabulary or ontology."
                             tagName="annotation"
                             listItems="${access.authentications}"
+                            addButtonLabel="Authentication"
                             label="Authentications">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"

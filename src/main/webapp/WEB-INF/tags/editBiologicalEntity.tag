@@ -60,6 +60,7 @@
                             listItems="${entity.alternateIdentifiers}"
                             cardText="Alternate identifiers for the biological entity."
                             tagName="identifier"
+                            addButtonLabel="Alternate Identifier"
                             label="Alternate Identifier">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
