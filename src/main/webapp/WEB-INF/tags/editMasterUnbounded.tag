@@ -41,7 +41,7 @@
     <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
          style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">${label}</h5>
+            <h5 class="card-title">${label}<c:if test="${isRequired}"><i class="text-danger">*</i></c:if></h5>
             <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
             <p class="card-text">${cardText}</p>
             <c:choose>

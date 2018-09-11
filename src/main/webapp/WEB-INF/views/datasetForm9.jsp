@@ -23,19 +23,22 @@
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
             <myTags:editMasterUnbounded listItems="${digitalObject.creators}"
-                                              label="Creator"
-                                              path="creators"
-                                              specifier="creators"
-                                              showAddPersonButton="${true}"
-                                              showAddOrganizationButton="${true}"
+                                        isRequired="${true}"
+                                        label="Creator"
+                                        path="creators"
+                                        specifier="creators"
+                                        showAddPersonButton="${true}"
+                                        showAddOrganizationButton="${true}"
                                         cardText="The person(s) or organization(s) which contributed to the creation of the dataset."
                                         tagName="personComprisedEntity"
-                                              createPersonOrganizationTags="${true}"
-                                              isFirstRequired="${true}">
+                                        createPersonOrganizationTags="${true}"
+                                        isFirstRequired="${true}">
             </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
+                   onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>
