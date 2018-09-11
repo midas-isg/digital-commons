@@ -41,6 +41,24 @@
                                 isUnboundedList="${false}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                string="${dataStandard.description}"
+                                path="${path}.description"
+                                label="Description"
+                                isTextArea="${true}"
+                                isRequired="${true}"
+                                placeholder="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" Version"
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                string="${dataStandard.version}"
+                                isUnboundedList="${false}"
+                                isRequired="${true}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
 <myTags:editAnnotation annotation="${dataStandard.type}"
                        isRequired="${true}"
                        path="${path}.type"
@@ -65,15 +83,6 @@
                             cardText="Alternate identifiers for the standard."
                             tagName="identifier">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString specifier="${specifier}-description"
-                                id="${specifier}-description"
-                                string="${dataStandard.description}"
-                                path="${path}.description"
-                                label="Description"
-                                isTextArea="${true}"
-                                isRequired="${false}"
-                                placeholder="Description">
-</myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
                             tagName="license"
                             specifier="${specifier}-licenses"
@@ -82,15 +91,6 @@
                             cardText="The terms of use of the data standard."
                             path="${path}.licenses">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString label="Version"
-                                placeholder=" Version"
-                                specifier="${specifier}-version"
-                                id="${specifier}-version"
-                                string="${dataStandard.version}"
-                                isUnboundedList="${false}"
-                                isRequired="${false}"
-                                path="${path}.version">
-</myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
                             tagName="categoryValuePair"
                             isRequired="${false}"

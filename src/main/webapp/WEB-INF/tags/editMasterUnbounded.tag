@@ -41,7 +41,7 @@
     <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
          style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title card-button-title">${label}</h5>
+            <h5 class="card-title card-button-title">${label}<c:if test="${isRequired}"><i class="text-danger">*</i></c:if></h5>
             <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
             <p class="card-text">${cardText}</p>
             <c:choose>
@@ -103,7 +103,7 @@
 <c:set var="listItemsCount" scope="page" value="0"/>
 
 <div id="${specifier}-card"
-     class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItems)}">hide</c:if>">
+     class="form-group edit-form-group col-sm-12 card <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItems)}">hide</c:if>">
     <div class="card-header card-header-unbounded">
         <h6 class="card-title">${label}</h6>
 
@@ -416,7 +416,8 @@
     <div class="${specifier}-${tagName}-add-more"></div>
 
     <div class="card-footer">
-        ${label}
+        ${label} <a class="color-white" onclick="scrollToAnchor('${specifier}-card');"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
+
     </div>
 </div>
 

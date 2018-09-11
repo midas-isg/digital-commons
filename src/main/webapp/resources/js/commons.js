@@ -735,7 +735,7 @@ $(document).ready(function() {
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
 
-        if(href!=undefined && nulhref.includes('http')) {
+        if(href!=undefined && (nulhref!= undefined && nulhref.includes('http'))) {
             ga('send', {
                 hitType: 'event',
                 eventCategory: 'Clickthrough',
@@ -753,6 +753,21 @@ $(document).ready(function() {
     });
 
 });
+
+function scrollToAnchor(anchor) {
+    var el = document.querySelector('#' + anchor);
+    var offset = el.getBoundingClientRect().top + window.scrollY;
+    if(offset < 81) {
+        offset += 80;
+    } else {
+        offset -= 80;
+    }
+    window.scroll({
+        top: offset,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
 
 // Collapsible Card
 $(document).on('click', 'a[data-action="collapse"]', function (e) {

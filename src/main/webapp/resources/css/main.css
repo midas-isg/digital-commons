@@ -1178,7 +1178,7 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
+    /*padding: 20px 0;*/
     /*border-bottom: 1px solid #47748b;*/
 }
 
@@ -1191,7 +1191,7 @@ div.container.metadata-container .metadata-column.fancy {
     padding: 10px;
     font-size: 1.1em;
     display: block;
-    color: #fff !important;
+    color: #fff ;
 }
 #sidebar ul li a:hover {
     color: #0d2c64 !important;
