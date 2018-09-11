@@ -37,6 +37,7 @@
                                 placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                 string="${distribution.title}"
                                 isUnboundedList="${false}"
+                                isInputGroup="${true}"
                                 isRequired="${true}"
                                 label="Title">
 </myTags:editNonZeroLengthString>
@@ -47,6 +48,7 @@
                                 placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
                                 label="Description"
                                 isUnboundedList="${false}"
+                                isInputGroup="${true}"
                                 isRequired="${true}"
                                 isTextArea="True">
 </myTags:editNonZeroLengthString>
@@ -56,6 +58,7 @@
                                 id="${specifier}-version"
                                 isUnboundedList="${false}"
                                 string="${distribution.version}"
+                                isInputGroup="${true}"
                                 isRequired="${true}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>
@@ -126,7 +129,6 @@
                             label="Qualifiers">
 </myTags:editMasterUnbounded>
 
-<%--TODO: Unbounded strings aren't working properly--%>
 <myTags:editMasterUnbounded listItems="${distribution.formats}"
                             tagName="string"
                             path="${path}.formats"

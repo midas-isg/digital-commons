@@ -40,6 +40,7 @@
         isUnboundedList="${false}"
         id="${specifier}-name"
         isRequired="${true}"
+        isInputGroup="${true}"
         path="${path}.name">
 </myTags:editNonZeroLengthString>
 <myTags:editDates label="Start Date"

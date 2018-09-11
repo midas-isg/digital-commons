@@ -38,6 +38,7 @@
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 isUnboundedList="${false}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
@@ -47,6 +48,7 @@
                                 path="${path}.description"
                                 label="Description"
                                 isTextArea="${true}"
+                                isInputGroup="${true}"
                                 isRequired="${true}"
                                 placeholder="Description">
 </myTags:editNonZeroLengthString>
@@ -56,6 +58,7 @@
                                 id="${specifier}-version"
                                 string="${dataStandard.version}"
                                 isUnboundedList="${false}"
+                                isInputGroup="${true}"
                                 isRequired="${true}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>

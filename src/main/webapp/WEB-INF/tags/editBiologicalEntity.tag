@@ -37,6 +37,7 @@
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 string="${entity.name}"
+                                isInputGroup="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString string="${entity.description}"
@@ -45,6 +46,7 @@
                                 placeholder="Description"
                                 isTextArea="true"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 id="${specifier}-description"
                                 specifier="${specifier}-description">
 </myTags:editNonZeroLengthString>

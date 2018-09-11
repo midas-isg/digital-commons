@@ -34,6 +34,7 @@
                                 label="Name"
                                 string="${dataRepository.name}"
                                 path="${path}.name"
+                                isInputGroup="${true}"
                                 isRequired="${true}">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.description"
@@ -42,6 +43,7 @@
                                 id="${specifier}-description"
                                 isTextArea="${true}"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 placeholder=" A textual narrative comprised of one or more statements describing the data repository."
                                 label="Description">
 </myTags:editNonZeroLengthString>
@@ -50,6 +52,7 @@
                                 specifier="${specifier}-version"
                                 id="${specifier}-version"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 string="${dataRepository.version}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>

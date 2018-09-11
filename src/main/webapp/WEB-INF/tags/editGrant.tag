@@ -39,6 +39,7 @@
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.funders"

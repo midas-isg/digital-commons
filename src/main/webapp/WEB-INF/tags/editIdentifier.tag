@@ -36,6 +36,7 @@
                                 placeholder="A code uniquely identifying an entity locally to a system or globally."
                                 isRequired="${true}"
                                 label="Identifier"
+                                isInputGroup="${true}"
                                 string="${singleIdentifier.identifier}">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.identifierSource"
@@ -44,6 +45,7 @@
                                 placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
                                 isRequired="${true}"
                                 label="Identifier Source"
+                                isInputGroup="${true}"
                                 string="${singleIdentifier.identifierSource}">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterElementWrapper path="${path}"

@@ -40,6 +40,7 @@
                                 id="${specifier}-category"
                                 isRequired="${true}"
                                 path="${path}.category"
+                                isInputGroup="${true}"
                                 string="${categoryValuePair.category}">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="CategoryIRI"
@@ -48,6 +49,7 @@
                                 id="${specifier}-categoryIRI"
                                 isRequired="${true}"
                                 path="${path}.categoryIRI"
+                                isInputGroup="${true}"
                                 string="${categoryValuePair.categoryIRI}">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.values"

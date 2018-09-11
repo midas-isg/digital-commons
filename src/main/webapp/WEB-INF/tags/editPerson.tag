@@ -44,6 +44,7 @@
                                 isRequired="true"
                                 specifier="${specifier}-fullname"
                                 id="${specifier}-fullname"
+                                isInputGroup="${true}"
                                 path="${path}.fullName">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="First Name"
@@ -52,6 +53,7 @@
                                 specifier="${specifier}-firstName"
                                 id="${specifier}-firstName"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 path="${path}.firstName">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="Middle Initial"
@@ -60,6 +62,7 @@
                                 specifier="${specifier}-middleInitial"
                                 id="${specifier}-middleInitial"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 path="${path}.middleInitial">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="Last Name"
@@ -68,6 +71,7 @@
                                 specifier="${specifier}-lastName"
                                 id="${specifier}-lastName"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 path="${path}.lastName">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="Email"
@@ -76,6 +80,7 @@
                                 specifier="${specifier}-email"
                                 id="${specifier}-email"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 path="${path}.email">
 </myTags:editNonZeroLengthString>
 <myTags:editIdentifier specifier="${specifier}-identifier"

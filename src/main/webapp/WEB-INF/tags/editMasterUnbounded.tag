@@ -385,6 +385,7 @@
                                                             id="${specifier}-${varStatus.count-1}"
                                                             placeholder="${placeholder}"
                                                             string="${listItem}"
+                                                            isInputGroup="${false}"
                                                             isRequired="${isRequired}"
                                                             isFirstRequired="${isRequired}"
                                                             isUnboundedList="${true}">
@@ -809,6 +810,7 @@
                                         placeholder="${placeholder}"
                                         id="${specifier}-${tagName}-copy-tag"
                                         isRequired="${false}"
+                                        isInputGroup="${false}"
                                         isUnboundedList="${true}">
         </myTags:editNonZeroLengthString>
     </c:when>
