@@ -10,23 +10,27 @@
 <%@ attribute name="selectedID" required="false"
               type="java.lang.Integer" %>
 
-<div class="form-group control-group full-width <c:if
+<div class="form-group row edit-form-group <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
-    <label class="item-label">Category</label>
+    <div class="col-2">
+        <label class="item-label">Category</label>
+    </div>
 
-    <select class="selectpicker" data-live-search="true"
-            title="Please select a category ..." name="category" id="categoryValue">
-        <c:forEach items="${categoryPaths}" var="categoryPath">
-            <c:choose>
-                <c:when test="${categoryPath.key==selectedID}">
-                    <option selected value="${categoryPath.key}">${categoryPath.value}</option>
-                </c:when>
-                <c:otherwise>
-                    <option value="${categoryPath.key}">${categoryPath.value}</option>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-    </select>
+    <div class="col-10">
+        <select class="selectpicker" data-live-search="true"
+                title="Please select a category ..." name="category" id="categoryValue">
+            <c:forEach items="${categoryPaths}" var="categoryPath">
+                <c:choose>
+                    <c:when test="${categoryPath.key==selectedID}">
+                        <option selected value="${categoryPath.key}">${categoryPath.value}</option>
+                    </c:when>
+                    <c:otherwise>
+                        <option value="${categoryPath.key}">${categoryPath.value}</option>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+        </select>
+    </div>
     <c:if test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">
         <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource('category')}" var="message">
             <span class="error-color error offset-2">${message.text}</span>
