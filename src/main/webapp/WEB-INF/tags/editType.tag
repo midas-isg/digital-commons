@@ -67,6 +67,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="The nature of the data, as determined for the information collected, the method used and the platform used."
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

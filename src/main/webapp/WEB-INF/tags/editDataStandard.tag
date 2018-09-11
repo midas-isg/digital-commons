@@ -106,6 +106,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A format, reporting guideline, terminology. It is used to indicate whether the dataset conforms to a particular community norm or specification."
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

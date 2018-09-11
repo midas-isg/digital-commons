@@ -30,6 +30,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="showCardFooter" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
@@ -44,6 +46,11 @@
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
                                 ${label}
                         </button>
+                        <p class="card-text">
+                            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+                                <span class="error-color error offset-2">${message.text}</span>
+                            </c:forEach>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -108,6 +115,12 @@
             </c:forEach>
         </c:if>
         <%--</div>  <!-- card-content -->--%>
+
+        <c:if test="${not isUnboundedList} and ${not isInputGroup}">
+            <div class="card-footer">
+                    ${label}
+            </div>
+        </c:if>
 
         <script type="text/javascript">
             $(document).ready(function () {

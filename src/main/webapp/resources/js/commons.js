@@ -950,6 +950,10 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
     //move card buttons to the bottom
     rearrangeCards(specifier+'-' + listItemCount + '-input-block');
+    //TODO: test cross-browser functionality for below
+    //TODO: header cuts off top of card when redirecting to location
+    // document.getElementById($("#" + specifier + "-card").selector).focus();
+    window.location.hash = $("#" + specifier + "-card").selector;
 }
 
 $(window).on("popstate", function() {

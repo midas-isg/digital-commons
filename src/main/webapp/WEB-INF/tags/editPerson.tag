@@ -38,20 +38,6 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editIdentifier specifier="${specifier}-identifier"
-                       label="Identifier"
-                       path="${path}.identifier"
-                       id="${specifier}-identifier"
-                       singleIdentifier="${person.identifier}"
-                       isUnboundedList="${false}">
-</myTags:editIdentifier>
-<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
-                            label="Alternate Identifiers"
-                            path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
-                            tagName="identifier"
-                            listItems="${person.alternateIdentifiers}">
-</myTags:editMasterUnbounded>
 <myTags:editNonZeroLengthString label="Full Name"
                                 placeholder=" The first name, any middle names, and surname of a person."
                                 string="${person.fullName}"
@@ -92,6 +78,20 @@
                                 isRequired="true"
                                 path="${path}.email">
 </myTags:editNonZeroLengthString>
+<myTags:editIdentifier specifier="${specifier}-identifier"
+                       label="Identifier"
+                       path="${path}.identifier"
+                       id="${specifier}-identifier"
+                       singleIdentifier="${person.identifier}"
+                       isUnboundedList="${false}">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
+                            tagName="identifier"
+                            listItems="${person.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.affiliations"
                                   specifier="${specifier}-affiliations"
                                   label="Affiliation"
@@ -118,6 +118,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isFirstRequired="${isFirstRequired}"
                                  cardText="${cardText}"
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

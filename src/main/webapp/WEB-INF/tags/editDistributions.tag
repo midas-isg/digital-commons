@@ -150,6 +150,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 showCardFooter="${true}"
                                  cardText="(From DCAT) Represents a specific available form of a dataset. Each dataset might be available in different forms, these forms might represent different formats of the dataset or different endpoints. Examples of distributions include a downloadable CSV file, an API or an RSS feed."
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

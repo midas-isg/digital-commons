@@ -95,6 +95,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isAccessRequired}"
                                  cardText="Information about resources that provide the means to obtain an asset (a dataset or other research object)."
+                                 showCardFooter="${true}"
                                  tagName="access"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

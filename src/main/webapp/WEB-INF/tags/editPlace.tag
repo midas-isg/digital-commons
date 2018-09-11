@@ -88,6 +88,7 @@
                                  label="${label}"
                                  id="${id}"
                                  cardText="A spatially bounded entity."
+                                 showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

@@ -75,6 +75,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="Process to acquire data on a sample and attempt to draw conclusions about the population the sample has been selected from, executing a plan and design."
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

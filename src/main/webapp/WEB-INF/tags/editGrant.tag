@@ -83,6 +83,7 @@
                                  label="${label}"
                                  id="${id}"
                                  cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                 showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

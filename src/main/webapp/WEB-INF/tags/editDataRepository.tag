@@ -114,6 +114,7 @@
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
+                                 showCardFooter="${true}"
                                  tagName="dataRepository"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

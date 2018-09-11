@@ -41,8 +41,11 @@
             <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-            <script src="${pageContext.request.contextPath}/resources/js/bootstrap/4.1.2/bootstrap.min.js" defer></script>
             <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
+            <script src="${pageContext.request.contextPath}/resources/js/bootstrap/4.1.2/bootstrap.min.js" defer></script>
+<%--
+            <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
+--%>
 
             <%--<script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>--%>
 

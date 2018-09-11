@@ -105,6 +105,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A (digital) document made available by a publisher."
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

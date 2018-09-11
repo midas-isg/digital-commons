@@ -84,6 +84,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isFirstRequired="${isFirstRequired}"
                                  cardText="${cardText}"
+                                 showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

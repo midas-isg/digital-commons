@@ -69,6 +69,7 @@
                                  id="${specifier}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A biological entity is a recognized entity covering biological process, molecular functions or cellular components (from: http://geneontology.org/)."
+                                 showCardFooter="${true}"
                                  tagName="biological-entity"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
