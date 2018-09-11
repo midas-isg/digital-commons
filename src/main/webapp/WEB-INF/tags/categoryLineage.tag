@@ -34,7 +34,7 @@
         <c:if test="${hasSidebar}">
             <li class="ml-auto">
                 <button type="button" id="sidebarCollapse"
-                        class="inline float-right btn btn-primary btn-sm navbar-btn d-none d-sm-none d-md-block">
+                        class="inline float-right btn btn-sidebar btn-sm navbar-btn d-none d-sm-none d-md-block">
                     <i class="glyphicon glyphicon-align-left"></i>
                     <span>Toggle Sidebar</span>
                 </button>

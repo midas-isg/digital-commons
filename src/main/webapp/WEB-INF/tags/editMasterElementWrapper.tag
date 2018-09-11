@@ -116,7 +116,7 @@
         </c:if>
         <%--</div>  <!-- card-content -->--%>
 
-        <c:if test="${not isUnboundedList} and ${not isInputGroup}">
+        <c:if test="${showCardFooter and not isUnboundedList and not isInputGroup}">
             <div class="card-footer">
                     ${label}
             </div>
