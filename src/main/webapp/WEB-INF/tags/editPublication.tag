@@ -39,6 +39,7 @@
         string="${publication.title}"
         path="${path}.title"
         isRequired="${true}"
+        isInputGroup="${true}"
         id="${specifier}-title"
         specifier="${specifier}-title">
 </myTags:editNonZeroLengthString>
@@ -47,6 +48,7 @@
                                 specifier="${specifier}-publicationVenue"
                                 id="${specifier}-publicationVenue"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 placeholder=" The name of the publication venue where the document is published if applicable."
                                 label="Publication Venue">
 </myTags:editNonZeroLengthString>

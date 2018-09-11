@@ -41,6 +41,7 @@
                                 isUnboundedList="false"
                                 specifier="${specifier}-landingPage"
                                 id="${specifier}-landingPage"
+                                isInputGroup="${true}"
                                 label="Landing Page">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.accessURL"
@@ -49,6 +50,7 @@
                                 string="${access.accessURL}"
                                 isRequired="${true}"
                                 id="${specifier}-accessURL"
+                                isInputGroup="${true}"
                                 label="Access URL">
 </myTags:editNonZeroLengthString>
 <myTags:editIdentifier label="Identifier"

@@ -34,6 +34,7 @@
                                         path="alternateIdentifiers"
                                         listItems="${digitalObject.alternateIdentifiers}"
                                         isRequired="${false}"
+                                        isInputGroup="${true}"
                                         tagName="identifier">
             </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString placeholder=" Name"
@@ -42,6 +43,7 @@
                                             specifier="name"
                                             id="name"
                                             isRequired="${true}"
+                                            isInputGroup="${true}"
                                             isUnboundedList="${false}"
                                             path="name">
             </myTags:editNonZeroLengthString>
@@ -51,6 +53,7 @@
                                             path="description"
                                             label="Description"
                                             isTextArea="${true}"
+                                            isInputGroup="${true}"
                                             isRequired="${false}"
                                             placeholder="Description">
             </myTags:editNonZeroLengthString>

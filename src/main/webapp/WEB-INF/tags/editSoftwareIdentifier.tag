@@ -43,6 +43,7 @@
                                 id="${specifier}-identifier"
                                 placeholder="A code uniquely identifying an entity locally to a system or globally."
                                 isRequired="${false}"
+                                isInputGroup="${true}"
                                 label="Identifier"
                                 string="${identifier.identifier}">
 </myTags:editNonZeroLengthString>
@@ -51,6 +52,7 @@
                                 id="${specifier}-identifierSource"
                                 placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
                                 isRequired="${false}"
+                                isInputGroup="${true}"
                                 label="Identifier Source"
                                 string="${identifier.identifierSource}">
 </myTags:editNonZeroLengthString>
@@ -59,6 +61,7 @@
                                 id="${specifier}-identifierDescription"
                                 placeholder="Identifier Description."
                                 isRequired="${false}"
+                                isInputGroup="${true}"
                                 label="Identifier Description"
                                 string="${identifier.identifierDescription}">
 </myTags:editNonZeroLengthString>

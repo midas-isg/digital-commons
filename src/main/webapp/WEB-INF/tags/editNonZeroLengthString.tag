@@ -20,6 +20,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="id" required="true"
               type="java.lang.String" %>
+<%@ attribute name="isInputGroup" required="true"
+              type="java.lang.Boolean" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 <%@ attribute name="isFirstRequired" required="false"
@@ -32,7 +34,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 isInputGroup="${true}"
+                                 isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
                                  cardText=""
@@ -51,7 +53,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 isInputGroup="${true}"
+                                 isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
                                  cardText=""

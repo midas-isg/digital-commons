@@ -38,6 +38,7 @@
                                                 specifier="availability"
                                                 id="availability"
                                                 isRequired="${true}"
+                                                isInputGroup="${true}"
                                                 placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
                                                 label="Availability">
                 </myTags:editNonZeroLengthString>
@@ -48,6 +49,7 @@
                                                 specifier="refinement"
                                                 id="refinement"
                                                 isRequired="${true}"
+                                                isInputGroup="${true}"
                                                 placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
                                                 label="Refinement">
                 </myTags:editNonZeroLengthString>
@@ -58,6 +60,7 @@
                                                 specifier="aggregation"
                                                 id="aggregation"
                                                 isRequired="${true}"
+                                                isInputGroup="${true}"
                                                 placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
                                                 label="Aggregation">
                 </myTags:editNonZeroLengthString>

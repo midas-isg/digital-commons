@@ -27,6 +27,7 @@
                                             id="title"
                                             placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
                                             isRequired="true"
+                                            isInputGroup="${true}"
                                             string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
 
@@ -37,6 +38,7 @@
                                             isTextArea="true"
                                             isRequired="true"
                                             placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                            isInputGroup="${true}"
                                             label="Description">
             </myTags:editNonZeroLengthString>
             <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"

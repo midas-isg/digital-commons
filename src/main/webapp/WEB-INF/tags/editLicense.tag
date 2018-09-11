@@ -38,6 +38,7 @@
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 isUnboundedList="${false}"
                                 label="Name">
 </myTags:editNonZeroLengthString>
@@ -47,6 +48,7 @@
                                 id="${specifier}-version"
                                 string="${license.version}"
                                 isRequired="${true}"
+                                isInputGroup="${true}"
                                 isUnboundedList="${false}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>

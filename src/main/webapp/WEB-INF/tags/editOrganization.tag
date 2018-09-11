@@ -44,6 +44,7 @@
                                 isRequired="true"
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
+                                isInputGroup="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString label="Abbreviation"
@@ -52,6 +53,7 @@
                                 id="${specifier}-abbreviation"
                                 isRequired="${true}"
                                 path="${path}.abbreviation"
+                                isInputGroup="${true}"
                                 string="${organization.abbreviation}">
 </myTags:editNonZeroLengthString>
 <myTags:editIdentifier specifier="${specifier}-identifier"

@@ -30,6 +30,7 @@
                                                 placeholder=" A release point for the dataset when applicable."
                                                 isUnboundedList="${false}"
                                                 isRequired="${true}"
+                                                isInputGroup="${true}"
                                                 label="Version">
                 </myTags:editNonZeroLengthString>
             </div>

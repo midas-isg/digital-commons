@@ -41,6 +41,7 @@
                                 placeholder="Value"
                                 isRequired="${true}"
                                 label="Value"
+                                isInputGroup="${true}"
                                 string="${annotation.value}">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.valueIRI"
@@ -49,6 +50,7 @@
                                 placeholder="Value IRI"
                                 isRequired="${true}"
                                 label="Value IRI"
+                                isInputGroup="${true}"
                                 string="${annotation.valueIRI}">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterElementWrapper path="${path}"

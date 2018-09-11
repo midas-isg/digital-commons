@@ -38,6 +38,7 @@
                                 placeholder=" The name of the place."
                                 string="${place.name}"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 label=" Name">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.description"
@@ -46,6 +47,7 @@
                                 string="${place.description}"
                                 isTextArea="true"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 placeholder=" A textual narrative comprised of one or more statements describing the place."
                                 label="Description">
 </myTags:editNonZeroLengthString>
@@ -54,6 +56,7 @@
                                 id="${specifier}-postalAddress"
                                 string="${place.postalAddress}"
                                 isRequired="true"
+                                isInputGroup="${true}"
                                 placeholder=" A physical street address."
                                 label="Postal Address">
 </myTags:editNonZeroLengthString>
