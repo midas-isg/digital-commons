@@ -845,6 +845,7 @@
             }
 
             createNewTab(this, '${specifier}', '${path}', '${tagName}', '${label}', isFirstRequired, listItemCount);
+            scrollToAnchor('${specifier}-card');
             listItemCount += 1;
 
         });
