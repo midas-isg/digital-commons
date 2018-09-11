@@ -1098,6 +1098,10 @@ div.container.metadata-container .metadata-column.fancy {
 /*//////////////////////////*/
 /*Edit dataset and software css*/
 /*//////////////////////////*/
+.form-group {
+    margin-bottom: 12px !important;
+}
+
 .edit-form-group {
     /*margin: 1px;*/
     /*border: 1px solid #ccc;*/
@@ -1284,6 +1288,7 @@ ul.CTAs a {
 }
 
 .card {
+    margin-top: 22px;
     margin-bottom: 15px;
     width: auto;
     padding-right: 0px;
@@ -1294,12 +1299,24 @@ ul.CTAs a {
     font-size:1.0em !important;
 }
 
+.card-button-title {
+    text-align: center;
+}
+
 
 .card-header {
     word-wrap:normal;
     color: #FFFFFF;
     /*background: #0b2b65;*/
     background-image: linear-gradient(to left, rgba(11,43,101,0.55), rgba(11,43,101,0.80));
+}
+
+.card-header-unbounded {
+    margin-bottom: 12px;
+}
+
+.card-header .heading-elements {
+    right: 5px;
 }
 
 .card-footer {

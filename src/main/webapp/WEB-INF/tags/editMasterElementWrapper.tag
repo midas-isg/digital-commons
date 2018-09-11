@@ -40,7 +40,7 @@
                 <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more "
                      style="width: 18rem;">
                     <div class="card-body">
-                        <h5 class="card-title">${label}</h5>
+                        <h5 class="card-title card-button-title">${label}</h5>
                         <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
                         <p class="card-text">${cardText}</p>
                         <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add

@@ -41,7 +41,7 @@
     <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
          style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">${label}</h5>
+            <h5 class="card-title card-button-title">${label}</h5>
             <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
             <p class="card-text">${cardText}</p>
             <c:choose>
@@ -104,7 +104,7 @@
 
 <div id="${specifier}-card"
      class="form-group edit-form-group col-sm-12 card<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItems)}">hide</c:if>">
-    <div class="card-header">
+    <div class="card-header card-header-unbounded">
         <h6 class="card-title">${label}</h6>
 
         <div class="heading-elements">
