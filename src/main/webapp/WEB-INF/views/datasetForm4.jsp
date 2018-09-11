@@ -21,7 +21,16 @@
 
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
-
+            <div id="types">
+                <myTags:editMasterUnbounded path="types"
+                                            specifier="types"
+                                            label="Types"
+                                            isRequired="${true}"
+                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
+                                            tagName="type"
+                                            listItems="${digitalObject.types}">
+                </myTags:editMasterUnbounded>
+            </div>
             <div id="availability">
                 <myTags:editNonZeroLengthString path="availability"
                                                 string="${digitalObject.availability}"
@@ -52,16 +61,7 @@
                                                 label="Aggregation">
                 </myTags:editNonZeroLengthString>
             </div>
-            <div id="types">
-                <myTags:editMasterUnbounded path="types"
-                                            specifier="types"
-                                            label="Types"
-                                            isRequired="${true}"
-                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
-                                            tagName="type"
-                                            listItems="${digitalObject.types}">
-                </myTags:editMasterUnbounded>
-            </div>
+
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
                    onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"

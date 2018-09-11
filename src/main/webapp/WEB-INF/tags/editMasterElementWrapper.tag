@@ -118,7 +118,8 @@
 
         <c:if test="${showCardFooter and not isUnboundedList and not isInputGroup}">
             <div class="card-footer">
-                    ${label}
+                    ${label} <a class="color-white" onclick="scrollToAnchor('${specifier}');"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
+
             </div>
         </c:if>
 

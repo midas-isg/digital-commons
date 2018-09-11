@@ -756,11 +756,11 @@ $(document).ready(function() {
 
 function scrollToAnchor(anchor) {
     var el = document.querySelector('#' + anchor);
-    var offset;
-    if(el.offsetTop < 81) {
-        offset = el.offsetTop - 80;
+    var offset = el.getBoundingClientRect().top + window.scrollY;
+    if(offset < 81) {
+        offset += 80;
     } else {
-        offset = el.offsetTop + 80;
+        offset -= 80;
     }
     window.scroll({
         top: offset,
