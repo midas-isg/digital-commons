@@ -125,6 +125,8 @@
                             listItems="${distribution.qualifiers}"
                             label="Qualifiers">
 </myTags:editMasterUnbounded>
+
+<%--TODO: Unbounded strings aren't working properly--%>
 <myTags:editMasterUnbounded listItems="${distribution.formats}"
                             tagName="string"
                             path="${path}.formats"
