@@ -60,7 +60,8 @@
 
 <myTags:editMasterUnbounded path="${path}.creators"
                             specifier="${specifier}-creators"
-                            label="Creator"
+                            label="Creators"
+                            addButtonLabel="Creator"
                             createPersonOrganizationTags="${true}"
                             listItems="${license.creators}"
                             isFirstRequired="false"

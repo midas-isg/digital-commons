@@ -28,7 +28,8 @@
                                         cardText="The geographical extension and span covered by the dataset and its measured dimensions/variables."
                                         tagName="place"
                                         isRequired="${false}"
-                                        label="Spatial Coverage">
+                                        addButtonLabel="Spatial Coverage"
+                                        label="Spatial Coverages">
             </myTags:editMasterUnbounded>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>

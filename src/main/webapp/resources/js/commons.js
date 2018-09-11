@@ -954,7 +954,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     makeAllTabsInactive(specifier);
     //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
-        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+ " " + listItemCount +
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+"   "+
         "<i onclick=\"closeTab(event, this, '"+specifier+"')\" class=\"ft-x\"></i></a></li>");
 
 

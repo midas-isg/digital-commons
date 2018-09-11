@@ -283,10 +283,22 @@ a {
     border-color: rgba(11,43,101,0.80);
 }
 
+
 .btn-primary:hover{
     color: #fff;
-    background-color: #0b2b65bf;
+    background-color: #0b2b65bf !important;
     border-color: #0b2b65bf;
+}
+
+.btn-primary:focus{
+    color: #fff;
+    background-color: #0b2b65bf !important;
+    border-color: #0b2b65bf;
+}
+
+:root {
+    --blue: #0b2b65;
+    --primary: #0b2b65;
 }
 
 .btn-sidebar {
@@ -1317,6 +1329,10 @@ ul.CTAs a {
 
 .card-header .heading-elements {
     right: 5px;
+}
+
+.ft-x{
+    padding-left: 5px;
 }
 
 .card-footer {

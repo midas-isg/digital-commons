@@ -29,6 +29,7 @@
                                         tagName="isAbout"
                                         cardText="Different entities associated with this dataset."
                                 label="Is About"
+                                        addButtonLabel="Is About"
                                 showAddAnnotationButton="true"
                                 showAddBiologicalEntityButton="true">
             </myTags:editMasterUnbounded>

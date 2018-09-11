@@ -27,6 +27,7 @@
                                         listItems="${digitalObject.primaryPublications}"
                                         cardText="The primary publication(s) associated with the dataset, usually describing how the dataset was produced."
                                         tagName="publication"
+                                        addButtonLabel="Primary Publication"
                                         label="Primary Publications">
             </myTags:editMasterUnbounded>
 

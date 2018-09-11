@@ -43,7 +43,8 @@
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.funders"
                                   specifier="${specifier}-funders"
-                                  label="Funder"
+                                  label="Funders"
+                            addButtonLabel="Funder"
                                   listItems="${grant.funders}"
                                   createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
@@ -61,6 +62,7 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
@@ -68,7 +70,8 @@
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.awardees"
                                   specifier="${specifier}-awardees"
-                                  label="Awardee"
+                                  label="Awardees"
+                            addButtonLabel="Awardee"
                                   listItems="${grant.awardees}"
                                   createPersonOrganizationTags="${true}"
                             cardText="The person(s) or organization(s) which received the funds supporting the project."

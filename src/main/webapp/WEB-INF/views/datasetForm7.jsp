@@ -37,6 +37,7 @@
                                             listItems="${digitalObject.citations}"
                                             cardText="The publication(s) that cite this dataset."
                                             tagName="publication"
+                                            addButtonLabel="Citation"
                                             label="Citations">
                 </myTags:editMasterUnbounded>
             </div>

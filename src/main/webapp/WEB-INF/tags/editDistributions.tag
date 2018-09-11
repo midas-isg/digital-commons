@@ -84,6 +84,7 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
@@ -101,6 +102,7 @@
                             cardText="Relevant dates for the datasets, e.g. creation date or last modification date may be added."
                             tagName="date"
                             label="Dates"
+                            addButtonLabel="Date"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
 
@@ -108,10 +110,12 @@
                             listItems="${distribution.licenses}"
                             cardText="The terms of use of the dataset distribution."
                             tagName="license"
-                            label="License"
+                            label="Licenses"
+                            addButtonLabel="License"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded label="Conforms To"
+                            addButtonLabel="Conforms To"
                             path="${path}.conformsTo"
                             listItems="${distribution.conformsTo}"
                             cardText="A data standard whose requirements and constraints are met by the dataset."
@@ -123,6 +127,7 @@
                             cardText="One or more characteristics of the dataset distribution (e.g. how it relates to other distributions, if the data is raw or processed, compressed or encrypted)."
                             tagName="annotation"
                             listItems="${distribution.qualifiers}"
+                            addButtonLabel="Qualifier"
                             label="Qualifiers">
 </myTags:editMasterUnbounded>
 
@@ -134,6 +139,7 @@
                             cardText="The technical format of the dataset distribution. Use the file extension or MIME type when possible. (Definition adapted from DataCite)"
                             isRequired="${false}"
                             placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                            addButtonLabel="Format"
                             label="Formats">
 </myTags:editMasterUnbounded>
 

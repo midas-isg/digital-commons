@@ -77,6 +77,7 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             listItems="${dataStandard.alternateIdentifiers}"
                             isRequired="${false}"
@@ -87,7 +88,8 @@
                             tagName="license"
                             specifier="${specifier}-licenses"
                             isRequired="${false}"
-                            label="License"
+                            label="Licenses"
+                            addButtonLabel="License"
                             cardText="The terms of use of the data standard."
                             path="${path}.licenses">
 </myTags:editMasterUnbounded>
@@ -97,6 +99,7 @@
                             specifier="${specifier}-extraProperties"
                             cardText="Extra properties that do not fit in the previous specified attributes."
                             path="${path}.extraProperties"
+                            addButtonLabel="Extra Property"
                             label="Extra Properties">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"

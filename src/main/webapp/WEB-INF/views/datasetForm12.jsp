@@ -27,6 +27,7 @@
                                         listItems="${digitalObject.acknowledges}"
                                         cardText="The grant(s) which funded and supported the work reported by the dataset."
                                         tagName="grant"
+                                        addButtonLabel="Acknowledgement"
                                         label="Acknowledges">
             </myTags:editMasterUnbounded>
 

@@ -52,7 +52,7 @@
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.values"
                             specifier="${specifier}-values"
-                            label="Value"
+                            label="Values"
                             addButtonLabel="Value"
                             cardText="A set of (annotated) values associated with the cateogory."
                             tagName="annotation"

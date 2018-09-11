@@ -26,7 +26,8 @@
                                         listItems="${digitalObject.licenses}"
                                         tagName="license"
                                         cardText="The terms of use of the dataset."
-                                        label="License"
+                                        label="Licenses"
+                                        addButtonLabel="License"
                                         specifier="licenses">
             </myTags:editMasterUnbounded>
 

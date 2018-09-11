@@ -12,7 +12,7 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="addButtonLabel" required="false"
+<%@ attribute name="addButtonLabel" required="true"
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="false"
               type="java.lang.String" %>
@@ -120,7 +120,7 @@
                     <c:when test="${tagName == 'personComprisedEntity'}">
                         <c:if test="${showAddPersonButton}">
                             <c:if test="${not showAddOrganizationButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddOrganizationButton}">
                                 <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add Person</a></li>
@@ -128,33 +128,27 @@
                         </c:if>
                         <c:if test="${showAddOrganizationButton}">
                             <c:if test="${not showAddPersonButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddPersonButton}">
                                 <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add Organization</a></li>
                             </c:if>
                         </c:if>
-<%--
-                        <c:if test="${showAddOrganizationButton} and ${showAddPersonButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add Person</a></li>
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add Organization</a></li>
-                        </c:if>
---%>
                     </c:when>
                     <c:when test="${tagName == 'isAbout'}">
-                        <c:if test="${showAddAnnotationButton} and not ${showAddBiologicalEntityButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                        <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
-                        <c:if test="${showAddBiologicalEntityButton} and not ${showAddAnnotationButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                        <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
-                        <c:if test="${showAddBiologicalEntityButton} and ${showAddAnnotationButton}">
+                        <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
                             <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add Annotation</a></li>
                             <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add Biological Entity</a></li>
                         </c:if>
                     </c:when>
                     <c:otherwise>
-                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${label}</a></li>
+                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
@@ -842,7 +836,7 @@
                 isFirstRequired = false;
             }
 
-            createNewTab(this, '${specifier}', '${path}', '${tagName}', '${label}', isFirstRequired, listItemCount);
+            createNewTab(this, '${specifier}', '${path}', '${tagName}', '${addButtonLabel}', isFirstRequired, listItemCount);
             listItemCount += 1;
 
         });

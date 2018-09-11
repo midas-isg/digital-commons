@@ -87,6 +87,7 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
@@ -94,7 +95,8 @@
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.affiliations"
                                   specifier="${specifier}-affiliations"
-                                  label="Affiliation"
+                                  label="Affiliations"
+                            addButtonLabel="Affiliation"
                                   listItems="${person.affiliations}"
                                   isFirstRequired="false"
                                   createPersonOrganizationTags="false"
@@ -108,6 +110,7 @@
                             listItems="${person.roles}"
                             cardText="The roles assumed by a person, ideally from a controlled vocabulary/ontology."
                             tagName="annotation"
+                            addButtonLabel="Role"
                             label="Roles">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"

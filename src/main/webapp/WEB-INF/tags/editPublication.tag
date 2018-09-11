@@ -52,7 +52,8 @@
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.authors"
                                   specifier="${specifier}-authors"
-                                  label="Author"
+                                  label="Authors"
+                            addButtonLabel="Author"
                                   listItems="${publication.authors}"
                                   createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
@@ -70,6 +71,7 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
                             listItems="${publication.alternateIdentifiers}"
@@ -85,7 +87,8 @@
 </myTags:editAnnotation>
 
 <myTags:editMasterUnbounded listItems="${publication.dates}"
-                            label="Publication Date"
+                            label="Publication Dates"
+                            addButtonLabel="Publication Date"
                             path="${path}.dates"
                             cardText="Relevant dates, the date of the publication must be provided."
                             tagName="date"
@@ -96,6 +99,7 @@
                             listItems="${publication.acknowledges}"
                             cardText="The grant(s) which funded and supported the work reported by the publication."
                             tagName="grant"
+                            addButtonLabel="Acknowledgment"
                             label="Acknowledges">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"

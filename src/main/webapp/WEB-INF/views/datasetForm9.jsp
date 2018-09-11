@@ -24,7 +24,8 @@
 
             <myTags:editMasterUnbounded listItems="${digitalObject.creators}"
                                         isRequired="${true}"
-                                        label="Creator"
+                                        label="Creators"
+                                        addButtonLabel="Creator"
                                         path="creators"
                                         specifier="creators"
                                         showAddPersonButton="${true}"

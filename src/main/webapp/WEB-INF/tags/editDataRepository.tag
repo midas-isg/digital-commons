@@ -73,6 +73,7 @@
                             listItems="${dataRepository.scopes}"
                             cardText="Information about the nature of the datasets in the repository, ideally from a controlled vocabulary or ontology (e.g. transcription profile, sequence reads, molecular structure, image, DNA sequence, NMR spectra)."
                             tagName="annotation"
+                            addButtonLabel="Scope"
                             label="Scopes">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.types"
@@ -80,18 +81,21 @@
                             listItems="${dataRepository.types}"
                             cardText="A descriptor (ideally from a controlled vocabulary) providing information about the type of repository, such as primary resource or aggregator."
                             tagName="annotation"
+                            addButtonLabel="Type"
                             label="Types">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${dataRepository.licenses}"
-                            label="License"
+                            label="Licenses"
+                            addButtonLabel="License"
                             cardText="The terms of use of the data repository."
                             tagName="license"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.publishers"
                                   specifier="${specifier}-publishers"
-                                  label="Publisher"
+                                  label="Publishers"
+                            addButtonLabel="Publisher"
                                   listItems="${dataRepository.publishers}"
                                   isFirstRequired="false"
                                   createPersonOrganizationTags="true"
@@ -106,6 +110,7 @@
                             cardText="The information about access modality for the data repository."
                             tagName="access"
                             isRequired="${false}"
+                            addButtonLabel="Access"
                             label="Access">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
