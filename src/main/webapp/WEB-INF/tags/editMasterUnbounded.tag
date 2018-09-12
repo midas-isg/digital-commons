@@ -159,10 +159,10 @@
                         <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
+                <li><a data-action="expand"><i class="ft-maximize ft-buttons"></i></a></li>
                 <li><a data-action="close"><i for="${specifier}-card"
-                                              class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                                              class="ft-x ft-buttons ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
         <c:if test="${function:isObjectEmpty(listItems)}">
@@ -176,8 +176,9 @@
             <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
                 <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
                     <c:set var="cardTabTitle" value="${function:getCardTabTitle(listItem)}"></c:set>
+                    <c:set var="cardTabToolTip" value="${function:getCardTabToolTip(listItem)}"></c:set>
                     <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
-                        <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link ">
+                        <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link " data-toggle="tooltip" title="${cardTabToolTip}">
                                 ${cardTabTitle}
                             <i onclick="closeTab(event, this)" class="ft-x"></i>
                         </a>
