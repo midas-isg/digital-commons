@@ -286,14 +286,14 @@ a {
 
 .btn-primary:hover{
     color: #fff;
-    background-color: #0b2b65bf !important;
-    border-color: #0b2b65bf;
+    background-color: rgba(11,43,101,0.55) !important;
+    border-color: rgba(11,43,101,0.55);
 }
 
 .btn-primary:focus{
     color: #fff;
-    background-color: #0b2b65bf !important;
-    border-color: #0b2b65bf;
+    background-color: rgba(11,43,101,0.55) !important;
+    border-color: rgba(11,43,101,0.55);
 }
 
 :root {
