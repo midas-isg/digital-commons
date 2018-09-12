@@ -104,7 +104,7 @@ public class TagUtil {
     public static boolean onlyContainsSoftwareElements(Object software) {
         String softwareCategory = software.getClass().getTypeName().substring(software.getClass().getTypeName().lastIndexOf(".") + 1);
 
-        if(softwareCategory.equals("DataFormatConverters") || softwareCategory.equals("MetagenomicAnalysis") || softwareCategory.equals("ModelingPlatforms") || softwareCategory.equals("PhylogeneticTreeConstructors") || softwareCategory.equals("SyntheticEcosystemConstructors")){
+        if (softwareCategory.equals("DataFormatConverters") || softwareCategory.equals("MetagenomicAnalysis") || softwareCategory.equals("ModelingPlatforms") || softwareCategory.equals("PhylogeneticTreeConstructors") || softwareCategory.equals("SyntheticEcosystemConstructors")) {
             return true;
         } else return false;
 /*
@@ -124,97 +124,115 @@ public class TagUtil {
 */
     }
 
-    public static String getCardTabTitle(Object listItem){
-        String cardTabTitle = null;
+    public static String getCardTabTitle(Object listItem) {
+        String cardTabTitle = getCardTabToolTip(listItem);
 
-        switch (listItem.getClass().getSimpleName()) {
-            case "String":
-                cardTabTitle = listItem.toString();
-                break;
-            case "Annotation":
-                cardTabTitle = ((Annotation) listItem).getValue();
-                break;
-            case "BiologicalEntity":
-                cardTabTitle = ((BiologicalEntity) listItem).getName();
-                break;
-            case "IsAboutItems":
-                if(isBiologicalEntity((IsAboutItems) listItem)){
-                    cardTabTitle = ((IsAboutItems) listItem).getName();
-                } else cardTabTitle = ((IsAboutItems) listItem).getValue();
-                break;
-            case "DataStandard":
-                cardTabTitle = ((DataStandard) listItem).getName();
-                break;
-            case "DataRepository":
-                cardTabTitle = ((DataRepository) listItem).getName();
-                break;
-            case "Date":
-                cardTabTitle = ((Date) listItem).getType().getValue();
-                break;
-            case "Identifier":
-                cardTabTitle = ((Identifier) listItem).getIdentifier();
-                break;
-            case "Person":
-                if (isObjectEmpty(((Person) listItem).getFullName())) {
-                    cardTabTitle = ((Person) listItem).getFirstName() + " " + ((Person) listItem).getLastName();
-                } else cardTabTitle = ((Person) listItem).getFullName();
-                break;
-            case "Organization":
-                cardTabTitle = ((Organization) listItem).getName();
-                break;
-            case "PersonOrganization":
-                if (isPerson((PersonOrganization) listItem)) {
-                    cardTabTitle = ((PersonOrganization) listItem).getFirstName() + " " + ((PersonOrganization) listItem).getLastName();
-                } else cardTabTitle = ((PersonOrganization) listItem).getName();
-                break;
-            case "Study":
-                cardTabTitle = ((Study) listItem).getName();
-                break;
-            case "License":
-                cardTabTitle = ((License) listItem).getName();
-                break;
-            case "Publication":
-                if (isObjectEmpty(((Publication) listItem).getTitle())) {
-                    cardTabTitle = "Publication";
-                } else cardTabTitle = ((Publication) listItem).getTitle();
-                break;
-            case "Grant":
-                cardTabTitle = ((Grant) listItem).getName();
-                break;
-            case "Access":
-                if (isObjectEmpty(((Access) listItem).getLandingPage())) {
-                    cardTabTitle = "Access";
-                } else cardTabTitle = ((Access) listItem).getLandingPage();
-                break;
-            case "Distribution":
-                if (isObjectEmpty(((Distribution) listItem).getTitle())) {
-                    cardTabTitle = "Distribution";
-                } else cardTabTitle = ((Distribution) listItem).getTitle();
-                break;
-            case "Place":
-                cardTabTitle = ((Place) listItem).getName();
-                break;
-            case "Type":
-                if (!isObjectEmpty(((Type) listItem).getInformation().getValue())) {
-                    cardTabTitle = ((Type) listItem).getInformation().getValue();
-                } else if (!isObjectEmpty(((Type) listItem).getMethod().getValue())) {
-                    cardTabTitle = ((Type) listItem).getMethod().getValue();
-                } else if (!isObjectEmpty(((Type) listItem).getPlatform().getValue())) {
-                    cardTabTitle = ((Type) listItem).getPlatform().getValue();
-                } else cardTabTitle = "Type";
-                break;
-            case "CategoryValuePair":
-                if (isObjectEmpty(((CategoryValuePair) listItem).getCategory())) {
-                    cardTabTitle = "Category";
-                } else cardTabTitle = ((CategoryValuePair) listItem).getCategory();
-                break;
+        if (cardTabTitle.length() > 40) {
+            if (cardTabTitle.contains(" ")) {
+                String[] cardTabTitleWords = cardTabTitle.split("\\s+");
+                int size = cardTabTitleWords.length;
+                if (size > 6) {
+                    cardTabTitle = cardTabTitle.substring(0, cardTabTitle.indexOf(cardTabTitleWords[3]) - 1) + "..." + cardTabTitle.substring(cardTabTitle.indexOf(cardTabTitleWords[size - 2]));
+                }
+            } else
+                cardTabTitle = cardTabTitle.substring(0, 15) + "..." + cardTabTitle.substring(cardTabTitle.length() - 15);
         }
 
         return cardTabTitle;
+
+    }
+
+    public static String getCardTabToolTip(Object listItem) {
+        String cardTabToolTip = null;
+
+        switch (listItem.getClass().getSimpleName()) {
+            case "String":
+                cardTabToolTip = listItem.toString();
+                break;
+            case "Annotation":
+                cardTabToolTip = ((Annotation) listItem).getValue();
+                break;
+            case "BiologicalEntity":
+                cardTabToolTip = ((BiologicalEntity) listItem).getName();
+                break;
+            case "IsAboutItems":
+                if (isBiologicalEntity((IsAboutItems) listItem)) {
+                    cardTabToolTip = ((IsAboutItems) listItem).getName();
+                } else cardTabToolTip = ((IsAboutItems) listItem).getValue();
+                break;
+            case "DataStandard":
+                cardTabToolTip = ((DataStandard) listItem).getName();
+                break;
+            case "DataRepository":
+                cardTabToolTip = ((DataRepository) listItem).getName();
+                break;
+            case "Date":
+                cardTabToolTip = ((Date) listItem).getType().getValue();
+                break;
+            case "Identifier":
+                cardTabToolTip = ((Identifier) listItem).getIdentifier();
+                break;
+            case "Person":
+                if (isObjectEmpty(((Person) listItem).getFullName())) {
+                    cardTabToolTip = ((Person) listItem).getFirstName() + " " + ((Person) listItem).getLastName();
+                } else cardTabToolTip = ((Person) listItem).getFullName();
+                break;
+            case "Organization":
+                cardTabToolTip = ((Organization) listItem).getName();
+                break;
+            case "PersonOrganization":
+                if (isPerson((PersonOrganization) listItem)) {
+                    cardTabToolTip = ((PersonOrganization) listItem).getFirstName() + " " + ((PersonOrganization) listItem).getLastName();
+                } else cardTabToolTip = ((PersonOrganization) listItem).getName();
+                break;
+            case "Study":
+                cardTabToolTip = ((Study) listItem).getName();
+                break;
+            case "License":
+                cardTabToolTip = ((License) listItem).getName();
+                break;
+            case "Publication":
+                if (isObjectEmpty(((Publication) listItem).getTitle())) {
+                    cardTabToolTip = "Publication";
+                } else cardTabToolTip = ((Publication) listItem).getTitle();
+                break;
+            case "Grant":
+                cardTabToolTip = ((Grant) listItem).getName();
+                break;
+            case "Access":
+                if (isObjectEmpty(((Access) listItem).getLandingPage())) {
+                    cardTabToolTip = "Access";
+                } else cardTabToolTip = ((Access) listItem).getLandingPage();
+                break;
+            case "Distribution":
+                if (isObjectEmpty(((Distribution) listItem).getTitle())) {
+                    cardTabToolTip = "Distribution";
+                } else cardTabToolTip = ((Distribution) listItem).getTitle();
+                break;
+            case "Place":
+                cardTabToolTip = ((Place) listItem).getName();
+                break;
+            case "Type":
+                if (!isObjectEmpty(((Type) listItem).getInformation().getValue())) {
+                    cardTabToolTip = ((Type) listItem).getInformation().getValue();
+                } else if (!isObjectEmpty(((Type) listItem).getMethod().getValue())) {
+                    cardTabToolTip = ((Type) listItem).getMethod().getValue();
+                } else if (!isObjectEmpty(((Type) listItem).getPlatform().getValue())) {
+                    cardTabToolTip = ((Type) listItem).getPlatform().getValue();
+                } else cardTabToolTip = "Type";
+                break;
+            case "CategoryValuePair":
+                if (isObjectEmpty(((CategoryValuePair) listItem).getCategory())) {
+                    cardTabToolTip = "Category";
+                } else cardTabToolTip = ((CategoryValuePair) listItem).getCategory();
+                break;
+        }
+
+        return cardTabToolTip;
     }
 
     public static boolean isFirstInstance(String specifier) {
-        if(specifier.endsWith("-0")){
+        if (specifier.endsWith("-0")) {
             return true;
         } else return false;
     }

@@ -31,6 +31,11 @@
         <function-signature>java.lang.String getCardTabTitle(java.lang.Object)</function-signature>
     </function>
     <function>
+        <name>getCardTabToolTip</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getCardTabToolTip(java.lang.Object)</function-signature>
+    </function>
+    <function>
         <name>isFirstInstance</name>
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isFirstInstance(java.lang.String)</function-signature>
