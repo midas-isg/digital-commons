@@ -30,20 +30,28 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="showCardFooter" required="false"
               type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
         <c:if test="${not isUnboundedList and not isRequired}">
-            <div class="col card-button <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"  id="${specifier}-add-input-button">
-                <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more "
+            <div class="col card-button d-flex align-items-stretch <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"  id="${specifier}-add-input-button">
+                <div class="card mx-auto input-group control-group card-rounded ${specifier}-${tagName}-add-more "
                      style="width: 18rem;">
-                    <div class="card-body">
+                    <div class="card-header add-card-header">
                         <h5 class="card-title card-button-title">${label}</h5>
-                        <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><i class="card-icon ${cardIcon}"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body d-flex">
                         <p class="card-text">${cardText}</p>
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
+                        <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button">Add
                                 ${label}
                         </button>
                         <p class="card-text">
@@ -137,6 +145,8 @@
                     $("#${specifier}-input-block").addClass("show");
 
                     $("#${specifier}-input-block").show();
+                    scrollToAnchor('${specifier}');
+                    highlightDiv('${specifier}');
 
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");

@@ -22,6 +22,8 @@
               type="java.lang.String" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -32,6 +34,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="${cardIcon}"
                                  tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -62,6 +65,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="${cardIcon}"
                                  tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

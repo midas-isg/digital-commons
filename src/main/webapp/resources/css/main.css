@@ -1335,6 +1335,25 @@ ul.CTAs a {
     padding-left: 5px;
 }
 
+.card-body {
+    flex-flow: column nowrap;
+}
+
+.card-rounded {
+    border-radius: 25px;
+}
+
+.card-icon {
+    margin-right: 5px;
+}
+
+.add-card-header {
+    color: #0b2b65;
+    background-image: none;
+    background-color: transparent;
+    border-bottom: none;
+}
+
 .card-footer {
     border-top: 1px solid #EEEEEE;
     text-transform: uppercase;

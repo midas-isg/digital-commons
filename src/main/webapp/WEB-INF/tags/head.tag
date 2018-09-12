@@ -26,7 +26,6 @@
 
             <link href="${pageContext.request.contextPath}/resources/css/feather/style.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/css/bootstrap-extended/bootstrap-extended.css" rel="stylesheet">
-            <%--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">--%>
             <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>
 
@@ -38,16 +37,11 @@
             <link href="${pageContext.request.contextPath}/resources/css/bootstrap-treeview/1.2.0/bootstrap-treeview.min.css" rel="stylesheet">
 
             <!-- Bootstrap JS -->
-            <%--<script src="${pageContext.request.contextPath}/resources/js/tether.min.js" defer></script>--%>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
             <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap/4.1.2/bootstrap.min.js" defer></script>
-<%--
-            <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
---%>
-
-            <%--<script src="${pageContext.request.contextPath}/resources/js/raphael.min.js"></script>--%>
+            <script src="//cdn.jsdelivr.net/jquery.shadow-animation/1/mainfile"></script>
 
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 
