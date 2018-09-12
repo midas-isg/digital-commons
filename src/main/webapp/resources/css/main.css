@@ -1206,11 +1206,12 @@ div.container.metadata-container .metadata-column.fancy {
     color: #fff ;
 }
 #sidebar ul li a:hover {
-    color: #0d2c64 !important;
     /*
+    color: #0d2c64 !important;
     color: #568aea !important;
-    */
     background: #fff;
+    */
+    background: #7785a6;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
