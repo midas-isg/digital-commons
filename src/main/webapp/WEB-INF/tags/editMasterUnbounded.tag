@@ -151,10 +151,10 @@
                         <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
-                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
+                <li><a data-action="expand"><i class="ft-maximize ft-buttons"></i></a></li>
                 <li><a data-action="close"><i for="${specifier}-card"
-                                              class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                                              class="ft-x ft-buttons ${specifier}-${tagName}-remove"></i></a></li>
             </ul>
         </div>
         <c:if test="${function:isObjectEmpty(listItems)}">

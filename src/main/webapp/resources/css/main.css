@@ -1335,6 +1335,10 @@ ul.CTAs a {
     padding-left: 5px;
 }
 
+.ft-buttons {
+    vertical-align: middle;
+}
+
 .card-footer {
     border-top: 1px solid #EEEEEE;
     text-transform: uppercase;
