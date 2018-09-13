@@ -61,6 +61,7 @@
                             specifier="${specifier}-alternateIdentifiers"
                             listItems="${entity.alternateIdentifiers}"
                             cardText="Alternate identifiers for the biological entity."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             addButtonLabel="Alternate Identifier"
                             label="Alternate Identifiers">

@@ -26,6 +26,7 @@
                                         specifier="primaryPublications"
                                         listItems="${digitalObject.primaryPublications}"
                                         cardText="The primary publication(s) associated with the dataset, usually describing how the dataset was produced."
+                                        cardIcon="fas fa-book"
                                         tagName="publication"
                                         addButtonLabel="Primary Publication"
                                         label="Primary Publications">

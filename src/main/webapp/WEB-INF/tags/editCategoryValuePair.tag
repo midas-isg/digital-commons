@@ -52,6 +52,7 @@
                                 isInputGroup="${true}"
                                 string="${categoryValuePair.categoryIRI}">
 </myTags:editNonZeroLengthString>
+<%--TODO: add icon for add values--%>
 <myTags:editMasterUnbounded path="${path}.values"
                             specifier="${specifier}-values"
                             label="Values"

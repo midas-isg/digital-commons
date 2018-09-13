@@ -68,6 +68,7 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${organization.alternateIdentifiers}">
 </myTags:editMasterUnbounded>

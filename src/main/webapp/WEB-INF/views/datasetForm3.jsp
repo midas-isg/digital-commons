@@ -26,6 +26,7 @@
                                         specifier="spatialCoverage"
                                         listItems="${digitalObject.spatialCoverage}"
                                         cardText="The geographical extension and span covered by the dataset and its measured dimensions/variables."
+                                        cardIcon="fas fa-globe-americas"
                                         tagName="place"
                                         isRequired="${false}"
                                         addButtonLabel="Spatial Coverage"

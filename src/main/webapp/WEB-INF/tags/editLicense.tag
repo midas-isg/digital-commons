@@ -29,6 +29,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A legal document giving official permission to do something with a Resource. It is assumed that an external vocabulary will describe with sufficient granularity the permission for redistribution, modification, derivation, reuse, etc. and conditions for citation/acknowledgment."
+                                 cardIcon="fab fa-creative-commons"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -69,6 +70,7 @@
                             isFirstRequired="false"
                             showAddPersonButton="true"
                             cardText="The person(s) or organization(s) responsible for writing the license."
+                            cardIcon="fas fa-users"
                             tagName="personComprisedEntity"
                             showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
@@ -79,6 +81,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A legal document giving official permission to do something with a Resource. It is assumed that an external vocabulary will describe with sufficient granularity the permission for redistribution, modification, derivation, reuse, etc. and conditions for citation/acknowledgment."
+                                 cardIcon="fab fa-creative-commons"
                                  showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

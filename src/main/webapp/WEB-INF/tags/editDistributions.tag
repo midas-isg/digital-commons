@@ -90,6 +90,7 @@
                             addButtonLabel="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${distribution.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -103,6 +104,7 @@
 <myTags:editMasterUnbounded listItems="${distribution.dates}"
                             path="${path}.dates"
                             cardText="Relevant dates for the datasets, e.g. creation date or last modification date may be added."
+                            cardIcon="far fa-calendar-alt"
                             tagName="date"
                             label="Dates"
                             addButtonLabel="Date"
@@ -112,11 +114,13 @@
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${distribution.licenses}"
                             cardText="The terms of use of the dataset distribution."
+                            cardIcon="fab fa-creative-commons"
                             tagName="license"
                             label="Licenses"
                             addButtonLabel="License"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
+<%--TODO: add icon for conforms to--%>
 <myTags:editMasterUnbounded label="Conforms To"
                             addButtonLabel="Conforms To"
                             path="${path}.conformsTo"
@@ -128,6 +132,7 @@
 <myTags:editMasterUnbounded path="${path}.qualifiers"
                             specifier="${specifier}-qualifiers"
                             cardText="One or more characteristics of the dataset distribution (e.g. how it relates to other distributions, if the data is raw or processed, compressed or encrypted)."
+                            cardIcon="far fa-file-archive"
                             tagName="annotation"
                             listItems="${distribution.qualifiers}"
                             addButtonLabel="Qualifier"
@@ -139,6 +144,7 @@
                             path="${path}.formats"
                             specifier="${specifier}-formats"
                             cardText="The technical format of the dataset distribution. Use the file extension or MIME type when possible. (Definition adapted from DataCite)"
+                            cardIcon="far fa-file-alt"
                             isRequired="${false}"
                             placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
                             addButtonLabel="Format"
@@ -151,6 +157,7 @@
                        id="${specifier}-unit"
                        isUnboundedList="${false}"
                        cardText="The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                       cardIcon="fas fa-ruler"
                        isRequired="${false}"
                        label="Unit">
 </myTags:editAnnotation>

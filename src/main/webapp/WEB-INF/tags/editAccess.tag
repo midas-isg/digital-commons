@@ -65,6 +65,7 @@
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${access.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -73,6 +74,7 @@
                             specifier="${specifier}-types"
                             listItems="${access.types}"
                             cardText="Method to obtain the resource, ideally specified from a controlled vocabulary or ontology."
+                            cardIcon="fas fa-info-circle"
                             tagName="annotation"
                             addButtonLabel="Type"
                             label="Types">
@@ -80,6 +82,7 @@
 <myTags:editMasterUnbounded path="${path}.authorizations"
                             specifier="${specifier}-authorizations"
                             cardText="Types of verification that accessing the resource is allowed. Authorization occurs before successful authentication and refers to the process of obtaining approval to use a data set. Ideally specified from a controlled vocabulary or ontology."
+                            cardIcon="fas fa-key"
                             tagName="annotation"
                             listItems="${access.authorizations}"
                             addButtonLabel="Authorization"
@@ -88,6 +91,7 @@
 <myTags:editMasterUnbounded path="${path}.authentications"
                             specifier="${specifier}-authentications"
                             cardText="Types of verification of the credentials for accessing the resource, it is the identification process at the time of access. ideally specified from a controlled vocabulary or ontology."
+                            cardIcon="fa fa-check-circle"
                             tagName="annotation"
                             listItems="${access.authentications}"
                             addButtonLabel="Authentication"

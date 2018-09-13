@@ -756,17 +756,21 @@ $(document).ready(function() {
 
 function scrollToAnchor(anchor) {
     var el = document.querySelector('#' + anchor);
-    var offset = el.getBoundingClientRect().top + window.scrollY;
-    if(offset < 81) {
-        offset += 95;
-    } else {
-        offset -= 95;
+    try {
+        var offset = el.getBoundingClientRect().top + window.scrollY;
+        if (offset < 81) {
+            offset += 95;
+        } else {
+            offset -= 95;
+        }
+        window.scroll({
+            top: offset,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } catch (e) {
+
     }
-    window.scroll({
-        top: offset,
-        left: 0,
-        behavior: 'smooth'
-    });
 }
 
 function highlightDiv(div) {

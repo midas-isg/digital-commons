@@ -1347,9 +1347,6 @@ ul.CTAs a {
     border-radius: 25px;
 }
 
-.card-icon {
-    margin-right: 5px;
-}
 
 .add-card-header {
     color: #0b2b65;
@@ -1375,6 +1372,20 @@ ul.CTAs a {
     padding-top: 15px;
 }
 
+.card-button-header {
+    padding-bottom: 0px;
+}
+
+.card-button-body {
+    padding-top: 0px;
+}
+
+.card-label {
+    font-size: 2em;
+}
+.card-icon {
+    font-size: 5em;
+}
 ::-webkit-input-placeholder {
     color: peachpuff;
     font-size: 10px;

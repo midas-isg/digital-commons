@@ -40,6 +40,7 @@
                        isUnboundedList="${false}"
                        isRequired="${false}"
                        cardText="The measurements or facts that the data is about."
+                       cardIcon="fas fa-info-circle"
                        path="${path}.information">
 </myTags:editAnnotation>
 <myTags:editAnnotation annotation="${type.method}"
@@ -49,6 +50,7 @@
                        isUnboundedList="${false}"
                        isRequired="${false}"
                        cardText="The procedure or technology used to generate the information."
+                       cardIcon="fa fa-cloud"
                        path="${path}.method">
 </myTags:editAnnotation>
 <myTags:editAnnotation annotation="${type.platform}"
@@ -58,6 +60,7 @@
                        isUnboundedList="${false}"
                        isRequired="${false}"
                        cardText="The set of instruments, software and reagents that are needed to generated the data."
+                       cardIcon="fas fa-laptop"
                        path="${path}.platform">
 </myTags:editAnnotation>
 <myTags:editMasterElementWrapper path="${path}"

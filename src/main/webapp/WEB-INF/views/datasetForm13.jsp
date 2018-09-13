@@ -35,6 +35,7 @@
                 </myTags:editNonZeroLengthString>
             </div>
             <div id="extraProperties">
+                <%--TODO: add icon for extra properties--%>
                 <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                             tagName="categoryValuePair"
                                             specifier="extraProperties"

@@ -43,16 +43,17 @@
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.funders"
-                                  specifier="${specifier}-funders"
-                                  label="Funders"
+                            specifier="${specifier}-funders"
+                            label="Funders"
                             addButtonLabel="Funder"
-                                  listItems="${grant.funders}"
-                                  createPersonOrganizationTags="${true}"
+                            listItems="${grant.funders}"
+                            createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
                             cardText="The person(s) or organization(s) which has awarded the funds supporting the project."
-                                  isFirstRequired="true"
-                                  showAddPersonButton="true"
-                                  showAddOrganizationButton="true">
+                            cardIcon="fas fa-users"
+                            isFirstRequired="true"
+                            showAddPersonButton="true"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${grant.identifier}"
@@ -66,20 +67,22 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${grant.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.awardees"
-                                  specifier="${specifier}-awardees"
-                                  label="Awardees"
+                            specifier="${specifier}-awardees"
+                            label="Awardees"
                             addButtonLabel="Awardee"
-                                  listItems="${grant.awardees}"
-                                  createPersonOrganizationTags="${true}"
+                            listItems="${grant.awardees}"
+                            createPersonOrganizationTags="${true}"
                             cardText="The person(s) or organization(s) which received the funds supporting the project."
+                            cardIcon="fas fa-award"
                             tagName="personComprisedEntity"
-                                  isFirstRequired="false"
-                                  showAddPersonButton="true"
-                                  showAddOrganizationButton="true">
+                            isFirstRequired="false"
+                            showAddPersonButton="true"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"

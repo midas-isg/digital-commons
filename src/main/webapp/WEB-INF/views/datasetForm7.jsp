@@ -36,6 +36,7 @@
                                             specifier="citations"
                                             listItems="${digitalObject.citations}"
                                             cardText="The publication(s) that cite this dataset."
+                                            cardIcon="fas fa-quote-right"
                                             tagName="publication"
                                             addButtonLabel="Citation"
                                             label="Citations">

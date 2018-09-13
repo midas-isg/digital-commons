@@ -14,9 +14,9 @@
             Info</a>
 
             <ul class="collapse list-unstyled" id="basicSubmenu">
-                <li><a href="#" onclick="submitForm('identifier')">Identifier</a></li>
                 <li><a href="#" onclick="submitForm('title')">Title</a></li>
                 <li><a href="#" onclick="submitForm('description')">Description</a></li>
+                <li><a href="#" onclick="submitForm('identifier')">Identifier</a></li>
                 <li><a href="#" onclick="submitForm('dates')">Dates</a></li>
             </ul>
         </li>
@@ -53,8 +53,8 @@
                aria-expanded="false"
                class="dropdown-toggle">Citation</a>
             <ul class="collapse list-unstyled" id="citationSubmenu">
-                <li><a href="#" onclick="submitForm('citations')">Citations</a></li>
                 <li><a href="#" onclick="submitForm('citationCount')">Citation Count</a></li>
+                <li><a href="#" onclick="submitForm('citations')">Citations</a></li>
             </ul>
         </li>
 

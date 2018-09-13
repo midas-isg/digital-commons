@@ -25,6 +25,7 @@
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
+                                 cardIcon="far fa-folder-open"
                                  tagName="dataRepository"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -68,6 +69,7 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${dataRepository.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -75,6 +77,7 @@
                             specifier="${specifier}-scopes"
                             listItems="${dataRepository.scopes}"
                             cardText="Information about the nature of the datasets in the repository, ideally from a controlled vocabulary or ontology (e.g. transcription profile, sequence reads, molecular structure, image, DNA sequence, NMR spectra)."
+                            cardIcon="far fa-eye"
                             tagName="annotation"
                             addButtonLabel="Scope"
                             label="Scopes">
@@ -83,6 +86,7 @@
                             specifier="${specifier}-types"
                             listItems="${dataRepository.types}"
                             cardText="A descriptor (ideally from a controlled vocabulary) providing information about the type of repository, such as primary resource or aggregator."
+                            cardIcon="fas fa-info-circle"
                             tagName="annotation"
                             addButtonLabel="Type"
                             label="Types">
@@ -92,6 +96,7 @@
                             label="Licenses"
                             addButtonLabel="License"
                             cardText="The terms of use of the data repository."
+                            cardIcon="fab fa-creative-commons"
                             tagName="license"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
@@ -102,7 +107,8 @@
                                   listItems="${dataRepository.publishers}"
                                   isFirstRequired="false"
                                   createPersonOrganizationTags="true"
-                            cardText="he person(s) or organization(s) responsible for the repository and its availability."
+                            cardText="The person(s) or organization(s) responsible for the repository and its availability."
+                            cardIcon="fas fa-users"
                             tagName="personComprisedEntity"
                                   showAddPersonButton="true"
                                   showAddOrganizationButton="true">
@@ -111,6 +117,7 @@
                             specifier="${specifier}-access"
                             listItems="${dataRepository.access}"
                             cardText="The information about access modality for the data repository."
+                            cardIcon="fa fa-unlock"
                             tagName="access"
                             isRequired="${false}"
                             addButtonLabel="Access"

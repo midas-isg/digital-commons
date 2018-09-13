@@ -27,6 +27,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="Information about the primary identifier."
+                                 cardIcon="fa fa-id-card-o"
                                  tagName="identifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
