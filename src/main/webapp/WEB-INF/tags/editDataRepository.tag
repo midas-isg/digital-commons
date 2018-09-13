@@ -101,17 +101,17 @@
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.publishers"
-                                  specifier="${specifier}-publishers"
-                                  label="Publishers"
+                            specifier="${specifier}-publishers"
+                            label="Publishers"
                             addButtonLabel="Publisher"
-                                  listItems="${dataRepository.publishers}"
-                                  isFirstRequired="false"
-                                  createPersonOrganizationTags="true"
+                            listItems="${dataRepository.publishers}"
+                            isFirstRequired="false"
+                            createPersonOrganizationTags="true"
                             cardText="The person(s) or organization(s) responsible for the repository and its availability."
-                            cardIcon="fas fa-users"
+                            cardIcon="fas fa-book-open"
                             tagName="personComprisedEntity"
-                                  showAddPersonButton="true"
-                                  showAddOrganizationButton="true">
+                            showAddPersonButton="true"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.access"
                             specifier="${specifier}-access"
