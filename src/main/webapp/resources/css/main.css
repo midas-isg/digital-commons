@@ -1331,12 +1331,12 @@ ul.CTAs a {
     background-image: linear-gradient(to left, rgba(11,43,101,0.55), rgba(11,43,101,0.80));
 }
 
-.card-header-unbounded {
-    margin-bottom: 12px;
-}
-
 .card-header .heading-elements {
     right: 5px;
+}
+
+.card-content {
+    margin-top: 12px;
 }
 
 .card-body {

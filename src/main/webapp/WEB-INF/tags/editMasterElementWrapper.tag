@@ -66,6 +66,7 @@
 
         <div id="${id}"
         class="<c:if test="${not isUnboundedList}">form-group </c:if> <c:if test="${not isInputGroup and not isUnboundedList}">card</c:if>
+            <c:if test="${isUnboundedList}">card-content collapse show</c:if>
             <c:if test="${isInputGroup}">row</c:if>
             <c:if test="${not isUnboundedList}">edit-form-group </c:if>
             <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>
