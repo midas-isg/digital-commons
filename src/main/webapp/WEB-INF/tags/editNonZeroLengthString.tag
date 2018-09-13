@@ -26,6 +26,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="false"
+              type="java.lang.String" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -37,7 +39,7 @@
                                  isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
-                                 cardText=""
+                                 cardText="${cardText}"
                                  tagName="string"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -56,7 +58,7 @@
                                  isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
-                                 cardText=""
+                                 cardText="${cardText}"
                                  tagName="string"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

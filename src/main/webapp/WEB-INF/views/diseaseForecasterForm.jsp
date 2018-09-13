@@ -25,6 +25,7 @@
             <myTags:editMasterUnbounded specifier="diseases"
                                         placeholder="Disease"
                                         label="Diseases"
+                                        addButtonLabel="Disease"
                                         path="diseases"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         tagName="softwareIdentifier"
@@ -32,6 +33,7 @@
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded listItems="${digitalObject.nowcasts}"
                                         label="Nowcasts"
+                                        addButtonLabel="Nowcast"
                                         placeholder="Nowcast"
                                         specifier="nowcast"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
@@ -40,6 +42,7 @@
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded listItems="${digitalObject.outcomes}"
                                         label="Outcomes"
+                                        addButtonLabel="Outcome"
                                         placeholder="Outcome"
                                         specifier="outcome"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
@@ -51,6 +54,7 @@
                                             specifier="forecast-frequency"
                                             id="forecast-frequency"
                                             path="forecastFrequency"
+                                            isInputGroup="${true}"
                                             string="${digitalObject.forecastFrequency}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Type"
@@ -58,10 +62,12 @@
                                             specifier="type"
                                             id="type"
                                             path="type"
+                                            isInputGroup="${true}"
                                             string="${digitalObject.type}">
             </myTags:editNonZeroLengthString>
             <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
             <myTags:editMasterUnbounded label="Forecasts"
+                                        addButtonLabel="Forecast"
                                         placeholder="Forecast"
                                         path="forecasts"
                                         specifier="forecasts"

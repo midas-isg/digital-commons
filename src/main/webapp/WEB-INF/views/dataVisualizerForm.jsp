@@ -24,6 +24,7 @@
 
             <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
                                         label="Visualization Types"
+                                        addButtonLabel="Visualization Type"
                                         placeholder="Visualization Type"
                                         specifier="visualization-type"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."

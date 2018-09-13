@@ -14,9 +14,9 @@
             Info</a>
 
             <ul class="collapse list-unstyled" id="softwareForm1">
-                <li><a href="#" onclick="submitForm('productName')">Product Name</a></li>
                 <li><a href="#" onclick="submitForm('title')">Title</a></li>
                 <li><a href="#" onclick="submitForm('humanReadableSynopsis')">Human Readable Synopsis</a></li>
+                <li><a href="#" onclick="submitForm('productName')">Product Name</a></li>
                 <li><a href="#" onclick="submitForm('identifier')">identifier</a></li>
                 <li><a href="#" onclick="submitForm('dataInputFormats')">Data Input Formats</a></li>
                 <li><a href="#" onclick="submitForm('dataOutputFormats')">Data Output Formats</a></li>
