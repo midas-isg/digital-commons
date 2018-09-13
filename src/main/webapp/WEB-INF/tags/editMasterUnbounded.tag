@@ -26,6 +26,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="showAddPersonButton" required="false"
               type="java.lang.Boolean" %>
 <%@ attribute name="showAddOrganizationButton" required="false"
@@ -38,57 +40,63 @@
               type="java.lang.Boolean" %>
 
 
-<div class="col card-button <c:if test="${not function:isObjectEmpty(listItems)}">hide</c:if>"
+<div class="col card-button d-flex align-items-stretch <c:if test="${not function:isObjectEmpty(listItems)}">hide</c:if>"
      id="${specifier}-add-input-button">
-    <div class="card mx-auto input-group control-group ${specifier}-${tagName}-add-more-button"
+    <div class="card mx-auto input-group control-group card-rounded ${specifier}-${tagName}-add-more-button"
          style="width: 18rem;">
-        <div class="card-body">
+        <div class="card-header add-card-header">
             <h5 class="card-title card-button-title">${label}<c:if test="${isRequired}"><i class="text-danger">*</i></c:if></h5>
-            <%--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>--%>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><i class="card-icon ${cardIcon}"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body d-flex">
             <p class="card-text">${cardText}</p>
             <c:choose>
                 <c:when test="${tagName == 'personComprisedEntity'}">
                     <c:if test="${showAddPersonButton and not showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddOrganizationButton and not showAddPersonButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddPersonButton and showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button">Add
                                 Person
                         </button>
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button">Add
                                 Organization
                         </button>
                     </c:if>
                 </c:when>
                 <c:when test="${tagName == 'isAbout'}">
                     <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button">Add
                                 Annotation
                         </button>
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
+                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
                                 Biological Entity
                         </button>
                     </c:if>
                 </c:when>
                 <c:otherwise>
-                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button">Add
+                    <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" type="button">Add
                             ${label}
                     </button>
                 </c:otherwise>
@@ -245,6 +253,7 @@
                                               specifier="${specifier}-${varStatus.count-1}"
                                               id="${specifier}-${varStatus.count-1}"
                                               cardText="${cardText}"
+                                              cardIcon="${cardIcon}"
                                               isUnboundedList="${true}"
                                               date="${listItem}"
                                               label="Date">
@@ -841,6 +850,7 @@
 
             createNewTab(this, '${specifier}', '${path}', '${tagName}', '${addButtonLabel}', isFirstRequired, listItemCount);
             scrollToAnchor('${specifier}-card');
+            highlightDiv('${specifier}-card');
             listItemCount += 1;
 
         });

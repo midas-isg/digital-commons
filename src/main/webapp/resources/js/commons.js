@@ -758,15 +758,35 @@ function scrollToAnchor(anchor) {
     var el = document.querySelector('#' + anchor);
     var offset = el.getBoundingClientRect().top + window.scrollY;
     if(offset < 81) {
-        offset += 80;
+        offset += 95;
     } else {
-        offset -= 80;
+        offset -= 95;
     }
     window.scroll({
         top: offset,
         left: 0,
         behavior: 'smooth'
     });
+}
+
+function highlightDiv(div) {
+    $("div.card").find('*').css("box-shadow", '');
+
+    $('#' + div).animate({
+        boxShadow: "0px 0px 15px 15px rgba(1, 255, 68, 0.9)"
+    }, 1000);
+
+    $(function() {
+        $("body").click(function(e) {
+            if (e.target.id == div || $(e.target).parents("#" + div).length) {
+                $('#' + div).animate({
+                    boxShadow: "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
+                }, 500);
+            }
+        });
+    })
+
+
 }
 
 // Collapsible Card

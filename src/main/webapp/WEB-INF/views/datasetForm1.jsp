@@ -52,6 +52,7 @@
                                         path="dates"
                                         label="Dates"
                                         addButtonLabel="Date"
+                                        cardIcon="fa fa-calendar-o"
                                         cardText="Information about a calendar date or timestamp indicating day, month, year and time of an event."
                                         tagName="date"
                                         specifier="dates">
