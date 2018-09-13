@@ -4,6 +4,7 @@ import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
 import edu.pitt.isg.mdc.dats2_2.*;
+import edu.pitt.isg.mdc.v1_0.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -126,16 +127,34 @@ public class TagUtil {
 
     public static String getCardTabTitle(Object listItem) {
         String cardTabTitle = getCardTabToolTip(listItem);
+        int maxLength = 35;
+        int leftIndex = 20;
+        int rightIndex = 10;
 
-        if (cardTabTitle.length() > 40) {
-            if (cardTabTitle.contains(" ")) {
-                String[] cardTabTitleWords = cardTabTitle.split("\\s+");
-                int size = cardTabTitleWords.length;
-                if (size > 6) {
-                    cardTabTitle = cardTabTitle.substring(0, cardTabTitle.indexOf(cardTabTitleWords[3]) - 1) + "..." + cardTabTitle.substring(cardTabTitle.indexOf(cardTabTitleWords[size - 2]));
+        if (cardTabTitle.contains(" ")) {
+            String[] cardTabTitleWords = cardTabTitle.split("\\s+");
+            int size = cardTabTitleWords.length;
+            if (size > 7) {
+                //take first 3 words and last 2 words
+                leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + cardTabTitleWords[2].length() + 2;
+                rightIndex = cardTabTitleWords[size - 2].length() + cardTabTitleWords[size - 1].length() + 1;
+                cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
+            } else if (size > 5) {
+                //take first 2 words and last word
+                    leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + 1;
+                    rightIndex = cardTabTitleWords[size - 1].length();
+                    cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
+            } else if (cardTabTitle.length() > maxLength) {
+                if (cardTabTitle.substring(0, leftIndex).contains(" ")) {
+                    leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
                 }
-            } else
-                cardTabTitle = cardTabTitle.substring(0, 15) + "..." + cardTabTitle.substring(cardTabTitle.length() - 15);
+                if (cardTabTitle.substring(cardTabTitle.length() - (rightIndex + 5)).contains(" ")) {
+                    rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
+                }
+                cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
+            }
+        } else if (cardTabTitle.length() > maxLength) {
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
         }
 
         return cardTabTitle;
@@ -170,8 +189,14 @@ public class TagUtil {
                 cardTabToolTip = ((Date) listItem).getType().getValue();
                 break;
             case "Identifier":
-                cardTabToolTip = ((Identifier) listItem).getIdentifier();
-                break;
+                if (listItem.getClass().getName() == "edu.pitt.isg.mdc.dats2_2.Identifier") {
+                    cardTabToolTip = ((edu.pitt.isg.mdc.dats2_2.Identifier) listItem).getIdentifier();
+                    break;
+                }
+                if (listItem.getClass().getName() == "edu.pitt.isg.mdc.v1_0.Identifier") {
+                    cardTabToolTip = ((edu.pitt.isg.mdc.v1_0.Identifier) listItem).getIdentifier();
+                    break;
+                }
             case "Person":
                 if (isObjectEmpty(((Person) listItem).getFullName())) {
                     cardTabToolTip = ((Person) listItem).getFirstName() + " " + ((Person) listItem).getLastName();
@@ -225,6 +250,14 @@ public class TagUtil {
                 if (isObjectEmpty(((CategoryValuePair) listItem).getCategory())) {
                     cardTabToolTip = "Category";
                 } else cardTabToolTip = ((CategoryValuePair) listItem).getCategory();
+                break;
+            case "NestedIdentifier":
+                if (isObjectEmpty(((NestedIdentifier) listItem).getIdentifier().getIdentifier())) {
+                    cardTabToolTip = "Identifier";
+                } else cardTabToolTip = ((NestedIdentifier) listItem).getIdentifier().getIdentifier();
+                break;
+            case "DataServiceDescription":
+                cardTabToolTip = ((DataServiceDescription) listItem).getAccessPointType().name();
                 break;
         }
 

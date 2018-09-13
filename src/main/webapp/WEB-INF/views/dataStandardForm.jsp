@@ -22,21 +22,6 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
-                                   label="Identifier"
-                                   specifier="identifier"
-                                   id="identifier"
-                                   isUnboundedList="${false}"
-                                   path="identifier">
-            </myTags:editIdentifier>
-            <myTags:editMasterUnbounded specifier="alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="alternateIdentifiers"
-                                        listItems="${digitalObject.alternateIdentifiers}"
-                                        isRequired="${false}"
-                                        isInputGroup="${true}"
-                                        tagName="identifier">
-            </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString placeholder=" Name"
                                             label="Name"
                                             string="${digitalObject.name}"
@@ -57,6 +42,32 @@
                                             isRequired="${false}"
                                             placeholder="Description">
             </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="Version"
+                                            placeholder=" Version"
+                                            specifier="version"
+                                            id="version"
+                                            string="${digitalObject.version}"
+                                            isUnboundedList="${false}"
+                                            isRequired="${false}"
+                                            isInputGroup="${true}"
+                                            path="version">
+            </myTags:editNonZeroLengthString>
+            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
+                                   label="Identifier"
+                                   specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
+                                   path="identifier">
+            </myTags:editIdentifier>
+            <myTags:editMasterUnbounded specifier="alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        addButtonLabel="Alternate Identifier"
+                                        path="alternateIdentifiers"
+                                        listItems="${digitalObject.alternateIdentifiers}"
+                                        cardText="Information about an alternate identifier (other than the primary)."
+                                        isRequired="${false}"
+                                        tagName="identifier">
+            </myTags:editMasterUnbounded>
             <myTags:editAnnotation annotation="${digitalObject.type}"
                                    isRequired="${true}"
                                    path="type"
@@ -70,25 +81,18 @@
                                         tagName="license"
                                         specifier="licenses"
                                         isRequired="${false}"
-                                        label="License"
+                                        label="Licenses"
+                                        addButtonLabel="License"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         path="licenses">
             </myTags:editMasterUnbounded>
-            <myTags:editNonZeroLengthString label="Version"
-                                            placeholder=" Version"
-                                            specifier="version"
-                                            id="version"
-                                            string="${digitalObject.version}"
-                                            isUnboundedList="${false}"
-                                            isRequired="${false}"
-                                            path="version">
-            </myTags:editNonZeroLengthString>
             <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                         tagName="categoryValuePair"
                                         isRequired="${false}"
                                         specifier="extraProperties"
                                         cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                         path="extraProperties"
+                                        addButtonLabel="Extra Property"
                                         label="Extra Properties">
             </myTags:editMasterUnbounded>
 

@@ -44,13 +44,13 @@
     <action-state id="index">
         <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
 
-        <transition on="identifier" to="dataStandardForm"/>
-        <transition on="alternateIdentifiers" to="dataStandardForm"/>
         <transition on="name" to="dataStandardForm"/>
         <transition on="description" to="dataStandardForm"/>
+        <transition on="version" to="dataStandardForm"/>
+        <transition on="identifier" to="dataStandardForm"/>
+        <transition on="alternateIdentifiers" to="dataStandardForm"/>
         <transition on="type" to="dataStandardForm"/>
         <transition on="license" to="dataStandardForm"/>
-        <transition on="version" to="dataStandardForm"/>
         <transition on="extraProperties" to="dataStandardForm"/>
         <transition on="alternateIdentifiers[0]" to="dataStandardForm"/>
         <transition on="licenses[0]" to="dataStandardForm"/>

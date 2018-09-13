@@ -25,6 +25,7 @@
                 <myTags:editMasterUnbounded path="hostSpeciesIncluded"
                                             specifier="host-species-included"
                                             label="Host Species Included"
+                                            addButtonLabel="Host Species"
                                             tagName="softwareIdentifier"
                                             placeholder="Host Species Included"
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
@@ -33,7 +34,8 @@
                 </myTags:editMasterUnbounded>
                 <myTags:editMasterUnbounded path="pathogenCoverage"
                                             specifier="pathogen-coverage"
-                                            label="Pathogen Coverage"
+                                            label="Pathogen Coverages"
+                                            addButtonLabel="Pathogen Coverage"
                                             tagName="softwareIdentifier"
                                             placeholder="Pathogen Coverage"
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."

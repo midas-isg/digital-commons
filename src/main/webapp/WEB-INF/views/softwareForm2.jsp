@@ -21,48 +21,47 @@
 
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
-            <div id="license">
+
                 <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
                                                 specifier="license" placeholder="License"
                                                 isRequired="${false}"
                                                 isUnboundedList="${false}"
+                                                isInputGroup="${true}"
+                                                cardText="The terms of use of the software."
                                                 id="license"
                                                 label="License"></myTags:editNonZeroLengthString>
-            </div>
-            <div id="source">
                 <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
                                                 specifier="source" placeholder="Source"
                                                 isRequired="${false}"
                                                 isUnboundedList="${false}"
+                                                isInputGroup="${true}"
                                                 id="source"
                                                 label="Source"></myTags:editNonZeroLengthString>
-            </div>
-            <div id="developers">
-                <myTags:editMasterUnbounded label="Developers" placeholder="Developer"
-                                            path="developers" specifier="developers"
+                <myTags:editMasterUnbounded label="Developers"
+                                            addButtonLabel="Developer"
+                                            placeholder="Developer"
+                                            path="developers"
+                                            specifier="developers"
                                             cardText="The person or organisation that developed the software."
                                             isRequired="${false}"
                                             tagName="string"
                                             listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
-            </div>
-            <div id="website">
                 <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
                                                 specifier="website" placeholder="Website"
                                                 isRequired="${false}"
                                                 isUnboundedList="${false}"
+                                                isInputGroup="${true}"
                                                 id="website"
                                                 label="Website"></myTags:editNonZeroLengthString>
-            </div>
-            <div id="documentation">
                 <myTags:editNonZeroLengthString path="documentation" string="${digitalObject.documentation}"
                                                 specifier="documentation" placeholder="Documentation"
                                                 isRequired="${false}"
                                                 isUnboundedList="${false}"
+                                                isInputGroup="${true}"
                                                 id="documentation"
                                                 label="Documentation"></myTags:editNonZeroLengthString>
-            </div>
-            <div id="publicationsThatUsedRelease">
                 <myTags:editMasterUnbounded label="Publications That Used Release"
+                                            addButtonLabel="Publication That Used Relase"
                                             placeholder="Publication That Used Release"
                                             path="publicationsThatUsedRelease"
                                             specifier="publications-that-used-release"
@@ -70,25 +69,24 @@
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             tagName="string"
                                             listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
-            </div>
-            <div id="executables">
-                <myTags:editMasterUnbounded label="Executables" placeholder="Executable"
+                <myTags:editMasterUnbounded label="Executables"
+                                            addButtonLabel="Executable"
+                                            placeholder="Executable"
                                             path="executables" specifier="executables"
                                             isRequired="${false}"
                                             tagName="string"
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
-            </div>
-            <div id="version">
-                <myTags:editMasterUnbounded label="Version" placeholder="Version"
+                <myTags:editMasterUnbounded label="Versions"
+                                            addButtonLabel="Version"
+                                            placeholder="Version"
                                             path="version" specifier="version"
                                             isRequired="${false}"
                                             tagName="string"
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
-            </div>
-            <div id="publicationsAboutRelease">
                 <myTags:editMasterUnbounded label="Publications About Release"
+                                            addButtonLabel="Publication About Release"
                                             placeholder="Publication About Release"
                                             path="publicationsAboutRelease"
                                             specifier="publications-about-release"
@@ -96,18 +94,17 @@
                                             tagName="string"
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
-            </div>
-            <div id="grants">
-                <myTags:editMasterUnbounded label="Grant" placeholder="Grant"
+                <myTags:editMasterUnbounded label="Grants"
+                                            addButtonLabel="Grant"
+                                            placeholder="Grant"
                                             path="grants" specifier="grants"
                                             isRequired="${false}"
                                             tagName="string"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                            cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
                                             listItems="${digitalObject.grants}">
                 </myTags:editMasterUnbounded>
-            </div>
-            <div id="locationCoverage">
                 <myTags:editMasterUnbounded label="Location Coverages"
+                                            addButtonLabel="Location Coverage"
                                             placeholder="Location Coverage"
                                             path="locationCoverage"
                                             specifier="location-coverage"
@@ -115,17 +112,11 @@
                                             cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
                                             listItems="${digitalObject.locationCoverage}">
                 </myTags:editMasterUnbounded>
-            </div>
-
-            <div id="availableOnOlympus">
                 <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus" checked="${digitalObject.availableOnOlympus}"></myTags:editCheckbox>
-            </div>
-            <div id="availableOnUIDS">
                 <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS" checked="${digitalObject.availableOnUIDS}"></myTags:editCheckbox>
-            </div>
-            <div id="signInRequired">
                 <myTags:editCheckbox label="Sign In Required" path="signInRequired" checked="${digitalObject.signInRequired}"></myTags:editCheckbox>
-            </div>
+
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
@@ -144,6 +135,12 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
+    });
+</script>
 
 <myTags:analytics/>
 
