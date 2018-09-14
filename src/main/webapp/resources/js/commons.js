@@ -959,8 +959,8 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
     regexEscapeOpenBracket = new RegExp('\\[', "g");
     regexEscapeClosedBracket = new RegExp('\\]', "g");
-    path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-    regexPath = new RegExp(path + '\\[0\\]', "g");
+    regexPath = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+    regexPath = new RegExp(regexPath + '\\[0\\]', "g");
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
     html = html.replace(regexPath, path+'[' + listItemCount + ']')
         .replace(regexSpecifier, specifier+'-' + listItemCount);
