@@ -851,7 +851,8 @@ function closeTab(e, div, specifier) {
     $(div.parentElement.parentElement).remove();
 
     $("#" + $(prevDiv).attr("for")).show();
-    $($(prevDiv).find("a")[0]).addClass("active")
+    // $($(prevDiv).find("a")[0]).addClass("active");
+    showTab(e,  $(prevDiv).find("a")[0], specifier);
 
     e.preventDefault();
     e.stopPropagation();

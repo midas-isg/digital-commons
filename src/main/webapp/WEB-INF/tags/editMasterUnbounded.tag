@@ -93,8 +93,8 @@
                 </c:otherwise>
             </c:choose>
 
-            <div class="d-flex align-items-center">
-                <div class="mr-auto card-label">${label}</div>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="card-label">${label}</div>
                 <div class="card-icon"><i class="${cardIcon}"></i></div>
             </div>
         </div>

@@ -104,7 +104,7 @@
                             specifier="${specifier}-acknowledges"
                             listItems="${publication.acknowledges}"
                             cardText="The grant(s) which funded and supported the work reported by the publication."
-                            cardIcon="fas fa-file-invoice-dollar"
+                            cardIcon="fas fa-university"
                             tagName="grant"
                             addButtonLabel="Acknowledgment"
                             label="Acknowledges">

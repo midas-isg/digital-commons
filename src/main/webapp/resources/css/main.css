@@ -1391,6 +1391,7 @@ ul.CTAs a {
 }
 .card-icon {
     font-size: 5em;
+    padding-left: 20px;
 }
 ::-webkit-input-placeholder {
     color: peachpuff;

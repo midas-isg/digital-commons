@@ -42,6 +42,7 @@
                                             label="Extra Properties"
                                             addButtonLabel="Extra Property"
                                             cardText="Extra properties that do not fit in the previous specified attributes."
+                                            cardIcon="fas fa-plus"
                                             path="extraProperties">
                 </myTags:editMasterUnbounded>
             </div>
