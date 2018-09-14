@@ -179,7 +179,7 @@
                     <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
                         <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link " data-toggle="tooltip" title="${cardTabToolTip}">
                                 ${cardTabTitle}
-                            <i onclick="closeTab(event, this)" class="ft-x"></i>
+                            <i onclick="closeTab(event, this, '${specifier}', '${tagName}')" class="ft-x"></i>
                         </a>
                     </li>
                 </c:forEach>
