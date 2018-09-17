@@ -22,106 +22,111 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-                <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
-                                                specifier="license"
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                placeholder="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
-                                                cardText="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
-                                                id="license"
-                                                label="License"></myTags:editNonZeroLengthString>
-                <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
-                                                specifier="source" placeholder="Where something is available or from where it originates."
-                                                cardText="Where something is available or from where it originates."
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                id="source"
-                                                label="Source"></myTags:editNonZeroLengthString>
-                <myTags:editMasterUnbounded label="Developers"
-                                            addButtonLabel="Developer"
-                                            placeholder="The person or organisation that developed and maintains the software."
-                                            path="developers"
-                                            specifier="developers"
-                                            cardText="The person or organisation that developed and maintains the software."
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
-                <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
-                                                specifier="website"
-                                                placeholder="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
-                                                cardText="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                id="website"
-                                                label="Website"></myTags:editNonZeroLengthString>
-                <myTags:editNonZeroLengthString path="documentation" string="${digitalObject.documentation}"
-                                                specifier="documentation"
-                                                placeholder="Material that provides official information or evidence or that serves as a record for the software."
-                                                cardText="Material that provides official information or evidence or that serves as a record for the software."
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                id="documentation"
-                                                label="Documentation"></myTags:editNonZeroLengthString>
-                <myTags:editMasterUnbounded label="Publications That Used Release"
-                                            addButtonLabel="Publication That Used Release"
-                                            placeholder="A publication that used the release."
-                                            path="publicationsThatUsedRelease"
-                                            specifier="publications-that-used-release"
-                                            isRequired="${false}"
-                                            cardText="A publication that used the release."
-                                            tagName="string"
-                                            listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Executables"
-                                            addButtonLabel="Executable"
-                                            placeholder="Executable"
-                                            path="executables" specifier="executables"
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
-                                            listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Versions"
-                                            addButtonLabel="Version"
-                                            placeholder="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
-                                            path="version" specifier="version"
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            cardText="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
-                                            listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Publications About Release"
-                                            addButtonLabel="Publication About Release"
-                                            placeholder="A publication that is about a release."
-                                            path="publicationsAboutRelease"
-                                            specifier="publications-about-release"
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            cardText="A publication that is about a release."
-                                            listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Grants"
-                                            addButtonLabel="Grant"
-                                            placeholder="Grant"
-                                            path="grants" specifier="grants"
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
-                                            listItems="${digitalObject.grants}">
-                </myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Location Coverages"
-                                            addButtonLabel="Location Coverage"
-                                            placeholder="An information content entity that specifies a geographical region coveredby the software."
-                                            path="locationCoverage"
-                                            specifier="location-coverage"
-                                            tagName="softwareIdentifier"
-                                            cardText="An information content entity that specifies a geographical region coveredby the software."
-                                            listItems="${digitalObject.locationCoverage}">
-                </myTags:editMasterUnbounded>
-                <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus" checked="${digitalObject.availableOnOlympus}"></myTags:editCheckbox>
-                <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS" checked="${digitalObject.availableOnUIDS}"></myTags:editCheckbox>
-                <myTags:editCheckbox label="Sign In Required" path="signInRequired" checked="${digitalObject.signInRequired}"></myTags:editCheckbox>
-
+            <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
+                                            specifier="license"
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            placeholder="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
+                                            cardText="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
+                                            id="license"
+                                            label="License"></myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
+                                            specifier="source"
+                                            placeholder="Where something is available or from where it originates."
+                                            cardText="Where something is available or from where it originates."
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            id="source"
+                                            label="Source"></myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
+                                            specifier="website"
+                                            placeholder="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
+                                            cardText="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            id="website"
+                                            label="Website"></myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="documentation" string="${digitalObject.documentation}"
+                                            specifier="documentation"
+                                            placeholder="Material that provides official information or evidence or that serves as a record for the software."
+                                            cardText="Material that provides official information or evidence or that serves as a record for the software."
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            id="documentation"
+                                            label="Documentation"></myTags:editNonZeroLengthString>
+            <myTags:editMasterUnbounded label="Developers"
+                                        addButtonLabel="Developer"
+                                        placeholder="The person or organisation that developed and maintains the software."
+                                        path="developers"
+                                        specifier="developers"
+                                        cardText="The person or organisation that developed and maintains the software."
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Publications That Used Release"
+                                        addButtonLabel="Publication That Used Release"
+                                        placeholder="A publication that used the release."
+                                        path="publicationsThatUsedRelease"
+                                        specifier="publications-that-used-release"
+                                        isRequired="${false}"
+                                        cardText="A publication that used the release."
+                                        tagName="string"
+                                        listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Executables"
+                                        addButtonLabel="Executable"
+                                        placeholder="Executable"
+                                        path="executables" specifier="executables"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Versions"
+                                        addButtonLabel="Version"
+                                        placeholder="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
+                                        path="version" specifier="version"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardText="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
+                                        listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Publications About Release"
+                                        addButtonLabel="Publication About Release"
+                                        placeholder="A publication that is about a release."
+                                        path="publicationsAboutRelease"
+                                        specifier="publications-about-release"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardText="A publication that is about a release."
+                                        listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Grants"
+                                        addButtonLabel="Grant"
+                                        placeholder="Grant"
+                                        path="grants" specifier="grants"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                        listItems="${digitalObject.grants}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Location Coverages"
+                                        addButtonLabel="Location Coverage"
+                                        placeholder="An information content entity that specifies a geographical region coveredby the software."
+                                        path="locationCoverage"
+                                        specifier="location-coverage"
+                                        tagName="softwareIdentifier"
+                                        cardText="An information content entity that specifies a geographical region coveredby the software."
+                                        listItems="${digitalObject.locationCoverage}">
+            </myTags:editMasterUnbounded>
+            <div class="row edit-form-group">
+            <myTags:editCheckbox label="Available on Olympus" path="availableOnOlympus"
+                                 checked="${digitalObject.availableOnOlympus}"></myTags:editCheckbox>
+            <myTags:editCheckbox label="Available on UIDS" path="availableOnUIDS"
+                                 checked="${digitalObject.availableOnUIDS}"></myTags:editCheckbox>
+            <myTags:editCheckbox label="Sign In Required" path="signInRequired"
+                                 checked="${digitalObject.signInRequired}"></myTags:editCheckbox>
+            </div>
             <div class="row " id="entryFormContent-card-row"></div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
