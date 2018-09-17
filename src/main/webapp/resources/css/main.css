@@ -1306,8 +1306,16 @@ ul.CTAs a {
     padding-left: 0px;
 }
 
+/*Cursor:pointer allows the jquery to fire on iOS*/
 .ft-x{
+    cursor: pointer;
     padding-left: 5px;
+}
+.ft-maximize {
+    cursor: pointer;
+}
+.ft-minus {
+    cursor: pointer;
 }
 .ft-buttons {
     vertical-align: middle;

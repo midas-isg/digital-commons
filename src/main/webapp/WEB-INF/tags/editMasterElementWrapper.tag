@@ -132,6 +132,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                // $('.add-card-header').css('cursor', 'pointer');
+
                 rearrangeCards("${specifier}-input-block");
 
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
