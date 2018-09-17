@@ -72,7 +72,7 @@
 
         <c:if test="${not isUnboundedList}">
             <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
-            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-2">${label}</h6>
+            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-sm-2">${label}</h6>
 
 
             <c:if test="${not isInputGroup}">
@@ -97,7 +97,7 @@
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
         class="<c:if test="${not isInputGroup}">card-content collapse show form-group edit-form-group</c:if>
-            <c:if test="${isInputGroup}">col-10 input-group full-width</c:if>
+            <c:if test="${isInputGroup}">col-sm-10 input-group full-width</c:if>
             control-group
             <c:if test="${(function:isObjectEmpty(object) and not isUnboundedList and not isRequired) or (isUnboundedList and not function:isFirstInstance(specifier))}">hide</c:if>">
 <%--
@@ -132,6 +132,8 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                // $('.add-card-header').css('cursor', 'pointer');
+
                 rearrangeCards("${specifier}-input-block");
 
                 $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
@@ -164,13 +166,23 @@
 
                 //Remove section
                 $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-                    e.stopImmediatePropagation();
-                    $("#${specifier}-add-input-button").removeClass("hide");
+                    var confirmation = true;
+                    $("#${specifier}-input-block").find("input[type = 'text']").each(function() {
+                        if(this.value != "") {
+                            confirmation = confirm("Are you sure you want to close this card?");
+                            return false;
+                        }
+                    });
 
-                    clearAndHideEditControlGroup($(e.target).attr("for"));
-                    $(this).closest('.card').addClass("hide").slideUp('fast');
+                    if (confirmation == true) {
+                        e.stopImmediatePropagation();
+                        $("#${specifier}-add-input-button").removeClass("hide");
 
-                    $("#${specifier}-input-block").addClass("hide");
+                        clearAndHideEditControlGroup($(e.target).attr("for"));
+                        $(this).closest('.card').addClass("hide").slideUp('fast');
+
+                        $("#${specifier}-input-block").addClass("hide");
+                    }
                 });
             });
 

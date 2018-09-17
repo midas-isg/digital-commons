@@ -48,46 +48,46 @@
             <c:choose>
                 <c:when test="${tagName == 'personComprisedEntity'}">
                     <c:if test="${showAddPersonButton and not showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddOrganizationButton and not showAddPersonButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddPersonButton and showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
                             Person
                         </button>
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
                             Organization
                         </button>
                     </c:if>
                 </c:when>
                 <c:when test="${tagName == 'isAbout'}">
                     <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
                             Annotation
                         </button>
-                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
                             Biological Entity
                         </button>
                     </c:if>
                 </c:when>
                 <c:otherwise>
-                    <button class="btn btn-primary btn-block <c:if test="${label.length() > 30}">btn-text-small</c:if> ${specifier}-add-${tagName}" type="button"><i class="fa fa-plus-circle"></i> Add
+                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" type="button"><i class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </c:otherwise>
@@ -127,35 +127,35 @@
                     <c:when test="${tagName == 'personComprisedEntity'}">
                         <c:if test="${showAddPersonButton}">
                             <c:if test="${not showAddOrganizationButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                                <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddOrganizationButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add Person</a></li>
+                                <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add Person</a></li>
                             </c:if>
                         </c:if>
                         <c:if test="${showAddOrganizationButton}">
                             <c:if test="${not showAddPersonButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                                <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddPersonButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add Organization</a></li>
+                                <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add Organization</a></li>
                             </c:if>
                         </c:if>
                     </c:when>
                     <c:when test="${tagName == 'isAbout'}">
                         <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                            <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
                         <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                            <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
                         <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add Annotation</a></li>
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add Biological Entity</a></li>
+                            <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add Annotation</a></li>
+                            <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add Biological Entity</a></li>
                         </c:if>
                     </c:when>
                     <c:otherwise>
-                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                        <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
@@ -856,16 +856,26 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-            e.stopImmediatePropagation();
-            $("#${specifier}-add-input-button").removeClass("hide");
+            var confirmation = true;
+            $("#${specifier}-card").find("input[type = 'text']").each(function() {
+                if(this.value != "") {
+                    confirmation = confirm("Are you sure you want to close this card?");
+                    return false;
+                }
+            });
 
-            clearAndHideEditControlGroup($(e.target).attr("for"));
+            if (confirmation == true) {
+                e.stopImmediatePropagation();
+                $("#${specifier}-add-input-button").removeClass("hide");
 
-            closeAllTabs(e, $("#${specifier}-card"));
+                clearAndHideEditControlGroup($(e.target).attr("for"));
 
-            $(this).closest('.card').addClass("hide").slideUp('fast');
+                closeAllTabs(e, $("#${specifier}-card"));
 
-            $("#${specifier}-card").addClass("hide");
+                $(this).closest('.card').addClass("hide").slideUp('fast');
+
+                $("#${specifier}-card").addClass("hide");
+            }
         });
 
     });

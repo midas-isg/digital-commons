@@ -363,17 +363,17 @@ a {
     }
 }
 
-@media screen and (max-width: 1010px) {
+/*@media screen and (max-width: 1010px) {*/
 
-    a:hover {
-        background-color: transparent !important;
-    }
+    /*a:hover {*/
+        /*!*background-color: transparent !important;*!*/
+    /*}*/
 
-}
+/*}*/
 
-@media (min-width: 766px) and (max-width: 1010px) {
+/*@media (min-width: 766px) and (max-width: 1010px) {*/
 
-}
+/*}*/
 
 .bs-docs-footer {
     color: #777;
@@ -1310,8 +1310,16 @@ ul.CTAs a {
     padding-left: 0px;
 }
 
+/*Cursor:pointer allows the jquery to fire on iOS*/
 .ft-x{
+    cursor: pointer;
     padding-left: 5px;
+}
+.ft-maximize {
+    cursor: pointer;
+}
+.ft-minus {
+    cursor: pointer;
 }
 .ft-buttons {
     vertical-align: middle;

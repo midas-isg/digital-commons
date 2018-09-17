@@ -12,11 +12,11 @@
 
 <div class="form-group row edit-form-group <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
-    <div class="col-2">
+    <div class="col-sm-2">
         <label class="item-label">Category</label>
     </div>
 
-    <div class="col-10">
+    <div class="col-sm-10">
         <select class="selectpicker" data-live-search="true"
                 title="Please select a category ..." name="category" id="categoryValue">
             <c:forEach items="${categoryPaths}" var="categoryPath">
