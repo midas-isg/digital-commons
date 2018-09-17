@@ -73,7 +73,7 @@
                                    path="type"
                                    specifier="type"
                                    id="type"
-                                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                   cardText="The nature of the information resource, ideally specified with a controlled vocabulary or ontology (.e.g model or format, vocabulary, reporting guideline)."
                                    isUnboundedList="${false}"
                                    label="Type">
             </myTags:editAnnotation>
@@ -83,14 +83,14 @@
                                         isRequired="${false}"
                                         label="Licenses"
                                         addButtonLabel="License"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="The terms of use of the data standard."
                                         path="licenses">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                         tagName="categoryValuePair"
                                         isRequired="${false}"
                                         specifier="extraProperties"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="Extra properties that do not fit in the previous specified attributes."
                                         path="extraProperties"
                                         addButtonLabel="Extra Property"
                                         label="Extra Properties">

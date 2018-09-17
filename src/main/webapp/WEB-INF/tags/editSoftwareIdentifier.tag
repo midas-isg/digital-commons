@@ -34,7 +34,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="Information about the primary identifier."
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -42,6 +42,7 @@
                                 specifier="${specifier}-identifier"
                                 id="${specifier}-identifier"
                                 placeholder="A code uniquely identifying an entity locally to a system or globally."
+                                cardText="A code uniquely identifying an entity locally to a system or globally."
                                 isRequired="${false}"
                                 isInputGroup="${true}"
                                 label="Identifier"
@@ -51,6 +52,7 @@
                                 specifier="${specifier}-identifierSource"
                                 id="${specifier}-identifierSource"
                                 placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
+                                cardText="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
                                 isRequired="${false}"
                                 isInputGroup="${true}"
                                 label="Identifier Source"
@@ -59,7 +61,8 @@
 <myTags:editNonZeroLengthString path="${path}.identifierDescription"
                                 specifier="${specifier}-identifierDescription"
                                 id="${specifier}-identifierDescription"
-                                placeholder="Identifier Description."
+                                placeholder="Information describing the identifier."
+                                cardText="Information describing the identifier."
                                 isRequired="${false}"
                                 isInputGroup="${true}"
                                 label="Identifier Description"
@@ -71,7 +74,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="Information about the primary identifier."
                                  isRequired="${isRequired}"
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="bottom">

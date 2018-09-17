@@ -25,9 +25,9 @@
             <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
                                         label="Visualization Types"
                                         addButtonLabel="Visualization Type"
-                                        placeholder="Visualization Type"
+                                        placeholder="Type of methods for creating images, diagrams or animations."
                                         specifier="visualization-type"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="Types of methods for creating images, diagrams or animations."
                                         tagName="string"
                                         isRequired="${false}"
                                         path="visualizationType">

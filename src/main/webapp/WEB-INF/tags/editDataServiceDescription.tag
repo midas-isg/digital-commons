@@ -40,7 +40,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="A service that has some information content entity as input and output."
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="top">
@@ -50,7 +50,7 @@
                    label="Access Point Type"
                    enumData="${description.accessPointType}"
                    enumList="${accessPointTypes}"
-                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                   cardText="Method by which access to the data service is provided."
                    tagName="accessPointType"
                    isRequired="${true}"
                    id="${specifier}-accessPointType">
@@ -60,7 +60,8 @@
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 specifier="${specifier}-accessPointDescription"
-                                placeholder="Access Point Description"
+                                placeholder="Information which describes access to the data service."
+                                cardText="Information which describes access to the data service."
                                 id="${specifier}-accessPointDescription"
                                 path="${path}.accessPointDescription">
 </myTags:editNonZeroLengthString>
@@ -69,7 +70,8 @@
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 specifier="${specifier}-accessPointUrl"
-                                placeholder="Access Point Url"
+                                placeholder="A web address defining the location of the data service."
+                                cardText="A web address defining the location of the data service."
                                 id="${specifier}-accessPointUrl"
                                 path="${path}.accessPointUrl">
 </myTags:editNonZeroLengthString>
@@ -81,7 +83,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="A service that has some information content entity as input and output."
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="bottom">

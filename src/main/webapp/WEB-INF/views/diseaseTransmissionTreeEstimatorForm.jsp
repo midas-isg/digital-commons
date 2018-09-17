@@ -27,8 +27,8 @@
                                             label="Host Species Included"
                                             addButtonLabel="Host Species"
                                             tagName="softwareIdentifier"
-                                            placeholder="Host Species Included"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                            placeholder="The species which is affected by disease or in which a parasite or commensal organism is living."
+                                            cardText="The species which is affected by disease or in which a parasite or commensal organism is living."
                                             listItems="${digitalObject.hostSpeciesIncluded}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>
@@ -37,8 +37,8 @@
                                             label="Pathogen Coverages"
                                             addButtonLabel="Pathogen Coverage"
                                             tagName="softwareIdentifier"
-                                            placeholder="Pathogen Coverage"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                            placeholder="Bacterium, virus, or other microorganism included."
+                                            cardText="The bacterium, virus, or other microorganism included."
                                             listItems="${digitalObject.pathogenCoverage}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>

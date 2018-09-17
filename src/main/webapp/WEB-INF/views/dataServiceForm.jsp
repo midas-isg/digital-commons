@@ -24,11 +24,12 @@
 
             <myTags:editMasterUnbounded path="dataServiceDescription"
                                         specifier="dataServiceDescription"
+                                        placeholder="A service that has some information content entity as input and output."
                                         label="Data Service Descriptions"
                                         addButtonLabel="Data Service Description"
                                         isRequired="${false}"
                                         isFirstRequired="${true}"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="A service that has some information content entity as input and output."
                                         listItems="${digitalObject.dataServiceDescription}"
                                         tagName="dataServiceDescription">
             </myTags:editMasterUnbounded>

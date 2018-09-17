@@ -296,6 +296,10 @@ a {
     border-color: rgba(11,43,101,0.55);
 }
 
+.btn-text-small {
+    font-size: 0.80rem;
+}
+
 :root {
     --blue: #0b2b65;
     --primary: #0b2b65;

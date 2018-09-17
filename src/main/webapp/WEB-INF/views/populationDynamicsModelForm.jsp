@@ -28,8 +28,8 @@
                                             label="Population Species Included"
                                             addButtonLabel="Population Species"
                                             tagName="softwareIdentifier"
-                                            placeholder="Population Species Included"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                            placeholder="Organisms of a particular biological taxon included in the model."
+                                            cardText="Organisms of a particular biological taxon included in the model."
                                             listItems="${digitalObject.populationSpeciesIncluded}"
                                             isRequired="${true}">
                 </myTags:editMasterUnbounded>

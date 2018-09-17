@@ -23,56 +23,58 @@
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
             <myTags:editMasterUnbounded specifier="diseases"
-                                        placeholder="Disease"
+                                        placeholder="A disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
                                         label="Diseases"
                                         addButtonLabel="Disease"
                                         path="diseases"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="A disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
                                         tagName="softwareIdentifier"
                                         listItems="${digitalObject.diseases}">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded listItems="${digitalObject.nowcasts}"
                                         label="Nowcasts"
                                         addButtonLabel="Nowcast"
-                                        placeholder="Nowcast"
+                                        placeholder="A description of present conditions or a forecast of those immediately expected."
                                         specifier="nowcast"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="A description of present conditions or a forecast of those immediately expected."
                                         tagName="string"
                                         path="nowcasts">
             </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded listItems="${digitalObject.outcomes}"
                                         label="Outcomes"
                                         addButtonLabel="Outcome"
-                                        placeholder="Outcome"
+                                        placeholder="A processual entity that is either the outcome of a disease course or a part of a disease course and has etiological relevance."
                                         specifier="outcome"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="A processual entity that is either the outcome of a disease course or a part of a disease course and has etiological relevance."
                                         tagName="string"
                                         path="outcomes">
             </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString label="Forecast Frequency"
-                                            placeholder="Forecast Frequency"
+                                            placeholder="How often the software updates output on one or more predicted count data items."
                                             specifier="forecast-frequency"
                                             id="forecast-frequency"
                                             path="forecastFrequency"
+                                            cardText="How often the software updates output on one or more predicted count data items."
                                             isInputGroup="${true}"
                                             string="${digitalObject.forecastFrequency}">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Type"
-                                            placeholder="Type"
+                                            placeholder="Type of forecasting the software produces."
                                             specifier="type"
                                             id="type"
                                             path="type"
+                                            cardText="Type of forecasting the software produces."
                                             isInputGroup="${true}"
                                             string="${digitalObject.type}">
             </myTags:editNonZeroLengthString>
             <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
             <myTags:editMasterUnbounded label="Forecasts"
                                         addButtonLabel="Forecast"
-                                        placeholder="Forecast"
+                                        placeholder="A description of future conditions."
                                         path="forecasts"
                                         specifier="forecasts"
                                         isRequired="${false}"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="A description of future conditions."
                                         isFirstRequired="${true}"
                                         tagName="string"
                                         listItems="${digitalObject.forecasts}">

@@ -27,8 +27,8 @@
                                         label="Pathogens"
                                         addButtonLabel="Pathogen"
                                         tagName="softwareIdentifier"
-                                        placeholder="Pathogens"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        placeholder="Bacterium, virus, or other microorganism included in the model."
+                                        cardText="The bacterium, virus, or other microorganism included in the model."
                                         listItems="${digitalObject.pathogens}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>

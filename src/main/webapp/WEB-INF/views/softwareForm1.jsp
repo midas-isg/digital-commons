@@ -23,7 +23,7 @@
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
                     <myTags:editNonZeroLengthString label="Title"
-                                                    placeholder="Title"
+                                                    placeholder="A textual entity that names a software."
                                                     path="title"
                                                     isRequired="${true}"
                                                     isUnboundedList="${false}"
@@ -33,7 +33,7 @@
                                                     string="${digitalObject.title}">
                     </myTags:editNonZeroLengthString>
                     <myTags:editNonZeroLengthString label="Human Readable Synopsis"
-                                                    placeholder="Human Readable Synopsis"
+                                                    placeholder="A comment that summarizes the most relevant or salient features and history of the entity for human readers."
                                                     path="humanReadableSynopsis"
                                                     isRequired="${true}"
                                                     isTextArea="${true}"
@@ -51,6 +51,7 @@
                                                 id="product"
                                                 specifier="product"
                                                 placeholder="Product Name"
+                                                cardText="The name of the software."
                                                 label="Product Name">
                 </myTags:editNonZeroLengthString>
                 <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
@@ -88,6 +89,7 @@
                                                 isRequired="${false}"
                                                 isUnboundedList="${false}"
                                                 isInputGroup="${true}"
+                                                cardText="Release information about the software that is the specified output of some compilation of software process"
                                                 id="source-code-release"
                                                 label="Source Code Release">
                 </myTags:editNonZeroLengthString>
@@ -97,7 +99,7 @@
                                             path="webApplication"
                                             specifier="web-application"
                                             isRequired="${false}"
-                                            cardText="Web applications associated with the entity."
+                                            cardText="Applications that can be directly executed by some processing unit."
                                             tagName="string"
                                             listItems="${digitalObject.webApplication}">
                 </myTags:editMasterUnbounded>

@@ -87,7 +87,7 @@
                     </c:if>
                 </c:when>
                 <c:otherwise>
-                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button"><i class="fa fa-plus-circle"></i> Add
+                    <button class="btn btn-primary btn-block <c:if test="${label.length() > 30}">btn-text-small</c:if> ${specifier}-add-${tagName}" type="button"><i class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </c:otherwise>
