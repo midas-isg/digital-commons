@@ -40,20 +40,18 @@
         <c:if test="${not isUnboundedList and not isRequired}">
             <div class="col card-button d-flex align-items-stretch <c:if test="${not function:isObjectEmpty(object)}">hide</c:if>"  id="${specifier}-add-input-button">
                 <div class="card mx-auto input-group control-group card-rounded ${specifier}-${tagName}-add-more "
-                     style="width: 18rem;">
-                    <div class="card-header add-card-header">
-                        <h5 class="card-title card-button-title">${label}</h5>
-                        <div class="heading-elements">
-                            <ul class="list-inline mb-0">
-                                <li><i class="card-icon ${cardIcon}"></i></li>
-                            </ul>
+                     style="width: 20rem;">
+                    <div class="card-header card-button-header add-card-header">
+                        <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button">
+                            <i class="fa fa-plus-circle"></i> Add ${label}
+                        </button>
+                        <div class="d-flex align-items-center">
+                            <div class="mr-auto card-label">${label}</div>
+                            <div class="card-icon"><i class="${cardIcon}"></i></div>
                         </div>
                     </div>
-                    <div class="card-body d-flex">
+                    <div class="card-body card-button-body d-flex">
                         <p class="card-text">${cardText}</p>
-                        <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button">Add
-                                ${label}
-                        </button>
                         <p class="card-text">
                             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                                 <span class="error-color error offset-2">${message.text}</span>

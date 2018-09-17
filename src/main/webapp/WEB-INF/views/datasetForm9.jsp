@@ -31,6 +31,7 @@
                                         showAddPersonButton="${true}"
                                         showAddOrganizationButton="${true}"
                                         cardText="The person(s) or organization(s) which contributed to the creation of the dataset."
+                                        cardIcon="fas fa-users"
                                         tagName="personComprisedEntity"
                                         createPersonOrganizationTags="${true}"
                                         isFirstRequired="${true}">

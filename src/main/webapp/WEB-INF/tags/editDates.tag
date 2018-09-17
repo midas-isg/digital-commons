@@ -34,7 +34,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
-                                 cardIcon="${cardIcon}"
+                                 cardIcon="far fa-calendar-alt"
                                  tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -65,7 +65,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
-                                 cardIcon="${cardIcon}"
+                                 cardIcon="far fa-calendar-alt"
                                  tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

@@ -26,6 +26,7 @@
                                         specifier="acknowledges"
                                         listItems="${digitalObject.acknowledges}"
                                         cardText="The grant(s) which funded and supported the work reported by the dataset."
+                                        cardIcon="fas fa-file-invoice-dollar"
                                         tagName="grant"
                                         addButtonLabel="Acknowledgement"
                                         label="Acknowledges">

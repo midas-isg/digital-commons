@@ -26,6 +26,7 @@
                                         listItems="${digitalObject.licenses}"
                                         tagName="license"
                                         cardText="The terms of use of the dataset."
+                                        cardIcon="fab fa-creative-commons"
                                         label="Licenses"
                                         addButtonLabel="License"
                                         specifier="licenses">

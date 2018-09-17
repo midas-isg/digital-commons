@@ -23,6 +23,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -33,6 +35,7 @@
                                  tagName="annotation"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="${cardIcon}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 <myTags:editNonZeroLengthString path="${path}.value"
@@ -62,6 +65,7 @@
                                  tagName="annotation"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="${cardIcon}"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
 

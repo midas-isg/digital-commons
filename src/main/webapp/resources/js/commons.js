@@ -756,17 +756,21 @@ $(document).ready(function() {
 
 function scrollToAnchor(anchor) {
     var el = document.querySelector('#' + anchor);
-    var offset = el.getBoundingClientRect().top + window.scrollY;
-    if(offset < 81) {
-        offset += 95;
-    } else {
-        offset -= 95;
+    try {
+        var offset = el.getBoundingClientRect().top + window.scrollY;
+        if (offset < 81) {
+            offset += 95;
+        } else {
+            offset -= 95;
+        }
+        window.scroll({
+            top: offset,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } catch (e) {
+
     }
-    window.scroll({
-        top: offset,
-        left: 0,
-        behavior: 'smooth'
-    });
 }
 
 function highlightDiv(div) {
@@ -834,7 +838,7 @@ function closeTab(e, div, specifier) {
         if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
             if ($(this).hasClass("active")) {
                 takeNext = true;
-            }
+            } else prevDiv = $(this.parentElement);
         } else if ($(this).hasClass("active")) {
             prevDiv = $(this.parentElement);
             return false;
@@ -842,12 +846,12 @@ function closeTab(e, div, specifier) {
 
 
     });
-    var divToClose = $(div.parentElement.parentElement).attr("for")
+    var divToClose = $(div.parentElement.parentElement).attr("for");
     $("#" + divToClose).remove();
     $(div.parentElement.parentElement).remove();
 
     $("#" + $(prevDiv).attr("for")).show();
-    $($(prevDiv).find("a")[0]).addClass("active")
+    $($(prevDiv).find("a")[0]).addClass("active");
 
     e.preventDefault();
     e.stopPropagation();

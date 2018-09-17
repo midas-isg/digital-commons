@@ -43,73 +43,63 @@
 <div class="col card-button d-flex align-items-stretch <c:if test="${not function:isObjectEmpty(listItems)}">hide</c:if>"
      id="${specifier}-add-input-button">
     <div class="card mx-auto input-group control-group card-rounded ${specifier}-${tagName}-add-more-button"
-         style="width: 18rem;">
-        <div class="card-header add-card-header">
-            <h5 class="card-title card-button-title">${label}<c:if test="${isRequired}"><i
-                    class="text-danger">*</i></c:if></h5>
-            <div class="heading-elements">
-                <ul class="list-inline mb-0">
-                    <li><i class="card-icon ${cardIcon}"></i></li>
-                </ul>
-            </div>
-        </div>
-        <div class="card-body d-flex">
-            <p class="card-text">${cardText}</p>
+         style="width: 20rem;">
+        <div class="card-header card-button-header add-card-header">
             <c:choose>
                 <c:when test="${tagName == 'personComprisedEntity'}">
                     <c:if test="${showAddPersonButton and not showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-person" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddOrganizationButton and not showAddPersonButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-organization" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddPersonButton and showAddOrganizationButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-person" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person" type="button"><i class="fa fa-plus-circle"></i> Add
                             Person
                         </button>
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-organization" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization" type="button"><i class="fa fa-plus-circle"></i> Add
                             Organization
                         </button>
                     </c:if>
                 </c:when>
                 <c:when test="${tagName == 'isAbout'}">
                     <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-annotation" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
                                 ${label}
                         </button>
                     </c:if>
                     <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-annotation" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation" type="button"><i class="fa fa-plus-circle"></i> Add
                             Annotation
                         </button>
-                        <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}"
-                                id="${specifier}-add-${tagName}-biologicalEntity" type="button">Add
+                        <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity" type="button"><i class="fa fa-plus-circle"></i> Add
                             Biological Entity
                         </button>
                     </c:if>
                 </c:when>
                 <c:otherwise>
-                    <button class="btn btn-primary btn-block mt-auto ${specifier}-add-${tagName}" type="button">Add
+                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName}" type="button"><i class="fa fa-plus-circle"></i> Add
                             ${label}
                     </button>
                 </c:otherwise>
             </c:choose>
+
+            <div class="d-flex align-items-center">
+                <div class="mr-auto card-label">${label}</div>
+                <div class="card-icon"><i class="${cardIcon}"></i></div>
+            </div>
+        </div>
+        <div class="card-body card-button-body d-flex">
+            <p class="card-text">${cardText}</p>
             <p class="card-text">
                 <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
                     <span class="error-color error offset-2">${message.text}</span>
@@ -122,7 +112,7 @@
 
 <div id="${specifier}-card"
      class="form-group edit-form-group col-sm-12 card <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${function:isObjectEmpty(listItems)}">hide</c:if>">
-    <div class="card-header">
+    <div class="card-header card-header-unbounded">
         <h6 class="card-title">${label}</h6>
 
         <div class="heading-elements">
@@ -137,48 +127,35 @@
                     <c:when test="${tagName == 'personComprisedEntity'}">
                         <c:if test="${showAddPersonButton}">
                             <c:if test="${not showAddOrganizationButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i
-                                        class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddOrganizationButton}">
-                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i
-                                        class="fa fa-plus-circle"></i> Add Person</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-person"><i class="fa fa-plus-circle"></i> Add Person</a></li>
                             </c:if>
                         </c:if>
                         <c:if test="${showAddOrganizationButton}">
                             <c:if test="${not showAddPersonButton}">
-                                <li><a class="${specifier}-add-${tagName}"
-                                       id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i>
-                                    Add ${addButtonLabel}</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                             </c:if>
                             <c:if test="${showAddPersonButton}">
-                                <li><a class="${specifier}-add-${tagName}"
-                                       id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i>
-                                    Add Organization</a></li>
+                                <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-organization"><i class="fa fa-plus-circle"></i> Add Organization</a></li>
                             </c:if>
                         </c:if>
                     </c:when>
                     <c:when test="${tagName == 'isAbout'}">
                         <c:if test="${showAddAnnotationButton and not showAddBiologicalEntityButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i
-                                    class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
                         <c:if test="${showAddBiologicalEntityButton and not showAddAnnotationButton}">
-                            <li><a class="${specifier}-add-${tagName}"
-                                   id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i>
-                                Add ${addButtonLabel}</a></li>
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                         </c:if>
                         <c:if test="${showAddBiologicalEntityButton and showAddAnnotationButton}">
-                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i
-                                    class="fa fa-plus-circle"></i> Add Annotation</a></li>
-                            <li><a class="${specifier}-add-${tagName}"
-                                   id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i>
-                                Add Biological Entity</a></li>
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-annotation"><i class="fa fa-plus-circle"></i> Add Annotation</a></li>
+                            <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}-biologicalEntity"><i class="fa fa-plus-circle"></i> Add Biological Entity</a></li>
                         </c:if>
                     </c:when>
                     <c:otherwise>
-                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i
-                                class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
+                        <li><a class="${specifier}-add-${tagName}" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
                 <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
@@ -199,13 +176,10 @@
                 <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
                     <c:set var="cardTabTitle" value="${function:getCardTabTitle(listItem)}"></c:set>
                     <c:set var="cardTabToolTip" value="${function:getCardTabToolTip(listItem)}"></c:set>
-                    <li for="${specifier}-${varStatus.count-1}" id="${specifier}-${varStatus.count-1}-tab"
-                        class="nav-item">
-                        <a onclick="showTab(event, this, '${specifier}')"
-                           id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link "
-                           data-toggle="tooltip" title="${cardTabToolTip}">
+                    <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
+                        <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link " data-toggle="tooltip" title="${cardTabToolTip}">
                                 ${cardTabTitle}
-                            <i onclick="closeTab(event, this)" class="ft-x"></i>
+                            <i onclick="closeTab(event, this, '${specifier}')" class="ft-x"></i>
                         </a>
                     </li>
                 </c:forEach>
@@ -214,15 +188,12 @@
 
     </div>
 
-<%--
-    <div class="card-content collapse show">
---%>
-        <c:if test="${not function:isObjectEmpty(listItems)}">
+    <c:if test="${not function:isObjectEmpty(listItems)}">
 
-            <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
-                <%--
-                            <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
-                --%>
+        <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
+<%--
+            <div id="${specifier}-${varStatus.count-1}-tag" class="form-group">
+--%>
                 <c:if test="${not function:isObjectEmpty(listItem)}">
                     <c:choose>
                         <c:when test="${tagName == 'access'}">
@@ -437,25 +408,20 @@
                     <c:set var="listItemsCount" scope="page" value="${varStatus.count}"/>
 
                 </c:if>
-                <%--
-                            </div>
-                --%>
-            </c:forEach>
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color error offset-2">${message.text}</span>
-            </c:forEach>
-
-        </c:if>
-
-        <div class="${specifier}-${tagName}-add-more"></div>
 <%--
-    </div>
+            </div>
 --%>
+        </c:forEach>
+        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
+            <span class="error-color error offset-2">${message.text}</span>
+        </c:forEach>
 
+    </c:if>
+
+    <div class="${specifier}-${tagName}-add-more"></div>
 
     <div class="card-footer">
-        ${label} <a class="color-white" onclick="scrollToAnchor('${specifier}-card');"><i
-            class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
+        ${label} <a class="color-white" onclick="scrollToAnchor('${specifier}-card');"><i class="fa fa-arrow-circle-o-up" aria-hidden="true"></i></a>
 
     </div>
 </div>
@@ -877,7 +843,7 @@
             debugger;
             e.stopImmediatePropagation();
             var isFirstRequired = "${isFirstRequired}";
-            if (isFirstRequired == "") {
+            if(isFirstRequired == "") {
                 isFirstRequired = false;
             }
 

@@ -28,6 +28,7 @@
                                             addButtonLabel="Type"
                                             isRequired="${true}"
                                             cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
+                                            cardIcon="fas fa-info"
                                             tagName="type"
                                             listItems="${digitalObject.types}">
                 </myTags:editMasterUnbounded>

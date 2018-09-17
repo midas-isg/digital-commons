@@ -24,27 +24,21 @@
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
             <myTags:editMasterUnbounded path="isAbout"
-                                specifier="isAbout"
-                                listItems="${digitalObject.isAbout}"
+                                        specifier="isAbout"
+                                        listItems="${digitalObject.isAbout}"
                                         tagName="isAbout"
                                         cardText="Different entities associated with this dataset."
-                                label="Is About"
-                                        addButtonLabel="Is About"
-                                showAddAnnotationButton="true"
-                                showAddBiologicalEntityButton="true">
-            </myTags:editMasterUnbounded>
-<%--
-            <myTags:editIsAbout path="isAbout"
-                                        specifier="isAbout"
-                                        isAboutList="${digitalObject.isAbout}"
+                                        cardIcon="fas fa-info-circle"
                                         label="Is About"
+                                        addButtonLabel="Is About"
                                         showAddAnnotationButton="true"
                                         showAddBiologicalEntityButton="true">
-            </myTags:editIsAbout>
---%>
+            </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
+                   onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

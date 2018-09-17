@@ -53,16 +53,17 @@
                                 label="Publication Venue">
 </myTags:editNonZeroLengthString>
 <myTags:editMasterUnbounded path="${path}.authors"
-                                  specifier="${specifier}-authors"
-                                  label="Authors"
+                            specifier="${specifier}-authors"
+                            label="Authors"
                             addButtonLabel="Author"
-                                  listItems="${publication.authors}"
-                                  createPersonOrganizationTags="${true}"
+                            listItems="${publication.authors}"
+                            createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
                             cardText="The person(s) and/or organisation(s) responsible for the publication."
-                                  isFirstRequired="${true}"
-                                  showAddPersonButton="${true}"
-                                  showAddOrganizationButton="${false}">
+                            cardIcon="fas fa-users"
+                            isFirstRequired="${true}"
+                            showAddPersonButton="${true}"
+                            showAddOrganizationButton="${false}">
 </myTags:editMasterUnbounded>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${publication.identifier}"
@@ -76,6 +77,7 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             listItems="${publication.alternateIdentifiers}"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
@@ -84,6 +86,7 @@
                        specifier="${specifier}-type"
                        id="${specifier}-type"
                        cardText="Publication type, ideally delegated to an external vocabulary/resource."
+                       cardIcon="far fa-bookmark"
                        annotation="${publication.type}"
                        label="Type">
 </myTags:editAnnotation>
@@ -93,6 +96,7 @@
                             addButtonLabel="Publication Date"
                             path="${path}.dates"
                             cardText="Relevant dates, the date of the publication must be provided."
+                            cardIcon="far fa-calendar-alt"
                             tagName="date"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
@@ -100,6 +104,7 @@
                             specifier="${specifier}-acknowledges"
                             listItems="${publication.acknowledges}"
                             cardText="The grant(s) which funded and supported the work reported by the publication."
+                            cardIcon="fas fa-file-invoice-dollar"
                             tagName="grant"
                             addButtonLabel="Acknowledgment"
                             label="Acknowledges">

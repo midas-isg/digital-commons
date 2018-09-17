@@ -29,6 +29,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="Process to acquire data on a sample and attempt to draw conclusions about the population the sample has been selected from, executing a plan and design."
+                                 cardIcon="far fa-user"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -76,6 +77,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="Process to acquire data on a sample and attempt to draw conclusions about the population the sample has been selected from, executing a plan and design."
+                                 cardIcon="far fa-user"
                                  showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

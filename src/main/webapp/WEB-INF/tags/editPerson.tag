@@ -95,25 +95,30 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${person.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
 <myTags:editMasterUnbounded path="${path}.affiliations"
-                                  specifier="${specifier}-affiliations"
-                                  label="Affiliations"
+                            specifier="${specifier}-affiliations"
+                            label="Affiliations"
                             addButtonLabel="Affiliation"
-                                  listItems="${person.affiliations}"
-                                  isFirstRequired="false"
-                                  createPersonOrganizationTags="false"
+                            listItems="${person.affiliations}"
+                            isFirstRequired="false"
+                            createPersonOrganizationTags="false"
                             tagName="personComprisedEntity"
                             cardText="The organizations to which the person is associated with."
-                                  showAddPersonButton="false"
-                                  showAddOrganizationButton="true">
+                            cardIcon="fas fa-users"
+                            showAddPersonButton="false"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
+
+<%--TODO: add icon for roles--%>
 <myTags:editMasterUnbounded path="${path}.roles"
                             specifier="${specifier}-roles"
                             listItems="${person.roles}"
                             cardText="The roles assumed by a person, ideally from a controlled vocabulary/ontology."
+                            cardIcon="far fa-handshake"
                             tagName="annotation"
                             addButtonLabel="Role"
                             label="Roles">

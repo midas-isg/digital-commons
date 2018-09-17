@@ -29,6 +29,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="A spatially bounded entity."
+                                 cardIcon="fas fa-map-marker-alt"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -82,6 +83,7 @@
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             cardText="Information about an alternate identifier (other than the primary)."
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
@@ -92,6 +94,7 @@
                                  label="${label}"
                                  id="${id}"
                                  cardText="A spatially bounded entity."
+                                 cardIcon="fas fa-map-marker-alt"
                                  showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"

@@ -1250,9 +1250,9 @@ div.container.metadata-container .metadata-column.fancy {
     #entryFormContent {
         width: 100%;
     }
-    #entryFormContent.active {
-        width: calc(100% - 250px);
-    }
+    /*#entryFormContent.active {*/
+        /*width: calc(100% - 250px);*/
+    /*}*/
 
     #entry-form {
         margin-top: 0px;
@@ -1280,6 +1280,7 @@ ul.CTAs a {
     */
     border-color: #adadad !important;
     height:30px !important;
+    line-height: 12px !important;
 }
 
 .wizard-form-group {
@@ -1295,6 +1296,11 @@ ul.CTAs a {
     top:6px !important;
 }
 
+@media screen and (max-width: 991.98px) {
+    .heading-elements .list-inline {
+    display: block;
+    }
+}
 .col {
     padding-right: 0px;
     padding-left: 0px;
@@ -1347,9 +1353,6 @@ ul.CTAs a {
     border-radius: 25px;
 }
 
-.card-icon {
-    margin-right: 5px;
-}
 
 .add-card-header {
     color: #0b2b65;
@@ -1375,6 +1378,20 @@ ul.CTAs a {
     padding-top: 15px;
 }
 
+.card-button-header {
+    padding-bottom: 0px;
+}
+
+.card-button-body {
+    padding-top: 0px;
+}
+
+.card-label {
+    font-size: 2em;
+}
+.card-icon {
+    font-size: 5em;
+}
 ::-webkit-input-placeholder {
     color: peachpuff;
     font-size: 10px;
