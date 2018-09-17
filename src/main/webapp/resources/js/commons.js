@@ -825,7 +825,7 @@ function makeAllTabsInactive(specifier) {
     });
 }
 
-function closeTab(e, div, specifier) {
+function closeTab(e, div, specifier, tagName) {
 
     //find closest tab to the left tab to make it active (we don't just want to use the first tab)
     var prevDiv = undefined;
@@ -838,7 +838,7 @@ function closeTab(e, div, specifier) {
         if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
             if ($(this).hasClass("active")) {
                 takeNext = true;
-            } else prevDiv = $(this.parentElement);
+            }
         } else if ($(this).hasClass("active")) {
             prevDiv = $(this.parentElement);
             return false;
@@ -846,12 +846,17 @@ function closeTab(e, div, specifier) {
 
 
     });
-    var divToClose = $(div.parentElement.parentElement).attr("for");
+    var divToClose = $(div.parentElement.parentElement).attr("for")
     $("#" + divToClose).remove();
     $(div.parentElement.parentElement).remove();
 
-    $("#" + $(prevDiv).attr("for")).show();
-    $($(prevDiv).find("a")[0]).addClass("active");
+    // $("#" + $(prevDiv).attr("for")).show();
+    // $($(prevDiv).find("a")[0]).addClass("active");
+    if(prevDiv == undefined) {
+        $("." + specifier + "-" + tagName + "-remove").click();
+    } else {
+        showTab(e,  $(prevDiv).find("a")[0], specifier);
+    }
 
     e.preventDefault();
     e.stopPropagation();
@@ -959,8 +964,8 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
     regexEscapeOpenBracket = new RegExp('\\[', "g");
     regexEscapeClosedBracket = new RegExp('\\]', "g");
-    path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-    regexPath = new RegExp(path + '\\[0\\]', "g");
+    regexPath = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+    regexPath = new RegExp(regexPath + '\\[0\\]', "g");
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
     html = html.replace(regexPath, path+'[' + listItemCount + ']')
         .replace(regexSpecifier, specifier+'-' + listItemCount);
@@ -979,7 +984,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
         " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+"   "+
-        "<i onclick=\"closeTab(event, this, '"+specifier+"')\" class=\"ft-x\"></i></a></li>");
+        "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
 
 
     //switch to newly created tab

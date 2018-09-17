@@ -58,6 +58,7 @@
                             label="Values"
                             addButtonLabel="Value"
                             cardText="A set of (annotated) values associated with the cateogory."
+                            cardIcon="fas fa-tags"
                             tagName="annotation"
                             listItems="${categoryValuePair.values}">
 </myTags:editMasterUnbounded>

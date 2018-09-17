@@ -25,7 +25,7 @@
                                  id="${id}"
                                  isUnboundedList="${false}"
                                  cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
-                                 cardIcon="far fa-folder-open"
+                                 cardIcon="fas fa-database"
                                  tagName="dataRepository"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -86,7 +86,7 @@
                             specifier="${specifier}-types"
                             listItems="${dataRepository.types}"
                             cardText="A descriptor (ideally from a controlled vocabulary) providing information about the type of repository, such as primary resource or aggregator."
-                            cardIcon="fas fa-info-circle"
+                            cardIcon="fas fa-shapes"
                             tagName="annotation"
                             addButtonLabel="Type"
                             label="Types">

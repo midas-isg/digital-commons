@@ -126,6 +126,7 @@
                             path="${path}.conformsTo"
                             listItems="${distribution.conformsTo}"
                             cardText="A data standard whose requirements and constraints are met by the dataset."
+                            cardIcon="fas fa-clipboard-list"
                             tagName="dataStandard"
                             specifier="${specifier}-conformsTo">
 </myTags:editMasterUnbounded>
@@ -157,7 +158,7 @@
                        id="${specifier}-unit"
                        isUnboundedList="${false}"
                        cardText="The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
-                       cardIcon="fas fa-ruler"
+                       cardIcon="fas fa-balance-scale"
                        isRequired="${false}"
                        label="Unit">
 </myTags:editAnnotation>

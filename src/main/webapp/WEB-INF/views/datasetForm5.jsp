@@ -27,7 +27,7 @@
                                         label="Distributions"
                                         addButtonLabel="Distribution"
                                         cardText="The distribution(s) by which datasets are made available (for example: mySQL dump)."
-                                        cardIcon="fab fa-creative-commons-share"
+                                        cardIcon="fas fa-share-square"
                                         specifier="distributions"
                                         path="distributions">
             </myTags:editMasterUnbounded>

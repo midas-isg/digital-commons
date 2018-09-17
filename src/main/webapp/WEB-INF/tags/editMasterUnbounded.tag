@@ -93,8 +93,8 @@
                 </c:otherwise>
             </c:choose>
 
-            <div class="d-flex align-items-center">
-                <div class="mr-auto card-label">${label}</div>
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="card-label">${label}</div>
                 <div class="card-icon"><i class="${cardIcon}"></i></div>
             </div>
         </div>
@@ -179,7 +179,7 @@
                     <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
                         <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link " data-toggle="tooltip" title="${cardTabToolTip}">
                                 ${cardTabTitle}
-                            <i onclick="closeTab(event, this, '${specifier}')" class="ft-x"></i>
+                            <i onclick="closeTab(event, this, '${specifier}', '${tagName}')" class="ft-x"></i>
                         </a>
                     </li>
                 </c:forEach>

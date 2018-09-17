@@ -118,7 +118,7 @@
                             specifier="${specifier}-roles"
                             listItems="${person.roles}"
                             cardText="The roles assumed by a person, ideally from a controlled vocabulary/ontology."
-                            cardIcon="far fa-handshake"
+                            cardIcon="fas fa-user-tie"
                             tagName="annotation"
                             addButtonLabel="Role"
                             label="Roles">

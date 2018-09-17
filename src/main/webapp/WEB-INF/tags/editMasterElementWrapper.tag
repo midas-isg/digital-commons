@@ -45,8 +45,8 @@
                         <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button">
                             <i class="fa fa-plus-circle"></i> Add ${label}
                         </button>
-                        <div class="d-flex align-items-center">
-                            <div class="mr-auto card-label">${label}</div>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="card-label">${label}</div>
                             <div class="card-icon"><i class="${cardIcon}"></i></div>
                         </div>
                     </div>
