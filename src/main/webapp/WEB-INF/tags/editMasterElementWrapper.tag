@@ -163,13 +163,23 @@
 
                 //Remove section
                 $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-                    e.stopImmediatePropagation();
-                    $("#${specifier}-add-input-button").removeClass("hide");
+                    var confirmation = true;
+                    $("#${specifier}-input-block").find("input[type = 'text']").each(function() {
+                        if(this.value != "") {
+                            confirmation = confirm("Are you sure you want to close this card?");
+                            return false;
+                        }
+                    });
 
-                    clearAndHideEditControlGroup($(e.target).attr("for"));
-                    $(this).closest('.card').addClass("hide").slideUp('fast');
+                    if (confirmation == true) {
+                        e.stopImmediatePropagation();
+                        $("#${specifier}-add-input-button").removeClass("hide");
 
-                    $("#${specifier}-input-block").addClass("hide");
+                        clearAndHideEditControlGroup($(e.target).attr("for"));
+                        $(this).closest('.card').addClass("hide").slideUp('fast');
+
+                        $("#${specifier}-input-block").addClass("hide");
+                    }
                 });
             });
 

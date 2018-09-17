@@ -826,36 +826,46 @@ function makeAllTabsInactive(specifier) {
 }
 
 function closeTab(e, div, specifier, tagName) {
-
-    //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+    //warn user before closing tab
+    var confirmation = true;
     var prevDiv = undefined;
     var takeNext = false;
-    $("#"+specifier+"-card-header").find("a").each(function () {
-        if (takeNext) {
-            prevDiv = $(this.parentElement);
+    $("#"+$(div.parentElement.parentElement).attr("for")).find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this tab?");
             return false;
         }
-        if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-            if ($(this).hasClass("active")) {
-                takeNext = true;
-            }
-        } else if ($(this).hasClass("active")) {
-            prevDiv = $(this.parentElement);
-            return false;
-        } else prevDiv = $(this.parentElement);
-
-
     });
-    var divToClose = $(div.parentElement.parentElement).attr("for")
-    $("#" + divToClose).remove();
-    $(div.parentElement.parentElement).remove();
 
-    // $("#" + $(prevDiv).attr("for")).show();
-    // $($(prevDiv).find("a")[0]).addClass("active");
-    if(prevDiv == undefined) {
-        $("." + specifier + "-" + tagName + "-remove").click();
-    } else {
-        showTab(e,  $(prevDiv).find("a")[0], specifier);
+    if(confirmation == true) {
+        //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+        $("#" + specifier + "-card-header").find("a").each(function () {
+            if (takeNext) {
+                prevDiv = $(this.parentElement);
+                return false;
+            }
+            if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+                if ($(this).hasClass("active")) {
+                    takeNext = true;
+                }
+            } else if ($(this).hasClass("active")) {
+                prevDiv = $(this.parentElement);
+                return false;
+            } else prevDiv = $(this.parentElement);
+
+
+        });
+        var divToClose = $(div.parentElement.parentElement).attr("for")
+        $("#" + divToClose).remove();
+        $(div.parentElement.parentElement).remove();
+
+        // $("#" + $(prevDiv).attr("for")).show();
+        // $($(prevDiv).find("a")[0]).addClass("active");
+        if (prevDiv == undefined) {
+            $("." + specifier + "-" + tagName + "-remove").click();
+        } else {
+            showTab(e, $(prevDiv).find("a")[0], specifier);
+        }
     }
 
     e.preventDefault();

@@ -856,16 +856,26 @@
 
         //Remove section
         $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-            e.stopImmediatePropagation();
-            $("#${specifier}-add-input-button").removeClass("hide");
+            var confirmation = true;
+            $("#${specifier}-card").find("input[type = 'text']").each(function() {
+                if(this.value != "") {
+                    confirmation = confirm("Are you sure you want to close this card?");
+                    return false;
+                }
+            });
 
-            clearAndHideEditControlGroup($(e.target).attr("for"));
+            if (confirmation == true) {
+                e.stopImmediatePropagation();
+                $("#${specifier}-add-input-button").removeClass("hide");
 
-            closeAllTabs(e, $("#${specifier}-card"));
+                clearAndHideEditControlGroup($(e.target).attr("for"));
 
-            $(this).closest('.card').addClass("hide").slideUp('fast');
+                closeAllTabs(e, $("#${specifier}-card"));
 
-            $("#${specifier}-card").addClass("hide");
+                $(this).closest('.card').addClass("hide").slideUp('fast');
+
+                $("#${specifier}-card").addClass("hide");
+            }
         });
 
     });
