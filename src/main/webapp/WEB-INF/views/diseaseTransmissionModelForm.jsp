@@ -52,6 +52,7 @@
                                         listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
@@ -60,6 +61,12 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
+    });
+</script>
 
 <myTags:analytics/>
 
