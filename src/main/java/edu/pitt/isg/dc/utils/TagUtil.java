@@ -9,6 +9,7 @@ import edu.pitt.isg.mdc.v1_0.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
 public class TagUtil {
     public static boolean isObjectEmpty(Object bean) {
@@ -138,6 +139,9 @@ public class TagUtil {
                 //take first 3 words and last 2 words
                 leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + cardTabTitleWords[2].length() + 2;
                 rightIndex = cardTabTitleWords[size - 2].length() + cardTabTitleWords[size - 1].length() + 1;
+                if (listItem.toString().length() - rightIndex > 15) {
+                    rightIndex = 15;
+                }
                 cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
             } else if (size > 5) {
                 //take first 2 words and last word
@@ -261,7 +265,7 @@ public class TagUtil {
                 break;
         }
 
-        return cardTabToolTip;
+        return escapeHtml(cardTabToolTip);
     }
 
     public static boolean isFirstInstance(String specifier) {

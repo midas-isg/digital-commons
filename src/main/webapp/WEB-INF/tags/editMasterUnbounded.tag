@@ -86,6 +86,11 @@
                         </button>
                     </c:if>
                 </c:when>
+                <c:when test="${label.startsWith('Publications')}">
+                    <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" type="button"><i class="fa fa-plus-circle"></i> Add
+                            ${addButtonLabel}s
+                    </button>
+                </c:when>
                 <c:otherwise>
                     <button class="btn btn-primary btn-block ${specifier}-add-${tagName} pointer" type="button"><i class="fa fa-plus-circle"></i> Add
                             ${label}
