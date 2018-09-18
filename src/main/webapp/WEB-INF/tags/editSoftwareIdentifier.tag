@@ -35,6 +35,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isRequired}"
                                  cardText="Information about the primary identifier."
+                                 cardIcon="fa fa-id-card-o"
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -43,7 +44,7 @@
                                 id="${specifier}-identifier"
                                 placeholder="A code uniquely identifying an entity locally to a system or globally."
                                 cardText="A code uniquely identifying an entity locally to a system or globally."
-                                isRequired="${false}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier"
                                 string="${identifier.identifier}">
@@ -53,7 +54,7 @@
                                 id="${specifier}-identifierSource"
                                 placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
                                 cardText="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
-                                isRequired="${false}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier Source"
                                 string="${identifier.identifierSource}">
@@ -63,7 +64,7 @@
                                 id="${specifier}-identifierDescription"
                                 placeholder="Information describing the identifier."
                                 cardText="Information describing the identifier."
-                                isRequired="${false}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier Description"
                                 string="${identifier.identifierDescription}">

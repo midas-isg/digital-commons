@@ -22,87 +22,87 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-                    <myTags:editNonZeroLengthString label="Title"
-                                                    placeholder="A textual entity that names a software."
-                                                    path="title"
-                                                    isRequired="${true}"
-                                                    isUnboundedList="${false}"
-                                                    isInputGroup="${true}"
-                                                    id="title"
-                                                    specifier="title"
-                                                    string="${digitalObject.title}">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editNonZeroLengthString label="Human Readable Synopsis"
-                                                    placeholder="A comment that summarizes the most relevant or salient features and history of the entity for human readers."
-                                                    path="humanReadableSynopsis"
-                                                    isRequired="${true}"
-                                                    isTextArea="${true}"
-                                                    isInputGroup="${true}"
-                                                    specifier="humanReadableSynopsis"
-                                                    isUnboundedList="${false}"
-                                                    id="humanReadableSynopsis"
-                                                    string="${digitalObject.humanReadableSynopsis}">
-                    </myTags:editNonZeroLengthString>
-                <myTags:editNonZeroLengthString path="product"
-                                                string="${digitalObject.product}"
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                id="product"
-                                                specifier="product"
-                                                placeholder="Product Name"
-                                                cardText="The name of the software."
-                                                label="Product Name">
-                </myTags:editNonZeroLengthString>
-                <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
-                                               specifier="identifier"
-                                               path="identifier"
-                                               isUnboundedList="${false}"
-                                               tagName="identifier"
-                                               id="identifier"
-                                               label="Identifier">
-                </myTags:editSoftwareIdentifier>
-                <myTags:editMasterUnbounded label="Data Input Formats"
-                                            addButtonLabel="Data Input Format"
-                                            placeholder="Data Input Format"
-                                            path="dataInputFormats"
-                                            specifier="dataInputFormats"
-                                            isRequired="${false}"
-                                            cardText="The entities used as input."
-                                            listItems="${digitalObject.dataInputFormats}"
-                                            tagName="string">
-                </myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded label="Data Output Formats"
-                                            addButtonLabel="Data Output Format"
-                                            placeholder="Data Output Format"
-                                            path="dataOutputFormats"
-                                            specifier="data-output-format"
-                                            isRequired="${false}"
-                                            tagName="string"
-                                            cardText="The entities resulting from applying the activity."
-                                            listItems="${digitalObject.dataOutputFormats}">
-                </myTags:editMasterUnbounded>
-                <myTags:editNonZeroLengthString path="sourceCodeRelease"
-                                                string="${digitalObject.sourceCodeRelease}"
-                                                specifier="soure-code-release"
-                                                placeholder="Source Code Release"
-                                                isRequired="${false}"
-                                                isUnboundedList="${false}"
-                                                isInputGroup="${true}"
-                                                cardText="Release information about the software that is the specified output of some compilation of software process"
-                                                id="source-code-release"
-                                                label="Source Code Release">
-                </myTags:editNonZeroLengthString>
-                <myTags:editMasterUnbounded label="Web Applications"
-                                            addButtonLabel="Web Application"
-                                            placeholder="Web Application"
-                                            path="webApplication"
-                                            specifier="web-application"
-                                            isRequired="${false}"
-                                            cardText="Applications that can be directly executed by some processing unit."
-                                            tagName="string"
-                                            listItems="${digitalObject.webApplication}">
-                </myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString label="Title"
+                                            placeholder="A textual entity that names a software."
+                                            path="title"
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            id="title"
+                                            specifier="title"
+                                            string="${digitalObject.title}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="Human Readable Synopsis"
+                                            placeholder="A comment that summarizes the most relevant or salient features and history of the entity for human readers."
+                                            path="humanReadableSynopsis"
+                                            isRequired="${true}"
+                                            isTextArea="${true}"
+                                            isInputGroup="${true}"
+                                            specifier="humanReadableSynopsis"
+                                            isUnboundedList="${false}"
+                                            id="humanReadableSynopsis"
+                                            string="${digitalObject.humanReadableSynopsis}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="product"
+                                            string="${digitalObject.product}"
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            id="product"
+                                            specifier="product"
+                                            placeholder="Product Name"
+                                            cardText="The name of the software."
+                                            label="Product Name">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString path="sourceCodeRelease"
+                                            string="${digitalObject.sourceCodeRelease}"
+                                            specifier="soure-code-release"
+                                            placeholder="Source Code Release"
+                                            isRequired="${true}"
+                                            isUnboundedList="${false}"
+                                            isInputGroup="${true}"
+                                            cardText="Release information about the software that is the specified output of some compilation of software process"
+                                            id="source-code-release"
+                                            label="Source Code Release">
+            </myTags:editNonZeroLengthString>
+            <myTags:editSoftwareIdentifier identifier="${digitalObject.identifier}"
+                                           specifier="identifier"
+                                           path="identifier"
+                                           isUnboundedList="${false}"
+                                           tagName="identifier"
+                                           id="identifier"
+                                           label="Identifier">
+            </myTags:editSoftwareIdentifier>
+            <myTags:editMasterUnbounded label="Data Input Formats"
+                                        addButtonLabel="Data Input Format"
+                                        placeholder="Data Input Format"
+                                        path="dataInputFormats"
+                                        specifier="dataInputFormats"
+                                        isRequired="${false}"
+                                        cardText="The entities used as input."
+                                        listItems="${digitalObject.dataInputFormats}"
+                                        tagName="string">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Data Output Formats"
+                                        addButtonLabel="Data Output Format"
+                                        placeholder="Data Output Format"
+                                        path="dataOutputFormats"
+                                        specifier="data-output-format"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardText="The entities resulting from applying the activity."
+                                        listItems="${digitalObject.dataOutputFormats}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded label="Web Applications"
+                                        addButtonLabel="Web Application"
+                                        placeholder="Web Application"
+                                        path="webApplication"
+                                        specifier="web-application"
+                                        isRequired="${false}"
+                                        cardText="Applications that can be directly executed by some processing unit."
+                                        tagName="string"
+                                        listItems="${digitalObject.webApplication}">
+            </myTags:editMasterUnbounded>
 
 
             <div class="row " id="entryFormContent-card-row"></div>
