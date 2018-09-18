@@ -22,6 +22,38 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <myTags:editNonZeroLengthString label="Type"
+                                            placeholder="Type of forecasting the software produces."
+                                            specifier="type"
+                                            id="type"
+                                            path="type"
+                                            cardText="Type of forecasting the software produces."
+                                            isInputGroup="${true}"
+                                            isRequired="${true}"
+                                            string="${digitalObject.type}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="Forecast Frequency"
+                                            placeholder="How often the software updates output on one or more predicted count data items."
+                                            specifier="forecast-frequency"
+                                            id="forecast-frequency"
+                                            path="forecastFrequency"
+                                            cardText="How often the software updates output on one or more predicted count data items."
+                                            isInputGroup="${true}"
+                                            isRequired="${true}"
+                                            string="${digitalObject.forecastFrequency}">
+            </myTags:editNonZeroLengthString>
+            <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
+            <myTags:editMasterUnbounded label="Forecasts"
+                                        addButtonLabel="Forecast"
+                                        placeholder="A description of future conditions."
+                                        path="forecasts"
+                                        specifier="forecasts"
+                                        isRequired="${true}"
+                                        cardText="A description of future conditions."
+                                        isFirstRequired="${true}"
+                                        tagName="string"
+                                        listItems="${digitalObject.forecasts}">
+            </myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded specifier="diseases"
                                         placeholder="A disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
                                         label="Diseases"
@@ -49,36 +81,8 @@
                                         tagName="string"
                                         path="outcomes">
             </myTags:editMasterUnbounded>
-            <myTags:editNonZeroLengthString label="Forecast Frequency"
-                                            placeholder="How often the software updates output on one or more predicted count data items."
-                                            specifier="forecast-frequency"
-                                            id="forecast-frequency"
-                                            path="forecastFrequency"
-                                            cardText="How often the software updates output on one or more predicted count data items."
-                                            isInputGroup="${true}"
-                                            string="${digitalObject.forecastFrequency}">
-            </myTags:editNonZeroLengthString>
-            <myTags:editNonZeroLengthString label="Type"
-                                            placeholder="Type of forecasting the software produces."
-                                            specifier="type"
-                                            id="type"
-                                            path="type"
-                                            cardText="Type of forecasting the software produces."
-                                            isInputGroup="${true}"
-                                            string="${digitalObject.type}">
-            </myTags:editNonZeroLengthString>
-            <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
-            <myTags:editMasterUnbounded label="Forecasts"
-                                        addButtonLabel="Forecast"
-                                        placeholder="A description of future conditions."
-                                        path="forecasts"
-                                        specifier="forecasts"
-                                        isRequired="${false}"
-                                        cardText="A description of future conditions."
-                                        isFirstRequired="${true}"
-                                        tagName="string"
-                                        listItems="${digitalObject.forecasts}">
-            </myTags:editMasterUnbounded>
+
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
@@ -86,7 +90,11 @@
         </form>
     </div>
 </div>
-
+<script>
+    $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+    });
+</script>
 
 <myTags:analytics/>
 
