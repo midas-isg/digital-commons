@@ -25,6 +25,8 @@
               type="java.lang.String" %>
 <%@ attribute name="cardIcon" required="false"
               type="java.lang.String" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -45,6 +47,7 @@
                                 isRequired="${true}"
                                 label="Value"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${updateCardTabTitleText}"
                                 string="${annotation.value}">
 </myTags:editNonZeroLengthString>
 <myTags:editNonZeroLengthString path="${path}.valueIRI"

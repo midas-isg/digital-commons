@@ -52,6 +52,7 @@
                        isRequired="${true}"
                        label="Type"
                        id="${specifier}-date"
+                       updateCardTabTitleText="${true}"
                        cardText="The type of date, used to specify the process which is being timestamped by the date attribute value, ideally comes from a controlled terminology."
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">

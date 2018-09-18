@@ -993,7 +993,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     makeAllTabsInactive(specifier);
     //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
-        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+"   "+
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" id=\""+specifier+"-"+listItemCount+"-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\""+label+"\">"+label+"   "+
         "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
 
 
@@ -1008,6 +1008,28 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
     window.location.hash = $("#" + specifier + "-card").selector;
+}
+
+function updateCardTabTitle(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+    var newCardTabTitleText = $("#" + specifier).val();
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, lastIndex + 2) + "listItem";
+        $('#'+ id +'[data-toggle="tooltip"]').attr("title",newCardTabTitleText);
+        newCardTabTitleText = newCardTabTitleText + "   ";
+        var currentCardTabTitleText = $("#" + id).text();
+        var currentCardTabTitleHTML = $("#" + id).html();
+        $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, newCardTabTitleText));
+    }
 }
 
 $(window).on("popstate", function() {
