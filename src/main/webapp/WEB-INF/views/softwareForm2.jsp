@@ -68,7 +68,7 @@
                                         tagName="string"
                                         listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Publications That Used Release"
-                                        addButtonLabel="Publication That Used Release"
+                                        addButtonLabel="Publication"
                                         placeholder="Article, paper, journal or other work employing the release of the software."
                                         path="publicationsThatUsedRelease"
                                         specifier="publications-that-used-release"
@@ -93,7 +93,7 @@
                                         cardText="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
                                         listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
             <myTags:editMasterUnbounded label="Publications About Release"
-                                        addButtonLabel="Publication About Release"
+                                        addButtonLabel="Publication"
                                         placeholder="Article, paper, journal or other work referencing the release of the software."
                                         path="publicationsAboutRelease"
                                         specifier="publications-about-release"
