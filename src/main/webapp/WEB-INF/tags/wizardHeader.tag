@@ -4,8 +4,17 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ attribute name="showCategories" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="wantLoader" required="false"
+              type="java.lang.Boolean" %>
 
 <myTags:categoryLineage lineage="${categoryName}" hasSidebar="${true}"/>
+
+<c:if test="${wantLoader}">
+    <div class="loading style-2">
+        <div class="loading-wheel"></div>
+    </div>
+</c:if>
+
 
 <c:choose>
     <c:when test="${showCategories}">

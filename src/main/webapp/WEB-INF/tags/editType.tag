@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="type" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Type" %>
@@ -22,44 +23,50 @@
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
-
+<fmt:message key="dataset.type" var="typePlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${type}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="The nature of the data, as determined for the information collected, the method used and the platform used."
+                                 cardText="${typePlaceHolder}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.type.information" var="informationPlaceHolder" />
 <myTags:editAnnotation annotation="${type.information}"
                        specifier="${specifier}-information"
                        id="${specifier}-information"
                        label="Information"
                        isUnboundedList="${false}"
                        isRequired="${false}"
-                       cardText="The measurements or facts that the data is about."
+                       cardText="${informationPlaceHolder}"
                        cardIcon="fas fa-info-circle"
                        path="${path}.information">
 </myTags:editAnnotation>
+
+<fmt:message key="dataset.type.method" var="methodPlaceHolder" />
 <myTags:editAnnotation annotation="${type.method}"
                        specifier="${specifier}-method"
                        id="${specifier}-method"
                        label="Method"
                        isUnboundedList="${false}"
                        isRequired="${false}"
-                       cardText="The procedure or technology used to generate the information."
+                       cardText="${methodPlaceHolder}"
                        cardIcon="fa fa-cloud"
                        path="${path}.method">
 </myTags:editAnnotation>
+
+<fmt:message key="dataset.type.platform" var="platformPlaceHolder" />
 <myTags:editAnnotation annotation="${type.platform}"
                        specifier="${specifier}-platform"
                        id="${specifier}-platform"
                        label="Platform"
                        isUnboundedList="${false}"
                        isRequired="${false}"
-                       cardText="The set of instruments, software and reagents that are needed to generated the data."
+                       cardText="${platformPlaceHolder}"
                        cardIcon="fas fa-laptop"
                        path="${path}.platform">
 </myTags:editAnnotation>
@@ -69,7 +76,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="The nature of the data, as determined for the information collected, the method used and the platform used."
+                                 cardText="${typePlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
@@ -17,19 +18,21 @@
 <%@attribute name="dataRepository" required="false"
              type="edu.pitt.isg.mdc.dats2_2.DataRepository" %>
 
-
+<fmt:message key="dataset.dataRepository" var="dataRepositoryPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${dataRepository}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
-                                 cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
+                                 cardText="${dataRepositoryPlaceHolder}"
                                  cardIcon="fas fa-database"
                                  tagName="dataRepository"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editNonZeroLengthString placeholder=" The name of the data repository."
+
+<fmt:message key="dataset.dataRepository.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString placeholder="${namePlaceHolder}"
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 label="Name"
@@ -38,6 +41,8 @@
                                 isInputGroup="${true}"
                                 isRequired="${true}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.dataRepository.description" var="descriptionPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.description"
                                 string="${dataRepository.description}"
                                 specifier="${specifier}-description"
@@ -45,11 +50,13 @@
                                 isTextArea="${true}"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
-                                placeholder=" A textual narrative comprised of one or more statements describing the data repository."
+                                placeholder="${descriptionPlaceHolder}"
                                 label="Description">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.dataRepository.version" var="versionPlaceHolder" />
 <myTags:editNonZeroLengthString label="Version"
-                                placeholder=" A release point for the dataset when applicable."
+                                placeholder="${versionPlaceHolder}"
                                 specifier="${specifier}-version"
                                 id="${specifier}-version"
                                 isRequired="${true}"
@@ -64,42 +71,52 @@
                        isUnboundedList="${false}"
                        label="Identifier">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierCardText" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierCardText}"
                             cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${dataRepository.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataRepository.scopes" var="scopesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.scopes"
                             specifier="${specifier}-scopes"
                             listItems="${dataRepository.scopes}"
-                            cardText="Information about the nature of the datasets in the repository, ideally from a controlled vocabulary or ontology (e.g. transcription profile, sequence reads, molecular structure, image, DNA sequence, NMR spectra)."
+                            cardText="${scopesPlaceHolder}"
                             cardIcon="far fa-eye"
                             tagName="annotation"
                             addButtonLabel="Scope"
                             label="Scopes">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataRepository.types" var="typesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.types"
                             specifier="${specifier}-types"
                             listItems="${dataRepository.types}"
-                            cardText="A descriptor (ideally from a controlled vocabulary) providing information about the type of repository, such as primary resource or aggregator."
+                            cardText="${typesPlaceHolder}"
                             cardIcon="fas fa-shapes"
                             tagName="annotation"
                             addButtonLabel="Type"
                             label="Types">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataRepository.licenses" var="licensesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${dataRepository.licenses}"
                             label="Licenses"
                             addButtonLabel="License"
-                            cardText="The terms of use of the data repository."
+                            cardText="${licensesPlaceHolder}"
                             cardIcon="fab fa-creative-commons"
                             tagName="license"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.publishers" var="publishersPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.publishers"
                             specifier="${specifier}-publishers"
                             label="Publishers"
@@ -107,16 +124,18 @@
                             listItems="${dataRepository.publishers}"
                             isFirstRequired="false"
                             createPersonOrganizationTags="true"
-                            cardText="The person(s) or organization(s) responsible for the repository and its availability."
+                            cardText="${publishersPlaceHolder}"
                             cardIcon="fas fa-book-open"
                             tagName="personComprisedEntity"
                             showAddPersonButton="true"
                             showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataRepository.access" var="accessPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.access"
                             specifier="${specifier}-access"
                             listItems="${dataRepository.access}"
-                            cardText="The information about access modality for the data repository."
+                            cardText="${accessPlaceHolder}"
                             cardIcon="fa fa-unlock"
                             tagName="access"
                             isRequired="${false}"
@@ -129,7 +148,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${false}"
-                                 cardText="A repository or catalog of datasets. It could be a primary repository or a repository that aggregates data existing in other repositories."
+                                 cardText="${dataRepositoryPlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="dataRepository"
                                  showTopOrBottom="bottom">

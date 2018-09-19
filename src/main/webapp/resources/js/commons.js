@@ -735,12 +735,16 @@ $(document).ready(function() {
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
 
-        if(href!=undefined && (nulhref!= undefined && nulhref.includes('http'))) {
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'Clickthrough',
-                eventAction: href
-            });
+        try{
+            if (href != undefined && nulhref.includes('http')) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: href
+                });
+            }
+        } catch (e) {
+            
         }
     });
 

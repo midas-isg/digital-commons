@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -20,24 +21,25 @@
     <div id="entryFormContent">
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${showCategories}"></myTags:wizardHeader>
-
+            <fmt:message key="dataset.title" var="titlePlaceHolder" />
             <myTags:editNonZeroLengthString label="Title"
                                             path="title"
                                             specifier="title"
                                             id="title"
-                                            placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                            placeholder="${titlePlaceHolder}"
                                             isRequired="true"
                                             isInputGroup="${true}"
                                             string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
 
+            <fmt:message key="dataset.description" var="descriptionPlaceHolder" />
             <myTags:editNonZeroLengthString path="description"
                                             string="${digitalObject.description}"
                                             specifier="description"
                                             id="description"
                                             isTextArea="true"
                                             isRequired="true"
-                                            placeholder=" A textual narrative comprised of one or more statements describing the dataset."
+                                            placeholder="${descriptionPlaceHolder}"
                                             isInputGroup="${true}"
                                             label="Description">
             </myTags:editNonZeroLengthString>
@@ -48,12 +50,14 @@
                                    path="identifier"
                                    label="Identifier">
             </myTags:editIdentifier>
+
+            <fmt:message key="dataset.dates" var="datesPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.dates}"
                                         path="dates"
                                         label="Dates"
                                         addButtonLabel="Date"
                                         cardIcon="far fa-calendar-alt"
-                                        cardText="Information about a calendar date or timestamp indicating day, month, year and time of an event."
+                                        cardText="${datesPlaceHolder}"
                                         tagName="date"
                                         specifier="dates">
             </myTags:editMasterUnbounded>

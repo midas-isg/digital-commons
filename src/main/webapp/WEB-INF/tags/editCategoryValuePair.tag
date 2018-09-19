@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -34,8 +35,10 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.categoryValuePair.category" var="categoryPlaceHolder" />
 <myTags:editNonZeroLengthString label="Category"
-                                placeholder=" A characteristic or property about the entity this object is associated with."
+                                placeholder="${categoryPlaceHolder}"
                                 specifier="${specifier}-category"
                                 id="${specifier}-category"
                                 isRequired="${true}"
@@ -43,8 +46,10 @@
                                 isInputGroup="${true}"
                                 string="${categoryValuePair.category}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.categoryValuePair.categoryIRI" var="categoryIRIPlaceHolder" />
 <myTags:editNonZeroLengthString label="CategoryIRI"
-                                placeholder=" The IRI corresponding to the category, if associated with an ontology term."
+                                placeholder="${categoryIRIPlaceHolder}"
                                 specifier="${specifier}-categoryIRI"
                                 id="${specifier}-categoryIRI"
                                 isRequired="${true}"
@@ -52,12 +57,13 @@
                                 isInputGroup="${true}"
                                 string="${categoryValuePair.categoryIRI}">
 </myTags:editNonZeroLengthString>
-<%--TODO: add icon for add values--%>
+
+<fmt:message key="dataset.categoryValuePair.values" var="valuesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.values"
                             specifier="${specifier}-values"
                             label="Values"
                             addButtonLabel="Value"
-                            cardText="A set of (annotated) values associated with the cateogory."
+                            cardText="${valuesPlaceHolder}"
                             cardIcon="fas fa-tags"
                             tagName="annotation"
                             listItems="${categoryValuePair.values}">

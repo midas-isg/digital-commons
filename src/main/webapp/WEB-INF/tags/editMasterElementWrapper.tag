@@ -146,8 +146,6 @@
                     $("#${specifier}-input-block").addClass("show");
 
                     $("#${specifier}-input-block").show();
-                    scrollToAnchor('${specifier}');
-                    highlightDiv('${specifier}');
 
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
@@ -162,6 +160,9 @@
 
                     //Add section
                     $("#${specifier}-${tagName}").val("");
+                    scrollToAnchor('${specifier}');
+                    highlightDiv('${specifier}');
+
                 });
 
                 //Remove section
