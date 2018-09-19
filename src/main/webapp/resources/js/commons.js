@@ -899,6 +899,7 @@ function showTab(e, div, specifier) {
     });
 
     $('#' + divToShow).removeClass("hide");
+    $('#' + divToShow.substring(0, divToShow.indexOf("-input-block"))).removeClass("hide");
     $('#' + divToShow + ' .card-content').each(function (index) {
         //if card is unbounded list we find the 'active' tab and unhide that input block
         var inputBlockID = $(this).attr("id");
