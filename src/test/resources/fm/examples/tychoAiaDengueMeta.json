@@ -1,0 +1,2038 @@
+{
+  "dates": [
+    {
+      "date": "2018-01-30",
+      "type": {
+        "value": "created",
+        "valueIRI": "http://doi.org/10.5438/0012"
+      }
+    }
+  ],
+  "title": "Counts of Dengue reported in ANGUILLA: 1980-2012",
+  "types": [
+    {
+      "method": {
+        "value": "Disease Surveillance",
+        "valueIRI": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545"
+      },
+      "information": {
+        "value": "Infectious disease incidence",
+        "valueIRI": "http://purl.obolibrary.org/obo/IDO_0000479"
+      }
+    },
+    {
+      "method": {
+        "value": "Disease Notification",
+        "valueIRI": "http://purl.bioontology.org/ontology/MESH/D018563"
+      },
+      "information": {
+        "value": "Infectious disease incidence",
+        "valueIRI": "http://purl.obolibrary.org/obo/IDO_0000479"
+      }
+    }
+  ],
+  "isAbout": [
+    {
+      "name": "Dengue",
+      "identifier": {
+        "identifier": "http://purl.bioontology.org/ontology/SNOMEDCT/38362002",
+        "identifierSource": "SNOMED-CT"
+      }
+    },
+    {
+      "value": "38362002",
+      "valueIRI": "http://purl.bioontology.org/ontology/SNOMEDCT/38362002"
+    },
+    {
+      "value": "AI",
+      "valueIRI": "https://www.iso.org/obp/ui/#iso:code:3166:AI"
+    },
+    {
+      "value": "Case",
+      "valueIRI": "http://purl.bioontology.org/ontology/SNOMEDCT/398241000"
+    },
+    {
+      "value": "Death",
+      "valueIRI": "http://purl.bioontology.org/ontology/SNOMEDCT/419620001"
+    },
+    {
+      "value": "1980-01-01-2012-12-31",
+      "valueIRI": "http://reference.data.gov.uk/id/gregorian-interval/1980-01-01T00:00:00/P32Y11M30D"
+    }
+  ],
+  "creators": [
+    {
+      "email": "wilbert.van.panhuis@pitt.edu",
+      "roles": [
+        {
+          "value": "Principal Investigator",
+          "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+        }
+      ],
+      "fullName": "Willem G Van Panhuis",
+      "lastName": "Van Panhuis",
+      "firstName": "Willem",
+      "identifier": {
+        "identifier": "0000-0002-7278-9982",
+        "identifierSource": "ORCID"
+      },
+      "affiliations": [
+        {
+          "name": "University of Pittsburgh Graduate School of Public Health",
+          "location": {
+            "name": "Pittsburgh",
+            "identifier": {
+              "identifier": "https://www.publichealth.pitt.edu/",
+              "identifierSource": "URL"
+            },
+            "coordinates": [
+              [
+                40.4429,
+                -79.9585
+              ]
+            ],
+            "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+          },
+          "identifier": {
+            "identifier": "https://www.publichealth.pitt.edu/",
+            "identifierSource": "URL"
+          },
+          "abbreviation": "Pitt GSPH"
+        }
+      ],
+      "middleInitial": "G"
+    },
+    {
+      "email": "alc172@pitt.edu",
+      "roles": [
+        {
+          "value": "Computer programmer",
+          "valueIRI": "http://purl.org/spar/scoro/computer-programmer"
+        }
+      ],
+      "fullName": "Anne L Cross",
+      "lastName": "Cross",
+      "firstName": "Anne",
+      "identifier": {
+        "identifier": "0000-0003-1707-253X",
+        "identifierSource": "ORCID"
+      },
+      "affiliations": [
+        {
+          "name": "University of Pittsburgh Graduate School of Public Health",
+          "location": {
+            "name": "Pittsburgh",
+            "identifier": {
+              "identifier": "https://www.publichealth.pitt.edu/",
+              "identifierSource": "URL"
+            },
+            "coordinates": [
+              [
+                40.4429,
+                -79.9585
+              ]
+            ],
+            "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+          },
+          "identifier": {
+            "identifier": "https://www.publichealth.pitt.edu/",
+            "identifierSource": "URL"
+          },
+          "abbreviation": "Pitt GSPH"
+        }
+      ],
+      "middleInitial": "L"
+    },
+    {
+      "email": "donburke@pitt.edu",
+      "roles": [
+        {
+          "value": "Principal Investigator",
+          "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+        }
+      ],
+      "fullName": "Donald S Burke",
+      "lastName": "Burke",
+      "firstName": "Donald",
+      "identifier": {
+        "identifier": "0000-0002-5704-8094",
+        "identifierSource": "ORCID"
+      },
+      "affiliations": [
+        {
+          "name": "University of Pittsburgh Graduate School of Public Health",
+          "location": {
+            "name": "Pittsburgh",
+            "identifier": {
+              "identifier": "https://www.publichealth.pitt.edu/",
+              "identifierSource": "URL"
+            },
+            "coordinates": [
+              [
+                40.4429,
+                -79.9585
+              ]
+            ],
+            "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+          },
+          "identifier": {
+            "identifier": "https://www.publichealth.pitt.edu/",
+            "identifierSource": "URL"
+          },
+          "abbreviation": "Pitt GSPH"
+        }
+      ],
+      "middleInitial": "S"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+      "version": "4.00",
+      "creators": [
+        {
+          "name": "Creative Commons",
+          "identifier": {
+            "identifier": "https://creativecommons.org/",
+            "identifierSource": "URL"
+          },
+          "abbreviation": "CC"
+        }
+      ],
+      "identifier": {
+        "identifier": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "identifierSource": "URL"
+      }
+    }
+  ],
+  "storedIn": {
+    "name": "Project Tycho",
+    "dates": [],
+    "types": [
+      {
+        "value": "Primary Repository",
+        "valueIRI": "bioCADDIE DATS specification"
+      }
+    ],
+    "access": [
+      {
+        "types": [
+          {
+            "value": "download"
+          }
+        ],
+        "identifier": {
+          "identifier": "https://www.tycho.pitt.edu/data",
+          "identifierSource": "URL"
+        },
+        "landingPage": "https://www.tycho.pitt.edu/login",
+        "authorizations": [
+          {
+            "value": "registration"
+          }
+        ],
+        "authentications": [
+          {
+            "value": "simpleLogin"
+          }
+        ]
+      }
+    ],
+    "scopes": [
+      {
+        "value": "Infectious Disease Incidence",
+        "valueIRI": "http://purl.obolibrary.org/obo/IDO_0000479"
+      }
+    ],
+    "version": "2.00",
+    "licenses": [
+      {
+        "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+        "version": "4.00",
+        "creators": [
+          {
+            "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+            "identifier": {
+              "identifier": "https://creativecommons.org/",
+              "identifierSource": "URL"
+            },
+            "abbreviation": "CC"
+          }
+        ],
+        "identifier": {
+          "identifier": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+          "identifierSource": "URL"
+        }
+      }
+    ],
+    "identifier": {
+      "identifier": "biodbcore-000995",
+      "identifierSource": "FAIRsharing"
+    },
+    "publishers": [
+      {
+        "name": "Project Tycho",
+        "location": {
+          "name": "Pittsburgh",
+          "identifier": {
+            "identifier": "http://www.geonames.org/5206379/pittsburgh.html",
+            "identifierSource": "Geonames"
+          },
+          "coordinates": [
+            [
+              40.442906,
+              -79.958548
+            ]
+          ],
+          "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, United States"
+        },
+        "identifier": {
+          "identifier": "https://www.tycho.pitt.edu",
+          "identifierSource": "URL"
+        }
+      }
+    ],
+    "description": "The Project Tycho Repository for Global Health Data aims to advance the availabilty and use of data for improving global health. A Project Tycho dataset includes case counts for a disease condition in a country. Data for Project Tycho datasets can come from various sources and have been pre-processed into the standard Project Tycho data format."
+  },
+  "citations": [],
+  "identifier": {
+    "identifier": "10.25337/T7/ptycho.v2.0/AI.38362002",
+    "identifierSource": "Project Tycho"
+  },
+  "refinement": "preprocessed data",
+  "aggregation": "instance of dataset",
+  "description": "Project Tycho datasets contain case counts for reported disease conditions for countries around the world. The Project Tycho data curation team extracts these case counts from various reputable sources, typically from national or international health authorities, such as the US Centers for Disease Control or the World Health Organization. These original data sources include both open- and restricted-access sources. For restricted-access sources, the Project Tycho team has obtained permission for redistribution from data contributors. All datasets contain case count data that are identical to counts published in the original source and no counts have been modified in any way by the Project Tycho team. The Project Tycho team has pre-processed datasets by adding new variables, such as standard disease and location identifiers, that improve data interpretability. We also formatted the data into a standard data format.\n\nEach Project Tycho dataset contains case counts for a specific condition (e.g. measles) and for a specific country (e.g. The United States). Case counts are reported per time interval. In addition to case counts, datasets include information about these counts (attributes), such as the location, age group, subpopulation, diagnostic certainty, place of acquisition, and the source from which we extracted case counts. One dataset can include many series of case count time intervals, such as \"US measles cases as reported by CDC\", or \"US measles cases reported by WHO\", or \"US measles cases that originated abroad\", etc. \n\nDepending on the intended use of a dataset, we recommend a few data processing steps before analysis:\n- Analyze missing data: Project Tycho datasets do not include time intervals for which no case count was reported (for many datasets, time series of case counts are incomplete, due to incompleteness of source documents) and users will need to add time intervals for which no count value is available. Project Tycho datasets do include time intervals for which a case count value of zero was reported.\n- Separate cumulative from non-cumulative time interval series. Case count time series in Project Tycho datasets can be \"cumulative\" or \"fixed-intervals\". Cumulative case count time series consist of overlapping case count intervals starting on the same date, but ending on different dates. For example, each interval in a cumulative count time series can start on January 1st, but end on January 7th, 14th, 21st, etc. It is common practice among public health agencies to report cases for cumulative time intervals. Case count series with fixed time intervals consist of mutually exclusive time intervals that all start and end on different dates and all have identical length (day, week, month, year). Given the different nature of these two types of case count data, we indicated this with an attribute for each count value, named \"PartOfCumulativeCountSeries\". \n",
+  "acknowledges": [
+    {
+      "name": "Evaluation of Candidate Vaccine Technologies Using Computational Models",
+      "funders": [
+        {
+          "name": "Bill \u0026 Melinda Gates Foundation",
+          "identifier": {
+            "identifier": "10.13039/100000865",
+            "identifierSource": "Crossref Funder ID"
+          },
+          "abbreviation": "BMGF"
+        }
+      ],
+      "awardees": [
+        {
+          "email": "wilbert.van.panhuis@pitt.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Willem G Van Panhuis",
+          "lastName": "Van Panhuis",
+          "firstName": "Willem",
+          "identifier": {
+            "identifier": "0000-0002-7278-9982",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "G"
+        },
+        {
+          "email": "donburke@pitt.edu",
+          "roles": [
+            {
+              "value": "Principal Investigator",
+              "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+            }
+          ],
+          "fullName": "Donald S Burke",
+          "lastName": "Burke",
+          "firstName": "Donald",
+          "identifier": {
+            "identifier": "0000-0002-5704-8094",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "S"
+        },
+        {
+          "email": "datc@ufl.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Derek AT Cummings",
+          "lastName": "Cummings",
+          "firstName": "Derek",
+          "identifier": {
+            "identifier": "0000-0002-9437-1907",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Florida: Department of Biology",
+              "location": {
+                "name": "Gainesville",
+                "identifier": {
+                  "identifier": "https://biology.ufl.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    29.6439,
+                    -82.3447
+                  ]
+                ],
+                "postalAddress": "220 Bartram Hall, P.O. Box 118525, Gainesville, FL 32611, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://biology.ufl.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "UF Biology"
+            }
+          ],
+          "middleInitial": "AT"
+        },
+        {
+          "email": "stb60@pitt.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Shawn Brown",
+          "lastName": "Brown",
+          "firstName": "Shawn",
+          "affiliations": [
+            {
+              "name": "Pittsburgh Supercomputing Center",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.psc.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4456,
+                    -79.9492
+                  ]
+                ],
+                "postalAddress": "300 South Craig Street, Pittsburgh, PA 15213, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.psc.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "PSC"
+            }
+          ]
+        },
+        {
+          "email": "brucelee@jhu.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Bruce Y Lee",
+          "lastName": "Lee",
+          "firstName": "Bruce",
+          "identifier": {
+            "identifier": "0000-0003-2633-8651",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "Johns Hopkins Bloomberg School of Public Health",
+              "location": {
+                "name": "Baltimore",
+                "identifier": {
+                  "identifier": "https://www.jhsph.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    39.298,
+                    -76.5905
+                  ]
+                ],
+                "postalAddress": "615 North Wolfe Street, Baltimore, MD 21205, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.jhsph.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "JHSPH"
+            }
+          ],
+          "middleInitial": "Y"
+        },
+        {
+          "email": "ireneruberto@yahoo.it",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Irene Ruberto",
+          "lastName": "Ruberto",
+          "firstName": "Irene",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "xiongxinsc@gmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Xin Xiong",
+          "lastName": "Xiong",
+          "firstName": "Xin",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "nianshong828@hotmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Nian Shong Chok",
+          "lastName": "Chok",
+          "firstName": "Nian Shong",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "mchoisy@gmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Marc Choisy",
+          "lastName": "Choisy",
+          "firstName": "Marc",
+          "identifier": {
+            "identifier": "0000-0002-5187-6390",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "Institut de Recherche pour le Développement",
+              "location": {
+                "name": "Marseille",
+                "identifier": {
+                  "identifier": "https://en.ird.fr/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    43.3096,
+                    5.36881
+                  ]
+                ],
+                "postalAddress": "44 Boulevard de Dunkerque, Marseille, 13002, FRANCE"
+              },
+              "identifier": {
+                "identifier": "https://en.ird.fr/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "IRD"
+            }
+          ]
+        }
+      ],
+      "alternateIdentifiers": [
+        {
+          "identifier": "http://www.vaccinemodeling.org",
+          "identifierSource": "URL"
+        }
+      ]
+    },
+    {
+      "name": "Computational Models of Infectious Disease Threats",
+      "funders": [
+        {
+          "name": "National Institute of General Medical Sciences",
+          "identifier": {
+            "identifier": "10.13039/100000057",
+            "identifierSource": "Crossref Funder ID"
+          },
+          "abbreviation": "NIGMS",
+          "alternateIdentifiers": [
+            {
+              "identifier": "https://projectreporter.nih.gov/project_info_details.cfm?aid\u003d9294075\u0026icde\u003d35532330",
+              "identifierSource": "URL"
+            }
+          ]
+        }
+      ],
+      "awardees": [
+        {
+          "email": "donburke@pitt.edu",
+          "roles": [
+            {
+              "value": "Principal Investigator",
+              "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+            }
+          ],
+          "fullName": "Donald S Burke",
+          "lastName": "Burke",
+          "firstName": "Donald",
+          "identifier": {
+            "identifier": "0000-0002-5704-8094",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "S"
+        },
+        {
+          "email": "stb60@pitt.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Shawn Brown",
+          "lastName": "Brown",
+          "firstName": "Shawn",
+          "affiliations": [
+            {
+              "name": "Pittsburgh Supercomputing Center",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.psc.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4456,
+                    -79.9492
+                  ]
+                ],
+                "postalAddress": "300 South Craig Street, Pittsburgh, PA 15213, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.psc.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "PSC"
+            }
+          ]
+        },
+        {
+          "email": "datc@ufl.edu",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Derek AT Cummings",
+          "lastName": "Cummings",
+          "firstName": "Derek",
+          "identifier": {
+            "identifier": "0000-0002-9437-1907",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Florida: Department of Biology",
+              "location": {
+                "name": "Gainesville",
+                "identifier": {
+                  "identifier": "https://biology.ufl.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    29.6439,
+                    -82.3447
+                  ]
+                ],
+                "postalAddress": "220 Bartram Hall, P.O. Box 118525, Gainesville, FL 32611, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://biology.ufl.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "UF Biology"
+            }
+          ],
+          "middleInitial": "AT"
+        },
+        {
+          "email": "ireneruberto@yahoo.it",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Irene Ruberto",
+          "lastName": "Ruberto",
+          "firstName": "Irene",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "xiongxinsc@gmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Xin Xiong",
+          "lastName": "Xiong",
+          "firstName": "Xin",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "nianshong828@hotmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Nian Shong Chok",
+          "lastName": "Chok",
+          "firstName": "Nian Shong",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "mchoisy@gmail.com",
+          "roles": [
+            {
+              "value": "Co-investigator",
+              "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+            }
+          ],
+          "fullName": "Marc Choisy",
+          "lastName": "Choisy",
+          "firstName": "Marc",
+          "identifier": {
+            "identifier": "0000-0002-5187-6390",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "Institut de Recherche pour le Développement",
+              "location": {
+                "name": "Marseille",
+                "identifier": {
+                  "identifier": "https://en.ird.fr/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    43.3096,
+                    5.36881
+                  ]
+                ],
+                "postalAddress": "44 Boulevard de Dunkerque, Marseille, 13002, FRANCE"
+              },
+              "identifier": {
+                "identifier": "https://en.ird.fr/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "IRD"
+            }
+          ]
+        }
+      ],
+      "identifier": {
+        "identifier": "https://projectreporter.nih.gov/project_info_details.cfm?aid\u003d9294075\u0026icde\u003d35532330",
+        "identifierSource": "URL"
+      },
+      "alternateIdentifiers": [
+        {
+          "identifier": "http://www.midas.pitt.edu",
+          "identifierSource": "URL"
+        }
+      ]
+    }
+  ],
+  "availability": "available",
+  "citationCount": 0,
+  "distributions": [
+    {
+      "size": 0,
+      "unit": {
+        "value": "Megabyte",
+        "valueIRI": "http://purl.obolibrary.org/obo/UO_0000235"
+      },
+      "dates": [
+        {
+          "date": "2018-01-30",
+          "type": {
+            "value": "created",
+            "valueIRI": "http://doi.org/10.5438/0012"
+          }
+        }
+      ],
+      "title": "CSV file with counts of Dengue reported in ANGUILLA: 1980-2012",
+      "access": {
+        "types": [
+          {
+            "value": "download"
+          }
+        ],
+        "accessURL": "http://www.tycho.pitt.edu/tycho/dataset/download/AI.38362002",
+        "identifier": {
+          "identifier": "https://www.tycho.pitt.edu/data",
+          "identifierSource": "URL"
+        },
+        "landingPage": "http://www.tycho.pitt.edu/tycho/dataset/AI.38362002/",
+        "authorizations": [
+          {
+            "value": "registration"
+          }
+        ],
+        "authentications": [
+          {
+            "value": "simpleLogin"
+          }
+        ]
+      },
+      "formats": [
+        "CSV"
+      ],
+      "version": "2.00",
+      "licenses": [
+        {
+          "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+          "version": "4.00",
+          "creators": [
+            {
+              "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+              "identifier": {
+                "identifier": "https://creativecommons.org/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "CC"
+            }
+          ],
+          "identifier": {
+            "identifier": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+            "identifierSource": "URL"
+          }
+        }
+      ],
+      "storedIn": {
+        "name": "Project Tycho",
+        "dates": [],
+        "types": [
+          {
+            "value": "Primary Repository",
+            "valueIRI": "bioCADDIE DATS specification"
+          }
+        ],
+        "access": [
+          {
+            "types": [
+              {
+                "value": "download"
+              }
+            ],
+            "identifier": {
+              "identifier": "https://www.tycho.pitt.edu/data",
+              "identifierSource": "URL"
+            },
+            "landingPage": "https://www.tycho.pitt.edu/login",
+            "authorizations": [
+              {
+                "value": "registration"
+              }
+            ],
+            "authentications": [
+              {
+                "value": "simpleLogin"
+              }
+            ]
+          }
+        ],
+        "scopes": [
+          {
+            "value": "Infectious Disease Incidence",
+            "valueIRI": "http://purl.obolibrary.org/obo/IDO_0000479"
+          }
+        ],
+        "version": "2.00",
+        "licenses": [
+          {
+            "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+            "version": "4.00",
+            "creators": [
+              {
+                "name": "Attribution-NonCommercial-ShareAlike 4.0 International",
+                "identifier": {
+                  "identifier": "https://creativecommons.org/",
+                  "identifierSource": "URL"
+                },
+                "abbreviation": "CC"
+              }
+            ],
+            "identifier": {
+              "identifier": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+              "identifierSource": "URL"
+            }
+          }
+        ],
+        "identifier": {
+          "identifier": "biodbcore-000995",
+          "identifierSource": "FAIRsharing"
+        },
+        "publishers": [
+          {
+            "name": "Project Tycho",
+            "location": {
+              "name": "Pittsburgh",
+              "identifier": {
+                "identifier": "http://www.geonames.org/5206379/pittsburgh.html",
+                "identifierSource": "Geonames"
+              },
+              "coordinates": [
+                [
+                  40.442906,
+                  -79.958548
+                ]
+              ],
+              "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, United States"
+            },
+            "identifier": {
+              "identifier": "https://www.tycho.pitt.edu",
+              "identifierSource": "URL"
+            }
+          }
+        ],
+        "description": "The Project Tycho Repository for Global Health Data aims to advance the availabilty and use of data for improving global health. A Project Tycho dataset includes case counts for a disease condition in a country. Data for Project Tycho datasets can come from various sources and have been pre-processed into the standard Project Tycho data format.",
+        "alternateIdentifiers": [
+          {
+            "identifier": "https://www.tycho.pitt.edu",
+            "identifierSource": "URL"
+          }
+        ]
+      },
+      "conformsTo": [
+        {
+          "name": "Project Tycho Data Standard",
+          "type": {
+            "value": "Format",
+            "valueIRI": "http://edamontology.org/format_1915"
+          },
+          "version": "1.00",
+          "identifier": {
+            "identifier": "bsg-s000718",
+            "identifierSource": "FAIRsharing"
+          },
+          "description": "Specification of Project Tycho dataset file format and variable definitions",
+          "alternateIdentifiers": [
+            {
+              "identifier": "https://www.tycho.pitt.edu/dataformat",
+              "identifierSource": "URL"
+            }
+          ]
+        }
+      ],
+      "identifier": {
+        "identifier": "10.25337/T7/ptycho.v2.0/AI.38362002",
+        "identifierSource": "Project Tycho"
+      },
+      "qualifiers": [
+        {
+          "value": "isomorphic with dataset, zipped CSV, Readme, and citation files",
+          "valueIRI": "pending"
+        }
+      ],
+      "description": "Downloadable CSV file of a Project Tycho dataset"
+    }
+  ],
+  "spatialCoverage": [
+    {
+      "name": "ANGUILLA",
+      "identifier": {
+        "identifier": "https://www.iso.org/obp/ui/#iso:code:3166:AI",
+        "identifierSource": "ISO 3166"
+      },
+      "description": "Country in ANGUILLA",
+      "alternateIdentifiers": [
+        {
+          "identifier": "http://www.geonames.org/",
+          "identifierSource": "Geonames"
+        }
+      ]
+    }
+  ],
+  "primaryPublications": [
+    {
+      "type": {
+        "value": "AcademicArticle",
+        "valueIRI": "http://purl.org/ontology/bibo/AcademicArticle"
+      },
+      "dates": [
+        {
+          "date": "2015-04-14",
+          "type": {
+            "value": "Issue date",
+            "valueIRI": "http://purl.org/dc/terms/issued"
+          }
+        }
+      ],
+      "title": "The availability and consistency of dengue surveillance data provided online by the World Health Organization.",
+      "authors": [
+        {
+          "email": "ireneruberto@yahoo.it",
+          "roles": [
+            {
+              "value": "Principal author",
+              "valueIRI": "http://purl.org/spar/scoro/principal-author"
+            }
+          ],
+          "fullName": "Irene Ruberto",
+          "lastName": "Ruberto",
+          "firstName": "Irene",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ]
+        },
+        {
+          "email": "wilbert.van.panhuis@pitt.edu",
+          "roles": [
+            {
+              "value": "Senior author",
+              "valueIRI": "http://purl.org/spar/scoro/senior-author"
+            }
+          ],
+          "fullName": "Willem G Van Panhuis",
+          "lastName": "Van Panhuis",
+          "firstName": "Willem",
+          "identifier": {
+            "identifier": "0000-0002-7278-9982",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "G"
+        },
+        {
+          "email": "marques@pitt.edu",
+          "roles": [
+            {
+              "value": "Author",
+              "valueIRI": "http://purl.org/spar/pro/author"
+            }
+          ],
+          "fullName": "Ernesto T. A. Marques",
+          "lastName": "Marques",
+          "firstName": "Ernesto",
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "T. A."
+        },
+        {
+          "email": "donburke@pitt.edu",
+          "roles": [
+            {
+              "value": "Author",
+              "valueIRI": "http://purl.org/spar/pro/author"
+            }
+          ],
+          "fullName": "Donald S Burke",
+          "lastName": "Burke",
+          "firstName": "Donald",
+          "identifier": {
+            "identifier": "0000-0002-5704-8094",
+            "identifierSource": "ORCID"
+          },
+          "affiliations": [
+            {
+              "name": "University of Pittsburgh Graduate School of Public Health",
+              "location": {
+                "name": "Pittsburgh",
+                "identifier": {
+                  "identifier": "https://www.publichealth.pitt.edu/",
+                  "identifierSource": "URL"
+                },
+                "coordinates": [
+                  [
+                    40.4429,
+                    -79.9585
+                  ]
+                ],
+                "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+              },
+              "identifier": {
+                "identifier": "https://www.publichealth.pitt.edu/",
+                "identifierSource": "URL"
+              },
+              "abbreviation": "Pitt GSPH"
+            }
+          ],
+          "middleInitial": "S"
+        }
+      ],
+      "identifier": {
+        "identifier": "10.1371/journal.pntd.0003511",
+        "identifierSource": "Public Library of Science"
+      },
+      "acknowledges": [
+        {
+          "name": "Evaluation of Candidate Vaccine Technologies Using Computational Models",
+          "funders": [
+            {
+              "name": "Bill \u0026 Melinda Gates Foundation",
+              "identifier": {
+                "identifier": "10.13039/100000865",
+                "identifierSource": "Crossref Funder ID"
+              },
+              "abbreviation": "BMGF",
+              "alternateIdentifiers": [
+                {
+                  "identifier": "https://projectreporter.nih.gov/project_info_details.cfm?aid\u003d9294075\u0026icde\u003d35532330",
+                  "identifierSource": "URL"
+                }
+              ]
+            }
+          ],
+          "awardees": [
+            {
+              "email": "donburke@pitt.edu",
+              "roles": [
+                {
+                  "value": "Principal Investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+                }
+              ],
+              "fullName": "Donald S Burke",
+              "lastName": "Burke",
+              "firstName": "Donald",
+              "identifier": {
+                "identifier": "0000-0002-5704-8094",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ],
+              "middleInitial": "S"
+            },
+            {
+              "email": "wilbert.van.panhuis@pitt.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Willem G Van Panhuis",
+              "lastName": "Van Panhuis",
+              "firstName": "Willem",
+              "identifier": {
+                "identifier": "0000-0002-7278-9982",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ],
+              "middleInitial": "G"
+            },
+            {
+              "email": "datc@ufl.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Derek AT Cummings",
+              "lastName": "Cummings",
+              "firstName": "Derek",
+              "identifier": {
+                "identifier": "0000-0002-9437-1907",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "University of Florida: Department of Biology",
+                  "location": {
+                    "name": "Gainesville",
+                    "identifier": {
+                      "identifier": "https://biology.ufl.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        29.6439,
+                        -82.3447
+                      ]
+                    ],
+                    "postalAddress": "220 Bartram Hall, P.O. Box 118525, Gainesville, FL 32611, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://biology.ufl.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "UF Biology"
+                }
+              ],
+              "middleInitial": "AT"
+            },
+            {
+              "email": "stb60@pitt.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Shawn Brown",
+              "lastName": "Brown",
+              "firstName": "Shawn",
+              "affiliations": [
+                {
+                  "name": "Pittsburgh Supercomputing Center",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.psc.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4456,
+                        -79.9492
+                      ]
+                    ],
+                    "postalAddress": "300 South Craig Street, Pittsburgh, PA 15213, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.psc.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "PSC"
+                }
+              ]
+            },
+            {
+              "email": "brucelee@jhu.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Bruce Y Lee",
+              "lastName": "Lee",
+              "firstName": "Bruce",
+              "identifier": {
+                "identifier": "0000-0003-2633-8651",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "Johns Hopkins Bloomberg School of Public Health",
+                  "location": {
+                    "name": "Baltimore",
+                    "identifier": {
+                      "identifier": "https://www.jhsph.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        39.298,
+                        -76.5905
+                      ]
+                    ],
+                    "postalAddress": "615 North Wolfe Street, Baltimore, MD 21205, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.jhsph.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "JHSPH"
+                }
+              ],
+              "middleInitial": "Y"
+            },
+            {
+              "email": "ireneruberto@yahoo.it",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Irene Ruberto",
+              "lastName": "Ruberto",
+              "firstName": "Irene",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "xiongxinsc@gmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Xin Xiong",
+              "lastName": "Xiong",
+              "firstName": "Xin",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "nianshong828@hotmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Nian Shong Chok",
+              "lastName": "Chok",
+              "firstName": "Nian Shong",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "mchoisy@gmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Marc Choisy",
+              "lastName": "Choisy",
+              "firstName": "Marc",
+              "identifier": {
+                "identifier": "0000-0002-5187-6390",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "Institut de Recherche pour le Développement",
+                  "location": {
+                    "name": "Marseille",
+                    "identifier": {
+                      "identifier": "https://en.ird.fr/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        43.3096,
+                        5.36881
+                      ]
+                    ],
+                    "postalAddress": "44 Boulevard de Dunkerque, Marseille, 13002, FRANCE"
+                  },
+                  "identifier": {
+                    "identifier": "https://en.ird.fr/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "IRD"
+                }
+              ]
+            }
+          ],
+          "alternateIdentifiers": [
+            {
+              "identifier": "http://www.vaccinemodeling.org",
+              "identifierSource": "URL"
+            }
+          ]
+        },
+        {
+          "name": "Computational Models of Infectious Disease Threats",
+          "funders": [
+            {
+              "name": "National Institute of General Medical Sciences",
+              "identifier": {
+                "identifier": "10.13039/100000057",
+                "identifierSource": "Crossref Funder ID"
+              },
+              "abbreviation": "NIGMS",
+              "alternateIdentifiers": [
+                {
+                  "identifier": "https://projectreporter.nih.gov/project_info_details.cfm?aid\u003d9294075\u0026icde\u003d35532330",
+                  "identifierSource": "URL"
+                }
+              ]
+            }
+          ],
+          "awardees": [
+            {
+              "email": "donburke@pitt.edu",
+              "roles": [
+                {
+                  "value": "Principal Investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/principal-investigator"
+                }
+              ],
+              "fullName": "Donald S Burke",
+              "lastName": "Burke",
+              "firstName": "Donald",
+              "identifier": {
+                "identifier": "0000-0002-5704-8094",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ],
+              "middleInitial": "S"
+            },
+            {
+              "email": "stb60@pitt.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Shawn Brown",
+              "lastName": "Brown",
+              "firstName": "Shawn",
+              "affiliations": [
+                {
+                  "name": "Pittsburgh Supercomputing Center",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.psc.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4456,
+                        -79.9492
+                      ]
+                    ],
+                    "postalAddress": "300 South Craig Street, Pittsburgh, PA 15213, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.psc.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "PSC"
+                }
+              ]
+            },
+            {
+              "email": "datc@ufl.edu",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Derek AT Cummings",
+              "lastName": "Cummings",
+              "firstName": "Derek",
+              "identifier": {
+                "identifier": "0000-0002-9437-1907",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "University of Florida: Department of Biology",
+                  "location": {
+                    "name": "Gainesville",
+                    "identifier": {
+                      "identifier": "https://biology.ufl.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        29.6439,
+                        -82.3447
+                      ]
+                    ],
+                    "postalAddress": "220 Bartram Hall, P.O. Box 118525, Gainesville, FL 32611, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://biology.ufl.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "UF Biology"
+                }
+              ],
+              "middleInitial": "AT"
+            },
+            {
+              "email": "ireneruberto@yahoo.it",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Irene Ruberto",
+              "lastName": "Ruberto",
+              "firstName": "Irene",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "xiongxinsc@gmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Xin Xiong",
+              "lastName": "Xiong",
+              "firstName": "Xin",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "nianshong828@hotmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Nian Shong Chok",
+              "lastName": "Chok",
+              "firstName": "Nian Shong",
+              "affiliations": [
+                {
+                  "name": "University of Pittsburgh Graduate School of Public Health",
+                  "location": {
+                    "name": "Pittsburgh",
+                    "identifier": {
+                      "identifier": "https://www.publichealth.pitt.edu/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        40.4429,
+                        -79.9585
+                      ]
+                    ],
+                    "postalAddress": "130 DeSoto Street, Pittsburgh, PA 15261, UNITED STATES OF AMERICA"
+                  },
+                  "identifier": {
+                    "identifier": "https://www.publichealth.pitt.edu/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "Pitt GSPH"
+                }
+              ]
+            },
+            {
+              "email": "mchoisy@gmail.com",
+              "roles": [
+                {
+                  "value": "Co-investigator",
+                  "valueIRI": "http://purl.org/spar/scoro/co-investigator"
+                }
+              ],
+              "fullName": "Marc Choisy",
+              "lastName": "Choisy",
+              "firstName": "Marc",
+              "identifier": {
+                "identifier": "0000-0002-5187-6390",
+                "identifierSource": "ORCID"
+              },
+              "affiliations": [
+                {
+                  "name": "Institut de Recherche pour le Développement",
+                  "location": {
+                    "name": "Marseille",
+                    "identifier": {
+                      "identifier": "https://en.ird.fr/",
+                      "identifierSource": "URL"
+                    },
+                    "coordinates": [
+                      [
+                        43.3096,
+                        5.36881
+                      ]
+                    ],
+                    "postalAddress": "44 Boulevard de Dunkerque, Marseille, 13002, FRANCE"
+                  },
+                  "identifier": {
+                    "identifier": "https://en.ird.fr/",
+                    "identifierSource": "URL"
+                  },
+                  "abbreviation": "IRD"
+                }
+              ]
+            }
+          ],
+          "identifier": {
+            "identifier": "https://projectreporter.nih.gov/project_info_details.cfm?aid\u003d9294075\u0026icde\u003d35532330",
+            "identifierSource": "URL"
+          },
+          "alternateIdentifiers": [
+            {
+              "identifier": "http://www.midas.pitt.edu",
+              "identifierSource": "URL"
+            }
+          ]
+        }
+      ],
+      "publicationVenue": ""
+    }
+  ]
+}
