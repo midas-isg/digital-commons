@@ -1025,11 +1025,46 @@ function updateCardTabTitle(specifier){
     if (index > 0 && newCardTabTitleText.length > 0) {
         var id = specifier.substring(0, lastIndex + 2) + "listItem";
         $('#'+ id +'[data-toggle="tooltip"]').attr("title",newCardTabTitleText);
-        newCardTabTitleText = newCardTabTitleText + "   ";
-        var currentCardTabTitleText = $("#" + id).text();
-        var currentCardTabTitleHTML = $("#" + id).html();
-        $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, newCardTabTitleText));
+        setCardTabTitle(id, specifier, newCardTabTitleText);
     }
+}
+
+function setCardTabTitle(id, specifier, cardTabTitle){
+    var maxLength = 35;
+    var leftIndex = 20;
+    var rightIndex = 10;
+
+    if (cardTabTitle.includes(" ")) {
+        var regex = /\s+/g;
+        var cardTabTitleWords = cardTabTitle.split(regex);
+        var size = cardTabTitleWords.length;
+        if (size > 7) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + cardTabTitleWords[2].length + 2;
+            rightIndex = cardTabTitleWords[size - 2].length + cardTabTitleWords[size - 1].length + 1;
+            if (rightIndex > 15) {rightIndex = 15}
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (size > 5) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + 1;
+            rightIndex = cardTabTitleWords[size - 1].length;
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (cardTabTitle.length > maxLength) {
+            if (cardTabTitle.substring(0, leftIndex).includes(" ")) {
+                leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
+            }
+            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).contains(" ")) {
+                rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
+            }
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
+        }
+    } else if (cardTabTitle.length > maxLength) {
+        cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+    }
+
+    cardTabTitle = cardTabTitle + "   ";
+    var currentCardTabTitleText = $("#" + id).text();
+    var currentCardTabTitleHTML = $("#" + id).html();
+    $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+
 }
 
 $(window).on("popstate", function() {
