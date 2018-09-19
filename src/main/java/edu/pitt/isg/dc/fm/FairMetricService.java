@@ -70,7 +70,6 @@ public class FairMetricService {
 	public FairMetricReport run() {
 		final FairMetricReport report = initFairMetricReport();
 		final List<FairMetricResultRow> results = report.getResults();
-//		meta.getAllMetadata(730)
 		meta.getAllMetadata(0)
 //				.limit(3)
 				.map(meta::metadata2fmBody)
@@ -80,7 +79,12 @@ public class FairMetricService {
 				.peek(it -> log.info(it.getSubject() + " was assessed."))
 				.forEach(row -> results.add(row));
 		reportRepo.save(report);
+		System.out.println("Saved report.");
 		return report;
+	}
+
+	public FairMetricReport currentReport() {
+		return reportRepo.findTopByOrderByCreatedDesc();
 	}
 
 	private FairMetricReport initFairMetricReport() {
@@ -155,7 +159,7 @@ public class FairMetricService {
 		try {
 			return post(body, url);
 		} catch (Exception e){
-			final FairMetricResult result = newFairMetricResult(url, e.getMessage(), Arrays.toString(e.getStackTrace()), "Failed:" + url, null);
+			final FairMetricResult result = newFairMetricResult(url, e.getMessage(), "Failed:" + url, Arrays.toString(e.getStackTrace()), null);
 			return result;
 			//throw new RuntimeException(e);
 		}

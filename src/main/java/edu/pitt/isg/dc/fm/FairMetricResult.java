@@ -1,8 +1,10 @@
 package edu.pitt.isg.dc.fm;
 
 import edu.pitt.isg.dc.config.hibernate.JsonbType;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Type;
 
@@ -17,9 +19,9 @@ import java.util.Objects;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
-@Entity
+@Entity @NoArgsConstructor
 @Data
-@Builder
+@Builder @AllArgsConstructor
 @Slf4j
 public class FairMetricResult {
     @Id
@@ -41,9 +43,7 @@ public class FairMetricResult {
                 Map<String, Object> resultMap = (Map<String, Object>)pair.getValue();
                 String key = "http://schema.org/comment";
                 String comment = getFirstValue(resultMap, key);
-//                log.debug("comment=" + comment);
                 String hasValue = getFirstValue(resultMap, "http://semanticscience.org/resource/SIO_000300");
-//                log.debug("hasValue=" + hasValue);
                 String metric = fmId.split("/result#")[0];
                 return newFairMetricResult(metric, fmId, hasValue, comment, map);
             }
@@ -59,13 +59,6 @@ public class FairMetricResult {
                 .comment(comment)
                 .raw(raw)
                 .build();
-        /*final FairMetricResult result = new FairMetricResult();
-        result.setMetric(metric);
-        result.setFmId(fmId);
-        result.setHasValue(hasValue);
-        result.setComment(comment);
-        result.setRaw(raw);
-        return result;*/
     }
 
     private static String getFirstValue(Map<String, Object> map, String key) {

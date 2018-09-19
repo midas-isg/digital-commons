@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,5 +30,6 @@ public class FairMetricReport {
             orphanRemoval = true
     )
     @JoinColumn(name = "report_id")
+    @OrderBy("id ASC")
     private List<FairMetricResultRow> results;
 }
