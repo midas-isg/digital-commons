@@ -139,7 +139,7 @@ public class TagUtil {
                 //take first 3 words and last 2 words
                 leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + cardTabTitleWords[2].length() + 2;
                 rightIndex = cardTabTitleWords[size - 2].length() + cardTabTitleWords[size - 1].length() + 1;
-                if (listItem.toString().length() - rightIndex > 15) {
+                if (rightIndex > 15) {
                     rightIndex = 15;
                 }
                 cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);

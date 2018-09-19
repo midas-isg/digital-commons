@@ -903,6 +903,7 @@ function showTab(e, div, specifier) {
     });
 
     $('#' + divToShow).removeClass("hide");
+    $('#' + divToShow.substring(0, divToShow.indexOf("-input-block"))).removeClass("hide");
     $('#' + divToShow + ' .card-content').each(function (index) {
         //if card is unbounded list we find the 'active' tab and unhide that input block
         var inputBlockID = $(this).attr("id");
@@ -997,7 +998,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     makeAllTabsInactive(specifier);
     //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
-        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+"   "+
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" id=\""+specifier+"-"+listItemCount+"-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\""+label+"\">"+label+"   "+
         "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
 
 
@@ -1012,6 +1013,63 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
     window.location.hash = $("#" + specifier + "-card").selector;
+}
+
+function updateCardTabTitle(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+    var newCardTabTitleText = $("#" + specifier).val();
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, lastIndex + 2) + "listItem";
+        $('#'+ id +'[data-toggle="tooltip"]').attr("title",newCardTabTitleText);
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function setCardTabTitle(id, specifier, cardTabTitle){
+    var maxLength = 35;
+    var leftIndex = 20;
+    var rightIndex = 10;
+
+    if (cardTabTitle.includes(" ")) {
+        var regex = /\s+/g;
+        var cardTabTitleWords = cardTabTitle.split(regex);
+        var size = cardTabTitleWords.length;
+        if (size > 7) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + cardTabTitleWords[2].length + 2;
+            rightIndex = cardTabTitleWords[size - 2].length + cardTabTitleWords[size - 1].length + 1;
+            if (rightIndex > 15) {rightIndex = 15}
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (size > 5) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + 1;
+            rightIndex = cardTabTitleWords[size - 1].length;
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (cardTabTitle.length > maxLength) {
+            if (cardTabTitle.substring(0, leftIndex).includes(" ")) {
+                leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
+            }
+            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).contains(" ")) {
+                rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
+            }
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
+        }
+    } else if (cardTabTitle.length > maxLength) {
+        cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+    }
+
+    cardTabTitle = cardTabTitle + "   ";
+    var currentCardTabTitleText = $("#" + id).text();
+    var currentCardTabTitleHTML = $("#" + id).html();
+    $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+
 }
 
 $(window).on("popstate", function() {

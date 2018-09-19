@@ -30,6 +30,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isSelect" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
 
@@ -59,7 +61,7 @@
     </c:when>
     <c:otherwise>
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
-               id="${specifier}" placeholder="${placeholder}"/>
+               id="${specifier}" placeholder="${placeholder}" <c:if test="${updateCardTabTitleText}">onfocusout="updateCardTabTitle('${specifier}')"</c:if> />
     </c:otherwise>
 
 </c:choose>
