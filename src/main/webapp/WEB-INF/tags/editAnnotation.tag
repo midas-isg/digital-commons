@@ -28,6 +28,8 @@
               type="java.lang.String" %>
 <%@ attribute name="updateCardTabTitleText" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextType" required="false"
+              type="java.lang.Boolean" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -51,6 +53,7 @@
                                 label="${valuePlaceHolder}"
                                 isInputGroup="${true}"
                                 updateCardTabTitleText="${updateCardTabTitleText}"
+                                updateCardTabTitleTextType="${updateCardTabTitleTextType}"
                                 string="${annotation.value}">
 </myTags:editNonZeroLengthString>
 
