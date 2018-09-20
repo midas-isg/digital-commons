@@ -78,6 +78,7 @@
             <c:if test="${not isInputGroup}">
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
+                        <li><a data-toggle="tooltip" data-placement="top" title="${cardText}"><i class="ft-info ft-buttons"></i></a></li>
                         <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                         <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                         <c:if test="${not isRequired}">
