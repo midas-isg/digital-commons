@@ -800,6 +800,10 @@ function highlightDiv(div, color) {
 
 
 }
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
 
 // Collapsible Card
 $(document).on('click', 'a[data-action="collapse"]', function (e) {
@@ -1008,6 +1012,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
     //switch to newly created tab
     showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
+    $('[data-toggle="tooltip"]').tooltip();
 
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");

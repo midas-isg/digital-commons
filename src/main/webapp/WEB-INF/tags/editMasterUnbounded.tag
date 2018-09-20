@@ -163,6 +163,7 @@
                         <li><a class="${specifier}-add-${tagName} pointer" id="${specifier}-add-${tagName}"><i class="fa fa-plus-circle"></i> Add ${addButtonLabel}</a></li>
                     </c:otherwise>
                 </c:choose>
+                <li><a data-toggle="tooltip" data-placement="top" title="${cardText}"><i class="ft-info ft-buttons"></i></a></li>
                 <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
                 <li><a data-action="expand"><i class="ft-maximize ft-buttons"></i></a></li>
                 <li><a data-action="close"><i for="${specifier}-card"
