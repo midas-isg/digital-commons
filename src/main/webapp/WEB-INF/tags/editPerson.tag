@@ -39,18 +39,6 @@
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 
-<fmt:message key="dataset.person.fullName" var="fullNamePlaceHolder" />
-<myTags:editNonZeroLengthString label="Full Name"
-                                placeholder="${fullNamePlaceHolder}"
-                                string="${person.fullName}"
-                                isRequired="true"
-                                specifier="${specifier}-fullname"
-                                id="${specifier}-fullname"
-                                isInputGroup="${true}"
-                                updateCardTabTitleTextPerson="${true}"
-                                path="${path}.fullName">
-</myTags:editNonZeroLengthString>
-
 <fmt:message key="dataset.person.firstName" var="firstNamePlaceHolder" />
 <myTags:editNonZeroLengthString label="First Name"
                                 placeholder="${firstNamePlaceHolder}"
@@ -85,6 +73,18 @@
                                 isInputGroup="${true}"
                                 updateCardTabTitleTextPerson="${true}"
                                 path="${path}.lastName">
+</myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.person.fullName" var="fullNamePlaceHolder" />
+<myTags:editNonZeroLengthString label="Full Name"
+                                placeholder="${fullNamePlaceHolder}"
+                                string="${person.fullName}"
+                                isRequired="true"
+                                specifier="${specifier}-fullname"
+                                id="${specifier}-fullname"
+                                isInputGroup="${true}"
+                                updateCardTabTitleTextPerson="${true}"
+                                path="${path}.fullName">
 </myTags:editNonZeroLengthString>
 
 <fmt:message key="dataset.person.email" var="emailPlaceHolder" />
