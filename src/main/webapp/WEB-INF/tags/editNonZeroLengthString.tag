@@ -30,6 +30,8 @@
               type="java.lang.String" %>
 <%@ attribute name="updateCardTabTitleText" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextPerson" required="false"
+              type="java.lang.Boolean" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -50,6 +52,7 @@
                        string="${string}"
                        isTextArea="${isTextArea}"
                        updateCardTabTitleText="${updateCardTabTitleText}"
+                       updateCardTabTitleTextPerson="${updateCardTabTitleTextPerson}"
                        placeholder="${placeholder}">
 </myTags:editInputBlock>
 <myTags:editMasterElementWrapper path="${path}"
