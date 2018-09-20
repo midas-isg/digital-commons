@@ -147,7 +147,7 @@
 
                     $("#${specifier}-input-block").show();
                     scrollToAnchor('${specifier}');
-                    highlightDiv('${specifier}');
+                    highlightDiv('${specifier}', "green");
 
                     <c:if test="${isUnboundedList or not isRequired}">
                     $("#${specifier}-add-input-button").addClass("hide");
