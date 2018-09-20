@@ -356,12 +356,23 @@ public class ReflectionValidator {
                             List newList = new ArrayList();
                             List<?> cleanedList = cleanseList((List) value, setEmptyToNull, convertLists);
                             if(cleanedList instanceof AutoPopulatingList) {
-                                for(Object listItem : cleanedList) {
-                                    newList.add(listItem);
+                                if(convertLists) {
+                                    for (Object listItem : cleanedList) {
+                                        newList.add(listItem);
+                                    }
+                                    setValue(field, object, newList);
+                                } else {
+                                    cleanseList((List) value, setEmptyToNull, convertLists);
                                 }
-                                setValue(field, object, newList);
-                            } else
-                                setValue(field, object, cleanedList);
+                            } else {
+                                if(cleanedList == null) {
+                                    if(setEmptyToNull) {
+                                        setValue(field, object, cleanedList);
+                                    }
+                                } else {
+                                    setValue(field, object, cleanedList);
+                                }
+                            }
                         }
                         foundField = true;
                     }
@@ -371,7 +382,13 @@ public class ReflectionValidator {
                 }
             } else {
                 Object cleanedObject = cleanse(value.getClass(), value, setEmptyToNull, convertLists);
-                setValue(field, object, cleanedObject);
+                if(cleanedObject == null) {
+                    if(setEmptyToNull) {
+                        setValue(field, object, cleanedObject);
+                    }
+                } else {
+                    setValue(field, object, cleanedObject);
+                }
             }
         }
         return object;
