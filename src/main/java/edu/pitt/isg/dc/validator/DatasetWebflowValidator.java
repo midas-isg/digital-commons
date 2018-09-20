@@ -21,11 +21,13 @@ import org.springframework.binding.message.Message;
 import org.springframework.binding.message.MessageBuilder;
 import org.springframework.binding.message.MessageContext;
 import org.springframework.stereotype.Component;
+import org.springframework.util.AutoPopulatingList;
 import org.springframework.webflow.execution.RequestContext;
 import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.crypto.Data;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -312,18 +314,21 @@ public class DatasetWebflowValidator {
         return isValid;
     }
 
-    public String validatePartOfDataset(Dataset dataset, MessageContext messageContext, String className, String envokeMethod, boolean rootIsRequired) {
+    public String validatePartOfDataset(Dataset dataset, MessageContext messageContext, String className, String invokeMethod, boolean rootIsRequired) {
 //        TODO: For some reason validating types doesn't work the first time, null pointer exception
         // rootIsRequired: For Lists, if  it is not required this value should True. For Objects if it is not required this should be False.
         List<ValidatorError> errors = new ArrayList<>();
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+
         try {
             String breadcrumb = "";
-            Method method = dataset.getClass().getMethod(envokeMethod);
+            Method method = dataset.getClass().getMethod(invokeMethod);
             Object obj = method.invoke(dataset);
             Field field = null;
+            AutoPopulatingList newList = null;
 
             for (Field newField : dataset.getClass().getDeclaredFields()) {
-                if (newField.getName().toLowerCase().contains(envokeMethod.replace("get", "").toLowerCase())) {
+                if (newField.getName().toLowerCase().contains(invokeMethod.replace("get", "").toLowerCase())) {
                     field = newField;
                     break;
                 }
@@ -331,6 +336,8 @@ public class DatasetWebflowValidator {
 
             if (obj instanceof List) {
                 webFlowReflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
+                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset, false);
+                requestContext.getFlowScope().put("dataset", dataset);
             } else {
                 webFlowReflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
             }
@@ -348,7 +355,6 @@ public class DatasetWebflowValidator {
             return "false";
         }
 
-        RequestContext requestContext = RequestContextHolder.getRequestContext();
         if (requestContext.getFlowScope().get("indexValue") != null) {
             return "index";
         }
@@ -396,7 +402,7 @@ public class DatasetWebflowValidator {
         }
 
         try {
-            digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject);
+            digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject, true);
         } catch (FatalReflectionValidatorException e) {
             e.printStackTrace();
         }
