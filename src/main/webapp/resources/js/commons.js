@@ -1070,7 +1070,7 @@ function updateCardTabTitlePerson(specifier){
     }
     contrivedFullName = contrivedFullName.trim();
 
-    if (contrivedFullName.length > 0 && contrivedFullName.length > fullName.length) {
+    if (specifier != fullNameId && contrivedFullName.length > 0 && contrivedFullName.length > fullName.length) {
         fullName = contrivedFullName;
         $("#" + fullNameId).val(fullName);
     }
