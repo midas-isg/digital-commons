@@ -44,6 +44,7 @@
                                 isRequired="${true}"
                                 path="${path}.category"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${true}"
                                 string="${categoryValuePair.category}">
 </myTags:editNonZeroLengthString>
 

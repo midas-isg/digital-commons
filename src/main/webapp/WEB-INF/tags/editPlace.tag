@@ -44,6 +44,7 @@
                                 string="${place.name}"
                                 isRequired="true"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${true}"
                                 label=" Name">
 </myTags:editNonZeroLengthString>
 

@@ -44,6 +44,7 @@
                        isRequired="${false}"
                        cardText="${informationPlaceHolder}"
                        cardIcon="fas fa-info-circle"
+                       updateCardTabTitleText="${true}"
                        path="${path}.information">
 </myTags:editAnnotation>
 

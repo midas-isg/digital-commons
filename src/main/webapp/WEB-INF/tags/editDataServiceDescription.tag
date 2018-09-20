@@ -53,6 +53,7 @@
                    cardText="Method by which access to the data service is provided."
                    tagName="accessPointType"
                    isRequired="${true}"
+                   updateCardTabTitleText="${true}"
                    id="${specifier}-accessPointType">
 </myTags:editSelect>
 <myTags:editNonZeroLengthString label="Access Point Description"
