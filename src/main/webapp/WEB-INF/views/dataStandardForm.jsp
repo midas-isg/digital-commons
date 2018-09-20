@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -39,7 +40,7 @@
                                             label="Description"
                                             isTextArea="${true}"
                                             isInputGroup="${true}"
-                                            isRequired="${false}"
+                                            isRequired="${true}"
                                             placeholder="Description">
             </myTags:editNonZeroLengthString>
             <myTags:editNonZeroLengthString label="Version"
@@ -48,10 +49,22 @@
                                             id="version"
                                             string="${digitalObject.version}"
                                             isUnboundedList="${false}"
-                                            isRequired="${false}"
+                                            isRequired="${true}"
                                             isInputGroup="${true}"
                                             path="version">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="dataStandard.type" var="typePlaceHolder" />
+            <myTags:editAnnotation annotation="${digitalObject.type}"
+                                   isRequired="${true}"
+                                   path="type"
+                                   specifier="type"
+                                   id="type"
+                                   cardText="${typePlaceHolder}"
+                                   isUnboundedList="${false}"
+                                   label="Type">
+            </myTags:editAnnotation>
+
             <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
                                    label="Identifier"
                                    specifier="identifier"
@@ -59,43 +72,44 @@
                                    isUnboundedList="${false}"
                                    path="identifier">
             </myTags:editIdentifier>
+
+            <fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
             <myTags:editMasterUnbounded specifier="alternateIdentifiers"
                                         label="Alternate Identifiers"
                                         addButtonLabel="Alternate Identifier"
                                         path="alternateIdentifiers"
                                         listItems="${digitalObject.alternateIdentifiers}"
-                                        cardText="Information about an alternate identifier (other than the primary)."
+                                        cardIcon="fa fa-id-card"
+                                        cardText="${alternateIdentifierPlaceHolder}"
                                         isRequired="${false}"
                                         tagName="identifier">
             </myTags:editMasterUnbounded>
-            <myTags:editAnnotation annotation="${digitalObject.type}"
-                                   isRequired="${true}"
-                                   path="type"
-                                   specifier="type"
-                                   id="type"
-                                   cardText="The nature of the information resource, ideally specified with a controlled vocabulary or ontology (.e.g model or format, vocabulary, reporting guideline)."
-                                   isUnboundedList="${false}"
-                                   label="Type">
-            </myTags:editAnnotation>
+
+            <fmt:message key="dataStandard.license" var="licensePlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.licenses}"
                                         tagName="license"
                                         specifier="licenses"
                                         isRequired="${false}"
                                         label="Licenses"
+                                        cardIcon="fab fa-creative-commons"
                                         addButtonLabel="License"
-                                        cardText="The terms of use of the data standard."
+                                        cardText="${licensePlaceHolder}"
                                         path="licenses">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="dataStandard.extraProperties" var="extraPropertiesPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                         tagName="categoryValuePair"
                                         isRequired="${false}"
                                         specifier="extraProperties"
-                                        cardText="Extra properties that do not fit in the previous specified attributes."
+                                        cardText="${extraPropertiesPlaceHolder}"
+                                        cardIcon="fas fa-plus"
                                         path="extraProperties"
                                         addButtonLabel="Extra Property"
                                         label="Extra Properties">
             </myTags:editMasterUnbounded>
 
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
@@ -105,6 +119,8 @@
 
 <script>
     $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
         $("#categoryValue").change(function () {
             var categoryValue = $(this).val();
             $("#categoryID").val(categoryValue)

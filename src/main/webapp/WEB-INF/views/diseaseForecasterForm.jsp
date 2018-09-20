@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,62 +22,73 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.diseaseForecaster.type" var="typePlaceHolder" />
             <myTags:editNonZeroLengthString label="Type"
-                                            placeholder="Type of forecasting the software produces."
+                                            placeholder="${typePlaceHolder}"
                                             specifier="type"
                                             id="type"
                                             path="type"
-                                            cardText="Type of forecasting the software produces."
+                                            cardText="${typePlaceHolder}"
                                             isInputGroup="${true}"
                                             isRequired="${true}"
                                             string="${digitalObject.type}">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.diseaseForecaster.forecastFrequency" var="forecastFrequencyPlaceHolder" />
             <myTags:editNonZeroLengthString label="Forecast Frequency"
-                                            placeholder="How often the software updates output on one or more predicted count data items."
+                                            placeholder="${forecastFrequencyPlaceHolder}"
                                             specifier="forecast-frequency"
                                             id="forecast-frequency"
                                             path="forecastFrequency"
-                                            cardText="How often the software updates output on one or more predicted count data items."
+                                            cardText="${forecastFrequencyPlaceHolder}"
                                             isInputGroup="${true}"
                                             isRequired="${true}"
                                             string="${digitalObject.forecastFrequency}">
             </myTags:editNonZeroLengthString>
             <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
+
+            <fmt:message key="software.diseaseForecaster.forecasts" var="forecastsPlaceHolder" />
             <myTags:editMasterUnbounded label="Forecasts"
                                         addButtonLabel="Forecast"
-                                        placeholder="A description of future conditions."
+                                        placeholder="${forecastsPlaceHolder}"
                                         path="forecasts"
                                         specifier="forecasts"
                                         isRequired="${true}"
-                                        cardText="A description of future conditions."
+                                        cardText="${forecastsPlaceHolder}"
                                         isFirstRequired="${true}"
                                         tagName="string"
                                         listItems="${digitalObject.forecasts}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseForecaster.diseases" var="diseasesPlaceHolder" />
             <myTags:editMasterUnbounded specifier="diseases"
-                                        placeholder="A disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+                                        placeholder="${diseasesPlaceHolder}"
                                         label="Diseases"
                                         addButtonLabel="Disease"
                                         path="diseases"
-                                        cardText="A disposition to undergo pathological processes that exists in an organism because of one or more disorders in that organism."
+                                        cardText="${diseasesPlaceHolder}"
                                         tagName="softwareIdentifier"
                                         listItems="${digitalObject.diseases}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseForecaster.nowcasts" var="nowcastsPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.nowcasts}"
                                         label="Nowcasts"
                                         addButtonLabel="Nowcast"
-                                        placeholder="A description of present conditions or a forecast of those immediately expected."
+                                        placeholder="${nowcastsPlaceHolder}"
                                         specifier="nowcast"
-                                        cardText="A description of present conditions or a forecast of those immediately expected."
+                                        cardText="${nowcastsPlaceHolder}"
                                         tagName="string"
                                         path="nowcasts">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseForecaster.outcomes" var="outcomesPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.outcomes}"
                                         label="Outcomes"
                                         addButtonLabel="Outcome"
-                                        placeholder="A processual entity that is either the outcome of a disease course or a part of a disease course and has etiological relevance."
+                                        placeholder="${outcomesPlaceHolder}"
                                         specifier="outcome"
-                                        cardText="A processual entity that is either the outcome of a disease course or a part of a disease course and has etiological relevance."
+                                        cardText="${outcomesPlaceHolder}"
                                         tagName="string"
                                         path="outcomes">
             </myTags:editMasterUnbounded>

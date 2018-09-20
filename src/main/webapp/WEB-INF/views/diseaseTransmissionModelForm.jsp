@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,33 +22,39 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+
+            <fmt:message key="software.diseaseTransmissionModel.controlMeasures" var="controlMeasuresPlaceHolder" />
             <myTags:editMasterUnbounded path="controlMeasures"
                                         specifier="control-measures"
                                         label="Control Measures"
                                         addButtonLabel="Control Measure"
                                         tagName="softwareIdentifier"
-                                        placeholder="Actions and/or activities that are taken to prevent, eliminate or reduce the occurrence of disease transmission."
-                                        cardText="Actions and/or activities that are taken to prevent, eliminate or reduce the occurrence of disease transmission."
+                                        placeholder="${controlMeasuresPlaceHolder}"
+                                        cardText="${controlMeasuresPlaceHolder}"
                                         listItems="${digitalObject.controlMeasures}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseTransmissionModel.hostSpeciesIncluded" var="hostSpeciesIncludedPlaceHolder" />
             <myTags:editMasterUnbounded path="hostSpeciesIncluded"
                                         specifier="host-species-included"
                                         label="Host Species Included"
                                         addButtonLabel="Host Species"
                                         tagName="softwareIdentifier"
-                                        placeholder="The species which is affected by disease or in which a parasite or commensal organism is living."
-                                        cardText="The species which is affected by disease or in which a parasite or commensal organism is living."
+                                        placeholder="${hostSpeciesIncludedPlaceHolder}"
+                                        cardText="${hostSpeciesIncludedPlaceHolder}"
                                         listItems="${digitalObject.hostSpeciesIncluded}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseTransmissionModel.pathogenCoverage" var="pathogenCoveragePlaceHolder" />
             <myTags:editMasterUnbounded path="pathogenCoverage"
                                         specifier="pathogen-coverage"
                                         label="Pathogen Coverages"
                                         addButtonLabel="Pathogen Coverage"
                                         tagName="softwareIdentifier"
-                                        placeholder="Bacterium, virus, or other microorganism included in the model."
-                                        cardText="The bacterium, virus, or other microorganism included in the model."
+                                        placeholder="${pathogenCoveragePlaceHolder}"
+                                        cardText="${pathogenCoveragePlaceHolder}"
                                         listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>

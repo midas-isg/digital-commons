@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,14 +22,14 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.dataService" var="dataServicePlaceHolder" />
             <myTags:editMasterUnbounded path="dataServiceDescription"
                                         specifier="dataServiceDescription"
-                                        placeholder="A service that has some information content entity as input and output."
                                         label="Data Service Descriptions"
                                         addButtonLabel="Data Service Description"
                                         isRequired="${false}"
                                         isFirstRequired="${true}"
-                                        cardText="A service that has some information content entity as input and output."
+                                        cardText="${dataServicePlaceHolder}"
                                         listItems="${digitalObject.dataServiceDescription}"
                                         tagName="dataServiceDescription">
             </myTags:editMasterUnbounded>
