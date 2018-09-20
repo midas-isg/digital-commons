@@ -658,7 +658,6 @@
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
             // debugger;
             e.stopImmediatePropagation();
-            $(".loading").removeClass("hide");
 
             var isFirstRequired = "${isFirstRequired}";
             if(isFirstRequired == "") {
@@ -669,7 +668,6 @@
             scrollToAnchor('${specifier}-card');
             highlightDiv('${specifier}-card', "green");
             listItemCount += 1;
-            $(".loading").addClass("hide");
 
 
         });
