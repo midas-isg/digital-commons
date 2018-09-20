@@ -798,7 +798,7 @@ public class DatasetValidatorTest {
             //create and clean datasetOriginal -- remove Emtpy Strings
             Dataset datasetOriginal = (Dataset) converter.fromJson(entryView.getUnescapedEntryJsonString(), Dataset.class);
             try {
-                datasetOriginal = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, datasetOriginal);
+                datasetOriginal = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, datasetOriginal, true);
             } catch (FatalReflectionValidatorException e) {
                 e.printStackTrace();
             }
@@ -814,7 +814,7 @@ public class DatasetValidatorTest {
             }
             //clean dataset
             try {
-                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset);
+                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset, true);
             } catch (FatalReflectionValidatorException e) {
                 e.printStackTrace();
             }

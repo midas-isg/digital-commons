@@ -965,9 +965,14 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
     });
 };
 
+function toggleLoadingScreen() {
+    $(".loading").toggle();
+}
+
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
-
+    toggleLoadingScreen();
+    
     $("#"+specifier+"-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
@@ -1028,6 +1033,8 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
     window.location.hash = $("#" + specifier + "-card").selector;
+    toggleLoadingScreen();
+
 }
 
 function updateCardTabTitle(specifier){

@@ -40,7 +40,8 @@
 </div>
 <script>
     $(document).ready(function () {
-       $('.loading').addClass("hide");
+        toggleLoadingScreen();
+       // $('.loading').addClass("hide");
 
     });
 </script>
