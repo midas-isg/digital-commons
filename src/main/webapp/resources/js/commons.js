@@ -867,9 +867,15 @@ function closeTab(e, div, specifier, tagName) {
 
 
         });
-        var divToClose = $(div.parentElement.parentElement).attr("for")
+        var divToClose = $(div.parentElement.parentElement).attr("for");
+        //remove does not clear flow data; had to call the function and hide div so flow data is updated on next/submit
+        clearAndHideEditControlGroup(divToClose);
+        $("#" + divToClose).addClass("hide");
+        $(div.parentElement.parentElement).addClass("hide");
+/*
         $("#" + divToClose).remove();
         $(div.parentElement.parentElement).remove();
+*/
 
         // $("#" + $(prevDiv).attr("for")).show();
         // $($(prevDiv).find("a")[0]).addClass("active");
