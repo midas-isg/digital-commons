@@ -162,6 +162,9 @@
 
                     //Add section
                     $("#${specifier}-${tagName}").val("");
+                    scrollToAnchor('${specifier}');
+                    highlightDiv('${specifier}',"green");
+
                 });
 
                 //Remove section

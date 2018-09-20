@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -21,20 +22,22 @@
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
-
+<fmt:message key="dataset.publication" var="publicationPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${publication}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A (digital) document made available by a publisher."
+                                 cardText="${publicationPlaceHolder}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
 
+
+<fmt:message key="dataset.publication.title" var="titlePlaceHolder" />
 <myTags:editNonZeroLengthString
-        placeholder=" The name of the publication and its funding program."
+        placeholder="${titlePlaceHolder}"
         label="Title"
         string="${publication.title}"
         path="${path}.title"
@@ -43,15 +46,19 @@
         id="${specifier}-title"
         specifier="${specifier}-title">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.publication.publicationVenue" var="venuePlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.publicationVenue"
                                 string="${publication.publicationVenue}"
                                 specifier="${specifier}-publicationVenue"
                                 id="${specifier}-publicationVenue"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
-                                placeholder=" The name of the publication venue where the document is published if applicable."
+                                placeholder="${venuePlaceHolder}"
                                 label="Publication Venue">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.publication.authors" var="authorsPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.authors"
                             specifier="${specifier}-authors"
                             label="Authors"
@@ -59,7 +66,7 @@
                             listItems="${publication.authors}"
                             createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
-                            cardText="The person(s) and/or organisation(s) responsible for the publication."
+                            cardText="${authorsPlaceHolder}"
                             cardIcon="fas fa-users"
                             isFirstRequired="${true}"
                             showAddPersonButton="${true}"
@@ -72,38 +79,45 @@
                        isUnboundedList="${false}"
                        label="Identifier">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
                             cardIcon="fa fa-id-card"
                             listItems="${publication.alternateIdentifiers}"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.publication.annotation" var="annotationPlaceHolder" />
 <myTags:editAnnotation path="${path}.type"
                        isUnboundedList="${false}"
                        specifier="${specifier}-type"
                        id="${specifier}-type"
-                       cardText="Publication type, ideally delegated to an external vocabulary/resource."
+                       cardText="${annotationPlaceHolder}"
                        cardIcon="far fa-bookmark"
                        annotation="${publication.type}"
                        label="Type">
 </myTags:editAnnotation>
 
+<fmt:message key="dataset.publication.dates" var="datesPlaceHolder" />
 <myTags:editMasterUnbounded listItems="${publication.dates}"
                             label="Publication Dates"
                             addButtonLabel="Publication Date"
                             path="${path}.dates"
-                            cardText="Relevant dates, the date of the publication must be provided."
+                            cardText="${datesPlaceHolder}"
                             cardIcon="far fa-calendar-alt"
                             tagName="date"
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.publication.acknowledges" var="acknowledgesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.acknowledges"
                             specifier="${specifier}-acknowledges"
                             listItems="${publication.acknowledges}"
-                            cardText="The grant(s) which funded and supported the work reported by the publication."
+                            cardText="${acknowledgesPlaceHolder}"
                             cardIcon="fas fa-university"
                             tagName="grant"
                             addButtonLabel="Acknowledgment"
@@ -115,7 +129,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A (digital) document made available by a publisher."
+                                 cardText="${publicationPlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

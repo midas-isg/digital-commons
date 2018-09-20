@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="person" required="false"
               type="edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity" %>
@@ -26,7 +27,6 @@
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
 
-
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${person}"
@@ -38,8 +38,10 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.person.fullName" var="fullNamePlaceHolder" />
 <myTags:editNonZeroLengthString label="Full Name"
-                                placeholder=" The first name, any middle names, and surname of a person."
+                                placeholder="${fullNamePlaceHolder}"
                                 string="${person.fullName}"
                                 isRequired="true"
                                 specifier="${specifier}-fullname"
@@ -47,8 +49,10 @@
                                 isInputGroup="${true}"
                                 path="${path}.fullName">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.person.firstName" var="firstNamePlaceHolder" />
 <myTags:editNonZeroLengthString label="First Name"
-                                placeholder=" The given name of the person."
+                                placeholder="${firstNamePlaceHolder}"
                                 string="${person.firstName}"
                                 specifier="${specifier}-firstName"
                                 id="${specifier}-firstName"
@@ -56,8 +60,10 @@
                                 isInputGroup="${true}"
                                 path="${path}.firstName">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.person.middleInitial" var="middleInitialPlaceHolder" />
 <myTags:editNonZeroLengthString label="Middle Initial"
-                                placeholder=" The first letter of the person's middle name."
+                                placeholder="${middleInitialPlaceHolder}"
                                 string="${person.middleInitial}"
                                 specifier="${specifier}-middleInitial"
                                 id="${specifier}-middleInitial"
@@ -65,8 +71,10 @@
                                 isInputGroup="${true}"
                                 path="${path}.middleInitial">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.person.lastName" var="lastNamePlaceHolder" />
 <myTags:editNonZeroLengthString label="Last Name"
-                                placeholder=" The person's family name."
+                                placeholder="${lastNamePlaceHolder}"
                                 string="${person.lastName}"
                                 specifier="${specifier}-lastName"
                                 id="${specifier}-lastName"
@@ -74,8 +82,10 @@
                                 isInputGroup="${true}"
                                 path="${path}.lastName">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.person.email" var="emailPlaceHolder" />
 <myTags:editNonZeroLengthString label="Email"
-                                placeholder=" An electronic mail address for the person."
+                                placeholder="${emailPlaceHolder}"
                                 string="${person.email}"
                                 specifier="${specifier}-email"
                                 id="${specifier}-email"
@@ -90,15 +100,19 @@
                        singleIdentifier="${person.identifier}"
                        isUnboundedList="${false}">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
                             cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${person.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.person.affiliations" var="affiliationsPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.affiliations"
                             specifier="${specifier}-affiliations"
                             label="Affiliations"
@@ -107,17 +121,17 @@
                             isFirstRequired="false"
                             createPersonOrganizationTags="false"
                             tagName="personComprisedEntity"
-                            cardText="The organizations to which the person is associated with."
+                            cardText="${affiliationsPlaceHolder}"
                             cardIcon="fas fa-users"
                             showAddPersonButton="false"
                             showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 
-<%--TODO: add icon for roles--%>
+<fmt:message key="dataset.person.roles" var="rolesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.roles"
                             specifier="${specifier}-roles"
                             listItems="${person.roles}"
-                            cardText="The roles assumed by a person, ideally from a controlled vocabulary/ontology."
+                            cardText="${rolesPlaceHolder}"
                             cardIcon="fas fa-user-tie"
                             tagName="annotation"
                             addButtonLabel="Role"

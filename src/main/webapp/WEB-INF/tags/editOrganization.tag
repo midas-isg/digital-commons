@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="organization" required="false"
               type="edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity" %>
@@ -26,7 +27,6 @@
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
 
-
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${organization}"
@@ -38,8 +38,10 @@
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.organization.name" var="namePlaceHolder" />
 <myTags:editNonZeroLengthString label="Name"
-                                placeholder=" The name of the organization."
+                                placeholder="${namePlaceHolder}"
                                 string="${organization.name}"
                                 isRequired="true"
                                 specifier="${specifier}-name"
@@ -47,8 +49,10 @@
                                 isInputGroup="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.organization.abbreviation" var="abbreviationPlaceHolder" />
 <myTags:editNonZeroLengthString label="Abbreviation"
-                                placeholder=" The shortname, abbreviation associated to the organization."
+                                placeholder="${abbreviationPlaceHolder}"
                                 specifier="${specifier}-abbreviation"
                                 id="${specifier}-abbreviation"
                                 isRequired="${true}"
@@ -63,11 +67,13 @@
                        singleIdentifier="${organization.identifier}"
                        isUnboundedList="${false}">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
                             cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${organization.alternateIdentifiers}">

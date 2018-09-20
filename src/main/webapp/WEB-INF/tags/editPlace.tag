@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="place" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Place" %>
@@ -22,26 +23,31 @@
 <%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
+<fmt:message key="dataset.place" var="placePlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${place}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A spatially bounded entity."
+                                 cardText="${placePlaceHolder}"
                                  cardIcon="fas fa-map-marker-alt"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.place.name" var="namePlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.name"
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
-                                placeholder=" The name of the place."
+                                placeholder="${namePlaceHolder}"
                                 string="${place.name}"
                                 isRequired="true"
                                 isInputGroup="${true}"
                                 label=" Name">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.place.description" var="descriptionPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.description"
                                 specifier="${specifier}-description"
                                 id="${specifier}-description"
@@ -49,24 +55,28 @@
                                 isTextArea="true"
                                 isRequired="true"
                                 isInputGroup="${true}"
-                                placeholder=" A textual narrative comprised of one or more statements describing the place."
+                                placeholder="${descriptionPlaceHolder}"
                                 label="Description">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.place.postalAddress" var="postalAddressPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.postalAddress"
                                 specifier="${specifier}-postalAddress"
                                 id="${specifier}-postalAddress"
                                 string="${place.postalAddress}"
                                 isRequired="true"
                                 isInputGroup="${true}"
-                                placeholder=" A physical street address."
+                                placeholder="${postalAddressPlaceHolder}"
                                 label="Postal Address">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.place.geometry" var="geometryPlaceHolder" />
 <myTags:editSelect path="${path}.geometry"
                    specifier="${specifier}-geometry"
                    label="Geometry"
                    enumData="${place.geometry}"
                    enumList="${geometryEnums}"
-                   cardText="A region of a space."
+                   cardText="${geometryPlaceHolder}"
                    isRequired="true"
                    tagName="geometry"
                    id="${specifier}-geometry">
@@ -78,11 +88,13 @@
                        singleIdentifier="${place.identifier}"
                        isUnboundedList="${false}">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
                             cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
@@ -93,7 +105,7 @@
                                  object="${place}"
                                  label="${label}"
                                  id="${id}"
-                                 cardText="A spatially bounded entity."
+                                 cardText="${placePlaceHolder}"
                                  cardIcon="fas fa-map-marker-alt"
                                  showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"

@@ -303,7 +303,7 @@
                                                            specifier="${specifier}-${varStatus.count-1}"
                                                            id="${specifier}-${varStatus.count-1}"
                                                            label="${label} (Annotation)"
-                                                           cardText="Different entities associated with this dataset."
+                                                           cardText="${cardText}"
                                                            isUnboundedList="${true}"
                                                            isRequired="${false}">
                                     </myTags:editAnnotation>
@@ -518,12 +518,13 @@
         </myTags:editIdentifier>
     </c:when>
     <c:when test="${tagName == 'isAbout'}">
+        <fmt:message key="dataset.isAbout" var="isAboutPlaceHolder" />
         <myTags:editAnnotation path="${path}[0]"
                                specifier="${specifier}-00"
                                id="${specifier}-annotation-copy-tag"
                                label="${label} (Annotation)"
                                isUnboundedList="${true}"
-                               cardText="Different entities associated with this dataset."
+                               cardText="${isAboutPlaceHolder}"
                                isRequired="${false}">
         </myTags:editAnnotation>
 
@@ -655,6 +656,8 @@
         $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
             // debugger;
             e.stopImmediatePropagation();
+            $(".loading").removeClass("hide");
+
             var isFirstRequired = "${isFirstRequired}";
             if(isFirstRequired == "") {
                 isFirstRequired = false;
@@ -664,6 +667,8 @@
             scrollToAnchor('${specifier}-card');
             highlightDiv('${specifier}-card', "green");
             listItemCount += 1;
+            $(".loading").addClass("hide");
+
 
         });
 

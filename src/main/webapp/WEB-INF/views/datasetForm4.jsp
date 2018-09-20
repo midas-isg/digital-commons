@@ -7,6 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+    <fmt:setBundle basename="cardText" />
 
 
     <myTags:head title="MIDAS Digital Commons"/>
@@ -22,47 +23,51 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
             <div id="types">
+                <fmt:message key="dataset.types" var="typesPlaceHolder" />
                 <myTags:editMasterUnbounded path="types"
                                             specifier="types"
                                             label="Types"
                                             addButtonLabel="Type"
                                             isRequired="${true}"
-                                            cardText="A term, ideally from a controlled terminology, identifying the dataset type or nature of the data, placing it in a typology."
+                                            cardText="${typesPlaceHolder}"
                                             cardIcon="fas fa-info"
                                             tagName="type"
                                             listItems="${digitalObject.types}">
                 </myTags:editMasterUnbounded>
             </div>
             <div id="availability">
+                <fmt:message key="dataset.availability" var="availabilityPlaceHolder" />
                 <myTags:editNonZeroLengthString path="availability"
                                                 string="${digitalObject.availability}"
                                                 specifier="availability"
                                                 id="availability"
                                                 isRequired="${true}"
                                                 isInputGroup="${true}"
-                                                placeholder=" A qualifier indicating the different types of availability for a dataset (available, unavailable, embargoed, available with restriction, information not available)."
+                                                placeholder="${availabilityPlaceHolder}"
                                                 label="Availability">
                 </myTags:editNonZeroLengthString>
             </div>
             <div id="refinement">
+                <fmt:message key="dataset.refinement" var="refinementPlaceHolder" />
                 <myTags:editNonZeroLengthString path="refinement"
                                                 string="${digitalObject.refinement}"
                                                 specifier="refinement"
                                                 id="refinement"
                                                 isRequired="${true}"
                                                 isInputGroup="${true}"
-                                                placeholder=" A qualifier to describe the level of data processing of the dataset and its distributions."
+                                                placeholder="${refinementPlaceHolder}"
                                                 label="Refinement">
                 </myTags:editNonZeroLengthString>
             </div>
             <div id="aggregation">
+                <fmt:message key="dataset.aggregation" var="aggregationPlaceHolder" />
                 <myTags:editNonZeroLengthString path="aggregation"
                                                 string="${digitalObject.aggregation}"
                                                 specifier="aggregation"
                                                 id="aggregation"
                                                 isRequired="${true}"
                                                 isInputGroup="${true}"
-                                                placeholder=" A qualifier indicating if the entity represents an 'instance of dataset' or a 'collection of datasets'."
+                                                placeholder="${aggregationPlaceHolder}"
                                                 label="Aggregation">
                 </myTags:editNonZeroLengthString>
             </div>

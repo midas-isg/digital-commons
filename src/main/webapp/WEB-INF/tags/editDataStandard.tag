@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
@@ -21,18 +22,20 @@
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
-
+<fmt:message key="dataset.dataStandard" var="dataStandardPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${dataStandard}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A format, reporting guideline, terminology. It is used to indicate whether the dataset conforms to a particular community norm or specification."
+                                 cardText="${dataStandardPlaceHolder}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editNonZeroLengthString placeholder=" Name"
+
+<fmt:message key="dataset.dataStandard.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString placeholder="${namePlaceHolder}"
                                 label="Name"
                                 string="${dataStandard.name}"
                                 specifier="${specifier}-name"
@@ -42,6 +45,8 @@
                                 isUnboundedList="${false}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.dataStandard.description" var="descriptionPlaceHolder" />
 <myTags:editNonZeroLengthString specifier="${specifier}-description"
                                 id="${specifier}-description"
                                 string="${dataStandard.description}"
@@ -50,10 +55,12 @@
                                 isTextArea="${true}"
                                 isInputGroup="${true}"
                                 isRequired="${true}"
-                                placeholder="Description">
+                                placeholder="${descriptionPlaceHolder}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.dataStandard.version" var="versionPlaceHolder" />
 <myTags:editNonZeroLengthString label="Version"
-                                placeholder=" Version"
+                                placeholder="${versionPlaceHolder}"
                                 specifier="${specifier}-version"
                                 id="${specifier}-version"
                                 string="${dataStandard.version}"
@@ -62,12 +69,14 @@
                                 isRequired="${true}"
                                 path="${path}.version">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.dataStandard.type" var="typePlaceHolder" />
 <myTags:editAnnotation annotation="${dataStandard.type}"
                        isRequired="${true}"
                        path="${path}.type"
                        specifier="${specifier}-type"
                        id="${specifier}-type"
-                       cardText="The nature of the information resource, ideally specified with a controlled vocabulary or ontology (.e.g model or format, vocabulary, reporting guideline)."
+                       cardText="${typePlaceHolder}"
                        isUnboundedList="${false}"
                        label="Type">
 </myTags:editAnnotation>
@@ -78,31 +87,40 @@
                        isUnboundedList="${false}"
                        path="${path}.identifier">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.dataStandard.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
                             listItems="${dataStandard.alternateIdentifiers}"
                             isRequired="${false}"
-                            cardText="Alternate identifiers for the standard."
+                            cardText="${alternateIdentifierPlaceHolder}"
+                            cardIcon="fa fa-id-card"
                             tagName="identifier">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataStandard.licenses" var="licensesPlaceHolder" />
 <myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
                             tagName="license"
                             specifier="${specifier}-licenses"
                             isRequired="${false}"
                             label="Licenses"
                             addButtonLabel="License"
-                            cardText="The terms of use of the data standard."
+                            cardText="${licensesPlaceHolder}"
+                            cardIcon="fab fa-creative-commons"
                             path="${path}.licenses">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.dataStandard.extraProperties" var="extraPropertiesPlaceHolder" />
 <myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
                             tagName="categoryValuePair"
                             isRequired="${false}"
                             specifier="${specifier}-extraProperties"
-                            cardText="Extra properties that do not fit in the previous specified attributes."
+                            cardText="${extraPropertiesPlaceHolder}"
                             path="${path}.extraProperties"
                             addButtonLabel="Extra Property"
+                            cardIcon="fas fa-plus"
                             label="Extra Properties">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
@@ -111,7 +129,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A format, reporting guideline, terminology. It is used to indicate whether the dataset conforms to a particular community norm or specification."
+                                 cardText="${dataStandardPlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

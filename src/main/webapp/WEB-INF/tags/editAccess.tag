@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -22,7 +23,7 @@
 <%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
-
+<fmt:message key="dataset.access" var="accessPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${access}"
@@ -31,11 +32,13 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isAccessRequired}"
                                  tagName="access"
-                                 cardText="Information about resources that provide the means to obtain an asset (a dataset or other research object)."
+                                 cardText="${accessPlaceHolder}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.access.landingPage" var="landingPagePlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.landingPage"
-                                placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
+                                placeholder="${landingPagePlaceHolder}"
                                 string="${access.landingPage}"
                                 isRequired="true"
                                 isUnboundedList="false"
@@ -44,9 +47,11 @@
                                 isInputGroup="${true}"
                                 label="Landing Page">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.access.url" var="urlPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.accessURL"
                                 specifier="${specifier}-accessURL"
-                                placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
+                                placeholder="${urlPlaceHolder}"
                                 string="${access.accessURL}"
                                 isRequired="${true}"
                                 id="${specifier}-accessURL"
@@ -60,37 +65,44 @@
                        path="${path}.identifier"
                        singleIdentifier="${access.identifier}">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             addButtonLabel="Alternate Identifier"
                             label="Alternate Identifiers"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
                             cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${access.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
 
+<fmt:message key="dataset.access.types" var="typesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.types"
                             specifier="${specifier}-types"
                             listItems="${access.types}"
-                            cardText="Method to obtain the resource, ideally specified from a controlled vocabulary or ontology."
+                            cardText="${typesPlaceHolder}"
                             cardIcon="fas fa-info-circle"
                             tagName="annotation"
                             addButtonLabel="Type"
                             label="Types">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.access.authorizations" var="authorizationsPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.authorizations"
                             specifier="${specifier}-authorizations"
-                            cardText="Types of verification that accessing the resource is allowed. Authorization occurs before successful authentication and refers to the process of obtaining approval to use a data set. Ideally specified from a controlled vocabulary or ontology."
+                            cardText="${authorizationsPlaceHolder}"
                             cardIcon="fas fa-key"
                             tagName="annotation"
                             listItems="${access.authorizations}"
                             addButtonLabel="Authorization"
                             label="Authorizations">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.access.authentications" var="authenticationsPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.authentications"
                             specifier="${specifier}-authentications"
-                            cardText="Types of verification of the credentials for accessing the resource, it is the identification process at the time of access. ideally specified from a controlled vocabulary or ontology."
+                            cardText="${authenticationsPlaceHolder}"
                             cardIcon="fa fa-check-circle"
                             tagName="annotation"
                             listItems="${access.authentications}"
@@ -104,7 +116,7 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isAccessRequired}"
-                                 cardText="Information about resources that provide the means to obtain an asset (a dataset or other research object)."
+                                 cardText="${accessPlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="access"
                                  showTopOrBottom="bottom">
