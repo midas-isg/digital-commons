@@ -336,7 +336,7 @@ public class DatasetWebflowValidator {
 
             if (obj instanceof List) {
                 webFlowReflectionValidator.validateList((List) obj, rootIsRequired, breadcrumb, field, errors);
-                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset, false);
+                dataset = (Dataset) webFlowReflectionValidator.cleanse(Dataset.class, dataset, false, false);
                 requestContext.getFlowScope().put("dataset", dataset);
             } else {
                 webFlowReflectionValidator.validate(Class.forName(className), obj, rootIsRequired, breadcrumb, field, errors);
@@ -402,7 +402,7 @@ public class DatasetWebflowValidator {
         }
 
         try {
-            digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject, true);
+            digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject, true, true);
         } catch (FatalReflectionValidatorException e) {
             e.printStackTrace();
         }

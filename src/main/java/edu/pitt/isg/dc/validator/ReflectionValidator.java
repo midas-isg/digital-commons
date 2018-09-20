@@ -299,14 +299,14 @@ public class ReflectionValidator {
         }
     }
 
-    public <T> List cleanseList(List<T> list, boolean setEmptyToNull) throws FatalReflectionValidatorException {
+    public <T> List cleanseList(List<T> list, boolean setEmptyToNull, boolean convertLists) throws FatalReflectionValidatorException {
         ListIterator iterator = list.listIterator();
         while(iterator.hasNext()) {
             Object listObject = iterator.next();
             if(isObjectEmpty(listObject)) {
                 iterator.remove();
             } else {
-                cleanse(listObject.getClass(), listObject, setEmptyToNull);
+                cleanse(listObject.getClass(), listObject, setEmptyToNull, convertLists);
             }
         }
         if(list.size() == 0) {
@@ -315,7 +315,7 @@ public class ReflectionValidator {
         return list;
     }
 
-    public Object cleanse(Class<?> clazz, Object object, boolean setEmptyToNull) throws FatalReflectionValidatorException {
+    public Object cleanse(Class<?> clazz, Object object, boolean setEmptyToNull, boolean convertLists) throws FatalReflectionValidatorException {
         if(setEmptyToNull) {
             if (isObjectEmpty(object)) {
                 return null;
@@ -339,14 +339,22 @@ public class ReflectionValidator {
                         String name = publicDeclaredField.getGenericType().getTypeName();
                         name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
                         if (name.contains("PersonComprisedEntity")) {
-                            List<PersonComprisedEntity> entityList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull);
-                            setValue(field, object, entityList);
+                            if(convertLists) {
+                                List<PersonComprisedEntity> entityList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull, convertLists);
+                                setValue(field, object, entityList);
+                            } else {
+                                cleanseList((List) value, setEmptyToNull, convertLists);
+                            }
                         } else if (name.contains("IsAbout")) {
-                            List<IsAbout> isAboutList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull);
-                            setValue(field, object, isAboutList);
+                            if(convertLists) {
+                                List<IsAbout> isAboutList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull, convertLists);
+                                setValue(field, object, isAboutList);
+                            } else {
+                                cleanseList((List) value, setEmptyToNull, convertLists);
+                            }
                         } else {
                             List newList = new ArrayList();
-                            List<?> cleanedList = cleanseList((List) value, setEmptyToNull);
+                            List<?> cleanedList = cleanseList((List) value, setEmptyToNull, convertLists);
                             if(cleanedList instanceof AutoPopulatingList) {
                                 for(Object listItem : cleanedList) {
                                     newList.add(listItem);
@@ -362,7 +370,7 @@ public class ReflectionValidator {
                     throw new FatalReflectionValidatorException("Unable to find getter for the list: " + field.getName());
                 }
             } else {
-                Object cleanedObject = cleanse(value.getClass(), value, setEmptyToNull);
+                Object cleanedObject = cleanse(value.getClass(), value, setEmptyToNull, convertLists);
                 setValue(field, object, cleanedObject);
             }
         }
