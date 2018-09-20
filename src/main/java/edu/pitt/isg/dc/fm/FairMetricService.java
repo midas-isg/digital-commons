@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,6 +19,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static edu.pitt.isg.dc.fm.FairMetricReportStatus.DONE;
+import static edu.pitt.isg.dc.fm.FairMetricReportStatus.RUNNING;
 import static edu.pitt.isg.dc.fm.FairMetricResult.fromJsonMap;
 import static edu.pitt.isg.dc.fm.FairMetricResult.newFairMetricResult;
 import static edu.pitt.isg.dc.fm.JsonKit.toJson;
@@ -66,9 +69,14 @@ public class FairMetricService {
 	private final FairMetricResultRowRepo rowRepo;
 	private final FairMetricResultRepo resultRepo;
 
-	@Transactional
 	public FairMetricReport run() {
 		final FairMetricReport report = initFairMetricReport();
+		fillResults(report);
+		return report;
+	}
+
+	@Transactional
+	void fillResults(FairMetricReport report) {
 		final List<FairMetricResultRow> results = report.getResults();
 		meta.getAllMetadata(0)
 //				.limit(3)
@@ -78,19 +86,29 @@ public class FairMetricService {
 				.map(this::saveRow)
 				.peek(it -> log.info(it.getSubject() + " was assessed."))
 				.forEach(row -> results.add(row));
+		report.setStatus(DONE);
 		reportRepo.save(report);
 		System.out.println("Saved report.");
-		return report;
 	}
 
 	public FairMetricReport currentReport() {
-		return reportRepo.findTopByOrderByCreatedDesc();
+		return cache(reportRepo.findTopByStatusOrderByCreatedDesc(DONE));
 	}
 
-	private FairMetricReport initFairMetricReport() {
+	private FairMetricReport cache(FairMetricReport current) {
+		return reportRepo.findOne(current.getId());
+	}
+
+	public FairMetricReport runningReport() {
+		return reportRepo.findTopByStatusOrderByCreatedDesc(RUNNING);
+	}
+
+	@Transactional
+	FairMetricReport initFairMetricReport() {
 		final FairMetricReport report = new FairMetricReport();
 		report.setResults(new ArrayList<>());
 		report.setCreated(now());
+		report.setStatus(RUNNING);
 		reportRepo.saveAndFlush(report);
 		return report;
 	}

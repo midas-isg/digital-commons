@@ -27,6 +27,7 @@ public class FairMetricController {
     @Transactional
     public String report(ModelMap model){
         model.addAttribute("report", currentReport());
+        model.addAttribute("running", service.runningReport());
         return "fairMetricReport";
     }
 

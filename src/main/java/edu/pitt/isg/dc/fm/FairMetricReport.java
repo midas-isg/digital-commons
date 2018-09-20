@@ -32,4 +32,5 @@ public class FairMetricReport {
     @JoinColumn(name = "report_id")
     @OrderBy("id ASC")
     private List<FairMetricResultRow> results;
+    private FairMetricReportStatus status;
 }
