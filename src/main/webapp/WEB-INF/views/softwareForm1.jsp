@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,8 +23,9 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.title" var="titlePlaceHolder" />
             <myTags:editNonZeroLengthString label="Title"
-                                            placeholder="A textual entity that names a software."
+                                            placeholder="${titlePlaceHolder}"
                                             path="title"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
@@ -32,8 +34,10 @@
                                             specifier="title"
                                             string="${digitalObject.title}">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.humanReadableSynopsis" var="humanReadableSynopsisPlaceHolder" />
             <myTags:editNonZeroLengthString label="Human Readable Synopsis"
-                                            placeholder="A comment that summarizes the most relevant or salient features and history of the entity for human readers."
+                                            placeholder="${humanReadableSynopsisPlaceHolder}"
                                             path="humanReadableSynopsis"
                                             isRequired="${true}"
                                             isTextArea="${true}"
@@ -43,6 +47,8 @@
                                             id="humanReadableSynopsis"
                                             string="${digitalObject.humanReadableSynopsis}">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.product" var="productPlaceHolder" />
             <myTags:editNonZeroLengthString path="product"
                                             string="${digitalObject.product}"
                                             isRequired="${true}"
@@ -50,18 +56,18 @@
                                             isInputGroup="${true}"
                                             id="product"
                                             specifier="product"
-                                            placeholder="Product Name"
-                                            cardText="The name of the software."
+                                            placeholder="${productPlaceHolder}"
                                             label="Product Name">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.sourceCodeRelease" var="sourceCodeReleasePlaceHolder" />
             <myTags:editNonZeroLengthString path="sourceCodeRelease"
                                             string="${digitalObject.sourceCodeRelease}"
                                             specifier="soure-code-release"
-                                            placeholder="Source Code Release"
+                                            placeholder="${sourceCodeReleasePlaceHolder}"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
-                                            cardText="Release information about the software that is the specified output of some compilation of software process"
                                             id="source-code-release"
                                             label="Source Code Release">
             </myTags:editNonZeroLengthString>
@@ -73,33 +79,39 @@
                                            id="identifier"
                                            label="Identifier">
             </myTags:editSoftwareIdentifier>
+
+            <fmt:message key="software.dataInputFormats" var="dataInputFormatsPlaceHolder" />
             <myTags:editMasterUnbounded label="Data Input Formats"
                                         addButtonLabel="Data Input Format"
-                                        placeholder="Data Input Format"
+                                        placeholder="${dataInputFormatsPlaceHolder}"
                                         path="dataInputFormats"
                                         specifier="dataInputFormats"
                                         isRequired="${false}"
-                                        cardText="The entities used as input."
+                                        cardText="${dataInputFormatsPlaceHolder}"
                                         listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
             <myTags:editMasterUnbounded label="Data Output Formats"
                                         addButtonLabel="Data Output Format"
-                                        placeholder="Data Output Format"
+                                        placeholder="${dataOutputFormatsPlaceHolder}"
                                         path="dataOutputFormats"
                                         specifier="data-output-format"
                                         isRequired="${false}"
                                         tagName="string"
-                                        cardText="The entities resulting from applying the activity."
+                                        cardText="${dataOutputFormatsPlaceHolder}"
                                         listItems="${digitalObject.dataOutputFormats}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.webApplication" var="webApplicationPlaceHolder" />
             <myTags:editMasterUnbounded label="Web Applications"
                                         addButtonLabel="Web Application"
-                                        placeholder="Web Application"
+                                        placeholder="${webApplicationPlaceHolder}"
                                         path="webApplication"
                                         specifier="web-application"
                                         isRequired="${false}"
-                                        cardText="Applications that can be directly executed by some processing unit."
+                                        cardText="${webApplicationPlaceHolder}"
                                         tagName="string"
                                         listItems="${digitalObject.webApplication}">
             </myTags:editMasterUnbounded>

@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,13 +22,14 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.pathogenEvolutionModels.pathogens" var="pathogensPlaceHolder" />
             <myTags:editMasterUnbounded path="pathogens"
                                         specifier="pathogens"
                                         label="Pathogens"
                                         addButtonLabel="Pathogen"
                                         tagName="softwareIdentifier"
-                                        placeholder="Bacterium, virus, or other microorganism included in the model."
-                                        cardText="The bacterium, virus, or other microorganism included in the model."
+                                        placeholder="${pathogensPlaceHolder}"
+                                        cardText="${pathogensPlaceHolder}"
                                         listItems="${digitalObject.pathogens}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>

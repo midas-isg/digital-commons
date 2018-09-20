@@ -115,7 +115,7 @@
 
                     <ul class="collapse list-unstyled" id="diseaseTransmissionTreeEstimatorForm">
                         <li><a href="#" onclick="submitForm('hostSpeciesIncludedTree')">Host Species Included</a></li>
-                        <li><a href="#" onclick="submitForm('pathogenCoverage')">Pathogen Coverage</a></li>
+                        <li><a href="#" onclick="submitForm('pathogenCoverageTree')">Pathogen Coverage</a></li>
                     </ul>
                 </li>
             </c:when>

@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,23 +22,26 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-                <myTags:editMasterUnbounded path="hostSpeciesIncluded"
+            <fmt:message key="software.diseaseTransmissionTreeEstimators.hostSpeciesIncluded" var="hostSpeciesIncludedPlaceHolder" />
+            <myTags:editMasterUnbounded path="hostSpeciesIncluded"
                                             specifier="host-species-included"
                                             label="Host Species Included"
                                             addButtonLabel="Host Species"
                                             tagName="softwareIdentifier"
-                                            placeholder="The species which is affected by disease or in which a parasite or commensal organism is living."
-                                            cardText="The species which is affected by disease or in which a parasite or commensal organism is living."
+                                            placeholder="${hostSpeciesIncludedPlaceHolder}"
+                                            cardText="${hostSpeciesIncludedPlaceHolder}"
                                             listItems="${digitalObject.hostSpeciesIncluded}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>
-                <myTags:editMasterUnbounded path="pathogenCoverage"
+
+            <fmt:message key="software.diseaseTransmissionTreeEstimators.pathogenCoverage" var="pathogenCoveragePlaceHolder" />
+            <myTags:editMasterUnbounded path="pathogenCoverage"
                                             specifier="pathogen-coverage"
                                             label="Pathogen Coverages"
                                             addButtonLabel="Pathogen Coverage"
                                             tagName="softwareIdentifier"
-                                            placeholder="Bacterium, virus, or other microorganism included."
-                                            cardText="The bacterium, virus, or other microorganism included."
+                                            placeholder="${pathogenCoveragePlaceHolder}"
+                                            cardText="${pathogenCoveragePlaceHolder}"
                                             listItems="${digitalObject.pathogenCoverage}"
                                             isRequired="${false}">
                 </myTags:editMasterUnbounded>

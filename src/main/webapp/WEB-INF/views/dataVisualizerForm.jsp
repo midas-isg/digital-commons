@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,12 +23,13 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.visualizationType" var="visualizationTypePlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
                                         label="Visualization Types"
                                         addButtonLabel="Visualization Type"
-                                        placeholder="Type of methods for creating images, diagrams or animations."
+                                        placeholder="${visualizationTypePlaceHolder}"
                                         specifier="visualization-type"
-                                        cardText="Types of methods for creating images, diagrams or animations."
+                                        cardText="${visualizationTypePlaceHolder}"
                                         tagName="string"
                                         isRequired="${false}"
                                         path="visualizationType">

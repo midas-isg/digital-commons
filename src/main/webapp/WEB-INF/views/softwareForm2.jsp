@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,101 +23,118 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="software.license" var="licensePlaceHolder" />
             <myTags:editNonZeroLengthString path="license" string="${digitalObject.license}"
                                             specifier="license"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
-                                            placeholder="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
-                                            cardText="A copyright license that is about the software and contains one or more conditional specifications that specify the use and redistribution of the software."
+                                            placeholder="${licensePlaceHolder}"
                                             id="license"
                                             label="License"></myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.source" var="sourcePlaceHolder" />
             <myTags:editNonZeroLengthString path="source" string="${digitalObject.source}"
                                             specifier="source"
-                                            placeholder="Where something is available or from where it originates."
-                                            cardText="Where something is available or from where it originates."
+                                            placeholder="${sourcePlaceHolder}"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
                                             id="source"
                                             label="Source"></myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.website" var="websitePlaceHolder" />
             <myTags:editNonZeroLengthString path="website" string="${digitalObject.website}"
                                             specifier="website"
-                                            placeholder="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
-                                            cardText="A set of related web pages containing content such as text, images, video, audio, etc., prepared and maintained as a collection of information on the software."
+                                            placeholder="${websitePlaceHolder}"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
                                             id="website"
                                             label="Website"></myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.documentation" var="documentationPlaceHolder" />
             <myTags:editNonZeroLengthString path="documentation" string="${digitalObject.documentation}"
                                             specifier="documentation"
-                                            placeholder="Material that provides official information or evidence or that serves as a record for the software."
-                                            cardText="Material that provides official information or evidence or that serves as a record for the software."
+                                            placeholder="${documentationPlaceHolder}"
                                             isRequired="${true}"
                                             isUnboundedList="${false}"
                                             isInputGroup="${true}"
                                             id="documentation"
                                             label="Documentation"></myTags:editNonZeroLengthString>
+
+            <fmt:message key="software.developers" var="developersPlaceHolder" />
             <myTags:editMasterUnbounded label="Developers"
                                         addButtonLabel="Developer"
-                                        placeholder="The person or organisation that developed and maintains the software."
+                                        placeholder="${developersPlaceHolder}"
                                         path="developers"
                                         specifier="developers"
-                                        cardText="The person or organisation that developed and maintains the software."
+                                        cardText="${developersPlaceHolder}"
                                         isRequired="${false}"
                                         tagName="string"
                                         listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
+
+            <fmt:message key="software.publicationsThatUsedRelease" var="publicationsThatUsedReleasePlaceHolder" />
             <myTags:editMasterUnbounded label="Publications That Used Release"
                                         addButtonLabel="Publication"
-                                        placeholder="Article, paper, journal or other work employing the release of the software."
+                                        placeholder="${publicationsThatUsedReleasePlaceHolder}"
                                         path="publicationsThatUsedRelease"
                                         specifier="publications-that-used-release"
                                         isRequired="${false}"
-                                        cardText="Article, paper, journal or other work employing the release of the software."
+                                        cardText="${publicationsThatUsedReleasePlaceHolder}"
                                         tagName="string"
                                         listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
+
+            <fmt:message key="software.executables" var="executablesPlaceHolder" />
             <myTags:editMasterUnbounded label="Executables"
                                         addButtonLabel="Executable"
-                                        placeholder="File or program able to run the software."
+                                        placeholder="${executablesPlaceHolder}"
                                         path="executables" specifier="executables"
                                         isRequired="${false}"
                                         tagName="string"
-                                        cardText="File or program able to run the software."
+                                        cardText="${executablesPlaceHolder}"
                                         listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
+
+            <fmt:message key="software.version" var="versionPlaceHolder" />
             <myTags:editMasterUnbounded label="Versions"
                                         addButtonLabel="Version"
-                                        placeholder="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
+                                        placeholder="${versionPlaceHolder}"
                                         path="version" specifier="version"
                                         isRequired="${false}"
                                         tagName="string"
-                                        cardText="A version is an information content entity which is a sequence of characters borne by part of each of a class of manufactured products or its packaging and indicates its order within a set of other products having the same name."
+                                        cardText="${versionPlaceHolder}"
                                         listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
+
+            <fmt:message key="software.publicationsAboutRelease" var="publicationsAboutReleasePlaceHolder" />
             <myTags:editMasterUnbounded label="Publications About Release"
                                         addButtonLabel="Publication"
-                                        placeholder="Article, paper, journal or other work referencing the release of the software."
+                                        placeholder="${publicationsAboutReleasePlaceHolder}"
                                         path="publicationsAboutRelease"
                                         specifier="publications-about-release"
                                         isRequired="${false}"
                                         tagName="string"
-                                        cardText="Article, paper, journal or other work referencing the release of the software."
+                                        cardText="${publicationsAboutReleasePlaceHolder}"
                                         listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
+
+            <fmt:message key="software.grant" var="grantPlaceHolder" />
             <myTags:editMasterUnbounded label="Grants"
                                         addButtonLabel="Grant"
-                                        placeholder="Grant"
+                                        placeholder="${grantPlaceHolder}"
                                         path="grants" specifier="grants"
                                         isRequired="${false}"
                                         tagName="string"
-                                        cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                        cardText="${grantPlaceHolder}"
                                         listItems="${digitalObject.grants}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.locationCoverage" var="locationCoveragePlaceHolder" />
             <myTags:editMasterUnbounded label="Location Coverages"
                                         addButtonLabel="Location Coverage"
-                                        placeholder="An information content entity that specifies a geographical region coveredby the software."
+                                        placeholder="${locationCoveragePlaceHolder}"
                                         path="locationCoverage"
                                         specifier="location-coverage"
                                         tagName="softwareIdentifier"
-                                        cardText="An information content entity that specifies a geographical region coveredby the software."
+                                        cardText="${locationCoveragePlaceHolder}"
                                         listItems="${digitalObject.locationCoverage}">
             </myTags:editMasterUnbounded>
             <div class="row edit-form-group">

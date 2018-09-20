@@ -26,7 +26,7 @@
             <myTags:editMasterUnbounded path="acknowledges"
                                         specifier="acknowledges"
                                         listItems="${digitalObject.acknowledges}"
-                                        cardText="${acknowledgesPlaceHolders}"
+                                        cardText="${acknowledgesPlaceHolder}"
                                         cardIcon="fas fa-university"
                                         tagName="grant"
                                         addButtonLabel="Acknowledgement"
