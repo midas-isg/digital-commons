@@ -5,6 +5,7 @@ import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
 import edu.pitt.isg.mdc.dats2_2.*;
 import edu.pitt.isg.mdc.v1_0.*;
+import org.springframework.binding.message.MessageCriteria;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -126,8 +127,8 @@ public class TagUtil {
 */
     }
 
-    public static String getCardTabTitle(Object listItem) {
-        String cardTabTitle = getCardTabToolTip(listItem);
+    public static String getCardTabTitle(Object listItem, String label) {
+        String cardTabTitle = getCardTabToolTip(listItem, label);
         int maxLength = 35;
         int leftIndex = 20;
         int rightIndex = 10;
@@ -165,7 +166,7 @@ public class TagUtil {
 
     }
 
-    public static String getCardTabToolTip(Object listItem) {
+    public static String getCardTabToolTip(Object listItem, String label) {
         String cardTabToolTip = null;
 
         switch (listItem.getClass().getSimpleName()) {
@@ -265,7 +266,15 @@ public class TagUtil {
                 break;
         }
 
+        if (cardTabToolTip == null || cardTabToolTip.isEmpty()) {
+            cardTabToolTip = label;
+        }
         return escapeHtml(cardTabToolTip);
+    }
+
+    public static MessageCriteria getMessageCriteria(String path){
+
+        return new ErrorHandlingMessageCriteria(path);
     }
 
     public static boolean isFirstInstance(String specifier) {

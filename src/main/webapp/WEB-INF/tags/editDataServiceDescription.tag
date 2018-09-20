@@ -56,6 +56,7 @@
                    cardText=""
                    tagName="accessPointType"
                    isRequired="${true}"
+                   updateCardTabTitleText="${true}"
                    id="${specifier}-accessPointType">
 </myTags:editSelect>
 

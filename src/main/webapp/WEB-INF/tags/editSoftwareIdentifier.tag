@@ -51,6 +51,7 @@
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier"
+                                updateCardTabTitleText="${true}"
                                 string="${identifier.identifier}">
 </myTags:editNonZeroLengthString>
 

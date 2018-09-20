@@ -44,6 +44,7 @@
         isRequired="${true}"
         isInputGroup="${true}"
         id="${specifier}-title"
+        updateCardTabTitleText="${true}"
         specifier="${specifier}-title">
 </myTags:editNonZeroLengthString>
 

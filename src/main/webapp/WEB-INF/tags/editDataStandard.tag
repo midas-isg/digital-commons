@@ -43,6 +43,7 @@
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 isUnboundedList="${false}"
+                                updateCardTabTitleText="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 

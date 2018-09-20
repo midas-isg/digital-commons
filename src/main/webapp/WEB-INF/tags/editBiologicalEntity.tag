@@ -41,6 +41,7 @@
                                 id="${specifier}-name"
                                 string="${entity.name}"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${true}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
 

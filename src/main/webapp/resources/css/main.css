@@ -1136,6 +1136,12 @@ div.container.metadata-container .metadata-column.fancy {
     border-color: #a94442 !important;
 }
 
+.has-error-card-tab {
+    color: white !important;
+    background: rgba(255, 0, 0, 0.7) !important;
+    border-color: #a94442;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */

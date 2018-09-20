@@ -48,7 +48,7 @@
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">
-        <select class="custom-select" name="${path}" id="${specifier}-select"
+        <select class="custom-select" name="${path}" id="${specifier}-select" <c:if test="${updateCardTabTitleText}">onfocusout="updateCardTabTitle('${specifier}')"</c:if>
                 title="${specifier}">
             <option value="">Please Select...</option>
             <c:forEach items="${enumList}" var="varEnum" varStatus="status">

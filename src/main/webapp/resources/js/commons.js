@@ -777,11 +777,15 @@ function scrollToAnchor(anchor) {
     }
 }
 
-function highlightDiv(div) {
+function highlightDiv(div, color) {
+
+    var colorToDisplay = "rgba(1, 255, 68, 0.9)";
+    if (color == "red") {colorToDisplay = "rgba(255, 0, 0, 0.7)"}
+
     $("div.card").find('*').css("box-shadow", '');
 
     $('#' + div).animate({
-        boxShadow: "0px 0px 15px 15px rgba(1, 255, 68, 0.9)"
+        boxShadow: "0px 0px 15px 15px " + colorToDisplay
     }, 1000);
 
     $(function() {
@@ -1065,11 +1069,12 @@ function setCardTabTitle(id, specifier, cardTabTitle){
         cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
     }
 
-    cardTabTitle = cardTabTitle + "   ";
-    var currentCardTabTitleText = $("#" + id).text();
-    var currentCardTabTitleHTML = $("#" + id).html();
-    $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
-
+    if(cardTabTitle.length > 0) {
+        cardTabTitle = cardTabTitle + "   ";
+        var currentCardTabTitleText = $("#" + id).text().trim();
+        var currentCardTabTitleHTML = $("#" + id).html();
+        $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+    }
 }
 
 $(window).on("popstate", function() {
