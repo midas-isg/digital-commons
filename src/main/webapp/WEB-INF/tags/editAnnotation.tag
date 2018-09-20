@@ -46,7 +46,7 @@
 <myTags:editNonZeroLengthString path="${path}.value"
                                 specifier="${specifier}-value"
                                 id="${specifier}-value"
-                                placeholder="Value"
+                                placeholder="${valuePlaceHolder}"
                                 isRequired="${true}"
                                 label="${valuePlaceHolder}"
                                 isInputGroup="${true}"

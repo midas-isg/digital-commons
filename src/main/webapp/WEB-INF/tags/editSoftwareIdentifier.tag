@@ -46,7 +46,7 @@
 <myTags:editNonZeroLengthString path="${path}.identifier"
                                 specifier="${specifier}-identifier"
                                 id="${specifier}-identifier"
-                                placeholder="A code uniquely identifying an entity locally to a system or globally."
+                                placeholder="${identifierPlaceHolder}"
                                 cardText="${identifierPlaceHolder}"
                                 isRequired="${true}"
                                 isInputGroup="${true}"

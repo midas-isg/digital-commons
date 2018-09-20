@@ -166,7 +166,7 @@
                             cardText="${formatsPlaceHolder}"
                             cardIcon="far fa-file-alt"
                             isRequired="${false}"
-                            placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                            placeholder="${formatsPlaceHolder}"
                             addButtonLabel="Format"
                             label="Formats">
 </myTags:editMasterUnbounded>
