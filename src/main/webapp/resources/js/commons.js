@@ -1033,8 +1033,51 @@ function updateCardTabTitle(specifier){
     var newCardTabTitleText = $("#" + specifier).val();
     if (index > 0 && newCardTabTitleText.length > 0) {
         var id = specifier.substring(0, lastIndex + 2) + "listItem";
-        $('#'+ id +'[data-toggle="tooltip"]').attr("title",newCardTabTitleText);
         setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitlePerson(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+    var fullNameId = specifier.substring(0, lastIndex + 2) + "fullname-string";
+    var firstNameId = specifier.substring(0, lastIndex + 2) + "firstName-string";
+    var middleInitialId = specifier.substring(0, lastIndex + 2) + "middleInitial-string";
+    var lastNameId = specifier.substring(0, lastIndex + 2) + "lastName-string";
+
+    var fullName = $("#" + fullNameId).val().trim();
+    var firstName = $("#" + firstNameId).val().trim();
+    var middleInitial = $("#" + middleInitialId).val().trim();
+    var lastName = $("#" + lastNameId).val().trim();
+
+    var contrivedFullName = fullName;
+    if (firstName.length > 0) {
+        contrivedFullName = firstName;
+    }
+    if (middleInitial.length > 0) {
+        contrivedFullName = contrivedFullName + " " + middleInitial;
+    }
+    if (lastName.length > 0) {
+        contrivedFullName = contrivedFullName + " " + $("#" + lastNameId).val().trim();
+    }
+    contrivedFullName = contrivedFullName.trim();
+
+    if (contrivedFullName.length > 0 && contrivedFullName.length > fullName.length) {
+        fullName = contrivedFullName;
+        $("#" + fullNameId).val(fullName);
+    }
+
+    if (fullName.length > 0) {
+        var id = specifier.substring(0, lastIndex + 2) + "listItem";
+        setCardTabTitle(id, specifier, fullName);
     }
 }
 
@@ -1042,6 +1085,8 @@ function setCardTabTitle(id, specifier, cardTabTitle){
     var maxLength = 35;
     var leftIndex = 20;
     var rightIndex = 10;
+
+    $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
 
     if (cardTabTitle.includes(" ")) {
         var regex = /\s+/g;
