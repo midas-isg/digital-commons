@@ -44,7 +44,7 @@
                        isRequired="${false}"
                        cardText="${informationPlaceHolder}"
                        cardIcon="fas fa-info-circle"
-                       updateCardTabTitleText="${true}"
+                       updateCardTabTitleTextType="${true}"
                        path="${path}.information">
 </myTags:editAnnotation>
 
@@ -57,6 +57,7 @@
                        isRequired="${false}"
                        cardText="${methodPlaceHolder}"
                        cardIcon="fa fa-cloud"
+                       updateCardTabTitleTextType="${true}"
                        path="${path}.method">
 </myTags:editAnnotation>
 
@@ -69,6 +70,7 @@
                        isRequired="${false}"
                        cardText="${platformPlaceHolder}"
                        cardIcon="fas fa-laptop"
+                       updateCardTabTitleTextType="${true}"
                        path="${path}.platform">
 </myTags:editAnnotation>
 <myTags:editMasterElementWrapper path="${path}"

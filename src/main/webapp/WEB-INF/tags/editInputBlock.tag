@@ -34,6 +34,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="updateCardTabTitleTextPerson" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextType" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
 
@@ -65,7 +67,8 @@
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
                id="${specifier}" placeholder="${placeholder}"
                <c:if test="${updateCardTabTitleText}">onfocusout="updateCardTabTitle('${specifier}')"</c:if>
-               <c:if test="${updateCardTabTitleTextPerson}">onfocusout="updateCardTabTitlePerson('${specifier}')"</c:if> />
+               <c:if test="${updateCardTabTitleTextPerson}">onfocusout="updateCardTabTitlePerson('${specifier}')"</c:if>
+               <c:if test="${updateCardTabTitleTextType}">onfocusout="updateCardTabTitleType('${specifier}')"</c:if> />
     </c:otherwise>
 
 </c:choose>

@@ -1063,26 +1063,56 @@ function updateCardTabTitlePerson(specifier){
     var middleInitial = $("#" + middleInitialId).val().trim();
     var lastName = $("#" + lastNameId).val().trim();
 
-    var contrivedFullName = fullName;
+    var combinedFullName = "";
     if (firstName.length > 0) {
-        contrivedFullName = firstName;
+        combinedFullName = firstName;
     }
     if (middleInitial.length > 0) {
-        contrivedFullName = contrivedFullName + " " + middleInitial;
+        combinedFullName = combinedFullName + " " + middleInitial;
     }
     if (lastName.length > 0) {
-        contrivedFullName = contrivedFullName + " " + $("#" + lastNameId).val().trim();
+        combinedFullName = combinedFullName + " " + lastName;
     }
-    contrivedFullName = contrivedFullName.trim();
+    if (combinedFullName.length > 0) {
+        combinedFullName = combinedFullName.trim();
+    }
 
-    if (contrivedFullName.length > 0 && contrivedFullName.length > fullName.length) {
-        fullName = contrivedFullName;
+    if (specifier != fullNameId && combinedFullName.length > 0 && combinedFullName.length > fullName.length) {
+        fullName = combinedFullName;
         $("#" + fullNameId).val(fullName);
     }
 
+    var id = specifier.substring(0, lastIndex + 2) + "listItem";
     if (fullName.length > 0) {
-        var id = specifier.substring(0, lastIndex + 2) + "listItem";
         setCardTabTitle(id, specifier, fullName);
+    }
+}
+
+function updateCardTabTitleType(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+    var informationId = specifier.substring(0, lastIndex + 2) + "information-value-string";
+    var methodId = specifier.substring(0, lastIndex + 2) + "method-value-string";
+    var platformId = specifier.substring(0, lastIndex + 2) + "platform-value-string";
+    var information = $("#" + informationId).val().trim();
+    var method = $("#" + methodId).val().trim();
+    var platform = $("#" + platformId).val().trim();
+
+    var id = specifier.substring(0, lastIndex + 2) + "listItem";
+    if (information.length > 0) {
+        setCardTabTitle(id, specifier, information);
+    } else if (method.length > 0) {
+        setCardTabTitle(id, specifier, method);
+    } else if (platform.length > 0) {
+        setCardTabTitle(id, specifier, platform);
     }
 }
 
