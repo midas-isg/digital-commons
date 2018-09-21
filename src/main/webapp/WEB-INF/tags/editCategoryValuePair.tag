@@ -44,7 +44,7 @@
                                 isRequired="${true}"
                                 path="${path}.category"
                                 isInputGroup="${true}"
-                                updateCardTabTitleText="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 string="${categoryValuePair.category}">
 </myTags:editNonZeroLengthString>
 

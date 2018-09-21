@@ -400,7 +400,6 @@
                                                             isInputGroup="${false}"
                                                             isRequired="${isRequired}"
                                                             isFirstRequired="${isRequired}"
-                                                            updateCardTabTitleText="${true}"
                                                             isUnboundedList="${true}">
                             </myTags:editNonZeroLengthString>
                         </c:when>

@@ -1075,20 +1075,20 @@ function updateCardTabTitlePerson(specifier){
     var middleInitialId = specifier.substring(0, lastIndex + 2) + "middleInitial-string";
     var lastNameId = specifier.substring(0, lastIndex + 2) + "lastName-string";
 
-    var fullName = $("#" + fullNameId).val().trim();
-    var firstName = $("#" + firstNameId).val().trim();
-    var middleInitial = $("#" + middleInitialId).val().trim();
-    var lastName = $("#" + lastNameId).val().trim();
+    var fullName = $("#" + fullNameId).val();
+    var firstName = $("#" + firstNameId).val();
+    var middleInitial = $("#" + middleInitialId).val();
+    var lastName = $("#" + lastNameId).val();
 
     var combinedFullName = "";
     if (firstName.length > 0) {
-        combinedFullName = firstName;
+        combinedFullName = firstName.trim();
     }
     if (middleInitial.length > 0) {
-        combinedFullName = combinedFullName + " " + middleInitial;
+        combinedFullName = combinedFullName + " " + middleInitial.trim();
     }
     if (lastName.length > 0) {
-        combinedFullName = combinedFullName + " " + lastName;
+        combinedFullName = combinedFullName + " " + lastName.trim();
     }
     if (combinedFullName.length > 0) {
         combinedFullName = combinedFullName.trim();
@@ -1119,17 +1119,17 @@ function updateCardTabTitleType(specifier){
     var informationId = specifier.substring(0, lastIndex + 2) + "information-value-string";
     var methodId = specifier.substring(0, lastIndex + 2) + "method-value-string";
     var platformId = specifier.substring(0, lastIndex + 2) + "platform-value-string";
-    var information = $("#" + informationId).val().trim();
-    var method = $("#" + methodId).val().trim();
-    var platform = $("#" + platformId).val().trim();
+    var information = $("#" + informationId).val();
+    var method = $("#" + methodId).val();
+    var platform = $("#" + platformId).val();
 
     var id = specifier.substring(0, lastIndex + 2) + "listItem";
     if (information.length > 0) {
-        setCardTabTitle(id, specifier, information);
+        setCardTabTitle(id, specifier, information.trim());
     } else if (method.length > 0) {
-        setCardTabTitle(id, specifier, method);
+        setCardTabTitle(id, specifier, method.trim());
     } else if (platform.length > 0) {
-        setCardTabTitle(id, specifier, platform);
+        setCardTabTitle(id, specifier, platform.trim());
     }
 }
 

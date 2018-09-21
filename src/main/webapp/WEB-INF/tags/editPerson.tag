@@ -47,7 +47,7 @@
                                 id="${specifier}-firstName"
                                 isRequired="true"
                                 isInputGroup="${true}"
-                                updateCardTabTitleTextPerson="${true}"
+                                updateCardTabTitleTextPerson="${isUnboundedList}"
                                 path="${path}.firstName">
 </myTags:editNonZeroLengthString>
 
@@ -59,7 +59,7 @@
                                 id="${specifier}-middleInitial"
                                 isRequired="true"
                                 isInputGroup="${true}"
-                                updateCardTabTitleTextPerson="${true}"
+                                updateCardTabTitleTextPerson="${isUnboundedList}"
                                 path="${path}.middleInitial">
 </myTags:editNonZeroLengthString>
 
@@ -71,7 +71,7 @@
                                 id="${specifier}-lastName"
                                 isRequired="true"
                                 isInputGroup="${true}"
-                                updateCardTabTitleTextPerson="${true}"
+                                updateCardTabTitleTextPerson="${isUnboundedList}"
                                 path="${path}.lastName">
 </myTags:editNonZeroLengthString>
 
@@ -83,7 +83,7 @@
                                 specifier="${specifier}-fullname"
                                 id="${specifier}-fullname"
                                 isInputGroup="${true}"
-                                updateCardTabTitleTextPerson="${true}"
+                                updateCardTabTitleTextPerson="${isUnboundedList}"
                                 path="${path}.fullName">
 </myTags:editNonZeroLengthString>
 

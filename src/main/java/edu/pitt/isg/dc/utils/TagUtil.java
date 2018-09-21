@@ -204,16 +204,51 @@ public class TagUtil {
                 }
             case "Person":
                 if (isObjectEmpty(((Person) listItem).getFullName())) {
-                    cardTabToolTip = ((Person) listItem).getFirstName() + " " + ((Person) listItem).getLastName();
+                    if (!isObjectEmpty(((Person) listItem).getFirstName())) {
+                        cardTabToolTip = ((Person) listItem).getFirstName();
+                    }
+                    if (!isObjectEmpty(((Person) listItem).getMiddleInitial())) {
+                        if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                            cardTabToolTip = cardTabToolTip + " " + ((Person) listItem).getMiddleInitial();
+                        } else cardTabToolTip = ((Person) listItem).getMiddleInitial();
+                    }
+                    if (!isObjectEmpty(((Person) listItem).getLastName())) {
+                        if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                            cardTabToolTip = cardTabToolTip + " " + ((Person) listItem).getLastName();
+                        } else cardTabToolTip = ((Person) listItem).getLastName();
+                    }
+                    if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                        cardTabToolTip = cardTabToolTip.trim();
+                    }
                 } else cardTabToolTip = ((Person) listItem).getFullName();
                 break;
             case "Organization":
                 cardTabToolTip = ((Organization) listItem).getName();
                 break;
             case "PersonOrganization":
+                if (isObjectEmpty(((PersonOrganization) listItem).getFullName())) {
+                    if (!isObjectEmpty(((PersonOrganization) listItem).getFirstName())) {
+                        cardTabToolTip = ((PersonOrganization) listItem).getFirstName();
+                    }
+                    if (!isObjectEmpty(((PersonOrganization) listItem).getMiddleInitial())) {
+                        if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                            cardTabToolTip = cardTabToolTip + " " + ((PersonOrganization) listItem).getMiddleInitial();
+                        } else cardTabToolTip = ((PersonOrganization) listItem).getMiddleInitial();
+                    }
+                    if (!isObjectEmpty(((PersonOrganization) listItem).getLastName())) {
+                        if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                            cardTabToolTip = cardTabToolTip + " " + ((PersonOrganization) listItem).getLastName();
+                        } else cardTabToolTip = ((PersonOrganization) listItem).getLastName();
+                    }
+                    if (cardTabToolTip != null && !cardTabToolTip.isEmpty()) {
+                        cardTabToolTip = cardTabToolTip.trim();
+                    }
+                } else cardTabToolTip = ((PersonOrganization) listItem).getFullName();
+/*
                 if (isPerson((PersonOrganization) listItem)) {
                     cardTabToolTip = ((PersonOrganization) listItem).getFirstName() + " " + ((PersonOrganization) listItem).getLastName();
                 } else cardTabToolTip = ((PersonOrganization) listItem).getName();
+*/
                 break;
             case "Study":
                 cardTabToolTip = ((Study) listItem).getName();

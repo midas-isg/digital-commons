@@ -55,7 +55,7 @@
                        label="Type"
                        id="${specifier}-date"
                        cardText="${annotationPlaceholder}"
-                       updateCardTabTitleText="${true}"
+                       updateCardTabTitleText="${isUnboundedList}"
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
 </myTags:editAnnotation>

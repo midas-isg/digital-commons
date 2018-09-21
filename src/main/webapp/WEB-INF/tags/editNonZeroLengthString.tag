@@ -53,7 +53,7 @@
                        specifier="${specifier}-string"
                        string="${string}"
                        isTextArea="${isTextArea}"
-                       updateCardTabTitleText="${updateCardTabTitleText}"
+                       updateCardTabTitleText="${isUnboundedList or updateCardTabTitleText}"
                        updateCardTabTitleTextPerson="${updateCardTabTitleTextPerson}"
                        updateCardTabTitleTextType="${updateCardTabTitleTextType}"
                        placeholder="${placeholder}">
