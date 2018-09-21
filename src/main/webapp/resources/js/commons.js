@@ -928,6 +928,10 @@ function showTab(e, div, specifier) {
         if ($("#" + tabID).length == 0 && !(tabID.endsWith("00-tab"))) {
             $(this).removeClass("hide");
         }
+        //cards with existing data were not displaying despite input block having hide removed
+        if ($("#" + tabID).length > 0 && !(tabID.endsWith("copy-tag"))) {
+            $(this).removeClass("hide");
+        }
 
         if ($("#" + tabID).children().hasClass("active")) {
             $(this).removeClass("hide");
