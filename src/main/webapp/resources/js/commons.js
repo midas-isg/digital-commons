@@ -923,8 +923,10 @@ function closeTab(e, div, specifier, tagName) {
             //find closest tab to the left tab to make it active (we don't just want to use the first tab)
             $("#" + specifier + "-card-header").find("a").each(function () {
                 if (takeNext) {
-                    prevDiv = $(this.parentElement);
-                    return false;
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                        return false;
+                    }
                 }
                 if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
                     if ($(this).hasClass("active")) {
@@ -933,8 +935,11 @@ function closeTab(e, div, specifier, tagName) {
                 } else if ($(this).hasClass("active")) {
                     prevDiv = $(this.parentElement);
                     return false;
-                } else prevDiv = $(this.parentElement);
-
+                } else {
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                    }
+                }
 
             });
         }
