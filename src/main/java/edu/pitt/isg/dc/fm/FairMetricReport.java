@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -26,6 +27,7 @@ public class FairMetricReport {
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime created;
     @OneToMany(
+            fetch = LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
@@ -33,4 +35,6 @@ public class FairMetricReport {
     @OrderBy("id ASC")
     private List<FairMetricResultRow> results;
     private FairMetricReportStatus status;
+    @Convert(converter = LocalDateTimeConverter.class)
+    private LocalDateTime updated;
 }

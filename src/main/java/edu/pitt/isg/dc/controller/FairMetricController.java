@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -31,9 +32,9 @@ public class FairMetricController {
         return "fairMetricReport";
     }
 
-    @GetMapping(value = "/run", produces = JSON)
+    @PostMapping(value = "/run", produces = JSON)
     @ResponseBody
-    public FairMetricReport run(){
+    public FairMetricReport post(){
         return service.run();
     }
 

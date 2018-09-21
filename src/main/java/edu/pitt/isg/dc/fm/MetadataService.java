@@ -34,8 +34,8 @@ import static java.util.Collections.singletonList;
 @Service
 @Slf4j
 public class MetadataService {
-    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons-dev";
-//    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons";
+//    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons-dev";
+    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons";
     public static final String metadataUrl = baseUrl + "/api/v1/identifiers/metadata";
     private Map<String, String> translator = initTranslator();
 

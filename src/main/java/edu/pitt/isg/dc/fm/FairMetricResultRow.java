@@ -13,6 +13,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.SequenceGenerator;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
@@ -26,6 +27,7 @@ public class FairMetricResultRow {
     @Column(length = 10_485_760)
     private String submittedPayload;
     @OneToMany(
+            fetch = LAZY,
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )

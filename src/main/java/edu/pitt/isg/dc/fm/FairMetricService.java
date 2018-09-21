@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import static edu.pitt.isg.dc.fm.FairMetricReportStatus.DONE;
+import static edu.pitt.isg.dc.fm.FairMetricReportStatus.FAILED;
 import static edu.pitt.isg.dc.fm.FairMetricReportStatus.RUNNING;
 import static edu.pitt.isg.dc.fm.FairMetricResult.fromJsonMap;
 import static edu.pitt.isg.dc.fm.FairMetricResult.newFairMetricResult;
@@ -67,27 +70,45 @@ public class FairMetricService {
 	private final FairMetricReportRepo reportRepo;
 	private final FairMetricResultRowRepo rowRepo;
 	private final FairMetricResultRepo resultRepo;
+	private final FairMetricReportErrorRepo errorRepo;
 
 	public FairMetricReport run() {
 		final FairMetricReport report = initFairMetricReport();
-		fillResults(report);
+		try {
+			fillResults(report);
+		} catch (Exception e){
+			report.setStatus(FAILED);
+			reportRepo.saveWithTimestamp(report);
+			persistException(report, e);
+		}
 		return report;
+	}
+
+	private FairMetricReportError persistException(FairMetricReport report, Exception e) {
+		final FairMetricReportError error = new FairMetricReportError();
+		error.setReport(report);
+		error.setCreated(now());
+        error.setMessage(e.getMessage());
+        final StringWriter sw = new StringWriter();
+        e.printStackTrace(new PrintWriter(sw));
+        error.setStackTrace(sw.toString());
+		return errorRepo.save(error);
 	}
 
 	@Transactional
 	void fillResults(FairMetricReport report) {
 		final List<FairMetricResultRow> results = report.getResults();
 		meta.getAllMetadata(0)
-//				.limit(3)
+//				.limit(4)
 				.map(meta::metadata2fmBody)
-				.peek(m -> System.out.println(m.get("subject")  + " is being assessing..."))
+				.peek(m -> log.info(m.get("subject")  + " is being assessing..."))
 				.map(it -> assessAllMetrics(it.get("subject"), toJson(it)))
 				.map(this::saveRow)
-				.peek(it -> log.info(it.getSubject() + " was assessed."))
+				.peek(it -> log.debug(it.getSubject() + " was assessed."))
 				.forEach(row -> results.add(row));
 		report.setStatus(DONE);
-		reportRepo.save(report);
-		System.out.println("Saved report.");
+		reportRepo.saveWithTimestamp(report);
+        log.info("Saved report.");
 	}
 
 	public FairMetricReport currentReport() {
@@ -108,13 +129,12 @@ public class FairMetricService {
 		report.setResults(new ArrayList<>());
 		report.setCreated(now());
 		report.setStatus(RUNNING);
-		reportRepo.saveAndFlush(report);
+		reportRepo.saveWithTimestamp(report);
 		return report;
 	}
 
 	private FairMetricResultRow saveRow(Map.Entry<String, List<FairMetricResult>> entry) {
 		final List<FairMetricResult> results = entry.getValue();
-		resultRepo.save(results);
 
 		final FairMetricResultRow row = new FairMetricResultRow();
 		final String key = entry.getKey();
@@ -122,7 +142,8 @@ public class FairMetricService {
 		row.setSubject(tokens[0]);
 		row.setSubmittedPayload(tokens[1]);
 		row.setResults(results);
-		rowRepo.saveAndFlush(row);
+//        resultRepo.save(results);
+        rowRepo.save(row);
 		return row;
 	}
 
@@ -149,7 +170,7 @@ public class FairMetricService {
 	@VisibleForTesting
 	FairMetricResult assessMetric(String metricId, String body) {
 		final FairMetricResult result = assess(body, metricId2Url.get(metricId));
-		System.out.println(result);
+        log.debug(result + "");
 		return result;
 	}
 

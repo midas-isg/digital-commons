@@ -28,16 +28,17 @@
         <!-- This is the results panel -->
         <div class="col-md-12 font-size-16">
             <h3 class="title-font" id="subtitle">
-                FAIR Metrics (${report.results.size()}) since ${report.created}
+                FAIR Metrics (${report.results.size()} entries) since ${report.created}
             </h3>
             <c:choose>
                 <c:when test="${empty running}">
-                    Submit a new batch?
                 </c:when>
                 <c:otherwise>
-                    <h4> With at least 1 pending since ${running.created}</h4>
+                    <h4>Note: there are some pending reruns since ${running.created}</h4>
                 </c:otherwise>
             </c:choose>
+            <form action="/digital-commons/fm/run" method="post" id="form1" />
+            <button type="submit" form="form1" value="Submit">Rerun Metrics</button>
             <table id="resultTable" datatable="ng" class="table table-striped table-bordered" dt-options="dtOptions"
                    dt-columns="dtColumns">
             </table>
