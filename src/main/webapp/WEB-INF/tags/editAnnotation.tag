@@ -52,7 +52,7 @@
                                 isRequired="${true}"
                                 label="${valuePlaceHolder}"
                                 isInputGroup="${true}"
-                                updateCardTabTitleText="${updateCardTabTitleText}"
+                                updateCardTabTitleText="${isUnboundedList or updateCardTabTitleText}"
                                 updateCardTabTitleTextType="${updateCardTabTitleTextType}"
                                 string="${annotation.value}">
 </myTags:editNonZeroLengthString>

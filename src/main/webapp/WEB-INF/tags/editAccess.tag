@@ -45,7 +45,7 @@
                                 specifier="${specifier}-landingPage"
                                 id="${specifier}-landingPage"
                                 isInputGroup="${true}"
-                                updateCardTabTitleText="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 label="Landing Page">
 </myTags:editNonZeroLengthString>
 

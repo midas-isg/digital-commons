@@ -56,7 +56,7 @@
                    cardText=""
                    tagName="accessPointType"
                    isRequired="${true}"
-                   updateCardTabTitleText="${true}"
+                   updateCardTabTitleText="${isUnboundedList}"
                    id="${specifier}-accessPointType">
 </myTags:editSelect>
 

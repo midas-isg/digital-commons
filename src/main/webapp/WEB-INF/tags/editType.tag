@@ -44,7 +44,7 @@
                        isRequired="${false}"
                        cardText="${informationPlaceHolder}"
                        cardIcon="fas fa-info-circle"
-                       updateCardTabTitleTextType="${true}"
+                       updateCardTabTitleTextType="${isUnboundedList}"
                        path="${path}.information">
 </myTags:editAnnotation>
 
@@ -57,7 +57,7 @@
                        isRequired="${false}"
                        cardText="${methodPlaceHolder}"
                        cardIcon="fa fa-cloud"
-                       updateCardTabTitleTextType="${true}"
+                       updateCardTabTitleTextType="${isUnboundedList}"
                        path="${path}.method">
 </myTags:editAnnotation>
 
@@ -70,7 +70,7 @@
                        isRequired="${false}"
                        cardText="${platformPlaceHolder}"
                        cardIcon="fas fa-laptop"
-                       updateCardTabTitleTextType="${true}"
+                       updateCardTabTitleTextType="${isUnboundedList}"
                        path="${path}.platform">
 </myTags:editAnnotation>
 <myTags:editMasterElementWrapper path="${path}"
