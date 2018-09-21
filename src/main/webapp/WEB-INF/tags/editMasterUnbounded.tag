@@ -643,9 +643,11 @@
 
     $(document).ready(function () {
 
+/*
         $(".has-error-card.card").each(function(){
             highlightDiv($(this).attr("id"), "red");
         });
+*/
 
         <c:if test="${not function:isObjectEmpty(listItems)}">
         $("#" + "${specifier}-0-listItem").addClass("active");

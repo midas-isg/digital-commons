@@ -756,6 +756,10 @@ $(document).ready(function() {
         location.hash = '_';
     });
 
+    $(".has-error-card.card").each(function(){
+        highlightDiv($(this).attr("id"), "red");
+    });
+
 });
 
 function scrollToAnchor(anchor) {
