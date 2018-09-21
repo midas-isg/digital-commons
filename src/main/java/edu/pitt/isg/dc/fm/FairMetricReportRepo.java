@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface FairMetricReportRepo extends JpaRepository<FairMetricReport, Long> {
-    FairMetricReport findTopByStatusOrderByCreatedDesc(FairMetricReportStatus status);
+    FairMetricReport getFirstByStatusOrderByCreatedDesc(FairMetricReportStatus status);
+
     @Cacheable("FairMetricReport")
-    FairMetricReport findOne(Long id);
+    default FairMetricReport peep(long id) {
+        return getOne(id);
+    }
 }

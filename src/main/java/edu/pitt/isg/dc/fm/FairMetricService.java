@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.jsoup.Jsoup;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -92,15 +91,15 @@ public class FairMetricService {
 	}
 
 	public FairMetricReport currentReport() {
-		return cache(reportRepo.findTopByStatusOrderByCreatedDesc(DONE));
+		return readFromCache(reportRepo.getFirstByStatusOrderByCreatedDesc(DONE).getId());
 	}
 
-	private FairMetricReport cache(FairMetricReport current) {
-		return reportRepo.findOne(current.getId());
+	private FairMetricReport readFromCache(long id) {
+		return reportRepo.peep(id);
 	}
 
 	public FairMetricReport runningReport() {
-		return reportRepo.findTopByStatusOrderByCreatedDesc(RUNNING);
+		return reportRepo.getFirstByStatusOrderByCreatedDesc(RUNNING);
 	}
 
 	@Transactional
@@ -179,7 +178,6 @@ public class FairMetricService {
 		} catch (Exception e){
 			final FairMetricResult result = newFairMetricResult(url, e.getMessage(), "Failed:" + url, Arrays.toString(e.getStackTrace()), null);
 			return result;
-			//throw new RuntimeException(e);
 		}
 	}
 
