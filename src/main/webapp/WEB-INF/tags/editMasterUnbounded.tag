@@ -663,15 +663,10 @@
             if(isFirstRequired == "") {
                 isFirstRequired = false;
             }
-
             createNewTab(this, '${specifier}', '${path}', '${tagName}', '${addButtonLabel}', isFirstRequired, listItemCount);
             scrollToAnchor('${specifier}-card');
             highlightDiv('${specifier}-card', "green");
             listItemCount += 1;
-
-
         });
-
-
     });
 </script>
