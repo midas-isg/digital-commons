@@ -837,6 +837,62 @@ function makeAllTabsInactive(specifier) {
     });
 }
 
+function removeSection(specifier, tagName, event, isUnbounded) {
+    var confirmation = true;
+    $("#" + specifier + "-card").find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this card?");
+            return false;
+        }
+    });
+
+    if (confirmation == true) {
+        event.stopImmediatePropagation();
+        $("#" + specifier + "-add-input-button").removeClass("hide");
+
+        // clearAndHideEditControlGroup($(event.target).attr("for"));
+
+        if(isUnbounded) {
+            clearAndHideEditControlGroup(specifier+"-card");
+            closeAllTabs(event, $("#"+specifier+"-card"));
+            $("#" + specifier + "-card").addClass("hide");
+        }else {
+            clearAndHideEditControlGroup(specifier+"-input-block");
+            $("#"+specifier+"-input-block").addClass("hide");
+        }
+
+        $("." + specifier+"-"+tagName+"-remove").closest('.card').addClass("hide").slideUp('fast');
+    }
+}
+
+function showCard(specifier, tagName, id, isUnboundedList, isRequired) {
+    // e.stopImmediatePropagation();
+    $("#"+id).removeClass("hide");
+    $(this).closest('.card').children('.card-content').removeClass('collapse');
+    $("#"+specifier+"-input-block").removeClass("hide");
+    $("#"+specifier+"-input-block").addClass("collapse");
+    $("#"+specifier+"-input-block").addClass("show");
+
+    $("#"+specifier+"-input-block").show();
+
+    if(isUnboundedList || !isRequired) {
+        $("#"+specifier+"-add-input-button").addClass("hide");
+    }
+
+    $("#"+specifier+"-"+tagName).val("");
+    scrollToAnchor(specifier);
+    highlightDiv(specifier,"green");
+
+    $("#" + specifier+"-date-picker").datepicker({
+        forceParse: false,
+        orientation: 'top auto',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4',
+    });
+}
+
+
 function closeTab(e, div, specifier, tagName) {
     //warn user before closing tab
     var confirmation = true;
@@ -850,37 +906,41 @@ function closeTab(e, div, specifier, tagName) {
     });
 
     if(confirmation == true) {
-        //find closest tab to the left tab to make it active (we don't just want to use the first tab)
-        $("#" + specifier + "-card-header").find("a").each(function () {
-            if (takeNext) {
-                prevDiv = $(this.parentElement);
-                return false;
+        //check if all other tabs have been "closed"
+        var counter = 0;
+        $("#" + specifier + "-card-header").find("li").each(function () {
+            if(!$(this).hasClass("hide")) {
+                counter++;
             }
-            if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-                if ($(this).hasClass("active")) {
-                    takeNext = true;
-                }
-            } else if ($(this).hasClass("active")) {
-                prevDiv = $(this.parentElement);
-                return false;
-            } else prevDiv = $(this.parentElement);
-
-
         });
+
+        if(counter>1) {
+            //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+            $("#" + specifier + "-card-header").find("a").each(function () {
+                if (takeNext) {
+                    prevDiv = $(this.parentElement);
+                    return false;
+                }
+                if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+                    if ($(this).hasClass("active")) {
+                        takeNext = true;
+                    }
+                } else if ($(this).hasClass("active")) {
+                    prevDiv = $(this.parentElement);
+                    return false;
+                } else prevDiv = $(this.parentElement);
+
+
+            });
+        }
         var divToClose = $(div.parentElement.parentElement).attr("for");
         //remove does not clear flow data; had to call the function and hide div so flow data is updated on next/submit
         clearAndHideEditControlGroup(divToClose);
         $("#" + divToClose).addClass("hide");
         $(div.parentElement.parentElement).addClass("hide");
-/*
-        $("#" + divToClose).remove();
-        $(div.parentElement.parentElement).remove();
-*/
 
-        // $("#" + $(prevDiv).attr("for")).show();
-        // $($(prevDiv).find("a")[0]).addClass("active");
         if (prevDiv == undefined) {
-            $("." + specifier + "-" + tagName + "-remove").click();
+            removeSection(specifier, tagName, e, true);
         } else {
             showTab(e, $(prevDiv).find("a")[0], specifier);
         }

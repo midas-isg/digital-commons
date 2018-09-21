@@ -20,7 +20,7 @@
     <div id="entryFormContent">
 
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+            <myTags:wizardHeader showCategories="${false}" wantLoader="${true}"></myTags:wizardHeader>
 
             <fmt:message key="dataset.primaryPublications" var="primaryPublicationsPlaceHolder" />
             <myTags:editMasterUnbounded path="primaryPublications"

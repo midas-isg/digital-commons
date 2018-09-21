@@ -42,7 +42,8 @@
                 <div class="card mx-auto input-group control-group card-rounded ${specifier}-${tagName}-add-more "
                      style="width: 20rem;">
                     <div class="card-header card-button-header add-card-header">
-                        <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button">
+                        <button class="btn btn-primary mt-auto btn-block ${specifier}-add-${tagName}" type="button"
+                                onclick="showCard('${specifier}', '${tagName}', '${id}', '${isUnboundedList}', '${isRequired}')">
                             <i class="fa fa-plus-circle"></i> Add ${label}
                         </button>
                         <div class="d-flex justify-content-center align-items-center">
@@ -79,13 +80,15 @@
             <c:if test="${not isInputGroup}">
                 <div class="heading-elements">
                     <ul class="list-inline mb-0">
-                        <li><a data-toggle="tooltip" data-placement="top" title="${cardText}"><i class="ft-info ft-buttons"></i></a></li>
+                        <li><a data-toggle="tooltip" data-placement="top" title="${cardText}"><i
+                                class="ft-info ft-buttons"></i></a></li>
                         <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                         <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
                         <c:if test="${not isRequired}">
 
-                            <li><a data-action="close"><i for="${specifier}-input-block"
-                                                          class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
+                            <li><a data-action="close" onclick="removeSection('${specifier}', '${tagName}', event, false)"><i
+                                    for="${specifier}-input-block"
+                                    class="ft-x ${specifier}-${tagName}-remove"></i></a></li>
                         </c:if>
 
                     </ul>
@@ -134,61 +137,7 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
-                // $('.add-card-header').css('cursor', 'pointer');
-
                 rearrangeCards("${specifier}-input-block");
-
-                $("body").on("click", ".${specifier}-add-${tagName}", function (e) {
-                    //debugger;
-                    e.stopImmediatePropagation();
-                    $("#${id}").removeClass("hide");
-                    $(this).closest('.card').children('.card-content').removeClass('collapse');
-                    $("#${specifier}-input-block").removeClass("hide");
-                    $("#${specifier}-input-block").addClass("collapse");
-                    $("#${specifier}-input-block").addClass("show");
-
-                    $("#${specifier}-input-block").show();
-                    scrollToAnchor('${specifier}');
-                    highlightDiv('${specifier}', "green");
-
-                    <c:if test="${isUnboundedList or not isRequired}">
-                    $("#${specifier}-add-input-button").addClass("hide");
-                    </c:if>
-                    $("#${specifier}-date-picker").datepicker({
-                        forceParse: false,
-                        orientation: 'top auto',
-                        todayHighlight: true,
-                        format: 'yyyy-mm-dd',
-                        uiLibrary: 'bootstrap4',
-                    });
-
-                    //Add section
-                    $("#${specifier}-${tagName}").val("");
-                    scrollToAnchor('${specifier}');
-                    highlightDiv('${specifier}',"green");
-
-                });
-
-                //Remove section
-                $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-                    var confirmation = true;
-                    $("#${specifier}-input-block").find("input[type = 'text']").each(function() {
-                        if(this.value != "") {
-                            confirmation = confirm("Are you sure you want to close this card?");
-                            return false;
-                        }
-                    });
-
-                    if (confirmation == true) {
-                        e.stopImmediatePropagation();
-                        $("#${specifier}-add-input-button").removeClass("hide");
-
-                        clearAndHideEditControlGroup($(e.target).attr("for"));
-                        $(this).closest('.card').addClass("hide").slideUp('fast');
-
-                        $("#${specifier}-input-block").addClass("hide");
-                    }
-                });
             });
 
         </script>

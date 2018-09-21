@@ -166,8 +166,8 @@
                 <li><a data-toggle="tooltip" data-placement="top" title="${cardText}"><i class="ft-info ft-buttons"></i></a></li>
                 <li><a data-action="collapse"><i class="ft-minus ft-buttons"></i></a></li>
                 <li><a data-action="expand"><i class="ft-maximize ft-buttons"></i></a></li>
-                <li><a data-action="close"><i for="${specifier}-card"
-                                              class="ft-x ft-buttons ${specifier}-${tagName}-remove"></i></a></li>
+                <li><a data-action="close" onclick="removeSection('${specifier}', '${tagName}', event, true)"><i for="${specifier}-card"
+                                              class="ft-x ft-buttons"></i></a></li>
             </ul>
         </div>
         <c:if test="${function:isObjectEmpty(listItems)}">
@@ -672,29 +672,6 @@
 
         });
 
-        //Remove section
-        $("body").on("click", ".${specifier}-${tagName}-remove", function (e) {
-            var confirmation = true;
-            $("#${specifier}-card").find("input[type = 'text']").each(function() {
-                if(this.value != "") {
-                    confirmation = confirm("Are you sure you want to close this card?");
-                    return false;
-                }
-            });
-
-            if (confirmation == true) {
-                e.stopImmediatePropagation();
-                $("#${specifier}-add-input-button").removeClass("hide");
-
-                clearAndHideEditControlGroup($(e.target).attr("for"));
-
-                closeAllTabs(e, $("#${specifier}-card"));
-
-                $(this).closest('.card').addClass("hide").slideUp('fast');
-
-                $("#${specifier}-card").addClass("hide");
-            }
-        });
 
     });
 </script>
