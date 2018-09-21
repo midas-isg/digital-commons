@@ -914,6 +914,7 @@ function closeTab(e, div, specifier, tagName) {
             }
         });
 
+        // TODO: need to fix bug where the next div that is show is one that was 'removed'
         if(counter>1) {
             //find closest tab to the left tab to make it active (we don't just want to use the first tab)
             $("#" + specifier + "-card-header").find("a").each(function () {

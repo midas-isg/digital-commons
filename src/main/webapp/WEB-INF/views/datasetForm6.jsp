@@ -39,6 +39,14 @@
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        toggleLoadingScreen();
+        // $('.loading').addClass("hide");
+
+    });
+</script>
 <myTags:analytics/>
 
 </body>
