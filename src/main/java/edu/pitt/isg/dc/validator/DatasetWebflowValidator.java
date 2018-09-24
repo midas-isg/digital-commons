@@ -99,7 +99,7 @@ public class DatasetWebflowValidator {
         if (ifMDCEditor(session) || ifISGAdmin(session)) {
             return "true";
         }
-        return "true";
+        return "false";
     }
 
     public String goToIndex(String indexValue) {

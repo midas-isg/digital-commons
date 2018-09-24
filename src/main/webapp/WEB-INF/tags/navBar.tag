@@ -42,7 +42,7 @@
     </li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
-    <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
+    <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown ">
             <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -91,6 +91,6 @@
             </div>
         </li>
 
-    <%--</c:if>--%>
+    </c:if>
     <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 </ul>

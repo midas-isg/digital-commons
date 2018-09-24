@@ -25,13 +25,13 @@
         <div class="col-12 background-white">
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
-                    <%--<c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">--%>
+                    <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
                     <div class="btn-group">
                         <button class="btn btn-light"><a
                                 href="${pageContext.request.contextPath}/addDigitalObject?entryID=${entryID}">Edit
                             Digital Object</a></button>
                     </div>
-                    <%--</c:if>--%>
+                    </c:if>
 
                 </div>
                 <c:choose>
