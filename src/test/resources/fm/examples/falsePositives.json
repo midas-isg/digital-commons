@@ -1,0 +1,21 @@
+{
+  "subject": "FAIRness",
+  "spec": "",
+  "persistence_doc": "http://bit.ly/2u6SSba",
+  "format": "",
+  "metadata": "http://bit.ly/2u6SSba",
+  "identifier": "FAIRness",
+  "search_uri": "http://bit.ly/2u6SSba",
+  "protocol_uri": "http://bit.ly/2u6SSba",
+  "allows": "",
+  "evidence": "http://bit.ly/2u6SSba",
+  "persistence_uri": "http://bit.ly/2u6SSba",
+  "bnf_uri": "https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form",
+  "vocab1_uri": "https://en.wikipedia.org/wiki/Resource_Description_Framework",
+  "vocab2_uri": "https://en.wikipedia.org/wiki/Resource_Description_Framework",
+  "vocab3_uri": "https://en.wikipedia.org/wiki/Resource_Description_Framework",
+  "linkset_uri": "http://vocab.deri.ie/void/guide",
+  "datalicense_uri": "http://bit.ly/2u6SSba",
+  "metadatalicense_uri": "http://bit.ly/2u6SSba",
+  "prov_vocab_uri": "http://bit.ly/2u6SSba"
+}
