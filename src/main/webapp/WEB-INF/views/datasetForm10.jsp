@@ -12,26 +12,27 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <myTags:datasetIndex active="licenses"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="licenses"></myTags:datasetIndex>
+    <div id="entryFormContent">
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <myTags:editLicense path="licenses"
-                                    licenses="${dataset.licenses}"
-                                    label="License"
-                                    specifier="licenses">
-                </myTags:editLicense>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            </form>
-        </div>
+            <myTags:editMasterUnbounded path="licenses"
+                                        listItems="${digitalObject.licenses}"
+                                        tagName="license"
+                                        label="License"
+                                        specifier="licenses">
+            </myTags:editMasterUnbounded>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
 <myTags:analytics/>

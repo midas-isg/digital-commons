@@ -166,8 +166,8 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         showBorder: false,
         collapseAll: true,
 
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
+        expandIcon: "fa fa-chevron-right",
+        collapseIcon: "fa fa-chevron-down",
 
         onNodeSelected: function(event, data) {
             if(typeof data['nodes'] !== undefined) {
@@ -689,8 +689,9 @@ $(document).ready(function() {
 
     var hashElement = $("a[href='" + location.hash + "']");
     if (location.hash && hashElement.length > 0) {
-        hashElement.tab("show");
-
+        try {
+            hashElement.tab("show");
+        } catch (e) {}
         if(location.hash === "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
         } else if(location.hash === "#modal-json") {
@@ -733,13 +734,16 @@ $(document).ready(function() {
 
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
+        try {
+            if (href.includes('http')) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: href
+                });
+            }
+        }catch (e) {
 
-        if(href.includes('http')) {
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'Clickthrough',
-                eventAction: href
-            });
         }
     });
 
@@ -754,7 +758,11 @@ $(document).ready(function() {
 
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
-    $("a[href='" + anchor + "']").tab("show");
+    try {
+        $("a[href='" + anchor + "']").tab("show");
+    } catch (e) {
+
+    }
 
     if(location.hash.includes('publication')) {
         $('#content-tab').addClass('highlighted-item');
@@ -828,7 +836,7 @@ function download(filename, elementId) {
 
 function toggleModalView() {
     if($('#modal-html').hasClass('active')) {
-        $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
+        // $('#modal-code-block').css('max-height', $('#modal-html').height() - 25 + 'px');
         $('#modal-json-link').click();
         $('#modal-switch-btn').text('Switch to HTML View');
     } else {

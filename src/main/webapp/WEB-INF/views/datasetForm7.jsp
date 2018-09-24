@@ -12,33 +12,40 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <myTags:datasetIndex active="citation"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="citation"></myTags:datasetIndex>
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editPublication path="citations"
+    <div id="entryFormContent">
+
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <div id="citations">
+                <myTags:editMasterUnbounded path="citations"
                                             specifier="citations"
-                                            publications="${dataset.citations}"
+                                            listItems="${digitalObject.citations}"
+                                            tagName="publication"
                                             label="Citations">
-                    </myTags:editPublication>
-                    <myTags:editFloat path="citationCount"
-                                      specifier="citationCount"
-                                      number="${dataset.citationCount}"
-                                      label="Citation Count"
-                                      placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
-                    </myTags:editFloat>
+                </myTags:editMasterUnbounded>
+            </div>
+            <div id="citationCount">
+                <myTags:editFloat path="citationCount"
+                                  id="citationCount"
+                                  specifier="citationCount"
+                                  number="${digitalObject.citationCount}"
+                                  label="Citation Count"
+                                  placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
+                </myTags:editFloat>
+            </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
+                   onclick="window.onbeforeunload = null;"/>
 
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
-
-            </form>
-        </div>
+        </form>
     </div>
 </div>
 <myTags:analytics/>

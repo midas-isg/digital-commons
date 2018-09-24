@@ -6,7 +6,7 @@
 <%@ attribute name="entryView" required="true"
               type="edu.pitt.isg.dc.entry.classes.EntryView" %>
 <%@ attribute name="lineage" required="true"
-              type="java.util.ArrayList" %>
+              type="java.util.List" %>
 
 <c:if test="${not empty entryView.entry.spatialCoverage or not empty entryView.entry.locationCoverage or not lineage.contains('Software')}">
     <tr>

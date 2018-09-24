@@ -33,8 +33,8 @@ function expandNodesInSessionVariable(treeId, sessionVariable) {
 }
 
 function getTreeviewInfo(entriesData, treeId, sessionVariable) {
-    var expandIcon = "glyphicon glyphicon-chevron-right";
-    var collapseIcon = "glyphicon glyphicon-chevron-down";
+    var expandIcon = "fa fa-chevron-right";
+    var collapseIcon = "fa fa-chevron-down";
 
     var jsonEntries = JSON.parse(entriesData);
     var entryType = jsonEntries[0]["type"];
@@ -339,6 +339,8 @@ function getDataOpenModal(id, rev) {
     $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
         var entry = JSON.parse(data.json);
         //console.log(data, entry);
+        $("#detailed-view-button").attr("onClick", "location.href='" + ctx + "/detailed-view/?id=" + id  + "'");
+        $("#detailed-metadata-view-button").attr("onClick", "window.open('" + ctx + "/detailed-metadata-view/?id=" + id + "')");
         showModal(entry, data.type, data.xml);
     });
 }

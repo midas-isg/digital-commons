@@ -79,6 +79,7 @@ public class ReflectionFactory {
         return create(clazz, null);
     }
 
+//TODO: throw exception if no getters/setters are found
     public static Object create(Class<?> clazz, Object instance) throws Exception {
         if (clazz.getName().endsWith("PersonComprisedEntity")) {
             clazz = Class.forName("edu.pitt.isg.dc.entry.classes.PersonOrganization");
@@ -104,7 +105,7 @@ public class ReflectionFactory {
                                 setter.invoke(instance, getGenericList(list, listClazz.getClass(), listClazz));
                             }
                         } else {
-                            if (!setter.getName().endsWith("Geometry")) {
+                            if (!setter.getName().endsWith("Geometry") && !setter.getName().endsWith("AccessPointType")) {
                                 Object object = getter.invoke(instance);
                                 if (object == null) {
                                     setter.invoke(instance, ReflectionFactory.create(getter.getReturnType()));

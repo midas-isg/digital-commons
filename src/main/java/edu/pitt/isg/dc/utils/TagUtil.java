@@ -2,6 +2,7 @@ package edu.pitt.isg.dc.utils;
 
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
+import edu.pitt.isg.dc.validator.ReflectionValidator;
 import edu.pitt.isg.mdc.dats2_2.Annotation;
 import edu.pitt.isg.mdc.dats2_2.IsAbout;
 import edu.pitt.isg.mdc.dats2_2.Organization;
@@ -13,50 +14,57 @@ import java.util.List;
 
 public class TagUtil {
     public static boolean isObjectEmpty(Object bean) {
-        if (bean == null || bean.equals("")) {
-            return true;
+        ReflectionValidator validator = new ReflectionValidator();
+        try {
+            return validator.isObjectEmpty(bean);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
-
-        boolean objectEmpty = false;
-
-        if (bean instanceof List) {
-            List myList = (List) bean;
-            if (myList.size() == 0)
-                return true;
-            else {
-                for (int i = 0; i < myList.size(); i++) {
-                    objectEmpty = isObjectEmpty(myList.get(i));
-                }
-            }
-        } else {
-            Method[] methods = bean.getClass().getDeclaredMethods();
-            for (Method method : methods) {
-                if (isGetter(method)) {
-                    try {
-                        Object obj = method.invoke(bean);
-                        if (obj == null || obj.equals("")) {
-                            objectEmpty = true;
-                        } else {
-                            if (obj.getClass().isPrimitive()) {
-                                return false;
-                            } else {
-                                if (isObjectEmpty(obj)) {
-                                    objectEmpty = true;
-                                } else
-                                    return false;
-                            }
-                        }
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (IllegalArgumentException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-        return objectEmpty;
+//        if (bean == null || bean.equals("")) {
+//            return true;
+//        }
+//
+//        boolean objectEmpty = false;
+//
+//        if (bean instanceof List) {
+//            List myList = (List) bean;
+//            if (myList.size() == 0)
+//                return true;
+//            else {
+//                for (int i = 0; i < myList.size(); i++) {
+//                    objectEmpty = isObjectEmpty(myList.get(i));
+//                }
+//            }
+//        } else {
+//            Method[] methods = bean.getClass().getDeclaredMethods();
+//            for (Method method : methods) {
+//                if (isGetter(method)) {
+//                    try {
+//                        Object obj = method.invoke(bean);
+//                        if (obj == null || obj.equals("")) {
+//                            objectEmpty = true;
+//                        } else {
+//                            if (obj.getClass().isPrimitive()) {
+//                                return false;
+//                            } else {
+//                                if (isObjectEmpty(obj)) {
+//                                    objectEmpty = true;
+//                                } else
+//                                    return false;
+//                            }
+//                        }
+//                    } catch (IllegalAccessException e) {
+//                        e.printStackTrace();
+//                    } catch (IllegalArgumentException e) {
+//                        e.printStackTrace();
+//                    } catch (InvocationTargetException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }
+//        return objectEmpty;
     }
 
     private static boolean isGetter(Method method) {
@@ -95,4 +103,28 @@ public class TagUtil {
             return true;
         }
     }
+
+    public static boolean onlyContainsSoftwareElements(Object software) {
+        String softwareCategory = software.getClass().getTypeName().substring(software.getClass().getTypeName().lastIndexOf(".") + 1);
+
+        if(softwareCategory.equals("DataFormatConverters") || softwareCategory.equals("MetagenomicAnalysis") || softwareCategory.equals("ModelingPlatforms") || softwareCategory.equals("PhylogeneticTreeConstructors") || softwareCategory.equals("SyntheticEcosystemConstructors")){
+            return true;
+        } else return false;
+/*
+        switch (softwareCategory) {
+            case "DataFormatConverters":
+                return true;
+            case "MetagenomicAnalysis":
+                return true;
+            case "ModelingPlatforms":
+                return true;
+            case "PhylogeneticTreeConstructors":
+                return true;
+            case "SyntheticEcosystemConstructors":
+                return true;
+            default: return false;
+        }
+*/
+    }
+
 }

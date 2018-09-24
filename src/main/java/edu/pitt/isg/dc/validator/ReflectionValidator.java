@@ -8,6 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.security.access.method.P;
 import org.springframework.util.AutoPopulatingList;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.xml.bind.annotation.XmlElement;
 import java.io.ObjectOutput;
 import java.lang.reflect.Field;
@@ -37,8 +38,17 @@ public class ReflectionValidator {
     }
 
     private Object getValue(Field field, Object object) throws FatalReflectionValidatorException {
+        Method method;
         try {
-            Method method = object.getClass().getMethod(getGetterNameFromFieldName(field));
+            if(field.getType().getName().equals("boolean")) {
+                String getterNameFromField = field.getName();
+                if(!getterNameFromField.startsWith("is")) {
+                    getterNameFromField = "is" + getterNameFromField.substring(0,1).toUpperCase() + getterNameFromField.substring(1);
+                }
+                method = object.getClass().getMethod(getterNameFromField);
+            } else {
+                method = object.getClass().getMethod(getGetterNameFromFieldName(field));
+            }
             return method.invoke(object);
         } catch (Exception e) {
             throw new FatalReflectionValidatorException(e.getMessage());
@@ -120,8 +130,6 @@ public class ReflectionValidator {
                     }
                 }
             }
-
-
         }
         return nonEmptyNonRequiredFields;
 
@@ -155,7 +163,7 @@ public class ReflectionValidator {
         return true;
     }
 
-    private boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
+    public boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
         if (objectOrList == null || objectOrList.equals("")) {
             return true;
         }
@@ -187,6 +195,11 @@ public class ReflectionValidator {
         }
         if (objectOrList.getClass().getName().endsWith("String")) {
             if (((String) objectOrList).isEmpty()) {
+                return true;
+            } else return false;
+        }
+        if (objectOrList.getClass().isEnum()) {
+            if (objectOrList == null) {
                 return true;
             } else return false;
         }
@@ -303,7 +316,7 @@ public class ReflectionValidator {
     }
 
     public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        if(TagUtil.isObjectEmpty(object)) {
+        if(isObjectEmpty(object)) {
             return null;
         }
 
@@ -311,6 +324,9 @@ public class ReflectionValidator {
 
         for(Field field : fields) {
             Object value = getValue(field, object);
+            if (value == null && (field.getType().isAssignableFrom(Float.class) || field.getType().isAssignableFrom(Integer.class))) {
+                continue; // setValue will change the null value to 0.0 or 0 as appropriate for numeric Types -- in doing so, the field will be populated in the json
+            }
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
                 setValue(field, object, null);
             } else if(isList(value)) {

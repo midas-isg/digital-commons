@@ -5,6 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="annotation" required="false"
               type="edu.pitt.isg.mdc.dats2_2.IsAbout" %>
 <%@ attribute name="path" required="true"
@@ -13,62 +15,46 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="showRemoveButton" required="true"
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
-<%--<div class="form-group control-group edit-form-group">--%>
-<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-    <div class="has-error">
-</c:if>
-    <c:if test="${showRemoveButton}">
-        <label>${label}</label>
-        <button class="btn btn-danger ${specifier}-remove" type="button"><i class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-    </c:if>
-    <div class="form-group edit-form-group">
-        <label>Value</label>
-        <input type="text" class="form-control" value="${annotation.value}" name="${path}.value" placeholder="Value">
-    </div>
 
-    <c:set var="valueIRIPath" value="${path}.valueIRI"/>
-    <c:choose>
-        <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}">
-            <div class="form-group edit-form-group has-error">
-        </c:when>
-        <c:otherwise>
-            <div class="form-group edit-form-group">
-        </c:otherwise>
-    </c:choose>
-    <label>Value IRI</label>
-    <input type="text" class="form-control" value="${annotation.valueIRI}" name="${valueIRIPath}"
-           placeholder="Value IRI">
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${annotation}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="annotation"
+                                 isRequired="${isRequired}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.value"
+                                specifier="${specifier}-value"
+                                placeholder="Value"
+                                isRequired="${true}"
+                                label="Value"
+                                string="${annotation.value}">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.valueIRI"
+                                specifier="${specifier}-valueIRI"
+                                placeholder="Value IRI"
+                                isRequired="${true}"
+                                label="Value IRI"
+                                string="${annotation.valueIRI}">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${annotation}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="annotation"
+                                 isRequired="${isRequired}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(valueIRIPath)}" var="message">
-        <span class="error-color">${message.text}</span>
-    </c:forEach>
-    </div>
-
-<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-    <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-        <span class="error-color">${message.text}</span>
-    </c:forEach>
-    </div>
-</c:if>
-
-
-<%--</div>--%>
-
-<c:if test="${showRemoveButton}">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-remove", function () {
-                clearAndHideEditControlGroup(this);
-                // $(this).parent(".control-group").remove();
-                <%--$(".${specifier}-add-annotation").show();--%>
-                $("#${specifier}-add-annotation").show();
-            });
-
-        });
-    </script>
-</c:if>

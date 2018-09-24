@@ -12,41 +12,68 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDiseaseForecasters/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="diseaseForecaster">
-                <div class="form-group edit-form-group">
-                    <label>Disease Forecaster</label>
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
-                    <myTags:editNestedIdentifier specifier="diseases" placeholder="Disease" label="Diseases" path="diseases" identifiers="${diseaseForecaster.diseases}"></myTags:editNestedIdentifier>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${diseaseForecaster.nowcasts}" label="Nowcasts" placeholder="Nowcast" specifier="nowcast" path="nowcasts"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${diseaseForecaster.outcomes}" label="Outcomes" placeholder="Outcome" specifier="outcome" path="outcomes"></myTags:editUnboundedNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Forecast Frequency" placeholder="Forecast Frequency" specifier="forecast-frequency" path="forecastFrequency" string="${diseaseForecaster.forecastFrequency}"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthString label="Type" placeholder="Type" specifier="type" path="type" string="${diseaseForecaster.type}"></myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editUnboundedRequiredNonZeroLengthString label="Forecasts" placeholder="Forecast" path="forecasts" specifier="forecasts" strings="${diseaseForecaster.forecasts}"></myTags:editUnboundedRequiredNonZeroLengthString>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseForecaster.locationCoverage}"></myTags:editNestedIdentifier>--%>
-                </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseForecasterForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
 
-            </form:form>
-        </div>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <myTags:editMasterUnbounded specifier="diseases"
+                                        placeholder="Disease"
+                                        label="Diseases"
+                                        path="diseases"
+                                        tagName="softwareIdentifier"
+                                        listItems="${digitalObject.diseases}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded listItems="${digitalObject.nowcasts}"
+                                        label="Nowcasts"
+                                        placeholder="Nowcast"
+                                        specifier="nowcast"
+                                        tagName="string"
+                                        path="nowcasts">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded listItems="${digitalObject.outcomes}"
+                                        label="Outcomes"
+                                        placeholder="Outcome"
+                                        specifier="outcome"
+                                        tagName="string"
+                                        path="outcomes">
+            </myTags:editMasterUnbounded>
+            <myTags:editNonZeroLengthString label="Forecast Frequency"
+                                            placeholder="Forecast Frequency"
+                                            specifier="forecast-frequency"
+                                            path="forecastFrequency"
+                                            string="${digitalObject.forecastFrequency}">
+            </myTags:editNonZeroLengthString>
+            <myTags:editNonZeroLengthString label="Type"
+                                            placeholder="Type"
+                                            specifier="type"
+                                            path="type"
+                                            string="${digitalObject.type}">
+            </myTags:editNonZeroLengthString>
+            <%--TODO: Forecast is a required element for Disease Forecasters -- need to updated editMasterElementWrapper.tag--%>
+            <myTags:editMasterUnbounded label="Forecasts"
+                                        placeholder="Forecast"
+                                        path="forecasts"
+                                        specifier="forecasts"
+                                        isRequired="${false}"
+                                        isFirstRequired="${true}"
+                                        tagName="string"
+                                        listItems="${digitalObject.forecasts}">
+            </myTags:editMasterUnbounded>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseForecasters/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
+
 <myTags:analytics/>
 
 </body>

@@ -12,31 +12,40 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <myTags:datasetIndex active="extra"></myTags:datasetIndex>
+<div class="wrapper">
+    <myTags:datasetIndex active="extra"></myTags:datasetIndex>
+    <div id="entryFormContent">
 
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                    <myTags:editNonRequiredNonZeroLengthString path="version"
-                                                               string="${dataset.version}"
-                                                               specifier="version"
-                                                               placeholder=" A release point for the dataset when applicable."
-                                                               label="Version">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
-                                                  specifier="extraProperties"
-                                                  label="Extra Properties"
-                                                  path="extraProperties">
-                    </myTags:editCategoryValuePair>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
-            </form>
-        </div>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <div id="version">
+                <myTags:editNonZeroLengthString path="version"
+                                                string="${digitalObject.version}"
+                                                specifier="version"
+                                                id="version"
+                                                placeholder=" A release point for the dataset when applicable."
+                                                isUnboundedList="${false}"
+                                                isRequired="${false}"
+                                                label="Version">
+                </myTags:editNonZeroLengthString>
+            </div>
+            <div id="extraProperties">
+                <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
+                                            tagName="categoryValuePair"
+                                            specifier="extraProperties"
+                                            label="Extra Properties"
+                                            path="extraProperties">
+                </myTags:editMasterUnbounded>
+            </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"
+                   onclick="window.onbeforeunload = null;"/>
+        </form>
     </div>
 </div>
 <myTags:analytics/>

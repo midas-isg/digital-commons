@@ -7,6 +7,7 @@ import edu.pitt.isg.dc.entry.Entry;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -47,12 +48,22 @@ public class WebServiceController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The metadata in JSON or XML format.")
     })
-    @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml"})
+    @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml", "Accept=application/html"})
     public @ResponseBody
     ResponseEntity getMetadata(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
         String header = request.getHeader("Accept");
         String metadata = apiUtil.getMetadata(identifier, header);
-        if(metadata != null) return ResponseEntity.status(HttpStatus.OK).body(metadata);
+        if(metadata != null) {
+            if (header.startsWith("text/html")) {
+                Long entryId = apiUtil.getEntryIdFromIdentifier(identifier);
+                String redirectLocation = "/digital-commons/detailed-metadata-view/?id=" + entryId;
+                HttpHeaders redirectHeaders = new HttpHeaders();
+                redirectHeaders.add("Location", redirectLocation);
+                ResponseEntity responseEntity = new ResponseEntity(null, redirectHeaders, HttpStatus.FOUND);
+                return responseEntity;
+            } else return ResponseEntity.status(HttpStatus.OK).body(metadata);
+        }
+//        if(metadata != null) return ResponseEntity.status(HttpStatus.OK).body(metadata);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No entry found for identifier " + identifier + " with response content type " + header + ".");
     }
     /*    Gson gson = new GsonBuilder().setPrettyPrinting().create();

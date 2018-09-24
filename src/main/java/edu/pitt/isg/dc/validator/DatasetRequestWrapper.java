@@ -1,6 +1,8 @@
 package edu.pitt.isg.dc.validator;
 
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.DataStandard;
+import edu.pitt.isg.mdc.v1_0.*;
 import org.apache.commons.lang.ArrayUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +22,20 @@ public class DatasetRequestWrapper extends HttpServletRequestWrapper {
     public String[] getParameterValues(String name) {
         Dataset dataset = new Dataset();
         Field[] attributes = dataset.getClass().getDeclaredFields();
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new Software().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DataFormatConverters().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DataService().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DataVisualizers().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DiseaseTransmissionModel().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DiseaseTransmissionTreeEstimators().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DiseaseForecasters().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new MetagenomicAnalysis().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new ModelingPlatforms().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new PathogenEvolutionModels().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new PhylogeneticTreeConstructors().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new PopulationDynamicsModel().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new SyntheticEcosystemConstructors().getClass().getDeclaredFields());
+        attributes = (Field[]) ArrayUtils.addAll(attributes, new DataStandard().getClass().getDeclaredFields());
         for(Field field : attributes) {
             if (!name.contains("add-") && name.contains(field.getName())) {
                 String[] values = super.getParameterValues(name);

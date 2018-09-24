@@ -6,181 +6,101 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
-<%@ attribute name="name" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="dataStandards" required="false"
-              type="java.util.List" %>
-
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(dataStandards)}">
-        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="varStatus">
-            <c:if test="${varStatus.first}">
-                <div class="form-group edit-form-group">
-                    <label path="${path}">${name}</label>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
-                                class="glyphicon glyphicon-plus"></i> Add
-                                ${name}
-                        </button>
-                    </div>
-                </div>
-            </c:if>
-
-            <c:if test="${not function:isObjectEmpty(dataStandard)}">
-                <div class="form-group control-group edit-form-group">
-                    <label>${name}</label>
-                    <br>
-                    <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <br><br>
-                    <myTags:editIdentifier identifier="${dataStandard.identifier}"
-                                           label="Identifier"
-                                           specifier="${specifier}-"
-                                           path="${path}[${varStatus.count-1}].identifier"
-                                           unbounded="False">
-                    </myTags:editIdentifier>
-                    <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                                           label="Alternate Identifiers"
-                                           path="${path}.alternateIdentifiers"
-                                           identifiers="${dataStandard.alternateIdentifiers}"
-                                           unbounded="${true}">
-                    </myTags:editIdentifier>
-                    <myTags:editRequiredNonZeroLengthString placeholder=" Name"
-                                                            label="Name"
-                                                            string="${dataStandard.name}"
-                                                            path="${path}[${varStatus.count-1}].name">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthStringTextArea specifier="${specifier}-description"
-                                                               string="${dataStandard.description}"
-                                                               path="${path}[${varStatus.count-1}].description"
-                                                               label="Description"
-                                                               placeholder="Description">
-                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                    <myTags:editAnnotationRequired annotation="${dataStandard.type}"
-                                                   path="${path}[${varStatus.count-1}].type"
-                                                   label="Type">
-                    </myTags:editAnnotationRequired>
-                    <myTags:editLicense licenses="${dataStandard.licenses}"
-                                        specifier="${specifier}-licenses"
-                                        label="License"
-                                        path="${path}[${varStatus.count-1}].licenses">
-                    </myTags:editLicense>
-                    <myTags:editNonRequiredNonZeroLengthString label="Version"
-                                                               placeholder=" Version"
-                                                               specifier="${specifier}-${varStatus.count-1}-version"
-                                                               string="${dataStandard.version}"
-                                                               path="${path}[${varStatus.count-1}].version">
-                    </myTags:editNonRequiredNonZeroLengthString>
-                    <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
-                                                  specifier="${specifier}-${varStatus.count-1}-extraProperties"
-                                                  path="${path}[${varStatus.count-1}].extraProperties"
-                                                  label="Extra Properties">
-                    </myTags:editCategoryValuePair>
-                </div>
-
-                <c:set var="dataStandardCount" scope="page" value="${varStatus.count}"/>
-            </c:if>
-
-        </c:forEach>
-        <div class="${specifier}-dataStandard-add-more"></div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label path="${path}">${name}</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
-                        class="glyphicon glyphicon-plus"></i> Add
-                        ${name}
-                </button>
-            </div>
-        </div>
-        <div class="${specifier}-dataStandard-add-more"></div>
-        <c:set var="dataStandardCount" scope="page" value="0"/>
-
-    </c:otherwise>
-</c:choose>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="dataStandard" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.DataStandard" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
 
 
-<div class="${specifier}-copy-dataStandard hide">
-    <div class="form-group control-group edit-form-group">
-        <label>${name}</label>
-        <br>
-        <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
-        <myTags:editIdentifier label="Identifier"
-                               specifier="${specifier}-"
-                               path="${path}[0].identifier"
-                               unbounded="False">
-        </myTags:editIdentifier>
-        <myTags:editIdentifier specifier="${specifier}-alternateIdentifiers"
-                               label="Alternate Identifiers"
-                               path="${path}.alternateIdentifiers"
-                               unbounded="${true}">
-        </myTags:editIdentifier>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
-                                                label="Name"
-                                                path="${path}[0].name">
-        </myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthStringTextArea specifier="${specifier}-0-description"
-                                                   path="${path}[0].description"
-                                                   label="Description"
-                                                   placeholder="Description">
-        </myTags:editNonRequiredNonZeroLengthStringTextArea>
-        <myTags:editAnnotationRequired path="${path}[0].type."
-                                       label="Type">
-        </myTags:editAnnotationRequired>
-        <myTags:editLicense specifier="${specifier}-0-licenses"
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
+                       label="Identifier"
+                       specifier="${specifier}-identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       path="${path}.identifier">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            listItems="${dataStandard.alternateIdentifiers}"
+                            isRequired="${false}"
+                            tagName="identifier">
+</myTags:editMasterUnbounded>
+<myTags:editNonZeroLengthString placeholder=" Name"
+                                label="Name"
+                                string="${dataStandard.name}"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isRequired="${true}"
+                                isUnboundedList="${false}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                string="${dataStandard.description}"
+                                path="${path}.description"
+                                label="Description"
+                                isTextArea="${true}"
+                                isRequired="${false}"
+                                placeholder="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editAnnotation annotation="${dataStandard.type}"
+                       isRequired="${true}"
+                       path="${path}.type"
+                       specifier="${specifier}-type"
+                       id="${specifier}-type"
+                       isUnboundedList="${false}"
+                       label="Type">
+</myTags:editAnnotation>
+<myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
+                            tagName="license"
+                            specifier="${specifier}-licenses"
+                            isRequired="${false}"
                             label="License"
-                            path="${path}[0].licenses">
-        </myTags:editLicense>
-        <myTags:editNonRequiredNonZeroLengthString label="Version"
-                                                   placeholder=" Version"
-                                                   specifier="${specifier}-0-version"
-                                                   path="${path}[0].version">
-        </myTags:editNonRequiredNonZeroLengthString>
-        <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties"
-                                      label="Extra Properties"
-                                      path="${path}[0].extraProperties">
-        </myTags:editCategoryValuePair>
-    </div>
+                            path="${path}.licenses">
+</myTags:editMasterUnbounded>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" Version"
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                string="${dataStandard.version}"
+                                isUnboundedList="${false}"
+                                isRequired="${false}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
+                            tagName="categoryValuePair"
+                            isRequired="${false}"
+                            specifier="${specifier}-extraProperties"
+                            path="${path}.extraProperties"
+                            label="Extra Properties">
+</myTags:editMasterUnbounded>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-</div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        var dataStandardCount = ${dataStandardCount};
-        //Show/Hide Location
-        $("body").on("click", ".${specifier}-add-dataStandard", function () {
-            var specifier = "${specifier}";
-            var path = "${path}";
-            var html = $(".${specifier}-copy-dataStandard").html();
-            var regexEscapeOpenBracket = new RegExp('\\[', "g");
-            var regexEscapeClosedBracket = new RegExp('\\]', "g");
-            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-            var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}[' + dataStandardCount + ']').replace(regexSpecifier, '${specifier}-' + dataStandardCount);
-
-            //$(this).after(html);
-            $(".${specifier}-dataStandard-add-more").before(html);
-            dataStandardCount += 1;
-            //$(this).hide();
-            //e.stopImmediatePropagation()
-        });
-
-        $("body").on("click", ".${specifier}-dataStandard-remove", function () {
-            clearAndHideEditControlGroup(this);
-            $(".${specifier}-add-dataStandard").show();
-        });
-
-    });
-</script>

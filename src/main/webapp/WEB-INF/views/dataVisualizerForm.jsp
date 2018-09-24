@@ -12,36 +12,32 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form:form id="entry-form" action="${pageContext.request.contextPath}/addDataVisualizers/${categoryID}?entryId=${entryId}&revisionId=${revisionId}"
-                       modelAttribute="dataVisualizer">
-                <div class="form-group edit-form-group">
-                    <label>Data Visualizer</label>
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
-                    <myTags:editUnboundedNonRequiredNonZeroLengthString formats="${dataVisualizer.visualizationType}" label="Visualization Types" placeholder="Visualization Type" specifier="visualization-type" path="visualizationType"></myTags:editUnboundedNonRequiredNonZeroLengthString>
+<div class="wrapper">
+    <myTags:softwareIndex active="dataVisualizerForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
 
-                </div>
-                <button type="submit" class="btn btn-default pull-right">Submit</button>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            </form:form>
-        </div>
+            <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
+                                        label="Visualization Types"
+                                        placeholder="Visualization Type"
+                                        specifier="visualization-type"
+                                        tagName="string"
+                                        isRequired="${false}"
+                                        path="visualizationType">
+            </myTags:editMasterUnbounded>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataVisualizers/" + action+ "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
 <myTags:analytics/>
 
 </body>

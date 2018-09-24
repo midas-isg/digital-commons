@@ -1,4 +1,4 @@
-function clearAndHideEditControlGroup(controlGroup) {
+function clearAndHideEditControlGroup(controlGroup, id) {
     var inputElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("input");
     for (var ie=0; ie < inputElements.length; ie++) {
         if (inputElements[ie].type === "text") {
@@ -15,5 +15,10 @@ function clearAndHideEditControlGroup(controlGroup) {
         }
     }
 
-    $(controlGroup).closest(".control-group").hide();
+    var selectElements = $(controlGroup).closest(".control-group")[0].getElementsByTagName("select");
+    for (var se=0; se < selectElements.length; se++) {
+        if (selectElements[se].type === "select-one") {
+            selectElements[se].selectedIndex = -1;
+        }
+    }
 }

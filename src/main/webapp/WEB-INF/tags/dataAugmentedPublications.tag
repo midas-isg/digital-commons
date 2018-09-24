@@ -23,8 +23,8 @@
 
 	var $dataAugmentedPublicationsTree = $('#publications-treeview').treeview({
 		data: dataAugmentedPublications,
-        expandIcon: "glyphicon glyphicon-chevron-right",
-        collapseIcon: "glyphicon glyphicon-chevron-down",
+        expandIcon: "fa fa-chevron-right",
+        collapseIcon: "fa fa-chevron-down",
 		emptyIcon: "bullet-point	",
 		showBorder: false,
 	});
