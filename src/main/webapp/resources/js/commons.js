@@ -1111,7 +1111,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
 }
 
-function updateCardTabTitle(specifier){
+function getLastIndex(specifier){
     var index = 0;
     //get the last index of the specifier
     for (var i=0; i<10; i++) {
@@ -1122,6 +1122,13 @@ function updateCardTabTitle(specifier){
             }
         }
     }
+
+    return index;
+}
+
+function updateCardTabTitle(specifier){
+    var index = getLastIndex(specifier);
+
     var newCardTabTitleText = $("#" + specifier).val();
     if (index > 0 && newCardTabTitleText.length > 0) {
         var id = specifier.substring(0, index + 2) + "listItem";
@@ -1129,17 +1136,19 @@ function updateCardTabTitle(specifier){
     }
 }
 
-function updateCardTabTitlePerson(specifier){
-    var index = 0;
-    //get the last index of the specifier
-    for (var i=0; i<10; i++) {
-        if (specifier.includes(i+"-")){
-            var lastIndex = specifier.lastIndexOf(i+"-");
-            if (lastIndex > index) {
-                index = lastIndex;
-            }
-        }
+function updateCardTabTitleFromSelect(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier+"-select")[0].value;
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
     }
+}
+
+function updateCardTabTitlePerson(specifier){
+    var index = getLastIndex(specifier);
+
     var fullNameId = specifier.substring(0, index + 2) + "fullname-string";
     var firstNameId = specifier.substring(0, index + 2) + "firstName-string";
     var middleInitialId = specifier.substring(0, index + 2) + "middleInitial-string";
@@ -1176,16 +1185,8 @@ function updateCardTabTitlePerson(specifier){
 }
 
 function updateCardTabTitleType(specifier){
-    var index = 0;
-    //get the last index of the specifier
-    for (var i=0; i<10; i++) {
-        if (specifier.includes(i+"-")){
-            var lastIndex = specifier.lastIndexOf(i+"-");
-            if (lastIndex > index) {
-                index = lastIndex;
-            }
-        }
-    }
+    var index = getLastIndex(specifier);
+
     var informationId = specifier.substring(0, index + 2) + "information-value-string";
     var methodId = specifier.substring(0, index + 2) + "method-value-string";
     var platformId = specifier.substring(0, index + 2) + "platform-value-string";
