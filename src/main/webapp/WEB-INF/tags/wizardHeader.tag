@@ -6,8 +6,10 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="wantLoader" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isControl" required="false"
+              type="java.lang.Boolean" %>
 
-<myTags:categoryLineage lineage="${categoryName}" hasSidebar="${true}"/>
+<myTags:categoryLineage lineage="${categoryName}" hasSidebar="${true}" isControl="${isControl}"/>
 
 <c:if test="${wantLoader}">
     <div class="loading ">

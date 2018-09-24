@@ -19,8 +19,7 @@
     <myTags:controlIndex></myTags:controlIndex>
     <div id="entryFormContent">
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <c:set var="categoryName" value="${['Select Category']}" scope="session"/>
-            <myTags:wizardHeader showCategories="${true}"></myTags:wizardHeader>
+            <myTags:wizardHeader showCategories="${true}" isControl="${true}"></myTags:wizardHeader>
 
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">

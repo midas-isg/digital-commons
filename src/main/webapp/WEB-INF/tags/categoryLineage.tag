@@ -6,9 +6,14 @@
               type="java.util.List" %>
 <%@ attribute name="hasSidebar" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isControl" required="false"
+              type="java.lang.Boolean" %>
 
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
+        <c:if test="${isControl}">
+            <li class="breadcrumb-item active">Select Category</li>
+        </c:if>
         <c:forEach items="${lineage}" var="category" varStatus="varStatus">
             <c:choose>
                 <c:when test="${varStatus.first}">
