@@ -28,9 +28,48 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
+                                 cardText="A spatially bounded entity."
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.name"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                placeholder=" The name of the place."
+                                string="${place.name}"
+                                isRequired="true"
+                                isInputGroup="${true}"
+                                label=" Name">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.description"
+                                specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                string="${place.description}"
+                                isTextArea="true"
+                                isRequired="true"
+                                isInputGroup="${true}"
+                                placeholder=" A textual narrative comprised of one or more statements describing the place."
+                                label="Description">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.postalAddress"
+                                specifier="${specifier}-postalAddress"
+                                id="${specifier}-postalAddress"
+                                string="${place.postalAddress}"
+                                isRequired="true"
+                                isInputGroup="${true}"
+                                placeholder=" A physical street address."
+                                label="Postal Address">
+</myTags:editNonZeroLengthString>
+<myTags:editSelect path="${path}.geometry"
+                   specifier="${specifier}-geometry"
+                   label="Geometry"
+                   enumData="${place.geometry}"
+                   enumList="${geometryEnums}"
+                   cardText="A region of a space."
+                   isRequired="true"
+                   tagName="geometry"
+                   id="${specifier}-geometry">
+</myTags:editSelect>
 <myTags:editIdentifier specifier="${specifier}-identifier"
                        label="Identifier"
                        path="${path}.identifier"
@@ -40,42 +79,20 @@
 </myTags:editIdentifier>
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
                             tagName="identifier"
                             listItems="${place.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
-<myTags:editNonZeroLengthString path="${path}.name"
-                                specifier="${specifier}-name"
-                                placeholder=" The name of the place."
-                                string="${place.name}"
-                                isRequired="true"
-                                label=" Name">
-</myTags:editNonZeroLengthString>
-<myTags:editNonZeroLengthString path="${path}.description"
-                                specifier="${specifier}-description"
-                                string="${place.description}"
-                                isTextArea="true"
-                                placeholder=" A textual narrative comprised of one or more statements describing the place."
-                                label="Description">
-</myTags:editNonZeroLengthString>
-<myTags:editNonZeroLengthString path="${path}.postalAddress"
-                                specifier="${specifier}-postalAddress"
-                                string="${place.postalAddress}"
-                                placeholder=" A physical street address."
-                                label="Postal Address">
-</myTags:editNonZeroLengthString>
-<myTags:editGeometry path="${path}.geometry"
-                     specifier="${specifier}-geometry"
-                     label="Geometry"
-                     geometry="${place.geometry}"
-                     id="${specifier}-geometry">
-</myTags:editGeometry>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${place}"
                                  label="${label}"
                                  id="${id}"
+                                 cardText="A spatially bounded entity."
+                                 showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"
                                  showTopOrBottom="bottom">

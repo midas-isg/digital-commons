@@ -15,36 +15,30 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Data Visualizer</label>
-<%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
---%>
-                    <myTags:editNonZeroLengthStringUnbounded formats="${dataVisualizer.visualizationType}" label="Visualization Types" placeholder="Visualization Type" specifier="visualization-type" path="visualizationType"></myTags:editNonZeroLengthStringUnbounded>
+<div class="wrapper">
+    <myTags:softwareIndex active="dataVisualizerForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
 
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            </form>
-        </div>
+            <myTags:editMasterUnbounded listItems="${digtialObject.visualizationType}"
+                                        label="Visualization Types"
+                                        placeholder="Visualization Type"
+                                        specifier="visualization-type"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        tagName="string"
+                                        isRequired="${false}"
+                                        path="visualizationType">
+            </myTags:editMasterUnbounded>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDataVisualizers/" + action+ "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
 <myTags:analytics/>
 
 </body>

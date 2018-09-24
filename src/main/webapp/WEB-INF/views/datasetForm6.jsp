@@ -18,21 +18,21 @@
 <div class="wrapper">
     <myTags:datasetIndex active="primaryPublications"></myTags:datasetIndex>
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
             <myTags:editMasterUnbounded path="primaryPublications"
                                         specifier="primaryPublications"
-                                        listItems="${dataset.primaryPublications}"
+                                        listItems="${digitalObject.primaryPublications}"
+                                        cardText="The primary publication(s) associated with the dataset, usually describing how the dataset was produced."
                                         tagName="publication"
+                                        addButtonLabel="Primary Publication"
                                         label="Primary Publications">
             </myTags:editMasterUnbounded>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

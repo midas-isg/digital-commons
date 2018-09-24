@@ -15,39 +15,49 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Disease Transmission Model</label>
-<%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}" selectedID="${selectedID}"></myTags:editSoftware>
---%>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseTransmissionModelForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
 
-                    <myTags:editNestedIdentifier specifier="control-measures" placeholder="Control Measure" label="Control Measures" path="controlMeasures" identifiers="${diseaseTransmissionModel.controlMeasures}"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="host-species-included" placeholder="Host Species Included" label="Host Species Included" path="hostSpeciesIncluded" identifiers="${diseaseTransmissionModel.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
-                    <%--<myTags:editNestedIdentifier specifier="location-coverage" placeholder="Location Coverage" label="Location Coverages" path="locationCoverage" identifiers="${diseaseTransmissionModel.locationCoverage}"></myTags:editNestedIdentifier>--%>
-                    <myTags:editNestedIdentifier specifier="pathogen-coverage" placeholder="Pathogen Coverage" label="Pathogen Coverages" path="pathogenCoverage" identifiers="${diseaseTransmissionModel.pathogenCoverage}"></myTags:editNestedIdentifier>
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            </form>
-        </div>
+            <myTags:editMasterUnbounded path="controlMeasures"
+                                        specifier="control-measures"
+                                        label="Control Measures"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Control Measure"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        listItems="${digitalObject.controlMeasures}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded path="hostSpeciesIncluded"
+                                        specifier="host-species-included"
+                                        label="Host Species Included"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Host Species Included"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        listItems="${digitalObject.hostSpeciesIncluded}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
+            <myTags:editMasterUnbounded path="pathogenCoverage"
+                                        specifier="pathogen-coverage"
+                                        label="Pathogen Coverage"
+                                        tagName="softwareIdentifier"
+                                        placeholder="Pathogen Coverage"
+                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        listItems="${digitalObject.pathogenCoverage}"
+                                        isRequired="${false}">
+            </myTags:editMasterUnbounded>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
-<%--
-<script>
-    $(document).ready(function () {
-        $("#categoryValue").change(function() {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionModel/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
 
-    });
-</script>
---%>
+
 <myTags:analytics/>
 
 </body>

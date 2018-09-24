@@ -21,180 +21,148 @@
               type="java.lang.Boolean" %>
 
 
-<%--
-<div id="${id}"
-     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(distribution)}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <div id="${specifier}-add-input-button"
-             class="input-group control-group ${specifier}-distribution-add-more <c:if test="${not function:isObjectEmpty(distribution)}">hide</c:if>">
-            <div class="input-group-btn">
-                <button class="btn btn-success ${specifier}-add-distribution" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                        ${label}
-                </button>
-            </div>
-        </div>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(distribution) and not isUnboundedList}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <button class="btn btn-danger ${specifier}-distribution-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${distribution}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 cardText="(From DCAT) Represents a specific available form of a dataset. Each dataset might be available in different forms, these forms might represent different formats of the dataset or different endpoints. Examples of distributions include a downloadable CSV file, an API or an RSS feed."
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.title"
+                                specifier="${specifier}-title"
+                                id="${specifier}-title"
+                                placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
+                                string="${distribution.title}"
+                                isUnboundedList="${false}"
+                                isInputGroup="${true}"
+                                isRequired="${true}"
+                                label="Title">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.description"
+                                string="${distribution.description}"
+                                specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
+                                label="Description"
+                                isUnboundedList="${false}"
+                                isInputGroup="${true}"
+                                isRequired="${true}"
+                                isTextArea="True">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder=" A release point for the dataset when applicable."
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                isUnboundedList="${false}"
+                                string="${distribution.version}"
+                                isInputGroup="${true}"
+                                isRequired="${true}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
+<myTags:editFloat path="${path}.size"
+                  specifier="${specifier}-size"
+                  id="${specifier}-size"
+                  number="${distribution.size}"
+                  placeholder=" The size of the dataset."
+                  label="Size">
+</myTags:editFloat>
 
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${distribution}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editIdentifier label="Identifier"
-                               specifier="${specifier}-identifier"
-                               path="${path}.identifier"
-                               id="${specifier}-identifier"
-                               isUnboundedList="${false}"
-                               singleIdentifier="${distribution.identifier}">
-        </myTags:editIdentifier>
-        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
-                                    label="Alternate Identifiers"
-                                    path="${path}.alternateIdentifiers"
-                                    tagName="identifier"
-                                    listItems="${distribution.alternateIdentifiers}">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString path="${path}.title"
-                                        specifier="${specifier}-title"
-                                        placeholder=" The name of the dataset, usually one sentece or short description of the dataset."
-                                        string="${distribution.title}"
-                                        isUnboundedList="${false}"
-                                        isRequired="${false}"
-                                        label="Title">
-        </myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString path="${path}.description"
-                                        string="${distribution.description}"
-                                        specifier="${specifier}-description"
-                                        placeholder=" A textual narrative comprised of one or more statements describing the dataset distribution."
-                                        label="Description"
-                                        isUnboundedList="${false}"
-                                        isRequired="${false}"
-                                        isTextArea="True">
-        </myTags:editNonZeroLengthString>
-        <myTags:editDataRepository label="Stored In"
-                                   path="${path}.storedIn"
-                                   dataRepository="${distribution.storedIn}"
-                                   id="${id}-storedIn"
-                                   specifier="${specifier}-storedIn">
-        </myTags:editDataRepository>
-        <myTags:editMasterUnbounded listItems="${distribution.dates}"
-                                    path="${path}.dates"
-                                    tagName="date"
-                                    label="Dates"
-                                    specifier="${specifier}-dates">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString label="Version"
-                                        placeholder=" A release point for the dataset when applicable."
-                                        specifier="${specifier}-version"
-                                        isUnboundedList="${false}"
-                                        string="${distribution.version}"
-                                        path="${path}.version">
-        </myTags:editNonZeroLengthString>
-        <myTags:editMasterUnbounded path="${path}.licenses"
-                                    listItems="${distribution.licenses}"
-                                    tagName="license"
-                                    label="License"
-                                    specifier="${specifier}-licenses">
-        </myTags:editMasterUnbounded>
-        <myTags:editAccess path="${path}.access"
-                           specifier="${specifier}-access"
-                           id="${specifier}-access"
-                           tagName="access"
-                           isUnboundedList="${false}"
-                           isAccessRequired="true"
-                           access="${distribution.access}">
-        </myTags:editAccess>
-        <myTags:editMasterUnbounded label="Conforms To"
-                                    path="${path}.conformsTo"
-                                    listItems="${distribution.conformsTo}"
-                                    tagName="dataStandard"
-                                    specifier="${specifier}-conformsTo">
-        </myTags:editMasterUnbounded>
-        <myTags:editMasterUnbounded path="${path}.qualifiers"
-                                    specifier="${specifier}-qualifiers"
-                                    tagName="annotation"
-                                    listItems="${distribution.qualifiers}"
-                                    label="Qualifiers">
-        </myTags:editMasterUnbounded>
-        <myTags:editMasterUnbounded listItems="${distribution.formats}"
-                                    tagName="string"
-                                    path="${path}.formats"
-                                    specifier="${specifier}-formats"
-                                    isRequired="${false}"
-                                    placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
-                                    label="Formats">
-        </myTags:editMasterUnbounded>
-        <myTags:editFloat path="${path}.size"
-                          specifier="${specifier}-size"
-                          id="${specifier}-size"
-                          number="${distribution.size}"
-                          placeholder=" The size of the dataset."
-                          label="Size">
-        </myTags:editFloat>
-        <myTags:editAnnotation annotation="${distribution.unit}"
-                               path="${path}.unit"
-                               specifier="${specifier}-unit"
-                               id="${specifier}-unit"
-                               isUnboundedList="${false}"
-                               isRequired="${false}"
-                               label="Unit">
-        </myTags:editAnnotation>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${distribution}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
+<myTags:editAccess path="${path}.access"
+                   specifier="${specifier}-access"
+                   id="${specifier}-access"
+                   tagName="access"
+                   isUnboundedList="${false}"
+                   isAccessRequired="${true}"
+                   access="${distribution.access}">
+</myTags:editAccess>
+<myTags:editIdentifier label="Identifier"
+                       specifier="${specifier}-identifier"
+                       path="${path}.identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       singleIdentifier="${distribution.identifier}">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
+                            tagName="identifier"
+                            listItems="${distribution.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
 
-<%--
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
-    </div>
+<myTags:editDataRepository label="Stored In"
+                           path="${path}.storedIn"
+                           dataRepository="${distribution.storedIn}"
+                           id="${id}-storedIn"
+                           specifier="${specifier}-storedIn">
+</myTags:editDataRepository>
+<myTags:editMasterUnbounded listItems="${distribution.dates}"
+                            path="${path}.dates"
+                            cardText="Relevant dates for the datasets, e.g. creation date or last modification date may be added."
+                            tagName="date"
+                            label="Dates"
+                            addButtonLabel="Date"
+                            specifier="${specifier}-dates">
+</myTags:editMasterUnbounded>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-distribution", function (e) {
-                e.stopImmediatePropagation();
+<myTags:editMasterUnbounded path="${path}.licenses"
+                            listItems="${distribution.licenses}"
+                            cardText="The terms of use of the dataset distribution."
+                            tagName="license"
+                            label="Licenses"
+                            addButtonLabel="License"
+                            specifier="${specifier}-licenses">
+</myTags:editMasterUnbounded>
+<myTags:editMasterUnbounded label="Conforms To"
+                            addButtonLabel="Conforms To"
+                            path="${path}.conformsTo"
+                            listItems="${distribution.conformsTo}"
+                            cardText="A data standard whose requirements and constraints are met by the dataset."
+                            tagName="dataStandard"
+                            specifier="${specifier}-conformsTo">
+</myTags:editMasterUnbounded>
+<myTags:editMasterUnbounded path="${path}.qualifiers"
+                            specifier="${specifier}-qualifiers"
+                            cardText="One or more characteristics of the dataset distribution (e.g. how it relates to other distributions, if the data is raw or processed, compressed or encrypted)."
+                            tagName="annotation"
+                            listItems="${distribution.qualifiers}"
+                            addButtonLabel="Qualifier"
+                            label="Qualifiers">
+</myTags:editMasterUnbounded>
 
-                $("#${specifier}-input-block").removeClass("hide");
-                $("#${specifier}-add-input-button").addClass("hide");
+<myTags:editMasterUnbounded listItems="${distribution.formats}"
+                            tagName="string"
+                            path="${path}.formats"
+                            specifier="${specifier}-formats"
+                            cardText="The technical format of the dataset distribution. Use the file extension or MIME type when possible. (Definition adapted from DataCite)"
+                            isRequired="${false}"
+                            placeholder=" The technical format of the dataset distribution. Use the file extension or MIME type when possible."
+                            addButtonLabel="Format"
+                            label="Formats">
+</myTags:editMasterUnbounded>
 
-                //Add section
-                $("#${specifier}-distribution").val("");
-            });
+<myTags:editAnnotation annotation="${distribution.unit}"
+                       path="${path}.unit"
+                       specifier="${specifier}-unit"
+                       id="${specifier}-unit"
+                       isUnboundedList="${false}"
+                       cardText="The unit of measurement used to estimate the size of the dataset (e.g, petabyte). Ideally, the unit should be coming from a reference controlled terminology."
+                       isRequired="${false}"
+                       label="Unit">
+</myTags:editAnnotation>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${distribution}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 showCardFooter="${true}"
+                                 cardText="(From DCAT) Represents a specific available form of a dataset. Each dataset might be available in different forms, these forms might represent different formats of the dataset or different endpoints. Examples of distributions include a downloadable CSV file, an API or an RSS feed."
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-            //Remove section
-            $("body").on("click", ".${specifier}-distribution-remove", function (e) {
-                e.stopImmediatePropagation();
-
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-add-input-button").removeClass("hide");
-                $("#${specifier}-input-block").addClass("hide");
-            });
-        });
-
-    </script>
-
-</div>
---%>

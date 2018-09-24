@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <input name="entryID"/>
+    <decision-state id="createOrEdit">
+        <if test="entryID == null" then="controlFlow" else="controlNextFlow" />
+    </decision-state>
+
+    <action-state id="controlNextFlow">
+        <evaluate expression="datasetWebflowValidator.isDigitalObjectDatasetOrSoftware(entryID)"/>
+        <transition on="dataset" to="nextFlowDataset"/>
+        <transition on="dataStandard" to="nextFlowDataStandard"/>
+        <transition on="software" to="nextFlowSoftware"/>
+    </action-state>
+
+    <view-state id="controlFlow">
+        <on-render>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('control')"/>
+        </on-render>
+
+        <transition on="next" to="nextFlow">
+            <set type="java.lang.Long" name="flowScope.categoryID" value="requestParameters.categoryID"/>
+        </transition>
+    </view-state>
+
+    <action-state id="nextFlow">
+        <evaluate expression="datasetWebflowValidator.controlFlow(flowRequestContext, messageContext)"/>
+        <transition on="dataset" to="nextFlowDataset"/>
+        <transition on="dataStandard" to="nextFlowDataStandard"/>
+        <transition on="software" to="nextFlowSoftware"/>
+        <transition on="" to="controlFlow"/>
+    </action-state>
+
+    
+    <subflow-state id="nextFlowDataset" subflow="addDataset">
+        <input name="entryID" value="flowScope.entryID"/>
+        <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
+    </subflow-state>
+
+    <subflow-state id="nextFlowDataStandard" subflow="addDataStandard">
+        <input name="entryID" value="flowScope.entryID"/>
+        <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
+    </subflow-state>
+
+    <subflow-state id="nextFlowSoftware" subflow="addSoftware">
+        <input name="entryID" value="flowScope.entryID"/>
+        <input name="categoryID" value="flowScope.categoryID"/>
+        <input name="categoryName" value="flowScope.categoryName"/>
+    </subflow-state>
+
+
+</flow>

@@ -45,6 +45,7 @@
                                            specifier="${specifier}-${varStatus.count-1}"
                                            id="${specifier}-${varStatus.count-1}"
                                            label="${label} (Annotation)"
+                                           cardText="Different entities associated with this dataset."
                                            isUnboundedList="${true}"
                                            isRequired="${false}">
                     </myTags:editAnnotation>
@@ -63,14 +64,14 @@
 
             <c:if test="${varStatus.first}">
 
-                <form:errors path="${path}[0]" class="error-color"/>
+                <form:errors path="${path}[0]" class="error-color error offset-2"/>
             </c:if>
 
             <c:set var="unboundedIsAboutCount" scope="page" value="${varStatus.count}"/>
             <c:set var="errorMessagePath" scope="page" value="${path}[${varStatus.count-1}]"/>
 
             <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(errorMessagePath)}" var="message">
-                <span class="error-color">${message.text}</span>
+                <span class="error-color error offset-2">${message.text}</span>
             </c:forEach>
         </c:if>
     </c:forEach>
@@ -82,6 +83,7 @@
                        id="${specifier}-annotation-copy-tag"
                        label="${label} (Annotation)"
                        isUnboundedList="${true}"
+                       cardText="Different entities associated with this dataset."
                        isRequired="${false}">
 </myTags:editAnnotation>
 

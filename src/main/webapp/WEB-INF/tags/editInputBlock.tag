@@ -10,6 +10,10 @@
               type="java.lang.Float" %>
 <%@ attribute name="date" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
+<%@ attribute name="enumData" required="false"
+              type="java.lang.Enum" %>
+<%@ attribute name="enumList" required="false"
+              type="java.util.List" %>
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -24,18 +28,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isDate" required="false"
               type="java.lang.Boolean" %>
-
-
-<%--
-<%@ attribute name="label" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="isUnboundedList" required="false"
+<%@ attribute name="isSelect" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
-              type="java.lang.String" %>
-<%@ attribute name="isRequired" required="false"
-              type="java.lang.Boolean" %>
---%>
 
 <c:choose>
 
@@ -50,6 +44,18 @@
     <c:when test="${isTextArea}">
         <textarea name="${path}" id="${specifier}" type="text" class="form-control" rows="5"
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
+    </c:when>
+    <c:when test="${isSelect}">
+        <select class="custom-select" name="${path}" id="${specifier}-select"
+                title="${specifier}">
+            <option value="">Please Select...</option>
+            <c:forEach items="${enumList}" var="varEnum" varStatus="status">
+                <option
+                        <c:if test="${enumData == varEnum}">selected="selected"</c:if>
+                        value="${varEnum}">
+                        ${varEnum}</option>
+            </c:forEach>
+        </select>
     </c:when>
     <c:otherwise>
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"

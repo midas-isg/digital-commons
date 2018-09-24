@@ -100,6 +100,8 @@
     });
 
     function submitForm(indexValue) {
+        window.onbeforeunload = null;
+
         $("#entry-form").attr("action", "${flowExecutionUrl}&_eventId=index&indexValue=" + indexValue);
         document.getElementById("entry-form").submit();
     }

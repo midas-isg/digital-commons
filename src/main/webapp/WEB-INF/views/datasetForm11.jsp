@@ -19,22 +19,32 @@
     <myTags:datasetIndex active="isAbout"></myTags:datasetIndex>
 
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info btn-sm navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editIsAbout path="isAbout"
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <myTags:editMasterUnbounded path="isAbout"
                                 specifier="isAbout"
-                                isAboutList="${dataset.isAbout}"
+                                listItems="${digitalObject.isAbout}"
+                                        tagName="isAbout"
+                                        cardText="Different entities associated with this dataset."
                                 label="Is About"
+                                        addButtonLabel="Is About"
                                 showAddAnnotationButton="true"
                                 showAddBiologicalEntityButton="true">
+            </myTags:editMasterUnbounded>
+<%--
+            <myTags:editIsAbout path="isAbout"
+                                        specifier="isAbout"
+                                        isAboutList="${digitalObject.isAbout}"
+                                        label="Is About"
+                                        showAddAnnotationButton="true"
+                                        showAddBiologicalEntityButton="true">
             </myTags:editIsAbout>
+--%>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

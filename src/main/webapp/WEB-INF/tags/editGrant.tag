@@ -22,123 +22,75 @@
               type="java.lang.Boolean" %>
 
 
-<%--
-<div id="${id}"
-     class="form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${isUnboundedList and function:isObjectEmpty(grant)}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <div id="${specifier}-add-input-button"
-             class="input-group control-group ${specifier}-grant-add-more <c:if test="${not function:isObjectEmpty(grant)}">hide</c:if>">
-            <div class="input-group-btn">
-                <button class="btn btn-success ${specifier}-add-grant" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                        ${label}
-                </button>
-            </div>
-        </div>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(grant) and not isUnboundedList}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <button class="btn btn-danger ${specifier}-grant-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${grant}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString placeholder=" The name of the grant and its funding program."
+                                label="Name"
+                                string="${grant.name}"
+                                isUnboundedList="${false}"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isRequired="${true}"
+                                isInputGroup="${true}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterUnbounded path="${path}.funders"
+                                  specifier="${specifier}-funders"
+                                  label="Funders"
+                            addButtonLabel="Funder"
+                                  listItems="${grant.funders}"
+                                  createPersonOrganizationTags="${true}"
+                            tagName="personComprisedEntity"
+                            cardText="The person(s) or organization(s) which has awarded the funds supporting the project."
+                                  isFirstRequired="true"
+                                  showAddPersonButton="true"
+                                  showAddOrganizationButton="true">
+</myTags:editMasterUnbounded>
+<myTags:editIdentifier path="${path}.identifier"
+                       singleIdentifier="${grant.identifier}"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       specifier="${specifier}-identifier"
+                       label="Identifier">
+</myTags:editIdentifier>
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
+                            path="${path}.alternateIdentifiers"
+                            cardText="Information about an alternate identifier (other than the primary)."
+                            tagName="identifier"
+                            listItems="${grant.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
+<myTags:editMasterUnbounded path="${path}.awardees"
+                                  specifier="${specifier}-awardees"
+                                  label="Awardees"
+                            addButtonLabel="Awardee"
+                                  listItems="${grant.awardees}"
+                                  createPersonOrganizationTags="${true}"
+                            cardText="The person(s) or organization(s) which received the funds supporting the project."
+                            tagName="personComprisedEntity"
+                                  isFirstRequired="false"
+                                  showAddPersonButton="true"
+                                  showAddOrganizationButton="true">
+</myTags:editMasterUnbounded>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${grant}"
+                                 label="${label}"
+                                 id="${id}"
+                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                 showCardFooter="${true}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${grant}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editIdentifier path="${path}.identifier"
-                               singleIdentifier="${grant.identifier}"
-                               id="${specifier}-identifier"
-                               isUnboundedList="${false}"
-                               specifier="${specifier}-identifier"
-                               label="Identifier">
-        </myTags:editIdentifier>
-        <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
-                                    label="Alternate Identifiers"
-                                    path="${path}.alternateIdentifiers"
-                                    tagName="identifier"
-                                    listItems="${grant.alternateIdentifiers}">
-        </myTags:editMasterUnbounded>
-        <myTags:editNonZeroLengthString placeholder=" The name of the grant and its funding program."
-                                        label="Name"
-                                        string="${grant.name}"
-                                        isUnboundedList="${false}"
-                                        specifier="${specifier}-name"
-                                        id="${specifier}-name"
-                                        isRequired="${true}"
-                                        path="${path}.name">
-        </myTags:editNonZeroLengthString>
-        <myTags:editPersonComprisedEntity path="${path}.funders"
-                                          specifier="${specifier}-funders"
-                                          label="Funder"
-                                          personComprisedEntities="${grant.funders}"
-                                          createPersonOrganizationTags="${true}"
-                                          isFirstRequired="true"
-                                          showAddPersonButton="true"
-                                          showAddOrganizationButton="true">
-        </myTags:editPersonComprisedEntity>
-        <myTags:editPersonComprisedEntity path="${path}.awardees"
-                                          specifier="${specifier}-awardees"
-                                          label="Awardee"
-                                          personComprisedEntities="${grant.awardees}"
-                                          createPersonOrganizationTags="${true}"
-                                          isFirstRequired="false"
-                                          showAddPersonButton="true"
-                                          showAddOrganizationButton="true">
-        </myTags:editPersonComprisedEntity>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${grant}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="${tagName}"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
-
-<%--
-        <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </c:if>
-    </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-grant", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                $("#${specifier}-add-input-button").addClass("hide");
-
-                //Add section
-                $("#${specifier}-grant").val("");
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-grant-remove", function (e) {
-                e.stopImmediatePropagation();
-
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-add-input-button").removeClass("hide");
-                $("#${specifier}-input-block").addClass("hide");
-            });
-        });
-
-    </script>
-
-</div>
---%>
 

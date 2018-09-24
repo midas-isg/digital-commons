@@ -21,88 +21,47 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${annotation}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="annotation"
+                                 isRequired="${isRequired}"
+                                 cardText="${cardText}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editNonZeroLengthString path="${path}.value"
+                                specifier="${specifier}-value"
+                                id="${specifier}-value"
+                                placeholder="Value"
+                                isRequired="${true}"
+                                label="Value"
+                                isInputGroup="${true}"
+                                string="${annotation.value}">
+</myTags:editNonZeroLengthString>
+<myTags:editNonZeroLengthString path="${path}.valueIRI"
+                                specifier="${specifier}-valueIRI"
+                                id="${specifier}-valueIRI"
+                                placeholder="Value IRI"
+                                isRequired="${true}"
+                                label="Value IRI"
+                                isInputGroup="${true}"
+                                string="${annotation.valueIRI}">
+</myTags:editNonZeroLengthString>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${annotation}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 tagName="annotation"
+                                 isRequired="${isRequired}"
+                                 cardText="${cardText}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-<%--
-<div id="${id}"
-     class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(annotation)}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <c:if test="${not isRequired}">
-            <div id="${specifier}-add-input-button"
-                 class="input-group control-group ${specifier}-annotation-add-more <c:if test="${not function:isObjectEmpty(annotation)}">hide</c:if>">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-annotation" type="button"><i
-                            class="fa fa-plus-circle"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-        </c:if>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(annotation) and not isUnboundedList and not isRequired}">hide</c:if>">
-        <c:if test="${isUnboundedList}">
-            <label>${label}</label>
-        </c:if>
-        <button class="btn btn-danger ${specifier}-annotation-remove" type="button"><i
-                class="fa fa-minus-circle"></i>
-            Remove
-        </button>
---%>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${annotation}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="annotation"
-                                         isRequired="${isRequired}"
-                                         showTopOrBottom="top">
-        </myTags:editMasterElementWrapper>
-        <myTags:editNonZeroLengthString path="${path}.value" specifier="${specifier}-value" placeholder="Value" isRequired="${true}" label="Value" string="${annotation.value}"></myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString path="${path}.valueIRI" specifier="${specifier}-valueIRI" placeholder="Value IRI" isRequired="${true}" label="Value IRI" string="${annotation.valueIRI}"></myTags:editNonZeroLengthString>
-        <myTags:editMasterElementWrapper path="${path}"
-                                         specifier="${specifier}"
-                                         object="${annotation}"
-                                         label="${label}"
-                                         id="${id}"
-                                         isUnboundedList="${isUnboundedList}"
-                                         tagName="annotation"
-                                         isRequired="${isRequired}"
-                                         showTopOrBottom="bottom">
-        </myTags:editMasterElementWrapper>
-
-<%--
-    </div>
-
-    <c:if test="${not isRequired}">
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("body").on("click", ".${specifier}-add-annotation", function (e) {
-                    e.stopImmediatePropagation();
-
-                    $("#${specifier}-input-block").removeClass("hide");
-                    <c:if test="${isUnboundedList or not isRequired}">
-                    $("#${specifier}-add-input-button").addClass("hide");
-                    </c:if>
-
-                    //Add section
-                    $("#${specifier}-annotation").val("");
-                });
-
-                //Remove section
-                $("body").on("click", ".${specifier}-annotation-remove", function (e) {
-                    e.stopImmediatePropagation();
-
-                    clearAndHideEditControlGroup(this);
-                    $("#${specifier}-add-input-button").removeClass("hide");
-                    $("#${specifier}-input-block").addClass("hide");
-                });
-            });
-
-        </script>
-    </c:if>
-
-</div>
---%>
