@@ -10,6 +10,7 @@ import org.springframework.binding.message.MessageCriteria;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
+
 import static org.apache.commons.lang.StringEscapeUtils.escapeHtml;
 
 public class TagUtil {
@@ -146,9 +147,9 @@ public class TagUtil {
                 cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
             } else if (size > 5) {
                 //take first 2 words and last word
-                    leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + 1;
-                    rightIndex = cardTabTitleWords[size - 1].length();
-                    cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
+                leftIndex = cardTabTitleWords[0].length() + cardTabTitleWords[1].length() + 1;
+                rightIndex = cardTabTitleWords[size - 1].length();
+                cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length() - rightIndex);
             } else if (cardTabTitle.length() > maxLength) {
                 if (cardTabTitle.substring(0, leftIndex).contains(" ")) {
                     leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
@@ -226,7 +227,9 @@ public class TagUtil {
                 cardTabToolTip = ((Organization) listItem).getName();
                 break;
             case "PersonOrganization":
-                if (isObjectEmpty(((PersonOrganization) listItem).getFullName())) {
+                if (!isObjectEmpty(((PersonOrganization) listItem).getName())) {
+                    cardTabToolTip = ((PersonOrganization) listItem).getName();
+                } else if (isObjectEmpty(((PersonOrganization) listItem).getFullName())) {
                     if (!isObjectEmpty(((PersonOrganization) listItem).getFirstName())) {
                         cardTabToolTip = ((PersonOrganization) listItem).getFirstName();
                     }
@@ -244,11 +247,6 @@ public class TagUtil {
                         cardTabToolTip = cardTabToolTip.trim();
                     }
                 } else cardTabToolTip = ((PersonOrganization) listItem).getFullName();
-/*
-                if (isPerson((PersonOrganization) listItem)) {
-                    cardTabToolTip = ((PersonOrganization) listItem).getFirstName() + " " + ((PersonOrganization) listItem).getLastName();
-                } else cardTabToolTip = ((PersonOrganization) listItem).getName();
-*/
                 break;
             case "Study":
                 cardTabToolTip = ((Study) listItem).getName();
@@ -307,7 +305,7 @@ public class TagUtil {
         return escapeHtml(cardTabToolTip);
     }
 
-    public static MessageCriteria getMessageCriteria(String path){
+    public static MessageCriteria getMessageCriteria(String path) {
 
         return new ErrorHandlingMessageCriteria(path);
     }
