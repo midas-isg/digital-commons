@@ -137,6 +137,15 @@
 
         <script type="text/javascript">
             $(document).ready(function () {
+                <c:if test="${tagName == 'date' and isInputGroup}">
+                $("#${specifier}").datepicker({
+                    forceParse: false,
+                    orientation: 'top auto',
+                    todayHighlight: true,
+                    format: 'yyyy-mm-dd',
+                    uiLibrary: 'bootstrap4',
+                });
+                </c:if>
                 rearrangeCards("${specifier}-input-block");
             });
 

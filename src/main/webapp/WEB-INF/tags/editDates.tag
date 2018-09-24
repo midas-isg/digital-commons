@@ -53,8 +53,8 @@
                        annotation="${date.type}"
                        isRequired="${true}"
                        label="Type"
+                       cardText="${annotationPlaceHolder}"
                        id="${specifier}-date"
-                       cardText="${annotationPlaceholder}"
                        updateCardTabTitleText="${isUnboundedList}"
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
