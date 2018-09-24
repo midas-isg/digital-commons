@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,33 +22,43 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+
+            <fmt:message key="software.diseaseTransmissionModel.controlMeasures" var="controlMeasuresPlaceHolder" />
             <myTags:editMasterUnbounded path="controlMeasures"
                                         specifier="control-measures"
                                         label="Control Measures"
+                                        addButtonLabel="Control Measure"
                                         tagName="softwareIdentifier"
-                                        placeholder="Control Measure"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        placeholder="${controlMeasuresPlaceHolder}"
+                                        cardText="${controlMeasuresPlaceHolder}"
                                         listItems="${digitalObject.controlMeasures}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseTransmissionModel.hostSpeciesIncluded" var="hostSpeciesIncludedPlaceHolder" />
             <myTags:editMasterUnbounded path="hostSpeciesIncluded"
                                         specifier="host-species-included"
                                         label="Host Species Included"
+                                        addButtonLabel="Host Species"
                                         tagName="softwareIdentifier"
-                                        placeholder="Host Species Included"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        placeholder="${hostSpeciesIncludedPlaceHolder}"
+                                        cardText="${hostSpeciesIncludedPlaceHolder}"
                                         listItems="${digitalObject.hostSpeciesIncluded}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseTransmissionModel.pathogenCoverage" var="pathogenCoveragePlaceHolder" />
             <myTags:editMasterUnbounded path="pathogenCoverage"
                                         specifier="pathogen-coverage"
-                                        label="Pathogen Coverage"
+                                        label="Pathogen Coverages"
+                                        addButtonLabel="Pathogen Coverage"
                                         tagName="softwareIdentifier"
-                                        placeholder="Pathogen Coverage"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        placeholder="${pathogenCoveragePlaceHolder}"
+                                        cardText="${pathogenCoveragePlaceHolder}"
                                         listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
@@ -57,6 +67,12 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
+    });
+</script>
 
 <myTags:analytics/>
 

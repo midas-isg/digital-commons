@@ -30,6 +30,12 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isSelect" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextPerson" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextType" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
 
@@ -46,7 +52,7 @@
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">
-        <select class="custom-select" name="${path}" id="${specifier}-select"
+        <select class="custom-select" name="${path}" id="${specifier}-select" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}')"</c:if>
                 title="${specifier}">
             <option value="">Please Select...</option>
             <c:forEach items="${enumList}" var="varEnum" varStatus="status">
@@ -59,7 +65,15 @@
     </c:when>
     <c:otherwise>
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
-               id="${specifier}" placeholder="${placeholder}"/>
+               id="${specifier}" placeholder="${placeholder}"
+               <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitle('${specifier}')"</c:if>
+               <c:if test="${updateCardTabTitleTextPerson}">onchange="updateCardTabTitlePerson('${specifier}')"</c:if>
+               <c:if test="${updateCardTabTitleTextType}">onchange="updateCardTabTitleType('${specifier}')"</c:if> />
+<%--
+               <c:if test="${updateCardTabTitleText}">onfocusout="updateCardTabTitle('${specifier}')"</c:if>
+               <c:if test="${updateCardTabTitleTextPerson}">onfocusout="updateCardTabTitlePerson('${specifier}')"</c:if>
+               <c:if test="${updateCardTabTitleTextType}">onfocusout="updateCardTabTitleType('${specifier}')"</c:if> />
+--%>
     </c:otherwise>
 
 </c:choose>

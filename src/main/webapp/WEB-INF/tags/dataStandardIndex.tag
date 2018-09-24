@@ -14,13 +14,13 @@
             Info</a>
 
             <ul class="collapse list-unstyled" id="basicSubmenu">
-                <li><a href="#" onclick="submitForm('identifier')">Identifier</a></li>
-                <li><a href="#" onclick="submitForm('alternateIdentifiers')">Alternate Identifiers</a></li>
                 <li><a href="#" onclick="submitForm('name')">Name</a></li>
                 <li><a href="#" onclick="submitForm('description')">Description</a></li>
-                <li><a href="#" onclick="submitForm('type')">Type</a></li>
-                <li><a href="#" onclick="submitForm('license')">License</a></li>
                 <li><a href="#" onclick="submitForm('version')">Version</a></li>
+                <li><a href="#" onclick="submitForm('type')">Type</a></li>
+                <li><a href="#" onclick="submitForm('identifier')">Identifier</a></li>
+                <li><a href="#" onclick="submitForm('alternateIdentifiers')">Alternate Identifiers</a></li>
+                <li><a href="#" onclick="submitForm('license')">License</a></li>
                 <li><a href="#" onclick="submitForm('extraProperties')">Extra Properties</a></li>
             </ul>
         </li>

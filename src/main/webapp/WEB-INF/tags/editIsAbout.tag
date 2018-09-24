@@ -6,6 +6,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="isAboutList" required="false"
               type="java.util.List" %>
@@ -20,6 +21,7 @@
 <%@ attribute name="showAddBiologicalEntityButton" required="true"
               type="java.lang.Boolean" %>
 
+<fmt:message key="dataset.isAbout" var="isAboutPlaceHolder" />
 
 <div class="<c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if>">
     <div class="form-group edit-form-group ${specifier}-add-more-button">
@@ -45,7 +47,7 @@
                                            specifier="${specifier}-${varStatus.count-1}"
                                            id="${specifier}-${varStatus.count-1}"
                                            label="${label} (Annotation)"
-                                           cardText="Different entities associated with this dataset."
+                                           cardText="${isAboutPlaceHolder}"
                                            isUnboundedList="${true}"
                                            isRequired="${false}">
                     </myTags:editAnnotation>
@@ -83,7 +85,7 @@
                        id="${specifier}-annotation-copy-tag"
                        label="${label} (Annotation)"
                        isUnboundedList="${true}"
-                       cardText="Different entities associated with this dataset."
+                       cardText="${isAboutPlaceHolder}"
                        isRequired="${false}">
 </myTags:editAnnotation>
 

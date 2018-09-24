@@ -28,6 +28,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -47,6 +49,7 @@
                        isSelect="${true}"
                        enumData="${enumData}"
                        enumList="${enumList}"
+                       updateCardTabTitleText="${updateCardTabTitleText}"
                        placeholder="Please select...">
 </myTags:editInputBlock>
 <myTags:editMasterElementWrapper path="${path}"

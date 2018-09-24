@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="singleIdentifier" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Identifier" %>
@@ -19,30 +20,36 @@
 <%@ attribute name="id" required="true"
               type="java.lang.String" %>
 
-
+<fmt:message key="dataset.identifier" var="cardText" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${singleIdentifier}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="Information about the primary identifier."
+                                 cardText="${cardText}"
+                                 cardIcon="fa fa-id-card-o"
                                  tagName="identifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.identifier.identifier" var="identifierPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.identifier"
                                 specifier="${specifier}-identifier"
                                 id="${specifier}-identifier"
-                                placeholder="A code uniquely identifying an entity locally to a system or globally."
+                                placeholder="${identifierPlaceHolder}"
                                 isRequired="${true}"
                                 label="Identifier"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 string="${singleIdentifier.identifier}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.identifier.identifierSource" var="identifierSourcePlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.identifierSource"
                                 specifier="${specifier}-identifierSource"
                                 id="${specifier}-identifierSource"
-                                placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
+                                placeholder="${identifierSourcePlaceHolder}"
                                 isRequired="${true}"
                                 label="Identifier Source"
                                 isInputGroup="${true}"
@@ -53,7 +60,7 @@
                                  object="${singleIdentifier}"
                                  label="${label}"
                                  id="${id}"
-                                 cardText="Information about the primary identifier."
+                                 cardText="${cardText}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="identifier"
                                  showTopOrBottom="bottom">

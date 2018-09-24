@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -21,11 +21,12 @@
 
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
-
+            <fmt:message key="dataset.spatialCoverage" var="spatialCoveragePlaceHolder" />
             <myTags:editMasterUnbounded path="spatialCoverage"
                                         specifier="spatialCoverage"
                                         listItems="${digitalObject.spatialCoverage}"
-                                        cardText="The geographical extension and span covered by the dataset and its measured dimensions/variables."
+                                        cardText="${spatialCoveragePlaceHolder}"
+                                        cardIcon="fas fa-globe-americas"
                                         tagName="place"
                                         isRequired="${false}"
                                         addButtonLabel="Spatial Coverage"

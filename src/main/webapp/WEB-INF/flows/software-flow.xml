@@ -73,8 +73,8 @@
         <transition on="controlMeasure" to="diseaseTransmissionModelForm"/>
         <transition on="hostSpeciesIncluded" to="diseaseTransmissionModelForm"/>
         <transition on="pathogenCoverage" to="diseaseTransmissionModelForm"/>
-        <transition on="hostSpeciesIncluded" to="diseaseTransmissionTreeEstimatorForm"/>
-        <transition on="pathogenCoverage" to="diseaseTransmissionTreeEstimatorForm"/>
+        <transition on="hostSpeciesIncludedTree" to="diseaseTransmissionTreeEstimatorForm"/>
+        <transition on="pathogenCoverageTree" to="diseaseTransmissionTreeEstimatorForm"/>
         <transition on="pathogens" to="pathogenEvolutionModelForm"/>
         <transition on="populationSpeciesIncluded" to="populationDynamicsModelForm"/>
         <transition on="dataServiceDescription[0]" to="dataServiceForm"/>

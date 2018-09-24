@@ -28,11 +28,21 @@
     <function>
         <name>getCardTabTitle</name>
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
-        <function-signature>java.lang.String getCardTabTitle(java.lang.Object)</function-signature>
+        <function-signature>java.lang.String getCardTabTitle(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>getCardTabToolTip</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getCardTabToolTip(java.lang.Object, java.lang.String)</function-signature>
     </function>
     <function>
         <name>isFirstInstance</name>
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isFirstInstance(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>getMessageCriteria</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>org.springframework.binding.message.MessageCriteria getMessageCriteria(java.lang.String)</function-signature>
     </function>
 </taglib>

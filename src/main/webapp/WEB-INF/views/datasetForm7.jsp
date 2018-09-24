@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -23,19 +23,22 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
             <div id="citationCount">
+                <fmt:message key="dataset.citationCount" var="citationCountPlaceHolder" />
                 <myTags:editFloat path="citationCount"
                                   id="citationCount"
                                   specifier="citationCount"
                                   number="${digitalObject.citationCount}"
                                   label="Citation Count"
-                                  placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
+                                  placeholder="${citationCountPlaceHolder}">
                 </myTags:editFloat>
             </div>
             <div id="citations">
+                <fmt:message key="dataset.citation" var="citationPlaceHolder" />
                 <myTags:editMasterUnbounded path="citations"
                                             specifier="citations"
                                             listItems="${digitalObject.citations}"
-                                            cardText="The publication(s) that cite this dataset."
+                                            cardText="${citationPlaceHolder}"
+                                            cardIcon="fas fa-quote-right"
                                             tagName="publication"
                                             addButtonLabel="Citation"
                                             label="Citations">

@@ -735,12 +735,16 @@ $(document).ready(function() {
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
 
-        if(href!=undefined && (nulhref!= undefined && nulhref.includes('http'))) {
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'Clickthrough',
-                eventAction: href
-            });
+        try{
+            if (href != undefined && nulhref.includes('http')) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: href
+                });
+            }
+        } catch (e) {
+            
         }
     });
 
@@ -752,22 +756,58 @@ $(document).ready(function() {
         location.hash = '_';
     });
 
+    $(".has-error-card.card").each(function(){
+        highlightDiv($(this).attr("id"), "red");
+    });
+
 });
 
 function scrollToAnchor(anchor) {
     var el = document.querySelector('#' + anchor);
-    var offset = el.getBoundingClientRect().top + window.scrollY;
-    if(offset < 81) {
-        offset += 80;
-    } else {
-        offset -= 80;
+    try {
+        var offset = el.getBoundingClientRect().top + window.scrollY;
+        if (offset < 81) {
+            offset += 95;
+        } else {
+            offset -= 95;
+        }
+        window.scroll({
+            top: offset,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } catch (e) {
+
     }
-    window.scroll({
-        top: offset,
-        left: 0,
-        behavior: 'smooth'
-    });
 }
+
+function highlightDiv(div, color) {
+
+    var colorToDisplay = "rgba(1, 255, 68, 0.9)";
+    if (color == "red") {colorToDisplay = "rgba(255, 0, 0, 0.7)"}
+
+    $("div.card").find('*').css("box-shadow", '');
+
+    $('#' + div).css(
+        "boxShadow", "0px 0px 15px 15px " + colorToDisplay
+    );
+
+    $(function() {
+        $("body").click(function(e) {
+            if (e.target.id == div || $(e.target).parents("#" + div).length) {
+                $('#' + div).css(
+                    "boxShadow", "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
+                );
+            }
+        });
+    })
+
+
+}
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
 
 // Collapsible Card
 $(document).on('click', 'a[data-action="collapse"]', function (e) {
@@ -801,33 +841,120 @@ function makeAllTabsInactive(specifier) {
     });
 }
 
-function closeTab(e, div, specifier) {
-
-    //find closest tab to the left tab to make it active (we don't just want to use the first tab)
-    var prevDiv = undefined;
-    var takeNext = false;
-    $("#"+specifier+"-card-header").find("a").each(function () {
-        if (takeNext) {
-            prevDiv = $(this.parentElement);
+function removeSection(specifier, tagName, event, isUnbounded) {
+    var confirmation = true;
+    $("#" + specifier + "-card").find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this card?");
             return false;
         }
-        if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
-            if ($(this).hasClass("active")) {
-                takeNext = true;
-            }
-        } else if ($(this).hasClass("active")) {
-            prevDiv = $(this.parentElement);
-            return false;
-        } else prevDiv = $(this.parentElement);
-
-
     });
-    var divToClose = $(div.parentElement.parentElement).attr("for")
-    $("#" + divToClose).remove();
-    $(div.parentElement.parentElement).remove();
 
-    $("#" + $(prevDiv).attr("for")).show();
-    $($(prevDiv).find("a")[0]).addClass("active")
+    if (confirmation == true) {
+        event.stopImmediatePropagation();
+        $("#" + specifier + "-add-input-button").removeClass("hide");
+
+        // clearAndHideEditControlGroup($(event.target).attr("for"));
+
+        if(isUnbounded) {
+            clearAndHideEditControlGroup(specifier+"-card");
+            closeAllTabs(event, $("#"+specifier+"-card"));
+            $("#" + specifier + "-card").addClass("hide");
+        }else {
+            clearAndHideEditControlGroup(specifier+"-input-block");
+            $("#"+specifier+"-input-block").addClass("hide");
+        }
+
+        $("." + specifier+"-"+tagName+"-remove").closest('.card').addClass("hide").slideUp('fast');
+    }
+}
+
+function showCard(specifier, tagName, id, isUnboundedList, isRequired) {
+    // e.stopImmediatePropagation();
+    $("#"+id).removeClass("hide");
+    $(this).closest('.card').children('.card-content').removeClass('collapse');
+    $("#"+specifier+"-input-block").removeClass("hide");
+    $("#"+specifier+"-input-block").addClass("collapse");
+    $("#"+specifier+"-input-block").addClass("show");
+
+    $("#"+specifier+"-input-block").show();
+
+    if(isUnboundedList || !isRequired) {
+        $("#"+specifier+"-add-input-button").addClass("hide");
+    }
+
+    $("#"+specifier+"-"+tagName).val("");
+    scrollToAnchor(specifier);
+    highlightDiv(specifier,"green");
+
+    $("#" + specifier+"-date-picker").datepicker({
+        forceParse: false,
+        orientation: 'top auto',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4',
+    });
+}
+
+
+function closeTab(e, div, specifier, tagName) {
+    //warn user before closing tab
+    var confirmation = true;
+    var prevDiv = undefined;
+    var takeNext = false;
+    $("#"+$(div.parentElement.parentElement).attr("for")).find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this tab?");
+            return false;
+        }
+    });
+
+    if(confirmation == true) {
+        //check if all other tabs have been "closed"
+        var counter = 0;
+        $("#" + specifier + "-card-header").find("li").each(function () {
+            if(!$(this).hasClass("hide")) {
+                counter++;
+            }
+        });
+
+        // TODO: need to fix bug where the next div that is show is one that was 'removed'
+        if(counter>1) {
+            //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+            $("#" + specifier + "-card-header").find("a").each(function () {
+                if (takeNext) {
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                        return false;
+                    }
+                }
+                if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+                    if ($(this).hasClass("active")) {
+                        takeNext = true;
+                    }
+                } else if ($(this).hasClass("active")) {
+                    prevDiv = $(this.parentElement);
+                    return false;
+                } else {
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                    }
+                }
+
+            });
+        }
+        var divToClose = $(div.parentElement.parentElement).attr("for");
+        //remove does not clear flow data; had to call the function and hide div so flow data is updated on next/submit
+        clearAndHideEditControlGroup(divToClose);
+        $("#" + divToClose).addClass("hide");
+        $(div.parentElement.parentElement).addClass("hide");
+
+        if (prevDiv == undefined) {
+            removeSection(specifier, tagName, e, true);
+        } else {
+            showTab(e, $(prevDiv).find("a")[0], specifier);
+        }
+    }
 
     e.preventDefault();
     e.stopPropagation();
@@ -860,10 +987,12 @@ function showTab(e, div, specifier) {
     });
 
     $('#' + divToShow).removeClass("hide");
+    $('#' + divToShow.substring(0, divToShow.indexOf("-input-block"))).removeClass("hide");
     $('#' + divToShow + ' .card-content').each(function (index) {
         //if card is unbounded list we find the 'active' tab and unhide that input block
         var inputBlockID = $(this).attr("id");
         var tabID = inputBlockID.replace("input-block", "tab");
+        var divBeforeInputBlockID = inputBlockID.replace("-input-block","");
 
         //the card is not an unbounded list so display the input block
 
@@ -871,8 +1000,11 @@ function showTab(e, div, specifier) {
             $(this).removeClass("hide");
         }
 
+        //cards with existing data were not displaying despite input block having hide removed
+        //added divBeforeInputBlockID to unhide if active
         if ($("#" + tabID).children().hasClass("active")) {
             $(this).removeClass("hide");
+            $("#"+divBeforeInputBlockID).removeClass("hide");
         }
     });
 };
@@ -907,6 +1039,10 @@ function showTabNamed(tabToActivate, divToShow, specifier) {
     });
 };
 
+function toggleLoadingScreen() {
+    $(".loading").toggle();
+}
+
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
@@ -935,8 +1071,8 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
     regexEscapeOpenBracket = new RegExp('\\[', "g");
     regexEscapeClosedBracket = new RegExp('\\]', "g");
-    path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-    regexPath = new RegExp(path + '\\[0\\]', "g");
+    regexPath = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+    regexPath = new RegExp(regexPath + '\\[0\\]', "g");
     regexSpecifier = new RegExp(specifier + '\\-00', "g");
     html = html.replace(regexPath, path+'[' + listItemCount + ']')
         .replace(regexSpecifier, specifier+'-' + listItemCount);
@@ -954,12 +1090,13 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     makeAllTabsInactive(specifier);
     //create a new tab
     $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
-        " <a onclick=\"showTab(event, this, '"+specifier+"')\" class=\"wizard-nav-link nav-link active\" >"+label+"   "+
-        "<i onclick=\"closeTab(event, this, '"+specifier+"')\" class=\"ft-x\"></i></a></li>");
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" id=\""+specifier+"-"+listItemCount+"-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\""+label+"\">"+label+"   "+
+        "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
 
 
     //switch to newly created tab
     showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
+    $('[data-toggle="tooltip"]').tooltip();
 
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
@@ -969,6 +1106,142 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
     window.location.hash = $("#" + specifier + "-card").selector;
+
+}
+
+function getLastIndex(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+
+    return index;
+}
+
+function updateCardTabTitle(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier).val();
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitleFromSelect(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier+"-select")[0].value;
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitlePerson(specifier){
+    var index = getLastIndex(specifier);
+
+    var fullNameId = specifier.substring(0, index + 2) + "fullname-string";
+    var firstNameId = specifier.substring(0, index + 2) + "firstName-string";
+    var middleInitialId = specifier.substring(0, index + 2) + "middleInitial-string";
+    var lastNameId = specifier.substring(0, index + 2) + "lastName-string";
+
+    var fullName = $("#" + fullNameId).val();
+    var firstName = $("#" + firstNameId).val();
+    var middleInitial = $("#" + middleInitialId).val();
+    var lastName = $("#" + lastNameId).val();
+
+    var combinedFullName = "";
+    if (firstName.length > 0) {
+        combinedFullName = firstName.trim();
+    }
+    if (middleInitial.length > 0) {
+        combinedFullName = combinedFullName + " " + middleInitial.trim();
+    }
+    if (lastName.length > 0) {
+        combinedFullName = combinedFullName + " " + lastName.trim();
+    }
+    if (combinedFullName.length > 0) {
+        combinedFullName = combinedFullName.trim();
+    }
+
+    if (specifier != fullNameId && combinedFullName.length > 0 && combinedFullName.length > fullName.length) {
+        fullName = combinedFullName;
+        $("#" + fullNameId).val(fullName);
+    }
+
+    var id = specifier.substring(0, index + 2) + "listItem";
+    if (fullName.length > 0) {
+        setCardTabTitle(id, specifier, fullName);
+    }
+}
+
+function updateCardTabTitleType(specifier){
+    var index = getLastIndex(specifier);
+
+    var informationId = specifier.substring(0, index + 2) + "information-value-string";
+    var methodId = specifier.substring(0, index + 2) + "method-value-string";
+    var platformId = specifier.substring(0, index + 2) + "platform-value-string";
+    var information = $("#" + informationId).val();
+    var method = $("#" + methodId).val();
+    var platform = $("#" + platformId).val();
+
+    var id = specifier.substring(0, index + 2) + "listItem";
+    if (information.length > 0) {
+        setCardTabTitle(id, specifier, information.trim());
+    } else if (method.length > 0) {
+        setCardTabTitle(id, specifier, method.trim());
+    } else if (platform.length > 0) {
+        setCardTabTitle(id, specifier, platform.trim());
+    }
+}
+
+function setCardTabTitle(id, specifier, cardTabTitle){
+    var maxLength = 35;
+    var leftIndex = 20;
+    var rightIndex = 10;
+
+    // $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
+    $('#'+ id +'[data-toggle="tooltip"]').attr("data-original-title",cardTabTitle);
+
+    if (cardTabTitle.includes(" ")) {
+        var regex = /\s+/g;
+        var cardTabTitleWords = cardTabTitle.split(regex);
+        var size = cardTabTitleWords.length;
+        if (size > 7) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + cardTabTitleWords[2].length + 2;
+            rightIndex = cardTabTitleWords[size - 2].length + cardTabTitleWords[size - 1].length + 1;
+            if (rightIndex > 15) {rightIndex = 15}
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (size > 5) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + 1;
+            rightIndex = cardTabTitleWords[size - 1].length;
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (cardTabTitle.length > maxLength) {
+            if (cardTabTitle.substring(0, leftIndex).includes(" ")) {
+                leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
+            }
+            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).contains(" ")) {
+                rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
+            }
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
+        }
+    } else if (cardTabTitle.length > maxLength) {
+        cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+    }
+
+    if(cardTabTitle.length > 0) {
+        cardTabTitle = cardTabTitle + "   ";
+        var currentCardTabTitleText = $("#" + id).text().trim();
+        var currentCardTabTitleHTML = $("#" + id).html();
+        $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+    }
 }
 
 $(window).on("popstate", function() {

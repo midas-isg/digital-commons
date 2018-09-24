@@ -12,7 +12,7 @@
 <%@ attribute name="checked" required="false"
               type="java.lang.Boolean" %>
 
-<div class="form-group edit-form-group">
+<div class="form-group col-4">
     <label>${label}</label>
     <input type="checkbox" name="${path}" <c:if test="${checked == true}">checked</c:if>>
 </div>

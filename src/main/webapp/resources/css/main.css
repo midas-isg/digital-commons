@@ -359,17 +359,17 @@ a {
     }
 }
 
-@media screen and (max-width: 1010px) {
+/*@media screen and (max-width: 1010px) {*/
 
-    a:hover {
-        background-color: transparent !important;
-    }
+    /*a:hover {*/
+        /*!*background-color: transparent !important;*!*/
+    /*}*/
 
-}
+/*}*/
 
-@media (min-width: 766px) and (max-width: 1010px) {
+/*@media (min-width: 766px) and (max-width: 1010px) {*/
 
-}
+/*}*/
 
 .bs-docs-footer {
     color: #777;
@@ -1136,6 +1136,12 @@ div.container.metadata-container .metadata-column.fancy {
     border-color: #a94442 !important;
 }
 
+.has-error-card-tab {
+    color: white !important;
+    background: rgba(255, 0, 0, 0.7) !important;
+    border-color: #a94442;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
@@ -1206,11 +1212,12 @@ div.container.metadata-container .metadata-column.fancy {
     color: #fff ;
 }
 #sidebar ul li a:hover {
-    color: #0d2c64 !important;
     /*
+    color: #0d2c64 !important;
     color: #568aea !important;
-    */
     background: #fff;
+    */
+    background: #7785a6;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
@@ -1249,9 +1256,9 @@ div.container.metadata-container .metadata-column.fancy {
     #entryFormContent {
         width: 100%;
     }
-    #entryFormContent.active {
-        width: calc(100% - 250px);
-    }
+    /*#entryFormContent.active {*/
+        /*width: calc(100% - 250px);*/
+    /*}*/
 
     #entry-form {
         margin-top: 0px;
@@ -1279,6 +1286,7 @@ ul.CTAs a {
     */
     border-color: #adadad !important;
     height:30px !important;
+    line-height: 12px !important;
 }
 
 .wizard-form-group {
@@ -1294,9 +1302,29 @@ ul.CTAs a {
     top:6px !important;
 }
 
+@media screen and (max-width: 991.98px) {
+    .heading-elements .list-inline {
+    display: block;
+    }
+}
 .col {
     padding-right: 0px;
     padding-left: 0px;
+}
+
+/*Cursor:pointer allows the jquery to fire on iOS*/
+.ft-x{
+    cursor: pointer;
+    padding-left: 5px;
+}
+.ft-maximize {
+    cursor: pointer;
+}
+.ft-minus {
+    cursor: pointer;
+}
+.ft-buttons {
+    vertical-align: middle;
 }
 
 .card {
@@ -1323,20 +1351,28 @@ ul.CTAs a {
     background-image: linear-gradient(to left, rgba(11,43,101,0.55), rgba(11,43,101,0.80));
 }
 
-.card-header-unbounded {
-    margin-bottom: 12px;
-}
-
 .card-header .heading-elements {
     right: 5px;
 }
 
-.ft-x{
-    padding-left: 5px;
+.card-content {
+    margin-top: 12px;
 }
 
-.ft-buttons {
-    vertical-align: middle;
+.card-body {
+    flex-flow: column nowrap;
+}
+
+.card-rounded {
+    border-radius: 25px;
+}
+
+
+.add-card-header {
+    color: #0b2b65;
+    background-image: none;
+    background-color: transparent;
+    border-bottom: none;
 }
 
 .card-footer {
@@ -1356,6 +1392,21 @@ ul.CTAs a {
     padding-top: 15px;
 }
 
+.card-button-header {
+    padding-bottom: 0px;
+}
+
+.card-button-body {
+    padding-top: 0px;
+}
+
+.card-label {
+    font-size: 2em;
+}
+.card-icon {
+    font-size: 5em;
+    padding-left: 20px;
+}
 ::-webkit-input-placeholder {
     color: peachpuff;
     font-size: 10px;
@@ -1371,4 +1422,44 @@ ul.CTAs a {
 ::placeholder {
     color: peachpuff;
     font-size: 10px;
+}
+
+/*CSS for Spinner*/
+.loading {
+    z-index: 999;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.5);
+}
+.loading-wheel {
+    width: 20px;
+    height: 20px;
+    margin-top: -40px;
+    margin-left: -40px;
+
+    position: absolute;
+    top: 50%;
+    left: 57%;
+
+    border-width: 30px;
+    border-radius: 50%;
+    -webkit-animation: spin 1s linear infinite;
+}
+
+.loading-wheel {
+    border-style: double;
+    border-color: #ccc transparent;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(-360deg);
+    }
 }

@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,10 +22,12 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="dataset.licenses" var="licensesPlaceHolder" />
             <myTags:editMasterUnbounded path="licenses"
                                         listItems="${digitalObject.licenses}"
                                         tagName="license"
-                                        cardText="The terms of use of the dataset."
+                                        cardText="${licensesPlaceHolder}"
+                                        cardIcon="fab fa-creative-commons"
                                         label="Licenses"
                                         addButtonLabel="License"
                                         specifier="licenses">

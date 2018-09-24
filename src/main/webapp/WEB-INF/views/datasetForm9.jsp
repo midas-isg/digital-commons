@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,6 +22,7 @@
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
+            <fmt:message key="dataset.creators" var="creatorsPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.creators}"
                                         isRequired="${true}"
                                         label="Creators"
@@ -30,7 +31,8 @@
                                         specifier="creators"
                                         showAddPersonButton="${true}"
                                         showAddOrganizationButton="${true}"
-                                        cardText="The person(s) or organization(s) which contributed to the creation of the dataset."
+                                        cardText="${creatorsPlaceHolder}"
+                                        cardIcon="fas fa-users"
                                         tagName="personComprisedEntity"
                                         createPersonOrganizationTags="${true}"
                                         isFirstRequired="${true}">

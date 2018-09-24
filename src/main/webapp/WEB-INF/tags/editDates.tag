@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="date" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
@@ -22,6 +23,8 @@
               type="java.lang.String" %>
 <%@ attribute name="cardText" required="true"
               type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -32,6 +35,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="far fa-calendar-alt"
                                  tagName="date"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -44,12 +48,14 @@
                   label="Date">
 </myTags:editDate>
 
+<fmt:message key="dataset.dates.annotation" var="annotationPlaceHolder" />
 <myTags:editAnnotation path="${path}.type"
                        annotation="${date.type}"
                        isRequired="${true}"
                        label="Type"
+                       cardText="${annotationPlaceHolder}"
                        id="${specifier}-date"
-                       cardText="The type of date, used to specify the process which is being timestamped by the date attribute value, ideally comes from a controlled terminology."
+                       updateCardTabTitleText="${isUnboundedList}"
                        isUnboundedList="${false}"
                        specifier="${specifier}-date">
 </myTags:editAnnotation>
@@ -62,6 +68,7 @@
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
                                  cardText="${cardText}"
+                                 cardIcon="far fa-calendar-alt"
                                  tagName="date"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>

@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -21,18 +22,20 @@
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
-
+<fmt:message key="dataset.grant" var="grantPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${grant}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                 cardText="${grantPlaceHolder}"
                                  tagName="${tagName}"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editNonZeroLengthString placeholder=" The name of the grant and its funding program."
+
+<fmt:message key="dataset.grant.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString placeholder="${namePlaceHolder}"
                                 label="Name"
                                 string="${grant.name}"
                                 isUnboundedList="${false}"
@@ -40,19 +43,23 @@
                                 id="${specifier}-name"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.grant.funders" var="fundersPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.funders"
-                                  specifier="${specifier}-funders"
-                                  label="Funders"
+                            specifier="${specifier}-funders"
+                            label="Funders"
                             addButtonLabel="Funder"
-                                  listItems="${grant.funders}"
-                                  createPersonOrganizationTags="${true}"
+                            listItems="${grant.funders}"
+                            createPersonOrganizationTags="${true}"
                             tagName="personComprisedEntity"
-                            cardText="The person(s) or organization(s) which has awarded the funds supporting the project."
-                                  isFirstRequired="true"
-                                  showAddPersonButton="true"
-                                  showAddOrganizationButton="true">
+                            cardText="${fundersPlaceHolder}"
+                            cardIcon="fas fa-users"
+                            isFirstRequired="true"
+                            showAddPersonButton="true"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 <myTags:editIdentifier path="${path}.identifier"
                        singleIdentifier="${grant.identifier}"
@@ -61,32 +68,38 @@
                        specifier="${specifier}-identifier"
                        label="Identifier">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
 <myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
                             label="Alternate Identifiers"
                             addButtonLabel="Alternate Identifier"
                             path="${path}.alternateIdentifiers"
-                            cardText="Information about an alternate identifier (other than the primary)."
+                            cardText="${alternateIdentifierPlaceHolder}"
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             listItems="${grant.alternateIdentifiers}">
 </myTags:editMasterUnbounded>
+
+<fmt:message key="dataset.grant.awardees" var="awardeesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.awardees"
-                                  specifier="${specifier}-awardees"
-                                  label="Awardees"
+                            specifier="${specifier}-awardees"
+                            label="Awardees"
                             addButtonLabel="Awardee"
-                                  listItems="${grant.awardees}"
-                                  createPersonOrganizationTags="${true}"
-                            cardText="The person(s) or organization(s) which received the funds supporting the project."
+                            listItems="${grant.awardees}"
+                            createPersonOrganizationTags="${true}"
+                            cardText="${awardeesPlaceHolder}"
+                            cardIcon="fas fa-award"
                             tagName="personComprisedEntity"
-                                  isFirstRequired="false"
-                                  showAddPersonButton="true"
-                                  showAddOrganizationButton="true">
+                            isFirstRequired="false"
+                            showAddPersonButton="true"
+                            showAddOrganizationButton="true">
 </myTags:editMasterUnbounded>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${grant}"
                                  label="${label}"
                                  id="${id}"
-                                 cardText="An allocated sum of funds given by a government or other organization for a particular purpose."
+                                 cardText="${grantPlaceHolder}"
                                  showCardFooter="${true}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="${tagName}"

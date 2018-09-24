@@ -4,6 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="entity" required="false"
               type="edu.pitt.isg.mdc.dats2_2.IsAbout" %>
@@ -20,30 +21,35 @@
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
 
-
+<fmt:message key="dataset.biologicalEntity" var="biologicalEntityPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${entity}"
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A biological entity is a recognized entity covering biological process, molecular functions or cellular components (from: http://geneontology.org/)."
+                                 cardText="${biologicalEntityPlaceHolder}"
                                  tagName="biological-entity"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
-<myTags:editNonZeroLengthString placeholder=" The name of the biological entity."
+
+<fmt:message key="dataset.biologicalEntity.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString placeholder="${namePlaceHolder}"
                                 label="Name"
                                 isRequired="true"
                                 specifier="${specifier}-name"
                                 id="${specifier}-name"
                                 string="${entity.name}"
                                 isInputGroup="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 path="${path}.name">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.biologicalEntity.description" var="descriptionPlaceHolder" />
 <myTags:editNonZeroLengthString string="${entity.description}"
                                 path="${path}.description"
                                 label="Description"
-                                placeholder="Description"
+                                placeholder="${descriptionPlaceHolder}"
                                 isTextArea="true"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
@@ -57,10 +63,13 @@
                        isUnboundedList="${false}"
                        label="Identifier">
 </myTags:editIdentifier>
+
+<fmt:message key="dataset.biologicalEntity.alternateIdentifiers" var="alternateIdentifiersPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.alternateIdentifiers"
                             specifier="${specifier}-alternateIdentifiers"
                             listItems="${entity.alternateIdentifiers}"
-                            cardText="Alternate identifiers for the biological entity."
+                            cardText="${alternateIdentifiersPlaceHolder}"
+                            cardIcon="fa fa-id-card"
                             tagName="identifier"
                             addButtonLabel="Alternate Identifier"
                             label="Alternate Identifiers">
@@ -71,7 +80,7 @@
                                  label="${label}"
                                  id="${specifier}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="A biological entity is a recognized entity covering biological process, molecular functions or cellular components (from: http://geneontology.org/)."
+                                 cardText="${biologicalEntityPlaceHolder}"
                                  showCardFooter="${true}"
                                  tagName="biological-entity"
                                  showTopOrBottom="bottom">

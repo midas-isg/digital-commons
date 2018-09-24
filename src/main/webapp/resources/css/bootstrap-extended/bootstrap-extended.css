@@ -1087,8 +1087,8 @@ button, html [type='button'], [type='reset'], [type='submit'] {
     */
   border-radius: 0;
   box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06); }
-  .card .card {
-    box-shadow: none !important; }
+  /*.card .card {*/
+    /*box-shadow: none !important; }*/
   .card .card-title {
     text-transform: uppercase;
     font-weight: 500;

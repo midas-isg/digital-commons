@@ -8,7 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -23,12 +23,14 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-                <myTags:editMasterUnbounded path="populationSpeciesIncluded"
+            <fmt:message key="software.populationDynamicsModels.populationSpeciesIncluded" var="populationSpeciesIncludedPlaceHolder" />
+            <myTags:editMasterUnbounded path="populationSpeciesIncluded"
                                             specifier="populationSpeciesIncluded"
                                             label="Population Species Included"
+                                            addButtonLabel="Population Species"
                                             tagName="softwareIdentifier"
-                                            placeholder="Population Species Included"
-                                            cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                            placeholder="${populationSpeciesIncludedPlaceHolder}"
+                                            cardText="${populationSpeciesIncludedPlaceHolder}"
                                             listItems="${digitalObject.populationSpeciesIncluded}"
                                             isRequired="${true}">
                 </myTags:editMasterUnbounded>

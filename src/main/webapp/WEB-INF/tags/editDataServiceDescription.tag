@@ -5,6 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<fmt:setBundle basename="cardText" />
+
 <%--
 <%@ attribute name="descriptions" required="false"
               type="java.util.List" %>
@@ -31,7 +34,7 @@
 <%@ attribute name="tagName" required="true"
               type="java.lang.String" %>
 
-
+<fmt:message key="software.dataServiceDescription" var="dataServiceDescriptionPlaceHolder" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${description}"
@@ -40,7 +43,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="${dataServiceDescriptionPlaceHolder}"
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="top">
@@ -50,26 +53,31 @@
                    label="Access Point Type"
                    enumData="${description.accessPointType}"
                    enumList="${accessPointTypes}"
-                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                   cardText=""
                    tagName="accessPointType"
                    isRequired="${true}"
+                   updateCardTabTitleText="${isUnboundedList}"
                    id="${specifier}-accessPointType">
 </myTags:editSelect>
+
+<fmt:message key="software.dataServiceDescription.accessPointDescription" var="accessPointDescriptionPlaceHolder" />
 <myTags:editNonZeroLengthString label="Access Point Description"
                                 string="${description.accessPointDescription}"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 specifier="${specifier}-accessPointDescription"
-                                placeholder="Access Point Description"
+                                placeholder="${accessPointUrlPlaceHolder}"
                                 id="${specifier}-accessPointDescription"
                                 path="${path}.accessPointDescription">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="software.dataServiceDescription.accessPointUrl" var="accessPointUrlPlaceHolder" />
 <myTags:editNonZeroLengthString label="Access Point Url"
                                 string="${description.accessPointUrl}"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 specifier="${specifier}-accessPointUrl"
-                                placeholder="Access Point Url"
+                                placeholder="${accessPointUrlPlaceHolder}"
                                 id="${specifier}-accessPointUrl"
                                 path="${path}.accessPointUrl">
 </myTags:editNonZeroLengthString>
@@ -81,7 +89,7 @@
                                  isUnboundedList="${isUnboundedList}"
                                  isInputGroup="${false}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="${dataServiceDescriptionPlaceHolder}"
                                  isFirstRequired="${isFirstRequired}"
                                  tagName="dataServiceDescription"
                                  showTopOrBottom="bottom">

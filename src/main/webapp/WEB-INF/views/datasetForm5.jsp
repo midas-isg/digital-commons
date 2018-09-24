@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -20,13 +20,14 @@
     <div id="entryFormContent">
 
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
-
+            <myTags:wizardHeader showCategories="${false}" wantLoader="${true}"></myTags:wizardHeader>
+            <fmt:message key="dataset.distributions" var="distributionsPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.distributions}"
                                         tagName="distribution"
                                         label="Distributions"
                                         addButtonLabel="Distribution"
-                                        cardText="The distribution(s) by which datasets are made available (for example: mySQL dump)."
+                                        cardText="${distributionsPlaceHolder}"
+                                        cardIcon="fas fa-share-square"
                                         specifier="distributions"
                                         path="distributions">
             </myTags:editMasterUnbounded>
@@ -37,6 +38,14 @@
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        toggleLoadingScreen();
+       // $('.loading').addClass("hide");
+
+    });
+</script>
+
 <myTags:analytics/>
 
 </body>

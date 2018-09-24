@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<fmt:setBundle basename="cardText" />
+
 <%@ attribute name="identifier" required="false"
               type="edu.pitt.isg.mdc.v1_0.Identifier" %>
 <%--
@@ -26,7 +28,7 @@
               type="java.lang.Boolean" %>
 
 
-
+<fmt:message key="software.identifier" var="cardText" />
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${identifier}"
@@ -34,33 +36,42 @@
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  isRequired="${isRequired}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="${cardText}"
+                                 cardIcon="fa fa-id-card-o"
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
+
+<fmt:message key="software.identifier.identifier" var="identifierPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.identifier"
                                 specifier="${specifier}-identifier"
                                 id="${specifier}-identifier"
-                                placeholder="A code uniquely identifying an entity locally to a system or globally."
-                                isRequired="${false}"
+                                placeholder="${identifierPlaceHolder}"
+                                cardText="${identifierPlaceHolder}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier"
+                                updateCardTabTitleText="${isUnboundedList}"
                                 string="${identifier.identifier}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="software.identifier.identifierSource" var="identifierSourcePlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.identifierSource"
                                 specifier="${specifier}-identifierSource"
                                 id="${specifier}-identifierSource"
-                                placeholder="The identifier source represents information about the organisation/namespace responsible for minting the identifiers. It must be provided if the identifier is provided."
-                                isRequired="${false}"
+                                placeholder="${identifierSourcePlaceHolder}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier Source"
                                 string="${identifier.identifierSource}">
 </myTags:editNonZeroLengthString>
+
+<fmt:message key="software.identifier.description" var="descriptionPlaceHolder" />
 <myTags:editNonZeroLengthString path="${path}.identifierDescription"
                                 specifier="${specifier}-identifierDescription"
                                 id="${specifier}-identifierDescription"
-                                placeholder="Identifier Description."
-                                isRequired="${false}"
+                                placeholder="${descriptionPlaceHolder}"
+                                isRequired="${true}"
                                 isInputGroup="${true}"
                                 label="Identifier Description"
                                 string="${identifier.identifierDescription}">
@@ -71,7 +82,7 @@
                                  label="${label}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
-                                 cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                 cardText="${cardText}"
                                  isRequired="${isRequired}"
                                  tagName="softwareIdentifier"
                                  showTopOrBottom="bottom">

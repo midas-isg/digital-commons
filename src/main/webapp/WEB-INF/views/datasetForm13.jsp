@@ -7,7 +7,7 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -23,11 +23,12 @@
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
             <div id="version">
+                <fmt:message key="dataset.version" var="versionPlaceHolder" />
                 <myTags:editNonZeroLengthString path="version"
                                                 string="${digitalObject.version}"
                                                 specifier="version"
                                                 id="version"
-                                                placeholder=" A release point for the dataset when applicable."
+                                                placeholder="${versionPlaceHolder}"
                                                 isUnboundedList="${false}"
                                                 isRequired="${true}"
                                                 isInputGroup="${true}"
@@ -35,12 +36,14 @@
                 </myTags:editNonZeroLengthString>
             </div>
             <div id="extraProperties">
+                <fmt:message key="dataset.extraProperties" var="extraPropertiesPlaceHolder" />
                 <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                             tagName="categoryValuePair"
                                             specifier="extraProperties"
                                             label="Extra Properties"
                                             addButtonLabel="Extra Property"
-                                            cardText="Extra properties that do not fit in the previous specified attributes."
+                                            cardText="${extraPropertiesPlaceHolder}"
+                                            cardIcon="fas fa-plus"
                                             path="extraProperties">
                 </myTags:editMasterUnbounded>
             </div>

@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -22,21 +23,6 @@
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
             <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
 
-            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
-                                   label="Identifier"
-                                   specifier="identifier"
-                                   id="identifier"
-                                   isUnboundedList="${false}"
-                                   path="identifier">
-            </myTags:editIdentifier>
-            <myTags:editMasterUnbounded specifier="alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="alternateIdentifiers"
-                                        listItems="${digitalObject.alternateIdentifiers}"
-                                        isRequired="${false}"
-                                        isInputGroup="${true}"
-                                        tagName="identifier">
-            </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString placeholder=" Name"
                                             label="Name"
                                             string="${digitalObject.name}"
@@ -54,44 +40,76 @@
                                             label="Description"
                                             isTextArea="${true}"
                                             isInputGroup="${true}"
-                                            isRequired="${false}"
+                                            isRequired="${true}"
                                             placeholder="Description">
             </myTags:editNonZeroLengthString>
-            <myTags:editAnnotation annotation="${digitalObject.type}"
-                                   isRequired="${true}"
-                                   path="type"
-                                   specifier="type"
-                                   id="type"
-                                   cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
-                                   isUnboundedList="${false}"
-                                   label="Type">
-            </myTags:editAnnotation>
-            <myTags:editMasterUnbounded listItems="${digitalObject.licenses}"
-                                        tagName="license"
-                                        specifier="licenses"
-                                        isRequired="${false}"
-                                        label="License"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
-                                        path="licenses">
-            </myTags:editMasterUnbounded>
             <myTags:editNonZeroLengthString label="Version"
                                             placeholder=" Version"
                                             specifier="version"
                                             id="version"
                                             string="${digitalObject.version}"
                                             isUnboundedList="${false}"
-                                            isRequired="${false}"
+                                            isRequired="${true}"
+                                            isInputGroup="${true}"
                                             path="version">
             </myTags:editNonZeroLengthString>
+
+            <fmt:message key="dataStandard.type" var="typePlaceHolder" />
+            <myTags:editAnnotation annotation="${digitalObject.type}"
+                                   isRequired="${true}"
+                                   path="type"
+                                   specifier="type"
+                                   id="type"
+                                   cardText="${typePlaceHolder}"
+                                   isUnboundedList="${false}"
+                                   label="Type">
+            </myTags:editAnnotation>
+
+            <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
+                                   label="Identifier"
+                                   specifier="identifier"
+                                   id="identifier"
+                                   isUnboundedList="${false}"
+                                   path="identifier">
+            </myTags:editIdentifier>
+
+            <fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
+            <myTags:editMasterUnbounded specifier="alternateIdentifiers"
+                                        label="Alternate Identifiers"
+                                        addButtonLabel="Alternate Identifier"
+                                        path="alternateIdentifiers"
+                                        listItems="${digitalObject.alternateIdentifiers}"
+                                        cardIcon="fa fa-id-card"
+                                        cardText="${alternateIdentifierPlaceHolder}"
+                                        isRequired="${false}"
+                                        tagName="identifier">
+            </myTags:editMasterUnbounded>
+
+            <fmt:message key="dataStandard.license" var="licensePlaceHolder" />
+            <myTags:editMasterUnbounded listItems="${digitalObject.licenses}"
+                                        tagName="license"
+                                        specifier="licenses"
+                                        isRequired="${false}"
+                                        label="Licenses"
+                                        cardIcon="fab fa-creative-commons"
+                                        addButtonLabel="License"
+                                        cardText="${licensePlaceHolder}"
+                                        path="licenses">
+            </myTags:editMasterUnbounded>
+
+            <fmt:message key="dataStandard.extraProperties" var="extraPropertiesPlaceHolder" />
             <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
                                         tagName="categoryValuePair"
                                         isRequired="${false}"
                                         specifier="extraProperties"
-                                        cardText="Some quick example text to build on the card title and make up the bulk of the card's content."
+                                        cardText="${extraPropertiesPlaceHolder}"
+                                        cardIcon="fas fa-plus"
                                         path="extraProperties"
+                                        addButtonLabel="Extra Property"
                                         label="Extra Properties">
             </myTags:editMasterUnbounded>
 
+            <div class="row " id="entryFormContent-card-row"></div>
 
             <input hidden id="categoryID" name="categoryID" value="${categoryID}" type="number">
             <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
@@ -101,6 +119,8 @@
 
 <script>
     $(document).ready(function () {
+        rearrangeCards('entryFormContent');
+
         $("#categoryValue").change(function () {
             var categoryValue = $(this).val();
             $("#categoryID").val(categoryValue)

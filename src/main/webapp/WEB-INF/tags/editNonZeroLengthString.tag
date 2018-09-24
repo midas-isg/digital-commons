@@ -26,6 +26,14 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isFirstRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextPerson" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextType" required="false"
+              type="java.lang.Boolean" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -37,7 +45,7 @@
                                  isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
-                                 cardText=""
+                                 cardText="${cardText}"
                                  tagName="string"
                                  showTopOrBottom="top">
 </myTags:editMasterElementWrapper>
@@ -45,6 +53,9 @@
                        specifier="${specifier}-string"
                        string="${string}"
                        isTextArea="${isTextArea}"
+                       updateCardTabTitleText="${isUnboundedList or updateCardTabTitleText}"
+                       updateCardTabTitleTextPerson="${updateCardTabTitleTextPerson}"
+                       updateCardTabTitleTextType="${updateCardTabTitleTextType}"
                        placeholder="${placeholder}">
 </myTags:editInputBlock>
 <myTags:editMasterElementWrapper path="${path}"
@@ -56,7 +67,7 @@
                                  isInputGroup="${isInputGroup}"
                                  isRequired="${isRequired}"
                                  isFirstRequired="${isFirstRequired}"
-                                 cardText=""
+                                 cardText="${cardText}"
                                  tagName="string"
                                  showTopOrBottom="bottom">
 </myTags:editMasterElementWrapper>
