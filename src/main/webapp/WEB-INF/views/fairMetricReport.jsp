@@ -8,22 +8,20 @@
 
 <html>
 <head>
-    <myTags:head/>
-    <%--<script src="${pageContext.request.contextPath}/resources/js/commons.js"></script>--%>
-    <script src="${pageContext.request.contextPath}/resources/js/lodash.min.js"></script>
-        <%--pageTitle="Search"--%>
+    <myTags:head title="MIDAS Digital Commons"/>
     <myTags:header
             pageTitle="MIDAS Digital Commons"
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
 
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <myTags:analytics/>
 <body id="commons-body">
 
 <myTags:softwareModal/>
 
-<div class="margin-top-22">
+<div class="container-fluid">
     <div class="row">
         <!-- This is the results panel -->
         <div class="col-md-12 font-size-16">

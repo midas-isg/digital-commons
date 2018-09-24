@@ -4,7 +4,7 @@
 
   "identifier": "10.25337/T7/ptycho.v2.0/AI.38362002",
   "vocab1_uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545",
-  "metadata": "http://betaweb.rods.pitt.edu/digital-commons-dev/api/v1/identifiers/metadata?identifier=10.25337/T7/ptycho.v2.0/AI.38362002",
+  "metadata": "http://betaweb.rods.pitt.edu/digital-commons/api/v1/identifiers/metadata?identifier=10.25337/T7/ptycho.v2.0/AI.38362002",
   "prov_vocab_uri": "https://orcid.org/0000-0002-7278-9982",
   "subject": "10.25337/T7/ptycho.v2.0/AI.38362002",
   "format": "https://fairsharing.org/bsg-s000718",
