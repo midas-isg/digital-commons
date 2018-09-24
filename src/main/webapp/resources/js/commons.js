@@ -1209,7 +1209,8 @@ function setCardTabTitle(id, specifier, cardTabTitle){
     var leftIndex = 20;
     var rightIndex = 10;
 
-    $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
+    // $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
+    $('#'+ id +'[data-toggle="tooltip"]').attr("data-original-title",cardTabTitle);
 
     if (cardTabTitle.includes(" ")) {
         var regex = /\s+/g;
