@@ -10,7 +10,7 @@
 <myTags:categoryLineage lineage="${categoryName}" hasSidebar="${true}"/>
 
 <c:if test="${wantLoader}">
-    <div class="loading style-2">
+    <div class="loading ">
         <div class="loading-wheel"></div>
     </div>
 </c:if>

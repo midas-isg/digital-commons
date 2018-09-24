@@ -1444,13 +1444,14 @@ ul.CTAs a {
 
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 57%;
 
     border-width: 30px;
     border-radius: 50%;
     -webkit-animation: spin 1s linear infinite;
 }
-.style-2 .loading-wheel {
+
+.loading-wheel {
     border-style: double;
     border-color: #ccc transparent;
 }

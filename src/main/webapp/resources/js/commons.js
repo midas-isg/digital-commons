@@ -788,16 +788,16 @@ function highlightDiv(div, color) {
 
     $("div.card").find('*').css("box-shadow", '');
 
-    $('#' + div).animate({
-        boxShadow: "0px 0px 15px 15px " + colorToDisplay
-    }, 1000);
+    $('#' + div).css(
+        "boxShadow", "0px 0px 15px 15px " + colorToDisplay
+    );
 
     $(function() {
         $("body").click(function(e) {
             if (e.target.id == div || $(e.target).parents("#" + div).length) {
-                $('#' + div).animate({
-                    boxShadow: "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
-                }, 500);
+                $('#' + div).css(
+                    "boxShadow", "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
+                );
             }
         });
     })
@@ -1045,8 +1045,7 @@ function toggleLoadingScreen() {
 
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
-    toggleLoadingScreen();
-    
+
     $("#"+specifier+"-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
@@ -1107,7 +1106,6 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
     window.location.hash = $("#" + specifier + "-card").selector;
-    toggleLoadingScreen();
 
 }
 
