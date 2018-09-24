@@ -17,10 +17,10 @@
                 <li><a href="#" onclick="submitForm('title')">Title</a></li>
                 <li><a href="#" onclick="submitForm('humanReadableSynopsis')">Human Readable Synopsis</a></li>
                 <li><a href="#" onclick="submitForm('productName')">Product Name</a></li>
+                <li><a href="#" onclick="submitForm('sourceCodeRelease')">Source Code Release</a></li>
                 <li><a href="#" onclick="submitForm('identifier')">identifier</a></li>
                 <li><a href="#" onclick="submitForm('dataInputFormats')">Data Input Formats</a></li>
                 <li><a href="#" onclick="submitForm('dataOutputFormats')">Data Output Formats</a></li>
-                <li><a href="#" onclick="submitForm('sourceCodeRelease')">Source Code Release</a></li>
                 <li><a href="#" onclick="submitForm('webApplications')">Web Applications</a></li>
             </ul>
         </li>
@@ -29,10 +29,13 @@
             Info</a>
 
             <ul class="collapse list-unstyled" id="softwareForm2">
-                <li><a href="#" onclick="submitForm('license')">License</a></li>
-                <li><a href="#" onclick="submitForm('source')">Source</a></li>
                 <li><a href="#" onclick="submitForm('website')">Website</a></li>
                 <li><a href="#" onclick="submitForm('documentation')">Documentation</a></li>
+                <li><a href="#" onclick="submitForm('availableOnOlympus')">Available On Olympus</a></li>
+                <li><a href="#" onclick="submitForm('availableOnUIDS')">Available On UIDS</a></li>
+                <li><a href="#" onclick="submitForm('signInRequired')">Sign In Required</a></li>
+                <li><a href="#" onclick="submitForm('license')">License</a></li>
+                <li><a href="#" onclick="submitForm('source')">Source</a></li>
                 <li><a href="#" onclick="submitForm('developers')">Developers</a></li>
                 <li><a href="#" onclick="submitForm('publicationsThatUsedRelease')">Publications That Used Release</a></li>
                 <li><a href="#" onclick="submitForm('executables')">Executables</a></li>
@@ -40,9 +43,6 @@
                 <li><a href="#" onclick="submitForm('publicationsAboutRelease')">Publications About Release</a></li>
                 <li><a href="#" onclick="submitForm('grants')">Grants</a></li>
                 <li><a href="#" onclick="submitForm('locationCoverage')">Location Coverage</a></li>
-                <li><a href="#" onclick="submitForm('availableOnOlympus')">Available On Olympus</a></li>
-                <li><a href="#" onclick="submitForm('availableOnUIDS')">Available On UIDS</a></li>
-                <li><a href="#" onclick="submitForm('signInRequired')">Sign In Required</a></li>
             </ul>
         </li>
 

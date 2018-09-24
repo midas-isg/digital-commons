@@ -388,7 +388,7 @@
                                                            isUnboundedList="${true}"
                                                            isRequired="${isRequired}"
                                                            id="${specifier}-${varStatus.count-1}"
-                                                           specifier="${specifier}-nested-identifier-${varStatus.count-1}">
+                                                           specifier="${specifier}-${varStatus.count-1}">
                             </myTags:editSoftwareIdentifier>
                         </c:when>
                         <c:when test="${tagName == 'string'}">

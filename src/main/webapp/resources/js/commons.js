@@ -992,19 +992,19 @@ function showTab(e, div, specifier) {
         //if card is unbounded list we find the 'active' tab and unhide that input block
         var inputBlockID = $(this).attr("id");
         var tabID = inputBlockID.replace("input-block", "tab");
+        var divBeforeInputBlockID = inputBlockID.replace("-input-block","");
 
         //the card is not an unbounded list so display the input block
 
         if ($("#" + tabID).length == 0 && !(tabID.endsWith("00-tab"))) {
             $(this).removeClass("hide");
         }
-        //cards with existing data were not displaying despite input block having hide removed
-        if ($("#" + tabID).length > 0 && !(tabID.endsWith("copy-tag"))) {
-            $(this).removeClass("hide");
-        }
 
+        //cards with existing data were not displaying despite input block having hide removed
+        //added divBeforeInputBlockID to unhide if active
         if ($("#" + tabID).children().hasClass("active")) {
             $(this).removeClass("hide");
+            $("#"+divBeforeInputBlockID).removeClass("hide");
         }
     });
 };
@@ -1109,7 +1109,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
 
 }
 
-function updateCardTabTitle(specifier){
+function getLastIndex(specifier){
     var index = 0;
     //get the last index of the specifier
     for (var i=0; i<10; i++) {
@@ -1120,28 +1120,37 @@ function updateCardTabTitle(specifier){
             }
         }
     }
+
+    return index;
+}
+
+function updateCardTabTitle(specifier){
+    var index = getLastIndex(specifier);
+
     var newCardTabTitleText = $("#" + specifier).val();
     if (index > 0 && newCardTabTitleText.length > 0) {
-        var id = specifier.substring(0, lastIndex + 2) + "listItem";
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitleFromSelect(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier+"-select")[0].value;
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
         setCardTabTitle(id, specifier, newCardTabTitleText);
     }
 }
 
 function updateCardTabTitlePerson(specifier){
-    var index = 0;
-    //get the last index of the specifier
-    for (var i=0; i<10; i++) {
-        if (specifier.includes(i+"-")){
-            var lastIndex = specifier.lastIndexOf(i+"-");
-            if (lastIndex > index) {
-                index = lastIndex;
-            }
-        }
-    }
-    var fullNameId = specifier.substring(0, lastIndex + 2) + "fullname-string";
-    var firstNameId = specifier.substring(0, lastIndex + 2) + "firstName-string";
-    var middleInitialId = specifier.substring(0, lastIndex + 2) + "middleInitial-string";
-    var lastNameId = specifier.substring(0, lastIndex + 2) + "lastName-string";
+    var index = getLastIndex(specifier);
+
+    var fullNameId = specifier.substring(0, index + 2) + "fullname-string";
+    var firstNameId = specifier.substring(0, index + 2) + "firstName-string";
+    var middleInitialId = specifier.substring(0, index + 2) + "middleInitial-string";
+    var lastNameId = specifier.substring(0, index + 2) + "lastName-string";
 
     var fullName = $("#" + fullNameId).val();
     var firstName = $("#" + firstNameId).val();
@@ -1167,31 +1176,23 @@ function updateCardTabTitlePerson(specifier){
         $("#" + fullNameId).val(fullName);
     }
 
-    var id = specifier.substring(0, lastIndex + 2) + "listItem";
+    var id = specifier.substring(0, index + 2) + "listItem";
     if (fullName.length > 0) {
         setCardTabTitle(id, specifier, fullName);
     }
 }
 
 function updateCardTabTitleType(specifier){
-    var index = 0;
-    //get the last index of the specifier
-    for (var i=0; i<10; i++) {
-        if (specifier.includes(i+"-")){
-            var lastIndex = specifier.lastIndexOf(i+"-");
-            if (lastIndex > index) {
-                index = lastIndex;
-            }
-        }
-    }
-    var informationId = specifier.substring(0, lastIndex + 2) + "information-value-string";
-    var methodId = specifier.substring(0, lastIndex + 2) + "method-value-string";
-    var platformId = specifier.substring(0, lastIndex + 2) + "platform-value-string";
+    var index = getLastIndex(specifier);
+
+    var informationId = specifier.substring(0, index + 2) + "information-value-string";
+    var methodId = specifier.substring(0, index + 2) + "method-value-string";
+    var platformId = specifier.substring(0, index + 2) + "platform-value-string";
     var information = $("#" + informationId).val();
     var method = $("#" + methodId).val();
     var platform = $("#" + platformId).val();
 
-    var id = specifier.substring(0, lastIndex + 2) + "listItem";
+    var id = specifier.substring(0, index + 2) + "listItem";
     if (information.length > 0) {
         setCardTabTitle(id, specifier, information.trim());
     } else if (method.length > 0) {
