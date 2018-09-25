@@ -85,12 +85,12 @@
                     'overflow': 'hidden'
                 });
 
-                this.$element
-                    .find('.modal-body').css({
-                    'max-height': maxHeight,
-                    'height': maxHeight,
-                    'overflow-y': 'auto'
-                });
+                // this.$element
+                //     .find('.modal-body').css({
+                //     'max-height': maxHeight,
+                //     'height': maxHeight,
+                //     'overflow-y': 'auto'
+                // });
             }
 
             $('.modal').on('show.bs.modal', function() {
