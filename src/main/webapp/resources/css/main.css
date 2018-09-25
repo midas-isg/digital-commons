@@ -900,7 +900,7 @@ tfoot {
 }
 
 @media (min-width: 992px) {
-    .nav-link {
+    .navbar-nav-link {
         margin-top: 0; !important;
         color: white !important;
         font-family: "TransportNewMedium", Helvetica, Arial, sans-serif;

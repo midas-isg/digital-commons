@@ -1,36 +1,36 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ attribute name="entries" required="true"
-              type="java.util.List"%>
+              type="java.util.List" %>
 <%@ attribute name="datasetEntries" required="true"
-              type="java.util.List"%>
+              type="java.util.List" %>
 <%@ attribute name="dataStandardEntries" required="true"
-              type="java.util.List"%>
+              type="java.util.List" %>
 <%@ attribute name="softwareEntries" required="true"
-              type="java.util.List"%>
+              type="java.util.List" %>
 <%@ attribute name="approvedEntries" required="true"
-              type="java.util.List"%>
+              type="java.util.List" %>
 <%@ attribute name="categoryPaths" required="true"
-              type="java.util.Map"%>
+              type="java.util.Map" %>
 <%@ attribute name="adminType" required="true"
-              type="java.lang.String"%>
+              type="java.lang.String" %>
 
 <script>
     var entryComments = {};
     var softwareXml = {};
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         if (location.hash) {
             $("a[href='" + location.hash + "']").tab("show");
         }
-        $(document.body).on("click", "a[data-toggle]", function(event) {
+        $(document.body).on("click", "a[data-toggle]", function (event) {
             location.hash = this.getAttribute("href");
         });
     });
-    $(window).on("popstate", function() {
+    $(window).on("popstate", function () {
         var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
         $("a[href='" + anchor + "']").tab("show");
     });
@@ -63,7 +63,7 @@
         $('#category-feedback').hide();
     }
 
-    $('#category-select').change(function() {
+    $('#category-select').change(function () {
         hideCategoryErrors();
     });
 
@@ -72,7 +72,7 @@
         var tableData = tableRow.children();
 
         var elemInfo = [];
-        for(var i = 1; i < 5; i++) {
+        for (var i = 1; i < 5; i++) {
             elemInfo.push($(tableData[i]).text().trim());
         }
 
@@ -86,17 +86,17 @@
         $(baseId + "author" + endId).text(elemInfo[2]);
         $(baseId + "type" + endId).text(elemInfo[3]);
 
-        if(htmlId == "approveModal") {
-            if(category !== null && category !== '') {
+        if (htmlId == "approveModal") {
+            if (category !== null && category !== '') {
                 $('#category-select' + endId).val(category);
             }
 
-            if(status == "approved") {
+            if (status == "approved") {
                 $("#approve-btn" + endId).text("Make Public");
                 $("#approve-modal-header" + endId).text("Make Submission Public");
             }
-        } else if(htmlId == "rejectModal") {
-            if(category !== null && category !== '') {
+        } else if (htmlId == "rejectModal") {
+            if (category !== null && category !== '') {
                 $('#category-span' + endId).text(category);
             } else {
                 $('#category-span' + endId).text("None");
@@ -110,24 +110,24 @@
     function evalPublishModal() {
 
         $.ajax({
-            type : "GET",
-            contentType : "application/json; charset=utf-8",
-            url : "${pageContext.request.contextPath}/api/cache-tree-info-json",
-            dataType : 'json',
+            type: "GET",
+            contentType: "application/json; charset=utf-8",
+            url: "${pageContext.request.contextPath}/api/cache-tree-info-json",
+            dataType: 'json',
             data: {},
             cache: false,
-            timeout : 500000,
-            beforeSend: function() {
+            timeout: 500000,
+            beforeSend: function () {
                 $(".ajax-loader").html("<img src='../img/spinner.gif'>");
-                },
-            complete: function(){
+            },
+            complete: function () {
                 $(".ajax-loader").html("");
             },
-            success : function(data) {
+            success: function (data) {
                 console.log(data);
                 showPublishModal(data);
             },
-            error : function(xhr, textStatus, errorThrown) {
+            error: function (xhr, textStatus, errorThrown) {
                 console.log(xhr.responseText);
                 console.log(textStatus);
                 console.log(errorThrown);
@@ -148,7 +148,7 @@
         //console.log(publishData.valueOf("result"));
         $('#btnStatusModalClose').prop('disabled', false);
         //$('#statusModalFooter').show();
-        if(publishData.result === "success") {
+        if (publishData.result === "success") {
             $('#statusModalBody').text("All updates have been published.");
         }
         else {
@@ -164,32 +164,32 @@
         var status = $("#approve-entry-status" + endId).val();
         var categoryId = $("#category-select" + endId).val();
         var params = getEntryParams(entryId, revisionId, categoryId);
-        if(categoryId === null || categoryId === '' || categoryId === 'none') {
+        if (categoryId === null || categoryId === '' || categoryId === 'none') {
             $('#category-form-group' + endId).addClass("has-error");
             $('#category-label' + endId).addClass("error-color");
             $('#category-feedback' + endId).show();
         } else {
             var alertMsg;
-            if(status === 'approved') {
+            if (status === 'approved') {
                 alertMsg = "There was an issue making this entry public. Please try again.";
-                $.post("${pageContext.request.contextPath}/add/make-public", params ,function(data){
-                    if(data === "success") {
+                $.post("${pageContext.request.contextPath}/add/make-public", params, function (data) {
+                    if (data === "success") {
                         window.location.reload();
                     } else {
                         alert(alertMsg);
                     }
-                }).fail(function() {
+                }).fail(function () {
                     alert(alertMsg);
                 });
             } else {
                 alertMsg = "There was an issue approving this entry. Please try again.";
-                $.post("${pageContext.request.contextPath}/add/approve", params ,function(data){
-                    if(data === "success") {
+                $.post("${pageContext.request.contextPath}/add/approve", params, function (data) {
+                    if (data === "success") {
                         window.location.reload();
                     } else {
                         alert(alertMsg);
                     }
-                }).fail(function() {
+                }).fail(function () {
                     alert(alertMsg);
                 });
             }
@@ -202,21 +202,21 @@
         var revisionId = $("#approve-entry-revision-id" + endId).val();
 
         var comments = [];
-        $.each($("#reject-comments-" + id).children(), function(index, child) {
+        $.each($("#reject-comments-" + id).children(), function (index, child) {
             var comment = $(child).find(">:first-child").val();
-            if(comment != null && comment != '') {
+            if (comment != null && comment != '') {
                 comments.push(comment);
             }
         });
 
         var params = getEntryParams(entryId, revisionId, null, comments);
-        $.post("${pageContext.request.contextPath}/add/reject", params ,function(data){
-            if(data == "success") {
+        $.post("${pageContext.request.contextPath}/add/reject", params, function (data) {
+            if (data == "success") {
                 window.location.reload();
             } else {
                 alert("There was an issue rejecting this entry. Please try again.");
             }
-        }).fail(function() {
+        }).fail(function () {
             alert("There was an issue rejecting this entry. Please try again.");
         });
     }
@@ -225,14 +225,14 @@
 
 <style>
     .reject-input {
-        margin-bottom:5px;
-        width:80%;
-        display:inline-block;
+        margin-bottom: 5px;
+        width: 80%;
+        display: inline-block;
     }
 
     .reject-input-btn {
-        margin-left:10px;
-        display:inline-block;
+        margin-left: 10px;
+        display: inline-block;
     }
 </style>
 <myTags:softwareModal/>
@@ -246,39 +246,48 @@
                     modalHeader="Reject Submission"
                     type="reject"
                     categoryPaths="${categoryPaths}"/>
-<div class="col-md-12 container">
+
+<div class="col-md-12">
     <h3 class="title-font" id="subtitle">
         Review Submissions
     </h3>
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#all">All</a></li>
-        <li><a href="#dataset">Dataset</a></li>
-        <li><a href="#data-standard">Data Standard</a></li>
-        <li><a href="#software">Software</a></li>
-        <li><a href="#approved-entries">Approved</a></li>
+    <ul class="nav nav-tabs background-nav">
+        <li class="nav-item"><a class="nav-link active" href="#all">All</a></li>
+        <li class="nav-item"><a class="nav-link" href="#dataset">Dataset</a></li>
+        <li class="nav-item"><a class="nav-link" href="#data-standard">Data Standard</a></li>
+        <li class="nav-item"><a class="nav-link" href="#software">Software</a></li>
+        <li class="nav-item"><a class="nav-link" href="#approved-entries">Approved</a></li>
         <c:choose>
             <c:when test="${adminType == 'ISG_ADMIN'}">
+                <li class="nav-item ml-auto mr-1 my-1">
                     <button type="button" class="btn btn-default btn-publish" name="btnPublish"
-                            onclick="evalPublishModal();">Publish</button>
+                            onclick="evalPublishModal();">Publish
+                    </button>
+                </li>
             </c:when>
         </c:choose>
     </ul>
 
     <div class="tab-content">
-        <div id="all" class="tab-pane fade in active">
-            <myTags:approveTable title="All" entries="${entries}" adminType="${adminType}"></myTags:approveTable>
+        <div id="all" class="tab-pane fade show active">
+            <myTags:approveTable title="All" entries="${entries}"
+                                 adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="dataset" class="tab-pane fade">
-            <myTags:approveTable title="Dataset" entries="${datasetEntries}" adminType="${adminType}"></myTags:approveTable>
+            <myTags:approveTable title="Dataset" entries="${datasetEntries}"
+                                 adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="data-standard" class="tab-pane fade">
-            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}" adminType="${adminType}"></myTags:approveTable>
+            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}"
+                                 adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="software" class="tab-pane fade">
-            <myTags:approveTable title="Software" entries="${softwareEntries}" adminType="${adminType}"></myTags:approveTable>
+            <myTags:approveTable title="Software" entries="${softwareEntries}"
+                                 adminType="${adminType}"></myTags:approveTable>
         </div>
         <div id="approved-entries" class="tab-pane fade">
-            <myTags:approveTable title="Approved" entries="${approvedEntries}" adminType="${adminType}"></myTags:approveTable>
+            <myTags:approveTable title="Approved" entries="${approvedEntries}"
+                                 adminType="${adminType}"></myTags:approveTable>
         </div>
     </div>
 </div>

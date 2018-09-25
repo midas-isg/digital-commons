@@ -24,11 +24,12 @@
         loggedIn="${loggedIn}"
         addEntry="${true}"
 />
-    <h1 id="header" class="h1">Harvest Record from Data.gov by Package Identifier</h1>
 <body id="commons-body">
 <div id="content-body">
-    <form method="POST" action="add-datagov-entry" name="form">
-    <div id="commons-main-body" class="row">
+    <div id="commons-main-body" class="container-fluid">
+        <h3 id="header" class="title-font">Harvest Record from Data.gov by Package Identifier</h3>
+
+        <form method="POST" action="add-datagov-entry" name="form">
         <div id="add-entry" class="tab-pane active">
             <div class="repeating-enclosing category-div">
                 <div class="item-enclosing">
@@ -84,7 +85,6 @@
                 <img src="<c:url value='/resources/img/spinner.gif'/>"></img>
            </span>
         </div>
-    </div>
     </form>
 </div>
 

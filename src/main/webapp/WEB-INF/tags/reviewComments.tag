@@ -8,53 +8,25 @@
 <%@ attribute name="entryTitle" required="true"
               type="java.lang.String" %>
 
-<div class="col-md-12 container">
-    <h3 class="title-font" id="subtitle">
-        Review and add comments
-    </h3>
-    <button class="btn btn-success" onclick="showCommentModal('${entryId}', '${revisionId}')">Add comment
-    </button>
-    <br><br>
-    <div class="col-md-6">
+<h3 class="title-font" id="subtitle">
+    Review and add comments
+</h3>
+<button class="btn btn-success" onclick="showCommentModal('${entryId}', '${revisionId}')">Add comment
+</button>
+<br><br>
+<div class="row">
+    <div class="col-md-5">
         <myTags:commentsTable comments="${comments}"/>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-default" id="html-view">
-            <div class="panel-heading clearfix background-nav"><button class="btn btn-default pull-right" onclick="switchView()">Switch to Metadata View</button> <h4 class="leaf">Summary for ${entryTitle}</h4></div>
+    <div class="col-md-7">
+        <myTags:detailedViewTag type="${entry.entryTypeBaseName}" revId="${revId}"
+                                entryJson="${entry.unescapedEntryJsonString}" entryID="${entry.id.entryId}"
+                                id="${entry.id.entryId}" entryView="${entry}" description="${entry.entry.description}"></myTags:detailedViewTag>
 
-            <div class="panel-body">
-
-                <myTags:softwareModalItems></myTags:softwareModalItems>
-                <c:set var="splitEntryType" value="${fn:split(entry.entryType, '.')}"></c:set>
-                <script>
-                    toggleModalItems(JSON.parse("${entry.entryJsonString}")["entry"], "${splitEntryType[fn:length(splitEntryType) - 1]}");
-                </script>
-            </div>
-        </div>
-
-        <div class="panel panel-default" id="meta-view" style="display: none">
-            <div class="panel-heading clearfix background-nav"><button class="btn btn-default pull-right" onclick="switchView()">Switch to HTML View</button> <h4 class="leaf">Summary for ${entryTitle}</h4></div>
-
-            <div class="panel-body">
-                <c:choose>
-                    <c:when test="${entry.xmlString} != null">
-                        <pre style="border:none; margin:0;"><code style="white-space:pre; display:inline-block">${entry.xmlString}</code></pre>
-                    </c:when>
-                    <c:otherwise>
-                        <pre style="border:none; margin:0;"><code style="white-space:pre; display:inline-block">${entry.unescapedEntryJsonString}</code></pre>
-                    </c:otherwise>
-                </c:choose>
-            </div>
-        </div>
     </div>
 
 </div>
-
 <script>
-    function switchView() {
-        $( "#html-view" ).toggle();
-        $( "#meta-view" ).toggle();
-    }
 
     function commentButton(id) {
         var endId = "-" + id;

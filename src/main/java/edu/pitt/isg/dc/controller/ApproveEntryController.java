@@ -12,6 +12,7 @@ import edu.pitt.isg.dc.entry.interfaces.MdcEntryDatastoreInterface;
 import edu.pitt.isg.dc.entry.interfaces.UsersSubmissionInterface;
 import edu.pitt.isg.dc.entry.util.CategoryHelper;
 import edu.pitt.isg.dc.entry.util.EntryHelper;
+import edu.pitt.isg.dc.repository.utils.ApiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static edu.pitt.isg.dc.controller.HomeController.*;
 
@@ -33,6 +31,9 @@ import static edu.pitt.isg.dc.controller.HomeController.*;
  */
 @Controller
 public class ApproveEntryController {
+    @Autowired
+    private ApiUtil apiUtil;
+
     @Autowired
     private MdcEntryDatastoreInterface datastore;
 

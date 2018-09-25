@@ -17,7 +17,7 @@
 <body id="commons-body">
     <div id="content-body">
 
-        <div id="commons-main-body" class="row">
+        <div id="commons-main-body" class="container-fluid">
             <div id="add-entry" class="tab-pane active">
                 <myTags:reviewEntries
                         entries="${entries}"
