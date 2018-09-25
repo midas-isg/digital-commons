@@ -30,9 +30,9 @@
 </script>
 
 <ul class="nav nav-tabs navbar-nav mr-auto" role="tablist">
-    <li><a id="content-tab" class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
+    <li><a id="content-tab" class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
     <li class="dropdown">
-        <a class="nav-link dropdown-toggle font-size-18 navbar-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-18 navbar-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -40,11 +40,11 @@
             <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#search">Ontology-based search</a>
         </div>
     </li>
-    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
-    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
+    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown ">
-            <a href="#" id="add-digital-object" class="nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+            <a href="#" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
@@ -92,5 +92,5 @@
         </li>
 
     </c:if>
-    <li><a class="nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 </ul>

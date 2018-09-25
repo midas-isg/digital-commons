@@ -22,6 +22,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -461,6 +462,11 @@ public class HomeController {
         //public HttpEntity<byte[]> detailedMetaDataView(@RequestParam(value = "id") long id, @RequestParam(value = "revId") long revId) throws Exception {
         //Entry entry = entryRule.read(new EntryId(id, revId));
         Entry entry = apiUtil.getEntryById(id);
+
+        //we are then trying to get non-public metadata
+        if(entry == null) {
+            entry = apiUtil.getEntryByIdIncludeNonPublic(id);
+        }
         EntryView entryView = new EntryView(entry);
         String documentText;
 
