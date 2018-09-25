@@ -39,19 +39,23 @@
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <transition to="entryConfirmation"/>
     </subflow-state>
 
     <subflow-state id="nextFlowDataStandard" subflow="addDataStandard">
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <transition to="entryConfirmation"/>
     </subflow-state>
 
     <subflow-state id="nextFlowSoftware" subflow="addSoftware">
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <transition to="entryConfirmation"/>
     </subflow-state>
 
+    <view-state id="entryConfirmation"/>
 
 </flow>

@@ -17,7 +17,7 @@
 
 
 <body id="detailed-view-body">
-<myTags:detailedViewTag id="${id}" entryID="${entryId}" entryJson="${entryJson}" entryView="${entryView}" lineage="${lineage}" revId="${revisionId}" type="${type}" description="${description}"/>
+<myTags:detailedViewTag id="${id}" entryID="${entryID}" entryJson="${entryJson}" entryView="${entryView}" lineage="${lineage}" revId="${revisionId}" type="${type}" description="${description}"/>
 
 
 <myTags:analytics/>
