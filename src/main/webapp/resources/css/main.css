@@ -1312,6 +1312,11 @@ ul.CTAs a {
     padding-left: 0px;
 }
 
+/*Home icon on detailed page white*/
+.fa-home {
+    color: white;
+}
+
 /*Cursor:pointer allows the jquery to fire on iOS*/
 .ft-x{
     cursor: pointer;
