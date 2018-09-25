@@ -18,7 +18,7 @@ function clearAndHideEditControlGroup(controlGroup, id) {
     var selectElements = $("#"+controlGroup)[0].getElementsByTagName("select");
     for (var se=0; se < selectElements.length; se++) {
         if (selectElements[se].type === "select-one") {
-            selectElements[se].selectedIndex = -1;
+            selectElements[se].selectedIndex = undefined;
         }
     }
 }
