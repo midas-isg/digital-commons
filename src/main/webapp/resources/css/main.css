@@ -515,6 +515,11 @@ body {
     overflow: scroll;
 }
 
+.modal-header {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
 .bullet-point:before {
     content: ' \25CF';
     font-size: 11px;
