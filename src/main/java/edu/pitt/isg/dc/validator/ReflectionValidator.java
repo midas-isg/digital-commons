@@ -262,13 +262,11 @@ public class ReflectionValidator {
                 clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
             } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
         }
-/*        //isAbout was not returning required fields when clazz equaled IsAboutItems for partial data check
         if(!isObjectEmpty(object) && clazz == edu.pitt.isg.dc.entry.classes.PersonOrganization.class){
-            if (isObjectEmpty(((edu.pitt.isg.dc.entry.classes.PersonOrganization) object).getName()) && isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValueIRI())) {
-                clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
-
-            } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
-        }*/
+            if(TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Organization")) {
+                clazz = Organization.class;
+            }
+        }
 
         List<Field> requiredFields = getRequiredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);
@@ -276,6 +274,17 @@ public class ReflectionValidator {
         List<Field> fieldsToValidate = new ArrayList<>();
         fieldsToValidate.addAll(requiredFields);
         fieldsToValidate.addAll(nonEmptyNonRequiredFields);
+
+        try {
+            if(!isObjectEmpty(object) && (clazz == edu.pitt.isg.dc.entry.classes.PersonOrganization.class || clazz == Person.class)){
+                if(TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Person")) {
+                    if(isObjectEmpty(((Person) object).getFirstName()) && isObjectEmpty(((Person) object).getLastName()) && isObjectEmpty(((Person) object).getMiddleInitial()) && isObjectEmpty(((Person) object).getFullName()) ){
+                        fieldsToValidate.add(Person.class.getDeclaredField("fullName"));
+                    }
+                }
+            }
+        }
+        catch (Exception e){ }
 
         for (Field field : fieldsToValidate) {
             Object value = getValue(field, object);
