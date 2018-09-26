@@ -168,6 +168,11 @@ public class ReflectionValidator {
             return true;
         }
 
+        if (objectOrList.getClass().getSimpleName().equalsIgnoreCase("PersonOrganization")) {
+            if (TagUtil.isPersonOrOrganization((PersonComprisedEntity) objectOrList).equalsIgnoreCase("false")) {
+                return true;
+            }
+        }
         if (isList(objectOrList)) {
             return isListEmtpy((List) objectOrList);
         } else {
@@ -257,6 +262,13 @@ public class ReflectionValidator {
                 clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
             } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
         }
+/*        //isAbout was not returning required fields when clazz equaled IsAboutItems for partial data check
+        if(!isObjectEmpty(object) && clazz == edu.pitt.isg.dc.entry.classes.PersonOrganization.class){
+            if (isObjectEmpty(((edu.pitt.isg.dc.entry.classes.PersonOrganization) object).getName()) && isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValueIRI())) {
+                clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
+
+            } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
+        }*/
 
         List<Field> requiredFields = getRequiredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);

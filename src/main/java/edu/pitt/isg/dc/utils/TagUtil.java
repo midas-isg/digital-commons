@@ -91,6 +91,24 @@ public class TagUtil {
         }
     }
 
+    public static String isPersonOrOrganization(PersonComprisedEntity personComprisedEntity) {
+        try {
+            if (personComprisedEntity instanceof Organization) {
+                return "Organization";
+            } if (personComprisedEntity instanceof Person) {
+                return "Person";
+            } else if (!isObjectEmpty(((PersonOrganization) personComprisedEntity).getName()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getAbbreviation()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getLocation())) {
+                return "Organization";
+            } else if (!isObjectEmpty(((PersonOrganization) personComprisedEntity).getFirstName()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getLastName()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getMiddleInitial()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getFullName()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getEmail()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getAffiliations()) || !isObjectEmpty(((PersonOrganization) personComprisedEntity).getRoles())) {
+                return "Person";
+            } else {
+                return "false";
+            }
+        } catch (Exception e) {
+            return "false";
+        }
+    }
+
     public static boolean isBiologicalEntity(IsAbout isAbout) {
         try {
             if (isAbout instanceof Annotation) {
