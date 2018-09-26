@@ -507,7 +507,12 @@ body {
 }
 
 .tab-content {
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
+}
+
+.modal-body .tab-content {
+    max-height: 600px;
+    overflow: scroll;
 }
 
 .bullet-point:before {
