@@ -251,6 +251,13 @@ public class ReflectionValidator {
             }
         }
 
+        //isAbout was not returning required fields when clazz equaled IsAboutItems for partial data check
+        if(!isObjectEmpty(object) && clazz == edu.pitt.isg.dc.entry.classes.IsAboutItems.class){
+            if (isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValue()) && isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValueIRI())) {
+                clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
+            } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
+        }
+
         List<Field> requiredFields = getRequiredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);
 
