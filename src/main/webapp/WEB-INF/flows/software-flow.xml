@@ -77,8 +77,8 @@
         <transition on="pathogenCoverageTree" to="diseaseTransmissionTreeEstimatorForm"/>
         <transition on="pathogens" to="pathogenEvolutionModelForm"/>
         <transition on="populationSpeciesIncluded" to="populationDynamicsModelForm"/>
-        <transition on="dataServiceDescription[0]" to="dataServiceForm"/>
-        <transition on="populationSpeciesIncluded[0]" to="populationDynamicsModelForm"/>
+        <transition on="dataServiceDescription" to="dataServiceForm"/>
+        <transition on="populationSpeciesIncluded" to="populationDynamicsModelForm"/>
     </action-state>
 
     <!--           -->
