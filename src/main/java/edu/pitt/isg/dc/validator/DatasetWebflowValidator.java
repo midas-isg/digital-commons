@@ -395,7 +395,7 @@ public class DatasetWebflowValidator {
             //Redirect to page with the error
             for (Message message : messageContext.getAllMessages()) {
                 String messageSource = message.getSource().toString();
-                context.getFlowScope().put("indexValue", messageSource.split("\\.")[0]);
+                context.getFlowScope().put("indexValue", messageSource.split("\\.")[0].split("\\[")[0]);
                 return "index";
             }
             return "false";
