@@ -276,8 +276,13 @@ public class ReflectionValidator {
         fieldsToValidate.addAll(nonEmptyNonRequiredFields);
 
         try {
-            if(!isObjectEmpty(object) && (clazz == edu.pitt.isg.dc.entry.classes.PersonOrganization.class || clazz == Person.class)){
-                if(TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Person")) {
+            if(!isObjectEmpty(object) && TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Person")){
+                if(clazz == PersonOrganization.class) {
+                    if(isObjectEmpty(((PersonOrganization) object).getFirstName()) && isObjectEmpty(((PersonOrganization) object).getLastName()) && isObjectEmpty(((PersonOrganization) object).getMiddleInitial()) && isObjectEmpty(((PersonOrganization) object).getFullName()) ){
+                        fieldsToValidate.add(Person.class.getDeclaredField("fullName"));
+                    }
+                }
+                if(clazz == Person.class) {
                     if(isObjectEmpty(((Person) object).getFirstName()) && isObjectEmpty(((Person) object).getLastName()) && isObjectEmpty(((Person) object).getMiddleInitial()) && isObjectEmpty(((Person) object).getFullName()) ){
                         fieldsToValidate.add(Person.class.getDeclaredField("fullName"));
                     }
