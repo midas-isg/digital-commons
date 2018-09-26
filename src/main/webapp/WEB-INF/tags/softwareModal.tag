@@ -5,7 +5,7 @@
 
 
 <div id="pageModal" class="modal fade">
-    <div class="modal-dialog" id="software-modal">
+    <div class="modal-dialog modal-lg" id="software-modal">
         <div class="modal-content">
             <div class="modal-header software-header">
                 <h2 class="sub-title-font pull-left color-white" id="software-name"></h2>
@@ -25,7 +25,7 @@
                         <style>
                             #modal-code-block {
                                 max-height:600px;
-                                max-width:560px;
+                                max-width:750px;
                                 overflow:scroll;
                                 margin-bottom:10px;
                                 border: 1px solid #ccc;
