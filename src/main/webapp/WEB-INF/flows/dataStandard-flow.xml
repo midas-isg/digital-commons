@@ -52,9 +52,9 @@
         <transition on="type" to="dataStandardForm"/>
         <transition on="license" to="dataStandardForm"/>
         <transition on="extraProperties" to="dataStandardForm"/>
-        <transition on="alternateIdentifiers[0]" to="dataStandardForm"/>
-        <transition on="licenses[0]" to="dataStandardForm"/>
-        <transition on="extraProperties[0]" to="dataStandardForm"/>
+        <transition on="alternateIdentifiers" to="dataStandardForm"/>
+        <transition on="licenses" to="dataStandardForm"/>
+        <transition on="extraProperties" to="dataStandardForm"/>
 
     </action-state>
 
