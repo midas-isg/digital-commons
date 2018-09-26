@@ -15,6 +15,8 @@
               type="java.lang.String" %>
 <%@ attribute name="label" required="true"
               type="java.lang.String" %>
+<%@ attribute name="isRequired" required="false"
+              type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 <%@ attribute name="id" required="true"
@@ -25,6 +27,7 @@
                                  specifier="${specifier}"
                                  object="${singleIdentifier}"
                                  label="${label}"
+                                 isRequired="${isRequired}"
                                  id="${id}"
                                  isUnboundedList="${isUnboundedList}"
                                  cardText="${cardText}"
@@ -61,6 +64,7 @@
                                  label="${label}"
                                  id="${id}"
                                  cardText="${cardText}"
+                                 isRequired="${isRequired}"
                                  isUnboundedList="${isUnboundedList}"
                                  tagName="identifier"
                                  showTopOrBottom="bottom">

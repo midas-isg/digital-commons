@@ -67,6 +67,7 @@
 
             <myTags:editIdentifier singleIdentifier="${digitalObject.identifier}"
                                    label="Identifier"
+                                   isRequired="${true}"
                                    specifier="identifier"
                                    id="identifier"
                                    isUnboundedList="${false}"

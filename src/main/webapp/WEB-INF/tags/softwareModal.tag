@@ -3,7 +3,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-
+<%@ attribute name="hideDetailedView" required="false"
+              type="java.lang.Boolean" %>
 <div id="pageModal" class="modal fade">
     <div class="modal-dialog modal-lg" id="software-modal">
         <div class="modal-content">
@@ -76,7 +77,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="detailed-view-button">Detailed View</button>
+                <button class="btn btn-default <c:if test="${hideDetailedView}">hidden</c:if> " id="detailed-view-button">Detailed View</button>
                 <button id="modal-switch-btn"
                         type="button"
                         class="btn btn-default"

@@ -235,7 +235,7 @@
         display: inline-block;
     }
 </style>
-<myTags:softwareModal/>
+<myTags:softwareModal hideDetailedView="${true}"/>
 <myTags:viewModal/>
 <myTags:statusModal/>
 <myTags:reviewModal id="approveModal"
