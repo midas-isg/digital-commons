@@ -29,13 +29,13 @@
             Info</a>
 
             <ul class="collapse list-unstyled" id="softwareForm2">
+                <li><a href="#" onclick="submitForm('license')">License</a></li>
+                <li><a href="#" onclick="submitForm('source')">Source</a></li>
                 <li><a href="#" onclick="submitForm('website')">Website</a></li>
                 <li><a href="#" onclick="submitForm('documentation')">Documentation</a></li>
                 <li><a href="#" onclick="submitForm('availableOnOlympus')">Available On Olympus</a></li>
                 <li><a href="#" onclick="submitForm('availableOnUIDS')">Available On UIDS</a></li>
                 <li><a href="#" onclick="submitForm('signInRequired')">Sign In Required</a></li>
-                <li><a href="#" onclick="submitForm('license')">License</a></li>
-                <li><a href="#" onclick="submitForm('source')">Source</a></li>
                 <li><a href="#" onclick="submitForm('developers')">Developers</a></li>
                 <li><a href="#" onclick="submitForm('publicationsThatUsedRelease')">Publications That Used Release</a></li>
                 <li><a href="#" onclick="submitForm('executables')">Executables</a></li>
