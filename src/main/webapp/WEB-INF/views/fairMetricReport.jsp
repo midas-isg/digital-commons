@@ -48,19 +48,19 @@
                 <tr>
                     <th>Digital Object Identifier</th>
                     <%--<th>FM</th>--%>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-F1A" />">FM-F1A</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-F1B" />">FM-F1B</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-F2" />">FM-F2</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-F3" />">FM-F3</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-F4" />">FM-F4</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM_A1.1" />">FM-A1.1</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM_A1.2" />">FM-A1.2</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-A2" />">FM-A2</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-I1" />">FM-I1</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-I2" />">FM-I2</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-I3" />">FM-I3</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-R1.1" />">FM-R1.1</th>
-                    <th data-toggle="tooltip" data-placement="top" title="<fmt:message key="FM-R1.2" />">FM-R1.2</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-F1A" />" data-target="#fairMetricsModal" >FM-F1A</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-F1B" />" data-target="#fairMetricsModal" >FM-F1B</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-F2" />" data-target="#fairMetricsModal" >FM-F2</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-F3" />" data-target="#fairMetricsModal" >FM-F3</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-F4" />" data-target="#fairMetricsModal" >FM-F4</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM_A1.1" />" data-target="#fairMetricsModal" >FM-A1.1</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM_A1.2" />" data-target="#fairMetricsModal" >FM-A1.2</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-A2" />" data-target="#fairMetricsModal" >FM-A2</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-I1" />" data-target="#fairMetricsModal" >FM-I1</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-I2" />" data-target="#fairMetricsModal" >FM-I2</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-I3" />" data-target="#fairMetricsModal" >FM-I3</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-R1.1" />" data-target="#fairMetricsModal" >FM-R1.1</th>
+                    <th data-toggle="modal" data-measured="<fmt:message key="FM-R1.2" />" data-target="#fairMetricsModal" >FM-R1.2</th>
                 </tr>
                 </thead>
                 <c:forEach items="${report.results}" var="row">
@@ -94,6 +94,25 @@
 </div>
 <br>
 <myTags:footer/>
+
+
+    <div class="modal" id="fairMetricsModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 <script>
@@ -101,6 +120,15 @@
         $('#entry-table').DataTable({
 
         });
+
+        $('#fairMetricsModal').on('show.bs.modal', function (event) {
+            var header = $(event.relatedTarget);
+            var measured = header.data('measured');
+
+            var modal = $(this);
+            modal.find('.modal-body').append(measured);
+
+        })
     });
 </script>
 </html>
