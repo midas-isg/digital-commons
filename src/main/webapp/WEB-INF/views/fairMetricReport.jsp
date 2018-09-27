@@ -99,7 +99,7 @@
 <script>
     $(document).ready(function (){
         $('#entry-table').DataTable({
-
+            ordering:  false
         });
     });
 </script>
