@@ -209,7 +209,7 @@
     <!--                        -->
     <!--Form Disease Transmission Model-->
     <view-state id="diseaseTransmissionModelForm" model="flowScope.digitalObject">
-        <transition on="previous" to="validateSoftwareFormEnd">
+        <transition on="previous" to="validateSoftwareFormPrevious">
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
@@ -255,6 +255,12 @@
     </view-state>
 
 
+    <action-state id="validateSoftwareFormPrevious">
+        <evaluate expression="datasetWebflowValidator.validateSoftwareForm1(flowScope.digitalObject, messageContext, flowScope.categoryID)"/>
+        <transition on="true" to="softwareForm2"/>
+        <transition on="false" to="softwareSpecficForm"/>
+        <transition on="index" to="index"/>
+    </action-state>
 
     <action-state id="validateSoftwareFormEnd">
         <evaluate expression="datasetWebflowValidator.submitDigitalObject(flowRequestContext, messageContext)" />

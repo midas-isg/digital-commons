@@ -1442,6 +1442,17 @@ ul.CTAs a {
     font-size: 10px;
 }
 
+/*FAIR Metrics*/
+.td-upper-boundry{
+    color: #0b2b65;
+    font-weight: bold;
+}
+
+.td-lower-boundry{
+    color: grey;
+    font-weight: bold;
+}
+
 /*CSS for Spinner*/
 .loading {
     z-index: 999;
