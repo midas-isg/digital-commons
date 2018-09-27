@@ -239,7 +239,7 @@
 }
 
 a {
-    /*color: #0c2b65 !important;*/
+    color: #0c2b65 !important;
     text-decoration: none;
 }
 
@@ -737,6 +737,18 @@ textarea {
 
 tfoot {
     display: none !important;
+}
+
+.page-link {
+    color: #0c2b65;
+
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #0c2b65;
+    border-color: #0c2b65;
 }
 
 .data-label {

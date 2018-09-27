@@ -118,7 +118,7 @@
 <script>
     $(document).ready(function (){
         $('#entry-table').DataTable({
-
+            ordering:  false
         });
 
         $('#fairMetricsModal').on('show.bs.modal', function (event) {
