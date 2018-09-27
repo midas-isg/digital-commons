@@ -215,7 +215,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         treeviewInfo['collapseIcon'] = "bullet-point";
         treeviewInfo['highlightSelected'] = false;
         treeviewInfo['onNodeSelected'] = function(event, data) {
-            $('[data-toggle="tooltip"]').tooltip('destroy');
+            $('[data-toggle="tooltip"]').tooltip('hide');
             event.stopPropagation();
         };
         $(treeviewTag).treeview(treeviewInfo);
@@ -326,7 +326,7 @@ function getNodeData(name, key, treeDictionary) {
     }
 
     if(name !== "software" && name !== "webServices" && name !== "dataFormats" && name !== "standardIdentifiers") {
-        nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
+        nodeData.text = "<span data-placement='top' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
     return nodeData;
@@ -662,12 +662,14 @@ function compareNodes(a,b) {
 
 function toggleTitle(element) {
     var $this = $(element);
+    $('[data-toggle="tooltip"]').tooltip();
+
 
     if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
-        $this.attr('title', $this.text());
+        $this.attr('data-original-title', $this.text());
 
     } else {
-        $this.attr('title', '');
+        $this.attr('data-original-title', '');
     }
 
 }
@@ -683,6 +685,8 @@ $('#commons-body').on('click', function (e) {
 });
 
 $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
     }
@@ -805,7 +809,7 @@ function highlightDiv(div, color) {
 
 }
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
+    $('[data-toggle="tooltip"]').tooltip();
 });
 
 
