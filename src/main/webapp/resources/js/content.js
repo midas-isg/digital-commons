@@ -335,6 +335,16 @@ function getDataAndOpenModal(event, id, rev) {
 
 }
 
+function getIdentifierOpenModal(identifier) {
+    $.post(ctx + "/entryInfoFromIdentifier", {identifier: identifier}, function(data){
+        var entry = JSON.parse(data.json);
+        //console.log(data, entry);
+        $("#detailed-view-button").attr("onClick", "location.href='" + ctx + "/detailed-view/?id=" + data.id  + "'");
+        $("#detailed-metadata-view-button").attr("onClick", "window.open('" + ctx + "/detailed-metadata-view/?id=" + data.id + "')");
+        showModal(entry, data.type, data.xml);
+    });
+}
+
 function getDataOpenModal(id, rev) {
     $.post(ctx + "/entryInfo/" + id + '/' + rev, function(data){
         var entry = JSON.parse(data.json);
