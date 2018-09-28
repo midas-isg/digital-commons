@@ -368,7 +368,7 @@
         </transition>
         <transition on="submit" to="validateForm13"/>
 
-        <transition on="index" to="index">
+        <transition on="index" to="validateForm13">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
