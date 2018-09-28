@@ -35,7 +35,7 @@
                     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
                         <div class="btn-group">
                             <button class="btn btn-light"><a
-                                    href="${pageContext.request.contextPath}/addDigitalObject?entryID=${entryID}">Edit
+                                    href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}">Edit
                                 Digital Object</a></button>
                         </div>
                     </c:if>

@@ -401,6 +401,10 @@ public class DatasetWebflowValidator {
             return "false";
         }
 
+        if(context.getCurrentEvent().getId().equals("previous") || context.getCurrentEvent().getId().equals("index")) {
+            return "index";
+        }
+
         try {
             digitalObject = webFlowReflectionValidator.cleanse(clazz, digitalObject, true, true);
         } catch (FatalReflectionValidatorException e) {

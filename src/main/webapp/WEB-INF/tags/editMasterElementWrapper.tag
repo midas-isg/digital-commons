@@ -74,7 +74,7 @@
 
         <c:if test="${not isUnboundedList}">
             <c:if test="${not isInputGroup}"> <div class="card-header"></c:if>
-            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> col-sm-2">${label}</h6>
+            <h6 class="<c:if test="${not isInputGroup}">card-title</c:if> my-2 col-sm-2">${label}</h6>
 
 
             <c:if test="${not isInputGroup}">

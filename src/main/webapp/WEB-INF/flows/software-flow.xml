@@ -165,7 +165,7 @@
     <view-state id="diseaseForecasterForm" model="flowScope.digitalObject">
         <transition on="previous" to="softwareForm2"/>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -177,7 +177,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -189,7 +189,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -201,7 +201,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -213,7 +213,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -225,7 +225,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -237,7 +237,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>
@@ -249,7 +249,7 @@
             <set name="flowScope.indexValue" value="'license'"/>
         </transition>
         <transition on="submit" to="validateSoftwareFormEnd"/>
-        <transition on="index" to="index">
+        <transition on="index" to="validateSoftwareFormEnd">
             <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
         </transition>
     </view-state>

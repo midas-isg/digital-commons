@@ -155,7 +155,7 @@ public class DataEntryController {
     }
 
 
-    @RequestMapping(value = "/addDataGovRecordById", method = RequestMethod.GET)
+    @RequestMapping(value = "/add-data-gov-record-by-id", method = RequestMethod.GET)
     public String addNewEntryFromDataGov(HttpSession session, Model model) throws Exception {
         model.addAttribute("categoryPaths", categoryHelper.getTreePaths());
         //model.addAttribute("category", category);

@@ -19,7 +19,7 @@ import javax.transaction.Transactional;
 import static edu.pitt.isg.dc.controller.MediaType.Application.JSON;
 
 @Controller
-@RequestMapping("/fm")
+@RequestMapping("/fair-metrics")
 @ApiIgnore
 @RequiredArgsConstructor
 public class FairMetricController {
