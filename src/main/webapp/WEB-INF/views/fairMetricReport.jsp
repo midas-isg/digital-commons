@@ -65,7 +65,7 @@
                 </thead>
                 <c:forEach items="${report.results}" var="row">
                     <tr>
-                        <td onclick="getIdentifierOpenModal('${row.subject}')"><c:out value="${row.subject}"/></td>
+                        <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out value="${row.subject}"/></a></td>
                         <%--<td><c:out value="${row.results.size()}"/></td>--%>
                         <c:forEach items="${row.results}" var="result" varStatus="status">
                             <c:choose>
