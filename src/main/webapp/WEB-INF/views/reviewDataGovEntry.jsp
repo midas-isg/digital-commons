@@ -17,15 +17,23 @@
 <body id="commons-body">
 <div id="content-body">
 
-    <div id="commons-main-body" class="row">
+    <div id="commons-main-body" class="container-fluid">
         <div id="add-entry" class="tab-pane active">
-            <myTags:reviewDataGovEntry
-                    returnMessage="${returnMessasge}"/>
+            <div class="row">
+                <div class="col-12">
+                    <br>
+
+                    <myTags:reviewDataGovEntry
+                            returnMessage="${returnMessasge}"/>
+
+                    <div id="add-another">
+                        <a class="btn btn-primary" href="${pageContext.request.contextPath}/add-data-gov-record-by-id">Add another record</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div id="add-another">
-        <a href="${pageContext.request.contextPath}/add-data-gov-record-by-id">Add another record</a>
-    </div>
+
 </div>
 
 <myTags:analytics/>
