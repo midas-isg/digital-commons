@@ -41,6 +41,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     @Query(nativeQuery = true, value="SELECT * FROM entry\n" +
             "WHERE (entry_id, revision_id) IN\n" +
             "(SELECT entry_id, max(revision_id) AS revision_id FROM entry\n" +
+            "WHERE status = 'approved' AND is_public=true \n " +
             "GROUP BY entry_id) AND status = 'approved' AND entry_id = ?1 AND is_public=true ")
     Entry getEntryByEntryIdAndMaxRevisionId(Long id);
 
