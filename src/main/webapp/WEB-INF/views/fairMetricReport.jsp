@@ -15,10 +15,10 @@
             loggedIn="${loggedIn}"
             addEntry="${true}"
     />
-        <fmt:setBundle basename="fairMetricsDescriptions" />
+    <fmt:setBundle basename="fairMetricsDescriptions"/>
 
 
-        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <myTags:analytics/>
 <body id="commons-body">
 
@@ -38,7 +38,7 @@
                     <h4>Note: there are some pending reruns since ${running.created}</h4>
                 </c:otherwise>
             </c:choose>
-            <form action="/digital-commons/fair-metrics/run" method="post" id="form1" />
+            <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
             <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             <table id="resultTable" datatable="ng" class="table table-striped table-bordered" dt-options="dtOptions"
                    dt-columns="dtColumns">
@@ -48,7 +48,7 @@
                 <tr>
                     <th>Digital Object Identifier</th>
                     <c:forEach items="${keys}" var="key">
-                        <th data-toggle="modal"  data-title="${key}" data-target="#fairMetricsModal"
+                        <th data-toggle="modal" data-title="${key}" data-target="#fairMetricsModal"
                             data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
                             data-name="<fmt:message key="${key.concat('-Name')}" />"
                             data-principle="<fmt:message key="${key.concat('-Principle')}" />"
@@ -67,8 +67,9 @@
                 </thead>
                 <c:forEach items="${report.results}" var="row">
                     <tr>
-                        <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out value="${row.subject}"/></a></td>
-                        <%--<td><c:out value="${row.results.size()}"/></td>--%>
+                        <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
+                                value="${row.subject}"/></a></td>
+                            <%--<td><c:out value="${row.results.size()}"/></td>--%>
                         <c:forEach items="${row.results}" var="result" varStatus="status">
                             <c:choose>
                                 <c:when test="${result.hasValue == '0' or result.hasValue == '0.0'}">
@@ -87,80 +88,80 @@
                                     <td><c:out value="${result.hasValue}"/></td>
                                 </c:otherwise>
                             </c:choose>
-                           
+
                         </c:forEach>
                     </tr>
                 </c:forEach>
                 <%--<tfoot>--%>
                 <%--<tr>--%>
-                    <%--<th>Subject</th>--%>
-                    <%--<th>FM</th>--%>
+                <%--<th>Subject</th>--%>
+                <%--<th>FM</th>--%>
                 <%--</tr>--%>
                 <%--</tfoot>--%>
             </table>
         </div>
-</div>
-<br>
-<myTags:footer/>
+    </div>
+    <br>
+    <myTags:footer/>
 
 
     <div class="modal fade" id="fairMetricsModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" style="max-width:600px;" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header software-header">
                     <h2 class="modal-title sub-title-font pull-left color-white"></h2>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">Metric Identifier: </h4><br>
-                        <span id="identifier"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">Metric Name: </h4><br>
-                        <span id="name"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">To which principle does it apply? </h4><br>
-                        <span id="principle"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">What is being measured? </h4><br>
-                        <span id="measured"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">Why should we measure it? </h4><br>
-                        <span id="whyMeasure"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">What must be provided? </h4><br>
-                        <span id="mustProvided"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">How do we measure it? </h4><br>
-                        <span id="howMeasure"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">What is a valid result? </h4><br>
-                        <span id="validResult"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">For which digital resource(s) is this relevant? </h4><br>
-                        <span id="whichRelevant"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">Examples of their application across types of digital resource: </h4><br>
-                        <span id="examples"></span>
-                    </div>
-                    <div class="sub-title-font font-size-16 modal-software-item">
-                        <h4 class="inline bold">Comments: </h4><br>
-                        <span id="comments"></span>
+                    <div class="tab-content">
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">Metric Identifier: </h4><br>
+                            <span id="identifier"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">Metric Name: </h4><br>
+                            <span id="name"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">To which principle does it apply? </h4><br>
+                            <span id="principle"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">What is being measured? </h4><br>
+                            <span id="measured"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">Why should we measure it? </h4><br>
+                            <span id="whyMeasure"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">What must be provided? </h4><br>
+                            <span id="mustProvided"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">How do we measure it? </h4><br>
+                            <span id="howMeasure"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">What is a valid result? </h4><br>
+                            <span id="validResult"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">For which digital resource(s) is this relevant? </h4><br>
+                            <span id="whichRelevant"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">Examples of their application across types of digital
+                                resource: </h4><br>
+                            <span id="examples"></span>
+                        </div>
+                        <div class="sub-title-font font-size-16 modal-software-item">
+                            <h4 class="inline bold">Comments: </h4><br>
+                            <span id="comments"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -168,28 +169,28 @@
 </body>
 
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         $('#entry-table').DataTable({
-            ordering:  false
+            ordering: false
         });
 
         $('#fairMetricsModal').on('show.bs.modal', function (event) {
             var header = $(event.relatedTarget);
             var modal = $(this);
-/*
-            modal.find('.modal-title').text(header.data('title'));
-            modal.find('#identifier').text(header.data('identifier'));
-            modal.find('#name').text(header.data('name'));
-            modal.find('#principle').text(header.data('principle'));
-            modal.find('#measured').text(header.data('measured'));
-            modal.find('#whyMeasure').text(header.data('why-measure'));
-            modal.find('#mustProvided').text(header.data('must-provided'));
-            modal.find('#howMeasure').text(header.data('how-measure'));
-            modal.find('#validResult').text(header.data('valid-result'));
-            modal.find('#whichRelevant').text(header.data('which-relevant'));
-            modal.find('#examples').text(header.data('examples'));
-            modal.find('#comments').text(header.data('comments'));
-*/
+            /*
+                        modal.find('.modal-title').text(header.data('title'));
+                        modal.find('#identifier').text(header.data('identifier'));
+                        modal.find('#name').text(header.data('name'));
+                        modal.find('#principle').text(header.data('principle'));
+                        modal.find('#measured').text(header.data('measured'));
+                        modal.find('#whyMeasure').text(header.data('why-measure'));
+                        modal.find('#mustProvided').text(header.data('must-provided'));
+                        modal.find('#howMeasure').text(header.data('how-measure'));
+                        modal.find('#validResult').text(header.data('valid-result'));
+                        modal.find('#whichRelevant').text(header.data('which-relevant'));
+                        modal.find('#examples').text(header.data('examples'));
+                        modal.find('#comments').text(header.data('comments'));
+            */
 
             var title = header.data('title');
             var identifier = header.data('identifier');
