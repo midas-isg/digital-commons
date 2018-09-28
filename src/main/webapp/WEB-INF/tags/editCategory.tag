@@ -12,7 +12,7 @@
 
 <div class="form-group row edit-form-group <c:if
         test="${ not empty flowRequestContext.messageContext.getMessagesBySource('category')}">has-error</c:if>">
-    <div class="col-sm-2">
+    <div class="my-2 col-sm-2">
         <label class="item-label">Category</label>
     </div>
 
