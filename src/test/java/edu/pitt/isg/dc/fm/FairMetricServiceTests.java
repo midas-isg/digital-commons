@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class FairMetricServiceTests {
     @Test
     public void falsePositives() throws Exception {
-        final String falsePositives = dumpJsonFile("/fm/examples/falsePositives.json");
+        final String falsePositives = dumpJsonFile("/fair-metrics/examples/falsePositives.json");
         final String body = falsePositives;
         final Map<String, FairMetricResult> metricId2result = newFairMetricService().assessAllMetrics(body);
 //        metricId2result.forEach((k, v) -> System.out.println(k + ": " + v));

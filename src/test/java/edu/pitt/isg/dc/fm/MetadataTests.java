@@ -29,13 +29,13 @@ public class MetadataTests {
 
     @Test
     public void file() {
-        String body = dumpJsonFile("/fm/examples/tychoAiaDengueMeta.json");
+        String body = dumpJsonFile("/fair-metrics/examples/tychoAiaDengueMeta.json");
         assertMeta(toStringObjectMap(body));
     }
 
     @Test
     public void fairMetricBody() {
-        String body = dumpJsonFile("/fm/examples/tychoAiaDengueMeta.json");
+        String body = dumpJsonFile("/fair-metrics/examples/tychoAiaDengueMeta.json");
         final Map<String, String> fmBody = metas.metadata2fmBody(toStringObjectMap(body));
         System.out.println(new Gson().toJson(fmBody));
         assertThat(fmBody.get(SUBJECT)).isEqualTo(id);

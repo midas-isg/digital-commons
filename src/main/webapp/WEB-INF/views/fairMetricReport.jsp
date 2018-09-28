@@ -38,7 +38,7 @@
                     <h4>Note: there are some pending reruns since ${running.created}</h4>
                 </c:otherwise>
             </c:choose>
-            <form action="/digital-commons/fm/run" method="post" id="form1" />
+            <form action="/digital-commons/fair-metrics/run" method="post" id="form1" />
             <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             <table id="resultTable" datatable="ng" class="table table-striped table-bordered" dt-options="dtOptions"
                    dt-columns="dtColumns">
@@ -74,6 +74,12 @@
                                 </c:when>
                                 <c:when test="${result.hasValue == '1' or result.hasValue == '1.0' or result.hasValue == '0.99'}">
                                     <td><i class="fas fa-check theme-primary-color"></i></td>
+                                </c:when>
+                                <c:when test="${result.hasValue == '0.33'}">
+                                    <td>1 of 3</td>
+                                </c:when>
+                                <c:when test="${result.hasValue == '0.66'}">
+                                    <td>2 of 3</td>
                                 </c:when>
                                 <c:otherwise>
                                     <td><c:out value="${result.hasValue}"/></td>

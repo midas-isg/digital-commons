@@ -24,7 +24,7 @@
         </div>
     </div>
     <div id="add-another">
-        <a href="${pageContext.request.contextPath}/addDataGovRecordById">Add another record</a>
+        <a href="${pageContext.request.contextPath}/add-data-gov-record-by-id">Add another record</a>
     </div>
 </div>
 
