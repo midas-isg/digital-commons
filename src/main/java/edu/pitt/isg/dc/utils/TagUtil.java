@@ -1,5 +1,8 @@
 package edu.pitt.isg.dc.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.classes.IsAboutItems;
 import edu.pitt.isg.dc.entry.classes.PersonOrganization;
 import edu.pitt.isg.dc.validator.ReflectionValidator;
@@ -22,50 +25,16 @@ public class TagUtil {
             e.printStackTrace();
             return false;
         }
-//        if (bean == null || bean.equals("")) {
-//            return true;
-//        }
-//
-//        boolean objectEmpty = false;
-//
-//        if (bean instanceof List) {
-//            List myList = (List) bean;
-//            if (myList.size() == 0)
-//                return true;
-//            else {
-//                for (int i = 0; i < myList.size(); i++) {
-//                    objectEmpty = isObjectEmpty(myList.get(i));
-//                }
-//            }
-//        } else {
-//            Method[] methods = bean.getClass().getDeclaredMethods();
-//            for (Method method : methods) {
-//                if (isGetter(method)) {
-//                    try {
-//                        Object obj = method.invoke(bean);
-//                        if (obj == null || obj.equals("")) {
-//                            objectEmpty = true;
-//                        } else {
-//                            if (obj.getClass().isPrimitive()) {
-//                                return false;
-//                            } else {
-//                                if (isObjectEmpty(obj)) {
-//                                    objectEmpty = true;
-//                                } else
-//                                    return false;
-//                            }
-//                        }
-//                    } catch (IllegalAccessException e) {
-//                        e.printStackTrace();
-//                    } catch (IllegalArgumentException e) {
-//                        e.printStackTrace();
-//                    } catch (InvocationTargetException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        }
-//        return objectEmpty;
+    }
+
+    public static String getTitleFromPayload(String payload){
+        JsonParser parser = new JsonParser();
+        JsonObject object = parser.parse(payload).getAsJsonObject();
+        try {
+            return object.get("title").getAsString();
+        } catch (NullPointerException e) {
+            return "";
+        }
     }
 
     private static boolean isGetter(Method method) {

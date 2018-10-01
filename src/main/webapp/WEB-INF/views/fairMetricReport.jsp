@@ -6,6 +6,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
 
 <html>
 <head>
@@ -39,11 +40,11 @@
                 </c:otherwise>
             </c:choose>
             <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
-            <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
-            <table id="resultTable" datatable="ng" class="table table-striped table-bordered" dt-options="dtOptions"
-                   dt-columns="dtColumns">
-            </table>
-            <table id="entry-table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+            <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
+                <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
+            </c:if>
+
+            <table id="fair-metrics-table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <th>Digital Object Identifier</th>
@@ -70,24 +71,27 @@
                 <c:forEach items="${report.results}" var="row">
                     <tr>
                         <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
-                                value="${row.subject}"/></a></td>
+                                value="${row.subject}"/></a>
+                            <br>
+                            <sub>${function:getTitleFromPayload(row.submittedPayload)}</sub>
+                        </td>
                             <%--<td><c:out value="${row.results.size()}"/></td>--%>
                         <c:forEach items="${row.results}" var="result" varStatus="status">
                             <c:choose>
                                 <c:when test="${result.hasValue == '0' or result.hasValue == '0.0'}">
-                                    <td><i class="fas fa-times fair-metric-x"></i></td>
+                                    <td class="vertical-align-middle text-center"><i class="fas fa-times fair-metric-x"></i></td>
                                 </c:when>
                                 <c:when test="${result.hasValue == '1' or result.hasValue == '1.0' or result.hasValue == '0.99'}">
-                                    <td><i class="fas fa-check theme-primary-color"></i></td>
+                                    <td class="vertical-align-middle text-center"><i class="fas fa-check theme-primary-color"></i></td>
                                 </c:when>
                                 <c:when test="${result.hasValue == '0.33'}">
-                                    <td>1 of 3</td>
+                                    <td class="vertical-align-middle text-center">1 of 3</td>
                                 </c:when>
                                 <c:when test="${result.hasValue == '0.66'}">
-                                    <td>2 of 3</td>
+                                    <td class="vertical-align-middle text-center">2 of 3</td>
                                 </c:when>
                                 <c:otherwise>
-                                    <td><c:out value="${result.hasValue}"/></td>
+                                    <td class="vertical-align-middle"><c:out value="${result.hasValue}"/></td>
                                 </c:otherwise>
                             </c:choose>
 
@@ -175,8 +179,18 @@
 
 <script>
     $(document).ready(function () {
-        $('#entry-table').DataTable({
-            ordering: false
+        //add a second pagination to the top of the table
+        $('#fair-metrics-table').DataTable({
+            "dom": "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>" +
+                "<'row'<'col-sm-12'tr>>" +
+                "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+            'createdRow': function (row, data, dataIndex) {
+                $('td', row).css('min-width', '65px');
+            },
+            ordering: false,
+            responsive: true
+
         });
 
 

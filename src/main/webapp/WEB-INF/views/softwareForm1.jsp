@@ -87,6 +87,7 @@
                                         path="dataInputFormats"
                                         specifier="dataInputFormats"
                                         isRequired="${false}"
+                                        cardIcon="fas fa-sign-in-alt"
                                         cardText="${dataInputFormatsPlaceHolder}"
                                         listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
@@ -100,6 +101,7 @@
                                         specifier="data-output-format"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardIcon="fas fa-sign-out-alt"
                                         cardText="${dataOutputFormatsPlaceHolder}"
                                         listItems="${digitalObject.dataOutputFormats}">
             </myTags:editMasterUnbounded>
@@ -111,6 +113,7 @@
                                         path="webApplication"
                                         specifier="web-application"
                                         isRequired="${false}"
+                                        cardIcon="fas fa-globe"
                                         cardText="${webApplicationPlaceHolder}"
                                         tagName="string"
                                         listItems="${digitalObject.webApplication}">
