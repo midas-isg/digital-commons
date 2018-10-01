@@ -48,7 +48,7 @@
                 <tr>
                     <th>Digital Object Identifier</th>
                     <c:forEach items="${keys}" var="key">
-                        <th data-toggle="modal" class="pointer" data-title="${key}" data-target="#fairMetricsModal"
+                        <th data-toggle="modal" class="pointer" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
                             title="<fmt:message key="${key.concat('-Name')}" />"
                             data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
                             data-name="<fmt:message key="${key.concat('-Name')}" />"
@@ -61,7 +61,7 @@
                             data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
                             data-examples="<fmt:message key="${key.concat('-Examples')}" />"
                             data-comments="<fmt:message key="${key.concat('-Comments')}" />"
-                        >${key}</th>
+                        ><fmt:message key="${key.concat('-Column-Header')}" /></th>
                     </c:forEach>
 
                 </tr>
@@ -115,50 +115,52 @@
                 <div class="modal-body">
                     <div class="tab-content">
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Metric Identifier: </h4><br>
+                            <h6 class="inline bold">Metric Identifier: </h6><br>
                             <span id="identifier"></span>
                         </div>
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Metric Name: </h4><br>
+                            <h6 class="inline bold">Metric Name: </h6><br>
                             <span id="name"></span>
                         </div>
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">To which principle does it apply? </h4><br>
+                            <h6 class="inline bold">To which principle does it apply? </h6><br>
                             <span id="principle"></span>
                         </div>
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">What is being measured? </h4><br>
+                            <h6 class="inline bold">What is being measured? </h6><br>
                             <span id="measured"></span>
                         </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Why should we measure it? </h4><br>
-                            <span id="whyMeasure"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">What must be provided? </h4><br>
-                            <span id="mustProvided"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">How do we measure it? </h4><br>
-                            <span id="howMeasure"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">What is a valid result? </h4><br>
-                            <span id="validResult"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">For which digital resource(s) is this relevant? </h4><br>
-                            <span id="whichRelevant"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Examples of their application across types of digital
-                                resource: </h4><br>
-                            <span id="examples"></span>
-                        </div>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h4 class="inline bold">Comments: </h4><br>
-                            <span id="comments"></span>
-                        </div>
+                        <%--
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">Why should we measure it? </h6><br>
+                                                    <span id="whyMeasure"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">What must be provided? </h6><br>
+                                                    <span id="mustProvided"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">How do we measure it? </h6><br>
+                                                    <span id="howMeasure"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">What is a valid result? </h6><br>
+                                                    <span id="validResult"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">For which digital resource(s) is this relevant? </h6><br>
+                                                    <span id="whichRelevant"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">Examples of their application across types of digital
+                                                        resource: </h6><br>
+                                                    <span id="examples"></span>
+                                                </div>
+                                                <div class="sub-title-font font-size-16 modal-software-item">
+                                                    <h6 class="inline bold">Comments: </h6><br>
+                                                    <span id="comments"></span>
+                                                </div>
+                        --%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -178,20 +180,6 @@
         $('#fairMetricsModal').on('show.bs.modal', function (event) {
             var header = $(event.relatedTarget);
             var modal = $(this);
-            /*
-                        modal.find('.modal-title').text(header.data('title'));
-                        modal.find('#identifier').text(header.data('identifier'));
-                        modal.find('#name').text(header.data('name'));
-                        modal.find('#principle').text(header.data('principle'));
-                        modal.find('#measured').text(header.data('measured'));
-                        modal.find('#whyMeasure').text(header.data('why-measure'));
-                        modal.find('#mustProvided').text(header.data('must-provided'));
-                        modal.find('#howMeasure').text(header.data('how-measure'));
-                        modal.find('#validResult').text(header.data('valid-result'));
-                        modal.find('#whichRelevant').text(header.data('which-relevant'));
-                        modal.find('#examples').text(header.data('examples'));
-                        modal.find('#comments').text(header.data('comments'));
-            */
 
             var title = header.data('title');
             var identifier = header.data('identifier');
@@ -211,13 +199,15 @@
             modal.find('#name').html(name);
             modal.find('#principle').html(principle);
             modal.find('#measured').html(measured);
-            modal.find('#whyMeasure').html(whyMeasure);
-            modal.find('#mustProvided').html(mustProvided);
-            modal.find('#howMeasure').html(howMeasure);
-            modal.find('#validResult').html(validResult);
-            modal.find('#whichRelevant').html(whichRelevant);
-            modal.find('#examples').html(examples);
-            modal.find('#comments').html(comments);
+            /*
+                        modal.find('#whyMeasure').html(whyMeasure);
+                        modal.find('#mustProvided').html(mustProvided);
+                        modal.find('#howMeasure').html(howMeasure);
+                        modal.find('#validResult').html(validResult);
+                        modal.find('#whichRelevant').html(whichRelevant);
+                        modal.find('#examples').html(examples);
+                        modal.find('#comments').html(comments);
+            */
         })
     });
 </script>
