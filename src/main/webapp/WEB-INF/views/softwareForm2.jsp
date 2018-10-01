@@ -70,6 +70,7 @@
                                         path="developers"
                                         specifier="developers"
                                         cardText="${developersPlaceHolder}"
+                                        cardIcon="fas fa-users"
                                         isRequired="${false}"
                                         tagName="string"
                                         listItems="${digitalObject.developers}"></myTags:editMasterUnbounded>
@@ -82,6 +83,7 @@
                                         specifier="publications-that-used-release"
                                         isRequired="${false}"
                                         cardText="${publicationsThatUsedReleasePlaceHolder}"
+                                        cardIcon="fas fa-book-open"
                                         tagName="string"
                                         listItems="${digitalObject.publicationsThatUsedRelease}"></myTags:editMasterUnbounded>
 
@@ -92,6 +94,7 @@
                                         path="executables" specifier="executables"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardIcon="far fa-file-code"
                                         cardText="${executablesPlaceHolder}"
                                         listItems="${digitalObject.executables}"></myTags:editMasterUnbounded>
 
@@ -102,6 +105,7 @@
                                         path="version" specifier="version"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardIcon="fas fa-layer-group"
                                         cardText="${versionPlaceHolder}"
                                         listItems="${digitalObject.version}"></myTags:editMasterUnbounded>
 
@@ -113,6 +117,7 @@
                                         specifier="publications-about-release"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardIcon="far fa-newspaper"
                                         cardText="${publicationsAboutReleasePlaceHolder}"
                                         listItems="${digitalObject.publicationsAboutRelease}"></myTags:editMasterUnbounded>
 
@@ -123,6 +128,7 @@
                                         path="grants" specifier="grants"
                                         isRequired="${false}"
                                         tagName="string"
+                                        cardIcon="fas fa-university"
                                         cardText="${grantPlaceHolder}"
                                         listItems="${digitalObject.grants}">
             </myTags:editMasterUnbounded>
@@ -134,6 +140,7 @@
                                         path="locationCoverage"
                                         specifier="location-coverage"
                                         tagName="softwareIdentifier"
+                                        cardIcon="fas fa-globe-americas"
                                         cardText="${locationCoveragePlaceHolder}"
                                         listItems="${digitalObject.locationCoverage}">
             </myTags:editMasterUnbounded>

@@ -1051,6 +1051,10 @@ div.container.metadata-container .metadata-column.fancy {
     padding: 3px;
 }
 
+.vertical-align-middle {
+    vertical-align: middle !important;
+}
+
 .table.table-condensed th, .table.table-condensed td {
     padding: 8px;
     font-size: 14px;
