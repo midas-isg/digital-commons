@@ -50,6 +50,7 @@
                     <c:forEach items="${keys}" var="key">
                         <th data-toggle="modal" class="pointer" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
                             title="<fmt:message key="${key.concat('-Name')}" />"
+                            data-fmid="<fmt:message key="${key}" />"
                             data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
                             data-name="<fmt:message key="${key.concat('-Name')}" />"
                             data-principle="<fmt:message key="${key.concat('-Principle')}" />"
@@ -164,6 +165,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="detailed-view-button" >Detailed View</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -177,11 +179,13 @@
             ordering: false
         });
 
+
         $('#fairMetricsModal').on('show.bs.modal', function (event) {
             var header = $(event.relatedTarget);
             var modal = $(this);
 
             var title = header.data('title');
+            var fmid = "FM-" + header.data('title');
             var identifier = header.data('identifier');
             var name = header.data('name');
             var principle = header.data('principle');
@@ -194,6 +198,7 @@
             var examples = header.data('examples');
             var comments = header.data('comments');
 
+            modal.find('#detailed-view-button').attr("onClick", "location.href='" + ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title  + "'")
             modal.find('.modal-title').html(title);
             modal.find('#identifier').html(identifier);
             modal.find('#name').html(name);
