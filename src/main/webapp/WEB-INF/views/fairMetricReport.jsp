@@ -49,6 +49,7 @@
                     <th>Digital Object Identifier</th>
                     <c:forEach items="${keys}" var="key">
                         <th data-toggle="modal" class="pointer" data-title="${key}" data-target="#fairMetricsModal"
+                            title="<fmt:message key="${key.concat('-Name')}" />"
                             data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
                             data-name="<fmt:message key="${key.concat('-Name')}" />"
                             data-principle="<fmt:message key="${key.concat('-Principle')}" />"
