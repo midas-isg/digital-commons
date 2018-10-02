@@ -18,6 +18,10 @@ import javax.transaction.Transactional;
 
 import static edu.pitt.isg.dc.controller.MediaType.Application.JSON;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/fair-metrics")
 @ApiIgnore
@@ -71,4 +75,12 @@ public class FairMetricController {
                 count++;
         return count;
     }
+
+    @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
+    public String detailedViewFAIRMetrics(Model model, HttpSession session,@RequestParam(value = "key") String key) throws Exception {
+        model.addAttribute("key", key);
+
+        return "detailedViewFAIRMetrics";
+    }
+
 }
