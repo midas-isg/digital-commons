@@ -90,6 +90,10 @@
                             <td><fmt:message key="${key.concat('-Must-Provided')}" /></td>
                         </tr>
                         <tr>
+                            <td>How do we measure it?</td>
+                            <td><fmt:message key="${key.concat('-How-Measure')}" /></td>
+                        </tr>
+                        <tr>
                             <td>What is a valid result?</td>
                             <td><fmt:message key="${key.concat('-Valid-Result')}" /></td>
                         </tr>
