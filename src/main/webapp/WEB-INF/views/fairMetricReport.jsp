@@ -49,7 +49,7 @@
                 <tr>
                     <th>Digital Object Identifier</th>
                     <c:forEach items="${keys}" var="key">
-                        <th data-toggle="modal" class="pointer" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
+                        <th data-toggle="modal" class="pointer center" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
                             title="<fmt:message key="${key.concat('-Name')}" />"
                             data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
                             data-name="<fmt:message key="${key.concat('-Name')}" />"
@@ -184,7 +184,7 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             'createdRow': function (row, data, dataIndex) {
-                $('td', row).css('min-width', '65px');
+                $('td', row).css('min-width', '35px');
             },
             ordering: false,
             responsive: true

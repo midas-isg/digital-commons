@@ -9,23 +9,19 @@
 <%@ attribute name="addEntry" type="java.lang.Boolean" %>
 
 <div class="spacer">
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-navbar py-0">
-        <a href="${pageContext.request.contextPath}">
-            <img alt="MIDAS"
-                 class="navbar-brand-mod navbar-brand"
-                 src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small.png">
-        </a>
-        <h2 id="page-title-big"
-            class="leaf d-none d-lg-block">${pageTitle}</h2>
-        <h5 id="page-title"
-            class="leaf d-lg-none d-xl-none">${pageTitle}</h5>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse"
-                aria-controls="navbar-collapse" aria-expanded="true" aria-label="Toggle navigation">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark  flex-md-row bg-navbar py-0  py-md-0">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}">
+            <img src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_smaller.png" height="50" class="d-inline-block align-top" alt="">
+        </a>
+        <h5 id="page-title"
+            class="leaf d-lg-none d-xl-block">Digital Commons</h5>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <c:choose>
                 <c:when test="${addEntry == true}">
                     <myTags:navBar contextPath="${pageContext.request.contextPath}"
@@ -38,25 +34,6 @@
                 </c:otherwise>
             </c:choose>
 
-            <c:choose>
-                <c:when test="${loggedIn == true}">
-                    <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
-                    <form class="form-inline" action="${urlLevel}" method="GET">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
-                                onclick="sessionStorage.clear();">Logout
-                        </button>
-                    </form>
-                </c:when>
-                <c:otherwise>
-                    <c:set var="urlLevel" value="${pageContext.request.contextPath}/login"/>
-                    <form class="form-inline" action="${urlLevel}" method="GET">
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
-                                onclick="sessionStorage.clear();">Log in
-                        </button>
-                    </form>
-
-                </c:otherwise>
-            </c:choose>
         </div>
     </nav>
 </div>
@@ -85,21 +62,21 @@
         </c:otherwise>
         </c:choose>
 
-        if ($(window).width() < maxWidthLarge) {
-            hideTitle('page-title-big');
-        } else {
-            showTitle('page-title-big');
-        }
-
-        if ($(window).width() >= maxWidthMedium && $(window).width() < maxWidthLarge) {
-            showTitle('page-title');
-        } else {
-            hideTitle('page-title');
-        }
-
-        if ($(window).width() < maxWidthSmall) {
-            showTitle('page-title');
-        }
+        // if ($(window).width() < maxWidthLarge) {
+        //     hideTitle('page-title-big');
+        // } else {
+        //     showTitle('page-title-big');
+        // }
+        //
+        // if ($(window).width() >= maxWidthMedium && $(window).width() < maxWidthLarge) {
+        //     showTitle('page-title');
+        // } else {
+        //     hideTitle('page-title');
+        // }
+        //
+        // if ($(window).width() < maxWidthSmall) {
+        //     showTitle('page-title');
+        // }
     }).resize();
 
     function hideTitle(title) {
