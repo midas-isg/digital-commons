@@ -922,6 +922,9 @@ function closeTab(e, div, specifier, tagName) {
             }
         });
 
+        //in some instances the tooltip was displayed in the top left corner of the page despite the tab/card being hidden
+        $(".tooltip").remove();
+
         // TODO: need to fix bug where the next div that is show is one that was 'removed'
         if(counter>1) {
             //find closest tab to the left tab to make it active (we don't just want to use the first tab)
