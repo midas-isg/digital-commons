@@ -24,19 +24,21 @@
 <body id="commons-body">
 
 <myTags:softwareModal/>
+<fmt:parseDate value="${ report.created }" pattern="yyyy-MM-dd'T'HH:mm" var="createdDate" type="both" />
+<fmt:parseDate value="${ running.created }" pattern="yyyy-MM-dd'T'HH:mm" var="runningDate" type="both" />
 
 <div class="container-fluid">
     <div class="row">
         <!-- This is the results panel -->
         <div class="col-md-12 font-size-16">
             <h3 class="title-font" id="subtitle">
-                FAIR Metrics (${report.results.size()} entries) since ${report.created}
+                FAIR Metrics (${report.results.size()} entries) since <fmt:formatDate type="both" value="${createdDate}" />
             </h3>
             <c:choose>
                 <c:when test="${empty running}">
                 </c:when>
                 <c:otherwise>
-                    <h4>Note: there are some pending reruns since ${running.created}</h4>
+                    <h4>Note: there are some pending reruns since <fmt:formatDate type="both" value="${runningDate}" /></h4>
                 </c:otherwise>
             </c:choose>
             <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
