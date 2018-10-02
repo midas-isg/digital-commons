@@ -20,6 +20,15 @@
     </li>
     <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+    <li class="dropdown">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="" onclick="return false;" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FAIR Analysis
+        </a>
+        <div class="dropdown-menu" aria-labelledby="fairDropdown">
+            <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
+            <a class="dropdown-item" href="http://meterdev.onbc.io/#/">FAIR-O-Meter</a>
+        </div>
+    </li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown ">
             <a href="" onclick="return false;" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-16 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
@@ -41,16 +50,7 @@
         </li>
 
     </c:if>
-    <li class="dropdown mr-auto">
-        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="" onclick="return false;" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            FAIR Analysis
-        </a>
-        <div class="dropdown-menu" aria-labelledby="fairDropdown">
-            <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
-            <a class="dropdown-item" href="http://meterdev.onbc.io/#/">FAIR-O-Meter</a>
-        </div>
-    </li>
-    <li class=""><a class="nav-link navbar-nav-link font-size-16 pull-lg-right margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li class="ml-auto"><a class="nav-link navbar-nav-link font-size-16 pull-lg-right margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
     <c:choose>
         <c:when test="${loggedIn == true}">
             <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>

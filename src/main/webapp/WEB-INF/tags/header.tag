@@ -11,9 +11,10 @@
 <div class="spacer">
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark  flex-md-row bg-navbar py-0  py-md-0">
-        <a class="navbar-brand" href="${pageContext.request.contextPath}">
-            <img src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_smaller.png" height="50" class="d-inline-block align-top" alt="">
-        </a>
+        <button class="navbar-brand btn btn-outline-light disabled no-opacity">mdc</button>
+        <%--<a class="navbar-brand" href="${pageContext.request.contextPath}">--%>
+            <%--<img src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_smaller.png" height="50" class="d-inline-block align-top" alt="">--%>
+        <%--</a>--%>
         <h5 id="page-title"
             class="leaf d-lg-none d-xl-block">Digital Commons</h5>
 

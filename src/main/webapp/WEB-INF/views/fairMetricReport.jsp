@@ -47,30 +47,35 @@
             <table id="fair-metrics-table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Digital Object Identifier</th>
-                    <c:forEach items="${keys}" var="key">
-                        <th data-toggle="modal" class="pointer center" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
-                            title="<fmt:message key="${key.concat('-Name')}" />"
-                            data-fmid="<fmt:message key="${key}" />"
-                            data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
-                            data-name="<fmt:message key="${key.concat('-Name')}" />"
-                            data-principle="<fmt:message key="${key.concat('-Principle')}" />"
-                            data-measured="<fmt:message key="${key.concat('-Measured')}" />"
-                            data-why-measure="<fmt:message key="${key.concat('-Why-Measure')}" />"
-                            data-must-provided="<fmt:message key="${key.concat('-Must-Provided')}" />"
-                            data-how-measure="<fmt:message key="${key.concat('-How-Measure')}" />"
-                            data-valid-result="<fmt:message key="${key.concat('-Valid-Result')}" />"
-                            data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
-                            data-examples="<fmt:message key="${key.concat('-Examples')}" />"
-                            data-comments="<fmt:message key="${key.concat('-Comments')}" />"
-                        ><fmt:message key="${key.concat('-Column-Header')}" /></th>
-                    </c:forEach>
-
+                    <th rowspan="2" class="fair-metric-table-header">Digital Object Identifier</th>
+                    <th colspan="13" class="text-center fair-metric-table-header">
+                        Fair Metrics
+                    </th>
                 </tr>
+                    <tr>
+                        <c:forEach items="${keys}" var="key">
+                            <th data-toggle="modal" class="pointer text-center underline" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
+                                title="<fmt:message key="${key.concat('-Name')}" />"
+                                data-fmid="<fmt:message key="${key}" />"
+                                data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
+                                data-name="<fmt:message key="${key.concat('-Name')}" />"
+                                data-principle="<fmt:message key="${key.concat('-Principle')}" />"
+                                data-measured="<fmt:message key="${key.concat('-Measured')}" />"
+                                data-why-measure="<fmt:message key="${key.concat('-Why-Measure')}" />"
+                                data-must-provided="<fmt:message key="${key.concat('-Must-Provided')}" />"
+                                data-how-measure="<fmt:message key="${key.concat('-How-Measure')}" />"
+                                data-valid-result="<fmt:message key="${key.concat('-Valid-Result')}" />"
+                                data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
+                                data-examples="<fmt:message key="${key.concat('-Examples')}" />"
+                                data-comments="<fmt:message key="${key.concat('-Comments')}" />"
+                            ><fmt:message key="${key.concat('-Column-Header')}" /></th>
+                        </c:forEach>
+
+                    </tr>
                 </thead>
                 <c:forEach items="${report.results}" var="row">
                     <tr>
-                        <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
+                        <td><a href="javascript:void(0);" class="underline" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
                                 value="${row.subject}"/></a>
                             <br>
                             <sub>${function:getTitleFromPayload(row.submittedPayload)}</sub>

@@ -799,7 +799,9 @@ tfoot {
 /*//////////////////////////*/
 /*Navbar CSS*/
 /*//////////////////////////*/
-
+.no-opacity {
+    opacity: 1 !important;
+}
 .margin-right-10 {
     margin-right: 10px;
 }
@@ -1523,4 +1525,9 @@ ul.CTAs a {
     100% {
         -webkit-transform: rotate(-360deg);
     }
+}
+
+.fair-metric-table-header {
+    background: #4a618d;
+    color: white;
 }
