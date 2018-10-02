@@ -151,6 +151,13 @@
     margin-bottom: 5px;
 }
 
+@media screen and (min-width: 1200px){
+    .navbar-collapse {
+        padding-left: 25px;
+    }
+
+}
+
 @media screen and (max-width: 860px) {
     .content-title-font {
         color: #0c2b65;
@@ -215,8 +222,8 @@
     position: relative;
     box-sizing: content-box;
     width: 100%;
-    min-height: 80px;
-    height: 80px;
+    min-height: 55px;
+    height: 55px;
 }
 
 .spacer-small {
@@ -792,6 +799,12 @@ tfoot {
 /*//////////////////////////*/
 /*Navbar CSS*/
 /*//////////////////////////*/
+.no-opacity {
+    opacity: 1 !important;
+}
+.margin-right-10 {
+    margin-right: 10px;
+}
 .dropdown:hover>.dropdown-menu {
     transform: none !important;
 }
@@ -832,16 +845,22 @@ tfoot {
     background-color: #0c2b65;
 }
 
-.navbar-brand-mod {
-    float: left !important;
-    height: 80px !important;
+.navbar-brand {
     padding-top: 0px !important;
     padding-bottom: 0px !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    font-size: 18px !important;
-    line-height: 20px !important;
+    margin-right: 10px;
 }
+
+/*.navbar-brand-mod {*/
+    /*float: left !important;*/
+    /*height: 80px !important;*/
+    /*padding-top: 0px !important;*/
+    /*padding-bottom: 0px !important;*/
+    /*padding-left: 15px !important;*/
+    /*padding-right: 15px !important;*/
+    /*font-size: 18px !important;*/
+    /*line-height: 20px !important;*/
+/*}*/
 
 .nav-link {
     margin-top: 0; !important;
@@ -853,10 +872,6 @@ tfoot {
 .nav-link.dropdown-menu > li > a:hover, .nav-link.dropdown-menu > li > a:focus {
     background-color: rgba(0, 0, 0, 0.25);
     margin-top: 0px !important;
-}
-
-.navbar-collapse {
-    padding-left: 30px;
 }
 
 #page-title {
@@ -896,16 +911,16 @@ tfoot {
 /*//////////////////////////*/
 
 @media (max-width: 440px) {
-    .navbar-brand-mod {
-        float: left !important;
-        height: 80px !important;
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-        font-size: 18px !important;
-        line-height: 20px !important;
-    }
+    /*.navbar-brand-mod {*/
+        /*float: left !important;*/
+        /*height: 80px !important;*/
+        /*padding-top: 0px !important;*/
+        /*padding-bottom: 0px !important;*/
+        /*padding-left: 0px !important;*/
+        /*padding-right: 0px !important;*/
+        /*font-size: 18px !important;*/
+        /*line-height: 20px !important;*/
+    /*}*/
 
     #page-title {
         margin-top: 10px;
@@ -934,7 +949,7 @@ tfoot {
         color: white !important;
         font-family: "TransportNewMedium", Helvetica, Arial, sans-serif;
         font-weight: normal;
-        height: 80px;
+        height: 50px;
         display: -ms-flexbox;
         display: flex;
         -ms-flex-flow: row wrap;
@@ -1207,7 +1222,7 @@ div.container.metadata-container .metadata-column.fancy {
     position: fixed;
     left: 0;
     top: 0;
-    padding-top: 70px;
+    padding-top: 40px;
     height: 100%;
     z-index: 3;
     background: #0b2b65;
@@ -1511,4 +1526,9 @@ ul.CTAs a {
     100% {
         -webkit-transform: rotate(-360deg);
     }
+}
+
+.fair-metric-table-header {
+    background: #4a618d;
+    color: white;
 }

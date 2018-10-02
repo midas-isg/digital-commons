@@ -24,53 +24,60 @@
 <body id="commons-body">
 
 <myTags:softwareModal/>
+<fmt:parseDate value="${ report.created }" pattern="yyyy-MM-dd'T'HH:mm" var="createdDate" type="both" />
+<fmt:parseDate value="${ running.created }" pattern="yyyy-MM-dd'T'HH:mm" var="runningDate" type="both" />
 
 <div class="container-fluid">
     <div class="row">
         <!-- This is the results panel -->
         <div class="col-md-12 font-size-16">
             <h3 class="title-font" id="subtitle">
-                FAIR Metrics (${report.results.size()} entries) since ${report.created}
+                FAIR Metrics (${report.results.size()} entries) since <fmt:formatDate type="both" value="${createdDate}" />
             </h3>
             <c:choose>
                 <c:when test="${empty running}">
                 </c:when>
                 <c:otherwise>
-                    <h4>Note: there are some pending reruns since ${running.created}</h4>
+                    <h4>Note: there are some pending reruns since <fmt:formatDate type="both" value="${runningDate}" /></h4>
                 </c:otherwise>
             </c:choose>
             <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
-            <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
+            <c:if test="${adminType == 'ISG_ADMIN'}">
                 <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             </c:if>
 
             <table id="fair-metrics-table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <th>Digital Object Identifier</th>
-                    <c:forEach items="${keys}" var="key">
-                        <th data-toggle="modal" class="pointer" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
-                            title="<fmt:message key="${key.concat('-Name')}" />"
-                            data-fmid="<fmt:message key="${key}" />"
-                            data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
-                            data-name="<fmt:message key="${key.concat('-Name')}" />"
-                            data-principle="<fmt:message key="${key.concat('-Principle')}" />"
-                            data-measured="<fmt:message key="${key.concat('-Measured')}" />"
-                            data-why-measure="<fmt:message key="${key.concat('-Why-Measure')}" />"
-                            data-must-provided="<fmt:message key="${key.concat('-Must-Provided')}" />"
-                            data-how-measure="<fmt:message key="${key.concat('-How-Measure')}" />"
-                            data-valid-result="<fmt:message key="${key.concat('-Valid-Result')}" />"
-                            data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
-                            data-examples="<fmt:message key="${key.concat('-Examples')}" />"
-                            data-comments="<fmt:message key="${key.concat('-Comments')}" />"
-                        ><fmt:message key="${key.concat('-Column-Header')}" /></th>
-                    </c:forEach>
-
+                    <th rowspan="2" class="fair-metric-table-header">Digital Object Identifier</th>
+                    <th colspan="13" class="text-center fair-metric-table-header">
+                        Fair Metrics
+                    </th>
                 </tr>
+                    <tr>
+                        <c:forEach items="${keys}" var="key">
+                            <th data-toggle="modal" class="pointer text-center underline" data-title="<fmt:message key="${key.concat('-Column-Header')}" />" data-target="#fairMetricsModal"
+                                title="<fmt:message key="${key.concat('-Name')}" />"
+                                data-fmid="<fmt:message key="${key}" />"
+                                data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
+                                data-name="<fmt:message key="${key.concat('-Name')}" />"
+                                data-principle="<fmt:message key="${key.concat('-Principle')}" />"
+                                data-measured="<fmt:message key="${key.concat('-Measured')}" />"
+                                data-why-measure="<fmt:message key="${key.concat('-Why-Measure')}" />"
+                                data-must-provided="<fmt:message key="${key.concat('-Must-Provided')}" />"
+                                data-how-measure="<fmt:message key="${key.concat('-How-Measure')}" />"
+                                data-valid-result="<fmt:message key="${key.concat('-Valid-Result')}" />"
+                                data-which-relevant="<fmt:message key="${key.concat('-Which-Relevant')}" />"
+                                data-examples="<fmt:message key="${key.concat('-Examples')}" />"
+                                data-comments="<fmt:message key="${key.concat('-Comments')}" />"
+                            ><fmt:message key="${key.concat('-Column-Header')}" /></th>
+                        </c:forEach>
+
+                    </tr>
                 </thead>
                 <c:forEach items="${report.results}" var="row">
                     <tr>
-                        <td><a href="javascript:void(0)" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
+                        <td><a href="javascript:void(0);" class="underline" onclick="getIdentifierOpenModal('${row.subject}')"><c:out
                                 value="${row.subject}"/></a>
                             <br>
                             <sub>${function:getTitleFromPayload(row.submittedPayload)}</sub>
@@ -186,7 +193,7 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             'createdRow': function (row, data, dataIndex) {
-                $('td', row).css('min-width', '65px');
+                $('td', row).css('min-width', '40px');
             },
             ordering: false,
             responsive: true

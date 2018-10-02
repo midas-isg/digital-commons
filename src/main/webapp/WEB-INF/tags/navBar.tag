@@ -7,32 +7,10 @@
 <%@attribute name="dataToggle" type="java.lang.String" %>
 <%@attribute name="adminType" type="java.lang.Boolean" %>
 
-<script>
-    function preventClick() {
-        event.preventDefault();
-        event.stopPropagation();
-    }
-
-    function customDatasetClick() {
-        preventClick();
-
-        var custom = prompt("Please enter your custom dataset name.", "");
-
-        var requestObj = {
-            'datasetType': 'custom',
-            'customValue': custom
-        };
-
-        if(custom != null && custom != "") {
-            window.location = "${pageContext.request.contextPath}/add/dataset?" + $.param( requestObj );
-        }
-    }
-</script>
-
-<ul class="nav nav-tabs navbar-nav mr-auto" role="tablist">
-    <li><a id="content-tab" class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
+<ul class="nav nav-tabs navbar-nav col-12" role="tablist">
+    <li><a id="content-tab" class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
     <li class="dropdown">
-        <a class="nav-link navbar-nav-link dropdown-toggle font-size-18 navbar-dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="javascript:void(0);" onclick="return false;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -40,11 +18,20 @@
             <a class="dropdown-item" data-toggle="${dataToggle}" href="${mainPath}#search">Ontology-based search</a>
         </div>
     </li>
-    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
-    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+    <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
+    <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
+    <li class="dropdown">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="javascript:void(0);" onclick="return false;" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FAIR Analysis
+        </a>
+        <div class="dropdown-menu" aria-labelledby="fairDropdown">
+            <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
+            <a class="dropdown-item" href="http://meterdev.onbc.io/#/">FAIR-O-Meter</a>
+        </div>
+    </li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown ">
-            <a href="#" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-18 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+            <a href="javascript:void(0);" onclick="return false;" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-16 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">
@@ -59,14 +46,34 @@
                 <h6 class="dropdown-header">Add</h6>
                 <a class="dropdown-item" href="${contextPath}/add-data-gov-record-by-id">Add Data.gov Dataset</a>
                 <a class="dropdown-item" href="${contextPath}/add-digital-object">Add Digital Object</a>
-
-                <div class="dropdown-divider"></div>
-                <h6 class="dropdown-header">Report</h6>
-                <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
-
             </div>
         </li>
 
     </c:if>
-    <li><a class="nav-link navbar-nav-link font-size-18" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li class="ml-auto d-none d-lg-block"><a class="nav-link navbar-nav-link font-size-16 margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li class="d-md-block d-lg-none"><a class="nav-link navbar-nav-link font-size-16 margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+
+    <c:choose>
+        <c:when test="${loggedIn == true}">
+            <c:set var="urlLevel" value="${pageContext.request.contextPath}/logout"/>
+            <form class="form-inline pull-right" action="${urlLevel}" method="GET">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
+                        onclick="sessionStorage.clear();">Logout
+                </button>
+            </form>
+        </c:when>
+        <c:otherwise>
+            <c:set var="urlLevel" value="${pageContext.request.contextPath}/login"/>
+            <form class="form-inline pull-right" action="${urlLevel}" method="GET">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit"
+                        onclick="sessionStorage.clear();">Log in
+                </button>
+            </form>
+
+        </c:otherwise>
+    </c:choose>
 </ul>
+<%--<ul class="nav nav-tabs navbar-nav" role="tablist">--%>
+    <%--<li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>--%>
+
+<%--</ul>--%>
