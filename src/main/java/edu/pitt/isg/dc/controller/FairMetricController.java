@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.transaction.Transactional;
 
@@ -80,7 +85,31 @@ public class FairMetricController {
     public String detailedViewFAIRMetrics(Model model, HttpSession session,@RequestParam(value = "key") String key) throws Exception {
         model.addAttribute("key", key);
 
+        Properties prop = new Properties();
+        prop = getFairMetricProperties();
+        String exampleText = prop.getProperty(key + "-Examples");
+        model.addAttribute("exampleText", exampleText);
+
         return "detailedViewFAIRMetrics";
+    }
+
+    private Properties getFairMetricProperties() throws IOException {
+        InputStream inputStream;
+        Properties prop = new Properties();
+        String propFileName = "fairMetricsDescriptions.properties";
+        try {
+            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+
+            if (inputStream != null) {
+                prop.load(inputStream);
+            } else {
+                throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+            }
+        } catch (Exception e){
+            System.out.println("Exception: " + e);
+        }
+
+        return prop;
     }
 
 }

@@ -17,7 +17,7 @@
 
 
 <body id="detailed-view-body">
-<myTags:detailedViewFAIRMetricsTag key="${key}"/>
+<myTags:detailedViewFAIRMetricsTag key="${key}" exampleText="${exampleText}"/>
 
 
 <myTags:analytics/>

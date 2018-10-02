@@ -7,26 +7,8 @@
 
 <%@ attribute name="key" required="true"
               type="java.lang.String" %>
-
-<%--
-<%@ attribute name="lineage" required="false"
-              type="java.util.List" %>
-<%@ attribute name="entryView" required="true"
-              type="edu.pitt.isg.dc.entry.classes.EntryView" %>
-<%@ attribute name="entryID" required="true"
+<%@ attribute name="exampleText" required="true"
               type="java.lang.String" %>
-<%@ attribute name="entryJson" required="true"
-              type="java.lang.String" %>
-<%@ attribute name="revId" required="true"
-              type="java.lang.Long" %>
-<%@ attribute name="id" required="true"
-              type="java.lang.Long" %>
-<%@ attribute name="type" required="true"
-              type="java.lang.String" %>
-<%@ attribute name="description" required="false"
-              type="java.lang.String" %>
---%>
-
 
 
 <fmt:setBundle basename="fairMetricsDescriptions"/>
@@ -41,132 +23,75 @@
                             FAIR Metrics Report</a></button>
                     </div>
                 </div>
-                <h3 class="inline">${key}</h3>
+                <h3 class="inline">FAIR Metric:  ${key}</h3>
             </div>
             <hr>
-<%--
-            <h5 class="sub-title-font">Metric Name</h5>
-            <span id="name"><fmt:message key="${key.concat('-Name')}" /></span>
-
-            <h5 class="sub-title-font">To which principle does it apply?</h5>
-            <div class="principle-section">
-                <span id="principle"><fmt:message key="${key.concat('-Principle')}" /></span>
-            </div>
-            <h5 class="sub-title-font">What is being measured? </h5>
-            <div class="measured-section">
-                <span id="measured"><fmt:message key="${key.concat('-Measured')}" /></span>
-            </div>
-            <h5 class="sub-title-font">Why should we measure it? </h5>
-            <div class="whyMeasure-section">
-                <span id="whyMeasure"><fmt:message key="${key.concat('-Why-Measure')}" /></span>
-            </div>
---%>
             <div class="metadata-column tables" style="padding-bottom: 0px;">
                 <div class="metadata-table"><h4 class="sub-title-font"></h4>
                     <table class="table table-condensed table-borderless table-discrete table-striped">
                         <tbody>
                         <tr>
-                            <td>Metric Identifier:</td>
+                            <td class="bold">Metric Identifier:</td>
                             <td>${key}: <a href="<fmt:message key="${key.concat('-URL')}" />" target="_blank" ><fmt:message key="${key.concat('-URL')}" /></a></td>
                         </tr>
                         <tr>
-                            <td>Metric Name:</td>
+                            <td class="bold">Metric Name:</td>
                             <td><fmt:message key="${key.concat('-Name')}" /></td>
                         </tr>
                         <tr>
-                            <td>To which principle does it apply?</td>
+                            <td class="bold">To which principle does it apply?</td>
                             <td><fmt:message key="${key.concat('-Principle')}" /></td>
                         </tr>
                         <tr>
-                            <td>What is being measured?</td>
+                            <td class="bold">What is being measured?</td>
                             <td><fmt:message key="${key.concat('-Measured')}" /></td>
                         </tr>
                         <tr>
-                            <td>Why should we measure it?</td>
+                            <td class="bold">Why should we measure it?</td>
                             <td><fmt:message key="${key.concat('-Why-Measure')}" /></td>
                         </tr>
                         <tr>
-                            <td>What must be provided?</td>
+                            <td class="bold">What must be provided?</td>
                             <td><fmt:message key="${key.concat('-Must-Provided')}" /></td>
                         </tr>
                         <tr>
-                            <td>How do we measure it?</td>
+                            <td class="bold">How do we measure it?</td>
                             <td><fmt:message key="${key.concat('-How-Measure')}" /></td>
                         </tr>
                         <tr>
-                            <td>What is a valid result?</td>
+                            <td class="bold">What is a valid result?</td>
                             <td><fmt:message key="${key.concat('-Valid-Result')}" /></td>
                         </tr>
                         <tr>
-                            <td>For which digital resource(s) is this relevant?</td>
+                            <td class="bold">For which digital resource(s) is this relevant?</td>
                             <td><fmt:message key="${key.concat('-Which-Relevant')}" /></td>
                         </tr>
-                        <tr>
-                            <td>Examples of their application across types of digital
-                                resource: </td>
-                            <td><fmt:message key="${key.concat('-Examples')}" /></td>
-                        </tr>
+                        <c:if test="${exampleText == 'None'}">
+                            <tr>
+                                <td class="bold">Examples of their application across types of digital
+                                    resource: </td>
+                                <td>${exampleText}</td>
+                            </tr>
+                        </c:if>
+<%--
                         <tr>
                             <td>Comments:</td>
                             <td><fmt:message key="${key.concat('-Comments')}" /></td>
                         </tr>
-
+--%>
                         </tbody>
                     </table>
                 </div>
             </div>
+            <c:choose>
+                <c:when test="${key == 'FM-F1A'}">
+                    <myTags:fairMetricsFMF1AExample></myTags:fairMetricsFMF1AExample>
+                </c:when>
+            </c:choose>
         </div>
     </div>
 </div>
 
-    <%--
-
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">Metric Identifier: </h5><br>
-    <span id="identifier"><fmt:message key="${key.concat('-Identifier')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">Metric Name: </h5><br>
-    <span id="name"><fmt:message key="${key.concat('-Name')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">To which principle does it apply? </h5><br>
-    <span id="principle"><fmt:message key="${key.concat('-Principle')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">What is being measured? </h5><br>
-    <span id="measured"><fmt:message key="${key.concat('-Measured')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">Why should we measure it? </h5><br>
-    <span id="whyMeasure"><fmt:message key="${key.concat('-Why-Measure')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">What must be provided? </h5><br>
-    <span id="mustProvided"><fmt:message key="${key.concat('-Must-Provided')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">How do we measure it? </h5><br>
-    <span id="howMeasure"><fmt:message key="${key.concat('-How-Measure')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">What is a valid result? </h5><br>
-    <span id="validResult"><fmt:message key="${key.concat('-Valid-Result')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">For which digital resource(s) is this relevant? </h5><br>
-    <span id="whichRelevant"><fmt:message key="${key.concat('-Which-Relevant')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">Examples of their application across types of digital
-        resource: </h5><br>
-    <span id="examples"><fmt:message key="${key.concat('-Examples')}" /></span>
-</div>
-<div class="sub-title-font font-size-16 modal-software-item">
-    <h5 class="inline bold">Comments: </h5><br>
-    <span id="comments"><fmt:message key="${key.concat('-Comments')}" /></span>
-</div>
---%>
 
 
 <%--
