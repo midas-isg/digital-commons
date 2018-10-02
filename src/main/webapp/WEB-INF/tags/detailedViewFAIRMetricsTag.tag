@@ -30,6 +30,92 @@
 
 
 <fmt:setBundle basename="fairMetricsDescriptions"/>
+<div class="container metadata-container">
+    <div class="section-content">
+        <div class="col-12 background-white">
+            <div class="margin-top-10">
+                <div class="btn-toolbar pull-right">
+                    <div class="btn-group">
+                        <button class="btn btn-light"><a
+                                href="${pageContext.request.contextPath}/fair-metrics/">
+                            FAIR Metrics Report</a></button>
+                    </div>
+                </div>
+                <h3 class="inline">${key}</h3>
+            </div>
+            <hr>
+<%--
+            <h5 class="sub-title-font">Metric Name</h5>
+            <span id="name"><fmt:message key="${key.concat('-Name')}" /></span>
+
+            <h5 class="sub-title-font">To which principle does it apply?</h5>
+            <div class="principle-section">
+                <span id="principle"><fmt:message key="${key.concat('-Principle')}" /></span>
+            </div>
+            <h5 class="sub-title-font">What is being measured? </h5>
+            <div class="measured-section">
+                <span id="measured"><fmt:message key="${key.concat('-Measured')}" /></span>
+            </div>
+            <h5 class="sub-title-font">Why should we measure it? </h5>
+            <div class="whyMeasure-section">
+                <span id="whyMeasure"><fmt:message key="${key.concat('-Why-Measure')}" /></span>
+            </div>
+--%>
+            <div class="metadata-column tables" style="padding-bottom: 0px;">
+                <div class="metadata-table"><h4 class="sub-title-font"></h4>
+                    <table class="table table-condensed table-borderless table-discrete table-striped">
+                        <tbody>
+                        <tr>
+                            <td>Metric Identifier:</td>
+                            <td>${key}: <a href="<fmt:message key="${key.concat('-URL')}" />" target="_blank" ><fmt:message key="${key.concat('-URL')}" /></a></td>
+                        </tr>
+                        <tr>
+                            <td>Metric Name:</td>
+                            <td><fmt:message key="${key.concat('-Name')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>To which principle does it apply?</td>
+                            <td><fmt:message key="${key.concat('-Principle')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>What is being measured?</td>
+                            <td><fmt:message key="${key.concat('-Measured')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Why should we measure it?</td>
+                            <td><fmt:message key="${key.concat('-Why-Measure')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>What must be provided?</td>
+                            <td><fmt:message key="${key.concat('-Must-Provided')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>What is a valid result?</td>
+                            <td><fmt:message key="${key.concat('-Valid-Result')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>For which digital resource(s) is this relevant?</td>
+                            <td><fmt:message key="${key.concat('-Which-Relevant')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Examples of their application across types of digital
+                                resource: </td>
+                            <td><fmt:message key="${key.concat('-Examples')}" /></td>
+                        </tr>
+                        <tr>
+                            <td>Comments:</td>
+                            <td><fmt:message key="${key.concat('-Comments')}" /></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <%--
 
 <div class="sub-title-font font-size-16 modal-software-item">
     <h5 class="inline bold">Metric Identifier: </h5><br>
@@ -76,6 +162,7 @@
     <h5 class="inline bold">Comments: </h5><br>
     <span id="comments"><fmt:message key="${key.concat('-Comments')}" /></span>
 </div>
+--%>
 
 
 <%--
