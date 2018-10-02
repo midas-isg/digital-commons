@@ -40,7 +40,7 @@
                 </c:otherwise>
             </c:choose>
             <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
-            <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
+            <c:if test="${adminType == 'ISG_ADMIN'}">
                 <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             </c:if>
 

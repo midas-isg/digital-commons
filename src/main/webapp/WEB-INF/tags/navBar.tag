@@ -10,7 +10,7 @@
 <ul class="nav nav-tabs navbar-nav col-12" role="tablist">
     <li><a id="content-tab" class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#content">Content</a></li>
     <li class="dropdown">
-        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="" onclick="return false;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="javascript:void(0);" onclick="return false;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Search
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -21,7 +21,7 @@
     <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#compute-platform">Compute Platform</a></li>
     <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <li class="dropdown">
-        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="" onclick="return false;" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" href="javascript:void(0);" onclick="return false;" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             FAIR Analysis
         </a>
         <div class="dropdown-menu" aria-labelledby="fairDropdown">
@@ -31,7 +31,7 @@
     </li>
     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
         <li class="dropdown ">
-            <a href="" onclick="return false;" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-16 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
+            <a href="javascript:void(0);" onclick="return false;" id="add-digital-object" class="nav-link navbar-nav-link dropdown-toggle leaf font-size-16 navbar-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Manage Digital Objects <span class="caret"></span></a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <c:choose>
                     <c:when test="${adminType == 'ISG_ADMIN'}">

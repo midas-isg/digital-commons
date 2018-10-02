@@ -113,8 +113,8 @@
 
 
             $("#drop-down-category").click(function () {
-                $(this).parents(".dropdown").find('.btn').html('Sort by Category <span class="caret"></span>');
-                $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+                $('.sort-by-dropdown').html('Sort by Category <span class="caret"></span>');
+                $('.sort-by-dropdown').val($(this).data('value'));
 
                 var treeIndex = $(this).attr("value");
                 $("#tree-check-box-div").hide();
@@ -123,8 +123,8 @@
             });
 
             $("#drop-down-location").click(function () {
-                $(this).parents(".dropdown").find('.btn').html('Sort by Location <span class="caret"></span>');
-                $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+                $('.sort-by-dropdown').html('Sort by Location <span class="caret"></span>');
+                $('.sort-by-dropdown').val($(this).data('value'));
 
                 var treeIndex = $(this).attr("value");
                 $("#tree-check-box-div").show();
