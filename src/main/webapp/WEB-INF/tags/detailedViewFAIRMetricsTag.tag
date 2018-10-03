@@ -27,7 +27,7 @@
                         </button>
                     <%--</div>--%>
                 </div>
-                <h3 class="inline">FAIR Metric: <fmt:message key="${key.concat('-Column-Header')}" /></h3>
+                <h3 class="inline"><%--FAIR Metric: --%><fmt:message key="${key.concat('-Column-Header')}" /> - <fmt:message key="${key.concat('-Name')}"/></h3>
             </div>
             <h12 class="italic font-small-3">For your convenience the information below has been provided from: <a class="underline" target="_blank" href="https://github.com/FAIRMetrics/Metrics">https://github.com/FAIRMetrics/Metrics</a></h12>
             <hr>
@@ -40,10 +40,12 @@
                             <td>${key}: <a class="underline link-break-all" href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>
+<%--
                         <tr>
                             <td class="bold">Metric Name:</td>
                             <td><fmt:message key="${key.concat('-Name')}"/></td>
                         </tr>
+--%>
                         <tr>
                             <td class="bold">To which principle does it apply?</td>
                             <td><fmt:message key="${key.concat('-Principle')}"/></td>
