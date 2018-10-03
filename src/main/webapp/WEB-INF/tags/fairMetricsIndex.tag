@@ -9,13 +9,11 @@
 
 <nav id="sidebar">
     <ul class="list-unstyled components">
-        <p class="font-size-20">FAIR Metrics Explained</p>
+        <p class="font-size-20">FAIR Metrics Descriptions</p>
         <c:forEach items="${keys}" var="key">
             <li <c:if test="${active == key}">class="active"</c:if>><a
                     href="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=${key}">${key}</a></li>
         </c:forEach>
-
-        <li><a href="${pageContext.request.contextPath}/fair-metrics/">FAIR Metrics Report</a></li>
 
     </ul>
 </nav>

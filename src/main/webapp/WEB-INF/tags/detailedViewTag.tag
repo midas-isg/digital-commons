@@ -34,7 +34,7 @@
                 <div class="btn-toolbar pull-right">
                     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
                         <div class="btn-group">
-                            <button class="btn btn-light"><a
+                            <button class="btn btn-primary"><a class="color-white"
                                     href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}">Edit
                                 Digital Object</a></button>
                         </div>
