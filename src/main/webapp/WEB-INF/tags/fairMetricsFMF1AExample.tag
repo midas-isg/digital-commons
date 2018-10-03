@@ -12,7 +12,7 @@
             <tbody>
             <tr>
                 <td>Gene Ontology:</td>
-                <td><a target="_blank" href="http://www.ebi.ac.uk/miriam/main/datatypes/MIR:00000022">http://www.ebi.ac.uk/miriam/main/datatypes/MIR:00000022</a></td>
+                <td><a class="underline" target="_blank" href="http://www.ebi.ac.uk/miriam/main/datatypes/MIR:00000022">http://www.ebi.ac.uk/miriam/main/datatypes/MIR:00000022</a></td>
             </tr>
 <%--
             <tr>
@@ -24,11 +24,11 @@
 --%>
             <tr>
                 <td>Model/format - RDFS:</td>
-                <td><a target="_blank" href="https://fairsharing.org/bsg-s000283">https://fairsharing.org/bsg-s000283</a></td>
+                <td><a class="underline" target="_blank" href="https://fairsharing.org/bsg-s000283">https://fairsharing.org/bsg-s000283</a></td>
             </tr>
             <tr>
                 <td>Repository</td>
-                <td>JWS Online: <a target="_blank" href="https://www.ebi.ac.uk/miriam/main/collections/MIR:00000130">https://www.ebi.ac.uk/miriam/main/collections/MIR:00000130</a><%-- <br> - DANS EASY:--%>
+                <td>JWS Online: <a class="underline" target="_blank" href="https://www.ebi.ac.uk/miriam/main/collections/MIR:00000130">https://www.ebi.ac.uk/miriam/main/collections/MIR:00000130</a><%-- <br> - DANS EASY:--%>
                 </td>
             </tr>
             </tbody>
@@ -44,7 +44,7 @@
                         <tbody>
                         <tr>
                             <td>
-                                <a target="_blank" href="https://fairsharing.org/biodbcore-000305">https://fairsharing.org/biodbcore-000305</a>
+                                <a class="underline" target="_blank" href="https://fairsharing.org/biodbcore-000305">https://fairsharing.org/biodbcore-000305</a>
                             </td>
                         </tr>
                         <tr>
@@ -69,7 +69,7 @@
                         <tbody>
                         <tr>
                             <td>
-                                <a target="_blank" href="https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json">https://raw.githubusercontent.com/WebsmartAPI/smartAPI/
+                                <a class="underline" target="_blank" href="https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json">https://raw.githubusercontent.com/WebsmartAPI/smartAPI/
                                     master/docs/iodocs/smartapi.json</a>
                             </td>
                         </tr>
@@ -89,7 +89,7 @@
     <div class="metadata-table"><h6 class="sub-title-font">Journal</h6>
         <table class="table table-condensed table-borderless table-discrete table-striped">
             <tr>
-                <td><a target="_blank" href="http://www.nature.com/developers/documentation/metadata-resources/doi">http://www.nature.com/developers/
+                <td><a class="underline" target="_blank" href="http://www.nature.com/developers/documentation/metadata-resources/doi">http://www.nature.com/developers/
                     documentation/metadata-resources/doi</a></td>
                 <td>the web site will have to
                     provide a machine-readable pointer to the official DOI specification.
