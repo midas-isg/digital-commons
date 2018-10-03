@@ -51,7 +51,7 @@
                 <tr>
                     <th rowspan="2" class="fair-metric-table-header">Digital Object Identifier</th>
                     <th colspan="13" class="text-center fair-metric-table-header">
-                        Fair Metrics
+                        <a class="color-white underline" href="${pageContext.request.contextPath}/fair-metrics/description"> FAIR Metrics</a>
                     </th>
                 </tr>
                     <tr>
