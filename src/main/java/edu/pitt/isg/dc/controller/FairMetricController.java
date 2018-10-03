@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import javax.transaction.Transactional;
@@ -37,21 +38,7 @@ public class FairMetricController {
     @GetMapping("")
     @Transactional
     public String report(ModelMap model){
-        ArrayList<String> keys = new ArrayList<String>();
-        keys.add("FM-F1A");
-        keys.add("FM-F1B");
-        keys.add("FM-F2");
-        keys.add("FM-F3");
-        keys.add("FM-F4");
-        keys.add("FM-A1.1");
-        keys.add("FM-A1.2");
-        keys.add("FM-A2");
-        keys.add("FM-I1");
-        keys.add("FM-I2");
-        keys.add("FM-I3");
-        keys.add("FM-R1.1");
-        keys.add("FM-R1.2");
-        model.addAttribute("keys", keys);
+        model.addAttribute("keys", getKeys());
 
         model.addAttribute("report", currentReport());
         model.addAttribute("running", service.runningReport());
@@ -84,6 +71,7 @@ public class FairMetricController {
     @RequestMapping(value = "/detailed-view", method = RequestMethod.GET)
     public String detailedViewFAIRMetrics(Model model, HttpSession session,@RequestParam(value = "key") String key) throws Exception {
         model.addAttribute("key", key);
+        model.addAttribute("keys", getKeys());
 
         Properties prop = new Properties();
         prop = getFairMetricProperties();
@@ -112,4 +100,22 @@ public class FairMetricController {
         return prop;
     }
 
+
+    private List<String> getKeys(){
+        ArrayList<String> keys = new ArrayList<String>();
+        keys.add("FM-F1A");
+        keys.add("FM-F1B");
+        keys.add("FM-F2");
+        keys.add("FM-F3");
+        keys.add("FM-F4");
+        keys.add("FM-A1.1");
+        keys.add("FM-A1.2");
+        keys.add("FM-A2");
+        keys.add("FM-I1");
+        keys.add("FM-I2");
+        keys.add("FM-I3");
+        keys.add("FM-R1.1");
+        keys.add("FM-R1.2");
+        return keys;
+    }
 }

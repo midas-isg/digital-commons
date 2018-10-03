@@ -18,9 +18,10 @@
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
                     <div class="btn-group">
-                        <button class="btn btn-light"><a
-                                href="${pageContext.request.contextPath}/fair-metrics/">
-                            FAIR Metrics Report</a></button>
+                        <button type="button" id="sidebarCollapse"
+                                class="btn btn-light">
+                            <span>Toggle Sidebar</span>
+                        </button>
                     </div>
                 </div>
                 <h3 class="inline">FAIR Metric: ${key}</h3>

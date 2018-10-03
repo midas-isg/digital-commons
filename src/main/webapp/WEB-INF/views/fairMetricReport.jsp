@@ -105,12 +105,6 @@
                         </c:forEach>
                     </tr>
                 </c:forEach>
-                <%--<tfoot>--%>
-                <%--<tr>--%>
-                <%--<th>Subject</th>--%>
-                <%--<th>FM</th>--%>
-                <%--</tr>--%>
-                <%--</tfoot>--%>
             </table>
         </div>
     </div>
