@@ -1093,7 +1093,7 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 .table-striped td {
-    word-break: break-all !important;
+    word-break: break-word !important;
 }
 
 .table-unstriped {
@@ -1104,6 +1104,10 @@ div.container.metadata-container .metadata-column.fancy {
 .table-unstriped td {
     padding-left: 0px !important;
     padding-right: 8px !important;
+}
+
+.link-break-all{
+    word-break: break-all !important;
 }
 
 .lineage{

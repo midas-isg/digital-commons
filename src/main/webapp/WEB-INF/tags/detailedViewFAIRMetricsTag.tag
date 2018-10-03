@@ -37,7 +37,7 @@
                         <tbody>
                         <tr>
                             <td class="bold">Metric Identifier:</td>
-                            <td>${key}: <a class="underline" href="<fmt:message key="${key.concat('-URL')}" />"
+                            <td>${key}: <a class="underline link-break-all" href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>
                         <tr>
