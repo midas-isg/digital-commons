@@ -1088,6 +1088,10 @@ div.container.metadata-container .metadata-column.fancy {
     /*word-break: break-word;*/
 }
 
+.table-unstriped {
+    background-color: rgba(0,0,0,.05);
+}
+
 .lineage{
     background-color: #f6f6f6;
     margin: 0;

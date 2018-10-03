@@ -7,7 +7,7 @@
 
 <div class="metadata-table"><h5 class="sub-title-font">Examples of their application across types of digital
     resource: </h5>
-    <div class="metadata-table"><h6 class="sub-title-font">my Zenodo Deposit for polyA (<a target="_blank"
+    <div class="metadata-table"><h6 class="sub-title-font">my Zenodo Deposit for polyA (<a class="underline" target="_blank"
                                                                                            href="https://doi.org/10.5281/zenodo.47641">https://doi.org/10.5281/zenodo.47641</a>)
     </h6>
         <div class="border">
@@ -93,7 +93,7 @@
             </div>
         </div>
     </div>
-    <div class="metadata-table"><h6 class="sub-title-font">myExperiment Workflow (<a target="_blank"
+    <div class="metadata-table"><h6 class="sub-title-font">myExperiment Workflow (<a class="underline" target="_blank"
                                                                                      href="http://www.myexperiment.org/workflows/2969.html">http://www.myexperiment.org/workflows/2969.html</a>)
     </h6>
         <div class="border">
@@ -139,7 +139,7 @@
             </div>
         </div>
     </div>
-    <div class="metadata-table"><h6 class="sub-title-font">Jupyter notebook on GitHub (<a target="_blank"
+    <div class="metadata-table"><h6 class="sub-title-font">Jupyter notebook on GitHub (<a class="underline" target="_blank"
                                                                                           href="https://github.com/VidhyasreeRamu/GlobalClimateChange/blob/master/GlobalWarmingAnalysis.ipynb">https://github.com/VidhyasreeRamu/GlobalClimateChange/blob/master/GlobalWarmingAnalysis.ipynb</a>)
     </h6>
         <div class="border">
@@ -160,7 +160,7 @@
                             BING:
                         </td>
                         <td>
-                            Fail (not in top 40... but MANY links to Microsoft Surface! LOL!)
+                            Fail (not in top 40<%--... but MANY links to Microsoft Surface! LOL!--%>)
                         </td>
                     </tr>
                     <tr>
@@ -176,7 +176,7 @@
                             Baidu:
                         </td>
                         <td>
-                            Fail (not even a github hit in top 40!)
+                            Fail (not<%-- even a github hit--%> in top 40)
                         </td>
                     </tr>
                     </tbody>
