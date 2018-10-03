@@ -19,7 +19,7 @@
                 <div class="btn-toolbar pull-right">
                     <%--<div class="btn-group">--%>
                         <button class="btn btn-primary fair-metrics-report-button">
-                            <a class="color-white" href="/digital-commons/fair-metrics/">FAIR Metrics Report</a>
+                            <a class="color-white" href="${pageContext.request.contextPath}/fair-metrics/">FAIR Metrics Report</a>
                         </button>
                         <button id="sidebarCollapse"
                                 class="btn btn-primary d-none d-sm-none d-md-block">
