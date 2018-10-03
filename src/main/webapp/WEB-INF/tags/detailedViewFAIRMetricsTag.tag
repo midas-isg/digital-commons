@@ -24,8 +24,9 @@
                         </button>
                     </div>
                 </div>
-                <h3 class="inline">FAIR Metric: ${key}</h3>
+                <h3 class="inline">FAIR Metric: <fmt:message key="${key.concat('-Column-Header')}" /></h3>
             </div>
+            <h12 class="italic font-small-3">For your convenience the information below has been provided from: <a target="_blank" href="https://github.com/FAIRMetrics/Metrics">https://github.com/FAIRMetrics/Metrics</a></h12>
             <hr>
             <div class="metadata-column tables" style="padding-bottom: 0px;">
                 <div class="metadata-table"><h4 class="sub-title-font"></h4>
