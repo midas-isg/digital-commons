@@ -969,6 +969,10 @@ tfoot {
         -ms-flex-align: center;
         align-items: center;
     }
+
+    .about-tab {
+        margin-left: auto;
+    }
 }
 
 /*//////////////////////////*/
