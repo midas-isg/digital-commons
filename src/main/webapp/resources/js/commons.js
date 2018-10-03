@@ -739,12 +739,6 @@ $(document).ready(function() {
     $(document.body).on("click", "a", function(event) {
         var href = this.getAttribute("href");
 
-        // if(href.includes('about')) {
-        //     $(".nav-link").removeClass("active");
-        //     $(this).addClass("active");
-        //
-        // }
-
         try{
             if (href != undefined && nulhref.includes('http')) {
                 ga('send', {
