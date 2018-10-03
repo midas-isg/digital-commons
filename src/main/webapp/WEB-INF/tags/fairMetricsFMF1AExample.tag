@@ -48,10 +48,9 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>
-                                FAIRsharing will implement the FAIR Metric specification to provide
-                                a machine-readable link to the MIRIAM repository (for life science content)
-                            <td>
+                            <td> FAIRsharing will implement the FAIR Metric specification to provide a machine-readable
+                                link to the MIRIAM repository (for life science content)
+                            </td>
                         </tr>
                         </tbody>
                     </table>

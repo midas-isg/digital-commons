@@ -20,22 +20,22 @@
                                 <c:set var="bioportalLink" value="http://bioportal.bioontology.org/ontologies/SNOMEDCT/${identifier}" />
                                 <c:choose>
                                     <c:when test="${fn:contains(identifierSource,'https://biosharing.org/bsg-s000098')}">
-                                        <a href="${bioportalLink}" class="color-white badge badge-info">${isAbout.name}</a>
+                                        <a href="${bioportalLink}" class="color-white badge badge-primary">${isAbout.name}</a>
                                     </c:when>
                                     <c:when test="${fn:contains(identifier,'http://purl.bioontology.org/ontology/SNOMEDCT/')}">
                                         <c:set var="identifier" value="${fn:replace(identifier, 'http://purl.bioontology.org/ontology/SNOMEDCT/', 'http://bioportal.bioontology.org/ontologies/SNOMEDCT/')}" />
-                                        <a href="${identifier}" class="color-white badge badge-info">${isAbout.name}</a>
+                                        <a href="${identifier}" class="color-white badge badge-primary">${isAbout.name}</a>
                                     </c:when>
                                     <c:when test="${fn:contains(identifier,'http')}">
-                                        <a href="${identifier}" class="color-white badge badge-info">${isAbout.name}</a>
+                                        <a href="${identifier}" class="color-white badge badge-primary">${isAbout.name}</a>
                                     </c:when>
                                     <c:when test="${fn:contains(identifierSource,'http')}">
-                                        <a href="${identifierSource}" class="color-white badge badge-info">${isAbout.name}</a>
+                                        <a href="${identifierSource}" class="color-white badge badge-primary">${isAbout.name}</a>
                                     </c:when>
                                 </c:choose>
                             </c:when>
                             <c:when test="${not empty isAbout.name}">
-                                <span class="color-white badge badge-info">${isAbout.name}</span>
+                                <span class="color-white badge badge-primary">${isAbout.name}</span>
                             </c:when>
                             <c:when test="${not empty isAbout.value && not empty isAbout.valueIRI}">
                                 <c:set var="valueIRI" value="${isAbout.valueIRI}" />
@@ -44,15 +44,15 @@
                                 </c:if>
                                 <c:choose>
                                     <c:when test="${fn:contains(valueIRI, 'http')}">
-                                        <a href="${valueIRI}" class="color-white badge badge-info">${isAbout.value}</a>
+                                        <a href="${valueIRI}" class="color-white badge badge-primary">${isAbout.value}</a>
                                     </c:when>
                                     <c:otherwise>
-                                        <span class="color-white badge badge-info">${isAbout.value}</span>
+                                        <span class="color-white badge badge-primary">${isAbout.value}</span>
                                     </c:otherwise>
                                 </c:choose>
                             </c:when>
                             <c:when test="${not empty isAbout.value}">
-                                <span class="color-white badge badge-info">${isAbout.value}</span>
+                                <span class="color-white badge badge-primary">${isAbout.value}</span>
                             </c:when>
                         </c:choose>
                     </c:forEach>

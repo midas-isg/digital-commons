@@ -284,6 +284,18 @@ a {
     border-color: #ccc !important;
 }
 
+.badge-primary {
+    color: #fff;
+    background-color: rgba(11,43,101,0.80);
+    border-color: rgba(11,43,101,0.80);
+}
+
+.badge-primary:hover{
+    color: #fff;
+    background-color: rgba(11,43,101,0.55) !important;
+    border-color: rgba(11,43,101,0.55);
+}
+
 .btn-primary {
     color: #fff;
     background-color: rgba(11,43,101,0.80);
@@ -1249,8 +1261,10 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 #sidebar ul p {
-    color: #fff;
+    color: #0c2b65;
+    background: #f6f6f6;
     padding: 10px;
+    margin-bottom: 0px;
 }
 
 #sidebar ul li a {

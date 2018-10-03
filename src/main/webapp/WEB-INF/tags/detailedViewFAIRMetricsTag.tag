@@ -17,12 +17,15 @@
         <div class="col-12 background-white">
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
-                    <div class="btn-group">
+                    <%--<div class="btn-group">--%>
+                        <button class="btn btn-primary">
+                            <a class="color-white" href="/digital-commons/fair-metrics/">FAIR Metrics Report</a>
+                        </button>
                         <button type="button" id="sidebarCollapse"
-                                class="btn btn-light">
+                                class="btn btn-primary">
                             <span>Toggle Sidebar</span>
                         </button>
-                    </div>
+                    <%--</div>--%>
                 </div>
                 <h3 class="inline">FAIR Metric: <fmt:message key="${key.concat('-Column-Header')}" /></h3>
             </div>
