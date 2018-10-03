@@ -18,7 +18,7 @@
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
                     <%--<div class="btn-group">--%>
-                        <button class="btn btn-primary">
+                        <button class="btn btn-primary fair-metrics-report-button">
                             <a class="color-white" href="/digital-commons/fair-metrics/">FAIR Metrics Report</a>
                         </button>
                         <button type="button" id="sidebarCollapse"
