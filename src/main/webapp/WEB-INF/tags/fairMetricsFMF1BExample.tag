@@ -12,7 +12,7 @@
         <tr>
             <td>FAIR principles (scholarly publication in Nature Scientific Data)</td>
             <td>
-                <table class="table">
+                <table class="table table-condensed table-borderless table-discrete table-unstriped">
                     <tbody>
                     <tr class="table-unstriped">
                         <td>

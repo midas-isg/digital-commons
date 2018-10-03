@@ -1098,11 +1098,12 @@ div.container.metadata-container .metadata-column.fancy {
 
 .table-unstriped {
     background: none !important;
+    margin-bottom: 0px !important;
 }
 
 .table-unstriped td {
-    padding: 0 !important;
-    word-break: break-all !important;
+    padding-left: 0px !important;
+    padding-right: 8px !important;
 }
 
 .lineage{
