@@ -40,14 +40,14 @@
             <tr>
                 <td>ArrayExpress:</td>
                 <td>
-                    <table>
+                    <table class="table table-condensed table-borderless table-discrete table">
                         <tbody>
-                        <tr>
+                        <tr class="table-unstriped">
                             <td>
                                 <a class="underline" target="_blank" href="https://fairsharing.org/biodbcore-000305">https://fairsharing.org/biodbcore-000305</a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="table-unstriped">
                             <td> FAIRsharing will implement the FAIR Metric specification to provide a machine-readable
                                 link to the MIRIAM repository (for life science content)
                             </td>
@@ -65,15 +65,15 @@
             <tr>
                 <td>smartAPI's API</td>
                 <td>
-                    <table>
+                    <table class="table table-condensed table-borderless table-discrete">
                         <tbody>
-                        <tr>
+                        <tr class="table-unstriped">
                             <td>
                                 <a class="underline" target="_blank" href="https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json">https://raw.githubusercontent.com/WebsmartAPI/smartAPI/
                                     master/docs/iodocs/smartapi.json</a>
                             </td>
                         </tr>
-                        <tr>
+                        <tr class="table-unstriped">
                             <td>the smartAPI repository will provide accessible specification of the identifier scheme
                                 that
                                 is embedded in that metadata document.

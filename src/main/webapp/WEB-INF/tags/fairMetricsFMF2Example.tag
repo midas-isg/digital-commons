@@ -14,21 +14,23 @@
             <td>
                 <table>
                     <tbody>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
                             A record in a metadata registry relevant to your digital object (e.g. FAIRsharing.org, FAIR Data Point, smartAPI editor)
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
                             Your metadata on an HTML web page using schema.org
                         </td>
                     </tr>
+<%--
                     <tr>
                         <td>
                             A FAIR Accessor...
                         </td>
                     </tr>
+--%>
                     </tbody>
                 </table>
             </td>
@@ -38,14 +40,14 @@
             <td>
                 <table>
                     <tbody>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
-                            <a target="_blank" href="http://semanticscience.org/ontology/sio.owl">http://semanticscience.org/ontology/sio.owl</a>
+                            <a class="underline" target="_blank" href="http://semanticscience.org/ontology/sio.owl">http://semanticscience.org/ontology/sio.owl</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
-                            <a target="_blank" href="https://biosharing.org/bsg-s002686">https://biosharing.org/bsg-s002686</a>
+                            <a class="underline" target="_blank" href="https://biosharing.org/bsg-s002686">https://biosharing.org/bsg-s002686</a>
                         </td>
                     </tr>
                     </tbody>
@@ -57,7 +59,7 @@
                 Example of a DANS metadata-record of an archived dataset:
             </td>
             <td>
-                <a target="_blank" href="https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:67859/tab/1">https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:67859/tab/1</a>
+                <a class="underline" target="_blank" href="https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:67859/tab/1">https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:67859/tab/1</a>
             </td>
         </tr>
         <tr>
@@ -65,7 +67,7 @@
                 smartAPI's API metadata:
             </td>
             <td>
-                <a target="_blank" href="https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json">https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json</a>
+                <a class="underline" target="_blank" href="https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json">https://raw.githubusercontent.com/WebsmartAPI/smartAPI/master/docs/iodocs/smartapi.json</a>
             </td>
         </tr>
         <tr>
@@ -73,7 +75,7 @@
                 Metadata record of a database:
             </td>
             <td>
-                GEO <a target="_blank" href="https://fairsharing.org/biodbcore-000441">https://fairsharing.org/biodbcore-000441</a>
+                GEO <a class="underline" target="_blank" href="https://fairsharing.org/biodbcore-000441">https://fairsharing.org/biodbcore-000441</a>
             </td>
         </tr>
         <tr>
@@ -81,36 +83,36 @@
                 Metadata record of a standard:
             </td>
             <td>
-                RDF <a target="_blank" href="https://fairsharing.org/bsg-s000559">https://fairsharing.org/bsg-s000559</a>
+                RDF <a class="underline" target="_blank" href="https://fairsharing.org/bsg-s000559">https://fairsharing.org/bsg-s000559</a>
             </td>
         </tr>
         <tr>
             <td>Non-article Published Work</td>
             <td>
-                <table>
+                <table class="table table-condensed table-borderless table-discrete table-unstriped">
                     <tbody>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
                             my Zenodo Deposit for polyA
                         </td>
                         <td>
-                            <a target="_blank" href="https://doi.org/10.5281/zenodo.47641">https://doi.org/10.5281/zenodo.47641</a>
+                            <a class="underline" target="_blank" href="https://doi.org/10.5281/zenodo.47641">https://doi.org/10.5281/zenodo.47641</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
                             myExperiment Workflow
                         </td>
                         <td>
-                            <a target="_blank" href="http://www.myexperiment.org/workflows/2999.html">http://www.myexperiment.org/workflows/2999.html</a>
+                            <a class="underline" target="_blank" href="http://www.myexperiment.org/workflows/2999.html">http://www.myexperiment.org/workflows/2999.html</a>
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="table-unstriped">
                         <td>
                             Jupyter notebook on GitHub
                         </td>
                         <td>
-                            <a target="_blank" href="https://github.com/VidhyasreeRamu/GlobalClimateChange/blob/master/GlobalWarmingAnalysis.ipynb">https://github.com/VidhyasreeRamu/GlobalClimateChange/
+                            <a class="underline" target="_blank" href="https://github.com/VidhyasreeRamu/GlobalClimateChange/blob/master/GlobalWarmingAnalysis.ipynb">https://github.com/VidhyasreeRamu/GlobalClimateChange/
                                 blob/master/GlobalWarmingAnalysis.ipynb</a>
                         </td>
                     </tr>
