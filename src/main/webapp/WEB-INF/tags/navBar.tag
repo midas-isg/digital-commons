@@ -50,8 +50,7 @@
         </li>
 
     </c:if>
-    <li class="ml-auto d-none d-lg-block"><a class="nav-link navbar-nav-link font-size-16 margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
-    <li class="d-md-block d-lg-none"><a class="nav-link navbar-nav-link font-size-16 margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
+    <li class="about-tab"><a class="nav-link navbar-nav-link font-size-16 margin-right-10" data-toggle="${dataToggle}" href="${mainPath}#about">About</a></li>
 
     <c:choose>
         <c:when test="${loggedIn == true}">
