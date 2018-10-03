@@ -21,9 +21,9 @@
                         <button class="btn btn-primary fair-metrics-report-button">
                             <a class="color-white" href="/digital-commons/fair-metrics/">FAIR Metrics Report</a>
                         </button>
-                        <button type="button" id="sidebarCollapse"
-                                class="btn btn-primary">
-                            <span>Toggle Sidebar</span>
+                        <button id="sidebarCollapse"
+                                class="btn btn-primary d-none d-sm-none d-md-block">
+                            Toggle Sidebar
                         </button>
                     <%--</div>--%>
                 </div>
