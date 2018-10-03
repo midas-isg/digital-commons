@@ -40,7 +40,7 @@
             <tr>
                 <td>ArrayExpress:</td>
                 <td>
-                    <table class="table table-condensed table-borderless table-discrete table">
+                    <table class="table table-condensed table-borderless table-discrete table-unstriped">
                         <tbody>
                         <tr class="table-unstriped">
                             <td>
@@ -65,7 +65,7 @@
             <tr>
                 <td>smartAPI's API</td>
                 <td>
-                    <table class="table table-condensed table-borderless table-discrete">
+                    <table class="table table-condensed table-borderless table-discrete table-unstriped">
                         <tbody>
                         <tr class="table-unstriped">
                             <td>

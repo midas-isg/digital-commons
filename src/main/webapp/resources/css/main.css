@@ -1088,8 +1088,17 @@ div.container.metadata-container .metadata-column.fancy {
     /*word-break: break-word;*/
 }
 
+.table-striped td {
+    word-break: break-all !important;
+}
+
 .table-unstriped {
-    background-color: rgba(0,0,0,.05);
+    background: none !important;
+}
+
+.table-unstriped td {
+    padding: 0 !important;
+    word-break: break-all !important;
 }
 
 .lineage{

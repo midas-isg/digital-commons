@@ -12,7 +12,7 @@
         <tr>
             <td>This URL can resolve to:</td>
             <td>
-                <table>
+                <table class="table table-condensed table-borderless table-discrete table-unstriped">
                     <tbody>
                     <tr class="table-unstriped">
                         <td>
@@ -39,7 +39,7 @@
             <td>Semanticscience Integrated Ontology</td>
             <td>
                 <table>
-                    <tbody>
+                    <tbody class="table table-condensed table-borderless table-discrete table-unstriped">
                     <tr class="table-unstriped">
                         <td>
                             <a class="underline" target="_blank" href="http://semanticscience.org/ontology/sio.owl">http://semanticscience.org/ontology/sio.owl</a>
