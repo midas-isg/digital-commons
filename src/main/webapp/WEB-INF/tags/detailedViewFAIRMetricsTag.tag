@@ -29,7 +29,14 @@
                     <%--</div>--%>
                 </div>
                 <h3 class="inline"><%--FAIR Metric: --%>
-                <fmt:message key="${key.concat('-Column-Header')}"/> - <fmt:message key="${key.concat('-Name')}"/></h3>
+                    <c:choose>
+                        <c:when test="${key == 'FM'}">
+                            About FAIR Metrics
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message key="${key.concat('-Column-Header')}"/> - <fmt:message key="${key.concat('-Name')}"/></h3>
+                        </c:otherwise>
+                    </c:choose>
             </div>
             <h12 class="italic font-small-3">The MIDAS Digital Commons uses the FAIR Metrics defined by Wilkinson, M. D.
                 et al, in the FAIRMetrics GitHub repository located <a class="underline" target="_blank"
@@ -47,13 +54,13 @@
                                 <span class="bold" data-toggle="tooltip"
                                       title="<fmt:message key="FM-Identifier" />"><fmt:message key="FM-Identifier-Field" /></span>
                             </td>
-                            <td>${key}: <a class="underline link-break-all"
+                            <td><%--${key}: --%><a class="underline link-break-all"
                                            href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>
                         <%--
                                                 <tr>
-                                                    <td class="bold"  data-toggle="tooltip" title="A human-readable name for the metric.">Metric Name:</td>
+                                                    <td class="bold"  data-toggle="tooltip" title="<fmt:message key="FM-Name" />"><fmt:message key="FM-Name-Field" /></td>
                                                     <td><fmt:message key="${key.concat('-Name')}"/></td>
                                                 </tr>
                         --%>
@@ -112,7 +119,7 @@
                                     <span class="bold" data-toggle="tooltip"
                                           title="<fmt:message key="FM-Examples" />"><fmt:message key="FM-Examples-Field" /></span>
                                 </td>
-                                <td>${exampleText}</td>
+                                <td><fmt:message key="${key.concat('-Examples')}"/></td>
                             </tr>
                         </c:if>
                         <%--
