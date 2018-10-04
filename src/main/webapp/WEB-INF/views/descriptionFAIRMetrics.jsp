@@ -32,7 +32,7 @@
                             Toggle Sidebar
                         </button>
                     </div>
-                    <h3 class="inline">About FAIR Metrics</h3>
+                    <h3 class="inline">FAIR Metrics Description</h3>
                 </div>
                 <h12 class="italic font-small-3">The MIDAS Digital Commons uses the FAIR Metrics defined by
                     Wilkinson, M. D. et al, in the FAIRMetrics GitHub repository located <a class="underline"
@@ -48,6 +48,36 @@
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             <c:forEach items="${keys}" var="key" varStatus="status">
+                                <c:choose>
+                                    <c:when test="${key == 'FM-F1A'}">
+                                        <tr>
+                                            <th colspan="2">
+                                               Findable
+                                            </th>
+                                        </tr>
+                                    </c:when>
+                                    <c:when test="${key == 'FM-A1.1'}">
+                                        <tr>
+                                            <th colspan="2">
+                                                Accessible
+                                            </td>
+                                        </tr>
+                                    </c:when>
+                                    <c:when test="${key == 'FM-I1'}">
+                                        <tr>
+                                            <th colspan="2">
+                                               Interoperable
+                                            </th>
+                                        </tr>
+                                    </c:when>
+                                    <c:when test="${key == 'FM-R1.1'}">
+                                        <tr>
+                                            <th colspan="2">
+                                                Reusable
+                                            </th>
+                                        </tr>
+                                    </c:when>
+                                </c:choose>
                                 <tr>
                                     <td class="bold">
                                         ${key}
