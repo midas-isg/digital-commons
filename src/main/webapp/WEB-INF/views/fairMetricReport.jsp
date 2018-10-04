@@ -93,10 +93,10 @@
                                     <td class="vertical-align-middle text-center"><i class="fas fa-check theme-primary-color"></i></td>
                                 </c:when>
                                 <c:when test="${result.hasValue == '0.33'}">
-                                    <td class="vertical-align-middle text-center">1 of 3</td>
+                                    <td class="vertical-align-middle text-center">1 of 3<br>passed</td>
                                 </c:when>
                                 <c:when test="${result.hasValue == '0.66'}">
-                                    <td class="vertical-align-middle text-center">2 of 3</td>
+                                    <td class="vertical-align-middle text-center">2 of 3<br>passed</td>
                                 </c:when>
                                 <c:otherwise>
                                     <td class="vertical-align-middle"><c:out value="${result.hasValue}"/></td>
@@ -188,7 +188,7 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             'createdRow': function (row, data, dataIndex) {
-                $('td', row).css('min-width', '40px');
+                $('td', row).css('min-width', '53px');
             },
             ordering: false,
             responsive: true
