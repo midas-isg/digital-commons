@@ -22,7 +22,7 @@
     <li><a class="nav-link navbar-nav-link font-size-16" data-toggle="${dataToggle}" href="${mainPath}#workflows" onclick="setTimeout(function(){drawDiagram()}, 300);">Workflows</a></li>
     <li class="dropdown">
         <a class="nav-link navbar-nav-link dropdown-toggle font-size-16 navbar-dropdown" id="fairDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            FAIR Analysis
+            FAIR Compliance
         </a>
         <div class="dropdown-menu" aria-labelledby="fairDropdown">
             <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
