@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-<div class="metadata-table"><h5 class="sub-title-font">Examples of their application across types of digital
+<div class="metadata-table"><h5 class="sub-title-font" data-toggle="tooltip" title="Whenever possible, provide an existing example of success, and an example of failure.">Examples of their application across types of digital
     resource: </h5>
     <div class="metadata-table"><h6 class="sub-title-font">my Zenodo Deposit for polyA (<a class="underline link-break-all" target="_blank"
                                                                                            href="https://doi.org/10.5281/zenodo.47641">https://doi.org/10.5281/zenodo.47641</a>)

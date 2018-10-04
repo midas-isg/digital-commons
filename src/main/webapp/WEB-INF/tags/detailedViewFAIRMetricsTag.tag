@@ -36,7 +36,7 @@
                     <table class="table table-condensed table-borderless table-discrete table-striped">
                         <tbody>
                         <tr>
-                            <td class="bold">Metric Identifier:</td>
+                            <td class="bold" data-toggle="tooltip" title="FAIR Metrics should, themselves, be FAIR objects, and thus should have globally unique identifiers.">Metric Identifier:</td>
                             <td>${key}: <a class="underline link-break-all" href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>
@@ -47,36 +47,36 @@
                         </tr>
 --%>
                         <tr>
-                            <td class="bold">To which principle does it apply?</td>
+                            <td class="bold" data-toggle="tooltip" title="Metrics should address only one sub-principle, since each FAIR principle is particular to one feature of a digital resource; metrics that address multiple principles are likely to be measuring multiple features, and those should be separated whenever possible.">To which principle does it apply?</td>
                             <td><fmt:message key="${key.concat('-Principle')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">What is being measured?</td>
+                            <td class="bold" data-toggle="tooltip" title="A precise description of the aspect of that digital resource that is going to be evaluated">What is being measured?</td>
                             <td><fmt:message key="${key.concat('-Measured')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">Why should we measure it?</td>
+                            <td class="bold" data-toggle="tooltip" title="Describe why it is relevant to measure this aspect">Why should we measure it?</td>
                             <td><fmt:message key="${key.concat('-Why-Measure')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">What must be provided?</td>
+                            <td class="bold" data-toggle="tooltip" title="What information is required to make this measurement?">What must be provided?</td>
                             <td><fmt:message key="${key.concat('-Must-Provided')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">How do we measure it?</td>
+                            <td class="bold" data-toggle="tooltip" title="In what way will that information be evaluated?">How do we measure it?</td>
                             <td><fmt:message key="${key.concat('-How-Measure')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">What is a valid result?</td>
+                            <td class="bold" data-toggle="tooltip" title="What outcome represents 'success' versus 'failure'">What is a valid result?</td>
                             <td><fmt:message key="${key.concat('-Valid-Result')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold">For which digital resource(s) is this relevant?</td>
+                            <td class="bold" data-toggle="tooltip" title="If possible, a metric should apply to all digital resources; however, some metrics may be applicable only to a subset. In this case, it is necessary to specify the range of resources to which the metric is reasonably applicable.">For which digital resource(s) is this relevant?</td>
                             <td><fmt:message key="${key.concat('-Which-Relevant')}"/></td>
                         </tr>
                         <c:if test="${exampleText == 'None'}">
                             <tr>
-                                <td class="bold">Examples of their application across types of digital
+                                <td class="bold" data-toggle="tooltip" title="Whenever possible, provide an existing example of success, and an example of failure.">Examples of their application across types of digital
                                     resource:
                                 </td>
                                 <td>${exampleText}</td>
@@ -110,3 +110,10 @@
     </div>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+</script>
