@@ -125,10 +125,12 @@
                             <h6 class="inline bold">Metric Identifier: </h6><br>
                             <span id="identifier"></span>
                         </div>
+<%--
                         <div class="sub-title-font font-size-16 modal-software-item">
                             <h6 class="inline bold">Metric Name: </h6><br>
                             <span id="name"></span>
                         </div>
+--%>
                         <div class="sub-title-font font-size-16 modal-software-item">
                             <h6 class="inline bold">To which principle does it apply? </h6><br>
                             <span id="principle"></span>
@@ -217,9 +219,11 @@
             var comments = header.data('comments');
 
             modal.find('#detailed-view-button').attr("onClick", "location.href='" + ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title  + "'")
-            modal.find('.modal-title').html(title);
+            modal.find('.modal-title').html(title + " - " + name);
             modal.find('#identifier').html(identifier);
+/*
             modal.find('#name').html(name);
+*/
             modal.find('#principle').html(principle);
             modal.find('#measured').html(measured);
             /*
