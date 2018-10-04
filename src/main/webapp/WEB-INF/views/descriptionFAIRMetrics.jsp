@@ -8,6 +8,7 @@
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
+    <fmt:setBundle basename="fairMetricsDescriptions"/>
 
     <myTags:head title="MIDAS Digital Commons"/>
 
@@ -41,6 +42,25 @@
                     to the repository above for the most recent updates to the metrics.
                 </h12>
                 <hr>
+
+                <div class="metadata-column tables" style="padding-bottom: 0px;">
+                    <div class="metadata-table"><h4 class="sub-title-font"></h4>
+                        <table class="table table-condensed table-borderless table-discrete table-striped">
+                            <tbody>
+                            <c:forEach items="${keys}" var="key" varStatus="status">
+                                <tr>
+                                    <td class="bold">
+                                        ${key}
+                                    </td>
+                                    <td>
+                                        <fmt:message key="${key.concat('-Measured')}"/>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
