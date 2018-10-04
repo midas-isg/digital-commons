@@ -47,7 +47,7 @@
                                 <span class="bold" data-toggle="tooltip"
                                       title="<fmt:message key="FM-Identifier" />"><fmt:message key="FM-Identifier-Field" /></span>
                             </td>
-                            <td>${key}: <a class="underline link-break-all"
+                            <td><%--${key}: --%><a class="underline link-break-all"
                                            href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>
@@ -112,7 +112,7 @@
                                     <span class="bold" data-toggle="tooltip"
                                           title="<fmt:message key="FM-Examples" />"><fmt:message key="FM-Examples-Field" /></span>
                                 </td>
-                                <td>${exampleText}</td>
+                                <td><fmt:message key="${key.concat('-Examples')}"/></td>
                             </tr>
                         </c:if>
                         <%--
