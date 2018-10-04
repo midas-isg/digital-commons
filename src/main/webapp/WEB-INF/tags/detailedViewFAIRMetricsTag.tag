@@ -45,7 +45,7 @@
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="FAIR Metrics should, themselves, be FAIR objects, and thus should have globally unique identifiers.">Metric Identifier:</span>
+                                      title="<fmt:message key="FM-Identifier" />"><fmt:message key="FM-Identifier-Field" /></span>
                             </td>
                             <td>${key}: <a class="underline link-break-all"
                                            href="<fmt:message key="${key.concat('-URL')}" />"
@@ -60,58 +60,57 @@
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="Metrics should address only one sub-principle, since each FAIR principle is particular to one feature of a digital resource; metrics that address multiple principles are likely to be measuring multiple features, and those should be separated whenever possible.">To which principle does it apply?</span>
+                                      title="<fmt:message key="FM-Principle" />"><fmt:message key="FM-Principle-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Principle')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="A precise description of the aspect of that digital resource that is going to be evaluated.">What is being measured?</span>
+                                      title="<fmt:message key="FM-Measured" />"><fmt:message key="FM-Measured-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Measured')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="Describe why it is relevant to measure this aspect.">Why should we measure it?</span>
+                                      title="<fmt:message key="FM-Why-Measure" />"><fmt:message key="FM-Why-Measure-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Why-Measure')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="What information is required to make this measurement?">What must be provided?</span>
+                                      title="<fmt:message key="FM-Must-Provided" />"><fmt:message key="FM-Must-Provided-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Must-Provided')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="In what way will that information be evaluated?">How do we measure it?</span>
+                                      title="<fmt:message key="FM-How-Measure" />"><fmt:message key="FM-How-Measure-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-How-Measure')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="What outcome represents 'success' versus 'failure'?">What is a valid result?</span>
+                                      title="<fmt:message key="FM-Valid-Result" />"><fmt:message key="FM-Valid-Result-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Valid-Result')}"/></td>
                         </tr>
                         <tr>
                             <td>
                                 <span class="bold" data-toggle="tooltip"
-                                      title="If possible, a metric should apply to all digital resources; however, some metrics may be applicable only to a subset. In this case, it is necessary to specify the range of resources to which the metric is reasonably applicable.">For which digital resource(s) is this relevant?</span>
+                                      title="<fmt:message key="FM-Which-Relevant" />"><fmt:message key="FM-Which-Relevant-Field" /></span>
                             </td>
                             <td><fmt:message key="${key.concat('-Which-Relevant')}"/></td>
                         </tr>
-                        <c:if test="${exampleText == 'None'}">
+                        <c:if test="${exampleText == 'None' or key == 'FM'}">
                             <tr>
                                 <td>
                                     <span class="bold" data-toggle="tooltip"
-                                          title="Whenever possible, provide an existing example of success, and an example of failure.">Examples of their application across types of digital
-                                    resource:</span>
+                                          title="<fmt:message key="FM-Examples" />"><fmt:message key="FM-Examples-Field" /></span>
                                 </td>
                                 <td>${exampleText}</td>
                             </tr>
@@ -128,8 +127,8 @@
                 <c:if test="${key == 'FM-F1A' or key == 'FM-F1B' or key == 'FM-F2' or key == 'FM-F4'}">
                     <div class="metadata-table">
                         <h5 class="sub-title-font">
-                            <span data-toggle="tooltip" title="Whenever possible, provide an existing example of success, and an example of failure.">
-                                Examples of their application across types of digital resource:
+                            <span data-toggle="tooltip" title="<fmt:message key="FM-Examples" />">
+                                <fmt:message key="FM-Examples-Field" />
                             </span>
                         </h5>
                         <c:choose>
