@@ -202,7 +202,7 @@
             var header = $(event.relatedTarget);
             var modal = $(this);
 
-            var title = header.data('title') + " - " + header.data('name');
+            var title = header.data('title');
             var fmid = "FM-" + header.data('title');
             var identifier = header.data('url');
             var name = header.data('name');
@@ -217,7 +217,7 @@
             var comments = header.data('comments');
 
             modal.find('#detailed-view-button').attr("onClick", "location.href='" + ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title  + "'")
-            modal.find('.modal-title').html(title);
+            modal.find('.modal-title').html(title + " - " + name);
             modal.find('#identifier').html(identifier);
 /*
             modal.find('#name').html(name);
