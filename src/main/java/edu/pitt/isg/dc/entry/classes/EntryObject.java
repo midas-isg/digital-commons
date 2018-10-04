@@ -222,7 +222,7 @@ public class EntryObject {
 
         Object returnObject = null;
         try {
-            Class typeClass = Class.forName(this.getEntryType());
+            Class typeClass = Class.forName(this.getEntryType().replace("class ", ""));
             returnObject = gson.fromJson(jsonString, typeClass);
         } catch (Exception e) {
             e.printStackTrace();

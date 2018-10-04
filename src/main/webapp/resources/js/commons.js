@@ -215,7 +215,7 @@ function buildBootstrapTree(name, contextPath, treeArray, treeviewTag, expandedI
         treeviewInfo['collapseIcon'] = "bullet-point";
         treeviewInfo['highlightSelected'] = false;
         treeviewInfo['onNodeSelected'] = function(event, data) {
-            $('[data-toggle="tooltip"]').tooltip('destroy');
+            $('[data-toggle="tooltip"]').tooltip('hide');
             event.stopPropagation();
         };
         $(treeviewTag).treeview(treeviewInfo);
@@ -326,7 +326,7 @@ function getNodeData(name, key, treeDictionary) {
     }
 
     if(name !== "software" && name !== "webServices" && name !== "dataFormats" && name !== "standardIdentifiers") {
-        nodeData.text = "<span data-placement='auto right' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
+        nodeData.text = "<span data-placement='top' data-container='body' data-toggle='tooltip' title='" + treeDictionary[key]["description"] + "'>" + title + "</span>";
     }
 
     return nodeData;
@@ -662,12 +662,14 @@ function compareNodes(a,b) {
 
 function toggleTitle(element) {
     var $this = $(element);
+    $('[data-toggle="tooltip"]').tooltip();
+
 
     if($this[0].parentNode.offsetWidth < $this[0].parentNode.scrollWidth || $this[0].offsetWidth < $this[0].scrollWidth){
-        $this.attr('title', $this.text());
+        $this.attr('data-original-title', $this.text());
 
     } else {
-        $this.attr('title', '');
+        $this.attr('data-original-title', '');
     }
 
 }
@@ -683,14 +685,17 @@ $('#commons-body').on('click', function (e) {
 });
 
 $(document).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
     }
 
     var hashElement = $("a[href='" + location.hash + "']");
     if (location.hash && hashElement.length > 0) {
-        hashElement.tab("show");
-
+        try {
+            hashElement.tab("show");
+        } catch (e) {}
         if(location.hash === "#workflows") {
             setTimeout(function(){drawDiagram()}, 300);
         } else if(location.hash === "#modal-json") {
@@ -732,16 +737,18 @@ $(document).ready(function() {
     });
 
     $(document.body).on("click", "a", function(event) {
-
         var href = this.getAttribute("href");
 
-
-        if(href != undefined && href.includes('http')) {
-            ga('send', {
-                hitType: 'event',
-                eventCategory: 'Clickthrough',
-                eventAction: href
-            });
+        try{
+            if (href != undefined && nulhref.includes('http')) {
+                ga('send', {
+                    hitType: 'event',
+                    eventCategory: 'Clickthrough',
+                    eventAction: href
+                });
+            }
+        } catch (e) {
+            
         }
     });
 
@@ -753,18 +760,504 @@ $(document).ready(function() {
         location.hash = '_';
     });
 
-    // Collapsible Card
-    $('a[data-action="collapse"]').on('click',function(e){
-        e.preventDefault();
-        $(this).closest('.card').children('.card-content').collapse('toggle');
-        $(this).closest('.card').find('[data-action="collapse"] i').toggleClass('ft-minimize-2 ft-maximize');
-
+    $(".has-error-card.card").each(function(){
+        highlightDiv($(this).attr("id"), "red");
     });
+
 });
+
+function scrollToAnchor(anchor) {
+    var el = document.querySelector('#' + anchor);
+    try {
+        var offset = el.getBoundingClientRect().top + window.scrollY;
+        if (offset < 81) {
+            offset += 95;
+        } else {
+            offset -= 95;
+        }
+        window.scroll({
+            top: offset,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } catch (e) {
+
+    }
+}
+
+function highlightDiv(div, color) {
+
+    var colorToDisplay = "rgba(1, 255, 68, 0.9)";
+    if (color == "red") {colorToDisplay = "rgba(255, 0, 0, 0.7)"}
+
+    $("div.card").find('*').css("box-shadow", '');
+
+    $('#' + div).css(
+        "boxShadow", "0px 0px 15px 15px " + colorToDisplay
+    );
+
+    $(function() {
+        $("body").click(function(e) {
+            if (e.target.id == div || $(e.target).parents("#" + div).length) {
+                $('#' + div).css(
+                    "boxShadow", "0px 0px 15px 15px rgba(0, 150, 0, 0.0)"
+                );
+            }
+        });
+    })
+
+
+}
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
+
+
+// Collapsible Card
+$(document).on('click', 'a[data-action="collapse"]', function (e) {
+    e.preventDefault();
+    $(this).closest(".card").children(".card-content").collapse("toggle");
+    $(this).closest(".card").find('[data-action="collapse"] i').toggleClass("ft-minus ft-plus");
+});
+
+// Toggle fullscreen
+$(document).on('click', 'a[data-action="expand"]', function (e) {
+    e.preventDefault();
+    $(this).closest('.card').find('[data-action="expand"] i').toggleClass('ft-maximize ft-minimize');
+    $(this).closest('.card').toggleClass('card-fullscreen');
+});
+
+function rearrangeCards(parentDiv) {
+    if($('#'+parentDiv).children('.card-button').length > 0 ) {
+        $('#'+parentDiv).children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    } else {
+        $('#' + parentDiv).children().children('.card-button').each(function () {
+            $($(this)[0]).appendTo("#" + parentDiv + "-card-row");
+        });
+    }
+}
+
+function makeAllTabsInactive(specifier) {
+    $("#"+ specifier+"-card-header").find("a").each(function () {
+        $(this).removeClass("active");
+    });
+}
+
+function removeSection(specifier, tagName, event, isUnbounded) {
+    var confirmation = true;
+    $("#" + specifier + "-card").find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this card?");
+            return false;
+        }
+    });
+
+    if (confirmation == true) {
+        event.stopImmediatePropagation();
+        $("#" + specifier + "-add-input-button").removeClass("hide");
+
+        // clearAndHideEditControlGroup($(event.target).attr("for"));
+
+        if(isUnbounded) {
+            clearAndHideEditControlGroup(specifier+"-card");
+            closeAllTabs(event, $("#"+specifier+"-card"));
+            $("#" + specifier + "-card").addClass("hide");
+        }else {
+            clearAndHideEditControlGroup(specifier+"-input-block");
+            $("#"+specifier+"-input-block").addClass("hide");
+        }
+
+        $("." + specifier+"-"+tagName+"-remove").closest('.card').addClass("hide").slideUp('fast');
+    }
+}
+
+function showCard(specifier, tagName, id, isUnboundedList, isRequired) {
+    // e.stopImmediatePropagation();
+    $("#"+id).removeClass("hide");
+    $(this).closest('.card').children('.card-content').removeClass('collapse');
+    $("#"+specifier+"-input-block").removeClass("hide");
+    $("#"+specifier+"-input-block").addClass("collapse");
+    $("#"+specifier+"-input-block").addClass("show");
+
+    $("#"+specifier+"-input-block").show();
+
+    if(isUnboundedList || !isRequired) {
+        $("#"+specifier+"-add-input-button").addClass("hide");
+    }
+
+    $("#"+specifier+"-"+tagName).val("");
+    scrollToAnchor(specifier);
+    highlightDiv(specifier,"green");
+
+    $("#" + specifier+"-date-picker").datepicker({
+        forceParse: false,
+        orientation: 'top auto',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4',
+    });
+}
+
+
+function closeTab(e, div, specifier, tagName) {
+    //warn user before closing tab
+    var confirmation = true;
+    var prevDiv = undefined;
+    var takeNext = false;
+    $("#"+$(div.parentElement.parentElement).attr("for")).find("input[type = 'text']").each(function() {
+        if(this.value != "") {
+            confirmation = confirm("Are you sure you want to close this tab?");
+            return false;
+        }
+    });
+
+    if(confirmation == true) {
+        //check if all other tabs have been "closed"
+        var counter = 0;
+        $("#" + specifier + "-card-header").find("li").each(function () {
+            if(!$(this).hasClass("hide")) {
+                counter++;
+            }
+        });
+
+        //in some instances the tooltip was displayed in the top left corner of the page despite the tab/card being hidden
+        $(".tooltip").remove();
+
+        // TODO: need to fix bug where the next div that is show is one that was 'removed'
+        if(counter>1) {
+            //find closest tab to the left tab to make it active (we don't just want to use the first tab)
+            $("#" + specifier + "-card-header").find("a").each(function () {
+                if (takeNext) {
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                        return false;
+                    }
+                }
+                if ($(div.parentElement.parentElement).attr("for") == $(this.parentElement).attr("for")) {
+                    if ($(this).hasClass("active")) {
+                        takeNext = true;
+                    }
+                } else if ($(this).hasClass("active")) {
+                    prevDiv = $(this.parentElement);
+                    return false;
+                } else {
+                    if(!$(this.parentElement).hasClass("hide")) {
+                        prevDiv = $(this.parentElement);
+                    }
+                }
+
+            });
+        }
+        var divToClose = $(div.parentElement.parentElement).attr("for");
+        //remove does not clear flow data; had to call the function and hide div so flow data is updated on next/submit
+        clearAndHideEditControlGroup(divToClose);
+        $("#" + divToClose).addClass("hide");
+        $(div.parentElement.parentElement).addClass("hide");
+
+        if (prevDiv == undefined) {
+            removeSection(specifier, tagName, e, true);
+        } else {
+            showTab(e, $(prevDiv).find("a")[0], specifier);
+        }
+    }
+
+    e.preventDefault();
+    e.stopPropagation();
+};
+
+//find each card header in the section and subsections and close all tabs
+function closeAllTabs(e, div) {
+    $(div).find(".card-header").each(function() {
+        closeAllTabs(e, $(this));
+        $(this).find("a").each(function(){
+            if ($(this).hasClass("nav-link")) {
+                $(this.parentElement).remove();
+            }
+        });
+    });
+};
+
+function showTab(e, div, specifier) {
+    //debugger;
+    makeAllTabsInactive(specifier);
+    console.log("calling showTab");
+    var divToShow = $(div.parentElement).attr('for');
+
+    $(div).addClass("active");
+
+    $('#'+specifier+'-card .card-content').each(function (index) {
+        if ($(this).attr("id") != divToShow) {
+            $(this).addClass("hide");
+        }
+    });
+
+    $('#' + divToShow).removeClass("hide");
+    $('#' + divToShow.substring(0, divToShow.indexOf("-input-block"))).removeClass("hide");
+    $('#' + divToShow + ' .card-content').each(function (index) {
+        //if card is unbounded list we find the 'active' tab and unhide that input block
+        var inputBlockID = $(this).attr("id");
+        var tabID = inputBlockID.replace("input-block", "tab");
+        var divBeforeInputBlockID = inputBlockID.replace("-input-block","");
+
+        //the card is not an unbounded list so display the input block
+
+        if ($("#" + tabID).length == 0 && !(tabID.endsWith("00-tab"))) {
+            $(this).removeClass("hide");
+        }
+
+        //cards with existing data were not displaying despite input block having hide removed
+        //added divBeforeInputBlockID to unhide if active
+        if ($("#" + tabID).children().hasClass("active")) {
+            $(this).removeClass("hide");
+            $("#"+divBeforeInputBlockID).removeClass("hide");
+        }
+    });
+};
+
+function showTabNamed(tabToActivate, divToShow, specifier) {
+    makeAllTabsInactive(specifier);
+    //console.log("calling showTabNamed");
+    // var divToShow = $(div.parentElement).attr('for');
+
+    $('#' + divToShow).removeClass("hide");
+    //   $(tabToActivate).addClass("active");
+    $($("[for='" + divToShow + "'] .nav-link")[0]).addClass("active");
+    $('#'+specifier+'-card .card-content').each(function (index) {
+        if ($(this).attr("id") != divToShow) {
+            $(this).addClass("hide");
+        }
+    });
+
+    $('#' + divToShow + ' .card-content').each(function (index) {
+        //if card is unbounded list we find the 'active' tab and unhide that input block
+        var inputBlockID = $(this).attr("id");
+        var tabID = inputBlockID.replace("input-block", "tab");
+
+        //the card is not an unbounded list so display the input block
+        if ($("#" + tabID).length == 0) {
+            $(this).removeClass("hide");
+        }
+
+        if ($("#" + tabID).children().hasClass("active")) {
+            $(this).removeClass("hide");
+        }
+    });
+};
+
+function toggleLoadingScreen() {
+    $(".loading").toggle();
+}
+
+function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
+    var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
+
+    $("#"+specifier+"-add-input-button").addClass("hide");
+    $("#"+specifier+"-card").removeClass("hide");
+    if (tagName == 'personComprisedEntity') {
+        if (thisObject.id == ""+specifier+"-add-"+tagName+"-person") {
+            if (listItemCount === 0 && isFirstRequired) {
+                html = $("#" + specifier+"-person-required-copy-tag").html();
+            } else html = $("#" + specifier+"-person-copy-tag").html();
+        } else if (thisObject.id == specifier+"-add-"+tagName+"-organization") {
+            if (listItemCount === 0 && isFirstRequired) {
+                html = $("#" + specifier+"-organization-required-copy-tag").html();
+            } else html = $("#" + specifier+"-organization-copy-tag").html();
+        }
+    } else if (tagName == 'isAbout') {
+        if (thisObject.id == specifier+"-add-"+tagName+"-annotation") {
+            html = $("#" + specifier+"-annotation-copy-tag").html();
+        } else if (thisObject.id == specifier+"-add-"+tagName+"-biologicalEntity") {
+            html = $("#" + specifier+"-biologicalEntity-copy-tag").html();
+        }
+    } else {
+        html = $("#" + specifier + "-"+tagName+"-copy-tag").html();
+    }
+
+
+    regexEscapeOpenBracket = new RegExp('\\[', "g");
+    regexEscapeClosedBracket = new RegExp('\\]', "g");
+    regexPath = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
+    regexPath = new RegExp(regexPath + '\\[0\\]', "g");
+    regexSpecifier = new RegExp(specifier + '\\-00', "g");
+    html = html.replace(regexPath, path+'[' + listItemCount + ']')
+        .replace(regexSpecifier, specifier+'-' + listItemCount);
+
+    newDivId = html.match(specifier+"-\\d*[A-Za-z\-]*")[0];
+    $("."+specifier+"-"+tagName+"-add-more").before(html);
+    $("#"+specifier+"-" + listItemCount + "-date-picker").datepicker({
+        forceParse: false,
+        orientation: 'top auto',
+        todayHighlight: true,
+        format: 'yyyy-mm-dd',
+        uiLibrary: 'bootstrap4',
+    });
+
+    makeAllTabsInactive(specifier);
+    //create a new tab
+    $("#" + specifier + "-card").find(".card-header-tabs").first().append("<li  for=" + newDivId + " id=\""+specifier+"-" + listItemCount + "-tab\" class=\"nav-item\">" +
+        " <a onclick=\"showTab(event, this, '"+specifier+"')\" id=\""+specifier+"-"+listItemCount+"-listItem\" class=\"wizard-nav-link nav-link active\" data-toggle=\"tooltip\" title=\""+label+"\">"+label+"   "+
+        "<i onclick=\"closeTab(event, this, '"+specifier+"', '"+tagName+"')\" class=\"ft-x\"></i></a></li>");
+
+
+    //switch to newly created tab
+    showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
+    $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
+    //move card buttons to the bottom
+    rearrangeCards(specifier+'-' + listItemCount + '-input-block');
+    //TODO: test cross-browser functionality for below
+    //TODO: header cuts off top of card when redirecting to location
+    // document.getElementById($("#" + specifier + "-card").selector).focus();
+    window.location.hash = $("#" + specifier + "-card").selector;
+
+}
+
+function getLastIndex(specifier){
+    var index = 0;
+    //get the last index of the specifier
+    for (var i=0; i<10; i++) {
+        if (specifier.includes(i+"-")){
+            var lastIndex = specifier.lastIndexOf(i+"-");
+            if (lastIndex > index) {
+                index = lastIndex;
+            }
+        }
+    }
+
+    return index;
+}
+
+function updateCardTabTitle(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier).val();
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitleFromSelect(specifier){
+    var index = getLastIndex(specifier);
+
+    var newCardTabTitleText = $("#" + specifier+"-select")[0].value;
+    if (index > 0 && newCardTabTitleText.length > 0) {
+        var id = specifier.substring(0, index + 2) + "listItem";
+        setCardTabTitle(id, specifier, newCardTabTitleText);
+    }
+}
+
+function updateCardTabTitlePerson(specifier){
+    var index = getLastIndex(specifier);
+
+    var fullNameId = specifier.substring(0, index + 2) + "fullname-string";
+    var firstNameId = specifier.substring(0, index + 2) + "firstName-string";
+    var middleInitialId = specifier.substring(0, index + 2) + "middleInitial-string";
+    var lastNameId = specifier.substring(0, index + 2) + "lastName-string";
+
+    var fullName = $("#" + fullNameId).val();
+    var firstName = $("#" + firstNameId).val();
+    var middleInitial = $("#" + middleInitialId).val();
+    var lastName = $("#" + lastNameId).val();
+
+    var combinedFullName = "";
+    if (firstName.length > 0) {
+        combinedFullName = firstName.trim();
+    }
+    if (middleInitial.length > 0) {
+        combinedFullName = combinedFullName + " " + middleInitial.trim();
+    }
+    if (lastName.length > 0) {
+        combinedFullName = combinedFullName + " " + lastName.trim();
+    }
+    if (combinedFullName.length > 0) {
+        combinedFullName = combinedFullName.trim();
+    }
+
+    if (specifier != fullNameId && combinedFullName.length > 0 && combinedFullName.length > fullName.length) {
+        fullName = combinedFullName;
+        $("#" + fullNameId).val(fullName);
+    }
+
+    var id = specifier.substring(0, index + 2) + "listItem";
+    if (fullName.length > 0) {
+        setCardTabTitle(id, specifier, fullName);
+    }
+}
+
+function updateCardTabTitleType(specifier){
+    var index = getLastIndex(specifier);
+
+    var informationId = specifier.substring(0, index + 2) + "information-value-string";
+    var methodId = specifier.substring(0, index + 2) + "method-value-string";
+    var platformId = specifier.substring(0, index + 2) + "platform-value-string";
+    var information = $("#" + informationId).val();
+    var method = $("#" + methodId).val();
+    var platform = $("#" + platformId).val();
+
+    var id = specifier.substring(0, index + 2) + "listItem";
+    if (information.length > 0) {
+        setCardTabTitle(id, specifier, information.trim());
+    } else if (method.length > 0) {
+        setCardTabTitle(id, specifier, method.trim());
+    } else if (platform.length > 0) {
+        setCardTabTitle(id, specifier, platform.trim());
+    }
+}
+
+function setCardTabTitle(id, specifier, cardTabTitle){
+    var maxLength = 35;
+    var leftIndex = 20;
+    var rightIndex = 10;
+
+    // $('#'+ id +'[data-toggle="tooltip"]').attr("title",cardTabTitle);
+    $('#'+ id +'[data-toggle="tooltip"]').attr("data-original-title",cardTabTitle);
+
+    if (cardTabTitle.includes(" ")) {
+        var regex = /\s+/g;
+        var cardTabTitleWords = cardTabTitle.split(regex);
+        var size = cardTabTitleWords.length;
+        if (size > 7) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + cardTabTitleWords[2].length + 2;
+            rightIndex = cardTabTitleWords[size - 2].length + cardTabTitleWords[size - 1].length + 1;
+            if (rightIndex > 15) {rightIndex = 15}
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (size > 5) {
+            leftIndex = cardTabTitleWords[0].length + cardTabTitleWords[1].length + 1;
+            rightIndex = cardTabTitleWords[size - 1].length;
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+        } else if (cardTabTitle.length > maxLength) {
+            if (cardTabTitle.substring(0, leftIndex).includes(" ")) {
+                leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
+            }
+            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).contains(" ")) {
+                rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
+            }
+            cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
+        }
+    } else if (cardTabTitle.length > maxLength) {
+        cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(cardTabTitle.length - rightIndex);
+    }
+
+    if(cardTabTitle.length > 0) {
+        cardTabTitle = cardTabTitle + "   ";
+        var currentCardTabTitleText = $("#" + id).text().trim();
+        var currentCardTabTitleHTML = $("#" + id).html();
+        $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+    }
+}
 
 $(window).on("popstate", function() {
     var anchor = location.hash || $("a[data-toggle='tab']").first().attr("href");
-    $("a[href='" + anchor + "']").tab("show");
+    try {
+        $("a[href='" + anchor + "']").tab("show");
+    } catch (e) {
+
+    }
 
     if(location.hash.includes('publication')) {
         $('#content-tab').addClass('highlighted-item');

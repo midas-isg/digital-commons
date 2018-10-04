@@ -1081,11 +1081,14 @@ button, html [type='button'], [type='reset'], [type='submit'] {
 
 .card {
   margin-bottom: 1.875rem;
-  border: none;
+  border: 2px solid #0b2b65 !important;
+    /*
+    border: none;
+    */
   border-radius: 0;
   box-shadow: 0 10px 40px 0 rgba(62, 57, 107, 0.07), 0 2px 9px 0 rgba(62, 57, 107, 0.06); }
-  .card .card {
-    box-shadow: none !important; }
+  /*.card .card {*/
+    /*box-shadow: none !important; }*/
   .card .card-title {
     text-transform: uppercase;
     font-weight: 500;
@@ -1142,8 +1145,6 @@ button, html [type='button'], [type='reset'], [type='submit'] {
         padding-top: 6px;
         padding-bottom: 6px; }
 
-.card-footer {
-  border-top: 1px solid #EEEEEE; }
 
 .text-white .card-text {
   color: white; }

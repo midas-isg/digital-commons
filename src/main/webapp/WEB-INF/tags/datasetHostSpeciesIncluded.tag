@@ -17,7 +17,7 @@
                                varStatus="varStatus">
                         <c:choose>
                             <c:when test="${not empty hostSpeciesIncluded.identifier.identifierDescription}">
-                                ${fn:toUpperCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 0, 1))}${fn:toLowerCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 1,fn:length(hostSpeciesIncluded.identifier.identifierDescription)))}${!varStatus.last ? ',' : ''}
+                                <span class="badge badge-primary">${fn:toUpperCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 0, 1))}${fn:toLowerCase(fn:substring(hostSpeciesIncluded.identifier.identifierDescription, 1,fn:length(hostSpeciesIncluded.identifier.identifierDescription)))}</span>
                             </c:when>
                         </c:choose>
                     </c:forEach>

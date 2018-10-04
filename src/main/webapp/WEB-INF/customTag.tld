@@ -11,6 +11,11 @@
         <function-signature>boolean isObjectEmpty(java.lang.Object)</function-signature>
     </function>
     <function>
+        <name>getTitleFromPayload</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getTitleFromPayload(java.lang.String)</function-signature>
+    </function>
+    <function>
         <name>isPerson</name>
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean isPerson(edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity)</function-signature>
@@ -24,5 +29,25 @@
         <name>onlyContainsSoftwareElements</name>
         <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
         <function-signature>boolean onlyContainsSoftwareElements(java.lang.Object)</function-signature>
+    </function>
+    <function>
+        <name>getCardTabTitle</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getCardTabTitle(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>getCardTabToolTip</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>java.lang.String getCardTabToolTip(java.lang.Object, java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>isFirstInstance</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>boolean isFirstInstance(java.lang.String)</function-signature>
+    </function>
+    <function>
+        <name>getMessageCriteria</name>
+        <function-class>edu.pitt.isg.dc.utils.TagUtil</function-class>
+        <function-signature>org.springframework.binding.message.MessageCriteria getMessageCriteria(java.lang.String)</function-signature>
     </function>
 </taglib>

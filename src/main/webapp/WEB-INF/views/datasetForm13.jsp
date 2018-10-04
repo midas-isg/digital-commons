@@ -7,37 +7,50 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="extra"></myTags:datasetIndex>
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editNonZeroLengthString path="version"
-                                            string="${dataset.version}"
-                                            specifier="version"
-                                            placeholder=" A release point for the dataset when applicable."
-                                            label="Version">
-            </myTags:editNonZeroLengthString>
-            <myTags:editCategoryValuePair categoryValuePairs="${dataset.extraProperties}"
-                                          specifier="extraProperties"
-                                          label="Extra Properties"
-                                          path="extraProperties">
-            </myTags:editCategoryValuePair>
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <div id="version">
+                <fmt:message key="dataset.version" var="versionPlaceHolder" />
+                <myTags:editNonZeroLengthString path="version"
+                                                string="${digitalObject.version}"
+                                                specifier="version"
+                                                id="version"
+                                                placeholder="${versionPlaceHolder}"
+                                                isUnboundedList="${false}"
+                                                isRequired="${true}"
+                                                isInputGroup="${true}"
+                                                label="Version">
+                </myTags:editNonZeroLengthString>
+            </div>
+            <div id="extraProperties">
+                <fmt:message key="dataset.extraProperties" var="extraPropertiesPlaceHolder" />
+                <myTags:editMasterUnbounded listItems="${digitalObject.extraProperties}"
+                                            tagName="categoryValuePair"
+                                            specifier="extraProperties"
+                                            label="Extra Properties"
+                                            addButtonLabel="Extra Property"
+                                            cardText="${extraPropertiesPlaceHolder}"
+                                            cardIcon="fas fa-plus"
+                                            path="extraProperties">
+                </myTags:editMasterUnbounded>
+            </div>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"
+                   onclick="window.onbeforeunload = null;"/>
         </form>
     </div>
 </div>

@@ -41,14 +41,6 @@
                 </div>
             </div>
 
-            <%--<myTags:software
-                    software="${software}"/>--%>
-            <%--<myTags:libraryViewerCollections
-                    libraryViewerUrl="${libraryViewerUrl}"
-                    libraryViewerToken="${libraryViewerToken}"
-                    spewRegions="${spewRegions}"/>
-            <myTags:webServices/>
-            <myTags:dataFormats/>--%>
             <myTags:standardIdentifiers/>
         </div>
 

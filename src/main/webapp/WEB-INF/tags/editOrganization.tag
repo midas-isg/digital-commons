@@ -5,8 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%--<%@ attribute name="organizations" required="true"--%>
-<%--type="java.util.ArrayList" %>--%>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
+
 <%@ attribute name="organization" required="false"
               type="edu.pitt.isg.mdc.dats2_2.PersonComprisedEntity" %>
 <%@ attribute name="path" required="true"
@@ -17,79 +18,86 @@
               type="java.lang.String" %>
 <%@ attribute name="isFirstRequired" required="true"
               type="java.lang.Boolean" %>
+<%@ attribute name="isUnboundedList" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
 
-<div class="form-group control-group edit-form-group">
-    <label>${label}</label>
-    <c:choose>
-        <c:when test="${not empty organization}">
-            <c:choose>
-                <c:when test="${not isFirstRequired}">
-                    <button class="btn btn-danger organization-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i> Remove
-                    </button>
-                </c:when>
-            </c:choose>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
-                                            label="Identifier"
-                                            path="${path}.identifier"
-                                            identifier="${organization.identifier}"
-                                            unbounded="${false}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            identifiers="${organization.alternateIdentifiers}"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editRequiredNonZeroLengthString label="Name"
-                                                    placeholder=" The name of the organization."
-                                                    string="${organization.name}"
-                                                    path="${path}.name">
-            </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonZeroLengthString label="Abbreviation"
-                                            placeholder=" The shortname, abbreviation associated to the organization."
-                                            specifier="${specifier}-abbreviation"
-                                            path="${path}.abbreviation"
-                                            string="${organization.abbreviation}">
-            </myTags:editNonZeroLengthString>
-            <myTags:editPlace place="${organization.location}"
-                              path="${path}.location"
-                              specifier="${specifier}-location"
-                              label="Location">
-            </myTags:editPlace>
-        </c:when>
-        <c:otherwise>
-            <c:choose>
-                <c:when test="${not isFirstRequired}">
-                    <button class="btn btn-danger organization-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i> Remove
-                    </button>
-                </c:when>
-            </c:choose>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-identifier"
-                                            label="Identifier"
-                                            path="${path}.identifier"
-                                            unbounded="${false}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editNonZeroLengthString label="Name" placeholder=" The name of the organization."
-                                            specifier="${specifier}-name"
-                                            path="${path}.name">
-            </myTags:editNonZeroLengthString>
-            <myTags:editNonZeroLengthString label="Abbreviation"
-                                            placeholder=" The shortname, abbreviation associated to the organization."
-                                            specifier="${specifier}-abbreviation"
-                                            path="${path}.abbreviation">
-            </myTags:editNonZeroLengthString>
-            <myTags:editPlace path="${path}.location"
-                              specifier="${specifier}-location"
-                              label="Location">
-            </myTags:editPlace>
-        </c:otherwise>
-    </c:choose>
-</div>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${organization}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+
+<fmt:message key="dataset.organization.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString label="Name"
+                                placeholder="${namePlaceHolder}"
+                                string="${organization.name}"
+                                isRequired="true"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isInputGroup="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
+
+<fmt:message key="dataset.organization.abbreviation" var="abbreviationPlaceHolder" />
+<myTags:editNonZeroLengthString label="Abbreviation"
+                                placeholder="${abbreviationPlaceHolder}"
+                                specifier="${specifier}-abbreviation"
+                                id="${specifier}-abbreviation"
+                                isRequired="${true}"
+                                path="${path}.abbreviation"
+                                isInputGroup="${true}"
+                                string="${organization.abbreviation}">
+</myTags:editNonZeroLengthString>
+<myTags:editIdentifier specifier="${specifier}-identifier"
+                       label="Identifier"
+                       id="${specifier}-identifier"
+                       path="${path}.identifier"
+                       singleIdentifier="${organization.identifier}"
+                       isUnboundedList="${false}">
+</myTags:editIdentifier>
+
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
+                            path="${path}.alternateIdentifiers"
+                            cardText="${alternateIdentifierPlaceHolder}"
+                            cardIcon="fa fa-id-card"
+                            tagName="identifier"
+                            listItems="${organization.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
+<myTags:editPlace place="${organization.location}"
+                  path="${path}.location"
+                  specifier="${specifier}-location"
+                  tagName="place"
+                  id="${specifier}-location"
+                  isUnboundedList="${false}"
+                  label="Location">
+</myTags:editPlace>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${organization}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
+                                 showCardFooter="${true}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
+
 

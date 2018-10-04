@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+    <input name="entryID"/>
+    <input name="categoryID"/>
+    <input name="categoryName"/>
+
+    <decision-state id="createOrEdit">
+        <if test="entryID == null" then="create" else="edit" />
+    </decision-state>
+
+    <action-state id="create">
+        <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
+        <transition on="false" to="accessDenied"/>
+
+        <transition to="dataStandardForm">
+            <set name="flowScope.showCategories" value="false"/>
+            <evaluate expression="datasetWebflowValidator.createSoftware(categoryID)" result="flowScope.digitalObject" />
+            <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
+        </transition>
+    </action-state>
+
+    <action-state id="edit">
+        <evaluate expression="datasetWebflowValidator.isLoggedIn(flowRequestContext)"/>
+        <transition on="false" to="accessDenied"/>
+
+        <transition to="dataStandardForm">
+            <set name="flowScope.showCategories" value="true"/>
+            <evaluate expression="datasetWebflowValidator.editDigitalObject(entryID)" result="flowScope.digitalObject"/>
+            <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
+            <evaluate expression="datasetWebflowValidator.getRevisionId(entryID)" result="flowScope.revisionID"/>
+            <evaluate expression="datasetWebflowValidator.getGeometryEnums()" result="flowScope.geometryEnums" />
+        </transition>
+    </action-state>
+
+    <view-state id="accessDenied">
+
+    </view-state>
+
+    <action-state id="index">
+        <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
+
+        <transition on="name" to="dataStandardForm"/>
+        <transition on="description" to="dataStandardForm"/>
+        <transition on="version" to="dataStandardForm"/>
+        <transition on="identifier" to="dataStandardForm"/>
+        <transition on="alternateIdentifiers" to="dataStandardForm"/>
+        <transition on="type" to="dataStandardForm"/>
+        <transition on="license" to="dataStandardForm"/>
+        <transition on="extraProperties" to="dataStandardForm"/>
+        <transition on="alternateIdentifiers" to="dataStandardForm"/>
+        <transition on="licenses" to="dataStandardForm"/>
+        <transition on="extraProperties" to="dataStandardForm"/>
+
+    </action-state>
+
+    <!--           -->
+    <!--Form page 1-->
+    <view-state id="dataStandardForm" model="flowScope.digitalObject">
+        <on-render>
+            <set type="java.lang.Long" name="requestScope.categoryID" value="flowScope.categoryID"/>
+            <set name="requestScope.showCategories" value="flowScope.showCategories"/>
+            <set name="requestScope.categoryName" value="flowScope.categoryName"/>
+            <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('dataStandard')"/>
+        </on-render>
+        <transition on="submit" to="validateDataStandardForm"/>
+
+        <transition on="index" to="index">
+            <set name="flowScope.indexValue" value="requestParameters.indexValue"/>
+        </transition>
+
+    </view-state>
+
+    <action-state id="validateDataStandardForm">
+        <evaluate expression="datasetWebflowValidator.submitDigitalObject(flowRequestContext, messageContext)" />
+
+        <transition on="true" to="entryConfirmation"/>
+        <transition on="false" to="dataStandardForm"/>
+
+        <transition on="index" to="index"/>
+
+    </action-state>
+    <!--End form page 1-->
+    <!--               -->
+
+   <end-state id="entryConfirmation"/>
+
+
+</flow>

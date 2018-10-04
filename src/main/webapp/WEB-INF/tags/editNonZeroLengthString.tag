@@ -18,81 +18,57 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
+<%@ attribute name="isInputGroup" required="true"
+              type="java.lang.Boolean" %>
 <%@ attribute name="isRequired" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="isFirstRequired" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="cardText" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="updateCardTabTitleText" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextPerson" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="updateCardTabTitleTextType" required="false"
               type="java.lang.Boolean" %>
 
 
-<div id="${id}" class="form-group <c:if test="${not isUnboundedList}">edit-form-group</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and empty string}">hide</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <c:if test="${not isRequired}">
-            <div id="${specifier}-add-input-button"
-                 class="input-group control-group ${specifier}-string-add-more <c:if test="${not empty string}">hide</c:if>">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-string" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-        </c:if>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="input-group control-group full-width <c:if test="${empty string and not isUnboundedList and not isRequired}">hide</c:if>">
-        <c:choose>
-            <c:when test="${isTextArea}">
-                <textarea name="${path}" id="${specifier}-string" type="text" class="form-control" rows="5" placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
-            </c:when>
-            <c:otherwise>
-                <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
-                       id="${specifier}-string" placeholder="${placeholder}"/>
-            </c:otherwise>
-        </c:choose>
-        <c:choose>
-            <c:when test="${isRequired}">
-                <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-                    <span class="error-color">${message.text}</span>
-                </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <div class="input-group-btn">
-                    <button class="btn btn-danger ${specifier}-string-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                </div>
-            </c:otherwise>
-        </c:choose>
-    </div>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${string}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isInputGroup="${isInputGroup}"
+                                 isRequired="${isRequired}"
+                                 isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
+                                 tagName="string"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editInputBlock path="${path}"
+                       specifier="${specifier}-string"
+                       string="${string}"
+                       isTextArea="${isTextArea}"
+                       updateCardTabTitleText="${isUnboundedList or updateCardTabTitleText}"
+                       updateCardTabTitleTextPerson="${updateCardTabTitleTextPerson}"
+                       updateCardTabTitleTextType="${updateCardTabTitleTextType}"
+                       placeholder="${placeholder}">
+</myTags:editInputBlock>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${string}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isInputGroup="${isInputGroup}"
+                                 isRequired="${isRequired}"
+                                 isFirstRequired="${isFirstRequired}"
+                                 cardText="${cardText}"
+                                 tagName="string"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-<c:if test="${not isRequired}">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-string", function (e) {
-                e.stopImmediatePropagation();
-
-                $("#${specifier}-input-block").removeClass("hide");
-                <c:if test="${isUnboundedList or not isRequired}">
-                    $("#${specifier}-add-input-button").addClass("hide");
-                </c:if>
-
-                //Add section
-                $("#${specifier}-string").val("");
-            });
-
-            //Remove section
-            $("body").on("click", ".${specifier}-string-remove", function (e) {
-                e.stopImmediatePropagation();
-
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-add-input-button").removeClass("hide");
-                $("#${specifier}-input-block").addClass("hide");
-            });
-        });
-
-    </script>
-</c:if>
-
-</div>

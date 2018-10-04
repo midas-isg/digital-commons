@@ -7,39 +7,48 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="citation"></myTags:datasetIndex>
 
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
-        <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editPublication path="citations"
-                                    specifier="citations"
-                                    publications="${dataset.citations}"
-                                    label="Citations">
-            </myTags:editPublication>
-            <myTags:editFloat path="citationCount"
-                              specifier="citationCount"
-                              number="${dataset.citationCount}"
-                              label="Citation Count"
-                              placeholder="The number of publications that cite this dataset (enumerated in the citations property)">
-            </myTags:editFloat>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+        <form method="post" id="entry-form" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+            <div id="citationCount">
+                <fmt:message key="dataset.citationCount" var="citationCountPlaceHolder" />
+                <myTags:editFloat path="citationCount"
+                                  id="citationCount"
+                                  specifier="citationCount"
+                                  number="${digitalObject.citationCount}"
+                                  label="Citation Count"
+                                  placeholder="${citationCountPlaceHolder}">
+                </myTags:editFloat>
+            </div>
+            <div id="citations">
+                <fmt:message key="dataset.citation" var="citationPlaceHolder" />
+                <myTags:editMasterUnbounded path="citations"
+                                            specifier="citations"
+                                            listItems="${digitalObject.citations}"
+                                            cardText="${citationPlaceHolder}"
+                                            cardIcon="fas fa-quote-right"
+                                            tagName="publication"
+                                            addButtonLabel="Citation"
+                                            label="Citations">
+                </myTags:editMasterUnbounded>
+            </div>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"
+                   onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
+                   onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

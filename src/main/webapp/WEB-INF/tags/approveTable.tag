@@ -133,12 +133,12 @@
                     <td>N/A</td>
                 </c:otherwise>
             </c:choose>
-            <td class="text-center"><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}", softwareXml["${entry.id.entryId}-${entry.id.revisionId}"])'><icon class="glyphicon glyphicon-eye-open"></icon></button></td>
-            <td class="text-center"><a href="${pageContext.request.contextPath}/add${splitEntryType[fn:length(splitEntryType) - 1]}?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}&categoryId=${entry.category.id}"><button class="btn btn-xs btn-default"><icon class="glyphicon glyphicon-edit"></icon></button></a></td>
-            <td class="text-center"><button class="btn btn-xs btn-default" onclick="location.href='${pageContext.request.contextPath}/add/review/comments?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}'"><icon class="glyphicon glyphicon-comment"></icon> <c:if test="${not empty entry.comments}">(${fn:length(entry.comments)})</c:if></button></td>
+            <td class="text-center"><button class="btn btn-xs btn-default" onclick='showModal(JSON.parse("${entry.entryJsonString}")["entry"],"${splitEntryType[fn:length(splitEntryType) - 1]}", softwareXml["${entry.id.entryId}-${entry.id.revisionId}"])'><i class="far fa-eye"></i></button></td>
+            <td class="text-center"><a href="${pageContext.request.contextPath}/add-digital-object?entryID=${entry.id.entryId}"><button class="btn btn-xs btn-default"><i class="fas fa-edit"></i></button></a></td>
+            <td class="text-center"><button class="btn btn-xs btn-default" onclick="location.href='${pageContext.request.contextPath}/add/review/comments?entryId=${entry.id.entryId}&revisionId=${entry.id.revisionId}'"><i class="far fa-comment-alt"></i> <c:if test="${not empty entry.comments}">(${fn:length(entry.comments)})</c:if></button></td>
             <c:if test="${adminType == 'ISG_ADMIN'}">
-                <td class="text-center"><button class="btn btn-xs btn-default" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, '${entry.getProperty('status')}');"><icon class="glyphicon glyphicon-check"></icon></button></td>
-                <td class="text-center"><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-default" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, null);"><icon class="glyphicon glyphicon-remove"></icon></button></td>
+                <td class="text-center"><button class="btn btn-xs btn-default" onclick="showReviewEntryModal('approveModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.id}', this, '${entry.getProperty('status')}');"><i class="far fa-check-square"></i></button></td>
+                <td class="text-center"><button id="reject-btn-${entry.id.entryId}-${entry.id.revisionId}" class="btn btn-xs btn-default" onclick="showReviewEntryModal('rejectModal', '${entry.id.entryId}', '${entry.id.revisionId}', '${entry.category.category}', this, null);"><icon class="fa fa-minus-circle"></icon></button></td>
             </c:if>
         </tr>
         <script>

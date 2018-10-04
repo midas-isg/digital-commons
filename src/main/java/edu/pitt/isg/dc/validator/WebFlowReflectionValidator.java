@@ -21,8 +21,8 @@ public class WebFlowReflectionValidator extends  ReflectionValidator {
     }
 
     @Override
-    public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        return super.cleanse(clazz, object);
+    public Object cleanse(Class<?> clazz, Object object, boolean setEmptyToNull, boolean convertLists) throws FatalReflectionValidatorException {
+        return super.cleanse(clazz, object, setEmptyToNull, convertLists);
     }
 
     public static void addValidationErrorToMessageContext(List<ValidatorError> errors, MessageContext messageContext) {

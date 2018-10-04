@@ -15,57 +15,38 @@
               type="java.lang.String" %>
 <%@ attribute name="placeholder" required="true"
               type="java.lang.String" %>
-<%@ attribute name="id" required="false"
+<%@ attribute name="id" required="true"
               type="java.lang.String" %>
 
 
-<div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not empty number}">hide</c:if>">
-    <label>${label}</label>
-    <div id="${specifier}-add-input-button"
-         class="input-group control-group ${specifier}-number-add-more <c:if test="${not empty number}">hide</c:if>">
-        <div class="input-group-btn">
-            <button class="btn btn-success ${specifier}-add-number" type="button"><i
-                    class="glyphicon glyphicon-plus"></i> Add
-                    ${label}
-            </button>
-        </div>
-    </div>
-    <div id="${specifier}-input-block"
-         class="input-group control-group full-width <c:if test="${empty number}">hide</c:if>">
-        <input type="number" step="any" class="form-control" value="${number}" name="${path}" id="${specifier}-number" placeholder="${placeholder}"/>
-        <div class="input-group-btn">
-            <button class="btn btn-danger ${specifier}-number-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </div>
-    </div>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${number}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${false}"
+                                 isInputGroup="${true}"
+                                 isRequired="${true}"
+                                 cardText=""
+                                 tagName="float"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
+<myTags:editInputBlock path="${path}"
+                       specifier="${specifier}-number"
+                       number="${number}"
+                       isFloat="${true}"
+                       placeholder="${placeholder}">
+</myTags:editInputBlock>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${number}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${false}"
+                                 isInputGroup="${true}"
+                                 isRequired="${true}"
+                                 cardText=""
+                                 tagName="float"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-    <c:if test="${not isRequired}">
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("body").on("click", ".${specifier}-add-number", function (e) {
-                    e.stopImmediatePropagation();
-
-                    $("#${specifier}-input-block").removeClass("hide");
-                    $("#${specifier}-add-input-button").addClass("hide");
-
-                    //Add section
-                    $("#${specifier}-number").val("");
-                });
-
-                //Remove section
-                $("body").on("click", ".${specifier}-number-remove", function (e) {
-                    e.stopImmediatePropagation();
-
-                    clearAndHideEditControlGroup(this);
-                    $("#${specifier}-add-input-button").removeClass("hide");
-                    $("#${specifier}-input-block").addClass("hide");
-                });
-            });
-
-        </script>
-    </c:if>
-
-</div>

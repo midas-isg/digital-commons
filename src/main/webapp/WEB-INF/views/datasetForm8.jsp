@@ -12,28 +12,27 @@
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
 <div class="wrapper">
     <myTags:datasetIndex active="producedBy"></myTags:datasetIndex>
-
     <div id="entryFormContent">
-        <button type="button" id="sidebarCollapse"
-                class="inline float-right btn btn-info navbar-btn d-none d-sm-none d-md-block">
-            <i class="glyphicon glyphicon-align-left"></i>
-            <span>Toggle Sidebar</span>
-        </button>
+
         <form method="post" id="entry-form" action="${flowExecutionUrl}">
-            <myTags:editStudy study="${dataset.producedBy}"
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <myTags:editStudy study="${digitalObject.producedBy}"
                               specifier="producedBy"
+                              tagName="producedBy"
+                              id="producedBy"
                               path="producedBy"
+                              isUnboundedList="${false}"
                               label="Produced By">
             </myTags:editStudy>
 
-            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"/>
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
 
         </form>
     </div>

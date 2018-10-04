@@ -5,6 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="date" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
@@ -18,120 +19,56 @@
               type="java.lang.String" %>
 <%@ attribute name="isRequired" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="label" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="cardText" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="cardIcon" required="false"
+              type="java.lang.String" %>
 
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${date}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isInputGroup="${false}"
+                                 isRequired="${isRequired}"
+                                 cardText="${cardText}"
+                                 cardIcon="far fa-calendar-alt"
+                                 tagName="date"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
 
-<div id="${id}"
-     class="card form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isRequired and isUnboundedList and function:isObjectEmpty(date)}">d-none</c:if>">
-    <c:if test="${not isUnboundedList}">
-        <label>${label}</label>
-        <c:if test="${not isRequired}">
-            <div id="${specifier}-add-input-button
-                 class="input-group control-group ${specifier}-date-add-more <c:if test="${not function:isObjectEmpty(date)}">d-none</c:if>">
-                <div class="input-group-btn">
-                    <button class="btn btn-success ${specifier}-add-date" type="button"><i
-                            class="glyphicon glyphicon-plus"></i> Add
-                            ${label}
-                    </button>
-                </div>
-            </div>
-        </c:if>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(date) and not isUnboundedList and not isRequired}">d-none</c:if>">
-       <%-- <button class="btn btn-danger ${specifier}-date-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>--%>
-        <div class="form-group edit-form-group">
-            <label>Date</label>
-            <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
-                   id="${specifier}-date-picker">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-            <myTags:editAnnotation path="${path}.type"
-                                   annotation="${date.type}"
-                                   isRequired="false"
-                                   label="Annotation"
-                                   specifier="${specifier}-date">
-            </myTags:editAnnotation>
-        </div>
-    </div>
+<myTags:editDate path="${path}.date"
+                  specifier="${specifier}-date-picker"
+                  id="${specifier}-size"
+                  date="${date}"
+                  placeholder=""
+                  label="Date">
+</myTags:editDate>
 
-    <c:if test="${not isRequired}">
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("body").on("click", ".${specifier}-add-date", function (e) {
-                    e.stopImmediatePropagation();
-
-                    $("#${specifier}-input-block").removeClass("d-none");
-                    <c:if test="${isUnboundedList or not isRequired}">
-                    $("#${specifier}-add-input-button").addClass("d-none");
-                    </c:if>
-
-                    //Add section
-                    $("#${specifier}-date").val("");
-                });
-
-                //Remove section
-                $("body").on("click", ".${specifier}-date-remove", function (e) {
-                    e.stopImmediatePropagation();
-
-                    clearAndHideEditControlGroup(this);
-                    $("#${specifier}-add-input-button").removeClass("d-none");
-                    $("#${specifier}-input-block").addClass("d-none");
-                });
-            });
-
-            $(document).on("focus", "input.date:not(.hasDatepicker)", function () {
-                $(this).datepicker({
-                    constrainInput: false,
-                    changeMonth: true,
-                    changeYear: true
-                });
-            });
-        </script>
-    </c:if>
-
-</div>
-
-<%--
-<script>
-    $(document).on("focus", "input.date:not(.hasDatepicker)", function () {
-        &lt;%&ndash;$("#${specifier}-date-picker").live("click", function () {&ndash;%&gt;
-        $(this).datepicker({
-            constrainInput: false,
-            changeMonth: true,
-            changeYear: true
-        });
-    });
-</script>
-
-
-<div class="form-group control-group edit-form-group">
-    <c:set var="datePath" value="${path}.date"/>
-    <c:choose>
-    <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(datePath)}">
-    <div class="form-group edit-form-group has-error">
-        </c:when>
-        <c:otherwise>
-        <div class="form-group edit-form-group">
-            </c:otherwise>
-            </c:choose>
-            <label>Date</label>
-            <input type="text" class="form-control date" value="${date.date}" name="${path}.date"
-                   id="${specifier}-date-picker">
-            <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(datePath)}" var="message">
-                <span class="error-color">${message.text}</span>
-            </c:forEach>
-        </div>
-        <myTags:editAnnotation path="${path}.type"
-                               date="${date.type}"
-                               label="Date"
-                               specifier="${specifier}-date"
-                               showRemoveButton="false">
-        </myTags:editAnnotation>
-    </div>
-
-
-    --%>
+<fmt:message key="dataset.dates.annotation" var="annotationPlaceHolder" />
+<myTags:editAnnotation path="${path}.type"
+                       annotation="${date.type}"
+                       isRequired="${true}"
+                       label="Type"
+                       cardText="${annotationPlaceHolder}"
+                       id="${specifier}-date"
+                       updateCardTabTitleText="${isUnboundedList}"
+                       isUnboundedList="${false}"
+                       specifier="${specifier}-date">
+</myTags:editAnnotation>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${date}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isInputGroup="${false}"
+                                 isRequired="${isRequired}"
+                                 cardText="${cardText}"
+                                 cardIcon="far fa-calendar-alt"
+                                 tagName="date"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>

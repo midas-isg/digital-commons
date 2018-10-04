@@ -33,7 +33,6 @@
         <div class=" panel panel-primary">
             <div class="panel-body" ng-hide="searchHidden">
                 <div class="row">
-                    <%--<div class="col-md-1"></div>--%>
                     <div class="col-md-4 col-sm-6">
                         <h4 class="content-title-font">Location</h4>
                         <div id="location-widget" style="max-height: 250px; height: 200px; min-height: 130px"></div>
@@ -269,7 +268,7 @@
         }
 
         function linkHtml(id, rev, name) {
-            return '<a href="#" onclick=\'' + "getDataOpenModal(" + id + "," + rev + ")" + '\'>' + name + '</a>';
+            return '<a class="underline" href="" onclick=\'' + "getDataOpenModal(" + id + "," + rev + ")" + '\'>' + name + '</a>';
         }
     });
 </script>

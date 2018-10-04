@@ -6,6 +6,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -19,204 +20,106 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isUnboundedList" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
 
+<fmt:message key="dataset.access" var="accessPlaceHolder" />
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${access}"
+                                 label="Access"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isRequired="${isAccessRequired}"
+                                 tagName="access"
+                                 cardText="${accessPlaceHolder}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
 
-<div id="${id}"
-     class="form-group edit-form-group <c:if test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">has-error</c:if> <c:if test="${not isAccessRequired and function:isObjectEmpty(access)}">hide</c:if>">
-    <c:if test="${isAccessRequired and not isUnboundedList}">
-        <label>Access</label>
-    </c:if>
-    <div id="${specifier}-input-block"
-         class="form-group control-group edit-form-group <c:if test="${function:isObjectEmpty(access) and not isUnboundedList}">hide</c:if>">
-        <c:if test="${not isAccessRequired}">
-            <button class="btn btn-danger access-remove" type="button"><i
-                    class="glyphicon glyphicon-remove"></i>
-                Remove
-            </button>
-        </c:if>
-        <myTags:editIdentifier label="Identifier" specifier="${specifier}-identifier"
-                               path="${path}.identifier"
-                               singleIdentifier="${access.identifier}"
-                               isUnboundedList="False"
-                               id="${specifier}-identifier">
-        </myTags:editIdentifier>
-        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="${path}.alternateIdentifiers"
-                                        identifiers="${access.alternateIdentifiers}">
-        </myTags:editIdentifierUnbounded>
-        <myTags:editNonZeroLengthString path="${path}.landingPage"
-                                        placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                        string="${access.landingPage}"
-                                        isRequired="true"
-                                        isUnboundedList="false"
-                                        specifier="${specifier}-landingPage"
-                                        id="${specifier}-landingPage"
-                                        label="Landing Page">
-        </myTags:editNonZeroLengthString>
-        <myTags:editNonZeroLengthString path="${path}.accessURL"
-                                        specifier="${specifier}-accessURL"
-                                        placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                        string="${access.accessURL}"
-                                        id="${specifier}-accessURL"
-                                        label="Access URL">
-        </myTags:editNonZeroLengthString>
-        <myTags:editAnnotationUnbounded path="${path}.types"
-                                        specifier="${specifier}-types"
-                                        annotations="${access.types}"
-                                        label="Types">
-        </myTags:editAnnotationUnbounded>
-        <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                        specifier="${specifier}-authorizations"
-                                        annotations="${access.authorizations}"
-                                        label="Authorizations">
-        </myTags:editAnnotationUnbounded>
-        <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                        specifier="${specifier}-authentications"
-                                        annotations="${access.authentications}"
-                                        label="Authentications">
-        </myTags:editAnnotationUnbounded>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-    </div>
-    <script type="text/javascript">
+<fmt:message key="dataset.access.landingPage" var="landingPagePlaceHolder" />
+<myTags:editNonZeroLengthString path="${path}.landingPage"
+                                placeholder="${landingPagePlaceHolder}"
+                                string="${access.landingPage}"
+                                isRequired="true"
+                                isUnboundedList="false"
+                                specifier="${specifier}-landingPage"
+                                id="${specifier}-landingPage"
+                                isInputGroup="${true}"
+                                updateCardTabTitleText="${isUnboundedList}"
+                                label="Landing Page">
+</myTags:editNonZeroLengthString>
 
-        $(document).ready(function () {
-            $("body").on("click", ".${specifier}-add-access", function (e) {
-                e.stopImmediatePropagation();
+<fmt:message key="dataset.access.url" var="urlPlaceHolder" />
+<myTags:editNonZeroLengthString path="${path}.accessURL"
+                                specifier="${specifier}-accessURL"
+                                placeholder="${urlPlaceHolder}"
+                                string="${access.accessURL}"
+                                isRequired="${true}"
+                                id="${specifier}-accessURL"
+                                isInputGroup="${true}"
+                                label="Access URL">
+</myTags:editNonZeroLengthString>
+<myTags:editIdentifier label="Identifier"
+                       specifier="${specifier}-identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       path="${path}.identifier"
+                       singleIdentifier="${access.identifier}">
+</myTags:editIdentifier>
 
-                $("#${specifier}-input-block").removeClass("hide");
-                //add button not necessary -- in distributions its required and in Data Repository is a list
-                <%--$("#${specifier}-add-input-button").addClass("hide");--%>
+<fmt:message key="dataset.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            addButtonLabel="Alternate Identifier"
+                            label="Alternate Identifiers"
+                            path="${path}.alternateIdentifiers"
+                            cardText="${alternateIdentifierPlaceHolder}"
+                            cardIcon="fa fa-id-card"
+                            tagName="identifier"
+                            listItems="${access.alternateIdentifiers}">
+</myTags:editMasterUnbounded>
 
-            });
+<fmt:message key="dataset.access.types" var="typesPlaceHolder" />
+<myTags:editMasterUnbounded path="${path}.types"
+                            specifier="${specifier}-types"
+                            listItems="${access.types}"
+                            cardText="${typesPlaceHolder}"
+                            cardIcon="fas fa-info-circle"
+                            tagName="annotation"
+                            addButtonLabel="Type"
+                            label="Types">
+</myTags:editMasterUnbounded>
 
-            //Remove section
-            $("body").on("click", ".${specifier}-access-remove", function () {
-                clearAndHideEditControlGroup(this);
-                $("#${specifier}-input-block").addClass("hide");
-                $("#${specifier}-add-input-button").removeClass("hide");
-            });
-        });
+<fmt:message key="dataset.access.authorizations" var="authorizationsPlaceHolder" />
+<myTags:editMasterUnbounded path="${path}.authorizations"
+                            specifier="${specifier}-authorizations"
+                            cardText="${authorizationsPlaceHolder}"
+                            cardIcon="fas fa-key"
+                            tagName="annotation"
+                            listItems="${access.authorizations}"
+                            addButtonLabel="Authorization"
+                            label="Authorizations">
+</myTags:editMasterUnbounded>
 
-    </script>
+<fmt:message key="dataset.access.authentications" var="authenticationsPlaceHolder" />
+<myTags:editMasterUnbounded path="${path}.authentications"
+                            specifier="${specifier}-authentications"
+                            cardText="${authenticationsPlaceHolder}"
+                            cardIcon="fa fa-check-circle"
+                            tagName="annotation"
+                            listItems="${access.authentications}"
+                            addButtonLabel="Authentication"
+                            label="Authentications">
+</myTags:editMasterUnbounded>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${access}"
+                                 label="Access"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 isRequired="${isAccessRequired}"
+                                 cardText="${accessPlaceHolder}"
+                                 showCardFooter="${true}"
+                                 tagName="access"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-</div>
-
-
-<%--
-
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(access)}">
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group has-error">
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group">
-            </c:otherwise>
-        </c:choose>
-        <label>Access</label>
-            <c:if test="${not isAccessRequired}">
-                <button class="btn btn-danger access-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded label="Identifier" specifier="${specifier}-identifier"
-                                            path="${path}.identifier"
-                                            identifier="${access.identifier}"
-                                            unbounded="False">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            identifiers="${access.alternateIdentifiers}"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
-                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                                    string="${access.landingPage}"
-                                                    label="Landing Page">
-            </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="${path}.accessURL"
-                                            specifier="${specifier}-accessURL"
-                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                            string="${access.accessURL}"
-                                            label="Access URL">
-            </myTags:editNonZeroLengthString>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            annotations="${access.types}"
-                                            label="Types">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                            specifier="${specifier}-authorizations"
-                                            annotations="${access.authorizations}"
-                                            label="Authorizations">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                            specifier="${specifier}-authentications"
-                                            annotations="${access.authentications}"
-                                            label="Authentications">
-            </myTags:editAnnotationUnbounded>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-        </div>
-    </c:when>
-    <c:otherwise>
-        <c:choose>
-            <c:when test="${not empty flowRequestContext.messageContext.getMessagesBySource(path)}">
-                <div class="form-group edit-form-group has-error">
-            </c:when>
-            <c:otherwise>
-                <div class="form-group edit-form-group">
-            </c:otherwise>
-        </c:choose>
-        <label>Access</label>
-            <c:if test="${not isAccessRequired}">
-                <button class="btn btn-danger access-remove" type="button"><i
-                        class="glyphicon glyphicon-remove"></i>
-                    Remove
-                </button>
-            </c:if>
-            <myTags:editIdentifierUnbounded label="Identifier" specifier="${specifier}-identifier"
-                                            path="${path}.identifier"
-                                            unbounded="False">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                            label="Alternate Identifiers"
-                                            path="${path}.alternateIdentifiers"
-                                            unbounded="${true}">
-            </myTags:editIdentifierUnbounded>
-            <myTags:editRequiredNonZeroLengthString path="${path}.landingPage"
-                                                    placeholder=" A web page that contains information about the associated dataset or other research object and a direct link to the object itself."
-                                                    label="Landing Page">
-            </myTags:editRequiredNonZeroLengthString>
-            <myTags:editNonZeroLengthString path="${path}.accessURL"
-                                            specifier="${specifier}-accessURL"
-                                            placeholder="A URL from which the resource (dataset or other research object) can be retrieved, i.e. a direct link to the object itself."
-                                            label="Access URL">
-            </myTags:editNonZeroLengthString>
-            <myTags:editAnnotationUnbounded path="${path}.types"
-                                            specifier="${specifier}-types"
-                                            label="Types">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authorizations"
-                                            specifier="${specifier}-authorizations"
-                                            label="Authorizations">
-            </myTags:editAnnotationUnbounded>
-            <myTags:editAnnotationUnbounded path="${path}.authentications"
-                                            specifier="${specifier}-authentications"
-                                            label="Authentications">
-            </myTags:editAnnotationUnbounded>
-        <c:forEach items="${flowRequestContext.messageContext.getMessagesBySource(path)}" var="message">
-            <span class="error-color">${message.text}</span>
-        </c:forEach>
-        </div>
-    </c:otherwise>
-</c:choose>
-
---%>

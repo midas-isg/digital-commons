@@ -7,52 +7,59 @@
     <%@ taglib tagdir="/WEB-INF/tags" prefix="myTags" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+    <fmt:setBundle basename="cardText" />
 
     <myTags:head title="MIDAS Digital Commons"/>
 
     <myTags:header pageTitle="MIDAS Digital Commons" loggedIn="${loggedIn}" addEntry="true"></myTags:header>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12">
-            <form method="post" id="entry-form" action="${flowExecutionUrl}">
-                <div class="form-group edit-form-group">
-                    <label>Disease Transmission Tree Estimator</label>
-<%--
-                    <myTags:editSoftware categoryPaths="${categoryPaths}"
-                                         selectedID="${selectedID}"></myTags:editSoftware>
---%>
-                    <myTags:editNestedIdentifier specifier="hostSpeciesIncluded"
-                                                 placeholder="Host Species Included"
-                                                 label="Host Species Included" path="hostSpeciesIncluded"
-                                                 identifiers="${diseaseTransmissionTreeEstimator.hostSpeciesIncluded}"></myTags:editNestedIdentifier>
-                    <myTags:editNestedIdentifier specifier="pathogenCoverage"
-                                                 placeholder="Pathogen Coverage"
-                                                 label="Pathogen Coverage" path="pathogenCoverage"
-                                                 identifiers="${diseaseTransmissionTreeEstimator.pathogenCoverage}"></myTags:editNestedIdentifier>
-                </div>
-                <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous"/>
-                <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"/>
+<div class="wrapper">
+    <myTags:softwareIndex active="diseaseTransmissionTreeEstimatorForm"></myTags:softwareIndex>
+    <div id="entryFormContent">
 
-            </form>
-        </div>
+        <form id="entry-form" method="post" action="${flowExecutionUrl}">
+            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+
+            <fmt:message key="software.diseaseTransmissionTreeEstimators.hostSpeciesIncluded" var="hostSpeciesIncludedPlaceHolder" />
+            <myTags:editMasterUnbounded path="hostSpeciesIncluded"
+                                            specifier="host-species-included"
+                                            label="Host Species Included"
+                                            addButtonLabel="Host Species"
+                                            tagName="softwareIdentifier"
+                                            placeholder="${hostSpeciesIncludedPlaceHolder}"
+                                            cardText="${hostSpeciesIncludedPlaceHolder}"
+                                            listItems="${digitalObject.hostSpeciesIncluded}"
+                                            isRequired="${false}">
+                </myTags:editMasterUnbounded>
+
+            <fmt:message key="software.diseaseTransmissionTreeEstimators.pathogenCoverage" var="pathogenCoveragePlaceHolder" />
+            <myTags:editMasterUnbounded path="pathogenCoverage"
+                                            specifier="pathogen-coverage"
+                                            label="Pathogen Coverages"
+                                            addButtonLabel="Pathogen Coverage"
+                                            tagName="softwareIdentifier"
+                                            placeholder="${pathogenCoveragePlaceHolder}"
+                                            cardText="${pathogenCoveragePlaceHolder}"
+                                            listItems="${digitalObject.pathogenCoverage}"
+                                            isRequired="${false}">
+                </myTags:editMasterUnbounded>
+            <div class="row " id="entryFormContent-card-row"></div>
+
+            <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
+            <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit" onclick="window.onbeforeunload = null;"/>
+
+        </form>
     </div>
 </div>
-<%--
 <script>
     $(document).ready(function () {
-        $("#categoryValue").change(function () {
-            var action = $(this).val()
-            $("#entry-form").attr("action", "${pageContext.request.contextPath}/addDiseaseTransmissionTreeEstimators/" + action + "?entryId=${entryId}&revisionId=${revisionId}");
-        });
+        rearrangeCards('entryFormContent');
 
     });
 </script>
---%>
+
 <myTags:analytics/>
 
 </body>

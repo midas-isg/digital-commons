@@ -3,9 +3,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
-
+<%@ attribute name="hideDetailedView" required="false"
+              type="java.lang.Boolean" %>
 <div id="pageModal" class="modal fade">
-    <div class="modal-dialog" id="software-modal">
+    <div class="modal-dialog modal-lg" id="software-modal">
         <div class="modal-content">
             <div class="modal-header software-header">
                 <h2 class="sub-title-font pull-left color-white" id="software-name"></h2>
@@ -24,8 +25,8 @@
                     <div class="tab-pane fade" id="modal-json">
                         <style>
                             #modal-code-block {
-                                max-height:600px;
-                                max-width:560px;
+                                max-height:550px;
+                                max-width:750px;
                                 overflow:scroll;
                                 margin-bottom:10px;
                                 border: 1px solid #ccc;
@@ -55,17 +56,17 @@
                             <pre style="border:none; margin:0; overflow:visible; display:inline-block"><code style="white-space:pre; display:inline-block" id="display-json"></code></pre>
                             <div id="modal-download-btns" style="display:none">
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 60px;right: 70px; position:absolute;"
+                                        style="top: 60px;right: 90px; position:absolute;"
                                         onclick="copyToClipboard('#display-json')">
                                     <icon class="fa fa-clipboard"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default"
-                                        style="top: 60px;right: 44px; position:absolute;"
+                                        style="top: 60px;right: 63px; position:absolute;"
                                         onclick="download($('#software-name').text() + '.json', '#display-json')">
                                     <icon class="fa fa-download"></icon>
                                 </button>
                                 <button class="btn btn-xs btn-default" id="detailed-metadata-view-button"
-                                        style="top: 60px;right: 18px; position:absolute;"
+                                        style="top: 60px;right: 35px; position:absolute;"
                                         >
                                     <icon class="fa fa-external-link"></icon>
                                 </button>
@@ -76,7 +77,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-default" id="detailed-view-button">Detailed View</button>
+                <button class="btn btn-default <c:if test="${hideDetailedView}">hidden</c:if> " id="detailed-view-button">Detailed View</button>
                 <button id="modal-switch-btn"
                         type="button"
                         class="btn btn-default"

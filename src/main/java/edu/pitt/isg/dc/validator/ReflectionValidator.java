@@ -8,6 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.security.access.method.P;
 import org.springframework.util.AutoPopulatingList;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.xml.bind.annotation.XmlElement;
 import java.io.ObjectOutput;
 import java.lang.reflect.Field;
@@ -55,7 +56,6 @@ public class ReflectionValidator {
     }
 
     private void setValue(Field field, Object object, Object value) throws FatalReflectionValidatorException {
-        //TODO: double check setters are working for boolean fields -- getters were updated : https://projectlombok.org/features/GetterSetter.html
         try {
             BeanUtils.setProperty(object, field.getName(), value);
         } catch (Exception e) {
@@ -163,11 +163,16 @@ public class ReflectionValidator {
         return true;
     }
 
-    private boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
+    public boolean isObjectEmpty(Object objectOrList) throws FatalReflectionValidatorException {
         if (objectOrList == null || objectOrList.equals("")) {
             return true;
         }
 
+        if (objectOrList.getClass().getSimpleName().equalsIgnoreCase("PersonOrganization")) {
+            if (TagUtil.isPersonOrOrganization((PersonComprisedEntity) objectOrList).equalsIgnoreCase("false")) {
+                return true;
+            }
+        }
         if (isList(objectOrList)) {
             return isListEmtpy((List) objectOrList);
         } else {
@@ -195,6 +200,11 @@ public class ReflectionValidator {
         }
         if (objectOrList.getClass().getName().endsWith("String")) {
             if (((String) objectOrList).isEmpty()) {
+                return true;
+            } else return false;
+        }
+        if (objectOrList.getClass().isEnum()) {
+            if (objectOrList == null) {
                 return true;
             } else return false;
         }
@@ -246,12 +256,40 @@ public class ReflectionValidator {
             }
         }
 
+        //isAbout was not returning required fields when clazz equaled IsAboutItems for partial data check
+        if(!isObjectEmpty(object) && clazz == edu.pitt.isg.dc.entry.classes.IsAboutItems.class){
+            if (isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValue()) && isObjectEmpty(((edu.pitt.isg.dc.entry.classes.IsAboutItems) object).getValueIRI())) {
+                clazz = edu.pitt.isg.mdc.dats2_2.BiologicalEntity.class;
+            } else clazz = edu.pitt.isg.mdc.dats2_2.Annotation.class;
+        }
+        if(!isObjectEmpty(object) && clazz == edu.pitt.isg.dc.entry.classes.PersonOrganization.class){
+            if(TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Organization")) {
+                clazz = Organization.class;
+            }
+        }
+
         List<Field> requiredFields = getRequiredFields(clazz);
         List<Field> nonEmptyNonRequiredFields = getNonEmptyNonRequiredFields(clazz, object);
 
         List<Field> fieldsToValidate = new ArrayList<>();
         fieldsToValidate.addAll(requiredFields);
         fieldsToValidate.addAll(nonEmptyNonRequiredFields);
+
+        try {
+            if(!isObjectEmpty(object) && TagUtil.isPersonOrOrganization((PersonComprisedEntity) object).equalsIgnoreCase("Person")){
+                if(clazz == PersonOrganization.class) {
+                    if(isObjectEmpty(((PersonOrganization) object).getFirstName()) && isObjectEmpty(((PersonOrganization) object).getLastName()) && isObjectEmpty(((PersonOrganization) object).getMiddleInitial()) && isObjectEmpty(((PersonOrganization) object).getFullName()) ){
+                        fieldsToValidate.add(Person.class.getDeclaredField("fullName"));
+                    }
+                }
+                if(clazz == Person.class) {
+                    if(isObjectEmpty(((Person) object).getFirstName()) && isObjectEmpty(((Person) object).getLastName()) && isObjectEmpty(((Person) object).getMiddleInitial()) && isObjectEmpty(((Person) object).getFullName()) ){
+                        fieldsToValidate.add(Person.class.getDeclaredField("fullName"));
+                    }
+                }
+            }
+        }
+        catch (Exception e){ }
 
         for (Field field : fieldsToValidate) {
             Object value = getValue(field, object);
@@ -294,14 +332,14 @@ public class ReflectionValidator {
         }
     }
 
-    public <T> List cleanseList(List<T> list) throws FatalReflectionValidatorException {
+    public <T> List cleanseList(List<T> list, boolean setEmptyToNull, boolean convertLists) throws FatalReflectionValidatorException {
         ListIterator iterator = list.listIterator();
         while(iterator.hasNext()) {
             Object listObject = iterator.next();
             if(isObjectEmpty(listObject)) {
                 iterator.remove();
             } else {
-                cleanse(listObject.getClass(), listObject);
+                cleanse(listObject.getClass(), listObject, setEmptyToNull, convertLists);
             }
         }
         if(list.size() == 0) {
@@ -310,15 +348,20 @@ public class ReflectionValidator {
         return list;
     }
 
-    public Object cleanse(Class<?> clazz, Object object) throws FatalReflectionValidatorException {
-        if(TagUtil.isObjectEmpty(object)) {
-            return null;
+    public Object cleanse(Class<?> clazz, Object object, boolean setEmptyToNull, boolean convertLists) throws FatalReflectionValidatorException {
+        if(setEmptyToNull) {
+            if (isObjectEmpty(object)) {
+                return null;
+            }
         }
 
         List<Field> fields = getAllPublicDeclaredFields(object.getClass());
 
         for(Field field : fields) {
             Object value = getValue(field, object);
+            if (value == null && (field.getType().isAssignableFrom(Float.class) || field.getType().isAssignableFrom(Integer.class))) {
+                continue; // setValue will change the null value to 0.0 or 0 as appropriate for numeric Types -- in doing so, the field will be populated in the json
+            }
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {
                 setValue(field, object, null);
             } else if(isList(value)) {
@@ -329,21 +372,40 @@ public class ReflectionValidator {
                         String name = publicDeclaredField.getGenericType().getTypeName();
                         name = name.substring(name.indexOf("<") + 1, name.indexOf(">"));
                         if (name.contains("PersonComprisedEntity")) {
-                            List<PersonComprisedEntity> entityList = cleanseList(convertItemsToSubclass((List) value));
-                            setValue(field, object, entityList);
+                            if(convertLists) {
+                                List<PersonComprisedEntity> entityList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull, convertLists);
+                                setValue(field, object, entityList);
+                            } else {
+                                cleanseList((List) value, setEmptyToNull, convertLists);
+                            }
                         } else if (name.contains("IsAbout")) {
-                            List<IsAbout> isAboutList = cleanseList(convertItemsToSubclass((List) value));
-                            setValue(field, object, isAboutList);
+                            if(convertLists) {
+                                List<IsAbout> isAboutList = cleanseList(convertItemsToSubclass((List) value), setEmptyToNull, convertLists);
+                                setValue(field, object, isAboutList);
+                            } else {
+                                cleanseList((List) value, setEmptyToNull, convertLists);
+                            }
                         } else {
                             List newList = new ArrayList();
-                            List<?> cleanedList = cleanseList((List) value);
+                            List<?> cleanedList = cleanseList((List) value, setEmptyToNull, convertLists);
                             if(cleanedList instanceof AutoPopulatingList) {
-                                for(Object listItem : cleanedList) {
-                                    newList.add(listItem);
+                                if(convertLists) {
+                                    for (Object listItem : cleanedList) {
+                                        newList.add(listItem);
+                                    }
+                                    setValue(field, object, newList);
+                                } else {
+                                    cleanseList((List) value, setEmptyToNull, convertLists);
                                 }
-                                setValue(field, object, newList);
-                            } else
-                                setValue(field, object, cleanedList);
+                            } else {
+                                if(cleanedList == null) {
+                                    if(setEmptyToNull) {
+                                        setValue(field, object, cleanedList);
+                                    }
+                                } else {
+                                    setValue(field, object, cleanedList);
+                                }
+                            }
                         }
                         foundField = true;
                     }
@@ -352,8 +414,14 @@ public class ReflectionValidator {
                     throw new FatalReflectionValidatorException("Unable to find getter for the list: " + field.getName());
                 }
             } else {
-                Object cleanedObject = cleanse(value.getClass(), value);
-                setValue(field, object, cleanedObject);
+                Object cleanedObject = cleanse(value.getClass(), value, setEmptyToNull, convertLists);
+                if(cleanedObject == null) {
+                    if(setEmptyToNull) {
+                        setValue(field, object, cleanedObject);
+                    }
+                } else {
+                    setValue(field, object, cleanedObject);
+                }
             }
         }
         return object;

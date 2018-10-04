@@ -1,0 +1,19 @@
+{
+  "persistence_doc": "http://www.doi.org/doi_handbook/6_Policies.html#6.5",
+  "todo1": "DOI to persistence_doc",
+
+  "identifier": "10.25337/T7/ptycho.v2.0/AI.38362002",
+  "vocab1_uri": "http://purl.obolibrary.org/obo/APOLLO_SV_00000545",
+  "metadata": "http://betaweb.rods.pitt.edu/digital-commons/api/v1/identifiers/metadata?identifier=10.25337/T7/ptycho.v2.0/AI.38362002",
+  "prov_vocab_uri": "https://orcid.org/0000-0002-7278-9982",
+  "subject": "10.25337/T7/ptycho.v2.0/AI.38362002",
+  "format": "https://fairsharing.org/bsg-s000718",
+  "vocab2_uri": "http://purl.obolibrary.org/obo/IDO_0000479",
+  "metadatalicense_uri": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "title": "Counts of Dengue reported in ANGUILLA: 1980-2012",
+  "spec": "https://fairsharing.org/bsg-s001182",
+  "vocab3_uri": "http://purl.obolibrary.org/obo/IDO_0000479",
+  "datalicense_uri": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "search_uri": "https://www4.bing.com/search?q=10.25337/T7/ptycho.v2.0/AI.38362002",
+  "protocol_uri": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+}

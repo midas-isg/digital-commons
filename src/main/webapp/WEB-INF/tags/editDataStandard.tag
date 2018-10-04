@@ -5,182 +5,134 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+<fmt:setBundle basename="cardText" />
 
-<%@ attribute name="name" required="false"
+<%@ attribute name="label" required="true"
               type="java.lang.String" %>
-<%@ attribute name="path" required="false"
+<%@ attribute name="path" required="true"
               type="java.lang.String" %>
-<%@ attribute name="specifier" required="false"
+<%@ attribute name="specifier" required="true"
               type="java.lang.String" %>
-<%@ attribute name="dataStandards" required="false"
-              type="java.util.List" %>
+<%@ attribute name="tagName" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="dataStandard" required="false"
+              type="edu.pitt.isg.mdc.dats2_2.DataStandard" %>
+<%@ attribute name="id" required="true"
+              type="java.lang.String" %>
+<%@ attribute name="isUnboundedList" required="true"
+              type="java.lang.Boolean" %>
 
-<c:choose>
-    <c:when test="${not function:isObjectEmpty(dataStandards)}">
-        <c:forEach items="${dataStandards}" var="dataStandard" varStatus="varStatus">
-            <c:if test="${varStatus.first}">
-                <div class="form-group edit-form-group">
-                    <label path="${path}">${name}</label>
-                    <div class="form-group">
-                        <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
-                                class="fa fa-plus-circle"></i> Add
-                                ${name}
-                        </button>
-                    </div>
-                </div>
-            </c:if>
+<fmt:message key="dataset.dataStandard" var="dataStandardPlaceHolder" />
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 cardText="${dataStandardPlaceHolder}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="top">
+</myTags:editMasterElementWrapper>
 
-            <c:if test="${not function:isObjectEmpty(dataStandard)}">
-                <div class="form-group control-group edit-form-group">
-                    <label>${name}</label>
-                    <br>
-                    <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
-                            class="glyphicon glyphicon-remove"></i>
-                        Remove
-                    </button>
-                    <br><br>
-                    <myTags:editIdentifierUnbounded identifier="${dataStandard.identifier}"
-                                                    label="Identifier"
-                                                    specifier="${specifier}-"
-                                                    path="${path}[${varStatus.count-1}].identifier"
-                                                    unbounded="False">
-                    </myTags:editIdentifierUnbounded>
-                    <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                                    label="Alternate Identifiers"
-                                                    path="${path}.alternateIdentifiers"
-                                                    identifiers="${dataStandard.alternateIdentifiers}"
-                                                    unbounded="${true}">
-                    </myTags:editIdentifierUnbounded>
-                    <myTags:editRequiredNonZeroLengthString placeholder=" Name"
-                                                            label="Name"
-                                                            string="${dataStandard.name}"
-                                                            path="${path}[${varStatus.count-1}].name">
-                    </myTags:editRequiredNonZeroLengthString>
-                    <myTags:editNonRequiredNonZeroLengthStringTextArea specifier="${specifier}-description"
-                                                               string="${dataStandard.description}"
-                                                               path="${path}[${varStatus.count-1}].description"
-                                                               label="Description"
-                                                               placeholder="Description">
-                    </myTags:editNonRequiredNonZeroLengthStringTextArea>
-                    <myTags:editAnnotationRequired annotation="${dataStandard.type}"
-                                                   path="${path}[${varStatus.count-1}].type"
-                                                   label="Type">
-                    </myTags:editAnnotationRequired>
-                    <myTags:editLicense licenses="${dataStandard.licenses}"
-                                        specifier="${specifier}-licenses"
-                                        label="License"
-                                        path="${path}[${varStatus.count-1}].licenses">
-                    </myTags:editLicense>
-                    <myTags:editNonZeroLengthString label="Version"
-                                                    placeholder=" Version"
-                                                    specifier="${specifier}-${varStatus.count-1}-version"
-                                                    string="${dataStandard.version}"
-                                                    path="${path}[${varStatus.count-1}].version">
-                    </myTags:editNonZeroLengthString>
-                    <myTags:editCategoryValuePair categoryValuePairs="${dataStandard.extraProperties}"
-                                                  specifier="${specifier}-${varStatus.count-1}-extraProperties"
-                                                  path="${path}[${varStatus.count-1}].extraProperties"
-                                                  label="Extra Properties">
-                    </myTags:editCategoryValuePair>
-                </div>
+<fmt:message key="dataset.dataStandard.name" var="namePlaceHolder" />
+<myTags:editNonZeroLengthString placeholder="${namePlaceHolder}"
+                                label="Name"
+                                string="${dataStandard.name}"
+                                specifier="${specifier}-name"
+                                id="${specifier}-name"
+                                isRequired="${true}"
+                                isInputGroup="${true}"
+                                isUnboundedList="${false}"
+                                updateCardTabTitleText="${isUnboundedList}"
+                                path="${path}.name">
+</myTags:editNonZeroLengthString>
 
-                <c:set var="dataStandardCount" scope="page" value="${varStatus.count}"/>
-            </c:if>
+<fmt:message key="dataset.dataStandard.description" var="descriptionPlaceHolder" />
+<myTags:editNonZeroLengthString specifier="${specifier}-description"
+                                id="${specifier}-description"
+                                string="${dataStandard.description}"
+                                path="${path}.description"
+                                label="Description"
+                                isTextArea="${true}"
+                                isInputGroup="${true}"
+                                isRequired="${true}"
+                                placeholder="${descriptionPlaceHolder}">
+</myTags:editNonZeroLengthString>
 
-        </c:forEach>
-        <div class="${specifier}-dataStandard-add-more"></div>
-    </c:when>
-    <c:otherwise>
-        <div class="form-group edit-form-group">
-            <label path="${path}">${name}</label>
-            <div class="form-group">
-                <button class="btn btn-success ${specifier}-add-dataStandard" type="button"><i
-                        class="fa fa-plus-circle"></i> Add
-                        ${name}
-                </button>
-            </div>
-        </div>
-        <div class="${specifier}-dataStandard-add-more"></div>
-        <c:set var="dataStandardCount" scope="page" value="0"/>
+<fmt:message key="dataset.dataStandard.version" var="versionPlaceHolder" />
+<myTags:editNonZeroLengthString label="Version"
+                                placeholder="${versionPlaceHolder}"
+                                specifier="${specifier}-version"
+                                id="${specifier}-version"
+                                string="${dataStandard.version}"
+                                isUnboundedList="${false}"
+                                isInputGroup="${true}"
+                                isRequired="${true}"
+                                path="${path}.version">
+</myTags:editNonZeroLengthString>
 
-    </c:otherwise>
-</c:choose>
+<fmt:message key="dataset.dataStandard.type" var="typePlaceHolder" />
+<myTags:editAnnotation annotation="${dataStandard.type}"
+                       isRequired="${true}"
+                       path="${path}.type"
+                       specifier="${specifier}-type"
+                       id="${specifier}-type"
+                       cardText="${typePlaceHolder}"
+                       isUnboundedList="${false}"
+                       label="Type">
+</myTags:editAnnotation>
+<myTags:editIdentifier singleIdentifier="${dataStandard.identifier}"
+                       label="Identifier"
+                       specifier="${specifier}-identifier"
+                       id="${specifier}-identifier"
+                       isUnboundedList="${false}"
+                       path="${path}.identifier">
+</myTags:editIdentifier>
 
+<fmt:message key="dataset.dataStandard.alternateIdentifier" var="alternateIdentifierPlaceHolder" />
+<myTags:editMasterUnbounded specifier="${specifier}-alternateIdentifiers"
+                            label="Alternate Identifiers"
+                            addButtonLabel="Alternate Identifier"
+                            path="${path}.alternateIdentifiers"
+                            listItems="${dataStandard.alternateIdentifiers}"
+                            isRequired="${false}"
+                            cardText="${alternateIdentifierPlaceHolder}"
+                            cardIcon="fa fa-id-card"
+                            tagName="identifier">
+</myTags:editMasterUnbounded>
 
-<div class="${specifier}-copy-dataStandard hide">
-    <div class="form-group control-group edit-form-group">
-        <label>${name}</label>
-        <br>
-        <button class="btn btn-danger ${specifier}-dataStandard-remove" type="button"><i
-                class="glyphicon glyphicon-remove"></i>
-            Remove
-        </button>
-        <br><br>
-        <myTags:editIdentifierUnbounded label="Identifier"
-                                        specifier="${specifier}-"
-                                        path="${path}[0].identifier"
-                                        unbounded="False">
-        </myTags:editIdentifierUnbounded>
-        <myTags:editIdentifierUnbounded specifier="${specifier}-alternateIdentifiers"
-                                        label="Alternate Identifiers"
-                                        path="${path}.alternateIdentifiers"
-                                        unbounded="${true}">
-        </myTags:editIdentifierUnbounded>
-        <myTags:editRequiredNonZeroLengthString placeholder=" Name"
-                                                label="Name"
-                                                path="${path}[0].name">
-        </myTags:editRequiredNonZeroLengthString>
-        <myTags:editNonRequiredNonZeroLengthStringTextArea specifier="${specifier}-0-description"
-                                                   path="${path}[0].description"
-                                                   label="Description"
-                                                   placeholder="Description">
-        </myTags:editNonRequiredNonZeroLengthStringTextArea>
-        <myTags:editAnnotationRequired path="${path}[0].type."
-                                       label="Type">
-        </myTags:editAnnotationRequired>
-        <myTags:editLicense specifier="${specifier}-0-licenses"
-                            label="License"
-                            path="${path}[0].licenses">
-        </myTags:editLicense>
-        <myTags:editNonZeroLengthString label="Version"
-                                        placeholder=" Version"
-                                        specifier="${specifier}-0-version"
-                                        path="${path}[0].version">
-        </myTags:editNonZeroLengthString>
-        <myTags:editCategoryValuePair specifier="${specifier}-0-extraProperties"
-                                      label="Extra Properties"
-                                      path="${path}[0].extraProperties">
-        </myTags:editCategoryValuePair>
-    </div>
+<fmt:message key="dataset.dataStandard.licenses" var="licensesPlaceHolder" />
+<myTags:editMasterUnbounded listItems="${dataStandard.licenses}"
+                            tagName="license"
+                            specifier="${specifier}-licenses"
+                            isRequired="${false}"
+                            label="Licenses"
+                            addButtonLabel="License"
+                            cardText="${licensesPlaceHolder}"
+                            cardIcon="fab fa-creative-commons"
+                            path="${path}.licenses">
+</myTags:editMasterUnbounded>
 
-</div>
+<fmt:message key="dataset.dataStandard.extraProperties" var="extraPropertiesPlaceHolder" />
+<myTags:editMasterUnbounded listItems="${dataStandard.extraProperties}"
+                            tagName="categoryValuePair"
+                            isRequired="${false}"
+                            specifier="${specifier}-extraProperties"
+                            cardText="${extraPropertiesPlaceHolder}"
+                            path="${path}.extraProperties"
+                            addButtonLabel="Extra Property"
+                            cardIcon="fas fa-plus"
+                            label="Extra Properties">
+</myTags:editMasterUnbounded>
+<myTags:editMasterElementWrapper path="${path}"
+                                 specifier="${specifier}"
+                                 object="${dataStandard}"
+                                 label="${label}"
+                                 id="${id}"
+                                 isUnboundedList="${isUnboundedList}"
+                                 cardText="${dataStandardPlaceHolder}"
+                                 showCardFooter="${true}"
+                                 tagName="${tagName}"
+                                 showTopOrBottom="bottom">
+</myTags:editMasterElementWrapper>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var dataStandardCount = ${dataStandardCount};
-        //Show/Hide Location
-        $("body").on("click", ".${specifier}-add-dataStandard", function () {
-            var specifier = "${specifier}";
-            var path = "${path}";
-            var html = $(".${specifier}-copy-dataStandard").html();
-            var regexEscapeOpenBracket = new RegExp('\\[', "g");
-            var regexEscapeClosedBracket = new RegExp('\\]', "g");
-            path = path.replace(regexEscapeOpenBracket, '\\[').replace(regexEscapeClosedBracket, '\\]');
-            var regexPath = new RegExp(path + '\\[0\\]', "g");
-            var regexSpecifier = new RegExp(specifier + '\\-0', "g");
-            html = html.replace(regexPath, '${path}[' + dataStandardCount + ']').replace(regexSpecifier, '${specifier}-' + dataStandardCount);
-
-            //$(this).after(html);
-            $(".${specifier}-dataStandard-add-more").before(html);
-            dataStandardCount += 1;
-            //$(this).hide();
-            //e.stopImmediatePropagation()
-        });
-
-        $("body").on("click", ".${specifier}-dataStandard-remove", function () {
-            clearAndHideEditControlGroup(this);
-            $(".${specifier}-add-dataStandard").show();
-        });
-
-    });
-</script>
