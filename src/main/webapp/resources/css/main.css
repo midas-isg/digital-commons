@@ -624,6 +624,11 @@ body {
     padding: 0px !important;
 }
 
+.no-padding-bottom {
+    padding-bottom: 0px !important;
+}
+
+
 .no-margin {
     margin: 0px !important;
 }
@@ -1571,4 +1576,10 @@ ul.CTAs a {
 
 .fair-metrics-report-button {
     margin-right:5px;
+}
+
+.fair-description {
+    font-size: 12px;
+    padding-bottom: 10px;
+    font-style: italic;
 }

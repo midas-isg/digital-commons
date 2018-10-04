@@ -48,7 +48,8 @@
                         <c:forEach items="${keys}" var="key" varStatus="status">
                         <c:choose>
                         <c:when test="${key == 'FM-F1A'}">
-                        <h6 class="sub-title-font">Findable</h6>
+                        <h5 class="sub-title-font no-padding-bottom">Findable</h5>
+                        <div class="fair-description"><fmt:message key="Findable"/> </div>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
 
@@ -56,21 +57,27 @@
                             <c:when test="${key == 'FM-A1.1'}">
                             </tbody>
                         </table>
-                        <h6 class="sub-title-font">Accessible</h6>
+                        <h5 class="sub-title-font">Accessible</h5>
+                        <div class="fair-description"><fmt:message key="Accessible"/> </div>
+
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
                             <c:when test="${key == 'FM-I1'}">
                             </tbody>
                         </table>
-                        <h6 class="sub-title-font">Interoperable</h6>
+                        <h5 class="sub-title-font">Interoperable</h5>
+                        <div class="fair-description"><fmt:message key="Interoperable"/> </div>
+
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
                             <c:when test="${key == 'FM-R1.1'}">
                             </tbody>
                         </table>
-                        <h6 class="sub-title-font">Reusable</h6>
+                        <h5 class="sub-title-font">Reusable</h5>
+                        <div class="fair-description"><fmt:message key="Reusable"/> </div>
+
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
