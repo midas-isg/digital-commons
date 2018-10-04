@@ -38,6 +38,7 @@
                         </c:otherwise>
                     </c:choose>
             </div>
+            <br>
             <h12 class="italic font-small-3">The MIDAS Digital Commons uses the FAIR Metrics defined by Wilkinson, M. D.
                 et al, in the FAIRMetrics GitHub repository located <a class="underline" target="_blank"
                                                                        href="https://github.com/FAIRMetrics/Metrics">here</a>.
