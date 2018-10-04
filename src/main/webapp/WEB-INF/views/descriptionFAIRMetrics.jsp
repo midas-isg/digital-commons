@@ -48,7 +48,7 @@
                         <c:forEach items="${keys}" var="key" varStatus="status">
                         <c:choose>
                         <c:when test="${key == 'FM-F1A'}">
-                        <h6>Findable</h6>
+                        <h6 class="sub-title-font">Findable</h6>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
 
@@ -56,21 +56,21 @@
                             <c:when test="${key == 'FM-A1.1'}">
                             </tbody>
                         </table>
-                        <h6>Accessible</h6>
+                        <h6 class="sub-title-font">Accessible</h6>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
                             <c:when test="${key == 'FM-I1'}">
                             </tbody>
                         </table>
-                        <h6>Interoperable</h6>
+                        <h6 class="sub-title-font">Interoperable</h6>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
                             <c:when test="${key == 'FM-R1.1'}">
                             </tbody>
                         </table>
-                        <h6>Reusable</h6>
+                        <h6 class="sub-title-font">Reusable</h6>
                         <table class="table table-condensed table-borderless table-discrete table-striped">
                             <tbody>
                             </c:when>
