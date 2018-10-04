@@ -1344,6 +1344,8 @@ div.container.metadata-container .metadata-column.fancy {
 @media (max-width: 768px) {
     #entryFormContent {
         width: 100%;
+        padding: 0;
+
     }
     /*#entryFormContent.active {*/
         /*width: calc(100% - 250px);*/
