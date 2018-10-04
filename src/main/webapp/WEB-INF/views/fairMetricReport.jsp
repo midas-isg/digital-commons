@@ -188,7 +188,9 @@
                 "<'row'<'col-sm-12'tr>>" +
                 "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
             'createdRow': function (row, data, dataIndex) {
+                $('td', row).css('padding', '.5rem');
                 $('td', row).css('min-width', '53px');
+
             },
             ordering: false,
             responsive: true
