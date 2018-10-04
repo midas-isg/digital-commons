@@ -36,7 +36,9 @@
                     <table class="table table-condensed table-borderless table-discrete table-striped">
                         <tbody>
                         <tr>
-                            <td class="bold" data-toggle="tooltip" title="FAIR Metrics should, themselves, be FAIR objects, and thus should have globally unique identifiers.">Metric Identifier:</td>
+                            <td >
+                                <span class="bold" data-toggle="tooltip" title="FAIR Metrics should, themselves, be FAIR objects, and thus should have globally unique identifiers.">Metric Identifier:</span>
+                            </td>
                             <td>${key}: <a class="underline link-break-all" href="<fmt:message key="${key.concat('-URL')}" />"
                                            target="_blank"><fmt:message key="${key.concat('-URL')}"/></a></td>
                         </tr>

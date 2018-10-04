@@ -81,6 +81,13 @@ public class FairMetricController {
         return "detailedViewFAIRMetrics";
     }
 
+    @RequestMapping(value = "/description", method = RequestMethod.GET)
+    public String descriptionFAIRMetrics(Model model, HttpSession session) throws Exception {
+        model.addAttribute("keys", getKeys());
+
+        return "descriptionFAIRMetrics";
+    }
+
     private Properties getFairMetricProperties() throws IOException {
         InputStream inputStream;
         Properties prop = new Properties();
