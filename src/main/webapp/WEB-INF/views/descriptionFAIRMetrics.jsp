@@ -22,8 +22,10 @@
         <div class="section-content">
             <div class="col-12 background-white">
                 <div class="margin-top-10">
-                    <div class="btn-toolbar pull-right">
-                        <button class="btn btn-primary fair-metrics-report-button">
+                    <h3 class="inline">FAIR Metrics Description</h3>
+                    <div class="btn-toolbar pull-right detailed-view-button">
+                        <%--<div class="btn-group">--%>
+                        <button class="btn btn-primary fair-metrics-report-button detailed-view-button">
                             <a class="color-white" href="${pageContext.request.contextPath}/fair-metrics/">FAIR Metrics
                                 Report</a>
                         </button>
@@ -31,8 +33,8 @@
                                 class="btn btn-primary d-none d-sm-none d-md-block">
                             Toggle Sidebar
                         </button>
+                        <%--</div>--%>
                     </div>
-                    <h3 class="inline">FAIR Metrics Description</h3>
                 </div>
                 <br>
                 <h12 class="italic font-small-3">The MIDAS Digital Commons uses the FAIR Metrics defined by

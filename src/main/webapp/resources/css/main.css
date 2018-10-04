@@ -158,6 +158,15 @@
 
 }
 
+@media screen and (max-width: 1200px){
+    .navbar-dark {
+        padding-right: 0;
+        padding-left: 10px;
+    }
+
+}
+
+
 @media screen and (max-width: 860px) {
     .content-title-font {
         color: #0c2b65;
@@ -816,6 +825,12 @@ tfoot {
 /*//////////////////////////*/
 /*Navbar CSS*/
 /*//////////////////////////*/
+
+.navbar-toggler {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .no-opacity {
     opacity: 1 !important;
 }
@@ -1189,6 +1204,10 @@ div.container.metadata-container .metadata-column.fancy {
 
     #sidebarCollapse span {
         display: none;
+    }
+
+    .detailed-view-button {
+        width: 100%;
     }
 }
 /*//////////////////////////*/
