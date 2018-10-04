@@ -122,54 +122,17 @@
                 <div class="modal-body">
                     <div class="tab-content">
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h6 class="inline bold">Metric Identifier: </h6><br>
+                            <h6 class="inline bold"><fmt:message key="FM-Identifier-Field" /></h6><br>
                             <span id="identifier"></span>
                         </div>
-<%--
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h6 class="inline bold">Metric Name: </h6><br>
-                            <span id="name"></span>
-                        </div>
---%>
-                        <div class="sub-title-font font-size-16 modal-software-item">
-                            <h6 class="inline bold">To which principle does it apply? </h6><br>
+                            <h6 class="inline bold"><fmt:message key="FM-Principle-Field" /></h6><br>
                             <span id="principle"></span>
                         </div>
                         <div class="sub-title-font font-size-16 modal-software-item">
-                            <h6 class="inline bold">What is being measured? </h6><br>
+                            <h6 class="inline bold"><fmt:message key="FM-Measured-Field" /></h6><br>
                             <span id="measured"></span>
                         </div>
-                        <%--
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">Why should we measure it? </h6><br>
-                                                    <span id="whyMeasure"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">What must be provided? </h6><br>
-                                                    <span id="mustProvided"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">How do we measure it? </h6><br>
-                                                    <span id="howMeasure"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">What is a valid result? </h6><br>
-                                                    <span id="validResult"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">For which digital resource(s) is this relevant? </h6><br>
-                                                    <span id="whichRelevant"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">Examples of their application across types of digital
-                                                        resource: </h6><br>
-                                                    <span id="examples"></span>
-                                                </div>
-                                                <div class="sub-title-font font-size-16 modal-software-item">
-                                                    <h6 class="inline bold">Comments: </h6><br>
-                                                    <span id="comments"></span>
-                                                </div>
-                        --%>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -218,7 +181,7 @@
 
             modal.find('#detailed-view-button').attr("onClick", "location.href='" + ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title  + "'")
             modal.find('.modal-title').html(title + " - " + name);
-            modal.find('#identifier').html(identifier);
+            modal.find('#identifier').html("<a class='underline link-break-all' href='" + identifier + "'target='_blank'>" + identifier + "</a>");
 /*
             modal.find('#name').html(name);
 */
