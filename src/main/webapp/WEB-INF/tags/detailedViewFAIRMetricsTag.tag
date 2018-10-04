@@ -44,7 +44,7 @@
                         </tr>
 <%--
                         <tr>
-                            <td class="bold">Metric Name:</td>
+                            <td class="bold"  data-toggle="tooltip" title="A human-readable name for the metric.">Metric Name:</td>
                             <td><fmt:message key="${key.concat('-Name')}"/></td>
                         </tr>
 --%>
@@ -53,11 +53,11 @@
                             <td><fmt:message key="${key.concat('-Principle')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold" data-toggle="tooltip" title="A precise description of the aspect of that digital resource that is going to be evaluated">What is being measured?</td>
+                            <td class="bold" data-toggle="tooltip" title="A precise description of the aspect of that digital resource that is going to be evaluated.">What is being measured?</td>
                             <td><fmt:message key="${key.concat('-Measured')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold" data-toggle="tooltip" title="Describe why it is relevant to measure this aspect">Why should we measure it?</td>
+                            <td class="bold" data-toggle="tooltip" title="Describe why it is relevant to measure this aspect.">Why should we measure it?</td>
                             <td><fmt:message key="${key.concat('-Why-Measure')}"/></td>
                         </tr>
                         <tr>
@@ -69,7 +69,7 @@
                             <td><fmt:message key="${key.concat('-How-Measure')}"/></td>
                         </tr>
                         <tr>
-                            <td class="bold" data-toggle="tooltip" title="What outcome represents 'success' versus 'failure'">What is a valid result?</td>
+                            <td class="bold" data-toggle="tooltip" title="What outcome represents 'success' versus 'failure'?">What is a valid result?</td>
                             <td><fmt:message key="${key.concat('-Valid-Result')}"/></td>
                         </tr>
                         <tr>
