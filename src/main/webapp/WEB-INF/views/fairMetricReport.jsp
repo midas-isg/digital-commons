@@ -60,6 +60,7 @@
                                 title="<fmt:message key="${key.concat('-Name')}" />"
                                 data-fmid="<fmt:message key="${key}" />"
                                 data-identifier="<fmt:message key="${key.concat('-Identifier')}" />"
+                                data-url="<fmt:message key="${key.concat('-URL')}" />"
                                 data-name="<fmt:message key="${key.concat('-Name')}" />"
                                 data-principle="<fmt:message key="${key.concat('-Principle')}" />"
                                 data-measured="<fmt:message key="${key.concat('-Measured')}" />"
@@ -201,7 +202,7 @@
 
             var title = header.data('title');
             var fmid = "FM-" + header.data('title');
-            var identifier = header.data('identifier');
+            var identifier = header.data('url');
             var name = header.data('name');
             var principle = header.data('principle');
             var measured = header.data('measured');
