@@ -30,7 +30,7 @@
             <link href="${pageContext.request.contextPath}/resources/css/feather/style.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/css/bootstrap-extended/bootstrap-extended.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dataTables.bootstrap.min.css"/>
+            <link href="${pageContext.request.contextPath}/resources/DataTables/datatables.min.css" rel="stylesheet">
 
             <!-- jQuery imports -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -54,8 +54,8 @@
             <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/content.js?v=" + Date.now() + "'><\/script>");</script>
             <script>document.write("<script type='text/javascript' src='${pageContext.request.contextPath}/resources/js/editForms.js?v=" + Date.now() + "'><\/script>");</script>
 
-            <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-            <script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>
+            <script src="${pageContext.request.contextPath}/resources/DataTables/datatables.min.js"></script>
+            <%--<script defer type="text/javascript" src="${pageContext.request.contextPath}/resources/js/dataTables.bootstrap.min.js"></script>--%>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
             <%--Datepicker--%>
