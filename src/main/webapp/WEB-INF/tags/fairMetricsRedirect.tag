@@ -19,8 +19,8 @@
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-A1.2">Metric: FM-A1.2</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-A2">Metric: FM-A2</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-I1">Metric: FM-I1</option>
-        <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-I3">Metric: FM-I2</option>
-        <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-I4">Metric: FM-I3</option>
+        <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-I2">Metric: FM-I2</option>
+        <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-I3">Metric: FM-I3</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-R1.1">Metric: FM-R1.1</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-R1.2">Metric: FM-R1.2</option>
     </select>
