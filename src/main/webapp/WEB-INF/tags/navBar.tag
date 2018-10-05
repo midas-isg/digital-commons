@@ -26,9 +26,9 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="fairDropdown">
             <%--<a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>--%>
-                <div class="dropdown-item">Fair Metrics</div>
-                <a class="dropdown-item dropdown-item-fair-metrics" href="${contextPath}/fair-metrics">Report</a>
-                <a class="dropdown-item dropdown-item-fair-metrics" href="${contextPath}/fair-metrics/description">Descriptions</a>
+                <h6 class="dropdown-header">Fair Metrics</h6>
+                <a class="dropdown-item" href="${contextPath}/fair-metrics">Report</a>
+                <a class="dropdown-item" href="${contextPath}/fair-metrics/description">Descriptions</a>
                 <div class="dropdown-divider"></div>
                 <%--
                             <div class="dropdown-submenu">
