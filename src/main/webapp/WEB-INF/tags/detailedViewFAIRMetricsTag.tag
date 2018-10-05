@@ -18,6 +18,7 @@
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
                     <%--<div class="btn-group">--%>
+                    <myTags:fairMetricsRedirect></myTags:fairMetricsRedirect>
                     <button class="btn btn-primary fair-metrics-report-button">
                         <a class="color-white" href="${pageContext.request.contextPath}/fair-metrics/">FAIR Metrics
                             Report</a>

@@ -25,7 +25,29 @@
             FAIR Compliance
         </a>
         <div class="dropdown-menu" aria-labelledby="fairDropdown">
-            <a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>
+            <%--<a class="dropdown-item" href="${contextPath}/fair-metrics">Fair Metrics</a>--%>
+            <div class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle font-size-16" id="fairMetricsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    FAIR Metrics
+                </a>
+                <div class="dropdown-menu" aria-labelledby="fairMetricsDropdown">
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics">Report</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/description">Description</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-F1A">FM-F1A</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-F1B">FM-F1B</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-F2">FM-F2</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-F3">FM-F3</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-F4">FM-F4</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-A1.1">FM-A1.1</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-A1.2">FM-A1.2</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-A2">FM-A2</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-I1">FM-I1</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-I2">FM-I2</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-I3">FM-I3</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-R1.1">FM-R1.1</a>
+                    <a class="dropdown-item" href="${contextPath}/fair-metrics/detailed-view/?key=FM-R1.2">FM-R1.2</a>
+                </div>
+            </div>
             <a class="dropdown-item" href="http://meterdev.onbc.io/#/">FAIR-O-Meter</a>
         </div>
     </li>
