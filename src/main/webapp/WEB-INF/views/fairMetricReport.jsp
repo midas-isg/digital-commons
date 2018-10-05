@@ -181,6 +181,11 @@
             var examples = header.data('examples');
             var comments = header.data('comments');
 
+            if(window.mobilecheck()){
+                window.location = ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title;
+                $('#fairMetricsModal').modal('dispose');
+            }
+
             modal.find('#detailed-view-button').attr("onClick", "location.href='" + ctx + "/fair-metrics/detailed-view/?key=" + "FM-" + title  + "'")
             modal.find('.modal-title').html(title + " - " + name);
             modal.find('#identifier').html("<a class='underline link-break-all' href='" + identifier + "'target='_blank'>" + identifier + "</a>");
