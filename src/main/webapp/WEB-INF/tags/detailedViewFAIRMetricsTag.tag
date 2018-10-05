@@ -16,6 +16,7 @@
     <div class="section-content">
         <div class="col-12 background-white">
             <div class="margin-top-10">
+                <myTags:fairMetricsRedirect></myTags:fairMetricsRedirect>
                 <h3 class="inline"><%--FAIR Metric: --%>
                     <c:choose>
                         <c:when test="${key == 'FM'}">
@@ -25,9 +26,9 @@
                             <fmt:message key="${key.concat('-Column-Header')}"/> - <fmt:message key="${key.concat('-Name')}"/></h3>
                         </c:otherwise>
                     </c:choose>
-                <div class="btn-toolbar pull-right detailed-view-button">
+                <div class="btn-toolbar pull-right">
                     <%--<div class="btn-group">--%>
-                    <button class="btn btn-primary fair-metrics-report-button detailed-view-button">
+                    <button class="btn btn-primary fair-metrics-report-button d-none d-sm-none d-md-block">
                         <a class="color-white" href="${pageContext.request.contextPath}/fair-metrics/">FAIR Metrics
                             Report</a>
                     </button>
@@ -38,13 +39,12 @@
                     <%--</div>--%>
                 </div>
             </div>
-            <br>
-            <h12 class="italic font-small-3">The MIDAS Digital Commons uses the FAIR Metrics defined by Wilkinson, M. D.
+            <div class="italic font-small-3 fair-metrics-message">The MIDAS Digital Commons uses the FAIR Metrics defined by Wilkinson, M. D.
                 et al, in the FAIRMetrics GitHub repository located <a class="underline" target="_blank"
                                                                        href="https://github.com/FAIRMetrics/Metrics">here</a>.
                 A description of each metric is provided below for convenience, but we recommend that you refer to the
                 repository above for the most recent updates to the metrics.
-            </h12>
+            </div>
             <hr>
             <div class="metadata-column tables" style="padding-bottom: 0px;">
                 <div class="metadata-table"><h4 class="sub-title-font"></h4>

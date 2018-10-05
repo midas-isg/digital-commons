@@ -10,7 +10,7 @@
 <nav id="sidebar">
     <ul class="list-unstyled components">
         <li <c:if test="${active == 'description'}">class="active"</c:if>><a
-                href="${pageContext.request.contextPath}/fair-metrics/description">FAIR Metrics Description</a></li>
+                href="${pageContext.request.contextPath}/fair-metrics/description">FAIR Metrics Descriptions</a></li>
         <c:forEach items="${keys}" var="key">
 
             <li <c:if test="${active == key}">class="active"</c:if>><a
