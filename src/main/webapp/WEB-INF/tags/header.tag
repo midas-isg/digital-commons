@@ -11,7 +11,7 @@
 <div class="spacer">
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark  flex-md-row bg-navbar py-0  py-md-0">
-        <button class="navbar-brand btn btn-outline-light disabled no-opacity">mdc</button>
+        <button type="button" onclick="location.href = '${pageContext.request.contextPath}/main'" class="navbar-brand btn btn-outline-light no-opacity">mdc</button>
         <%--<a class="navbar-brand" href="${pageContext.request.contextPath}">--%>
             <%--<img src="${pageContext.request.contextPath}/resources/img/midas-logo-gray-small_smaller.png" height="50" class="d-inline-block align-top" alt="">--%>
         <%--</a>--%>

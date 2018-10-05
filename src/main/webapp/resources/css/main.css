@@ -891,6 +891,10 @@ tfoot {
     margin-right: 10px;
 }
 
+.navbar-brand:hover {
+    color: #0b2b65 !important;
+}
+
 /*.navbar-brand-mod {*/
     /*float: left !important;*/
     /*height: 80px !important;*/
