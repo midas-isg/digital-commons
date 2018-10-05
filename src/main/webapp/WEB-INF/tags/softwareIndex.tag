@@ -55,7 +55,7 @@
                     <ul class="collapse list-unstyled" id="diseaseForecasterForm">
                         <li><a href="#" onclick="submitForm('type')">Type</a></li>
                         <li><a href="#" onclick="submitForm('forecastFrequency')">Forecast Frequency</a></li>
-                        <li><a href="#" onclick="submitForm('forecast')">Forecast</a></li>
+                        <li><a href="#" onclick="submitForm('forecasts')">Forecasts</a></li>
                         <li><a href="#" onclick="submitForm('diseases')">Diseases</a></li>
                         <li><a href="#" onclick="submitForm('nowcasts')">Nowcasts</a></li>
                         <li><a href="#" onclick="submitForm('outcomes')">Outcomes</a></li>

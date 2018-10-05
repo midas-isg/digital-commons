@@ -65,7 +65,7 @@
         <transition on="outcomes" to="diseaseForecasterForm"/>
         <transition on="forecastFrequency" to="diseaseForecasterForm"/>
         <transition on="type" to="diseaseForecasterForm"/>
-        <transition on="forecast" to="diseaseForecasterForm"/>
+        <transition on="forecasts" to="diseaseForecasterForm"/>
         <transition on="accessPointType" to="dataServiceForm"/>
         <transition on="accessPointDescription" to="dataServiceForm"/>
         <transition on="accessPointURL" to="dataServiceForm"/>

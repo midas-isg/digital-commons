@@ -892,7 +892,8 @@ tfoot {
 }
 
 .navbar-brand:hover {
-    color: #0b2b65 !important;
+    background-color: #0b2b65 !important;
+    color: #fff !important;
 }
 
 /*.navbar-brand-mod {*/
