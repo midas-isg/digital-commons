@@ -7,7 +7,7 @@
 
 <div class="col-12 d-block d-md-none dropdown-menu-fair-metrics-redirect">
     <select class="custom-select" title="Redirect To..." id="fairMetricsMobileDropdown" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-        <option value="" >Redirect To...</option>
+        <option value="" >Select To View...</option>
         <option value="${pageContext.request.contextPath}/fair-metrics">FAIR Metrics Report</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/description">FAIR Metrics Descriptions</option>
         <option value="${pageContext.request.contextPath}/fair-metrics/detailed-view/?key=FM-F1A">Metric: FM-F1A</option>

@@ -1187,6 +1187,10 @@ div.container.metadata-container .metadata-column.fancy {
 }
 
 @media (max-width: 767px){
+    div.container.metadata-container {
+        padding-bottom: 40px;
+    }
+
     div.container.metadata-container .metadata-column.fancy {
         flex: 1 0 100%;
     }
@@ -1617,5 +1621,5 @@ ul.CTAs a {
 }
 
 .dropdown-item-fair-metrics{
-    padding-left: 50px !important;
+    padding-left: 30px !important;
 }
