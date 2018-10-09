@@ -156,7 +156,7 @@ public class DatasetWebflowValidator {
                     return (DiseaseTransmissionModel) ReflectionFactory.create(DiseaseTransmissionModel.class);
                 case "Disease transmission tree estimators": // Root: Software: (Disease transmission tree estimators)
                     return (DiseaseTransmissionTreeEstimators) ReflectionFactory.create(DiseaseTransmissionTreeEstimators.class);
-                case "Metagenomic Analysis": // Root: Software: (Metagenomic Analysis)
+                case "Metagenomic analysis": // Root: Software: (Metagenomic Analysis)
                     return (MetagenomicAnalysis) ReflectionFactory.create(MetagenomicAnalysis.class);
                 case "Modeling platforms": // Root: Software: (Modeling platforms)
                     return (ModelingPlatforms) ReflectionFactory.create(ModelingPlatforms.class);
