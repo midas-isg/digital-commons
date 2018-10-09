@@ -30,6 +30,7 @@
                                         placeholder="${visualizationTypePlaceHolder}"
                                         specifier="visualization-type"
                                         cardText="${visualizationTypePlaceHolder}"
+                                        cardIcon="far fa-eye"
                                         tagName="string"
                                         isRequired="${false}"
                                         path="visualizationType">

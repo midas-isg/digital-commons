@@ -30,6 +30,7 @@
                                         tagName="softwareIdentifier"
                                         placeholder="${pathogensPlaceHolder}"
                                         cardText="${pathogensPlaceHolder}"
+                                        cardIcon="fas fa-microscope"
                                         listItems="${digitalObject.pathogens}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>

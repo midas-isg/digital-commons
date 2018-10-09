@@ -31,6 +31,7 @@
                                             tagName="softwareIdentifier"
                                             placeholder="${populationSpeciesIncludedPlaceHolder}"
                                             cardText="${populationSpeciesIncludedPlaceHolder}"
+                                            cardIcon="fas fa-users"
                                             listItems="${digitalObject.populationSpeciesIncluded}"
                                             isRequired="${true}">
                 </myTags:editMasterUnbounded>
