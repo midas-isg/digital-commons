@@ -208,6 +208,9 @@ public class DatasetWebflowValidator {
 
         RequestContext requestContext = RequestContextHolder.getRequestContext();
         Long categoryID = getCategoryId(entryId);
+        if(categoryID == null) {
+            System.out.println("Category ID is not set");
+        }
         requestContext.getFlowScope().put("categoryID", categoryID);
         requestContext.getFlowScope().put("categoryName", createLineage(getCategoryNameFromID(categoryID)));
 
@@ -374,10 +377,12 @@ public class DatasetWebflowValidator {
         Long entryIdentifier = null;
 
         try {
-            categoryID = (Long) context.getFlowScope().get("categoryID");
-            revisionId = (Long) context.getFlowScope().get("revisionID");
-            entryIdentifier = (Long) Long.parseLong(context.getFlowScope().get("entryID").toString());
-        } catch (Exception e) {
+            categoryID = Long.parseLong(context.getFlowScope().get("categoryID").toString());
+            revisionId = Long.parseLong(context.getFlowScope().get("revisionID").toString());
+            entryIdentifier = Long.parseLong(context.getFlowScope().get("entryID").toString());
+        } catch (ClassCastException ex) {
+            System.out.println("Category ID: " + context.getFlowScope().get("categoryID"));
+        }catch (Exception e) {
             e.printStackTrace();
         }
 
