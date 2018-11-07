@@ -30,6 +30,7 @@
                                         isRequired="${false}"
                                         isFirstRequired="${true}"
                                         cardText="${dataServicePlaceHolder}"
+                                        cardIcon="fas fa-exchange-alt"
                                         listItems="${digitalObject.dataServiceDescription}"
                                         tagName="dataServiceDescription">
             </myTags:editMasterUnbounded>

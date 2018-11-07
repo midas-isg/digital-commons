@@ -31,6 +31,7 @@
                                         tagName="softwareIdentifier"
                                         placeholder="${controlMeasuresPlaceHolder}"
                                         cardText="${controlMeasuresPlaceHolder}"
+                                        cardIcon="fas fa-syringe"
                                         listItems="${digitalObject.controlMeasures}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
@@ -43,6 +44,7 @@
                                         tagName="softwareIdentifier"
                                         placeholder="${hostSpeciesIncludedPlaceHolder}"
                                         cardText="${hostSpeciesIncludedPlaceHolder}"
+                                        cardIcon="fas fa-crow"
                                         listItems="${digitalObject.hostSpeciesIncluded}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
@@ -55,6 +57,7 @@
                                         tagName="softwareIdentifier"
                                         placeholder="${pathogenCoveragePlaceHolder}"
                                         cardText="${pathogenCoveragePlaceHolder}"
+                                        cardIcon="fas fa-microscope"
                                         listItems="${digitalObject.pathogenCoverage}"
                                         isRequired="${false}">
             </myTags:editMasterUnbounded>
