@@ -873,7 +873,10 @@ function removeSection(specifier, tagName, event, isUnbounded) {
     }
 }
 
-function showCard(specifier, tagName, id, isUnboundedList, isRequired) {
+function showCard(specifier, tagName, id, unboundedList, required) {
+    var isUnboundedList = (unboundedList === 'true');
+    var isRequired = (required === 'true');
+
     // e.stopImmediatePropagation();
     $("#"+id).removeClass("hide");
     $(this).closest('.card').children('.card-content').removeClass('collapse');
