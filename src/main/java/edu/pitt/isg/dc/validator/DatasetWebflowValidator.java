@@ -383,6 +383,11 @@ public class DatasetWebflowValidator {
             System.out.println("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
 //            logger.debug("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
             if(!(context.getFlowScope().get("categoryID") instanceof Long)) {
+                if(context.getFlowScope().get("categoryID").getClass().isArray()) {
+                    for (String category :  (String[])context.getFlowScope().get("categoryID")) {
+                        System.out.println("Category ID = " + category);
+                    }
+                }
                 System.out.println("Error converting object (categoryID) of type " + context.getFlowScope().get("categoryID").getClass());
             }
             if(context.getFlowScope().get("revisionID") != null && !(context.getFlowScope().get("revisionID") instanceof Long)) {
