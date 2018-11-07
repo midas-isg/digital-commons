@@ -382,9 +382,18 @@ public class DatasetWebflowValidator {
         try {
             System.out.println("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
 //            logger.debug("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
-            categoryID = Long.parseLong(context.getFlowScope().get("categoryID").toString().trim());
-            revisionId = Long.parseLong(context.getFlowScope().get("revisionID").toString().trim());
-            entryIdentifier = Long.parseLong(context.getFlowScope().get("entryID").toString().trim());
+            if(!(context.getFlowScope().get("categoryID") instanceof Long)) {
+                System.out.println("Error converting object (categoryID) of type " + context.getFlowScope().get("categoryID").getClass());
+            }
+            if(context.getFlowScope().get("revisionID") != null && !(context.getFlowScope().get("revisionID") instanceof Long)) {
+                System.out.println("Error converting object (revisionID) of type " + context.getFlowScope().get("revisionID").getClass());
+            }
+            if(context.getFlowScope().get("entryID")!= null &&!(context.getFlowScope().get("entryID") instanceof String)) {
+                System.out.println("Error converting object (entryID) of type " + context.getFlowScope().get("entryID").getClass());
+            }
+            categoryID = (Long) context.getFlowScope().get("categoryID");
+            revisionId = (Long) context.getFlowScope().get("revisionID");
+            entryIdentifier = Long.parseLong((String)context.getFlowScope().get("entryID"));
         } catch (ClassCastException ex) {
             System.out.println("Category ID: " + context.getFlowScope().get("categoryID"));
         } catch (NumberFormatException exe) {
