@@ -396,7 +396,7 @@ public class DatasetWebflowValidator {
             if(context.getFlowScope().get("entryID")!= null &&!(context.getFlowScope().get("entryID") instanceof String)) {
                 System.out.println("Error converting object (entryID) of type " + context.getFlowScope().get("entryID").getClass());
             }
-            categoryID = (Long) context.getFlowScope().get("categoryID");
+            categoryID = Long.parseLong((String)context.getFlowScope().get("categoryID"));
             revisionId = (Long) context.getFlowScope().get("revisionID");
             entryIdentifier = Long.parseLong((String)context.getFlowScope().get("entryID"));
         } catch (ClassCastException ex) {
