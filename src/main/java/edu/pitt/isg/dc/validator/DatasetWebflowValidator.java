@@ -16,7 +16,6 @@ import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Geometry;
 import edu.pitt.isg.mdc.v1_0.*;
-import eu.trentorise.opendata.jackan.dcat.DcatFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +29,9 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.xml.crypto.Data;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.logging.Level;
 
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
 import static edu.pitt.isg.dc.controller.HomeController.ifMDCEditor;
@@ -380,18 +377,15 @@ public class DatasetWebflowValidator {
         Long entryIdentifier = null;
 
         try {
-            System.out.println("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
-//            logger.debug("Trying to parse category ID: " + context.getFlowScope().get("categoryID").toString() + ".");
-            categoryID = Long.parseLong(context.getFlowScope().get("categoryID").toString().trim());
-            revisionId = Long.parseLong(context.getFlowScope().get("revisionID").toString().trim());
-            entryIdentifier = Long.parseLong(context.getFlowScope().get("entryID").toString().trim());
-        } catch (ClassCastException ex) {
-            System.out.println("Category ID: " + context.getFlowScope().get("categoryID"));
-        } catch (NumberFormatException exe) {
-            exe.printStackTrace();
-            System.out.println("Category ID: " + context.getFlowScope().get("categoryID") + ".");
-        } catch (Exception e) {
-            e.printStackTrace();
+            categoryID = Long.parseLong((String) context.getFlowScope().get("categoryID"));
+        } catch (ClassCastException e) {
+            categoryID = (Long) context.getFlowScope().get("categoryID");
+        }
+        revisionId = (Long) context.getFlowScope().get("revisionID");
+        try {
+            entryIdentifier = Long.parseLong((String) context.getFlowScope().get("entryID"));
+        } catch (NumberFormatException e) {
+            entryIdentifier = (Long) context.getFlowScope().get("entryID");
         }
 
         //Second check for required fields

@@ -37,7 +37,7 @@ public class DatasetRequestWrapper extends HttpServletRequestWrapper {
         attributes = (Field[]) ArrayUtils.addAll(attributes, new SyntheticEcosystemConstructors().getClass().getDeclaredFields());
         attributes = (Field[]) ArrayUtils.addAll(attributes, new DataStandard().getClass().getDeclaredFields());
         for(Field field : attributes) {
-            if (!name.contains("add-") && name.contains(field.getName())) {
+            if ((!name.contains("add-") && name.contains(field.getName())) || name.equals("categoryID")) {
                 String[] values = super.getParameterValues(name);
                 String[] newValues = values.clone();
                 ArrayList<String> valuesList = new ArrayList<String>(Arrays.asList(newValues));

@@ -43,7 +43,7 @@
 
     <action-state id="index">
         <evaluate expression="datasetWebflowValidator.goToIndex(flowScope.indexValue)"/>
-
+        <transition on="(root)" to="dataStandardForm"/>
         <transition on="name" to="dataStandardForm"/>
         <transition on="description" to="dataStandardForm"/>
         <transition on="version" to="dataStandardForm"/>
