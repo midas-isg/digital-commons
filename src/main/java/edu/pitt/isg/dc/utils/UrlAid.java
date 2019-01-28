@@ -18,20 +18,24 @@
  */
 package edu.pitt.isg.dc.utils;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.servlet.http.HttpServletRequest;
 
+@Component
+@RequiredArgsConstructor
 public class UrlAid {
+    @Value("${app.https.enable:true}")
+    private boolean isForcedToHttps = true;
 
-    private UrlAid() {
-    }
-
-    public static String toUrlString(HttpServletRequest request, String... pathSegments) {
+    public String toUrlString(HttpServletRequest request, String... pathSegments) {
         return toContextUrlBuilder(request).pathSegment(pathSegments).build().normalize().toString();
     }
 
-    private static UriComponentsBuilder toContextUrlBuilder(HttpServletRequest request) {
+    private UriComponentsBuilder toContextUrlBuilder(HttpServletRequest request) {
         UriComponentsBuilder builder = UriComponentsBuilder.newInstance()
                 .scheme(request.getScheme())
                 .host(request.getServerName());
@@ -46,6 +50,15 @@ public class UrlAid {
             builder = builder.path(contextPath);
         }
 
+        if (isForcedToHttps)
+            builder.scheme("https");
+
         return builder;
+    }
+
+    public String changeScheme(String url) {
+        if (isForcedToHttps)
+            return url.replace("http://", "https://");
+        return url;
     }
 }
