@@ -4,9 +4,11 @@ import com.auth0.Auth0User;
 import com.auth0.NonceUtils;
 import com.auth0.QueryParamUtils;
 import com.auth0.SessionUtils;
+import com.auth0.Tokens;
 import com.auth0.spring.security.mvc.Auth0CallbackHandler;
 import com.mangofactory.swagger.annotations.ApiIgnore;
 import edu.pitt.isg.dc.utils.UrlAid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,10 +29,13 @@ import java.util.List;
 
 @ApiIgnore
 @Controller
+@RequiredArgsConstructor
 public class Auth0Controller extends Auth0CallbackHandler {
 	private static final String ROLES_TOKEN = "roles";
 	public static final String ISG_ADMIN_TOKEN = "ISG_ADMIN";
 	public static final String MDC_EDITOR_TOKEN = "MDC_EDITOR";
+
+	private final UrlAid aid;
 
 	@RequestMapping(value = "/${auth0.loginRedirectOnFail}", method = RequestMethod.GET)
 	public String showLoginPage(
@@ -45,7 +50,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		NonceUtils.addNonceToStorage(request);
 		String nonce = SessionUtils.getState(request);
 
-		model.addAttribute("callbackUrl", UrlAid.toUrlString(request, "callback"));
+		model.addAttribute("callbackUrl", aid.toUrlString(request, "callback"));
 		model.addAttribute("state", nonce);
 		model.addAttribute("clientId", clientId);
 		model.addAttribute("domain", auth0Domain);
@@ -57,6 +62,12 @@ public class Auth0Controller extends Auth0CallbackHandler {
 		}
 
 		return "login";
+	}
+
+	protected Tokens fetchTokens(HttpServletRequest req) {
+		String authorizationCode = req.getParameter("code");
+		String redirectUri = aid.changeScheme(req.getRequestURL().toString());
+		return this.auth0Client.getTokens(authorizationCode, redirectUri);
 	}
 
 	@RequestMapping(value = "/logoutFromAuth0", method = RequestMethod.GET)
@@ -76,7 +87,7 @@ public class Auth0Controller extends Auth0CallbackHandler {
 				.scheme("https")
 				.host(auth0Domain)
 				.pathSegment("v2", "logout")
-				.queryParam("returnTo", UrlAid.toUrlString(request,  "login"))
+				.queryParam("returnTo", aid.toUrlString(request,  "login"))
 				.build().toString();
 		return new RedirectView(redirectUrl, false);
 	}
