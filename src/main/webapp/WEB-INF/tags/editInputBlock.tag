@@ -8,6 +8,8 @@
               type="java.lang.String" %>
 <%@ attribute name="number" required="false"
               type="java.lang.Float" %>
+<%@ attribute name="numberBigInteger" required="false"
+              type="java.math.BigInteger" %>
 <%@ attribute name="date" required="false"
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
 <%@ attribute name="enumData" required="false"
@@ -26,6 +28,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isFloat" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isBigInteger" required="false"
+              type="java.lang.Boolean" %>
 <%@ attribute name="isDate" required="false"
               type="java.lang.Boolean" %>
 <%@ attribute name="isSelect" required="false"
@@ -37,11 +41,23 @@
 <%@ attribute name="updateCardTabTitleTextType" required="false"
               type="java.lang.Boolean" %>
 
+<%@ attribute name="minimum" required="false"
+              type="java.lang.Integer" %>
+<%@ attribute name="maximum" required="false"
+              type="java.lang.Integer" %>
+<%@ attribute name="step" required="false"
+              type="java.lang.String" %>
+
 <c:choose>
 
     <c:when test="${isFloat}">
         <input type="number" step="any" class="form-control" value="${number}" name="${path}" id="${specifier}"
                placeholder="${placeholder}"/>
+    </c:when>
+    <c:when test="${isBigInteger}">
+        <input type="number" step="1" min="${minimum}" max="${maximum}"
+               value="${numberBigInteger}"
+               class="form-control" name="${path}" id="${specifier}" placeholder="${placeholder}"/>
     </c:when>
     <c:when test="${isDate}">
         <input type="text" class="form-control date" value="${date.date}" name="${path}"

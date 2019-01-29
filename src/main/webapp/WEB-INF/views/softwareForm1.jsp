@@ -80,6 +80,7 @@
                                            label="Identifier">
             </myTags:editSoftwareIdentifier>
 
+<%--
             <fmt:message key="software.dataInputFormats" var="dataInputFormatsPlaceHolder" />
             <myTags:editMasterUnbounded label="Data Input Formats"
                                         addButtonLabel="Data Input Format"
@@ -92,7 +93,21 @@
                                         listItems="${digitalObject.dataInputFormats}"
                                         tagName="string">
             </myTags:editMasterUnbounded>
+--%>
+            <fmt:message key="software.dataInputFormats" var="dataInputFormatsPlaceHolder" />
+            <myTags:editMasterUnbounded label="Inputs"
+                                        addButtonLabel="Input"
+                                        placeholder="${dataInputFormatsPlaceHolder}"
+                                        path="inputs"
+                                        specifier="inputs"
+                                        isRequired="${false}"
+                                        cardIcon="fas fa-sign-in-alt"
+                                        cardText="${dataInputFormatsPlaceHolder}"
+                                        listItems="${digitalObject.inputs}"
+                                        tagName="string">
+            </myTags:editMasterUnbounded>
 
+<%--
             <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
             <myTags:editMasterUnbounded label="Data Output Formats"
                                         addButtonLabel="Data Output Format"
@@ -104,6 +119,19 @@
                                         cardIcon="fas fa-sign-out-alt"
                                         cardText="${dataOutputFormatsPlaceHolder}"
                                         listItems="${digitalObject.dataOutputFormats}">
+            </myTags:editMasterUnbounded>
+--%>
+            <fmt:message key="software.dataOutputFormats" var="dataOutputFormatsPlaceHolder" />
+            <myTags:editMasterUnbounded label="Outputs"
+                                        addButtonLabel="Output"
+                                        placeholder="${dataOutputFormatsPlaceHolder}"
+                                        path="outputs"
+                                        specifier="outputs"
+                                        isRequired="${false}"
+                                        tagName="string"
+                                        cardIcon="fas fa-sign-out-alt"
+                                        cardText="${dataOutputFormatsPlaceHolder}"
+                                        listItems="${digitalObject.outputs}">
             </myTags:editMasterUnbounded>
 
             <fmt:message key="software.webApplication" var="webApplicationPlaceHolder" />

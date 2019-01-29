@@ -235,6 +235,26 @@
                                                           categoryValuePair="${listItem}">
                             </myTags:editCategoryValuePair>
                         </c:when>
+                        <c:when test="${tagName == 'dataInputs'}">
+                            <myTags:editDataInputs path="${path}[${varStatus.count-1}]"
+                                                     specifier="${specifier}-${varStatus.count-1}"
+                                                     id="${specifier}-${varStatus.count-1}"
+                                                     tagName="${tagName}"
+                                                     label="${label}"
+                                                     isUnboundedList="${true}"
+                                                     dataInputs="${listItem}">
+                            </myTags:editDataInputs>
+                        </c:when>
+                        <c:when test="${tagName == 'dataOutputs'}">
+                            <myTags:editDataOutputs path="${path}[${varStatus.count-1}]"
+                                                   specifier="${specifier}-${varStatus.count-1}"
+                                                   id="${specifier}-${varStatus.count-1}"
+                                                   tagName="${tagName}"
+                                                   label="${label}"
+                                                   isUnboundedList="${true}"
+                                                   dataOutputs="${listItem}">
+                            </myTags:editDataOutputs>
+                        </c:when>
                         <c:when test="${tagName == 'dataStandard'}">
                             <myTags:editDataStandard path="${path}[${varStatus.count-1}]"
                                                      specifier="${specifier}-${varStatus.count-1}"
