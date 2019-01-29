@@ -71,9 +71,13 @@
 
 <myTags:softwareModalItem id="executables" title="Executables" hasHref="false"></myTags:softwareModalItem>
 
-<myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>
+<%--<myTags:softwareModalItem id="data-input-formats" title="Formats for data input"></myTags:softwareModalItem>--%>
 
-<myTags:softwareModalItem id="data-output-formats" title="Formats for data output"></myTags:softwareModalItem>
+<myTags:softwareModalItem id="inputs" title="Inputs"></myTags:softwareModalItem>
+
+<%--<myTags:softwareModalItem id="data-output-formats" title="Formats for data output"></myTags:softwareModalItem>--%>
+
+<myTags:softwareModalItem id="outputs" title="Outputs"></myTags:softwareModalItem>
 
 <myTags:softwareModalItem id="visualization-type" title="Types of visualizations"></myTags:softwareModalItem>
 

@@ -448,7 +448,9 @@ var convertToHtml = [
     "forecasts",
     "executables",
     "dataInputFormats",
-    "dataOutputFormats"
+    "dataOutputFormats",
+    "inputs",
+    "outputs"
 ];
 
 function toggleModalItem(key, attrs, name, hasHref, renderHtml) {
@@ -599,6 +601,35 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                 attribute = attribute['identifier'];
             }
             hasNulls = attribute === null;
+        } else if (key === 'inputs' || key === 'outputs'){
+            // debugger;
+            if (Object.prototype.toString.call( attribute ) === '[object Array]') {
+                for (var i = 0; i < attribute.length; i++) {
+                    if (attribute[i].hasOwnProperty('dataFormats')) {
+                        var dataFormats = attribute[i]['dataFormats'];
+                        if (Object.prototype.toString.call(dataFormats) === '[object Array]') {
+                            for (var y = 0; y < dataFormats.length; y++) {
+                                dataFormats[y] = identifierToString(dataFormats[y]);
+                                if (dataFormats[y] !== null && dataFormats[y].length > 0) {
+                                    hasNulls = false;
+                                    attribute = dataFormats;
+                                }
+
+                            }
+                        }
+                        if (hasNulls) {
+                            $(containerId).hide();
+                        }
+
+                        if (convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
+                            attribute = listToHtmlString(attribute);
+                        } else {
+                            attribute = displayList(attribute);
+                        }
+
+                    }
+                }
+            }
         } else if (Object.prototype.toString.call( attribute ) === '[object Array]')  {
             for(var i = 0; i < attribute.length; i++) {
                 attribute[i] = identifierToString(attribute[i]);
@@ -646,7 +677,8 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
         $(containerId).show();
     } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
-        $(elementId).html('N/A');
+        // $(elementId).html('N/A');
+        $(elementId).html('Syntax Not Available.');
     } else {
         $(containerId).hide();
     }

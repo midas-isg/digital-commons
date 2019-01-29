@@ -258,8 +258,10 @@ function toggleModalItems(entry, type) {
     entry = setDataServiceDescription(entry);
 
     toggleRequiredModalItem('identifier', entry, 'identifier', false, true, type);
-    toggleRequiredModalItem('dataInputFormats', entry, 'data-input-formats', false, true, type, true);
-    toggleRequiredModalItem('dataOutputFormats', entry, 'data-output-formats', false, true, type, true);
+    // toggleRequiredModalItem('dataInputFormats', entry, 'data-input-formats', false, true, type, true);
+    // toggleRequiredModalItem('dataOutputFormats', entry, 'data-output-formats', false, true, type, true);
+    toggleRequiredModalItem('inputs', entry, 'inputs', false, true, type, true);
+    toggleRequiredModalItem('outputs', entry, 'outputs', false, true, type, true);
 
     toggleModalItem('type', entry, 'type', false, false);
     toggleModalItem('populationSpeciesIncluded', entry, 'population-species', false, false);
