@@ -172,6 +172,12 @@ public class TagUtil {
                     cardTabToolTip = ((IsAboutItems) listItem).getName();
                 } else cardTabToolTip = ((IsAboutItems) listItem).getValue();
                 break;
+            case "DataInputs":
+                cardTabToolTip = ((DataInputs) listItem).getDescription();
+                break;
+            case "DataOutputs":
+                cardTabToolTip = ((DataOutputs) listItem).getDescription();
+                break;
             case "DataStandard":
                 cardTabToolTip = ((DataStandard) listItem).getName();
                 break;

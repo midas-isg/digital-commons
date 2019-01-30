@@ -65,6 +65,7 @@
     </c:when>
     <c:when test="${isTextArea}">
         <textarea name="${path}" id="${specifier}" type="text" class="form-control" rows="5"
+                  <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitle('${specifier}')"</c:if>
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">

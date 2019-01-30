@@ -484,6 +484,24 @@
                                       label="${label}">
         </myTags:editCategoryValuePair>
     </c:when>
+    <c:when test="${tagName == 'dataInputs'}">
+        <myTags:editDataInputs path="${path}[0]"
+                               specifier="${specifier}-00"
+                               id="${specifier}-${tagName}-copy-tag"
+                               tagName="${tagName}"
+                               label="${label}"
+                               isUnboundedList="${true}">
+        </myTags:editDataInputs>
+    </c:when>
+    <c:when test="${tagName == 'dataOutputs'}">
+        <myTags:editDataOutputs path="${path}[0]"
+                                specifier="${specifier}-00"
+                                id="${specifier}-${tagName}-copy-tag"
+                                tagName="${tagName}"
+                                label="${label}"
+                                isUnboundedList="${true}">
+        </myTags:editDataOutputs>
+    </c:when>
     <c:when test="${tagName == 'dataStandard'}">
         <myTags:editDataStandard path="${path}[0]"
                                  specifier="${specifier}-00"

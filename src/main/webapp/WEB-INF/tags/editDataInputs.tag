@@ -50,9 +50,11 @@
                                 specifier="${specifier}-description"
                                 id="${specifier}-description"
                                 string="${dataInputs.description}"
+                                isTextArea="${true}"
                                 isRequired="${true}"
                                 isInputGroup="${true}"
                                 isUnboundedList="${false}"
+                                updateCardTabTitleText="${true}"
                                 path="${path}.description">
 </myTags:editNonZeroLengthString>
 
@@ -62,7 +64,7 @@
                             label="Data Formats"
                             addButtonLabel="Data Format"
                             listItems="${dataInputs.dataFormats}"
-                            isFirstRequired="true"
+                            isFirstRequired="${false}"
                             cardText="${dataFormatsPlaceHolder}"
                             cardIcon=""
                             tagName="string">

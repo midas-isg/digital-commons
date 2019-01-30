@@ -15,6 +15,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -203,7 +204,7 @@ public class ReflectionValidator {
                 return true;
             } else return false;
         }
-        if (objectOrList.getClass().isEnum()) {
+        if (objectOrList.getClass().isEnum() || objectOrList.getClass().getName().endsWith("BigInteger") || objectOrList.getClass().getName().endsWith("Double")) {
             if (objectOrList == null) {
                 return true;
             } else return false;
@@ -359,7 +360,7 @@ public class ReflectionValidator {
 
         for(Field field : fields) {
             Object value = getValue(field, object);
-            if (value == null && (field.getType().isAssignableFrom(Float.class) || field.getType().isAssignableFrom(Integer.class))) {
+            if (value == null && (field.getType().isAssignableFrom(Float.class) || field.getType().isAssignableFrom(BigInteger.class) || field.getType().isAssignableFrom(Integer.class) || field.getType().isAssignableFrom(Double.class))) {
                 continue; // setValue will change the null value to 0.0 or 0 as appropriate for numeric Types -- in doing so, the field will be populated in the json
             }
             if (value == null || (value.getClass().getName().startsWith("java.lang") && value.equals(""))) {

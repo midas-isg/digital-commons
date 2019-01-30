@@ -104,7 +104,7 @@
                                         cardIcon="fas fa-sign-in-alt"
                                         cardText="${dataInputFormatsPlaceHolder}"
                                         listItems="${digitalObject.inputs}"
-                                        tagName="string">
+                                        tagName="dataInputs">
             </myTags:editMasterUnbounded>
 
 <%--
@@ -128,7 +128,7 @@
                                         path="outputs"
                                         specifier="outputs"
                                         isRequired="${false}"
-                                        tagName="string"
+                                        tagName="dataOutputs"
                                         cardIcon="fas fa-sign-out-alt"
                                         cardText="${dataOutputFormatsPlaceHolder}"
                                         listItems="${digitalObject.outputs}">

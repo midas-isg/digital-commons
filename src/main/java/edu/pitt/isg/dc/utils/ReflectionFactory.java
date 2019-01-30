@@ -87,7 +87,7 @@ public class ReflectionFactory {
         if (clazz.getName().endsWith("IsAbout")) {
             clazz = Class.forName("edu.pitt.isg.dc.entry.classes.IsAboutItems");
         }
-        if (instance == null)
+        if (instance == null && !clazz.getName().endsWith("XMLGregorianCalendar") && !clazz.getName().contains("Enum") && !clazz.getName().endsWith("BigInteger") && !clazz.getName().endsWith("double") && !clazz.getName().endsWith("MultipartFile"))
             instance = clazz.newInstance();
         for (Method getter : ReflectionFactory.gatherMethods(instance, null)) {
             if (getter.getName().startsWith("get") && getter.getParameterTypes().length == 0) {
@@ -105,7 +105,12 @@ public class ReflectionFactory {
                                 setter.invoke(instance, getGenericList(list, listClazz.getClass(), listClazz));
                             }
                         } else {
-                            if (!setter.getName().endsWith("Geometry") && !setter.getName().endsWith("AccessPointType")) {
+                            if (!setter.getParameterTypes()[0].getName().endsWith("BigInteger") &&
+                                    !setter.getParameterTypes()[0].getName().endsWith("double") &&
+                                    !setter.getParameterTypes()[0].getName().contains("Enum") &&
+                                    !setter.getParameterTypes()[0].getName().endsWith("XMLGregorianCalendar") &&
+                                    !setter.getName().endsWith("Geometry") &&
+                                    !setter.getName().endsWith("AccessPointType")) {
                                 Object object = getter.invoke(instance);
                                 if (object == null) {
                                     setter.invoke(instance, ReflectionFactory.create(getter.getReturnType()));
