@@ -583,6 +583,13 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     var elementId = '#software-' + name;
     var containerId = elementId + '-container';
 
+    if (key === 'inputs' || key === 'outputs'){
+        document.getElementById("software-" + key + "-container").innerHTML = '';
+        var insertTitle = '<h4 class="inline bold" id="software-' + key + '-tag">' +  key.charAt(0).toUpperCase() + key.slice(1) + ': </h4><br>'
+        document.getElementById("software-" + key + "-container").insertAdjacentHTML('afterbegin', insertTitle);
+        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', '<span id="software-' + key + '"></span>');
+    }
+
     if(key in attrs) {
         var attribute = attrs[key];
         var hasNulls = true;
@@ -602,31 +609,50 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             }
             hasNulls = attribute === null;
         } else if (key === 'inputs' || key === 'outputs'){
+            var property = '';
+            var label = '';
+            if (key === 'inputs') {
+                property = 'inputNumber';
+                label = 'Number of Inputs: ';
+            } else if (key === 'outputs') {
+                property = 'outputNumber';
+                label = 'Number of Outputs: ';
+            }
             // debugger;
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
-                for (var i = 0; i < attribute.length; i++) {
-                    if (attribute[i].hasOwnProperty('dataFormats')) {
-                        var dataFormats = attribute[i]['dataFormats'];
-                        if (Object.prototype.toString.call(dataFormats) === '[object Array]') {
-                            for (var y = 0; y < dataFormats.length; y++) {
-                                dataFormats[y] = identifierToString(dataFormats[y]);
-                                if (dataFormats[y] !== null && dataFormats[y].length > 0) {
-                                    hasNulls = false;
-                                    attribute = dataFormats;
-                                }
+                var inputOutput = attribute;
+                for (var i = 0; i < inputOutput.length; i++) {
+                    // debugger;
+                    if (inputOutput[i].hasOwnProperty('description')) {
+                        var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',descriptionHTML);
+                        toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
+                    } else {
+                        $('#software-' + key + '-' + i + '-description').remove();
+                    }
+                    if (inputOutput[i].hasOwnProperty(property)) {
+                        var insertHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span></div>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertHTML);
+                        toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
+                    } else {
+                        $('#software-' + key + '-' + i + '-' + property).remove();
+                    }
+                    if (inputOutput[i].hasOwnProperty('dataFormats')) {
+                        var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend', dataFormatsHTML);
+                        var dataFormats = undefined;
+                        dataFormats = inputOutput[i]['dataFormats'];
 
-                            }
-                        }
-                        if (hasNulls) {
-                            $(containerId).hide();
-                        }
-
-                        if (convertToHtml.indexOf(key) > -1 && attribute.length > 1) {
-                            attribute = listToHtmlString(attribute);
+                        $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlString(dataFormats));
+/*
+                        if (convertToHtml.indexOf(key) > -1 && dataFormats.length > 1) {
+                            $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlString(dataFormats));
                         } else {
-                            attribute = displayList(attribute);
+                            $('#software-' + key + '-' + i + '-dataFormats').text(displayList(dataFormats));
                         }
-
+*/
+                    } else {
+                        $('#software-' + key + '-' + i + '-dataFormats').remove();
                     }
                 }
             }
