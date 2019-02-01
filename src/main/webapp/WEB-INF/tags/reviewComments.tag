@@ -11,8 +11,7 @@
 <h3 class="title-font" id="subtitle">
     Review and add comments
 </h3>
-<button class="btn btn-success" onclick="showCommentModal('${entryId}', '${revisionId}')">Add comment
-</button>
+<button class="btn btn-success" id="new-comment-button" onclick="addComment()">Add comment</button>
 <br><br>
 <div class="row">
     <div class="col-md-5">
@@ -27,6 +26,31 @@
 
 </div>
 <script>
+
+    function submitComment() {
+        var comments = [];
+        comments.push($("#new-comment").val());
+        var entryId = "${entry.id.entryId}";
+        var revisionId = "${entry.id.revisionId}";
+
+        var params = {
+            'entryId': entryId,
+            'revisionId': revisionId,
+            'comments': comments
+        };
+
+
+        $.post("${pageContext.request.contextPath}/add/comment", params, function (data) {
+            if (data == "success") {
+                window.location.reload();
+            } else {
+                alert("There was an issue commenting on this entry. Please try again.");
+            }
+        }).fail(function () {
+            alert("There was an issue commenting on this entry. Please try again.");
+        });
+
+    }
 
     function commentButton(id) {
         var endId = "-" + id;
@@ -89,15 +113,16 @@
 
     }
 
-    function addComment(id) {
-        var value = "";
+    function addComment() {
+        $("#new-comment-button").prop("disabled", true);
+        var toAppend = "<div class='input-group mb-3'>" +
+            "<textarea class='form-control' id='new-comment'rows='4' style='resize:none'/>" +
+                "<div class='input-group-append'>" +
+                    "<button class='btn btn-success' onclick='submitComment()' type='button'>Submit<br> Comment</button>" +
+                "</div>" +
+        "</div>";
 
-        var toAppend = "<div>" +
-            "<input class='form-control reject-input' value=\"" + value + "\"/>" +
-            "</button>" +
-            "</div>";
-
-        $('#reject-comments-commentModal').append(toAppend);
+        $('#comments-table').after(toAppend);
     }
 </script>
 
