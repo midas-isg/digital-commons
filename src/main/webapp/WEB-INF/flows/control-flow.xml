@@ -5,6 +5,7 @@
                           http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
     <input name="entryID"/>
+    <input name="createCopy"/>
     <decision-state id="createOrEdit">
         <if test="entryID == null" then="controlFlow" else="controlNextFlow" />
     </decision-state>
@@ -39,6 +40,7 @@
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <input name="createCopy" value="flowScope.createCopy"/>
         <transition to="entryConfirmation"/>
     </subflow-state>
 
@@ -46,6 +48,7 @@
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <input name="createCopy" value="flowScope.createCopy"/>
         <transition to="entryConfirmation"/>
     </subflow-state>
 
@@ -53,6 +56,7 @@
         <input name="entryID" value="flowScope.entryID"/>
         <input name="categoryID" value="flowScope.categoryID"/>
         <input name="categoryName" value="flowScope.categoryName"/>
+        <input name="createCopy" value="flowScope.createCopy"/>
         <transition to="entryConfirmation"/>
     </subflow-state>
 

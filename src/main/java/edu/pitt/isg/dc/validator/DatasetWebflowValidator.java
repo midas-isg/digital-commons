@@ -204,6 +204,13 @@ public class DatasetWebflowValidator {
         return createLineage(getCategoryNameFromID(categoryID));
     }
 
+    public Object copyDigitalObject(Long entryId) {
+        Object digitalObject = editDigitalObject(entryId);
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        requestContext.getFlowScope().put("entryID", null);
+        return digitalObject;
+    }
+
     public Object editDigitalObject(Long entryId) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryId);
         EntryView entryView = new EntryView(entry);

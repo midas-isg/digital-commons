@@ -33,10 +33,15 @@
             <div class="margin-top-10">
                 <div class="btn-toolbar pull-right">
                     <c:if test="${adminType == 'ISG_ADMIN' or adminType == 'MDC_EDITOR'}">
-                        <div class="btn-group">
+                        <div class="btn-group margin-right-10">
                             <button class="btn btn-primary detailed-view-button"><a class="color-white"
                                     href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}">Edit
                                 Digital Object</a></button>
+                        </div>
+                        <div class="btn-group margin-left-10">
+                            <button class="btn btn-primary detailed-view-button"><a class="color-white"
+                                    href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}&createCopy=true">
+                                Copy And Edit Digital Object</a></button>
                         </div>
                     </c:if>
 
