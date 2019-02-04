@@ -7,7 +7,7 @@
 <%@ attribute name="comments" required="true" type="java.util.List" %>
 <h4>${title}</h4>
 
-<table class="table table-condensed">
+<table class="table table-condensed" id="comments-table">
     <thead>
     <tr>
         <th>Comment</th>

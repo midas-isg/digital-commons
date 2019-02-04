@@ -8,7 +8,7 @@
 <%@ attribute name="categoryPaths" required="true" type="java.util.Map"%>
 
 <div id="${id}" class="modal fade">
-    <div class="modal-dialog" style="max-width:600px;">
+    <div class="modal-dialog modal-lg" style="min-width: 600px">
         <div class="modal-content">
             <div class="modal-header software-header">
                 <c:choose>
@@ -80,9 +80,9 @@
                     <c:when test="${type == 'reject'}">
                         <button type="button" class="btn btn-danger" onclick="rejectButton('${id}')">Reject</button>
                     </c:when>
-                    <c:otherwise>
-                        <button type="button" class="btn btn-default" onclick="commentButton('${id}')">Submit</button>
-                    </c:otherwise>
+                    <%--<c:otherwise>--%>
+                        <%--<button type="button" class="btn btn-default" onclick="commentButton('${id}')">Submit</button>--%>
+                    <%--</c:otherwise>--%>
                 </c:choose>
             </div>
         </div>

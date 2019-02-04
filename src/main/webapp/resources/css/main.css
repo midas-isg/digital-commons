@@ -1631,3 +1631,11 @@ ul.CTAs a {
 .dropdown-item-fair-metrics{
     padding-left: 30px !important;
 }
+
+.rejected-entry {
+    background-color: rgb(242, 222, 222);
+}
+
+.revised-entry {
+    background-color: rgb(254, 255, 177);
+}

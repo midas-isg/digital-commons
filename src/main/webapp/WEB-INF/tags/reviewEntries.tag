@@ -269,24 +269,25 @@
     </ul>
 
     <div class="tab-content">
-        <div id="all" class="tab-pane fade show active">
-            <myTags:approveTable title="All" entries="${entries}"
+        <div id="all" class="tab-pane fade show active margin-top-10">
+            <myTags:approveTable title="All" type="all" entries="${entries}" toggleRejects="${true}"
                                  adminType="${adminType}"></myTags:approveTable>
         </div>
-        <div id="dataset" class="tab-pane fade">
-            <myTags:approveTable title="Dataset" entries="${datasetEntries}"
+        <div id="dataset" class="tab-pane fade margin-top-10">
+            <myTags:approveTable title="Dataset" type="dataset" entries="${datasetEntries}" toggleRejects="${true}"
                                  adminType="${adminType}"></myTags:approveTable>
         </div>
-        <div id="data-standard" class="tab-pane fade">
-            <myTags:approveTable title="Data Standard" entries="${dataStandardEntries}"
+        <div id="data-standard" class="tab-pane fade margin-top-10">
+            <myTags:approveTable title="Data Standard" type="data-standard" entries="${dataStandardEntries}"
+                                 toggleRejects="${true}"
                                  adminType="${adminType}"></myTags:approveTable>
         </div>
-        <div id="software" class="tab-pane fade">
-            <myTags:approveTable title="Software" entries="${softwareEntries}"
+        <div id="software" class="tab-pane fade margin-top-10">
+            <myTags:approveTable title="Software" type="software" entries="${softwareEntries}" toggleRejects="${true}"
                                  adminType="${adminType}"></myTags:approveTable>
         </div>
-        <div id="approved-entries" class="tab-pane fade">
-            <myTags:approveTable title="Approved" entries="${approvedEntries}"
+        <div id="approved-entries" class="tab-pane fade margin-top-10">
+            <myTags:approveTable title="Approved" type="approved" entries="${approvedEntries}"
                                  adminType="${adminType}"></myTags:approveTable>
         </div>
     </div>

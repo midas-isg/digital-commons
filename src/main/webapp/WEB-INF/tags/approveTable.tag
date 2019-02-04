@@ -7,8 +7,16 @@
 <%@ attribute name="entries" required="true" type="java.util.List"%>
 <%@ attribute name="title" required="true" type="java.lang.String"%>
 <%@ attribute name="adminType" required="true" type="java.lang.String"%>
-<h4>${title}</h4>
+<%@ attribute name="type" required="true" type="java.lang.String"%>
+<%@ attribute name="toggleRejects" required="false" type="java.lang.Boolean"%>
 
+<h4 class="inline">${title}</h4>
+<c:if test="${toggleRejects}">
+    <div class="form-check pull-right">
+        <input type="checkbox" class="form-check-input" id="reject-check-${type}">
+        <label class="form-check-label" for="reject-check-${type}">Show rejected entries</label>
+    </div>
+</c:if>
 <table class="table table-condensed">
     <thead>
     <tr>
@@ -47,7 +55,7 @@
             softwareXml["${entry.id.entryId}-${entry.id.revisionId}"] = "${entry.escapedXmlString}";
         </script>
 
-        <tr id="tr-${entry.id.entryId}-${entry.id.revisionId}-${title}">
+        <tr id="tr-${entry.id.entryId}-${entry.id.revisionId}-${type}">
             <td>
                 <c:choose>
                     <c:when test="${entry.dateAdded != null}">
@@ -144,14 +152,26 @@
         <script>
             <c:choose>
                 <c:when test="${entry.getProperty('status') == 'rejected'}">
-                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${title}").css('background-color', '#f2dede');
+                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${type}").addClass('rejected-entry');
+                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${type}").addClass('rejected-entry-${type}');
+                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${type}").addClass('hidden');
                     $("#reject-btn-${entry.id.entryId}-${entry.id.revisionId}").addClass('disabled');
                 </c:when>
                 <c:when test="${entry.getProperty('status') == 'revised'}">
-                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${title}").css('background-color', '#feffb1');
+                    $("#tr-${entry.id.entryId}-${entry.id.revisionId}-${type}").addClass('revised-entry');
                 </c:when>
             </c:choose>
         </script>
     </c:forEach>
     </tbody>
 </table>
+
+<script>
+    $("#reject-check-${type}").on('change', function () {
+        if($("#reject-check-${type}").is(":checked")) {
+            $(".rejected-entry-${type}").removeClass("hidden");
+        } else {
+            $(".rejected-entry-${type}").addClass("hidden");
+        }
+    })
+</script>
