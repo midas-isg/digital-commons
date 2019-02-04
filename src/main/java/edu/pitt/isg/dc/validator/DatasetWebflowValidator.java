@@ -269,6 +269,25 @@ public class DatasetWebflowValidator {
         return Arrays.asList(DataServiceAccessPointType.class.getEnumConstants());
     }
 
+    private String getTitleForEntryId(Long entryId){
+        return apiUtil.getTitleByEntryId(entryId);
+    }
+
+    private Long getEntryIdForExistingIdentifier(String identifier){
+        return apiUtil.getEntryIdFromIdentifier(identifier);
+    }
+
+    private Boolean isIdentifierUnique(String identifier){
+        if(apiUtil.getCountOfIdentifier(identifier) == 0){
+            return true;
+        } else return false;
+    }
+
+    private String getInvalidIdentiferErrorMessage(Long entryIdForExistingIdentifier) {
+        String existingIdentifierTitle = getTitleForEntryId(entryIdForExistingIdentifier);
+        return  "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
+    }
+
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
         String isValid;
         String title = dataset.getTitle();
@@ -285,6 +304,21 @@ public class DatasetWebflowValidator {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "title").defaultText("Title cannot be empty").build());
             isValid = "false";
+        }
+
+        //Check to see if the entered Identifier is unique to the system
+        String identifier = dataset.getIdentifier().getIdentifier();
+        if (isEmpty(identifier)) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "identifier").defaultText("Identifier cannot be empty").build());
+            isValid = "false";
+        }else {
+            if (!isIdentifierUnique(identifier)) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                messageContext.addMessage(new MessageBuilder().error().source(
+                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                isValid = "false";
+            }
         }
 
         RequestContext requestContext = RequestContextHolder.getRequestContext();
@@ -310,6 +344,20 @@ public class DatasetWebflowValidator {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "title").defaultText("Title cannot be empty").build());
             isValid = "false";
+        }
+        //Check to see if the entered Identifier is unique to the system
+        String identifier = ((Software) software).getIdentifier().getIdentifier();
+        if (isEmpty(identifier)) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "identifier").defaultText("Identifier cannot be empty").build());
+            isValid = "false";
+        }else {
+            if (!isIdentifierUnique(identifier)) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                messageContext.addMessage(new MessageBuilder().error().source(
+                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                isValid = "false";
+            }
         }
         if (isEmpty(humanReadableSynopsis)) {
             messageContext.addMessage(new MessageBuilder().error().source(
@@ -398,6 +446,23 @@ public class DatasetWebflowValidator {
         //Second check for required fields
         String breadcrumb = "";
         List<ValidatorError> errors = new ArrayList<>();
+        Boolean isValid = true;
+        if (clazz.getSimpleName().endsWith("DataStandard")) {
+            //Check to see if the entered Identifier is unique to the system
+            String identifier = ((DataStandard) digitalObject).getIdentifier().getIdentifier();
+            if (isEmpty(identifier)) {
+                messageContext.addMessage(new MessageBuilder().error().source(
+                        "identifier").defaultText("Identifier cannot be empty").build());
+                isValid = false;
+            }else {
+                if (!isIdentifierUnique(identifier)) {
+                    Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                    messageContext.addMessage(new MessageBuilder().error().source(
+                            "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                    isValid = false;
+                }
+            }
+        }
         try {
             webFlowReflectionValidator.validate(clazz, digitalObject, true, breadcrumb, null, errors);
             webFlowReflectionValidator.addValidationErrorToMessageContext(errors, messageContext);
@@ -405,7 +470,7 @@ public class DatasetWebflowValidator {
             e.printStackTrace();
         }
 
-        if (errors.size() > 0) {
+        if (errors.size() > 0 || !isValid) {
             //Redirect to page with the error
             for (Message message : messageContext.getAllMessages()) {
                 String messageSource = message.getSource().toString();

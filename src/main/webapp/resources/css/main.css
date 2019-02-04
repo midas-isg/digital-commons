@@ -837,8 +837,8 @@ tfoot {
 .margin-right-10 {
     margin-right: 10px;
 }
-.margin-left-10 {
-    margin-left: 10px;
+.margin-left-20 {
+    margin-left: 20px;
 }
 .dropdown:hover>.dropdown-menu {
     transform: none !important;

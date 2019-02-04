@@ -58,6 +58,14 @@ public class ApiUtil {
         return parsedIdentifiers;
     }
 
+    public Integer getCountOfIdentifier(String identifier) {
+        return repo.findCountOfIdentifier(identifier);
+    }
+
+    public String getTitleByEntryId(Long entryId) {
+        return repo.findTitleByEntryId(entryId);
+    }
+
     public String getAccessUrl(String identifier, String distributionId) {
         if (distributionId == null) distributionId = "0";
         String accessUrl = repo.findAccessUrlByIdentifierAndDistributionId(identifier, distributionId);

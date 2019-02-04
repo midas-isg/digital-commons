@@ -10,9 +10,11 @@
     <input name="createCopy"/>
 
     <decision-state id="createOrEdit">
-        <!--<if test="entryID == null" then="create" else="edit" />-->
+        <if test="entryID == null" then="create" else="edit" />
+<!--
         <if test="entryID == null" then="create" />
         <if test="createCopy == 'true'" then="copy" else="edit" />
+-->
     </decision-state>
 
     <action-state id="create">

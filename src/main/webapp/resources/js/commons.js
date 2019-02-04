@@ -704,7 +704,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
     } else if(!type.includes('Dataset') && !type.includes('DataStandard')) {
         $(containerId).show();
         // $(elementId).html('N/A');
-        $(elementId).html('Syntax Not Available.');
+        $(elementId).html('Syntax Not Available');
     } else {
         $(containerId).hide();
     }

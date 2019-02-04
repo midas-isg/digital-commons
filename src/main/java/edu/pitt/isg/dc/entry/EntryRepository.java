@@ -158,6 +158,16 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "is_public = true limit 1")
     Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
 
+    @Query(nativeQuery = true, value = "select content->'entry'->>'title' from entry where " +
+            "entry_id = :entryId  and " +
+            "is_public = true ")
+    String findTitleByEntryId(@Param("entryId") Long entryId);
+
+    @Query(nativeQuery = true, value = "select count(*) from entry where " +
+            "content->'entry'->'identifier'->>'identifier' = :identifier  and " +
+            "is_public = true ")
+    Integer findCountOfIdentifier(@Param("identifier") String identifier);
+
     @Query(nativeQuery = true, value="select * from entry where is_public = true;")
     List<Entry> findPublicEntries();
 
