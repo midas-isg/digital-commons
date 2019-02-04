@@ -10,11 +10,9 @@
     <input name="createCopy"/>
 
     <decision-state id="createOrEdit">
-        <if test="entryID == null" then="create" else="edit" />
-<!--
+        <!--<if test="entryID == null" then="create" else="edit" />-->
         <if test="entryID == null" then="create" />
         <if test="createCopy == 'true'" then="copy" else="edit" />
--->
     </decision-state>
 
     <action-state id="create">
@@ -31,7 +29,7 @@
         <transition on="false" to="accessDenied"/>
         <transition to="softwareForm1">
             <evaluate expression="datasetWebflowValidator.getCategoryId(entryID)" result="flowScope.categoryID"/>
-            <evaluate expression="datasetWebflowValidator.copyDigitalObject(entryID)" result="flowScope.digitalObject"/>
+            <evaluate expression="datasetWebflowValidator.copyDigitalObject(entryID, 'Software')" result="flowScope.digitalObject"/>
             <evaluate expression="datasetWebflowValidator.getAccessPointEnums()" result="flowScope.accessPointTypes" />
         </transition>
     </action-state>
