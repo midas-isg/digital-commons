@@ -161,6 +161,7 @@
                 <c:when test="${not function:onlyContainsSoftwareElements(digitalObject)}">
                     <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next"
                            onclick="window.onbeforeunload = null;"/>
+                    <myTags:finishedEditingButton/>
                 </c:when>
                 <c:otherwise>
                     <input type="submit" name="_eventId_submit" class="btn btn-default pull-right" value="Submit"

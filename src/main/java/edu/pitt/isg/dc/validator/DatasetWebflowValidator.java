@@ -241,6 +241,9 @@ public class DatasetWebflowValidator {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        requestContext.getFlowScope().put("editing", true);
+
         return digitalObject;
     }
 

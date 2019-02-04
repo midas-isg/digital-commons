@@ -35,6 +35,7 @@
 
             <input type="submit" name="_eventId_previous" class="btn btn-default" value="Previous" onclick="window.onbeforeunload = null;"/>
             <input type="submit" name="_eventId_next" class="btn btn-default pull-right" value="Next" onclick="window.onbeforeunload = null;"/>
+            <myTags:finishedEditingButton/>
 
         </form>
     </div>
