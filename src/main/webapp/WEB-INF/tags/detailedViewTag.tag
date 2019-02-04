@@ -38,13 +38,11 @@
                                     href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}">Edit
                                 Digital Object</a></button>
                         </div>
-<%--
                         <div class="btn-group margin-left-20">
                             <button class="btn btn-primary detailed-view-button"><a class="color-white"
                                     href="${pageContext.request.contextPath}/add-digital-object?entryID=${entryID}&createCopy=true">
                                 Copy And Edit Digital Object</a></button>
                         </div>
---%>
                     </c:if>
 
                 </div>
