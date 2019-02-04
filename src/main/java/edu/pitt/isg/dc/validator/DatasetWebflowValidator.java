@@ -291,6 +291,20 @@ public class DatasetWebflowValidator {
         return  "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
     }
 
+    private MessageContext checkForIdentifierUniqueness(MessageContext messageContext, String identifier){
+        if (isEmpty(identifier)) {
+            messageContext.addMessage(new MessageBuilder().error().source(
+                    "identifier").defaultText("Identifier cannot be empty").build());
+        }else {
+            if (!isIdentifierUnique(identifier)) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                messageContext.addMessage(new MessageBuilder().error().source(
+                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+            }
+        }
+        return messageContext;
+    }
+
     public String validateDatasetForm1(Dataset dataset, MessageContext messageContext, Long categoryID) {
         String isValid;
         String title = dataset.getTitle();
@@ -311,17 +325,9 @@ public class DatasetWebflowValidator {
 
         //Check to see if the entered Identifier is unique to the system
         String identifier = dataset.getIdentifier().getIdentifier();
-        if (isEmpty(identifier)) {
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "identifier").defaultText("Identifier cannot be empty").build());
+        messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+        if(messageContext.hasErrorMessages()){
             isValid = "false";
-        }else {
-            if (!isIdentifierUnique(identifier)) {
-                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
-                messageContext.addMessage(new MessageBuilder().error().source(
-                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
-                isValid = "false";
-            }
         }
 
         RequestContext requestContext = RequestContextHolder.getRequestContext();
@@ -350,17 +356,9 @@ public class DatasetWebflowValidator {
         }
         //Check to see if the entered Identifier is unique to the system
         String identifier = ((Software) software).getIdentifier().getIdentifier();
-        if (isEmpty(identifier)) {
-            messageContext.addMessage(new MessageBuilder().error().source(
-                    "identifier").defaultText("Identifier cannot be empty").build());
+        messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+        if(messageContext.hasErrorMessages()){
             isValid = "false";
-        }else {
-            if (!isIdentifierUnique(identifier)) {
-                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
-                messageContext.addMessage(new MessageBuilder().error().source(
-                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
-                isValid = "false";
-            }
         }
         if (isEmpty(humanReadableSynopsis)) {
             messageContext.addMessage(new MessageBuilder().error().source(
@@ -453,17 +451,9 @@ public class DatasetWebflowValidator {
         if (clazz.getSimpleName().endsWith("DataStandard")) {
             //Check to see if the entered Identifier is unique to the system
             String identifier = ((DataStandard) digitalObject).getIdentifier().getIdentifier();
-            if (isEmpty(identifier)) {
-                messageContext.addMessage(new MessageBuilder().error().source(
-                        "identifier").defaultText("Identifier cannot be empty").build());
+            messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+            if(messageContext.hasErrorMessages()){
                 isValid = false;
-            }else {
-                if (!isIdentifierUnique(identifier)) {
-                    Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
-                    messageContext.addMessage(new MessageBuilder().error().source(
-                            "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
-                    isValid = false;
-                }
             }
         }
         try {
