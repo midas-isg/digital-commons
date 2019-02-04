@@ -210,7 +210,6 @@ public class DatasetWebflowValidator {
         RequestContext requestContext = RequestContextHolder.getRequestContext();
         requestContext.getFlowScope().put("entryID", null);
 
-        Class clazz;
         switch (dataType) {
             case "Dataset":
                 if (!isEmpty(((Dataset) digitalObject).getTitle())) {
@@ -330,10 +329,12 @@ public class DatasetWebflowValidator {
             DataInputs dataInput = inputs.get(i);
             if(!isEmpty(dataInput)){
                 BigInteger inputNumber = dataInput.getInputNumber();
-                if (inputMap.containsKey(inputNumber)) {
-                    messageContext.addMessage(new MessageBuilder().error().source(
-                            "inputs[" + i + "].inputNumber").defaultText("Input Number must be unique").build());
-                } else inputMap.put(inputNumber, i);
+                if (!isEmpty(inputNumber)) {
+                    if (inputMap.containsKey(inputNumber)) {
+                        messageContext.addMessage(new MessageBuilder().error().source(
+                                "inputs[" + i + "].inputNumber").defaultText("Input Number must be unique").build());
+                    } else inputMap.put(inputNumber, i);
+                }
             }
         }
 
@@ -341,11 +342,15 @@ public class DatasetWebflowValidator {
         Map<BigInteger, Integer> outputMap = new HashMap<BigInteger, Integer>();
         for (int i = 0; i < outputs.size(); i++){
             DataOutputs dataOutput = outputs.get(i);
-            BigInteger outputNumber = dataOutput.getOutputNumber();
-            if (outputMap.containsKey(outputNumber)) {
-                messageContext.addMessage(new MessageBuilder().error().source(
-                        "outputs[" + i + "].outputNumber").defaultText("Output Number must be unique").build());
-            } else outputMap.put(outputNumber, i);
+            if (!isEmpty(dataOutput)) {
+                BigInteger outputNumber = dataOutput.getOutputNumber();
+                if (!isEmpty(outputNumber)) {
+                    if (outputMap.containsKey(outputNumber)) {
+                        messageContext.addMessage(new MessageBuilder().error().source(
+                                "outputs[" + i + "].outputNumber").defaultText("Output Number must be unique").build());
+                    } else outputMap.put(outputNumber, i);
+                }
+            }
         }
 
         return messageContext;
@@ -403,7 +408,7 @@ public class DatasetWebflowValidator {
         //Check to see if the entered Identifier is unique to the system
         String identifier = ((Software) software).getIdentifier().getIdentifier();
         messageContext = checkForIdentifierUniqueness(messageContext, identifier);
-//        messageContext = checkSoftwareInputOutputNumberUniqueness(software, messageContext);
+        messageContext = checkSoftwareInputOutputNumberUniqueness(software, messageContext);
         if(messageContext.hasErrorMessages()){
             isValid = "false";
         }
