@@ -118,7 +118,7 @@
             cache: false,
             timeout: 500000,
             beforeSend: function () {
-                $(".ajax-loader").html("<img src='../img/spinner.gif'>");
+                $(".ajax-loader").html("<img src='../resources/img/spinner.gif'>");
             },
             complete: function () {
                 $(".ajax-loader").html("");
