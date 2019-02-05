@@ -296,26 +296,41 @@ public class DatasetWebflowValidator {
         return apiUtil.getEntryIdFromIdentifier(identifier);
     }
 
-    private Boolean isIdentifierUnique(String identifier){
-        if(apiUtil.getCountOfIdentifier(identifier) == 0){
-            return true;
-        } else return false;
+    private Integer numberOfEntriesWithIdentifier(String identifier){
+        return apiUtil.getCountOfIdentifier(identifier);
     }
 
     private String getInvalidIdentiferErrorMessage(Long entryIdForExistingIdentifier) {
         String existingIdentifierTitle = getTitleForEntryId(entryIdForExistingIdentifier);
-        return  "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
+        String errorMessage;
+        if (isEmpty((existingIdentifierTitle))) {
+            errorMessage = "Please provide a unique Identifier.  This identifier already being used.";
+        } else errorMessage = "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
+
+        return  errorMessage;
     }
 
     private MessageContext checkForIdentifierUniqueness(MessageContext messageContext, String identifier){
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        Long entryIdForThisIdentifier = null;
+        if (!isEmpty(requestContext.getFlowScope().get("entryID"))) {
+            entryIdForThisIdentifier = Long.valueOf(requestContext.getFlowScope().get("entryID").toString());
+        }
+
         if (isEmpty(identifier)) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "identifier").defaultText("Identifier cannot be empty").build());
         }else {
-            if (!isIdentifierUnique(identifier)) {
-                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+            Integer numberOfEntries = numberOfEntriesWithIdentifier(identifier);
+            if (numberOfEntries > 1) {
                 messageContext.addMessage(new MessageBuilder().error().source(
-                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                        "identifier").defaultText("Please provide a unique Identifier.  This identifier already being used.").build());
+            } else if (numberOfEntries == 1) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                if (isEmpty(entryIdForThisIdentifier) || !entryIdForThisIdentifier.equals(entryIdForExistingIdentifier)) {
+                    messageContext.addMessage(new MessageBuilder().error().source(
+                            "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                }
             }
         }
         return messageContext;
