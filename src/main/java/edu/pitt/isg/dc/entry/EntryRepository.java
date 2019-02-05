@@ -158,7 +158,10 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "is_public = true limit 1")
     Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
 
-    @Query(nativeQuery = true, value = "select content->'entry'->>'title' from entry where " +
+    @Query(nativeQuery = true, value = "select CASE " +
+            "WHEN content->'entry'->>'title' IS NOT NULL THEN content->'entry'->>'title' " +
+            "WHEN content->'entry'->>'name' IS NOT NULL THEN content->'entry'->>'name' " +
+            "END from entry where " +
             "entry_id = :entryId  and " +
             "is_public = true ")
     String findTitleByEntryId(@Param("entryId") Long entryId);

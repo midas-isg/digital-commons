@@ -210,7 +210,6 @@ public class DatasetWebflowValidator {
         RequestContext requestContext = RequestContextHolder.getRequestContext();
         requestContext.getFlowScope().put("entryID", null);
 
-        Class clazz;
         switch (dataType) {
             case "Dataset":
                 if (!isEmpty(((Dataset) digitalObject).getTitle())) {
@@ -300,26 +299,41 @@ public class DatasetWebflowValidator {
         return apiUtil.getEntryIdFromIdentifier(identifier);
     }
 
-    private Boolean isIdentifierUnique(String identifier){
-        if(apiUtil.getCountOfIdentifier(identifier) == 0){
-            return true;
-        } else return false;
+    private Integer numberOfEntriesWithIdentifier(String identifier){
+        return apiUtil.getCountOfIdentifier(identifier);
     }
 
     private String getInvalidIdentiferErrorMessage(Long entryIdForExistingIdentifier) {
         String existingIdentifierTitle = getTitleForEntryId(entryIdForExistingIdentifier);
-        return  "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
+        String errorMessage;
+        if (isEmpty((existingIdentifierTitle))) {
+            errorMessage = "Please provide a unique Identifier.  This identifier already being used.";
+        } else errorMessage = "Please provide a unique Identifier.  This identifier already being used for " + existingIdentifierTitle + ".";
+
+        return  errorMessage;
     }
 
     private MessageContext checkForIdentifierUniqueness(MessageContext messageContext, String identifier){
+        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        Long entryIdForThisIdentifier = null;
+        if (!isEmpty(requestContext.getFlowScope().get("entryID"))) {
+            entryIdForThisIdentifier = Long.valueOf(requestContext.getFlowScope().get("entryID").toString());
+        }
+
         if (isEmpty(identifier)) {
             messageContext.addMessage(new MessageBuilder().error().source(
                     "identifier").defaultText("Identifier cannot be empty").build());
         }else {
-            if (!isIdentifierUnique(identifier)) {
-                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+            Integer numberOfEntries = numberOfEntriesWithIdentifier(identifier);
+            if (numberOfEntries > 1) {
                 messageContext.addMessage(new MessageBuilder().error().source(
-                        "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                        "identifier").defaultText("Please provide a unique Identifier.  This identifier already being used.").build());
+            } else if (numberOfEntries == 1) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+                if (isEmpty(entryIdForThisIdentifier) || !entryIdForThisIdentifier.equals(entryIdForExistingIdentifier)) {
+                    messageContext.addMessage(new MessageBuilder().error().source(
+                            "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
+                }
             }
         }
         return messageContext;
@@ -333,10 +347,12 @@ public class DatasetWebflowValidator {
             DataInputs dataInput = inputs.get(i);
             if(!isEmpty(dataInput)){
                 BigInteger inputNumber = dataInput.getInputNumber();
-                if (inputMap.containsKey(inputNumber)) {
-                    messageContext.addMessage(new MessageBuilder().error().source(
-                            "inputs[" + i + "].inputNumber").defaultText("Input Number must be unique").build());
-                } else inputMap.put(inputNumber, i);
+                if (!isEmpty(inputNumber)) {
+                    if (inputMap.containsKey(inputNumber)) {
+                        messageContext.addMessage(new MessageBuilder().error().source(
+                                "inputs[" + i + "].inputNumber").defaultText("Input Number must be unique").build());
+                    } else inputMap.put(inputNumber, i);
+                }
             }
         }
 
@@ -344,11 +360,15 @@ public class DatasetWebflowValidator {
         Map<BigInteger, Integer> outputMap = new HashMap<BigInteger, Integer>();
         for (int i = 0; i < outputs.size(); i++){
             DataOutputs dataOutput = outputs.get(i);
-            BigInteger outputNumber = dataOutput.getOutputNumber();
-            if (outputMap.containsKey(outputNumber)) {
-                messageContext.addMessage(new MessageBuilder().error().source(
-                        "outputs[" + i + "].outputNumber").defaultText("Output Number must be unique").build());
-            } else outputMap.put(outputNumber, i);
+            if (!isEmpty(dataOutput)) {
+                BigInteger outputNumber = dataOutput.getOutputNumber();
+                if (!isEmpty(outputNumber)) {
+                    if (outputMap.containsKey(outputNumber)) {
+                        messageContext.addMessage(new MessageBuilder().error().source(
+                                "outputs[" + i + "].outputNumber").defaultText("Output Number must be unique").build());
+                    } else outputMap.put(outputNumber, i);
+                }
+            }
         }
 
         return messageContext;
@@ -406,7 +426,7 @@ public class DatasetWebflowValidator {
         //Check to see if the entered Identifier is unique to the system
         String identifier = ((Software) software).getIdentifier().getIdentifier();
         messageContext = checkForIdentifierUniqueness(messageContext, identifier);
-//        messageContext = checkSoftwareInputOutputNumberUniqueness(software, messageContext);
+        messageContext = checkSoftwareInputOutputNumberUniqueness(software, messageContext);
         if(messageContext.hasErrorMessages()){
             isValid = "false";
         }
