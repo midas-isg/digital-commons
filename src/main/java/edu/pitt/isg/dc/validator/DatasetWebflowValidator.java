@@ -61,6 +61,12 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
+/*
+    public List getDataFormatsEnums() {
+        return apiUtil.getDataFormats();
+    }
+*/
+
     public String isDigitalObjectDatasetOrSoftware(Long entryID) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryID);
         EntryView entryView = new EntryView(entry);

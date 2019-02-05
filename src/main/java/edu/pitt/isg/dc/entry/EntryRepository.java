@@ -119,6 +119,11 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     )
     List<Object[]> match2Software();
 
+    @Query(nativeQuery = true, value = "select content->'entry'->>'name' as name " +
+            "from entry " +
+            "where " + IS_PUBLIC + "and category_id == 4 " +
+            "order by name ")
+    List findDataFormats();
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +

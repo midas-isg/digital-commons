@@ -613,29 +613,32 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
             var label = '';
             if (key === 'inputs') {
                 property = 'inputNumber';
-                label = 'Number of Inputs: ';
+                label = '';
             } else if (key === 'outputs') {
                 property = 'outputNumber';
-                label = 'Number of Outputs: ';
+                label = '';
             }
             // debugger;
             if (Object.prototype.toString.call( attribute ) === '[object Array]') {
                 var inputOutput = attribute;
                 for (var i = 0; i < inputOutput.length; i++) {
                     // debugger;
-                    if (inputOutput[i].hasOwnProperty('description')) {
+                    if (inputOutput[i].hasOwnProperty(property) && inputOutput[i].hasOwnProperty('description')) {
                         var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
-                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',descriptionHTML);
+                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span id="software-' + key + '-' + i + '-' + property + '"></span>: ' + descriptionHTML + '</div>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
+                        toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
-                    } else {
-                        $('#software-' + key + '-' + i + '-description').remove();
                     }
-                    if (inputOutput[i].hasOwnProperty(property)) {
+                    if (inputOutput[i].hasOwnProperty(property) && !inputOutput[i].hasOwnProperty('description')) {
                         var insertHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span></div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
-                    } else {
-                        $('#software-' + key + '-' + i + '-' + property).remove();
+                    }
+                    if (inputOutput[i].hasOwnProperty('description') && !inputOutput[i].hasOwnProperty(property)) {
+                        var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
+                        document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',descriptionHTML);
+                        toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
                     if (inputOutput[i].hasOwnProperty('dataFormats')) {
                         var dataFormatsHTML = '<span id="software-' + key + '-' + i + '-dataFormats"></span>';
