@@ -31,6 +31,7 @@
             <link href="${pageContext.request.contextPath}/resources/css/bootstrap-extended/bootstrap-extended.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
             <link href="${pageContext.request.contextPath}/resources/DataTables/datatables.min.css" rel="stylesheet">
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 
             <!-- jQuery imports -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -45,6 +46,7 @@
             <script>document.write("<link href='${pageContext.request.contextPath}/resources/css/main.css?v=" + Date.now() + "'rel='stylesheet'>");</script>
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap/4.1.2/bootstrap.min.js" defer></script>
             <script src="//cdn.jsdelivr.net/jquery.shadow-animation/1/mainfile"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
             <script src="${pageContext.request.contextPath}/resources/js/bootstrap-treeview/1.2.0/bootstrap-treeview.min.js"></script>
 

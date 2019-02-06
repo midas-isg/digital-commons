@@ -75,11 +75,11 @@
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">
-        <select <c:if test="${isMulti}"> multiple size="10" </c:if> class="custom-select capitalize" name="${path}" id="${specifier}-select"
+        <select <c:if test="${isMulti}"> multiple size="10" </c:if> class="multiSelect" style="width: 100%" name="${path}" id="${specifier}-select"
           title="${specifier}" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
           <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
             <c:if test="${not isMulti}"><option value="">Please Select...</option></c:if>
-            <c:if test="${isMulti}"><option hidden value=""></option></c:if>
+            <c:if test="${isMulti}"><option value=""></option></c:if>
             <c:forEach items="${enumList}" var="varEnum" varStatus="status">
                 <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
                 <option
@@ -88,7 +88,7 @@
                             <c:if test="${data == varEnum}">selected="selected"</c:if>
                         </c:forEach>
                         value="${varEnum}">
-                        ${fn:toLowerCase(normalizedEnum)}</option>
+                        ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
             </c:forEach>
         </select>
     </c:when>
