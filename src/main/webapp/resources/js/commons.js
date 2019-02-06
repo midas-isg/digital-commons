@@ -631,7 +631,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
                     if (inputOutput[i].hasOwnProperty(property) && !inputOutput[i].hasOwnProperty('description')) {
-                        var insertHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span></div>';
+                        var insertHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span>: </div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                     }
@@ -1312,6 +1312,13 @@ function setCardTabTitle(id, specifier, cardTabTitle){
         var currentCardTabTitleText = $("#" + id).text().trim();
         var currentCardTabTitleHTML = $("#" + id).html();
         $("#" + id).html(currentCardTabTitleHTML.replace(currentCardTabTitleText, cardTabTitle));
+    }
+}
+
+function clearMultiSelectIfEmpty(id) {
+    var multiSelectId = "#" + id;
+    if($(multiSelectId + " :selected").length === 0) {
+        $(multiSelectId).val('');
     }
 }
 

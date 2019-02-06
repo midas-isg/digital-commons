@@ -40,6 +40,12 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="updateCardTabTitleTextType" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isMulti" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="enumDataList" required="false"
+              type="java.util.List" %>
+<%@ attribute name="enumDataMap" required="false"
+              type="java.util.List" %>
 
 <%@ attribute name="minimum" required="false"
               type="java.lang.Integer" %>
@@ -69,6 +75,25 @@
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">
+        <select <c:if test="${isMulti}"> multiple size="10" </c:if> class="custom-select capitalize" name="${path}" id="${specifier}-select"
+          title="${specifier}" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
+          <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
+            <c:if test="${not isMulti}"><option value="">Please Select...</option></c:if>
+            <c:if test="${isMulti}"><option hidden value=""></option></c:if>
+            <c:forEach items="${enumList}" var="varEnum" varStatus="status">
+                <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
+                <option
+                        <c:if test="${enumData == varEnum}">selected="selected"</c:if>
+                        <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                            <c:if test="${data == varEnum}">selected="selected"</c:if>
+                        </c:forEach>
+                        value="${varEnum}">
+                        ${fn:toLowerCase(normalizedEnum)}</option>
+            </c:forEach>
+        </select>
+    </c:when>
+<%--
+    <c:when test="${isSelect}">
         <select class="custom-select" name="${path}" id="${specifier}-select" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}')"</c:if>
                 title="${specifier}">
             <option value="">Please Select...</option>
@@ -80,6 +105,7 @@
             </c:forEach>
         </select>
     </c:when>
+--%>
     <c:otherwise>
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
                id="${specifier}" placeholder="${placeholder}"

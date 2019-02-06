@@ -179,17 +179,20 @@
         </c:if>
         <c:if test="${not function:isObjectEmpty(listItems)}">
             <ul id="${specifier}-card-header" class="nav nav-tabs card-header-tabs">
+                <c:set var="setActive" value="${true}" />
                 <c:forEach items="${listItems}" varStatus="varStatus" var="listItem">
                     <c:if test="${not function:isObjectEmpty(listItem)}">
                         <c:set var="cardTabTitle" value="${function:getCardTabTitle(listItem, addButtonLabel)}"></c:set>
                         <c:set var="cardTabToolTip" value="${function:getCardTabToolTip(listItem, addButtonLabel)}"></c:set>
                         <c:set var="pathCardTab" value="${path}[${varStatus.count-1}]"></c:set>
                         <li for="${specifier}-${varStatus.count-1}-input-block" id="${specifier}-${varStatus.count-1}-tab" class="nav-item">
-                            <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem" class="wizard-nav-link nav-link <c:if test="${not empty flowRequestContext.messageContext.getMessagesByCriteria(function:getMessageCriteria(pathCardTab))}">has-error-card-tab</c:if> " data-toggle="tooltip" title="${cardTabToolTip}">
+                            <a onclick="showTab(event, this, '${specifier}')" id="${specifier}-${varStatus.count-1}-listItem"
+                               class="wizard-nav-link nav-link <c:if test="${setActive}">active</c:if> <c:if test="${not empty flowRequestContext.messageContext.getMessagesByCriteria(function:getMessageCriteria(pathCardTab))}">has-error-card-tab</c:if> " data-toggle="tooltip" title="${cardTabToolTip}">
                                     ${cardTabTitle}
                                 <i onclick="closeTab(event, this, '${specifier}', '${tagName}')" class="ft-x"></i>
                             </a>
                         </li>
+                        <c:set var="setActive" value="${false}" />
                     </c:if>
                 </c:forEach>
             </ul>

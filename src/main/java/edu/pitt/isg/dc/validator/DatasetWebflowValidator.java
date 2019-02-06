@@ -61,11 +61,14 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
-/*
-    public List getDataFormatsEnums() {
-        return apiUtil.getDataFormats();
+    public List<String> getDataFormatsEnums() {
+        List<String> dataFormats = apiUtil.getDataFormats();
+        dataFormats.add("Proprietary");
+        dataFormats.add("Syntax Not Available");
+
+        return dataFormats;
     }
-*/
+
 
     public String isDigitalObjectDatasetOrSoftware(Long entryID) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryID);

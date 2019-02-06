@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
-<fmt:setBundle basename="cardText" />
+<fmt:setBundle basename="cardText"/>
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -22,7 +22,7 @@
 <%@ attribute name="isUnboundedList" required="true"
               type="java.lang.Boolean" %>
 
-<fmt:message key="software.dataInputs" var="dataInputsPlaceHolder" />
+<fmt:message key="software.dataInputs" var="dataInputsPlaceHolder"/>
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
                                  object="${dataInputs}"
@@ -36,15 +36,15 @@
 </myTags:editMasterElementWrapper>
 
 <myTags:editPositiveBigInteger number="${dataInputs.inputNumber}"
-                                    path="${path}.inputNumber"
-                                    specifier="${specifier}-inputNumber"
-                                    label="Input Number"
-                                    placeholder="Input Number"
-                                    id="${specifier}-inputNumber"
-                                    isRequired="${true}">
+                               path="${path}.inputNumber"
+                               specifier="${specifier}-inputNumber"
+                               label="Input Number"
+                               placeholder="Input Number"
+                               id="${specifier}-inputNumber"
+                               isRequired="${true}">
 </myTags:editPositiveBigInteger>
 
-<fmt:message key="software.dataInputs.description" var="descriptionPlaceHolder" />
+<fmt:message key="software.dataInputs.description" var="descriptionPlaceHolder"/>
 <myTags:editNonZeroLengthString label="Description"
                                 placeholder="${descriptionPlaceHolder}"
                                 specifier="${specifier}-description"
@@ -58,7 +58,21 @@
                                 path="${path}.description">
 </myTags:editNonZeroLengthString>
 
-<fmt:message key="software.dataInputs.dataFormats" var="dataFormatsPlaceHolder" />
+<fmt:message key="software.dataInputs.dataFormats" var="dataFormatsPlaceHolder"/>
+<myTags:editSelect path="${path}.dataFormats"
+                   specifier="${specifier}-dataFormats"
+                   label="Data Formats"
+                   id="${specifier}-dataFormats"
+                   tagName="select"
+                   isRequired="${true}"
+                   isMulti="${true}"
+                   enumList="${dataFormatsEnums}"
+                   enumDataList="${dataInputs.dataFormats}"
+                   cardText="${dataFormatsPlaceHolder}">
+</myTags:editSelect>
+
+<%--
+<fmt:message key="software.dataInputs.dataFormats" var="dataFormatsPlaceHolder"/>
 <myTags:editMasterUnbounded path="${path}.dataFormats"
                             specifier="${specifier}-dataFormats"
                             label="Data Formats"
@@ -69,6 +83,7 @@
                             cardIcon=""
                             tagName="string">
 </myTags:editMasterUnbounded>
+--%>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"

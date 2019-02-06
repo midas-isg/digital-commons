@@ -66,6 +66,10 @@ public class ApiUtil {
         return repo.findTitleByEntryId(entryId);
     }
 
+    public List<String> getDataFormats() {
+        return repo.findDataFormats();
+    }
+
     public String getAccessUrl(String identifier, String distributionId) {
         if (distributionId == null) distributionId = "0";
         String accessUrl = repo.findAccessUrlByIdentifierAndDistributionId(identifier, distributionId);

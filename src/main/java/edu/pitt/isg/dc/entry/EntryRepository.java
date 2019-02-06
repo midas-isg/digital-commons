@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Repository
@@ -119,11 +121,17 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     )
     List<Object[]> match2Software();
 
-    @Query(nativeQuery = true, value = "select content->'entry'->>'name' as name " +
+    @Query(nativeQuery = true, value = "select distinct content->'entry'->>'name' || \n" +
+            "CASE \n" +
+            "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
+            "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
+            "when left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
+            "else concat(' - ', content->'entry'->>'version') \n" +
+            "end as name \n" +
             "from entry " +
-            "where " + IS_PUBLIC + "and category_id == 4 " +
+            "where " + IS_PUBLIC + "and category_id = 4 " +
             "order by name ")
-    List findDataFormats();
+    List<String> findDataFormats();
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
@@ -163,11 +171,21 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "is_public = true limit 1")
     Integer findCategoryIdByIdentifier(@Param("identifier") String identifier);
 
-    @Query(nativeQuery = true, value = "select CASE " +
-            "WHEN content->'entry'->>'title' IS NOT NULL THEN content->'entry'->>'title' " +
-            "WHEN content->'entry'->>'name' IS NOT NULL THEN content->'entry'->>'name' " +
-            "END from entry where " +
-            "entry_id = :entryId  and " +
+    @Query(nativeQuery = true, value = "select concat(" +
+            "CASE \n" +
+            "when category_id = 4 then content->'entry'->>'name' \n" +
+            "else content->'entry'->>'title' \n" +
+            "end, \n" +
+            "CASE \n" +
+            "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
+            "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
+            "when category_id = 4 and left(content->'entry'->>'version',1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', content->'entry'->>'version') \n" +
+            "when category_id = 4 then concat(' - ', content->'entry'->>'version') \n" +
+            "when left(trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ',')),1) ~ '^\\d+(\\.\\d+)?$' then concat(' - v', trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ','))) \n" +
+            "else trim(array_to_string(ARRAY(select ' ' || jsonb_array_elements_text(content->'entry'->'version')), ',')) \n" +
+            "end) \n" +
+            "from entry " +
+            "where entry_id = :entryId  and " +
             "is_public = true ")
     String findTitleByEntryId(@Param("entryId") Long entryId);
 

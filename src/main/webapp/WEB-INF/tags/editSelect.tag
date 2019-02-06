@@ -12,6 +12,10 @@
 --%>
 <%@ attribute name="enumData" required="false"
               type="java.lang.Enum" %>
+<%@ attribute name="enumDataList" required="false"
+              type="java.util.List" %>
+<%@ attribute name="enumDataMap" required="false"
+              type="java.util.Map" %>
 <%@ attribute name="enumList" required="false"
               type="java.util.List" %>
 <%@ attribute name="path" required="true"
@@ -30,6 +34,8 @@
               type="java.lang.String" %>
 <%@ attribute name="updateCardTabTitleText" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isMulti" required="false"
+              type="java.lang.Boolean" %>
 
 
 <myTags:editMasterElementWrapper path="${path}"
@@ -47,7 +53,10 @@
 <myTags:editInputBlock path="${path}"
                        specifier="${specifier}-${tagName}"
                        isSelect="${true}"
+                       isMulti="${isMulti}"
                        enumData="${enumData}"
+                       enumDataList="${enumDataList}"
+                       enumDataMap="${enumDataMap}"
                        enumList="${enumList}"
                        updateCardTabTitleText="${updateCardTabTitleText}"
                        placeholder="Please select...">

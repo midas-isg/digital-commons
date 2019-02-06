@@ -20,5 +20,9 @@ function clearAndHideEditControlGroup(controlGroup, id) {
         if (selectElements[se].type === "select-one") {
             selectElements[se].selectedIndex = undefined;
         }
+        if (selectElements[se].type === "select-multiple") {
+            $("#"+selectElements[se].id ).val('');
+            // $("#"+selectElements[se].id + " option:selected").prop("selected", false);
+        }
     }
 }
