@@ -4,6 +4,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="function" uri="/WEB-INF/customTag.tld" %>
+
 <%@ attribute name="string" required="false"
               type="java.lang.String" %>
 <%@ attribute name="number" required="false"
@@ -16,6 +18,10 @@
               type="java.lang.Enum" %>
 <%@ attribute name="enumList" required="false"
               type="java.util.List" %>
+<%@ attribute name="enumDataList" required="false"
+              type="java.util.List" %>
+<%@ attribute name="enumDataMap" required="false"
+              type="java.util.Map" %>
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -42,10 +48,6 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isMulti" required="false"
               type="java.lang.Boolean" %>
-<%@ attribute name="enumDataList" required="false"
-              type="java.util.List" %>
-<%@ attribute name="enumDataMap" required="false"
-              type="java.util.List" %>
 
 <%@ attribute name="minimum" required="false"
               type="java.lang.Integer" %>
@@ -78,18 +80,29 @@
         <select <c:if test="${isMulti}"> multiple size="10" </c:if> class="multiSelect" style="width: 100%" name="${path}" id="${specifier}-select"
           title="${specifier}" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
           <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
-            <c:if test="${not isMulti}"><option value="">Please Select...</option></c:if>
-            <c:if test="${isMulti}"><option value=""></option></c:if>
-            <c:forEach items="${enumList}" var="varEnum" varStatus="status">
-                <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
-                <option
-                        <c:if test="${enumData == varEnum}">selected="selected"</c:if>
-                        <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
-                            <c:if test="${data == varEnum}">selected="selected"</c:if>
-                        </c:forEach>
-                        value="${varEnum}">
-                        ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
-            </c:forEach>
+            <c:if test="${function:isObjectEmpty(enumDataMap)}"><option value="">Please Select...</option>
+                <c:forEach items="${enumList}" var="varEnum" varStatus="status">
+                    <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
+                    <option
+                            <c:if test="${enumData == varEnum}">selected="selected"</c:if>
+                            <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                                <c:if test="${data == varEnum}">selected="selected"</c:if>
+                            </c:forEach>
+                            value="${varEnum}">
+                            ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
+                </c:forEach>
+            </c:if>
+            <c:if test="${not function:isObjectEmpty(enumDataMap)}"><option value=""></option>
+                <c:forEach items="${enumDataMap.keySet().toArray()}" var="varEnum" varStatus="status">
+                    <c:set var="normalizedEnum" value="${fn:replace(enumDataMap.get(varEnum), '_', ' ')}" />
+                    <option
+                            <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                                <c:if test="${data == varEnum}">selected="selected"</c:if>
+                            </c:forEach>
+                            value="${varEnum}">
+                            ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
+                </c:forEach>
+            </c:if>
         </select>
     </c:when>
 <%--

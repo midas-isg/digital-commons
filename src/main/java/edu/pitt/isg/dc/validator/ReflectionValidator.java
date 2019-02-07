@@ -204,7 +204,7 @@ public class ReflectionValidator {
                 return true;
             } else return false;
         }
-        if (objectOrList.getClass().isEnum() || objectOrList.getClass().getName().endsWith("BigInteger") || objectOrList.getClass().getName().endsWith("Double")) {
+        if (objectOrList.getClass().isEnum() || objectOrList.getClass().getName().endsWith("BigInteger") || objectOrList.getClass().getName().endsWith("Double") || objectOrList.getClass().getName().endsWith("Map")) {
             if (objectOrList == null) {
                 return true;
             } else return false;
