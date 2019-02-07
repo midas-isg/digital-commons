@@ -16,6 +16,7 @@ import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Geometry;
 import edu.pitt.isg.mdc.v1_0.*;
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,19 @@ public class DatasetWebflowValidator {
 
     private Converter converter = new Converter();
 
-    public List<String> getDataFormatsEnums() {
-        List<String> dataFormats = apiUtil.getDataFormats();
-        dataFormats.add("Proprietary");
-        dataFormats.add("Syntax Not Available");
+    public Map<String, String> getDataFormatsEnums() {
+        Map<String, String> dataFormats = new LinkedHashMap<String, String>();
+        List<Object[]> dataFormatsObjectList = apiUtil.getDataFormats();
+
+        for (Iterator<Object[]> iterator = dataFormatsObjectList.iterator(); iterator.hasNext();){
+            Object[] dataFormatsObject = iterator.next();
+            if (!dataFormats.containsKey(dataFormatsObject[0].toString())) {
+                dataFormats.put(dataFormatsObject[0].toString(), dataFormatsObject[1].toString());
+            }
+        }
+
+        dataFormats.put("Proprietary", "Proprietary");
+        dataFormats.put("Syntax Not Available", "Syntax Not Available");
 
         return dataFormats;
     }

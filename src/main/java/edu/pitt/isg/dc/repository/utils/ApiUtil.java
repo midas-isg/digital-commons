@@ -66,7 +66,7 @@ public class ApiUtil {
         return repo.findTitleByEntryId(entryId);
     }
 
-    public List<String> getDataFormats() {
+    public List<Object[]> getDataFormats() {
         return repo.findDataFormats();
     }
 

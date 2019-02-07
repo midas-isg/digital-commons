@@ -9,10 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Repository
 public interface EntryRepository extends JpaRepository<Entry, EntryId> {
@@ -121,7 +118,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     )
     List<Object[]> match2Software();
 
-    @Query(nativeQuery = true, value = "select distinct content->'entry'->>'name' || \n" +
+    @Query(nativeQuery = true, value = "select distinct content->'entry'->'identifier'->>'identifier' as identifier, content->'entry'->>'name' || \n" +
             "CASE \n" +
             "when content->'entry'->>'version' is null or content->'entry'->>'version' = '' then '' \n" +
             "when content->'entry'->>'version' = '2010 U.S. Synthesized Population' then concat(' - ', content->'entry'->>'version') \n" +
@@ -131,7 +128,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "from entry " +
             "where " + IS_PUBLIC + "and category_id = 4 " +
             "order by name ")
-    List<String> findDataFormats();
+    List<Object[]> findDataFormats();
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
