@@ -1119,9 +1119,14 @@ function toggleLoadingScreen() {
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
-    $('.multiSelect').select2('destroy');
 
-    $("#"+specifier+"-add-input-button").addClass("hide");
+    $('.multiSelect').each(function (i, obj) {
+        if ($(obj).hasClass("select2-hidden-accessible")) {
+            $(obj).select2('destroy');
+        }
+    });
+
+    $("#" + specifier + "-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
         if (thisObject.id == ""+specifier+"-add-"+tagName+"-person") {
@@ -1172,7 +1177,9 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //switch to newly created tab
     showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
     $('[data-toggle="tooltip"]').tooltip();
-    $(".multiSelect").select2();
+    $(".multiSelect").select2({
+        placeholder: "Please Select... "
+    });
 
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
@@ -1326,8 +1333,11 @@ function clearMultiSelectIfEmpty(id) {
         $(multiSelectId + " > option").each(function() {
             this.disabled = false;
         });
-        $(multiSelectId).select2();
-        $(multiSelectId).val('');
+        setTimeout(function(){
+            $(multiSelectId).select2();
+            $(multiSelectId).val('');
+
+        });
     } else {
         var values = $(multiSelectId).val();
         if (values) {

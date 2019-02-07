@@ -83,6 +83,7 @@
             <c:if test="${function:isObjectEmpty(enumDataMap)}">
                 <c:forEach items="${enumList}" var="varEnum" varStatus="status">
                     <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
+                    <option></option>
                     <option
                             <c:if test="${enumData == varEnum}">selected="selected"</c:if>
                             <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
@@ -91,17 +92,15 @@
                             value="${varEnum}">
                             ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
                 </c:forEach>
-                <option value="">Please Select...</option>
             </c:if>
             <c:if test="${not function:isObjectEmpty(enumDataMap)}">
                 <c:forEach items="${enumDataMap.keySet().toArray()}" var="varEnum" varStatus="status">
-                    <c:set var="normalizedEnum" value="${fn:replace(enumDataMap.get(varEnum), '_', ' ')}" />
                     <option
                             <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
                                 <c:if test="${data == varEnum}">selected="selected"</c:if>
                             </c:forEach>
                             value="${varEnum}">
-                            ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
+                            ${enumDataMap.get(varEnum)}</option>
                 </c:forEach>
                 <option value=""></option>
             </c:if>
