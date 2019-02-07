@@ -79,7 +79,6 @@
           title="${specifier}" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
           <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
             <c:if test="${not isMulti}"><option value="">Please Select...</option></c:if>
-            <c:if test="${isMulti}"><option value=""></option></c:if>
             <c:forEach items="${enumList}" var="varEnum" varStatus="status">
                 <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
                 <option
@@ -90,6 +89,7 @@
                         value="${varEnum}">
                         ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
             </c:forEach>
+            <c:if test="${isMulti}"><option value=""></option></c:if>
         </select>
     </c:when>
 <%--
