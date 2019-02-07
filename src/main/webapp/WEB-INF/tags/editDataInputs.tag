@@ -66,7 +66,7 @@
                    tagName="select"
                    isRequired="${true}"
                    isMulti="${true}"
-                   enumList="${dataFormatsEnums}"
+                   enumDataMap="${dataFormatsEnums}"
                    enumDataList="${dataInputs.dataFormats}"
                    cardText="${dataFormatsPlaceHolder}">
 </myTags:editSelect>

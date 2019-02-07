@@ -59,6 +59,19 @@
 </myTags:editNonZeroLengthString>
 
 <fmt:message key="software.dataOutputs.dataFormats" var="dataFormatsPlaceHolder" />
+<myTags:editSelect path="${path}.dataFormats"
+                   specifier="${specifier}-dataFormats"
+                   label="Data Formats"
+                   id="${specifier}-dataFormats"
+                   tagName="select"
+                   isRequired="${true}"
+                   isMulti="${true}"
+                   enumDataMap="${dataFormatsEnums}"
+                   enumDataList="${dataOutputs.dataFormats}"
+                   cardText="${dataFormatsPlaceHolder}">
+</myTags:editSelect>
+
+<%--
 <myTags:editMasterUnbounded path="${path}.dataFormats"
                             specifier="${specifier}-dataFormats"
                             label="Data Formats"
@@ -69,6 +82,7 @@
                             cardIcon=""
                             tagName="string">
 </myTags:editMasterUnbounded>
+--%>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
