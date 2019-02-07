@@ -208,7 +208,15 @@
 
 
 .full-width {
-    width: 100%;
+    width: 120px;
+}
+
+.integer-width {
+    max-width: 120px;
+}
+
+.float-width {
+    max-width: 15%;
 }
 
 .background-nav {
@@ -941,6 +949,15 @@ tfoot {
         top: 6px !important;
         padding: 0px !important;
     }
+
+    .integer-width {
+        max-width: 100%;
+    }
+
+    .float-width {
+        max-width: 100%;
+    }
+
 
     .dropdown .dropdown-menu {
         /*display: table-column-group;*/

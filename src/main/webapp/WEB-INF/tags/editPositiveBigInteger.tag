@@ -30,6 +30,7 @@
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${true}"
+                                 isBigInteger="${true}"
                                  cardText=""
                                  tagName="number"
                                  showTopOrBottom="top">

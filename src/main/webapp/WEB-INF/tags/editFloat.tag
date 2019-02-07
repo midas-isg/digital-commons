@@ -27,6 +27,7 @@
                                  isUnboundedList="${false}"
                                  isInputGroup="${true}"
                                  isRequired="${true}"
+                                 isFloat="${true}"
                                  cardText=""
                                  tagName="float"
                                  showTopOrBottom="top">

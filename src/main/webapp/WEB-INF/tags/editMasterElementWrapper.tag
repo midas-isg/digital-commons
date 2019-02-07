@@ -34,6 +34,10 @@
               type="java.lang.String" %>
 <%@ attribute name="showCardFooter" required="false"
               type="java.lang.Boolean" %>
+<%@ attribute name="isBigInteger" required="false"
+              type="java.lang.Boolean" %>
+<%@ attribute name="isFloat" required="false"
+              type="java.lang.Boolean" %>
 
 <c:choose>
     <c:when test="${showTopOrBottom == 'top'}">
@@ -102,7 +106,13 @@
         <%--<div class="<c:if test="${not isInputGroup}">card-content</c:if> <c:if test="${isInputGroup}">col-9</c:if>">--%>
         <div id="${specifier}-input-block"
         class="<c:if test="${not isInputGroup}">card-content collapse show form-group edit-form-group</c:if>
-            <c:if test="${isInputGroup}">col-sm-10 input-group full-width</c:if>
+            <c:if test="${isInputGroup}">col-sm-10 input-group
+                <c:choose>
+                    <c:when test="${isBigInteger}">integer-width </c:when>
+                    <c:when test="${isFloat}">float-width </c:when>
+                    <c:otherwise>full-width </c:otherwise>
+                </c:choose>
+            </c:if>
             control-group
             <c:if test="${(function:isObjectEmpty(object) and not isUnboundedList and not isRequired) or (isUnboundedList and not function:isFirstInstance(specifier))}">hide</c:if>">
 <%--
