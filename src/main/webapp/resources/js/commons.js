@@ -1323,6 +1323,10 @@ function setCardTabTitle(id, specifier, cardTabTitle){
 function clearMultiSelectIfEmpty(id) {
     var multiSelectId = "#" + id;
     if($(multiSelectId + " :selected").length === 0) {
+        $(multiSelectId + " > option").each(function() {
+            this.disabled = false;
+        });
+        $(multiSelectId).select2();
         $(multiSelectId).val('');
     } else {
         var values = $(multiSelectId).val();
@@ -1333,6 +1337,24 @@ function clearMultiSelectIfEmpty(id) {
                 $(multiSelectId).val(values).change();
             }
         }
+        if($(multiSelectId).val().includes('Syntax Not Available') && $(multiSelectId).val().length > 1) {
+            var i = values.indexOf('Syntax Not Available');
+            if (i >= 0) {
+                values.splice(i, 1);
+                $(multiSelectId).val(values).change();
+            }
+        }
+
+
+
+        if(!$(multiSelectId).val().includes('Syntax Not Available')) {
+            $(multiSelectId + " > option").each(function() {
+                if(this.value === 'Syntax Not Available')
+                    this.disabled = true;
+            });
+            $(multiSelectId).select2();
+        }
+
     }
 }
 
