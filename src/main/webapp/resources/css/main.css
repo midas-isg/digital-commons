@@ -208,7 +208,7 @@
 
 
 .full-width {
-    width: 120px;
+    width: 100%;
 }
 
 .integer-width {
@@ -216,7 +216,7 @@
 }
 
 .float-width {
-    max-width: 15%;
+    max-width: 120px;
 }
 
 .background-nav {
