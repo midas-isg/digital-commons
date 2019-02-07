@@ -748,6 +748,8 @@ $('#commons-body').on('click', function (e) {
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
 
+    $(".multiSelect").select2();
+
     if ($(window).width() < 768) {
         $('.navbar-toggle').click();
     }
@@ -1117,6 +1119,8 @@ function toggleLoadingScreen() {
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
+    $('.multiSelect').select2('destroy');
+
     $("#"+specifier+"-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
     if (tagName == 'personComprisedEntity') {
@@ -1168,6 +1172,7 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //switch to newly created tab
     showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
     $('[data-toggle="tooltip"]').tooltip();
+    $(".multiSelect").select2();
 
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
@@ -1319,6 +1324,15 @@ function clearMultiSelectIfEmpty(id) {
     var multiSelectId = "#" + id;
     if($(multiSelectId + " :selected").length === 0) {
         $(multiSelectId).val('');
+    } else {
+        var values = $(multiSelectId).val();
+        if (values) {
+            var i = values.indexOf('');
+            if (i >= 0) {
+                values.splice(i, 1);
+                $(multiSelectId).val(values).change();
+            }
+        }
     }
 }
 
