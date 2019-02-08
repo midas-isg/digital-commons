@@ -15,6 +15,7 @@ import edu.pitt.isg.dc.utils.ReflectionFactory;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
 import edu.pitt.isg.mdc.dats2_2.Geometry;
+import edu.pitt.isg.mdc.dats2_2.License;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
@@ -73,12 +74,14 @@ public class DatasetWebflowValidator {
             }
         }
 
-        dataFormats.put("Proprietary", "Proprietary");
         dataFormats.put("Syntax Not Available", "Syntax Not Available");
 
         return dataFormats;
     }
 
+    public List<License> getDataFormatsLicenses() {
+        return apiUtil.getDataFormatsLicenses();
+    }
 
     public String isDigitalObjectDatasetOrSoftware(Long entryID) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryID);

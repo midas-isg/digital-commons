@@ -1,7 +1,9 @@
 package edu.pitt.isg.dc.repository.utils;
 
+import edu.pitt.isg.Converter;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
+import edu.pitt.isg.mdc.dats2_2.License;
 import org.jsoup.Jsoup;
 import org.openarchives.oai._2.*;
 import org.openarchives.oai._2_0.oai_dc.OaiDcType;
@@ -68,6 +70,17 @@ public class ApiUtil {
 
     public List<Object[]> getDataFormats() {
         return repo.findDataFormats();
+    }
+
+    public List<License> getDataFormatsLicenses() {
+        List<License> licenseList = new ArrayList<>();
+        Converter converter = new Converter();
+        for (String licenseJson : repo.findDataFormatsLicenses()) {
+            License license = (License) converter.convertFromJsonToClass(licenseJson, License.class);
+            licenseList.add(license);
+        }
+
+        return licenseList;
     }
 
     public String getAccessUrl(String identifier, String distributionId) {

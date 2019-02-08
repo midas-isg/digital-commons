@@ -17,6 +17,7 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
     String AND_PUBLIC = "AND " + IS_PUBLIC;
     String AND_A_PUBLIC = "AND a." + IS_PUBLIC;
     String AND_B_PUBLIC = "AND b." + IS_PUBLIC;
+    String IS_DATA_FORMAT = "category_id = 4 ";
 
     @Transactional(readOnly=true)
     Entry findOne(EntryId id);
@@ -126,9 +127,14 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "else concat(' - ', content->'entry'->>'version') \n" +
             "end as name \n" +
             "from entry " +
-            "where " + IS_PUBLIC + "and category_id = 4 " +
+            "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT +
             "order by name ")
     List<Object[]> findDataFormats();
+
+    @Query(nativeQuery = true, value = "select distinct jsonb_array_elements_text(content->'entry'->'licenses') \n" +
+            "from entry " +
+            "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT)
+    List<String> findDataFormatsLicenses();
 
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
