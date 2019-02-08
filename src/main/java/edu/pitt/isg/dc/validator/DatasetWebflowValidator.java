@@ -458,7 +458,15 @@ public class DatasetWebflowValidator {
             isValid = "false";
         }
 
-        RequestContext requestContext = RequestContextHolder.getRequestContext();
+        Class clazz = software.getClass();
+        RequestContext requestContext =  RequestContextHolder.getRequestContext();
+        try {
+            software = webFlowReflectionValidator.cleanse(clazz, software, false, false);
+            requestContext.getFlowScope().put("software", software);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         if (requestContext.getFlowScope().get("indexValue") != null && Boolean.valueOf(isValid)) {
             return "index";
         }

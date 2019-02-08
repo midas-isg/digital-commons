@@ -420,6 +420,13 @@ function listToHtmlString(attributeList) {
     return htmlStr;
 }
 
+function listToHtmlStringDataFormats(attributeList) {
+    var htmlStr = '<ul style="padding-left:35px"><li>';
+    attributeList = attributeList.join('</li><li>');
+    htmlStr += attributeList + '</ul>';
+    return htmlStr;
+}
+
 function displayList(attributeList) {
     for(var i=attributeList.length-1; i>=0; i--) {
         if(Object.prototype.toString.call( attributeList[i] ) === '[object Object]') {
@@ -625,13 +632,13 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                     // debugger;
                     if (inputOutput[i].hasOwnProperty(property) && inputOutput[i].hasOwnProperty('description')) {
                         var descriptionHTML = '<span id="software-' + key + '-' + i + '-description"></span>';
-                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span id="software-' + key + '-' + i + '-' + property + '"></span>: ' + descriptionHTML + '</div>';
+                        var insertNumberAndDescriptionHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><span class="bold" id="software-' + key + '-' + i + '-' + property + '"></span><span class="bold">: </span>' + descriptionHTML + '</div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertNumberAndDescriptionHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                         toggleModalItem('description', inputOutput[i], key + '-' + i + '-description', false, false);
                     }
                     if (inputOutput[i].hasOwnProperty(property) && !inputOutput[i].hasOwnProperty('description')) {
-                        var insertHTML = '<div id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span>: </div>';
+                        var insertHTML = '<div class="bold" id="software-' + key + '-' + i + '-' + property + '-container"><label>' + label + '</label><span id="software-' + key + '-' + i + '-' + property + '"></span>: </div>';
                         document.getElementById("software-" + key + "-container").insertAdjacentHTML('beforeend',insertHTML);
                         toggleModalItem(property, inputOutput[i], key + '-' + i + '-' + property, false, false);
                     }
@@ -646,7 +653,7 @@ function toggleRequiredModalItem(key, attrs, name, hasHref, renderHtml, type) {
                         var dataFormats = undefined;
                         dataFormats = inputOutput[i]['dataFormats'];
 
-                        $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlString(dataFormats));
+                        $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlStringDataFormats(dataFormats));
 /*
                         if (convertToHtml.indexOf(key) > -1 && dataFormats.length > 1) {
                             $('#software-' + key + '-' + i + '-dataFormats').html(listToHtmlString(dataFormats));
