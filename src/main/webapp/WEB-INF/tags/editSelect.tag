@@ -36,7 +36,8 @@
               type="java.lang.Boolean" %>
 <%@ attribute name="isMulti" required="false"
               type="java.lang.Boolean" %>
-
+<%@ attribute name="isAutoComplete" required="false"
+              type="java.lang.Boolean" %>
 
 <myTags:editMasterElementWrapper path="${path}"
                                  specifier="${specifier}"
@@ -59,6 +60,7 @@
                        enumDataMap="${enumDataMap}"
                        enumList="${enumList}"
                        updateCardTabTitleText="${updateCardTabTitleText}"
+                       isAutoComplete="${isAutoComplete}"
                        placeholder="Please select...">
 </myTags:editInputBlock>
 <myTags:editMasterElementWrapper path="${path}"

@@ -55,7 +55,8 @@
               type="java.lang.Integer" %>
 <%@ attribute name="step" required="false"
               type="java.lang.String" %>
-
+<%@ attribute name="isAutoComplete" required="false"
+              type="java.lang.Boolean" %>
 <c:choose>
 
     <c:when test="${isFloat}">
@@ -77,60 +78,64 @@
                   placeholder="${placeholder}">${fn:escapeXml(string)}</textarea>
     </c:when>
     <c:when test="${isSelect}">
-        <select <c:if test="${isMulti}"> multiple size="10" </c:if> class="multiSelect" style="width: 100%" name="${path}" id="${specifier}-select"
-          title="${specifier}" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
-          <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
-            <c:if test="${function:isObjectEmpty(enumDataMap)}">
-                <c:forEach items="${enumList}" var="varEnum" varStatus="status">
-                    <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}" />
+        <c:choose>
+            <c:when test="${isAutoComplete}">
+                <select class="autoCompleteSelect" style="width: 100%;" name="${path}" id="${specifier}-select" onchange="autoCompleteFields('${specifier}', '${pageContext.request.contextPath}')">
                     <option></option>
-                    <option
-                            <c:if test="${enumData == varEnum}">selected="selected"</c:if>
-                            <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
-                                <c:if test="${data == varEnum}">selected="selected"</c:if>
-                            </c:forEach>
-                            value="${varEnum}">
-                            ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
-                </c:forEach>
-            </c:if>
-            <c:if test="${not function:isObjectEmpty(enumDataMap)}">
-                <c:forEach items="${enumDataMap.keySet().toArray()}" var="varEnum" varStatus="status">
-                    <option
-                            <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
-                                <c:if test="${data == varEnum}">selected="selected"</c:if>
-                            </c:forEach>
-                            value="${varEnum}">
-                            ${enumDataMap.get(varEnum)}</option>
-                </c:forEach>
-                <option value=""></option>
-            </c:if>
-        </select>
+                    <c:forEach items="${enumList}" var="varEnum" varStatus="status">
+                        <c:set var="varEnumName" value="${varEnum.name}"/>
+                        <option
+                                <c:if test="${enumData == varEnumName}">selected="selected"</c:if>
+                                <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                                    <c:if test="${data == varEnumName}">selected="selected"</c:if>
+                                </c:forEach>
+                                value="${varEnumName}"
+                                identifier="[${varEnum.identifier.identifier}]">
+                                ${varEnumName}</option>
+                    </c:forEach>
+                </select>
+            </c:when>
+            <c:otherwise>
+                <select class="multiSelect" <c:if test="${isMulti}">multiple</c:if> style="width: 100%" name="${path}" id="${specifier}-select"
+                        title="${specifier}"
+                        <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}-select')"</c:if>
+                        <c:if test="${isMulti}">onchange="clearMultiSelectIfEmpty('${specifier}-select')"</c:if>>
+                    <c:if test="${function:isObjectEmpty(enumDataMap)}">
+                        <option></option>
+                        <c:forEach items="${enumList}" var="varEnum" varStatus="status">
+                            <c:set var="normalizedEnum" value="${fn:replace(varEnum, '_', ' ')}"/>
+                            <option
+                                    <c:if test="${enumData == varEnum}">selected="selected"</c:if>
+                                    <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                                        <c:if test="${data == varEnum}">selected="selected"</c:if>
+                                    </c:forEach>
+                                    value="${varEnum}">
+                                    ${fn:toUpperCase(fn:substring(normalizedEnum, 0, 1))}${fn:toLowerCase(fn:substring(normalizedEnum, 1,fn:length(normalizedEnum)))}</option>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${not function:isObjectEmpty(enumDataMap)}">
+                        <c:forEach items="${enumDataMap.keySet().toArray()}" var="varEnum" varStatus="status">
+                            <option
+                                    <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
+                                        <c:if test="${data == varEnum}">selected="selected"</c:if>
+                                    </c:forEach>
+                                    value="${varEnum}">
+                                    ${enumDataMap.get(varEnum)}</option>
+                        </c:forEach>
+                        <option value=""></option>
+                    </c:if>
+                </select>
+            </c:otherwise>
+        </c:choose>
     </c:when>
-<%--
-    <c:when test="${isSelect}">
-        <select class="custom-select" name="${path}" id="${specifier}-select" <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitleFromSelect('${specifier}')"</c:if>
-                title="${specifier}">
-            <option value="">Please Select...</option>
-            <c:forEach items="${enumList}" var="varEnum" varStatus="status">
-                <option
-                        <c:if test="${enumData == varEnum}">selected="selected"</c:if>
-                        value="${varEnum}">
-                        ${varEnum}</option>
-            </c:forEach>
-        </select>
-    </c:when>
---%>
+
     <c:otherwise>
         <input type="text" class="form-control" value="${fn:escapeXml(string)}" name="${path}"
                id="${specifier}" placeholder="${placeholder}"
                <c:if test="${updateCardTabTitleText}">onchange="updateCardTabTitle('${specifier}')"</c:if>
                <c:if test="${updateCardTabTitleTextPerson}">onchange="updateCardTabTitlePerson('${specifier}')"</c:if>
                <c:if test="${updateCardTabTitleTextType}">onchange="updateCardTabTitleType('${specifier}')"</c:if> />
-<%--
-               <c:if test="${updateCardTabTitleText}">onfocusout="updateCardTabTitle('${specifier}')"</c:if>
-               <c:if test="${updateCardTabTitleTextPerson}">onfocusout="updateCardTabTitlePerson('${specifier}')"</c:if>
-               <c:if test="${updateCardTabTitleTextType}">onfocusout="updateCardTabTitleType('${specifier}')"</c:if> />
---%>
+
     </c:otherwise>
 
 </c:choose>

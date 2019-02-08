@@ -19,6 +19,7 @@ import edu.pitt.isg.dc.utils.DigitalCommonsProperties;
 import edu.pitt.isg.dc.validator.*;
 import edu.pitt.isg.mdc.dats2_2.DataStandard;
 import edu.pitt.isg.mdc.dats2_2.Dataset;
+import edu.pitt.isg.mdc.dats2_2.License;
 import edu.pitt.isg.mdc.v1_0.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -35,9 +36,11 @@ import org.springframework.webflow.execution.RequestContextHolder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import static edu.pitt.isg.dc.controller.Auth0Controller.ISG_ADMIN_TOKEN;
@@ -202,5 +205,10 @@ public class DataEntryController {
         return "reviewDataGovEntry";
     }
 
+    @RequestMapping(value="/get-autocomplete-list", method = RequestMethod.GET)
+    @ResponseBody
+    public List getAutoCompleteList(@RequestParam("type") String type, HttpServletRequest request, HttpServletResponse response) {
+       return apiUtil.getDataFormatsLicenses();
+    }
 
 }
