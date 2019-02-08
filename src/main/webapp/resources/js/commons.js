@@ -943,7 +943,7 @@ function removeSection(specifier, tagName, event, isUnbounded) {
     }
 }
 
-function showCard(specifier, tagName, id, unboundedList, required) {
+function showCard(specifier, tagName, id, unboundedList, required, quiet) {
     var isUnboundedList = (unboundedList === 'true');
     var isRequired = (required === 'true');
 
@@ -961,8 +961,10 @@ function showCard(specifier, tagName, id, unboundedList, required) {
     }
 
     $("#"+specifier+"-"+tagName).val("");
-    scrollToAnchor(specifier);
-    highlightDiv(specifier,"green");
+    if(!quiet) {
+        scrollToAnchor(specifier);
+        highlightDiv(specifier, "green");
+    }
 
     $("#" + specifier+"-date-picker").datepicker({
         forceParse: false,
@@ -1126,12 +1128,7 @@ function toggleLoadingScreen() {
 function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
-
-    $('.multiSelect').each(function (i, obj) {
-        if ($(obj).hasClass("select2-hidden-accessible")) {
-            $(obj).select2('destroy');
-        }
-    });
+    destroySelect2();
 
     $("#" + specifier + "-add-input-button").addClass("hide");
     $("#"+specifier+"-card").removeClass("hide");
@@ -1184,9 +1181,9 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //switch to newly created tab
     showTabNamed(specifier+"-" + listItemCount + "-tab", newDivId, specifier);
     $('[data-toggle="tooltip"]').tooltip();
-    $(".multiSelect").select2({
-        placeholder: "Please Select... "
-    });
+
+    createSelect2();
+
 
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("collapse");
     $("#"+specifier+"-"+listItemCount+"-input-block").addClass("show");
@@ -1478,4 +1475,92 @@ function uniqueArray(arrArg) {
     return arrArg.filter(function(elem, pos,arr) {
         return arr.indexOf(elem) == pos;
     });
-};
+}
+
+function autoCompleteFields(id, contextPath) {
+    var selectText = $("#" + id + "-select option:selected").text().trim() + " " + $("#" + id + "-select option:selected")[0].getAttribute("identifier");
+    var path = id.substring(0, id.lastIndexOf("-"));
+    path = path.substring(0, path.lastIndexOf("-"));
+    var jsonList;
+    $.ajax({
+        type : "GET",
+        contentType : "application/json; charset=utf-8",
+        url : contextPath + "/get-autocomplete-list",
+        dataType : 'json',
+        data: {type: "license"},
+        timeout : 100000,
+        beforeSend : function() {
+            $(".loading").show();
+        },
+        success : function(data) {
+            jsonList = data;
+            if(jsonList) {
+                for (var i = 0; i < jsonList.length; i++) {
+                    var jsonObj = jsonList[i];
+                    var compareText = jsonObj.name + " [" + jsonObj.identifier.identifier+ "]";
+                    
+                    if(compareText === selectText) {
+                        $("#" + path + "-version-string").val(jsonObj.version);
+                        showCard(path+"-identifier", "identifier", path+"-identifier", "false", "", "true");
+                        $("#" + path + "-identifier-identifier-string").val(jsonObj.identifier.identifier);
+                        $("#" + path + "-identifier-identifierSource-string").val(jsonObj.identifier.identifierSource);
+                    }
+                }
+            }
+        },
+        error : function(xhr, textStatus, errorThrown) {
+            console.log(xhr.responseText);
+            console.log(textStatus);
+            console.log(errorThrown);
+        },
+        complete : function () {
+            $(".loading").hide();
+        }
+    });
+}
+
+function formatAutoCompleteResult(license) {
+    if(!license.element) {
+        return license.text;
+    }
+    var $name = $(
+        '<span>' + license.element.value + '</span> <span class="select2-identifier">'+ license.element.getAttribute("identifier") + '</span>'
+    );
+    return $name;
+}
+
+function formatAutoCompleteSelect(license) {
+    if(!license.element) {
+        return license.text;
+    }
+    var $name = $(
+        '<span>' + license.element.value + '</span>'
+    );
+    return $name;
+}
+
+function destroySelect2() {
+    $('.multiSelect').each(function (i, obj) {
+        if ($(obj).hasClass("select2-hidden-accessible")) {
+            $(obj).select2('destroy');
+        }
+    });
+    $('.autoCompleteSelect').each(function (i, obj) {
+        if ($(obj).hasClass("select2-hidden-accessible")) {
+            $(obj).select2('destroy');
+        }
+    });
+}
+
+function createSelect2() {
+    $(".multiSelect").select2({
+        placeholder: "Please Select... "
+    });
+
+    $(".autoCompleteSelect").select2({
+        placeholder: "License name",
+        tags: true,
+        templateResult: formatAutoCompleteResult,
+        templateSelection: formatAutoCompleteSelect
+    });
+}

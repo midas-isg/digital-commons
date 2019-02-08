@@ -21,7 +21,7 @@
     <div id="entryFormContent">
 
         <form id="entry-form" method="post" action="${flowExecutionUrl}">
-            <myTags:wizardHeader showCategories="${false}"></myTags:wizardHeader>
+            <myTags:wizardHeader showCategories="${false}" wantLoader="${true}"></myTags:wizardHeader>
 
             <myTags:editNonZeroLengthString placeholder=" Name"
                                             label="Name"
@@ -120,6 +120,8 @@
 
 <script>
     $(document).ready(function () {
+        toggleLoadingScreen();
+
         rearrangeCards('entryFormContent');
 
         $("#categoryValue").change(function () {

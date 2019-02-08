@@ -36,17 +36,30 @@
 </myTags:editMasterElementWrapper>
 
 <fmt:message key="dataset.license.name" var="namePlaceHolder" />
-<myTags:editNonZeroLengthString path="${path}.name"
-                                placeholder="${namePlaceHolder}"
-                                string="${license.name}"
-                                specifier="${specifier}-name"
-                                id="${specifier}-name"
-                                isRequired="${true}"
-                                isInputGroup="${true}"
-                                isUnboundedList="${false}"
-                                updateCardTabTitleText="${isUnboundedList}"
-                                label="Name">
-</myTags:editNonZeroLengthString>
+<myTags:editSelect path="${path}.name"
+                   specifier="${specifier}-name"
+                   label="Name"
+                   enumData="${license.name}"
+                   enumList="${dataFormatsLicenses}"
+                   cardText="${namePlaceHolder}"
+                   isRequired="true"
+                   tagName="name"
+                   isAutoComplete="${true}"
+                   id="${specifier}-name">
+</myTags:editSelect>
+
+
+<%--<myTags:editNonZeroLengthString path="${path}.name"--%>
+                                <%--placeholder="${namePlaceHolder}"--%>
+                                <%--string="${license.name}"--%>
+                                <%--specifier="${specifier}-name"--%>
+                                <%--id="${specifier}-name"--%>
+                                <%--isRequired="${true}"--%>
+                                <%--isInputGroup="${true}"--%>
+                                <%--isUnboundedList="${false}"--%>
+                                <%--updateCardTabTitleText="${isUnboundedList}"--%>
+                                <%--label="Name">--%>
+<%--</myTags:editNonZeroLengthString>--%>
 
 <fmt:message key="dataset.license.version" var="versionPlaceHolder" />
 <myTags:editNonZeroLengthString label="Version"
