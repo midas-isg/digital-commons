@@ -34,6 +34,8 @@ import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.*;
 
 import static edu.pitt.isg.dc.controller.HomeController.ifISGAdmin;
@@ -347,11 +349,23 @@ public class DatasetWebflowValidator {
                     "identifier").defaultText("Identifier cannot be empty").build());
         }else {
             Integer numberOfEntries = numberOfEntriesWithIdentifier(identifier);
+            String id = null;
+            if (numberOfEntries.equals(0)) {
+                if (identifier.startsWith("https")) {
+                    id = identifier.replace("https","http");
+                    numberOfEntries = numberOfEntriesWithIdentifier(id);
+                } else if (identifier.startsWith("http")) {
+                    id = identifier.replace("http","https");
+                    numberOfEntries = numberOfEntriesWithIdentifier(id);
+                }
+            } else {
+                id = identifier;
+            }
             if (numberOfEntries > 1) {
                 messageContext.addMessage(new MessageBuilder().error().source(
                         "identifier").defaultText("Please provide a unique Identifier.  This identifier already being used.").build());
-            } else if (numberOfEntries == 1) {
-                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(identifier);
+            } else if (numberOfEntries.equals(1)) {
+                Long entryIdForExistingIdentifier = getEntryIdForExistingIdentifier(id);
                 if (isEmpty(entryIdForThisIdentifier) || !entryIdForThisIdentifier.equals(entryIdForExistingIdentifier)) {
                     messageContext.addMessage(new MessageBuilder().error().source(
                             "identifier").defaultText(getInvalidIdentiferErrorMessage(entryIdForExistingIdentifier)).build());
@@ -361,8 +375,111 @@ public class DatasetWebflowValidator {
         return messageContext;
     }
 
+    private Integer getResponseCodeForURL(URL url){
+        try {
+            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            return http.getResponseCode();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 
-    private MessageContext checkSoftwareInputOutputNumberUniqueness(Object software, MessageContext messageContext){
+    private Boolean checkURLValidity(URL url){
+        Integer statusCode = getResponseCodeForURL(url);
+
+        if(statusCode >= 200 && statusCode <= 299){
+            return true;
+/*
+        } else if (statusCode == 301) {
+            return true;
+*/
+        } else if (statusCode == 302) {
+            return true;
+        } else return false;
+    }
+
+    private void changeIdentifierToHttp (String identifier) {
+        if (!isEmpty(identifier) && identifier.startsWith("https")) {
+            String httpIdentifier = identifier.replace("https", "http");
+            RequestContext context = RequestContextHolder.getRequestContext();
+            Object object = context.getFlowScope().get("digitalObject");
+
+            if (object.getClass().getSimpleName().equalsIgnoreCase("Dataset")) {
+                ((Dataset) object).getIdentifier().setIdentifier(httpIdentifier);
+            } else if (object.getClass().getSimpleName().equalsIgnoreCase("DataStandard")) {
+                ((DataStandard) object).getIdentifier().setIdentifier(httpIdentifier);
+            } else {
+                ((Software) object).getIdentifier().setIdentifier(httpIdentifier);
+            }
+
+            context.getFlowScope().put("digitalObject", object);
+        }
+    }
+
+    private String resolveUri (String uri, String path) {
+        String status = null;
+        Boolean isIdentifier = false;
+        if (!isEmpty(path) && path.equals("identifier.identifier")) {
+            isIdentifier = true;
+        }
+
+        if (!isEmpty(uri)) {
+            try {
+                if(uri.startsWith("https")) {
+                    if (isIdentifier && checkURLValidity(new URL(uri.replace("https", "http")))) {
+                        changeIdentifierToHttp(uri);
+                        status = "valid";
+                    } else if (checkURLValidity(new URL(uri))) {
+                        status = "valid";
+                    } else status = "invalid";
+                } else if (uri.startsWith("http")) {
+                    if (checkURLValidity(new URL(uri))) {
+                        status = "valid";
+                    } else status = "invalid";
+                } else status = "nonURL";
+            } catch (Exception e) {
+                e.printStackTrace();
+                status = "error";
+            }
+        } else status = "empty";
+
+        return status;
+    }
+
+    private MessageContext checkForUrlResolution(MessageContext messageContext, String path, String uri, Boolean allowEmptyAndNonURL){
+        if (!isEmpty(uri) && !isEmpty(path)) {
+            String errorMessage = "Please provide a valid URL";
+            String uriStatus = resolveUri(uri, path);
+            if (uriStatus.equals("invalid")) {
+                try {
+                    Integer errorCode = getResponseCodeForURL(new URL(uri));
+                    if (errorCode.equals(301)) {errorMessage = "Please provide and updated URL.  This URL has permanently moved.";}
+                    else if (errorCode >=300 && errorCode <= 399) {errorMessage = "Please provide a updated URL.  This URL has been redirected.";}
+                    else if (errorCode.equals(404)) {errorMessage = "Please provide a valid URL.  This URL was not found.";}
+                    else if (errorCode >=400 && errorCode <= 499) {errorMessage = "Please provide a valid URL.  This URL was not found.";}
+                    else if (errorCode >=500) {errorMessage = "Please provide a valid URL.";}
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                messageContext.addMessage(new MessageBuilder().error().source(path).defaultText(errorMessage).build());
+            }
+            if (uriStatus.equals("error")) {
+                messageContext.addMessage(new MessageBuilder().error().source(path).defaultText(errorMessage).build());
+            }
+            if (!allowEmptyAndNonURL) {
+                if (uriStatus.equals("empty") || uriStatus.equals("nonURL")) {
+                    messageContext.addMessage(new MessageBuilder().error().source(path).defaultText(errorMessage).build());
+                }
+            }
+        }
+
+        return messageContext;
+    }
+
+
+        private MessageContext checkSoftwareInputOutputNumberUniqueness(Object software, MessageContext messageContext){
         List<DataInputs> inputs = ((Software) software).getInputs();
         Map<BigInteger, Integer> inputMap = new HashMap<BigInteger, Integer>();
         for (int i = 0; i < inputs.size(); i++){
@@ -417,6 +534,7 @@ public class DatasetWebflowValidator {
         //Check to see if the entered Identifier is unique to the system
         String identifier = dataset.getIdentifier().getIdentifier();
         messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+        messageContext = checkForUrlResolution(messageContext, "identifier.identifier", identifier, true);
         if(messageContext.hasErrorMessages()){
             isValid = "false";
         }
@@ -448,6 +566,7 @@ public class DatasetWebflowValidator {
         //Check to see if the entered Identifier is unique to the system
         String identifier = ((Software) software).getIdentifier().getIdentifier();
         messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+        messageContext = checkForUrlResolution(messageContext, "identifier.identifier", identifier, true);
         messageContext = checkSoftwareInputOutputNumberUniqueness(software, messageContext);
         if(messageContext.hasErrorMessages()){
             isValid = "false";
@@ -552,6 +671,7 @@ public class DatasetWebflowValidator {
             //Check to see if the entered Identifier is unique to the system
             String identifier = ((DataStandard) digitalObject).getIdentifier().getIdentifier();
             messageContext = checkForIdentifierUniqueness(messageContext, identifier);
+            messageContext = checkForUrlResolution(messageContext, "identifier.identifier", identifier, true);
             if(messageContext.hasErrorMessages()){
                 isValid = false;
             }
