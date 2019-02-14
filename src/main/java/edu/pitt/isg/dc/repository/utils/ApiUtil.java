@@ -1,6 +1,7 @@
 package edu.pitt.isg.dc.repository.utils;
 
-import edu.pitt.isg.Converter;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.pitt.isg.dc.entry.*;
 import edu.pitt.isg.dc.entry.classes.EntryView;
 import edu.pitt.isg.mdc.dats2_2.License;
@@ -19,6 +20,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static edu.pitt.isg.dc.validator.ValidatorHelperMethods.isEmpty;
 
 /**
  * Created by jdl50 on 5/27/17.
@@ -72,16 +75,51 @@ public class ApiUtil {
         return repo.findDataFormats();
     }
 
-    public List<License> getDataFormatsLicenses() {
-        List<License> licenseList = new ArrayList<>();
-        Converter converter = new Converter();
-        for (String licenseJson : repo.findDataFormatsLicenses()) {
-            License license = (License) converter.convertFromJsonToClass(licenseJson, License.class);
-            licenseList.add(license);
+
+    public List<JsonObject> getLicenseList(String typeOfLicenses) {
+        List<JsonObject> licenseList = new ArrayList<>();
+        List<String> licenseRepositoryList = new ArrayList<>();
+
+        if(!isEmpty(typeOfLicenses)){
+            if (typeOfLicenses.equalsIgnoreCase("dataFormats")) {
+                licenseRepositoryList = repo.findDataFormatsLicenses();
+            } else if (typeOfLicenses.equalsIgnoreCase("dataRepository")) {
+                licenseRepositoryList = repo.findDataRepositoryLicenses();
+            }
+
+//            Converter converter = new Converter();
+            for (String licenseJson : licenseRepositoryList) {
+                JsonParser parser = new JsonParser();
+                JsonObject license = parser.parse(licenseJson).getAsJsonObject();
+//                License license = (License) converter.convertFromJsonToClass(licenseJson, License.class);
+                licenseList.add(license);
+            }
         }
 
         return licenseList;
     }
+/*
+    public List<License> getLicenseList(String typeOfLicenses) {
+        List<License> licenseList = new ArrayList<>();
+        List<String> licenseRepositoryList = new ArrayList<>();
+
+        if(!isEmpty(typeOfLicenses)){
+            if (typeOfLicenses.equalsIgnoreCase("dataFormats")) {
+                licenseRepositoryList = repo.findDataFormatsLicenses();
+            } else if (typeOfLicenses.equalsIgnoreCase("dataRepository")) {
+                licenseRepositoryList = repo.findDataRepositoryLicenses();
+            }
+
+            Converter converter = new Converter();
+            for (String licenseJson : licenseRepositoryList) {
+                License license = (License) converter.convertFromJsonToClass(licenseJson, License.class);
+                licenseList.add(license);
+            }
+        }
+
+        return licenseList;
+    }
+*/
 
     public String getAccessUrl(String identifier, String distributionId) {
         if (distributionId == null) distributionId = "0";

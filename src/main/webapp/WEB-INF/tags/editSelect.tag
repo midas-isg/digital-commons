@@ -12,12 +12,18 @@
 --%>
 <%@ attribute name="enumData" required="false"
               type="java.lang.Enum" %>
+<%@ attribute name="enumDataString" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="enumDataList" required="false"
               type="java.util.List" %>
 <%@ attribute name="enumDataMap" required="false"
               type="java.util.Map" %>
 <%@ attribute name="enumList" required="false"
               type="java.util.List" %>
+<%@ attribute name="enumListType" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="enumListSubType" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
 <%@ attribute name="specifier" required="true"
@@ -56,9 +62,12 @@
                        isSelect="${true}"
                        isMulti="${isMulti}"
                        enumData="${enumData}"
+                       enumDataString="${enumDataString}"
                        enumDataList="${enumDataList}"
                        enumDataMap="${enumDataMap}"
                        enumList="${enumList}"
+                       enumListType="${enumListType}"
+                       enumListSubType="${enumListSubType}"
                        updateCardTabTitleText="${updateCardTabTitleText}"
                        isAutoComplete="${isAutoComplete}"
                        placeholder="Please select...">

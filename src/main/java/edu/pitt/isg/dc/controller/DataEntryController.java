@@ -207,8 +207,16 @@ public class DataEntryController {
 
     @RequestMapping(value="/get-autocomplete-list", method = RequestMethod.GET)
     @ResponseBody
-    public List getAutoCompleteList(@RequestParam("type") String type, HttpServletRequest request, HttpServletResponse response) {
-       return apiUtil.getDataFormatsLicenses();
+    public List getAutoCompleteList(@RequestParam("type") String type, @RequestParam("subType") String subType, HttpServletRequest request, HttpServletResponse response) {
+        if (type.equalsIgnoreCase("license")) {
+            if (subType.equalsIgnoreCase("dataFormats")) {
+                return repo.findDataFormatsLicenses();
+            } else if (subType.equalsIgnoreCase("dataRepository")) {
+                return repo.findDataRepositoryLicenses();
+            }
+        }
+        return null;
+//       return apiUtil.getLicenseList(subType);
     }
 
 }

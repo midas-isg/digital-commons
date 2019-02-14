@@ -80,7 +80,8 @@
             <set name="requestScope.showCategories" value="flowScope.showCategories"/>
             <set name="requestScope.categoryName" value="flowScope.categoryName"/>
             <set name="requestScope.categoryPaths" value="datasetWebflowValidator.categoryListForDropdown('dataStandard')"/>
-            <set name="requestScope.dataFormatsLicenses" value="datasetWebflowValidator.getDataFormatsLicenses()"/>
+            <set name="requestScope.licenseListSubType" value="'dataFormats'"/>
+            <set name="requestScope.licenses" value="datasetWebflowValidator.getLicenseList(requestScope.licenseListSubType.toString())"/>
         </on-render>
         <transition on="submit" to="validateDataStandardForm"/>
 

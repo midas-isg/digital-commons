@@ -125,6 +125,7 @@
                             specifier="${specifier}-dates">
 </myTags:editMasterUnbounded>
 
+<%--
 <fmt:message key="dataset.distribution.licenses" var="licensesPlaceHolder" />
 <myTags:editMasterUnbounded path="${path}.licenses"
                             listItems="${distribution.licenses}"
@@ -135,6 +136,7 @@
                             addButtonLabel="License"
                             specifier="${specifier}-licenses">
 </myTags:editMasterUnbounded>
+--%>
 
 <fmt:message key="dataset.distribution.conformsTo" var="conformsToPlaceHolder" />
 <myTags:editMasterUnbounded label="Conforms To"
