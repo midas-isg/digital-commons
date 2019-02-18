@@ -81,9 +81,14 @@ public class DatasetWebflowValidator {
         return dataFormats;
     }
 
-    public List<License> getDataFormatsLicenses() {
-        return apiUtil.getDataFormatsLicenses();
+    public List<JsonObject> getLicenseList(String typeOfLicenseList) {
+        return apiUtil.getLicenseList(typeOfLicenseList);
     }
+/*
+    public List<License> getLicenseList(String typeOfLicenseList) {
+        return apiUtil.getLicenseList(typeOfLicenseList);
+    }
+*/
 
     public String isDigitalObjectDatasetOrSoftware(Long entryID) {
         Entry entry = apiUtil.getEntryByIdIncludeNonPublic(entryID);

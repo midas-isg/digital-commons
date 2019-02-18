@@ -16,12 +16,18 @@
               type="edu.pitt.isg.mdc.dats2_2.Date" %>
 <%@ attribute name="enumData" required="false"
               type="java.lang.Enum" %>
+<%@ attribute name="enumDataString" required="false"
+              type="java.lang.String" %>
 <%@ attribute name="enumList" required="false"
               type="java.util.List" %>
 <%@ attribute name="enumDataList" required="false"
               type="java.util.List" %>
 <%@ attribute name="enumDataMap" required="false"
               type="java.util.Map" %>
+<%@ attribute name="enumListType" required="false"
+              type="java.lang.String" %>
+<%@ attribute name="enumListSubType" required="false"
+              type="java.lang.String" %>
 
 <%@ attribute name="path" required="true"
               type="java.lang.String" %>
@@ -80,17 +86,21 @@
     <c:when test="${isSelect}">
         <c:choose>
             <c:when test="${isAutoComplete}">
-                <select class="autoCompleteSelect" style="width: 100%;" name="${path}" id="${specifier}-select" onchange="autoCompleteFields('${specifier}', '${pageContext.request.contextPath}')">
+                <select class="autoCompleteSelect" style="width: 100%;" name="${path}" id="${specifier}-select" onchange="autoCompleteFields('${specifier}', '${path}', '${pageContext.request.contextPath}', '${enumListType}', '${enumListSubType}', '${updateCardTabTitleText}')">
                     <option></option>
                     <c:forEach items="${enumList}" var="varEnum" varStatus="status">
-                        <c:set var="varEnumName" value="${varEnum.name}"/>
+                        <c:set var="varEnumName" value="${varEnum.get('name').getAsString()}"/>
+                        <%--<c:set var="varEnumName" value="${varEnum.name}"/>--%>
                         <option
-                                <c:if test="${enumData == varEnumName}">selected="selected"</c:if>
+                                <c:if test="${enumDataString == varEnumName}"> selected="selected" </c:if>
+<%--
                                 <c:forEach items="${enumDataList}" var="data" varStatus="statusDataList">
                                     <c:if test="${data == varEnumName}">selected="selected"</c:if>
                                 </c:forEach>
+--%>
                                 value="${varEnumName}"
-                                identifier="[${varEnum.identifier.identifier}]">
+                                identifier="[${varEnum.get('identifier').get('identifier').getAsString()}]">
+                                <%--identifier="[${varEnum.identifier.identifier}]">--%>
                                 ${varEnumName}</option>
                     </c:forEach>
                 </select>

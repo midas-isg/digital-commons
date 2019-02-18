@@ -834,6 +834,7 @@ $(document).ready(function() {
         highlightDiv($(this).attr("id"), "red");
     });
 
+    createSelect2();
 });
 
 function scrollToAnchor(anchor) {
@@ -915,10 +916,10 @@ function makeAllTabsInactive(specifier) {
     });
 }
 
-function removeSection(specifier, tagName, event, isUnbounded) {
+function removeSection(specifier, tagName, event, isUnbounded, isAutoComplete) {
     var confirmation = true;
     $("#" + specifier + "-card").find("input[type = 'text']").each(function() {
-        if(this.value != "") {
+        if(this.value != "" && !isAutoComplete) {
             confirmation = confirm("Are you sure you want to close this card?");
             return false;
         }
@@ -1125,7 +1126,7 @@ function toggleLoadingScreen() {
     $(".loading").toggle();
 }
 
-function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount) {
+function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequired, listItemCount, isAutoComplete) {
     var html, regexEscapeOpenBracket, regexEscapeClosedBracket, newDivId, regexPath, regexSpecifier;
 
     destroySelect2();
@@ -1192,7 +1193,9 @@ function createNewTab(thisObject, specifier, path, tagName, label, isFirstRequir
     //TODO: test cross-browser functionality for below
     //TODO: header cuts off top of card when redirecting to location
     // document.getElementById($("#" + specifier + "-card").selector).focus();
-    window.location.hash = $("#" + specifier + "-card").selector;
+    if(!isAutoComplete){
+        window.location.hash = $("#" + specifier + "-card").selector;
+    }
 
 }
 
@@ -1224,7 +1227,7 @@ function updateCardTabTitle(specifier){
 function updateCardTabTitleFromSelect(specifier){
     var index = getLastIndex(specifier);
 
-    var newCardTabTitleText = $("#" + specifier+"-select")[0].value;
+    var newCardTabTitleText = document.getElementById(specifier+"-select").value;
     if (index > 0 && newCardTabTitleText.length > 0) {
         var id = specifier.substring(0, index + 2) + "listItem";
         setCardTabTitle(id, specifier, newCardTabTitleText);
@@ -1314,7 +1317,7 @@ function setCardTabTitle(id, specifier, cardTabTitle){
             if (cardTabTitle.substring(0, leftIndex).includes(" ")) {
                 leftIndex = cardTabTitle.substring(0, leftIndex).lastIndexOf(" ");
             }
-            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).contains(" ")) {
+            if (cardTabTitle.substring(cardTabTitle.length - (rightIndex + 5)).includes(" ")) {
                 rightIndex = cardTabTitle.lastIndexOf(" ") + 1;
             }
             cardTabTitle = cardTabTitle.substring(0, leftIndex) + "..." + cardTabTitle.substring(rightIndex);
@@ -1477,17 +1480,21 @@ function uniqueArray(arrArg) {
     });
 }
 
-function autoCompleteFields(id, contextPath) {
+function autoCompleteFields(id, name, contextPath, typeOfList, typeOfSubList, updateCardTabTitleText) {
+    if(updateCardTabTitleText){
+        updateCardTabTitleFromSelect(id);
+    }
     var selectText = $("#" + id + "-select option:selected").text().trim() + " " + $("#" + id + "-select option:selected")[0].getAttribute("identifier");
     var path = id.substring(0, id.lastIndexOf("-"));
     path = path.substring(0, path.lastIndexOf("-"));
+    var fieldName = name.substring(0, name.lastIndexOf("."));
     var jsonList;
     $.ajax({
         type : "GET",
         contentType : "application/json; charset=utf-8",
         url : contextPath + "/get-autocomplete-list",
         dataType : 'json',
-        data: {type: "license"},
+        data: {type: typeOfList, subType: typeOfSubList},
         timeout : 100000,
         beforeSend : function() {
             $(".loading").show();
@@ -1496,14 +1503,9 @@ function autoCompleteFields(id, contextPath) {
             jsonList = data;
             if(jsonList) {
                 for (var i = 0; i < jsonList.length; i++) {
-                    var jsonObj = jsonList[i];
-                    var compareText = jsonObj.name + " [" + jsonObj.identifier.identifier+ "]";
-                    
-                    if(compareText === selectText) {
-                        $("#" + path + "-version-string").val(jsonObj.version);
-                        showCard(path+"-identifier", "identifier", path+"-identifier", "false", "", "true");
-                        $("#" + path + "-identifier-identifier-string").val(jsonObj.identifier.identifier);
-                        $("#" + path + "-identifier-identifierSource-string").val(jsonObj.identifier.identifierSource);
+                    var jsonObj = JSON.parse(jsonList[i]);
+                    if(typeOfList === 'license'){
+                        autoCompleteLicenseFields(jsonObj, path, selectText, fieldName);
                     }
                 }
             }
@@ -1518,6 +1520,101 @@ function autoCompleteFields(id, contextPath) {
         }
     });
 }
+
+function autoCompleteLicenseFields(jsonObj, path, selectText, fieldName){
+    // var compareText = jsonObj.name + " [" + jsonObj.identifier.identifier+ "]";
+    var identifier = "";
+    if (jsonObj.identifier != null) {
+        if(jsonObj.identifier.identifier != null) {
+            identifier = jsonObj.identifier.identifier;
+        }
+    }
+
+    var compareText = jsonObj.name + " [" + identifier+ "]";
+
+    if(compareText === selectText) {
+        $("#" + path + "-version-string").val(jsonObj.version);
+
+        //Identifier
+        autoCompleteIdentifierFields(jsonObj, path + "-identifier");
+        //Creators
+        autoCompleteCreatorsFields(jsonObj, path + "-creators", fieldName);
+    }
+}
+
+function autoCompleteIdentifierFields(jsonObj, path){
+    //Identifier
+    var identifier = "";
+    var identifierSource = "";
+    if(jsonObj.identifier != null) {
+        showCard(path, "identifier", path, "false", "", "true");
+        if(jsonObj.identifier.identifier != null) {
+            identifier = jsonObj.identifier.identifier;
+        }
+        if(jsonObj.identifier.identifierSource != null) {
+            identifierSource = jsonObj.identifier.identifierSource;
+        }
+    }
+    $("#" + path + "-identifier-string").val(identifier);
+    $("#" + path + "-identifierSource-string").val(identifierSource);
+    if(jsonObj.identifier == null) {
+        removeSection(path, "identifier", event, false, true);
+    }
+}
+
+function autoCompleteAlternateIdentifierFields(jsonObj, path, fieldName){
+    removeSection(path, "identifier", event, true, true);
+    if(jsonObj.alternateIdentifiers != null){
+        for (var i = 0; i < jsonObj.alternateIdentifiers.length; i++) {
+            var alternateIdentifier = jsonObj.alternateIdentifiers[k];
+            createNewTab(document.getElementById(path+'-add-identifier'), path, fieldName + ".alternateIdentifiers", "identifier", "Alternate Identifier", false, i, true)
+            var identifier = "";
+            var identifierSource = "";
+
+            if(alternateIdentifier.identifier != null){
+                identifier = alternateIdentifier.identifier;
+            }
+            if(alternateIdentifier.identifierSource != null){
+                identifierSource = alternateIdentifier.identifierSource;
+            }
+            $("#" + path + "-identifier-string").val(identifier);
+            $("#" + path + "-identifierSource-string").val(identifierSource);
+
+        }
+    }
+}
+
+function autoCompleteCreatorsFields(jsonObj, path, fieldName){
+    removeSection(path, "personComprisedEntity", event, true, true);
+    if(jsonObj.creators != null){
+        for (var k = 0; k < jsonObj.creators.length; k++) {
+            var creator = jsonObj.creators[k];
+            var personOrganization = undefined;
+            if(creator.name != null){
+                personOrganization = "organization";
+            } else personOrganization = "person";
+
+            createNewTab(document.getElementById(path+"-add-personComprisedEntity-"+personOrganization), path, fieldName + ".creators", "personComprisedEntity", "Creator", "", k, true)
+            //Identifier
+            autoCompleteIdentifierFields(jsonObj.creators[k], path + "-" + k + "-identifier");
+            autoCompleteAlternateIdentifierFields(jsonObj.creators[k], path + "-" + k + "-alternateIdentifiers", fieldName);
+
+            if(personOrganization === "organization"){
+                var creatorName = '';
+                var creatorAbbreviation = '';
+                if (creator.name != null) {
+                    creatorName = creator.name;
+                }
+                if (creator.abbreviation != null) {
+                    creatorAbbreviation = creator.abbreviation;
+                }
+                $("#" + path + "-" + k + "-name-string").val(creatorName);
+                $("#" + path + "-" + k + "-abbreviation-string").val(creatorAbbreviation);
+            }
+        }
+    }
+}
+
 
 function formatAutoCompleteResult(license) {
     if(!license.element) {

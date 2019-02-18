@@ -39,12 +39,15 @@
 <myTags:editSelect path="${path}.name"
                    specifier="${specifier}-name"
                    label="Name"
-                   enumData="${license.name}"
-                   enumList="${dataFormatsLicenses}"
+                   enumDataString="${license.name}"
+                   enumList="${licenses}"
+                   enumListType="license"
+                   enumListSubType="${licenseListSubType}"
                    cardText="${namePlaceHolder}"
                    isRequired="true"
                    tagName="name"
                    isAutoComplete="${true}"
+                   updateCardTabTitleText="${isUnboundedList}"
                    id="${specifier}-name">
 </myTags:editSelect>
 

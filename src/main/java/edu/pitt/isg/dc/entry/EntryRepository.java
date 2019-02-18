@@ -136,6 +136,22 @@ public interface EntryRepository extends JpaRepository<Entry, EntryId> {
             "where " + IS_PUBLIC + "and " + IS_DATA_FORMAT)
     List<String> findDataFormatsLicenses();
 
+    @Query(nativeQuery = true, value = "select distinct l.license \n" +
+            "from ( \n" +
+                "select jsonb_array_elements_text(content->'entry'->'storedIn'->'licenses') as license \n" +
+                "from entry \n" +
+                "where content->'entry'->'storedIn'->'licenses' is not null and is_public = true \n" +
+                "union \n" +
+                "select jsonb_array_elements_text(d.distributions->'storedIn'->'licenses') as license \n" +
+                "from ( \n" +
+                    "select distinct jsonb_array_elements(content->'entry'->'distributions') as distributions \n" +
+                    "from entry \n" +
+                    "where content->'entry'->'distributions' is not null and is_public = true \n" +
+                ") as d \n" +
+                "where d.distributions->'storedIn'->'licenses' is not null \n" +
+            ") as l ")
+    List<String> findDataRepositoryLicenses();
+
     @Query(nativeQuery = true, value = "select display_name, " +
             "content->'entry'#>'{distributions,0}'->'access'->>'accessURL' " +
             "as access_url from entry where category_id = 39 order by display_name")

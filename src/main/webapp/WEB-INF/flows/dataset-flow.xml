@@ -129,6 +129,10 @@
     <!-- STORED IN -->
     <!--Form page 2-->
     <view-state id="datasetForm2" model="flowScope.digitalObject">
+        <on-render>
+            <set name="requestScope.licenseListSubType" value="'dataRepository'"/>
+            <set name="requestScope.licenses" value="datasetWebflowValidator.getLicenseList(requestScope.licenseListSubType.toString())"/>
+        </on-render>
         <transition on="previous"  to="validateForm2">
             <set name="flowScope.indexValue" value="'title'"/>
         </transition>
@@ -197,6 +201,10 @@
     <!-- Distributions -->
     <!--Form page 5-->
     <view-state id="datasetForm5" model="flowScope.digitalObject">
+        <on-render>
+            <set name="requestScope.licenseListSubType" value="'dataRepository'"/>
+            <set name="requestScope.licenses" value="datasetWebflowValidator.getLicenseList(requestScope.licenseListSubType.toString())"/>
+        </on-render>
         <transition on="previous" to="validateForm5">
             <set name="flowScope.indexValue" value="'types'"/>
         </transition>
