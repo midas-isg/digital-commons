@@ -15,6 +15,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -50,8 +52,9 @@ public class WebServiceController {
     })
     @RequestMapping(value = "/identifiers/metadata", method = RequestMethod.GET, headers = {"Accept=application/json", "Accept=application/xml", "Accept=application/html"})
     public @ResponseBody
-    ResponseEntity getMetadata(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) {
+    ResponseEntity getMetadata(ModelMap model, @RequestParam("identifier") String identifier, HttpServletRequest request) throws UnsupportedEncodingException {
         String header = request.getHeader("Accept");
+        identifier = java.net.URLDecoder.decode(identifier, StandardCharsets.UTF_8.name());
         String metadata = apiUtil.getMetadata(identifier, header);
         if(metadata != null) {
             if (header.startsWith("text/html")) {

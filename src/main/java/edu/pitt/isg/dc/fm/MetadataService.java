@@ -1,12 +1,21 @@
 package edu.pitt.isg.dc.fm;
 
+import com.google.gson.JsonSyntaxException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.jsoup.Jsoup;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -35,8 +44,9 @@ import static java.util.Collections.singletonList;
 @Slf4j
 public class MetadataService {
 //    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons-dev";
-    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons";
-    public static final String metadataUrl = baseUrl + "/api/v1/identifiers/metadata";
+//    private static final String baseUrl = "http://betaweb.rods.pitt.edu/digital-commons";
+//    private static final String baseUrl = "http://localhost:8080/digital-commons/";
+    public static final String metadataUrl = "/api/v1/identifiers/metadata";
     private Map<String, String> translator = initTranslator();
 
     private Map<String, String> initTranslator() {
@@ -73,13 +83,21 @@ public class MetadataService {
         }
     }
 
-    public Map<String, Object> getMetadata(String identifier) {
-
-        String json = getJson(identifier);
-        return toStringObjectMap(json);
+    public Map<String, Object> getMetadata(String identifier) throws IOException {
+        try {
+            String json = getJson(identifier);
+            return toStringObjectMap(json);
+        } catch (Exception e) {
+            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
+            file.createNewFile();
+            FileOutputStream oFile = new FileOutputStream(file, true);
+            oFile.write(identifier.getBytes());
+            oFile.write("\n".getBytes());
+        }
+        return null;
     }
 
-    public Map<String, String> metadata2fmBody(Map<String, Object> meta){
+    public Map<String, String> metadata2fmBody(Map<String, Object> meta) {
         final Map<String, String> fmBody = new LinkedHashMap<>();
         fmBody.put("title", getString(meta, "title")); // e.g. "Counts of Dengue reported in ANGUILLA: 1980-2012"
         final String identifier = getString(meta, "identifier.identifier"); // e.g. "10.25337/T7/ptycho.v2.0/AI.38362002"
@@ -92,7 +110,11 @@ public class MetadataService {
         fillVocabs(meta, fmBody);
         fillProvVocab(meta, fmBody);
         fillUsingDistribution(meta, fmBody);
-        fmBody.put(METADATA, toMetadataUrl(identifier)); // e.g. api/v1/identifiers/metadata?identifier=10.25337/T7/ptycho.v2.0/AI.38362002
+        try {
+            fmBody.put(METADATA, toMetadataUrl(identifier)); // e.g. api/v1/identifiers/metadata?identifier=10.25337/T7/ptycho.v2.0/AI.38362002
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         fmBody.put(SEARCH_URI, toBingSearchUrl(identifier)); // e.g. "https://www4.bing.com/search?q=10.25337/T7/ptycho.v2.0/AI.38362002"
         fillLicenses(meta, fmBody);
         return fmBody;
@@ -165,6 +187,7 @@ public class MetadataService {
 
     public Stream<Map<String, Object>> getAllMetadata(long skip){
         try {
+            String baseUrl = getURLBase(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest());
             final String body = Jsoup.connect(baseUrl + "/api/v1/identifiers").timeout(60_000).ignoreContentType(true)
                     .header("Content-Type", "application/json")
                     .header("Accept", "application/json")
@@ -187,10 +210,12 @@ public class MetadataService {
         }
     }
 
-    private String toMetadataUrl(String identifier) {
+    private String toMetadataUrl(String identifier) throws MalformedURLException {
         final List<BasicNameValuePair> list = singletonList(new BasicNameValuePair("identifier", identifier));
         final String query = URLEncodedUtils.format(list, "utf-8");
-        return metadataUrl + "?" + query;
+        String url = getURLBase(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest()) + metadataUrl;
+
+        return url + "?" + query;
     }
 
     private String toBingSearchUrl(String identifier) {
@@ -222,5 +247,9 @@ public class MetadataService {
         } catch (Exception e){
             return null;
         }
+    }
+
+    public String getURLBase(HttpServletRequest request) throws MalformedURLException {
+        return request.getRequestURL().toString().replace(request.getRequestURI(), request.getContextPath());
     }
 }

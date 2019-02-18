@@ -43,7 +43,7 @@
             </c:choose>
             <form action="/digital-commons/fair-metrics/run" method="post" id="form1"/>
             <c:if test="${adminType == 'ISG_ADMIN'}">
-                <button class="btn btn-primary" type="submit" form="form1" value="Submit">Rerun Metrics</button>
+                <button class="btn btn-primary run-metrics-button" type="submit" form="form1" value="Submit">Rerun Metrics</button>
             </c:if>
 
             <table id="fair-metrics-table" class="display table table-striped table-bordered" cellspacing="0"
