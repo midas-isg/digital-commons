@@ -88,11 +88,12 @@ public class MetadataService {
             String json = getJson(identifier);
             return toStringObjectMap(json);
         } catch (Exception e) {
-            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
-            file.createNewFile();
-            FileOutputStream oFile = new FileOutputStream(file, true);
-            oFile.write(identifier.getBytes());
-            oFile.write("\n".getBytes());
+            log.error("Failed to get metadata for identifier: " + identifier, e);
+//            File file  = new File("/Users/mas400/Downloads/identifier_issues.txt");
+//            file.createNewFile();
+//            FileOutputStream oFile = new FileOutputStream(file, true);
+//            oFile.write(identifier.getBytes());
+//            oFile.write("\n".getBytes());
         }
         return null;
     }
