@@ -3,6 +3,7 @@ package edu.pitt.isg.dc.fm;
 import com.google.gson.Gson;
 import org.junit.Test;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -54,7 +55,7 @@ public class MetadataTests {
     }
 
     @Test
-    public void webservice() {
+    public void webservice() throws IOException {
         assertMeta(metas.getMetadata(id));
     }
 
